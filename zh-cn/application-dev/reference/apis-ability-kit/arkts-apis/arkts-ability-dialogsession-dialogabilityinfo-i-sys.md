@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ abilityIconId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ abilityLabelId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ abilityName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ appIndex: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ bundleIconId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -146,7 +146,7 @@ bundleLabelId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -170,7 +170,7 @@ bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -194,7 +194,7 @@ codePath?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -218,7 +218,7 @@ installSource?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -242,7 +242,7 @@ moduleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -266,7 +266,7 @@ multiAppMode: MultiAppMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -290,7 +290,7 @@ visible: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

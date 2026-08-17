@@ -4,7 +4,7 @@ Letter type in text
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ The default is normal.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ The text is all lowercase.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ The text is all uppercase.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

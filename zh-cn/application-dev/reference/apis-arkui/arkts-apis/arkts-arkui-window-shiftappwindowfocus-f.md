@@ -6,11 +6,11 @@
 function shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promise<void>
 ```
 
-在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。 目标窗口需确保具有获得焦点的能力（可通过 [setWindowFocusable()](arkts-arkui-window-window-i.md#setWindowFocusable) 设置），并确保调用[showWindow()](arkts-arkui-window-window-i.md#showWindow)成功且执行完毕。 > **说明：** > > 在调用shiftAppWindowFocus()前，建议确保目标窗口已调用 > [loadContent()](arkts-arkui-window-window-i.md#loadContent) > 或[setUIContent()](arkts-arkui-window-window-i.md#setUIContent)并生效， > 否则可能会导致不可见窗口获取焦点，造成功能异常或影响用户体验。
+在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。 目标窗口需确保具有获得焦点的能力（可通过 [setWindowFocusable()](arkts-arkui-window-window-i.md#setwindowfocusable) 设置），并确保调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)成功且执行完毕。 > **说明：** > > 在调用shiftAppWindowFocus()前，建议确保目标窗口已调用 > [loadContent()](arkts-arkui-window-window-i.md#loadcontent) > 或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)并生效， > 否则可能会导致不可见窗口获取焦点，造成功能异常或影响用户体验。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,8 +24,8 @@ function shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sourceWindowId | int | 是 | 源窗口id，必须是获焦状态。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getWindowProperties)方法获取窗口id属性。 |
-| targetWindowId | int | 是 | 目标窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getWindowProperties)方法获取窗口id属性。 |
+| sourceWindowId | int | 是 | 源窗口id，必须是获焦状态。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。 |
+| targetWindowId | int | 是 | 目标窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。 |
 
 **返回值：**
 

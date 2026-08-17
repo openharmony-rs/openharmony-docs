@@ -4,7 +4,7 @@ Enum type supplied to keyboardAppearance for setting the web keyboard appearance
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Default skin mode, no immersive style.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ No immersive style.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ Light immersive style.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ Dark immersive style.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

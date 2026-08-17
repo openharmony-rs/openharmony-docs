@@ -4,7 +4,7 @@ label文本和字体的样式对象。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ font?: Font
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ heightAdaptivePolicy?: TextHeightAdaptivePolicy
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ maxFontSize?: number | ResourceStr
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ maxLines?: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -124,7 +124,7 @@ minFontSize?: number | ResourceStr
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -148,7 +148,7 @@ overflow?: TextOverflow
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -174,7 +174,7 @@ selectedColor?: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -200,7 +200,7 @@ unselectedColor?: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

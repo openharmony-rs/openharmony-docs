@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ BottomTabBarStyle的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -49,7 +49,7 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -81,7 +81,7 @@ id(value: string): BottomTabBarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -113,7 +113,7 @@ labelStyle(style: TabBarLabelStyle): BottomTabBarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -145,7 +145,7 @@ layoutMode(value: LayoutMode): BottomTabBarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -159,7 +159,7 @@ layoutMode(value: LayoutMode): BottomTabBarStyle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [LayoutMode](arkts-na-tabcontent-layoutmode-e.md) | 是 | 底部页签的图片、文字排布的方式，具体参照LayoutMode枚举。&lt;br/&gt;默认值：LayoutMode.VERTICAL |
+| value | [LayoutMode](arkts-na-tabcontent-layoutmode-e.md) | 是 | 底部页签的图片、文字排布的方式，具体参照LayoutMode枚举。<br/>默认值：LayoutMode.VERTICAL |
 
 **返回值：**
 
@@ -177,7 +177,7 @@ BottomTabBarStyle的静态构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -210,7 +210,7 @@ padding(value: Padding | Dimension | LocalizedPadding): BottomTabBarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -224,7 +224,7 @@ padding(value: Padding | Dimension | LocalizedPadding): BottomTabBarStyle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Padding](../../apis-arkui/arkts-apis/arkts-arkui-padding-t.md) \| [Dimension](../../apis-arkui/arkts-apis/arkts-arkui-dimension-t.md) \| [LocalizedPadding](../../apis-arkui/arkts-apis/arkts-arkui-localizedpadding-i.md) | 是 | 底部页签的内边距。&lt;br/&gt;取值范围：[0, +∞]&lt;br/&gt;默认值：{left:4.0vp,right:4.0 vp,top:0.0vp,bottom:0.0vp}&lt;br/&gt;使用LocalizedPadding时，支持镜像能力。&lt;br /&gt;默认值：{start:LengthMetrics.vp(4),end: LengthMetrics.vp(4),&lt;br/&gt;top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)} |
+| value | [Padding](../../apis-arkui/arkts-apis/arkts-arkui-padding-t.md) \| [Dimension](../../apis-arkui/arkts-apis/arkts-arkui-dimension-t.md) \| [LocalizedPadding](../../apis-arkui/arkts-apis/arkts-arkui-localizedpadding-i.md) | 是 | 底部页签的内边距。<br/>取值范围：[0, +∞]<br/>默认值：{left:4.0vp,right:4.0 vp,top:0.0vp,bottom:0.0vp}<br/>使用LocalizedPadding时，支持镜像能力。&lt;br /&gt;默认值：{start:LengthMetrics.vp(4),end: LengthMetrics.vp(4),<br/>top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)} |
 
 **返回值：**
 
@@ -242,7 +242,7 @@ symmetricExtensible(value: boolean): BottomTabBarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -256,7 +256,7 @@ symmetricExtensible(value: boolean): BottomTabBarStyle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 底部页签的图片、文字是否可以对称借用左右底部页签的空余位置中的最小值。&lt;br/&gt;true：可以对称借用；false：不可以对称借用。&lt;br/&gt;默认值：false，底部页签的图片 、文字不可以对称借用左右底部页签的空余位置中的最小值。 |
+| value | boolean | 是 | 底部页签的图片、文字是否可以对称借用左右底部页签的空余位置中的最小值。<br/>true：可以对称借用；false：不可以对称借用。<br/>默认值：false，底部页签的图片 、文字不可以对称借用左右底部页签的空余位置中的最小值。 |
 
 **返回值：**
 
@@ -274,7 +274,7 @@ verticalAlign(value: VerticalAlign): BottomTabBarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -288,7 +288,7 @@ verticalAlign(value: VerticalAlign): BottomTabBarStyle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [VerticalAlign](../../apis-arkui/arkts-apis/arkts-arkui-verticalalign-e.md) | 是 | 底部页签的图片、文字在垂直方向上的对齐格式。&lt;br/&gt;默认值：VerticalAlign.Center |
+| value | [VerticalAlign](../../apis-arkui/arkts-apis/arkts-arkui-verticalalign-e.md) | 是 | 底部页签的图片、文字在垂直方向上的对齐格式。<br/>默认值：VerticalAlign.Center |
 
 **返回值：**
 

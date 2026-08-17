@@ -10,7 +10,7 @@ function get(key: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -67,7 +67,7 @@ function get(key: string, def: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -125,7 +125,7 @@ function get(key: string, def?: string): Promise<string>
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -142,7 +142,7 @@ function get(key: string, def?: string): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 待查询的系统参数key。 |
-| def | string | 否 | def为所要获取的系统参数的默认值。 &lt;br&gt; def为可选参数，仅当系统参数不存在时生效。 &lt;br&gt; def可以传undefined或任意字符串类型的值。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或任意字符串类型的值。 |
 
 **返回值：**
 

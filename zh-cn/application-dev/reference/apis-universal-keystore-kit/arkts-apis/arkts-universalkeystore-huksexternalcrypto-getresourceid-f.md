@@ -10,7 +10,7 @@ function getResourceId(providerName: string, params: HuksExternalCryptoParam[]):
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -25,7 +25,7 @@ function getResourceId(providerName: string, params: HuksExternalCryptoParam[]):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | providerName | string | 是 | 提供者名称，建议包含厂商信息，全局唯一，长度最大为128字节。 |
-| params | [HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)[] | 是 | 获取资源ID所需的属性参数。必选TAG包括： [HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#HuksExternalCryptoTagType)、 [HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#HuksExternalCryptoTagType)、 [HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#HuksExternalCryptoTagType)。 |
+| params | [HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)[] | 是 | 获取资源ID所需的属性参数。必选TAG包括： [HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#huksexternalcryptotagtype)、 [HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#huksexternalcryptotagtype)、 [HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#huksexternalcryptotagtype)。 |
 
 **返回值：**
 

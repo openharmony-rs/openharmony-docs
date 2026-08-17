@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,21 +20,21 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createKeyboardController](arkts-input-inputeventclient-createkeyboardcontroller-f.md#createKeyboardController) | 创建键盘控制器，用于模拟按键操作。使用Promise异步回调。 |
-| [createMouseController](arkts-input-inputeventclient-createmousecontroller-f.md#createMouseController) | 创建鼠标控制器，用于模拟鼠标操作。使用Promise异步回调。 |
-| [createTouchController](arkts-input-inputeventclient-createtouchcontroller-f.md#createTouchController) | 创建触控控制器，用于模拟触控操作。使用Promise异步回调。 |
+| [createKeyboardController](arkts-input-inputeventclient-createkeyboardcontroller-f.md#createkeyboardcontroller) | 创建键盘控制器，用于模拟按键操作。使用Promise异步回调。 |
+| [createMouseController](arkts-input-inputeventclient-createmousecontroller-f.md#createmousecontroller) | 创建鼠标控制器，用于模拟鼠标操作。使用Promise异步回调。 |
+| [createTouchController](arkts-input-inputeventclient-createtouchcontroller-f.md#createtouchcontroller) | 创建触控控制器，用于模拟触控操作。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md#injectEvent) | 按键(包括单个按键和组合键)注入。 |
-| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md#injectEvent（系统接口）) | 按键(包括单个按键和组合键)注入。 |
-| [injectKeyEvent](arkts-input-inputeventclient-injectkeyevent-f-sys.md#injectKeyEvent) | 按键(包括单个按键和组合键)事件注入。 |
-| [injectMouseEvent](arkts-input-inputeventclient-injectmouseevent-f-sys.md#injectMouseEvent) | 鼠标/触控板事件注入。 |
-| [injectTouchEvent](arkts-input-inputeventclient-injecttouchevent-f-sys.md#injectTouchEvent) | 触屏输入事件注入。 |
-| [permitInjection](arkts-input-inputeventclient-permitinjection-f-sys.md#permitInjection) | 允许事件注入权限。 |
+| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md#injectevent) | 按键(包括单个按键和组合键)注入。 |
+| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md#injectevent系统接口) | 按键(包括单个按键和组合键)注入。 |
+| [injectKeyEvent](arkts-input-inputeventclient-injectkeyevent-f-sys.md#injectkeyevent) | 按键(包括单个按键和组合键)事件注入。 |
+| [injectMouseEvent](arkts-input-inputeventclient-injectmouseevent-f-sys.md#injectmouseevent) | 鼠标/触控板事件注入。 |
+| [injectTouchEvent](arkts-input-inputeventclient-injecttouchevent-f-sys.md#injecttouchevent) | 触屏输入事件注入。 |
+| [permitInjection](arkts-input-inputeventclient-permitinjection-f-sys.md#permitinjection) | 允许事件注入权限。 |
 <!--DelEnd-->
 
 ### 接口

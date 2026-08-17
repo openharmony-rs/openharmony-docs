@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 previewText?: StyledString
 ```
 
-预览内容属性字符串。&lt;br/&gt; 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。
+预览内容属性字符串。<br/> 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。
 
 **类型：** [StyledString](arkts-arkui-styledstring-styledstring-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ range: TextRange
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ replacementString: StyledString
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

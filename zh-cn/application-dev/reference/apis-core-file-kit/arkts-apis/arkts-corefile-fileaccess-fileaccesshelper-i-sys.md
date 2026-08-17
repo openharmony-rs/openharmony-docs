@@ -4,7 +4,7 @@ FileAccessHelper对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -24,7 +24,7 @@ access(sourceFileUri: string) : Promise<boolean>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -126,7 +126,7 @@ access(sourceFileUri: string, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -225,7 +225,7 @@ copy(sourceUri: string, destUri: string, force?: boolean): Promise<Array<CopyRes
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -263,7 +263,7 @@ copy(sourceUri: string, destUri: string, callback: AsyncCallback<Array<CopyResul
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -330,7 +330,7 @@ copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -398,11 +398,11 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 
-**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md#copyFile)(src: string | number, dest: string | number, mode?: number)
+**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md#copyfile)(src: string | number, dest: string | number, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -467,11 +467,11 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 
-**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md#copyFile)(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md#copyfile)(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -555,11 +555,11 @@ createFile(uri: string, displayName: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md#createRandomAccessFile)(file: string | File, mode?: number, options?: RandomAccessFileOptions)
+**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md#createrandomaccessfile)(file: string | File, mode?: number, options?: RandomAccessFileOptions)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -660,11 +660,11 @@ createFile(uri: string, displayName: string, callback: AsyncCallback<string>): v
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md#createRandomAccessFile)(file: string | File, callback: AsyncCallback&lt;RandomAccessFile&gt;)
+**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md#createrandomaccessfile)(file: string | File, callback: AsyncCallback&lt;RandomAccessFile&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -757,7 +757,7 @@ delete(uri: string) : Promise<number>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -856,7 +856,7 @@ delete(uri: string, callback: AsyncCallback<number>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -951,7 +951,7 @@ getFileInfoFromRelativePath(relativePath: string) : Promise<FileInfo>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -1008,7 +1008,7 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback<FileIn
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -1064,7 +1064,7 @@ getFileInfoFromUri(uri: string) : Promise<FileInfo>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -1122,7 +1122,7 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback<FileInfo>) : void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -1175,11 +1175,11 @@ try {
 getRoots(): Promise<RootIterator>
 ```
 
-以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。 该方法返回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md#RootInfo（系统接口）)。
+以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。 该方法返回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md#rootinfo系统接口)。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -1273,11 +1273,11 @@ async function getRoots() {
 getRoots(callback: AsyncCallback<RootIterator>): void
 ```
 
-以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。 callback带回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回 [RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md#RootInfo（系统接口）)。
+以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。 callback带回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回 [RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md#rootinfo系统接口)。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -1376,7 +1376,7 @@ mkDir(parentUri: string, displayName: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -1481,7 +1481,7 @@ mkDir(parentUri: string, displayName: string, callback: AsyncCallback<string>): 
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -1578,11 +1578,11 @@ move(sourceFile: string, destFile: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#moveFile)(src: string, dest: string, mode?: number)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1678,11 +1678,11 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback<string>): voi
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#moveFile)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1775,11 +1775,11 @@ moveFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#moveFile)(src: string, dest: string, mode?: number)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1869,11 +1869,11 @@ moveFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#moveFile)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1960,11 +1960,11 @@ moveItem(sourceUri: string, destUri: string, force?: boolean): Promise<Array<Mov
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#moveFile)(src: string, dest: string, mode?: number)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2029,11 +2029,11 @@ moveItem(sourceUri: string, destUri: string, callback: AsyncCallback<Array<MoveR
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#moveFile)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2127,11 +2127,11 @@ moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCall
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#moveFile)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2226,7 +2226,7 @@ openFile(uri: string, flags: OPENFLAGS) : Promise<number>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -2324,7 +2324,7 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback<number>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -2420,7 +2420,7 @@ query(uri: string, metaJson: string) : Promise<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -2438,8 +2438,8 @@ query(uri: string, metaJson: string) : Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md#FileInfo（系统接口）)中获取）。 |
-| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md#FileKey（系统接口）) 。 |
+| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md#fileinfo系统接口)中获取）。 |
+| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md#filekey系统接口) 。 |
 
 **返回值：**
 
@@ -2479,7 +2479,7 @@ query(uri: string, metaJson: string, callback: AsyncCallback<string>) : void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -2497,8 +2497,8 @@ query(uri: string, metaJson: string, callback: AsyncCallback<string>) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md#FileInfo（系统接口）)中获取）。 |
-| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md#FileKey（系统接口）)。 |
+| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md#fileinfo系统接口)中获取）。 |
+| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md#filekey系统接口)。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回json字符串，包括查询属性和值。 |
 
 ## 示例
@@ -2538,11 +2538,11 @@ registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
-**替代接口：** [createWatcher](../../apis-na/arkts-apis/arkts-na-fileio-createwatcher-f.md#createWatcher)
+**替代接口：** [createWatcher](../../apis-na/arkts-apis/arkts-na-fileio-createwatcher-f.md#createwatcher)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2576,7 +2576,7 @@ rename(uri: string, displayName: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -2675,7 +2675,7 @@ rename(uri: string, displayName: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -2771,7 +2771,7 @@ unregisterObserver(uri: string, callback?: Callback<NotifyMessage>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 

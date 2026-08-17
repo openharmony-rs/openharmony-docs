@@ -1,12 +1,12 @@
 # WhiteBalance（系统接口）
 
-WhiteBalance继承自[WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md#WhiteBalanceQuery（系统接口）)。 提供了处理设备白平衡的相关功能，包括获取和设置白平衡模式以及白平衡值。
+WhiteBalance继承自[WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md#whitebalancequery系统接口)。 提供了处理设备白平衡的相关功能，包括获取和设置白平衡模式以及白平衡值。
 
-**继承/实现关系：** WhiteBalance extends [WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md#WhiteBalanceQuery（系统接口）)
+**继承/实现关系：** WhiteBalance extends [WhiteBalanceQuery](arkts-camera-camera-whitebalancequery-i.md#whitebalancequery系统接口)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ getWhiteBalance(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -61,7 +61,7 @@ Gets RGB white balance gain values.
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ getWhiteBalanceMode(): WhiteBalanceMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -127,11 +127,11 @@ getWhiteBalanceMode(): WhiteBalanceMode
 setWhiteBalance(whiteBalance: int): void
 ```
 
-设置手动白平衡值。 设置之前需要先检查设备支持的白平衡值范围，具体方法请参考[getWhiteBalanceRange](arkts-camera-camera-whitebalancequery-i-sys.md#getWhiteBalanceRange)。
+设置手动白平衡值。 设置之前需要先检查设备支持的白平衡值范围，具体方法请参考[getWhiteBalanceRange](arkts-camera-camera-whitebalancequery-i-sys.md#getwhitebalancerange)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -167,7 +167,7 @@ Sets RGB white balance gain values.
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -198,11 +198,11 @@ Sets RGB white balance gain values.
 setWhiteBalanceMode(mode: WhiteBalanceMode): void
 ```
 
-设置白平衡模式。设置之前需要先检查设备是否支持指定的白平衡模式，具体方法请参考 [isWhiteBalanceModeSupported](arkts-camera-camera-whitebalancequery-i-sys.md#isWhiteBalanceModeSupported)。
+设置白平衡模式。设置之前需要先检查设备是否支持指定的白平衡模式，具体方法请参考 [isWhiteBalanceModeSupported](arkts-camera-camera-whitebalancequery-i-sys.md#iswhitebalancemodesupported)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

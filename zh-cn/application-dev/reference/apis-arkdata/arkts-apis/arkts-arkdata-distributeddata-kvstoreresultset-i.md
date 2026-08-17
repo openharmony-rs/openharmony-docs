@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#KVStoreResultSet)
+**替代接口：** [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#kvstoreresultset)
 
 <!--Device-distributedData-interface KvStoreResultSet--><!--Device-distributedData-interface KvStoreResultSet-End-->
 
@@ -24,7 +24,7 @@ getCount(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -69,7 +69,7 @@ getEntry(): Entry
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -114,7 +114,7 @@ getPosition(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -159,7 +159,7 @@ isAfterLast(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -204,7 +204,7 @@ isBeforeFirst(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -249,7 +249,7 @@ isFirst(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -294,7 +294,7 @@ isLast(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -339,7 +339,7 @@ move(offset: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -390,7 +390,7 @@ moveToFirst(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -435,7 +435,7 @@ moveToLast(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -480,7 +480,7 @@ moveToNext(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -525,7 +525,7 @@ moveToPosition(position: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -576,7 +576,7 @@ moveToPrevious(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

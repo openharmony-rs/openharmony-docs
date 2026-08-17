@@ -1,12 +1,12 @@
 # TimePickerDialogOptions
 
-时间选择器弹窗选项。 继承自[TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md#TimePickerOptions)。
+时间选择器弹窗选项。 继承自[TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md#timepickeroptions)。
 
-**继承/实现关系：** TimePickerDialogOptions extends [TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md#TimePickerOptions)
+**继承/实现关系：** TimePickerDialogOptions extends [TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md#timepickeroptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ distortionMode?: DistortionMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -54,7 +54,7 @@ edgeLightMode?: EdgeLightMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

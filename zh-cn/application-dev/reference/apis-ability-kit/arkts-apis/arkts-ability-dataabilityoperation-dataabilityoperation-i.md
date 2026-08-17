@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ expectedCount?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ interrupted?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ predicates?: dataAbility.DataAbilityPredicates
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ predicatesBackReferences?: Map<number, number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ type: featureAbility.DataAbilityOperationType
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ uri: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -156,7 +156,7 @@ valueBackReferences?: rdb.ValuesBucket
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ valuesBucket?: rdb.ValuesBucket
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

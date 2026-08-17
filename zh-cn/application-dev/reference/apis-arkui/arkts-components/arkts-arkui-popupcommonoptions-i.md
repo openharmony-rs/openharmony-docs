@@ -1,10 +1,10 @@
 # PopupCommonOptions
 
-配置弹出气泡的参数。使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)中的 [getPromptAction()](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getPromptAction)方法获取到 [PromptAction](../arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#PromptAction)对象，再通过该对象调用 [openPopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openPopup)和 [updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatePopup)时传入的options参数。
+配置弹出气泡的参数。使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 [getPromptAction()](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取到 [PromptAction](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#promptaction)对象，再通过该对象调用 [openPopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup)和 [updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup)时传入的options参数。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ The height of the arrow.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ Popup箭头在气泡处的偏移。 箭头在气泡上下方时，数值为0表�
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ The position of the sharp corner of popup.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ The width of the arrow.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ autoCancel?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -152,7 +152,7 @@ avoidTarget?: AvoidanceMode
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ Defines popup background blur Style
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -202,7 +202,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -226,7 +226,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -250,7 +250,7 @@ borderLinearGradient?: PopupBorderLinearGradient
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -274,7 +274,7 @@ borderWidth?: Dimension
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -300,7 +300,7 @@ colorMode?: AnchoredColorMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -326,7 +326,7 @@ enableArrow?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -352,7 +352,7 @@ Popup组件是否响应悬停态（半折叠状态）变化，即在悬停态下
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -370,7 +370,7 @@ Popup组件是否响应悬停态（半折叠状态）变化，即在悬停态下
 focusable?: boolean
 ```
 
-设置气泡弹出后是否获焦。 true：气泡可以获焦；false：气泡不会获焦。 默认值：false **说明：** 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatePopup)进行更新。
+设置气泡弹出后是否获焦。 true：气泡可以获焦；false：气泡不会获焦。 默认值：false **说明：** 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup)进行更新。
 
 **类型：** boolean
 
@@ -378,7 +378,7 @@ focusable?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -404,7 +404,7 @@ followTransformOfTarget?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -428,7 +428,7 @@ levelMode?: LevelMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -452,7 +452,7 @@ mask?: boolean | PopupMaskType
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -478,7 +478,7 @@ offset?: Position
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -496,13 +496,13 @@ offset?: Position
 onStateChange?: PopupStateChangeCallback
 ```
 
-气泡状态变化事件回调。 **说明：** 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatePopup)进行更新。
+气泡状态变化事件回调。 **说明：** 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup)进行更新。
 
 **类型：** [PopupStateChangeCallback](arkts-arkui-popupstatechangecallback-t.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -520,13 +520,13 @@ onStateChange?: PopupStateChangeCallback
 onWillDismiss?: boolean | Callback<DismissPopupAction>
 ```
 
-设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。 1. 当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件； 2. 如果设置为函数类型，则拦截退出事件且执行回调函数。侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC在回调函数中返回的reason为PRESS_BACK，点击为TOUCH_OUTSIDE。 **说明：** 1. 在onWillDismiss回调中，不能再做onWillDismiss拦截。 2. 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatePopup)进行更新。
+设置Popup交互式关闭拦截开关及拦截回调函数，默认值为true，Popup响应点击、侧滑（左滑/右滑）、三键back。 1. 当为boolean类型时，如果设置为false，则不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数show值为false时才退出；如果设置为true，则正常响应退出事件； 2. 如果设置为函数类型，则拦截退出事件且执行回调函数。侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC在回调函数中返回的reason为PRESS_BACK，点击为TOUCH_OUTSIDE。 **说明：** 1. 在onWillDismiss回调中，不能再做onWillDismiss拦截。 2. 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup)进行更新。
 
 **类型：** boolean \| [Callback](arkts-arkui-callback-i.md)&lt;[DismissPopupAction](arkts-arkui-dismisspopupaction-i.md)&gt;
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -550,7 +550,7 @@ outlineLinearGradient?: PopupBorderLinearGradient
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -574,7 +574,7 @@ outlineWidth?: Dimension
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -600,7 +600,7 @@ placement?: Placement
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -618,13 +618,13 @@ placement?: Placement
 popupColor?: ResourceColor
 ```
 
-气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。默认值：透明色TRANSPARENT加模糊背景填充效果 [COMPONENT_ULTRA_THICK](arkts-arkui-blurstyle-e.md#BlurStyle)。
+气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。默认值：透明色TRANSPARENT加模糊背景填充效果 [COMPONENT_ULTRA_THICK](arkts-arkui-blurstyle-e.md#blurstyle)。
 
 **类型：** ResourceColor
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -650,7 +650,7 @@ The round corners of the popup.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -676,7 +676,7 @@ The style of popup Shadow.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -694,7 +694,7 @@ The style of popup Shadow.
 showInSubWindow?: boolean
 ```
 
-气泡是否显示在创建的子窗里。 true：气泡会显示在创建的子窗里；false：气泡会显示在对应的主窗中。 默认值：false **说明：** 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatePopup)进行更新。
+气泡是否显示在创建的子窗里。 true：气泡会显示在创建的子窗里；false：气泡会显示在对应的主窗中。 默认值：false **说明：** 不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup)进行更新。
 
 **类型：** boolean
 
@@ -702,7 +702,7 @@ showInSubWindow?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -720,13 +720,13 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置组件的系统材质。 默认值：undefined，会清除由该接口设置的材质效果。 **说明：** 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundColor)、边框颜色 [borderColor](arkts-arkui-commonmethod-c.md#borderColor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderWidth)、阴影 [shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
+设置组件的系统材质。 默认值：undefined，会清除由该接口设置的材质效果。 **说明：** 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-commonmethod-c.md#backgroundcolor)、边框颜色 [borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth)、阴影 [shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。
 
 **类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -750,7 +750,7 @@ targetSpace?: Length
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -768,13 +768,13 @@ targetSpace?: Length
 transition?: TransitionEffect
 ```
 
-自定义设置Popup气泡显示和退出的动画效果。 **说明：** 1. 如果不设置，则使用默认的显示/退出动效。 2. 显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。 3. 退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。 4.不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatePopup)进行更新。
+自定义设置Popup气泡显示和退出的动画效果。 **说明：** 1. 如果不设置，则使用默认的显示/退出动效。 2. 显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。 3. 退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。 4.不支持通过[updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup)进行更新。
 
 **类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -798,7 +798,7 @@ Set the width of the popup.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@ Provides APIs to obtain the manual exposure range supported.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Get exposure bias step.
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -59,7 +59,7 @@ Gets the supported manual exposure duration range, units: microseconds.
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

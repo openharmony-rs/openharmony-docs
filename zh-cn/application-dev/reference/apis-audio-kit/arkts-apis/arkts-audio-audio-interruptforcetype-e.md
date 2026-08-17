@@ -1,10 +1,10 @@
 # InterruptForceType
 
-表示音频打断类型的枚举。 当用户监听到音频中断（即收到[InterruptEvent](arkts-audio-audio-interruptevent-i.md#InterruptEvent)事件）时，获取此信息。 此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](arkts-audio-audio-interrupthint-e.md#InterruptHint)获取。关于音频打断策略的详细说明可参考文档 [音频焦点介绍](../../../media/audio/audio-playback-concurrency.md)。
+表示音频打断类型的枚举。 当用户监听到音频中断（即收到[InterruptEvent](arkts-audio-audio-interruptevent-i.md#interruptevent)事件）时，获取此信息。 此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](arkts-audio-audio-interrupthint-e.md#interrupthint)获取。关于音频打断策略的详细说明可参考文档 [音频焦点介绍](../../../media/audio/audio-playback-concurrency.md)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ INTERRUPT_FORCE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ INTERRUPT_FORCE = 0
 INTERRUPT_SHARE = 1
 ```
 
-共享打断类型，即系统不执行具体操作，通过[InterruptHint](arkts-audio-audio-interrupthint-e.md#InterruptHint)建议并提示应用操作，应用可自行决策下一步处理方式。
+共享打断类型，即系统不执行具体操作，通过[InterruptHint](arkts-audio-audio-interrupthint-e.md#interrupthint)建议并提示应用操作，应用可自行决策下一步处理方式。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

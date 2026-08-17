@@ -1,10 +1,10 @@
 # WebKeyboardOptions
 
-Defines the web keyboard options when onInterceptKeyboardAttach event return.
+拦截网页可编辑元素拉起软键盘的回调返回值，包括键盘类型和自定义键盘。适用于需要控制软键盘行为的场景。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Defines the web keyboard options when onInterceptKeyboardAttach event return.
 customKeyboard?: CustomBuilder
 ```
 
-Set the custom keyboard builder when the custom keyboard is used.
+指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
 
 **类型：** CustomBuilder
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ Set the custom keyboard builder when the custom keyboard is used.
 enterKeyType?: number
 ```
 
-Set the enter key type when the system keyboard is used, the "enter" key related to the [inputMethodEngine](../../apis-ime-kit/arkts-apis/arkts-inputmethodengine.md#@ohos.inputMethodEngine).
+指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-enterkeytype-e.md#enterkeytype)，该参数为可选参数，默认值为 UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。
 
 **类型：** number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ Set the enter key type when the system keyboard is used, the "enter" key related
 useSystemKeyboard: boolean
 ```
 
-Whether the system keyboard is used.
+是否使用系统默认软键盘。 true表示使用系统默认软键盘，false表示不使用系统默认软键盘。 默认值：true。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

@@ -6,11 +6,11 @@
 function unregisterConversationListener(bundleName: string, abilityName: string): void
 ```
 
-注销指定Bundle名和Ability名的会话监听。需与注册监听器 [registerConversationListener](arkts-distributedservice-conversation-registerconversationlistener-f-sys.md#registerConversationListener（系统接口）)配对使用，用于注销已注册的会话监听器。 在不再需要接收消息时应调用注销监听器以释放资源，未注销会导致资源持续占用。同一Bundle名和Ability名只能注册一个监听器， 重复注册会覆盖之前的监听器，注销后将移除当前生效的监听器。调用此接口后，应用将不再接收对应Bundle名和Ability名的会话数据。 如果之前未注册过指定Bundle名和Ability名的监听器，此接口同样返回成功。
+注销指定Bundle名和Ability名的会话监听。需与注册监听器 [registerConversationListener](arkts-distributedservice-conversation-registerconversationlistener-f-sys.md#registerconversationlistener系统接口)配对使用，用于注销已注册的会话监听器。 在不再需要接收消息时应调用注销监听器以释放资源，未注销会导致资源持续占用。同一Bundle名和Ability名只能注册一个监听器， 重复注册会覆盖之前的监听器，注销后将移除当前生效的监听器。调用此接口后，应用将不再接收对应Bundle名和Ability名的会话数据。 如果之前未注册过指定Bundle名和Ability名的监听器，此接口同样返回成功。
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 

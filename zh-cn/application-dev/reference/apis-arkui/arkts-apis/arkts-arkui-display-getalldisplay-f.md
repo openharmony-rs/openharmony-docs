@@ -10,11 +10,11 @@ function getAllDisplay(callback: AsyncCallback<Array<Display>>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getAllDisplays)(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;)
+**替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays)(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;)
 
 <!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void-End-->
 
@@ -37,7 +37,7 @@ display.getAllDisplay((err: BusinessError, data: Array<display.Display>) => {
     console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in obtaining the default display objects. Data: ${JSON.stringify(data)}`);
+  console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -52,11 +52,11 @@ function getAllDisplay(): Promise<Array<Display>>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getAllDisplays)()
+**替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md#getalldisplays)()
 
 <!--Device-display-function getAllDisplay(): Promise<Array<Display>>--><!--Device-display-function getAllDisplay(): Promise<Array<Display>>-End-->
 
@@ -75,7 +75,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise: Promise<Array<display.Display>> = display.getAllDisplay();
 promise.then((data: Array<display.Display>) => {
-  console.info(`Succeeded in obtaining the default display objects. Data: ${JSON.stringify(data)}`);
+  console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
 });

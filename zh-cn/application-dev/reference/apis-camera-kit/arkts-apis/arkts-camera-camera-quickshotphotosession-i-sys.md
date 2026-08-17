@@ -2,11 +2,11 @@
 
 Quick shot photo session object.
 
-**继承/实现关系：** QuickShotPhotoSession extends [Session](arkts-camera-camera-session-i.md#Session), [AutoExposure](arkts-camera-camera-autoexposure-i.md#AutoExposure), [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md#ColorEffect（系统接口）), [ColorManagement](arkts-camera-camera-colormanagement-i.md#ColorManagement), [EffectSuggestion](arkts-camera-camera-effectsuggestion-i-sys.md#EffectSuggestion（系统接口）), [Flash](arkts-camera-camera-flash-i.md#Flash), [Focus](arkts-camera-camera-focus-i.md#Focus), [Zoom](arkts-camera-camera-zoom-i.md#Zoom), [Beauty](arkts-camera-camera-beauty-i-sys.md#Beauty（系统接口）)
+**继承/实现关系：** QuickShotPhotoSession extends [Session](arkts-camera-camera-session-i.md#session), [AutoExposure](arkts-camera-camera-autoexposure-i.md#autoexposure), [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md#coloreffect系统接口), [ColorManagement](arkts-camera-camera-colormanagement-i.md#colormanagement), [EffectSuggestion](arkts-camera-camera-effectsuggestion-i-sys.md#effectsuggestion系统接口), [Flash](arkts-camera-camera-flash-i.md#flash), [Focus](arkts-camera-camera-focus-i.md#focus), [Zoom](arkts-camera-camera-zoom-i.md#zoom), [Beauty](arkts-camera-camera-beauty-i-sys.md#beauty系统接口)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ Unsubscribes from effect suggestion change events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,7 +58,7 @@ Unsubscribes from error events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ Unsubscribes from focus state change event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ Unsubscribes from zoom info event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ Unsubscribes from effect suggestion event callback.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -187,7 +187,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -220,7 +220,7 @@ Unsubscribes from focus state change events.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -253,7 +253,7 @@ Unsubscribes from smooth zoom state change events.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -286,7 +286,7 @@ Subscribes to effect suggestion change events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -318,7 +318,7 @@ Subscribes to error events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -350,7 +350,7 @@ Subscribes focus state change event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -382,7 +382,7 @@ Subscribes zoom info event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -414,7 +414,7 @@ Subscribes to effect suggestion event callback.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -447,7 +447,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -461,8 +461,8 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginConfig), [commitConfig](arkts-camera-camera-session-i.md#commitConfig), and [addInput](arkts-camera-camera-session-i.md#addInput). |
-| callback | [ErrorCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-errorcallback-t.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md#CameraErrorCode). |
+| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
+| callback | [ErrorCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-errorcallback-t.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md#cameraerrorcode). |
 
 **错误码：**
 
@@ -480,7 +480,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -513,7 +513,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

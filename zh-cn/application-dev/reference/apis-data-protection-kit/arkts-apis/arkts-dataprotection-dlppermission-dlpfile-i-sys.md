@@ -1,10 +1,10 @@
 # DLPFile（系统接口）
 
-管理DLPFile的实例，表示一个DLP文件对象，需要通过 [generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md#generateDLPFile) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#openDLPFile)获取DLPFile的实例。DLPFile对象代表一个已打开 的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closeDLPFile)方法释放资源，避免文件句柄泄漏。 DLPFile对象在跨进程传递时，需要进行授权。
+管理DLPFile的实例，表示一个DLP文件对象，需要通过 [generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md#generatedlpfile) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile)获取DLPFile的实例。DLPFile对象代表一个已打开 的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closedlpfile)方法释放资源，避免文件句柄泄漏。 DLPFile对象在跨进程传递时，需要进行授权。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 addDLPLinkFile(linkFileName: string): Promise<void>
 ```
 
-在FUSE文件系统(Filesystem in Userspace)添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文 件的读写操作会同步到实际DLP文件。使用Promise异步回调。 在调用addDLPLinkFile后需要调用 [deleteDLPLinkFile](#deleteDLPLinkFile)移除DLP link文件。 DLP应用需要通过标准文件接口访问加密文件内容时，先添加link文件将DLP文件映射为虚拟明文文件，应用可像操作普通文件一样读写该link文件。
+在FUSE文件系统(Filesystem in Userspace)添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文 件的读写操作会同步到实际DLP文件。使用Promise异步回调。 在调用addDLPLinkFile后需要调用 [deleteDLPLinkFile](#deletedlplinkfile)移除DLP link文件。 DLP应用需要通过标准文件接口访问加密文件内容时，先添加link文件将DLP文件映射为虚拟明文文件，应用可像操作普通文件一样读写该link文件。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
 
-async function ExampleFunction() {
+async function exampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
   let file: number | undefined = undefined;
   let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
@@ -88,7 +88,7 @@ async function ExampleFunction() {
   }
 }
 
-ExampleFunction();
+exampleFunction();
 ```
 
 ## addDLPLinkFile
@@ -97,11 +97,11 @@ ExampleFunction();
 addDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 ```
 
-在FUSE文件系统添加link文件。使用callback异步回调。调用成功后，在FUSE文件系统中创建一个映射到DLP文件密文的虚拟文件。 在调用addDLPLinkFile后需要调用 [deleteDLPLinkFile](#deleteDLPLinkFile)移除DLP link文件。 DLP应用需要通过标准文件接口访问加密文件内容时使用此接口。
+在FUSE文件系统添加link文件。使用callback异步回调。调用成功后，在FUSE文件系统中创建一个映射到DLP文件密文的虚拟文件。 在调用addDLPLinkFile后需要调用 [deleteDLPLinkFile](#deletedlplinkfile)移除DLP link文件。 DLP应用需要通过标准文件接口访问加密文件内容时使用此接口。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
     if (err) {
-      console.error('addDLPLinkFile error,', err.code, err.message);
+      console.error(`Failed to add DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -172,11 +172,11 @@ ExampleFunction();
 closeDLPFile(): Promise<void>
 ```
 
-关闭DLPFile，释放对象。使用Promise异步回调。 调用[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#openDLPFile)成功后返回DLPFile对象，必须在使用完毕后调 用closeDLPFile()释放资源。 文件所有者决定关闭DLP文件时使用此接口。 > **说明：** > > dlpFile不再使用，应该关闭释放内存，且对象不应继续使用。
+关闭DLPFile，释放对象。使用Promise异步回调。 调用[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md#opendlpfile)成功后返回DLPFile对象，必须在使用完毕后调 用closeDLPFile()释放资源。 文件所有者决定关闭DLP文件时使用此接口。 > **说明：** > > dlpFile不再使用，应该关闭释放内存，且对象不应继续使用。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -245,7 +245,7 @@ closeDLPFile(callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -297,7 +297,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.closeDLPFile((err, res) => { // 关闭DLP文件。
     if (err) {
-      console.error('closeDLPFile error,', err.code, err.message);
+      console.error(`Failed to close DLPFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -314,11 +314,11 @@ ExampleFunction();
 deleteDLPLinkFile(linkFileName: string): Promise<void>
 ```
 
-删除FUSE文件系统中创建的link文件。使用Promise异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。 在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#addDLPLinkFile)添加 DLP link文件。 DLP文件访问结束后清理link文件映射时使用此接口。
+删除FUSE文件系统中创建的link文件。使用Promise异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。 在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加 DLP link文件。 DLP文件访问结束后清理link文件映射时使用此接口。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -392,11 +392,11 @@ ExampleFunction();
 deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 ```
 
-删除FUSE文件系统中创建的link文件，使用callback异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。 在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#addDLPLinkFile)添加 DLP link文件。 DLP文件访问结束后清理link文件映射时使用此接口。
+删除FUSE文件系统中创建的link文件，使用callback异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。 在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加 DLP link文件。 DLP文件访问结束后清理link文件映射时使用此接口。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -450,7 +450,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // 删除link文件。
     if (err) {
-      console.error('deleteDLPLinkFile error,', err.code, err.message);
+      console.error(`Failed to delete DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -472,7 +472,7 @@ recoverDLPFile(plaintextFd: number): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -559,7 +559,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -620,7 +620,7 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   dlpFile.recoverDLPFile(destFile, async (err, res) => { // 还原DLP文件。
     if (err) {
-      console.error('recoverDLPFile error,', err.code, err.message);
+      console.error(`Failed to recover DLPFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -643,7 +643,7 @@ replaceDLPLinkFile(linkFileName: string): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -723,7 +723,7 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -778,7 +778,7 @@ async function ExampleFunction() {
   await dlpFile.stopFuseLink(); // 暂停link读写。
   dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // 替换link文件。
     if (err) {
-      console.error('replaceDLPLinkFile error,', err.code, err.message);
+      console.error(`Failed to replace DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
       await dlpFile?.resumeFuseLink(); // 恢复link读写。
@@ -797,11 +797,11 @@ ExampleFunction();
 resumeFuseLink(): Promise<void>
 ```
 
-恢复FUSE关联读写。使用Promise异步回调。调用成功后，恢复对link文件的读写操作。 必须在调用[stopFuseLink](#stopFuseLink)暂停读写后才能调用此方法恢复读写功能。 link文件替换完成后，需要恢复读写关联以继续正常的文件访问。
+恢复FUSE关联读写。使用Promise异步回调。调用成功后，恢复对link文件的读写操作。 必须在调用[stopFuseLink](#stopfuselink)暂停读写后才能调用此方法恢复读写功能。 link文件替换完成后，需要恢复读写关联以继续正常的文件访问。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -869,11 +869,11 @@ ExampleFunction();
 resumeFuseLink(callback: AsyncCallback<void>): void
 ```
 
-恢复FUSE关联读写，使用callback异步回调。调用成功后，恢复对link文件的读写操作。 必须在调用[stopFuseLink](#stopFuseLink)暂停读写后才能调用此方法恢复读写功能。 link文件替换完成后需要恢复读写关联。
+恢复FUSE关联读写，使用callback异步回调。调用成功后，恢复对link文件的读写操作。 必须在调用[stopFuseLink](#stopfuselink)暂停读写后才能调用此方法恢复读写功能。 link文件替换完成后需要恢复读写关联。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -927,7 +927,7 @@ async function ExampleFunction() {
   await dlpFile.stopFuseLink(); // 暂停link读写。
   dlpFile.resumeFuseLink(async (err, res) => {
     if (err) {
-      console.error('resumeFuseLink error,', err.code, err.message);
+      console.error(`Failed to resume FuseLink. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -945,11 +945,11 @@ ExampleFunction();
 stopFuseLink(): Promise<void>
 ```
 
-停止FUSE关联读写。使用Promise异步回调。调用成功后，暂停对link文件的读写操作。 调用stopFuseLink暂停FUSE关联读写后，必须调用[resumeFuseLink](#resumeFuseLink)恢复读写功能。 在删除link文件前，需要先停止关联读写以确保文件操作安全。
+停止FUSE关联读写。使用Promise异步回调。调用成功后，暂停对link文件的读写操作。 调用stopFuseLink暂停FUSE关联读写后，必须调用[resumeFuseLink](#resumefuselink)恢复读写功能。 在删除link文件前，需要先停止关联读写以确保文件操作安全。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -1015,11 +1015,11 @@ ExampleFunction();
 stopFuseLink(callback: AsyncCallback<void>): void
 ```
 
-停止FUSE关联读写。使用callback异步回调。调用成功后，暂停对link文件的读写操作。 调用stopFuseLink暂停FUSE关联读写后，必须调用[resumeFuseLink](#resumeFuseLink)恢复读写功能。 删除link文件前需要暂停读写关联。
+停止FUSE关联读写。使用callback异步回调。调用成功后，暂停对link文件的读写操作。 调用stopFuseLink暂停FUSE关联读写后，必须调用[resumeFuseLink](#resumefuselink)恢复读写功能。 删除link文件前需要暂停读写关联。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -1072,7 +1072,7 @@ async function ExampleFunction() {
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   dlpFile.stopFuseLink(async (err, res) => {
     if (err) {
-      console.error('stopFuseLink error,', err.code, err.message);
+      console.error(`Failed to stop FuseLink. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info('res', JSON.stringify(res));
     }
@@ -1096,7 +1096,7 @@ dlpProperty: DLPProperty
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

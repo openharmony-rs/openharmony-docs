@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ UNKNOWN = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ ARGB_8888 = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ RGB_565 = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -80,11 +80,11 @@ RGB_565 = 2
 RGBA_8888 = 3
 ```
 
-颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#CameraFormat)。
+颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -106,7 +106,7 @@ BGRA_8888 = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -128,7 +128,7 @@ RGB_888 = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -150,7 +150,7 @@ ALPHA_8 = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -172,7 +172,7 @@ RGBA_F16 = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -190,11 +190,11 @@ RGBA_F16 = 7
 NV21 = 8
 ```
 
-YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#CameraFormat)。
+YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -216,7 +216,7 @@ YUV像素排列，U分量在V分量之前。颜色信息由亮度分量Y和交�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -238,7 +238,7 @@ RGBA_1010102 = 10
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -252,11 +252,11 @@ RGBA_1010102 = 10
 YCBCR_P010 = 11
 ```
 
-颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#CameraFormat)。
+颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -270,11 +270,11 @@ YCBCR_P010 = 11
 YCRCB_P010 = 12
 ```
 
-颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#CameraFormat)。
+颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -292,7 +292,7 @@ Y8 = 14
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -312,7 +312,7 @@ Indicates that each pixel is stored on 8 bits, without 4-byte stride alignment. 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -334,7 +334,7 @@ Indicates that each pixel is stored on 16 bits. Each pixel contains 1 component:
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -356,7 +356,7 @@ The storage format is ASTC 4x4 format, and the memory usage is only 1/4 of RGBA_
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

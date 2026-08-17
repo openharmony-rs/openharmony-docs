@@ -4,7 +4,7 @@ UI事件监听器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Listen on component event once, additional listening options can be set.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ Listen for dialog show once
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -132,7 +132,7 @@ Listen for toast show once
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -180,7 +180,7 @@ Listen on window change once, additional listening options can be set.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -237,7 +237,7 @@ once(type: 'componentEventOccur', componentEventType: ComponentEventType, option
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -302,7 +302,7 @@ once(type: 'dialogShow', callback: Callback<UIElementInfo>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -353,7 +353,7 @@ once(type: 'toastShow', callback: Callback<UIElementInfo>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -408,7 +408,7 @@ once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowCh
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

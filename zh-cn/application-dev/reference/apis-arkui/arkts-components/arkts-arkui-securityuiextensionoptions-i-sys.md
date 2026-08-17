@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ dpiFollowStrategy?: SecurityDpiFollowStrategy
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ dpiFollowStrategy?: SecurityDpiFollowStrategy
 isTransferringCaller?: boolean
 ```
 
-在使用SecurityUIExtensionComponent嵌套时，设置当前组件是否转发上一级调用方的Caller信息（即发起调用的Ability身份信息），用于支持多级嵌套场景下的调用链传递。&lt;br/&gt; true：转发上一级的Caller信息；false：不转发上一级的Caller信息。&lt;br/&gt; 默认值：**false** 默认值：**false**
+在使用SecurityUIExtensionComponent嵌套时，设置当前组件是否转发上一级调用方的Caller信息（即发起调用的Ability身份信息），用于支持多级嵌套场景下的调用链传递。<br/> true：转发上一级的Caller信息；false：不转发上一级的Caller信息。<br/> 默认值：**false** 默认值：**false**
 
 **类型：** boolean
 
@@ -54,7 +54,7 @@ isTransferringCaller?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ placeholder?: ComponentContent
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

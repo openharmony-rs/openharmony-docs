@@ -10,7 +10,7 @@ function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, ca
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -43,10 +43,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.NumberFormatOptions = {
     countryCode: "CN"
-}
+};
 call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`formatPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
@@ -64,7 +64,7 @@ function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -102,11 +102,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.NumberFormatOptions = {
     countryCode: "CN"
-}
+};
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
     console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`formatPhoneNumber fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 
@@ -121,7 +121,7 @@ function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -153,7 +153,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
+        console.error(`formatPhoneNumber fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }

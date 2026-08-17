@@ -1,10 +1,10 @@
 # WebMediaOptions
 
-Defines the Media Options.
+用于配置 Web 组件的媒体策略，包括音频续播有效期、音频独占模式等。适用于需要优化音频播放体验和多实例音频管理的场景，提升媒体播放的稳定性和用户体验。
 
-**起始版本：** 12
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Defines the Media Options.
 audioExclusive?: boolean
 ```
 
-Whether the audio of each web is exclusive.
+应用内多个Web实例的音频是否独占。 true表示应用内多个Web实例的音频独占，false表示不独占。 默认值：true。
 
 **类型：** boolean
 
-**起始版本：** 11
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ Whether the audio of each web is exclusive.
 audioSessionType?: AudioSessionType
 ```
 
-音频会话的类型
+应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../apis-audio-kit/arkts-apis/arkts-audio-audio-streamusage-e.md#streamusage)中的STREAM_USAGE_MUSIC。用于改变组件音频类型 与系统音频类型映射关系，影响ArkWeb音频焦点策略。
 
 **类型：** [AudioSessionType](arkts-arkweb-audiosessiontype-e.md)
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -60,13 +60,13 @@ audioSessionType?: AudioSessionType
 resumeInterval?: number
 ```
 
-The time interval for audio playback to resume.
+被其他应用暂停的Web音视频能够自动续播的有效期，单位：秒。取值范围：[-2147483648, 2147483647]。值为0时，不自动续播；大于0时，将在该时间内尝试续播；小于0时，将在无限时间内尝试续播。由于近似值原因，该有 效期可能存在一秒内的误差。 **说明：** HLS视频被打断后，回到前台将自动续播，不受该时间控制。 默认值：0。
 
 **类型：** number
 
-**起始版本：** 11
+**起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

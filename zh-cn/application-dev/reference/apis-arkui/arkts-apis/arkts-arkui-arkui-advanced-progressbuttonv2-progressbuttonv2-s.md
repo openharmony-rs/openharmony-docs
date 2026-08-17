@@ -4,7 +4,7 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -49,7 +49,7 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -67,13 +67,13 @@
 @Param readonly isEnabled: boolean
 ```
 
-下载按钮是否可以点击。&lt;br&gt; true：可以点击。&lt;br&gt; false：不可点击。
+下载按钮是否可以点击。<br> true：可以点击。<br> false：不可点击。
 
 **类型：** boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -97,7 +97,7 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -116,13 +116,13 @@
   @Param readonly progress: number
 ```
 
-下载按钮的当前进度值。&lt;br/&gt;取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。&lt;br/&gt;默认值：0
+下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0
 
 **类型：** number
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -140,13 +140,13 @@
 @Param progressButtonRadius?: LengthMetrics
 ```
 
-下载按钮的圆角（不支持百分比设置）。&lt;br/&gt;取值范围：[0, height/2]&lt;br/&gt;默认值：height/2&lt;br/&gt;设置非法数值时，按照默认值处理。
+下载按钮的圆角（不支持百分比设置）。<br/>取值范围：[0, height/2]<br/>默认值：height/2<br/>设置非法数值时，按照默认值处理。
 
-**类型：** [LengthMetrics](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -164,13 +164,13 @@
 @Param @Once progressButtonWidth?: LengthMetrics
 ```
 
-下载按钮的宽度。&lt;br/&gt;默认值：44vp
+下载按钮的宽度。<br/>默认值：44vp
 
-**类型：** [LengthMetrics](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

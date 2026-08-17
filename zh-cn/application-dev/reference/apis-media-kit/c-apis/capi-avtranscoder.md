@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs of request capability for Transcoder.
+提供转码的请求能力接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 

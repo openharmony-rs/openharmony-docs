@@ -1,10 +1,10 @@
 # On
 
-UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。 On提供的API能力具有以下几个特点： 1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。 2、控件属性支持多种匹配模式。 3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isBefore)和[ON.isAfter](#isAfter)等API限定邻近控件特征进行辅助定位。 On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
+UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。 On提供的API能力具有以下几个特点： 1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。 2、控件属性支持多种匹配模式。 3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore)和[ON.isAfter](#isafter)等API限定邻近控件特征进行辅助定位。 On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ UiTest框架从API version 9开始，通过On类提供了丰富的控件特征�
 afterComponent(com: Component): On
 ```
 
-要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md#Component)指定的另一个组件之后 对象，用于相对于组件定位。
+要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md#component)指定的另一个组件之后 对象，用于相对于组件定位。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -69,11 +69,11 @@ async function demo() {
 beforeComponent(com: Component): On
 ```
 
-要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md#Component)指定的另一个组件之前 对象，用于相对于组件定位。
+要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md#component)指定的另一个组件之前 对象，用于相对于组件定位。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -124,7 +124,7 @@ belongingDisplay(displayId: int): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -138,7 +138,7 @@ belongingDisplay(displayId: int): On
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | int | 是 | 指定控件所属屏幕ID，取值范围：大于等于0的整数。 **说明：** 传入displayId不存在时，将抛出17000007异常。可通过 [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getAllDisplays)获取当前所有的 display对象，并由display对象获取对应的屏幕ID。&lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
+| displayId | int | 是 | 指定控件所属屏幕ID，取值范围：大于等于0的整数。 **说明：** 传入displayId不存在时，将抛出17000007异常。可通过 [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getalldisplays)获取当前所有的 display对象，并由display对象获取对应的屏幕ID。&lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
 
 **返回值：**
 
@@ -171,7 +171,7 @@ checkable(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -218,7 +218,7 @@ checked(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -265,7 +265,7 @@ clickable(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -312,7 +312,7 @@ description(val: string, pattern?: MatchPattern): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -327,7 +327,7 @@ description(val: string, pattern?: MatchPattern): On
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | val | string | 是 | 控件的描述属性。 &lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#MatchPattern)。 |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#matchpattern)。 |
 
 **返回值：**
 
@@ -360,7 +360,7 @@ enabled(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -407,7 +407,7 @@ focused(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -454,7 +454,7 @@ hint(val: string, pattern?: MatchPattern): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -469,7 +469,7 @@ hint(val: string, pattern?: MatchPattern): On
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | val | string | 是 | 指定控件提示文本。 &lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#MatchPattern)。 |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#matchpattern)。 |
 
 **返回值：**
 
@@ -502,7 +502,7 @@ id(id: string): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -549,7 +549,7 @@ id(id: string, pattern: MatchPattern): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -597,7 +597,7 @@ inWindow(bundleName: string): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -644,7 +644,7 @@ isAfter(on: On): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -692,7 +692,7 @@ isBefore(on: On): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -740,7 +740,7 @@ longClickable(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -787,7 +787,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -802,7 +802,7 @@ originalText(text: string, pattern?: MatchPattern): On
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | text | string | 是 | 指定控件文本，用于匹配目标控件文本。 &lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#MatchPattern)。 |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#matchpattern)。 |
 
 **返回值：**
 
@@ -835,7 +835,7 @@ scrollable(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -882,7 +882,7 @@ selected(b?: boolean): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -925,11 +925,11 @@ let on: On = ON.selected(true); // 使用静态构造器ON创建On对象，指�
 text(txt: string, pattern?: MatchPattern): On
 ```
 
-指定目标控件文本属性，支持多种匹配模式，返回On对象自身。 > **说明：**> > 如果控件的无障碍属性 > [accessibilityLevel](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) > 设置为'no'或'no-hide-descendants'，无法使用本接口指定目标控件的文本属性用于查找控件，可以使用[On.originalText()](#originalText)接口实现。
+指定目标控件文本属性，支持多种匹配模式，返回On对象自身。 > **说明：**> > 如果控件的无障碍属性 > [accessibilityLevel](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) > 设置为'no'或'no-hide-descendants'，无法使用本接口指定目标控件的文本属性用于查找控件，可以使用[On.originalText()](#originaltext)接口实现。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -944,7 +944,7 @@ text(txt: string, pattern?: MatchPattern): On
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | txt | string | 是 | 指定控件文本，用于匹配目标控件文本。&lt;!--RP2--&gt;&lt;!--RP2End--&gt; |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#MatchPattern)。<br>**起始版本：** 10 |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#matchpattern)。<br>**起始版本：** 10 |
 
 **返回值：**
 
@@ -977,7 +977,7 @@ type(tp: string): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1024,7 +1024,7 @@ type(tp: string, pattern: MatchPattern): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1072,7 +1072,7 @@ within(on: On): On
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1116,11 +1116,11 @@ let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroll里面的
 withinComponent(com: Component): On
 ```
 
-要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md#Component)指定的另一个组件的内部 对象，用于相对于组件定位。
+要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md#component)指定的另一个组件的内部 对象，用于相对于组件定位。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

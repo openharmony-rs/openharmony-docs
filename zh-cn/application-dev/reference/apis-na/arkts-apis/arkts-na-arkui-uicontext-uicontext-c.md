@@ -4,7 +4,7 @@ UIContext类
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ addLocalInputEventMonitor(eventMask: int, listener: InputEventListener): InputEv
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -55,7 +55,7 @@ Defining animation function
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ animateToImmediately(param: AnimateParam, processor: VoidCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -109,7 +109,7 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -137,7 +137,7 @@ Bind tabs to scrollable container component to automatically hide tab bar.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -164,7 +164,7 @@ closeBindSheet(bindSheetContent: ComponentContentBase): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -191,7 +191,7 @@ closeBindSheet(bindSheetContent: ComponentContentBase): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [120001](../../apis-arkui/errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120003](../../apis-arkui/errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
 ## constructor
@@ -204,7 +204,7 @@ UIContext 构造函数
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -224,7 +224,7 @@ Create an animator object for custom animation.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -250,7 +250,7 @@ Create an animator object for custom animation.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## createUIContextWithoutWindow
 
@@ -262,7 +262,7 @@ Create a UI instance singleton without window and get its UIContext object.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -282,14 +282,14 @@ Create a UI instance singleton without window and get its UIContext object.
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | object UIContext, or undefined when failed. |
+| [UIContext](arkts-na-arkui-uicontext-uicontext-c.md) | object UIContext, or undefined when failed. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [100001](../../apis-arkui/errorcode-internal.md#100001-接口调用异常错误码) | Internal error. @static |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. The number of parameters is incorrect. &lt;br&gt; 2. Invalid parameter type of context. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. The number of parameters is incorrect. <br> 2. Invalid parameter type of context. |
 
 ## destroyUIContextWithoutWindow
 
@@ -301,7 +301,7 @@ Destroy the UI instance singleton without window.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -321,7 +321,7 @@ Dispach keyboard event to the frameNode with inspector key.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -354,7 +354,7 @@ enableEventPassthrough(enabled: boolean | undefined, eventType: RawInputEventTyp
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -381,7 +381,7 @@ enableSwipeBack(enabled: boolean | undefined): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -395,7 +395,7 @@ enableSwipeBack(enabled: boolean | undefined): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean \| undefined | 是 | 是否支持应用内横向滑动返回，默认值为true。&lt;br&gt;当值为true时，支持应用内横向滑动返回。 &lt;br&gt;当值为false时，不支持应用内横向滑动返回。 |
+| enabled | boolean \| undefined | 是 | 是否支持应用内横向滑动返回，默认值为true。<br>当值为true时，支持应用内横向滑动返回。 <br>当值为false时，不支持应用内横向滑动返回。 |
 
 ## fp2px
 
@@ -407,7 +407,7 @@ Converts a value in fp units to a value in px.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -439,7 +439,7 @@ static getAllUIContexts(): UIContext[]
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -453,7 +453,7 @@ static getAllUIContexts(): UIContext[]
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)[] | An array containing all valid UIContext instances, returns an empty array if no contexts are available. |
+| [UIContext](arkts-na-arkui-uicontext-uicontext-c.md)[] | An array containing all valid UIContext instances, returns an empty array if no contexts are available. |
 
 ## getAtomicServiceBar
 
@@ -465,7 +465,7 @@ getAtomicServiceBar(): Nullable<AtomicServiceBar>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -479,7 +479,7 @@ getAtomicServiceBar(): Nullable<AtomicServiceBar>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Nullable](arkts-na-nullable-t.md)&lt;[AtomicServiceBar](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-atomicservicebar-i.md)&gt; | The atomic service bar. |
+| [Nullable](arkts-na-nullable-t.md)&lt;[AtomicServiceBar](arkts-na-arkui-uicontext-atomicservicebar-i.md)&gt; | The atomic service bar. |
 
 ## getAttachedFrameNodeById
 
@@ -491,7 +491,7 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -523,7 +523,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -537,7 +537,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | The UIContext for the current calling scope, or undefined if no context can be determined from the call stack. |
+| [UIContext](arkts-na-arkui-uicontext-uicontext-c.md) | The UIContext for the current calling scope, or undefined if no context can be determined from the call stack. |
 
 ## getComponentSnapshot
 
@@ -549,7 +549,7 @@ getComponentSnapshot(): ComponentSnapshot
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -563,7 +563,7 @@ getComponentSnapshot(): ComponentSnapshot
 
 | 类型 | 说明 |
 | --- | --- |
-| [ComponentSnapshot](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-componentsnapshot-c.md) | the ComponentSnapshot |
+| [ComponentSnapshot](arkts-na-arkui-uicontext-componentsnapshot-c.md) | the ComponentSnapshot |
 
 ## getComponentUtils
 
@@ -575,7 +575,7 @@ get object ComponentUtils.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -589,7 +589,7 @@ get object ComponentUtils.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ComponentUtils](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-componentutils-c.md) | object ComponentUtils. |
+| [ComponentUtils](arkts-na-arkui-uicontext-componentutils-c.md) | object ComponentUtils. |
 
 ## getContextMenuController
 
@@ -601,7 +601,7 @@ getContextMenuController(): ContextMenuController
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -615,7 +615,7 @@ getContextMenuController(): ContextMenuController
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContextMenuController](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-contextmenucontroller-c.md) | object context menu controller. |
+| [ContextMenuController](arkts-na-arkui-uicontext-contextmenucontroller-c.md) | object context menu controller. |
 
 ## getCursorController
 
@@ -627,7 +627,7 @@ getCursorController(): CursorController
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -641,7 +641,7 @@ getCursorController(): CursorController
 
 | 类型 | 说明 |
 | --- | --- |
-| [CursorController](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
+| [CursorController](arkts-na-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
 
 ## getDialogPresenter
 
@@ -653,7 +653,7 @@ getDialogPresenter(): DialogPresenter
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -667,7 +667,7 @@ getDialogPresenter(): DialogPresenter
 
 | 类型 | 说明 |
 | --- | --- |
-| [DialogPresenter](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-dialogpresenter-c.md) | Dialog object. |
+| [DialogPresenter](arkts-na-arkui-uicontext-dialogpresenter-c.md) | Dialog object. |
 
 ## getDragController
 
@@ -679,7 +679,7 @@ getDragController(): DragController
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -693,7 +693,7 @@ getDragController(): DragController
 
 | 类型 | 说明 |
 | --- | --- |
-| [DragController](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-dragcontroller-c.md) | the DragController |
+| [DragController](arkts-na-arkui-uicontext-dragcontroller-c.md) | the DragController |
 
 ## getFilteredInspectorTree
 
@@ -701,11 +701,11 @@ getDragController(): DragController
 getFilteredInspectorTree(filters?: Array<string>): string
 ```
 
-获取组件树和组件属性。该接口处理时间较长，适用于 &lt;br&gt;testing scenarios only.
+获取组件树和组件属性。该接口处理时间较长，适用于 <br>testing scenarios only.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -719,7 +719,7 @@ getFilteredInspectorTree(filters?: Array<string>): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: &lt;br&gt;**"id"**: unique ID of the component. &lt;br&gt;**"src"**: source of the resource. &lt;br&gt;**"content"**: information or data contained in the element, component, or object. &lt;br&gt;**"editable"**: whether the component is editable. &lt;br&gt;**"scrollable"**: whether the component is scrollable. &lt;br&gt;**"selectable"**: whether the component is selectable. &lt;br&gt;**"focusable"**: whether the component is focusable. &lt;br&gt;**"focused"**: whether the component is currently focused. &lt;br&gt;If **filters** includes one or more fields, unspecified fields will be filtered out from the results. &lt;br&gt;If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. &lt;br&gt;Other filter fields are used only in testing scenarios. |
+| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: <br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. <br>Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
@@ -739,11 +739,11 @@ getFilteredInspectorTree(filters?: Array<string>): string
 getFilteredInspectorTreeById(id: string, depth: int, filters?: Array<string>): string
 ```
 
-获取指定组件及其子组件的属性。该接口处理时间较长， &lt;br&gt;and is intended for testing scenarios only.
+获取指定组件及其子组件的属性。该接口处理时间较长， <br>and is intended for testing scenarios only.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -758,8 +758,8 @@ getFilteredInspectorTreeById(id: string, depth: int, filters?: Array<string>): s
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | ID of the target component. |
-| depth | int | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of &lt;br&gt;the specified component are obtained. If the value is **2**, the attributes of the specified component and its &lt;br&gt;level-1 child components are obtained. The rest can be deduced by analogy. |
-| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: &lt;br&gt;**"id"**: unique ID of the component. &lt;br&gt;**"src"**: source of the resource. &lt;br&gt;**"content"**: information or data contained in the element, component, or object. &lt;br&gt;**"editable"**: whether the component is editable. &lt;br&gt;**"scrollable"**: whether the component is scrollable. &lt;br&gt;**"selectable"**: whether the component is selectable. &lt;br&gt;**"focusable"**: whether the component is focusable. &lt;br&gt;**"focused"**: whether the component is currently focused. &lt;br&gt;If **filters** includes one or more fields, unspecified fields will be filtered out from the results. &lt;br&gt;If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. &lt;br&gt;Other filter fields are used only in testing scenarios. |
+| depth | int | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of <br>the specified component are obtained. If the value is **2**, the attributes of the specified component and its <br>level-1 child components are obtained. The rest can be deduced by analogy. |
+| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: <br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields will be filtered out. <br>Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
@@ -784,7 +784,7 @@ getFocusController(): FocusController
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -798,7 +798,7 @@ getFocusController(): FocusController
 
 | 类型 | 说明 |
 | --- | --- |
-| [FocusController](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-focuscontroller-c.md) | the FocusController |
+| [FocusController](arkts-na-arkui-uicontext-focuscontroller-c.md) | the FocusController |
 
 ## getFont
 
@@ -810,7 +810,7 @@ get object font.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -824,7 +824,7 @@ get object font.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Font](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-font-c.md) | object Font. |
+| [Font](arkts-na-arkui-uicontext-font-c.md) | object Font. |
 
 ## getFrameNodeById
 
@@ -836,7 +836,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -868,7 +868,7 @@ getFrameNodeByUniqueId(id: int): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -900,7 +900,7 @@ getHostContext(): Context | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -914,7 +914,7 @@ getHostContext(): Context | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](../../apis-arkui/arkts-apis/arkts-arkui-context-t.md) |  |
+| [Context](arkts-na-context-t.md) |  |
 
 ## getId
 
@@ -926,7 +926,7 @@ getId(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -952,7 +952,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -966,7 +966,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 | 类型 | 说明 |
 | --- | --- |
-| [KeyboardAvoidMode](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | The mode of keyboard avoid. |
+| [KeyboardAvoidMode](arkts-na-arkui-uicontext-keyboardavoidmode-e.md) | The mode of keyboard avoid. |
 
 ## getLastFocusedUIContext
 
@@ -978,7 +978,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -992,7 +992,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | The UIContext of the last focused UI instance or undefined if no one exists. |
+| [UIContext](arkts-na-arkui-uicontext-uicontext-c.md) | The UIContext of the last focused UI instance or undefined if no one exists. |
 
 ## getLastForegroundUIContext
 
@@ -1004,7 +1004,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1018,7 +1018,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | The UIContext of the last foregrounded UI instance or undefined if no one exists |
+| [UIContext](arkts-na-arkui-uicontext-uicontext-c.md) | The UIContext of the last foregrounded UI instance or undefined if no one exists |
 
 ## getMagnifier
 
@@ -1030,7 +1030,7 @@ getMagnifier(): Magnifier
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1044,7 +1044,7 @@ getMagnifier(): Magnifier
 
 | 类型 | 说明 |
 | --- | --- |
-| [Magnifier](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-magnifier-c.md) | Magnifier instance obtained. |
+| [Magnifier](arkts-na-arkui-uicontext-magnifier-c.md) | Magnifier instance obtained. |
 
 ## getMaxFontScale
 
@@ -1056,7 +1056,7 @@ getMaxFontScale(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1082,7 +1082,7 @@ getMeasureUtils(): MeasureUtils
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1096,7 +1096,7 @@ getMeasureUtils(): MeasureUtils
 
 | 类型 | 说明 |
 | --- | --- |
-| [MeasureUtils](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-measureutils-c.md) | the MeasureUtils |
+| [MeasureUtils](arkts-na-arkui-uicontext-measureutils-c.md) | the MeasureUtils |
 
 ## getMediaQuery
 
@@ -1108,7 +1108,7 @@ get object mediaQuery.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1122,7 +1122,7 @@ get object mediaQuery.
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaQuery](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
+| [MediaQuery](arkts-na-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
 
 ## getNavigationInfoByUniqueId
 
@@ -1134,7 +1134,7 @@ getNavigationInfoByUniqueId(id: int): observer.NavigationInfo | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1166,7 +1166,7 @@ getOverlayManager(): OverlayManager
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1180,7 +1180,7 @@ getOverlayManager(): OverlayManager
 
 | 类型 | 说明 |
 | --- | --- |
-| [OverlayManager](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanager-c.md) | object OverlayManager. |
+| [OverlayManager](arkts-na-arkui-uicontext-overlaymanager-c.md) | object OverlayManager. |
 
 ## getOverlayManagerOptions
 
@@ -1192,7 +1192,7 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1206,7 +1206,7 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| [OverlayManagerOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | object OverlayManagerOptions. |
+| [OverlayManagerOptions](arkts-na-arkui-uicontext-overlaymanageroptions-i.md) | object OverlayManagerOptions. |
 
 ## getPageInfoByUniqueId
 
@@ -1218,7 +1218,7 @@ getPageInfoByUniqueId(id: int): PageInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1238,7 +1238,7 @@ getPageInfoByUniqueId(id: int): PageInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [PageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-pageinfo-i.md) | The page information of the frameNode with the target uniqueId, includes navDestination and router page information. If the frame node does not have navDestination and router page information, it will return an empty object. |
+| [PageInfo](arkts-na-arkui-uicontext-pageinfo-i.md) | The page information of the frameNode with the target uniqueId, includes navDestination and router page information. If the frame node does not have navDestination and router page information, it will return an empty object. |
 
 ## getPageRootNode
 
@@ -1250,7 +1250,7 @@ getPageRootNode(): FrameNode | null
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1282,7 +1282,7 @@ getPixelRoundMode(): PixelRoundMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1308,7 +1308,7 @@ get object PromptAction.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1322,7 +1322,7 @@ get object PromptAction.
 
 | 类型 | 说明 |
 | --- | --- |
-| [PromptAction](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md) | object PromptAction. |
+| [PromptAction](arkts-na-arkui-uicontext-promptaction-c.md) | object PromptAction. |
 
 ## getRouter
 
@@ -1334,7 +1334,7 @@ get object router.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1348,7 +1348,7 @@ get object router.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Router](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-router-c.md) | object Router. |
+| [Router](arkts-na-arkui-uicontext-router-c.md) | object Router. |
 
 ## getSharedLocalStorage
 
@@ -1360,7 +1360,7 @@ getSharedLocalStorage(): LocalStorage | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1386,7 +1386,7 @@ getSmartGestureController(): SmartGestureController
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1400,7 +1400,7 @@ getSmartGestureController(): SmartGestureController
 
 | 类型 | 说明 |
 | --- | --- |
-| [SmartGestureController](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md) | object smart gesture controller. |
+| [SmartGestureController](arkts-na-arkui-uicontext-smartgesturecontroller-c.md) | object smart gesture controller. |
 
 ## getTextMenuController
 
@@ -1412,7 +1412,7 @@ getTextMenuController(): TextMenuController
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1426,7 +1426,7 @@ getTextMenuController(): TextMenuController
 
 | 类型 | 说明 |
 | --- | --- |
-| [TextMenuController](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | object text menu controller. |
+| [TextMenuController](arkts-na-arkui-uicontext-textmenucontroller-c.md) | object text menu controller. |
 
 ## getUIInspector
 
@@ -1438,7 +1438,7 @@ getUIInspector(): UIInspector
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1452,7 +1452,7 @@ getUIInspector(): UIInspector
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIInspector](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uiinspector-c.md) | 返回UIInspector实例对象。 |
+| [UIInspector](arkts-na-arkui-uicontext-uiinspector-c.md) | 返回UIInspector实例对象。 |
 
 ## getUIObserver
 
@@ -1464,7 +1464,7 @@ getUIObserver(): UIObserver
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1478,7 +1478,7 @@ getUIObserver(): UIObserver
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIObserver](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uiobserver-c.md) | The UI observer. |
+| [UIObserver](arkts-na-arkui-uicontext-uiobserver-c.md) | The UI observer. |
 
 ## getWindowHeightBreakpoint
 
@@ -1490,7 +1490,7 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1516,7 +1516,7 @@ getWindowId(): int | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1542,7 +1542,7 @@ getWindowName(): string | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1568,7 +1568,7 @@ getWindowWidthBreakpoint(): WidthBreakpoint
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1594,7 +1594,7 @@ isAvailable(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1620,7 +1620,7 @@ isEasySplit(): boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1646,7 +1646,7 @@ Checks whether current font scale follows the system.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1672,7 +1672,7 @@ Defining keyframe animation function.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1699,7 +1699,7 @@ Converts a value in lpx units to a value in px.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1731,7 +1731,7 @@ Open the BindSheet.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1747,7 +1747,7 @@ Open the BindSheet.
 | --- | --- | --- | --- |
 | bindSheetContent | [ComponentContentBase](arkts-na-componentcontent-componentcontentbase-c.md) | 是 | The content of BindSheet. |
 | sheetOptions | [SheetOptions](arkts-na-common-sheetoptions-i.md) | 否 | The options of sheet. |
-| targetId | int | 否 | The uniqueId of the FrameNode to which BindSheet is attached. &lt;br&gt;Value range:(0, +∞) |
+| targetId | int | 否 | The uniqueId of the FrameNode to which BindSheet is attached. <br>Value range:(0, +∞) |
 
 **返回值：**
 
@@ -1760,7 +1760,7 @@ Open the BindSheet.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [120001](../../apis-arkui/errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120002](../../apis-arkui/errorcode-bindSheet.md#120002-内容节点对应半模态页面已存在) | The bindSheetContent already exists. |
 | [120005](../../apis-arkui/errorcode-bindSheet.md#120005-指定的targetid对应的节点未挂载在组件树上) | The node of targetId is not in the component tree. |
 | [120004](../../apis-arkui/errorcode-bindSheet.md#120004-指定的targetid不存在) | The targetId does not exist. |
@@ -1776,7 +1776,7 @@ Post a frame callback to run on the next frame after the specified delay.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1790,7 +1790,7 @@ Post a frame callback to run on the next frame after the specified delay.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameCallback | [FrameCallback](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | The frame callback to run on the next frame. |
+| frameCallback | [FrameCallback](arkts-na-arkui-uicontext-framecallback-c.md) | 是 | The frame callback to run on the next frame. |
 | delayTime | long | 是 | The delay time in milliseconds, |
 
 ## postFrameCallback
@@ -1803,7 +1803,7 @@ Post a frame callback to run on the next frame.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1817,7 +1817,7 @@ Post a frame callback to run on the next frame.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameCallback | [FrameCallback](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | The frame callback to run on the next frame. |
+| frameCallback | [FrameCallback](arkts-na-arkui-uicontext-framecallback-c.md) | 是 | The frame callback to run on the next frame. |
 
 ## px2fp
 
@@ -1829,7 +1829,7 @@ Converts a value in px units to a value in fp.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1861,7 +1861,7 @@ Converts a value in px units to a value in lpx.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1893,7 +1893,7 @@ Converts a value in px units to a value in vp.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1925,7 +1925,7 @@ removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1951,7 +1951,7 @@ Require DynamicSyncScene by id.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1971,7 +1971,7 @@ Require DynamicSyncScene by id.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[DynamicSyncScene](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)&gt; | The instance of SwiperDynamicSyncScene. |
+| Array&lt;[DynamicSyncScene](arkts-na-arkui-uicontext-dynamicsyncscene-c.md)&gt; | The instance of SwiperDynamicSyncScene. |
 
 ## resolveUIContext
 
@@ -1979,11 +1979,11 @@ Require DynamicSyncScene by id.
 static resolveUIContext(): ResolvedUIContext
 ```
 
-使用优先级策略解析UIContext 按照预定义优先级顺序解析并返回UIContext实例。 解析规则按顺序如下： &lt;br&gt;1. 返回当前调用作用域对应的UIContext &lt;br&gt;2. 当仅存在单个UI实例时，返回该唯一实例的UIContext &lt;br&gt;3. 若存在最后获得焦点的UI实例，返回其UIContext &lt;br&gt;4. 若存在最后进入前台的UI实例，返回其UIContext &lt;br&gt;5. 若存在任何UI实例，返回最大实例ID的UIContext &lt;br&gt;6. 当不满足上述所有条件时，返回未定义调用作用域内的UIContext实例
+使用优先级策略解析UIContext 按照预定义优先级顺序解析并返回UIContext实例。 解析规则按顺序如下： <br>1. 返回当前调用作用域对应的UIContext <br>2. 当仅存在单个UI实例时，返回该唯一实例的UIContext <br>3. 若存在最后获得焦点的UI实例，返回其UIContext <br>4. 若存在最后进入前台的UI实例，返回其UIContext <br>5. 若存在任何UI实例，返回最大实例ID的UIContext <br>6. 当不满足上述所有条件时，返回未定义调用作用域内的UIContext实例
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1997,7 +1997,7 @@ static resolveUIContext(): ResolvedUIContext
 
 | 类型 | 说明 |
 | --- | --- |
-| [ResolvedUIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-resolveduicontext-c.md) | ResolvedUIContext实例 |
+| [ResolvedUIContext](arkts-na-arkui-uicontext-resolveduicontext-c.md) | ResolvedUIContext实例 |
 
 ## runScopedTask
 
@@ -2009,7 +2009,7 @@ Run custom functions inside the UIContext scope.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2035,7 +2035,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2049,7 +2049,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| feature | [CustomKeyboardContinueFeature](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-customkeyboardcontinuefeature-e.md) | 是 | 自定义键盘接续特性。 |
+| feature | [CustomKeyboardContinueFeature](arkts-na-arkui-uicontext-customkeyboardcontinuefeature-e.md) | 是 | 自定义键盘接续特性。 |
 
 ## setImageCacheCount
 
@@ -2061,7 +2061,7 @@ setImageCacheCount(value: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2087,7 +2087,7 @@ setImageRawDataCacheSize(value: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2113,7 +2113,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2127,7 +2127,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [KeyboardAvoidMode](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 是 | The mode of keyboard avoid. |
+| value | [KeyboardAvoidMode](arkts-na-arkui-uicontext-keyboardavoidmode-e.md) | 是 | The mode of keyboard avoid. |
 
 ## setOverlayManagerOptions
 
@@ -2139,7 +2139,7 @@ Init OverlayManager.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2153,7 +2153,7 @@ Init OverlayManager.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [OverlayManagerOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | 是 | Options. |
+| options | [OverlayManagerOptions](arkts-na-arkui-uicontext-overlaymanageroptions-i.md) | 是 | Options. |
 
 **返回值：**
 
@@ -2171,7 +2171,7 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2197,7 +2197,7 @@ static setResourceManagerCacheMaxCountForHSP(count: int): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -2231,7 +2231,7 @@ setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -2245,7 +2245,7 @@ setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | [TextSelectionClearPolicy](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | 是 | 文本选择清除策略。 |
+| policy | [TextSelectionClearPolicy](arkts-na-arkui-uicontext-textselectionclearpolicy-e.md) | 是 | 文本选择清除策略。 |
 
 ## setUIStates
 
@@ -2257,7 +2257,7 @@ setUIStates(callback: VoidCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2283,7 +2283,7 @@ actionSheet display.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2309,7 +2309,7 @@ alertDialog display.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2335,7 +2335,7 @@ datePickerDialog display.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2361,7 +2361,7 @@ textPickerDialog display.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2387,7 +2387,7 @@ timePickerDialog display.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2413,7 +2413,7 @@ Unbind tabs from nested scrollable container components.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2441,7 +2441,7 @@ Unbind tabs from scrollable container component.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2468,7 +2468,7 @@ Update the BindSheet with sheetOptions.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2497,7 +2497,7 @@ Update the BindSheet with sheetOptions.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [120001](../../apis-arkui/errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120003](../../apis-arkui/errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
 ## vp2px
@@ -2510,7 +2510,7 @@ Converts a value in vp units to a value in px.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

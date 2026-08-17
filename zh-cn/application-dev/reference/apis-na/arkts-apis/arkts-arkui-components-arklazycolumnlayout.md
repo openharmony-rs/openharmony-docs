@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyColumnLayout](arkts-na-arkui-components-arklazycolumnlayout-lazycolumnlayout-f.md#LazyColumnLayout) | 定义LazyColumnLayout组件。 |
+| [LazyColumnLayout](arkts-na-arkui-components-arklazycolumnlayout-lazycolumnlayout-f.md#lazycolumnlayout) | 定义LazyColumnLayout组件。 |
 
 ### 接口
 

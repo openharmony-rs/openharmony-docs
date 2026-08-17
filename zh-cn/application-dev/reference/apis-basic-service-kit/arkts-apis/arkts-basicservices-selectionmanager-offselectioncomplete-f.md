@@ -6,11 +6,11 @@
 function offSelectionComplete(callback?: Callback<SelectionInfo>): void
 ```
 
-取消订阅划词完成事件，与[onSelectionComplete](arkts-basicservices-selectionmanager-onselectioncomplete-f.md#onSelectionComplete)搭配使 用。
+取消订阅划词完成事件，与[onSelectionComplete](arkts-basicservices-selectionmanager-onselectioncomplete-f.md#onselectioncomplete)搭配使 用。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

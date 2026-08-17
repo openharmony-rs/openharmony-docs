@@ -10,7 +10,7 @@ function unsubscribeManagedEventSync(admin: Want, managedEvents: Array<ManagedEv
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function unsubscribeManagedEventSync(admin: Want, managedEvents: Array<ManagedEv
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| managedEvents | Array&lt;[ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md)&gt; | 是 | 取消订阅事件数组，用于指定需要取消订阅的系统管理事件。数组元素为 [ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md#ManagedEvent)枚举值，应与订阅时传入的事件类型一致。 |
+| managedEvents | Array&lt;[ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md)&gt; | 是 | 取消订阅事件数组，用于指定需要取消订阅的系统管理事件。数组元素为 [ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md#managedevent)枚举值，应与订阅时传入的事件类型一致。 |
 
 **错误码：**
 
@@ -49,7 +49,8 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
+let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED,
+  adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
 try {
   adminManager.unsubscribeManagedEventSync(wantTemp, events);

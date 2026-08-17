@@ -10,11 +10,11 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 10
 
-**替代接口：** [obtainAllWorks](#obtainAllWorks)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
+**替代接口：** [obtainAllWorks](#obtainallworks)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,7 +54,7 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ function obtainAllWorks(): Promise<Array<WorkInfo>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

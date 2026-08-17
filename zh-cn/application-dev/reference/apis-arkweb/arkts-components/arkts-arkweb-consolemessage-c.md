@@ -1,10 +1,10 @@
 # ConsoleMessage
 
-Encompassed message information as parameters to onConsole method.
+ConsoleMessage是Web组件中封装JavaScript控制台输出信息的对象。当网页通过`console.log()`、`console.warn()`、`console.error()`等方法输出日志时，该对象通过 `onConsole`事件回调提供给应用，用于监控和检查网页调试输出。示例代码参考[onConsole事件](arkts-arkweb-web-attribute.md#onconsole)。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Encompassed message information as parameters to onConsole method.
 constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)
 ```
 
-Constructor.
+ConsoleMessage的构造函数。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -51,7 +51,7 @@ ConsoleMessage的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -67,11 +67,11 @@ ConsoleMessage的构造函数。
 getLineNumber(): number
 ```
 
-获取ConsoleMessage的行数。
+获取控制台输出在网页源文件中的行号。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -85,7 +85,7 @@ getLineNumber(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回ConsoleMessage的行数。 |
+| number | 返回控制台输出在网页源文件中的行号。 |
 
 ## getMessage
 
@@ -93,11 +93,11 @@ getLineNumber(): number
 getMessage(): string
 ```
 
-获取ConsoleMessage的日志信息。
+获取控制台输出的日志信息。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -111,7 +111,7 @@ getMessage(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 返回ConsoleMessage的日志信息。 |
+| string | 返回控制台输出的日志信息。 |
 
 ## getMessageLevel
 
@@ -123,7 +123,7 @@ getMessageLevel(): MessageLevel
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -149,7 +149,7 @@ getSource() : ConsoleMessageSource
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -173,7 +173,7 @@ getSourceId(): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ cancelTransition?(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ finishTransition(): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ updateTransition?(progress: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ from: NavContentInfo
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ isInteractive?: boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -146,7 +146,7 @@ to: NavContentInfo
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

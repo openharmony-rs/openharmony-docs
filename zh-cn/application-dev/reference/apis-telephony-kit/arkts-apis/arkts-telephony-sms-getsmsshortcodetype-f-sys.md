@@ -10,7 +10,7 @@ function getSmsShortCodeType(slotId: int, destAddr: string): Promise<SmsShortCod
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function getSmsShortCodeType(slotId: int, destAddr: string): Promise<SmsShortCod
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | int | 是 | Indicates the ID of the slot holding the SIM card for sending SMS messages. The value {@code 0} indicates card slot 1, and the value {@code 1} indicates card slot 2. |
-| destAddr | string | 是 | Indicates the destination address of the sending SMS. &lt;br&gt;取值范围:[0,+∞) |
+| destAddr | string | 是 | Indicates the destination address of the sending SMS. <br>取值范围:[0,+∞) |
 
 **返回值：**
 

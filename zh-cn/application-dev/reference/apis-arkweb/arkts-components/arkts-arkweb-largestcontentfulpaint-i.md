@@ -1,10 +1,10 @@
 # LargestContentfulPaint
 
-提供网页绘制页面最大内容的详细信息。
+提供网页绘制页面最大内容的详细信息，包括导航时间和各类绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,13 +24,57 @@ imageBPP?: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LargestContentfulPaint-imageBPP?: number--><!--Device-LargestContentfulPaint-imageBPP?: number-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## largestImageLoadEndTime
+
+```TypeScript
+largestImageLoadEndTime?: number
+```
+
+最大图片结束加载时间，单位是以毫秒表示。
+
+**类型：** number
+
+**起始版本：** 12
+
+**ArkTS模式：** 起始版本为12。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LargestContentfulPaint-largestImageLoadEndTime?: number--><!--Device-LargestContentfulPaint-largestImageLoadEndTime?: number-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## largestImageLoadStartTime
+
+```TypeScript
+largestImageLoadStartTime?: number
+```
+
+最大图片开始加载时间，单位是以毫秒表示。
+
+**类型：** number
+
+**起始版本：** 12
+
+**ArkTS模式：** 起始版本为12。
+
+**废弃版本：** -1
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+<!--Device-LargestContentfulPaint-largestImageLoadStartTime?: number--><!--Device-LargestContentfulPaint-largestImageLoadStartTime?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,7 +90,7 @@ largestImagePaintTime?: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -68,7 +112,7 @@ largestTextPaintTime?: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -90,7 +134,7 @@ navigationStartTime?: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
+import { notificationManager } from 'notificationManager';
 ```
 
 ## getSlot
@@ -16,7 +16,7 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>):
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot|nu
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -141,7 +141,7 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -218,7 +218,7 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot|null>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

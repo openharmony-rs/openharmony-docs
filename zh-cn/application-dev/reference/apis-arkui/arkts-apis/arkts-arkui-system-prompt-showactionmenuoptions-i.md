@@ -4,7 +4,7 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ buttons: [Button, Button?, Button?, Button?, Button?, Button?]
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ complete?: () => void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ fail?: (errMsg: string) => void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ success?: (tapIndex: number, errMsg: string) => void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ title?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 

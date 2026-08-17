@@ -1,12 +1,12 @@
 # ContentCoverOptions
 
-继承自[BindOptions](arkts-na-common-bindoptions-i.md#BindOptions)。 全屏模态页面内容选项。
+继承自[BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)。 全屏模态页面内容选项。
 
-**继承/实现关系：** ContentCoverOptions extends [BindOptions](arkts-na-common-bindoptions-i.md#BindOptions)
+**继承/实现关系：** ContentCoverOptions extends [BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ enableSafeArea?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ modalTransition?: ModalTransition
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ onWillDismiss?: Callback<DismissContentCoverAction>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ transition?: TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

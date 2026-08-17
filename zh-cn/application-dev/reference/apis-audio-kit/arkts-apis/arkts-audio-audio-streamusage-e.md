@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ STREAM_USAGE_UNKNOWN = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,11 +42,11 @@ STREAM_USAGE_MEDIA = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [STREAM_USAGE_AUDIOBOOK](#STREAM_USAGE_AUDIOBOOK)
+**替代接口：** [STREAM_USAGE_AUDIOBOOK](#streamusageaudiobook)
 
 <!--Device-StreamUsage-STREAM_USAGE_MEDIA = 1--><!--Device-StreamUsage-STREAM_USAGE_MEDIA = 1-End-->
 
@@ -62,7 +62,7 @@ STREAM_USAGE_MUSIC = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ VoIP语音通话（该流类型起播时，会触发开启3A算法）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ STREAM_USAGE_VOICE_ASSISTANT = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ STREAM_USAGE_ALARM = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -142,7 +142,7 @@ STREAM_USAGE_VOICE_MESSAGE = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -162,11 +162,11 @@ STREAM_USAGE_NOTIFICATION_RINGTONE = 6
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [STREAM_USAGE_RINGTONE](#STREAM_USAGE_RINGTONE)
+**替代接口：** [STREAM_USAGE_RINGTONE](#streamusageringtone)
 
 <!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION_RINGTONE = 6--><!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION_RINGTONE = 6-End-->
 
@@ -182,7 +182,7 @@ STREAM_USAGE_RINGTONE = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -202,7 +202,7 @@ STREAM_USAGE_NOTIFICATION = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -222,7 +222,7 @@ STREAM_USAGE_ACCESSIBILITY = 8
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -242,7 +242,7 @@ STREAM_USAGE_MOVIE = 10
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -262,7 +262,7 @@ STREAM_USAGE_GAME = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -282,7 +282,7 @@ STREAM_USAGE_AUDIOBOOK = 12
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -302,7 +302,7 @@ STREAM_USAGE_NAVIGATION = 13
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -322,7 +322,7 @@ VoIP视频通话（该流类型起播时，会触发开启3A算法）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

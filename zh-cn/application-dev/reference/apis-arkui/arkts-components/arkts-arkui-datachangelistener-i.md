@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onDataAdd(index: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ onDataAdd(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataAdded
 
@@ -48,11 +48,11 @@ onDataAdded(index: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 
-**替代接口：** [onDataAdd](#onDataAdd)
+**替代接口：** [onDataAdd](#ondataadd)
 
 <!--Device-DataChangeListener-onDataAdded(index: number): void--><!--Device-DataChangeListener-onDataAdded(index: number): void-End-->
 
@@ -62,7 +62,7 @@ onDataAdded(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据添加位置的索引值。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataChange
 
@@ -74,7 +74,7 @@ onDataChange(index: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ onDataChange(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataChanged
 
@@ -100,11 +100,11 @@ onDataChanged(index: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 
-**替代接口：** [onDataChange](#onDataChange)
+**替代接口：** [onDataChange](#ondatachange)
 
 <!--Device-DataChangeListener-onDataChanged(index: number): void--><!--Device-DataChangeListener-onDataChanged(index: number): void-End-->
 
@@ -114,7 +114,7 @@ onDataChanged(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据变化位置的索引值。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataDelete
 
@@ -126,7 +126,7 @@ onDataDelete(index: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ onDataDelete(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataDeleted
 
@@ -152,11 +152,11 @@ onDataDeleted(index: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 
-**替代接口：** [onDataDelete](#onDataDelete)
+**替代接口：** [onDataDelete](#ondatadelete)
 
 <!--Device-DataChangeListener-onDataDeleted(index: number): void--><!--Device-DataChangeListener-onDataDeleted(index: number): void-End-->
 
@@ -166,7 +166,7 @@ onDataDeleted(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| index | number | 是 | 数据删除位置的索引值。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataMove
 
@@ -178,7 +178,7 @@ onDataMove(from: number, to: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -192,8 +192,8 @@ onDataMove(from: number, to: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataMoved
 
@@ -205,11 +205,11 @@ onDataMoved(from: number, to: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 
-**替代接口：** [onDataMove](#onDataMove)
+**替代接口：** [onDataMove](#ondatamove)
 
 <!--Device-DataChangeListener-onDataMoved(from: number, to: number): void--><!--Device-DataChangeListener-onDataMoved(from: number, to: number): void-End-->
 
@@ -219,8 +219,8 @@ onDataMoved(from: number, to: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
-| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。 &lt;br&gt;小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
+| to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。 <br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
 ## onDataReloaded
 
@@ -232,7 +232,7 @@ onDataReloaded(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -252,7 +252,7 @@ onDataReloaded(reuseImmediately: boolean): void
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -268,7 +268,7 @@ onDataReloaded(reuseImmediately: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reuseImmediately | boolean | 是 | 是否允许在更新过程中复用旧的子组件。&lt;br/&gt;true：允许在更新过程中复用旧的子组件。&lt;br/&gt;false：不允许在更新过程中复用旧的子组件。 |
+| reuseImmediately | boolean | 是 | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。 |
 
 ## onDatasetChange
 
@@ -280,7 +280,7 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

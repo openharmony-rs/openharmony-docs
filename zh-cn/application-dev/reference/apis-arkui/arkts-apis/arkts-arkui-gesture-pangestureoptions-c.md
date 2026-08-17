@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(value?: PanGestureHandlerOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ constructor(value?: PanGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [PanGestureHandlerOptions](arkts-arkui-gesture-pangesturehandleroptions-i.md) | 否 | 滑动手势配置参数对象。&lt;br/&gt;fingers用于指定触发滑动的最少手指数，最小为1指， 最大取值为10指。&lt;br/&gt;默认值：1 &lt;br/&gt;direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&)和逻辑或（\|）运算。&lt;br/&gt;默认值：PanDirection.All&lt;br/&gt;distance用于指定触发滑动手势事件的最小滑动距离，单位 为vp。&lt;br/&gt;手写笔默认值：8，其余输入源默认值：5&lt;br/&gt;**说明：**&lt;br/&gt;Tabs组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免 造成事件错乱。&lt;br/&gt;当设定的值小于0时，按默认值处理。&lt;br/&gt;建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。&lt;br/&gt;当组件应用了 scale缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value | [PanGestureHandlerOptions](arkts-arkui-gesture-pangesturehandleroptions-i.md) | 否 | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指， 最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位 为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>Tabs组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免 造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了 scale缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ## getDirection
 
@@ -48,7 +48,7 @@ getDirection(): PanDirection
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ getDistance(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ setDirection(value: PanDirection): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ setDirection(value: PanDirection): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [PanDirection](arkts-arkui-gesture-pandirection-e.md) | 是 | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&)和逻辑或（\|）运算。&lt;br/&gt;默认值：PanDirection.All |
+| value | [PanDirection](arkts-arkui-gesture-pandirection-e.md) | 是 | 用于指定触发滑动的手势方向，此枚举值支持逻辑与(&)和逻辑或（\|）运算。<br/>默认值：PanDirection.All |
 
 ## setDistance
 
@@ -126,7 +126,7 @@ setDistance(value: double): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ setDistance(value: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 触发滑动手势事件的最小滑动距离，单位为vp。&lt;br/&gt;手写笔默认值：8，其余输入源默认值：5&lt;br/&gt;**说明：**&lt;br/&gt;Tabs组件 滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。&lt;br/&gt;当设定的值小于0时，按默认值处理。&lt;br/&gt;建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手 （响应时延慢）的问题。&lt;br/&gt;当组件应用了scale缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value | double | 是 | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>Tabs组件 滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手 （响应时延慢）的问题。<br/>当组件应用了scale缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ## setFingers
 
@@ -152,7 +152,7 @@ setFingers(value: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -166,5 +166,5 @@ setFingers(value: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | int | 是 | 触发滑动的最少手指数，最小为1指， 最大取值为10指。&lt;br/&gt;默认值：1 |
+| value | int | 是 | 触发滑动的最少手指数，最小为1指， 最大取值为10指。<br/>默认值：1 |
 

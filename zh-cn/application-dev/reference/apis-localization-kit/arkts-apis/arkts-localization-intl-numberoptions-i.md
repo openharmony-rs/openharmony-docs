@@ -4,7 +4,7 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ compactDisplay?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ currency?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ currencyDisplay?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ currencySign?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ locale?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ localeMatcher?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -156,7 +156,7 @@ maximumFractionDigits?: int
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ maximumSignificantDigits?: int
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -200,7 +200,7 @@ minimumFractionDigits?: int
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -222,7 +222,7 @@ minimumIntegerDigits?: int
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -244,7 +244,7 @@ minimumSignificantDigits?: int
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -266,7 +266,7 @@ notation?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -288,7 +288,7 @@ numberingSystem?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -310,7 +310,7 @@ roundingIncrement?: int
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -332,7 +332,7 @@ roundingMode?: string
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -354,7 +354,7 @@ roundingPriority?: string
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -376,7 +376,7 @@ signDisplay?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -398,7 +398,7 @@ style?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -420,7 +420,7 @@ unit?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -442,7 +442,7 @@ unitDisplay?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 
@@ -464,7 +464,7 @@ unitUsage?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -486,7 +486,7 @@ true表示分组显示，false表示不分组显示。 默认值：true。 不�
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** -1
 

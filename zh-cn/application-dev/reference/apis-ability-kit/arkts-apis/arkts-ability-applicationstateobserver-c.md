@@ -1,10 +1,8 @@
 # ApplicationStateObserver
 
-应用状态监听器，可以作为入参传入 [on('applicationState')](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState) 方法，监听应用的生命周期变化。
+**起始版本：** -1
 
-**起始版本：** 14
-
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -22,7 +20,7 @@ Ability状态发生变化时执行的回调函数。
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -46,7 +44,7 @@ onAppStarted(appStateData: AppStateData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -70,7 +68,7 @@ onAppStopped(appStateData: AppStateData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -94,7 +92,7 @@ onForegroundApplicationChanged(appStateData: AppStateData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -118,7 +116,7 @@ onProcessCreated(processData: ProcessData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -130,7 +128,7 @@ onProcessCreated(processData: ProcessData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| processData | [ProcessData](arkts-ability-processdata-t.md) | 是 | 进程数据信息。 |
+| processData | [ProcessData](../../apis-na/arkts-apis/arkts-na-processdata-t.md) | 是 | 进程数据信息。 |
 
 ## onProcessDied
 
@@ -142,7 +140,7 @@ onProcessDied(processData: ProcessData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -154,7 +152,7 @@ onProcessDied(processData: ProcessData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| processData | [ProcessData](arkts-ability-processdata-t.md) | 是 | 进程数据信息。 |
+| processData | [ProcessData](../../apis-na/arkts-apis/arkts-na-processdata-t.md) | 是 | 进程数据信息。 |
 
 ## onProcessStateChanged
 
@@ -166,7 +164,7 @@ onProcessStateChanged(processData: ProcessData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -178,5 +176,5 @@ onProcessStateChanged(processData: ProcessData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| processData | [ProcessData](arkts-ability-processdata-t.md) | 是 | 进程数据信息。 |
+| processData | [ProcessData](../../apis-na/arkts-apis/arkts-na-processdata-t.md) | 是 | 进程数据信息。 |
 

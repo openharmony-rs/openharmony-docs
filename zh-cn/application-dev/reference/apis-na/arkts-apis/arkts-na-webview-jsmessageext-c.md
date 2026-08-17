@@ -4,7 +4,7 @@ The message for indicating the of result of JavaScript code execution.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Get the array value of the the JavaScript code execution result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ Get the array buffer value of the JavaScript code execution result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ Get the boolean value of the JavaScript code execution result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ Get the exception or object of the the JavaScript code execution result and seri
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -136,7 +136,7 @@ Get the number value of the JavaScript code execution result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -166,7 +166,7 @@ Get the string value of the JavaScript code execution result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -196,7 +196,7 @@ Get the type of the JavaScript code execution result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -208,5 +208,5 @@ Get the type of the JavaScript code execution result.
 
 | 类型 | 说明 |
 | --- | --- |
-| [JsMessageType](arkts-na-webview-jsmessagetype-e.md) | Returns data of JsMessageType type |
+| [JsMessageType](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-jsmessagetype-e.md) | Returns data of JsMessageType type |
 

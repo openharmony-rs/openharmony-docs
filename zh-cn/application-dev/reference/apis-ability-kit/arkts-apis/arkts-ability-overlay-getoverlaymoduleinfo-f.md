@@ -10,7 +10,7 @@ function getOverlayModuleInfo(moduleName: string, callback: AsyncCallback<Overla
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ function getOverlayModuleInfo(moduleName: string, callback: AsyncCallback<Overla
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | moduleName | string | 是 | 指定当前应用中的overlay特征module的名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;OverlayModuleInfo&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#AsyncCallback)，当获取当前应用中指定的module的 [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md#OverlayModuleInfo)信息成功时，err返回undefined。否则回调函数返回具体错误 对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;OverlayModuleInfo&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，当获取当前应用中指定的module的 [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md#overlaymoduleinfo)信息成功时，err返回undefined。否则回调函数返回具体错误 对象。 |
 
 **错误码：**
 
@@ -68,7 +68,7 @@ function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -6,11 +6,11 @@
 function getBrightnessInfo(displayId: long): BrightnessInfo
 ```
 
-获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md#BrightnessInfo)对象中的currentHeadroom和maxHeadroom 为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
+获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](arkts-arkui-display-brightnessinfo-i.md#brightnessinfo)对象中的currentHeadroom和maxHeadroom 为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -49,7 +49,7 @@ try {
   let brightnessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightnessInfo)}`);
 } catch (error) {
-  console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get display brightnessInfo. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 

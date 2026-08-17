@@ -4,7 +4,7 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ build(): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ adOptions: advertising.AdOptions
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ adParam: advertising.AdRequestParams
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ displayOptions: advertising.AdDisplayOptions
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -110,7 +110,7 @@ interactionListener: advertising.AdInteractionListener
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

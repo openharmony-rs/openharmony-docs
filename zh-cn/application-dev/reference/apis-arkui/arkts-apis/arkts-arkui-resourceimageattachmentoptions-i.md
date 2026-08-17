@@ -4,7 +4,7 @@ ResourceStr类型图片设置项。
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ colorFilter?: ColorFilterType
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ layoutStyle?: ImageAttachmentLayoutStyle
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ objectFit?: ImageFit
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ resourceValue: Optional<ResourceStr>
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ size?: SizeOptions
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -144,7 +144,7 @@ supportSvg2?: boolean
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -168,7 +168,7 @@ syncLoad?: boolean
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -192,7 +192,7 @@ verticalAlign?: ImageSpanAlignment
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 

@@ -6,11 +6,11 @@
 export function createModuleContext(context: Context, bundleName: string, moduleName: string): Promise<Context>
 ```
 
-根据入参Context创建相应模块的Context。使用Promise异步回调。 > **说明：** > > - 从API version 18开始，Context支持获取当前应用的进程名 > [processName](arkts-ability-context-c.md#Context)。 > createModuleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应 > 的属性值。 > > - 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
+根据入参Context创建相应模块的Context。使用Promise异步回调。 > **说明：** > > - 从API version 18开始，Context支持获取当前应用的进程名 > [processName](arkts-ability-context-c.md#context)。 > createModuleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应 > 的属性值。 > > - 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -29,7 +29,7 @@ export function createModuleContext(context: Context, bundleName: string, module
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](arkts-ability-context-c.md) | 是 | 表示应用上下文。 |
-| bundleName | string | 是 | 表示应用包名。取值为空字符串时，默认为当前应用。 |
+| bundleName | string | 是 | 表示应用包名。取值为空字符串时，默认取当前应用的包名。 |
 | moduleName | string | 是 | 表示应用模块名。 |
 
 **返回值：**

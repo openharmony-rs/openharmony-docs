@@ -4,7 +4,7 @@ PersistentStorage提供了UI状态的持久化存储能力，将选定的AppStor
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -18,15 +18,15 @@ PersistentStorage提供了UI状态的持久化存储能力，将选定的AppStor
 static DeleteProp(key: string): void
 ```
 
-是PersistProp的逆向操作。将key对应的属性从 [PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续 [AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作对PersistentStorage不会再有影响。如需再次持久化，可再次调用 PersistProp接口。
+是[PersistProp](#persistprop)的逆向操作。将key对应的属性从 [PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续 [AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作对PersistentStorage不会再有影响。如需再次持久化，可再次调用 [PersistProp](#persistprop)接口。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** deleteProp
+**替代接口：** [deleteProp](#deleteprop)
 
 <!--Device-PersistentStorage-static DeleteProp(key: string): void--><!--Device-PersistentStorage-static DeleteProp(key: string): void-End-->
 
@@ -54,11 +54,11 @@ static Keys(): Array<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** keys
+**替代接口：** [keys](#keys)
 
 <!--Device-PersistentStorage-static Keys(): Array<string>--><!--Device-PersistentStorage-static Keys(): Array<string>-End-->
 
@@ -86,11 +86,11 @@ static PersistProp<T>(key: string, defaultValue: T): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** persistProp
+**替代接口：** [persistProp](#persistprop)
 
 <!--Device-PersistentStorage-static PersistProp<T>(key: string, defaultValue: T): void--><!--Device-PersistentStorage-static PersistProp<T>(key: string, defaultValue: T): void-End-->
 
@@ -120,15 +120,15 @@ static PersistProps(
   ): void
 ```
 
-行为与PersistProp类似，不同在于可以一次性持久化多个数据。该接口应在访问AppStorage之前调用，适合在应用启动时初始化。
+行为与[PersistProp](#persistprop)类似，不同在于可以一次性持久化多个数据。该接口应在访问AppStorage之前调用，适合在应用启动时初始化。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** PersistProps
+**替代接口：** [PersistProps](#persistprops)
 
 <!--Device-PersistentStorage-static PersistProps(    properties: {      key: string;      defaultValue: any;    }[],  ): void--><!--Device-PersistentStorage-static PersistProps(    properties: {      key: string;      defaultValue: any;    }[],  ): void-End-->
 
@@ -146,11 +146,11 @@ static PersistProps(
 static deleteProp(key: string): void
 ```
 
-是persistProp的逆向操作。将key对应的属性从 [PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续 [AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作对PersistentStorage不会再有影响。如需再次持久化，可再次调用 persistProp接口。
+是[persistProp](#persistprop)的逆向操作。将key对应的属性从 [PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)中删除，后续 [AppStorage](../../../ui/state-management/arkts-appstorage.md)的操作对PersistentStorage不会再有影响。如需再次持久化，可再次调用 [persistProp](#persistprop)接口。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -182,7 +182,7 @@ static keys(): Array<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -214,7 +214,7 @@ static persistProp<T>(key: string, defaultValue: T): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -241,11 +241,11 @@ persistProp具体用法详见[从AppStorage中访问PersistentStorage初始化�
 static persistProps(props: PersistPropsOptions[]): void
 ```
 
-行为与persistProp类似，不同在于可以一次性持久化多个数据。该接口通常在访问AppStorage之前调用，适合在应用启动时初始化。
+行为与[persistProp](#persistprop)类似，不同在于可以一次性持久化多个数据。该接口通常在访问AppStorage之前调用，适合在应用启动时初始化。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

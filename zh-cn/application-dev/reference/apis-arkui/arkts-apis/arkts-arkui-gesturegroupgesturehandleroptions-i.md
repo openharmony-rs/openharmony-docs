@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 gestures: GestureHandler<TapGestureHandler | LongPressGestureHandler | PanGestureHandler | SwipeGestureHandler | PinchGestureHandler | RotationGestureHandler | GestureGroupHandler>[]
 ```
 
-设置手势组中需要包含的手势集合。 **说明：** 当需要为一个组件同时添加单击和双击手势时，可在[GestureGroup](arkts-arkui-gesture-con.md#GestureGroup)中添加两个[TapGesture](arkts-arkui-gesture-con.md#TapGesture)，需要双击手势在前，单击手势在后，否则不生效。
+设置手势组中需要包含的手势集合。 **说明：** 当需要为一个组件同时添加单击和双击手势时，可在[GestureGroup](arkts-arkui-gesture-con.md#gesturegroup)中添加两个[TapGesture](arkts-arkui-gesture-con.md#tapgesture)，需要双击手势在前，单击手势在后，否则不生效。
 
 **类型：** [GestureHandler](arkts-arkui-gesturehandler-c.md)&lt;[TapGestureHandler](arkts-arkui-tapgesturehandler-c.md) \| [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) \| [PanGestureHandler](arkts-arkui-pangesturehandler-c.md) \| [SwipeGestureHandler](arkts-arkui-swipegesturehandler-c.md) \| [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) \| [RotationGestureHandler](arkts-arkui-rotationgesturehandler-c.md) \| [GestureGroupHandler](arkts-arkui-gesturegrouphandler-c.md)&gt;[]
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ mode: GestureMode
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

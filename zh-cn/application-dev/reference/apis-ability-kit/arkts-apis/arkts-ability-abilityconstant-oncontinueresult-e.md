@@ -1,10 +1,10 @@
 # OnContinueResult
 
-Ability迁移结果，该类型为枚举，可配合UIAbility的[onContinue()](arkts-ability-app-ability-uiability-uiability-c.md#onContinue)方法完成相应的返回。
+Ability迁移结果，该类型为枚举，可配合UIAbility的[onContinue()](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)方法完成相应的返回。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ AGREE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,11 +40,11 @@ AGREE = 0
 REJECT = 1
 ```
 
-表示拒绝：如应用在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#onContinue)中异常会导致迁移以后数据恢复时显示异常，则可以返回REJECT。
+表示拒绝：如应用在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)中异常会导致迁移以后数据恢复时显示异常，则可以返回REJECT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,11 +62,11 @@ REJECT = 1
 MISMATCH = 2
 ```
 
-表示版本不匹配：迁移发起端应用可以在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#onContinue)中获取到迁移目标端应用的版本号，进行协商后，如果版本不 匹配导致无法迁移，可以返回该结果。
+表示版本不匹配：迁移发起端应用可以在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)中获取到迁移目标端应用的版本号，进行协商后，如果版本不 匹配导致无法迁移，可以返回该结果。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

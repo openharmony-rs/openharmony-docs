@@ -10,7 +10,7 @@ function installFont(path: string): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -32,7 +32,7 @@ function installFont(path: string): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回安装结果。 &lt;br&gt;- 返回0：安装成功，字体已添加到系统字体库。 &lt;br&gt;- 返回其他值：安装失败，请根据错误码排查原因。 |
+| Promise&lt;int&gt; | Promise对象，返回安装结果。 <br>- 返回0：安装成功，字体已添加到系统字体库。 <br>- 返回其他值：安装失败，请根据错误码排查原因。 |
 
 **错误码：**
 

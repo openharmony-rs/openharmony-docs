@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ LEFT = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ RIGHT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ CENTER = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ JUSTIFY = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,11 +98,11 @@ JUSTIFY = 3
 START = 4
 ```
 
-基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#TextDirection)，文本靠开头方向对齐。
+基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#textdirection)，文本靠开头方向对齐。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -118,11 +118,11 @@ START = 4
 END = 5
 ```
 
-基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#TextDirection)，文本以结束方向对齐。
+基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#textdirection)，文本以结束方向对齐。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

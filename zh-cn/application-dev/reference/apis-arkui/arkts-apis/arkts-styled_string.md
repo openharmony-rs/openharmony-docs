@@ -16,8 +16,8 @@
 | [LetterSpacingStyle](arkts-arkui-letterspacingstyle-c.md) | 文本字符间距对象说明。适用于需要调整字符间距的场景，例如标题文字加宽间距以增强视觉效果、密集文本缩小间距以节省空间等。 |
 | [LineHeightStyle](arkts-arkui-lineheightstyle-c.md) | 文本行高对象说明。 |
 | [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | 文本行间距对象说明。适用于需要调整段落内各行间距的场景，例如提升文本阅读舒适度、调整文档排版密度等。 |
-| [MutableStyledString](arkts-arkui-mutablestyledstring-c.md) | 继承于[StyledString](arkts-arkui-styledstring-c.md#StyledString)类。 > **以下接口异常入参处理统一说明：** > > 当start和length越界或者必填传入undefined时，会抛出异常； > > 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。 |
-| [ParagraphStyle](arkts-arkui-paragraphstyle-c.md) | 文本段落样式对象说明。 除首个段落外，后续段落按'\n'划分。 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。 在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](arkts-arkui-customspan-c.md#CustomSpan)或[ImageAttachment](arkts-arkui-imageattachment-c.md#ImageAttachment)时，设置在该段落上的段落样式不生 效。从API版本26.0.0开始，设置段落样式生效。 |
+| [MutableStyledString](arkts-arkui-mutablestyledstring-c.md) | 继承于[StyledString](arkts-arkui-styledstring-c.md#styledstring)类。 > **以下接口异常入参处理统一说明：** > > 当start和length越界或者必填传入undefined时，会抛出异常； > > 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。 |
+| [ParagraphStyle](arkts-arkui-paragraphstyle-c.md) | 文本段落样式对象说明。 除首个段落外，后续段落按'\n'划分。 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。 在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](arkts-arkui-customspan-c.md#customspan)或[ImageAttachment](arkts-arkui-imageattachment-c.md#imageattachment)时，设置在该段落上的段落样式不生 效。从API版本26.0.0开始，设置段落样式生效。 |
 | [StyledString](arkts-arkui-styledstring-c.md) | 属性字符串。 |
 | [TextShadowStyle](arkts-arkui-textshadowstyle-c.md) | 文本阴影对象说明。 |
 | [TextStyle](arkts-arkui-textstyle-c.md) | 文本字体样式对象说明。 |
@@ -70,8 +70,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [StyledStringMarshallCallback](arkts-arkui-styledstringmarshallcallback-t-sys.md) | 属性字符串[StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md#StyledStringMarshallingValue（系统接口）)序列化回调类型。 |
+| [StyledStringMarshallCallback](arkts-arkui-styledstringmarshallcallback-t-sys.md) | 属性字符串[StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md#styledstringmarshallingvalue系统接口)序列化回调类型。 |
 | [StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md) | 属性字符串自定义序列化对象类型，需要开发者定义序列化和反序列化的方式。 |
-| [StyledStringUnmarshallCallback](arkts-arkui-styledstringunmarshallcallback-t-sys.md) | 属性字符串反序列化ArrayBuffer得到[StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md#StyledStringMarshallingValue（系统接口）)回调类型。 |
+| [StyledStringUnmarshallCallback](arkts-arkui-styledstringunmarshallcallback-t-sys.md) | 属性字符串反序列化ArrayBuffer得到[StyledStringMarshallingValue](arkts-arkui-styledstringmarshallingvalue-t-sys.md#styledstringmarshallingvalue系统接口)回调类型。 |
 <!--DelEnd-->
 

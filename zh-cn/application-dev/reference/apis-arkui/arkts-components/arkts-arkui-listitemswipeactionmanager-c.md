@@ -4,7 +4,7 @@ ListItem划出菜单的管理器。
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static collapse(node: FrameNode): void
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -57,7 +57,7 @@ static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 

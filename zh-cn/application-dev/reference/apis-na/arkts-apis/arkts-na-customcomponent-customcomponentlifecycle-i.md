@@ -1,10 +1,10 @@
 # CustomComponentLifecycle
 
-CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过 [UIUtils.getLifecycle](../../apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#getLifecycle)获取CustomComponentLifecycle实例。
+CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过 [UIUtils.getLifecycle](../../apis-arkui/arkts-apis/arkts-arkui-arkui-statemanagement-uiutils-c.md#getlifecycle)获取CustomComponentLifecycle实例。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ addObserver函数用于注册自定义组件生命周期监听器。当自定义
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ getCurrentState函数用于获得自定义组件当前的生命周期状态。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ removeObserver函数用于移除自定义组件生命周期监听器。解除注
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

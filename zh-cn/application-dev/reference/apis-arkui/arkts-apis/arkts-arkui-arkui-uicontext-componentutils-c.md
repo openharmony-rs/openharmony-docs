@@ -1,10 +1,10 @@
 # ComponentUtils
 
-提供获取组件绘制区域坐标和大小的能力。 > **说明：** > > - 本Class首批接口从API version 10开始支持。 > > - 以下API需先使用UIContext中的[getComponentUtils()](arkts-arkui-arkui-uicontext-uicontext-c.md#getComponentUtils)方法获取到ComponentUtils对象，再通过该对象调用对应方法。
+提供获取组件绘制区域坐标和大小的能力。 > **说明：** > > - 本Class首批接口从API version 10开始支持。 > > - 以下API需先使用UIContext中的[getComponentUtils()](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getcomponentutils)方法获取到ComponentUtils对象，再通过该对象调用对应方法。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 getRectangleById(id: string): componentUtils.ComponentInfo
 ```
 
-获取组件大小、位置、平移、缩放、旋转及仿射矩阵属性信息。 > **说明：** > > 该接口需要在目标组件布局完成以后获取目标组件区域大小信息，建议在[布局回调](../../apis-na/arkts-apis/arkts-arkui-inspector.md#@ohos.arkui.inspector)中使用该接口。如果组件动态创建但未挂载组件树，则无法通过该接口获取正常的 > 组件信息。因为组件在未挂载组件树的情况下，一般未经过UI框架正常的测量与布局，此时请确保组件正常挂载组件树后再尝试获取组件信息。
+获取组件大小、位置、平移、缩放、旋转及仿射矩阵属性信息。 > **说明：** > > 该接口需要在目标组件布局完成以后获取目标组件区域大小信息，建议在[布局回调](arkts-arkui-inspector.md#ohosarkuiinspector)中使用该接口。如果组件动态创建但未挂载组件树，则无法通过该接口获取正常的 > 组件信息。因为组件在未挂载组件树的情况下，一般未经过UI框架正常的测量与布局，此时请确保组件正常挂载组件树后再尝试获取组件信息。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

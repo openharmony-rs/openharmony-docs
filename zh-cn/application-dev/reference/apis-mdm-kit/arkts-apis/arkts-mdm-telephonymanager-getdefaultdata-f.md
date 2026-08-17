@@ -10,7 +10,7 @@ function getDefaultData(admin: Want): number
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -59,9 +59,9 @@ let wantTemp: Want = {
 try {
   // 获取当前默认数据流量卡的卡槽ID
   let slotId: number = telephonyManager.getDefaultData(wantTemp);
-  console.info(`success to get default data SIM ID, current is ${slotId}`);
+  console.info(`success in getting default data SIM ID on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to get default data. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get default data on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

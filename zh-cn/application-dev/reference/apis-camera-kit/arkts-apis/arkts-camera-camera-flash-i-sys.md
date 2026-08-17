@@ -1,12 +1,12 @@
 # Flash
 
-Flash继承自[FlashQuery](arkts-camera-camera-flashquery-i.md#FlashQuery)。 闪光灯类，对设备闪光灯操作。
+Flash继承自[FlashQuery](arkts-camera-camera-flashquery-i.md#flashquery)。 闪光灯类，对设备闪光灯操作。
 
-**继承/实现关系：** Flash extends [FlashQuery](arkts-camera-camera-flashquery-i.md#FlashQuery)
+**继承/实现关系：** Flash extends [FlashQuery](arkts-camera-camera-flashquery-i.md#flashquery)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ Flash继承自[FlashQuery](arkts-camera-camera-flashquery-i.md#FlashQuery)。 �
 enableLcdFlash(enabled: boolean): void
 ```
 
-Enables or disables the LCD flash. Before the setting, call [isLcdFlashSupported](arkts-camera-camera-flashquery-i-sys.md#isLcdFlashSupported) to check whether the device supports the LCD flash.
+Enables or disables the LCD flash. Before the setting, call [isLcdFlashSupported](arkts-camera-camera-flashquery-i-sys.md#islcdflashsupported) to check whether the device supports the LCD flash.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

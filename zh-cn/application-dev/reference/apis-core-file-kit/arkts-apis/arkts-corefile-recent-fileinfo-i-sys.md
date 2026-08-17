@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -26,7 +26,7 @@ readonly ctime: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -50,7 +50,7 @@ readonly fileName: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -68,13 +68,13 @@ readonly fileName: string
 readonly mode: number
 ```
 
-[文件权限信息](arkts-corefile-file-fs-stat-i.md#Stat)。
+[文件权限信息](arkts-corefile-file-fs-stat-i.md#stat)。
 
 **类型：** number
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -98,7 +98,7 @@ readonly mtime: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -122,7 +122,7 @@ readonly size: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -146,7 +146,7 @@ readonly srcPath: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -170,7 +170,7 @@ readonly uri: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 

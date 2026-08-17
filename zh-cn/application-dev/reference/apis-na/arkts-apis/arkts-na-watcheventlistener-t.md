@@ -8,7 +8,7 @@ export type WatchEventListener = (event: WatchEvent) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,5 +20,5 @@ export type WatchEventListener = (event: WatchEvent) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [WatchEvent](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-watchevent-i.md) | 是 | 回调的事件类。 |
+| event | [WatchEvent](arkts-na-file-fs-watchevent-i.md) | 是 | 回调的事件类。 |
 

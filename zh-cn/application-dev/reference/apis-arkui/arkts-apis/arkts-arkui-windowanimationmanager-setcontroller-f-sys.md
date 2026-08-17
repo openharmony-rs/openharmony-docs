@@ -6,11 +6,11 @@
 function setController(controller: WindowAnimationController): void
 ```
 
-设置窗口动画控制器。窗口动画控制器的说明请参考[WindowAnimationController](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md#WindowAnimationController（系统接口）)。 在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。
+设置窗口动画控制器。窗口动画控制器的说明请参考[WindowAnimationController](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md#windowanimationcontroller系统接口)。 在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

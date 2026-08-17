@@ -6,11 +6,11 @@
 function requestFocus(value: string): boolean
 ```
 
-方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。 如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../arkts-apis/arkts-arkui-arkui-uicontext-focuscontroller-c.md#requestFocus)。
+方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。 如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-focuscontroller-c.md#requestfocus)。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs for generating an image at the specific time from a video resource.
+提供从视频资源中生成指定时间点图像的接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 

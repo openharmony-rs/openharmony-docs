@@ -10,7 +10,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int)
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定查询应用的包名。 |
-| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md#ResourceFlag（系统接口）).GET_RESOURCE_INFO_ALL。 |
+| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md#resourceflag系统接口).GET_RESOURCE_INFO_ALL。 |
 
 **返回值：**
 
@@ -74,7 +74,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int,
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -91,7 +91,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定查询应用的包名。 |
-| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md#ResourceFlag（系统接口）).GET_RESOURCE_INFO_ALL。 |
+| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md#resourceflag系统接口).GET_RESOURCE_INFO_ALL。 |
 | appIndex | int | 否 | 指定查询应用分身的ID，默认值为0。 |
 
 **返回值：**

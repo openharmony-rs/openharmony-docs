@@ -6,7 +6,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ constructor(options?: RotationGestureHandlerOptions)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ onActionCancel(event: Callback<void>): RotationGestureHandler
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -82,11 +82,11 @@ onActionCancel(event: Callback<void>): RotationGestureHandler
 onActionCancel(event: Callback<GestureEvent>): RotationGestureHandler
 ```
 
-设置旋转手势处理器取消回调。旋转手势处理器识别成功后，接收到触摸取消事件时触发回调。与 [onActionCancel](#onActionCancel)相比，此接口返回手势事件信息。
+设置旋转手势处理器取消回调。旋转手势处理器识别成功后，接收到触摸取消事件时触发回调。与 [onActionCancel](#onactioncancel)相比，此接口返回手势事件信息。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ onActionEnd(event: Callback<GestureEvent>): RotationGestureHandler
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ onActionStart(event: Callback<GestureEvent>): RotationGestureHandler
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -188,7 +188,7 @@ onActionUpdate(event: Callback<GestureEvent>): RotationGestureHandler
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

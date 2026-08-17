@@ -10,11 +10,11 @@ function setScreenOffTime(admin: Want, time: number): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setValue)
+**替代接口：** [setValue](arkts-mdm-devicesettings-setvalue-f.md#setvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_SCREENOFF_TIME
 

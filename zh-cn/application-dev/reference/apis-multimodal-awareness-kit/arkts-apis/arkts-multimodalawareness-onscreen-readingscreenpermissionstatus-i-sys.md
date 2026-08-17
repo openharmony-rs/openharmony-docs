@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@
 readingCode?: int
 ```
 
-如果屏幕无法读取，将返回相应的状态码。
+如果屏幕无法读取，将返回相应的状态码，参考[CollectStrategy](arkts-multimodalawareness-onscreen-collectstrategy-e-sys.md#collectstrategy系统接口)。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ readingState: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

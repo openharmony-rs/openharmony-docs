@@ -10,11 +10,11 @@ function cancelAll(callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelAll)
+**替代接口：** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall)
 
 <!--Device-notification-function cancelAll(callback: AsyncCallback<void>): void--><!--Device-notification-function cancelAll(callback: AsyncCallback<void>): void-End-->
 
@@ -37,11 +37,11 @@ function cancelAll(): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelAll)
+**替代接口：** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall)
 
 <!--Device-notification-function cancelAll(): Promise<void>--><!--Device-notification-function cancelAll(): Promise<void>-End-->
 

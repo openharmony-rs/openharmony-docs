@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 readonly flags?: int
 ```
 
-标识当前应用和当前用户之间的状态集合，每一位表示一个特定的布尔状态，取值参考 [ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md#ApplicationInfoFlag（系统接口）)。
+标识当前应用和当前用户之间的状态集合，每一位表示一个特定的布尔状态，取值参考 [ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md#applicationinfoflag系统接口)。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

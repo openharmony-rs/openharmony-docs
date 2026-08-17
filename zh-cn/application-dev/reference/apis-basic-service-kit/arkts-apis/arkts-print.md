@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,112 +18,112 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addPrinter](arkts-basicservices-print-addprinter-f.md#addPrinter) | 添加打印机到系统中，使用Promise异步回调。 |
-| [addPrinterToDiscovery](arkts-basicservices-print-addprintertodiscovery-f.md#addPrinterToDiscovery) | 添加打印机到系统打印机发现列表，使用Promise异步回调。 |
-| [getAddedPrinters](arkts-basicservices-print-getaddedprinters-f.md#getAddedPrinters) | 获取系统中已添加的打印机列表，使用Promise异步回调。 |
-| [getPrinterInformationById](arkts-basicservices-print-getprinterinformationbyid-f.md#getPrinterInformationById) | 根据打印机id获取打印机信息，使用Promise异步回调。 |
-| [notifyWatermarkComplete](arkts-basicservices-print-notifywatermarkcomplete-f.md#notifyWatermarkComplete) | 通知水印处理完成。 |
-| [offPrinterChange](arkts-basicservices-print-offprinterchange-f.md#offPrinterChange) | Unregister event callback for the change of printer. |
-| off_printerChange | 取消注册打印机变动事件回调，使用callback回调。 |
-| [onPrinterChange](arkts-basicservices-print-onprinterchange-f.md#onPrinterChange) | Register event callback for the change of printer. |
-| on_printerChange | 注册打印机变动事件回调，使用callback回调。 |
+| [addPrinter](arkts-basicservices-print-addprinter-f.md#addprinter) | 添加打印机到系统中，使用Promise异步回调。 |
+| [addPrinterToDiscovery](arkts-basicservices-print-addprintertodiscovery-f.md#addprintertodiscovery) | 添加打印机到系统打印机发现列表，使用Promise异步回调。 |
+| [getAddedPrinters](arkts-basicservices-print-getaddedprinters-f.md#getaddedprinters) | 获取系统中已添加的打印机列表，使用Promise异步回调。 |
+| [getPrinterInformationById](arkts-basicservices-print-getprinterinformationbyid-f.md#getprinterinformationbyid) | 根据打印机id获取打印机信息，使用Promise异步回调。 |
+| [notifyWatermarkComplete](arkts-basicservices-print-notifywatermarkcomplete-f.md#notifywatermarkcomplete) | 通知水印处理完成。 |
+| [offPrinterChange](arkts-basicservices-print-offprinterchange-f.md#offprinterchange) | Unregister event callback for the change of printer. |
+| [off_printerChange](arkts-basicservices-print-offprinterchange-f.md#offprinterchange) | 取消注册打印机变动事件回调，使用callback回调。 |
+| [onPrinterChange](arkts-basicservices-print-onprinterchange-f.md#onprinterchange) | Register event callback for the change of printer. |
+| [on_printerChange](arkts-basicservices-print-onprinterchange-f.md#onprinterchange) | 注册打印机变动事件回调，使用callback回调。 |
 | [print](arkts-basicservices-print-f.md#print) | 打印接口，传入文件进行打印，使用callback异步回调。拉起系统打印预览界面，需要使用[print](arkts-basicservices-print-f.md#print)接口，传入 context。 |
 | [print](arkts-basicservices-print-f.md#print) | 打印接口，传入文件进行打印，使用Promise异步回调。拉起系统打印预览界面，需要使用[print](arkts-basicservices-print-f.md#print)接口，传入 context。 |
 | [print](arkts-basicservices-print-f.md#print) | 打印接口，传入文件进行打印，使用callback异步回调。 |
 | [print](arkts-basicservices-print-f.md#print) | 打印接口，传入文件进行打印，使用Promise异步回调。 |
 | [print](arkts-basicservices-print-f.md#print) | 打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。当前支持的文件类型：".pdf"。 |
-| [registerWatermarkCallback](arkts-basicservices-print-registerwatermarkcallback-f.md#registerWatermarkCallback) | 注册强制水印处理的监听事件。 |
-| [removePrinterFromDiscovery](arkts-basicservices-print-removeprinterfromdiscovery-f.md#removePrinterFromDiscovery) | 从系统打印机发现列表里移除打印机，使用Promise异步回调。 |
-| [startPrint](arkts-basicservices-print-startprint-f.md#startPrint) | 打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。 |
-| [unregisterWatermarkCallback](arkts-basicservices-print-unregisterwatermarkcallback-f.md#unregisterWatermarkCallback) | 注销强制水印处理的监听事件。 |
-| [updatePrinterInDiscovery](arkts-basicservices-print-updateprinterindiscovery-f.md#updatePrinterInDiscovery) | 更新打印机能力到系统打印机发现列表，使用Promise异步回调。 |
+| [registerWatermarkCallback](arkts-basicservices-print-registerwatermarkcallback-f.md#registerwatermarkcallback) | 注册强制水印处理的监听事件。 |
+| [removePrinterFromDiscovery](arkts-basicservices-print-removeprinterfromdiscovery-f.md#removeprinterfromdiscovery) | 从系统打印机发现列表里移除打印机，使用Promise异步回调。 |
+| [startPrint](arkts-basicservices-print-startprint-f.md#startprint) | 打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。 |
+| [unregisterWatermarkCallback](arkts-basicservices-print-unregisterwatermarkcallback-f.md#unregisterwatermarkcallback) | 注销强制水印处理的监听事件。 |
+| [updatePrinterInDiscovery](arkts-basicservices-print-updateprinterindiscovery-f.md#updateprinterindiscovery) | 更新打印机能力到系统打印机发现列表，使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addPrinterToCups](arkts-basicservices-print-addprintertocups-f-sys.md#addPrinterToCups) | 添加打印机到cups，使用Promise异步回调。 |
-| [addPrinters](arkts-basicservices-print-addprinters-f-sys.md#addPrinters) | 添加打印机，使用callback异步回调。 |
-| [addPrinters](arkts-basicservices-print-addprinters-f-sys.md#addPrinters（系统接口）) | 添加打印机，使用Promise异步回调。 |
-| [analyzePrintEvents](arkts-basicservices-print-analyzeprintevents-f-sys.md#analyzePrintEvents) | 分析打印事件。 |
-| [authPrintJob](arkts-basicservices-print-authprintjob-f-sys.md#authPrintJob) | 验证打印作业。 |
-| [authSmbDeviceAsRegisteredUser](arkts-basicservices-print-authsmbdeviceasregistereduser-f-sys.md#authSmbDeviceAsRegisteredUser) | 以注册用户身份对SMB设备进行身份验证，并获取可用打印机。 |
-| [cancelPrintJob](arkts-basicservices-print-cancelprintjob-f-sys.md#cancelPrintJob) | 取消已发送到打印机的打印任务，使用callback异步回调。 |
-| [cancelPrintJob](arkts-basicservices-print-cancelprintjob-f-sys.md#cancelPrintJob（系统接口）) | 取消已发送到打印机的打印任务，使用Promise异步回调。 |
-| [checkPreferencesConflicts](arkts-basicservices-print-checkpreferencesconflicts-f-sys.md#checkPreferencesConflicts) | 检查首选项冲突。 |
-| [connectPrinter](arkts-basicservices-print-connectprinter-f-sys.md#connectPrinter) | 通过打印机ID连接打印机，使用callback异步回调。 |
-| [connectPrinter](arkts-basicservices-print-connectprinter-f-sys.md#connectPrinter（系统接口）) | 通过打印机ID连接打印机，使用Promise异步回调。 |
-| [connectPrinterByIdAndPpd](arkts-basicservices-print-connectprinterbyidandppd-f-sys.md#connectPrinterByIdAndPpd) | 根据打印机ID查询推荐的打印机驱动程序。 |
-| [connectPrinterByIpAndPpd](arkts-basicservices-print-connectprinterbyipandppd-f-sys.md#connectPrinterByIpAndPpd) | 通过打印机IP和ppd连接打印机。 |
-| [deletePrinterFromCups](arkts-basicservices-print-deleteprinterfromcups-f-sys.md#deletePrinterFromCups) | 从cups中删除打印机，使用Promise异步回调。 |
-| [disconnectPrinter](arkts-basicservices-print-disconnectprinter-f-sys.md#disconnectPrinter) | 断开特定打印机的连接，使用callback异步回调。 |
-| [disconnectPrinter](arkts-basicservices-print-disconnectprinter-f-sys.md#disconnectPrinter（系统接口）) | 断开特定打印机的连接，使用Promise异步回调。 |
-| [discoverUsbPrinters](arkts-basicservices-print-discoverusbprinters-f-sys.md#discoverUsbPrinters) | 发现usb打印机，使用Promise异步回调。 |
-| [getPrinterDefaultPreferences](arkts-basicservices-print-getprinterdefaultpreferences-f-sys.md#getPrinterDefaultPreferences) | 按打印机ID获取默认首选项。 |
-| [getPrinterInfoById](arkts-basicservices-print-getprinterinfobyid-f-sys.md#getPrinterInfoById) | 根据打印机id获取打印机信息，使用Promise异步回调。 |
-| [getSharedHosts](arkts-basicservices-print-getsharedhosts-f-sys.md#getSharedHosts) | 获取所有可用的共享主机。 |
-| [notifyPrintService](arkts-basicservices-print-notifyprintservice-f-sys.md#notifyPrintService) | 将spooler关闭信息通知打印服务，使用callback异步回调。 |
-| [notifyPrintService](arkts-basicservices-print-notifyprintservice-f-sys.md#notifyPrintService（系统接口）) | 将spooler关闭信息通知打印服务，使用Promise异步回调。 |
-| [notifyPrintServiceEvent](arkts-basicservices-print-notifyprintserviceevent-f-sys.md#notifyPrintServiceEvent) | 将打印应用相关事件通知打印服务，使用Promise异步回调。 |
-| [notifyPrintServiceEvent](arkts-basicservices-print-notifyprintserviceevent-f-sys.md#notifyPrintServiceEvent（系统接口）) | 将打印应用相关事件通知打印服务，使用Promise异步回调。 |
-| [notifyPrintServiceSpoolerCloseForCancelled](arkts-basicservices-print-notifyprintservicespoolercloseforcancelled-f-sys.md#notifyPrintServiceSpoolerCloseForCancelled) | Notify print service the information. |
-| [notifyPrintServiceSpoolerCloseForCancelled](arkts-basicservices-print-notifyprintservicespoolercloseforcancelled-f-sys.md#notifyPrintServiceSpoolerCloseForCancelled（系统接口）) | Notify print service the information. |
-| [notifyPrintServiceSpoolerCloseForStarted](arkts-basicservices-print-notifyprintservicespoolercloseforstarted-f-sys.md#notifyPrintServiceSpoolerCloseForStarted) | Notify print service the information. |
-| [notifyPrintServiceSpoolerCloseForStarted](arkts-basicservices-print-notifyprintservicespoolercloseforstarted-f-sys.md#notifyPrintServiceSpoolerCloseForStarted（系统接口）) | Notify print service the information. |
-| [offExtInfoChange](arkts-basicservices-print-offextinfochange-f-sys.md#offExtInfoChange) | Unregister event callback for the information change of print extension. |
-| [offJobStateChange](arkts-basicservices-print-offjobstatechange-f-sys.md#offJobStateChange) | Unregister event callback for the state change of print job. |
-| [offPrinterInfoQuery](arkts-basicservices-print-offprinterinfoquery-f-sys.md#offPrinterInfoQuery) | 查询到的打印机信息的Unregister事件回调。 |
-| [offPrinterStateChange](arkts-basicservices-print-offprinterstatechange-f-sys.md#offPrinterStateChange) | Unregister event callback for the state change of printer. |
-| off_extInfoChange | 取消注册打印扩展信息变化事件回调，使用callback回调。 |
-| off_jobStateChange | 取消注册打印任务状态变化事件回调，使用callback回调。 |
-| off_printerStateChange | 取消注册打印机状态变化事件回调，使用callback回调。 |
-| [onExtInfoChange](arkts-basicservices-print-onextinfochange-f-sys.md#onExtInfoChange) | Register event callback for the information change of print extension. |
-| [onJobStateChange](arkts-basicservices-print-onjobstatechange-f-sys.md#onJobStateChange) | Register event callback for the state change of print job. |
-| [onPrinterInfoQuery](arkts-basicservices-print-onprinterinfoquery-f-sys.md#onPrinterInfoQuery) | 为查询到的打印机信息注册事件回调。 |
-| [onPrinterStateChange](arkts-basicservices-print-onprinterstatechange-f-sys.md#onPrinterStateChange) | Register event callback for the state change of printer. |
-| on_extInfoChange | 注册打印扩展信息变化事件回调，使用callback回调。 |
-| on_jobStateChange | 注册打印任务状态变化事件回调，使用callback回调。 |
-| on_printerStateChange | 注册打印机状态变化事件回调，使用callback回调。 |
-| [queryAllActivePrintJobs](arkts-basicservices-print-queryallactiveprintjobs-f-sys.md#queryAllActivePrintJobs) | 查询所有活跃中的打印任务，使用Promise进行异步回调。 |
-| [queryAllPrintJobs](arkts-basicservices-print-queryallprintjobs-f-sys.md#queryAllPrintJobs) | 查询所有打印任务，使用callback异步回调。 |
-| [queryAllPrintJobs](arkts-basicservices-print-queryallprintjobs-f-sys.md#queryAllPrintJobs（系统接口）) | 查询所有打印任务，使用Promise异步回调。 |
-| [queryAllPrinterExtensionInfos](arkts-basicservices-print-queryallprinterextensioninfos-f-sys.md#queryAllPrinterExtensionInfos) | 查询所有已安装的打印机扩展服务，使用callback异步回调。 |
-| [queryAllPrinterExtensionInfos](arkts-basicservices-print-queryallprinterextensioninfos-f-sys.md#queryAllPrinterExtensionInfos（系统接口）) | 查询所有已安装的打印机扩展服务，使用Promise异步回调。 |
-| [queryAllPrinterPpds](arkts-basicservices-print-queryallprinterppds-f-sys.md#queryAllPrinterPpds) | 查询所有打印机ppd。 |
-| [queryPrintJobById](arkts-basicservices-print-queryprintjobbyid-f-sys.md#queryPrintJobById) | 按打印任务ID查询打印任务，使用callback异步回调。 |
-| [queryPrintJobById](arkts-basicservices-print-queryprintjobbyid-f-sys.md#queryPrintJobById（系统接口）) | 按打印任务ID查询打印任务，使用Promise异步回调。 |
-| [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md#queryPrintJobList) | 查询所有打印任务，使用callback异步回调。 |
-| [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md#queryPrintJobList（系统接口）) | 查询所有打印任务，使用Promise异步回调。 |
-| [queryPrinterCapability](arkts-basicservices-print-queryprintercapability-f-sys.md#queryPrinterCapability) | 查询打印机能力，使用callback异步回调。 |
-| [queryPrinterCapability](arkts-basicservices-print-queryprintercapability-f-sys.md#queryPrinterCapability（系统接口）) | 查询打印机能力，使用Promise异步回调。 |
-| [queryPrinterCapabilityByUri](arkts-basicservices-print-queryprintercapabilitybyuri-f-sys.md#queryPrinterCapabilityByUri) | 使用打印机的uri查询打印机能力，使用Promise异步回调。 |
-| [queryPrinterInfoByIp](arkts-basicservices-print-queryprinterinfobyip-f-sys.md#queryPrinterInfoByIp) | 根据ip查询打印机信息。 |
-| [queryRecommendDriversById](arkts-basicservices-print-queryrecommenddriversbyid-f-sys.md#queryRecommendDriversById) | 根据打印机ID查询推荐的打印机驱动程序。 |
-| [removePrinters](arkts-basicservices-print-removeprinters-f-sys.md#removePrinters) | 移除打印机，使用callback异步回调。 |
-| [removePrinters](arkts-basicservices-print-removeprinters-f-sys.md#removePrinters（系统接口）) | 移除打印机，使用Promise异步回调。 |
-| [requestPrintPreview](arkts-basicservices-print-requestprintpreview-f-sys.md#requestPrintPreview) | 请求预览打印数据，使用callback回调。 |
-| [requestPrintPreview](arkts-basicservices-print-requestprintpreview-f-sys.md#requestPrintPreview（系统接口）) | 请求预览打印数据，使用Promise异步回调。 |
-| [restartPrintJob](arkts-basicservices-print-restartprintjob-f-sys.md#restartPrintJob) | 重新打印之前打印过的打印任务，使用Promise异步回调。 |
-| [savePdfFileJob](arkts-basicservices-print-savepdffilejob-f-sys.md#savePdfFileJob) | 保存打印作业的pdf文件。 |
-| [setDefaultPrinter](arkts-basicservices-print-setdefaultprinter-f-sys.md#setDefaultPrinter) | 设置默认打印机，使用Promise异步回调。 |
-| [setPrinterPreferences](arkts-basicservices-print-setprinterpreferences-f-sys.md#setPrinterPreferences) | 设置打印机首选项，使用Promise异步回调。 |
-| [startDiscoverPrinter](arkts-basicservices-print-startdiscoverprinter-f-sys.md#startDiscoverPrinter) | 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。 |
-| [startDiscoverPrinter](arkts-basicservices-print-startdiscoverprinter-f-sys.md#startDiscoverPrinter（系统接口）) | 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。 |
-| [startGettingPrintFile](arkts-basicservices-print-startgettingprintfile-f-sys.md#startGettingPrintFile) | 开始获取打印文件，使用Callback异步回调。 |
-| [startPrintJob](arkts-basicservices-print-startprintjob-f-sys.md#startPrintJob) | 开始打印任务，使用callback异步回调。 |
-| [startPrintJob](arkts-basicservices-print-startprintjob-f-sys.md#startPrintJob（系统接口）) | 开始打印任务，使用Promise异步回调。 |
-| [stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f-sys.md#stopDiscoverPrinter) | 停止发现打印机，使用callback异步回调。 |
-| [stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f-sys.md#stopDiscoverPrinter（系统接口）) | 停止发现打印机，使用Promise异步回调。 |
-| [updateExtensionInfo](arkts-basicservices-print-updateextensioninfo-f-sys.md#updateExtensionInfo) | 更新打印扩展状态，使用callback异步回调。 |
-| [updateExtensionInfo](arkts-basicservices-print-updateextensioninfo-f-sys.md#updateExtensionInfo（系统接口）) | 更新打印扩展状态，使用Promise异步回调。 |
-| [updatePrintJobState](arkts-basicservices-print-updateprintjobstate-f-sys.md#updatePrintJobState) | 更新打印任务状态，使用callback异步回调。 |
-| [updatePrintJobState](arkts-basicservices-print-updateprintjobstate-f-sys.md#updatePrintJobState（系统接口）) | 更新打印任务状态，使用Promise异步回调。 |
-| [updatePrinterInformation](arkts-basicservices-print-updateprinterinformation-f-sys.md#updatePrinterInformation) | 更新系统中打印机的部分信息，使用Promise异步回调。当前仅允许更新[PrinterInformation](arkts-basicservices-print-printerinformation-i.md#PrinterInformation)的alias和options字段。 |
-| [updatePrinterState](arkts-basicservices-print-updateprinterstate-f-sys.md#updatePrinterState) | 更新打印机状态，使用callback异步回调。 |
-| [updatePrinterState](arkts-basicservices-print-updateprinterstate-f-sys.md#updatePrinterState（系统接口）) | 更新打印机状态，使用Promise异步回调。 |
-| [updatePrinters](arkts-basicservices-print-updateprinters-f-sys.md#updatePrinters) | 更新特定打印机的信息，使用callback异步回调。 |
-| [updatePrinters](arkts-basicservices-print-updateprinters-f-sys.md#updatePrinters（系统接口）) | 更新特定打印机的信息，使用Promise异步回调。 |
+| [addPrinterToCups](arkts-basicservices-print-addprintertocups-f-sys.md#addprintertocups) | 添加打印机到cups，使用Promise异步回调。 |
+| [addPrinters](arkts-basicservices-print-addprinters-f-sys.md#addprinters) | 添加打印机，使用callback异步回调。 |
+| [addPrinters](arkts-basicservices-print-addprinters-f-sys.md#addprinters系统接口) | 添加打印机，使用Promise异步回调。 |
+| [analyzePrintEvents](arkts-basicservices-print-analyzeprintevents-f-sys.md#analyzeprintevents) | 分析打印事件。 |
+| [authPrintJob](arkts-basicservices-print-authprintjob-f-sys.md#authprintjob) | 验证打印作业。 |
+| [authSmbDeviceAsRegisteredUser](arkts-basicservices-print-authsmbdeviceasregistereduser-f-sys.md#authsmbdeviceasregistereduser) | 以注册用户身份对SMB设备进行身份验证，并获取可用打印机。 |
+| [cancelPrintJob](arkts-basicservices-print-cancelprintjob-f-sys.md#cancelprintjob) | 取消已发送到打印机的打印任务，使用callback异步回调。 |
+| [cancelPrintJob](arkts-basicservices-print-cancelprintjob-f-sys.md#cancelprintjob系统接口) | 取消已发送到打印机的打印任务，使用Promise异步回调。 |
+| [checkPreferencesConflicts](arkts-basicservices-print-checkpreferencesconflicts-f-sys.md#checkpreferencesconflicts) | 检查首选项冲突。 |
+| [connectPrinter](arkts-basicservices-print-connectprinter-f-sys.md#connectprinter) | 通过打印机ID连接打印机，使用callback异步回调。 |
+| [connectPrinter](arkts-basicservices-print-connectprinter-f-sys.md#connectprinter系统接口) | 通过打印机ID连接打印机，使用Promise异步回调。 |
+| [connectPrinterByIdAndPpd](arkts-basicservices-print-connectprinterbyidandppd-f-sys.md#connectprinterbyidandppd) | 根据打印机ID查询推荐的打印机驱动程序。 |
+| [connectPrinterByIpAndPpd](arkts-basicservices-print-connectprinterbyipandppd-f-sys.md#connectprinterbyipandppd) | 通过打印机IP和ppd连接打印机。 |
+| [deletePrinterFromCups](arkts-basicservices-print-deleteprinterfromcups-f-sys.md#deleteprinterfromcups) | 从cups中删除打印机，使用Promise异步回调。 |
+| [disconnectPrinter](arkts-basicservices-print-disconnectprinter-f-sys.md#disconnectprinter) | 断开特定打印机的连接，使用callback异步回调。 |
+| [disconnectPrinter](arkts-basicservices-print-disconnectprinter-f-sys.md#disconnectprinter系统接口) | 断开特定打印机的连接，使用Promise异步回调。 |
+| [discoverUsbPrinters](arkts-basicservices-print-discoverusbprinters-f-sys.md#discoverusbprinters) | 发现usb打印机，使用Promise异步回调。 |
+| [getPrinterDefaultPreferences](arkts-basicservices-print-getprinterdefaultpreferences-f-sys.md#getprinterdefaultpreferences) | 按打印机ID获取默认首选项。 |
+| [getPrinterInfoById](arkts-basicservices-print-getprinterinfobyid-f-sys.md#getprinterinfobyid) | 根据打印机id获取打印机信息，使用Promise异步回调。 |
+| [getSharedHosts](arkts-basicservices-print-getsharedhosts-f-sys.md#getsharedhosts) | 获取所有可用的共享主机。 |
+| [notifyPrintService](arkts-basicservices-print-notifyprintservice-f-sys.md#notifyprintservice) | 将spooler关闭信息通知打印服务，使用callback异步回调。 |
+| [notifyPrintService](arkts-basicservices-print-notifyprintservice-f-sys.md#notifyprintservice系统接口) | 将spooler关闭信息通知打印服务，使用Promise异步回调。 |
+| [notifyPrintServiceEvent](arkts-basicservices-print-notifyprintserviceevent-f-sys.md#notifyprintserviceevent) | 将打印应用相关事件通知打印服务，使用Promise异步回调。 |
+| [notifyPrintServiceEvent](arkts-basicservices-print-notifyprintserviceevent-f-sys.md#notifyprintserviceevent系统接口) | 将打印应用相关事件通知打印服务，使用Promise异步回调。 |
+| [notifyPrintServiceSpoolerCloseForCancelled](arkts-basicservices-print-notifyprintservicespoolercloseforcancelled-f-sys.md#notifyprintservicespoolercloseforcancelled) | Notify print service the information. |
+| [notifyPrintServiceSpoolerCloseForCancelled](arkts-basicservices-print-notifyprintservicespoolercloseforcancelled-f-sys.md#notifyprintservicespoolercloseforcancelled系统接口) | Notify print service the information. |
+| [notifyPrintServiceSpoolerCloseForStarted](arkts-basicservices-print-notifyprintservicespoolercloseforstarted-f-sys.md#notifyprintservicespoolercloseforstarted) | Notify print service the information. |
+| [notifyPrintServiceSpoolerCloseForStarted](arkts-basicservices-print-notifyprintservicespoolercloseforstarted-f-sys.md#notifyprintservicespoolercloseforstarted系统接口) | Notify print service the information. |
+| [offExtInfoChange](arkts-basicservices-print-offextinfochange-f-sys.md#offextinfochange) | Unregister event callback for the information change of print extension. |
+| [offJobStateChange](arkts-basicservices-print-offjobstatechange-f-sys.md#offjobstatechange) | Unregister event callback for the state change of print job. |
+| [offPrinterInfoQuery](arkts-basicservices-print-offprinterinfoquery-f-sys.md#offprinterinfoquery) | 查询到的打印机信息的Unregister事件回调。 |
+| [offPrinterStateChange](arkts-basicservices-print-offprinterstatechange-f-sys.md#offprinterstatechange) | Unregister event callback for the state change of printer. |
+| [off_extInfoChange](arkts-basicservices-print-offextinfochange-f-sys.md#offextinfochange) | 取消注册打印扩展信息变化事件回调，使用callback回调。 |
+| [off_jobStateChange](arkts-basicservices-print-offjobstatechange-f-sys.md#offjobstatechange) | 取消注册打印任务状态变化事件回调，使用callback回调。 |
+| [off_printerStateChange](arkts-basicservices-print-offprinterstatechange-f-sys.md#offprinterstatechange) | 取消注册打印机状态变化事件回调，使用callback回调。 |
+| [onExtInfoChange](arkts-basicservices-print-onextinfochange-f-sys.md#onextinfochange) | Register event callback for the information change of print extension. |
+| [onJobStateChange](arkts-basicservices-print-onjobstatechange-f-sys.md#onjobstatechange) | Register event callback for the state change of print job. |
+| [onPrinterInfoQuery](arkts-basicservices-print-onprinterinfoquery-f-sys.md#onprinterinfoquery) | 为查询到的打印机信息注册事件回调。 |
+| [onPrinterStateChange](arkts-basicservices-print-onprinterstatechange-f-sys.md#onprinterstatechange) | Register event callback for the state change of printer. |
+| [on_extInfoChange](arkts-basicservices-print-onextinfochange-f-sys.md#onextinfochange) | 注册打印扩展信息变化事件回调，使用callback回调。 |
+| [on_jobStateChange](arkts-basicservices-print-onjobstatechange-f-sys.md#onjobstatechange) | 注册打印任务状态变化事件回调，使用callback回调。 |
+| [on_printerStateChange](arkts-basicservices-print-onprinterstatechange-f-sys.md#onprinterstatechange) | 注册打印机状态变化事件回调，使用callback回调。 |
+| [queryAllActivePrintJobs](arkts-basicservices-print-queryallactiveprintjobs-f-sys.md#queryallactiveprintjobs) | 查询所有活跃中的打印任务，使用Promise进行异步回调。 |
+| [queryAllPrintJobs](arkts-basicservices-print-queryallprintjobs-f-sys.md#queryallprintjobs) | 查询所有打印任务，使用callback异步回调。 |
+| [queryAllPrintJobs](arkts-basicservices-print-queryallprintjobs-f-sys.md#queryallprintjobs系统接口) | 查询所有打印任务，使用Promise异步回调。 |
+| [queryAllPrinterExtensionInfos](arkts-basicservices-print-queryallprinterextensioninfos-f-sys.md#queryallprinterextensioninfos) | 查询所有已安装的打印机扩展服务，使用callback异步回调。 |
+| [queryAllPrinterExtensionInfos](arkts-basicservices-print-queryallprinterextensioninfos-f-sys.md#queryallprinterextensioninfos系统接口) | 查询所有已安装的打印机扩展服务，使用Promise异步回调。 |
+| [queryAllPrinterPpds](arkts-basicservices-print-queryallprinterppds-f-sys.md#queryallprinterppds) | 查询所有打印机ppd。 |
+| [queryPrintJobById](arkts-basicservices-print-queryprintjobbyid-f-sys.md#queryprintjobbyid) | 按打印任务ID查询打印任务，使用callback异步回调。 |
+| [queryPrintJobById](arkts-basicservices-print-queryprintjobbyid-f-sys.md#queryprintjobbyid系统接口) | 按打印任务ID查询打印任务，使用Promise异步回调。 |
+| [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md#queryprintjoblist) | 查询所有打印任务，使用callback异步回调。 |
+| [queryPrintJobList](arkts-basicservices-print-queryprintjoblist-f-sys.md#queryprintjoblist系统接口) | 查询所有打印任务，使用Promise异步回调。 |
+| [queryPrinterCapability](arkts-basicservices-print-queryprintercapability-f-sys.md#queryprintercapability) | 查询打印机能力，使用callback异步回调。 |
+| [queryPrinterCapability](arkts-basicservices-print-queryprintercapability-f-sys.md#queryprintercapability系统接口) | 查询打印机能力，使用Promise异步回调。 |
+| [queryPrinterCapabilityByUri](arkts-basicservices-print-queryprintercapabilitybyuri-f-sys.md#queryprintercapabilitybyuri) | 使用打印机的uri查询打印机能力，使用Promise异步回调。 |
+| [queryPrinterInfoByIp](arkts-basicservices-print-queryprinterinfobyip-f-sys.md#queryprinterinfobyip) | 根据ip查询打印机信息。 |
+| [queryRecommendDriversById](arkts-basicservices-print-queryrecommenddriversbyid-f-sys.md#queryrecommenddriversbyid) | 根据打印机ID查询推荐的打印机驱动程序。 |
+| [removePrinters](arkts-basicservices-print-removeprinters-f-sys.md#removeprinters) | 移除打印机，使用callback异步回调。 |
+| [removePrinters](arkts-basicservices-print-removeprinters-f-sys.md#removeprinters系统接口) | 移除打印机，使用Promise异步回调。 |
+| [requestPrintPreview](arkts-basicservices-print-requestprintpreview-f-sys.md#requestprintpreview) | 请求预览打印数据，使用callback回调。 |
+| [requestPrintPreview](arkts-basicservices-print-requestprintpreview-f-sys.md#requestprintpreview系统接口) | 请求预览打印数据，使用Promise异步回调。 |
+| [restartPrintJob](arkts-basicservices-print-restartprintjob-f-sys.md#restartprintjob) | 重新打印之前打印过的打印任务，使用Promise异步回调。 |
+| [savePdfFileJob](arkts-basicservices-print-savepdffilejob-f-sys.md#savepdffilejob) | 保存打印作业的pdf文件。 |
+| [setDefaultPrinter](arkts-basicservices-print-setdefaultprinter-f-sys.md#setdefaultprinter) | 设置默认打印机，使用Promise异步回调。 |
+| [setPrinterPreferences](arkts-basicservices-print-setprinterpreferences-f-sys.md#setprinterpreferences) | 设置打印机首选项，使用Promise异步回调。 |
+| [startDiscoverPrinter](arkts-basicservices-print-startdiscoverprinter-f-sys.md#startdiscoverprinter) | 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。 |
+| [startDiscoverPrinter](arkts-basicservices-print-startdiscoverprinter-f-sys.md#startdiscoverprinter系统接口) | 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。 |
+| [startGettingPrintFile](arkts-basicservices-print-startgettingprintfile-f-sys.md#startgettingprintfile) | 开始获取打印文件，使用Callback异步回调。 |
+| [startPrintJob](arkts-basicservices-print-startprintjob-f-sys.md#startprintjob) | 开始打印任务，使用callback异步回调。 |
+| [startPrintJob](arkts-basicservices-print-startprintjob-f-sys.md#startprintjob系统接口) | 开始打印任务，使用Promise异步回调。 |
+| [stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f-sys.md#stopdiscoverprinter) | 停止发现打印机，使用callback异步回调。 |
+| [stopDiscoverPrinter](arkts-basicservices-print-stopdiscoverprinter-f-sys.md#stopdiscoverprinter系统接口) | 停止发现打印机，使用Promise异步回调。 |
+| [updateExtensionInfo](arkts-basicservices-print-updateextensioninfo-f-sys.md#updateextensioninfo) | 更新打印扩展状态，使用callback异步回调。 |
+| [updateExtensionInfo](arkts-basicservices-print-updateextensioninfo-f-sys.md#updateextensioninfo系统接口) | 更新打印扩展状态，使用Promise异步回调。 |
+| [updatePrintJobState](arkts-basicservices-print-updateprintjobstate-f-sys.md#updateprintjobstate) | 更新打印任务状态，使用callback异步回调。 |
+| [updatePrintJobState](arkts-basicservices-print-updateprintjobstate-f-sys.md#updateprintjobstate系统接口) | 更新打印任务状态，使用Promise异步回调。 |
+| [updatePrinterInformation](arkts-basicservices-print-updateprinterinformation-f-sys.md#updateprinterinformation) | 更新系统中打印机的部分信息，使用Promise异步回调。当前仅允许更新[PrinterInformation](arkts-basicservices-print-printerinformation-i.md#printerinformation)的alias和options字段。 |
+| [updatePrinterState](arkts-basicservices-print-updateprinterstate-f-sys.md#updateprinterstate) | 更新打印机状态，使用callback异步回调。 |
+| [updatePrinterState](arkts-basicservices-print-updateprinterstate-f-sys.md#updateprinterstate系统接口) | 更新打印机状态，使用Promise异步回调。 |
+| [updatePrinters](arkts-basicservices-print-updateprinters-f-sys.md#updateprinters) | 更新特定打印机的信息，使用callback异步回调。 |
+| [updatePrinters](arkts-basicservices-print-updateprinters-f-sys.md#updateprinters系统接口) | 更新特定打印机的信息，使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

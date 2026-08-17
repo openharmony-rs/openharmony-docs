@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ addColorStop(offset: double, color: string | ColorMetrics): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,8 +36,8 @@ addColorStop(offset: double, color: string | ColorMetrics): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | double | 是 | 设置渐变点距离起点的位置占总体长度的比例，范围为[0, 1]。 设置offset&lt;0或offset&gt;1无渐变效果。&lt;br&gt;异常值undefined和null按无效值处理， 不设置本次断点值，NaN会导致CanvasGradient异常，Infinity会导致整个CanvasGradient不生效。 |
-| color | string \| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-colormetrics-t.md) | 是 | 设置渐变填充的颜色。&lt;br&gt;可以使用 colorWithSpace 方法构造指定色域属性 [ColorSpace](../../../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#colorspace20) 为SRGB或DISPLAY_P3的颜色。每个渐变ColorMetrics的色域属性应当统一， 设置不同色域的属性时将抛出异常，错误码：103701。&lt;br&gt; 设置null和undefined无效，忽略本次断点值。 |
+| offset | double | 是 | 设置渐变点距离起点的位置占总体长度的比例，范围为[0, 1]。 设置offset&lt;0或offset&gt;1无渐变效果。<br>异常值undefined和null按无效值处理， 不设置本次断点值，NaN会导致CanvasGradient异常，Infinity会导致整个CanvasGradient不生效。 |
+| color | string \| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-colormetrics-t.md) | 是 | 设置渐变填充的颜色。<br>可以使用 colorWithSpace 方法构造指定色域属性 [ColorSpace](../../../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#colorspace20) 为SRGB或DISPLAY_P3的颜色。每个渐变ColorMetrics的色域属性应当统一， 设置不同色域的属性时将抛出异常，错误码：103701。<br> 设置null和undefined无效，忽略本次断点值。 |
 
 **错误码：**
 

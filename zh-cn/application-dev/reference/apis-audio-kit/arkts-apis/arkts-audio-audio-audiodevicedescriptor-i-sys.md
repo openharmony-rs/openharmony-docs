@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Extended information for distributed device, including whether the device suppor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ Extended information for distributed device, including whether the device suppor
 readonly dmDeviceType?: int
 ```
 
-Only [SPEAKER](arkts-audio-audio-devicetype-e.md#SPEAKER) with networkId, [REMOTE_CAST](arkts-audio-audio-devicetype-e.md#REMOTE_CAST) or [REMOTE_DAUDIO](arkts-audio-audio-devicetype-e.md#REMOTE_DAUDIO) has dmDeviceType which indicated deviceTypeId.
+Only [SPEAKER](arkts-audio-audio-devicetype-e.md#speaker) with networkId, [REMOTE_CAST](arkts-audio-audio-devicetype-e.md#remotecast) or [REMOTE_DAUDIO](arkts-audio-audio-devicetype-e.md#remotedaudio) has dmDeviceType which indicated deviceTypeId.
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ Whether device supports high quality recording.
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ Interrupt group id
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ readonly networkId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ Volume group id
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@ Defines the largest content paint rendering of web page.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Bits per pixel of maximum image.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ Bits per pixel of maximum image.
 largestImageLoadEndTime?: long
 ```
 
-Load end time of largest image. &lt;br&gt;Unit:milliseconds.
+Load end time of largest image. <br>Unit:milliseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,13 +58,13 @@ Load end time of largest image. &lt;br&gt;Unit:milliseconds.
 largestImageLoadStartTime?: long
 ```
 
-Load start time of largest image. &lt;br&gt;Unit:milliseconds.
+Load start time of largest image. <br>Unit:milliseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -78,13 +78,13 @@ Load start time of largest image. &lt;br&gt;Unit:milliseconds.
 largestImagePaintTime?: long
 ```
 
-Paint time of largest image. &lt;br&gt;Unit:milliseconds.
+Paint time of largest image. <br>Unit:milliseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,13 +98,13 @@ Paint time of largest image. &lt;br&gt;Unit:milliseconds.
 largestTextPaintTime?: long
 ```
 
-Paint time of largest text. &lt;br&gt;Unit:milliseconds.
+Paint time of largest text. <br>Unit:milliseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -118,13 +118,13 @@ Paint time of largest text. &lt;br&gt;Unit:milliseconds.
 navigationStartTime?: long
 ```
 
-Start time of navigation, in microseconds. &lt;br&gt;Unit:microseconds.
+Start time of navigation, in microseconds. <br>Unit:microseconds.
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

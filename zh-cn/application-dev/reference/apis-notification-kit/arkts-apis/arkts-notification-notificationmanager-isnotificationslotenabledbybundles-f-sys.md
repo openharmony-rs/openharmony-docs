@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
+import { notificationManager } from 'notificationManager';
 ```
 
 ## isNotificationSlotEnabledByBundles
@@ -16,7 +16,7 @@ function isNotificationSlotEnabledByBundles(bundles: Array<BundleOption>, type: 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -32,7 +32,7 @@ function isNotificationSlotEnabledByBundles(bundles: Array<BundleOption>, type: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundles | Array&lt;BundleOption&gt; | 是 | 应用包信息数组。 &lt;br&gt;最大长度为1000且不能为空。 |
+| bundles | Array&lt;BundleOption&gt; | 是 | 应用包信息数组。 <br>最大长度为1000且不能为空。 |
 | type | SlotType | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
 
 **返回值：**

@@ -11,11 +11,11 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getAngleVariation)(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;, callback: AsyncCallback&lt;Array&lt;double&gt;&gt;)
+**替代接口：** [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getanglevariation)(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;, callback: AsyncCallback&lt;Array&lt;double&gt;&gt;)
 
 <!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>,    callback: AsyncCallback<Array<number>>): void--><!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>,    callback: AsyncCallback<Array<number>>): void-End-->
 
@@ -58,11 +58,11 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getAngleVariation)(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;)
+**替代接口：** [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getanglevariation)(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;)
 
 <!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>): Promise<Array<number>>--><!--Device-sensor-function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>): Promise<Array<number>>-End-->
 
@@ -91,11 +91,11 @@ const promise = sensor.getAngleModify([1, 0, 0, 0, 1, 0, 0, 0, 1], [1, 0, 0, 0, 
 promise.then((data: Array<number>) => {
   console.info('Succeeded in getting AngleModify_promise.');
   for (let i = 0; i < data.length; i++) {
-    console.info("Succeeded in getting data[" + i + "]: " + data[i]);
+    console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
   }
 }).catch((reason: BusinessError) => {
   let e: BusinessError = reason as BusinessError;
-  console.info("Succeeded in getting promise::catch", e);
+  console.info('Succeeded in getting promise::catch', e);
 })
 ```
 

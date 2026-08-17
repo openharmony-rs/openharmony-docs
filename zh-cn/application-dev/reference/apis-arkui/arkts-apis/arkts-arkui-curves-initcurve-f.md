@@ -10,7 +10,7 @@ export function initCurve(curve?: Curve): ICurve
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ export function initCurve(curve?: Curve): ICurve
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| curve | Curve | 否 | 曲线类型。&lt;br/&gt;默认值：Curve.Linear |
+| curve | Curve | 否 | 曲线类型。<br/>默认值：Curve.Linear |
 
 **返回值：**
 

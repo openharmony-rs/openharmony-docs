@@ -10,11 +10,11 @@ function hasRight(deviceName: string): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasRight)
+**替代接口：** [hasRight](arkts-basicservices-usbmanager-hasright-f.md#hasright)
 
 <!--Device-usb-function hasRight(deviceName: string): boolean--><!--Device-usb-function hasRight(deviceName: string): boolean-End-->
 

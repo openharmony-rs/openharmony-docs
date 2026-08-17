@@ -1,10 +1,10 @@
 # @ohos.window.floatingBall
 
-该模块提供闪控球的基础功能，包括判断设备是否支持闪控球功能，以及创建闪控球控制器来启动、更新或停止闪控球。适用于跨应用的题目搜索、账单记录、商品比价、抢单、翻译场景，以及金融类应用的实时盯盘场景，以小窗模式呈现内容。闪控球以悬浮小组件 形式显示在其他应用之上，即时呈现应用的关键信息。 > **说明：** > > - 针对系统能力SystemCapability.Window.SessionManager，请先使用 > [canIUse()](arkts-arkui-global-caniuse-f.md#canIUse)接口判断当前设备是否支持此syscap及对应接口。
+该模块提供闪控球的基础功能，包括判断设备是否支持闪控球功能，以及创建闪控球控制器来启动、更新或停止闪控球。适用于跨应用的题目搜索、账单记录、商品比价、抢单、翻译场景，以及金融类应用的实时盯盘场景，以小窗模式呈现内容。闪控球以悬浮小组件 形式显示在其他应用之上，即时呈现应用的关键信息。 > **说明：** > > - 针对系统能力SystemCapability.Window.SessionManager，请先使用 > [canIUse()](arkts-arkui-global-caniuse-f.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -19,7 +19,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [create](arkts-arkui-floatingball-create-f.md#create) | 创建闪控球控制器，使用Promise异步回调。 |
-| [isFloatingBallEnabled](arkts-arkui-floatingball-isfloatingballenabled-f.md#isFloatingBallEnabled) | 判断当前设备是否支持闪控球功能。 |
+| [isFloatingBallEnabled](arkts-arkui-floatingball-isfloatingballenabled-f.md#isfloatingballenabled) | 判断当前设备是否支持闪控球功能。 |
 
 ### 接口
 

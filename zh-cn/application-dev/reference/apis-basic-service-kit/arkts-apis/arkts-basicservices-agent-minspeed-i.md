@@ -1,10 +1,10 @@
 # MinSpeed
 
-任务的最低限速配置。若任务速度持续低于设定值并达到指定时长，则任务失败，失败原因为 [LOW_SPEED](arkts-basicservices-agent-faults-e.md#Faults)。
+任务的最低限速配置。若任务速度持续低于设定值并达到指定时长，则任务失败，失败原因为 [LOW_SPEED](arkts-basicservices-agent-faults-e.md#faults)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ duration: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ speed: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

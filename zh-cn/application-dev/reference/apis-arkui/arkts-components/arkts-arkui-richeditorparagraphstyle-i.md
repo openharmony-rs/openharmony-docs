@@ -4,7 +4,7 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ leadingMargin?: Dimension | LeadingMarginPlaceholder
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ lineBreakStrategy?: LineBreakStrategy
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ paragraphSpacing?: number
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -90,13 +90,13 @@ paragraphSpacing?: number
 shaderStyle?: ShaderStyle
 ```
 
-设置文本着色器效果。 默认值：undefined，不设置着色器效果。 该接口与[RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md#RichEditorTextStyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于 [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md#RichEditorTextStyle)的fontColor。
+设置文本着色器效果。 默认值：undefined，不设置着色器效果。 该接口与[RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md#richeditortextstyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于 [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md#richeditortextstyle)的fontColor。
 
 **类型：** ShaderStyle
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ textAlign?: TextAlign
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -144,7 +144,7 @@ textDirection?: TextDirection
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -168,7 +168,7 @@ textVerticalAlign?: TextVerticalAlign
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -192,7 +192,7 @@ wordBreak?: WordBreak
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

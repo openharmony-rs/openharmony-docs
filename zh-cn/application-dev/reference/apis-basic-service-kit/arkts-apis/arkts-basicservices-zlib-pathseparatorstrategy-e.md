@@ -1,10 +1,10 @@
 # PathSeparatorStrategy
 
-PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md#Options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
+PathSeparatorStrategy作为[Options](arkts-basicservices-zlib-options-i.md#options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ PATH_SEPARATOR_STRATEGY_DEFAULT = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

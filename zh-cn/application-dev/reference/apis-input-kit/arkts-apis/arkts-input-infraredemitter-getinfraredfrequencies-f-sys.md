@@ -10,7 +10,7 @@ function getInfraredFrequencies(): Array<InfraredFrequency>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function getInfraredFrequencies(): Array<InfraredFrequency>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[InfraredFrequency](arkts-input-infraredemitter-infraredfrequency-i-sys.md)&gt; | 红外信号的频率范围，包含多组最大和最小频率。&lt;br/&gt;从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
+| Array&lt;[InfraredFrequency](arkts-input-infraredemitter-infraredfrequency-i-sys.md)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 

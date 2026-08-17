@@ -4,11 +4,11 @@
 type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions
 ```
 
-The callback of onInterceptKeyboardAttach event.
+拦截网页可编辑元素拉起软键盘的回调，一般在点击网页input标签时触发。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,11 +22,11 @@ The callback of onInterceptKeyboardAttach event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-webkeyboardcallbackinfo-i.md) | 是 | callback information of onInterceptKeyboardAttach. |
+| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-webkeyboardcallbackinfo-i.md) | 是 | 拦截网页拉起软键盘回调通知的入参，其中包括WebKeyboardController、可 编辑元素的属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebKeyboardOptions](arkts-arkweb-webkeyboardoptions-i.md) | Return the web keyboard options of this web component. |
+| [WebKeyboardOptions](arkts-arkweb-webkeyboardoptions-i.md) | 回调函数通过返回[WebKeyboardOptions]{ |
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ REQUIRE_ABILITY_LIST = 'requireAbilityList'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ SUPPORT_URL_CASTING = 'url-cast'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -62,11 +62,11 @@ SUPPORT_URL_CASTING = 'url-cast'
 DLNA_CURRENT_URI_METADATA = 'CurrentURIMetadata'
 ```
 
-[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md#AVMediaDescription)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。
+[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md#avmediadescription)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -84,11 +84,11 @@ DLNA_CURRENT_URI_METADATA = 'CurrentURIMetadata'
 DLNA_DIDL_LITE = 'DIDL-Lite'
 ```
 
-[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md#AVMediaDescription)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。
+[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md#avmediadescription)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -1,14 +1,14 @@
 # ProximityResponse
 
-距离感应数据改变后的回调函数的响应对象，包含可见物体相对于设备显示屏的接近或远离状态数据。
+距离感应数据改变后的回调函数的响应对象，包含可见物体相对于设备显示屏的接近或远离状态数据。 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [ProximityResponse](arkts-sensorservice-sensor-proximityresponse-i.md#ProximityResponse)
+**替代接口：** [ProximityResponse](arkts-sensorservice-sensor-proximityresponse-i.md#proximityresponse)
 
 <!--Device-unnamed-export interface ProximityResponse--><!--Device-unnamed-export interface ProximityResponse-End-->
 
@@ -26,7 +26,7 @@ distance: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

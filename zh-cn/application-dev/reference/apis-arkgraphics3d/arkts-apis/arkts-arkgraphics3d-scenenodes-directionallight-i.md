@@ -2,11 +2,11 @@
 
 定义平行光.
 
-**继承/实现关系：** DirectionalLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md#Light)
+**继承/实现关系：** DirectionalLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md#light)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

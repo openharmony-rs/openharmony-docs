@@ -10,7 +10,7 @@ function getDisplayByIdSync(displayId: long): Display
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function getDisplayByIdSync(displayId: long): Display
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过 [WindowProperties](arkts-arkui-window-windowproperties-i.md#WindowProperties)的displayId属性获取到准确的displayId作为入参。 |
+| displayId | long | 是 | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过 [WindowProperties](arkts-arkui-window-windowproperties-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
 
 **返回值：**
 

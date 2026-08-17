@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 alignment?: DialogAlignment
 ```
 
-弹窗在竖直方向上的对齐方式。&lt;br&gt;默认值：DialogAlignment.Default &lt;br/&gt;**说明：**&lt;br/&gt;若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。
+弹窗在竖直方向上的对齐方式。<br>默认值：DialogAlignment.Default <br/>**说明：**<br/>若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。
 
 **类型：** DialogAlignment
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ alignment?: DialogAlignment
 autoCancel?: boolean
 ```
 
-点击遮障层时，是否关闭弹窗，true表示关闭弹窗。false表示不关闭弹窗。&lt;br/&gt;默认值：true
+点击遮障层时，是否关闭弹窗，true表示关闭弹窗。false表示不关闭弹窗。<br/>默认值：true
 
 **类型：** boolean
 
@@ -48,7 +48,7 @@ autoCancel?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ dialogTransition?: TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -138,7 +138,7 @@ Defines the dialog display mode when show in subwindow.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -162,7 +162,7 @@ enableHoverMode?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -186,7 +186,7 @@ focusable?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -210,7 +210,7 @@ hoverModeArea?: HoverModeAreaType
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -234,7 +234,7 @@ immersiveMode?: ImmersiveMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -250,7 +250,7 @@ immersiveMode?: ImmersiveMode
 isModal?: boolean
 ```
 
-弹窗是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与弹窗周围其他控件进行交互，即蒙层区域无法事件透传。 值为false表示为非模态窗口且无蒙层，可以与弹窗周围其他控件进行交互。&lt;br/&gt;默认值：true
+弹窗是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与弹窗周围其他控件进行交互，即蒙层区域无法事件透传。 值为false表示为非模态窗口且无蒙层，可以与弹窗周围其他控件进行交互。<br/>默认值：true
 
 **类型：** boolean
 
@@ -258,7 +258,7 @@ isModal?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -274,13 +274,13 @@ isModal?: boolean
 keyboardAvoidDistance?: LengthMetrics
 ```
 
-弹窗避让键盘后，和键盘之间距离。&lt;br /&gt;**说明：**&lt;br/&gt;- 默认值：16vp&lt;br /&gt;- 默认单位：vp &lt;br /&gt;- 当且仅当keyboardAvoidMode属性设置为DEFAULT时生效。
+弹窗避让键盘后，和键盘之间距离。&lt;br /&gt;**说明：**<br/>- 默认值：16vp&lt;br /&gt;- 默认单位：vp &lt;br /&gt;- 当且仅当keyboardAvoidMode属性设置为DEFAULT时生效。
 
 **类型：** LengthMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -296,7 +296,7 @@ keyboardAvoidDistance?: LengthMetrics
 keyboardAvoidMode?: KeyboardAvoidMode
 ```
 
-用于设置弹窗是否在拉起软键盘时进行自动避让。&lt;br/&gt;默认值：KeyboardAvoidMode.DEFAULT
+用于设置弹窗是否在拉起软键盘时进行自动避让。<br/>默认值：KeyboardAvoidMode.DEFAULT
 
 **类型：** KeyboardAvoidMode
 
@@ -304,7 +304,7 @@ keyboardAvoidMode?: KeyboardAvoidMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -328,7 +328,7 @@ levelMode?: LevelMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -352,7 +352,7 @@ levelOrder?: LevelOrder
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -368,13 +368,13 @@ levelOrder?: LevelOrder
 levelUniqueId?: int
 ```
 
-设置页面级弹窗需要显示的层级下的节点UniqueID，该ID可以通过[getUniqueId](arkts-na-framenode-c.md#getUniqueId)获取。 &lt;br/&gt;取值范围：大于等于0的数字。&lt;br /&gt;**说明：** &lt;br /&gt;- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+设置页面级弹窗需要显示的层级下的节点UniqueID，该ID可以通过[getUniqueId](arkts-na-framenode-c.md#getuniqueid)获取。 <br/>取值范围：大于等于0的数字。&lt;br /&gt;**说明：** &lt;br /&gt;- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -390,13 +390,13 @@ levelUniqueId?: int
 maskColor?: ResourceColor
 ```
 
-自定义蒙层颜色。&lt;br&gt;默认值: 0x33000000
+自定义蒙层颜色。<br>默认值: 0x33000000
 
 **类型：** ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -412,13 +412,13 @@ maskColor?: ResourceColor
 maskRect?: Rectangle
 ```
 
-弹窗遮蔽层区域。 &lt;br/&gt;默认值：{ x: 0, y: 0, width: '100%', height: '100%' } &lt;br/&gt;**说明：** &lt;br/&gt;showInSubWindow为true时，maskRect不生效。 &lt;br/&gt;maskRect在设置[Rectangle](../../../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8)中的部分属性后， 若未设置其余的属性，则其余属性的默认值为0。
+弹窗遮蔽层区域。 <br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：** <br/>showInSubWindow为true时，maskRect不生效。 <br/>maskRect在设置[Rectangle](../../../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8)中的部分属性后， 若未设置其余的属性，则其余属性的默认值为0。
 
 **类型：** Rectangle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -440,7 +440,7 @@ maskTransition?: TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -456,13 +456,13 @@ maskTransition?: TransitionEffect
 offset?: Offset
 ```
 
-弹窗相对alignment所在位置的偏移量。&lt;br/&gt;默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}
+弹窗相对alignment所在位置的偏移量。<br/>默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}
 
 **类型：** Offset
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -484,7 +484,7 @@ onDidAppear?: VoidCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -500,13 +500,13 @@ onDidAppear?: VoidCallback
 onDidDisappear?: VoidCallback
 ```
 
-弹窗消失后的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。 &lt;br/&gt;当弹窗退场动画未完成时（例如：同时触发弹窗关闭和页面切换），该回调不会触发。
+弹窗消失后的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。 <br/>当弹窗退场动画未完成时（例如：同时触发弹窗关闭和页面切换），该回调不会触发。
 
 **类型：** VoidCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -528,7 +528,7 @@ onWillAppear?: VoidCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -550,7 +550,7 @@ onWillDisappear?: VoidCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -566,13 +566,13 @@ onWillDisappear?: VoidCallback
 onWillDismiss?: Callback<DismissDialogAction>
 ```
 
-交互式关闭回调函数。 &lt;br/&gt;**说明：** &lt;br/&gt;1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。 在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。 &lt;br/&gt;2.在onWillDismiss回调中，不能再做onWillDismiss拦截。
+交互式关闭回调函数。 <br/>**说明：** <br/>1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。 在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。 <br/>2.在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
 **类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DismissDialogAction](../../apis-arkui/arkts-apis/arkts-arkui-promptaction-dismissdialogaction-i.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -588,7 +588,7 @@ onWillDismiss?: Callback<DismissDialogAction>
 showInSubWindow?: boolean
 ```
 
-某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。&lt;br/&gt;默认值：false，弹窗显示在应用内，而非独立子窗口。
+某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br/>默认值：false，弹窗显示在应用内，而非独立子窗口。
 
 **类型：** boolean
 
@@ -596,7 +596,7 @@ showInSubWindow?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -612,13 +612,13 @@ showInSubWindow?: boolean
 systemMaterial?: uiMaterial.Material
 ```
 
-设置弹窗的系统材质。&lt;br/&gt;**说明：**&lt;br/&gt;- 默认值：ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象。 设置undefined时与默认值保持一致。&lt;br/&gt;- 不同的材质具有不同的效果，该接口影响 背景色backgroundColor、 背景模糊backgroundBlurStyle、 背景效果backgroundEffect、 边框颜色borderColor、边框宽度borderWidth、 阴影shadow，不建议与上述接口一起使用。
+设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象。 设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响 背景色backgroundColor、 背景模糊backgroundBlurStyle、 背景效果backgroundEffect、 边框颜色borderColor、边框宽度borderWidth、 阴影shadow，不建议与上述接口一起使用。
 
 **类型：** uiMaterial.Material
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -634,13 +634,13 @@ systemMaterial?: uiMaterial.Material
 transition?: TransitionEffect
 ```
 
-设置弹窗显示和退出的过渡效果。&lt;br/&gt;**说明：**&lt;br/&gt; 1.如果不设置，则使用默认的显示/退出动效。 &lt;br/&gt; 2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。 &lt;br/&gt; 3.退出动效中按back键，不会打断退出动效，退出动效继续执行，继续按back键退出应用。
+设置弹窗显示和退出的过渡效果。<br/>**说明：**<br/> 1.如果不设置，则使用默认的显示/退出动效。 <br/> 2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。 <br/> 3.退出动效中按back键，不会打断退出动效，退出动效继续执行，继续按back键退出应用。
 
 **类型：** TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

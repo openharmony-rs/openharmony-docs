@@ -10,11 +10,11 @@ function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md#displayBadge（系统接口）)
+**替代接口：** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md#displaybadge系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -43,11 +43,11 @@ function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md#displayBadge（系统接口）)
+**替代接口：** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md#displaybadge系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

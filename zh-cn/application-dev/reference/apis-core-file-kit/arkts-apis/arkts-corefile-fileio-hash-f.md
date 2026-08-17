@@ -10,11 +10,11 @@ declare function hash(path: string, algorithm: string): Promise<string>
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [hash](arkts-file-hash.md#@ohos.file.hash)
+**替代接口：** [hash](arkts-file-hash.md#ohosfilehash)
 
 <!--Device-unnamed-declare function hash(path: string, algorithm: string): Promise<string>--><!--Device-unnamed-declare function hash(path: string, algorithm: string): Promise<string>-End-->
 
@@ -44,11 +44,11 @@ declare function hash(path: string, algorithm: string, callback: AsyncCallback<s
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [hash](arkts-file-hash.md#@ohos.file.hash)
+**替代接口：** [hash](arkts-file-hash.md#ohosfilehash)
 
 <!--Device-unnamed-declare function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void-End-->
 

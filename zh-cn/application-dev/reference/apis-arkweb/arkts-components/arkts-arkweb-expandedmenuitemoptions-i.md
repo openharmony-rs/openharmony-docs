@@ -1,14 +1,14 @@
 # ExpandedMenuItemOptions
 
-> **说明：** > > 从API version 12开始支持，从API version 20开始废弃，建议使用 > editMenuOptions替代。 > 自定义菜单扩展项。
+自定义菜单扩展项。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 20
 
-**替代接口：** EditMenuOptions
+**替代接口：** [editMenuOptions](arkts-arkweb-web-attribute.md#editmenuoptions)
 
 <!--Device-unnamed-declare interface ExpandedMenuItemOptions--><!--Device-unnamed-declare interface ExpandedMenuItemOptions-End-->
 
@@ -20,13 +20,13 @@
 action: (selectedText: {plainText: string}) => void
 ```
 
-选中的文本信息。
+回调函数，用于接收用户选择菜单扩展项后的操作。回调参数selectedText包含plainText字段，表示用户选中的文本内容。
 
 **类型：** (selectedText: {plainText: string}) =&gt; void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 20
 
@@ -50,7 +50,7 @@ content: ResourceStr
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 20
 
@@ -74,7 +74,7 @@ startIcon?: ResourceStr
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 20
 

@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [DatePickerDialogOptions](arkts-na-datepicker-datepickerdialogoptions-i.md) | 日期选择器弹窗选项。 继承自[DatePickerOptions](arkts-na-datepicker-datepickeroptions-i.md#DatePickerOptions)。 |
+| [DatePickerDialogOptions](arkts-na-datepicker-datepickerdialogoptions-i.md) | 日期选择器弹窗选项。 继承自[DatePickerOptions](arkts-na-datepicker-datepickeroptions-i.md#datepickeroptions)。 |
 | [DatePickerOptions](arkts-na-datepicker-datepickeroptions-i.md) | 日期选择器组件的参数说明。 |
 | [DatePickerResult](arkts-na-datepicker-datepickerresult-i.md) | 日期选择器返回的时间格式。 |
 | [LunarSwitchStyle](arkts-na-datepicker-lunarswitchstyle-i.md) | 农历开关样式。 |
@@ -16,7 +16,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [DatePickerDialogOptions](arkts-na-datepicker-datepickerdialogoptions-i-sys.md) | 日期选择器弹窗选项。 继承自[DatePickerOptions](arkts-na-datepicker-datepickeroptions-i.md#DatePickerOptions)。 |
+| [DatePickerDialogOptions](arkts-na-datepicker-datepickerdialogoptions-i-sys.md) | 日期选择器弹窗选项。 继承自[DatePickerOptions](arkts-na-datepicker-datepickeroptions-i.md#datepickeroptions)。 |
 <!--DelEnd-->
 
 ### 枚举

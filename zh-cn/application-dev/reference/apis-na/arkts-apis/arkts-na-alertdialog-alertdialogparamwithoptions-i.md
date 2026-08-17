@@ -1,12 +1,12 @@
 # AlertDialogParamWithOptions
 
-继承自[AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md#AlertDialogParam)。
+继承自[AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md#alertdialogparam)。
 
-**继承/实现关系：** AlertDialogParamWithOptions extends [AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md#AlertDialogParam)
+**继承/实现关系：** AlertDialogParamWithOptions extends [AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md#alertdialogparam)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ buttonDirection?: DialogButtonDirection
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ buttons: Array<AlertDialogButtonOptions>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

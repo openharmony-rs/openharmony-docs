@@ -4,7 +4,7 @@ Defines the struct of AccessibilityOptions.
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ accessibilityPreferred -在连接子组件字符串时，是否应该优先考�
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ actionControllerId?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ stateControllerRoleType - 通过该可选参数指定特定类型的子组件，
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ stateControllerId -通过该可选参数指定特定ID的子组件，配置Acces
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ stateControllerRoleType - 通过该可选参数指定特定类型的子组件，
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

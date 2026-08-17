@@ -14,7 +14,7 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [ToolBarItemOptions](arkts-arkui-toolbaritemoptions-i.md) | 否 | ToolBarItem**的可选参数，包括[ToolBarItemPlacement](arkts-arkui-toolbaritemplacement-e.md#ToolBarItemPlacement)类型的**placement**参数。<br>默认值：**placement: ToolBarItemPlacement.TOP_BAR_LEADING |
+| options | [ToolBarItemOptions](arkts-arkui-toolbaritemoptions-i.md) | 否 | ToolBarItem**的可选参数，包括[ToolBarItemPlacement](arkts-arkui-toolbaritemplacement-e.md#toolbaritemplacement)类型的**placement**参数。<br>默认值：**placement: ToolBarItemPlacement.TOP_BAR_LEADING |
 
 ## 汇总
 

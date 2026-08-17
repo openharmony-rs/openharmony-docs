@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ corners: CornerRadius
 
 设置圆角的属性。
 
-**类型：** [CornerRadius](arkts-na-cornerradius-t.md)
+**类型：** [CornerRadius](../../apis-arkui/arkts-apis/arkts-arkui-cornerradius-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,11 +42,11 @@ rect: Rect
 
 设置矩形的属性。
 
-**类型：** [Rect](arkts-na-rect-t.md)
+**类型：** [Rect](../../apis-arkui/arkts-apis/arkts-arkui-rect-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

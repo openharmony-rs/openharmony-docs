@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 canOverScroll?: boolean
 ```
 
-是否启用过滚动。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt; 设置为&lt;em&gt;true&lt;/em&gt;时可以滚动超出边界并触发回弹动画，同时组件的&lt;em&gt;edgeEffect&lt;/em&gt;属性需设置为EdgeEffect.Spring。 &lt;/p&gt;
+是否启用过滚动。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br> 设置为&lt;em&gt;true&lt;/em&gt;时可以滚动超出边界并触发回弹动画，同时组件的&lt;em&gt;edgeEffect&lt;/em&gt;属性需设置为EdgeEffect.Spring。 &lt;/p&gt;
 
 **类型：** boolean
 
@@ -26,7 +26,7 @@ canOverScroll?: boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ curve?: Curve | ICurve
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ curve?: Curve | ICurve
 duration?: number
 ```
 
-滚动时长。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;设置为小于0的值时，按默认值处理。 &lt;/p&gt;
+滚动时长。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br>设置为小于0的值时，按默认值处理。 &lt;/p&gt;
 
 **类型：** number
 
@@ -78,7 +78,7 @@ duration?: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

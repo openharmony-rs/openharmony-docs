@@ -1,10 +1,10 @@
 # AudioHapticPlayer
 
-音振播放器，提供音振协同播放功能。在调用AudioHapticPlayer的接口前，需要先通过 [createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createPlayer)创建 实例。
+音振播放器，提供音振协同播放功能。在调用AudioHapticPlayer的接口前，需要先通过 [createPlayer](arkts-audio-audiohaptic-audiohapticmanager-i.md#createplayer)创建 实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ isMuted(type: AudioHapticType): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ Unsubscribes audio interrupt event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -101,22 +101,22 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
     switch (interruptEvent.hintType) {
       case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
         // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-        console.info('Force paused. Update playing status and stop writing');
+        console.info('Force paused. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_STOP:
         // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
-        console.info('Force stopped. Update playing status and stop writing');
+        console.info('Force stopped. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_DUCK:
         // 音频流已被降低音量渲染。
-        console.info('Force ducked. Update volume status');
+        console.info('Force ducked. Update volume status.');
         isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // 音频流已被恢复正常音量渲染。
-        console.info('Force unducked. Update volume status');
+        console.info('Force unducked. Update volume status.');
         isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       default:
@@ -128,7 +128,7 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused renderer or ignore.');
         // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
         break;
       default:
@@ -152,7 +152,7 @@ Unsubscribes end of stream event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -174,7 +174,7 @@ audioHapticPlayerInstance.offEndOfStream();
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let endOfStreamCallback = () => {
-  console.info('Succeeded in using on or off function.');
+  console.info('End of stream reached.');
 };
 
 audioHapticPlayerInstance.onEndOfStream(endOfStreamCallback);
@@ -192,7 +192,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -223,27 +223,28 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
   // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
   // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
   // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  console.info(`Audio interrupted, interruptEvent: ${JSON.stringify(interruptEvent)}.`);
   if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
     // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
     switch (interruptEvent.hintType) {
       case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
         // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-        console.info('Force paused. Update playing status and stop writing');
+        console.info('Force paused. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_STOP:
         // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
-        console.info('Force stopped. Update playing status and stop writing');
+        console.info('Force stopped. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_DUCK:
         // 音频流已被降低音量渲染。
-        console.info('Force ducked. Update volume status');
+        console.info('Force ducked. Update volume status.');
         isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // 音频流已被恢复正常音量渲染。
-        console.info('Force unducked. Update volume status');
+        console.info('Force unducked. Update volume status.');
         isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       default:
@@ -255,7 +256,7 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused renderer or ignore.');
         // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
         break;
       default:
@@ -279,7 +280,7 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -302,7 +303,7 @@ audioHapticPlayerInstance.off('endOfStream');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let endOfStreamCallback = () => {
-  console.info('Succeeded in using on or off function.');
+  console.info('End of stream reached.');
 };
 
 audioHapticPlayerInstance.on('endOfStream', endOfStreamCallback);
@@ -320,7 +321,7 @@ Subscribes audio interrupt event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -352,22 +353,22 @@ audioHapticPlayerInstance.onAudioInterrupt((interruptEvent: audio.InterruptEvent
     switch (interruptEvent.hintType) {
       case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
         // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-        console.info('Force paused. Update playing status and stop writing');
+        console.info('Force paused. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_STOP:
         // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
-        console.info('Force stopped. Update playing status and stop writing');
+        console.info('Force stopped. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_DUCK:
         // 音频流已被降低音量渲染。
-        console.info('Force ducked. Update volume status');
+        console.info('Force ducked. Update volume status.');
         isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // 音频流已被恢复正常音量渲染。
-        console.info('Force unducked. Update volume status');
+        console.info('Force unducked. Update volume status.');
         isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       default:
@@ -379,7 +380,7 @@ audioHapticPlayerInstance.onAudioInterrupt((interruptEvent: audio.InterruptEvent
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused renderer or ignore.');
         // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
         break;
       default:
@@ -399,7 +400,7 @@ Subscribes end of stream event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -417,7 +418,7 @@ Subscribes end of stream event.
 
 ```TypeScript
 audioHapticPlayerInstance.onEndOfStream(() => {
-  console.info('Succeeded in using on function.');
+  console.info('End of stream reached.');
 });
 ```
 
@@ -431,7 +432,7 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -459,27 +460,28 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
   // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
   // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
   // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  console.info(`Audio interrupted, interruptEvent: ${JSON.stringify(interruptEvent)}.`);
   if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
     // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
     switch (interruptEvent.hintType) {
       case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
         // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-        console.info('Force paused. Update playing status and stop writing');
+        console.info('Force paused. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_STOP:
         // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
-        console.info('Force stopped. Update playing status and stop writing');
+        console.info('Force stopped. Update playing status and stop writing.');
         isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_DUCK:
         // 音频流已被降低音量渲染。
-        console.info('Force ducked. Update volume status');
+        console.info('Force ducked. Update volume status.');
         isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
         // 音频流已被恢复正常音量渲染。
-        console.info('Force unducked. Update volume status');
+        console.info('Force unducked. Update volume status.');
         isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
         break;
       default:
@@ -491,7 +493,7 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused renderer or ignore.');
         // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
         break;
       default:
@@ -511,7 +513,7 @@ on(type: 'endOfStream', callback: Callback<void>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -530,7 +532,7 @@ on(type: 'endOfStream', callback: Callback<void>): void
 
 ```TypeScript
 audioHapticPlayerInstance.on('endOfStream', () => {
-  console.info('Succeeded in using on function.');
+  console.info('End of stream reached.');
 });
 ```
 
@@ -544,7 +546,7 @@ release(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -586,7 +588,7 @@ setLoop(loop: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -634,7 +636,7 @@ setVolume(volume: double): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -684,7 +686,7 @@ start(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -728,7 +730,7 @@ stop(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -757,7 +759,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 audioHapticPlayerInstance.stop().then(() => {
   console.info('Succeeded in stopping.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stop Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

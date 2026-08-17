@@ -6,11 +6,11 @@
 function removeAllowedPermissionBundle(admin: Want, permission: string, applicationInstance: common.ApplicationInstance): void
 ```
 
-从权限使用例外名单中移除指定应用，移除后该应用不能继续使用对应的权限。 > **说明：** > > 必须先通过[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setDisallowedPermission)接口禁用权限后，才能从权限使用例外名单移除应用，否则返回错误码92010 > 44。
+从权限使用例外名单中移除指定应用，移除后该应用不能继续使用对应的权限。 > **说明：** > > 必须先通过[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setdisallowedpermission)接口禁用权限后，才能从权限使用例外名单移除应用，否则返回错误码92010 > 44。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -61,7 +61,7 @@ let appInstance: common.ApplicationInstance = {
 try {
   securityManager.removeAllowedPermissionBundle(wantTemp, permission, appInstance);
   console.info(`Succeeded in removing allowed permission bundle.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove allowed permission bundle. Code: ${err.code}, message: ${err.message}`);
 }
 ```

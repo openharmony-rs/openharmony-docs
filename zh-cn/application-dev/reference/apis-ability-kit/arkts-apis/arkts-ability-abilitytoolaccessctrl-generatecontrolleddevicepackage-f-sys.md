@@ -10,7 +10,7 @@ export function generateControlledDevicePackage(permissionQuery: PermissionQuery
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -44,4 +44,32 @@ export function generateControlledDevicePackage(permissionQuery: PermissionQuery
 | [24010003](../errorcode-abilityToolAccessCtrl-sys.md#24010003-环境错误) | The account is not logged in, network is unavailable, timeout, etc. |
 | [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-入参错误) | Invalid parameter. Permission exceeds 256 characters, specificied tokenId is invalid, etc. |
 | [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-系统服务工作异常) | Service is abnormal. possible cause: IPC failed. |
+
+## 示例
+
+```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let permissionQuery: Array<abilityToolAccessCtrl.PermissionQuery> = [{
+  operationInfo: [{
+    operationType: abilityToolAccessCtrl.OperationType.CLI,
+    info: {
+      cliCmdName: 'ohos-displayManager',
+      subCliCmdName: 'set-brightness'
+    }
+  }],
+  needTicket: true,
+  remoteInfo: {
+    role: abilityToolAccessCtrl.Role.CONTROLLER,
+    remoteId: 'device123',
+    domainId: 'domain456'
+  }
+}];
+abilityToolAccessCtrl.generateControlledDevicePackage(permissionQuery).then((data: Array<abilityToolAccessCtrl.RemoteAuthPackage>) => {
+  console.info('generateControlledDevicePackage success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
+  console.error(`generateControlledDevicePackage fail, code: ${err.code}, message: ${err.message}`);
+});
+```
 

@@ -6,15 +6,15 @@
 function addRule(rule: bigint): void
 ```
 
-> **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[hichecker.addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addCheckRule)替代。 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈。
+> **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[hichecker.addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule)替代。 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addCheckRule)
+**替代接口：** [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule)
 
 <!--Device-hichecker-function addRule(rule: bigint): void--><!--Device-hichecker-function addRule(rule: bigint): void-End-->
 

@@ -1,10 +1,10 @@
 # Direction
 
-表示屏幕方向的枚举，用于[Configuration.direction](arkts-ability-app-ability-configuration-configuration-i.md#Configuration)字段。开发者可以使用这些预置枚举设置或获取系统/应 用的显示方向。
+表示屏幕方向的枚举，用于[Configuration.direction](arkts-ability-app-ability-configuration-configuration-i.md#configuration)字段。开发者可以使用这些预置枚举设置或获取系统/应 用的显示方向。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ DIRECTION_NOT_SET = -1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ DIRECTION_VERTICAL = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ DIRECTION_HORIZONTAL = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

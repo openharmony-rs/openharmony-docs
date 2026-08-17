@@ -9,7 +9,7 @@ export declare type PersistenceErrorCallback = (key: string, reason: 'quota' | '
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

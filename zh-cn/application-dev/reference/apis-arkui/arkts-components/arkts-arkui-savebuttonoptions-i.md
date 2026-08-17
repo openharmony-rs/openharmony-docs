@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ buttonType?: ButtonType
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ buttonType?: ButtonType
 icon?: SaveIconStyle
 ```
 
-设置保存控件的图标风格。 &lt;br&gt;不传入该参数表示不显示图标；若同时也不传text，整体配置将显示为默认样式。
+设置保存控件的图标风格。 <br>不传入该参数表示不显示图标；若同时也不传text，整体配置将显示为默认样式。
 
 **类型：** [SaveIconStyle](arkts-arkui-saveiconstyle-e.md)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -66,13 +66,13 @@ icon?: SaveIconStyle
 text?: SaveDescription
 ```
 
-设置保存控件的文本描述。 &lt;br&gt;不传入该参数表示不显示文本描述；若同时也不传icon，整体配置将显示为默认样式。
+设置保存控件的文本描述。 <br>不传入该参数表示不显示文本描述；若同时也不传icon，整体配置将显示为默认样式。
 
 **类型：** [SaveDescription](arkts-arkui-savedescription-e.md)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

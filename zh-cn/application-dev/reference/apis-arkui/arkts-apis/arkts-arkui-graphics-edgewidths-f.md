@@ -10,7 +10,7 @@ export function edgeWidths(all: number): Edges<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ export function edgeWidths(all: number): Edges<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| all | number | 是 | 边框宽度，单位为vp。 &lt;br&gt;取值范围：[0, +∞) &lt;br&gt;负数按默认值处理。 |
+| all | number | 是 | 边框宽度，单位为vp。 <br>取值范围：[0, +∞) <br>负数按默认值处理。 |
 
 **返回值：**
 

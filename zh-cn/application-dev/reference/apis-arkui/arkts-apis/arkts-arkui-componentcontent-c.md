@@ -1,12 +1,12 @@
 # ComponentContent
 
-有两种创建实体封装组件的方式。ComponentContent需要通过update接口手动更新内容，主要适用于弹窗等解耦封装场景；ReactiveComponentContent支持响应式数据自动更新、完整生命周期管理和组件复用，适用 于长列表等高性能渲染场景。开发者可根据实际需求从以下方式中选择。 ComponentContent表示组件内容的实体封装，其对象支持在非UI组件中创建与传递，便于开发者对弹窗类组件进行解耦封装。其底层使用了BuilderNode，具体使用规格参考 BuilderNode。 ReactiveComponentContent表示组件内容的实体封装，其对象支持在非UI组件中创建与传递。它支持响应式数据自动更新、完整的生命周期管理和组件复用，适用于长列表等需要高性能渲染的场景。其底层使用了 ReactiveBuilderNode，具体使用规格参考[ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md#ReactiveBuilderNode)。 > **说明：** > > - 当前不支持在预览器中使用ComponentContent和ReactiveComponentContent。 > > - ComponentContent对象不支持使用JSON序列化。
+有两种创建实体封装组件的方式。ComponentContent需要通过update接口手动更新内容，主要适用于弹窗等解耦封装场景；ReactiveComponentContent支持响应式数据自动更新、完整生命周期管理和组件复用，适用 于长列表等高性能渲染场景。开发者可根据实际需求从以下方式中选择。 ComponentContent表示组件内容的实体封装，其对象支持在非UI组件中创建与传递，便于开发者对弹窗类组件进行解耦封装。其底层使用了BuilderNode，具体使用规格参考 BuilderNode。 ReactiveComponentContent表示组件内容的实体封装，其对象支持在非UI组件中创建与传递。它支持响应式数据自动更新、完整的生命周期管理和组件复用，适用于长列表等需要高性能渲染的场景。其底层使用了 ReactiveBuilderNode，具体使用规格参考[ReactiveBuilderNode](../../apis-na/arkts-apis/arkts-na-buildernode-reactivebuildernode-c.md#reactivebuildernode)。 > **说明：** > > - 当前不支持在预览器中使用ComponentContent和ReactiveComponentContent。 > > - ComponentContent对象不支持使用JSON序列化。
 
 **继承/实现关系：** ComponentContent extends Content
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ ComponentContent的构造函数。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ ComponentContent的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
+| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
 | builder | WrappedBuilder&lt;[]&gt; | 是 | 封装不带参builder函数的WrappedBuilder对象。 |
 
 ## constructor
@@ -53,7 +53,7 @@ ComponentContent的构造函数。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -69,7 +69,7 @@ ComponentContent的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
+| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
 | builder | WrappedBuilder&lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
 | args | T | 是 | WrappedBuilder对象封装的builder函数的参数，类型T需与`WrappedBuilder&lt;[T]&gt;`中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI 内容。 |
 
@@ -83,7 +83,7 @@ ComponentContent的构造函数。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -99,10 +99,10 @@ ComponentContent的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
+| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需要的UI上下文。 |
 | builder | WrappedBuilder&lt;[T]&gt; | 是 | 封装带参builder函数的WrappedBuilder对象。 |
 | args | T | 是 | WrappedBuilder对象封装的builder函数的参数，类型T需与`WrappedBuilder&lt;[T]&gt;`中指定的参数类型保持一致，用于将外部数据传递给builder函数以构建UI 内容。 |
-| options | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | 是 | 构建配置参数，用于配置Builder的构建行为，BuildOptions中所有属性都是可选的。 |
+| options | [BuildOptions](../../apis-na/arkts-apis/arkts-na-buildernode-buildoptions-i.md) | 是 | 构建配置参数，用于配置Builder的构建行为，BuildOptions中所有属性都是可选的。 |
 
 ## 示例
 
@@ -214,11 +214,11 @@ struct Index {
 dispose(): void
 ```
 
-立即释放当前ComponentContent对象对[基本概念：实体节点](../../../ui/arkts-user-defined-node.md#基本概念)的引用关系。关于ComponentContent的解绑场景请参见 [解除实体节点引用关系](../../../ui/arkts-user-defined-arktsNode-builderNode.md#解除实体节点引用关系)。 > **说明：** > > 当ComponentContent对象调用dispose之后，会与后端实体节点解除引用关系。调用dispose后再次调用该对象的其他接口可能会出现crash或返回默认值，建议在操作节点前通过 > [isDisposed](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#isDisposed)接口检查其有效性。若前端对象ComponentContent无法释放，容易导致内存泄漏。建议在不再需要操作该 > ComponentContent对象时，开发者主动调用dispose释放后端节点，以减少引用关系的复杂性，降低内存泄漏的风险。
+立即释放当前ComponentContent对象对[基本概念：实体节点](../../../ui/arkts-user-defined-node.md#基本概念)的引用关系。关于ComponentContent的解绑场景请参见 [解除实体节点引用关系](../../../ui/arkts-user-defined-arktsNode-builderNode.md#解除实体节点引用关系)。 > **说明：** > > 当ComponentContent对象调用dispose之后，会与后端实体节点解除引用关系。调用dispose后再次调用该对象的其他接口可能会出现crash或返回默认值，建议在操作节点前通过 > [isDisposed](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#isdisposed)接口检查其有效性。若前端对象ComponentContent无法释放，容易导致内存泄漏。建议在不再需要操作该 > ComponentContent对象时，开发者主动调用dispose释放后端节点，以减少引用关系的复杂性，降低内存泄漏的风险。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -302,7 +302,7 @@ inheritFreezeOptions(enabled: boolean): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -318,7 +318,7 @@ inheritFreezeOptions(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | ComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。 &lt;br&gt;true：继承父组件中自定义组件的冻结策略；false：不继承父组件中自定义组件的冻结策略。 &lt;br&gt;**说明：** 仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置true才会继承父组 件的冻结策略。 |
+| enabled | boolean | 是 | ComponentContent对象是否设置为继承父组件中自定义组件的冻结策略。 <br>true：继承父组件中自定义组件的冻结策略；false：不继承父组件中自定义组件的冻结策略。 <br>**说明：** 仅当父组件为自定义组件、BuilderNode、ComponentContent、ReactiveBuilderNode或ReactiveComponentContent时，设置true才会继承父组 件的冻结策略。 |
 
 ## 示例
 
@@ -518,7 +518,7 @@ isDisposed(): boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -616,11 +616,11 @@ struct Index {
 isTransferred(): boolean
 ```
 
-判断ComponentContent是否通过transfer.transferStatic或者transfer.transferDynamic方法创建。如果通过上述两个接口创建，则不支持以下方法： [update](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#update)，[dispose](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#dispose)， [updateConfiguration](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#updateConfiguration)， [inheritFreezeOptions](#inheritFreezeOptions)。
+判断ComponentContent是否通过transfer.transferStatic或者transfer.transferDynamic方法创建。如果通过上述两个接口创建，则不支持以下方法： [update](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#update)，[dispose](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#dispose)， [updateConfiguration](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#updateconfiguration)， [inheritFreezeOptions](#inheritfreezeoptions)。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -636,7 +636,7 @@ isTransferred(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回ComponentContent是否通过transfer.transferStatic或transfer.transferDynamic方法创建。&lt;br/&gt;true： ComponentContent通过transfer.transferStatic或transfer.transferDynamic方法创建。&lt;br/&gt;false：ComponentContent不通过 transfer.transferStatic或transfer.transferDynamic方法创建。 |
+| boolean | 返回ComponentContent是否通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>true： ComponentContent通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>false：ComponentContent不通过 transfer.transferStatic或transfer.transferDynamic方法创建。 |
 
 ## 示例
 
@@ -727,7 +727,7 @@ recycle(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -749,7 +749,7 @@ reuse(param?: Object): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -777,7 +777,7 @@ update(args: T): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -853,11 +853,11 @@ struct Index {
 updateConfiguration(): void
 ```
 
-传递系统环境变化事件，触发节点的全量更新。适用于系统深浅色模式切换、语言变更、字体大小调整等需要节点响应系统配置变化的场景。系统环境变化的相关信息请参见 [@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md#Configuration)。 > **说明：** > > updateConfiguration接口用于通知对象更新当前的系统环境变化。
+传递系统环境变化事件，触发节点的全量更新。适用于系统深浅色模式切换、语言变更、字体大小调整等需要节点响应系统配置变化的场景。系统环境变化的相关信息请参见 [@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md#configuration)。 > **说明：** > > updateConfiguration接口用于通知对象更新当前的系统环境变化。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

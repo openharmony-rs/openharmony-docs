@@ -6,7 +6,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ alignItems(value: HorizontalAlign | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ attributeModifier(modifier: AttributeModifier<LazyColumnLayoutAttribute> | Attri
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ footer(builder: CustomBuilder | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ header(builder: CustomBuilder | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): th
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -152,7 +152,7 @@ setLazyColumnLayoutOptions(): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -172,7 +172,7 @@ space(space: LengthMetrics | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -182,7 +182,7 @@ space(space: LengthMetrics | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| space | [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) \| undefined | 是 |  |
+| space | [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) \| undefined | 是 |  |
 
 **返回值：**
 
@@ -198,7 +198,7 @@ sticky(sticky: StickyStyle | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -226,7 +226,7 @@ default
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

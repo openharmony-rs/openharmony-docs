@@ -10,7 +10,7 @@ function queryAllPrinterPpds(): Promise<PpdInfo[]>
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

@@ -1,12 +1,12 @@
 # CcmParamsSpec
 
-加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#ParamsSpec)的子类，封装使用CCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证 标签。它是[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#ParamsSpec)的子类，用于在对称加解密时作为 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法的参数。 &lt;br&gt;适用于CCM模式。 > **说明：** > > 传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法前需 > 要指定其algName属性（来源于父类[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#ParamsSpec)）。
+加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#paramsspec)的子类，封装使用CCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证 标签。它是[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#paramsspec)的子类，用于在对称加解密时作为 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法的参数。 <br>适用于CCM模式。 > **说明：** > > 传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法前需 > 要指定其algName属性（来源于父类[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#paramsspec)）。
 
-**继承/实现关系：** CcmParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#ParamsSpec)
+**继承/实现关系：** CcmParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#paramsspec)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ aad: DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,13 +46,13 @@ aad: DataBlob
 authTag: DataBlob
 ```
 
-指明加解密参数authTag，长度为12字节。 &lt;br&gt;加密时，需从 [doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#doFinal)或 [doFinalSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#doFinalSync)输出的 [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md#DataBlob)中提取末尾12字节，作为解密时 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)或 [initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initSync)方法中CcmParamsSpec的authTag。
+指明加解密参数authTag，长度为12字节。 <br>加密时，需从 [doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal)或 [doFinalSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinalsync)输出的 [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md#datablob)中提取末尾12字节，作为解密时 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)或 [initSync()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#initsync)方法中CcmParamsSpec的authTag。
 
 **类型：** DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -76,7 +76,7 @@ iv: DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

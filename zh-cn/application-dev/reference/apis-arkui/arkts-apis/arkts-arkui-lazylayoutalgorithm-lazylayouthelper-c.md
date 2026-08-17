@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ getLazyLayoutDirection(): LazyLayoutDirection
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ getViewEnd(): int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ getViewEnd(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 可视区域的结束位置。 &lt;br&gt;单位：px。 |
+| int | 可视区域的结束位置。 <br>单位：px。 |
 
 ## getViewStart
 
@@ -78,7 +78,7 @@ getViewStart(): int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -94,7 +94,7 @@ getViewStart(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 可视区域的起始位置。 &lt;br&gt;单位：px。 |
+| int | 可视区域的起始位置。 <br>单位：px。 |
 
 ## setAdjustedOffset
 
@@ -106,7 +106,7 @@ setAdjustedOffset(offset: int): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ setChildrenInactive(children: int[]): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

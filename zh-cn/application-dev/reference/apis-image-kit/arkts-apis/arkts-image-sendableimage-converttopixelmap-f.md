@@ -10,7 +10,7 @@ Creates a image PixelMap from sendable image PixelMap.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,15 +40,20 @@ Creates a image PixelMap from sendable image PixelMap.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ConvertToPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-  let sendablePixelMap : sendableImage.PixelMap = sendableImage.createPixelMapSync(color, opts);
-  let pixelMap : image.PixelMap = sendableImage.convertToPixelMap(sendablePixelMap);
-  return pixelMap;
+function convertToPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  const opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } };
+  let sendablePixelMap: sendableImage.PixelMap = sendableImage.createPixelMapSync(color, opts);
+  try {
+    let pixelMap: image.PixelMap = sendableImage.convertToPixelMap(sendablePixelMap);
+    console.info('Succeeded in converting the PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 

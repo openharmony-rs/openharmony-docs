@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -20,43 +20,43 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md#addDisallowedListForAccount) | 为指定用户添加禁止使用某特性的应用名单。指定用户下，添加到名单中的应用不允许使用指定的特性能力。 |
-| [getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md#getDisallowedListForAccount) | 获取指定用户禁止使用某特性的应用名单。 |
-| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy) | 查询某特性是否被禁用。 |
-| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy) | 查询指定设备特性是否被禁用。 |
-| [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getDisallowedPolicyForAccount) | 获取指定用户的某特性状态。 |
-| [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getDisallowedPolicyForAccount) | 获取指定用户的某特性状态。 |
-| [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getUserRestricted) | 获取设置项的禁用状态。 |
-| [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getUserRestricted) | 获取设置项的禁用状态 |
-| [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getUserRestrictedForAccount) | 获取指定用户设置项的禁用状态。 |
-| [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getUserRestrictedForAccount) | 获取指定用户设置项的禁用状态。 |
-| [removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md#removeDisallowedListForAccount) | 为指定用户移除禁止使用某特性的应用名单。 |
-| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy) | 设置禁用/启用某特性。 |
-| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy) | 设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。 |
-| [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount) | 设置禁用/启用指定用户的某特性。 |
-| [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setDisallowedPolicyForAccount) | 设置禁用/启用指定用户的某特性。 |
-| [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setUserRestriction) | 设置用户行为的限制规则。 |
-| [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setUserRestriction) | 设置用户行为的限制规则。 |
-| [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setUserRestrictionForAccount) | 设置指定用户行为的限制规则。 |
-| [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setUserRestrictionForAccount) | 限制指定用户修改指定的设置项。 |
+| [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md#adddisallowedlistforaccount) | 为指定用户添加禁止使用某特性的应用名单。指定用户下，添加到名单中的应用不允许使用指定的特性能力。 |
+| [getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md#getdisallowedlistforaccount) | 获取指定用户禁止使用某特性的应用名单。 |
+| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy) | 查询某特性是否被禁用。 |
+| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy) | 查询指定设备特性是否被禁用。 |
+| [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount) | 获取指定用户的某特性状态。 |
+| [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount) | 获取指定用户的某特性状态。 |
+| [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getuserrestricted) | 获取设置项的禁用状态。 |
+| [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getuserrestricted) | 获取设置项的禁用状态 |
+| [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getuserrestrictedforaccount) | 获取指定用户设置项的禁用状态。 |
+| [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getuserrestrictedforaccount) | 获取指定用户设置项的禁用状态。 |
+| [removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md#removedisallowedlistforaccount) | 为指定用户移除禁止使用某特性的应用名单。 |
+| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy) | 设置禁用/启用某特性。 |
+| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy) | 设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。 |
+| [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount) | 设置禁用/启用指定用户的某特性。 |
+| [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount) | 设置禁用/启用指定用户的某特性。 |
+| [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setuserrestriction) | 设置用户行为的限制规则。 |
+| [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setuserrestriction) | 设置用户行为的限制规则。 |
+| [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setuserrestrictionforaccount) | 设置指定用户行为的限制规则。 |
+| [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setuserrestrictionforaccount) | 限制指定用户修改指定的设置项。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [disableMicrophone](arkts-mdm-restrictions-disablemicrophone-f-sys.md#disableMicrophone) | 使设备禁用或启用麦克风。 |
-| [isFingerprintAuthDisabled](arkts-mdm-restrictions-isfingerprintauthdisabled-f-sys.md#isFingerprintAuthDisabled) | 查询指纹认证是否被禁用。 |
-| [isHdcDisabled](arkts-mdm-restrictions-ishdcdisabled-f-sys.md#isHdcDisabled) | 查询HDC是否被禁用。使用callback异步回调。 |
-| [isHdcDisabled](arkts-mdm-restrictions-ishdcdisabled-f-sys.md#isHdcDisabled（系统接口）) | 查询HDC是否被禁用。使用Promise异步回调。 |
-| [isMicrophoneDisabled](arkts-mdm-restrictions-ismicrophonedisabled-f-sys.md#isMicrophoneDisabled) | 查询麦克风是否被禁用。 |
-| [isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isPrinterDisabled) | 查询设备打印能力是否被禁用。使用callback异步回调。 |
-| [isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isPrinterDisabled（系统接口）) | 查询设备打印能力是否被禁用。使用Promise异步回调。 |
-| [setFingerprintAuthDisabled](arkts-mdm-restrictions-setfingerprintauthdisabled-f-sys.md#setFingerprintAuthDisabled) | 禁用或启用指纹认证。 |
-| [setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#setHdcDisabled) | 使设备禁用或启用[HDC](../../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。 |
-| [setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#setHdcDisabled（系统接口）) | 使设备禁用或启用HDC。使用Promise异步回调。 |
-| [setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setPrinterDisabled) | 使设备禁用或启用打印能力。使用callback异步回调。 |
-| [setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setPrinterDisabled（系统接口）) | 使设备禁用或启用打印能力。使用Promise异步回调。 |
+| [disableMicrophone](arkts-mdm-restrictions-disablemicrophone-f-sys.md#disablemicrophone) | 使设备禁用或启用麦克风。 |
+| [isFingerprintAuthDisabled](arkts-mdm-restrictions-isfingerprintauthdisabled-f-sys.md#isfingerprintauthdisabled) | 查询指纹认证是否被禁用。 |
+| [isHdcDisabled](arkts-mdm-restrictions-ishdcdisabled-f-sys.md#ishdcdisabled) | 查询HDC是否被禁用。使用callback异步回调。 |
+| [isHdcDisabled](arkts-mdm-restrictions-ishdcdisabled-f-sys.md#ishdcdisabled系统接口) | 查询HDC是否被禁用。使用Promise异步回调。 |
+| [isMicrophoneDisabled](arkts-mdm-restrictions-ismicrophonedisabled-f-sys.md#ismicrophonedisabled) | 查询麦克风是否被禁用。 |
+| [isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isprinterdisabled) | 查询设备打印能力是否被禁用。使用callback异步回调。 |
+| [isPrinterDisabled](arkts-mdm-restrictions-isprinterdisabled-f-sys.md#isprinterdisabled系统接口) | 查询设备打印能力是否被禁用。使用Promise异步回调。 |
+| [setFingerprintAuthDisabled](arkts-mdm-restrictions-setfingerprintauthdisabled-f-sys.md#setfingerprintauthdisabled) | 禁用或启用指纹认证。 |
+| [setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#sethdcdisabled) | 使设备禁用或启用[HDC](../../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)。使用callback异步回调。 |
+| [setHdcDisabled](arkts-mdm-restrictions-sethdcdisabled-f-sys.md#sethdcdisabled系统接口) | 使设备禁用或启用HDC。使用Promise异步回调。 |
+| [setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setprinterdisabled) | 使设备禁用或启用打印能力。使用callback异步回调。 |
+| [setPrinterDisabled](arkts-mdm-restrictions-setprinterdisabled-f-sys.md#setprinterdisabled系统接口) | 使设备禁用或启用打印能力。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 枚举

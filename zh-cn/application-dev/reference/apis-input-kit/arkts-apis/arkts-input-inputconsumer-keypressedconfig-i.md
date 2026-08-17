@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ action: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ isRepeat: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,13 +58,13 @@ isRepeat: boolean
 key: int
 ```
 
-按键键值。 **说明：** 从API version 26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](arkts-input-multimodalinput-keycode-keycode-e.md#KeyCode)键和 [KEYCODE_FINGERPRINT_SLIDE_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md#KeyCode)键，非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报，请参考 [优先响应系统功能键开发指导](../../../device/input/keypressed-guidelines.md)。 从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](arkts-input-multimodalinput-keycode-keycode-e.md#KeyCode)键、 [KEYCODE_MEDIA_NEXT](arkts-input-multimodalinput-keycode-keycode-e.md#KeyCode)键和 [KEYCODE_MEDIA_PREVIOUS](arkts-input-multimodalinput-keycode-keycode-e.md#KeyCode)键。 对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](arkts-input-multimodalinput-keycode-keycode-e.md#KeyCode)键和 [KEYCODE_VOLUME_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md#KeyCode)键。
+按键键值。 **说明：** 从API version 26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](arkts-input-multimodalinput-keycode-keycode-e.md#keycode)键和 [KEYCODE_FINGERPRINT_SLIDE_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md#keycode)键，非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报，请参考 [优先响应系统功能键开发指导](../../../device/input/keypressed-guidelines.md)。 从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](arkts-input-multimodalinput-keycode-keycode-e.md#keycode)键、 [KEYCODE_MEDIA_NEXT](arkts-input-multimodalinput-keycode-keycode-e.md#keycode)键和 [KEYCODE_MEDIA_PREVIOUS](arkts-input-multimodalinput-keycode-keycode-e.md#keycode)键。 对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](arkts-input-multimodalinput-keycode-keycode-e.md#keycode)键和 [KEYCODE_VOLUME_DOWN](arkts-input-multimodalinput-keycode-keycode-e.md#keycode)键。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

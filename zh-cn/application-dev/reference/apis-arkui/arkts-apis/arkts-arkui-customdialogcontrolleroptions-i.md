@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ alignment?: DialogAlignment
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ autoCancel?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -94,7 +94,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -118,7 +118,7 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -142,7 +142,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -166,7 +166,7 @@ borderColor?: ResourceColor | EdgeColors
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -190,7 +190,7 @@ borderStyle?: BorderStyle | EdgeStyles
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -214,7 +214,7 @@ borderWidth?: Dimension | EdgeWidths
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -238,7 +238,7 @@ builder: any
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -260,7 +260,7 @@ cancel?: () => void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -282,7 +282,7 @@ closeAnimation?: AnimateParam
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -306,7 +306,7 @@ cornerRadius?: Dimension | BorderRadiuses
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -330,7 +330,7 @@ customStyle?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -354,7 +354,7 @@ displayModeInSubWindow?: DialogDisplayMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -380,7 +380,7 @@ enableHoverMode?: boolean
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -406,7 +406,7 @@ focusable?: boolean
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -430,7 +430,7 @@ gridCount?: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -452,7 +452,7 @@ height?: Dimension
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -478,7 +478,7 @@ hoverModeArea?: HoverModeAreaType
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -504,7 +504,7 @@ immersiveMode?: ImmersiveMode
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -530,7 +530,7 @@ isModal?: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -554,7 +554,7 @@ keyboardAvoidDistance?: LengthMetrics
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -580,7 +580,7 @@ keyboardAvoidMode?: KeyboardAvoidMode
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -606,7 +606,7 @@ levelMode?: LevelMode
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -632,7 +632,7 @@ levelOrder?: LevelOrder
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -650,13 +650,13 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-设置页面级弹窗需要显示的层级下的节点UniqueID，UniqueID可以通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getUniqueId)获取。 取值范围：大于等于0的数字。 **说明：** - 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+设置页面级弹窗需要显示的层级下的节点UniqueID，UniqueID可以通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getuniqueid)获取。 取值范围：大于等于0的数字。 **说明：** - 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
 **类型：** number
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -680,7 +680,7 @@ maskColor?: ResourceColor
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -704,7 +704,7 @@ maskRect?: Rectangle
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -728,7 +728,7 @@ offset?: Offset
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -750,7 +750,7 @@ onDidAppear?: Callback<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -774,7 +774,7 @@ onDidDisappear?: Callback<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -798,7 +798,7 @@ onWillAppear?: Callback<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -822,7 +822,7 @@ onWillDisappear?: Callback<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -846,7 +846,7 @@ onWillDismiss?: Callback<DismissDialogAction>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -870,7 +870,7 @@ openAnimation?: AnimateParam
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -894,7 +894,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -920,7 +920,7 @@ showInSubWindow?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -944,7 +944,7 @@ systemMaterial?: SystemUiMaterial
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -968,7 +968,7 @@ width?: Dimension
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

@@ -6,7 +6,7 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 (value?: { fingers?: number; direction?: SwipeDirection; speed?: number }): SwipeGestureInterface
 ```
 
-继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#GestureInterface)，设置快滑手势事件。
+继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#gestureinterface)，设置快滑手势事件。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | 否 | 设置快滑事件参数。 &lt;br&gt; - fingers：触发快滑的最少手指数。&lt;br/&gt;默认值：1 &lt;br/&gt;取值范围：[1, 10] &lt;br&gt; - direction：触发快滑手势的滑动方向。&lt;br/&gt;默认值：SwipeDirection.All &lt;br&gt; - speed：识别快滑的最小速度。&lt;br/&gt;默认值：100VP/s &lt;br/&gt;取值范围：(0, +∞) &lt;br/&gt;**说明：** &lt;br/&gt;当滑动速度的值小于等于0时，会被转化为默认值。 |
+| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | 否 | 设置快滑事件参数。 <br> - fingers：触发快滑的最少手指数。<br/>默认值：1 <br/>取值范围：[1, 10] <br> - direction：触发快滑手势的滑动方向。<br/>默认值：SwipeDirection.All <br> - speed：识别快滑的最小速度。<br/>默认值：100VP/s <br/>取值范围：(0, +∞) <br/>**说明：** <br/>当滑动速度的值小于等于0时，会被转化为默认值。 |
 
 **返回值：**
 
@@ -56,7 +56,7 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ Swipe手势识别成功时触发回调。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

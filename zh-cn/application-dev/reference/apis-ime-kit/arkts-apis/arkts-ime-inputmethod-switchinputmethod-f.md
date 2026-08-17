@@ -10,7 +10,7 @@ function switchInputMethod(target: InputMethodProperty, callback: AsyncCallback<
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -25,7 +25,7 @@ function switchInputMethod(target: InputMethodProperty, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 是 | 目标输入法。&lt;br/&gt;**使用场景：**指定要切换到的目标输入法，通过name和id唯一确定。&lt;br/&gt;**说明：**只需填写name和id字段即可唯 一指定一个输入法，无需填写label、icon等可选字段。 |
+| target | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 是 | 目标输入法。<br/>**使用场景：**指定要切换到的目标输入法，通过name和id唯一确定。<br/>**说明：**只需填写name和id字段即可唯 一指定一个输入法，无需填写label、icon等可选字段。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当输入法切换成功，err为undefined，data为true；否则为错误对象。 |
 
 **错误码：**
@@ -89,7 +89,7 @@ function switchInputMethod(target: InputMethodProperty): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -104,7 +104,7 @@ function switchInputMethod(target: InputMethodProperty): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 是 | 目标输入法。&lt;br/&gt;**使用场景：**指定要切换到的目标输入法，通过name和id唯一确定。&lt;br/&gt;**说明：**只需填写name和id字段即可唯 一指定一个输入法。 |
+| target | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 是 | 目标输入法。<br/>**使用场景：**指定要切换到的目标输入法，通过name和id唯一确定。<br/>**说明：**只需填写name和id字段即可唯 一指定一个输入法。 |
 
 **返回值：**
 

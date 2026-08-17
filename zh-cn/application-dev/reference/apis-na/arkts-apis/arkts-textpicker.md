@@ -9,8 +9,8 @@
 | [DividerOptions](arkts-na-textpicker-divideroptions-i.md) | 分割线的信息。 |
 | [PickerBackgroundStyle](arkts-na-textpicker-pickerbackgroundstyle-i.md) | 选择器选中项的背景样式，包括选中项的背景颜色和边框圆角半径。 |
 | [TextCascadePickerRangeContent](arkts-na-textpicker-textcascadepickerrangecontent-i.md) | 多列联动数据选择器的数据选项内容。 |
-| [TextPickerDialogOptions](arkts-na-textpicker-textpickerdialogoptions-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-na-textpicker-textpickeroptions-i.md#TextPickerOptions)。 默认值： { color: \\$r('sys.color.comp_background_tertiary'), borderRadius: \\$r('sys.float.corner_radius_level12') } |
-| [TextPickerDialogOptionsExt](arkts-na-textpicker-textpickerdialogoptionsext-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-na-textpicker-textpickeroptions-i.md#TextPickerOptions)。 |
+| [TextPickerDialogOptions](arkts-na-textpicker-textpickerdialogoptions-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-na-textpicker-textpickeroptions-i.md#textpickeroptions)。 默认值： { color: \\$r('sys.color.comp_background_tertiary'), borderRadius: \\$r('sys.float.corner_radius_level12') } |
+| [TextPickerDialogOptionsExt](arkts-na-textpicker-textpickerdialogoptionsext-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-na-textpicker-textpickeroptions-i.md#textpickeroptions)。 |
 | [TextPickerOptions](arkts-na-textpicker-textpickeroptions-i.md) | 文本选择器的参数说明。 |
 | [TextPickerRangeContent](arkts-na-textpicker-textpickerrangecontent-i.md) | 单列数据选择器的数据选项内容。 |
 | [TextPickerResult](arkts-na-textpicker-textpickerresult-i.md) | 文本选择器结果。 |
@@ -21,7 +21,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [TextPickerDialogOptionsExt](arkts-na-textpicker-textpickerdialogoptionsext-i-sys.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-na-textpicker-textpickeroptions-i.md#TextPickerOptions)。 |
+| [TextPickerDialogOptionsExt](arkts-na-textpicker-textpickerdialogoptionsext-i-sys.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-na-textpicker-textpickeroptions-i.md#textpickeroptions)。 |
 <!--DelEnd-->
 
 ### 类型

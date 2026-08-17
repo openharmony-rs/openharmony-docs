@@ -1,10 +1,10 @@
 # SlideRange
 
-定义有效滑动区间。 > **说明：** > > - 当前仅当min&lt;=from<=to<=max时该接口生效(min和max不依赖于其设置的值，而取决于其实际生效的值)。 > > - 可只设置from或者to，也可以同时设置from和to。 &gt;&lt;=to<=max时该接口生效(min和max不依赖于其设置的值，而取决于其实际生效的值)。 > &gt;&lt;=max时该接口生效(min和max不依赖于其设置的值，而取决于其实际生效的值)。 &gt; > - 可只设置from或者to，也可以同时设置from和to。 > > - 当接口生效且设置的from处于紧邻的step整数倍的值之间，则from实际取左区间step整数倍的那个值或者min作为修正后的值。 > > - 当接口生效且设置的to处于紧邻的step整数倍的值之间，则to实际取右区间step整数倍的那个值或者MAX作为修正后的值。 > > - 在from和to取修正值后， 当value是undefined或null时，其取值与from一致; 当value是数值型且value &lt;= from，则取from; 当value &gt; to，则取to。
+定义有效滑动区间。 > **说明：** > > - 当前仅当min&lt;=from<=to<=max时该接口生效(min和max不依赖于其设置的值，而取决于其实际生效的值)。 > > - 可只设置from或者to，也可以同时设置from和to。 &gt; > - 当接口生效且设置的from处于紧邻的step整数倍的值之间，则from实际取左区间step整数倍的那个值或者min作为修正后的值。 > > - 当接口生效且设置的to处于紧邻的step整数倍的值之间，则to实际取右区间step整数倍的那个值或者MAX作为修正后的值。 > > - 在from和to取修正值后， 当value是undefined或null时，其取值与from一致; 当value是数值型且value &lt;= from，则取from; 当value &gt; to，则取to。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ from?: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ to?: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

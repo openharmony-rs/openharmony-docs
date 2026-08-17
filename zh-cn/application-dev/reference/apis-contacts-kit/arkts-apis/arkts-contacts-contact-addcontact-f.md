@@ -10,11 +10,11 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [addContact](#addContact)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
+**替代接口：** [addContact](#addcontact)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -65,7 +65,7 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -130,11 +130,11 @@ function addContact(contact: Contact): Promise<number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [addContact](#addContact)(context: Context, contact: Contact)
+**替代接口：** [addContact](#addcontact)(context: Context, contact: Contact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -185,7 +185,7 @@ function addContact(context: Context, contact: Contact): Promise<number>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

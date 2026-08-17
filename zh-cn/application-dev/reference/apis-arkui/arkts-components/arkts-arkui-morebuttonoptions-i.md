@@ -4,7 +4,7 @@
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function createCmsParser(): CmsParser
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ function createCmsParser(): CmsParser
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -102,7 +102,7 @@ function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
     arr.push(str.charCodeAt(i));
-  };
+  }
   return new Uint8Array(arr);
 }
 
@@ -123,7 +123,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: 'SHA256',
+      mdName: 'SHA256'
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -134,7 +134,7 @@ async function testCmsVerifyTest() {
     cms.addSigner(x509CertEntry, keyInfo, signerConfig);
     let signData = cms.doFinalSync(plainText, option);
     let config: cert.CmsVerificationConfig = {
-      trustCerts: [x509CertRoot, x509CertInter],
+      trustCerts: [x509CertRoot, x509CertInter]
     };
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);

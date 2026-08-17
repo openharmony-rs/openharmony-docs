@@ -6,13 +6,13 @@
 export declare const WithEnv: WithEnvInterface
 ```
 
-WithEnv组件用于为子组件树设置局部环境变量作用域。开发者可以通过该组件为后代组件提供自定义环境变量，或设置系统环境变量。 > **说明：** > - 此接口仅可在Stage模型下使用。 > > - 可通过[customEnv](arkts-arkui-arkui-withenv-withenvattribute-c.md#customEnv)设置自定义环境变量。 > > - 支持通过[env](arkts-arkui-arkui-withenv-withenvattribute-c.md#env)设置的系统环境变量键，系统环境变量键存于WritableEnvKey。 > > - WithEnv嵌套时，同名环境变量按最近作用域生效。
+WithEnv组件用于为子组件树设置局部环境变量作用域。开发者可以通过该组件为后代组件提供自定义环境变量，或设置系统环境变量。 > **说明：** > - 此接口仅可在Stage模型下使用。 > > - 可通过[customEnv](../../apis-na/arkts-apis/arkts-na-arkui-withenv-withenvattribute-i.md#customenv)设置自定义环境变量。 > > - 支持通过[env](../../apis-na/arkts-apis/arkts-na-arkui-withenv-withenvattribute-i.md#env)设置的系统环境变量键，系统环境变量键存于WritableEnvKey。 > > - WithEnv嵌套时，同名环境变量按最近作用域生效。
 
 ### 子组件 支持单个子组件。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -34,7 +34,7 @@ export declare const WithEnvInstance: WithEnvAttribute
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

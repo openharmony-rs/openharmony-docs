@@ -4,11 +4,11 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [OpenMode](arkts-corefile-fileio-openmode-n.md#OpenMode)
+**替代接口：** [OpenMode](../../apis-na/arkts-apis/arkts-na-fileio-openmode-n.md#openmode)
 
 <!--Device-fileAccess-enum OPENFLAGS--><!--Device-fileAccess-enum OPENFLAGS-End-->
 
@@ -26,11 +26,11 @@ READ = 0o0
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [OpenMode](arkts-corefile-fileio-openmode-n.md#OpenMode)
+**替代接口：** [OpenMode](../../apis-na/arkts-apis/arkts-na-fileio-openmode-n.md#openmode)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,11 +50,11 @@ WRITE = 0o1
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [OpenMode](arkts-corefile-fileio-openmode-n.md#OpenMode)
+**替代接口：** [OpenMode](../../apis-na/arkts-apis/arkts-na-fileio-openmode-n.md#openmode)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,11 +74,11 @@ WRITE_READ = 0o2
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
-**替代接口：** [OpenMode](arkts-corefile-fileio-openmode-n.md#OpenMode)
+**替代接口：** [OpenMode](../../apis-na/arkts-apis/arkts-na-fileio-openmode-n.md#openmode)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

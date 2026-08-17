@@ -10,7 +10,7 @@ function postDialProceed(callId: int, proceed: boolean, callback: AsyncCallback<
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function postDialProceed(callId: int, proceed: boolean, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callId | int | 是 | 呼叫Id。 |
-| proceed | boolean | 是 | 用户选择是否发送DTMF(Dual Tone Multi Frequency，双音多频)音，默认为false。&lt;br/&gt;-true：是&lt;br/&gt;-false：否 |
+| proceed | boolean | 是 | 用户选择是否发送DTMF(Dual Tone Multi Frequency，双音多频)音，默认为false。<br/>-true：是<br/>-false：否 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以回调函数的方式返回继续进行通话的结果。 |
 
 **错误码：**
@@ -63,7 +63,7 @@ function postDialProceed(callId: int, proceed: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ function postDialProceed(callId: int, proceed: boolean): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callId | int | 是 | 呼叫Id。 |
-| proceed | boolean | 是 | 用户选择是否发送DTMF音，默认为false。&lt;br/&gt;-true：是&lt;br/&gt;-false：否 |
+| proceed | boolean | 是 | 用户选择是否发送DTMF音，默认为false。<br/>-true：是<br/>-false：否 |
 
 **返回值：**
 

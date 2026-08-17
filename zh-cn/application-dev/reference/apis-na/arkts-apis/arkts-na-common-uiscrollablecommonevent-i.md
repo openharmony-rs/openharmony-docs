@@ -2,11 +2,11 @@
 
 Defines a UIScrollableCommonEvent which is used to set event to target component.
 
-**继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](arkts-na-common-uicommonevent-i.md#UICommonEvent)
+**继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](arkts-na-common-uicommonevent-i.md#uicommonevent)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Set or reset the callback which is triggered when the scrolling reaches the end 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ Set or reset the callback which is triggered when the scrolling reaches the end 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling reaches the end position. &lt;br&gt;Passing undefined will unregister the callback. |
+| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling reaches the end position. <br>Passing undefined will unregister the callback. |
 
 ## setOnReachStart
 
@@ -50,7 +50,7 @@ Set or reset the callback which is triggered when the scrolling reaches the star
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ Set or reset the callback which is triggered when the scrolling reaches the star
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling reaches the start position. &lt;br&gt;Passing undefined will unregister the callback. |
+| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling reaches the start position. <br>Passing undefined will unregister the callback. |
 
 ## setOnScrollFrameBegin
 
@@ -76,7 +76,7 @@ Set or reset the callback which is triggered when scrolling begin each frame.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ Set or reset the callback which is triggered when scrolling begin each frame.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnScrollFrameBeginCallback](../../apis-arkui/arkts-components/arkts-arkui-onscrollframebegincallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling begin each frame. &lt;br&gt;Passing undefined will unregister the callback. |
+| callback | [OnScrollFrameBeginCallback](../../apis-arkui/arkts-components/arkts-arkui-onscrollframebegincallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling begin each frame. <br>Passing undefined will unregister the callback. |
 
 ## setOnScrollStart
 
@@ -102,7 +102,7 @@ Set or reset the callback which is triggered when the scrolling started.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ Set or reset the callback which is triggered when the scrolling started.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling started. &lt;br&gt;Passing undefined will unregister the callback. |
+| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling started. <br>Passing undefined will unregister the callback. |
 
 ## setOnScrollStop
 
@@ -128,7 +128,7 @@ Set or reset the callback which is triggered when the scrolling stopped.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -142,5 +142,5 @@ Set or reset the callback which is triggered when the scrolling stopped.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling stopped. &lt;br&gt;Passing undefined will unregister the callback. |
+| callback | [VoidCallback](../../apis-arkui/arkts-apis/arkts-arkui-voidcallback-t.md) \| undefined | 是 | callback function, triggered when the scrolling stopped. <br>Passing undefined will unregister the callback. |
 

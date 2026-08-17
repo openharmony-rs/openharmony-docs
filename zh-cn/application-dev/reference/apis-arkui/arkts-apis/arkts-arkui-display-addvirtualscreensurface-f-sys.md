@@ -10,7 +10,7 @@ function addVirtualScreenSurface(screenId: long, surfaceId: string, surfaceRegio
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ function addVirtualScreenSurface(screenId: long, surfaceId: string, surfaceRegio
 | --- | --- | --- | --- |
 | screenId | long | 是 | 虚拟屏幕的屏幕ID。 |
 | surfaceId | string | 是 | 代表虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId， 该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
-| surfaceRegion | Rect | 否 | surface显示的虚拟屏的矩形区域。 如果虚拟屏幕未通过[setVirtualScreenSurface()](arkts-arkui-display-setvirtualscreensurface-f.md#setVirtualScreenSurface) 或 [addVirtualScreenSurface()](#addVirtualScreenSurface（系统接口）)绑定过surface，surfaceRegion无效，默认全屏。 在镜像模式下，surfaceRegion无效，默认全屏。在异源模式下，surfaceRegion有效。 |
+| surfaceRegion | Rect | 否 | surface显示的虚拟屏的矩形区域。 如果虚拟屏幕未通过[setVirtualScreenSurface()](arkts-arkui-display-setvirtualscreensurface-f.md#setvirtualscreensurface) 或 [addVirtualScreenSurface()](#addvirtualscreensurface系统接口)绑定过surface，surfaceRegion无效，默认全屏。 在镜像模式下，surfaceRegion无效，默认全屏。在异源模式下，surfaceRegion有效。 |
 
 **返回值：**
 
@@ -98,14 +98,15 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   addVirtualScreenSurface = () => {
+    // 虚拟屏ID需从createVirtualScreen()返回值获取
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     display.addVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in adding surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to add surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to add surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
-  }
+  };
   build() {
     RelativeContainer() {
       XComponent({

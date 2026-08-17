@@ -10,11 +10,11 @@ export declare function Navigation(
 ): NavigationAttribute
 ```
 
-绑定导航控制器到Navigation组件，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#NavPathStack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navDestination)属性进行页面路由。
+绑定导航控制器到Navigation组件，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#navpathstack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navdestination)属性进行页面路由。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -49,11 +49,11 @@ export declare function Navigation(
 ): NavigationAttribute
 ```
 
-绑定导航控制器到Navigation组件，并设置自定义首页，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#NavPathStack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navDestination)属性进行页面路由。
+绑定导航控制器到Navigation组件，并设置自定义首页，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#navpathstack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navdestination)属性进行页面路由。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -88,11 +88,11 @@ export declare function Navigation(
 ): NavigationAttribute
 ```
 
-绑定导航控制器到Navigation组件，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#NavPathStack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navDestination)属性进行页面路由。
+绑定导航控制器到Navigation组件，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#navpathstack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navdestination)属性进行页面路由。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

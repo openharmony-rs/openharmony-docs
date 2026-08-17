@@ -11,7 +11,7 @@ function getMainWindowSnapshot(windowId: Array<int>, config: WindowSnapshotConfi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -25,7 +25,7 @@ function getMainWindowSnapshot(windowId: Array<int>, config: WindowSnapshotConfi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | Array&lt;int&gt; | 是 | 需要获取截图的主窗口ID列表。可通过 [window.getAllMainWindowInfo()](arkts-arkui-window-getallmainwindowinfo-f.md#getAllMainWindowInfo)获取到主窗口windowId。当windowId为null、undefined、小于0、存 在重复值或数量超过512个时，返回错误码401；当windowId大于0但不存在对应窗口时，返回undefined。 |
+| windowId | Array&lt;int&gt; | 是 | 需要获取截图的主窗口ID列表。可通过 [window.getAllMainWindowInfo()](arkts-arkui-window-getallmainwindowinfo-f.md#getallmainwindowinfo)获取到主窗口windowId。当windowId为null、undefined、小于0、存 在重复值或数量超过512个时，返回错误码401；当windowId大于0但不存在对应窗口时，返回undefined。 |
 | config | [WindowSnapshotConfiguration](arkts-arkui-window-windowsnapshotconfiguration-i.md) | 是 | 获取窗口截图时的配置信息。 |
 
 **返回值：**
@@ -57,6 +57,7 @@ export default class EntryAbility extends UIAbility {
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Success in loading the content');
@@ -122,6 +123,7 @@ export default class EntryAbility extends UIAbility {
     windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
       if (err?.code) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Success in loading the content');

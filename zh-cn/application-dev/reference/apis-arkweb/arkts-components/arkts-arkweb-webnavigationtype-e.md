@@ -1,10 +1,10 @@
 # WebNavigationType
 
-Enum type supplied to [navigationType](arkts-arkweb-loadcommitteddetails-i.md#navigationType) for the navigation's type.
+定义navigation类型。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Enum type supplied to [navigationType](arkts-arkweb-loadcommitteddetails-i.md#na
 UNKNOWN = 0
 ```
 
-Unknown type.
+未知类型。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ Unknown type.
 MAIN_FRAME_NEW_ENTRY = 1
 ```
 
-A new entry was created due to a navigation happened on the main frame. Contains all situations that will generate a mainframe navigation entry, which means that navigations to a hash on the same document or history.pushState also belong to this type.
+主文档上产生的新的历史节点跳转。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ A new entry was created due to a navigation happened on the main frame. Contains
 MAIN_FRAME_EXISTING_ENTRY = 2
 ```
 
-Navigate to an existing entry due to a navigation on the main frame. e.g. 1. History navigations. 2. Reloads (contains loading the same url). 3. Same-document navigations(history.replaceState(), location.replace()).
+主文档上产生的到已有的历史节点的跳转。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -78,11 +78,11 @@ Navigate to an existing entry due to a navigation on the main frame. e.g. 1. His
 NAVIGATION_TYPE_NEW_SUBFRAME = 4
 ```
 
-A navigation happened on subframe which was triggered by user.
+子文档上产生的用户触发的跳转。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -98,11 +98,11 @@ A navigation happened on subframe which was triggered by user.
 NAVIGATION_TYPE_AUTO_SUBFRAME = 5
 ```
 
-A navigation happened on the subframe automatically.
+子文档上产生的非用户触发的跳转。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

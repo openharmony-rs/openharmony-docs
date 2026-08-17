@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Navigation](arkts-na-navigation-navigation-f.md#Navigation) | 绑定导航控制器到Navigation组件，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#NavPathStack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navDestination)属性进行页面路由。 |
+| [Navigation](arkts-na-navigation-navigation-f.md#navigation) | 绑定导航控制器到Navigation组件，适用于使用[NavPathStack](arkts-na-navigation-navpathstack-c.md#navpathstack)配合 [navDestination](arkts-na-navigation-navigationattribute-i.md#navdestination)属性进行页面路由。 |
 
 ### 类
 

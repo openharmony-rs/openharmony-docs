@@ -4,7 +4,7 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 
@@ -24,7 +24,7 @@ static aes(options: CipherAesOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 
@@ -50,7 +50,7 @@ static rsa(options: CipherRsaOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 

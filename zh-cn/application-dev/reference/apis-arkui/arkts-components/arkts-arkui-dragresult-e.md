@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 UNKNOWN = -1
 ```
 
-拖拽结果尚未设置，在[onDragStart](arkts-arkui-commonmethod-c.md#onDragStart)，[onDragEnter](arkts-arkui-commonmethod-c.md#onDragEnter)， [onDragMove](arkts-arkui-commonmethod-c.md#onDragMove)，[onDragLeave](arkts-arkui-commonmethod-c.md#onDragLeave)， onDrop中使用。
+拖拽结果尚未设置，在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)， [onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)， onDrop中使用。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ DRAG_SUCCESSFUL = 0
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ DRAG_FAILED = 1
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ DRAG_CANCELED = 2
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -106,11 +106,11 @@ DRAG_CANCELED = 2
 DROP_ENABLED = 3
 ```
 
-组件允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#onDragEnter)，[onDragMove](arkts-arkui-commonmethod-c.md#onDragMove)， [onDragLeave](arkts-arkui-commonmethod-c.md#onDragLeave)中使用。
+组件允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)， [onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)中使用。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -128,11 +128,11 @@ DROP_ENABLED = 3
 DROP_DISABLED = 4
 ```
 
-组件不允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#onDragEnter)，[onDragMove](arkts-arkui-commonmethod-c.md#onDragMove)， [onDragLeave](arkts-arkui-commonmethod-c.md#onDragLeave)中使用。
+组件不允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)， [onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)中使用。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

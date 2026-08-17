@@ -16,7 +16,7 @@
 | [CloseSwipeActionOptions](arkts-na-list-closeswipeactionoptions-i.md) | 定义收起滑动操作选项。 |
 | [ListBackPressBehavior](arkts-na-list-listbackpressbehavior-i.md) | 定义List组件的系统返回键行为。 |
 | [ListDividerOptions](arkts-na-list-listdivideroptions-i.md) | 定义List或ListItemGroup组件的分割线样式。 |
-| [ListOptions](arkts-na-list-listoptions-i.md) | 定义List组件参数。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;: &lt;br&gt;- List组件通用属性clip的默认值为true。 &lt;/p&gt; |
+| [ListOptions](arkts-na-list-listoptions-i.md) | 定义List组件参数。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;: <br>- List组件通用属性clip的默认值为true。 &lt;/p&gt; |
 | [UIListEvent](arkts-na-list-uilistevent-i.md) | frameNode中getEvent('List')方法的返回值，可用于给List 节点设置滚动事件。 UIListEvent继承于UIScrollableCommonEvent。 |
 | [VisibleListContentInfo](arkts-na-list-visiblelistcontentinfo-i.md) | 定义List可见内容区子组件的详细信息。 |
 

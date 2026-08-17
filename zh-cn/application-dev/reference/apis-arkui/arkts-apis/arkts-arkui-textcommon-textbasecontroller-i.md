@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ closeSelectionMenu(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ ArkTS-Sta: getLayoutManager(): LayoutManager | undefined 获取布局管理器�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ ArkTS-Sta: setSelection(selectionStart: int, selectionEnd: int, options?: Select
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ ArkTS-Sta: setSelection(selectionStart: int, selectionEnd: int, options?: Select
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionStart | int | 是 | 选中开始位置。&lt;br/&gt;取值小于0时，按0处理。 |
-| selectionEnd | int | 是 | 选中结束位置。&lt;br/&gt;取值大于文本长度时，按当前文本长度处理。 |
+| selectionStart | int | 是 | 选中开始位置。<br/>取值小于0时，按0处理。 |
+| selectionEnd | int | 是 | 选中结束位置。<br/>取值大于文本长度时，按当前文本长度处理。 |
 | options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。 默认值继承 [SelectionOptions](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-text-style.md#selectionoptions12对象说明)。 |
 

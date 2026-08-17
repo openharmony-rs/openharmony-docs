@@ -1,10 +1,10 @@
 # Panel（系统接口）
 
-划词面板对象，通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)创建，提供面板内容设置、显示、隐藏、移动及事件订阅等管理能力，适用于在划词完成后向用户展示自定义操作界面的场景。
+划词面板对象，通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)创建，提供面板内容设置、显示、隐藏、移动及事件订阅等管理能力，适用于在划词完成后向用户展示自定义操作界面的场景。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 hide(): Promise<void>
 ```
 
-隐藏当前划词面板，与[show](#show)搭配使用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到 Panel实例后调用。使用Promise异步回调。如不主动调用，面板在失焦时会自动隐藏。
+隐藏当前划词面板，与[show](#show)搭配使用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到 Panel实例后调用。使用Promise异步回调。如不主动调用，面板在失焦时会自动隐藏。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -81,15 +81,15 @@ selectionPanel?.hide().then(() => {
 moveTo(x: int, y: int): Promise<void>
 ```
 
-移动划词面板至屏幕全局坐标系下的指定位置，支持移动到扩展屏上。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到Panel实例后调用。使用Promise异步回调。 > **说明：** > > 从API version 20开始支持，从API version 24开始废弃。
+移动划词面板至屏幕全局坐标系下的指定位置，支持移动到扩展屏上。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到Panel实例后调用。使用Promise异步回调。 > **说明：** > > 从API version 20开始支持，从API version 24开始废弃。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** 24
 
-**替代接口：** [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#moveToGlobalDisplay)
+**替代接口：** [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay)
 
 <!--Device-Panel-moveTo(x: int, y: int): Promise<void>--><!--Device-Panel-moveTo(x: int, y: int): Promise<void>-End-->
 
@@ -140,11 +140,11 @@ try {
 off(type: 'destroyed', callback?: Callback<void>): void
 ```
 
-取消订阅划词面板销毁事件，与[on('destroyed')](#on_destroyed)搭配使 用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到Panel实例后调用。
+取消订阅划词面板销毁事件，与[on('destroyed')](#ondestroyed)搭配使 用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到Panel实例后调用。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -178,11 +178,11 @@ try {
 off(type: 'hidden', callback?: Callback<void>): void
 ```
 
-取消订阅划词面板隐藏事件，与[on('hidden')](#on_destroyed)搭配使用。需通过 [createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到Panel实例后调用。
+取消订阅划词面板隐藏事件，与[on('hidden')](#ondestroyed)搭配使用。需通过 [createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到Panel实例后调用。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -216,11 +216,11 @@ try {
 on(type: 'destroyed', callback: Callback<void>): void
 ```
 
-订阅划词面板销毁事件，与[off('destroyed')](#off_destroyed)搭配使 用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到Panel实例后调用。
+订阅划词面板销毁事件，与[off('destroyed')](#offdestroyed)搭配使 用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到Panel实例后调用。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -235,7 +235,7 @@ on(type: 'destroyed', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'destroyed' | 是 | 设置监听类型，固定取值为'destroyed'。 |
-| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，调用[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f-sys.md#destroyPanel（系统接口）)销毁面板时触发。 |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，调用[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f-sys.md#destroypanel系统接口)销毁面板时触发。 |
 
 ## 示例
 
@@ -256,11 +256,11 @@ try {
 on(type: 'hidden', callback: Callback<void>): void
 ```
 
-订阅划词面板隐藏事件，与[off('hidden')](#off_destroyed)搭配使用。面板调用 [hide](#hide)隐藏或失焦自动隐藏时触发该事件。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到 Panel实例后调用。
+订阅划词面板隐藏事件，与[off('hidden')](#offdestroyed)搭配使用。面板调用 [hide](#hide)隐藏或失焦自动隐藏时触发该事件。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到 Panel实例后调用。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -296,11 +296,11 @@ try {
 setUiContent(path: string): Promise<void>
 ```
 
-为当前的划词面板设置界面内容，例如展示翻译结果、搜索建议或自定义操作按钮等。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到Panel实例后调用。使用Promise 异步回调。
+为当前的划词面板设置界面内容，例如展示翻译结果、搜索建议或自定义操作按钮等。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到Panel实例后调用。使用Promise 异步回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -373,11 +373,11 @@ try {
 show(): Promise<void>
 ```
 
-显示划词面板，与[hide](#hide)搭配使用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到 Panel实例后调用。使用Promise异步回调。
+显示划词面板，与[hide](#hide)搭配使用。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到 Panel实例后调用。使用Promise异步回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -436,11 +436,11 @@ selectionPanel?.show().then(() => {
 startMoving(): Promise<void>
 ```
 
-设置划词面板可随鼠标、触控板或触屏拖动移动位置，指针释放后自动停止移动。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createPanel（系统接口）)获取到Panel实例后调用。使用Promise异步 回调。该接口需在onTouch的回调函数中调用，并且事件类型为TouchType.Down。
+设置划词面板可随鼠标、触控板或触屏拖动移动位置，指针释放后自动停止移动。需通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f-sys.md#createpanel系统接口)获取到Panel实例后调用。使用Promise异步 回调。该接口需在onTouch的回调函数中调用，并且事件类型为TouchType.Down。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

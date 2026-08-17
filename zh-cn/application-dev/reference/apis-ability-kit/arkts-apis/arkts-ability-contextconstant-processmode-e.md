@@ -1,10 +1,10 @@
 # ProcessMode
 
-UIAbility启动后的进程模式。 ProcessMode作为[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md#StartOptions)的一个属性，仅在 [UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startAbility) 中生效，用来指定目标UIAbility的进程模式。 该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+UIAbility启动后的进程模式。 ProcessMode作为[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md#startoptions)的一个属性，仅在 [UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability) 中生效，用来指定目标UIAbility的进程模式。 该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ NEW_PROCESS_ATTACH_TO_PARENT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ ATTACH_TO_STATUS_BAR_ITEM = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

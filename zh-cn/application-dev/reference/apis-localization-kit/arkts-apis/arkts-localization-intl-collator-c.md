@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ compare(first: string, second: string): int
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -43,7 +43,7 @@ compare(first: string, second: string): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 比较结果。 &lt;br&gt;- number为负数时，表示first排序在second之前。 &lt;br&gt;- number为0时，表示first与second排序相同。 &lt;br&gt;- number为正数，表示first排序在second之后。 |
+| int | 比较结果。 <br>- number为负数时，表示first排序在second之前。 <br>- number为0时，表示first与second排序相同。 <br>- number为正数，表示first排序在second之后。 |
 
 ## 示例
 
@@ -66,7 +66,7 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -95,7 +95,7 @@ constructor(locale: string | Array<string>, options?: CollatorOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -110,7 +110,7 @@ constructor(locale: string | Array<string>, options?: CollatorOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | 否 | 创建排序对象时可设置的配置项。 &lt;br&gt;默认值：所有属性都取默认值时的配置项。 |
+| options | [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | 否 | 创建排序对象时可设置的配置项。 <br>默认值：所有属性都取默认值时的配置项。 |
 
 ## 示例
 
@@ -131,7 +131,7 @@ resolvedOptions(): CollatorOptions
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

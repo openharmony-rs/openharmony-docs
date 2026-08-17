@@ -10,11 +10,11 @@ function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallba
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getMissionInfos（系统接口）)
+**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getmissioninfos系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -59,11 +59,11 @@ function getMissionInfos(deviceId: string, numMax: number): Promise<Array<Missio
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getMissionInfos（系统接口）)
+**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getmissioninfos系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 

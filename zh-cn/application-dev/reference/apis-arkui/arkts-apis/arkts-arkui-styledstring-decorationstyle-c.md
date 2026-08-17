@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(value: DecorationStyleInterface)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ constructor(value: DecorationStyleInterface)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [DecorationStyleInterface](arkts-arkui-styledstring-decorationstyleinterface-i.md) | 是 | 文本装饰线设置项。&lt;br/&gt;默认值：&lt;br/&gt;{&lt;br/&gt; type: TextDecorationType.None,&lt;br/&gt; color: Color.Black,&lt;br/&gt; style: TextDecorationStyle.SOLID &lt;br/&gt;} |
+| value | [DecorationStyleInterface](arkts-arkui-styledstring-decorationstyleinterface-i.md) | 是 | 文本装饰线设置项。<br/>默认值：<br/>{<br/> type: TextDecorationType.None,<br/> color: Color.Black,<br/> style: TextDecorationStyle.SOLID <br/>} |
 
 ## constructor
 
@@ -48,7 +48,7 @@ constructor(value: DecorationStyleInterface, options?: DecorationOptions)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -62,8 +62,8 @@ constructor(value: DecorationStyleInterface, options?: DecorationOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [DecorationStyleInterface](arkts-arkui-styledstring-decorationstyleinterface-i.md) | 是 | 文本装饰线设置项。&lt;br/&gt;默认值：&lt;br/&gt;{&lt;br/&gt; type: TextDecorationType.None,&lt;br/&gt; color: Color.Black,&lt;br/&gt; style: TextDecorationStyle.SOLID, &lt;br/&gt; thicknessScale: 1.0&lt;br/&gt;} |
-| options | [DecorationOptions](arkts-arkui-styledstring-decorationoptions-i.md) | 否 | 文本装饰线额外配置选项。&lt;br/&gt;默认值：&lt;br/&gt;{&lt;br/&gt; enableMultiType: undefined&lt;br/&gt;} |
+| value | [DecorationStyleInterface](arkts-arkui-styledstring-decorationstyleinterface-i.md) | 是 | 文本装饰线设置项。<br/>默认值：<br/>{<br/> type: TextDecorationType.None,<br/> color: Color.Black,<br/> style: TextDecorationStyle.SOLID, <br/> thicknessScale: 1.0<br/>} |
+| options | [DecorationOptions](arkts-arkui-styledstring-decorationoptions-i.md) | 否 | 文本装饰线额外配置选项。<br/>默认值：<br/>{<br/> enableMultiType: undefined<br/>} |
 
 ## color
 
@@ -77,7 +77,7 @@ readonly color?: ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -99,7 +99,7 @@ readonly options?: DecorationOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -121,7 +121,7 @@ readonly style?: TextDecorationStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -143,7 +143,7 @@ readonly thicknessScale?: double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -165,7 +165,7 @@ readonly type: TextDecorationType
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -10,11 +10,11 @@ function clearAllMissions(callback: AsyncCallback<void>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [clearAllMissions](arkts-ability-missionmanager-clearallmissions-f-sys.md#clearAllMissions（系统接口）)
+**替代接口：** [clearAllMissions](arkts-ability-missionmanager-clearallmissions-f-sys.md#clearallmissions系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -62,11 +62,11 @@ function clearAllMissions(): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [clearAllMissions](arkts-ability-missionmanager-clearallmissions-f-sys.md#clearAllMissions（系统接口）)
+**替代接口：** [clearAllMissions](arkts-ability-missionmanager-clearallmissions-f-sys.md#clearallmissions系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 

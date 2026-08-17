@@ -4,7 +4,7 @@ Used to intercept url requests. Response headers and body can be sent through We
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Notify that this request should be failed.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -53,7 +53,7 @@ Notify that this request should be failed.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -85,7 +85,7 @@ Notify that this request should be finished and there is no more data available.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -109,7 +109,7 @@ Pass response headers to intercepted requests.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -121,7 +121,7 @@ Pass response headers to intercepted requests.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| response | [WebSchemeHandlerResponse](arkts-na-webview-webschemehandlerresponse-c.md) | 是 | Set response header to intercept. |
+| response | [WebSchemeHandlerResponse](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-webschemehandlerresponse-c.md) | 是 | Set response header to intercept. |
 
 **错误码：**
 
@@ -140,7 +140,7 @@ Pass response body data to intercepted requests.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function print(files: Array<string>, callback: AsyncCallback<PrintTask>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ function print(files: Array<string>): Promise<PrintTask>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -125,7 +125,7 @@ function print(files: Array<string>, context: Context, callback: AsyncCallback<P
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -196,7 +196,7 @@ function print(files: Array<string>, context: Context): Promise<PrintTask>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -273,7 +273,7 @@ function print(jobName: string, printAdapter: PrintDocumentAdapter, printAttribu
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -287,8 +287,8 @@ function print(jobName: string, printAdapter: PrintDocumentAdapter, printAttribu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。当前仅支持".pdf"文件类型。打印侧会通过 [onStartLayoutWrite](arkts-basicservices-print-printdocumentadapter-i.md#onStartLayoutWrite)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印 文件。 |
-| printAdapter | [PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md) | 是 | 表示三方应用实现的[PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md#PrintDocumentAdapter)接口实 例。 |
+| jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。当前仅支持".pdf"文件类型。打印侧会通过 [onStartLayoutWrite](arkts-basicservices-print-printdocumentadapter-i.md#onstartlayoutwrite)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印 文件。 |
+| printAdapter | [PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md) | 是 | 表示三方应用实现的[PrintDocumentAdapter](arkts-basicservices-print-printdocumentadapter-i.md#printdocumentadapter)接口实 例。 |
 | printAttributes | [PrintAttributes](arkts-basicservices-print-printattributes-i.md) | 是 | 表示打印参数。 |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 

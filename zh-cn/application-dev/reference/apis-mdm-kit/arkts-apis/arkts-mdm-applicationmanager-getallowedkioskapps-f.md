@@ -10,7 +10,7 @@ function getAllowedKioskApps(admin: Want): Array<string>
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -42,6 +42,26 @@ function getAllowedKioskApps(admin: Want): Array<string>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
+## 示例
+
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { applicationManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.edmtest',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let appIdentifiers: Array<string> = applicationManager.getAllowedKioskApps(wantTemp);
+  console.info(`Succeeded in getting allowed kiosk apps, appIdentifiers: ${JSON.stringify(appIdentifiers)}`);
+} catch (err) {
+  console.error(`Failed to get allowed kiosk apps. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 
 ## getAllowedKioskApps
 
@@ -53,7 +73,7 @@ function getAllowedKioskApps(admin: Want | null): Array<string>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -88,17 +108,11 @@ function getAllowedKioskApps(admin: Want | null): Array<string>
 ## 示例
 
 ```TypeScript
-import { Want } from '@kit.AbilityKit';
 import { applicationManager } from '@kit.MDMKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.edmtest',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
 try {
-  let appIdentifiers: Array<string> = applicationManager.getAllowedKioskApps(wantTemp);
+  // 参数需根据实际情况进行替换
+  let appIdentifiers: Array<string> = applicationManager.getAllowedKioskApps(null);
   console.info(`Succeeded in getting allowed kiosk apps, appIdentifiers: ${JSON.stringify(appIdentifiers)}`);
 } catch (err) {
   console.error(`Failed to get allowed kiosk apps. Code is ${err.code}, message is ${err.message}`);

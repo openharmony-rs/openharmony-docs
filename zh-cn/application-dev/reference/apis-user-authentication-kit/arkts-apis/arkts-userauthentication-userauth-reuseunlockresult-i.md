@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 reuseDuration: int
 ```
 
-允许复用解锁认证结果的有效时长，单位为毫秒。有效时长的值应大于0，最大值为 [MAX_ALLOWABLE_REUSE_DURATION](arkts-userauthentication-userauth-con.md#MAX_ALLOWABLE_REUSE_DURATION)， （300000毫秒，即5分钟）。建议根据业务场景设置合理的时长： - 高安全场景（如支付）：建议设置较短时长（如30秒至1分钟）。 - 中等安全场景（如应用登录）：建议设置中等时长（如2至3分钟）。 - 低安全场景（如数据查询）：可使用最大时长。
+允许复用解锁认证结果的有效时长，单位为毫秒。有效时长的值应大于0，最大值为 [MAX_ALLOWABLE_REUSE_DURATION](arkts-userauthentication-userauth-con.md#maxallowablereuseduration)， （300000毫秒，即5分钟）。建议根据业务场景设置合理的时长： - 高安全场景（如支付）：建议设置较短时长（如30秒至1分钟）。 - 中等安全场景（如应用登录）：建议设置中等时长（如2至3分钟）。 - 低安全场景（如数据查询）：可使用最大时长。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ reuseMode: ReuseMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

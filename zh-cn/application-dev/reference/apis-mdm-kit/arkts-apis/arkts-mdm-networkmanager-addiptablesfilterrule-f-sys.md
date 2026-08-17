@@ -10,7 +10,7 @@ function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule, callback:
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -87,7 +87,7 @@ function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule): Promise<
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

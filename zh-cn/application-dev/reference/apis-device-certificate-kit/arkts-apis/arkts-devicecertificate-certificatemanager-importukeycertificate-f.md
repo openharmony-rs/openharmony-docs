@@ -10,7 +10,7 @@ function importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyI
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,9 +26,9 @@ function importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyUri | string | 是 | 表示USB Key证书凭据的uri. &lt;br&gt;最大长度为256且不能为空。 &lt;br&gt;keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](arkts-devicecertificate-certificatemanager-getukeycertificatelist-f.md#getUkeyCertificateList)接口得到。 |
-| cert | Uint8Array | 是 | 表示待导入的证书数据。 &lt;br&gt;最大长度为10240且不能为空。 &lt;br&gt;证书数据格式遵循SKF（Smart Key Framework）规范的定义。 |
-| ukeyInfo | [UkeyInfo](arkts-devicecertificate-certificatemanager-ukeyinfo-i.md) | 是 | 表示USB Key证书属性信息。 &lt;br&gt;UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
+| keyUri | string | 是 | 表示USB Key证书凭据的uri. <br>最大长度为256且不能为空。 <br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](arkts-devicecertificate-certificatemanager-getukeycertificatelist-f.md#getukeycertificatelist)接口得到。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。 <br>最大长度为10240且不能为空。 <br>证书数据格式遵循SKF（Smart Key Framework）规范的定义。 |
+| ukeyInfo | [UkeyInfo](arkts-devicecertificate-certificatemanager-ukeyinfo-i.md) | 是 | 表示USB Key证书属性信息。 <br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
 
 **返回值：**
 
@@ -45,7 +45,7 @@ function importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyI
 | [17500010](../errorcode-certManager.md#17500010-访问usb证书凭据失败) | Indicates that access USB Key service failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [17500002](../errorcode-certManager.md#17500002-证书不存在) | The certificate identified by keyUri does not exist |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; &lt;br&gt;2. Memory operation error; 3. File operation error. Please try again. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 
 ## 示例
 
@@ -56,10 +56,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 /* keyUri和cert数据需要业务赋值，本例数据仅为示例 */
 let keyUri: string = 'test'; /* USB Key证书的uri，可通过getUkeyCertificateList获取 */
 let certData: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 let ukeyInfo: certificateManager.UkeyInfo = {
-  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN
 };
 try {
   certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {

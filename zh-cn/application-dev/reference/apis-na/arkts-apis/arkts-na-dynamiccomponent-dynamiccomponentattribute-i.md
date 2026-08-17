@@ -6,7 +6,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ onError(callback: ErrorCallback<BusinessError> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ setDynamicComponentOptions(options: DynamicOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 

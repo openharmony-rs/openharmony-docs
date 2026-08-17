@@ -1,10 +1,10 @@
 # UIContext
 
-UIContext实例对象。 > **说明：** > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。 > > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的 > [getUIContext()](../../../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定 > 义组件内置方法[getUIContext()](../../../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext > 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getCallingScopeUIContext)获取UIContext实例。本文中 > UIContext对象以uiContext表示。
+UIContext实例对象。 > **说明：** > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。 > > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的 > [getUIContext()](../../../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定 > 义组件内置方法[getUIContext()](../../../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext > 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext)获取UIContext实例。本文中 > UIContext对象以uiContext表示。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ addLocalInputEventMonitor(eventMask: int, listener: InputEventListener): InputEv
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ addLocalInputEventMonitor(eventMask: int, listener: InputEventListener): InputEv
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventMask | int | 是 | 事件类型掩码，指定要监视的事件类型 位运算。 &lt;br&gt;取值限定为整数。 |
+| eventMask | int | 是 | 事件类型掩码，指定要监视的事件类型 位运算。 <br>取值限定为整数。 |
 | listener | InputEventListener | 是 | 事件监听器回调函数。 |
 
 **返回值：**
@@ -57,7 +57,7 @@ animateTo(value: AnimateParam, event: () => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -86,7 +86,7 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ Bind tabs to scrollable container component to automatically hide tab bar.
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -145,7 +145,7 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -174,7 +174,7 @@ closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
 ## constructor
@@ -187,7 +187,7 @@ constructor()
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -209,7 +209,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -237,7 +237,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## createAnimator
 
@@ -245,11 +245,11 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与[createAnimator](#createAnimator)相比，新增对 [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md#SimpleAnimatorOptions)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[createAnimator](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#createanimator)相比，新增对 [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md#simpleanimatoroptions)类型入参的支持。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -277,7 +277,7 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## createUIContextWithoutWindow
 
@@ -289,7 +289,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -305,20 +305,20 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | common.UIAbilityContext \| common.ExtensionContext | 是 | [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)或 [ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility)所对应的上下文环境。 |
+| context | common.UIAbilityContext \| common.ExtensionContext | 是 | [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#uiability)或 [ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)所对应的上下文环境。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Context of the created UI instance, or **undefined** if creation fails. |
+| [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | Context of the created UI instance, or **undefined** if creation fails. |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. The number of parameters is incorrect. &lt;br&gt; 2. Invalid parameter type of context. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. The number of parameters is incorrect. <br> 2. Invalid parameter type of context. |
 
 ## destroyUIContextWithoutWindow
 
@@ -326,11 +326,11 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 static destroyUIContextWithoutWindow(): void
 ```
 
-销毁[createUIContextWithoutWindow](#createUIContextWithoutWindow)创建的UI实例。
+销毁[createUIContextWithoutWindow](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#createuicontextwithoutwindow)创建的UI实例。
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -352,7 +352,7 @@ Dispach keyboard event to the frameNode with inspector key.
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -387,7 +387,7 @@ enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -416,7 +416,7 @@ whether to enable or disable swipe to back event.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -438,11 +438,11 @@ whether to enable or disable swipe to back event.
 fp2px(value: number): number
 ```
 
-将fp单位的数值转换为以px为单位的数值。 转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#VirtualScreenConfig).density。 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。 > **说明：** > > getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。
+将fp单位的数值转换为以px为单位的数值。 转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#virtualscreenconfig).density。 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。 > **说明：** > > getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -462,7 +462,7 @@ fp2px(value: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 转换后的数值。&lt;br/&gt;取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 ## getAllUIContexts
 
@@ -474,7 +474,7 @@ static getAllUIContexts(): UIContext[]
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -490,7 +490,7 @@ static getAllUIContexts(): UIContext[]
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)[] | Array of all currently valid UIContext instances. Returns an empty array if no valid UIContext instance exists. |
+| [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)[] | Array of all currently valid UIContext instances. Returns an empty array if no valid UIContext instance exists. |
 
 ## getAtomicServiceBar
 
@@ -502,7 +502,7 @@ Get AtomicServiceBar.
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -518,7 +518,7 @@ Get AtomicServiceBar.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Nullable](../../apis-na/arkts-apis/arkts-na-nullable-t.md)&lt;[AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md)&gt; | The atomic service bar. |
+| [Nullable](../../apis-na/arkts-apis/arkts-na-nullable-t.md)&lt;[AtomicServiceBar](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-atomicservicebar-i.md)&gt; | The atomic service bar. |
 
 ## getAttachedFrameNodeById
 
@@ -530,7 +530,7 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -560,11 +560,11 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 static getCallingScopeUIContext(): UIContext | undefined
 ```
 
-获取当前[调用作用域](../../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。 > **说明：** > > 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isAvailable)接口判断其有效性。
+获取当前[调用作用域](../../../ui/arkts-global-interface.md#基本概念)的UIContext，调用作用域不明确时返回undefined。 > **说明：** > > 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#isavailable)接口判断其有效性。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -580,7 +580,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | UIContext of the current [calling scope](../../../ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the calling scope is ambiguous. |
+| [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | UIContext of the current [calling scope](../../../ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the calling scope is ambiguous. |
 
 ## getComponentSnapshot
 
@@ -592,7 +592,7 @@ getComponentSnapshot(): ComponentSnapshot
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -608,7 +608,7 @@ getComponentSnapshot(): ComponentSnapshot
 
 | 类型 | 说明 |
 | --- | --- |
-| [ComponentSnapshot](arkts-arkui-arkui-uicontext-componentsnapshot-c.md) | 组件快照。 |
+| [ComponentSnapshot](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-componentsnapshot-c.md) | 组件快照。 |
 
 ## getComponentUtils
 
@@ -620,7 +620,7 @@ get object ComponentUtils.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -636,7 +636,7 @@ get object ComponentUtils.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ComponentUtils](arkts-arkui-arkui-uicontext-componentutils-c.md) | object ComponentUtils. |
+| [ComponentUtils](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-componentutils-c.md) | object ComponentUtils. |
 
 ## getContextMenuController
 
@@ -648,7 +648,7 @@ Get object context menu controller.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -664,7 +664,7 @@ Get object context menu controller.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContextMenuController](arkts-arkui-arkui-uicontext-contextmenucontroller-c.md) | object context menu controller. |
+| [ContextMenuController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-contextmenucontroller-c.md) | object context menu controller. |
 
 ## getCursorController
 
@@ -676,7 +676,7 @@ Get object cursor controller.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -692,7 +692,7 @@ Get object cursor controller.
 
 | 类型 | 说明 |
 | --- | --- |
-| [CursorController](arkts-arkui-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
+| [CursorController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
 
 ## getDialogPresenter
 
@@ -704,7 +704,7 @@ getDialogPresenter(): DialogPresenter
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -720,7 +720,7 @@ getDialogPresenter(): DialogPresenter
 
 | 类型 | 说明 |
 | --- | --- |
-| [DialogPresenter](arkts-arkui-arkui-uicontext-dialogpresenter-c.md) | Dialog对象。 |
+| [DialogPresenter](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-dialogpresenter-c.md) | Dialog对象。 |
 
 ## getDragController
 
@@ -732,7 +732,7 @@ Get DragController.
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -748,7 +748,7 @@ Get DragController.
 
 | 类型 | 说明 |
 | --- | --- |
-| [DragController](arkts-arkui-arkui-uicontext-dragcontroller-c.md) | the DragController |
+| [DragController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-dragcontroller-c.md) | the DragController |
 
 ## getFilteredInspectorTree
 
@@ -760,7 +760,7 @@ get the filtered attributes of the component tree.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -776,7 +776,7 @@ get the filtered attributes of the component tree.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: &lt;br&gt;**"id"**: unique ID of the component. &lt;br&gt;**"src"**: source of the resource. &lt;br&gt;**"content"**: information or data contained in the element, component, or object. &lt;br&gt;**"editable"**: whether the component is editable. &lt;br&gt;**"scrollable"**: whether the component is scrollable. &lt;br&gt;**"selectable"**: whether the component is selectable. &lt;br&gt;**"focusable"**: whether the component is focusable. &lt;br&gt;**"focused"**: whether the component is currently focused. &lt;br&gt;If **filters** includes one or more fields, unspecified fields will be filtered out from the results. &lt;br&gt;If **filters** is not provided or is an empty array, none of the aforementioned fields &lt;br&gt;will be filtered out. &lt;br&gt;The following filter field is supported since API version 20: &lt;br&gt;**"isLayoutInspector"**: whether the component tree contains custom components. &lt;br&gt;If **filters** is omitted or &lt;br&gt;does not contain **"isLayoutInspector"**, the returned component tree &lt;br&gt;will not include custom component details. &lt;br&gt;Other filter fields are used only in testing scenarios. |
+| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: <br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields <br>will be filtered out. <br>The following filter field is supported since API version 20: <br>**"isLayoutInspector"**: whether the component tree contains custom components. <br>If **filters** is omitted or <br>does not contain **"isLayoutInspector"**, the returned component tree <br>will not include custom component details. <br>Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
@@ -788,7 +788,7 @@ get the filtered attributes of the component tree.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## getFilteredInspectorTreeById
 
@@ -800,7 +800,7 @@ get the filtered attributes of the component tree with the specified id and dept
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -817,20 +817,20 @@ get the filtered attributes of the component tree with the specified id and dept
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | ID of the target component. |
-| depth | number | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of &lt;br&gt;the specified component are obtained. If the value is **2**, the attributes of &lt;br&gt;the specified component and its &lt;br&gt;level-1 child components are obtained. The rest can be deduced by analogy. |
-| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: &lt;br&gt;**"id"**: unique ID of the component. &lt;br&gt;**"src"**: source of the resource. &lt;br&gt;**"content"**: information or data contained in the element, component, or object. &lt;br&gt;**"editable"**: whether the component is editable. &lt;br&gt;**"scrollable"**: whether the component is scrollable. &lt;br&gt;**"selectable"**: whether the component is selectable. &lt;br&gt;**"focusable"**: whether the component is focusable. &lt;br&gt;**"focused"**: whether the component is currently focused. &lt;br&gt;If **filters** includes one or more fields, unspecified fields will be filtered out from the results. &lt;br&gt;If **filters** is not provided or is an empty array, none of the aforementioned fields &lt;br&gt;will be filtered out. &lt;br&gt;Other filter fields are used only in testing scenarios. |
+| depth | number | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of <br>the specified component are obtained. If the value is **2**, the attributes of <br>the specified component and its <br>level-1 child components are obtained. The rest can be deduced by analogy. |
+| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: <br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields <br>will be filtered out. <br>Other filter fields are used only in testing scenarios. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | JSON string of the attributes of the specified component and its child components. For details about each field in the component, see the return value &lt;br&gt;description of [getInspectorInfo]{ |
+| string | JSON string of the attributes of the specified component and its child components. For details about each field in the component, see the return value <br>description of [getInspectorInfo]{ |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## getFocusController
 
@@ -842,7 +842,7 @@ getFocusController(): FocusController
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -858,7 +858,7 @@ getFocusController(): FocusController
 
 | 类型 | 说明 |
 | --- | --- |
-| [FocusController](arkts-arkui-arkui-uicontext-focuscontroller-c.md) | 焦点控制器 |
+| [FocusController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-focuscontroller-c.md) | 焦点控制器 |
 
 ## getFont
 
@@ -870,7 +870,7 @@ getFont(): Font
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -886,7 +886,7 @@ getFont(): Font
 
 | 类型 | 说明 |
 | --- | --- |
-| [Font](arkts-arkui-arkui-uicontext-font-c.md) | Font实例对象。 |
+| [Font](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-font-c.md) | Font实例对象。 |
 
 ## getFrameNodeById
 
@@ -898,7 +898,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -932,7 +932,7 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -966,7 +966,7 @@ getHostContext(): Context | undefined
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -982,7 +982,7 @@ getHostContext(): Context | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](arkts-arkui-context-t.md) | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext]{ |
+| [Context](../../apis-na/arkts-apis/arkts-na-context-t.md) | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext]{ |
 
 ## getId
 
@@ -994,7 +994,7 @@ getId(): number
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -1022,7 +1022,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -1038,7 +1038,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 | 类型 | 说明 |
 | --- | --- |
-| [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 返回虚拟键盘抬起时的页面避让模式。 |
+| [KeyboardAvoidMode](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-keyboardavoidmode-e.md) | 返回虚拟键盘抬起时的页面避让模式。 |
 
 ## getLastFocusedUIContext
 
@@ -1050,7 +1050,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -1066,7 +1066,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | UIContext of the UI instance that most recently switched to the focused state. Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever been focused. |
+| [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | UIContext of the UI instance that most recently switched to the focused state. Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever been focused. |
 
 ## getLastForegroundUIContext
 
@@ -1078,7 +1078,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -1094,7 +1094,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | UIContext of the UI instance that most recently switched to the foreground state. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UI instance has ever been in the foreground. |
+| [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | UIContext of the UI instance that most recently switched to the foreground state. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UI instance has ever been in the foreground. |
 
 ## getMagnifier
 
@@ -1102,11 +1102,11 @@ static getLastForegroundUIContext(): UIContext | undefined
 getMagnifier(): Magnifier
 ```
 
-获取[Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md#Magnifier)对象，可控制放大镜显示和隐藏。
+获取[Magnifier](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-magnifier-c.md#magnifier)对象，可控制放大镜显示和隐藏。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -1122,7 +1122,7 @@ getMagnifier(): Magnifier
 
 | 类型 | 说明 |
 | --- | --- |
-| [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md) | Magnifier对象，可用于控制放大镜的显示和隐藏。 |
+| [Magnifier](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-magnifier-c.md) | Magnifier对象，可用于控制放大镜的显示和隐藏。 |
 
 ## getMaxFontScale
 
@@ -1134,7 +1134,7 @@ Get the max font scale.
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -1162,7 +1162,7 @@ getMeasureUtils(): MeasureUtils
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1178,7 +1178,7 @@ getMeasureUtils(): MeasureUtils
 
 | 类型 | 说明 |
 | --- | --- |
-| [MeasureUtils](arkts-arkui-arkui-uicontext-measureutils-c.md) | 提供文本宽度、高度等相关计算。 |
+| [MeasureUtils](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-measureutils-c.md) | 提供文本宽度、高度等相关计算。 |
 
 ## getMediaQuery
 
@@ -1190,7 +1190,7 @@ get object mediaQuery.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -1206,7 +1206,7 @@ get object mediaQuery.
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
+| [MediaQuery](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
 
 ## getNavigationInfoByUniqueId
 
@@ -1218,7 +1218,7 @@ Get navigation information of the frameNode with uniqueId.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1252,7 +1252,7 @@ Obtains the OverlayManager object.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1268,7 +1268,7 @@ Obtains the OverlayManager object.
 
 | 类型 | 说明 |
 | --- | --- |
-| [OverlayManager](arkts-arkui-arkui-uicontext-overlaymanager-c.md) | OverlayManager instance obtained. |
+| [OverlayManager](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-overlaymanager-c.md) | OverlayManager instance obtained. |
 
 ## getOverlayManagerOptions
 
@@ -1280,7 +1280,7 @@ Get object OverlayManagerOptions.
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -1296,7 +1296,7 @@ Get object OverlayManagerOptions.
 
 | 类型 | 说明 |
 | --- | --- |
-| [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | object OverlayManagerOptions. |
+| [OverlayManagerOptions](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-overlaymanageroptions-i.md) | object OverlayManagerOptions. |
 
 ## getPageInfoByUniqueId
 
@@ -1308,7 +1308,7 @@ getPageInfoByUniqueId(id: number): PageInfo
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1330,7 +1330,7 @@ getPageInfoByUniqueId(id: number): PageInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [PageInfo](arkts-arkui-arkui-uicontext-pageinfo-i.md) | The page information of the frameNode with the target uniqueId, includes navDestination and router page information. If the frame node does not have navDestination and router page information, it will return an empty object. |
+| [PageInfo](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-pageinfo-i.md) | The page information of the frameNode with the target uniqueId, includes navDestination and router page information. If the frame node does not have navDestination and router page information, it will return an empty object. |
 
 ## getPageRootNode
 
@@ -1342,7 +1342,7 @@ getPageRootNode(): FrameNode | null
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1356,7 +1356,7 @@ getPageRootNode(): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| FrameNode | FrameNode of the root node of the page or **null**. &lt;br&gt;If no valid FrameNode is available, **null** is returned. &lt;br&gt;If no page is loaded in the window, **null** is returned. |
+| FrameNode | FrameNode of the root node of the page or **null**. <br>If no valid FrameNode is available, **null** is returned. <br>If no page is loaded in the window, **null** is returned. |
 
 **错误码：**
 
@@ -1374,7 +1374,7 @@ getPixelRoundMode(): PixelRoundMode
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -1402,7 +1402,7 @@ get object PromptAction.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -1418,7 +1418,7 @@ get object PromptAction.
 
 | 类型 | 说明 |
 | --- | --- |
-| [PromptAction](arkts-arkui-arkui-uicontext-promptaction-c.md) | PromptAction object. |
+| [PromptAction](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md) | PromptAction object. |
 
 ## getRouter
 
@@ -1430,7 +1430,7 @@ Obtains a Router object.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -1446,7 +1446,7 @@ Obtains a Router object.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Router](arkts-arkui-arkui-uicontext-router-c.md) | Router object. |
+| [Router](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-router-c.md) | Router object. |
 
 ## getSharedLocalStorage
 
@@ -1458,7 +1458,7 @@ getSharedLocalStorage(): LocalStorage | undefined
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1486,7 +1486,7 @@ getSmartGestureController(): SmartGestureController
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1502,7 +1502,7 @@ getSmartGestureController(): SmartGestureController
 
 | 类型 | 说明 |
 | --- | --- |
-| [SmartGestureController](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md) | 智能手势控制器对象。 |
+| [SmartGestureController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-smartgesturecontroller-c.md) | 智能手势控制器对象。 |
 
 ## getTextMenuController
 
@@ -1510,11 +1510,11 @@ getSmartGestureController(): SmartGestureController
 getTextMenuController(): TextMenuController
 ```
 
-获取[TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md#TextMenuController)对象，可通过该对象控制文本选择菜单。
+获取[TextMenuController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-textmenucontroller-c.md#textmenucontroller)对象，可通过该对象控制文本选择菜单。
 
 **起始版本：** 16
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为16。
+**ArkTS模式：** 起始版本为16。
 
 **废弃版本：** -1
 
@@ -1530,7 +1530,7 @@ getTextMenuController(): TextMenuController
 
 | 类型 | 说明 |
 | --- | --- |
-| [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | TextMenuController对象。 |
+| [TextMenuController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-textmenucontroller-c.md) | TextMenuController对象。 |
 
 ## getUIInspector
 
@@ -1542,7 +1542,7 @@ getUIInspector(): UIInspector
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -1558,7 +1558,7 @@ getUIInspector(): UIInspector
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md) | 返回UIInspector实例对象。 |
+| [UIInspector](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uiinspector-c.md) | 返回UIInspector实例对象。 |
 
 ## getUIObserver
 
@@ -1570,7 +1570,7 @@ getUIObserver(): UIObserver
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -1586,7 +1586,7 @@ getUIObserver(): UIObserver
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md) | 返回UIObserver实例对象。 |
+| [UIObserver](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uiobserver-c.md) | 返回UIObserver实例对象。 |
 
 ## getWindowHeightBreakpoint
 
@@ -1598,7 +1598,7 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -1622,11 +1622,11 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 getWindowId(): number | undefined
 ```
 
-获取当前应用实例所属的窗口ID。 > **说明：** > > 若UIContext位于主应用程序进程中的[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#UIExtensionAbility)内，则返回主应用程 > 序的顶层窗口ID。
+获取当前应用实例所属的窗口ID。 > **说明：** > > 若UIContext位于主应用程序进程中的[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#uiextensionability)内，则返回主应用程 > 序的顶层窗口ID。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1654,7 +1654,7 @@ getWindowName(): string | undefined
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1682,7 +1682,7 @@ getWindowWidthBreakpoint(): WidthBreakpoint
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -1710,7 +1710,7 @@ isAvailable(): boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -1738,7 +1738,7 @@ isEasySplit(): boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1766,7 +1766,7 @@ Checks whether current font scale follows the system.
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -1794,7 +1794,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -1823,7 +1823,7 @@ lpx2px(value: number): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1843,7 +1843,7 @@ lpx2px(value: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 转换后的数值。&lt;br/&gt;取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 ## openBindSheet
 
@@ -1851,11 +1851,11 @@ lpx2px(value: number): number
 openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOptions?: SheetOptions, targetId?: number): Promise<void>
 ```
 
-创建并弹出以bindSheetContent作为内容的半模态页面，使用Promise异步回调。通过该接口弹出的半模态页面样式完全按照bindSheetContent中设置的样式显示。 > **说明：** > > 1. 使用该接口时，若未传入有效的targetId，则不支持设置SheetOptions.preferType为POPUP模式、不支持设置SheetOptions.mode为EMBEDDED模式。 > > 2. 由于[updateBindSheet](#updateBindSheet)和[closeBindSheet](#closeBindSheet)依赖 > bindSheetContent去更新或者关闭指定的半模态页面，开发者需自行维护传入的bindSheetContent。 > > 3. 不支持设置SheetOptions.UIContext。
+创建并弹出以bindSheetContent作为内容的半模态页面，使用Promise异步回调。通过该接口弹出的半模态页面样式完全按照bindSheetContent中设置的样式显示。 > **说明：** > > 1. 使用该接口时，若未传入有效的targetId，则不支持设置SheetOptions.preferType为POPUP模式、不支持设置SheetOptions.mode为EMBEDDED模式。 > > 2. 由于[updateBindSheet](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#updatebindsheet)和[closeBindSheet](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#closebindsheet)依赖 > bindSheetContent去更新或者关闭指定的半模态页面，开发者需自行维护传入的bindSheetContent。 > > 3. 不支持设置SheetOptions.UIContext。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1872,7 +1872,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bindSheetContent | ComponentContent&lt;T&gt; | 是 | 半模态页面中显示的组件内容。 |
-| sheetOptions | [SheetOptions](../../apis-na/arkts-apis/arkts-na-common-sheetoptions-i.md) | 否 | 半模态页面样式。&lt;br/&gt;**说明：** &lt;br/&gt;1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的 UIContext。&lt;br/&gt;2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。&lt;br/&gt;3. 若不传递 targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。&lt;br/&gt;4. 其余属性的默认值参考SheetOptions文 档。 |
+| sheetOptions | [SheetOptions](../../apis-na/arkts-apis/arkts-na-common-sheetoptions-i.md) | 否 | 半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的 UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递 targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考SheetOptions文 档。 |
 | targetId | number | 否 | 需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
 **返回值：**
@@ -1886,7 +1886,7 @@ openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOpti
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120002](../errorcode-bindSheet.md#120002-内容节点对应半模态页面已存在) | The bindSheetContent already exists. |
 | [120005](../errorcode-bindSheet.md#120005-指定的targetid对应的节点未挂载在组件树上) | The node of targetId is not in the component tree. |
 | [120004](../errorcode-bindSheet.md#120004-指定的targetid不存在) | The targetId does not exist. |
@@ -1902,7 +1902,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1918,7 +1918,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
+| frameCallback | [FrameCallback](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
 | delayTime | number | 是 | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
 
 ## postFrameCallback
@@ -1931,7 +1931,7 @@ postFrameCallback(frameCallback: FrameCallback): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1947,7 +1947,7 @@ postFrameCallback(frameCallback: FrameCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameCallback | [FrameCallback](arkts-arkui-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
+| frameCallback | [FrameCallback](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-framecallback-c.md) | 是 | 下一帧需要执行的回调。 |
 
 ## px2fp
 
@@ -1955,11 +1955,11 @@ postFrameCallback(frameCallback: FrameCallback): void
 px2fp(value: number): number
 ```
 
-将px单位的数值转换为以fp为单位的数值。 转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#VirtualScreenConfig).density。 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。 > **说明：** > > getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。
+将px单位的数值转换为以fp为单位的数值。 转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#virtualscreenconfig).density。 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](../../../reference/apis-arkui/arkui-ts/ts-types.md#configuration)。 > **说明：** > > getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1979,7 +1979,7 @@ px2fp(value: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 转换后的数值。&lt;br/&gt;取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 ## px2lpx
 
@@ -1991,7 +1991,7 @@ px2lpx(value: number): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2011,7 +2011,7 @@ px2lpx(value: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 转换后的数值。&lt;br/&gt;取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 ## px2vp
 
@@ -2019,11 +2019,11 @@ px2lpx(value: number): number
 px2vp(value: number): number
 ```
 
-将px单位的数值转换为以vp为单位的数值。 转换公式为：vp值 = px值 ÷ 像素密度 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#VirtualScreenConfig).density。 > **说明：** > > 1. getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。 > > 2. UI实例未创建时，像素单位中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考 > [像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+将px单位的数值转换为以vp为单位的数值。 转换公式为：vp值 = px值 ÷ 像素密度 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#virtualscreenconfig).density。 > **说明：** > > 1. getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。 > > 2. UI实例未创建时，像素单位中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考 > [像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2043,7 +2043,7 @@ px2vp(value: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 转换后的数值。&lt;br/&gt;取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 
 ## removeLocalInputEventMonitor
 
@@ -2055,7 +2055,7 @@ removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -2083,7 +2083,7 @@ requireDynamicSyncScene(id: string): Array<DynamicSyncScene>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2105,7 +2105,7 @@ requireDynamicSyncScene(id: string): Array<DynamicSyncScene>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)&gt; | The instance of SwiperDynamicSyncScene. |
+| Array&lt;[DynamicSyncScene](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-dynamicsyncscene-c.md)&gt; | The instance of SwiperDynamicSyncScene. |
 
 ## resolveUIContext
 
@@ -2117,7 +2117,7 @@ static resolveUIContext(): ResolvedUIContext
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -2133,7 +2133,7 @@ static resolveUIContext(): ResolvedUIContext
 
 | 类型 | 说明 |
 | --- | --- |
-| [ResolvedUIContext](arkts-arkui-arkui-uicontext-resolveduicontext-c.md) | 返回带有解析策略的UIContext实例对象。 |
+| [ResolvedUIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-resolveduicontext-c.md) | 返回带有解析策略的UIContext实例对象。 |
 
 ## runScopedTask
 
@@ -2145,7 +2145,7 @@ runScopedTask(callback: () => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -2173,7 +2173,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2189,7 +2189,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| feature | [CustomKeyboardContinueFeature](arkts-arkui-arkui-uicontext-customkeyboardcontinuefeature-e.md) | 是 | 自定义键盘接续特性。 |
+| feature | [CustomKeyboardContinueFeature](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-customkeyboardcontinuefeature-e.md) | 是 | 自定义键盘接续特性。 |
 
 ## setImageCacheCount
 
@@ -2201,7 +2201,7 @@ setImageCacheCount(value: number): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2229,7 +2229,7 @@ setImageRawDataCacheSize(value: number): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2257,7 +2257,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -2273,7 +2273,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 是 | 配置虚拟键盘抬起时页面的避让模式。&lt;br /&gt;默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。&lt;br /&gt;setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
+| value | [KeyboardAvoidMode](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-keyboardavoidmode-e.md) | 是 | 配置虚拟键盘抬起时页面的避让模式。&lt;br /&gt;默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。&lt;br /&gt;setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
 ## setOverlayManagerOptions
 
@@ -2285,7 +2285,7 @@ Init OverlayManager.
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -2301,7 +2301,7 @@ Init OverlayManager.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | 是 | Options. |
+| options | [OverlayManagerOptions](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-overlaymanageroptions-i.md) | 是 | Options. |
 
 **返回值：**
 
@@ -2319,7 +2319,7 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -2335,7 +2335,7 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [PixelRoundMode](../../apis-na/arkts-apis/arkts-na-enums-pixelroundmode-e.md) | 是 | 像素取整模式。&lt;br /&gt;默认值：PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH&lt;br/&gt;设置异常值时，该属性为默认值。 |
+| mode | [PixelRoundMode](../../apis-na/arkts-apis/arkts-na-enums-pixelroundmode-e.md) | 是 | 像素取整模式。&lt;br /&gt;默认值：PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH<br/>设置异常值时，该属性为默认值。 |
 
 ## setResourceManagerCacheMaxCountForHSP
 
@@ -2347,7 +2347,7 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -2383,7 +2383,7 @@ setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -2399,7 +2399,7 @@ setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | 是 | 文本选择清除策略。 |
+| policy | [TextSelectionClearPolicy](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-textselectionclearpolicy-e.md) | 是 | 文本选择清除策略。 |
 
 ## showActionSheet
 
@@ -2411,7 +2411,7 @@ Shows an action sheet in the given settings.
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -2439,7 +2439,7 @@ alertDialog display.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -2467,7 +2467,7 @@ datePickerDialog display.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -2495,7 +2495,7 @@ textPickerDialog display.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -2523,7 +2523,7 @@ textPickerDialog display.
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -2551,7 +2551,7 @@ timePickerDialog display.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -2579,7 +2579,7 @@ Unbind tabs from nested scrollable container components.
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -2609,7 +2609,7 @@ Unbind tabs from scrollable container component.
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -2638,7 +2638,7 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2655,8 +2655,8 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bindSheetContent | ComponentContent&lt;T&gt; | 是 | 半模态页面中显示的组件内容。 |
-| sheetOptions | [SheetOptions](../../apis-na/arkts-apis/arkts-na-common-sheetoptions-i.md) | 是 | 半模态页面样式。&lt;br/&gt;**说明：** &lt;br/&gt;不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函 数。 |
-| partialUpdate | boolean | 否 | 半模态页面更新方式, 默认值为false。&lt;br/&gt;**说明：** &lt;br/&gt;1. true为增量更新，保留当前值，更新SheetOptions中的指定属性。 &lt;br/&gt;2. false为全量更新，除SheetOptions中的指定属性，其他属性恢复默认值。 |
+| sheetOptions | [SheetOptions](../../apis-na/arkts-apis/arkts-na-common-sheetoptions-i.md) | 是 | 半模态页面样式。<br/>**说明：** <br/>不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函 数。 |
+| partialUpdate | boolean | 否 | 半模态页面更新方式, 默认值为false。<br/>**说明：** <br/>1. true为增量更新，保留当前值，更新SheetOptions中的指定属性。 <br/>2. false为全量更新，除SheetOptions中的指定属性，其他属性恢复默认值。 |
 
 **返回值：**
 
@@ -2669,7 +2669,7 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [120001](../errorcode-bindSheet.md#120001-内容节点对应半模态页面错误) | The bindSheetContent is incorrect. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: &lt;br&gt; 1. Mandatory parameters are left unspecified. &lt;br&gt; 2. Incorrect parameters types. &lt;br&gt; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [120003](../errorcode-bindSheet.md#120003-无法找到内容节点对应的半模态页面) | The bindSheetContent cannot be found. |
 
 ## vp2px
@@ -2678,11 +2678,11 @@ updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOp
 vp2px(value: number): number
 ```
 
-将vp单位的数值转换为以px为单位的数值。 转换公式为：px值 = vp值 × 像素密度 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#VirtualScreenConfig).density。 > **说明：** > > 1. getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。 > > 2. UI实例未创建时，像素单位中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考 > [像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+将vp单位的数值转换为以px为单位的数值。 转换公式为：px值 = vp值 × 像素密度 像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](arkts-arkui-display-virtualscreenconfig-i.md#virtualscreenconfig).density。 > **说明：** > > 1. getUIContext需在windowStage. > [loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后 > 调用此接口，否则无法返回准确结果。 > > 2. UI实例未创建时，像素单位中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考 > [像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2702,5 +2702,5 @@ vp2px(value: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 转换后的数值。&lt;br/&gt;取值范围：(-∞, +∞) |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
 

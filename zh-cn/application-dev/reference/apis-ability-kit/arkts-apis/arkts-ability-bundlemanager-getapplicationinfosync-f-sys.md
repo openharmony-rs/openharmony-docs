@@ -10,7 +10,7 @@ function getApplicationInfoSync(bundleName: string, applicationFlags: int, userI
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -27,8 +27,8 @@ function getApplicationInfoSync(bundleName: string, applicationFlags: int, userI
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
-| applicationFlags | int | 是 | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考 [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md#ApplicationFlag（系统接口）)。 |
-| userId | int | 是 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId) 获取。 |
+| applicationFlags | int | 是 | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考 [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md#applicationflag系统接口)。 |
+| userId | int | 是 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
 
 **返回值：**
 
@@ -78,7 +78,7 @@ function getApplicationInfoSync(bundleName: string, applicationFlags: int) : App
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -95,7 +95,7 @@ function getApplicationInfoSync(bundleName: string, applicationFlags: int) : App
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
-| applicationFlags | int | 是 | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考 [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md#ApplicationFlag（系统接口）)。 |
+| applicationFlags | int | 是 | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考 [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md#applicationflag系统接口)。 |
 
 **返回值：**
 

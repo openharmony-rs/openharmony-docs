@@ -10,7 +10,7 @@ export function stepsCurve(count: int, end: boolean): ICurve
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,8 +24,8 @@ export function stepsCurve(count: int, end: boolean): ICurve
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | int | 是 | 阶梯的数量，需要为正整数。&lt;br/&gt;取值范围：[1, +∞)&lt;br/&gt;**说明：** &lt;br/&gt;设置小于1的值时，按值为1处理。 |
-| end | boolean | 是 | 在每个间隔的起点或终点发生阶跃变化。&lt;br&gt;-true：在终点发生阶跃变化。&lt;br&gt;-false：在起点发生阶跃变化。 |
+| count | int | 是 | 阶梯的数量，需要为正整数。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置小于1的值时，按值为1处理。 |
+| end | boolean | 是 | 在每个间隔的起点或终点发生阶跃变化。<br>-true：在终点发生阶跃变化。<br>-false：在起点发生阶跃变化。 |
 
 **返回值：**
 

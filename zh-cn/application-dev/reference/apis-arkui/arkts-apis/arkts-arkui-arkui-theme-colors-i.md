@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ alert: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ backgroundEmphasize: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ backgroundFourth: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ backgroundPrimary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ backgroundSecondary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -144,7 +144,7 @@ backgroundTertiary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -168,7 +168,7 @@ brand: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -186,13 +186,13 @@ brand: ResourceColor
 compBackgroundEmphasize: ResourceColor
 ```
 
-高亮背景。&lt;/br&gt;**影响组件：** Swiper、Toggle、[Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、&lt;/br&gt; Checkbox、CheckboxGroup、Radio
+高亮背景。&lt;/br&gt;**影响组件：** Swiper、Toggle、[Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、&lt;/br&gt; Checkbox、CheckboxGroup、Radio
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -216,7 +216,7 @@ compBackgroundFocus: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -240,7 +240,7 @@ compBackgroundGray: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -264,7 +264,7 @@ compBackgroundNeutral: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -288,7 +288,7 @@ compBackgroundPrimary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -312,7 +312,7 @@ compBackgroundPrimaryContrary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -336,7 +336,7 @@ compBackgroundPrimaryTran: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -360,7 +360,7 @@ compBackgroundSecondary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -378,13 +378,13 @@ compBackgroundSecondary: ResourceColor
 compBackgroundTertiary: ResourceColor
 ```
 
-三级背景。&lt;/br&gt;**影响组件：** EditableTitleBar、Progress、 AlphabetIndexer、&lt;/br&gt;Button、Select、 Toggle、&lt;/br&gt;[Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、TextInput、 Search。从API版本26.0.0开始，新增UIPickerComponent、 TextPicker。
+三级背景。&lt;/br&gt;**影响组件：** EditableTitleBar、Progress、 AlphabetIndexer、&lt;/br&gt;Button、Select、 Toggle、&lt;/br&gt;[Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、TextInput、 Search。从API版本26.0.0开始，新增UIPickerComponent、 TextPicker。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -408,7 +408,7 @@ compCommonContrary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -426,13 +426,13 @@ compCommonContrary: ResourceColor
 compDivider: ResourceColor
 ```
 
-通用分割线颜色。&lt;/br&gt;**影响组件：** [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#SelectDialog)、 PatternLock、Divider。从API版本26.0.0开始，新增 UIPickerComponent、TextPicker、MenuItem、 MenuItemGroup、Select。
+通用分割线颜色。&lt;/br&gt;**影响组件：** [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#selectdialog)、 PatternLock、Divider。从API版本26.0.0开始，新增 UIPickerComponent、TextPicker、MenuItem、 MenuItemGroup、Select。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -450,13 +450,13 @@ compDivider: ResourceColor
 compEmphasizeSecondary: ResourceColor
 ```
 
-20%高亮背景颜色。&lt;/br&gt;**影响组件：** Progress、[ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#ProgressButtonColorOptions)、 AlphabetIndexer、&lt;/br&gt;Select、Toggle
+20%高亮背景颜色。&lt;/br&gt;**影响组件：** Progress、[ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#progressbuttoncoloroptions)、 AlphabetIndexer、&lt;/br&gt;Select、Toggle
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -480,7 +480,7 @@ compEmphasizeTertiary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -504,7 +504,7 @@ compFocusedPrimary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -528,7 +528,7 @@ compFocusedSecondary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -552,7 +552,7 @@ compFocusedTertiary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -576,7 +576,7 @@ compForegroundPrimary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -600,7 +600,7 @@ confirm: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -624,7 +624,7 @@ container?: ResourceColor
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -642,13 +642,13 @@ container?: ResourceColor
 fontEmphasize: ResourceColor
 ```
 
-高亮字体颜色。&lt;/br&gt;**影响组件：** [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#TipsDialog)、 [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md#ConfirmDialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、&lt;/br&gt; [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#SelectDialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、 [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、&lt;/br&gt;AlphabetIndexer、 Popup、Button、&lt;/br&gt;Select、 ToolBar、Search、&lt;/br&gt;TimePicker、 DatePicker、TextPicker。从API版本26.0.0开始，新增RichEditor。
+高亮字体颜色。&lt;/br&gt;**影响组件：** [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#tipsdialog)、 [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md#confirmdialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#alertdialog)、&lt;/br&gt; [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#selectdialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#customcontentdialog)、 [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#subheader)、&lt;/br&gt;AlphabetIndexer、 Popup、Button、&lt;/br&gt;Select、 ToolBar、Search、&lt;/br&gt;TimePicker、 DatePicker、TextPicker。从API版本26.0.0开始，新增RichEditor。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -672,7 +672,7 @@ fontFourth: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -696,7 +696,7 @@ fontOnFourth: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -714,13 +714,13 @@ fontOnFourth: ResourceColor
 fontOnPrimary: ResourceColor
 ```
 
-一级文本反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [Badge](../../apis-na/arkts-apis/arkts-na-tabcontent-tabbaroptions-i.md#badge)、Button、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)
+一级文本反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [Badge](../../apis-na/arkts-apis/arkts-na-tabcontent-tabbaroptions-i.md#badge)、Button、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -744,7 +744,7 @@ fontOnSecondary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -768,7 +768,7 @@ fontOnTertiary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -786,13 +786,13 @@ fontOnTertiary: ResourceColor
 fontPrimary: ResourceColor
 ```
 
-一级文本字体颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md#LoadingDialog)、 [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#TipsDialog)、&lt;/br&gt; [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md#ConfirmDialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、 [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#SelectDialog)、&lt;/br&gt; [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、Swiper、 Text、&lt;/br&gt;[SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、 [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#ProgressButtonColorOptions)、AlphabetIndexer、&lt;/br&gt; Popup、Select、[Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、&lt;/br&gt; ToolBar、Menu、TextInput、&lt;/br&gt; Search、TimePicker、DatePicker、&lt;/br&gt; TextPicker、[ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#ComposeListItem)、 [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增CalendarPicker、 UIPickerComponent、RichEditor、MenuItem、 MenuItemGroup、Counter。
+一级文本字体颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md#loadingdialog)、 [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#tipsdialog)、&lt;/br&gt; [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md#confirmdialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#alertdialog)、 [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md#selectdialog)、&lt;/br&gt; [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#customcontentdialog)、Swiper、 Text、&lt;/br&gt;[SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#subheader)、 [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#progressbuttoncoloroptions)、AlphabetIndexer、&lt;/br&gt; Popup、Select、[Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、&lt;/br&gt; ToolBar、Menu、TextInput、&lt;/br&gt; Search、TimePicker、DatePicker、&lt;/br&gt; TextPicker、[ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#composelistitem)、 [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)。从API版本26.0.0开始，新增CalendarPicker、 UIPickerComponent、RichEditor、MenuItem、 MenuItemGroup、Counter。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -810,13 +810,13 @@ fontPrimary: ResourceColor
 fontSecondary: ResourceColor
 ```
 
-二级文本字体颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、&lt;/br&gt; [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、AlphabetIndexer、 Popup、&lt;/br&gt;TextInput、Search、 [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#ComposeListItem)、&lt;/br&gt; [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)、TextClock。从API版本26.0.0开始，新增 MenuItem、MenuItemGroup。
+二级文本字体颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#alertdialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#customcontentdialog)、&lt;/br&gt; [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#subheader)、AlphabetIndexer、 Popup、&lt;/br&gt;TextInput、Search、 [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#composelistitem)、&lt;/br&gt; [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)、TextClock。从API版本26.0.0开始，新增 MenuItem、MenuItemGroup。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -834,13 +834,13 @@ fontSecondary: ResourceColor
 fontTertiary: ResourceColor
 ```
 
-三级文本字体颜色。&lt;/br&gt;**影响组件：** [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#ComposeListItem)
+三级文本字体颜色。&lt;/br&gt;**影响组件：** [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md#composelistitem)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -864,7 +864,7 @@ iconEmphasize: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -888,7 +888,7 @@ iconFourth: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -906,13 +906,13 @@ iconFourth: ResourceColor
 iconOnFourth: ResourceColor
 ```
 
-四级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#ProgressButtonColorOptions)
+四级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbuttoncoloroptions-i.md#progressbuttoncoloroptions)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -936,7 +936,7 @@ iconOnPrimary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -954,13 +954,13 @@ iconOnPrimary: ResourceColor
 iconOnSecondary: ResourceColor
 ```
 
-二级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)
+二级图标反转颜色，用于彩色背景。&lt;/br&gt;**影响组件：** [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -984,7 +984,7 @@ iconOnTertiary: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1002,13 +1002,13 @@ iconOnTertiary: ResourceColor
 iconPrimary: ResourceColor
 ```
 
-一级图标颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、Swiper、 ToolBar、&lt;/br&gt;[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开 始，新增MenuItem。
+一级图标颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、Swiper、 ToolBar、&lt;/br&gt;[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)。从API版本26.0.0开 始，新增MenuItem。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1026,13 +1026,13 @@ iconPrimary: ResourceColor
 iconSecondary: ResourceColor
 ```
 
-二级图标颜色。&lt;/br&gt;**影响组件：** [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md#LoadingDialog)、 [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)、&lt;/br&gt;Popup、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、Search、&lt;/br&gt; [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增LoadingProgress。
+二级图标颜色。&lt;/br&gt;**影响组件：** [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md#loadingdialog)、 [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#subheader)、&lt;/br&gt;Popup、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、Search、&lt;/br&gt; [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)。从API版本26.0.0开始，新增LoadingProgress。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1056,7 +1056,7 @@ iconSubEmphasize: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1074,13 +1074,13 @@ iconSubEmphasize: ResourceColor
 iconTertiary: ResourceColor
 ```
 
-三级图标颜色。&lt;/br&gt;**影响组件：** [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#SubHeader)
+三级图标颜色。&lt;/br&gt;**影响组件：** [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md#subheader)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1098,13 +1098,13 @@ iconTertiary: ResourceColor
 interactiveActive: ResourceColor
 ```
 
-通用激活交互式颜色。&lt;/br&gt;**影响组件：** [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)
+通用激活交互式颜色。&lt;/br&gt;**影响组件：** [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1128,7 +1128,7 @@ interactiveClick: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1146,13 +1146,13 @@ interactiveClick: ResourceColor
 interactiveFocus: ResourceColor
 ```
 
-通用获焦交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)
+通用获焦交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1170,13 +1170,13 @@ interactiveFocus: ResourceColor
 interactiveHover: ResourceColor
 ```
 
-通用悬停交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增 RichEditor、MenuItem、Select。
+通用悬停交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)。从API版本26.0.0开始，新增 RichEditor、MenuItem、Select。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1194,13 +1194,13 @@ interactiveHover: ResourceColor
 interactivePressed: ResourceColor
 ```
 
-通用按压交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)。从API版本26.0.0开始，新增 RichEditor。
+通用按压交互式颜色。&lt;/br&gt;**影响组件：** EditableTitleBar、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、[TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)。从API版本26.0.0开始，新增 RichEditor。
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1218,13 +1218,13 @@ interactivePressed: ResourceColor
 interactiveSelect: ResourceColor
 ```
 
-通用选择交互式颜色。&lt;/br&gt;**影响组件：** [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#OnChangedCallback)
+通用选择交互式颜色。&lt;/br&gt;**影响组件：** [TreeView](../../apis-na/arkts-apis/arkts-na-onchangedcallback-t.md#onchangedcallback)
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1248,7 +1248,7 @@ onPrimary?: ResourceColor
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1272,7 +1272,7 @@ primary?: ResourceColor
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1290,13 +1290,13 @@ primary?: ResourceColor
 warning: ResourceColor
 ```
 
-一级警示色。&lt;/br&gt;**影响组件：** [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#TipsDialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#AlertDialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#CustomContentDialog)、&lt;/br&gt;[Badge](../../apis-na/arkts-apis/arkts-na-tabcontent-tabbaroptions-i.md#badge)、 Button
+一级警示色。&lt;/br&gt;**影响组件：** [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md#tipsdialog)、 [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md#alertdialog)、 [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md#customcontentdialog)、&lt;/br&gt;[Badge](../../apis-na/arkts-apis/arkts-na-tabcontent-tabbaroptions-i.md#badge)、 Button
 
 **类型：** [ResourceColor](../../apis-na/arkts-apis/arkts-na-resourcecolor-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

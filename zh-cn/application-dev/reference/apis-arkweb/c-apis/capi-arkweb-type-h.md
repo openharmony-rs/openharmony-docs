@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkWeb_JavaScriptBridgeData](capi-web-arkweb-javascriptbridgedata.md) | ArkWeb_JavaScriptBridgeData | ArkWeb_JavaScriptBridgeData是JavaScript桥接数据定义结构体，用于在Native代码和Web页面之间传递JavaScript桥接相关的数据。该结构体封装了桥接调用中的参数数据，是JavaScript桥接子系统中的基本数据单元，配合ArkWeb_ControllerAPI中的JavaScript Proxy注册接口使用。 |
-| [ArkWeb_JavaScriptObject](capi-web-arkweb-javascriptobject.md) | ArkWeb_JavaScriptObject | Defines the javascript object. |
+| [ArkWeb_JavaScriptObject](capi-web-arkweb-javascriptobject.md) | ArkWeb_JavaScriptObject | ArkWeb_JavaScriptObject结构体用于向Web页面注入JavaScript代码并获取执行结果。适用于需要从原生应用主动调用Web页面中的JavaScript函数、读取Web页面状态或调用Web页面API的场景，可简化Web与原生应用间的数据交互流程。开发者可通过该结构体指定待注入的JavaScript脚本内容及长度，注册执行完成回调，并通过userData传递自定义上下文数据，实现Web与原生应用之间的数据交互。 |
 | [ArkWeb_ProxyMethod](capi-web-arkweb-proxymethod.md) | ArkWeb_ProxyMethod | ArkWeb_ProxyMethod是用于定义JavaScript代理方法的结构体，支持实现JavaScript与Native代码之间的安全通信，适用于需要从Web页面调用Native能力的场景。该结构体指定了一个可以从JavaScript调用的Native方法的基本信息，包含方法名称和对应的Native回调函数指针和需要携带的自定义数据三个字段。多个ArkWeb_ProxyMethod可以组合成ArkWeb_ProxyObject，以对象的形式整体注入到Web页面中，从而让Web应用能够方便地访问设备原生能力。 |
 | [ArkWeb_ProxyMethodWithResult](capi-web-arkweb-proxymethodwithresult.md) | ArkWeb_ProxyMethodWithResult | ArkWeb_ProxyMethodWithResult是带返回值的JavaScript代理方法结构体，扩展了ArkWeb_ProxyMethod的能力，支持在JavaScript调用Native方法后获取返回值。该结构体在方法名称和回调函数的基础上，增加了返回值处理能力，适用于需要向Web前端返回执行结果的调用场景。 |
 | [ArkWeb_ProxyObject](capi-web-arkweb-proxyobject.md) | ArkWeb_ProxyObject | ArkWeb_ProxyObject是注入到Web页面的JavaScript代理对象结构体，用于将一组相关的ArkWeb_ProxyMethod方法组织成对象整体暴露给Web前端。该结构体指定了对象在JavaScript中的名称（objName）、方法数组（methodList）和方法数量（size），使得Native应用可以向Web页面暴露结构化的API集合。代理对象通过方法映射机制将Native侧的ArkWeb_ProxyMethod与JavaScript侧的方法调用进行关联，支持方法参数和返回值的自动转换。 |
@@ -51,8 +51,8 @@
 | [typedef void (\*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)](#arkweb_oncomponentcallback) | ArkWeb_OnComponentCallback | 接收Web组件事件通知的回调。用于接收Web组件生命周期事件通知，例如页面加载完成、页面销毁、组件可见性变化等场景下的状态变更通知。 |
 | [typedef void (\*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)](#arkweb_onscrollcallback) | ArkWeb_OnScrollCallback | Web组件滚动时的回调函数。 |
 | [typedef void (\*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)](#arkweb_onmessageeventhandler) | ArkWeb_OnMessageEventHandler | 处理HTML发送过来的Post Message数据。 |
-| [ARKWEB_MEMBER_EXISTS(s, f) \((intptr_t) & ((s)->f) - (intptr_t)(s) + sizeof((s)->f) <= *(size_t *)(s))](#arkweb_member_exists) | - | Check whether the member variables of the current struct exist. |
-| [ARKWEB_MEMBER_MISSING(s, f)(!ARKWEB_MEMBER_EXISTS(s, f) \|\| !((s)->f))](#arkweb_member_missing) | - | Return false if the struct member does not exist, otherwise true. |
+| [ARKWEB_MEMBER_EXISTS(s, f) \((intptr_t) & ((s)->f) - (intptr_t)(s) + sizeof((s)->f) <= *(size_t *)(s))](#arkweb_member_exists) | - | 检查结构体中是否存在该成员变量。 |
+| [ARKWEB_MEMBER_MISSING(s, f)(!ARKWEB_MEMBER_EXISTS(s, f) \|\| !((s)->f))](#arkweb_member_missing) | - | 当前结构体存在该成员变量则返回false，否则返回true。 |
 
 ## 枚举类型说明
 
@@ -202,7 +202,7 @@ ARKWEB_MEMBER_EXISTS(s, f) \((intptr_t) & ((s)->f) - (intptr_t)(s) + sizeof((s)-
 
 **描述**
 
-Check whether the member variables of the current struct exist.
+检查结构体中是否存在该成员变量。
 
 **起始版本：** 12
 
@@ -214,7 +214,7 @@ ARKWEB_MEMBER_MISSING(s, f)(!ARKWEB_MEMBER_EXISTS(s, f) || !((s)->f))
 
 **描述**
 
-Return false if the struct member does not exist, otherwise true.
+当前结构体存在该成员变量则返回false，否则返回true。
 
 **起始版本：** 12
 

@@ -12,7 +12,7 @@
 | [Environment](arkts-arkgraphics3d-sceneresources-environment-i.md) | 环境资源. |
 | [Image](arkts-arkgraphics3d-sceneresources-image-i.md) | 图像资源. |
 | [ImageStream](arkts-arkgraphics3d-sceneresources-imagestream-i.md) | 图像流资源. |
-| [Material](arkts-arkgraphics3d-sceneresources-material-i.md) | 材质类型，继承自[SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#SceneResource)。 |
+| [Material](arkts-arkgraphics3d-sceneresources-material-i.md) | 材质类型，继承自[SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)。 |
 | [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md) | 材质属性接口. |
 | [Mesh](arkts-arkgraphics3d-sceneresources-mesh-i.md) | 网格节点拥有的网格实例 |
 | [MeshResource](arkts-arkgraphics3d-sceneresources-meshresource-i.md) | 几何节点的网络数据描述资源 |
@@ -32,7 +32,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [UnlitShadowAlphaMaterial](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md) | 无光照阴影透明度材质资源。 此材质继承自[Material](arkts-arkgraphics3d-sceneresources-material-i.md#Material)，仅绘制材质表面阴影。材质启用[Blend](arkts-arkgraphics3d-sceneresources-blend-i.md#Blend)属性时，可与背景融合模拟透明效果。 |
+| [UnlitShadowAlphaMaterial](arkts-arkgraphics3d-sceneresources-unlitshadowalphamaterial-i-sys.md) | 无光照阴影透明度材质资源。 此材质继承自[Material](arkts-arkgraphics3d-sceneresources-material-i.md#material)，仅绘制材质表面阴影。材质启用[Blend](arkts-arkgraphics3d-sceneresources-blend-i.md#blend)属性时，可与背景融合模拟透明效果。 |
 <!--DelEnd-->
 
 ### 枚举

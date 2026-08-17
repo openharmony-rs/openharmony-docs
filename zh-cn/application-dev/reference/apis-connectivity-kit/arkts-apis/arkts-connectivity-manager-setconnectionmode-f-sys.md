@@ -10,7 +10,7 @@ function setConnectionMode(mode: ConnectionMode, duration: int): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -29,7 +29,7 @@ function setConnectionMode(mode: ConnectionMode, duration: int): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [ConnectionMode](arkts-connectivity-manager-connectionmode-e-sys.md) | 是 | 需要设置的NearLink连接模式 |
-| duration | int | 是 | 表示设置连接模式的持续时间（以秒为单位）。值为0表示无限制 &lt;br&gt;单位为： 秒，取值应为≥0的整数。 |
+| duration | int | 是 | 表示设置连接模式的持续时间（以秒为单位）。值为0表示无限制 <br>单位为： 秒，取值应为≥0的整数。 |
 
 **返回值：**
 

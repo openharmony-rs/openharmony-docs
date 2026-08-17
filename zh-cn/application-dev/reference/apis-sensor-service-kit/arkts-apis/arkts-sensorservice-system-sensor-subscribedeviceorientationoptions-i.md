@@ -1,14 +1,14 @@
 # SubscribeDeviceOrientationOptions
 
-用于设置设备方向传感器订阅的参数，包括回调频率和回调函数。
+用于设置设备方向传感器订阅的参数，包括回调频率和回调函数。 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [ORIENTATION](arkts-sensorservice-sensor-sensorid-e.md#ORIENTATION)
+**替代接口：** [ORIENTATION](arkts-sensorservice-sensor-sensorid-e.md#orientation)
 
 <!--Device-unnamed-export interface SubscribeDeviceOrientationOptions--><!--Device-unnamed-export interface SubscribeDeviceOrientationOptions-End-->
 
@@ -26,11 +26,11 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#on_SensorId.COLOR)
+**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#onsensoridcolor)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -44,13 +44,13 @@ fail?: (data: string, code: number) => void
 interval: string
 ```
 
-频率参数，设备方向传感器的回调函数执行频率。 默认值：'normal'。 可选值： -'game'：极高的回调频率，20ms/次，适用于游戏场景。 -'ui'：较高的回调频率，60ms/次，适用于UI更新场景。 -'normal'：普通的回调频率，200ms/次，适用于低功耗场景。
+频率参数，设备方向传感器的回调函数执行频率。 <br/>默认值：'normal'。 <br/>可选值： <br/>-'game'：极高的回调频率，20ms/次，适用于游戏场景。 <br/>-'ui'：较高的回调频率，60ms/次，适用于UI更新场景。 <br/>-'normal'：普通的回调频率，200ms/次，适用于低功耗场景。
 
 **类型：** string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -74,11 +74,11 @@ success: (data: DeviceOrientationResponse) => void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#on_SensorId.COLOR)
+**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#onsensoridcolor)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

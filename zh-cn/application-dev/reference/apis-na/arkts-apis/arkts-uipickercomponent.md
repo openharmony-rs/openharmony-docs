@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [UIPickerComponent](arkts-na-uipickercomponent-uipickercomponent-f.md#UIPickerComponent) | 定义UIPickerComponent组件。 |
+| [UIPickerComponent](arkts-na-uipickercomponent-uipickercomponent-f.md#uipickercomponent) | 定义UIPickerComponent组件。 |
 
 ### 接口
 
@@ -26,5 +26,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnUIPickerComponentCallback](arkts-na-onuipickercomponentcallback-t.md) | 定义[onChange](arkts-na-uipickercomponent-uipickercomponentattribute-i.md#onChange)和[onScrollStop](arkts-na-uipickercomponent-uipickercomponentattribute-i.md#onScrollStop)事件的回调类型。 |
+| [OnUIPickerComponentCallback](arkts-na-onuipickercomponentcallback-t.md) | 定义[onChange](arkts-na-uipickercomponent-uipickercomponentattribute-i.md#onchange)和[onScrollStop](arkts-na-uipickercomponent-uipickercomponentattribute-i.md#onscrollstop)事件的回调类型。 |
 

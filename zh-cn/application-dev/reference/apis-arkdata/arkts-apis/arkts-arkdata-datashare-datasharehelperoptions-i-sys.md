@@ -1,10 +1,10 @@
 # DataShareHelperOptions（系统接口）
 
-指定[DataShareHelper](#DataShareHelperOptions（系统接口）)的可选参数，包含是否在代理模式下，以及非静默访问的拉起等待时间。
+指定[DataShareHelper](#datasharehelperoptions系统接口)的可选参数，包含是否在代理模式下，以及非静默访问的拉起等待时间。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@
 isProxy?: boolean
 ```
 
-默认为false，如果为true，则要创建的[DataShareHelper](#DataShareHelperOptions（系统接口）)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在， 当数据库不存在时， [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createDataShareHelper（系统接口）) 会拉起数据提供者创建数据库。
+默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelperoptions系统接口)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在， 当数据库不存在时， [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper系统接口) 会拉起数据提供者创建数据库。
 
 **类型：** boolean
 
@@ -28,7 +28,7 @@ isProxy?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -54,7 +54,7 @@ waitTime?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

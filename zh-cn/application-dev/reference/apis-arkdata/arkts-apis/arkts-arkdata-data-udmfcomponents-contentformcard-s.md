@@ -4,7 +4,7 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ contentFormData: uniformDataStruct.ContentForm
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -47,7 +47,7 @@ contentFormData: uniformDataStruct.ContentForm
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -66,11 +66,11 @@ contentFormData: uniformDataStruct.ContentForm
 
 内容卡片类型，影响内容卡片的大小。
 
-**类型：** [FormType](../../apis-na/arkts-apis/arkts-na-data-udmfcomponents-formtype-e.md)
+**类型：** [FormType](arkts-arkdata-data-udmfcomponents-formtype-e.md)
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -93,7 +93,7 @@ contentFormData: uniformDataStruct.ContentForm
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -115,7 +115,7 @@ handleOnClick?: Function
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

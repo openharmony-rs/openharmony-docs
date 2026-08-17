@@ -8,11 +8,11 @@ type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md#AuthTrustLevel)
+**替代接口：** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md#authtrustlevel)
 
 <!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'--><!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'-End-->
 

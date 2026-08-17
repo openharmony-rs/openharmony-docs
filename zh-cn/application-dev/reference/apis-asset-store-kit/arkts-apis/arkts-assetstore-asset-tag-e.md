@@ -1,10 +1,10 @@
 # Tag
 
-枚举，关键资产支持的属性名称类型，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md#AssetMap)的键。 > **说明：** > > 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见 > [各个场景的开发指导](../../../security/AssetStoreKit/asset-store-kit-overview.md)。
+枚举，关键资产支持的属性名称类型，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md#assetmap)的键。 > **说明：** > > 以下为Tag类型的全量枚举值，每个接口可传的Tag枚举及对应的Value取值范围不同，详见 > [各个场景的开发指导](../../../security/AssetStoreKit/asset-store-kit-overview.md)。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ SECRET = TagType.BYTES | 0x01
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ ALIAS = TagType.BYTES | 0x02
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ ACCESSIBILITY = TagType.NUMBER | 0x03
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ AUTH_TYPE = TagType.NUMBER | 0x05
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -142,7 +142,7 @@ AUTH_CHALLENGE = TagType.BYTES | 0x07
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -162,7 +162,7 @@ AUTH_TOKEN = TagType.BYTES | 0x08
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -182,7 +182,7 @@ SYNC_TYPE = TagType.NUMBER | 0x10
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -202,7 +202,7 @@ IS_PERSISTENT = TagType.BOOL | 0x11
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -220,7 +220,7 @@ DATA_LABEL_CRITICAL_1 = TagType.BYTES | 0x20
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -240,7 +240,7 @@ DATA_LABEL_CRITICAL_2 = TagType.BYTES | 0x21
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -260,7 +260,7 @@ DATA_LABEL_CRITICAL_3 = TagType.BYTES | 0x22
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -280,7 +280,7 @@ DATA_LABEL_CRITICAL_4 = TagType.BYTES | 0x23
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -300,7 +300,7 @@ DATA_LABEL_NORMAL_1 = TagType.BYTES | 0x30
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -320,7 +320,7 @@ DATA_LABEL_NORMAL_2 = TagType.BYTES | 0x31
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -340,7 +340,7 @@ DATA_LABEL_NORMAL_3 = TagType.BYTES | 0x32
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -360,7 +360,7 @@ DATA_LABEL_NORMAL_4 = TagType.BYTES | 0x33
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -380,7 +380,7 @@ DATA_LABEL_NORMAL_LOCAL_1 = TagType.BYTES | 0x34
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -400,7 +400,7 @@ DATA_LABEL_NORMAL_LOCAL_2 = TagType.BYTES | 0x35
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -420,7 +420,7 @@ DATA_LABEL_NORMAL_LOCAL_3 = TagType.BYTES | 0x36
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -440,7 +440,7 @@ DATA_LABEL_NORMAL_LOCAL_4 = TagType.BYTES | 0x37
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -460,7 +460,7 @@ RETURN_TYPE = TagType.NUMBER | 0x40
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -480,7 +480,7 @@ RETURN_LIMIT = TagType.NUMBER | 0x41
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -500,7 +500,7 @@ RETURN_OFFSET = TagType.NUMBER | 0x42
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -520,7 +520,7 @@ RETURN_ORDERED_BY = TagType.NUMBER | 0x43
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -540,7 +540,7 @@ CONFLICT_RESOLUTION = TagType.NUMBER | 0x44
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -560,7 +560,7 @@ UPDATE_TIME = TagType.BYTES | 0x45
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -580,7 +580,7 @@ OPERATION_TYPE = TagType.NUMBER | 0x46
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -598,7 +598,7 @@ REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -618,7 +618,7 @@ GROUP_ID = TagType.BYTES | 0x48
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -636,7 +636,7 @@ WRAP_TYPE = TagType.NUMBER | 0x49
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

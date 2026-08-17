@@ -2,7 +2,7 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -20,7 +20,7 @@ static clear(options?: ClearStorageOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -48,7 +48,7 @@ static delete(options: DeleteStorageOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -76,7 +76,7 @@ static get(options: GetStorageOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -104,7 +104,7 @@ static set(options: SetStorageOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 

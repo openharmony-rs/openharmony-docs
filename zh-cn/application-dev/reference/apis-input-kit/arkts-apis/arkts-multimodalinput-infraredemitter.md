@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,15 +30,15 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md#hasIrEmitter) | 查询设备是否配备红外发射器。使用Promise异步回调。 |
+| [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md#hasiremitter) | 查询设备是否配备红外发射器。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getInfraredFrequencies](arkts-input-infraredemitter-getinfraredfrequencies-f-sys.md#getInfraredFrequencies) | 查询设备支持的红外信号的频率范围。 |
-| [transmitInfrared](arkts-input-infraredemitter-transmitinfrared-f-sys.md#transmitInfrared) | 产生特定频率和特定电平大小的红外信号。 |
+| [getInfraredFrequencies](arkts-input-infraredemitter-getinfraredfrequencies-f-sys.md#getinfraredfrequencies) | 查询设备支持的红外信号的频率范围。 |
+| [transmitInfrared](arkts-input-infraredemitter-transmitinfrared-f-sys.md#transmitinfrared) | 产生特定频率和特定电平大小的红外信号。 |
 <!--DelEnd-->
 
 <!--Del-->

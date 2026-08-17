@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@ constructor(value: double, unit?:LengthUnit)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -34,8 +34,8 @@ constructor(value: double, unit?:LengthUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 长度属性的值。&lt;br/&gt;取值范围：[0, +∞) |
-| unit | [LengthUnit](arkts-na-graphics-lengthunit-e.md) | 否 | 长度属性的单位。 |
+| value | double | 是 | 长度属性的值。<br/>取值范围：[0, +∞) |
+| unit | [LengthUnit](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthunit-e.md) | 否 | 长度属性的单位。 |
 
 ## fp
 
@@ -47,7 +47,7 @@ static fp(value: double): LengthMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -61,13 +61,13 @@ static fp(value: double): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 长度属性的值。&lt;br/&gt;。 &lt;br&gt;取值范围：(-∞, +∞)。 |
+| value | double | 是 | 长度属性的值。<br/>。 <br>取值范围：(-∞, +∞)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
+| [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
 
 ## lpx
 
@@ -79,7 +79,7 @@ static lpx(value: double): LengthMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -93,13 +93,13 @@ static lpx(value: double): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 长度属性的值。&lt;br/&gt;。 &lt;br&gt;取值范围：(-∞, +∞)。 |
+| value | double | 是 | 长度属性的值。<br/>。 <br>取值范围：(-∞, +∞)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
+| [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
 
 ## percent
 
@@ -111,7 +111,7 @@ static percent(value: double): LengthMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -125,13 +125,13 @@ static percent(value: double): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 长度属性的值。&lt;br/&gt;。 &lt;br&gt;取值范围：[0, 1]。 |
+| value | double | 是 | 长度属性的值。<br/>。 <br>取值范围：[0, 1]。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
+| [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
 
 ## px
 
@@ -143,7 +143,7 @@ static px(value: double): LengthMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -157,13 +157,13 @@ static px(value: double): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 长度属性的值。&lt;br/&gt;。 &lt;br&gt;取值范围：(-∞, +∞)。 |
+| value | double | 是 | 长度属性的值。<br/>。 <br>取值范围：(-∞, +∞)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
+| [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
 
 ## resource
 
@@ -175,7 +175,7 @@ static resource(value: Resource): LengthMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -195,7 +195,7 @@ static resource(value: Resource): LengthMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
+| [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
 
 ## vp
 
@@ -207,7 +207,7 @@ static vp(value: double): LengthMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -221,13 +221,13 @@ static vp(value: double): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 长度属性的值。&lt;br/&gt;。 &lt;br&gt;取值范围：(-∞, +∞)。 |
+| value | double | 是 | 长度属性的值。<br/>。 <br>取值范围：(-∞, +∞)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
+| [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) | LengthMetrics 类的实例。 |
 
 ## unit
 
@@ -237,13 +237,13 @@ public unit: LengthUnit
 
 长度属性的单位，默认为VP。
 
-**类型：** [LengthUnit](arkts-na-graphics-lengthunit-e.md)
+**类型：** [LengthUnit](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthunit-e.md)
 
 **默认值：** VP
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -265,7 +265,7 @@ public value: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

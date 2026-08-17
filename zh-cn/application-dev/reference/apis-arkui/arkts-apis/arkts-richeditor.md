@@ -7,8 +7,8 @@
 | 名称 | 说明 |
 | --- | --- |
 | [RichEditorBaseController](arkts-arkui-richeditor-richeditorbasecontroller-c.md) | RichEditor组件控制器基类。 |
-| [RichEditorController](arkts-arkui-richeditor-richeditorcontroller-c.md) | RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditor-richeditorbasecontroller-c.md#RichEditorBaseController)。 |
-| [RichEditorStyledStringController](arkts-arkui-richeditor-richeditorstyledstringcontroller-c.md) | 使用属性字符串构建的RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditor-richeditorbasecontroller-c.md#RichEditorBaseController)。 |
+| [RichEditorController](arkts-arkui-richeditor-richeditorcontroller-c.md) | RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditor-richeditorbasecontroller-c.md#richeditorbasecontroller)。 |
+| [RichEditorStyledStringController](arkts-arkui-richeditor-richeditorstyledstringcontroller-c.md) | 使用属性字符串构建的RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditor-richeditorbasecontroller-c.md#richeditorbasecontroller)。 |
 
 ### 接口
 
@@ -35,11 +35,11 @@
 | [RichEditorOptions](arkts-arkui-richeditor-richeditoroptions-i.md) | RichEditor初始化参数。 |
 | [RichEditorParagraphResult](arkts-arkui-richeditor-richeditorparagraphresult-i.md) | 后端返回的段落信息。 |
 | [RichEditorParagraphStyle](arkts-arkui-richeditor-richeditorparagraphstyle-i.md) | 段落样式。 |
-| [RichEditorParagraphStyleOptions](arkts-arkui-richeditor-richeditorparagraphstyleoptions-i.md) | 段落样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#RichEditorRange)。 |
+| [RichEditorParagraphStyleOptions](arkts-arkui-richeditor-richeditorparagraphstyleoptions-i.md) | 段落样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#richeditorrange)。 |
 | [RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md) | 定义RichEditor的范围。 |
 | [RichEditorSelection](arkts-arkui-richeditor-richeditorselection-i.md) | 选中内容信息。 |
 | [RichEditorSpanPosition](arkts-arkui-richeditor-richeditorspanposition-i.md) | Span位置信息。 |
-| [RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md) | 文本样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#RichEditorRange)。 |
+| [RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md) | 文本样式选项。 继承自[RichEditorRange](arkts-arkui-richeditor-richeditorrange-i.md#richeditorrange)。 |
 | [RichEditorStyledStringOptions](arkts-arkui-richeditor-richeditorstyledstringoptions-i.md) | RichEditor初始化参数。 |
 | [RichEditorSymbolSpanOptions](arkts-arkui-richeditor-richeditorsymbolspanoptions-i.md) | 设置SymbolSpan组件的偏移位置和样式。 |
 | [RichEditorSymbolSpanStyle](arkts-arkui-richeditor-richeditorsymbolspanstyle-i.md) | 组件SymbolSpan样式信息。 |
@@ -49,9 +49,9 @@
 | [RichEditorTextSpanResult](arkts-arkui-richeditor-richeditortextspanresult-i.md) | 文本Span信息。 |
 | [RichEditorTextStyle](arkts-arkui-richeditor-richeditortextstyle-i.md) | 文本样式信息。 |
 | [RichEditorTextStyleResult](arkts-arkui-richeditor-richeditortextstyleresult-i.md) | 后端返回的文本样式信息。 在RichEditorTextStyle中，fontWeight是设置字体粗细的输入参数。 而在RichEditorTextStyleResult中，会将之前设置的字体粗细转换为数字后返回。 转换关系如下： \| RichEditorTextStyle中的fontWeight \| RichEditorTextStyleResult中的fontWeight \| \| ---- \| ----------------------------------- \| \| 100 \| 0 \| \| 200 \| 1 \| \| 300 \| 2 \| \| 400 \| 3 \| \| 500 \| 4 \| \| 600 \| 5 \| \| 700 \| 6 \| \| 800 \| 7 \| \| 900 \| 8 \| \| Lighter \| 12 \| \| Normal \| 10 \| \| Regular \| 14 \| \| Medium \| 13 \| \| Bold \| 9 \| \| Bolder \| 11 \| RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转换关系，与RichEditorTextStyle和 RichEditorTextStyleResult中fontWeight的转换关系一致。 |
-| [RichEditorUpdateImageSpanStyleOptions](arkts-arkui-richeditor-richeditorupdateimagespanstyleoptions-i.md) | 图片的样式选项。 继承自[RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md#RichEditorSpanStyleOptions)。 |
-| [RichEditorUpdateSymbolSpanStyleOptions](arkts-arkui-richeditor-richeditorupdatesymbolspanstyleoptions-i.md) | SymbolSpan样式选项。 继承自[RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md#RichEditorSpanStyleOptions)。 |
-| [RichEditorUpdateTextSpanStyleOptions](arkts-arkui-richeditor-richeditorupdatetextspanstyleoptions-i.md) | 文本样式选项。 继承自[RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md#RichEditorSpanStyleOptions)。 |
+| [RichEditorUpdateImageSpanStyleOptions](arkts-arkui-richeditor-richeditorupdateimagespanstyleoptions-i.md) | 图片的样式选项。 继承自[RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md#richeditorspanstyleoptions)。 |
+| [RichEditorUpdateSymbolSpanStyleOptions](arkts-arkui-richeditor-richeditorupdatesymbolspanstyleoptions-i.md) | SymbolSpan样式选项。 继承自[RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md#richeditorspanstyleoptions)。 |
+| [RichEditorUpdateTextSpanStyleOptions](arkts-arkui-richeditor-richeditorupdatetextspanstyleoptions-i.md) | 文本样式选项。 继承自[RichEditorSpanStyleOptions](arkts-arkui-richeditor-richeditorspanstyleoptions-i.md#richeditorspanstyleoptions)。 |
 | [RichEditorUrlStyle](arkts-arkui-richeditor-richeditorurlstyle-i.md) | Url信息。 |
 | [SelectionMenuOptions](arkts-arkui-richeditor-selectionmenuoptions-i.md) | 菜单的选项。 |
 

@@ -1,10 +1,10 @@
 # BlanklessFrameInterpolationState
 
-定义当前插帧状态 设备行为差异:仅支持手机平台，其他平台返回801
+白屏插帧状态。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 FRAME_INTERPOLATION_SUCCEEDED = 0
 ```
 
-插帧成功 设备行为差异:仅支持手机平台，其他平台返回801
+插帧成功。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ FRAME_INTERPOLATION_SUCCEEDED = 0
 FRAME_INTERPOLATION_FAILED = 1
 ```
 
-插帧失败 设备行为差异:仅支持手机平台，其他平台返回801
+插帧失败。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ FRAME_INTERPOLATION_FAILED = 1
 FRAME_INTERPOLATION_REMOVED = 2
 ```
 
-插帧移除 设备行为差异:仅支持手机平台，其他平台返回801
+插帧移除。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

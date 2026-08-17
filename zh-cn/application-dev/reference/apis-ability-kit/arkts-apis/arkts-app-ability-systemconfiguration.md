@@ -1,10 +1,10 @@
 # @ohos.app.ability.systemConfiguration
 
-systemConfiguration模块提供系统环境变化监听回调能力，包括系统深浅色模式、系统语言、系统字体大小缩放比例等变化的回调。 例如，通过对系统深浅色模式变化的监听，应用可感知系统的深浅色模式变化，并动态调整自身应用的深浅色主题以适配系统环境。 该模块与[EnvironmentCallback](../../apis-na/arkts-apis/arkts-na-app-ability-environmentcallback-environmentcallback-i.md#EnvironmentCallback)模块的区别在于： - systemConfiguration模块：用于监听系统环境变量[Configuration](arkts-ability-app-ability-configuration-configuration-i.md#Configuration)的变化。 - [EnvironmentCallback](../../apis-na/arkts-apis/arkts-na-app-ability-environmentcallback-environmentcallback-i.md#EnvironmentCallback)模块：用于监听某个应用环境变量 [Configuration](arkts-ability-app-ability-configuration-configuration-i.md#Configuration)的变化。
+systemConfiguration模块提供系统环境变化监听回调能力，包括系统深浅色模式、系统语言、系统字体大小缩放比例等变化的回调。 例如，通过对系统深浅色模式变化的监听，应用可感知系统的深浅色模式变化，并动态调整自身应用的深浅色主题以适配系统环境。 该模块与[EnvironmentCallback](../../apis-na/arkts-apis/arkts-na-app-ability-environmentcallback-environmentcallback-i.md#environmentcallback)模块的区别在于： - systemConfiguration模块：用于监听系统环境变量[Configuration](arkts-ability-app-ability-configuration-configuration-i.md#configuration)的变化。 - [EnvironmentCallback](../../apis-na/arkts-apis/arkts-na-app-ability-environmentcallback-environmentcallback-i.md#environmentcallback)模块：用于监听某个应用环境变量 [Configuration](arkts-ability-app-ability-configuration-configuration-i.md#configuration)的变化。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@ systemConfiguration模块提供系统环境变化监听回调能力，包括系�
 
 | 名称 | 说明 |
 | --- | --- |
-| [UpdatedCallback](arkts-ability-systemconfiguration-updatedcallback-i.md) | UpdatedCallback是监听系统环境变化的回调函数，开发者可通过 [ApplicationContext.onSystemConfigurationUpdated](arkts-ability-applicationcontext-c.md#onSystemConfigurationUpdated) 方法注册自定义的UpdatedCallback，来监听系统环境变化。 |
+| [UpdatedCallback](arkts-ability-systemconfiguration-updatedcallback-i.md) | UpdatedCallback是监听系统环境变化的回调函数，开发者可通过 [ApplicationContext.onSystemConfigurationUpdated](arkts-ability-applicationcontext-c.md#onsystemconfigurationupdated) 方法注册自定义的UpdatedCallback，来监听系统环境变化。 |
 
 ### 类型
 

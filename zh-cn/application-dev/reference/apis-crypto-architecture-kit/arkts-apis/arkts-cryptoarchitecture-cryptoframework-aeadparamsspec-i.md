@@ -1,12 +1,12 @@
 # AeadParamsSpec
 
-用于AEAD（带附加数据的认证加密）对称加解密的 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法参数，继承自 [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#ParamsSpec)。 &lt;br&gt;适用于[AES算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes)的CCM和GCM分组模式。 &lt;br&gt;适用于[SM4算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#sm4)的GCM分组模式。 &lt;br&gt;适用于 [ChaCha20-Poly1305算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20) 分组模式。 > **说明：** > > 在AES-CCM模式下使用AeadParamsSpec加密时： > - 如果加密时指定了tag长度，解密时也必须传入相同的长度。 > > - CCM模式下[update](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)与[doFinal](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#doFinal)只能调用其 > 中一个进行加密或者解密，且每个方法只能调用一次。
+用于AEAD（带附加数据的认证加密）对称加解密的 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法参数，继承自 [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#paramsspec)。 <br>适用于[AES算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes)的CCM和GCM分组模式。 <br>适用于[SM4算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#sm4)的GCM分组模式。 <br>适用于 [ChaCha20-Poly1305算法](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20) 分组模式。 > **说明：** > > 在AES-CCM模式下使用AeadParamsSpec加密时： > - 如果加密时指定了tag长度，解密时也必须传入相同的长度。 > > - CCM模式下[update](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)与[doFinal](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal)只能调用其 > 中一个进行加密或者解密，且每个方法只能调用一次。
 
-**继承/实现关系：** AeadParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#ParamsSpec)
+**继承/实现关系：** AeadParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md#paramsspec)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ authenticatedData?: Uint8Array
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ nonce: Uint8Array
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -68,13 +68,13 @@ nonce: Uint8Array
 tagLen?: int
 ```
 
-认证标签长度，单位为字节。 &lt;br&gt;加密时，标签将被添加到密文末尾。 &lt;br&gt;解密时，标签应位于密文末尾。 &lt;br&gt;取值应为整数。 > **说明：** > - 对于AES-CCM，默认值为12。支持的取值为4、6、8、10、12、14和16。 > - 对于AES-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。 > - 对于SM4-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。 > - 对于ChaCha20-Poly1305，默认值为16。支持的取值为16。
+认证标签长度，单位为字节。 <br>加密时，标签将被添加到密文末尾。 <br>解密时，标签应位于密文末尾。 <br>取值应为整数。 > **说明：** > - 对于AES-CCM，默认值为12。支持的取值为4、6、8、10、12、14和16。 > - 对于AES-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。 > - 对于SM4-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。 > - 对于ChaCha20-Poly1305，默认值为16。支持的取值为16。
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 public addOwningProperty(subscriber: IPropertySubscriber): void
 ```
 
-添加持有的属性。属性不再使用时，应调用[removeOwningProperty](#removeOwningProperty) 或[removeOwningPropertyById](#removeOwningPropertyById)移除。
+添加持有的属性。属性不再使用时，应调用[removeOwningProperty](#removeowningproperty) 或[removeOwningPropertyById](#removeowningpropertybyid)移除。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ constructor()
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ protected notifyPropertyHasChanged(propName: string, newValue: any): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -97,7 +97,7 @@ public removeOwningProperty(property: IPropertySubscriber): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -111,7 +111,7 @@ public removeOwningProperty(property: IPropertySubscriber): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| property | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 是 | 要删除的订阅者， 需为已通过[addOwningProperty](#addOwningProperty)添加的订阅者。 |
+| property | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | 是 | 要删除的订阅者， 需为已通过[addOwningProperty](#addowningproperty)添加的订阅者。 |
 
 ## removeOwningPropertyById
 
@@ -123,7 +123,7 @@ public removeOwningPropertyById(subscriberId: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -137,7 +137,7 @@ public removeOwningPropertyById(subscriberId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriberId | number | 是 | 要删除的订阅者ID， 需为已通过[addOwningProperty](#addOwningProperty)添加的订阅者ID， 通过[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md#IPropertySubscriber（系统接口）).[id()](arkts-arkui-ipropertysubscriber-i-sys.md#id)方法获取。 |
+| subscriberId | number | 是 | 要删除的订阅者ID， 需为已通过[addOwningProperty](#addowningproperty)添加的订阅者ID， 通过[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md#ipropertysubscriber系统接口).[id()](arkts-arkui-ipropertysubscriber-i-sys.md#id)方法获取。 |
 
 ## owningProperties_
 
@@ -151,7 +151,7 @@ private owningProperties_: Set<number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

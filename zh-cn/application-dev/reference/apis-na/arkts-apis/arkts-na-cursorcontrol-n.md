@@ -4,7 +4,7 @@ CursorControl
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,6 +20,6 @@ CursorControl
 
 | 名称 | 说明 |
 | --- | --- |
-| [setCursor](arkts-na-cursorcontrol-setcursor-f.md#setCursor) | Change the mouse cursor style by param: 'PointerStyle'. |
-| [restoreDefault](arkts-na-cursorcontrol-restoredefault-f.md#restoreDefault) | Restore the default mouse cursor style. |
+| [setCursor](arkts-na-cursorcontrol-setcursor-f.md#setcursor) | Change the mouse cursor style by param: 'PointerStyle'. |
+| [restoreDefault](arkts-na-cursorcontrol-restoredefault-f.md#restoredefault) | Restore the default mouse cursor style. |
 

@@ -1,10 +1,10 @@
 # MediaKeySystem
 
-支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createMediaKeySystem)创建一个MediaKeySystem实例。
+支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)创建一个MediaKeySystem实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -56,7 +56,7 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -97,7 +97,7 @@ Create a MediaKeySession instance with level.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -136,7 +136,7 @@ createMediaKeySession(): MediaKeySession
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -170,7 +170,7 @@ Create a MediaKeySession instance.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -202,7 +202,7 @@ destroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -229,7 +229,7 @@ generateKeySystemRequest(): Promise<ProvisionRequest>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -262,7 +262,7 @@ getCertificateStatus(): CertificateStatus
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -295,7 +295,7 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -309,7 +309,7 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#PreDefinedConfigName)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
 
 **返回值：**
 
@@ -335,7 +335,7 @@ getConfigurationString(configName: string): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -349,7 +349,7 @@ getConfigurationString(configName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，长度不能超过4096字节。&lt;br&gt;如果参数长度超过4096字节，会抛出错误码401。&lt;br&gt;属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#PreDefinedConfigName)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，长度不能超过4096字节。<br>如果参数长度超过4096字节，会抛出错误码401。<br>属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
 
 **返回值：**
 
@@ -375,7 +375,7 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -408,7 +408,7 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -441,7 +441,7 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -481,7 +481,7 @@ getStatistics(): StatisticKeyValue[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -514,7 +514,7 @@ Unregister keySystemRequired events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -544,7 +544,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -558,7 +558,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keySystemRequired' | 是 | 监听事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createMediaKeySystem)成功创建MediaKeySystem实例 后可监听。 |
+| type | 'keySystemRequired' | 是 | 监听事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)成功创建MediaKeySystem实例 后可监听。 |
 | callback | (eventInfo: EventInfo) =&gt; void | 否 | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。 |
 
 **错误码：**
@@ -578,7 +578,7 @@ Register keySystemRequired events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -608,7 +608,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -622,7 +622,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keySystemRequired' | 是 | 事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createMediaKeySystem)成功创建MediaKeySystem实例 后可监听，需要设备证书时触发该事件。 |
+| type | 'keySystemRequired' | 是 | 事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)成功创建MediaKeySystem实例 后可监听，需要设备证书时触发该事件。 |
 | callback | (eventInfo: EventInfo) =&gt; void | 是 | 回调函数，返回事件信息。只要有该事件返回就证明需请求设备证书。 |
 
 **错误码：**
@@ -642,7 +642,7 @@ processKeySystemResponse(response: Uint8Array): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -682,7 +682,7 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -696,7 +696,7 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#PreDefinedConfigName)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
 | value | Uint8Array | 是 | 数组类型的配置属性值，具体属性值由设备上DRM解决方案决定。 |
 
 **错误码：**
@@ -717,7 +717,7 @@ setConfigurationString(configName: string, value: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -731,7 +731,7 @@ setConfigurationString(configName: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#PreDefinedConfigName)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
 | value | string | 是 | 配置属性值。 |
 
 **错误码：**

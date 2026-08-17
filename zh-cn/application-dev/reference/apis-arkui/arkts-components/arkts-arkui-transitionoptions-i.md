@@ -4,11 +4,11 @@ TransitionOptions通过指定结构体内的参数来指定转场效果。 > **�
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md#TransitionEffect)
+**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md#transitioneffect)
 
 <!--Device-unnamed-declare interface TransitionOptions--><!--Device-unnamed-declare interface TransitionOptions-End-->
 
@@ -26,7 +26,7 @@ opacity?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -48,7 +48,7 @@ rotate?: RotateOptions
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -70,7 +70,7 @@ scale?: ScaleOptions
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -92,7 +92,7 @@ translate?: TranslateOptions
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -114,11 +114,11 @@ type?: TransitionType
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md#TransitionEffect)
+**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md#transitioneffect)
 
 <!--Device-TransitionOptions-type?: TransitionType--><!--Device-TransitionOptions-type?: TransitionType-End-->
 

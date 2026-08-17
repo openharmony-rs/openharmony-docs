@@ -10,7 +10,7 @@ function offCCallStateChange(callback?: Callback<CCallStateInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function offCCallStateChange(callback?: Callback<CCallStateInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[CCallStateInfo](arkts-telephony-observer-ccallstateinfo-i.md)&gt; | 否 | 回调函数，返回通话状态信息对象。&lt;br/&gt;应用可获取到CCallState。&lt;br/&gt; |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[CCallStateInfo](arkts-telephony-observer-ccallstateinfo-i.md)&gt; | 否 | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallState。<br/> |
 
 **错误码：**
 
@@ -39,7 +39,7 @@ function offCCallStateChange(callback?: Callback<CCallStateInfo>): void
 ## 示例
 
 ```TypeScript
-import { call, observer } from '@kit.TelephonyKit';
+import { observer } from '@kit.TelephonyKit';
 
 let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));

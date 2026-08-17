@@ -1,10 +1,10 @@
 # DetectedBlankScreenReason
 
-Enum type supplied to [BlankScreenDetectionEventInfo](arkts-na-web-blankscreendetectioneventinfo-i.md#BlankScreenDetectionEventInfo) when onDetectedBlankScreen being called.
+Enum type supplied to [BlankScreenDetectionEventInfo](arkts-na-web-blankscreendetectioneventinfo-i.md#blankscreendetectioneventinfo) when onDetectedBlankScreen being called.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ None of any contentful nodes have been detected.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ Web has detected a few of contentful nodes but below the threshold.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

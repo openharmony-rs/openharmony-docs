@@ -1,10 +1,10 @@
 # InputMethodSetting
 
-InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getInputMethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getAllInputMethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listInputMethodSubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md#getSetting)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md#getSetting)获取到InputMethodSetting实例后，通过实例调用。
+InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取到InputMethodSetting实例后，通过实例调用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ enableInputMethod(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -150,7 +150,7 @@ getAllInputMethodsSync(userId?: int): Array<InputMethodProperty>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -195,7 +195,7 @@ getCursorInfo(userId?: int): CursorInfo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -211,7 +211,7 @@ getCursorInfo(userId?: int): CursorInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | int | 否 | 指定的用户ID。 <如果调用者不是用户0应用，该值默认为调用者的用户ID。 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。 |
+| userId | int | 否 | 指定的用户ID。 &lt;如果调用者不是用户0应用，该值默认为调用者的用户ID。 如果调用者是用户0应用，则该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 
@@ -254,7 +254,7 @@ getDefaultInputMethodAbility(): InputMethodProperty
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -303,7 +303,7 @@ getInputMethodSubtypes(bundleName: string, userId?: int): Array<InputMethodSubty
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -349,7 +349,7 @@ getInputMethodsSync(enable: boolean, userId?: int): Array<InputMethodProperty>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -395,7 +395,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -415,7 +415,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 面板显隐状态查询结果。&lt;br/&gt;- true表示被查询的输入法面板处于显示状态。&lt;br/&gt;- false表示被查询的输入法面板处于隐藏状态。 |
+| boolean | 面板显隐状态查询结果。<br/>- true表示被查询的输入法面板处于显示状态。<br/>- false表示被查询的输入法面板处于隐藏状态。 |
 
 **错误码：**
 
@@ -453,7 +453,7 @@ isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -476,7 +476,7 @@ isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 面板显隐状态查询结果。&lt;br/&gt;- true表示被查询的输入法面板处于显示状态。&lt;br/&gt;- false表示被查询的输入法面板处于隐藏状态。 |
+| boolean | 面板显隐状态查询结果。<br/>- true表示被查询的输入法面板处于显示状态。<br/>- false表示被查询的输入法面板处于隐藏状态。 |
 
 **错误码：**
 
@@ -527,7 +527,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -561,7 +561,7 @@ offImeHide(callback?: Callback<Array<InputWindowInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -593,7 +593,7 @@ offImeShow(callback?: Callback<Array<InputWindowInfo>>):void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -623,11 +623,11 @@ inputMethod.getSetting().offImeShow();
 off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
 ```
 
-取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘隐藏事件。
+取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘隐藏事件。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -642,7 +642,7 @@ off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'imeHide' | 是 | 设置监听类型，固定取值'imeHide'。 |
-| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 &lt;br&gt;参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 <br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 ## 示例
 
@@ -656,11 +656,11 @@ inputMethod.getSetting().off('imeHide');
 off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
 ```
 
-取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘显示事件。
+取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘显示事件。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -675,7 +675,7 @@ off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'imeShow' | 是 | 设置监听类型，固定取值'imeShow'。 |
-| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 &lt;br&gt;参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 <br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 ## 示例
 
@@ -693,7 +693,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -727,7 +727,7 @@ onImeHide(callback: Callback<Array<InputWindowInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -767,7 +767,7 @@ onImeShow(callback: Callback<Array<InputWindowInfo>>):void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -805,11 +805,11 @@ inputMethod.getSetting().onImeShow((info: Array<inputMethod.InputWindowInfo>) =>
 on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void
 ```
 
-订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘隐藏事件。使用callback异步回调。
+订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘隐藏事件。使用callback异步回调。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -846,11 +846,11 @@ inputMethod.getSetting().on('imeHide', (info: Array<inputMethod.InputWindowInfo>
 on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void
 ```
 
-订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#Panel)固定态软键盘显示事件。使用callback异步回调。
+订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘显示事件。使用callback异步回调。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

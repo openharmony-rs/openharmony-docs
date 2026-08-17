@@ -10,11 +10,11 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [transformPoint](arkts-arkui-matrix4-matrix4transit-i.md#transformPoint)
+**替代接口：** [transformPoint](arkts-arkui-matrix4-matrix4transit-i.md#transformpoint)
 
 <!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]--><!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]-End-->
 

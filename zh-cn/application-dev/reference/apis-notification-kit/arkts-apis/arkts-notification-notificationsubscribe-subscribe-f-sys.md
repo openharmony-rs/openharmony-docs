@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from '@kit.NotificationKit';
+import { notificationSubscribe } from 'notificationSubscribe';
 ```
 
 ## subscribe
@@ -16,11 +16,11 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribeNotification（系统接口）)
+**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -108,11 +108,11 @@ function subscribe(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribeNotification（系统接口）)
+**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -207,11 +207,11 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribeNotification（系统接口）)
+**替代接口：** [subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md#subscribenotification系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

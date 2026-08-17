@@ -6,7 +6,7 @@ Search组件的控制器继承自 [TextContentControllerBase](../../../reference
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ caretPosition(value: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ caretPosition(value: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | int | 是 | 从字符串开始到光标所在位置的长度。 &lt;br/&gt;取值范围：大于等于0。 |
+| value | int | 是 | 从字符串开始到光标所在位置的长度。 <br/>取值范围：大于等于0。 |
 
 ## constructor
 
@@ -50,7 +50,7 @@ SearchController的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOpti
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,8 +84,8 @@ setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOpti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectionStart | int | 是 | 文本选择区域起始位置，文本框中文字的起始位置为0。&lt;br/&gt;当selectionStart小于0时、按照0处理；当selectionStart大于文字最大长度时、 按照文字最大长度处理。&lt;br/&gt; |
-| selectionEnd | int | 是 | 文本选择区域结束位置。&lt;br/&gt;当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。&lt;br/&gt; |
+| selectionStart | int | 是 | 文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时、按照0处理；当selectionStart大于文字最大长度时、 按照文字最大长度处理。<br/> |
+| selectionEnd | int | 是 | 文本选择区域结束位置。<br/>当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。<br/> |
 | options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选中文字时的配置。&lt;br /&gt;默认值：MenuPolicy.DEFAULT。 |
 
 ## stopEditing
@@ -98,7 +98,7 @@ stopEditing(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

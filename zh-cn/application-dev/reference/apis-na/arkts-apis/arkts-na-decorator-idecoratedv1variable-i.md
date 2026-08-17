@@ -2,11 +2,11 @@
 
 Define V1 decorated variable interface.
 
-**继承/实现关系：** IDecoratedV1Variable extends [IDecoratedVariable](arkts-na-decorator-idecoratedvariable-i.md#IDecoratedVariable)
+**继承/实现关系：** IDecoratedV1Variable extends [IDecoratedVariable](arkts-na-decorator-idecoratedvariable-i.md#idecoratedvariable)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Registers the watch callback function with the data source.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

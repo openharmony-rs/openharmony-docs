@@ -10,7 +10,7 @@ function off(type: 'colorChange', callback?: (colors: Array<RgbaColor>, wallpape
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

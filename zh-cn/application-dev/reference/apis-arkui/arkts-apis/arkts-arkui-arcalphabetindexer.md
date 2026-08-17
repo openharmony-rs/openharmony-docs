@@ -18,5 +18,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnSelectCallback](arkts-arkui-onselectcallback-t.md) | 定义[onSelect](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md#onSelect)中使用的回调类型。 |
+| [OnSelectCallback](arkts-arkui-onselectcallback-t.md) | 定义[onSelect](arkts-arkui-arkui-arcalphabetindexer-arcalphabetindexerattribute-c.md#onselect)中使用的回调类型。 |
 

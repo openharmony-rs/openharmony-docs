@@ -4,7 +4,7 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 alignment?: DialogAlignment
 ```
 
-对话框在竖直方向上的对齐方式。 &lt;br/&gt;默认值：DialogAlignment.Default &lt;br/&gt;**说明：** &lt;br/&gt;若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。
+对话框在竖直方向上的对齐方式。 <br/>默认值：DialogAlignment.Default <br/>**说明：** <br/>若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。
 
 **类型：** DialogAlignment
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ alignment?: DialogAlignment
 backgroundBlurStyle?: BlurStyle
 ```
 
-对话框背板模糊材质。 &lt;br/&gt;默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。 &lt;br/&gt;**说明：** &lt;br/&gt;设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
+对话框背板模糊材质。 <br/>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。 <br/>**说明：** <br/>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
 **类型：** BlurStyle
 
@@ -50,7 +50,7 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 backgroundColor?: ResourceColor
 ```
 
-对话框背板颜色。 &lt;br/&gt;默认值：Color.Transparent &lt;br/&gt;**说明：** &lt;br/&gt;backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。
+对话框背板颜色。 <br/>默认值：Color.Transparent <br/>**说明：** <br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。
 
 **类型：** ResourceColor
 
@@ -100,7 +100,7 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -124,7 +124,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -148,7 +148,7 @@ buttons?: Array<Button>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -172,7 +172,7 @@ enableHoverMode?: boolean
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -198,7 +198,7 @@ hoverModeArea?: HoverModeAreaType
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -224,7 +224,7 @@ immersiveMode?: ImmersiveMode
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -242,7 +242,7 @@ immersiveMode?: ImmersiveMode
 isModal?: boolean
 ```
 
-对话框是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与对话框周围其他控件进行交互，即蒙层区域无法事件透传。 值为false表示为非模态窗口且无蒙层，可以与对话框周围其他控件进行交互。 &lt;br/&gt;默认值：true
+对话框是否为模态窗口。值为true表示为模态窗口且有蒙层，不可与对话框周围其他控件进行交互，即蒙层区域无法事件透传。 值为false表示为非模态窗口且无蒙层，可以与对话框周围其他控件进行交互。 <br/>默认值：true
 
 **类型：** boolean
 
@@ -250,7 +250,7 @@ isModal?: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -276,7 +276,7 @@ levelMode?: LevelMode
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -302,7 +302,7 @@ levelOrder?: LevelOrder
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -320,13 +320,13 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-置页面级对话框需要显示的层级下的节点UniqueID。 &lt;br/&gt;取值范围：大于等于0的数字。 &lt;br /&gt;**说明：** &lt;br /&gt;- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
+置页面级对话框需要显示的层级下的节点UniqueID。 <br/>取值范围：大于等于0的数字。 &lt;br /&gt;**说明：** &lt;br /&gt;- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。
 
 **类型：** number
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -344,13 +344,13 @@ levelUniqueId?: number
 maskRect?: Rectangle
 ```
 
-对话框遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。 &lt;br/&gt;默认值：{ x: 0, y: 0, width: '100%', height: '100%' } &lt;br/&gt;**说明：** &lt;br/&gt;showInSubWindow为true时，maskRect不生效。 &lt;br/&gt;maskRect在设置[Rectangle](../arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明)中的部分属性后，若未设置其余的属性， 则其余属性的默认值为0。
+对话框遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。 <br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：** <br/>showInSubWindow为true时，maskRect不生效。 <br/>maskRect在设置[Rectangle](../arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明)中的部分属性后，若未设置其余的属性， 则其余属性的默认值为0。
 
 **类型：** Rectangle
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -368,13 +368,13 @@ maskRect?: Rectangle
 message?: string | Resource
 ```
 
-内容文本。&lt;br/&gt;默认值：undefined，取值为undefined默认不显示内容。
+内容文本。<br/>默认值：undefined，取值为undefined默认不显示内容。
 
 **类型：** string \| Resource
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -390,13 +390,13 @@ message?: string | Resource
 offset?: Offset
 ```
 
-对话框相对alignment所在位置的偏移量。 &lt;br/&gt;默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}
+对话框相对alignment所在位置的偏移量。 <br/>默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}
 
 **类型：** Offset
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -414,13 +414,13 @@ offset?: Offset
 onDidAppear?: Callback<void>
 ```
 
-对话框弹出后的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 &lt;br /&gt;2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 &lt;br /&gt;3.快速点击弹出，关闭对话框时，onWillDisappear在onDidAppear前生效。 &lt;br/&gt;4.对话框入场动效未完成时彻底关闭对话框，动效打断，onDidAppear不会触发。
+对话框弹出后的事件回调。 &lt;br /&gt;**说明：** &lt;br /&gt;1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。 &lt;br /&gt;2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。 &lt;br /&gt;3.快速点击弹出，关闭对话框时，onWillDisappear在onDidAppear前生效。 <br/>4.对话框入场动效未完成时彻底关闭对话框，动效打断，onDidAppear不会触发。
 
 **类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -444,7 +444,7 @@ onDidDisappear?: Callback<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -468,7 +468,7 @@ onWillAppear?: Callback<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -492,7 +492,7 @@ onWillDisappear?: Callback<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -516,7 +516,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -534,7 +534,7 @@ shadow?: ShadowOptions | ShadowStyle
 showInSubWindow?: boolean
 ```
 
-某对话框需要显示在主窗口之外时，是否在子窗口显示此对话框。值为true表示在子窗口显示对话框。 &lt;br/&gt;默认值：false，对话框显示在应用内，而非独立子窗口。 &lt;br/&gt;**说明：** showInSubWindow为true的对话框无法触发显示另一个showInSubWindow为true的对话框。
+某对话框需要显示在主窗口之外时，是否在子窗口显示此对话框。值为true表示在子窗口显示对话框。 <br/>默认值：false，对话框显示在应用内，而非独立子窗口。 <br/>**说明：** showInSubWindow为true的对话框无法触发显示另一个showInSubWindow为true的对话框。
 
 **类型：** boolean
 
@@ -542,7 +542,7 @@ showInSubWindow?: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -560,13 +560,13 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。 &lt;br /&gt;**说明：** &lt;br/&gt;- 默认值：[ImmersiveOptions](../../apis-na/arkts-apis/arkts-na-uimaterial-immersiveoptions-i.md#ImmersiveOptions)的style为ImmersiveStyle.ULTRA_THICK的 [ImmersiveMaterial](../../apis-na/arkts-apis/arkts-na-uimaterial-immersivematerial-c.md#ImmersiveMaterial)对象。设置undefined时与默认值保持一致。 &lt;br/&gt;- 不同的材质具有不同的效果，该接口影响 背景色[backgroundColor](../arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、 背景模糊[backgroundBlurStyle](../arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)、 背景效果[backgroundEffect](../arkui-ts/ts-universal-attributes-background.md#backgroundeffect11)、 阴影[shadow](../arkui-ts/ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。
+设置弹窗的系统材质。 &lt;br /&gt;**说明：** <br/>- 默认值：[ImmersiveOptions](../../apis-na/arkts-apis/arkts-na-uimaterial-immersiveoptions-i.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的 [ImmersiveMaterial](../../apis-na/arkts-apis/arkts-na-uimaterial-immersivematerial-c.md#immersivematerial)对象。设置undefined时与默认值保持一致。 <br/>- 不同的材质具有不同的效果，该接口影响 背景色[backgroundColor](../arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、 背景模糊[backgroundBlurStyle](../arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)、 背景效果[backgroundEffect](../arkui-ts/ts-universal-attributes-background.md#backgroundeffect11)、 阴影[shadow](../arkui-ts/ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。
 
 **类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -584,13 +584,13 @@ systemMaterial?: SystemUiMaterial
 title?: string | Resource
 ```
 
-标题文本。&lt;br/&gt;默认值：undefined，取值为undefined默认不显示标题。
+标题文本。<br/>默认值：undefined，取值为undefined默认不显示标题。
 
 **类型：** string \| Resource
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

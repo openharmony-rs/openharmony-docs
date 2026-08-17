@@ -1,10 +1,10 @@
 # NativeEmbedParamDataInfo
 
-提供同层渲染object标签内嵌param元素变化时同层标签的详细信息。
+提供同层渲染object标签内嵌param元素变化时同层标签的详细信息，包括标签ID和参数项。适用于需要监控param元素变化的场景，提升同层元素管理的灵活性和准确性。
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ embedId: string
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ objectAttributeId?: string
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ paramItems?: Array<NativeEmbedParamItem>
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 

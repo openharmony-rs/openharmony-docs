@@ -6,11 +6,11 @@
 function traceByValue(name: string, count: long): void
 ```
 
-用来标记一个跟踪的整数变量，该变量的数值会不断变化。适用于需要实时监控数值变化（如网络请求次数、缓存命中率、内存占用等）的场景，能够帮助开发者 快速发现异常波动，分析数据趋势。 从API version 19开始，建议使用 [traceByValue](#traceByValue)接口，以便分级控 制跟踪输出。
+用来标记一个跟踪的整数变量，该变量的数值会不断变化。适用于需要实时监控数值变化（如网络请求次数、缓存命中率、内存占用等）的场景，能够帮助开发者 快速发现异常波动，分析数据趋势。 从API version 19开始，建议使用 [traceByValue](#tracebyvalue)接口，以便分级控 制跟踪输出。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -60,7 +60,7 @@ function traceByValue(level: HiTraceOutputLevel, name: string, count: long): voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

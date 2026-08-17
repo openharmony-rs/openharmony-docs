@@ -1,12 +1,12 @@
 # Point3d
 
-三维的坐标点。继承自[Point](arkts-arkgraphics2d-common2d-point-i.md#Point)。
+三维的坐标点。继承自[Point](arkts-arkgraphics2d-common2d-point-i.md#point)。
 
-**继承/实现关系：** Point3d extends [Point](arkts-arkgraphics2d-common2d-point-i.md#Point)
+**继承/实现关系：** Point3d extends [Point](arkts-arkgraphics2d-common2d-point-i.md#point)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ z轴坐标，浮点数。单位为物理像素px。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

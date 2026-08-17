@@ -4,7 +4,7 @@ Provides methods for switching components.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ changeIndex(index: int | undefined, animationMode?: SwiperAnimationMode | boolea
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,8 +36,8 @@ changeIndex(index: int | undefined, animationMode?: SwiperAnimationMode | boolea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int \| undefined | 是 | 指定页面在Swiper中的索引值。&lt;br/&gt;取值为undefined时，按默认值处理。&lt;br/&gt;**说明：** &lt;br/&gt;设置的值小于0或大于最大页面索引时，取 0。 |
-| animationMode | [SwiperAnimationMode](arkts-na-swiper-swiperanimationmode-e.md) \| boolean | 否 | 设置翻页至指定页面时的动效模式。&lt;br/&gt;默认值： SwiperAnimationMode.NO_ANIMATION&lt;br/&gt; **说明：** &lt;br/&gt;当传入true时有动效，等同于SwiperAnimationMode.DEFAULT_ANIMATION；当传入 false时无动效，等同于SwiperAnimationMode.NO_ANIMATION。&lt;br/&gt;true：有动效翻页；false：无动效翻页。 |
+| index | int \| undefined | 是 | 指定页面在Swiper中的索引值。<br/>取值为undefined时，按默认值处理。<br/>**说明：** <br/>设置的值小于0或大于最大页面索引时，取 0。 |
+| animationMode | [SwiperAnimationMode](arkts-na-swiper-swiperanimationmode-e.md) \| boolean | 否 | 设置翻页至指定页面时的动效模式。<br/>默认值： SwiperAnimationMode.NO_ANIMATION<br/> **说明：** <br/>当传入true时有动效，等同于SwiperAnimationMode.DEFAULT_ANIMATION；当传入 false时无动效，等同于SwiperAnimationMode.NO_ANIMATION。<br/>true：有动效翻页；false：无动效翻页。 |
 
 ## constructor
 
@@ -49,7 +49,7 @@ SwiperController的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -65,11 +65,11 @@ SwiperController的构造函数。
 fakeDragBy(offset: float): boolean
 ```
 
-设置模拟拖拽的拖拽距离。 > **说明：** > > - 模拟拖拽的距离需要依赖布局体现，建议接口在布局前调用，拖拽效果可以在当前帧布局后体现。如果在未布局前调用了多次该接口，当前帧布局时只生效最后一次调用传入的拖拽距离。 > > - 在[loop](arkts-na-swiper-swiperattribute-i.md#loop)设置为true的循环场景下，如果设置的模拟拖拽的距离大于布局总长度，此时模拟拖拽距离会被调整为拖拽到刚好显示第一个子节点（向布局起点拖拽）或者最后一个子 > 节点（向布局终点方向拖拽）的距离。 > > - [onGestureSwipe](arkts-na-swiper-swiperattribute-i.md#onGestureSwipe)事件、 > [onContentWillScroll](arkts-na-swiper-swiperattribute-i.md#onContentWillScroll)事件在拖拽过程中不触发。 > [customContentTransition](arkts-na-swiper-swiperattribute-i.md#customContentTransition)会在布局前触发，由于真实的拖拽距离可能在布局时被调整，在传入拖拽距离过大时，触发事 > 件时的返回的节点显示信息可能与布局结果不一致。
+设置模拟拖拽的拖拽距离。 > **说明：** > > - 模拟拖拽的距离需要依赖布局体现，建议接口在布局前调用，拖拽效果可以在当前帧布局后体现。如果在未布局前调用了多次该接口，当前帧布局时只生效最后一次调用传入的拖拽距离。 > > - 在[loop](arkts-na-swiper-swiperattribute-i.md#loop)设置为true的循环场景下，如果设置的模拟拖拽的距离大于布局总长度，此时模拟拖拽距离会被调整为拖拽到刚好显示第一个子节点（向布局起点拖拽）或者最后一个子 > 节点（向布局终点方向拖拽）的距离。 > > - [onGestureSwipe](arkts-na-swiper-swiperattribute-i.md#ongestureswipe)事件、 > [onContentWillScroll](arkts-na-swiper-swiperattribute-i.md#oncontentwillscroll)事件在拖拽过程中不触发。 > [customContentTransition](arkts-na-swiper-swiperattribute-i.md#customcontenttransition)会在布局前触发，由于真实的拖拽距离可能在布局时被调整，在传入拖拽距离过大时，触发事 > 件时的返回的节点显示信息可能与布局结果不一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -83,13 +83,13 @@ fakeDragBy(offset: float): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | float | 是 | 需要模拟拖拽的拖拽距离。&lt;br/&gt;正数表示向布局起点拖拽；负数表示向布局终点方向拖拽。&lt;br/&gt;单位：vp |
+| offset | float | 是 | 需要模拟拖拽的拖拽距离。<br/>正数表示向布局起点拖拽；负数表示向布局终点方向拖拽。<br/>单位：vp |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否消费传入的拖拽距离。&lt;br/&gt;true表示消费任意传入的拖拽距离；false表示当前没有在模拟拖拽中，或者已经拖拽到边界，没有消费传入的拖拽距离。&lt;br/&gt;设置0为不可消费的拖拽距离。 |
+| boolean | 是否消费传入的拖拽距离。<br/>true表示消费任意传入的拖拽距离；false表示当前没有在模拟拖拽中，或者已经拖拽到边界，没有消费传入的拖拽距离。<br/>设置0为不可消费的拖拽距离。 |
 
 ## finishAnimation
 
@@ -101,7 +101,7 @@ finishAnimation(callback?: VoidCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -127,7 +127,7 @@ isFakeDragging(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -141,7 +141,7 @@ isFakeDragging(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否处在模拟拖拽状态。&lt;br/&gt;true表示当前处在模拟拖拽状态；false表示当前不处在模拟拖拽状态。 |
+| boolean | 是否处在模拟拖拽状态。<br/>true表示当前处在模拟拖拽状态；false表示当前不处在模拟拖拽状态。 |
 
 ## preloadItems
 
@@ -153,7 +153,7 @@ preloadItems(indices: Array<int> | undefined): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -167,7 +167,7 @@ preloadItems(indices: Array<int> | undefined): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indices | Array&lt;int&gt; \| undefined | 是 | 需预加载的子节点的下标数组。&lt;br/&gt;取值为undefined时，默认全部加载。 |
+| indices | Array&lt;int&gt; \| undefined | 是 | 需预加载的子节点的下标数组。<br/>取值为undefined时，默认全部加载。 |
 
 **返回值：**
 
@@ -179,7 +179,7 @@ preloadItems(indices: Array<int> | undefined): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter invalid. Possible causes: &lt;br&gt; 1. The parameter type is not Array&lt;int&gt;. &lt;br&gt; 2. The parameter is an empty array. &lt;br&gt; 3. The parameter contains an invalid index. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter invalid. Possible causes: <br> 1. The parameter type is not Array&lt;int&gt;. <br> 2. The parameter is an empty array. <br> 3. The parameter contains an invalid index. |
 | [100004](../../apis-arkui/errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to component. |
 
 ## showNext
@@ -192,7 +192,7 @@ showNext(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -212,7 +212,7 @@ showPrevious(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -232,7 +232,7 @@ startFakeDrag(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -246,7 +246,7 @@ startFakeDrag(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否开启模拟拖拽功能。&lt;br/&gt;true表示开启模拟拖拽功能成功；false表示开启模拟拖拽功能失败。 |
+| boolean | 是否开启模拟拖拽功能。<br/>true表示开启模拟拖拽功能成功；false表示开启模拟拖拽功能失败。 |
 
 ## stopFakeDrag
 
@@ -258,7 +258,7 @@ stopFakeDrag(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -272,5 +272,5 @@ stopFakeDrag(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否关闭模拟拖拽功能。&lt;br/&gt;true表示关闭模拟拖拽功能成功；false表示关闭模拟拖拽功能失败。 |
+| boolean | 是否关闭模拟拖拽功能。<br/>true表示关闭模拟拖拽功能成功；false表示关闭模拟拖拽功能失败。 |
 

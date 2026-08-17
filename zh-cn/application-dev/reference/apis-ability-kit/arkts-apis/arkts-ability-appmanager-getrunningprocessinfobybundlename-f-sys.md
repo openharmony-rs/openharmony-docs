@@ -10,7 +10,7 @@ function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCa
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: int, call
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<Pr
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -197,7 +197,7 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: int): Pro
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

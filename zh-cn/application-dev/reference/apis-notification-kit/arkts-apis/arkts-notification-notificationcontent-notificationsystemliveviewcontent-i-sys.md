@@ -1,12 +1,12 @@
 # NotificationSystemLiveViewContent
 
-描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。 不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后， 三方应用发布同ID的通知来更新指定内容。 继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 > **说明：** > > 实际显示效果依赖于设备能力和通知中心UI样式。
+描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。 不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后， 三方应用发布同ID的通知来更新指定内容。 继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 > **说明：** > > 实际显示效果依赖于设备能力和通知中心UI样式。
 
-**继承/实现关系：** NotificationSystemLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)
+**继承/实现关系：** NotificationSystemLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ cardButtons?: Array<NotificationIconButton>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ liveViewType?: LiveViewTypes
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ Unregister the callback for brightness info changes.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ try {
   display.offBrightnessInfoChange(callback);
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+  console.error(`brightnessInfoChange error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 

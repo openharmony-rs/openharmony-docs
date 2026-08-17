@@ -4,11 +4,11 @@
 type OnAdsBlockedCallback = (details: AdsBlockedDetails) => void
 ```
 
-The callback of ads block
+当页面发生广告过滤时触发此回调。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,5 +22,5 @@ The callback of ads block
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| details | [AdsBlockedDetails](arkts-arkweb-adsblockeddetails-i.md) | 是 | details of OnAdsBlockedCallback. |
+| details | [AdsBlockedDetails](arkts-arkweb-adsblockeddetails-i.md) | 是 | 发生广告拦截时，广告资源信息。 |
 

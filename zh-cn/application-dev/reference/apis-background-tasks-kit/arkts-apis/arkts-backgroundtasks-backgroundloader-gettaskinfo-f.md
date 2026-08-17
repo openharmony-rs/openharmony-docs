@@ -10,7 +10,7 @@ function getTaskInfo(taskId: int): Promise<TaskInfo>
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function getTaskInfo(taskId: int): Promise<TaskInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| taskId | int | 是 | 后台加载任务id。 &lt;br&gt;取值范围为全体整数。 |
+| taskId | int | 是 | 后台加载任务id。 <br>取值范围为全体整数。 |
 
 **返回值：**
 

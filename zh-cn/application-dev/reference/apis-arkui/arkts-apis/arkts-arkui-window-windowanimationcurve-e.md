@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 LINEAR = 0
 ```
 
-表示动画从头到尾的速度都是相同的。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#WindowAnimationConfig)中duration必填。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#WindowAnimationConfig)中param选填，且不生效。
+表示动画从头到尾的速度都是相同的。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#windowanimationconfig)中duration必填。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#windowanimationconfig)中param选填，且不生效。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ LINEAR = 0
 INTERPOLATION_SPRING = 1
 ```
 
-表示插值器弹簧曲线，一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受 [WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#WindowAnimationConfig)中的duration参数控制。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#WindowAnimationConfig)中duration选填，且不生效。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#WindowAnimationConfig)中param必填。
+表示插值器弹簧曲线，一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受 [WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#windowanimationconfig)中的duration参数控制。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#windowanimationconfig)中duration选填，且不生效。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#windowanimationconfig)中param必填。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ INTERPOLATION_SPRING = 1
 CUBIC_BEZIER = 2
 ```
 
-表示贝塞尔曲线。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#WindowAnimationConfig)中的param和duration为必填项。
+表示贝塞尔曲线。 使用该曲线类型时[WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md#windowanimationconfig)中的param和duration为必填项。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

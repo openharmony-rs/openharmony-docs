@@ -10,7 +10,7 @@ function findWindow(name: string): Window
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function findWindow(name: string): Window
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 窗口名称。查找子窗口或系统窗口时使用[Configuration](arkts-arkui-window-configuration-i.md#Configuration)中的窗口名称；查找主窗口时使用 [getWindowName](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getWindowName)获取当前实例的窗口名称。 |
+| name | string | 是 | 窗口名称。查找子窗口或系统窗口时使用[Configuration](arkts-arkui-window-configuration-i.md#configuration)中的窗口名称；查找主窗口时使用 [getWindowName](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getwindowname)获取当前实例的窗口名称。 |
 
 **返回值：**
 

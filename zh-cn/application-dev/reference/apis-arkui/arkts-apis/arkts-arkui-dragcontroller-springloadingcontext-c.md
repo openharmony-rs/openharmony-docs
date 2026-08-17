@@ -4,7 +4,7 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ abort(): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ updateConfiguration(config: DragSpringLoadingConfiguration): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -68,13 +68,13 @@ updateConfiguration(config: DragSpringLoadingConfiguration): void
 currentConfig?: DragSpringLoadingConfiguration
 ```
 
-当前回调中的配置信息，当悬停检测状态为CANCEL时缺失，为undefined时取 [DragSpringLoadingConfiguration](arkts-arkui-dragcontroller-dragspringloadingconfiguration-i.md#DragSpringLoadingConfiguration)默认值。
+当前回调中的配置信息，当悬停检测状态为CANCEL时缺失，为undefined时取 [DragSpringLoadingConfiguration](arkts-arkui-dragcontroller-dragspringloadingconfiguration-i.md#dragspringloadingconfiguration)默认值。
 
 **类型：** DragSpringLoadingConfiguration
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ currentNotifySequence: number
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -116,13 +116,13 @@ currentNotifySequence: number
 dragInfos?: SpringLoadingDragInfos
 ```
 
-拖拽信息，当悬停检测状态为CANCEL时缺失，为undefined时取[SpringLoadingDragInfos](arkts-arkui-dragcontroller-springloadingdraginfos-i.md#SpringLoadingDragInfos)默认值。
+拖拽信息，当悬停检测状态为CANCEL时缺失，为undefined时取[SpringLoadingDragInfos](arkts-arkui-dragcontroller-springloadingdraginfos-i.md#springloadingdraginfos)默认值。
 
 **类型：** [SpringLoadingDragInfos](arkts-arkui-dragcontroller-springloadingdraginfos-i.md)
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -146,7 +146,7 @@ state: DragSpringLoadingState
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

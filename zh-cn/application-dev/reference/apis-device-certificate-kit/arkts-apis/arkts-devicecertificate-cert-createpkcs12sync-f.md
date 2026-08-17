@@ -10,7 +10,7 @@ function createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -37,8 +37,8 @@ function createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： &lt;br&gt;1. 密码过短或过长； &lt;br&gt;2. 私钥与证书不匹配； &lt;br&gt;3. 加密算法参数无效。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. 密码过短或过长； <br>2. 私钥与证书不匹配； <br>3. 加密算法参数无效。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -78,7 +78,7 @@ let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'a20rj9HG4sb8tUIHPBv0dgY=\n' +
   '-----END PRIVATE KEY-----\n';
 
-let othercert = '-----BEGIN CERTIFICATE-----\n' +
+let otherCert = '-----BEGIN CERTIFICATE-----\n' +
   'MIIDZTCCAk0CFAoqA7Irtoo7/3+sfOHy0s91pKkiMA0GCSqGSIb3DQEBCwUAMG8x\n' +
   'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
   'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
@@ -149,26 +149,26 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
 }
 
 async function doTestCreatePkcs12Sync() {
-  const caCert = await createX509Cert(othercert);
+  const caCert = await createX509Cert(otherCert);
   const x509Cert = await createX509Cert(certData);
 
   let data: cert.Pkcs12Data = {
     privateKey: priKey,
     cert: x509Cert,
     otherCerts: [caCert]
-  }
+  };
 
   let keyParam: cert.PbesParams = {
     saltLen: 16,
     iterations: 2048,
     encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_192_CBC
-  }
+  };
 
   let certParam: cert.PbesParams = {
     saltLen: 16,
     iterations: 2048,
     encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_256_CBC
-  }
+  };
 
   let config: cert.Pkcs12CreationConfig = {
     password: '123456',
@@ -178,7 +178,7 @@ async function doTestCreatePkcs12Sync() {
     macSaltLen: 16,
     macIterations: 2048,
     macDigestAlgorithm: cert.Pkcs12MacDigestAlgorithm.SHA384
-  }
+  };
   try {
     let p12 = cert.createPkcs12Sync(data, config);
     console.info('createPkcs12Sync result: success, p12 = ' + p12);
@@ -303,18 +303,18 @@ async function doTestCreatePkcs12Sync() {
       privateKey : priKey,
       cert : x509Cert,
       otherCerts : [caCert]
-    }
+    };
     let keyParam : cert.PbesParams = {
       saltLen : 16,
       iterations : 2048,
       encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_192_CBC
-    }
+    };
 
     let certParam : cert.PbesParams = {
       saltLen : 16,
       iterations : 2048,
       encryptionAlgorithm : cert.PbesEncryptionAlgorithm.AES_256_CBC
-    }
+    };
 
     let config : cert.Pkcs12CreationConfig = {
       password : "123456",
@@ -324,7 +324,7 @@ async function doTestCreatePkcs12Sync() {
       macSaltLen : 16,
       macIterations : 2048,
       macDigestAlgorithm : cert.Pkcs12MacDigestAlgorithm.SHA384
-    }
+    };
     try {
       let p12 = cert.createPkcs12Sync(data, config);
       console.info("createPkcs12Sync result: success, p12 = " + p12);

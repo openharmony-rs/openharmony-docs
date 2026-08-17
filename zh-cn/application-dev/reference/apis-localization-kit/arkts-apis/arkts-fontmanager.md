@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -33,9 +33,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md#dataMigration) | 设备升级时使用的数据迁移接口，用于启动迁移任务，通过回调函数实时反馈迁移进度和结果。 |
-| [installFont](arkts-localization-fontmanager-installfont-f-sys.md#installFont) | 将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。 安装成功后，应用可以通过字体名称使用该字体。 |
-| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md#uninstallFont) | 根据字体名称从系统字体库中卸载已安装的字体文件。使用Promise异步回调。 |
+| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md#datamigration) | 设备升级时使用的数据迁移接口，用于启动迁移任务，通过回调函数实时反馈迁移进度和结果。 |
+| [installFont](arkts-localization-fontmanager-installfont-f-sys.md#installfont) | 将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。 安装成功后，应用可以通过字体名称使用该字体。 |
+| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md#uninstallfont) | 根据字体名称从系统字体库中卸载已安装的字体文件。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

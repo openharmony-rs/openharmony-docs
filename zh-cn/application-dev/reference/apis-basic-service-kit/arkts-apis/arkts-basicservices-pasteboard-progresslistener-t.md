@@ -8,7 +8,7 @@ type ProgressListener = (progress: ProgressInfo) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,5 +22,5 @@ type ProgressListener = (progress: ProgressInfo) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| progress | ProgressInfo | 是 | 定义进度上报的数据结构，且仅当进度指示选项[ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md#ProgressIndicator)设置为 NONE时才会上报此信息。 |
+| progress | ProgressInfo | 是 | 定义进度上报的数据结构，且仅当进度指示选项[ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md#progressindicator)设置为 NONE时才会上报此信息。 |
 

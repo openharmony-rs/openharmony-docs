@@ -6,11 +6,11 @@
 function startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options?: StartOptions): Promise<void>
 ```
 
-根据指定的快捷方式信息，拉起对应的Ability，并携带快捷方式的启动原因。使用Promise异步回调。 被拉起方可以通过[LaunchParam](arkts-ability-abilityconstant-launchparam-i.md#LaunchParam)的launchReasonMessage字段获取到 启动原因，并根据启动原因进行业务逻辑处理。
+根据指定的快捷方式信息，拉起对应的Ability，并携带快捷方式的启动原因。使用Promise异步回调。 被拉起方可以通过[LaunchParam](arkts-ability-abilityconstant-launchparam-i.md#launchparam)的launchReasonMessage字段获取到 启动原因，并根据启动原因进行业务逻辑处理。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

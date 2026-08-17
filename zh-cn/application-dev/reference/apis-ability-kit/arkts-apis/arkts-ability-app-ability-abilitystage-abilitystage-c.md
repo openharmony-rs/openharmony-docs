@@ -1,10 +1,10 @@
 # AbilityStage
 
-AbilityStage是一个[Module](../../../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源 预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。 应用的[HAP](../../../quick-start/hap-package.md)/[HSP](../../../quick-start/in-app-hsp.md)在首次加载时会创建一个AbilityStage实例。当一 个Module中存在AbilityStage和其他组件（UIAbility/ExtensionAbility组件），AbilityStage实例会早于其他组件实例创建。 AbilityStage拥有[onCreate()](#onCreate)、[onDestroy()](#onDestroy)生命周期回调和 [onAcceptWant()](#onAcceptWant)、[onConfigurationUpdate()](#onConfigurationUpdate) 、[onMemoryLevel()](#onMemoryLevel)事件回调等。
+AbilityStage是一个[Module](../../../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源 预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。 应用的[HAP](../../../quick-start/hap-package.md)/[HSP](../../../quick-start/in-app-hsp.md)在首次加载时会创建一个AbilityStage实例。当一 个Module中存在AbilityStage和其他组件（UIAbility/ExtensionAbility组件），AbilityStage实例会早于其他组件实例创建。 AbilityStage拥有[onCreate()](#oncreate)、[onDestroy()](#ondestroy)生命周期回调和 [onAcceptWant()](#onacceptwant)、[onConfigurationUpdate()](#onconfigurationupdate) 、[onMemoryLevel()](#onmemorylevel)事件回调等。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onAboutToCreateAbility(): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -51,11 +51,11 @@ export default class MyAbilityStage extends AbilityStage {
 onAcceptWant(want: Want): string
 ```
 
-当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个 string作为待启动的UIAbility实例的唯一标识。同步接口，不支持异步回调。 如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。 > **说明：** > > 从API version 20开始，当[AbilityStage.onAcceptWantAsync](#onAcceptWantAsync)实现时，本回调函数将不会被触发。
+当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个 string作为待启动的UIAbility实例的唯一标识。同步接口，不支持异步回调。 如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。 > **说明：** > > 从API version 20开始，当[AbilityStage.onAcceptWantAsync](#onacceptwantasync)实现时，本回调函数将不会被触发。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ onAcceptWantAsync(want: Want): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -148,11 +148,11 @@ class MyAbilityStage extends AbilityStage {
 onConfigurationUpdate(newConfig: Configuration): void
 ```
 
-当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](arkts-ability-app-ability-configuration-configuration-i.md#Configuration)类中。同步接口 ，不支持异步回调。 > **说明：** > > 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setLanguage)接口 > 设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见 > [使用场景](../../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
+当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](arkts-ability-app-ability-configuration-configuration-i.md#configuration)类中。同步接口 ，不支持异步回调。 > **说明：** > > 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setlanguage)接口 > 设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见 > [使用场景](../../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -192,7 +192,7 @@ onCreate(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -226,7 +226,7 @@ onDestroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -260,7 +260,7 @@ onLaunchFromHyperSnap(): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -293,7 +293,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -309,7 +309,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| level | AbilityConstant.MemoryLevel | 是 | 整机可用内存级别，对应的触发场景详见 [AbilityConstant.MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md#MemoryLevel)。 |
+| level | AbilityConstant.MemoryLevel | 是 | 整机可用内存级别，对应的触发场景详见 [AbilityConstant.MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md#memorylevel)。 |
 
 ## 示例
 
@@ -329,11 +329,11 @@ export default class MyAbilityStage extends AbilityStage {
 onNewProcessRequest(want: Want): string
 ```
 
-如果UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!-- DelEnd--&gt;的isolationProcess字段取值为true），当该UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。同步接口，不支持异步回调。 如果该应用已有相同标识的进程存在，则待启动的UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;运行在此进程中，否则创建新的进程。 如果开发者同时实现onNewProcessRequest和[onAcceptWant](#onAcceptWant)，将先收到onNewProcessRequest回调，再收到 onAcceptWant回调。 &lt;!--Del--&gt; 仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)配置文件中配 置isolationProcess字段为true。 &lt;!--DelEnd--&gt; > **说明：** > > - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。&lt;!--Del--&gt;从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。&lt;!--DelEnd &gt; --> > > - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onNewProcessRequestAsync)实现时，本回调函 > 数将不执行。
+如果UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!-- DelEnd--&gt;的isolationProcess字段取值为true），当该UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。同步接口，不支持异步回调。 如果该应用已有相同标识的进程存在，则待启动的UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;运行在此进程中，否则创建新的进程。 如果开发者同时实现onNewProcessRequest和[onAcceptWant](#onacceptwant)，将先收到onNewProcessRequest回调，再收到 onAcceptWant回调。 &lt;!--Del--&gt; 仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)配置文件中配 置isolationProcess字段为true。 &lt;!--DelEnd--&gt; > **说明：** > > - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。&lt;!--Del--&gt;从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。&lt;!--DelEnd &gt; --> > > - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync)实现时，本回调函 > 数将不执行。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -378,7 +378,7 @@ onNewProcessRequestAsync(want: Want): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -424,11 +424,11 @@ class MyAbilityStage extends AbilityStage {
 onPrepareTermination(): AbilityConstant.PrepareTermination
 ```
 
-当应用被用户关闭时调用，可用于询问用户选择立即执行操作还是取消操作。同步接口，不支持异步回调。 > **说明：** > > - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。 > > - 当[AbilityStage.onPrepareTerminationAsync](#onPrepareTerminationAsync)实现时，本回调函数将不执行。
+当应用被用户关闭时调用，可用于询问用户选择立即执行操作还是取消操作。同步接口，不支持异步回调。 > **说明：** > > - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。 > > - 当[AbilityStage.onPrepareTerminationAsync](#onprepareterminationasync)实现时，本回调函数将不执行。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -471,7 +471,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -518,7 +518,7 @@ AbilityStage上下文。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@ The ProxyRule used by insertProxyRule.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ Returns the scheme filter used for this rule.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -34,7 +34,7 @@ Returns the scheme filter used for this rule.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ProxySchemeFilter](arkts-na-webview-proxyschemefilter-e.md) | The scheme filter used for this rule. |
+| [ProxySchemeFilter](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-proxyschemefilter-e.md) | The scheme filter used for this rule. |
 
 ## getUrl
 
@@ -46,7 +46,7 @@ Returns the proxy URL.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

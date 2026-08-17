@@ -2,11 +2,11 @@
 
 CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上绘制，绘制对象可以是形状、文本、图片等。 > **说明：** > > * 建议使用时将CanvasRenderingContext2D对象与Canvas组件封装到同一个自定义组件中，保证两者一一对应且生命周期保持一致。 > > * 本文绘制接口在调用时会存入被关联的Canvas组件的指令队列中。仅当当前帧进入渲染阶段且关联的Canvas组件处于可见状态时， > 这些指令才会从队列中被提取并执行。因此，在Canvas组件不可见的情况下，应尽量避免频繁调用绘制接口， > 以防止指令在队列中堆积，从而避免内存占用过大的问题。 > > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降。
 
-**继承/实现关系：** CanvasRenderer extends [CanvasPath](arkts-arkui-canvaspath-c.md#CanvasPath)
+**继承/实现关系：** CanvasRenderer extends [CanvasPath](arkts-arkui-canvaspath-c.md#canvaspath)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ beginPath(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ clearRect(x: number, y: number, w: number, h: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -62,10 +62,10 @@ clearRect(x: number, y: number, w: number, h: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 指定矩形上的左上角x坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| y | number | 是 | 指定矩形上的左上角y坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| w | number | 是 | 指定矩形的宽度。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| h | number | 是 | 指定矩形的高度。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
+| x | number | 是 | 指定矩形上的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| y | number | 是 | 指定矩形上的左上角y坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| w | number | 是 | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| h | number | 是 | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
 ## clip
 
@@ -77,7 +77,7 @@ clip(fillRule?: CanvasFillRule): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -93,7 +93,7 @@ clip(fillRule?: CanvasFillRule): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要剪切对象的规则。&lt;br&gt;可选参数为："nonzero"，"evenodd"。&lt;br&gt;异常值undefined或null按默认值处理。&lt;br&gt;默认值："nonzero" |
+| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要剪切对象的规则。<br>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
 
 ## clip
 
@@ -105,7 +105,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -121,8 +121,8 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | Path2D剪切路径。&lt;br&gt;异常值undefined或null按无效值处理。 |
-| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要剪切对象的规则。&lt;br&gt;可选参数为："nonzero"，"evenodd"。&lt;br&gt;异常值undefined或null按默认值处理。&lt;br&gt;默认值："nonzero" |
+| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | Path2D剪切路径。<br>异常值undefined或null按无效值处理。 |
+| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要剪切对象的规则。<br>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
 
 ## createConicGradient
 
@@ -138,7 +138,7 @@ createConicGradient(
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -154,9 +154,9 @@ createConicGradient(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startAngle | number | 是 | 渐变起始角度。角度测量从中心右侧水平方向开始，顺时针移动。&lt;br&gt;异常值undefined或null按0处理。NaN和Infinity按无效值处理。&lt;br&gt;单位：弧度 |
-| x | number | 是 | 锥形渐变圆心的x轴坐标。&lt;br&gt;异常值undefined或null按0处理。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| y | number | 是 | 锥形渐变圆心的y轴坐标。&lt;br&gt;异常值undefined或null按0处理。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
+| startAngle | number | 是 | 渐变起始角度。角度测量从中心右侧水平方向开始，顺时针移动。<br>异常值undefined或null按0处理。NaN和Infinity按无效值处理。<br>单位：弧度 |
+| x | number | 是 | 锥形渐变圆心的x轴坐标。<br>异常值undefined或null按0处理。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| y | number | 是 | 锥形渐变圆心的y轴坐标。<br>异常值undefined或null按0处理。NaN和Infinity按无效值处理。<br>默认单位：vp |
 
 **返回值：**
 
@@ -174,7 +174,7 @@ createImageData(sw: number, sh: number): ImageData
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -190,8 +190,8 @@ createImageData(sw: number, sh: number): ImageData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sw | number | 是 | ImageData对象的宽度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| sh | number | 是 | ImageData对象的高度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
+| sw | number | 是 | ImageData对象的宽度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| sh | number | 是 | ImageData对象的高度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
 
 **返回值：**
 
@@ -209,7 +209,7 @@ createImageData(imageData: ImageData): ImageData
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -225,7 +225,7 @@ createImageData(imageData: ImageData): ImageData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| imageData | [ImageData](arkts-arkui-imagedata-c.md) | 是 | 已有的ImageData对象。&lt;br&gt;异常值undefined和null按宽高为0的ImageData处理。 |
+| imageData | [ImageData](arkts-arkui-imagedata-c.md) | 是 | 已有的ImageData对象。<br>异常值undefined和null按宽高为0的ImageData处理。 |
 
 **返回值：**
 
@@ -243,7 +243,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -259,10 +259,10 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x0 | number | 是 | 起点的x轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| y0 | number | 是 | 起点的y轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| x1 | number | 是 | 终点的x轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| y1 | number | 是 | 终点的y轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
+| x0 | number | 是 | 起点的x轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| y0 | number | 是 | 起点的y轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| x1 | number | 是 | 终点的x轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| y1 | number | 是 | 终点的y轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
 
 **返回值：**
 
@@ -280,7 +280,7 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -296,8 +296,8 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) | 是 | 图源对象，具体参考ImageBitmap对象。&lt;br&gt;异常值undefined或null按无效值处理。 |
-| repetition | string \| null | 是 | 设置图像重复的方式：&lt;br&gt;'repeat'：沿x轴和y轴重复绘制图像；&lt;br&gt;'repeat-x'：沿x轴重复绘制图像；&lt;br&gt;'repeat-y'：沿y轴重复绘制图像；&lt;br&gt;'no-repeat'：不重复绘制图像；&lt;br&gt;'clamp'：在原始边界外绘制时，超出部分使用边缘的颜色绘制；&lt;br&gt;'mirror'：沿x轴和y轴重复翻转绘制图像。&lt;br&gt;异常值undefined或null按无效值处理。 |
+| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) | 是 | 图源对象，具体参考ImageBitmap对象。<br>异常值undefined或null按无效值处理。 |
+| repetition | string \| null | 是 | 设置图像重复的方式：<br>'repeat'：沿x轴和y轴重复绘制图像；<br>'repeat-x'：沿x轴重复绘制图像；<br>'repeat-y'：沿y轴重复绘制图像；<br>'no-repeat'：不重复绘制图像；<br>'clamp'：在原始边界外绘制时，超出部分使用边缘的颜色绘制；<br>'mirror'：沿x轴和y轴重复翻转绘制图像。<br>异常值undefined或null按无效值处理。 |
 
 **返回值：**
 
@@ -315,7 +315,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -331,12 +331,12 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x0 | number | 是 | 起始圆的圆心x轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| y0 | number | 是 | 起始圆的圆心y轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| r0 | number | 是 | 起始圆的半径，必须是非负有限数。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| x1 | number | 是 | 终止圆的圆心x轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| y1 | number | 是 | 终止圆的圆心y轴坐标。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
-| r1 | number | 是 | 终止圆的半径，必须是非负有限数。&lt;br&gt;异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。&lt;br&gt;默认单位：vp |
+| x0 | number | 是 | 起始圆的圆心x轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| y0 | number | 是 | 起始圆的圆心y轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| r0 | number | 是 | 起始圆的半径，必须是非负有限数。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| x1 | number | 是 | 终止圆的圆心x轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| y1 | number | 是 | 终止圆的圆心y轴坐标。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
+| r1 | number | 是 | 终止圆的半径，必须是非负有限数。<br>异常值undefined或null时接口返回undefined。NaN和Infinity按无效值处理。<br>默认单位：vp |
 
 **返回值：**
 
@@ -354,7 +354,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -370,9 +370,9 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) \| PixelMap | 是 | 图片资源，请参考ImageBitmap或PixelMap。&lt;br&gt; 异常值undefined或null按无效值处理，不进行绘制。 |
-| dx | number | 是 | 绘制区域左上角在x轴的位置。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。&lt;br&gt;默认单位：vp |
-| dy | number | 是 | 绘制区域左上角在y轴的位置。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。&lt;br&gt;默认单位：vp |
+| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) \| PixelMap | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br> 异常值undefined或null按无效值处理，不进行绘制。 |
+| dx | number | 是 | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。<br>默认单位：vp |
+| dy | number | 是 | 绘制区域左上角在y轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。<br>默认单位：vp |
 
 ## drawImage
 
@@ -384,7 +384,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -400,11 +400,11 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) \| PixelMap | 是 | 图片资源，请参考ImageBitmap或PixelMap。&lt;br&gt; 异常值undefined或null按无效值处理，不进行绘制。 |
-| dx | number | 是 | 绘制区域左上角在x轴的位置。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。&lt;br&gt;默认单位：vp |
-| dy | number | 是 | 绘制区域左上角在y轴的位置。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。&lt;br&gt;默认单位：vp |
-| dw | number | 是 | 绘制区域的宽度。当绘制区域的宽度和裁剪图像的宽度不一致时，将图像宽度拉伸或压缩为绘制区域 的宽度。&lt;br&gt;负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| dh | number | 是 | 绘制区域的高度。当绘制区域的高度和裁剪图像的高度不一致时，将图像高度拉伸或压缩为绘制区域 的高度。&lt;br&gt;负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
+| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) \| PixelMap | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br> 异常值undefined或null按无效值处理，不进行绘制。 |
+| dx | number | 是 | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。<br>默认单位：vp |
+| dy | number | 是 | 绘制区域左上角在y轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理， 不进行绘制。<br>默认单位：vp |
+| dw | number | 是 | 绘制区域的宽度。当绘制区域的宽度和裁剪图像的宽度不一致时，将图像宽度拉伸或压缩为绘制区域 的宽度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dh | number | 是 | 绘制区域的高度。当绘制区域的高度和裁剪图像的高度不一致时，将图像高度拉伸或压缩为绘制区域 的高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
 ## drawImage
 
@@ -426,7 +426,7 @@ drawImage(
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -442,15 +442,15 @@ drawImage(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) \| PixelMap | 是 | 图片资源，请参考ImageBitmap或PixelMap。&lt;br&gt;异常值undefined或null按无效值处理，不进行绘制。 |
-| sx | number | 是 | 裁剪源图像时矩形左上角的x轴坐标。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| sy | number | 是 | 裁剪源图像时矩形左上角的y轴坐标。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| sw | number | 是 | 裁剪源图像的目标宽度。&lt;br&gt;负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| sh | number | 是 | 裁剪源图像的目标高度。&lt;br&gt;负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| dx | number | 是 | 绘制区域左上角在x轴的位置。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| dy | number | 是 | 绘制区域左上角在y轴的位置。&lt;br&gt;异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| dw | number | 是 | 绘制区域的宽度。当绘制区域的宽度和裁剪图像的宽度不一致时，将图像宽度拉伸或压缩为绘制区域的宽度。&lt;br&gt;负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| dh | number | 是 | 绘制区域的高度。当绘制区域的高度和裁剪图像的高度不一致时，将图像高度拉伸或压缩为绘制区域的高度。&lt;br&gt;负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
+| image | [ImageBitmap](arkts-arkui-imagebitmap-c.md) \| PixelMap | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
+| sx | number | 是 | 裁剪源图像时矩形左上角的x轴坐标。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| sy | number | 是 | 裁剪源图像时矩形左上角的y轴坐标。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| sw | number | 是 | 裁剪源图像的目标宽度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| sh | number | 是 | 裁剪源图像的目标高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dx | number | 是 | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dy | number | 是 | 绘制区域左上角在y轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dw | number | 是 | 绘制区域的宽度。当绘制区域的宽度和裁剪图像的宽度不一致时，将图像宽度拉伸或压缩为绘制区域的宽度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| dh | number | 是 | 绘制区域的高度。当绘制区域的高度和裁剪图像的高度不一致时，将图像高度拉伸或压缩为绘制区域的高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
 ## fill
 
@@ -462,7 +462,7 @@ fill(fillRule?: CanvasFillRule): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -478,7 +478,7 @@ fill(fillRule?: CanvasFillRule): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要填充对象的规则。&lt;br&gt;可选参数为："nonzero"，"evenodd"。&lt;br&gt;异常值undefined或null按默认值处理。&lt;br&gt;默认值："nonzero" |
+| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要填充对象的规则。<br>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
 
 ## fill
 
@@ -490,7 +490,7 @@ fill(path: Path2D, fillRule?: CanvasFillRule): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -506,8 +506,8 @@ fill(path: Path2D, fillRule?: CanvasFillRule): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | Path2D填充路径。&lt;br&gt;异常值undefined或null按无效值处理。 |
-| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要填充对象的规则。&lt;br&gt;可选参数为："nonzero"，"evenodd"。&lt;br&gt;异常值undefined或null按默认值处理。&lt;br&gt;默认值："nonzero" |
+| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | Path2D填充路径。<br>异常值undefined或null按无效值处理。 |
+| fillRule | [CanvasFillRule](arkts-arkui-canvasfillrule-t.md) | 否 | 指定要填充对象的规则。<br>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
 
 ## fillRect
 
@@ -519,7 +519,7 @@ fillRect(x: number, y: number, w: number, h: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -535,10 +535,10 @@ fillRect(x: number, y: number, w: number, h: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 指定矩形左上角点的x坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| y | number | 是 | 指定矩形左上角点的y坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| w | number | 是 | 指定矩形的宽度。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| h | number | 是 | 指定矩形的高度。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
+| x | number | 是 | 指定矩形左上角点的x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| y | number | 是 | 指定矩形左上角点的y坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| w | number | 是 | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| h | number | 是 | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
 ## fillText
 
@@ -550,7 +550,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -566,10 +566,10 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| text | string | 是 | 需要绘制的文本内容。&lt;br&gt;异常值undefined或null按无效值处理，不进行绘制。 |
-| x | number | 是 | 文本绘制起点的x轴坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| y | number | 是 | 文本绘制起点的y轴坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| maxWidth | number | 否 | 指定文本允许的最大宽度。&lt;br&gt;异常值null按无效值处理，不进行绘制，undefined、NaN或Infinity按默认值处理。&lt;br&gt;默认值：不限制宽度。&lt;br&gt;默认单位：vp |
+| text | string | 是 | 需要绘制的文本内容。<br>异常值undefined或null按无效值处理，不进行绘制。 |
+| x | number | 是 | 文本绘制起点的x轴坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| y | number | 是 | 文本绘制起点的y轴坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| maxWidth | number | 否 | 指定文本允许的最大宽度。<br>异常值null按无效值处理，不进行绘制，undefined、NaN或Infinity按默认值处理。<br>默认值：不限制宽度。<br>默认单位：vp |
 
 ## getImageData
 
@@ -581,7 +581,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -597,10 +597,10 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sx | number | 是 | 输出区域左上角的x轴坐标。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| sy | number | 是 | 输出区域左上角的y轴坐标。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| sw | number | 是 | 输出区域的宽度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| sh | number | 是 | 输出区域的高度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
+| sx | number | 是 | 输出区域左上角的x轴坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| sy | number | 是 | 输出区域左上角的y轴坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| sw | number | 是 | 输出区域的宽度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| sh | number | 是 | 输出区域的高度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
 
 **返回值：**
 
@@ -618,7 +618,7 @@ getLineDash(): number[]
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -646,7 +646,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -660,10 +660,10 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sx | number | 是 | 输出区域左上角的x轴坐标。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| sy | number | 是 | 输出区域左上角的y轴坐标。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| sw | number | 是 | 输出区域的宽度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| sh | number | 是 | 输出区域的高度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
+| sx | number | 是 | 输出区域左上角的x轴坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| sy | number | 是 | 输出区域左上角的y轴坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| sw | number | 是 | 输出区域的宽度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| sh | number | 是 | 输出区域的高度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
 
 **返回值：**
 
@@ -681,7 +681,7 @@ getTransform(): Matrix2D
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -709,7 +709,7 @@ measureText(text: string): TextMetrics
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -725,7 +725,7 @@ measureText(text: string): TextMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| text | string | 是 | 需要进行测量的文本。&lt;br&gt;传入异常值undefined或null时按"undefined"或"null"计算。 |
+| text | string | 是 | 需要进行测量的文本。<br>传入异常值undefined或null时按"undefined"或"null"计算。 |
 
 **返回值：**
 
@@ -743,7 +743,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string): vo
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -759,9 +759,9 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| imageData | [ImageData](arkts-arkui-imagedata-c.md) | 是 | 含有像素数据的ImageData对象，用于放到画布上。&lt;br&gt;异常值undefined和null按无效值处理，不进行绘制。 |
-| dx | number \| string | 是 | 画布上矩形区域的x轴偏移量。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| dy | number \| string | 是 | 画布上矩形区域的y轴偏移量。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
+| imageData | [ImageData](arkts-arkui-imagedata-c.md) | 是 | 含有像素数据的ImageData对象，用于放到画布上。<br>异常值undefined和null按无效值处理，不进行绘制。 |
+| dx | number \| string | 是 | 画布上矩形区域的x轴偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| dy | number \| string | 是 | 画布上矩形区域的y轴偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
 
 ## putImageData
 
@@ -781,7 +781,7 @@ putImageData(
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -797,13 +797,13 @@ putImageData(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| imageData | [ImageData](arkts-arkui-imagedata-c.md) | 是 | 含有像素数据的ImageData对象，用于放到画布上。&lt;br&gt;异常值undefined和null按无效值处理，不进行绘制。 |
-| dx | number \| string | 是 | 画布上矩形区域的x轴偏移量。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| dy | number \| string | 是 | 画布上矩形区域的y轴偏移量。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| dirtyX | number \| string | 是 | 源图像矩形区域左上角相对于源图像左上角的x轴偏移量。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| dirtyY | number \| string | 是 | 源图像矩形区域左上角相对于源图像左上角的y轴偏移量。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| dirtyWidth | number \| string | 是 | 源图像裁剪矩形的宽度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
-| dirtyHeight | number \| string | 是 | 源图像裁剪矩形的高度。&lt;br&gt;异常值undefined、null、NaN和Infinity按0处理。&lt;br&gt;默认单位：vp |
+| imageData | [ImageData](arkts-arkui-imagedata-c.md) | 是 | 含有像素数据的ImageData对象，用于放到画布上。<br>异常值undefined和null按无效值处理，不进行绘制。 |
+| dx | number \| string | 是 | 画布上矩形区域的x轴偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| dy | number \| string | 是 | 画布上矩形区域的y轴偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| dirtyX | number \| string | 是 | 源图像矩形区域左上角相对于源图像左上角的x轴偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| dirtyY | number \| string | 是 | 源图像矩形区域左上角相对于源图像左上角的y轴偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| dirtyWidth | number \| string | 是 | 源图像裁剪矩形的宽度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
+| dirtyHeight | number \| string | 是 | 源图像裁剪矩形的高度。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
 
 ## reset
 
@@ -815,7 +815,7 @@ reset(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -837,7 +837,7 @@ resetTransform(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -859,7 +859,7 @@ restore(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -881,7 +881,7 @@ restoreLayer(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -903,7 +903,7 @@ rotate(angle: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -919,7 +919,7 @@ rotate(angle: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| angle | number | 是 | 设置顺时针旋转的弧度值，可以通过 degree Math.PI / 180 将角度转换为弧度值。&lt;br&gt; API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时， 当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效， 其他传入有效参数的绘制方法正常绘制。&lt;br&gt;单位：弧度 |
+| angle | number | 是 | 设置顺时针旋转的弧度值，可以通过 degree Math.PI / 180 将角度转换为弧度值。<br> API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时， 当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效， 其他传入有效参数的绘制方法正常绘制。<br>单位：弧度 |
 
 ## save
 
@@ -931,7 +931,7 @@ save(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -953,7 +953,7 @@ saveLayer(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -975,7 +975,7 @@ scale(x: number, y: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -991,8 +991,8 @@ scale(x: number, y: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 设置水平方向的缩放值。&lt;br&gt;API version 18之前，设置NaN或Infinity时， 在该方法后执行的绘制方法无法绘制；不支持设置0和负数，设置0、负数、null或undefined时， 当前接口不生效。API version 18及以后，设置NaN、Infinity、0、负数、null或undefined时当前接口不生效， 其他传入有效参数的绘制方法正常绘制。 |
-| y | number | 是 | 设置垂直方向的缩放值，不支持设置负数。&lt;br&gt;API version 18之前， 设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；不支持设置0和负数， 设置0、负数、null或undefined时，当前接口不生效。API version 18及以后， 设置NaN、Infinity、0、负数、null或undefined时当前接口不生效， 其他传入有效参数的绘制方法正常绘制。 |
+| x | number | 是 | 设置水平方向的缩放值。<br>API version 18之前，设置NaN或Infinity时， 在该方法后执行的绘制方法无法绘制；不支持设置0和负数，设置0、负数、null或undefined时， 当前接口不生效。API version 18及以后，设置NaN、Infinity、0、负数、null或undefined时当前接口不生效， 其他传入有效参数的绘制方法正常绘制。 |
+| y | number | 是 | 设置垂直方向的缩放值，不支持设置负数。<br>API version 18之前， 设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；不支持设置0和负数， 设置0、负数、null或undefined时，当前接口不生效。API version 18及以后， 设置NaN、Infinity、0、负数、null或undefined时当前接口不生效， 其他传入有效参数的绘制方法正常绘制。 |
 
 ## setLineDash
 
@@ -1004,7 +1004,7 @@ setLineDash(segments: number[]): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1020,7 +1020,7 @@ setLineDash(segments: number[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| segments | number[] | 是 | 一个数字数组，指定交替绘制线和间距的距离。&lt;br&gt;异常值undefined和null按无效值处理。&lt;br&gt;默认单位：vp |
+| segments | number[] | 是 | 一个数字数组，指定交替绘制线和间距的距离。<br>异常值undefined和null按无效值处理。<br>默认单位：vp |
 
 ## setPixelMap
 
@@ -1032,7 +1032,7 @@ setPixelMap(value?: PixelMap): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1046,7 +1046,7 @@ setPixelMap(value?: PixelMap): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | PixelMap | 否 | 含有像素值的PixelMap对象。&lt;br&gt;异常值undefined和null按无效值处理，不进行绘制。&lt;br&gt;默认值：null |
+| value | PixelMap | 否 | 含有像素值的PixelMap对象。<br>异常值undefined和null按无效值处理，不进行绘制。<br>默认值：null |
 
 ## setTransform
 
@@ -1058,7 +1058,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1074,12 +1074,12 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| a | number | 是 | scaleX：指定水平缩放值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| b | number | 是 | skewY：指定垂直倾斜值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| c | number | 是 | skewX：指定水平倾斜值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| d | number | 是 | scaleY：指定垂直缩放值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| e | number | 是 | translateX：指定水平移动值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。&lt;br&gt;默认单位：vp |
-| f | number | 是 | translateY：指定垂直移动值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。&lt;br&gt;默认单位：vp |
+| a | number | 是 | scaleX：指定水平缩放值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| b | number | 是 | skewY：指定垂直倾斜值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| c | number | 是 | skewX：指定水平倾斜值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| d | number | 是 | scaleY：指定垂直缩放值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| e | number | 是 | translateX：指定水平移动值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br>默认单位：vp |
+| f | number | 是 | translateY：指定垂直移动值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br>默认单位：vp |
 
 ## setTransform
 
@@ -1091,7 +1091,7 @@ setTransform(transform?: Matrix2D): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1107,7 +1107,7 @@ setTransform(transform?: Matrix2D): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| transform | Matrix2D | 否 | 变换矩阵。&lt;br&gt;异常值undefined或null按无效值处理。&lt;br&gt;默认值：null |
+| transform | Matrix2D | 否 | 变换矩阵。<br>异常值undefined或null按无效值处理。<br>默认值：null |
 
 ## stroke
 
@@ -1119,7 +1119,7 @@ stroke(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1141,7 +1141,7 @@ stroke(path: Path2D): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1157,7 +1157,7 @@ stroke(path: Path2D): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 需要绘制的Path2D。&lt;br&gt;异常值undefined或null按无效值处理，不进行绘制。 |
+| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 需要绘制的Path2D。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 
 ## strokeRect
 
@@ -1169,7 +1169,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1185,10 +1185,10 @@ strokeRect(x: number, y: number, w: number, h: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 指定矩形的左上角x坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| y | number | 是 | 指定矩形的左上角y坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| w | number | 是 | 指定矩形的宽度。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| h | number | 是 | 指定矩形的高度。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
+| x | number | 是 | 指定矩形的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| y | number | 是 | 指定矩形的左上角y坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| w | number | 是 | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| h | number | 是 | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
 ## strokeText
 
@@ -1200,7 +1200,7 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1216,10 +1216,10 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| text | string | 是 | 需要绘制的文本内容。&lt;br&gt;异常值undefined或null按无效值处理，不进行绘制。 |
-| x | number | 是 | 文本绘制起点的x轴坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| y | number | 是 | 文本绘制起点的y轴坐标。&lt;br&gt;异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。&lt;br&gt;默认单位：vp |
-| maxWidth | number | 否 | 需要绘制的文本的最大宽度。&lt;br&gt;异常值null按无效值处理，不进行绘制，undefined、NaN或Infinity按默认值处理。&lt;br&gt;默认单位：vp&lt;br&gt;默认值：不限制宽度。 |
+| text | string | 是 | 需要绘制的文本内容。<br>异常值undefined或null按无效值处理，不进行绘制。 |
+| x | number | 是 | 文本绘制起点的x轴坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| y | number | 是 | 文本绘制起点的y轴坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| maxWidth | number | 否 | 需要绘制的文本的最大宽度。<br>异常值null按无效值处理，不进行绘制，undefined、NaN或Infinity按默认值处理。<br>默认单位：vp<br>默认值：不限制宽度。 |
 
 ## transferFromImageBitmap
 
@@ -1231,7 +1231,7 @@ transferFromImageBitmap(bitmap: ImageBitmap): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1259,7 +1259,7 @@ transform方法对应一个变换矩阵，想对一个图形进行变化的时�
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1275,12 +1275,12 @@ transform方法对应一个变换矩阵，想对一个图形进行变化的时�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| a | number | 是 | 变换矩阵中第一行第一列的单元格。scaleX：指定水平缩放值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| b | number | 是 | 变换矩阵第二行第一列的单元格。skewY：指定垂直倾斜值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| c | number | 是 | 变换矩阵第一行第二列的单元格。skewX：指定水平倾斜值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| d | number | 是 | 变换矩阵第二行第二列的单元格。scaleY：指定垂直缩放值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
-| e | number | 是 | 变换矩阵第一行第三列的单元格。translateX：指定水平移动值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。&lt;br&gt;默认单位：vp |
-| f | number | 是 | 变换矩阵第二行第三列的单元格。translateY：指定垂直移动值，支持设置负数。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。&lt;br&gt;默认单位：vp |
+| a | number | 是 | 变换矩阵中第一行第一列的单元格。scaleX：指定水平缩放值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| b | number | 是 | 变换矩阵第二行第一列的单元格。skewY：指定垂直倾斜值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| c | number | 是 | 变换矩阵第一行第二列的单元格。skewX：指定水平倾斜值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| d | number | 是 | 变换矩阵第二行第二列的单元格。scaleY：指定垂直缩放值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。 |
+| e | number | 是 | 变换矩阵第一行第三列的单元格。translateX：指定水平移动值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br>默认单位：vp |
+| f | number | 是 | 变换矩阵第二行第三列的单元格。translateY：指定垂直移动值，支持设置负数。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br>默认单位：vp |
 
 ## translate
 
@@ -1292,7 +1292,7 @@ translate(x: number, y: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1308,8 +1308,8 @@ translate(x: number, y: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 设置水平平移量。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。&lt;br&gt;默认单位：vp |
-| y | number | 是 | 设置竖直平移量。&lt;br&gt;API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。&lt;br&gt;默认单位：vp |
+| x | number | 是 | 设置水平平移量。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br>默认单位：vp |
+| y | number | 是 | 设置竖直平移量。<br>API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制方法无法绘制；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的绘制方法正常绘制。<br>默认单位：vp |
 
 ## antialias
 
@@ -1325,7 +1325,7 @@ antialias: boolean | undefined
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1351,7 +1351,7 @@ direction: CanvasDirection
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1377,7 +1377,7 @@ fillStyle: string | number | CanvasGradient | CanvasPattern
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1403,7 +1403,7 @@ filter: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1421,7 +1421,7 @@ filter: string
 font: string
 ```
 
-设置文本绘制中的字体样式，此属性为只写属性，可通过赋值语句设置其值， 但无法通过读取操作获取其当前值，若尝试读取将返回undefined。 语法：ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family' &lt;br&gt;-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：'normal','italic'。 &lt;br&gt;-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：'normal',&nbsp;'bold', &nbsp;'bolder',&nbsp;'lighter',&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600, &nbsp;700,&nbsp;800,&nbsp;900。 &lt;br&gt;-&nbsp;font-size(可选)，指定字号和行高，单位支持px、vp。使用时需要添加单位。 &lt;br&gt;-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：'sans-serif',&nbsp;'serif', &nbsp;'monospace'。 从API version 20开始，支持通过该接口设置注册过的自定义字体（DevEco Studio的预览器不支持显示自定义字体）。 自定义字体注册有以下两种方式。 一种是通过ArkUI的异步接口 this.uiContext.getFont().[registerFont](../../../reference/apis-arkui/arkts-apis-uicontext-font.md#registerfont) 注册，调用后立即绘制可能会导致自定义字体不生效。 另一种是直接调用字体引擎的 fontCollection.[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadFontSync) 接口来注册自定义字体到字体引擎。在直接调用字体引擎接口注册自定义字体时，fontCollection的实例需要是 text.FontCollection.getGlobalInstance()，因为组件默认会从该实例加载字体。 如果使用其他实例，可能会导致自定义字体不生效。
+设置文本绘制中的字体样式，此属性为只写属性，可通过赋值语句设置其值， 但无法通过读取操作获取其当前值，若尝试读取将返回undefined。 语法：ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family' <br>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：'normal','italic'。 <br>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：'normal',&nbsp;'bold', &nbsp;'bolder',&nbsp;'lighter',&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600, &nbsp;700,&nbsp;800,&nbsp;900。 <br>-&nbsp;font-size(可选)，指定字号和行高，单位支持px、vp。使用时需要添加单位。 <br>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：'sans-serif',&nbsp;'serif', &nbsp;'monospace'。 从API version 20开始，支持通过该接口设置注册过的自定义字体（DevEco Studio的预览器不支持显示自定义字体）。 自定义字体注册有以下两种方式。 一种是通过ArkUI的异步接口 this.uiContext.getFont().[registerFont](../../../reference/apis-arkui/arkts-apis-uicontext-font.md#registerfont) 注册，调用后立即绘制可能会导致自定义字体不生效。 另一种是直接调用字体引擎的 fontCollection.[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync) 接口来注册自定义字体到字体引擎。在直接调用字体引擎接口注册自定义字体时，fontCollection的实例需要是 text.FontCollection.getGlobalInstance()，因为组件默认会从该实例加载字体。 如果使用其他实例，可能会导致自定义字体不生效。
 
 **类型：** string
 
@@ -1429,7 +1429,7 @@ font: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1455,7 +1455,7 @@ globalAlpha: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1481,7 +1481,7 @@ globalCompositeOperation: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1507,7 +1507,7 @@ imageSmoothingEnabled: boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1533,7 +1533,7 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1559,7 +1559,7 @@ letterSpacing: LengthMetrics | string
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -1585,7 +1585,7 @@ lineCap: CanvasLineCap
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1611,7 +1611,7 @@ lineDashOffset: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1629,7 +1629,7 @@ lineDashOffset: number
 lineJoin: CanvasLineJoin
 ```
 
-指定线段间相交的交点样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。 &lt;br&gt;可选值为： &lt;br&gt;- **'round'**：在线段相连处绘制一个扇形，扇形的圆角半径是线段的宽度。 &lt;br&gt;- **'bevel'**：在线段相连处使用三角形为底填充，每个部分矩形拐角独立。 &lt;br&gt;- **'miter'**：在相连部分的外边缘处进行延伸，使其相交于一点，形成一个菱形区域， 该属性可以通过设置miterLimit属性展现效果。 &lt;br&gt;默认值：**'miter'**
+指定线段间相交的交点样式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。 <br>可选值为： <br>- **'round'**：在线段相连处绘制一个扇形，扇形的圆角半径是线段的宽度。 <br>- **'bevel'**：在线段相连处使用三角形为底填充，每个部分矩形拐角独立。 <br>- **'miter'**：在相连部分的外边缘处进行延伸，使其相交于一点，形成一个菱形区域， 该属性可以通过设置miterLimit属性展现效果。 <br>默认值：**'miter'**
 
 **类型：** [CanvasLineJoin](arkts-arkui-canvaslinejoin-t.md)
 
@@ -1637,7 +1637,7 @@ lineJoin: CanvasLineJoin
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1663,7 +1663,7 @@ lineWidth: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1689,7 +1689,7 @@ miterLimit: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1715,7 +1715,7 @@ shadowBlur: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1741,7 +1741,7 @@ shadowColor: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1767,7 +1767,7 @@ shadowOffsetX: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1793,7 +1793,7 @@ shadowOffsetY: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1819,7 +1819,7 @@ strokeStyle: string | number | CanvasGradient | CanvasPattern
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1845,7 +1845,7 @@ textAlign: CanvasTextAlign
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -1871,7 +1871,7 @@ textBaseline: CanvasTextBaseline
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

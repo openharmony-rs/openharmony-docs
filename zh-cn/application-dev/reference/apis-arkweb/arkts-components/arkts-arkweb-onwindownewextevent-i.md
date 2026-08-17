@@ -1,10 +1,10 @@
 # OnWindowNewExtEvent
 
-Defines the triggered callback when web page requires the user to create a window.
+定义网页请求创建窗口时触发的回调信息，包括窗口特征信息和窗口打开方式。适用于需要精细控制新窗口行为的场景，提升窗口管理的定制性和用户体验。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Defines the triggered callback when web page requires the user to create a windo
 handler: ControllerHandler
 ```
 
-Lets you set the WebviewController instance for creating a new window.
+用于设置新建窗口的WebviewController实例。
 
 **类型：** [ControllerHandler](arkts-arkweb-controllerhandler-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ Lets you set the WebviewController instance for creating a new window.
 isAlert: boolean
 ```
 
-true indicates the request to create a dialog and false indicates a new tab.
+true代表请求创建对话框，false代表请求创建新标签页。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ true indicates the request to create a dialog and false indicates a new tab.
 isUserTrigger: boolean
 ```
 
-true indicates that it is triggered by the user, and false indicates that it is triggered by a non-user.
+true代表用户触发，false代表非用户触发。
 
 **类型：** boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,13 +84,13 @@ true indicates that it is triggered by the user, and false indicates that it is 
 navigationPolicy: NavigationPolicy
 ```
 
-The navigation policy causing the new web view to be created.
+网页请求用户创建新窗口时的窗口打开方式。
 
 **类型：** [NavigationPolicy](arkts-arkweb-navigationpolicy-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -106,13 +106,13 @@ The navigation policy causing the new web view to be created.
 targetUrl: string
 ```
 
-Destination URL.
+请求的新窗口中需要打开的url。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -128,13 +128,13 @@ Destination URL.
 windowFeatures: WindowFeatures
 ```
 
-Contains the attributes that a webpage requests from its containing web view, the parameters of window.open.
+网页请求创建的新窗口特征信息。
 
 **类型：** [WindowFeatures](arkts-arkweb-windowfeatures-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

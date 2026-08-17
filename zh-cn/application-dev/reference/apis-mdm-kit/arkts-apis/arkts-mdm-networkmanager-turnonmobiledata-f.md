@@ -10,7 +10,7 @@ function turnOnMobileData(admin: Want, isForce: boolean): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function turnOnMobileData(admin: Want, isForce: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| isForce | boolean | 是 | 是否强制打开移动数据网络。true表示强制开启，强制开启后不支持用户在设备上手动关闭，必须采用 [turnOffMobileData](arkts-mdm-networkmanager-turnoffmobiledata-f.md#turnOffMobileData)接口关闭。false表示非强制开启，此时用户可以在设备上手动操作关闭移动数据网络。适用于企业网络安全管控 场景，例如防止通过移动数据网络进行数据泄露、控制网络连接方式、降低通信成本、确保设备仅使用企业网络，帮助企业控制设备网络访问方式，防止通过移动数据网络的安全风险和数据外泄。 |
+| isForce | boolean | 是 | 是否强制打开移动数据网络。true表示强制开启，强制开启后不支持用户在设备上手动关闭，必须采用 [turnOffMobileData](arkts-mdm-networkmanager-turnoffmobiledata-f.md#turnoffmobiledata)接口关闭。false表示非强制开启，此时用户可以在设备上手动操作关闭移动数据网络。适用于企业网络安全管控 场景，例如防止通过移动数据网络进行数据泄露、控制网络连接方式、降低通信成本、确保设备仅使用企业网络，帮助企业控制设备网络访问方式，防止通过移动数据网络的安全风险和数据外泄。 |
 
 **错误码：**
 

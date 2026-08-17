@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NavDestination](arkts-na-navdestination-navdestination-f.md#NavDestination) | 定义NavDestination组件 |
+| [NavDestination](arkts-na-navdestination-navdestination-f.md#navdestination) | 定义NavDestination组件 |
 
 ### 接口
 

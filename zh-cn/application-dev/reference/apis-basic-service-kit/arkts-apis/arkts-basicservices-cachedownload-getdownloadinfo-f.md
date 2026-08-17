@@ -6,11 +6,11 @@
 function getDownloadInfo(url: string): DownloadInfo | undefined
 ```
 
-基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。 - 如果下载信息列表中能够找到指定url，返回该url对应的最新[DownloadInfo](arkts-basicservices-cachedownload-downloadinfo-i.md#DownloadInfo)。 - 如果下载信息列表中找不到指定url，返回undefined。 - 在缓存下载信息时，如果在该url下已存在缓存信息，新的缓存内容会覆盖旧缓存。 - 目标信息在存储到内存时，使用“LRU”（最近最少使用）方式替换已存在的缓存数据。
+基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。 - 如果下载信息列表中能够找到指定url，返回该url对应的最新[DownloadInfo](arkts-basicservices-cachedownload-downloadinfo-i.md#downloadinfo)。 - 如果下载信息列表中找不到指定url，返回undefined。 - 在缓存下载信息时，如果在该url下已存在缓存信息，新的缓存内容会覆盖旧缓存。 - 目标信息在存储到内存时，使用“LRU”（最近最少使用）方式替换已存在的缓存数据。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

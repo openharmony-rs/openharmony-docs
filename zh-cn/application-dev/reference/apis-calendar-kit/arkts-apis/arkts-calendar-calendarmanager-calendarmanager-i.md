@@ -1,10 +1,10 @@
 # CalendarManager
 
-下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getCalendarManager)方法获取CalendarManager对象，再通过此对象调用对应方法，进行 Calendar的创建、删除、修改、查询等操作。
+下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md#getcalendarmanager)方法获取CalendarManager对象，再通过此对象调用对应方法，进行 Calendar的创建、删除、修改、查询等操作。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -48,9 +48,9 @@ createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: &lt;br&gt;1. 必填参数为空； &lt;br&gt;2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: <br>1. 必填参数为空； <br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 
 ## 示例
@@ -84,7 +84,7 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calenda
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -105,9 +105,9 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calenda
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: &lt;br&gt;1. 必填参数为空； &lt;br&gt;2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: <br>1. 必填参数为空； <br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 
 ## 示例
@@ -146,7 +146,7 @@ deleteCalendar(calendar: Calendar): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -172,9 +172,9 @@ deleteCalendar(calendar: Calendar): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: &lt;br&gt;1. 必填参数为空； &lt;br&gt;2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: <br>1. 必填参数为空； <br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 
 ## 示例
@@ -219,7 +219,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -240,9 +240,9 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: &lt;br&gt;1. 必填参数为空； &lt;br&gt;2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: <br>1. 必填参数为空； <br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 
 ## 示例
@@ -290,7 +290,7 @@ editEvent(event: Event): Promise<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -341,7 +341,7 @@ getAllCalendars(): Promise<Calendar[]>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -363,7 +363,7 @@ getAllCalendars(): Promise<Calendar[]>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 
 ## 示例
@@ -397,7 +397,7 @@ getAllCalendars(callback: AsyncCallback<Calendar[]>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -417,9 +417,9 @@ getAllCalendars(callback: AsyncCallback<Calendar[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: &lt;br&gt;1. 必填参数为空； &lt;br&gt;2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: <br>1. 必填参数为空； <br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 
 ## 示例
@@ -453,7 +453,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -483,7 +483,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
 
@@ -513,7 +513,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -538,7 +538,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>)
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
 
@@ -580,7 +580,7 @@ getCalendar(callback: AsyncCallback<Calendar>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -602,9 +602,9 @@ getCalendar(callback: AsyncCallback<Calendar>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: &lt;br&gt;1. 必填参数为空； &lt;br&gt;2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数检查失败，可能原因: <br>1. 必填参数为空； <br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: &lt;br&gt;1. dataShare数据库执行错误； &lt;br&gt;2. 空指针错误； &lt;br&gt;3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。 |
 
 ## 示例

@@ -10,7 +10,7 @@ function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback:
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -23,8 +23,8 @@ function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isEnabled | boolean | 是 | 是否使能ArkTS对象内存泄漏检测功能。true：开启ArkTS内存泄漏检测功能；false：关闭ArkTS内存泄漏检测功能。 |
-| configs | Array&lt;string&gt; | 是 | 配置项，数组中每个元素为监测具体对象的类型。&lt;br&gt;可配置项包括：XComponent，NodeContainer，Window，CustomComponent 和Ability。&lt;br&gt;**说明：**传入空数组代表监测以上全部对象。 |
-| callback | Callback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口返回的内存泄漏文件列表和虚拟机内存快照文件。&lt;br&gt;回调函数中传入一个数组 对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。 |
+| configs | Array&lt;string&gt; | 是 | 配置项，数组中每个元素为监测具体对象的类型。<br>可配置项包括：XComponent，NodeContainer，Window，CustomComponent 和Ability。<br>**说明：**传入空数组代表监测以上全部对象。 |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口返回的内存泄漏文件列表和虚拟机内存快照文件。<br>回调函数中传入一个数组 对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。 |
 
 **错误码：**
 
@@ -57,7 +57,7 @@ function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callb
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.1.0。
+**ArkTS模式：** 起始版本为26.1.0。
 
 **废弃版本：** -1
 
@@ -69,9 +69,9 @@ function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isEnabled | boolean | 是 | 是否使能ArkTS对象内存泄漏检测功能。&lt;br&gt;true：开启ArkTS内存泄漏检测功能。&lt;br&gt;false：关闭ArkTS内存泄漏检测功能。 |
-| configs | [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md) | 是 | LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。&lt;br&gt;**说明：**对象中参数类型传入空值或假值代表该属性设置 为默认值。 |
-| callback | Callback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，用于接收泄漏检测的导出文件路径。&lt;br&gt;回调函数中传入一个数组 对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。 |
+| isEnabled | boolean | 是 | 是否使能ArkTS对象内存泄漏检测功能。<br>true：开启ArkTS内存泄漏检测功能。<br>false：关闭ArkTS内存泄漏检测功能。 |
+| configs | [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md) | 是 | LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明：**对象中参数类型传入空值或假值代表该属性设置 为默认值。 |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，用于接收泄漏检测的导出文件路径。<br>回调函数中传入一个数组 对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。 |
 
 **错误码：**
 

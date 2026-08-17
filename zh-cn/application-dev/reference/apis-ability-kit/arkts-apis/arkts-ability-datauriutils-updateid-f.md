@@ -10,7 +10,7 @@ function updateId(uri: string, id: double): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -49,6 +49,7 @@ try {
     'com.example.dataUriUtils/1221',
     id
   );
+  console.info(`update id with the uri is: ${uri}`);
 } catch (err) {
   console.error(`update id err, code: ${(err as BusinessError).code}, msg: ${(err as BusinessError).message}`);
 }

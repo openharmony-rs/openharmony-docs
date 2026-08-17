@@ -1,14 +1,14 @@
 # Vector
 
-Vector是一种线性数据结构，底层基于数组实现，解决了需要动态扩容、高效随机访问的数据存储问题。 当Vector的内存用尽时，会自动分配更大的连续内存区，将原先的元素复制到新的内存区，并释放旧的内存区。 使用Vector能够高效快速地访问元素，其2倍扩容策略减少了频繁的内存重分配，同时丰富的操作接口提供了更灵活的数据管理能力。 Vector和[ArrayList](arkts-arkts-util-arraylist-arraylist-c.md#ArrayList)相似，都是基于数组实现，但Vector提供了更多操作数组的接口。 它们都可以动态调整容量，但Vector每次扩容增加1倍，ArrayList只扩容0.5倍。 **推荐使用场景：** 当需要频繁按索引随机访问元素且数据量较大时，推荐使用Vector来存取数据。 文档中使用了泛型，涉及以下泛型标记符： - T：Type，类 > **说明：**> > - 此模块提供的接口从API version 9开始废弃。建议使用 > [@ohos.util.ArrayList](arkts-arkts-util-arraylist-arraylist-c.md#ArrayList)。
+Vector是一种线性数据结构，底层基于数组实现，解决了需要动态扩容、高效随机访问的数据存储问题。 当Vector的内存用尽时，会自动分配更大的连续内存区，将原先的元素复制到新的内存区，并释放旧的内存区。 使用Vector能够高效快速地访问元素，其2倍扩容策略减少了频繁的内存重分配，同时丰富的操作接口提供了更灵活的数据管理能力。 Vector和[ArrayList](arkts-arkts-util-arraylist-arraylist-c.md#arraylist)相似，都是基于数组实现，但Vector提供了更多操作数组的接口。 它们都可以动态调整容量，但Vector每次扩容增加1倍，ArrayList只扩容0.5倍。 **推荐使用场景：** 当需要频繁按索引随机访问元素且数据量较大时，推荐使用Vector来存取数据。 文档中使用了泛型，涉及以下泛型标记符： - T：Type，类 > **说明：**> > - 此模块提供的接口从API version 9开始废弃。建议使用 > [@ohos.util.ArrayList](arkts-arkts-util-arraylist-arraylist-c.md#arraylist)。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ArrayList](arkts-arkts-util-arraylist-arraylist-c.md#ArrayList)
+**替代接口：** [ArrayList](arkts-arkts-util-arraylist-arraylist-c.md#arraylist)
 
 <!--Device-unnamed-declare class Vector--><!--Device-unnamed-declare class Vector-End-->
 
@@ -24,7 +24,7 @@ Vector是一种线性数据结构，底层基于数组实现，解决了需要�
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -72,7 +72,7 @@ add(element: T): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -124,7 +124,7 @@ clear(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -153,7 +153,7 @@ clone(): Vector<T>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -188,7 +188,7 @@ Vector的构造函数。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -212,7 +212,7 @@ convertToArray(): Array<T>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -247,7 +247,7 @@ copyToArray(array: Array<T>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -271,7 +271,7 @@ forEach(callbackFn: (value: T, index?: number, vector?: Vector<T>) => void, this
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -311,7 +311,7 @@ get(index: number): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -323,7 +323,7 @@ get(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 查找的下标值，取值范围：0 ≤ index < length。 |
+| index | number | 是 | 查找的下标值，取值范围：0 ≤ index &lt; length。 |
 
 **返回值：**
 
@@ -352,7 +352,7 @@ getCapacity(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -387,7 +387,7 @@ getFirstElement(): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -422,7 +422,7 @@ getIndexFrom(element: T, index: number): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -464,7 +464,7 @@ getIndexOf(element: T): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -508,7 +508,7 @@ getLastElement(): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -543,7 +543,7 @@ getLastIndexFrom(element: T, index: number): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -585,7 +585,7 @@ getLastIndexOf(element: T): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -629,7 +629,7 @@ has(element: T): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -672,7 +672,7 @@ increaseCapacityTo(newCapacity: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -711,7 +711,7 @@ insert(element: T, index: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -749,7 +749,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -784,7 +784,7 @@ remove(element: T): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -825,7 +825,7 @@ removeByIndex(index: number): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -867,7 +867,7 @@ removeByRange(fromIndex: number, toIndex: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -905,7 +905,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector<T>) =>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -946,7 +946,7 @@ set(index: number, element: T): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -977,7 +977,7 @@ setLength(newSize: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1013,7 +1013,7 @@ sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1054,7 +1054,7 @@ subVector(fromIndex: number, toIndex: number): Vector<T>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1066,7 +1066,7 @@ subVector(fromIndex: number, toIndex: number): Vector<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fromIndex | number | 是 | 起始下标，取值范围：0 ≤ fromIndex < length。 |
+| fromIndex | number | 是 | 起始下标，取值范围：0 ≤ fromIndex &lt; length。 |
 | toIndex | number | 是 | 终止下标，取值范围：0 ≤ toIndex ≤ length，且toIndex应大于fromIndex。 |
 
 **返回值：**
@@ -1102,7 +1102,7 @@ toString(): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1137,7 +1137,7 @@ trimToCurrentLength(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1168,7 +1168,7 @@ Vector的元素个数。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

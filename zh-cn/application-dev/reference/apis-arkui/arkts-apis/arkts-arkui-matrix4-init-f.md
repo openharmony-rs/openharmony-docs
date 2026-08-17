@@ -27,7 +27,7 @@ Matrix的构造函数，可以通过传入的参数创建一个四阶矩阵，�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -41,7 +41,7 @@ Matrix的构造函数，可以通过传入的参数创建一个四阶矩阵，�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double     ] | 是 | 参数为长度为16（4*4）的number数组, 详情见四阶矩阵说明。&lt;br/&gt;各number取值范围：(-∞, +∞)&lt;br/&gt;默认值：&lt;br/&gt; [1, 0, 0, 0,&lt;br/&gt;0, 1, 0, 0,&lt;br/&gt;0, 0, 1, 0,&lt;br/&gt;0, 0, 0, 1] |
+| options | [         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double,         double     ] | 是 | 参数为长度为16（4*4）的number数组, 详情见四阶矩阵说明。<br/>各number取值范围：(-∞, +∞)<br/>默认值：<br/> [1, 0, 0, 0,<br/>0, 1, 0, 0,<br/>0, 0, 1, 0,<br/>0, 0, 0, 1] |
 
 **返回值：**
 

@@ -10,7 +10,7 @@ function getJsonProfile(profileType: ProfileType, bundleName: string, moduleName
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -29,7 +29,7 @@ function getJsonProfile(profileType: ProfileType, bundleName: string, moduleName
 | profileType | [ProfileType](arkts-ability-bundlemanager-profiletype-e-sys.md) | 是 | 表示要查询的配置文件类型。 |
 | bundleName | string | 是 | 表示要查询应用程序的bundleName。 |
 | moduleName | string | 否 | 表示要查询应用程序的module的名称，缺省时在入口模块中查找。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId) 获取，默认值：调用方所在用户，取值范围：大于等于0。<br>**起始版本：** 12 |
+| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。<br>**起始版本：** 12 |
 
 **返回值：**
 

@@ -10,7 +10,7 @@ function installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string):
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -41,12 +41,12 @@ function installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter verification failed. Possible causes: &lt;br&gt;The keystore parameter is empty or exceeds the maximum length. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter verification failed. Possible causes: <br>The keystore parameter is empty or exceeds the maximum length. |
 | [17500008](../errorcode-certManager.md#17500008-密码错误) | Indicates that the password is error. |
 | [17500003](../errorcode-certManager.md#17500003-证书或凭据无效) | Indicates that the certificate is in an invalid format. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. &lt;br&gt; The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. <br> The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; &lt;br&gt;2. Memory operation error; 3. File operation error. Please try again. |
+| [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | Indicates that the number of certificates reaches the maximum allowed. |
 
 ## 示例

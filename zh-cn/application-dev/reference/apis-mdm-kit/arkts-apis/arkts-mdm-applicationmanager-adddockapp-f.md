@@ -10,7 +10,7 @@ function addDockApp(admin: Want, bundleName: string, abilityName: string, index?
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -29,7 +29,7 @@ function addDockApp(admin: Want, bundleName: string, abilityName: string, index?
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 应用的包名。 |
 | abilityName | string | 是 | 应用的Ability名称，仅支持应用程序入口Ability。 |
-| index | number | 否 | 应用在快捷栏中的位置索引，默认值为99。 &lt;br&gt;取值范围：[0,100)。 |
+| index | number | 否 | 应用在快捷栏中的位置索引，默认值为99。 <br>取值范围：[0,100)。 |
 
 **错误码：**
 
@@ -65,7 +65,7 @@ try {
   let abilityName: string = 'EntryAbility';
   applicationManager.addDockApp(wantTemp, bundleName, abilityName, 3);
   console.info('Succeeded in adding dock app.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add dock app. Code: ${err.code}, message: ${err.message}`);
 }
 ```

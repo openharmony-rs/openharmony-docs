@@ -10,7 +10,7 @@ function getId(uri: string): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,12 +40,13 @@ function getId(uri: string): double
 
 ```TypeScript
 import { dataUriUtils } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let id = dataUriUtils.getId('com.example.dataUriUtils/1221');
   console.info(`get id: ${id}`);
 } catch (err) {
-  console.error(`get id err ,check the uri ${err}`);
+  console.error(`get id err, code: ${JSON.stringify((err as BusinessError).code)}, msg: ${JSON.stringify((err as BusinessError).message)}`);
 }
 ```
 

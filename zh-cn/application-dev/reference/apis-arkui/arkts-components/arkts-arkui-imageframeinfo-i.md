@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ duration?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ height?: number | string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ left?: number | string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -88,13 +88,13 @@ left?: number | string
 src: string | Resource | PixelMap
 ```
 
-图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持Resource类型的路径，从API version 12开始支持 [PixelMap](../../../reference/apis-arkui/arkui-ts/ts-image-common.md#pixelmap)类型。 **string格式说明：** - 支持加载本地图片路径和网络图片地址。使用相对路径引用本地图片时，不支持跨包或跨模块调用。resources目录下的文件不支持通过相对路径访问，需使用Resource类型（如\$r或\$ rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。 - 支持`http`和`https`网络图片地址，使用网络图片时需要申请权限`ohos.permission.INTERNET`。 - 支持`file://`路径前缀的字符串，应用沙箱URI为`file://&lt;bundleName&gt;/&lt;sandboxPath&gt;`。沙箱路径需要使用 [fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#getUriFromPath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的 文件有可读权限。 - 支持`Base64`字符串。
+图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持Resource类型的路径，从API version 12开始支持 [PixelMap](../../../reference/apis-arkui/arkui-ts/ts-image-common.md#pixelmap)类型。 **string格式说明：** - 支持加载本地图片路径和网络图片地址。使用相对路径引用本地图片时，不支持跨包或跨模块调用。resources目录下的文件不支持通过相对路径访问，需使用Resource类型（如\$r或\$ rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。 - 支持`http`和`https`网络图片地址，使用网络图片时需要申请权限`ohos.permission.INTERNET`。 - 支持`file://`路径前缀的字符串，应用沙箱URI为`file://&lt;bundleName&gt;/&lt;sandboxPath&gt;`。沙箱路径需要使用 [fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的 文件有可读权限。 - 支持`Base64`字符串。
 
 **类型：** string \| Resource \| PixelMap
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -118,7 +118,7 @@ top?: number | string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -142,7 +142,7 @@ width?: number | string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

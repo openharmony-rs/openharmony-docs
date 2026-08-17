@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,13 +22,13 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getMaterialInfo](arkts-na-uimaterial-getmaterialinfo-f.md#getMaterialInfo) | 获取当前应用的材质配置信息。返回的配置信息来自应用在[module.json5](../../../quick-start/module-configuration-file.md)中配置的metadata。 |
+| [getMaterialInfo](arkts-na-uimaterial-getmaterialinfo-f.md#getmaterialinfo) | 获取当前应用的材质配置信息。返回的配置信息来自应用在[module.json5](../../../quick-start/module-configuration-file.md)中配置的metadata。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [ImmersiveMaterial](arkts-na-uimaterial-immersivematerial-c.md) | 沉浸式材质类，继承自[Material](arkts-na-uimaterial-materialtype-e.md#MaterialType（系统接口）)。 沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高档和中档算力设备上，影响材质层滤镜效果和阴影 shadow效果。在低档算力设备上，影响背景色 [backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框 颜色borderColor、边框宽度borderWidth、阴影 shadow效果。且同一材质的效果，会受到设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置 下，材质的参数和效果存在差异。 |
+| [ImmersiveMaterial](arkts-na-uimaterial-immersivematerial-c.md) | 沉浸式材质类，继承自[Material](arkts-na-uimaterial-materialtype-e.md#materialtype系统接口)。 沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高档和中档算力设备上，影响材质层滤镜效果和阴影 shadow效果。在低档算力设备上，影响背景色 [backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框 颜色borderColor、边框宽度borderWidth、阴影 shadow效果。且同一材质的效果，会受到设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置 下，材质的参数和效果存在差异。 |
 
 <!--Del-->
 ### 类（系统接口）

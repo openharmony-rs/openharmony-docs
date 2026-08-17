@@ -10,11 +10,11 @@ function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): v
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#moveMissionToFront（系统接口）)
+**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#movemissiontofront系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -64,11 +64,11 @@ function moveMissionToFront(missionId: number, options: StartOptions, callback: 
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#moveMissionToFront（系统接口）)
+**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#movemissiontofront系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -119,11 +119,11 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#moveMissionToFront（系统接口）)
+**替代接口：** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md#movemissiontofront系统接口)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 

@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [rememberVariable](arkts-na-remember-remembervariable-f.md#rememberVariable) | 创建状态变量。 |
+| [rememberVariable](arkts-na-remember-remembervariable-f.md#remembervariable) | 创建状态变量。 |
 
 ### 接口
 

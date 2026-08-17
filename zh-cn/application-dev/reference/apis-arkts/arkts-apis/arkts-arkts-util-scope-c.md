@@ -4,11 +4,11 @@ Scope 接口用于描述字段的有效范围。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ScopeHelper](arkts-arkts-util-scopehelper-c.md#ScopeHelper)
+**替代接口：** [ScopeHelper](arkts-arkts-util-scopehelper-c.md#scopehelper)
 
 <!--Device-util-class Scope--><!--Device-util-class Scope-End-->
 
@@ -24,7 +24,7 @@ clamp(value: ScopeType): ScopeType
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -88,7 +88,7 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -145,7 +145,7 @@ contains(value: ScopeType): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -209,7 +209,7 @@ contains(range: Scope): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -275,7 +275,7 @@ expand(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -341,7 +341,7 @@ expand(range: Scope): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -407,7 +407,7 @@ expand(value: ScopeType): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -471,11 +471,11 @@ getLower(): ScopeType
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getLower](arkts-arkts-util-scopehelper-c.md#getLower)
+**替代接口：** [getLower](arkts-arkts-util-scopehelper-c.md#getlower)
 
 <!--Device-Scope-getLower(): ScopeType--><!--Device-Scope-getLower(): ScopeType-End-->
 
@@ -528,11 +528,11 @@ getUpper(): ScopeType
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getUpper](arkts-arkts-util-scopehelper-c.md#getUpper)
+**替代接口：** [getUpper](arkts-arkts-util-scopehelper-c.md#getupper)
 
 <!--Device-Scope-getUpper(): ScopeType--><!--Device-Scope-getUpper(): ScopeType-End-->
 
@@ -585,7 +585,7 @@ intersect(range: Scope): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -651,7 +651,7 @@ intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -717,11 +717,11 @@ toString(): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#toString)
+**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#tostring)
 
 <!--Device-Scope-toString(): string--><!--Device-Scope-toString(): string-End-->
 

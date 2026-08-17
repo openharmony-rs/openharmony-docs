@@ -10,7 +10,7 @@ function isEncoding(encoding: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function isEncoding(encoding: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 是 | 编码格式，支持的格式范围为[BufferEncoding](arkts-arkts-buffer-bufferencoding-t.md#BufferEncoding)。 |
+| encoding | string | 是 | 编码格式，支持的格式范围为[BufferEncoding](arkts-arkts-buffer-bufferencoding-t.md#bufferencoding)。 |
 
 **返回值：**
 

@@ -4,7 +4,7 @@ Swiper组件的内容区信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Swiper组件的id。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,11 +42,11 @@ swiperItemInfos: Array<SwiperItemInfo>
 
 当前处于显示状态的Swiper子组件的信息。
 
-**类型：** Array&lt;[SwiperItemInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-swiperiteminfo-i.md)&gt;
+**类型：** Array&lt;[SwiperItemInfo](arkts-na-arkui-uicontext-swiperiteminfo-i.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ Swiper子组件的唯一标识符。 取值限定为整数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

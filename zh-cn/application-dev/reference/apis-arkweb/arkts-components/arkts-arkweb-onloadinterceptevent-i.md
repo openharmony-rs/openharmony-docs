@@ -1,10 +1,10 @@
 # OnLoadInterceptEvent
 
-定义截获资源加载时触发的回调。
+定义截获资源加载时触发的回调信息，包括请求详情。适用于需要拦截或处理资源加载的场景，提升资源控制的灵活性和安全性。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 data: WebResourceRequest
 ```
 
-网页请求的封装信息。
+url请求的相关信息。
 
 **类型：** [WebResourceRequest](arkts-arkweb-webresourcerequest-c.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

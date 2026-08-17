@@ -6,7 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ analyzerConfig(config: ImageAnalyzerConfig | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ attributeModifier(modifier: AttributeModifier<VideoAttribute> | AttributeModifie
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ autoPlay(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ controls(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ enableAnalyzer(enable: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -152,7 +152,7 @@ enableShortcutKey(enabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ loop(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -204,7 +204,7 @@ muted(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -230,7 +230,7 @@ objectFit(value: ImageFit | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -256,7 +256,7 @@ onError(event: VoidCallback | ErrorCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -282,7 +282,7 @@ onFinish(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -308,7 +308,7 @@ onFullscreenChange(callback: Callback<FullscreenInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -334,7 +334,7 @@ onPause(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -360,7 +360,7 @@ onPrepared(callback: Callback<PreparedInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -386,7 +386,7 @@ onSeeked(callback: Callback<PlaybackInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -412,7 +412,7 @@ onSeeking(callback: Callback<PlaybackInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -438,7 +438,7 @@ onStart(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -464,7 +464,7 @@ onStop(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -490,7 +490,7 @@ onUpdate(callback: Callback<PlaybackInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -516,7 +516,7 @@ setVideoOptions(value: VideoOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -542,7 +542,7 @@ surfaceBackgroundColor(color: ColorMetrics | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -570,7 +570,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

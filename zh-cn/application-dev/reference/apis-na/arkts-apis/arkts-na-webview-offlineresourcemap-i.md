@@ -4,7 +4,7 @@ Define offline resource's content and info.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Arraybuffer of resource. Size must less than 10Mb and cannot be empty.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ Response headers of resource.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -60,11 +60,11 @@ type: OfflineResourceType
 
 Resource type
 
-**类型：** [OfflineResourceType](arkts-na-webview-offlineresourcetype-e.md)
+**类型：** [OfflineResourceType](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-offlineresourcetype-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ Url list of resource. Url of urlList must be HTTP/HTTPS protocol and no longer t
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

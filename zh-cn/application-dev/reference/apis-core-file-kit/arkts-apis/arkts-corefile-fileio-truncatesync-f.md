@@ -10,11 +10,11 @@ declare function truncateSync(path: string, len?: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [truncateSync](arkts-corefile-file-fs-truncatesync-f.md#truncateSync)
+**替代接口：** [truncateSync](arkts-corefile-file-fs-truncatesync-f.md#truncatesync)
 
 <!--Device-unnamed-declare function truncateSync(path: string, len?: number): void--><!--Device-unnamed-declare function truncateSync(path: string, len?: number): void-End-->
 

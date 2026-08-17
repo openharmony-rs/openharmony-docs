@@ -4,11 +4,11 @@
 type OnInputmethodAttachedCallback = () => void
 ```
 
-当inputmethod被附加时，会触发回调。
+当检测到输入法绑定成功时，会触发此回调。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -24,7 +24,7 @@ complete?: () => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -44,7 +44,7 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -58,13 +58,13 @@ fail?: (data: string, code: number) => void
 success?: (data: BatteryResponse) => void
 ```
 
-接口调用成功的回调函数，data为[BatteryResponse](arkts-basicservices-system-battery-batteryresponse-i.md#BatteryResponse)类型的返回值。
+接口调用成功的回调函数，data为[BatteryResponse](arkts-basicservices-system-battery-batteryresponse-i.md#batteryresponse)类型的返回值。
 
 **类型：** (data: BatteryResponse) =&gt; void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 

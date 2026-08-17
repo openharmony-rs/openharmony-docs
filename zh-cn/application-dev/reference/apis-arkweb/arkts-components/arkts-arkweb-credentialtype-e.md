@@ -1,10 +1,10 @@
 # CredentialType
 
-Enum type supplied to [CredentialType](#CredentialType) when ClientAuthenticationHandler#confirm being called.
+凭证类型，用于定义身份认证中使用的凭证种类。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Enum type supplied to [CredentialType](#CredentialType) when ClientAuthenticatio
 CREDENTIAL_USER = 2
 ```
 
-User credential.
+用户凭证。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -36,11 +36,11 @@ User credential.
 CREDENTIAL_APP = 3
 ```
 
-Application-specific credential.
+应用凭证。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -54,11 +54,11 @@ Application-specific credential.
 CREDENTIAL_UKEY = 4
 ```
 
-Hardware security key credential.
+ukey凭证。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

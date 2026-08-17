@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
+import { notificationManager } from 'notificationManager';
 ```
 
 ## isDistributedEnabled
@@ -16,11 +16,11 @@ function isDistributedEnabled(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabled](#isDistributedEnabled)(deviceType: string)
+**替代接口：** [isDistributedEnabled](#isdistributedenabled)(deviceType: string)
 
 <!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void-End-->
 
@@ -86,11 +86,11 @@ function isDistributedEnabled(): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isDistributedEnabled](#isDistributedEnabled)(deviceType: string)
+**替代接口：** [isDistributedEnabled](#isdistributedenabled)(deviceType: string)
 
 <!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>--><!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>-End-->
 

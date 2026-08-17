@@ -1,10 +1,10 @@
 # ChannelInfo
 
-打开代理通道函数的入参，包括对端设备的MAC地址和监听服务的UUID。
+打开代理通道函数的入参，包括代理通道的链路类型、对端设备的MAC地址和监听服务的UUID。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 linkType: LinkType
 ```
 
-代理通道的链路类型。
+代理通道的链路类型，取值范围见[LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md#linktype)，目前仅支持LINK_BR（蓝牙BR协议）。
 
 **类型：** [LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ linkType: LinkType
 peerDevAddr: string
 ```
 
-对端设备的MAC地址。
+对端设备的MAC地址，格式为XX:XX:XX:XX:XX:XX，其中XX为十六进制字符（0~9、A~F或a~f）。对端设备必须已配对，未配对时返回错误码32390002。格式不符合要求时返回错误码32390006。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ peerDevAddr: string
 peerUuid: string
 ```
 
-对端监听的服务的UUID。
+对端监听的服务的UUID，格式为标准UUID字符串，如xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx。格式不符合要求时返回错误码32390006。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

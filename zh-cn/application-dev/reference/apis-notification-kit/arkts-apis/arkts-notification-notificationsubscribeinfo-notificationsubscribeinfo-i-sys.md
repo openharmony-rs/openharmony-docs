@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ bundleNames?: Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,13 +42,13 @@ bundleNames?: Array<string>
 deviceType?: string
 ```
 
-设备类型。不传递该参数时，默认订阅当前设备的通知。根据[设备信息](../../apis-na/arkts-apis/arkts-deviceinfo.md#@ohos.deviceInfo)获取。
+设备类型。不传递该参数时，默认订阅当前设备的通知。根据[设备信息](../../apis-na/arkts-apis/arkts-deviceinfo.md#ohosdeviceinfo)获取。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ enableClassification?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -88,13 +88,13 @@ enableClassification?: boolean
 filterLimit?: long
 ```
 
-通知过滤范围。默认值为0。取值范围包括： - 0：不进行任何过滤，订阅全部通知。 - 1：将渠道类型为[SOCIAL_COMMUNICATION](arkts-notification-notificationmanager-slottype-e.md#SlotType)且 [userInput](arkts-notification-notificationactionbutton-notificationactionbutton-i.md#NotificationActionButton)为空的通知过滤掉。 - 2：将渠道类型为[SOCIAL_COMMUNICATION](arkts-notification-notificationmanager-slottype-e.md#SlotType)且 [userInput](arkts-notification-notificationactionbutton-notificationactionbutton-i.md#NotificationActionButton)不为空的通知过滤掉。
+通知过滤范围。默认值为0。取值范围包括： - 0：不进行任何过滤，订阅全部通知。 - 1：将渠道类型为[SOCIAL_COMMUNICATION](arkts-notification-notificationmanager-slottype-e.md#slottype)且 [userInput](arkts-notification-notificationactionbutton-notificationactionbutton-i.md#notificationactionbutton)为空的通知过滤掉。 - 2：将渠道类型为[SOCIAL_COMMUNICATION](arkts-notification-notificationmanager-slottype-e.md#slottype)且 [userInput](arkts-notification-notificationactionbutton-notificationactionbutton-i.md#notificationactionbutton)不为空的通知过滤掉。
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ needSilentReplayOnSubscribe?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ pictureOptions?: PictureOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -164,7 +164,7 @@ slotTypes?: Array<notificationManager.SlotType>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -186,7 +186,7 @@ userId?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -208,7 +208,7 @@ voiceContentOptions?: VoiceContentOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

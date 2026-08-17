@@ -1,10 +1,10 @@
 # UserAgentBrandVersion
 
-Class that holds brand name, major version and full version. Brand name and major version used to generated User-Agent client hints sec-cu-ua. Brand name and full version used to generated user-agent client hint sec-ch-ua-full-version-list.
+UserAgentBrandVersion是ArkWeb框架中用于配置User-Agent客户端提示信息中品牌名称和版本号的数据类，配合 [UserAgentMetadata](arkts-arkweb-webview-useragentmetadata-c.md#useragentmetadata)使用。在User-Agent Client Hints机制中，浏览器通过Sec-CH-UA-Full-Version-List 等请求标头向服务器报告品牌和版本信息，UserAgentBrandVersion用于定义其中的单个品牌条目。 UserAgentBrandVersion提供品牌名称和版本号的设置与获取方法：setBrand/getBrand用于设置和获取品牌名称（如“ArkWeb”等），setMajorVersion/getMajorVersion用于设 置和获取主版本号（如“126”），setFullVersion/getFullVersion用于设置和获取完整版本号（如“126.0.0.0”）。应用可通过修改这些值来定制Web组件向服务器报告的浏览器身份信息。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Class that holds brand name, major version and full version. Brand name and majo
 getBrand(): string
 ```
 
-Get the brand info.
+获取品牌名称。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ Get the brand info.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns brand info of UserAgentBrandVersion. |
+| string | 返回品牌名称字符串。 |
 
 ## getFullVersion
 
@@ -44,11 +44,11 @@ Get the brand info.
 getFullVersion(): string
 ```
 
-Get the full version.
+获取完整版本号。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ Get the full version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns full version of UserAgentBrandVersion. |
+| string | 返回完整版本号字符串。 |
 
 ## getMajorVersion
 
@@ -70,11 +70,11 @@ Get the full version.
 getMajorVersion(): string
 ```
 
-Get the major version.
+获取主版本号。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -88,7 +88,7 @@ Get the major version.
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Returns major version of UserAgentBrandVersion. |
+| string | 返回主版本号字符串。 |
 
 ## setBrand
 
@@ -96,11 +96,11 @@ Get the major version.
 setBrand(brand: string): void
 ```
 
-Sets the brand. Should not be blank.
+设置品牌名称。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ Sets the brand. Should not be blank.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| brand | string | 是 | The brand. |
+| brand | string | 是 | 品牌名称，不能为空字符串。 |
 
 ## setFullVersion
 
@@ -122,11 +122,11 @@ Sets the brand. Should not be blank.
 setFullVersion(fullVersion: string): void
 ```
 
-Sets the full version. Should not be blank.
+设置完整版本号。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -140,7 +140,7 @@ Sets the full version. Should not be blank.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullVersion | string | 是 | The full version. |
+| fullVersion | string | 是 | 完整版本号，不能为空字符串。 |
 
 ## setMajorVersion
 
@@ -148,11 +148,11 @@ Sets the full version. Should not be blank.
 setMajorVersion(majorVersion: string): void
 ```
 
-Sets the major version. Should not be blank.
+设置主版本号。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -166,5 +166,5 @@ Sets the major version. Should not be blank.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| majorVersion | string | 是 | The major version. |
+| majorVersion | string | 是 | 主版本号，不能为空字符串。 |
 

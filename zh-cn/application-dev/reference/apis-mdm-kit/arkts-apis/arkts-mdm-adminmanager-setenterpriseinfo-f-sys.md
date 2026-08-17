@@ -10,7 +10,7 @@ function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo, callback
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -32,5 +32,5 @@ export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar
 
 | 类型 | 说明 |
 | --- | --- |
-| [ChineseCalendar](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-chinesecalendar-c.md) | 农历对象。 |
+| [ChineseCalendar](arkts-na-i18n-chinesecalendar-c.md) | 农历对象。 |
 

@@ -6,7 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ attributeModifier(modifier: AttributeModifier<UIPickerComponentAttribute> | Attr
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ canLoop(isLoop: boolean | undefined): UIPickerComponentAttribute
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ displayedItemCount(count: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ enableHapticFeedback(enable: boolean | undefined): UIPickerComponentAttribute
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ itemHeight(height: LengthMetrics | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -136,7 +136,7 @@ itemHeight(height: LengthMetrics | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md) \| undefined | 是 |  |
+| height | [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) \| undefined | 是 |  |
 
 **返回值：**
 
@@ -152,7 +152,7 @@ onChange(callback: OnUIPickerComponentCallback | undefined): UIPickerComponentAt
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ onScrollStop(callback: OnUIPickerComponentCallback | undefined): UIPickerCompone
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -204,7 +204,7 @@ selectionIndicator(style: PickerIndicatorStyle | undefined): UIPickerComponentAt
 
 **起始版本：** -1
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为-1。
+**ArkTS模式：** 起始版本为-1。
 
 **废弃版本：** -1
 
@@ -232,7 +232,7 @@ default
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fing
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,8 +22,8 @@ function shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fing
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sourceWindowId | int | 是 | 源窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getWindowProperties)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误 码1300016。 |
-| targetWindowId | int | 是 | 目标窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getWindowProperties)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误 码1300016。 |
+| sourceWindowId | int | 是 | 源窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误 码1300016。 |
+| targetWindowId | int | 是 | 目标窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误 码1300016。 |
 | fingerId | int | 是 | 触屏事件的手指唯一标识符。推荐使用 [TouchEvent](../../../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)对象中touches属性获取 id。该参数应为大于等于0的整数，小于0时会返回错误码1300016。 |
 
 **返回值：**

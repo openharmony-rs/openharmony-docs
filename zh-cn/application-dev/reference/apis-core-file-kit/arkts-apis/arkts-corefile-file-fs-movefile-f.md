@@ -10,7 +10,7 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -67,7 +67,7 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -118,7 +118,7 @@ declare function moveFile(src: string, dest: string, mode: number, callback: Asy
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

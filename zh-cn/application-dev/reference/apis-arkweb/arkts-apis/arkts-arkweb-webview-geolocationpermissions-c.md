@@ -1,10 +1,10 @@
 # GeolocationPermissions
 
-Provides a method for managing web geographic location permissions.
+GeolocationPermissions是Web组件的地理位置权限管理对象，提供对Web组件中已保存的地理位置权限状态的查询、授权、删除等管理能力。通过GeolocationPermissions，应用可以在网页发起地理位置请 求之前预先授权特定源的访问权限，也可以主动查询或清除已保存的权限记录，而无需依赖网页请求时的弹窗授权流程。 GeolocationPermissions适用于需要主动管理Web组件地理位置权限的场景，例如：应用希望预先授权信任的网站访问地理位置，避免每次访问都弹出授权提示；或应用需要清除用户不再需要的地理位置权限记录。访问地理位置时需添 加权限：ohos.permission.LOCATION、ohos.permission.APPROXIMATELY_LOCATION、ohos.permission.LOCATION_IN_BACKGROUND，具体权限说明请参 考[申请位置权限开发指导](../../../device/location/location-permission-guidelines.md)。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Provides a method for managing web geographic location permissions.
 static allowGeolocation(origin: string, incognito?: boolean): void
 ```
 
-Allow geolocation permissions for specifies source.
+允许指定源使用地理位置接口。用于预先授权信任网站的地理位置权限，避免重复弹窗，或由应用主动管理特定源的地理位置授权。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -36,15 +36,15 @@ Allow geolocation permissions for specifies source.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | Index of the origin. |
-| incognito | boolean | 否 | Whether to allow the specified origin to use the geolocation information in incognito mode. The value **true** means to allow the specified origin to use the geolocation information in incognito mode, and **false** means the opposite.&lt;br&gt;Default value: **false**.&lt;br&gt;If **null** or **undefined** is passed in, the value is **false**.<br>**起始版本：** 11 |
+| origin | string | 是 | 指定源的字符串。 <br>origin格式必须遵循RFC 6454中定义的格式。传入不符合RFC 6454格式的字符串时抛出异常，错误码17100011。 |
+| incognito | boolean | 否 | true表示隐私模式下允许指定源使用地理位置，false表示正常非隐私模式下允许指定源使用地理位置。 <br>默认值：false。 <br>传入null或undefined时为false。<br>**起始版本：** 11 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 ## deleteAllGeolocation
 
@@ -52,11 +52,11 @@ Allow geolocation permissions for specifies source.
 static deleteAllGeolocation(incognito?: boolean): void
 ```
 
-Delete all geolocation permissions.
+清除所有源的地理位置权限状态。用于用户退出登录或一键清除等场景下批量撤销地理位置授权。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ Delete all geolocation permissions.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| incognito | boolean | 否 | Whether to clear the geolocation permission status of all sources in incognito mode. The value **true** means to clear the geolocation permission status of all sources in incognito mode, and **false** means the opposite.&lt;br&gt;Default value: **false**.&lt;br&gt;If **null** or **undefined** is passed in, the value is **false**.<br>**起始版本：** 11 |
+| incognito | boolean | 否 | true表示隐私模式下清除所有源的地理位置权限状态，false表示正常非隐私模式下清除所有源的地理位置权限状态。 <br>默认值：false。 <br>传入null或undefined时为false。<br>**起始版本：** 11 |
 
 ## deleteGeolocation
 
@@ -78,11 +78,11 @@ Delete all geolocation permissions.
 static deleteGeolocation(origin: string, incognito?: boolean): void
 ```
 
-Delete geolocation permissions for specifies source.
+清除指定源的地理位置权限状态。用于撤销指定网站的地理位置授权，或为应用提供按源管理权限的能力。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -96,15 +96,15 @@ Delete geolocation permissions for specifies source.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | Index of the origin. |
-| incognito | boolean | 否 | Whether to clear the geolocation permission status of a specified origin in incognito mode. The value **true** means to clear the geolocation permission status of a specified origin in incognito mode, and **false** means the opposite.&lt;br&gt;Default value: **false**.&lt;br&gt;If **null** or **undefined** is passed in, the value is **false**.<br>**起始版本：** 11 |
+| origin | string | 是 | 指定源的字符串。 <br>origin格式必须遵循RFC 6454中定义的格式。传入不符合RFC 6454格式的字符串时抛出异常，错误码17100011。 |
+| incognito | boolean | 否 | true表示隐私模式下清除指定源的地理位置权限状态，false表示正常非隐私模式下清除指定源的地理位置权限状态。 <br>默认值：false。 <br>传入null或undefined时为false。<br>**起始版本：** 11 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 ## getAccessibleGeolocation
 
@@ -112,11 +112,11 @@ Delete geolocation permissions for specifies source.
 static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise<boolean>
 ```
 
-Gets the geolocation permission status of the specified source.
+以Promise方式异步获取指定源的地理位置权限状态。用于查询指定网站的地理位置授权结果，如设置界面展示权限状态或访问前校验授权。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -130,21 +130,21 @@ Gets the geolocation permission status of the specified source.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | Index of the origin. |
-| incognito | boolean | 否 | Whether to obtain the geolocation permission status of the specified origin in incognito mode. The value **true** means to obtain the geolocation permission status of the specified origin in incognito mode, and **false** means the opposite.&lt;br&gt;Default value: **false**.&lt;br&gt;If **null** or **undefined** is passed, error code **401** is thrown.<br>**起始版本：** 11 |
+| origin | string | 是 | 指定源的字符串。 <br>origin格式必须遵循RFC 6454中定义的格式。传入不符合RFC 6454格式的字符串时抛出异常，错误码17100011。 |
+| incognito | boolean | 否 | true表示在隐私模式下获取指定源的地理位置权限状态，false表示在正常模式下获取。 <br>默认值：false。 <br>传入null或undefined时会抛出异常错误码401。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the geolocation permission status of the specified origin. &lt;br&gt;If the operation is successful, the value **true** means that the geolocation permission is granted, and **false** means the opposite. &lt;br&gt;If the operation fails, the geolocation permission status of the specified origin is not found. |
+| Promise&lt;boolean&gt; | Promise实例，用于获取指定源的权限状态。 <br>获取成功，true表示已授权，false表示拒绝访问。 <br>获取失败，表示不存在指定源的权限状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 ## getAccessibleGeolocation
 
@@ -152,11 +152,11 @@ Gets the geolocation permission status of the specified source.
 static getAccessibleGeolocation(origin: string, callback: AsyncCallback<boolean>, incognito?: boolean): void
 ```
 
-Gets the geolocation permission status of the specified source.
+以回调方式异步获取指定源的地理位置权限状态。用于查询指定网站的地理位置授权结果，如设置界面展示权限状态或访问前校验授权。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -170,16 +170,16 @@ Gets the geolocation permission status of the specified source.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| origin | string | 是 | Index of the origin. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to return the geolocation permission status of the specified origin.&lt;br&gt;If the operation is successful, the value **true** means that the geolocation permission is granted, and **false** means the opposite.&lt;br&gt;If the operation fails, the geolocation permission status of the specified origin is not found. |
-| incognito | boolean | 否 | Whether to obtain the geolocation permission status of the specified origin in incognito mode. The value **true** means to obtain the geolocation permission status of the specified origin in incognito mode, and **false** means the opposite.&lt;br&gt;Default value: **false**.&lt;br&gt;If **null** or **undefined** is passed, error code **401** is thrown.<br>**起始版本：** 11 |
+| origin | string | 是 | 指定源的字符串。 <br>origin格式必须遵循RFC 6454中定义的格式。传入不符合RFC 6454格式的字符串时抛出异常，错误码17100011。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 返回指定源的地理位置权限状态。 <br>获取成功，true表示已授权，false表示拒绝访问。 <br>获取失败，表示不存在指定源的权限状态。 |
+| incognito | boolean | 否 | true表示在隐私模式下获取指定源的地理位置权限状态，false表示在正常模式下获取。 <br>默认值：false。 <br>传入null或undefined时会抛出异常错误码401。<br>**起始版本：** 11 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. The origin format must follow defined in RFC 6454. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 ## getStoredGeolocation
 
@@ -187,11 +187,11 @@ Gets the geolocation permission status of the specified source.
 static getStoredGeolocation(incognito?: boolean): Promise<Array<string>>
 ```
 
-Get all stored geolocation permission url source.
+以Promise方式异步获取已存储地理位置权限状态的所有源信息。用于获取已授权地理位置权限的网站列表，如隐私设置页展示或权限管理界面的批量管理。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -205,19 +205,19 @@ Get all stored geolocation permission url source.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| incognito | boolean | 否 | Whether to obtain the geolocation permission status of all origins in incognito mode. The value **true** means to obtain the geolocation permission status of all origins in incognito mode, and **false** means the opposite.&lt;br&gt;Default value: **false**.&lt;br&gt;If **null** or **undefined** is passed, error code **401** is thrown.<br>**起始版本：** 11 |
+| incognito | boolean | 否 | true表示在隐私模式下获取已存储地理位置权限状态的所有源信息，false表示在正常模式下获取。 <br>默认值：false。 <br>传入null或undefined时会抛出异常错误码401。<br>**起始版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the geolocation permission status of all origins. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise实例，用于获取已存储地理位置权限状态的所有源信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## getStoredGeolocation
 
@@ -225,11 +225,11 @@ Get all stored geolocation permission url source.
 static getStoredGeolocation(callback: AsyncCallback<Array<string>>, incognito?: boolean): void
 ```
 
-Get all stored geolocation permission url source.
+以回调方式异步获取已存储地理位置权限状态的所有源信息。用于获取已授权地理位置权限的网站列表，如隐私设置页展示或权限管理界面的批量管理。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -243,12 +243,12 @@ Get all stored geolocation permission url source.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | Callback used to return the geolocation permission status of all origins. |
-| incognito | boolean | 否 | Whether to obtain the geolocation permission status of all origins in incognito mode. The value **true** means to obtain the geolocation permission status of all origins in incognito mode, and **false** means the opposite.&lt;br&gt;Default value: **false**.&lt;br&gt;If **null** or **undefined** is passed, error code **401** is thrown.<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 返回已存储地理位置权限状态的所有源信息。回调参数包括：error（错误对象，获取成功时为null）和origins（已存储地 理位置权限的源字符串数组，每个元素为遵循RFC 6454中定义格式的源字符串）。获取失败时，error为错误对象。 |
+| incognito | boolean | 否 | true表示在隐私模式下获取已存储地理位置权限状态的所有源信息，false表示在正常模式下获取。 <br>默认值：false。 <br>传入null或undefined时会抛出异常错误码401。<br>**起始版本：** 11 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 

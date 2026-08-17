@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,50 +18,50 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAttachedMechDevices](arkts-mechanic-mechanicmanager-getattachedmechdevices-f.md#getAttachedMechDevices) | 获取已连接的机械设备列表 |
-| [getCameraTrackingEnabled](arkts-mechanic-mechanicmanager-getcameratrackingenabled-f.md#getCameraTrackingEnabled) | 获取相机跟踪状态 |
-| [getCameraTrackingLayout](arkts-mechanic-mechanicmanager-getcameratrackinglayout-f.md#getCameraTrackingLayout) | 获取当前摄像头跟踪布局 |
-| [isControlSupported](arkts-mechanic-mechanicmanager-iscontrolsupported-f.md#isControlSupported) | 判断当前设备是否支持某类设备的具身控制 |
-| [offAttachStateChange](arkts-mechanic-mechanicmanager-offattachstatechange-f.md#offAttachStateChange) | Unsubscribes from device attachment state change events. |
-| [offTrackingStateChange](arkts-mechanic-mechanicmanager-offtrackingstatechange-f.md#offTrackingStateChange) | 设置相机跟踪布局 |
-| off_attachStateChange | Unsubscribes from device attachment state change events. |
-| off_trackingStateChange | 设置相机跟踪布局 |
-| [onAttachStateChange](arkts-mechanic-mechanicmanager-onattachstatechange-f.md#onAttachStateChange) | Subscribes to device attachment state change events. |
-| [onTrackingStateChange](arkts-mechanic-mechanicmanager-ontrackingstatechange-f.md#onTrackingStateChange) | Subscribes to tracking events. |
-| on_attachStateChange | Subscribes to device attachment state change events. |
-| on_trackingStateChange | Subscribes to tracking events. |
-| [setCameraTrackingEnabled](arkts-mechanic-mechanicmanager-setcameratrackingenabled-f.md#setCameraTrackingEnabled) | 启用或禁用摄像机跟踪 |
+| [getAttachedMechDevices](arkts-mechanic-mechanicmanager-getattachedmechdevices-f.md#getattachedmechdevices) | 获取已连接的机械设备列表 |
+| [getCameraTrackingEnabled](arkts-mechanic-mechanicmanager-getcameratrackingenabled-f.md#getcameratrackingenabled) | 获取相机跟踪状态 |
+| [getCameraTrackingLayout](arkts-mechanic-mechanicmanager-getcameratrackinglayout-f.md#getcameratrackinglayout) | 获取当前摄像头跟踪布局 |
+| [isControlSupported](arkts-mechanic-mechanicmanager-iscontrolsupported-f.md#iscontrolsupported) | 判断当前设备是否支持某类设备的具身控制 |
+| [offAttachStateChange](arkts-mechanic-mechanicmanager-offattachstatechange-f.md#offattachstatechange) | Unsubscribes from device attachment state change events. |
+| [offTrackingStateChange](arkts-mechanic-mechanicmanager-offtrackingstatechange-f.md#offtrackingstatechange) | 设置相机跟踪布局 |
+| [off_attachStateChange](arkts-mechanic-mechanicmanager-offattachstatechange-f.md#offattachstatechange) | Unsubscribes from device attachment state change events. |
+| [off_trackingStateChange](arkts-mechanic-mechanicmanager-offtrackingstatechange-f.md#offtrackingstatechange) | 设置相机跟踪布局 |
+| [onAttachStateChange](arkts-mechanic-mechanicmanager-onattachstatechange-f.md#onattachstatechange) | Subscribes to device attachment state change events. |
+| [onTrackingStateChange](arkts-mechanic-mechanicmanager-ontrackingstatechange-f.md#ontrackingstatechange) | Subscribes to tracking events. |
+| [on_attachStateChange](arkts-mechanic-mechanicmanager-onattachstatechange-f.md#onattachstatechange) | Subscribes to device attachment state change events. |
+| [on_trackingStateChange](arkts-mechanic-mechanicmanager-ontrackingstatechange-f.md#ontrackingstatechange) | Subscribes to tracking events. |
+| [setCameraTrackingEnabled](arkts-mechanic-mechanicmanager-setcameratrackingenabled-f.md#setcameratrackingenabled) | 启用或禁用摄像机跟踪 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [connectDevice](arkts-mechanic-mechanicmanager-connectdevice-f-sys.md#connectDevice) | 基于地址连接设备 |
-| [disconnectDevice](arkts-mechanic-mechanicmanager-disconnectdevice-f-sys.md#disconnectDevice) | 基于具身设备ID断开设备 |
-| [doAction](arkts-mechanic-mechanicmanager-doaction-f-sys.md#doAction) | 执行一个动作序列 |
-| [getCurrentAngles](arkts-mechanic-mechanicmanager-getcurrentangles-f-sys.md#getCurrentAngles) | 获取机械设备的当前角度 |
-| [getMaxRotationSpeed](arkts-mechanic-mechanicmanager-getmaxrotationspeed-f-sys.md#getMaxRotationSpeed) | Obtains the maximum rotation speed of a mechanical device. |
-| [getMaxRotationTime](arkts-mechanic-mechanicmanager-getmaxrotationtime-f-sys.md#getMaxRotationTime) | Obtains the maximum continuous rotation duration of a mechanical device. |
-| [getRotationAxesStatus](arkts-mechanic-mechanicmanager-getrotationaxesstatus-f-sys.md#getRotationAxesStatus) | 获取当前转轴状态 |
-| [getRotationLimits](arkts-mechanic-mechanicmanager-getrotationlimits-f-sys.md#getRotationLimits) | Obtains the maximum rotation angles relative to the reference point for the specified mechanical device. |
-| [isSupportAction](arkts-mechanic-mechanicmanager-issupportaction-f-sys.md#isSupportAction) | 判断是否支持某个动作 |
+| [connectDevice](arkts-mechanic-mechanicmanager-connectdevice-f-sys.md#connectdevice) | 基于地址连接设备 |
+| [disconnectDevice](arkts-mechanic-mechanicmanager-disconnectdevice-f-sys.md#disconnectdevice) | 基于具身设备ID断开设备 |
+| [doAction](arkts-mechanic-mechanicmanager-doaction-f-sys.md#doaction) | 执行一个动作序列 |
+| [getCurrentAngles](arkts-mechanic-mechanicmanager-getcurrentangles-f-sys.md#getcurrentangles) | 获取机械设备的当前角度 |
+| [getMaxRotationSpeed](arkts-mechanic-mechanicmanager-getmaxrotationspeed-f-sys.md#getmaxrotationspeed) | Obtains the maximum rotation speed of a mechanical device. |
+| [getMaxRotationTime](arkts-mechanic-mechanicmanager-getmaxrotationtime-f-sys.md#getmaxrotationtime) | Obtains the maximum continuous rotation duration of a mechanical device. |
+| [getRotationAxesStatus](arkts-mechanic-mechanicmanager-getrotationaxesstatus-f-sys.md#getrotationaxesstatus) | 获取当前转轴状态 |
+| [getRotationLimits](arkts-mechanic-mechanicmanager-getrotationlimits-f-sys.md#getrotationlimits) | Obtains the maximum rotation angles relative to the reference point for the specified mechanical device. |
+| [isSupportAction](arkts-mechanic-mechanicmanager-issupportaction-f-sys.md#issupportaction) | 判断是否支持某个动作 |
 | [move](arkts-mechanic-mechanicmanager-move-f-sys.md#move) | 以特定参数移动一个具身设备 |
-| [moveBySpeed](arkts-mechanic-mechanicmanager-movebyspeed-f-sys.md#moveBySpeed) | 以特定速度移动一个具身设备 |
-| [offRotationAxesStatusChange](arkts-mechanic-mechanicmanager-offrotationaxesstatuschange-f-sys.md#offRotationAxesStatusChange) | Unregister a listener for axis state changes. |
-| off_rotationAxesStatusChange | Unregister a listener for axis state changes. |
-| [onRotationAxesStatusChange](arkts-mechanic-mechanicmanager-onrotationaxesstatuschange-f-sys.md#onRotationAxesStatusChange) | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
-| on_rotationAxesStatusChange | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
+| [moveBySpeed](arkts-mechanic-mechanicmanager-movebyspeed-f-sys.md#movebyspeed) | 以特定速度移动一个具身设备 |
+| [offRotationAxesStatusChange](arkts-mechanic-mechanicmanager-offrotationaxesstatuschange-f-sys.md#offrotationaxesstatuschange) | Unregister a listener for axis state changes. |
+| [off_rotationAxesStatusChange](arkts-mechanic-mechanicmanager-offrotationaxesstatuschange-f-sys.md#offrotationaxesstatuschange) | Unregister a listener for axis state changes. |
+| [onRotationAxesStatusChange](arkts-mechanic-mechanicmanager-onrotationaxesstatuschange-f-sys.md#onrotationaxesstatuschange) | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
+| [on_rotationAxesStatusChange](arkts-mechanic-mechanicmanager-onrotationaxesstatuschange-f-sys.md#onrotationaxesstatuschange) | Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored. |
 | [rotate](arkts-mechanic-mechanicmanager-rotate-f-sys.md#rotate) | 将机械设备旋转到相对角度 |
-| [rotateBySpeed](arkts-mechanic-mechanicmanager-rotatebyspeed-f-sys.md#rotateBySpeed) | 以指定的速度旋转机械设备 |
-| [rotateToEulerAngles](arkts-mechanic-mechanicmanager-rotatetoeulerangles-f-sys.md#rotateToEulerAngles) | 将机械设备旋转到绝对角度 |
-| [searchTarget](arkts-mechanic-mechanicmanager-searchtarget-f-sys.md#searchTarget) | Searching for a specified target. |
-| [setCameraTrackingLayout](arkts-mechanic-mechanicmanager-setcameratrackinglayout-f-sys.md#setCameraTrackingLayout) | 设置相机跟踪布局 |
-| [setUserOperation](arkts-mechanic-mechanicmanager-setuseroperation-f-sys.md#setUserOperation) | 设置用户操作 |
-| [stopMoving](arkts-mechanic-mechanicmanager-stopmoving-f-sys.md#stopMoving) | 停止转动 |
+| [rotateBySpeed](arkts-mechanic-mechanicmanager-rotatebyspeed-f-sys.md#rotatebyspeed) | 以指定的速度旋转机械设备 |
+| [rotateToEulerAngles](arkts-mechanic-mechanicmanager-rotatetoeulerangles-f-sys.md#rotatetoeulerangles) | 将机械设备旋转到绝对角度 |
+| [searchTarget](arkts-mechanic-mechanicmanager-searchtarget-f-sys.md#searchtarget) | Searching for a specified target. |
+| [setCameraTrackingLayout](arkts-mechanic-mechanicmanager-setcameratrackinglayout-f-sys.md#setcameratrackinglayout) | 设置相机跟踪布局 |
+| [setUserOperation](arkts-mechanic-mechanicmanager-setuseroperation-f-sys.md#setuseroperation) | 设置用户操作 |
+| [stopMoving](arkts-mechanic-mechanicmanager-stopmoving-f-sys.md#stopmoving) | 停止转动 |
 | [subscribe](arkts-mechanic-mechanicmanager-subscribe-f-sys.md#subscribe) | 订阅具身设备事件回调 |
-| [turnBySpeed](arkts-mechanic-mechanicmanager-turnbyspeed-f-sys.md#turnBySpeed) | 以固定速度原地旋转 |
-| [unSubscribe](arkts-mechanic-mechanicmanager-unsubscribe-f-sys.md#unSubscribe) | 取消事件注册 |
+| [turnBySpeed](arkts-mechanic-mechanicmanager-turnbyspeed-f-sys.md#turnbyspeed) | 以固定速度原地旋转 |
+| [unSubscribe](arkts-mechanic-mechanicmanager-unsubscribe-f-sys.md#unsubscribe) | 取消事件注册 |
 <!--DelEnd-->
 
 ### 接口

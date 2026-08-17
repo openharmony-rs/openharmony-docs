@@ -1,12 +1,12 @@
 # MagneticFieldUncalibratedResponse
 
-未校准磁场传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#Response)。
+未校准磁场传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。
 
-**继承/实现关系：** MagneticFieldUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md#Response)
+**继承/实现关系：** MagneticFieldUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ x轴方向未校准的环境磁场强度偏量（估计的磁场偏差）。单�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ y轴方向未校准的环境磁场强度偏量（估计的磁场偏差）。单�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ z轴方向未校准的环境磁场强度偏量（估计的磁场偏差）。单�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -86,7 +86,7 @@ x轴方向未校准的环境磁场强度。单位：μT（微特斯拉）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -106,7 +106,7 @@ y轴方向未校准的环境磁场强度。单位：μT（微特斯拉）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ z轴方向未校准的环境磁场强度。单位：μT（微特斯拉）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

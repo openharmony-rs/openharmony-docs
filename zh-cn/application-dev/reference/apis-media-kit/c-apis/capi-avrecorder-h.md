@@ -128,7 +128,7 @@ OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWind
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入的recorder为nullptr。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入的recorder为nullptr，或window不为空。 |
 
 ### OH_AVRecorder_UpdateRotation()
 

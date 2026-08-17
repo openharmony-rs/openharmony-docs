@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ SOURCE_TYPE_INVALID = -1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ Mic音频源。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,7 +58,7 @@ SOURCE_TYPE_VOICE_RECOGNITION = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -72,11 +72,11 @@ SOURCE_TYPE_VOICE_RECOGNITION = 1
 SOURCE_TYPE_PLAYBACK_CAPTURE = 2
 ```
 
-播放音频流（内录）录制音频源。 <br/
+播放音频流（内录）录制音频源。 &lt;br/
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 12
 
@@ -92,11 +92,11 @@ SOURCE_TYPE_PLAYBACK_CAPTURE = 2
 SOURCE_TYPE_VOICE_COMMUNICATION = 7
 ```
 
-语音通话场景的音频源（单独启动录制不会开启3A算法，需同时使用[STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md#StreamUsage)或 [STREAM_USAGE_VIDEO_COMMUNICATION](arkts-audio-audio-streamusage-e.md#StreamUsage)类型的AudioRender起播才会触发开启3A算法）。
+语音通话场景的音频源（单独启动录制不会开启3A算法，需同时使用[STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md#streamusage)或 [STREAM_USAGE_VIDEO_COMMUNICATION](arkts-audio-audio-streamusage-e.md#streamusage)类型的AudioRender起播才会触发开启3A算法）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ SOURCE_TYPE_VOICE_MESSAGE = 10
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -132,7 +132,7 @@ SOURCE_TYPE_CAMCORDER = 13
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -150,7 +150,7 @@ SOURCE_TYPE_UNPROCESSED = 14
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -168,7 +168,7 @@ SOURCE_TYPE_LIVE = 17
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

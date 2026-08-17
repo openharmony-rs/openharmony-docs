@@ -4,7 +4,7 @@ Defines the parameters of the edge light effect.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -20,7 +20,7 @@ Defines the parameters of the edge light effect.
 color?: ResourceColor
 ```
 
-The color of the light effect. &lt;br&gt;If not specified, the default color is white (#FFFFFF).
+The color of the light effect. <br>If not specified, the default color is white (#FFFFFF).
 
 **类型：** [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -28,7 +28,7 @@ The color of the light effect. &lt;br&gt;If not specified, the default color is 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -46,13 +46,13 @@ The color of the light effect. &lt;br&gt;If not specified, the default color is 
 intensity?: double
 ```
 
-The luminous intensity of the Edge Streamer effect. &lt;br&gt;Valid range: [0.0, 1.0].Default value is 1. &lt;br&gt;Value 0.0 means the light effect is completely invisible. &lt;br&gt;Value 1.0 means the light effect is at maximum brightness. &lt;br&gt;Values exceeding 1.0 will be clamped to 1.0. &lt;br&gt;Negative values are treated as 0.0.
+The luminous intensity of the Edge Streamer effect. <br>Valid range: [0.0, 1.0].Default value is 1. <br>Value 0.0 means the light effect is completely invisible. <br>Value 1.0 means the light effect is at maximum brightness. <br>Values exceeding 1.0 will be clamped to 1.0. <br>Negative values are treated as 0.0.
 
 **类型：** double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -70,13 +70,13 @@ The luminous intensity of the Edge Streamer effect. &lt;br&gt;Valid range: [0.0,
 length: Length
 ```
 
-Projection length of the edge streamer along the flow direction. &lt;br&gt;Negative values are treated as 0.
+Projection length of the edge streamer along the flow direction. <br>Negative values are treated as 0.
 
 **类型：** [Length](../../apis-arkui/arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ The location of the edge light effect.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -118,7 +118,7 @@ The location of the edge light effect.
 thickness?: Length
 ```
 
-The thickness (width) of the light effect line. &lt;br&gt;Negative values are treated as 0. &lt;br&gt;If not specified, the default value is 0vp.
+The thickness (width) of the light effect line. <br>Negative values are treated as 0. <br>If not specified, the default value is 0vp.
 
 **类型：** [Length](../../apis-arkui/arkts-apis/arkts-arkui-length-t.md)
 
@@ -126,7 +126,7 @@ The thickness (width) of the light effect line. &lt;br&gt;Negative values are tr
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

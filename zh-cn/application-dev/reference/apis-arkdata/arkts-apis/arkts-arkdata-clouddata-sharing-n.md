@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -21,25 +21,25 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [allocResourceAndShare](arkts-arkdata-sharing-allocresourceandshare-f-sys.md#allocResourceAndShare) | 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集。 如果指定了列字段，则返回的结果集中同时包含对应列的字段值，使用Promise异步回调。 |
-| [allocResourceAndShare](arkts-arkdata-sharing-allocresourceandshare-f-sys.md#allocResourceAndShare（系统接口）) | 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集，使用callback异步回调。 |
-| [allocResourceAndShare](arkts-arkdata-sharing-allocresourceandshare-f-sys.md#allocResourceAndShare（系统接口）) | 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集 并根据指定的列字段，返回的结果集中同时包含对应列的字段值，使用callback异步回调。 |
+| [allocResourceAndShare](arkts-arkdata-sharing-allocresourceandshare-f-sys.md#allocresourceandshare) | 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集。 如果指定了列字段，则返回的结果集中同时包含对应列的字段值，使用Promise异步回调。 |
+| [allocResourceAndShare](arkts-arkdata-sharing-allocresourceandshare-f-sys.md#allocresourceandshare系统接口) | 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集，使用callback异步回调。 |
+| [allocResourceAndShare](arkts-arkdata-sharing-allocresourceandshare-f-sys.md#allocresourceandshare系统接口) | 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集 并根据指定的列字段，返回的结果集中同时包含对应列的字段值，使用callback异步回调。 |
 | [share](arkts-arkdata-sharing-share-f-sys.md#share) | 根据指定的共享资源标识和共享参与者发起共享邀请，使用callback异步回调。 |
-| [share](arkts-arkdata-sharing-share-f-sys.md#share（系统接口）) | 根据指定的共享资源标识和共享参与者发起共享邀请，使用Promise异步回调。 |
+| [share](arkts-arkdata-sharing-share-f-sys.md#share系统接口) | 根据指定的共享资源标识和共享参与者发起共享邀请，使用Promise异步回调。 |
 | [unshare](arkts-arkdata-sharing-unshare-f-sys.md#unshare) | 根据指定的共享资源标识和共享参与者发起共享邀请，使用callback异步回调。 |
-| [unshare](arkts-arkdata-sharing-unshare-f-sys.md#unshare（系统接口）) | 根据指定的共享资源标识和共享参与者发起共享邀请，使用Promise异步回调。 |
+| [unshare](arkts-arkdata-sharing-unshare-f-sys.md#unshare系统接口) | 根据指定的共享资源标识和共享参与者发起共享邀请，使用Promise异步回调。 |
 | [exit](arkts-arkdata-sharing-exit-f-sys.md#exit) | 根据指定的共享资源标识退出共享，使用callback异步回调。 |
-| [exit](arkts-arkdata-sharing-exit-f-sys.md#exit（系统接口）) | 根据指定的共享资源标识退出共享，使用Promise异步回调。 |
-| [changePrivilege](arkts-arkdata-sharing-changeprivilege-f-sys.md#changePrivilege) | 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用callback异步回调。 |
-| [changePrivilege](arkts-arkdata-sharing-changeprivilege-f-sys.md#changePrivilege（系统接口）) | 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用Promise异步回调。 |
-| [queryParticipants](arkts-arkdata-sharing-queryparticipants-f-sys.md#queryParticipants) | 根据指定的共享资源标识查询当前共享的参与者，使用callback异步回调。 |
-| [queryParticipants](arkts-arkdata-sharing-queryparticipants-f-sys.md#queryParticipants（系统接口）) | 根据指定的共享资源标识查询当前共享的参与者，使用Promise异步回调。 |
-| [queryParticipantsByInvitation](arkts-arkdata-sharing-queryparticipantsbyinvitation-f-sys.md#queryParticipantsByInvitation) | 根据指定的共享邀请码查询当前共享的参与者，使用callback异步回调。 |
-| [queryParticipantsByInvitation](arkts-arkdata-sharing-queryparticipantsbyinvitation-f-sys.md#queryParticipantsByInvitation（系统接口）) | 根据指定的共享邀请码查询当前共享的参与者，使用Promise异步回调。 |
-| [confirmInvitation](arkts-arkdata-sharing-confirminvitation-f-sys.md#confirmInvitation) | 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用callback异步回调。 |
-| [confirmInvitation](arkts-arkdata-sharing-confirminvitation-f-sys.md#confirmInvitation（系统接口）) | 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用Promise异步回调。 |
-| [changeConfirmation](arkts-arkdata-sharing-changeconfirmation-f-sys.md#changeConfirmation) | 根据共享资源标识更改共享邀请的状态，使用callback异步回调。 |
-| [changeConfirmation](arkts-arkdata-sharing-changeconfirmation-f-sys.md#changeConfirmation（系统接口）) | 根据共享资源标识更改共享邀请的状态，使用Promise异步回调。 |
+| [exit](arkts-arkdata-sharing-exit-f-sys.md#exit系统接口) | 根据指定的共享资源标识退出共享，使用Promise异步回调。 |
+| [changePrivilege](arkts-arkdata-sharing-changeprivilege-f-sys.md#changeprivilege) | 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用callback异步回调。 |
+| [changePrivilege](arkts-arkdata-sharing-changeprivilege-f-sys.md#changeprivilege系统接口) | 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用Promise异步回调。 |
+| [queryParticipants](arkts-arkdata-sharing-queryparticipants-f-sys.md#queryparticipants) | 根据指定的共享资源标识查询当前共享的参与者，使用callback异步回调。 |
+| [queryParticipants](arkts-arkdata-sharing-queryparticipants-f-sys.md#queryparticipants系统接口) | 根据指定的共享资源标识查询当前共享的参与者，使用Promise异步回调。 |
+| [queryParticipantsByInvitation](arkts-arkdata-sharing-queryparticipantsbyinvitation-f-sys.md#queryparticipantsbyinvitation) | 根据指定的共享邀请码查询当前共享的参与者，使用callback异步回调。 |
+| [queryParticipantsByInvitation](arkts-arkdata-sharing-queryparticipantsbyinvitation-f-sys.md#queryparticipantsbyinvitation系统接口) | 根据指定的共享邀请码查询当前共享的参与者，使用Promise异步回调。 |
+| [confirmInvitation](arkts-arkdata-sharing-confirminvitation-f-sys.md#confirminvitation) | 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用callback异步回调。 |
+| [confirmInvitation](arkts-arkdata-sharing-confirminvitation-f-sys.md#confirminvitation系统接口) | 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用Promise异步回调。 |
+| [changeConfirmation](arkts-arkdata-sharing-changeconfirmation-f-sys.md#changeconfirmation) | 根据共享资源标识更改共享邀请的状态，使用callback异步回调。 |
+| [changeConfirmation](arkts-arkdata-sharing-changeconfirmation-f-sys.md#changeconfirmation系统接口) | 根据共享资源标识更改共享邀请的状态，使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

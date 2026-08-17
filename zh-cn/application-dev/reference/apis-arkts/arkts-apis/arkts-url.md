@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -32,11 +32,11 @@
 | --- | --- |
 | [URL](arkts-arkts-url-url-c.md) | 用于解析和构造完整URL。 |
 | [URLParams](arkts-arkts-url-urlparams-c.md) | URLParams是一个用于解析、构造和操作URL参数的实用类。该类提供了统一的接口来处理URL查询参数。 |
-| [URLSearchParams](arkts-arkts-url-urlsearchparams-c.md) | URLSearchParams接口定义了一些处理URL查询字符串的实用方法，从API version 9开始废弃，建议使用[URLParams](arkts-arkts-url-urlparams-c.md#URLParams)。 |
+| [URLSearchParams](arkts-arkts-url-urlsearchparams-c.md) | URLSearchParams接口定义了一些处理URL查询字符串的实用方法，从API version 9开始废弃，建议使用[URLParams](arkts-arkts-url-urlparams-c.md#urlparams)。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [UrlCbFn](arkts-arkts-url-urlcbfn-t.md) | [forEach](arkts-arkts-url-urlparams-c.md#forEach)函数所需的回调函数。 |
+| [UrlCbFn](arkts-arkts-url-urlcbfn-t.md) | [forEach](arkts-arkts-url-urlparams-c.md#foreach)函数所需的回调函数。 |
 

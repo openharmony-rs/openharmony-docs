@@ -4,11 +4,11 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md#ACCELEROMETER)
+**替代接口：** [ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md#accelerometer)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -28,11 +28,11 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#on_SensorId.COLOR)
+**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#onsensoridcolor)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -48,13 +48,13 @@ fail?: (data: string, code: number) => void
 interval: string
 ```
 
-频率参数，加速度的回调函数执行频率。 默认值：'normal'。 可选值： -'game'：极高的回调频率，20ms/次，适用于游戏场景。 -'ui'：较高的回调频率，60ms/次，适用于UI更新场景。 -'normal'：普通的回调频率，200ms/次，适用于低功耗场景。
+频率参数，加速度的回调函数执行频率。 <br/>默认值：'normal'。 <br/>可选值： <br/>-'game'：极高的回调频率，20ms/次，适用于游戏场景。 <br/>-'ui'：较高的回调频率，60ms/次，适用于UI更新场景。 <br/>-'normal'：普通的回调频率，200ms/次，适用于低功耗场景。
 
 **类型：** string
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
@@ -80,11 +80,11 @@ success: (data: AccelerometerResponse) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#on_SensorId.COLOR)
+**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#onsensoridcolor)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 

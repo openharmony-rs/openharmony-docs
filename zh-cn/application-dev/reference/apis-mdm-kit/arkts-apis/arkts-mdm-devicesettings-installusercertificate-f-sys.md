@@ -10,11 +10,11 @@ function installUserCertificate(admin: Want, certificate: CertBlob, callback: As
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installUserCertificate)
+**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installusercertificate)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -88,11 +88,11 @@ function installUserCertificate(admin: Want, certificate: CertBlob): Promise<str
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installUserCertificate)
+**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installusercertificate)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 

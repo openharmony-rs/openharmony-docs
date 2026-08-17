@@ -4,7 +4,7 @@ UIServiceProxy提供代理能力，可以从UIServiceExtension客户端发送数
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ sendData(data: Record<string, Object>): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -106,7 +106,7 @@ struct UIServiceExtensionAbility {
       // 连接UIServiceExtension
       context.connectUIServiceExtensionAbility(startWant, this.dataCallBack)
         .then((proxy: common.UIServiceProxy) => {
-          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           let formData: Record<string, string> = {
             'PATH': '/tmp/aaa.jpg'
@@ -144,7 +144,7 @@ sendData(data: Record<string, RecordData>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

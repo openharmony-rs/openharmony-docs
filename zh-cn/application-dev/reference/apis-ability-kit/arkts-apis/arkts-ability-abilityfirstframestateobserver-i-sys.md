@@ -1,10 +1,10 @@
 # AbilityFirstFrameStateObserver（系统接口）
 
-定义了Ability首帧绘制完成事件监听对象，可以作为 [on](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState) 的入参，用于监听Ability首帧绘制完成事件。
+定义了Ability首帧绘制完成事件监听对象，可以作为 [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) 的入参，用于监听Ability首帧绘制完成事件。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Ability首帧绘制完成时触发的回调函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

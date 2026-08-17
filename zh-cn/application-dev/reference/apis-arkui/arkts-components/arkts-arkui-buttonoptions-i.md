@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 buttonStyle?: ButtonStyleMode
 ```
 
-按钮的样式和重要程度。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过 backgroundColor、 [fontColor](arkts-arkui-button-attribute.md#fontColor)和[role](arkts-arkui-button-attribute.md#role)接口设置，实际显示效果以最后一次设置为准。 默认值：ButtonStyleMode.EMPHASIZED **说明：** 按钮重要程度：强调按钮>普通按钮>文字按钮。
+按钮的样式和重要程度。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过 backgroundColor、 [fontColor](arkts-arkui-button-attribute.md#fontcolor)和[role](arkts-arkui-button-attribute.md#role)接口设置，实际显示效果以最后一次设置为准。 默认值：ButtonStyleMode.EMPHASIZED **说明：** 按钮重要程度：强调按钮>普通按钮>文字按钮。
 
 **类型：** [ButtonStyleMode](arkts-arkui-buttonstylemode-e.md)
 
@@ -26,7 +26,7 @@ buttonStyle?: ButtonStyleMode
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -54,7 +54,7 @@ controlSize?: ControlSize
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ controlSize?: ControlSize
 role?: ButtonRole
 ```
 
-按钮的角色。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过 backgroundColor、 [fontColor](arkts-arkui-button-attribute.md#fontColor)和[buttonStyle](arkts-arkui-button-attribute.md#buttonStyle)接口设置，实际显示效果以最后一次设置为 准。 默认值：ButtonRole.NORMAL
+按钮的角色。根据设置枚举值的不同，系统自动调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过 backgroundColor、 [fontColor](arkts-arkui-button-attribute.md#fontcolor)和[buttonStyle](arkts-arkui-button-attribute.md#buttonstyle)接口设置，实际显示效果以最后一次设置为 准。 默认值：ButtonRole.NORMAL
 
 **类型：** [ButtonRole](arkts-arkui-buttonrole-e.md)
 
@@ -82,7 +82,7 @@ role?: ButtonRole
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -108,7 +108,7 @@ stateEffect?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -132,7 +132,7 @@ type?: ButtonType
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

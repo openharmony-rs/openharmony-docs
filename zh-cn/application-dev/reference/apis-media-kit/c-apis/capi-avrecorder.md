@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs of request capability for Recorder.
+提供录制的请求能力接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 

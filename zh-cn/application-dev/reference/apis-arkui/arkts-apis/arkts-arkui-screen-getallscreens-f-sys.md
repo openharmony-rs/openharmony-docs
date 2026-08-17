@@ -10,7 +10,7 @@ function getAllScreens(callback: AsyncCallback<Array<Screen>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -86,7 +86,7 @@ function getAllScreens(): Promise<Array<Screen>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ let screenClass: screen.Screen | null = null;
 // 获取所有屏幕对象
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
-  if(data.length > 0){
+  if (data.length > 0) {
     screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
@@ -137,7 +137,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let screenClass: screen.Screen | null = null;
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
-  if(data.length > 0){
+  if (data.length > 0) {
     screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);

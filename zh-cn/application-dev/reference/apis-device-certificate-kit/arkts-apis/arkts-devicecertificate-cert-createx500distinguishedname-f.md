@@ -10,7 +10,7 @@ function createX500DistinguishedName(nameStr: string): Promise<X500Distinguished
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,9 +36,9 @@ function createX500DistinguishedName(nameStr: string): Promise<X500Distinguished
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
 | [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | 证书签名验证错误。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
 | [19030003](../errorcode-cert.md#19030003-证书尚未生效) | 证书尚未生效。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
@@ -68,12 +68,12 @@ let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=Cali
 async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameStr)
-      .then((data) => {
+      .then((_data) => {
         console.info('createX500DistinguishedName result: success.');
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      })
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -99,7 +99,7 @@ function stringToUint8Array(str: string): Uint8Array {
 let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
 async function createX500DistinguishedName() {
   try {
-    let data = await cert.createX500DistinguishedName(nameStr);
+    await cert.createX500DistinguishedName(nameStr);
     console.info('createX500DistinguishedName result: success.');
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -119,7 +119,7 @@ function createX500DistinguishedName(nameDer: Uint8Array): Promise<X500Distingui
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -145,9 +145,9 @@ function createX500DistinguishedName(nameDer: Uint8Array): Promise<X500Distingui
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
 | [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | 证书签名验证错误。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
 | [19030003](../errorcode-cert.md#19030003-证书尚未生效) | 证书尚未生效。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
@@ -171,12 +171,12 @@ let nameDer =
 async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameDer)
-      .then((data) => {
+      .then((_data) => {
         console.info('createX500DistinguishedName result: success.');
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      })
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -196,7 +196,7 @@ let nameDer =
 
 async function createX500DistinguishedName() {
   try {
-    let data = cert.createX500DistinguishedName(nameDer);
+    cert.createX500DistinguishedName(nameDer);
     console.info('createX500DistinguishedName result: success.');
   } catch (error) {
     let e: BusinessError = error as BusinessError;

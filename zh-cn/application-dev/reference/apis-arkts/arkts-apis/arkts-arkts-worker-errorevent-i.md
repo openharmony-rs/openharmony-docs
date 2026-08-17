@@ -2,11 +2,11 @@
 
 错误事件类用于表示Worker执行过程中出现异常的详细信息，ErrorEvent类继承Event。
 
-**继承/实现关系：** ErrorEvent extends [Event](arkts-arkts-worker-event-i.md#Event)
+**继承/实现关系：** ErrorEvent extends [Event](arkts-arkts-worker-event-i.md#event)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ readonly colno: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ readonly error: Object
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ readonly filename: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ readonly lineno: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ readonly message: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

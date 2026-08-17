@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,13 +36,13 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| overlayColor | [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | 是 | 要叠加在上方的颜色对象。alpha属性决定叠加强度。1.0表示完全覆盖，0.0表示完全透明，混合结果为原色。 |
+| overlayColor | [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | 是 | 要叠加在上方的颜色对象。alpha属性决定叠加强度。1.0表示完全覆盖，0.0表示完全透明，混合结果为原色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | 新的颜色对象，其red、green、blue和alpha通道均为当前颜色与叠加颜色混合后的结果值。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | 新的颜色对象，其red、green、blue和alpha通道均为当前颜色与叠加颜色混合后的结果值。 |
 
 **错误码：**
 
@@ -60,7 +60,7 @@ static colorWithSpace(colorSpace: ColorSpace, red: double, green: double, blue: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ static colorWithSpace(colorSpace: ColorSpace, red: double, green: double, blue: 
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | ColorMetrics类的实例。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | ColorMetrics类的实例。 |
 
 ## numeric
 
@@ -96,7 +96,7 @@ static numeric(value: int): ColorMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -110,13 +110,13 @@ static numeric(value: int): ColorMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | int | 是 | HEX格式颜色。&lt;br/&gt;取值范围：支持rgb或者argb。 &lt;br&gt;取值限定为整数。 |
+| value | int | 是 | HEX格式颜色。<br/>取值范围：支持rgb或者argb。 <br>取值限定为整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | ColorMetrics 类的实例。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | ColorMetrics 类的实例。 |
 
 ## resourceColor
 
@@ -128,7 +128,7 @@ static resourceColor(color: ResourceColor): ColorMetrics
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -148,7 +148,7 @@ static resourceColor(color: ResourceColor): ColorMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | ColorMetrics 类的实例。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | ColorMetrics 类的实例。 |
 
 **错误码：**
 
@@ -167,7 +167,7 @@ static rgba(red: double, green: double, blue: double, alpha?: double): ColorMetr
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -184,13 +184,13 @@ static rgba(red: double, green: double, blue: double, alpha?: double): ColorMetr
 | red | double | 是 | 颜色的R分量（红色），值是0~255的整数。 |
 | green | double | 是 | 颜色的G分量（绿色），值是0~255的整数。 |
 | blue | double | 是 | 颜色的B分量（蓝色），值是0~255的整数。 |
-| alpha | double | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。&lt;br/&gt; **说明：** alpha小于0为全透明，大于1为不透明。 |
+| alpha | double | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。<br/> **说明：** alpha小于0为全透明，大于1为不透明。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](arkts-na-graphics-colormetrics-c.md) | ColorMetrics 类的实例。 |
+| [ColorMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-colormetrics-c.md) | ColorMetrics 类的实例。 |
 
 ## BLACK
 
@@ -204,7 +204,7 @@ public static readonly BLACK: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -226,7 +226,7 @@ public static readonly BLUE: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -248,7 +248,7 @@ public static readonly BROWN: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -270,7 +270,7 @@ public static readonly GRAY: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -292,7 +292,7 @@ public static readonly GREEN: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -314,7 +314,7 @@ public static readonly GREY: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -336,7 +336,7 @@ public static readonly ORANGE: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -358,7 +358,7 @@ public static readonly PINK: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -380,7 +380,7 @@ public static readonly RED: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -402,7 +402,7 @@ public static readonly TRANSPARENT: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -424,7 +424,7 @@ public static readonly WHITE: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -446,7 +446,7 @@ public static readonly YELLOW: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -18,14 +18,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getOAID](arkts-ads-identifier-getoaid-f.md#getOAID) | 获取开放匿名设备标识符（OAID）。使用callback异步回调。 |
-| [getOAID](arkts-ads-identifier-getoaid-f.md#getOAID) | 获取开放匿名设备标识符（OAID）。使用Promise异步回调。 |
+| [getOAID](arkts-ads-identifier-getoaid-f.md#getoaid) | 获取开放匿名设备标识符（OAID）。使用callback异步回调。 |
+| [getOAID](arkts-ads-identifier-getoaid-f.md#getoaid) | 获取开放匿名设备标识符（OAID）。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [resetOAID](arkts-ads-identifier-resetoaid-f-sys.md#resetOAID) | 重置开放匿名设备标识符（OAID）。 |
+| [resetOAID](arkts-ads-identifier-resetoaid-f-sys.md#resetoaid) | 重置开放匿名设备标识符（OAID）。 |
 <!--DelEnd-->
 

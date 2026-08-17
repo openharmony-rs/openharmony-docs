@@ -4,7 +4,7 @@ Specify the number of columns for different responsive breakpoints.
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ For Lists and Swipers: One column is displayed on SM (and smaller),two on MD, an
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ For SM (and smaller),MD, and LG (and larger) devices, one,two,and three columns 
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ For SM (and smaller),MD, and LG (and larger) devices,two,three,and five columns 
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

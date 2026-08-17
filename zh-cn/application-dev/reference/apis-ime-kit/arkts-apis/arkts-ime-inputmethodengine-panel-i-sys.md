@@ -1,10 +1,10 @@
 # Panel
 
-Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的 [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createPanel) 接口获取，使用完毕后需调用 [destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroyPanel) 销毁以释放资源。createPanel与destroyPanel必须配对调用。 **核心功能概述：** - **页面加载**：通过 [setUiContent](arkts-ime-inputmethodengine-panel-i.md#setUiContent)为面板加载键盘页面内容， 支持加载普通页面和与LocalStorage关联的页面。 - **显示与隐藏**：通过[show](arkts-ime-inputmethodengine-panel-i.md#show)显示面板，通过 [hide](arkts-ime-inputmethodengine-panel-i.md#hide)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件 监听状态变化。 - **尺寸与位置调整**：通过 [resize](arkts-ime-inputmethodengine-panel-i.md#resize)调整面板尺寸，通过 [moveTo](arkts-ime-inputmethodengine-panel-i.md#moveTo)移动面板位置，通过 [startMoving](arkts-ime-inputmethodengine-panel-i.md#startMoving)拖拽移动面板，通过 [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustPanelRect)/ [updatePanelRect](arkts-ime-inputmethodengine-panel-i.md#updatePanelRect)/ [updateRegion](arkts-ime-inputmethodengine-panel-i.md#updateRegion)调整面板区域。 - **模式设置**：通过[changeFlag](arkts-ime-inputmethodengine-panel-i.md#changeFlag)切换面板固定态/浮动态，通过 [setPrivacyMode](arkts-ime-inputmethodengine-panel-i.md#setPrivacyMode)设置隐私模式，通过 [setImmersiveMode](arkts-ime-inputmethodengine-panel-i.md#setImmersiveMode)/ [getImmersiveMode](arkts-ime-inputmethodengine-panel-i.md#getImmersiveMode)设置/获取沉浸模式。 - **事件监听**：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。 **面板生命周期：** 1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createPanel)中创建Panel实例并指定面板类型和标志位。 2. 调用[setUiContent](arkts-ime-inputmethodengine-panel-i.md#setUiContent)加载键盘页面内容。 3. 调用[show](arkts-ime-inputmethodengine-panel-i.md#show)显示面板，用户可交互。 4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。 5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroyPanel)销毁面板，释放资源。 下列API均需使用 [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createPanel) 获取到Panel实例后，通过实例调用。
+Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的 [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel) 接口获取，使用完毕后需调用 [destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel) 销毁以释放资源。createPanel与destroyPanel必须配对调用。 **核心功能概述：** - **页面加载**：通过 [setUiContent](arkts-ime-inputmethodengine-panel-i.md#setuicontent)为面板加载键盘页面内容， 支持加载普通页面和与LocalStorage关联的页面。 - **显示与隐藏**：通过[show](arkts-ime-inputmethodengine-panel-i.md#show)显示面板，通过 [hide](arkts-ime-inputmethodengine-panel-i.md#hide)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件 监听状态变化。 - **尺寸与位置调整**：通过 [resize](arkts-ime-inputmethodengine-panel-i.md#resize)调整面板尺寸，通过 [moveTo](arkts-ime-inputmethodengine-panel-i.md#moveto)移动面板位置，通过 [startMoving](arkts-ime-inputmethodengine-panel-i.md#startmoving)拖拽移动面板，通过 [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect)/ [updatePanelRect](arkts-ime-inputmethodengine-panel-i.md#updatepanelrect)/ [updateRegion](arkts-ime-inputmethodengine-panel-i.md#updateregion)调整面板区域。 - **模式设置**：通过[changeFlag](arkts-ime-inputmethodengine-panel-i.md#changeflag)切换面板固定态/浮动态，通过 [setPrivacyMode](arkts-ime-inputmethodengine-panel-i.md#setprivacymode)设置隐私模式，通过 [setImmersiveMode](arkts-ime-inputmethodengine-panel-i.md#setimmersivemode)/ [getImmersiveMode](arkts-ime-inputmethodengine-panel-i.md#getimmersivemode)设置/获取沉浸模式。 - **事件监听**：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。 **面板生命周期：** 1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)中创建Panel实例并指定面板类型和标志位。 2. 调用[setUiContent](arkts-ime-inputmethodengine-panel-i.md#setuicontent)加载键盘页面内容。 3. 调用[show](arkts-ime-inputmethodengine-panel-i.md#show)显示面板，用户可交互。 4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。 5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel)销毁面板，释放资源。 下列API均需使用 [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel) 获取到Panel实例后，通过实例调用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ offSizeUpdate(callback?: SizeUpdateCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,7 +58,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -97,7 +97,7 @@ onSizeUpdate(callback: SizeUpdateCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -133,7 +133,7 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -173,7 +173,7 @@ setShadow(radius: double, color: string, offsetX: double, offsetY: double): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

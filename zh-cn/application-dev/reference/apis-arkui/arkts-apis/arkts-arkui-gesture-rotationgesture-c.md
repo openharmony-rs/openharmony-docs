@@ -2,11 +2,11 @@
 
 用于触发旋转手势，最少需要2指，最多5指，最小改变度数为1度。该手势不支持通过触控板双指旋转操作触发。 > **说明：** > > - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-**继承/实现关系：** RotationGesture extends [Gesture](arkts-arkui-gesture-gesture-c.md#Gesture)
+**继承/实现关系：** RotationGesture extends [Gesture](arkts-arkui-gesture-gesture-c.md#gesture)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@
 static $_instantiate(factory: () => RotationGesture, value?: RotationGestureHandlerOptions): RotationGesture
 ```
 
-设置旋转手势事件。继承自[Gesture](arkts-arkui-gesture-gesture-c.md#Gesture)。
+设置旋转手势事件。继承自[Gesture](arkts-arkui-gesture-gesture-c.md#gesture)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -53,11 +53,11 @@ static $_instantiate(factory: () => RotationGesture, value?: RotationGestureHand
 onActionCancel(event: Callback<GestureEvent>): this
 ```
 
-Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onActionCancel)相比，该回调返回手势事件信息。
+Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -89,7 +89,7 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -121,7 +121,7 @@ Rotation手势识别成功后触发的回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -153,7 +153,7 @@ Rotation手势移动过程中触发的回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

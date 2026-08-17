@@ -1,10 +1,10 @@
 # MissionListener（系统接口）
 
-定义系统任务状态监听，可以通过on注册。
+定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-onmission-f-sys.md#onmission)注册。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ onMissionClosed(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -146,7 +146,7 @@ onMissionCreated(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -164,7 +164,7 @@ onMissionCreated(mission: int): void
 
 ## 示例
 
-详细示例请见[onMissionClosed](#onMissionClosed)。
+详细示例请见[onMissionClosed](#onmissionclosed)。
 
 ## onMissionDestroyed
 
@@ -176,7 +176,7 @@ onMissionDestroyed(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -194,7 +194,7 @@ onMissionDestroyed(mission: int): void
 
 ## 示例
 
-详细示例请见[onMissionClosed](#onMissionClosed)。
+详细示例请见[onMissionClosed](#onmissionclosed)。
 
 ## onMissionIconUpdated
 
@@ -206,7 +206,7 @@ onMissionIconUpdated(mission: int, icon: image.PixelMap): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -225,7 +225,7 @@ onMissionIconUpdated(mission: int, icon: image.PixelMap): void
 
 ## 示例
 
-详细示例请见[onMissionClosed](#onMissionClosed)。
+详细示例请见[onMissionClosed](#onmissionclosed)。
 
 ## onMissionLabelUpdated
 
@@ -237,7 +237,7 @@ onMissionLabelUpdated(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -255,7 +255,7 @@ onMissionLabelUpdated(mission: int): void
 
 ## 示例
 
-详细示例请见[onMissionClosed](#onMissionClosed)。
+详细示例请见[onMissionClosed](#onmissionclosed)。
 
 ## onMissionMovedToFront
 
@@ -267,7 +267,7 @@ onMissionMovedToFront(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -285,7 +285,7 @@ onMissionMovedToFront(mission: int): void
 
 ## 示例
 
-详细示例请见[onMissionClosed](#onMissionClosed)。
+详细示例请见[onMissionClosed](#onmissionclosed)。
 
 ## onMissionSnapshotChanged
 
@@ -297,7 +297,7 @@ onMissionSnapshotChanged(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -315,5 +315,5 @@ onMissionSnapshotChanged(mission: int): void
 
 ## 示例
 
-详细示例请见[onMissionClosed](#onMissionClosed)。
+详细示例请见[onMissionClosed](#onmissionclosed)。
 

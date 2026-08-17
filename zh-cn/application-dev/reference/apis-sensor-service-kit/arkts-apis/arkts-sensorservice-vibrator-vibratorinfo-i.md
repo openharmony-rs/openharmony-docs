@@ -1,10 +1,10 @@
 # VibratorInfo
 
-表示查询的马达信息。通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md#getVibratorInfoSync)返回此对象，用于获取设备马达能力和选择合适的马达触发振动。
+表示查询的马达信息。通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md#getvibratorinfosync)返回此对象，用于获取设备马达能力和选择合适的马达触发振动。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 deviceId: int
 ```
 
-设备ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration)等接口指定目标设备。
+设备ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标设备。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ deviceName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ isHdHapticSupported: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ isLocalVibrator: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,13 +98,13 @@ isLocalVibrator: boolean
 vibratorId: int
 ```
 
-马达ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration)等接口指定目标马达。
+马达ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标马达。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

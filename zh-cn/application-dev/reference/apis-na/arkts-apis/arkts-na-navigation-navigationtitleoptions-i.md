@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ barStyle?: BarStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -130,7 +130,7 @@ barStyle?: BarStyle
 enableHoverMode?: boolean
 ```
 
-是否响应悬停态。 使用规则： 1. 需满足Navigation为全屏大小； 2. 标题栏显示模式为[Free](arkts-na-navigation-navigationtitlemode-e.md#NavigationTitleMode)时或者标题栏布局方式为[STANDARD](arkts-na-navigation-barstyle-e.md#BarStyle)时，此接口设置无效。 true：响应悬停态；false：不响应悬停态。 默认值： false。
+是否响应悬停态。 使用规则： 1. 需满足Navigation为全屏大小； 2. 标题栏显示模式为[Free](arkts-na-navigation-navigationtitlemode-e.md#navigationtitlemode)时或者标题栏布局方式为[STANDARD](arkts-na-navigation-barstyle-e.md#barstyle)时，此接口设置无效。 true：响应悬停态；false：不响应悬停态。 默认值： false。
 
 **类型：** boolean
 
@@ -138,7 +138,7 @@ enableHoverMode?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -154,13 +154,13 @@ enableHoverMode?: boolean
 mainTitleModifier?: TextModifier
 ```
 
-主标题属性修改器。 1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）； 2. 不设该属性或者设置了异常值，则恢复系统默认设置； 3. [Free](arkts-na-navigation-navigationtitlemode-e.md#NavigationTitleMode)模式下设置字体大小时，原有滑动改变标题大小的效果失效。
+主标题属性修改器。 1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）； 2. 不设该属性或者设置了异常值，则恢复系统默认设置； 3. [Free](arkts-na-navigation-navigationtitlemode-e.md#navigationtitlemode)模式下设置字体大小时，原有滑动改变标题大小的效果失效。
 
 **类型：** TextModifier
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -178,13 +178,13 @@ paddingEnd?: LengthMetrics
 
 标题栏结束端内间距。 仅支持以下任一场景： 1. 使用非自定义菜单，即[菜单value](arkts-na-navigation-navigationattribute-i.md#menus)为Array&lt;NavigationMenuItem&gt;； 2. 没有右上角菜单，且使用非自定义标题，即[标题value](arkts-na-navigation-navigationattribute-i.md#title)类型为ResourceStr或NavigationCommonTitle。 默认值： LengthMetrics.resource(`\$r('sys.float.margin_right')`)。
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **默认值：** LengthMetrics.resource($r('sys.float.margin_right'))
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -200,15 +200,15 @@ paddingEnd?: LengthMetrics
 paddingStart?: LengthMetrics
 ```
 
-标题栏起始端内间距。 仅支持以下任一场景： 1. 显示返回图标，即[hideBackButton](arkts-na-navigation-navigationattribute-i.md#hideBackButton)为false； 2. 使用非自定义标题，即[标题value](arkts-na-navigation-navigationattribute-i.md#title)类型为ResourceStr或NavigationCommonTitle。 默认值： LengthMetrics.resource(\$r('sys.float.margin_left'))。
+标题栏起始端内间距。 仅支持以下任一场景： 1. 显示返回图标，即[hideBackButton](arkts-na-navigation-navigationattribute-i.md#hidebackbutton)为false； 2. 使用非自定义标题，即[标题value](arkts-na-navigation-navigationattribute-i.md#title)类型为ResourceStr或NavigationCommonTitle。 默认值： LengthMetrics.resource(\$r('sys.float.margin_left'))。
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)
 
 **默认值：** LengthMetrics.resource($r('sys.float.margin_left'))
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -230,7 +230,7 @@ scrollEffectOptions?: ScrollEffectOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -252,7 +252,7 @@ subTitleModifier?: TextModifier
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

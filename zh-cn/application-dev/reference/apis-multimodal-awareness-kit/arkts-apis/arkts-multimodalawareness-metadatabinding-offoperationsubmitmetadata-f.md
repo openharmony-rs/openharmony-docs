@@ -10,7 +10,7 @@ function offOperationSubmitMetadata(bundleName: string, callback?: Callback<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ function offOperationSubmitMetadata(bundleName: string, callback?: Callback<int>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [32100001](../../apis-multimodalawareness-kit/errorcode-metadataBinding.md#32100001-文件创建失败) | Internal handling failed. |
-| [32100005](../../apis-multimodalawareness-kit/errorcode-metadataBinding.md#32100005-取消订阅失败) | Unsubscribe Failed. Possible causes: &lt;br&gt;1. Abnormal system capability. &lt;br&gt;2. IPC communication abnormality. |
+| [32100005](../../apis-multimodalawareness-kit/errorcode-metadataBinding.md#32100005-取消订阅失败) | Unsubscribe Failed. Possible causes: <br>1. Abnormal system capability. <br>2. IPC communication abnormality. |
 
 ## 示例
 

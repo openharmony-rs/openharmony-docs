@@ -10,7 +10,7 @@ function addPortAuthorization(tokenId: string, deviceId: string): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function addPortAuthorization(tokenId: string, deviceId: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | tokenId | string | 是 | 被授权应用的tokenId |
-| deviceId | string | 是 | 串口设备ID &lt;br&gt;对于板载串口，取值为portName；对于USB虚拟串口，取值为vid+pid+SN拼接。 |
+| deviceId | string | 是 | 串口设备ID <br>对于板载串口，取值为portName；对于USB虚拟串口，取值为vid+pid+SN拼接。 |
 
 **返回值：**
 

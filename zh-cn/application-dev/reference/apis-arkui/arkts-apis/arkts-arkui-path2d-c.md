@@ -2,11 +2,11 @@
 
 路径对象，支持通过对象的接口进行路径的描述，并通过Canvas的stroke接口或者fill接口进行绘制。 > **说明：** > > Path2D对象不支持重置已设置的路径，如需新路径可重新创建一个空的Path2D对象。 > > Path2D对象的方法无法对 > [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) > 和 > [OffscreenCanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md) > 对象中设置的路径生效。
 
-**继承/实现关系：** Path2D extends [CanvasPath](arkts-arkui-canvaspath-c.md#CanvasPath)
+**继承/实现关系：** Path2D extends [CanvasPath](arkts-arkui-canvaspath-c.md#canvaspath)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ addPath(path: Path2D, transform?: Matrix2D): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -40,8 +40,8 @@ addPath(path: Path2D, transform?: Matrix2D): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 需要添加到当前路径的路径对象，路径单位：px。 &lt;br&gt;异常值undefined和null按无效值处理。 |
-| transform | Matrix2D | 否 | 新增路径的变换矩阵对象。 &lt;br&gt;异常值undefined和null按无效值处理。 &lt;br&gt;默认值：null。 |
+| path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 需要添加到当前路径的路径对象，路径单位：px。 <br>异常值undefined和null按无效值处理。 |
+| transform | Matrix2D | 否 | 新增路径的变换矩阵对象。 <br>异常值undefined和null按无效值处理。 <br>默认值：null。 |
 
 ## constructor
 
@@ -53,7 +53,7 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -75,7 +75,7 @@ constructor(unit: LengthMetricsUnit)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -93,7 +93,7 @@ constructor(unit: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| unit | LengthMetricsUnit | 是 | 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同CanvasRenderingContext2D 。 &lt;br&gt;默认值：DEFAULT &lt;br&gt;异常值NaN和Infinity按默认值处理。 |
+| unit | LengthMetricsUnit | 是 | 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同CanvasRenderingContext2D 。 <br>默认值：DEFAULT <br>异常值NaN和Infinity按默认值处理。 |
 
 ## constructor
 
@@ -105,7 +105,7 @@ constructor(path: Path2D)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -133,7 +133,7 @@ constructor(path: Path2D, unit: LengthMetricsUnit)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -152,7 +152,7 @@ constructor(path: Path2D, unit: LengthMetricsUnit)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | [Path2D](arkts-arkui-path2d-c.md) | 是 | 路径对象。 |
-| unit | LengthMetricsUnit | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改， 配置方法同 [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。 &lt;br&gt;异常值NaN和Infinity按默认值处理。 &lt;br&gt;默认值：DEFAULT。 |
+| unit | LengthMetricsUnit | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改， 配置方法同 [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。 <br>异常值NaN和Infinity按默认值处理。 <br>默认值：DEFAULT。 |
 
 ## constructor
 
@@ -164,7 +164,7 @@ constructor(d: string)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -192,7 +192,7 @@ constructor(description: string, unit: LengthMetricsUnit)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -211,5 +211,5 @@ constructor(description: string, unit: LengthMetricsUnit)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | description | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考 [SVG路径描述规范](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)， 异常值按无效值处理。 |
-| unit | LengthMetricsUnit | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改， 配置方法同 [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。 &lt;br&gt;异常值NaN和Infinity按默认值处理。 &lt;br&gt;默认值：DEFAULT。 |
+| unit | LengthMetricsUnit | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改， 配置方法同 [CanvasRenderingContext2D](../../../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)。 <br>异常值NaN和Infinity按默认值处理。 <br>默认值：DEFAULT。 |
 

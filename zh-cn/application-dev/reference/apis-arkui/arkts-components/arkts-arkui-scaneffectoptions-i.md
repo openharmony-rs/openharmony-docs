@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 enableScanEffect?: boolean
 ```
 
-扫光效果的开关。仅支持[ProgressType](arkts-arkui-progresstype-e.md#ProgressType)类型为Linear、Ring、Capsule的进度条。 true：表示开启扫光效果。 false：表示关闭扫光效果。 默认值：false
+扫光效果的开关。仅支持[ProgressType](arkts-arkui-progresstype-e.md#progresstype)类型为Linear、Ring、Capsule的进度条。 true：表示开启扫光效果。 false：表示关闭扫光效果。 默认值：false
 
 **类型：** boolean
 
@@ -26,7 +26,7 @@ enableScanEffect?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

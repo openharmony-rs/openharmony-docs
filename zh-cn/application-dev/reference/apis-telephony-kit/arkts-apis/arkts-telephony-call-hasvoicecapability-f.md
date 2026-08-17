@@ -10,7 +10,7 @@ function hasVoiceCapability(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,4 +23,11 @@ function hasVoiceCapability(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回true表示设备具备语音通话能力，返回false表示设备不具备语音通话能力。 |
+
+## 示例
+
+```TypeScript
+let result: boolean = call.hasVoiceCapability();
+console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
+```
 

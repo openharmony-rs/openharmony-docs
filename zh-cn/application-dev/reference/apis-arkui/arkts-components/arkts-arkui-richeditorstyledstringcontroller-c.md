@@ -1,14 +1,14 @@
 # RichEditorStyledStringController
 
-使用属性字符串构建的RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md#RichEditorBaseController)。
+使用属性字符串构建的RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md#richeditorbasecontroller)。
 
 ## 导入对象 ```ts controller: RichEditorStyledStringController = new RichEditorStyledStringController(); ```
 
-**继承/实现关系：** RichEditorStyledStringController extends [RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md#RichEditorBaseController) implements StyledStringController
+**继承/实现关系：** RichEditorStyledStringController extends [RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md#richeditorbasecontroller) implements StyledStringController
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ getSelection(): RichEditorRange
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ getSelection(): RichEditorRange
 
 | 类型 | 说明 |
 | --- | --- |
-| [RichEditorRange](arkts-arkui-richeditorrange-i.md) | 选中区域范围。 &lt;br&gt;当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
+| [RichEditorRange](arkts-arkui-richeditorrange-i.md) | 选中区域范围。 <br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## getStyledString
 
@@ -54,7 +54,7 @@ getStyledString(): MutableStyledString
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ getStyledString(): MutableStyledString
 
 | 类型 | 说明 |
 | --- | --- |
-| MutableStyledString | 富文本组件显示的属性字符串。 &lt;br&gt;当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
+| MutableStyledString | 富文本组件显示的属性字符串。 <br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## onContentChanged
 
@@ -78,11 +78,11 @@ getStyledString(): MutableStyledString
 onContentChanged(listener: StyledStringChangedListener): void
 ```
 
-注册文本内容变化回调，该回调仅在后端程序导致文本内容变更时触发，调用[setStyledString](#setStyledString)时不会触发。
+注册文本内容变化回调，该回调仅在后端程序导致文本内容变更时触发，调用[setStyledString](#setstyledstring)时不会触发。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -110,7 +110,7 @@ setStyledString(styledString: StyledString): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -126,5 +126,5 @@ setStyledString(styledString: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | StyledString | 是 | 属性字符串。&lt;br/&gt;**说明：** &lt;br/&gt;StyledString的子类 MutableStyledString也可以作为入参值。 |
+| styledString | StyledString | 是 | 属性字符串。<br/>**说明：** <br/>StyledString的子类 MutableStyledString也可以作为入参值。 |
 

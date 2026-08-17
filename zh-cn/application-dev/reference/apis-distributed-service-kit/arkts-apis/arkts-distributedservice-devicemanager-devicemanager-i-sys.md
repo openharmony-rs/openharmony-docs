@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [DeviceManager](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#DeviceManager)
+**替代接口：** [DeviceManager](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#devicemanager)
 
 <!--Device-deviceManager-interface DeviceManager--><!--Device-deviceManager-interface DeviceManager-End-->
 
@@ -28,11 +28,11 @@ authenticateDevice(
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [bindTarget](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#bindTarget)(deviceId: string, bindParam: { [key: string]: Object; }, callback: AsyncCallback&lt;{deviceId: string;}&gt;)
+**替代接口：** [bindTarget](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#bindtarget)(deviceId: string, bindParam: { [key: string]: Object; }, callback: AsyncCallback&lt;{deviceId: string;}&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -134,7 +134,7 @@ deleteCredential(queryInfo: string, callback: AsyncCallback<{ resultInfo: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -208,11 +208,11 @@ getDeviceInfo(networkId: string, callback: AsyncCallback<DeviceInfo>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
-**替代接口：** [getDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getDeviceName)
+**替代接口：** [getDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getdevicename)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -270,11 +270,11 @@ getDeviceInfo(networkId: string): Promise<DeviceInfo>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
-**替代接口：** [getDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getDeviceName)
+**替代接口：** [getDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getdevicename)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -330,11 +330,11 @@ getLocalDeviceInfo(callback: AsyncCallback<DeviceInfo>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getLocalDeviceNetworkId)
+**替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getlocaldevicenetworkid)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -390,11 +390,11 @@ getLocalDeviceInfo(): Promise<DeviceInfo>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getLocalDeviceNetworkId)
+**替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getlocaldevicenetworkid)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -441,11 +441,11 @@ getLocalDeviceInfoSync(): DeviceInfo
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getLocalDeviceNetworkId)
+**替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getlocaldevicenetworkid)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -495,11 +495,11 @@ getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getAvailableDeviceList)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
+**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -554,11 +554,11 @@ getTrustedDeviceList(): Promise<Array<DeviceInfo>>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getAvailableDeviceList)()
+**替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)()
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -605,11 +605,11 @@ getTrustedDeviceListSync(): Array<DeviceInfo>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [getAvailableDeviceListSync](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getAvailableDeviceListSync)
+**替代接口：** [getAvailableDeviceListSync](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -659,7 +659,7 @@ getTrustedDeviceListSync(isRefresh: boolean): Array<DeviceInfo>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -718,7 +718,7 @@ importCredential(credentialInfo: string, callback: AsyncCallback<{ resultInfo: s
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -821,11 +821,11 @@ off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: Devi
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#off_deviceStateChange)(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;)
+**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#offdevicestatechange)(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -889,11 +889,11 @@ off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAc
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#off_deviceStateChange)(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
+**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#offdevicestatechange)(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -957,11 +957,11 @@ off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: num
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#off_deviceStateChange)(type: 'discoverFailure', callback: Callback&lt;{ reason: int; }&gt;)
+**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#offdevicestatechange)(type: 'discoverFailure', callback: Callback&lt;{ reason: int; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1017,7 +1017,7 @@ off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1075,7 +1075,7 @@ off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1132,11 +1132,11 @@ off(type: 'serviceDie', callback?: () => void): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#off_deviceStateChange)(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
+**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#offdevicestatechange)(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1187,11 +1187,11 @@ off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#off_deviceStateChange)(type: 'replyResult', callback: Callback&lt;{ param: string; }&gt;)
+**替代接口：** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#offdevicestatechange)(type: 'replyResult', callback: Callback&lt;{ param: string; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1240,11 +1240,11 @@ on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: Device
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#on_deviceStateChange)(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;)
+**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1308,11 +1308,11 @@ on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeActi
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#on_deviceStateChange)(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
+**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1376,11 +1376,11 @@ on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: numbe
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#on_deviceStateChange)(type: 'discoverFailure', callback: Callback&lt;{ reason: int; }&gt;)
+**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'discoverFailure', callback: Callback&lt;{ reason: int; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1436,7 +1436,7 @@ on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1494,7 +1494,7 @@ on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1551,11 +1551,11 @@ on(type: 'serviceDie', callback: () => void): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#on_deviceStateChange)(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
+**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'serviceDie', callback?: Callback&lt;{}&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1606,11 +1606,11 @@ ui状态变更回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#on_deviceStateChange)(type: 'replyResult', callback: Callback&lt;{ param: string; }&gt;)
+**替代接口：** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'replyResult', callback: Callback&lt;{ param: string; }&gt;)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1672,7 +1672,7 @@ publishDeviceDiscovery(publishInfo: PublishInfo): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1741,11 +1741,11 @@ release(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md#releaseDeviceManager)
+**替代接口：** [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md#releasedevicemanager)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1788,7 +1788,7 @@ requestCredentialRegisterInfo(requestInfo: string, callback: AsyncCallback<{ reg
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -1859,11 +1859,11 @@ setUserOperation(operateAction: number, params: string): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [replyUiAction](arkts-distributedservice-distributeddevicemanager-devicemanager-i-sys.md#replyUiAction)
+**替代接口：** [replyUiAction](arkts-distributedservice-distributeddevicemanager-devicemanager-i-sys.md#replyuiaction)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1922,11 +1922,11 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startDiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
+**替代接口：** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1998,11 +1998,11 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo, filterOptions?: string): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startDiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
+**替代接口：** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -2097,11 +2097,11 @@ stopDeviceDiscovery(subscribeId: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [stopDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#stopDiscovering)
+**替代接口：** [stopDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#stopdiscovering)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -2153,11 +2153,11 @@ unAuthenticateDevice(deviceInfo: DeviceInfo): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
-**替代接口：** [unbindTarget](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#unbindTarget)
+**替代接口：** [unbindTarget](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#unbindtarget)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -2223,7 +2223,7 @@ unPublishDeviceDiscovery(publishId: number): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -2277,7 +2277,7 @@ verifyAuthInfo(authInfo: AuthInfo, callback: AsyncCallback<{ deviceId: string, l
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 

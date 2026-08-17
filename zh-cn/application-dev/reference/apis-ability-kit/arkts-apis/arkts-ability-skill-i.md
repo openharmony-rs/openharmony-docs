@@ -4,7 +4,7 @@ skill标签对象。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ skill标签对象。
 readonly actions: Array<string>
 ```
 
-Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md#Action)。
+Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md#action)。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ Skill接收的DomainVerify值，仅在AbilityInfo中存在，表示是否开启�
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ Skill接收的DomainVerify值，仅在AbilityInfo中存在，表示是否开启�
 readonly entities: Array<string>
 ```
 
-Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md#Entity)。
+Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md#entity)。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ Want匹配的Uri集合。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

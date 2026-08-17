@@ -10,7 +10,7 @@ function switchInputMethodWithUserId(bundleName: string, subtypeId?: string, use
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@ function switchInputMethodWithUserId(bundleName: string, subtypeId?: string, use
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 目标输入法的包名。 |
 | subtypeId | string | 否 | 输入法子类型的ID。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
-| userId | int | 否 | 用户ID。如果不提供： &lt;br&gt;- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。 &lt;br&gt;- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+| userId | int | 否 | 用户ID。如果不提供： <br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。 <br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
 

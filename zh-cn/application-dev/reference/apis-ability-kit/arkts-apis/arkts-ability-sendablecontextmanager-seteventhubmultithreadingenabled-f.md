@@ -6,11 +6,11 @@
 function setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 ```
 
-设置Context中的[EventHub](arkts-ability-eventhub-c.md#EventHub)是否启用跨线程通信能力。 > **说明：** > > - 当多个Context进行通信时，需要调用该接口设置每个Context都支持EventHub跨线程数据传递功能。
+设置Context中的[EventHub](arkts-ability-eventhub-c.md#eventhub)是否启用跨线程通信能力。 > **说明：** > > - 当多个Context进行通信时，需要调用该接口设置每个Context都支持EventHub跨线程数据传递功能。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -31,7 +31,7 @@ function setEventHubMultithreadingEnabled(context: common.Context, enabled: bool
 
 ## 示例
 
-主线程启用[Context](arkts-ability-context-c.md#Context)中[EventHub](arkts-ability-eventhub-c.md#EventHub)的跨线程通信能力，并将Context转换为[SendableContext](arkts-ability-sendablecontext-i.md#SendableContext)后发送到[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程。
+主线程启用[Context](arkts-ability-context-c.md#context)中[EventHub](arkts-ability-eventhub-c.md#eventhub)的跨线程通信能力，并将Context转换为[SendableContext](arkts-ability-sendablecontext-i.md#sendablecontext)后发送到[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程。
 
 ```TypeScript
 import { common, sendableContextManager } from '@kit.AbilityKit';
@@ -88,7 +88,7 @@ struct Index {
 }
 ```
 
-[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程接收到[SendableContext](arkts-ability-sendablecontext-i.md#SendableContext)后，将其转换为[Context](arkts-ability-context-c.md#Context)。然后，在Worker线程内，启用Context中[EventHub](arkts-ability-eventhub-c.md#EventHub)的跨线程通信能力，并通过该功能向主线程发送消息。
+[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程接收到[SendableContext](arkts-ability-sendablecontext-i.md#sendablecontext)后，将其转换为[Context](arkts-ability-context-c.md#context)。然后，在Worker线程内，启用Context中[EventHub](arkts-ability-eventhub-c.md#eventhub)的跨线程通信能力，并通过该功能向主线程发送消息。
 
 ```TypeScript
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ columnWidths?: LengthMetrics[]
 
 设置每一列的列宽。 默认值：每一列的列宽相等，为组件宽度除以列数。 **说明：** 1. 当文本长度大于列宽时，文本被截断。 2. 当设置为异常值时，使用默认值。 3. 支持设置为Undefined和Null，不支持Undefined[]和Null[]。
 
-**类型：** [LengthMetrics](arkts-na-graphics-lengthmetrics-c.md)[]
+**类型：** [LengthMetrics](../../apis-arkui/arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ columnWidths?: LengthMetrics[]
 range: string[] | string[][] | Resource | TextPickerRangeContent[] | TextCascadePickerRangeContent[]
 ```
 
-选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。 **说明：** 1. 单列数据选择器使用string[]，Resource， [TextPickerRangeContent](arkts-na-textpicker-textpickerrangecontent-i.md#TextPickerRangeContent)[]类型。 2. 多列非联动数据选择器使用string[][]类型。 3. 多列联动数据选择器使用[TextCascadePickerRangeContent](arkts-na-textpicker-textcascadepickerrangecontent-i.md#TextCascadePickerRangeContent)[]类型。 4. Resource类型只支持[strarray.json](../../../quick-start/resource-categories-and-access.md#资源组目录)。 5. range的类型及列数不可以动态修改。
+选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。 **说明：** 1. 单列数据选择器使用string[]，Resource， [TextPickerRangeContent](arkts-na-textpicker-textpickerrangecontent-i.md#textpickerrangecontent)[]类型。 2. 多列非联动数据选择器使用string[][]类型。 3. 多列联动数据选择器使用[TextCascadePickerRangeContent](arkts-na-textpicker-textcascadepickerrangecontent-i.md#textcascadepickerrangecontent)[]类型。 4. Resource类型只支持[strarray.json](../../../quick-start/resource-categories-and-access.md#资源组目录)。 5. range的类型及列数不可以动态修改。
 
 **类型：** string[] \| string[][] \| [Resource](../../apis-arkui/arkts-apis/arkts-arkui-resource-t.md) \| [TextPickerRangeContent](arkts-na-textpicker-textpickerrangecontent-i.md)[] \| [TextCascadePickerRangeContent](arkts-na-textpicker-textcascadepickerrangecontent-i.md)[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ selected?: int | int[] | Bindable<int> | Bindable<int[]>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ value?: BindableResourceStr | BindableResourceStrArray
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

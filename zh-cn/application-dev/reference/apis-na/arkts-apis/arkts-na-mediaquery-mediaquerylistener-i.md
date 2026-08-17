@@ -1,12 +1,12 @@
 # MediaQueryListener
 
-媒体查询的句柄，并包含了申请句柄时的首次查询结果。媒体查询根据设置的条件语句， 比如'(width <= 600vp)'，比较系统信息，若首次查询时相关信息未初始化，matches返回false。 继承自[MediaQueryResult](arkts-na-mediaquery-mediaqueryresult-i.md#MediaQueryResult)。
+媒体查询的句柄，并包含了申请句柄时的首次查询结果。媒体查询根据设置的条件语句， 比如'(width &lt;= 600vp)'，比较系统信息，若首次查询时相关信息未初始化，matches返回false。 继承自[MediaQueryResult](arkts-na-mediaquery-mediaqueryresult-i.md#mediaqueryresult)。
 
-**继承/实现关系：** MediaQueryListener extends [MediaQueryResult](arkts-na-mediaquery-mediaqueryresult-i.md#MediaQueryResult)
+**继承/实现关系：** MediaQueryListener extends [MediaQueryResult](arkts-na-mediaquery-mediaqueryresult-i.md#mediaqueryresult)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ offChange(callback?: Callback<MediaQueryResult>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ onChange(callback: Callback<MediaQueryResult>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

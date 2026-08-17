@@ -1,10 +1,10 @@
 # FrameCallback
 
-用于定义帧回调任务，可在下一帧渲染阶段或帧渲染任务结束后的空闲阶段执行。 > **说明：** > > - 以下API需要配合[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)中的[postFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postFrameCallback)和 > [postDelayedFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postDelayedFrameCallback)使用。开发者需要继承该类并重写 > [onFrame](#onFrame)或[onIdle](#onIdle)方法，实现具体的业务逻辑。
+用于定义帧回调任务，可在下一帧渲染阶段或帧渲染任务结束后的空闲阶段执行。 > **说明：** > > - 以下API需要配合[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的[postFrameCallback](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#postframecallback)和 > [postDelayedFrameCallback](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#postdelayedframecallback)使用。开发者需要继承该类并重写 > [onFrame](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-framecallback-c.md#onframe)或[onIdle](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-framecallback-c.md#onidle)方法，实现具体的业务逻辑。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onFrame(frameTimeInNano: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ onFrame(frameTimeInNano: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| frameTimeInNano | number | 是 | 下一帧渲染开始执行的时间，以纳秒为单位。&lt;br/&gt;取值范围：[0, +∞) |
+| frameTimeInNano | number | 是 | 下一帧渲染开始执行的时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
 
 ## onIdle
 
@@ -50,7 +50,7 @@ onIdle(timeLeftInNano: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -66,5 +66,5 @@ onIdle(timeLeftInNano: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeLeftInNano | number | 是 | 这一帧剩余的空闲时间，以纳秒为单位。&lt;br/&gt;取值范围：[0, +∞) |
+| timeLeftInNano | number | 是 | 这一帧剩余的空闲时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
 

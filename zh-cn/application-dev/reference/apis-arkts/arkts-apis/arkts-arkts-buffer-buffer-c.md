@@ -4,7 +4,7 @@ Buffer对象是处理二进制数据的缓冲区。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ compare(
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -58,7 +58,7 @@ compare(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and &lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 ## 示例
 
@@ -92,7 +92,7 @@ compare(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -107,7 +107,7 @@ compare(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要比较的实例对象。 |
-| targetStart | int | 否 | `target`实例中开始的偏移量。取值范围：>= 0且<= target的字节长度。默认值：0。 |
+| targetStart | int | 否 | `target`实例中开始的偏移量。取值范围：>= 0且&lt;= target的字节长度。默认值：0。 |
 | targetEnd | int | 否 | `target`实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
 | sourceStart | int | 否 | `this`实例中开始的偏移量。默认值：0。 |
 | sourceEnd | int | 否 | `this`实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
@@ -122,7 +122,7 @@ compare(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and &lt;= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 ## 示例
 
@@ -150,7 +150,7 @@ copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEn
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -165,7 +165,7 @@ copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array | 是 | 要复制到的Buffer或Uint8Array实例。 |
-| targetStart | int | 否 | `target`实例中开始写入的偏移量。取值范围：>= 0且<= target的字节长度。默认值：0。 |
+| targetStart | int | 否 | `target`实例中开始写入的偏移量。取值范围：>= 0且&lt;= target的字节长度。默认值：0。 |
 | sourceStart | int | 否 | `this`实例中开始复制的偏移量。默认值: 0。 |
 | sourceEnd | int | 否 | `this`实例中结束复制的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 
@@ -208,7 +208,7 @@ entries(): IterableIterator<[int, long]>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -257,7 +257,7 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -309,7 +309,7 @@ fill(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -324,7 +324,7 @@ fill(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | string \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| Uint8Array \| int \| double \| long | 是 | 用于填充的值。<br>**起始版本：** 11 |
-| offset | int | 否 | 起始偏移量。取值范围：>= 0且<= Buffer.length。默认值：0。 |
+| offset | int | 否 | 起始偏移量。取值范围：>= 0且&lt;= Buffer.length。默认值：0。 |
 | end | int | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 | encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
 
@@ -338,7 +338,7 @@ fill(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/end]" is out of range. It must be >= 0 and &lt;= [right range]. Received value is: [offset/end] |
 
 ## includes
 
@@ -350,7 +350,7 @@ includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?:
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -384,7 +384,7 @@ indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -418,7 +418,7 @@ keys(): IterableIterator<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -464,7 +464,7 @@ lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffse
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -498,7 +498,7 @@ readBigInt64BE(offset?: int): bigint
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -512,7 +512,7 @@ readBigInt64BE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
 
 **返回值：**
 
@@ -524,7 +524,7 @@ readBigInt64BE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -552,7 +552,7 @@ readBigInt64LE(offset?: int): bigint
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -566,7 +566,7 @@ readBigInt64LE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -578,7 +578,7 @@ readBigInt64LE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -606,7 +606,7 @@ readBigUInt64BE(offset?: int): bigint
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -620,7 +620,7 @@ readBigUInt64BE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -632,7 +632,7 @@ readBigUInt64BE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -659,7 +659,7 @@ readBigUInt64LE(offset?: int): bigint
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -673,7 +673,7 @@ readBigUInt64LE(offset?: int): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -685,7 +685,7 @@ readBigUInt64LE(offset?: int): bigint
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -713,7 +713,7 @@ readDoubleBE(offset?: int): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -727,7 +727,7 @@ readDoubleBE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -739,7 +739,7 @@ readDoubleBE(offset?: int): double
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -765,7 +765,7 @@ readDoubleLE(offset?: int): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -779,7 +779,7 @@ readDoubleLE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 8，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -791,7 +791,7 @@ readDoubleLE(offset?: int): double
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -817,7 +817,7 @@ readFloatBE(offset?: int): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -831,7 +831,7 @@ readFloatBE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
@@ -843,7 +843,7 @@ readFloatBE(offset?: int): double
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -869,7 +869,7 @@ readFloatLE(offset?: int): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -883,7 +883,7 @@ readFloatLE(offset?: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
@@ -895,7 +895,7 @@ readFloatLE(offset?: int): double
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -921,7 +921,7 @@ readInt16BE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -935,7 +935,7 @@ readInt16BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
@@ -947,7 +947,7 @@ readInt16BE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
 
 ## 示例
 
@@ -973,7 +973,7 @@ readInt16LE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -987,7 +987,7 @@ readInt16LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
@@ -999,7 +999,7 @@ readInt16LE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
 
 ## 示例
 
@@ -1025,7 +1025,7 @@ readInt32BE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1039,7 +1039,7 @@ readInt32BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
@@ -1051,7 +1051,7 @@ readInt32BE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -1077,7 +1077,7 @@ readInt32LE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1091,7 +1091,7 @@ readInt32LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
@@ -1103,7 +1103,7 @@ readInt32LE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -1129,7 +1129,7 @@ readInt8(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1143,7 +1143,7 @@ readInt8(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 1，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 1，默认值：0。 |
 
 **返回值：**
 
@@ -1155,7 +1155,7 @@ readInt8(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 1 . Received value is: [offset] |
 
 ## 示例
 
@@ -1183,7 +1183,7 @@ readIntBE(offset: int, byteLength: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1197,8 +1197,8 @@ readIntBE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
@@ -1210,7 +1210,7 @@ readIntBE(offset: int, byteLength: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -1237,7 +1237,7 @@ readIntLE(offset: int, byteLength: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1251,8 +1251,8 @@ readIntLE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
@@ -1264,7 +1264,7 @@ readIntLE(offset: int, byteLength: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -1290,7 +1290,7 @@ readUInt16BE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1304,7 +1304,7 @@ readUInt16BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
@@ -1316,7 +1316,7 @@ readUInt16BE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
 
 ## 示例
 
@@ -1344,7 +1344,7 @@ readUInt16LE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1358,7 +1358,7 @@ readUInt16LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 2，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 2，默认值：0。 |
 
 **返回值：**
 
@@ -1370,7 +1370,7 @@ readUInt16LE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 2 . Received value is: [offset] |
 
 ## 示例
 
@@ -1398,7 +1398,7 @@ readUInt32BE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1412,7 +1412,7 @@ readUInt32BE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
@@ -1424,7 +1424,7 @@ readUInt32BE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -1450,7 +1450,7 @@ readUInt32LE(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1464,7 +1464,7 @@ readUInt32LE(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 4，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 4，默认值：0。 |
 
 **返回值：**
 
@@ -1476,7 +1476,7 @@ readUInt32LE(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -1502,7 +1502,7 @@ readUInt8(offset?: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1516,7 +1516,7 @@ readUInt8(offset?: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 否 | 偏移量。取值范围：0 <= offset <= Buffer.length - 1，默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 1，默认值：0。 |
 
 **返回值：**
 
@@ -1528,7 +1528,7 @@ readUInt8(offset?: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 1 . Received value is: [offset] |
 
 ## 示例
 
@@ -1556,7 +1556,7 @@ readUIntBE(offset: int, byteLength: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1570,8 +1570,8 @@ readUIntBE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 要读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 要读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
@@ -1583,7 +1583,7 @@ readUIntBE(offset: int, byteLength: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -1609,7 +1609,7 @@ readUIntLE(offset: int, byteLength: int): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1623,8 +1623,8 @@ readUIntLE(offset: int, byteLength: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | int | 是 | 偏移量。取值范围：0 <= offset <= Buffer.length - byteLength，默认值：0。 |
-| byteLength | int | 是 | 读取的字节数。取值范围：1 <= byteLength <= 6。 |
+| offset | int | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
+| byteLength | int | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
 
@@ -1636,7 +1636,7 @@ readUIntLE(offset: int, byteLength: int): long
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -1662,7 +1662,7 @@ subarray(start?: int, end?: int): Buffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1683,7 +1683,7 @@ subarray(start?: int, end?: int): Buffer
 
 | 类型 | 说明 |
 | --- | --- |
-| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。当start < 0或end < 0时返回空Buffer。 |
+| [Buffer](arkts-arkts-buffer-buffer-c.md) | 返回新的Buffer对象。当start &lt; 0或end &lt; 0时返回空Buffer。 |
 
 ## 示例
 
@@ -1710,7 +1710,7 @@ swap16(): Buffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1755,7 +1755,7 @@ swap32(): Buffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1800,7 +1800,7 @@ swap64(): Buffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1845,7 +1845,7 @@ toJSON(): Object
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -1882,7 +1882,7 @@ toJSON(): jsonx.JsonElement
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1919,7 +1919,7 @@ toString(encoding?: string, start?: number, end?: number): string
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -1966,7 +1966,7 @@ toString(): string
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1994,7 +1994,7 @@ toString(encoding?: BufferEncoding, start?: int, end?: int): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2043,7 +2043,7 @@ values(): IterableIterator<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2091,7 +2091,7 @@ write(str: string, offset?: int, length?: int, encoding?: string): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2106,7 +2106,7 @@ write(str: string, offset?: int, length?: int, encoding?: string): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | str | string | 是 | 要写入Buffer的字符串。 |
-| offset | int | 否 | 偏移量。取值范围：>= 0且<= Buffer.length。默认值：0。 |
+| offset | int | 否 | 偏移量。取值范围：>= 0且&lt;= Buffer.length。默认值：0。 |
 | length | int | 否 | 最大字节长度。默认值：（Buffer.length - offset）。 |
 | encoding | string | 否 | 字符编码，支持的格式范围为BufferEncoding。默认值：'utf8'。 |
 
@@ -2120,7 +2120,7 @@ write(str: string, offset?: int, length?: int, encoding?: string): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be >= 0 and <= buf.length. Received value is: [offset/length] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[offset/length]" is out of range. It must be >= 0 and &lt;= buf.length. Received value is: [offset/length] |
 
 ## 示例
 
@@ -2148,7 +2148,7 @@ writeBigInt64BE(value: bigint, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2163,7 +2163,7 @@ writeBigInt64BE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2175,7 +2175,7 @@ writeBigInt64BE(value: bigint, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2198,7 +2198,7 @@ writeBigInt64LE(value: bigint, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2213,7 +2213,7 @@ writeBigInt64LE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2225,7 +2225,7 @@ writeBigInt64LE(value: bigint, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2248,7 +2248,7 @@ writeBigUInt64BE(value: bigint, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2263,7 +2263,7 @@ writeBigUInt64BE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2275,7 +2275,7 @@ writeBigUInt64BE(value: bigint, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2298,7 +2298,7 @@ writeBigUInt64LE(value: bigint, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2313,7 +2313,7 @@ writeBigUInt64LE(value: bigint, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | bigint | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2325,7 +2325,7 @@ writeBigUInt64LE(value: bigint, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2348,7 +2348,7 @@ writeDoubleBE(value: double, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2363,7 +2363,7 @@ writeDoubleBE(value: double, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2375,7 +2375,7 @@ writeDoubleBE(value: double, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -2398,7 +2398,7 @@ writeDoubleLE(value: double, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2413,7 +2413,7 @@ writeDoubleLE(value: double, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 8。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -2425,7 +2425,7 @@ writeDoubleLE(value: double, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 8 . Received value is: [offset] |
 
 ## 示例
 
@@ -2448,7 +2448,7 @@ writeFloatBE(value: double, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2463,7 +2463,7 @@ writeFloatBE(value: double, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2475,7 +2475,7 @@ writeFloatBE(value: double, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -2498,7 +2498,7 @@ writeFloatLE(value: double, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2513,7 +2513,7 @@ writeFloatLE(value: double, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | double | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2525,7 +2525,7 @@ writeFloatLE(value: double, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4 . Received value is: [offset] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "offset" is out of range. It must be >= 0 and &lt;= buf.length - 4 . Received value is: [offset] |
 
 ## 示例
 
@@ -2548,7 +2548,7 @@ writeInt16BE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2563,7 +2563,7 @@ writeInt16BE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2575,7 +2575,7 @@ writeInt16BE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2598,7 +2598,7 @@ writeInt16LE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2613,7 +2613,7 @@ writeInt16LE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2625,7 +2625,7 @@ writeInt16LE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2648,7 +2648,7 @@ writeInt32BE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2663,7 +2663,7 @@ writeInt32BE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2675,7 +2675,7 @@ writeInt32BE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2698,7 +2698,7 @@ writeInt32LE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2713,7 +2713,7 @@ writeInt32LE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -2725,7 +2725,7 @@ writeInt32LE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2748,7 +2748,7 @@ writeInt8(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2762,8 +2762,8 @@ writeInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。取值范围：-128 <= value <= 127（8位有符号整数）。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
+| value | long | 是 | 写入Buffer的数据。取值范围：-128 &lt;= value &lt;= 127（8位有符号整数）。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
 
 **返回值：**
 
@@ -2775,7 +2775,7 @@ writeInt8(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2801,7 +2801,7 @@ writeIntBE(value: long, offset: int, byteLength: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2816,7 +2816,7 @@ writeIntBE(value: long, offset: int, byteLength: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
 | byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -2829,7 +2829,7 @@ writeIntBE(value: long, offset: int, byteLength: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2852,7 +2852,7 @@ writeIntLE(value: long, offset: int, byteLength: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2867,7 +2867,7 @@ writeIntLE(value: long, offset: int, byteLength: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
 | byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -2880,7 +2880,7 @@ writeIntLE(value: long, offset: int, byteLength: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2903,7 +2903,7 @@ writeUInt16BE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2918,7 +2918,7 @@ writeUInt16BE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值为0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| offset | int | 否 | 偏移量。默认值为0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2930,7 +2930,7 @@ writeUInt16BE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -2956,7 +2956,7 @@ writeUInt16LE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2971,7 +2971,7 @@ writeUInt16LE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 2。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 2。 |
 
 **返回值：**
 
@@ -2983,7 +2983,7 @@ writeUInt16LE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -3009,7 +3009,7 @@ writeUInt32BE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3024,7 +3024,7 @@ writeUInt32BE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -3036,7 +3036,7 @@ writeUInt32BE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -3059,7 +3059,7 @@ writeUInt32LE(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3074,7 +3074,7 @@ writeUInt32LE(value: long, offset?: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer对象的数据。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 4。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 4。 |
 
 **返回值：**
 
@@ -3086,7 +3086,7 @@ writeUInt32LE(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -3109,7 +3109,7 @@ writeUInt8(value: long, offset?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3123,8 +3123,8 @@ writeUInt8(value: long, offset?: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | long | 是 | 写入Buffer的数据。取值范围：0 <= value <= 255（8位无符号整数）。 |
-| offset | int | 否 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - 1。 |
+| value | long | 是 | 写入Buffer的数据。取值范围：0 &lt;= value &lt;= 255（8位无符号整数）。 |
+| offset | int | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 1。 |
 
 **返回值：**
 
@@ -3136,7 +3136,7 @@ writeUInt8(value: long, offset?: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -3168,7 +3168,7 @@ writeUIntBE(value: long, offset: int, byteLength: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3183,7 +3183,7 @@ writeUIntBE(value: long, offset: int, byteLength: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
 | byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -3196,7 +3196,7 @@ writeUIntBE(value: long, offset: int, byteLength: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -3219,7 +3219,7 @@ writeUIntLE(value: long, offset: int, byteLength: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3234,7 +3234,7 @@ writeUIntLE(value: long, offset: int, byteLength: int): int
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | long | 是 | 写入Buffer的数据。 |
-| offset | int | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= Buffer.length - byteLength。 |
+| offset | int | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
 | byteLength | int | 是 | 要写入的字节数。 |
 
 **返回值：**
@@ -3247,7 +3247,7 @@ writeUIntLE(value: long, offset: int, byteLength: int): int
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
+| [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "[param]" is out of range. It must be >= [left range] and &lt;= [right range]. Received value is: [param] |
 
 ## 示例
 
@@ -3272,7 +3272,7 @@ ArrayBuffer对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -3288,13 +3288,13 @@ ArrayBuffer对象。
 byteOffset: number
 ```
 
-当前Buffer所在内存池的偏移量。&lt;br&gt;- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocUninitializedFromPool)创 建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。&lt;br&gt;- 当Buffer直接分配内存时（如使用 [alloc](arkts-arkts-buffer-alloc-f.md#alloc)），返回值为0。
+当前Buffer所在内存池的偏移量。<br>- 当Buffer通过内存池创建时（如使用[allocUninitializedFromPool](arkts-arkts-buffer-allocuninitializedfrompool-f.md#allocuninitializedfrompool)创 建Buffer，或使用buffer.from()传入字符串，且字符串长度加当前内存池偏移量小于4kb），返回相对于内存池的偏移量。<br>- 当Buffer直接分配内存时（如使用 [alloc](arkts-arkts-buffer-alloc-f.md#alloc)），返回值为0。
 
 **类型：** number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -3316,7 +3316,7 @@ Buffer对象的字节长度。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

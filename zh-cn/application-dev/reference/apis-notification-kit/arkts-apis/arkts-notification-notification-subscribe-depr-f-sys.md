@@ -10,11 +10,11 @@ function subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<v
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe（系统接口）)
+**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -46,11 +46,11 @@ function subscribe(
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe（系统接口）)
+**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -79,11 +79,11 @@ function subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscr
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe（系统接口）)
+**替代接口：** [subscribe](arkts-notification-notificationsubscribe-subscribe-f-sys.md#subscribe系统接口)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

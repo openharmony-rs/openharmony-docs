@@ -6,11 +6,11 @@
 function isScreenReaderOpenSync(): boolean
 ```
 
-是否开启了屏幕朗读模式。
+查询屏幕朗读模式是否开启。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -13,7 +13,7 @@ export declare function Blank(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ export declare function Blank(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| min | double \| string | 否 | 空白填充组件在容器主轴上的最小大小。&lt;br&gt; 默认值：0，number类型单位为vp，string类型可以显式指定 [像素单位](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md)， 如'10px'。不指定像素单位时，默认单位vp，如'10'，等同于10vp。&lt;br&gt; 非法值：按默认值处理。&lt;br&gt; **说明：**&lt;br&gt; 不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时， 使用最小值作为自身大小并超出容器。 |
+| min | double \| string | 否 | 空白填充组件在容器主轴上的最小大小。<br> 默认值：0，number类型单位为vp，string类型可以显式指定 [像素单位](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md)， 如'10px'。不指定像素单位时，默认单位vp，如'10'，等同于10vp。<br> 非法值：按默认值处理。<br> **说明：**<br> 不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时， 使用最小值作为自身大小并超出容器。 |
 
 **返回值：**
 
@@ -49,7 +49,7 @@ Defines Blank Component.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

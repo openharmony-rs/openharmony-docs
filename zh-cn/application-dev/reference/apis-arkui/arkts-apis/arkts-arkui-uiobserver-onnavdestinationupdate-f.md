@@ -6,11 +6,11 @@
 export function on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback<NavDestinationInfo>): void
 ```
 
-监听NavDestination组件的状态变化。与 * [uiObserver.on](#on_navDestinationUpdate)相比，新增了options参数，即支持指定监听的Navigation的id。
+监听NavDestination组件的状态变化。与 * [uiObserver.on](#onnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -97,7 +97,7 @@ export function on(type: 'navDestinationUpdate', callback: Callback<NavDestinati
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ autoRefresh?(value: boolean): ColorMetrics
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ autoRefresh?(value: boolean): ColorMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 使用[resourceColor](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md#resourceColor)方法构造的ColorMetrics对象是否在系统配置变化时自动刷新颜色值。 &lt;br&gt;true表示主动监听系统配置变化，变化时值刷新为对应配置下的资源值。 &lt;br&gt;false表示不主动监听系统配置变化。 |
+| value | boolean | 是 | 使用[resourceColor](#resourcecolor)方法构造的ColorMetrics对象是否在系统配置变化时自动刷新颜色值。 <br>true表示主动监听系统配置变化，变化时值刷新为对应配置下的资源值。 <br>false表示不主动监听系统配置变化。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md) | 返回设置自动刷新属性后的ColorMetrics对象。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 返回设置自动刷新属性后的ColorMetrics对象。 |
 
 ## blendColor
 
@@ -56,7 +56,7 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -72,13 +72,13 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| overlayColor | [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md) | 是 | 要叠加在上方的颜色对象。alpha属性决定叠加强度。1.0表示完全覆盖，0.0表示完全透明，混合结果为原色。 |
+| overlayColor | [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 是 | 要叠加在上方的颜色对象。alpha属性决定叠加强度。1.0表示完全覆盖，0.0表示完全透明，混合结果为原色。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md) | 新的颜色对象，其red、green、blue和alpha通道均为当前颜色与叠加颜色混合后的结果值。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 新的颜色对象，其red、green、blue和alpha通道均为当前颜色与叠加颜色混合后的结果值。 |
 
 **错误码：**
 
@@ -96,7 +96,7 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -112,17 +112,17 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用 [setWindowColorSpace](arkts-arkui-window-window-i.md#setWindowColorSpace)接口，将当前窗口设置为广色 域模式。 |
+| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用 [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace)接口，将当前窗口设置为广色 域模式。 |
 | red | number | 是 | 颜色的R分量（红色），值是0~1的浮点数。超出范围时按边界值处理。 |
 | green | number | 是 | 颜色的G分量（绿色），值是0~1的浮点数。超出范围时按边界值处理。 |
 | blue | number | 是 | 颜色的B分量（蓝色），值是0~1的浮点数。超出范围时按边界值处理。 |
-| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。 &lt;br&gt; **说明：** alpha小于0为全透明，大于1为不透明。 |
+| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。 <br> **说明：** alpha小于0为全透明，大于1为不透明。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md) | 指定色彩空间下rgba格式颜色对应的颜色对象。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 指定色彩空间下rgba格式颜色对应的颜色对象。 |
 
 ## numeric
 
@@ -134,7 +134,7 @@ static numeric(value: number): ColorMetrics
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -150,13 +150,13 @@ static numeric(value: number): ColorMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | HEX格式颜色，支持RGB或者ARGB。 &lt;br&gt;取值范围：[0, 0xffffffff] &lt;br&gt;超出范围时按边界值处理。 |
+| value | number | 是 | HEX格式颜色，支持RGB或者ARGB。 <br>取值范围：[0, 0xffffffff] <br>超出范围时按边界值处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md) | HEX格式颜色对应的颜色对象。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | HEX格式颜色对应的颜色对象。 |
 
 ## resourceColor
 
@@ -168,7 +168,7 @@ static resourceColor(color: ResourceColor): ColorMetrics
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -190,7 +190,7 @@ static resourceColor(color: ResourceColor): ColorMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md) | 资源格式颜色对应的颜色对象。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | 资源格式颜色对应的颜色对象。 |
 
 **错误码：**
 
@@ -209,7 +209,7 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -228,11 +228,11 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 | red | number | 是 | 颜色的R分量（红色），值是0~255的整数。超出范围时按边界值处理。 |
 | green | number | 是 | 颜色的G分量（绿色），值是0~255的整数。超出范围时按边界值处理。 |
 | blue | number | 是 | 颜色的B分量（蓝色），值是0~255的整数。超出范围时按边界值处理。 |
-| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。 &lt;br&gt; **说明：** alpha小于0为全透明，大于1为不透明。 |
+| alpha | number | 否 | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。 <br> **说明：** alpha小于0为全透明，大于1为不透明。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md) | rgb或rgba格式颜色对应的颜色对象。 |
+| [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md) | rgb或rgba格式颜色对应的颜色对象。 |
 

@@ -4,7 +4,7 @@ PersistentStorage提供了UI状态的持久化存储能力，将选定的AppStor
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(appStorage: AppStorage, storage: Storage)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

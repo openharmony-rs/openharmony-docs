@@ -4,7 +4,7 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ challenge?: Uint8Array
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ challenge?: Uint8Array
 interactionContext?: Context
 ```
 
-用户交互上下文配置，默认为undefined。 - 未指定上下文时，授权对话框以模态系统模式显示。 - 指定[UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#UIAbilityContext)或 [UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#UIExtensionContext)时，以模态应用模式显示。 - 未提供有效上下文时，授权对话框无法显示。 **注意**：仅当isInteractionAllowed为true时生效。
+用户交互上下文配置，默认为undefined。 - 未指定上下文时，授权对话框以模态系统模式显示。 - 指定[UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#uiabilitycontext)或 [UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#uiextensioncontext)时，以模态应用模式显示。 - 未提供有效上下文时，授权对话框无法显示。 **注意**：仅当isInteractionAllowed为true时生效。
 
 **类型：** [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)
 
@@ -54,7 +54,7 @@ interactionContext?: Context
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ isInteractionAllowed?: boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -106,7 +106,7 @@ isReuseNeeded?: boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

@@ -1,10 +1,10 @@
 # StartOptions
 
-StartOptions可以作为启动UIAbility接口（例如 [startAbility()](arkts-ability-uiabilitycontext-c.md#startAbility) ）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
+StartOptions可以作为启动UIAbility接口（例如 [startAbility()](arkts-ability-uiabilitycontext-c.md#startability) ）的入参，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ completionHandler?: CompletionHandler
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ displayId?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ hideStartWindow?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -94,7 +94,7 @@ maxWindowHeight?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ maxWindowWidth?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -138,7 +138,7 @@ minWindowHeight?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -160,7 +160,7 @@ minWindowWidth?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -176,13 +176,13 @@ minWindowWidth?: int
 processMode?: contextConstant.ProcessMode
 ```
 
-UIAbility启动后的进程模式。 **约束：** 1.该功能仅在2in1和Tablet设备上生效。 2.仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startAbility)中生效。 3.processMode和startupVisibility必须同时设置。
+UIAbility启动后的进程模式。 **约束：** 1.该功能仅在2in1和Tablet设备上生效。 2.仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability)中生效。 3.processMode和startupVisibility必须同时设置。
 
 **类型：** contextConstant.ProcessMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -204,7 +204,7 @@ splitRatio?: window.SplitRatioPreference
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -220,13 +220,13 @@ splitRatio?: window.SplitRatioPreference
 startWindowBackgroundColor?: string
 ```
 
-启动当前应用的UIAbility时，启动页所显示的背景颜色。固定为ARGB格式, 如：`#E5FFFFFF`。如果未配置该字段，则默认采用module.json5文件中startWindowBackground字段的配置。 **约束：** - 启动其他应用的UIAbility时，该字段不生效。 - 该功能仅在2in1和Tablet设备上生效。 - 仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startAbility)中生效。
+启动当前应用的UIAbility时，启动页所显示的背景颜色。固定为ARGB格式, 如：`#E5FFFFFF`。如果未配置该字段，则默认采用module.json5文件中startWindowBackground字段的配置。 **约束：** - 启动其他应用的UIAbility时，该字段不生效。 - 该功能仅在2in1和Tablet设备上生效。 - 仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability)中生效。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -242,13 +242,13 @@ startWindowBackgroundColor?: string
 startWindowIcon?: image.PixelMap
 ```
 
-启动当前应用的UIAbility时，启动页所显示的图标。如果未配置该字段，则默认采用module.json5文件中startWindowIcon字段的配置。 **约束：** - 启动其他应用的UIAbility时，该字段不生效。 - 该功能仅在2in1和Tablet设备上生效。 - 仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startAbility)中生效。 - 图片数据大小限制为600MB。
+启动当前应用的UIAbility时，启动页所显示的图标。如果未配置该字段，则默认采用module.json5文件中startWindowIcon字段的配置。 **约束：** - 启动其他应用的UIAbility时，该字段不生效。 - 该功能仅在2in1和Tablet设备上生效。 - 仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability)中生效。 - 图片数据大小限制为600MB。
 
 **类型：** image.PixelMap
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -264,13 +264,13 @@ startWindowIcon?: image.PixelMap
 startupVisibility?: contextConstant.StartupVisibility
 ```
 
-UIAbility启动后的可见性。当用户设置目标UIAbility为不可见时，目标UIAbility的窗口不会显示在前台，dock栏也不会有图标，同时目标UIAbility的onForeground生命周期不会被调用。 **约束：** 1.该功能仅在2in1和Tablet设备上生效。 2.仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startAbility)中生效。 3.processMode和startupVisibility必须同时设置。
+UIAbility启动后的可见性。当用户设置目标UIAbility为不可见时，目标UIAbility的窗口不会显示在前台，dock栏也不会有图标，同时目标UIAbility的onForeground生命周期不会被调用。 **约束：** 1.该功能仅在2in1和Tablet设备上生效。 2.仅在[UIAbilityContext.startAbility](arkts-ability-uiabilitycontext-c.md#startability)中生效。 3.processMode和startupVisibility必须同时设置。
 
 **类型：** contextConstant.StartupVisibility
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -292,7 +292,7 @@ supportWindowModes?: Array<bundleManager.SupportWindowMode>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -314,7 +314,7 @@ windowCreateParams?: window.WindowCreateParams
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -330,13 +330,13 @@ windowCreateParams?: window.WindowCreateParams
 windowHeight?: int
 ```
 
-窗口的高度，单位为px。 取值范围为[minWindowHeight, maxWindowHeight]，取值范围单位为vp，可参考[vp2px](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px)换算为对应的px值 。 **约束：** 该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+窗口的高度，单位为px。 取值范围为[minWindowHeight, maxWindowHeight]，取值范围单位为vp，可参考[vp2px](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#vp2px)换算为对应的px值 。 **约束：** 该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -358,7 +358,7 @@ windowLeft?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -374,13 +374,13 @@ windowLeft?: int
 windowMode?: int
 ```
 
-启动UIAbility时的窗口模式，详见[WindowMode](arkts-ability-abilityconstant-windowmode-e.md#WindowMode)。
+启动UIAbility时的窗口模式，详见[WindowMode](arkts-ability-abilityconstant-windowmode-e.md#windowmode)。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -402,7 +402,7 @@ windowTop?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -418,13 +418,13 @@ windowTop?: int
 windowWidth?: int
 ```
 
-窗口的宽度，单位为px。 取值范围为[minWindowWidth, maxWindowWidth]，取值范围单位为vp，可参考[vp2px](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px)换算为对应的px值。 **约束：** 该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+窗口的宽度，单位为px。 取值范围为[minWindowWidth, maxWindowWidth]，取值范围单位为vp，可参考[vp2px](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#vp2px)换算为对应的px值。 **约束：** 该功能仅在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下生效。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -446,7 +446,7 @@ withAnimation?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

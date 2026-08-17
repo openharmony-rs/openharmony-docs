@@ -15,12 +15,12 @@ Defines the namespace of focus controller.
 
 | 名称 | 说明 |
 | --- | --- |
-| [$$](arkts-na-common-$$-f.md#$$) | Convert to a bindable property. |
-| [$r](arkts-na-common-$r-f.md#$r) | global \\$r function |
-| [$rawfile](arkts-na-common-$rawfile-f.md#$rawfile) | global \\$rawfile function |
-| [animateToImmediately](arkts-na-common-animatetoimmediately-f.md#animateToImmediately) | Define animation functions for immediate distribution. This interface depends on the UI context and cannot be used when the UI context is unclear. It is recommended to use animateToImmediately to explicitly specify the UI context. |
-| [applyStyles](arkts-na-common-applystyles-f.md#applyStyles) | Apply style function on this CommonMethod. |
-| [makeBindable](arkts-na-common-makebindable-f.md#makeBindable) | Create a bindable property instance. |
+| [$$](arkts-na-common-$$-f.md#) | Convert to a bindable property. |
+| [$r](arkts-na-common-$r-f.md#r) | global \\$r function |
+| [$rawfile](arkts-na-common-$rawfile-f.md#rawfile) | global \\$rawfile function |
+| [animateToImmediately](arkts-na-common-animatetoimmediately-f.md#animatetoimmediately) | Define animation functions for immediate distribution. This interface depends on the UI context and cannot be used when the UI context is unclear. It is recommended to use animateToImmediately to explicitly specify the UI context. |
+| [applyStyles](arkts-na-common-applystyles-f.md#applystyles) | Apply style function on this CommonMethod. |
+| [makeBindable](arkts-na-common-makebindable-f.md#makebindable) | Create a bindable property instance. |
 
 ### 类
 
@@ -58,7 +58,7 @@ Defines the namespace of focus controller.
 | [AsymmetricTransitionOption](arkts-na-common-asymmetrictransitionoption-i.md) | Defines the option of asymmetric transition. |
 | [AttributeModifier](arkts-na-common-attributemodifier-i.md) | Defines the attribute modifier. |
 | [AxisEvent](arkts-na-common-axisevent-i.md) | The axis event triggers this method invocation. |
-| [BackgroundBlurStyleOptions](arkts-na-common-backgroundblurstyleoptions-i.md) | 继承自[BlurStyleOptions](arkts-na-common-blurstyleoptions-i.md#BlurStyleOptions)。 |
+| [BackgroundBlurStyleOptions](arkts-na-common-backgroundblurstyleoptions-i.md) | 继承自[BlurStyleOptions](arkts-na-common-blurstyleoptions-i.md#blurstyleoptions)。 |
 | [BackgroundBrightnessOptions](arkts-na-common-backgroundbrightnessoptions-i.md) | 背景亮度选项。 |
 | [BackgroundEffectOptions](arkts-na-common-backgroundeffectoptions-i.md) | 背景效果参数。 |
 | [BackgroundImageOptions](arkts-na-common-backgroundimageoptions-i.md) | Define the options for background image. |
@@ -75,7 +75,7 @@ Defines the namespace of focus controller.
 | [CommonConfiguration](arkts-na-common-commonconfiguration-i.md) | Defines the common configuration. |
 | [CommonMethod](arkts-na-common-commonmethod-i.md) | CommonMethod |
 | [Configuration](arkts-na-common-configuration-i.md) | Defines the data type of the interface restriction. |
-| [ContentCoverOptions](arkts-na-common-contentcoveroptions-i.md) | 继承自[BindOptions](arkts-na-common-bindoptions-i.md#BindOptions)。 全屏模态页面内容选项。 |
+| [ContentCoverOptions](arkts-na-common-contentcoveroptions-i.md) | 继承自[BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)。 全屏模态页面内容选项。 |
 | [ContentModifier](arkts-na-common-contentmodifier-i.md) | Defines the content modifier. |
 | [ContextMenuAnimationOptions](arkts-na-common-contextmenuanimationoptions-i.md) | Defines the ContextMenu's preview animator options. |
 | [ContextMenuOptions](arkts-na-common-contextmenuoptions-i.md) | Defines the context menu options. |
@@ -136,7 +136,7 @@ Defines the namespace of focus controller.
 | [MultiShadowOptions](arkts-na-common-multishadowoptions-i.md) | Defines the options of Shadow. |
 | [NestedScrollOptions](arkts-na-common-nestedscrolloptions-i.md) | Define nested scroll options |
 | [OverlayOffset](arkts-na-common-overlayoffset-i.md) | Defines the OverlayOffset. |
-| [OverlayOptions](arkts-na-common-overlayoptions-i.md) | Defines the OverlayOptions interface. &lt;strong&gt;NOTE&lt;/strong&gt;:&lt;br&gt; When both align and offset are set, the effects are combined. The overlay is first aligned relative to the component and then offset from its current upper left corner. |
+| [OverlayOptions](arkts-na-common-overlayoptions-i.md) | Defines the OverlayOptions interface. &lt;strong&gt;NOTE&lt;/strong&gt;:<br> When both align and offset are set, the effects are combined. The overlay is first aligned relative to the component and then offset from its current upper left corner. |
 | [PickerDialogButtonStyle](arkts-na-common-pickerdialogbuttonstyle-i.md) | Provide an interface for the button style of picker |
 | [PickerTextStyle](arkts-na-common-pickertextstyle-i.md) | Provide an interface for the text style of picker |
 | [PixelRoundPolicy](arkts-na-common-pixelroundpolicy-i.md) | Defines the direction of pixel rounding at the component level. |
@@ -160,7 +160,7 @@ Defines the namespace of focus controller.
 | [SelectionOptions](arkts-na-common-selectionoptions-i.md) | Defines the selection options. |
 | [ShadowOptions](arkts-na-common-shadowoptions-i.md) | Define the options of shadow |
 | [SheetDismiss](arkts-na-common-sheetdismiss-i.md) | 控制半模态的关闭。 |
-| [SheetOptions](arkts-na-common-sheetoptions-i.md) | 继承自[BindOptions](arkts-na-common-bindoptions-i.md#BindOptions)。 半模态页面内容选项。 |
+| [SheetOptions](arkts-na-common-sheetoptions-i.md) | 继承自[BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)。 半模态页面内容选项。 |
 | [SheetTitleOptions](arkts-na-common-sheettitleoptions-i.md) | 半模态面板的标题。 |
 | [SizeResult](arkts-na-common-sizeresult-i.md) | Provides the component size information. |
 | [SmartGestureShortcutOptions](arkts-na-common-smartgestureshortcutoptions-i.md) | Options for configuring smart gesture shortcuts. |
@@ -198,7 +198,7 @@ Defines the namespace of focus controller.
 | [LightSource](arkts-na-common-lightsource-i-sys.md) | 一个组件支持添加1个光源。 |
 | [PixelMapMock](arkts-na-common-pixelmapmock-i-sys.md) | pixelmap object with release function. |
 | [PointLightStyle](arkts-na-common-pointlightstyle-i-sys.md) | 通过设置光源和被照亮的类型实现点光源照亮周围组件的UI效果。 |
-| [SheetOptions](arkts-na-common-sheetoptions-i-sys.md) | 继承自[BindOptions](arkts-na-common-bindoptions-i.md#BindOptions)。 半模态页面内容选项。 |
+| [SheetOptions](arkts-na-common-sheetoptions-i-sys.md) | 继承自[BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)。 半模态页面内容选项。 |
 | [SpatialEffectParams](arkts-na-common-spatialeffectparams-i-sys.md) | Spatial effect params. |
 | [SpatialPosition](arkts-na-common-spatialposition-i-sys.md) | Spatial corner positions in 3D space. |
 <!--DelEnd-->
@@ -221,7 +221,7 @@ Defines the namespace of focus controller.
 | [ChainStyle](arkts-na-common-chainstyle-e.md) | Enumerates the chain styles in relative container. |
 | [ContentClipMode](arkts-na-common-contentclipmode-e.md) | Enum of scrollable containers' content clip mode. |
 | [DismissReason](arkts-na-common-dismissreason-e.md) | 关闭原因类型。 |
-| [DragBehavior](arkts-na-common-dragbehavior-e.md) | Enum for Drag Behavior. &lt;strong&gt;NOTE&lt;/strong&gt;:&lt;br&gt; DragBehavior serves to inform you about the intended method of data handling, whether it's a copy or a move, but it does not actually dictate the real processing of the data. |
+| [DragBehavior](arkts-na-common-dragbehavior-e.md) | Enum for Drag Behavior. &lt;strong&gt;NOTE&lt;/strong&gt;:<br> DragBehavior serves to inform you about the intended method of data handling, whether it's a copy or a move, but it does not actually dictate the real processing of the data. |
 | [DragPreviewMode](arkts-na-common-dragpreviewmode-e.md) | Defines the drag preview mode. |
 | [DragResult](arkts-na-common-dragresult-e.md) | Enum for Drag Result. |
 | [DraggingSizeChangeEffect](arkts-na-common-draggingsizechangeeffect-e.md) | Define drag start animation effect from drag preview to the handle drag image |

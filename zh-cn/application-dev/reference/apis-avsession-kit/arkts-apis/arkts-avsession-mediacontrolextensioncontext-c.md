@@ -1,12 +1,12 @@
 # MediaControlExtensionContext（系统接口）
 
-MediaControlExtensionContext是 [MediaControlExtensionAbility](arkts-avsession-app-ability-mediacontrolextensionability-mediacontrolextensionability-c.md#MediaControlExtensionAbility（系统接口）)的上下文 环境，继承自[UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#UIExtensionContext)，提供MediaControlExtensionAbility的相关配置信息以及操作 UIAbility的方法，如启动UIAbility等。
+MediaControlExtensionContext是 [MediaControlExtensionAbility](arkts-avsession-app-ability-mediacontrolextensionability-mediacontrolextensionability-c.md#mediacontrolextensionability系统接口)的上下文 环境，继承自[UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#uiextensioncontext)，提供MediaControlExtensionAbility的相关配置信息以及操作 UIAbility的方法，如启动UIAbility等。
 
 **继承/实现关系：** MediaControlExtensionContext extends UIExtensionContext
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

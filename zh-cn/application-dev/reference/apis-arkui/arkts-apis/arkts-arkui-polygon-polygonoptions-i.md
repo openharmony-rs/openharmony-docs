@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 height?: Length
 ```
 
-高度，取值范围≥0。&lt;br/&gt;默认值：0&lt;br/&gt;默认单位：vp&lt;br/&gt;异常值undefined、null、NaN和Infinity按照默认值处理。
+高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **类型：** [Length](arkts-arkui-length-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ height?: Length
 width?: Length
 ```
 
-宽度，取值范围≥0。&lt;br/&gt;默认值：0&lt;br/&gt;默认单位：vp&lt;br/&gt;异常值undefined、null、NaN和Infinity按照默认值处理。
+宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **类型：** [Length](arkts-arkui-length-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

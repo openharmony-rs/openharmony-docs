@@ -1,10 +1,10 @@
 # GesturePoint
 
-GesturePoint表示手势触摸点。 本模块用于创建辅助功能注入手势所需的手势路径的触摸点信息。
+GesturePoint表示手势触摸点，是构成手势路径GesturePath的基本单元。 本模块用于创建手势路径的触摸点信息，供辅助功能注入手势使用。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ GesturePoint表示手势触摸点。 本模块用于创建辅助功能注入手�
 constructor(positionX: double, positionY: double)
 ```
 
-构造函数。
+根据传入的X坐标和Y坐标创建GesturePoint实例。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -57,7 +57,7 @@ positionX: double
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -77,7 +77,7 @@ positionY: double
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

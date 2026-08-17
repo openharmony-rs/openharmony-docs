@@ -4,7 +4,7 @@ Provides a monthly view component to display information such as date, shift bre
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -26,7 +26,7 @@ Gregorian calendar day.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -50,7 +50,7 @@ Day.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -74,7 +74,7 @@ Indicates the off-duty flag information. The options are work and off.By default
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -98,7 +98,7 @@ Indicates whether to display has Schedule. The week sequence is one, two, three,
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -122,7 +122,7 @@ Indicates the sequence number of the 7 x 7 (7 x 6) grid layout on a calendar pag
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -146,7 +146,7 @@ Indicates whether the default value is Lunar calendar.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -170,7 +170,7 @@ Lunar day.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -194,7 +194,7 @@ Lunar moon. The week sequence is one, two, three, four, five, six.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -218,7 +218,7 @@ Display Lunar Date.The week sequence is one, two, three, four, five, six.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -242,7 +242,7 @@ Gregorian calendar month.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -266,7 +266,7 @@ Gregorian calendar year.
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 

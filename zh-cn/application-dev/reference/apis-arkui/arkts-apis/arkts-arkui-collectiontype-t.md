@@ -9,7 +9,7 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

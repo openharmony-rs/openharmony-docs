@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -20,7 +20,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [USER_LOGIN](arkts-performanceanalysis-event-depr-con.md#USER_LOGIN) | 用户登录事件。 |
-| [USER_LOGOUT](arkts-performanceanalysis-event-depr-con.md#USER_LOGOUT) | 用户登出事件。 |
-| [DISTRIBUTED_SERVICE_START](arkts-performanceanalysis-event-depr-con.md#DISTRIBUTED_SERVICE_START) | 分布式服务启动事件。 |
+| [USER_LOGIN](arkts-performanceanalysis-event-depr-con.md#userlogin) | 用户登录事件。 |
+| [USER_LOGOUT](arkts-performanceanalysis-event-depr-con.md#userlogout) | 用户登出事件。 |
+| [DISTRIBUTED_SERVICE_START](arkts-performanceanalysis-event-depr-con.md#distributedservicestart) | 分布式服务启动事件。 |
 

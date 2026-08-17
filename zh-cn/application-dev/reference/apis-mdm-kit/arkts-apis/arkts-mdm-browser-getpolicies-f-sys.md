@@ -10,11 +10,11 @@ function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getPoliciesSync)
+**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -73,11 +73,11 @@ function getPolicies(admin: Want, appId: string): Promise<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getPoliciesSync)
+**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

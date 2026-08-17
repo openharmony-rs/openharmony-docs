@@ -1,10 +1,10 @@
 # OnSearchResultReceiveEvent
 
-定义通知调用方网页页内查找的结果。
+定义网页页内查找结果的回调信息，包括匹配项序号和总数。适用于需要监控页内搜索行为的场景，提升搜索交互的可见性和用户体验。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ activeMatchOrdinal: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ activeMatchOrdinal: number
 isDoneCounting: boolean
 ```
 
-当次页内查找操作是否结束。该方法可能会回调多次，直到isDoneCounting为true为止。
+当次页内查找操作是否结束。 true表示当次页内查找操作结束，false表示未结束。 该方法可能回调多次，直到isDoneCounting为true。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ numberOfMatches: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

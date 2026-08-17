@@ -1,10 +1,10 @@
 # CompletionHandlerForAtomicService
 
-CompletionHandlerForAtomicService提供了 [onAtomicServiceRequestSuccess](#onAtomicServiceRequestSuccess) 和 [onAtomicServiceRequestFailure](#onAtomicServiceRequestFailure) 两个回调函数，分别在打开原子化服务成功和失败时回调。
+CompletionHandlerForAtomicService提供了 [onAtomicServiceRequestSuccess](#onatomicservicerequestsuccess) 和 [onAtomicServiceRequestFailure](#onatomicservicerequestfailure) 两个回调函数，分别在打开原子化服务成功和失败时回调。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -85,7 +85,7 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -105,5 +105,5 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 ## 示例
 
-参见[onAtomicServiceRequestFailure](#onAtomicServiceRequestFailure)接口的示例。
+参见[onAtomicServiceRequestFailure](#onatomicservicerequestfailure)接口的示例。
 

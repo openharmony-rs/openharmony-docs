@@ -1,12 +1,12 @@
 # Video
 
-视频类型数据，是[File](arkts-arkdata-unifieddatachannel-file-c.md#File)的子类，用于描述视频文件。
+视频类型数据，是[File](arkts-arkdata-unifieddatachannel-file-c.md#file)的子类，用于描述视频文件。
 
-**继承/实现关系：** Video extends [File](arkts-arkdata-unifieddatachannel-file-c.md#File)
+**继承/实现关系：** Video extends [File](arkts-arkdata-unifieddatachannel-file-c.md#file)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

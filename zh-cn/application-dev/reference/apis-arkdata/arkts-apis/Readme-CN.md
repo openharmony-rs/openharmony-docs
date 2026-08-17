@@ -1,6 +1,7 @@
 # ArkTS API<!--arkts-arkdata-->
 
-- [@ohos.application.DataShareExtensionAbility](arkts-application-datashareextensionability.md)
+<!--Del-->
+- [@ohos.application.DataShareExtensionAbility](arkts-application-datashareextensionability.md)<!--DelEnd-->
   <!--Del-->
   - [DataShareExtensionAbility(系统接口)](arkts-arkdata-application-datashareextensionability-datashareextensionability-c-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -23,7 +24,8 @@
   - [UpdateFn(系统接口)](arkts-arkdata-updatefn-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UpdateOperation(系统接口)](arkts-arkdata-updateoperation-t-sys.md)<!--DelEnd-->
-- [@ohos.data.DataShareResultSet](arkts-data-datashareresultset.md)
+<!--Del-->
+- [@ohos.data.DataShareResultSet](arkts-data-datashareresultset.md)<!--DelEnd-->
   <!--Del-->
   - [DataShareResultSet(系统接口)](arkts-arkdata-data-datashareresultset-datashareresultset-i-sys.md)<!--DelEnd-->
   <!--Del-->

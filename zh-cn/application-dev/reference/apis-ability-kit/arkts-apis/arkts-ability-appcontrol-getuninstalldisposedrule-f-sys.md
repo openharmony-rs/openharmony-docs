@@ -10,7 +10,7 @@ function getUninstallDisposedRule(appIdentifier: string, appIndex?: int): Uninst
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,8 +26,8 @@ function getUninstallDisposedRule(appIdentifier: string, appIndex?: int): Uninst
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appIdentifier | string | 是 | 要获取卸载处置规则的应用的appIdentifier。&lt;br&gt; 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用 Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
-| appIndex | int | 否 | 表示分身应用的索引，默认值为0。&lt;br&gt; appIndex为0时，表示获取主应用的卸载处置规则。appIndex大于0时，表示获取指定分身应用的卸载处置规则。 |
+| appIdentifier | string | 是 | 要获取卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用 Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appIndex | int | 否 | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示获取主应用的卸载处置规则。appIndex大于0时，表示获取指定分身应用的卸载处置规则。 |
 
 **返回值：**
 

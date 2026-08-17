@@ -1,12 +1,12 @@
 # SheetOptions
 
-继承自[BindOptions](arkts-arkui-bindoptions-i.md#BindOptions)。 半模态页面内容选项。
+继承自[BindOptions](arkts-arkui-bindoptions-i.md#bindoptions)。 半模态页面内容选项。
 
-**继承/实现关系：** SheetOptions extends [BindOptions](arkts-arkui-bindoptions-i.md#BindOptions)
+**继承/实现关系：** SheetOptions extends [BindOptions](arkts-arkui-bindoptions-i.md#bindoptions)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ blurStyle?: BlurStyle
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -76,7 +76,7 @@ borderStyle?: BorderStyle | EdgeStyles
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ detentSelection?: SheetSize | Length
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -150,7 +150,7 @@ detents?: [(SheetSize | Length), (SheetSize | Length)?, (SheetSize | Length)?]
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -176,7 +176,7 @@ dragBar?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -194,7 +194,7 @@ dragBar?: boolean
 effectEdge?: number
 ```
 
-设置半模态面板内容区边缘回弹效果，支持单边生效。 **默认值**：默认双边生效，即[EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).START | [EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).END（即数值3）。 **说明：** 1. 仅上边缘生效：[EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).START。 2. 仅下边缘生效：[EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).END。 3. 双边生效：[EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).START | [EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).END（即数值3）。 4. 双边不生效：[EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).START & [EffectEdge](arkts-arkui-effectedge-e.md#EffectEdge).END（即数值0）。
+设置半模态面板内容区边缘回弹效果，支持单边生效。 **默认值**：默认双边生效，即[EffectEdge](arkts-arkui-effectedge-e.md#effectedge).START | [EffectEdge](arkts-arkui-effectedge-e.md#effectedge).END（即数值3）。 **说明：** 1. 仅上边缘生效：[EffectEdge](arkts-arkui-effectedge-e.md#effectedge).START。 2. 仅下边缘生效：[EffectEdge](arkts-arkui-effectedge-e.md#effectedge).END。 3. 双边生效：[EffectEdge](arkts-arkui-effectedge-e.md#effectedge).START | [EffectEdge](arkts-arkui-effectedge-e.md#effectedge).END（即数值3）。 4. 双边不生效：[EffectEdge](arkts-arkui-effectedge-e.md#effectedge).START & [EffectEdge](arkts-arkui-effectedge-e.md#effectedge).END（即数值0）。
 
 **类型：** number
 
@@ -202,7 +202,7 @@ effectEdge?: number
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -228,7 +228,7 @@ enableFloatingDragBar?: boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -254,7 +254,7 @@ enableHoverMode?: boolean
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -280,7 +280,7 @@ enableOutsideInteractive?: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -306,7 +306,7 @@ height?: SheetSize | Length
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -332,7 +332,7 @@ hoverModeArea?: HoverModeAreaType
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -358,7 +358,7 @@ keyboardAvoidMode?: SheetKeyboardAvoidMode
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -382,7 +382,7 @@ maskColor?: ResourceColor
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -408,7 +408,7 @@ bindSheet全屏模态样式的系统转场方式。 默认值：ModalTransition.
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -426,7 +426,7 @@ bindSheet全屏模态样式的系统转场方式。 默认值：ModalTransition.
 mode?: SheetMode
 ```
 
-设置半模态页面的显示层级。 默认值：SheetMode.OVERLAY **说明：** 1. 半模态显示期间mode属性不支持动态切换，两种模式的显示层级完全不同，无法做到显示期间同一个半模态从一个层级变换到另一个层级。建议在使用时明确诉求固定mode值。 2. 设置SheetMode.EMBEDDED时不支持设置UIContext属性，两者对应的半模态显示层级效果互相冲突。 3. 使用[openBindSheet](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openBindSheet)启动半模态页面，若未传入有效的targetId，则不支持设置为SheetMode.EMBEDDED，默认为SheetMode.OVERLAY。
+设置半模态页面的显示层级。 默认值：SheetMode.OVERLAY **说明：** 1. 半模态显示期间mode属性不支持动态切换，两种模式的显示层级完全不同，无法做到显示期间同一个半模态从一个层级变换到另一个层级。建议在使用时明确诉求固定mode值。 2. 设置SheetMode.EMBEDDED时不支持设置UIContext属性，两者对应的半模态显示层级效果互相冲突。 3. 使用[openBindSheet](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet)启动半模态页面，若未传入有效的targetId，则不支持设置为SheetMode.EMBEDDED，默认为SheetMode.OVERLAY。
 
 **类型：** [SheetMode](arkts-arkui-sheetmode-e.md)
 
@@ -434,7 +434,7 @@ mode?: SheetMode
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -458,7 +458,7 @@ onDetentsDidChange?: Callback<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -482,7 +482,7 @@ onHeightDidChange?: Callback<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -506,7 +506,7 @@ onTypeDidChange?: Callback<SheetType>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -530,7 +530,7 @@ onWidthDidChange?: Callback<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -548,13 +548,13 @@ onWidthDidChange?: Callback<number>
 onWillDismiss?: Callback<DismissSheetAction>
 ```
 
-半模态页面的交互式关闭回调函数。允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。 **说明：** 当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数[DismissSheetAction](arkts-arkui-dismisssheetaction-i.md#DismissSheetAction)中的 reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。 如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。 侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。 在onWillDismiss回调中，不能再做onWillDismiss拦截。 建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。
+半模态页面的交互式关闭回调函数。允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。 **说明：** 当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数[DismissSheetAction](arkts-arkui-dismisssheetaction-i.md#dismisssheetaction)中的 reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。 如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。 侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。 在onWillDismiss回调中，不能再做onWillDismiss拦截。 建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。
 
 **类型：** [Callback](arkts-arkui-callback-i.md)&lt;[DismissSheetAction](arkts-arkui-dismisssheetaction-i.md)&gt;
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -578,7 +578,7 @@ onWillSpringBackWhenDismiss?: Callback<SpringBackAction>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -604,7 +604,7 @@ placement?: Placement
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -630,7 +630,7 @@ placementOnTarget?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -648,13 +648,13 @@ placementOnTarget?: boolean
 preferType?: SheetType
 ```
 
-半模态页面的样式。 **说明：** 半模态在不同窗口所支持的显示类型： 1. 宽度 < 600vp：底部、全屏。默认底部样式。 2. 600vp <= 宽度 &lt; 840vp：底部、居中、跟手、侧边、全屏。默认居中样式。 3. 宽度 &gt;= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。 4. API version 20开始，窗口宽度大于600vp时，preferType支持设置为SheetType.SIDE。 5. API version 20开始，preferType支持设置为SheetType.CONTENT_COVER，支持设置为全屏模态样式。
+半模态页面的样式。 **说明：** 半模态在不同窗口所支持的显示类型： 1. 宽度 &lt; 600vp：底部、全屏。默认底部样式。 2. 600vp &lt;= 宽度 &lt; 840vp：底部、居中、跟手、侧边、全屏。默认居中样式。 3. 宽度 &gt;= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。 4. API version 20开始，窗口宽度大于600vp时，preferType支持设置为SheetType.SIDE。 5. API version 20开始，preferType支持设置为SheetType.CONTENT_COVER，支持设置为全屏模态样式。
 
 **类型：** [SheetType](arkts-arkui-sheettype-e.md)
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -678,7 +678,7 @@ radius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -704,7 +704,7 @@ radiusRenderStrategy?: RenderStrategy
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -730,7 +730,7 @@ scrollSizeMode?: ScrollSizeMode
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -754,7 +754,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -778,7 +778,7 @@ shouldDismiss?: (sheetDismiss: SheetDismiss) => void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -804,7 +804,7 @@ showClose?: boolean | Resource
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -830,7 +830,7 @@ showInSubWindow?: boolean
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -848,13 +848,13 @@ showInSubWindow?: boolean
 systemMaterial?: SystemUiMaterial
 ```
 
-设置组件的系统材质。 默认值：undefined，会清除由该接口设置的材质效果。 **说明：**: 不同系统材质对应不同的属性影响效果，该接口影响背景色 [backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框 颜色[borderColor](arkts-arkui-commonmethod-c.md#borderColor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderWidth)、阴影 [shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。使用示例请参考 [示例10（半模态设置系统材质）](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#示例10半模态设置系统材质)。
+设置组件的系统材质。 默认值：undefined，会清除由该接口设置的材质效果。 **说明：**: 不同系统材质对应不同的属性影响效果，该接口影响背景色 [backgroundColor](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框 颜色[borderColor](arkts-arkui-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-commonmethod-c.md#borderwidth)、阴影 [shadow](arkts-arkui-commonmethod-c.md#shadow)，不建议与上述接口一起使用。使用示例请参考 [示例10（半模态设置系统材质）](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#示例10半模态设置系统材质)。
 
 **类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -878,7 +878,7 @@ title?: SheetTitleOptions | CustomBuilder
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -896,13 +896,13 @@ title?: SheetTitleOptions | CustomBuilder
 uiContext?: UIContext
 ```
 
-在UIContext实例对应的窗口中显示半模态。 **说明：** 使用[openBindSheet](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openBindSheet)启动的半模态页面，不支持设置、更 新该属性。
+在UIContext实例对应的窗口中显示半模态。 **说明：** 使用[openBindSheet](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet)启动的半模态页面，不支持设置、更 新该属性。
 
 **类型：** [UIContext](arkts-arkui-uicontext-t.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -926,7 +926,7 @@ width?: Dimension
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

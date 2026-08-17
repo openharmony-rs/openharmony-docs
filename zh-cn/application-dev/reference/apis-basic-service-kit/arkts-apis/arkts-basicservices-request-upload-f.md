@@ -10,11 +10,11 @@ function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadFile)(context: BaseContext, config: UploadConfig)
+**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)(context: BaseContext, config: UploadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -68,11 +68,11 @@ function upload(config: UploadConfig): Promise<UploadTask>
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadFile)(context: BaseContext, config: UploadConfig)
+**替代接口：** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)(context: BaseContext, config: UploadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 

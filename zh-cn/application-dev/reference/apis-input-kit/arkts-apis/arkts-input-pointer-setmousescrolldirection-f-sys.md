@@ -10,7 +10,7 @@ function setMouseScrollDirection(inverted: boolean): Promise<void>
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function setMouseScrollDirection(inverted: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inverted | boolean | 是 | inverted为鼠标滚轮滚动的方向。&lt;br&gt;true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。&lt;br&gt;默认为true。 |
+| inverted | boolean | 是 | inverted为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
 
 **返回值：**
 

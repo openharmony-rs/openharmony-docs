@@ -6,7 +6,7 @@ typedef struct NativeChildProcess_Args {...} NativeChildProcess_Args
 
 ## 概述
 
-The struct describes the parameters passed to the child process.
+传递给子进程的参数。
 
 **起始版本：** 13
 
@@ -20,7 +20,7 @@ The struct describes the parameters passed to the child process.
 
 | 名称 | 描述 |
 | -- | -- |
-| char* entryParams |  |
-| struct [NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList |  |
+| char* entryParams | 入口参数，大小不能超过150KB。 |
+| struct [NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList | 传递给子进程的文件描述符信息列表。 |
 
 

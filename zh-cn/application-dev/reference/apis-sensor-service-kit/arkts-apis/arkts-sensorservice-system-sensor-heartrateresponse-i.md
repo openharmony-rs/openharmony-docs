@@ -4,11 +4,11 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [HeartRateResponse](arkts-sensorservice-sensor-heartrateresponse-i.md#HeartRateResponse)
+**替代接口：** [HeartRateResponse](arkts-sensorservice-sensor-heartrateresponse-i.md#heartrateresponse)
 
 **需要权限：** ohos.permission.READ_HEALTH_DATA
 
@@ -22,17 +22,17 @@
 heartRate: number
 ```
 
-心率值。单位：次/分钟（bpm）。取值范围：取值为实际上报物理量，由硬件传感器决定。正常成人静息心率约为60-100 bpm。
+心率值。单位：bpm（beats per minute，每分钟心跳次数）。取值范围：取值为实际上报物理量，由硬件传感器决定。正常成人静息心率约为60-100 bpm。
 
 **类型：** number
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
-**替代接口：** [heartRate](arkts-sensorservice-sensor-heartrateresponse-i.md#heartRate)
+**替代接口：** [heartRate](arkts-sensorservice-sensor-heartrateresponse-i.md#heartrate)
 
 **需要权限：** ohos.permission.READ_HEALTH_DATA
 

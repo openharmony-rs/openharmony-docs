@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from '@kit.NotificationKit';
+import { notificationManager } from 'notificationManager';
 ```
 
 ## getNotificationParameters
@@ -12,11 +12,11 @@ import { notificationManager } from '@kit.NotificationKit';
 function getNotificationParameters(id: number, label?: string): Promise<NotificationParameters>
 ```
 
-获取通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)中wantAgent字段的部分信息。使用Promise异 步回调。
+获取通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)中wantAgent字段的部分信息。使用Promise异 步回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -86,11 +86,11 @@ notificationManager.getNotificationParameters(id, label).then((data: notificatio
 function getNotificationParameters(id: int, label?: string): Promise<NotificationParameters | null>
 ```
 
-获取通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)中wantAgent字段的部分信息。使用Promise异 步回调。
+获取通知[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)中wantAgent字段的部分信息。使用Promise异 步回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

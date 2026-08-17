@@ -1,10 +1,10 @@
 # BackgroundTaskSubmode
 
-长时任务子类型。通常与长时任务主类型[BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#BackgroundTaskMode)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者 共同作为API version 21新增的申请、更新长时任务接口入参，用于指定长时任务类型。
+长时任务子类型。通常与长时任务主类型[BackgroundTaskMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#backgroundtaskmode)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者 共同作为API version 21新增的申请、更新长时任务接口入参，用于指定长时任务类型。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ SUBMODE_NORMAL_NOTIFICATION = 2
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -60,7 +60,7 @@ SUBMODE_LIVE_VIEW_NOTIFICATION = 3
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -118,7 +118,7 @@ SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION = 6
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -136,7 +136,7 @@ SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -172,7 +172,7 @@ SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION = 9
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -190,7 +190,7 @@ SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION = 10
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -208,7 +208,7 @@ SUBMODE_WORK_OUT_NORMAL_NOTIFICATION = 11
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

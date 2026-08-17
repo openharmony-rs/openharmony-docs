@@ -4,11 +4,11 @@
 type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 ```
 
-[forEach](arkts-arkts-url-urlparams-c.md#forEach)函数所需的回调函数。
+[forEach](arkts-arkts-url-urlparams-c.md#foreach)函数所需的回调函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,5 +24,5 @@ type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 | --- | --- | --- | --- |
 | value | string | 是 | 当前遍历到的值。 |
 | key | string | 是 | 当前遍历到的键名。 |
-| searchParams | [URLParams](arkts-arkts-url-urlparams-c.md) | 是 | 当前调用[forEach](arkts-arkts-url-urlparams-c.md#forEach)方法的实例对象。 |
+| searchParams | [URLParams](arkts-arkts-url-urlparams-c.md) | 是 | 当前调用[forEach](arkts-arkts-url-urlparams-c.md#foreach)方法的实例对象。 |
 

@@ -6,15 +6,15 @@
 function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 ```
 
-释放注册过的通信接口。 需要调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claimInterface)先获取接口，才能使用此方法释放接口。
+释放注册过的通信接口。 需要调用[usb.claimInterface](arkts-basicservices-usb-claiminterface-f.md#claiminterface)先获取接口，才能使用此方法释放接口。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md#releaseInterface)
+**替代接口：** [releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md#releaseinterface)
 
 <!--Device-usb-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number--><!--Device-usb-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number-End-->
 

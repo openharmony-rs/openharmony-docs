@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ UNSPECIFIED = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ TYPE_CREATE_PROCESS = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ TYPE_CREATE_PROCESS = 1
 TYPE_CREATE_ABILITY_STAGE = 2
 ```
 
-进程最终预加载到[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#AbilityStage)创建完成阶段。
+进程最终预加载到[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#abilitystage)创建完成阶段。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ TYPE_CREATE_WINDOW_STAGE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,11 +98,11 @@ TYPE_CREATE_WINDOW_STAGE = 3
 TYPE_CREATE_BACKGROUND_ABILITY = 4
 ```
 
-进程最终预加载到[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onBackground)执行完成阶段。
+进程最终预加载到[onBackground](arkts-ability-app-ability-uiability-uiability-c.md#onbackground)执行完成阶段。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -1,10 +1,10 @@
 # WindowFeatures
 
-Defines the window features info for window.open.
+提供网页请求创建的新窗口特征信息，包括大小和位置。适用于需要精确控制新窗口属性的场景，提升窗口布局的准确性和用户体验。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Defines the window features info for window.open.
 height: number
 ```
 
-The requested height of the containing window.
+新窗口高度（单位：像素）。
 
 **类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ The requested height of the containing window.
 width: number
 ```
 
-The requested width of the containing window.
+新窗口宽度（单位：像素）。
 
 **类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,13 +58,13 @@ The requested width of the containing window.
 x: number
 ```
 
-The requested x-coordinate of the containing window.
+新窗口左上角横坐标（单位：像素）。
 
 **类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -78,13 +78,13 @@ The requested x-coordinate of the containing window.
 y: number
 ```
 
-The requested y-coordinate of the containing window.
+新窗口左上角纵坐标（单位：像素）。
 
 **类型：** number
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

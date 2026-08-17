@@ -32,6 +32,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [WithEnv](arkts-arkui-arkui-withenv-con.md#WithEnv) | WithEnv组件用于为子组件树设置局部环境变量作用域。开发者可以通过该组件为后代组件提供自定义环境变量，或设置系统环境变量。 |
-| [WithEnvInstance](arkts-arkui-arkui-withenv-con.md#WithEnvInstance) | 定义WithEnv逻辑组件实例。 |
+| [WithEnv](arkts-arkui-arkui-withenv-con.md#withenv) | WithEnv组件用于为子组件树设置局部环境变量作用域。开发者可以通过该组件为后代组件提供自定义环境变量，或设置系统环境变量。 |
+| [WithEnvInstance](arkts-arkui-arkui-withenv-con.md#withenvinstance) | 定义WithEnv逻辑组件实例。 |
 

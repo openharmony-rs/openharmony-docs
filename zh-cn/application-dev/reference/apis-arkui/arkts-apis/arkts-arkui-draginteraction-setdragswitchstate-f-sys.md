@@ -10,7 +10,7 @@ function setDragSwitchState(enabled: boolean): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function setDragSwitchState(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 设置开关状态。&lt;br&gt;false：关闭，true：开启。 |
+| enabled | boolean | 是 | 设置开关状态。<br>false：关闭，true：开启。 |
 
 **错误码：**
 

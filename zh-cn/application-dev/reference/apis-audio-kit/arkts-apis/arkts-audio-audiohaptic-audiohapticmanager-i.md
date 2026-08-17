@@ -1,10 +1,10 @@
 # AudioHapticManager
 
-管理音振协同功能。在调用AudioHapticManager的接口前，需要先通过[getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md#getAudioHapticManager)创建实例。
+管理音振协同功能。在调用AudioHapticManager的接口前，需要先通过[getAudioHapticManager](arkts-audio-audiohaptic-getaudiohapticmanager-f.md#getaudiohapticmanager)创建实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapti
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -60,16 +60,16 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapti
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let id = 0; // 需要通过registerSource方法获取。
+let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
 let audioHapticPlayerInstance;
 
 audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
   audioHapticPlayerInstance = value;
-  console.info('Succeeded in creating player.');
+  console.info('Succeeded in creating the player.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create the player. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -83,7 +83,7 @@ Create an audio haptic player. This method uses a promise to return the result. 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -125,7 +125,7 @@ registerSource(audioUri: string, hapticUri: string): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -137,14 +137,14 @@ registerSource(audioUri: string, hapticUri: string): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| audioUri | string | 是 | 音频资源的Uri。 &lt;br&gt;- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#AVPlayer)。 &lt;br&gt;- 对低时延模式，音频资源格式支持可参考[SoundPool](../../apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md#SoundPool)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open)的要求。 &lt;br&gt;- 对两种时延模式，均建议传入文件的绝对路径。 |
-| hapticUri | string | 是 | 振动资源的Uri。 &lt;br&gt;振动资源格式支持可参考[HapticFileDescriptor](../../apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-hapticfiledescriptor-i.md#HapticFileDescriptor)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open)的要求。 &lt;br&gt;建议传入文件的绝对路径。 |
+| audioUri | string | 是 | 音频资源的Uri。 <br>- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md#avplayer)。 <br>- 对低时延模式，音频资源格式支持可参考[SoundPool](../../apis-media-kit/arkts-apis/arkts-media-soundpool-soundpool-i.md#soundpool)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open)的要求。 <br>- 对两种时延模式，均建议传入文件的绝对路径。 |
+| hapticUri | string | 是 | 振动资源的Uri。 <br>振动资源格式支持可参考[HapticFileDescriptor](../../apis-sensor-service-kit/arkts-apis/arkts-sensorservice-vibrator-hapticfiledescriptor-i.md#hapticfiledescriptor)，路径格式需满足 [fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open)的要求。 <br>建议传入文件的绝对路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回注册的资源ID。 &lt;br&gt;正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
+| Promise&lt;int&gt; | Promise对象，返回注册的资源ID。 <br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
 
 **错误码：**
 
@@ -157,15 +157,17 @@ registerSource(audioUri: string, hapticUri: string): Promise<int>
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
-let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
+// 音频资源的URI，传递给registerSource用于注册。
+let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的URI。
+// 振动资源的URI，传递给registerSource用于注册。
+let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的URI。
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value) => {
-  console.info(`Succeeded in registering source. ID: ${value}.`);
   id = value;
+  console.info(`Succeeded in registering the source, sourceId: ${value}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register the source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -179,7 +181,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -198,7 +200,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回注册的资源ID。 &lt;br&gt;正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
+| Promise&lt;int&gt; | Promise对象，返回注册的资源ID。 <br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
 
 ## 示例
 
@@ -225,10 +227,10 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value) => {
-  console.info(`Succeeded in registering source from fd. ID: ${value}.`);
   id = value;
+  console.info(`Succeeded in registering the source from fd, sourceId: ${value}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register the source from fd. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -242,7 +244,7 @@ setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -269,7 +271,7 @@ setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let id = 0; // 需要通过registerSource方法获取。
+let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
 
@@ -286,7 +288,7 @@ setStreamUsage(id: int, usage: audio.StreamUsage): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -314,7 +316,7 @@ setStreamUsage(id: int, usage: audio.StreamUsage): void
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let id = 0; // 需要通过registerSource方法获取。
+let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
 
@@ -331,7 +333,7 @@ unregisterSource(id: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -362,12 +364,12 @@ unregisterSource(id: int): Promise<void>
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let id = 0; // 需要通过registerSource方法获取。
+let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 audioHapticManagerInstance.unregisterSource(id).then(() => {
-  console.info('Succeeded in unregistering source.');
+  console.info('Succeeded in unregistering the source.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to unregister source. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister the source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

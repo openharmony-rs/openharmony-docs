@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 addCert(cert: X509Cert): void
 ```
 
-用于添加内容类型为SIGNED_DATA的CMS的证书，例如签名证书的颁发者证书。 &lt;br&gt;如果未调用addSigner接口，并且仅添加证书后，生成的CMS签名数据将只包含证书。
+用于添加内容类型为SIGNED_DATA的CMS的证书，例如签名证书的颁发者证书。 <br>如果未调用addSigner接口，并且仅添加证书后，生成的CMS签名数据将只包含证书。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,8 +42,8 @@ addCert(cert: X509Cert): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数校验失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -171,11 +171,11 @@ function testAddCert() {
 addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 ```
 
-为内容类型为ENVELOPED_DATA的CMS添加接收者信息。使用Promise方式返回结果。 &lt;br&gt;该方法至少需要设置一个接收者。
+为内容类型为ENVELOPED_DATA的CMS添加接收者信息。使用Promise方式返回结果。 <br>该方法至少需要设置一个接收者。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -201,8 +201,8 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： &lt;br&gt;1. 接收者证书类型无效或不支持； &lt;br&gt;2. CmsKeyAgreeRecipientInfo的digestAlgorithm无效或不支持； &lt;br&gt;3. recipientInfo中无接收者信息。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. 接收者证书类型无效或不支持； <br>2. CmsKeyAgreeRecipientInfo的digestAlgorithm无效或不支持； <br>3. recipientInfo中无接收者信息。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -252,34 +252,34 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function testAddRecipientInfo() {
-  let ecccertEncodingBlob: cert.EncodingBlob = {
+  let eccCertEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(eccCertData),
     // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
-  let rsacertEncodingBlob: cert.EncodingBlob = {
+  let rsaCertEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(rsaCertData),
     // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
   try {
-    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
-    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let eccX509Cert = await cert.createX509Cert(eccCertEncodingBlob);
+    let rsaX509Cert = await cert.createX509Cert(rsaCertEncodingBlob);
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
     console.info(`createCmsGenerator result: success.`);
 
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccx509Certcert,
-      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+      cert : eccX509Cert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
     let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsax509Certcert,
+      cert : rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
       keyTransInfo : rsaCert,
-      keyAgreeInfo : eccCert,
+      keyAgreeInfo : eccCert
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
@@ -299,7 +299,7 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -321,8 +321,8 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数校验失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 | [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
@@ -351,7 +351,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -403,7 +403,7 @@ function testAddSigner() {
             addCert:false,
             addAttr:false,
             addSmimeCapAttr:false
-          }
+          };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testAddSigner addSigner result: success.');
         } catch (err) {
@@ -437,7 +437,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -490,7 +490,7 @@ function testAddSigner() {
             addCert:false,
             addAttr:false,
             addSmimeCapAttr:false
-          }
+          };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testAddSigner addSigner result: success.');
         } catch (err) {
@@ -513,7 +513,7 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -540,8 +540,8 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数校验失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -569,7 +569,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -621,12 +621,12 @@ async function testDoFinalByPromise() {
           addCert:false,
           addAttr:true,
           addSmimeCapAttr:true
-        }
+        };
         cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
         console.info('testDoFinalByPromise addSigner result: success.');
         cmsGenerator.addCert(x509Cert);
         console.info('testDoFinalByPromise addCert result: success.');
-        let content = new Uint8Array([1,2,3,4]);
+        let content = new Uint8Array([1, 2, 3, 4]);
         let optionsFinal: cert.CmsGeneratorOptions = {
           contentDataFormat : cert.CmsContentDataFormat.BINARY,
           outFormat : cert.CmsFormat.PEM,
@@ -668,7 +668,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -718,12 +718,12 @@ async function testDoFinalByPromise() {
         addCert:false,
         addAttr:true,
         addSmimeCapAttr:true
-      }
+      };
       cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
       console.info('testDoFinalByPromise addSigner success.');
       cmsGenerator.addCert(x509Cert);
       console.info('testDoFinalByPromise addCert success.');
-      let content = new Uint8Array([1,2,3,4]);
+      let content = new Uint8Array([1, 2, 3, 4]);
       let optionsFinal: cert.CmsGeneratorOptions = {
         contentDataFormat : cert.CmsContentDataFormat.BINARY,
         outFormat : cert.CmsFormat.PEM,
@@ -749,7 +749,7 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -776,8 +776,8 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数校验失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -805,7 +805,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -857,19 +857,19 @@ function testDoFinalSync() {
             addCert:false,
             addAttr:false,
             addSmimeCapAttr:false
-          }
+          };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testDoFinalSync addSigner result: success.');
           cmsGenerator.addCert(x509Cert);
           console.info('testDoFinalSync addCert result: success.');
-          let content = new Uint8Array([1,2,3,4]);
+          let content = new Uint8Array([1, 2, 3, 4]);
           let optionsFinal: cert.CmsGeneratorOptions = {
             contentDataFormat : cert.CmsContentDataFormat.BINARY,
             outFormat : cert.CmsFormat.DER,
             isDetached : false
           };
           let output = cmsGenerator.doFinalSync(content, optionsFinal);
-          console.info('testDoFinalSync doFinalSync result: success, output = %s.',output);
+          console.info('testDoFinalSync doFinalSync result: success, output = %s.', output);
         } catch (err) {
           let e: BusinessError = err as BusinessError;
           console.error(`testDoFinalSync failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -901,7 +901,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -954,7 +954,7 @@ function testDoFinalSync() {
             addCert: false,
             addAttr: false,
             addSmimeCapAttr: false
-          }
+          };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testDoFinalSync addSigner result: success.');
           cmsGenerator.addCert(x509Cert);
@@ -983,11 +983,11 @@ function testDoFinalSync() {
 getEncryptedContentData(): Promise<Uint8Array>
 ```
 
-用于获取内容类型为ENVELOPED_DATA的CMS的加密内容数据。使用Promise方式返回结果。 &lt;br&gt;如果创建了类型为ENVELOPED_DATA的CmsGenerator并使用了数据分离来生成CMS封装数据，使用此方法来获取加密的内容数据。
+用于获取内容类型为ENVELOPED_DATA的CMS的加密内容数据。使用Promise方式返回结果。 <br>如果创建了类型为ENVELOPED_DATA的CmsGenerator并使用了数据分离来生成CMS封装数据，使用此方法来获取加密的内容数据。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1007,7 +1007,7 @@ getEncryptedContentData(): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 
@@ -1058,20 +1058,20 @@ function stringToUint8Array(str: string): Uint8Array {
 
 async function testGetEncryptedContentData() {
   try {
-    let ecccertEncodingBlob: cert.EncodingBlob = {
+    let eccCertEncodingBlob: cert.EncodingBlob = {
       data: stringToUint8Array(eccCertData),
       // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     };
 
-    let rsacertEncodingBlob: cert.EncodingBlob = {
+    let rsaCertEncodingBlob: cert.EncodingBlob = {
       data: stringToUint8Array(rsaCertData),
       // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     };
 
-    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
-    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let eccX509Cert = await cert.createX509Cert(eccCertEncodingBlob);
+    let rsaX509Cert = await cert.createX509Cert(rsaCertEncodingBlob);
 
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -1080,19 +1080,19 @@ async function testGetEncryptedContentData() {
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccx509Certcert,
-      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+      cert : eccX509Cert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
     let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsax509Certcert,
+      cert : rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
       keyTransInfo : rsaCert,
-      keyAgreeInfo : eccCert,
+      keyAgreeInfo : eccCert
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
-    let content = new Uint8Array([1,2,3,4]);
+    let content = new Uint8Array([1, 2, 3, 4]);
     let optionsFinal: cert.CmsGeneratorOptions = {
       contentDataFormat : cert.CmsContentDataFormat.BINARY,
       outFormat : cert.CmsFormat.PEM,
@@ -1114,11 +1114,11 @@ async function testGetEncryptedContentData() {
 setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
 ```
 
-为内容类型为ENVELOPED_DATA的CMS设置加密算法。 &lt;br&gt;该方法应在创建ENVELOPED_DATA类型的CmsGenerator后立即调用。如果未调用此方法，则默认使用AES_256_GCM作为加密算法。
+为内容类型为ENVELOPED_DATA的CMS设置加密算法。 <br>该方法应在创建ENVELOPED_DATA类型的CmsGenerator后立即调用。如果未调用此方法，则默认使用AES_256_GCM作为加密算法。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1138,8 +1138,8 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： &lt;br&gt;1. 内存拷贝失败； &lt;br&gt;2. 系统内部出现空指针； &lt;br&gt;3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： &lt;br&gt;1. 算法类型无效或不支持。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. 算法类型无效或不支持。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
 

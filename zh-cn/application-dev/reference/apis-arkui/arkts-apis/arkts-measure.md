@@ -15,14 +15,14 @@
  The **measure** module provides APIs for measuring text metrics, such as text height and width.
  > **NOTE**
  >
- > - This module cannot be used in the file declaration of the [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#UIAbility). In
+ > - This module cannot be used in the file declaration of the [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#uiability). In
  > other words, the APIs of this module can be used only after a component instance is created; they cannot be called
  > in the lifecycle of the UIAbility.
  >
  > - To perform more complex text measurements, you are advised to call the corresponding graphics measurement API,
- > specifically [Paragraph](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-paragraphstyle-i.md#ParagraphStyle).
+ > specifically [Paragraph](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-paragraphstyle-i.md#paragraphstyle).
  >
- > - Avoid using [ApplicationContext.setFontSizeScale](../../apis-ability-kit/arkts-apis/arkts-ability-applicationcontext-c.md#setFontSizeScale)
+ > - Avoid using [ApplicationContext.setFontSizeScale](../../apis-ability-kit/arkts-apis/arkts-ability-applicationcontext-c.md#setfontsizescale)
  > during text measurement API calls. To ensure timing consistency and the accuracy of measurement results, manually
  > listen for font scale changes.
  >

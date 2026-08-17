@@ -10,11 +10,11 @@ function queryHolders(callback: AsyncCallback<Array<Holder>>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryHolders](#queryHolders)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
+**替代接口：** [queryHolders](#queryholders)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -54,7 +54,7 @@ function queryHolders(context: Context, callback: AsyncCallback<Array<Holder>>):
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -109,11 +109,11 @@ function queryHolders(): Promise<Array<Holder>>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryHolders](#queryHolders)(context: Context)
+**替代接口：** [queryHolders](#queryholders)(context: Context)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -149,7 +149,7 @@ function queryHolders(context: Context): Promise<Array<Holder>>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

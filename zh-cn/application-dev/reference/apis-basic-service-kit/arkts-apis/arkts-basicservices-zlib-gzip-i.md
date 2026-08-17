@@ -4,7 +4,7 @@ Gzip相关接口。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ gzbuffer(size: long): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ gzclearerr(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -179,7 +179,7 @@ gzclose(): Promise<ReturnStatus>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -250,7 +250,7 @@ gzcloser(): Promise<ReturnStatus>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -322,7 +322,7 @@ gzclosew(): Promise<ReturnStatus>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -393,7 +393,7 @@ gzdirect(): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -458,7 +458,7 @@ gzdopen(fd: int, mode: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -537,7 +537,7 @@ gzeof(): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -612,7 +612,7 @@ gzerror(): Promise<GzErrorOutputInfo>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -695,7 +695,7 @@ gzflush(flush: CompressFlushMode): Promise<ReturnStatus>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -709,7 +709,7 @@ gzflush(flush: CompressFlushMode): Promise<ReturnStatus>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| flush | [CompressFlushMode](arkts-basicservices-zlib-compressflushmode-e.md) | 是 | 控制刷新操作的行为，参考[CompressFlushMode枚举](arkts-basicservices-zlib-compressflushmode-e.md#CompressFlushMode)的定义。 |
+| flush | [CompressFlushMode](arkts-basicservices-zlib-compressflushmode-e.md) | 是 | 控制刷新操作的行为，参考[CompressFlushMode枚举](arkts-basicservices-zlib-compressflushmode-e.md#compressflushmode)的定义。 |
 
 **返回值：**
 
@@ -773,7 +773,7 @@ gzfread(buf: ArrayBuffer, size: long, nitems: long): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -862,7 +862,7 @@ gzfwrite(buf: ArrayBuffer, size: long, nitems: long): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -947,7 +947,7 @@ gzgetc(): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1021,7 +1021,7 @@ gzgets(buf: ArrayBuffer): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1103,7 +1103,7 @@ gzoffset(): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1174,7 +1174,7 @@ gzopen(path: string, mode: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1189,7 +1189,7 @@ gzopen(path: string, mode: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 需要打开的文件路径。 |
-| mode | string | 是 | 指定文件打开方法。&lt;br&gt;基础模式（必须三选一）：&lt;br/&gt;-?“r”或“rb”：读取模式，自动检测并解压gzip文件（若非gzip格式则直接读取原始数据）。&lt;br/&gt;-? “w”或“wb”：写入模式，创建新文件并压缩数据。&lt;br/&gt;-?“a”或“ab”：追加模式，在现有文件末尾追加新的gzip流（不校验原文件格式）。&lt;br/&gt;可选功能参数（可组合使用）：&lt;br/&gt;-?压缩级别：0（不压 缩）至9（最佳压缩），默认压缩级别为6，需要配合写入模式或者追加模式使用。&lt;br/&gt;-?压缩策略：“f”（过滤策略）、“h”（霍夫曼策略）、“R”（游标编码策略）、“F”（固定编码策略），只能选取一种压缩策略。 &lt;br/&gt;- 透明模式：“T”，写入时不压缩且不生成gzip头（生成普通文件），与压缩策略互斥。&lt;br/&gt;-?独占创建：“x”，如果文件存在则打开失败，需要配合写入模式或者追加模式使用&lt;br/&gt;-? close-on-exec标志：“e”，设置文件描述符的FD_CLOEXEC属性（依赖系统支持）。&lt;br/&gt;模式字符串示例：&lt;br/&gt;-?“r”：读取模式，读取时以二进制形式读取。&lt;br/&gt;-?“rb”：读取模式，读 取时以二进制形式读取。&lt;br/&gt;-“wb6”：写入模式，压缩时以二进制形式写入，压缩级别为6。&lt;br/&gt;-?“wb9f”：写入模式，压缩时以二进制形式写入，压缩级别为最佳压缩，压缩策略采用过滤策略。&lt;br/&gt;-? “wbT”：写入模式，不压缩，生成普通文件。&lt;br/&gt;-?“wbx”：写入模式，压缩时以二进制形式写入，采用独占创建的方式写入文件。&lt;br/&gt;-?“abx”：追加模式，压缩时以二进制形式追加并写入，采用独占创建的方式 写入文件。 |
+| mode | string | 是 | 指定文件打开方法。<br>基础模式（必须三选一）：<br/>-?“r”或“rb”：读取模式，自动检测并解压gzip文件（若非gzip格式则直接读取原始数据）。<br/>-? “w”或“wb”：写入模式，创建新文件并压缩数据。<br/>-?“a”或“ab”：追加模式，在现有文件末尾追加新的gzip流（不校验原文件格式）。<br/>可选功能参数（可组合使用）：<br/>-?压缩级别：0（不压 缩）至9（最佳压缩），默认压缩级别为6，需要配合写入模式或者追加模式使用。<br/>-?压缩策略：“f”（过滤策略）、“h”（霍夫曼策略）、“R”（游标编码策略）、“F”（固定编码策略），只能选取一种压缩策略。 <br/>- 透明模式：“T”，写入时不压缩且不生成gzip头（生成普通文件），与压缩策略互斥。<br/>-?独占创建：“x”，如果文件存在则打开失败，需要配合写入模式或者追加模式使用<br/>-? close-on-exec标志：“e”，设置文件描述符的FD_CLOEXEC属性（依赖系统支持）。<br/>模式字符串示例：<br/>-?“r”：读取模式，读取时以二进制形式读取。<br/>-?“rb”：读取模式，读 取时以二进制形式读取。<br/>-“wb6”：写入模式，压缩时以二进制形式写入，压缩级别为6。<br/>-?“wb9f”：写入模式，压缩时以二进制形式写入，压缩级别为最佳压缩，压缩策略采用过滤策略。<br/>-? “wbT”：写入模式，不压缩，生成普通文件。<br/>-?“wbx”：写入模式，压缩时以二进制形式写入，采用独占创建的方式写入文件。<br/>-?“abx”：追加模式，压缩时以二进制形式追加并写入，采用独占创建的方式 写入文件。 |
 
 **返回值：**
 
@@ -1252,7 +1252,7 @@ gzprintf(format: string, ...args: Array<string | double>): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1332,7 +1332,7 @@ gzputc(ch: int): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1410,7 +1410,7 @@ gzputs(str: string): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1488,7 +1488,7 @@ gzread(buf: ArrayBuffer): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1575,7 +1575,7 @@ gzrewind(): Promise<ReturnStatus>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1648,7 +1648,7 @@ gzseek(offset: long, whence: OffsetReferencePoint): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1663,7 +1663,7 @@ gzseek(offset: long, whence: OffsetReferencePoint): Promise<long>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | offset | long | 是 | 目标偏移位置。 |
-| whence | [OffsetReferencePoint](arkts-basicservices-zlib-offsetreferencepoint-e.md) | 是 | 定义偏移的参考点，参考[OffsetReferencePoint枚举定义](arkts-basicservices-zlib-offsetreferencepoint-e.md#OffsetReferencePoint)。 |
+| whence | [OffsetReferencePoint](arkts-basicservices-zlib-offsetreferencepoint-e.md) | 是 | 定义偏移的参考点，参考[OffsetReferencePoint枚举定义](arkts-basicservices-zlib-offsetreferencepoint-e.md#offsetreferencepoint)。 |
 
 **返回值：**
 
@@ -1727,7 +1727,7 @@ gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise<ReturnSta
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1741,8 +1741,8 @@ gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise<ReturnSta
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| level | [CompressLevel](arkts-basicservices-zlib-compresslevel-e.md) | 是 | 压缩级别，参考[CompressLevel枚举定义](arkts-basicservices-zlib-compresslevel-e.md#CompressLevel)。 |
-| strategy | [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md) | 是 | 压缩策略，参考[CompressStrategy枚举定义](arkts-basicservices-zlib-compressstrategy-e.md#CompressStrategy)。 |
+| level | [CompressLevel](arkts-basicservices-zlib-compresslevel-e.md) | 是 | 压缩级别，参考[CompressLevel枚举定义](arkts-basicservices-zlib-compresslevel-e.md#compresslevel)。 |
+| strategy | [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md) | 是 | 压缩策略，参考[CompressStrategy枚举定义](arkts-basicservices-zlib-compressstrategy-e.md#compressstrategy)。 |
 
 **返回值：**
 
@@ -1807,7 +1807,7 @@ gztell(): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1878,7 +1878,7 @@ gzungetc(c: int): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1959,7 +1959,7 @@ gzwrite(buf: ArrayBuffer, len: long): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

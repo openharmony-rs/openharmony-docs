@@ -4,7 +4,7 @@ ArcSwiper自定义切换动画相关信息。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@ ArcSwiper自定义切换动画相关信息。
 timeout?: number
 ```
 
-ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用 [SwiperContentTransitionProxy](arkts-arkui-arkui-arcswiper-swipercontenttransitionproxy-i.md#SwiperContentTransitionProxy)的 [finishTransition](arkts-arkui-arkui-arcswiper-swipercontenttransitionproxy-i.md#finishTransition)接口通知ArcSwiper组件此页面的自定义动画已结束，组件将强制结束该页面的自定义动 画，并立即在该页面节点下渲染树。单位ms，默认值为0。
+ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用 [SwiperContentTransitionProxy](arkts-arkui-arkui-arcswiper-swipercontenttransitionproxy-i.md#swipercontenttransitionproxy)的 [finishTransition](arkts-arkui-arkui-arcswiper-swipercontenttransitionproxy-i.md#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，组件将强制结束该页面的自定义动 画，并立即在该页面节点下渲染树。单位ms，默认值为0。
 
 **类型：** number
 
@@ -26,7 +26,7 @@ ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页�
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ transition: Callback<SwiperContentTransitionProxy>
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

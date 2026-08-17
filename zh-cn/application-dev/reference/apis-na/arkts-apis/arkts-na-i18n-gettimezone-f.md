@@ -10,7 +10,7 @@ export function getTimeZone(zoneID?: string): TimeZone
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -30,5 +30,5 @@ export function getTimeZone(zoneID?: string): TimeZone
 
 | 类型 | 说明 |
 | --- | --- |
-| [TimeZone](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-timezone-c.md) | 时区ID对应的时区对象。 |
+| [TimeZone](arkts-na-i18n-timezone-c.md) | 时区ID对应的时区对象。 |
 

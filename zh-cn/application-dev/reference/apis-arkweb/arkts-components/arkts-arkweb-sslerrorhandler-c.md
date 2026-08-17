@@ -1,10 +1,10 @@
 # SslErrorHandler
 
-Defines the ssl error request result, related to onSslErrorEventReceive method.
+SslErrorHandler是Web组件中处理SSL证书验证错误的类。当加载安全页面时遇到SSL证书错误（如证书过期、主机名不匹配、不受信任的CA），应用可通过onSslErrorEvent回调获取SslErrorHandler实 例，并决定是否继续加载或取消导航。示例代码参考[onSslErrorEvent](arkts-arkweb-web-attribute.md#onsslerrorevent)事件。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Defines the ssl error request result, related to onSslErrorEventReceive method.
 constructor()
 ```
 
-Constructor.
+SslErrorHandler的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ Constructor.
 handleCancel(): void
 ```
 
-取消此请求。
+通知Web组件取消此请求，并停止当前SSL证书验证流程。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ handleCancel(): void
 handleCancel(abortLoading: boolean): void
 ```
 
-ArkWeb遇到了SSL证书错误，该接口表示是否终止或者继续展示错误给用户。
+通知Web组件取消此请求，并根据参数abortLoading决定是否停止加载。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ ArkWeb遇到了SSL证书错误，该接口表示是否终止或者继续展示�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| abortLoading | boolean | 是 | 如果abortLoading为true，则取消当前请求并停留在当前页面，如果为false，则拒绝忽略该SSL错误，最终展示空白页，如果开启了默认错误页，则显示默认错误页。默认为false |
+| abortLoading | boolean | 是 | 是否在取消请求后停止加载页面。 <br>true表示停止加载页面，false表示继续加载页面。 |
 
 ## handleConfirm
 
@@ -82,11 +82,11 @@ ArkWeb遇到了SSL证书错误，该接口表示是否终止或者继续展示�
 handleConfirm(): void
 ```
 
-继续使用SSL证书。
+忽略SSL证书验证错误，继续加载页面。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

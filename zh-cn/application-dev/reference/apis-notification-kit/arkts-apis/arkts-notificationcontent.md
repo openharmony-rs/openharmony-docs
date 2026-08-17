@@ -10,11 +10,11 @@
 | [NotificationButton](arkts-notification-notificationcontent-notificationbutton-i.md) | 描述通知按钮，用于在实况窗中展示可交互的按钮。 |
 | [NotificationCapsule](arkts-notification-notificationcontent-notificationcapsule-i.md) | 描述通知胶囊，用于在实况窗中展示胶囊形态。 |
 | [NotificationContent](arkts-notification-notificationcontent-notificationcontent-i.md) | 通知内容。 |
-| [NotificationLongTextContent](arkts-notification-notificationcontent-notificationlongtextcontent-i.md) | 描述长文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 |
-| [NotificationMultiLineContent](arkts-notification-notificationcontent-notificationmultilinecontent-i.md) | 描述多行文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 |
-| [NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md) | 描述附有图片的通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 |
+| [NotificationLongTextContent](arkts-notification-notificationcontent-notificationlongtextcontent-i.md) | 描述长文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 |
+| [NotificationMultiLineContent](arkts-notification-notificationcontent-notificationmultilinecontent-i.md) | 描述多行文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 |
+| [NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md) | 描述附有图片的通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 |
 | [NotificationProgress](arkts-notification-notificationcontent-notificationprogress-i.md) | 描述通知进度，用于在实况窗中展示进度条信息。 |
-| [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i.md) | 描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。 不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后， 三方应用发布同ID的通知来更新指定内容。 继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 |
+| [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i.md) | 描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。 不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后， 三方应用发布同ID的通知来更新指定内容。 继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 |
 | [NotificationTime](arkts-notification-notificationcontent-notificationtime-i.md) | 描述通知计时信息。 |
 
 <!--Del-->
@@ -26,9 +26,9 @@
 | [NotificationCapsule](arkts-notification-notificationcontent-notificationcapsule-i-sys.md) | 描述通知胶囊，用于在实况窗中展示胶囊形态。 |
 | [NotificationContent](arkts-notification-notificationcontent-notificationcontent-i-sys.md) | 通知内容。 |
 | [NotificationIconButton](arkts-notification-notificationcontent-notificationiconbutton-i-sys.md) | 描述系统通知按钮。 |
-| [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md) | 描述普通实况通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 |
-| [NotificationMultiLineContent](arkts-notification-notificationcontent-notificationmultilinecontent-i-sys.md) | 描述多行文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 |
-| [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i-sys.md) | 描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。 不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后， 三方应用发布同ID的通知来更新指定内容。 继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#NotificationBasicContent)。 |
+| [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md) | 描述普通实况通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 |
+| [NotificationMultiLineContent](arkts-notification-notificationcontent-notificationmultilinecontent-i-sys.md) | 描述多行文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 |
+| [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i-sys.md) | 描述系统实况窗通知内容，用于在实况窗中展示实时状态信息。 不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后， 三方应用发布同ID的通知来更新指定内容。 继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 |
 <!--DelEnd-->
 
 <!--Del-->

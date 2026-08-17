@@ -10,7 +10,7 @@ function analyzePrintEvents(printerId: string, eventType: string): Promise<strin
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -28,8 +28,8 @@ function analyzePrintEvents(printerId: string, eventType: string): Promise<strin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| printerId | string | 是 | 打印机ID。 &lt;br&gt;要分析的打印机ID。 |
-| eventType | string | 是 | 前卫类型。 &lt;br&gt;需要分析的事件类型。 |
+| printerId | string | 是 | 打印机ID。 <br>要分析的打印机ID。 |
+| eventType | string | 是 | 前卫类型。 <br>需要分析的事件类型。 |
 
 **返回值：**
 

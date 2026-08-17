@@ -2,11 +2,11 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 
-**替代接口：** [File](arkts-basicservices-request-file-i.md#File)
+**替代接口：** [File](arkts-basicservices-request-file-i.md#file)
 
 <!--Device-unnamed-export interface RequestFile--><!--Device-unnamed-export interface RequestFile-End-->
 
@@ -24,7 +24,7 @@ multipart 提交时，请求头中的文件名。
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 
@@ -46,7 +46,7 @@ multipart 提交时，表单项目的名称，缺省为file。
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 
@@ -68,7 +68,7 @@ type?: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 
@@ -90,7 +90,7 @@ uri: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为3。
+**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 

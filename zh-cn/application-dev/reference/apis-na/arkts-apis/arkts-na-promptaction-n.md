@@ -1,10 +1,10 @@
 # promptAction
 
-创建并显示即时反馈、对话框和操作菜单。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。 > > - 本模块不支持在[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#UIAbility)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。 > > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见 > [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)说明。建议&lt;!--Del--&gt;在除 > [ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)等无UI界面的场景外，均&lt;!--DelEnd--&gt;使用 > UIContext中的弹窗方法。
+创建并显示即时反馈、对话框和操作菜单。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。 > > - 本模块不支持在[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#uiability)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。 > > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见 > [UIContext](arkts-na-arkui-uicontext-uicontext-c.md#uicontext)说明。建议&lt;!--Del--&gt;在除 > [ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)等无UI界面的场景外，均&lt;!--DelEnd--&gt;使用 > UIContext中的弹窗方法。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,15 +20,15 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [openToast](arkts-na-promptaction-opentoast-f.md#openToast) | 显示即时反馈并通过Promise返回其id。 |
-| [closeToast](arkts-na-promptaction-closetoast-f.md#closeToast) | 关闭即时反馈。 |
+| [openToast](arkts-na-promptaction-opentoast-f.md#opentoast) | 显示即时反馈并通过Promise返回其id。 |
+| [closeToast](arkts-na-promptaction-closetoast-f.md#closetoast) | 关闭即时反馈。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
 | [CommonController](arkts-na-promptaction-commoncontroller-c.md) | 公共控制器，可以控制promptAction相关组件。 |
-| [DialogController](arkts-na-promptaction-dialogcontroller-c.md) | 自定义弹窗控制器，继承自CommonController。 DialogController可作为UIContext弹出自定义弹窗的成员变量，具体用法可看 [openCustomDialogWithController](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openCustomDialogWithController) 和[presentCustomDialog](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentCustomDialog)示例。 |
+| [DialogController](arkts-na-promptaction-dialogcontroller-c.md) | 自定义弹窗控制器，继承自CommonController。 DialogController可作为UIContext弹出自定义弹窗的成员变量，具体用法可看 [openCustomDialogWithController](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller) 和[presentCustomDialog](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog)示例。 |
 
 ### 接口
 

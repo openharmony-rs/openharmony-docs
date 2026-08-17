@@ -1,10 +1,10 @@
 # AudioSessionManager
 
-音频会话管理。 在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-audio-audio-audiomanager-i.md#getSessionManager)获取 AudioSessionManager实例。 > **说明：** > > - 本Interface首批接口从API version 12开始支持。
+音频会话管理。 在使用AudioSessionManager的接口之前，需先通过[getSessionManager](arkts-audio-audio-audiomanager-i.md#getsessionmanager)获取 AudioSessionManager实例。 > **说明：** > > - 本Interface首批接口从API version 12开始支持。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,11 +58,11 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise<void>
 clearSelectedMediaInputDevice(): Promise<void>
 ```
 
-清空通过[selectMediaInputDevice](#selectMediaInputDevice)设置的媒体输入设备。使用Promise异步回调。
+清空通过[selectMediaInputDevice](#selectmediainputdevice)设置的媒体输入设备。使用Promise异步回调。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ deactivateAudioSession(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -120,11 +120,11 @@ deactivateAudioSession(): Promise<void>
 enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 ```
 
-启用混音播放下接收静音播放建议通知功能。 通常，当使用混音模式时，如果其他应用同时播放音频，会和其他应用进行混音播放。但在某些场景下（如游戏或广播），应用自身会通过静音自身的音频以给用户提供更好的体验。 如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[AudioSessionStateChangedEvent](arkts-audio-audio-audiosessionstatechangedevent-i.md#AudioSessionStateChangedEvent)回 调发送。收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。 此功能仅支持已设置[AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#AudioSessionScene)并激活模式模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期 间生效一次，每次激活音频会话前都必须重新启用。 详细说明请参考[启用混音播放下静音建议通知](../../../media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
+启用混音播放下接收静音播放建议通知功能。 通常，当使用混音模式时，如果其他应用同时播放音频，会和其他应用进行混音播放。但在某些场景下（如游戏或广播），应用自身会通过静音自身的音频以给用户提供更好的体验。 如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[AudioSessionStateChangedEvent](arkts-audio-audio-audiosessionstatechangedevent-i.md#audiosessionstatechangedevent)回 调发送。收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。 此功能仅支持已设置[AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#audiosessionscene)并激活模式模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期 间生效一次，每次激活音频会话前都必须重新启用。 详细说明请参考[启用混音播放下静音建议通知](../../../media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -144,7 +144,7 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6800103](../errorcode-audio.md#6800103-状态不支持) | Function is called without setting [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#AudioSessionScene) or called after audio session activation. |
+| [6800103](../errorcode-audio.md#6800103-状态不支持) | Function is called without setting [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#audiosessionscene) or called after audio session activation. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, system internal error. |
 
 ## getAvailableDevices
@@ -157,7 +157,7 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -190,11 +190,11 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredRecordCategory
 ```
 
-获取通过 [setBluetoothAndNearlinkPreferredRecordCategory](#setBluetoothAndNearlinkPreferredRecordCategory) 设置的在使用蓝牙或星闪进行录音时的设备偏好分类。
+获取通过 [setBluetoothAndNearlinkPreferredRecordCategory](#setbluetoothandnearlinkpreferredrecordcategory) 设置的在使用蓝牙或星闪进行录音时的设备偏好分类。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -220,11 +220,11 @@ getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredR
 getDefaultOutputDevice(): DeviceType
 ```
 
-获取通过[setDefaultOutputDevice](#setDefaultOutputDevice)设置的默认发声设备。
+获取通过[setDefaultOutputDevice](#setdefaultoutputdevice)设置的默认发声设备。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -236,7 +236,7 @@ getDefaultOutputDevice(): DeviceType
 
 | 类型 | 说明 |
 | --- | --- |
-| DeviceType | 设备类型。 &lt;br&gt;仅支持以下设备：EARPIECE（听筒）、SPEAKER（扬声器）和DEFAULT（系统默认设备）。 |
+| DeviceType | 设备类型。 <br>仅支持以下设备：EARPIECE（听筒）、SPEAKER（扬声器）和DEFAULT（系统默认设备）。 |
 
 **错误码：**
 
@@ -251,11 +251,11 @@ getDefaultOutputDevice(): DeviceType
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 ```
 
-获得通过[selectMediaInputDevice](#selectMediaInputDevice)设置的媒体输入设备。如果没有设置，返回一个 deviceType属性为INVALID的设备。
+获得通过[selectMediaInputDevice](#selectmediainputdevice)设置的媒体输入设备。如果没有设置，返回一个 deviceType属性为INVALID的设备。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -285,7 +285,7 @@ isAudioSessionActivated(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -311,7 +311,7 @@ isOtherMediaPlaying(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -337,7 +337,7 @@ offAudioSessionDeactivated(callback?: Callback<AudioSessionDeactivatedEvent>): v
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -370,7 +370,7 @@ Unsubscribes to audio session deactivated event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -401,7 +401,7 @@ Unsubscribes to available device change events.
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -431,7 +431,7 @@ Unsubscribes current input device change events.
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -461,7 +461,7 @@ Unsubscribes output device change event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -492,7 +492,7 @@ off(type: 'audioSessionDeactivated', callback?: Callback<AudioSessionDeactivated
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -526,7 +526,7 @@ off(type: 'audioSessionStateChanged', callback?: Callback<AudioSessionStateChang
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -558,7 +558,7 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): voi
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -589,7 +589,7 @@ off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceCha
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -620,7 +620,7 @@ off(type: 'currentOutputDeviceChanged', callback?: Callback<CurrentOutputDeviceC
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -652,7 +652,7 @@ Listens for audio session deactivated event. When the audio session is deactivat
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -685,7 +685,7 @@ Listens for audio session state change event. When the audio session state chang
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -717,7 +717,7 @@ Subscribes to available device change events. When a device is connected/disconn
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -749,7 +749,7 @@ Subscribes input device change event callback. The event is triggered when curre
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -780,7 +780,7 @@ Subscribes output device change event callback. The event is triggered when devi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -812,7 +812,7 @@ on(type: 'audioSessionDeactivated', callback: Callback<AudioSessionDeactivatedEv
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -846,7 +846,7 @@ on(type: 'audioSessionStateChanged', callback: Callback<AudioSessionStateChanged
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -879,7 +879,7 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -912,7 +912,7 @@ on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChang
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -944,7 +944,7 @@ on(type: 'currentOutputDeviceChanged', callback: Callback<CurrentOutputDeviceCha
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -973,11 +973,11 @@ on(type: 'currentOutputDeviceChanged', callback: Callback<CurrentOutputDeviceCha
 selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void>
 ```
 
-设置媒体输入设备。使用Promise异步回调。 > **说明：** > > - 本接口不适用于VoIP通话录音，即[SourceType](arkts-audio-audio-sourcetype-e.md#SourceType)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。 > > - 本接口调用前需要先调用[getAvailableDevices](#getAvailableDevices)接口查询到当前可用输入设备列表，从列表中选择输入 > 设备。 > > - 当系统中存在其他更高优先级的应用录音流时，实际使用的输入设备会跟随其他高优先级应用所选的输入设备。 > > - 应用程序可以监听 > [currentInputDeviceChanged](#on_audioSessionDeactivated) > 事件来获得实际的输入设备。
+设置媒体输入设备。使用Promise异步回调。 > **说明：** > > - 本接口不适用于VoIP通话录音，即[SourceType](arkts-audio-audio-sourcetype-e.md#sourcetype)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。 > > - 本接口调用前需要先调用[getAvailableDevices](#getavailabledevices)接口查询到当前可用输入设备列表，从列表中选择输入 > 设备。 > > - 当系统中存在其他更高优先级的应用录音流时，实际使用的输入设备会跟随其他高优先级应用所选的输入设备。 > > - 应用程序可以监听 > [currentInputDeviceChanged](#onaudiosessiondeactivated) > 事件来获得实际的输入设备。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1010,11 +1010,11 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void>
 setAudioSessionBehavior(behavior: int): void
 ```
 
-设置音频会话行为参数，支持多种标志位的组合使用。 > **说明：** > > 当音频会话在激活状态时调用此接口后，必须重新调用接口[activateAudioSession](#activateAudioSession)使其生效。
+设置音频会话行为参数，支持多种标志位的组合使用。 > **说明：** > > 当音频会话在激活状态时调用此接口后，必须重新调用接口[activateAudioSession](#activateaudiosession)使其生效。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1028,7 +1028,7 @@ setAudioSessionBehavior(behavior: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| behavior | int | 是 | 用于设置音频会话行为。 &lt;br&gt;该参数可以是单个标志，也可以是多个标志的按位OR组合。 &lt;br&gt;当前支持的音频会话行为详见[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md#AudioSessionBehaviorFlags)中定义的标志。 |
+| behavior | int | 是 | 用于设置音频会话行为。 <br>该参数可以是单个标志，也可以是多个标志的按位OR组合。 <br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md#audiosessionbehaviorflags)中定义的标志。 |
 
 **错误码：**
 
@@ -1047,7 +1047,7 @@ setAudioSessionScene(scene: AudioSessionScene): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1075,11 +1075,11 @@ setAudioSessionScene(scene: AudioSessionScene): void
 setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPreferredRecordCategory): Promise<void>
 ```
 
-设置在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。使用Promise异步回调。 > **说明：** > > - 应用程序可以在蓝牙或星闪连接之前设置此分类，系统将在设备连接时优先使用蓝牙或星闪进行录音。 > > - 当系统中存在其他更高优先级的应用录音流时，实际使用的输入设备会跟随其他高优先级应用所选的输入设备。 > > - 应用程序可以监听 > [currentInputDeviceChanged](#on_audioSessionDeactivated) > 事件来获得实际的输入设备。
+设置在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。使用Promise异步回调。 > **说明：** > > - 应用程序可以在蓝牙或星闪连接之前设置此分类，系统将在设备连接时优先使用蓝牙或星闪进行录音。 > > - 当系统中存在其他更高优先级的应用录音流时，实际使用的输入设备会跟随其他高优先级应用所选的输入设备。 > > - 应用程序可以监听 > [currentInputDeviceChanged](#onaudiosessiondeactivated) > 事件来获得实际的输入设备。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1112,11 +1112,11 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 setCapturerMuteHint(mute: boolean): Promise<void>
 ```
 
-应用将当前音频会话内录音流的自身静音状态传递给系统音频模块。&lt;!--RP1--&gt;该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。&lt;!--RP1End--&gt;使用Promise异步回调。 > **说明：** > > - 该接口用于向系统音频模块上报当前音频会话内录音流的静音状态，不会改变录音流的实际静音状态。 > > - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码6800103。 > > - 若某条录音流同时调用了流级接口[AudioCapturer.setMuteHint](arkts-audio-audio-audiocapturer-i.md#setMuteHint)和本接口，流级接口设置优先级更高，以流级接口设置值为准。
+应用将当前音频会话内录音流的自身静音状态传递给系统音频模块。&lt;!--RP1--&gt;该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。&lt;!--RP1End--&gt;使用Promise异步回调。 > **说明：** > > - 该接口用于向系统音频模块上报当前音频会话内录音流的静音状态，不会改变录音流的实际静音状态。 > > - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码6800103。 > > - 若某条录音流同时调用了流级接口[AudioCapturer.setMuteHint](arkts-audio-audio-audiocapturer-i.md#setmutehint)和本接口，流级接口设置优先级更高，以流级接口设置值为准。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -1150,11 +1150,11 @@ setCapturerMuteHint(mute: boolean): Promise<void>
 setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 ```
 
-设置默认发声设备。使用Promise方式进行异步回调。 > **说明：** > > - 本接口适用于以下情况：当设置的[AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#AudioSessionScene)为VoIP场景时，激活AudioSession后立即生效。若 > [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#AudioSessionScene)为非VoIP场景，激活AudioSession时不会生效，仅在启动播放的 > [StreamUsage](arkts-audio-audio-streamusage-e.md#StreamUsage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。 > > - 本接口允许在AudioSessionManager创建后随时调用，系统会记录应用设置的默认本机内置发声设备。但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从 > 外接设备发声。否则，系统遵循应用设置的默认本机内置发声设备。
+设置默认发声设备。使用Promise方式进行异步回调。 > **说明：** > > - 本接口适用于以下情况：当设置的[AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#audiosessionscene)为VoIP场景时，激活AudioSession后立即生效。若 > [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md#audiosessionscene)为非VoIP场景，激活AudioSession时不会生效，仅在启动播放的 > [StreamUsage](arkts-audio-audio-streamusage-e.md#streamusage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。 > > - 本接口允许在AudioSessionManager创建后随时调用，系统会记录应用设置的默认本机内置发声设备。但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从 > 外接设备发声。否则，系统遵循应用设置的默认本机内置发声设备。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1166,7 +1166,7 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceType | DeviceType | 是 | 设备类型。 &lt;br&gt;仅支持以下设备：EARPIECE（听筒）、SPEAKER（扬声器）和DEFAULT（系统默认设备）。 |
+| deviceType | DeviceType | 是 | 设备类型。 <br>仅支持以下设备：EARPIECE（听筒）、SPEAKER（扬声器）和DEFAULT（系统默认设备）。 |
 
 **返回值：**
 
@@ -1188,11 +1188,11 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise<void>
 setMediaOutputDevice(deviceType: DeviceType): Promise<void>
 ```
 
-当连接其他音频外设（如蓝牙耳机或有线耳机）时，将媒体输出设备切换为内置扬声器。使用Promise异步回调。 > **说明：** > > - 本接口仅适用于媒体播放场景，并且会作用于应用内发起的所有媒体流。 > > - 若存在更高优先级的并发播放流或用户手动选择输出设备，则应用程序实际使用的输出设备将与本接口设置的设备不同。应用程序可通过监听 > [CurrentOutputDeviceChangedEvent](arkts-audio-audio-currentoutputdevicechangedevent-i.md#CurrentOutputDeviceChangedEvent)事件获取当前活跃的输出设备。 > > - 当应用程序需要清除之前通过接口设置的扬声器输出配置时，可通过调用接口将媒体输出设备设置为DEFAULT（系统默认设备）来实现。该设置仅在应用程序运行期间有效，当应用程序退出时，此接口的设置将自动清除。
+当连接其他音频外设（如蓝牙耳机或有线耳机）时，将媒体输出设备切换为内置扬声器。使用Promise异步回调。 > **说明：** > > - 本接口仅适用于媒体播放场景，并且会作用于应用内发起的所有媒体流。 > > - 若存在更高优先级的并发播放流或用户手动选择输出设备，则应用程序实际使用的输出设备将与本接口设置的设备不同。应用程序可通过监听 > [CurrentOutputDeviceChangedEvent](arkts-audio-audio-currentoutputdevicechangedevent-i.md#currentoutputdevicechangedevent)事件获取当前活跃的输出设备。 > > - 当应用程序需要清除之前通过接口设置的扬声器输出配置时，可通过调用接口将媒体输出设备设置为DEFAULT（系统默认设备）来实现。该设置仅在应用程序运行期间有效，当应用程序退出时，此接口的设置将自动清除。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1206,7 +1206,7 @@ setMediaOutputDevice(deviceType: DeviceType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceType | DeviceType | 是 | 设备类型。 &lt;br&gt;仅支持以下设备：SPEAKER（扬声器）和DEFAULT（系统默认设备）。 |
+| deviceType | DeviceType | 是 | 设备类型。 <br>仅支持以下设备：SPEAKER（扬声器）和DEFAULT（系统默认设备）。 |
 
 **返回值：**
 

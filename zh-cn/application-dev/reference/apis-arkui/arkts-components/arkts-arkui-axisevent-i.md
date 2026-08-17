@@ -1,12 +1,12 @@
 # AxisEvent
 
-轴事件的对象说明，继承于[BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)。
+轴事件的对象说明，继承于[BaseEvent](arkts-arkui-baseevent-i.md#baseevent)。
 
-**继承/实现关系：** AxisEvent extends [BaseEvent](arkts-arkui-baseevent-i.md#BaseEvent)
+**继承/实现关系：** AxisEvent extends [BaseEvent](arkts-arkui-baseevent-i.md#baseevent)
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ getHorizontalAxisValue(): number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ getHorizontalAxisValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 水平轴值。 &lt;br&gt;单位：vp |
+| number | 水平轴值。 <br>单位：vp |
 
 ## getPinchAxisScaleValue
 
@@ -80,7 +80,7 @@ getPinchAxisScaleValue(): number
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ getPinchAxisScaleValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 双指缩放比例。&lt;br/&gt; **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。&lt;br/&gt;默认值：0 &lt;br/&gt;取值范围：[0, +∞)&lt;br/&gt; |
+| number | 双指缩放比例。<br/> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。<br/>默认值：0 <br/>取值范围：[0, +∞)<br/> |
 
 ## getVerticalAxisValue
 
@@ -108,7 +108,7 @@ getVerticalAxisValue(): number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -124,7 +124,7 @@ getVerticalAxisValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 垂直轴值。 &lt;br&gt;单位：vp |
+| number | 垂直轴值。 <br>单位：vp |
 
 ## hasAxis
 
@@ -136,7 +136,7 @@ hasAxis(axisType: AxisType): boolean
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -158,7 +158,7 @@ hasAxis(axisType: AxisType): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 此轴事件是否包含指定的轴类型。 &lt;br&gt;true：包含指定的轴类型；false：不包含指定的轴类型。 |
+| boolean | 此轴事件是否包含指定的轴类型。 <br>true：包含指定的轴类型；false：不包含指定的轴类型。 |
 
 ## action
 
@@ -172,7 +172,7 @@ action: AxisAction
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -196,7 +196,7 @@ displayX: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -220,7 +220,7 @@ displayY: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -238,13 +238,13 @@ displayY: number
 eventHandleId?: number
 ```
 
-用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postInputEventWithStrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
+用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy](../../apis-na/arkts-apis/arkts-na-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
 **类型：** number
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -268,7 +268,7 @@ globalDisplayX?: number
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -292,7 +292,7 @@ globalDisplayY?: number
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -316,7 +316,7 @@ propagation: Callback<void>
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -340,7 +340,7 @@ scrollStep?: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -364,7 +364,7 @@ windowX: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -388,7 +388,7 @@ windowY: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -412,7 +412,7 @@ x: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 
@@ -436,7 +436,7 @@ y: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为17。
+**ArkTS模式：** 起始版本为17。
 
 **废弃版本：** -1
 

@@ -1,6 +1,7 @@
 # ArkTS API<!--arkts-basicserviceskit-->
 
-- [@ohos.WallpaperExtensionAbility](arkts-wallpaperextensionability.md)
+<!--Del-->
+- [@ohos.WallpaperExtensionAbility](arkts-wallpaperextensionability.md)<!--DelEnd-->
   <!--Del-->
   - [WallpaperExtensionAbility(系统接口)](arkts-basicservices-wallpaperextensionability-c-sys.md)<!--DelEnd-->
 - [@ohos.account.appAccount](arkts-account-appaccount.md)
@@ -181,10 +182,12 @@
   - [PrintExtensionAbility](arkts-basicservices-app-ability-printextensionability-printextensionability-c.md)
   <!--Del-->
   - [PrintExtensionAbility(系统接口)](arkts-basicservices-app-ability-printextensionability-printextensionability-c-sys.md)<!--DelEnd-->
-- [@ohos.application.StaticSubscriberExtensionAbility](arkts-application-staticsubscriberextensionability.md)
+<!--Del-->
+- [@ohos.application.StaticSubscriberExtensionAbility](arkts-application-staticsubscriberextensionability.md)<!--DelEnd-->
   <!--Del-->
   - [StaticSubscriberExtensionAbility(系统接口)](arkts-basicservices-application-staticsubscriberextensionability-staticsubscriberextensionability-c-sys.md)<!--DelEnd-->
-- [@ohos.application.StaticSubscriberExtensionContext](arkts-application-staticsubscriberextensioncontext.md)
+<!--Del-->
+- [@ohos.application.StaticSubscriberExtensionContext](arkts-application-staticsubscriberextensioncontext.md)<!--DelEnd-->
   <!--Del-->
   - [StaticSubscriberExtensionContext(系统接口)](arkts-basicservices-application-staticsubscriberextensioncontext-staticsubscriberextensioncontext-c-sys.md)<!--DelEnd-->
 - [@ohos.base](arkts-base.md)
@@ -241,7 +244,8 @@
   - [BatteryHealthState](arkts-basicservices-batteryinfo-batteryhealthstate-e.md)
   - [BatteryPluggedType](arkts-basicservices-batteryinfo-batterypluggedtype-e.md)
   - [CommonEventBatteryChangedKey](arkts-basicservices-batteryinfo-commoneventbatterychangedkey-e.md)
-- [@ohos.batteryStatistics](arkts-batterystatistics.md)
+<!--Del-->
+- [@ohos.batteryStatistics](arkts-batterystatistics.md)<!--DelEnd-->
   <!--Del-->
   - [getAppPowerPercent(系统接口)](arkts-basicservices-batterystats-getapppowerpercent-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -256,7 +260,8 @@
   - [BatteryStatsInfo(系统接口)](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ConsumptionType(系统接口)](arkts-basicservices-batterystats-consumptiontype-e-sys.md)<!--DelEnd-->
-- [@ohos.brightness](arkts-brightness.md)
+<!--Del-->
+- [@ohos.brightness](arkts-brightness.md)<!--DelEnd-->
   <!--Del-->
   - [setValue(系统接口)](arkts-basicservices-brightness-setvalue-f-sys.md)<!--DelEnd-->
 - [@ohos.busManager.serial](arkts-busmanager-serial.md)
@@ -269,7 +274,8 @@
   - [DataBits](arkts-basicservices-serial-databits-e.md)
   - [Parity](arkts-basicservices-serial-parity-e.md)
   - [StopBits](arkts-basicservices-serial-stopbits-e.md)
-- [@ohos.charger](arkts-charger.md)
+<!--Del-->
+- [@ohos.charger](arkts-charger.md)<!--DelEnd-->
   <!--Del-->
   - [ChargeType(系统接口)](arkts-basicservices-charger-chargetype-e-sys.md)<!--DelEnd-->
 - [@ohos.commonEvent](arkts-commonevent.md)
@@ -300,7 +306,8 @@
   - [Support](arkts-basicservices-commoneventmanager-support-e.md)
   <!--Del-->
   - [Support(系统接口)](arkts-basicservices-commoneventmanager-support-e-sys.md)<!--DelEnd-->
-- [@ohos.configPolicy](arkts-configpolicy.md)
+<!--Del-->
+- [@ohos.configPolicy](arkts-configpolicy.md)<!--DelEnd-->
   <!--Del-->
   - [getCfgDirList(系统接口)](arkts-basicservices-configpolicy-getcfgdirlist-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -753,13 +760,16 @@
   - [ScanErrorCode](arkts-basicservices-scan-scanerrorcode-e.md)
   - [ScannerDiscoveryMode](arkts-basicservices-scan-scannerdiscoverymode-e.md)
   - [ScannerSyncMode](arkts-basicservices-scan-scannersyncmode-e.md)
-- [@ohos.selectionInput.SelectionExtensionAbility](arkts-selectioninput-selectionextensionability.md)
+<!--Del-->
+- [@ohos.selectionInput.SelectionExtensionAbility](arkts-selectioninput-selectionextensionability.md)<!--DelEnd-->
   <!--Del-->
   - [SelectionExtensionAbility(系统接口)](arkts-basicservices-selectioninput-selectionextensionability-selectionextensionability-c-sys.md)<!--DelEnd-->
-- [@ohos.selectionInput.SelectionExtensionContext](arkts-selectioninput-selectionextensioncontext.md)
+<!--Del-->
+- [@ohos.selectionInput.SelectionExtensionContext](arkts-selectioninput-selectionextensioncontext.md)<!--DelEnd-->
   <!--Del-->
   - [SelectionExtensionContext(系统接口)](arkts-basicservices-selectioninput-selectionextensioncontext-selectionextensioncontext-c-sys.md)<!--DelEnd-->
-- [@ohos.selectionInput.SelectionPanel](arkts-selectioninput-selectionpanel.md)
+<!--Del-->
+- [@ohos.selectionInput.SelectionPanel](arkts-selectioninput-selectionpanel.md)<!--DelEnd-->
   <!--Del-->
   - [PanelInfo(系统接口)](arkts-basicservices-selectioninput-selectionpanel-panelinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -807,7 +817,8 @@
   <!--Del-->
   - [updateNtpTime(系统接口)](arkts-basicservices-systemdatetime-updatentptime-f-sys.md)<!--DelEnd-->
   - [TimeType](arkts-basicservices-systemdatetime-timetype-e.md)
-- [@ohos.systemParameterEnhance](arkts-systemparameterenhance.md)
+<!--Del-->
+- [@ohos.systemParameterEnhance](arkts-systemparameterenhance.md)<!--DelEnd-->
   <!--Del-->
   - [get(系统接口)](arkts-basicservices-systemparameterenhance-get-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -825,7 +836,8 @@
   - [setDate](arkts-basicservices-systemtime-setdate-f.md)
   - [setTime](arkts-basicservices-systemtime-settime-f.md)
   - [setTimezone](arkts-basicservices-systemtime-settimezone-f.md)
-- [@ohos.systemTimer](arkts-systemtimer.md)
+<!--Del-->
+- [@ohos.systemTimer](arkts-systemtimer.md)<!--DelEnd-->
   <!--Del-->
   - [createTimer(系统接口)](arkts-basicservices-systemtimer-createtimer-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -838,7 +850,8 @@
   - [TimerOptions(系统接口)](arkts-basicservices-systemtimer-timeroptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [常量(系统接口)](arkts-basicservices-systemtimer-con-sys.md)<!--DelEnd-->
-- [@ohos.systemparameter](arkts-systemparameter.md)
+<!--Del-->
+- [@ohos.systemparameter](arkts-systemparameter.md)<!--DelEnd-->
   <!--Del-->
   - [get(系统接口)](arkts-basicservices-systemparameter-get-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -855,7 +868,8 @@
   - [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md)
   - [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md)
   - [ThermalLevel](arkts-basicservices-thermal-thermallevel-e.md)
-- [@ohos.update](arkts-update.md)
+<!--Del-->
+- [@ohos.update](arkts-update.md)<!--DelEnd-->
   <!--Del-->
   - [getLocalUpdater(系统接口)](arkts-basicservices-update-getlocalupdater-f-sys.md)<!--DelEnd-->
   <!--Del-->

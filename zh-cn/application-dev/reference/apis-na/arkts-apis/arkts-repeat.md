@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Repeat](arkts-na-repeat-repeat-f.md#Repeat) | 定义Repeat组件。需要在组件属性设置开始时调用setRepeatOptions，并在组件属性设置结束时调用applyAttributeFinish。 |
+| [Repeat](arkts-na-repeat-repeat-f.md#repeat) | 定义Repeat组件。需要在组件属性设置开始时调用setRepeatOptions，并在组件属性设置结束时调用applyAttributeFinish。 |
 
 ### 接口
 

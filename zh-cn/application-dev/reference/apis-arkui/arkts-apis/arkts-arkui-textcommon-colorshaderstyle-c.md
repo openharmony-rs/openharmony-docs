@@ -1,12 +1,12 @@
 # ColorShaderStyle
 
-显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#ShaderStyle)。
+显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#shaderstyle)。
 
-**继承/实现关系：** ColorShaderStyle extends [ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#ShaderStyle)
+**继承/实现关系：** ColorShaderStyle extends [ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#shaderstyle)
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ constructor(color: ResourceColor)
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ color: ResourceColor
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ declare function choose(types?: string[]): Promise<string>
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -41,7 +41,7 @@ declare function choose(callback: AsyncCallback<string>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -66,7 +66,7 @@ declare function choose(types: string[], callback: AsyncCallback<string>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

@@ -10,7 +10,7 @@ function setDefaultData(admin: Want, slotId: number): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -57,9 +57,9 @@ let slotId: number = 0;
 try {
   // 设置指定卡槽为默认数据流量卡
   telephonyManager.setDefaultData(wantTemp, slotId);
-  console.info(`success to set default data SIM ID`);
+  console.info(`success in setting default data SIM ID on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to set default data. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set default data on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

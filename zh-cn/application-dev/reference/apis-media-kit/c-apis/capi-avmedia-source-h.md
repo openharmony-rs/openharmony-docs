@@ -51,7 +51,7 @@
 | [OH_AVMediaSourceLoader *OH_AVMediaSourceLoader_Create(void)](#oh_avmediasourceloader_create) | - | 创建一个OH_AVMediaSourceLoader实例。成功时返回OH_AVMediaSourceLoader指针，失败时返回空指针。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)](#oh_avmediasourceloader_destroy) | - | 释放OH_AVMediaSourceLoader实例。 |
 | [OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_AVMediaSourceLoader *loader)](#oh_avmediasource_setmediasourceloader) | - | 为媒体源实例设置一个源加载器。 |
-| [typedef int64_t (\*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSourceLoadingRequest *request, void *userData)](#oh_avmediasourceloaderonsourceopenedcallback) | OH_AVMediaSourceLoaderOnSourceOpenedCallback | Defines the SourceOpenCallback function which is called by the service.client should process the incoming requestand return the unique handle to the open resource.The client must return the handle immediately after processing the request. |
+| [typedef int64_t (\*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSourceLoadingRequest *request, void *userData)](#oh_avmediasourceloaderonsourceopenedcallback) | OH_AVMediaSourceLoaderOnSourceOpenedCallback | 定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。客户端必须在处理完请求后立即返回句柄。 |
 | [typedef void (\*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t requestedOffset, int64_t requestedLength, void *userData)](#oh_avmediasourceloaderonsourcereadcallback) | OH_AVMediaSourceLoaderOnSourceReadCallback | 定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader)方法推送数据。客户端必须在处理完请求后立即返回。 |
 | [typedef void (\*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void *userData)](#oh_avmediasourceloaderonsourceclosedcallback) | OH_AVMediaSourceLoaderOnSourceClosedCallback | 定义由服务端调用的SourceCloseCallback函数。客户端应释放相关资源，并在处理完请求后立即返回。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceOpenedCallback callback, void *userData)](#oh_avmediasourceloader_setsourceopencallback) | - | 为OH_AVMediaSourceLoader设置打开回调函数。 |
@@ -321,7 +321,7 @@ OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | 指向OH_AVMediaSource的指针。 |
-| const char *mimetype | 媒体源的MIME类型{@link AVMimeTypes}。 |
+| const char *mimetype | 媒体源的MIME类型{@link AV_MimeTypes}。 |
 
 **返回：**
 
@@ -523,7 +523,7 @@ typedef int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSource
 
 **描述**
 
-Defines the SourceOpenCallback function which is called by the service.client should process the incoming requestand return the unique handle to the open resource.The client must return the handle immediately after processing the request.
+定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。客户端必须在处理完请求后立即返回句柄。
 
 **起始版本：** 23
 

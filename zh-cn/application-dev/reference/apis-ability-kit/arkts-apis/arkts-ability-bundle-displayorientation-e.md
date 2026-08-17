@@ -1,14 +1,14 @@
 # DisplayOrientation
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [bundleManager.DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md#DisplayOrientation)替代。 屏幕显示方向。
+> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [bundleManager.DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md#displayorientation)替代。 屏幕显示方向。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md#DisplayOrientation)
+**替代接口：** [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md#displayorientation)
 
 <!--Device-bundle-export enum DisplayOrientation--><!--Device-bundle-export enum DisplayOrientation-End-->
 
@@ -24,11 +24,11 @@ UNSPECIFIED = 0
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#UNSPECIFIED)
+**替代接口：** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#unspecified)
 
 <!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
 
@@ -42,11 +42,11 @@ LANDSCAPE = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [LANDSCAPE](arkts-ability-bundlemanager-displayorientation-e.md#LANDSCAPE)
+**替代接口：** [LANDSCAPE](arkts-ability-bundlemanager-displayorientation-e.md#landscape)
 
 <!--Device-DisplayOrientation-LANDSCAPE = 1--><!--Device-DisplayOrientation-LANDSCAPE = 1-End-->
 
@@ -60,11 +60,11 @@ PORTRAIT = 2
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [PORTRAIT](arkts-ability-bundlemanager-displayorientation-e.md#PORTRAIT)
+**替代接口：** [PORTRAIT](arkts-ability-bundlemanager-displayorientation-e.md#portrait)
 
 <!--Device-DisplayOrientation-PORTRAIT = 2--><!--Device-DisplayOrientation-PORTRAIT = 2-End-->
 
@@ -78,11 +78,11 @@ FOLLOW_RECENT = 3
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#FOLLOW_RECENT)
+**替代接口：** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#followrecent)
 
 <!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
 

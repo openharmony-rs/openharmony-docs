@@ -1,14 +1,14 @@
 # LauncherAbilityInfo（系统接口）
 
-LauncherAbilityInfo信息，通过接口 innerBundleManager.getLauncherAbilityInfos 获取。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-LauncherAbilityInfo](#LauncherAbilityInfo（系统接口）)替代。 > > 本模块为系统接口。
+LauncherAbilityInfo信息，通过接口 innerBundleManager.getLauncherAbilityInfos 获取。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-LauncherAbilityInfo](#launcherabilityinfo系统接口)替代。 > > 本模块为系统接口。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [LauncherAbilityInfo](#LauncherAbilityInfo（系统接口）)
+**替代接口：** [LauncherAbilityInfo](#launcherabilityinfo系统接口)
 
 <!--Device-unnamed-export interface LauncherAbilityInfo--><!--Device-unnamed-export interface LauncherAbilityInfo-End-->
 
@@ -28,7 +28,7 @@ launcher ability的应用程序的配置信息。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -52,7 +52,7 @@ launcher ability的ElementName信息。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -76,7 +76,7 @@ launcher ability的图标的资源ID值。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -100,7 +100,7 @@ launcher ability的安装时间戳，单位毫秒。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -124,7 +124,7 @@ launcher ability的标签的资源ID值。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -148,7 +148,7 @@ launcher ability的用户ID。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

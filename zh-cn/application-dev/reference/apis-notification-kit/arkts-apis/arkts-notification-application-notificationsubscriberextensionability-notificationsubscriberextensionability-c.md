@@ -4,7 +4,7 @@ NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -15,7 +15,7 @@ NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，
 ## 导入模块
 
 ```TypeScript
-import { NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
+import { NotificationSubscriberExtensionAbility } from 'NotificationSubscriberExtensionAbility';
 ```
 
 ## onCancelMessages
@@ -28,7 +28,7 @@ onCancelMessages(hashCodes: Array<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ onDestroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -126,7 +126,7 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -180,7 +180,7 @@ NotificationSubscriberExtensionAbility的上下文环境。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

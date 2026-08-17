@@ -1,12 +1,12 @@
 # CalendarDialogOptions
 
-日历选择器弹窗选项。 继承自[CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md#CalendarOptions)。 > **说明：** > > 在应用窗口缩小过程中，弹窗的宽度会被不断压缩，当缩小到一定程度时会导致其内容无法完整显示，保证CalendarPickerDialog内容能够 > 完整显示的最小窗口宽度为386vp。
+日历选择器弹窗选项。 继承自[CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md#calendaroptions)。 > **说明：** > > 在应用窗口缩小过程中，弹窗的宽度会被不断压缩，当缩小到一定程度时会导致其内容无法完整显示，保证CalendarPickerDialog内容能够 > 完整显示的最小窗口宽度为386vp。
 
-**继承/实现关系：** CalendarDialogOptions extends [CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md#CalendarOptions)
+**继承/实现关系：** CalendarDialogOptions extends [CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md#calendaroptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ distortionMode?: DistortionMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -54,7 +54,7 @@ edgeLightMode?: EdgeLightMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -2,11 +2,11 @@
 
 基础自定义组件的定义，它是所有自定义组件的基类。
 
-**继承/实现关系：** BaseCustomComponent extends [ExtendableComponent](arkts-na-extendablecomponent-extendablecomponent-c.md#ExtendableComponent) implements CommonAttribute
+**继承/实现关系：** BaseCustomComponent extends [ExtendableComponent](arkts-na-extendablecomponent-extendablecomponent-c.md#extendablecomponent) implements CommonAttribute
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ aboutToRecycle(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

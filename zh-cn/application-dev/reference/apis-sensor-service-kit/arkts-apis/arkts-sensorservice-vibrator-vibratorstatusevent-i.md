@@ -1,10 +1,10 @@
 # VibratorStatusEvent
 
-振动设备上线、下线状态事件信息。当马达设备上线或下线时，通过vibrator.on回调传递此对象。
+振动设备上线、下线状态事件信息。当马达设备上线或下线时，通过[vibrator.on](arkts-sensorservice-vibrator-onvibratorstatechange-f.md#onvibratorstatechange)回调传递此对象。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 deviceId: int
 ```
 
-设备的ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startVibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopVibration)等接口指定目标设备。
+设备的ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标设备。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ isVibratorOnline: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,13 +58,13 @@ isVibratorOnline: boolean
 timestamp: long
 ```
 
-报告事件的时间戳。单位：ms。
+报告事件的时间戳。单位：ms（毫秒）。
 
 **类型：** long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ vibratorCount: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

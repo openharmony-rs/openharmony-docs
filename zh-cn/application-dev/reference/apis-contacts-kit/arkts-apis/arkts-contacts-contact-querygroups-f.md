@@ -10,11 +10,11 @@ function queryGroups(callback: AsyncCallback<Array<Group>>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#queryGroups)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**替代接口：** [queryGroups](#querygroups)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -54,7 +54,7 @@ function queryGroups(context: Context, callback: AsyncCallback<Array<Group>>): v
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -109,11 +109,11 @@ function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): voi
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#queryGroups)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**替代接口：** [queryGroups](#querygroups)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -158,7 +158,7 @@ function queryGroups(context: Context, holder: Holder, callback: AsyncCallback<A
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -218,11 +218,11 @@ function queryGroups(holder?: Holder): Promise<Array<Group>>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#queryGroups)(context: Context, holder?: Holder)
+**替代接口：** [queryGroups](#querygroups)(context: Context, holder?: Holder)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -268,7 +268,7 @@ function queryGroups(context: Context, holder?: Holder): Promise<Array<Group>>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

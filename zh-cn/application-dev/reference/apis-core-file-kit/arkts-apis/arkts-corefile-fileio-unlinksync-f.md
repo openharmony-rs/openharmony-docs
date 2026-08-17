@@ -10,11 +10,11 @@ declare function unlinkSync(path: string): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [unlinkSync](arkts-corefile-file-fs-unlinksync-f.md#unlinkSync)
+**替代接口：** [unlinkSync](arkts-corefile-file-fs-unlinksync-f.md#unlinksync)
 
 <!--Device-unnamed-declare function unlinkSync(path: string): void--><!--Device-unnamed-declare function unlinkSync(path: string): void-End-->
 

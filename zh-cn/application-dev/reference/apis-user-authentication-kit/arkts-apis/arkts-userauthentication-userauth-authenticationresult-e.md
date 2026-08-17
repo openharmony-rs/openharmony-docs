@@ -4,11 +4,11 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md#UserAuthResultCode)
+**替代接口：** [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md#userauthresultcode)
 
 <!--Device-userAuth-export enum AuthenticationResult--><!--Device-userAuth-export enum AuthenticationResult-End-->
 
@@ -24,11 +24,11 @@ NO_SUPPORT = -1
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#TYPE_NOT_SUPPORT)
+**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#typenotsupport)
 
 <!--Device-AuthenticationResult-NO_SUPPORT = -1--><!--Device-AuthenticationResult-NO_SUPPORT = -1-End-->
 
@@ -44,11 +44,11 @@ SUCCESS = 0
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [SUCCESS](arkts-userauthentication-userauth-resultcode-e.md#SUCCESS)
+**替代接口：** [SUCCESS](arkts-userauthentication-userauth-resultcode-e.md#success)
 
 <!--Device-AuthenticationResult-SUCCESS = 0--><!--Device-AuthenticationResult-SUCCESS = 0-End-->
 
@@ -64,11 +64,11 @@ COMPARE_FAILURE = 1
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [FAIL](arkts-userauthentication-userauth-resultcode-e.md#FAIL)
+**替代接口：** [FAIL](arkts-userauthentication-userauth-resultcode-e.md#fail)
 
 <!--Device-AuthenticationResult-COMPARE_FAILURE = 1--><!--Device-AuthenticationResult-COMPARE_FAILURE = 1-End-->
 
@@ -84,11 +84,11 @@ CANCELED = 2
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [CANCELED](arkts-userauthentication-userauth-resultcode-e.md#CANCELED)
+**替代接口：** [CANCELED](arkts-userauthentication-userauth-resultcode-e.md#canceled)
 
 <!--Device-AuthenticationResult-CANCELED = 2--><!--Device-AuthenticationResult-CANCELED = 2-End-->
 
@@ -104,11 +104,11 @@ TIMEOUT = 3
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [TIMEOUT](arkts-userauthentication-userauth-resultcode-e.md#TIMEOUT)
+**替代接口：** [TIMEOUT](arkts-userauthentication-userauth-resultcode-e.md#timeout)
 
 <!--Device-AuthenticationResult-TIMEOUT = 3--><!--Device-AuthenticationResult-TIMEOUT = 3-End-->
 
@@ -124,7 +124,7 @@ CAMERA_FAIL = 4
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -142,11 +142,11 @@ BUSY = 5
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [BUSY](arkts-userauthentication-userauth-resultcode-e.md#BUSY)
+**替代接口：** [BUSY](arkts-userauthentication-userauth-resultcode-e.md#busy)
 
 <!--Device-AuthenticationResult-BUSY = 5--><!--Device-AuthenticationResult-BUSY = 5-End-->
 
@@ -162,11 +162,11 @@ INVALID_PARAMETERS = 6
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [INVALID_PARAMETERS](arkts-userauthentication-userauth-resultcode-e.md#INVALID_PARAMETERS)
+**替代接口：** [INVALID_PARAMETERS](arkts-userauthentication-userauth-resultcode-e.md#invalidparameters)
 
 <!--Device-AuthenticationResult-INVALID_PARAMETERS = 6--><!--Device-AuthenticationResult-INVALID_PARAMETERS = 6-End-->
 
@@ -182,11 +182,11 @@ LOCKED = 7
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [LOCKED](arkts-userauthentication-userauth-resultcode-e.md#LOCKED)
+**替代接口：** [LOCKED](arkts-userauthentication-userauth-resultcode-e.md#locked)
 
 <!--Device-AuthenticationResult-LOCKED = 7--><!--Device-AuthenticationResult-LOCKED = 7-End-->
 
@@ -202,11 +202,11 @@ NOT_ENROLLED = 8
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-resultcode-e.md#NOT_ENROLLED)
+**替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-resultcode-e.md#notenrolled)
 
 <!--Device-AuthenticationResult-NOT_ENROLLED = 8--><!--Device-AuthenticationResult-NOT_ENROLLED = 8-End-->
 
@@ -222,11 +222,11 @@ GENERAL_ERROR = 100
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#GENERAL_ERROR)
+**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#generalerror)
 
 <!--Device-AuthenticationResult-GENERAL_ERROR = 100--><!--Device-AuthenticationResult-GENERAL_ERROR = 100-End-->
 

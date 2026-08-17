@@ -10,7 +10,7 @@ function offGetSimActiveState(callback?: Callback<boolean>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function offGetSimActiveState(callback?: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 否 | 回调函数，返回SIM卡是否激活。&lt;br/&gt;- true：激活。&lt;br/&gt;- false：未激活。 |
+| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 否 | 回调函数，返回SIM卡是否激活。<br/>- true：激活。<br/>- false：未激活。 |
 
 **错误码：**
 

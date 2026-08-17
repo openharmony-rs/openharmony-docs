@@ -10,7 +10,7 @@ function getAllSimMessages(slotId: int, callback: AsyncCallback<Array<SimShortMe
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function getAllSimMessages(slotId: int, callback: AsyncCallback<Array<SimShortMe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | SIM卡槽ID：&lt;br/&gt;- 0：卡槽1&lt;br/&gt;- 1：卡槽2 |
+| slotId | int | 是 | SIM卡槽ID：<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[SimShortMessage](arkts-telephony-sms-simshortmessage-i-sys.md)&gt;&gt; | 是 | 获取所有SIM卡消息的回调函数。 |
 
 **错误码：**
@@ -64,7 +64,7 @@ function getAllSimMessages(slotId: int): Promise<Array<SimShortMessage>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ function getAllSimMessages(slotId: int): Promise<Array<SimShortMessage>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | SIM卡槽ID：&lt;br/&gt;- 0：卡槽1&lt;br/&gt;- 1：卡槽2 |
+| slotId | int | 是 | SIM卡槽ID：<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 
 **返回值：**
 

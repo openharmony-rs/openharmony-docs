@@ -10,7 +10,7 @@ function createAVPlayer(callback: AsyncCallback<AVPlayer>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -55,11 +55,11 @@ media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
 function createAVPlayer(callback: AsyncCallback<AVPlayer | undefined>): void
 ```
 
-Creates an **AVPlayer** instance. This API uses an asynchronous callback to return the result. &lt;br&gt;**NOTE:**&lt;br&gt; You are advised to create a maximum of 16 **AVPlayer** instances for an application in both audio and video playback scenarios. The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use.
+Creates an **AVPlayer** instance. This API uses an asynchronous callback to return the result. <br>**NOTE:**<br> You are advised to create a maximum of 16 **AVPlayer** instances for an application in both audio and video playback scenarios. The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ function createAVPlayer(): Promise<AVPlayer>
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -137,11 +137,11 @@ media.createAVPlayer().then((video: media.AVPlayer) => {
 function createAVPlayer(): Promise<AVPlayer | undefined>
 ```
 
-Creates an **AVPlayer** instance. This API uses a promise to return the result. &lt;br&gt;**NOTE:**&lt;br&gt; You are advised to create a maximum of 16 **AVPlayer** instances for an application in both audio and video playback scenarios. The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use.
+Creates an **AVPlayer** instance. This API uses a promise to return the result. <br>**NOTE:**<br> You are advised to create a maximum of 16 **AVPlayer** instances for an application in both audio and video playback scenarios. The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

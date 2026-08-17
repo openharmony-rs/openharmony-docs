@@ -6,11 +6,11 @@
 function addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 ```
 
-为设备添加防火墙过滤规则。适用于企业网络安全管控场景，例如限制特定IP地址的网络访问、防止恶意网络攻击、控制应用程序的网络通信、实现网络访问的允许名单或禁用名单管理，帮助企业精细化控制 网络访问，防止网络攻击和数据泄露。 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。 从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md#LogType)。 > **说明：** > > - 添加了[Action](arkts-mdm-networkmanager-action-e.md#Action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。 > > - 设备重启，将会清空防火墙过滤规则。 > > - 规则匹配顺序：先匹配域名过滤规则（由[addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md#addDomainFilterRule)添加），再匹配本接口添加的IP防火墙规则；在域名规则或IP规 > 则中，均按[Action](arkts-mdm-networkmanager-action-e.md#Action)为ALLOW、DENY、REJECT的顺序进行匹配。
+为设备添加防火墙过滤规则。适用于企业网络安全管控场景，例如限制特定IP地址的网络访问、防止恶意网络攻击、控制应用程序的网络通信、实现网络访问的允许名单或禁用名单管理，帮助企业精细化控制 网络访问，防止网络攻击和数据泄露。 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。 从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md#logtype)。 > **说明：** > > - 添加了[Action](arkts-mdm-networkmanager-action-e.md#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。 > > - 设备重启，将会清空防火墙过滤规则。 > > - 规则匹配顺序：先匹配域名过滤规则（由[addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md#adddomainfilterrule)添加），再匹配本接口添加的IP防火墙规则；在域名规则或IP规 > 则中，均按[Action](arkts-mdm-networkmanager-action-e.md#action)为ALLOW、DENY、REJECT的顺序进行匹配。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ offFrame(callback?: Callback<IntervalInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -59,7 +59,7 @@ off(type: 'frame', callback?: Callback<IntervalInfo>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -77,15 +77,13 @@ off(type: 'frame', callback?: Callback<IntervalInfo>): void
 ## 示例
 
 ```TypeScript
-// 定义回调函数
 let callback = (frameInfo: displaySync.IntervalInfo) => {
     console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
 }
 
-// 注册回调函数
 backDisplaySync?.on("frame", callback)
 
-// 取消回调函数
+// 取消订阅函数
 backDisplaySync?.off("frame", callback)
 ```
 
@@ -99,7 +97,7 @@ onFrame(callback: Callback<IntervalInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -130,11 +128,11 @@ backDisplaySync?.onFrame(callback)
 on(type: 'frame', callback: Callback<IntervalInfo>): void
 ```
 
-订阅每一帧的变化。注册回调函数后，还需调用start方法启动DisplaySync，系统才会在每一帧触发该回调。和off('frame')方法配对使用，用于取消注册回调函数。 字段需为非负整数，取值范围为[0, 设备最大帧率]，且满足min <= expected <= max。超出有效范围时参数校验失败。
+订阅每一帧的变化。注册回调函数后，还需调用start方法启动DisplaySync，系统才会在每一帧触发该回调。和off('frame')方法配对使用，用于取消注册回调函数。 字段需为非负整数，取值范围为[0, 设备最大帧率]，且满足min &lt;= expected &lt;= max。超出有效范围时参数校验失败。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -152,12 +150,11 @@ on(type: 'frame', callback: Callback<IntervalInfo>): void
 ## 示例
 
 ```TypeScript
-// 定义回调函数
 let callback = (frameInfo: displaySync.IntervalInfo) => {
     console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
 }
 
-// 注册回调函数
+// 注册订阅函数
 backDisplaySync?.on("frame", callback)
 ```
 
@@ -171,7 +168,7 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -183,7 +180,7 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rateRange | [ExpectedFrameRateRange](../../apis-na/arkts-apis/arkts-na-common-expectedframeraterange-i.md) | 是 | 设置DisplaySync期望的帧率范围，包含expected、min和max三个字段，单位为帧/秒（fps）， 字段需为非负整数，取值范围为[0, 设备最大帧率]，且满足min <= expected <= max。超出有效范围时会抛出401错误码。 |
+| rateRange | [ExpectedFrameRateRange](../../apis-na/arkts-apis/arkts-na-common-expectedframeraterange-i.md) | 是 | 设置DisplaySync期望的帧率范围，包含expected、min和max三个字段，单位为帧/秒（fps）， 字段需为非负整数，取值范围为[0, 设备最大帧率]，且满足min &lt;= expected &lt;= max。超出有效范围时会抛出401错误码。 |
 
 **错误码：**
 
@@ -194,18 +191,14 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 ## 示例
 
 ```TypeScript
-// 定义期望帧率范围
-let range: ExpectedFrameRateRange = {
-  expected: 10, // 期望帧率
-  min: 0, // 最小帧率
-  max: 120 // 最大帧率
+let range : ExpectedFrameRateRange = {
+  expected: 10,
+  min:0,
+  max:120
 };
 
-// 设置DisplaySync期望帧率范围
+// 设置DisplaySync期望的帧率
 backDisplaySync?.setExpectedFrameRateRange(range)
-
-// 生效期望帧率范围
-backDisplaySync?.start()
 ```
 
 ## start
@@ -218,7 +211,7 @@ start(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -229,24 +222,21 @@ start(): void
 ## 示例
 
 ```TypeScript
-// 定义期望帧率范围
-let range: ExpectedFrameRateRange = {
-  expected: 10, // 期望帧率
-  min: 0, // 最小帧率
-  max: 120 // 最大帧率
+let range : ExpectedFrameRateRange = {
+  expected: 10,
+  min:0,
+  max:120
 };
-// 设置DisplaySync期望帧率范围
+
 backDisplaySync?.setExpectedFrameRateRange(range)
 
-// 定义回调函数
 let callback = (frameInfo: displaySync.IntervalInfo) => {
     console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
 }
 
-// 注册回调函数
 backDisplaySync?.on("frame", callback)
 
-// 生效期望帧率范围并且开始每帧回调
+// 开始每帧回调
 backDisplaySync?.start()
 ```
 
@@ -286,7 +276,7 @@ stop(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -297,30 +287,25 @@ stop(): void
 ## 示例
 
 ```TypeScript
-// 定义期望帧率范围
-let range: ExpectedFrameRateRange = {
-  expected: 10, // 期望帧率
-  min: 0, // 最小帧率
-  max: 120 // 最大帧率
+let range : ExpectedFrameRateRange = {
+  expected: 10,
+  min:0,
+  max:120
 };
 
-// 设置DisplaySync期望帧率范围
 backDisplaySync?.setExpectedFrameRateRange(range)
 
-// 定义回调函数
 let callback = (frameInfo: displaySync.IntervalInfo) => {
     console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
 }
 
-// 注册回调函数
 backDisplaySync?.on("frame", callback)
 
-// 生效期望帧率范围并且开始每帧回调
 backDisplaySync?.start()
 
 // ...
 
-// 停止生效期望帧率范围并且停止每帧回调
+// 停止每帧回调
 backDisplaySync?.stop()
 ```
 

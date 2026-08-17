@@ -15,7 +15,7 @@ Queries usage information about each bundle within a specified period at a speci
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -32,8 +32,8 @@ Queries usage information about each bundle within a specified period at a speci
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | byInterval | IntervalType | 是 | Indicates the interval at which the usage statistics are queried. The value can be { |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)&gt;&gt; | 是 | the callback of usage information about each bundle. |
 
 ## 示例
@@ -70,7 +70,7 @@ Queries usage information about each bundle within a specified period at a speci
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -87,8 +87,8 @@ Queries usage information about each bundle within a specified period at a speci
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | byInterval | IntervalType | 是 | Indicates the interval at which the usage statistics are queried. The value can be { |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds. &lt;br&gt; Unit:ms |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 
 **返回值：**
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algorithm | [LayoutAlgorithm](../../apis-na/arkts-apis/arkts-na-layoutalgorithm-i.md) | 是 | 指定动态布局组件的布局算法。取非法值时，按照[堆叠布局算法](../../apis-na/arkts-apis/arkts-na-layoutalgorithm-stacklayoutalgorithm-c.md#StackLayoutAlgorithm) 布局子组件，子组件堆叠排列。 |
+| algorithm | [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md) | 是 | 指定动态布局组件的布局算法。取非法值时，按照[堆叠布局算法](arkts-arkui-layoutalgorithm-stacklayoutalgorithm-c.md#stacklayoutalgorithm) 布局子组件，子组件堆叠排列。 |
 
 **返回值：**
 

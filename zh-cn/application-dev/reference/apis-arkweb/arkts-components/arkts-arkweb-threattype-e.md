@@ -1,10 +1,10 @@
 # ThreatType
 
-Enum type supplied to threatType for the website's threat type.
+定义网站风险类型。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ THREAT_ILLEGAL = 0
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ THREAT_FRAUD = 1
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ THREAT_RISK = 2
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -78,11 +78,11 @@ THREAT_RISK = 2
 THREAT_WARNING = 3
 ```
 
-涉嫌包含不健康内容的网站。 ArkWeb 不会拦截此类网站，应用程序可以自行处理。
+涉嫌包含不健康内容的网站。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ THREAT_NONE = 4
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ THREAT_UNPROCESSED = 5
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 

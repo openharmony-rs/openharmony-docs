@@ -4,7 +4,7 @@ NodeController用于管理自定义节点的创建、显示、更新等操作，
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ aboutToAppear?(): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ aboutToDisappear?(): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ aboutToResize?(size: Size): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ aboutToResize?(size: Size): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Size](../../apis-na/arkts-apis/arkts-na-graphics-size-i.md) | 是 | 组件布局大小的宽和高，单位为vp。 |
+| size | [Size](arkts-arkui-graphics-size-i.md) | 是 | 组件布局大小的宽和高，单位为vp。 |
 
 ## makeNode
 
@@ -90,11 +90,11 @@ aboutToResize?(size: Size): void
 abstract makeNode(uiContext: UIContext): FrameNode | null
 ```
 
-当NodeController绑定的NodeContainer创建时触发此回调。回调方法将返回一个节点，该节点将被挂载至 NodeContainer。 或者可以通过NodeController的rebuild()方法触发回调。 > **说明：** > > NodeContainer不支持跨实例复用。如果出现跨实例复用 > NodeContainer，传入 > NodeContainer的[NodeController](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#NodeController)触发 > [makeNode](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#makeNode)回调方法时，入参中的[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)对象可能为undefined，此时需要开发者 > 判断该对象是否为undefined，防止后续使用此入参时出现[UIContext无效的JS异常](../../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
+当NodeController绑定的NodeContainer创建时触发此回调。回调方法将返回一个节点，该节点将被挂载至 NodeContainer。 或者可以通过NodeController的rebuild()方法触发回调。 > **说明：** > > NodeContainer不支持跨实例复用。如果出现跨实例复用 > NodeContainer，传入 > NodeContainer的[NodeController](#nodecontroller)触发 > [makeNode](#makenode)回调方法时，入参中的[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)对象可能为undefined，此时需要开发者 > 判断该对象是否为undefined，防止后续使用此入参时出现[UIContext无效的JS异常](../../../ui/arkts-wrong-uicontext-debug.md#定位uicontext错误问题)。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -110,7 +110,7 @@ abstract makeNode(uiContext: UIContext): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 回调该方法时，绑定NodeContainer的UI上下文。跨实 例复用NodeContainer时，该参数可能为undefined，需要开发者自行判断。 |
+| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 回调该方法时，绑定NodeContainer的UI上下文。跨实 例复用NodeContainer时，该参数可能为undefined，需要开发者自行判断。 |
 
 **返回值：**
 
@@ -124,11 +124,11 @@ abstract makeNode(uiContext: UIContext): FrameNode | null
 onAttach?(): void
 ```
 
-当NodeController绑定的NodeContainer挂载至主节点树时触发此回调。与 [aboutToAppear](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#aboutToAppear)不同，aboutToAppear在NodeContainer挂载显示后触发，onAttach在NodeContainer挂载至主 节点树时触发，两者触发时机可能不同。 > **说明：** > > 回调时机参考onAttach。
+当NodeController绑定的NodeContainer挂载至主节点树时触发此回调。与 [aboutToAppear](#abouttoappear)不同，aboutToAppear在NodeContainer挂载显示后触发，onAttach在NodeContainer挂载至主 节点树时触发，两者触发时机可能不同。 > **说明：** > > 回调时机参考onAttach。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -146,11 +146,11 @@ onAttach?(): void
 onBind?(containerId: number): void
 ```
 
-当NodeController与NodeContainer绑定后触发此回调。该回调后于 [onWillBind](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#onWillBind)触发，两者均为可选回调，可根据需要在绑定前或绑定后执行相应逻辑。
+当NodeController与NodeContainer绑定后触发此回调。该回调后于 [onWillBind](#onwillbind)触发，两者均为可选回调，可根据需要在绑定前或绑定后执行相应逻辑。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -174,11 +174,11 @@ onBind?(containerId: number): void
 onDetach?(): void
 ```
 
-当NodeController绑定的NodeContainer从主节点树卸载时触发此回调。与 [aboutToDisappear](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#aboutToDisappear)不同，aboutToDisappear在NodeContainer销毁时触发，onDetach在 NodeContainer从主节点树卸载时触发，两者触发时机可能不同。 > **说明：** > > 回调时机参考onDetach。
+当NodeController绑定的NodeContainer从主节点树卸载时触发此回调。与 [aboutToDisappear](#abouttodisappear)不同，aboutToDisappear在NodeContainer销毁时触发，onDetach在 NodeContainer从主节点树卸载时触发，两者触发时机可能不同。 > **说明：** > > 回调时机参考onDetach。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -200,7 +200,7 @@ onTouchEvent?(event: TouchEvent): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -224,11 +224,11 @@ onTouchEvent?(event: TouchEvent): void
 onUnbind?(containerId: number): void
 ```
 
-当NodeController与NodeContainer解绑后触发此回调。该回调后于 [onWillUnbind](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#onWillUnbind)触发，两者均为可选回调，可根据需要在解绑前或解绑后执行相应逻辑。
+当NodeController与NodeContainer解绑后触发此回调。该回调后于 [onWillUnbind](#onwillunbind)触发，两者均为可选回调，可根据需要在解绑前或解绑后执行相应逻辑。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -252,11 +252,11 @@ onUnbind?(containerId: number): void
 onWillBind?(containerId: number): void
 ```
 
-当NodeController与NodeContainer即将绑定前触发此回调。该回调先于 [onBind](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#onBind)触发，两者均为可选回调，可根据需要在绑定前或绑定后执行相应逻辑。
+当NodeController与NodeContainer即将绑定前触发此回调。该回调先于 [onBind](#onbind)触发，两者均为可选回调，可根据需要在绑定前或绑定后执行相应逻辑。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -280,11 +280,11 @@ onWillBind?(containerId: number): void
 onWillUnbind?(containerId: number): void
 ```
 
-当NodeController与NodeContainer即将解绑前触发此回调。该回调先于 [onUnbind](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#onUnbind)触发，两者均为可选回调，可根据需要在解绑前或解绑后执行相应逻辑。
+当NodeController与NodeContainer即将解绑前触发此回调。该回调先于 [onUnbind](#onunbind)触发，两者均为可选回调，可根据需要在解绑前或解绑后执行相应逻辑。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -308,11 +308,11 @@ onWillUnbind?(containerId: number): void
 rebuild(): void
 ```
 
-调用此接口通知NodeContainer组件重新回调 [makeNode](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#makeNode)方法，更改子节点。例如，当NodeContainer展示的内容数据发生变化、需要更新显示的子节点时，可调用此方法触发重新构建。 > **说明：** > > 由于rebuild方法为应用主动调用的方法，且该操作与UI相关，需要开发者自行保证调用该接口时UI上下文有效，即与绑定的NodeContainer保持UI上下文一致。 > > 监听回调等[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)时，可以通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)的 > [runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runScopedTask)方法明确调用时的UI上下文。
+调用此接口通知NodeContainer组件重新回调 [makeNode](#makenode)方法，更改子节点。例如，当NodeContainer展示的内容数据发生变化、需要更新显示的子节点时，可调用此方法触发重新构建。 > **说明：** > > 由于rebuild方法为应用主动调用的方法，且该操作与UI相关，需要开发者自行保证调用该接口时UI上下文有效，即与绑定的NodeContainer保持UI上下文一致。 > > 监听回调等[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)时，可以通过[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)的 > [runScopedTask](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#runscopedtask)方法明确调用时的UI上下文。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

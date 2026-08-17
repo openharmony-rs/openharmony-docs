@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md#SlotLevel)
+**替代接口：** [SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md#slotlevel)
 
 <!--Device-notification-export enum SlotLevel--><!--Device-notification-export enum SlotLevel-End-->
 
@@ -24,11 +24,11 @@ LEVEL_NONE = 0
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [LEVEL_NONE](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_NONE)
+**替代接口：** [LEVEL_NONE](arkts-notification-notificationmanager-slotlevel-e.md#levelnone)
 
 <!--Device-SlotLevel-LEVEL_NONE = 0--><!--Device-SlotLevel-LEVEL_NONE = 0-End-->
 
@@ -44,11 +44,11 @@ LEVEL_MIN = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [LEVEL_MIN](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_MIN)
+**替代接口：** [LEVEL_MIN](arkts-notification-notificationmanager-slotlevel-e.md#levelmin)
 
 <!--Device-SlotLevel-LEVEL_MIN = 1--><!--Device-SlotLevel-LEVEL_MIN = 1-End-->
 
@@ -64,11 +64,11 @@ LEVEL_LOW = 2
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [LEVEL_LOW](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_LOW)
+**替代接口：** [LEVEL_LOW](arkts-notification-notificationmanager-slotlevel-e.md#levellow)
 
 <!--Device-SlotLevel-LEVEL_LOW = 2--><!--Device-SlotLevel-LEVEL_LOW = 2-End-->
 
@@ -84,11 +84,11 @@ LEVEL_DEFAULT = 3
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [LEVEL_DEFAULT](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_DEFAULT)
+**替代接口：** [LEVEL_DEFAULT](arkts-notification-notificationmanager-slotlevel-e.md#leveldefault)
 
 <!--Device-SlotLevel-LEVEL_DEFAULT = 3--><!--Device-SlotLevel-LEVEL_DEFAULT = 3-End-->
 
@@ -104,11 +104,11 @@ LEVEL_HIGH = 4
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [LEVEL_HIGH](arkts-notification-notificationmanager-slotlevel-e.md#LEVEL_HIGH)
+**替代接口：** [LEVEL_HIGH](arkts-notification-notificationmanager-slotlevel-e.md#levelhigh)
 
 <!--Device-SlotLevel-LEVEL_HIGH = 4--><!--Device-SlotLevel-LEVEL_HIGH = 4-End-->
 

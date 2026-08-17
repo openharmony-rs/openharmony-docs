@@ -10,7 +10,7 @@ function activeSim(admin: Want, slotId: number): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -57,9 +57,9 @@ let slotId: number = 0;
 try {
   // 启用指定卡槽的SIM卡
   telephonyManager.activeSim(wantTemp, slotId);
-  console.info(`success to active SIM`);
+  console.info(`success in activating SIM card on slot ${slotId}`);
 } catch (err) {
-  console.error(`Failed to active SIM. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to activate SIM on slot ${slotId}. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

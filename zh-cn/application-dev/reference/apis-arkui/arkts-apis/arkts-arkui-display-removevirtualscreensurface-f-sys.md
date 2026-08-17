@@ -10,7 +10,7 @@ function removeVirtualScreenSurface(screenId: long, surfaceId: string): Promise<
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -97,14 +97,15 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   removeVirtualScreenSurface = () => {
+    // 虚拟屏ID需从createVirtualScreen()返回值获取
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     display.removeVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in removing surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to remove surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to remove surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
-  }
+  };
   build() {
     RelativeContainer() {
       XComponent({

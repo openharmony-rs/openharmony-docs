@@ -4,7 +4,7 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 enableSnapToEnd?: boolean
 ```
 
-在Scroll组件限位滚动模式下，该属性设置为true后，不允许Scroll在最后一页和末尾间自由滑动，该属性设置为false后，允许Scroll在最后一页和末尾间自由滑动。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;1. 该属性值默认为true。 &lt;br&gt;2. 该属性仅当snapPagination属性为Array\&lt;Dimension\&gt;时生效，不支持Dimension。 &lt;/p&gt;
+在Scroll组件限位滚动模式下，该属性设置为true后，不允许Scroll在最后一页和末尾间自由滑动，该属性设置为false后，允许Scroll在最后一页和末尾间自由滑动。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br>1. 该属性值默认为true。 <br>2. 该属性仅当snapPagination属性为Array\&lt;Dimension\&gt;时生效，不支持Dimension。 &lt;/p&gt;
 
 **类型：** boolean
 
@@ -26,7 +26,7 @@ enableSnapToEnd?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ enableSnapToEnd?: boolean
 enableSnapToStart?: boolean
 ```
 
-在Scroll组件限位滚动模式下，该属性设置为true后，不允许Scroll在开头和第一页间自由滑动，该属性设置为false后，允许Scroll在开头和第一页间自由滑动。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;1. 该属性值默认为true。 &lt;br&gt;2. 该属性仅当snapPagination属性为Array\&lt;Dimension\&gt;时生效，不支持Dimension。 &lt;/p&gt;
+在Scroll组件限位滚动模式下，该属性设置为true后，不允许Scroll在开头和第一页间自由滑动，该属性设置为false后，允许Scroll在开头和第一页间自由滑动。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br>1. 该属性值默认为true。 <br>2. 该属性仅当snapPagination属性为Array\&lt;Dimension\&gt;时生效，不支持Dimension。 &lt;/p&gt;
 
 **类型：** boolean
 
@@ -52,7 +52,7 @@ enableSnapToStart?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ snapAlign: ScrollSnapAlign
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ snapAlign: ScrollSnapAlign
 snapPagination?: Dimension | Array<Dimension>
 ```
 
-限位滚动时的分页点。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;1.当属性为Dimension时，Dimension表示每页的大小，系统按照该大小进行分页。 &lt;br&gt;2.当属性为Array\&lt;Dimension\&gt;时，每个Dimension表示分页点，系统按照分页点进行分页。每个Dimension的范围为[0,可滑动距离]。 &lt;br&gt;3.当该属性不填或者Dimension为小于等于0的输入时，按异常值，无限位滚动处理。当该属性值为Array\&lt;Dimension\&gt;数组时，数组中的数值必须为单调递增。 &lt;br&gt;4.当输入为百分比时，实际的大小为Scroll组件的视口与百分比数值之积。 &lt;/p&gt;
+限位滚动时的分页点。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br>1.当属性为Dimension时，Dimension表示每页的大小，系统按照该大小进行分页。 <br>2.当属性为Array\&lt;Dimension\&gt;时，每个Dimension表示分页点，系统按照分页点进行分页。每个Dimension的范围为[0,可滑动距离]。 <br>3.当该属性不填或者Dimension为小于等于0的输入时，按异常值，无限位滚动处理。当该属性值为Array\&lt;Dimension\&gt;数组时，数组中的数值必须为单调递增。 <br>4.当输入为百分比时，实际的大小为Scroll组件的视口与百分比数值之积。 &lt;/p&gt;
 
 **类型：** Dimension \| Array&lt;Dimension&gt;
 
@@ -104,7 +104,7 @@ snapPagination?: Dimension | Array<Dimension>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

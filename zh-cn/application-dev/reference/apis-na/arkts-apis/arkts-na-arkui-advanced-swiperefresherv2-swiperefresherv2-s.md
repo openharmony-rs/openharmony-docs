@@ -4,7 +4,7 @@ SwipeRefresherV2组件用于内容加载，内容加载指获取内容并加载�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ The method to build component.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ The method to build component.
   content?: string
 ```
 
-内容加载时显示的文本。&lt;br/&gt;默认值：空字符串。&lt;br/&gt;**说明：**如果文本大于列宽时，文本被截断。
+内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明：**如果文本大于列宽时，文本被截断。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -64,13 +64,13 @@ The method to build component.
   isLoading: boolean
 ```
 
-当前内容是否正在加载。&lt;br&gt; true：内容正在加载。&lt;br&gt; false：内容未在加载。
+当前内容是否正在加载。<br> true：内容正在加载。<br> false：内容未在加载。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

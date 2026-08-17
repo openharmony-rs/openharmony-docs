@@ -23,7 +23,8 @@
     - [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md)
     - [SceneResourceFactory](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md)
     - [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md)
-  - [SceneBoidsSim](arkts-sceneboidssim.md)
+  <!--Del-->
+  - [SceneBoidsSim](arkts-sceneboidssim.md)<!--DelEnd-->
     <!--Del-->
     - [BoidsSimPlugin(系统接口)](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md)<!--DelEnd-->
     <!--Del-->

@@ -10,7 +10,7 @@ function terminateMission(missionId: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function terminateMission(missionId: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionId | int | 是 | 任务ID，可通过 [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getMissionInfos（系统接口）) 获取。 |
+| missionId | int | 是 | 任务ID，可通过 [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getmissioninfos系统接口) 获取。 |
 
 **返回值：**
 

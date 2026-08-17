@@ -2,11 +2,11 @@
 
 消息类，持有Worker线程间传递的数据，MessageEvent类继承Event。
 
-**继承/实现关系：** MessageEvent extends [Event](arkts-arkts-worker-event-i.md#Event)
+**继承/实现关系：** MessageEvent extends [Event](arkts-arkts-worker-event-i.md#event)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ readonly data: T
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

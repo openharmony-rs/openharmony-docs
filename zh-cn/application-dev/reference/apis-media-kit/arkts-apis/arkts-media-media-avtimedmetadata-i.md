@@ -4,7 +4,7 @@ Interface for defining time base metadata
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ The classification label of the time base metadata.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ Key-value pair set corresponding to time primitive information
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -62,13 +62,13 @@ Key-value pair set corresponding to time primitive information
 duration: int
 ```
 
-Duration of the time primitive information The value should be an integer. &lt;br&gt;Unit:milliseconds.
+Duration of the time primitive information The value should be an integer. <br>Unit:milliseconds.
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ Defines the unique token of the time base metadata, The tag must be unique in ot
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -106,13 +106,13 @@ Defines the unique token of the time base metadata, The tag must be unique in ot
 start: int
 ```
 
-Defines the offset value of the time primitive information relative to the start time of the entire media. The value should be an integer. &lt;br&gt;Unit:milliseconds.
+Defines the offset value of the time primitive information relative to the start time of the entire media. The value should be an integer. <br>Unit:milliseconds.
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@
 preparseLiveViewPicList?: string[]
 ```
 
-订阅普通实况类型通知中 [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md#NotificationLiveViewContent（系统接口）)的extraInfo中的 图片信息。入参为extraInfo中需要解析为pixelMap格式的图片文件名的Key。&lt;br&gt;当应用发布普通实况类型通知时，通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onConsume)将解析后的图片信息回调给订阅者， 解析后的图片信息存放于NotificationLiveViewContent的pictureInfo内。
+订阅普通实况类型通知中 [NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md#notificationliveviewcontent系统接口)的extraInfo中的 图片信息。入参为extraInfo中需要解析为pixelMap格式的图片文件名的Key。<br>当应用发布普通实况类型通知时，通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)将解析后的图片信息回调给订阅者， 解析后的图片信息存放于NotificationLiveViewContent的pictureInfo内。
 
 **类型：** string[]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

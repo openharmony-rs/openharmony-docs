@@ -10,7 +10,7 @@ function getDefaultSmsSimId(callback: AsyncCallback<int>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ function getDefaultSmsSimId(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 获取默认短信SIM的SIM ID的回调函数。&lt;br/&gt;与SIM卡绑定，从1开始递增。&lt;br/&gt;无卡时返回值为-1。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 获取默认短信SIM的SIM ID的回调函数。<br/>与SIM卡绑定，从1开始递增。<br/>无卡时返回值为-1。 |
 
 **错误码：**
 
@@ -43,7 +43,11 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSimId((err: BusinessError, data: number) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error('callback: err->${JSON.stringify(err)}');
+        return;
+    }
+    console.info('callback: data->${JSON.stringify(data)}');
 });
 ```
 
@@ -58,7 +62,7 @@ function getDefaultSmsSimId(): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +74,7 @@ function getDefaultSmsSimId(): Promise<int>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | 以Promise形式返回发送短信的默认SIM卡ID：&lt;br/&gt;与SIM卡绑定，从1开始递增。&lt;br/&gt;无卡时返回值为-1。 |
+| Promise&lt;int&gt; | 以Promise形式返回发送短信的默认SIM卡ID：<br/>与SIM卡绑定，从1开始递增。<br/>无卡时返回值为-1。 |
 
 **错误码：**
 
@@ -93,7 +97,7 @@ let promise = sms.getDefaultSmsSimId();
 promise.then((data: number) => {
     console.info(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getDefaultSmsSimId failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getDefaultSmsSimId failed, promise: errCode:${err.code},errMsg:${err.message}`);
 });
 ```
 

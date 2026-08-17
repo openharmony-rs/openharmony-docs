@@ -1,10 +1,10 @@
 # SiteIsolationMode
 
-Indicates the site isolation mode of the application, default value depends on different devices type.
+站点隔离机制将不同源的网站隔离在不同的渲染子进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个渲染子进程，站点隔离打开后，让不同源的Iframe运行在独立的渲染子进程中。
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Indicates the site isolation mode of the application, default value depends on d
 PARTIAL = 0
 ```
 
-The partial site isolation mode
+部分站点隔离，即在同一个渲染进程内加载新站点。
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -36,11 +36,11 @@ The partial site isolation mode
 STRICT = 1
 ```
 
-The strict site isolation mode
+严格站点隔离，跨站点的Iframe将切换到新的渲染进程。
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 

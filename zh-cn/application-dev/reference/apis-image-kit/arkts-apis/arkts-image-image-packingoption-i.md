@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ backgroundColor?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ backgroundColor?: int
 bufferSize?: int
 ```
 
-接收编码数据的缓冲区大小，单位：字节（Byte）。如果不设置大小，默认为25MB。如果编码图片超过25MB，需要指定大小。bufferSize需大于编码后图片大小。使用 [packToFile](arkts-image-image-imagepacker-i.md#packToFile) 不受此参数限制。
+接收编码数据的缓冲区大小，单位：字节（Byte）。如果不设置大小，默认为25MB。如果编码图片超过25MB，需要指定大小。bufferSize需大于编码后图片大小。使用 [packToFile](arkts-image-image-imagepacker-i.md#packtofile) 不受此参数限制。
 
 **类型：** int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ desiredDynamicRange?: PackingDynamicRange
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,13 +82,13 @@ desiredDynamicRange?: PackingDynamicRange
 format: string
 ```
 
-目标格式。&lt;/br&gt;- 当[输入为ImageSource或PixelMap](../../../media/image/image-encoding.md)时，支持"image/jpeg"、"image/webp"、" image/png"和"image/heic（或者image/heif）"&lt;sup&gt;12+&lt;/sup&gt;、"image/sdr_astc_4x4"&lt;sup&gt;18+&lt;/sup&gt;、"image/sdr_sut_superfast_4 x4"&lt;sup&gt;18+&lt;/sup&gt;（不同硬件设备支持情况不同）、"image/hdr_astc_4x4"&lt;sup&gt;20+&lt;/sup&gt;。 - 当[输入为Picture](../../../media/image/image-picture-encoding.md)时，仅支持"image/jpeg"和"image/heic（或者image/heif）"&lt;sup&gt; 12+&lt;/sup&gt;。 - gif图片编码需要输入多个PixelMap，并指定format为"image/gif"，使用 [packToDataFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packToDataFromPixelmapSequence)或 [packToFileFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packToFileFromPixelmapSequence)接口进行编码。 **说明：** 因为jpeg不支持透明通道，若使用带透明通道的数据编码jpeg格式，透明色将变为黑色。
+目标格式。&lt;/br&gt;- 当[输入为ImageSource或PixelMap](../../../media/image/image-encoding.md)时，支持"image/jpeg"、"image/webp"、" image/png"和"image/heic（或者image/heif）"&lt;sup&gt;12+&lt;/sup&gt;、"image/sdr_astc_4x4"&lt;sup&gt;18+&lt;/sup&gt;、"image/sdr_sut_superfast_4 x4"&lt;sup&gt;18+&lt;/sup&gt;（不同硬件设备支持情况不同）、"image/hdr_astc_4x4"&lt;sup&gt;20+&lt;/sup&gt;。 - 当[输入为Picture](../../../media/image/image-picture-encoding.md)时，仅支持"image/jpeg"和"image/heic（或者image/heif）"&lt;sup&gt; 12+&lt;/sup&gt;。 - gif图片编码需要输入多个PixelMap，并指定format为"image/gif"，使用 [packToDataFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtodatafrompixelmapsequence)或 [packToFileFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtofilefrompixelmapsequence)接口进行编码。 **说明：** 因为jpeg不支持透明通道，若使用带透明通道的数据编码jpeg格式，透明色将变为黑色。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -110,7 +110,7 @@ maxEmbedThumbnailDimension?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -132,7 +132,7 @@ needsPackGPS?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ needsPackProperties?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -174,7 +174,7 @@ quality: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -190,13 +190,13 @@ quality: int
 sizeLimit?: PackingSizeLimit
 ```
 
-用于指定编码输出图像的最大尺寸限制。 当原图宽度或高度超过最大尺寸maxSize的限制时，保持宽高比不变进行等比例缩小，确保输出图像尺寸不超过指定边界。缩放过程由level参数控制采用的缩放算法。 若未指定此参数，或根据最大尺寸计算的输出图宽/高为0，则按原图尺寸编码。 单位：像素（px）。 参数规则： - maxSize = {0, 0}：不限制最大编码尺寸，按原图尺寸编码 - maxSize.width > 0而maxSize.height &lt;= 0：限制最大宽度，高度不限（使用原图高度） - maxSize.width <= 0而maxSize.height > 0：限制最大高度，宽度不限（使用原图宽度） - maxSize.width &gt;&lt;= 0而maxSize.height &gt; 0：限制最大高度，宽度不限（使用原图宽度） - maxSize.width > 0且maxSize.height > 0：宽高同时限制，选择较小的缩放比例 默认值：{maxSize: {width: 0, height: 0}, level: AntiAliasingLevel.NONE}
+用于指定编码输出图像的最大尺寸限制。 当原图宽度或高度超过最大尺寸maxSize的限制时，保持宽高比不变进行等比例缩小，确保输出图像尺寸不超过指定边界。缩放过程由level参数控制采用的缩放算法。 若未指定此参数，或根据最大尺寸计算的输出图宽/高为0，则按原图尺寸编码。 单位：像素（px）。 参数规则： - maxSize = {0, 0}：不限制最大编码尺寸，按原图尺寸编码 - maxSize.width > 0而maxSize.height &lt;= 0：限制最大宽度，高度不限（使用原图高度） - maxSize.width <= 0而maxSize.height > 0：限制最大高度，宽度不限（使用原图宽度） - maxSize.width &gt; 0且maxSize.height > 0：宽高同时限制，选择较小的缩放比例 默认值：{maxSize: {width: 0, height: 0}, level: AntiAliasingLevel.NONE}
 
 **类型：** [PackingSizeLimit](arkts-image-image-packingsizelimit-i.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -218,7 +218,7 @@ TIFF图像编码选项。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

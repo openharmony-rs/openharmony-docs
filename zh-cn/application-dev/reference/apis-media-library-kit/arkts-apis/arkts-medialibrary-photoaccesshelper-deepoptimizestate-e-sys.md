@@ -1,0 +1,126 @@
+# DeepOptimizeState（系统接口）
+
+表示深度优化存储空间的状态类型的枚举。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+<!--Device-photoAccessHelper-enum DeepOptimizeState--><!--Device-photoAccessHelper-enum DeepOptimizeState-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+深度优化存储空间正在进行。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DeepOptimizeState-RUNNING = 0--><!--Device-DeepOptimizeState-RUNNING = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## COMPLETED
+
+```TypeScript
+COMPLETED = 1
+```
+
+深度优化存储空间成功完成。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DeepOptimizeState-COMPLETED = 1--><!--Device-DeepOptimizeState-COMPLETED = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## FAILED
+
+```TypeScript
+FAILED = 2
+```
+
+深度优化存储空间失败。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DeepOptimizeState-FAILED = 2--><!--Device-DeepOptimizeState-FAILED = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## STOPPED
+
+```TypeScript
+STOPPED = 3
+```
+
+深度优化存储空间已停止。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DeepOptimizeState-STOPPED = 3--><!--Device-DeepOptimizeState-STOPPED = 3-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## INTERRUPTED
+
+```TypeScript
+INTERRUPTED = 4
+```
+
+深度优化存储空间被中断。
+
+**起始版本：** 26.0.0
+
+**ArkTS模式：** 起始版本为26.0.0。
+
+**废弃版本：** -1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DeepOptimizeState-INTERRUPTED = 4--><!--Device-DeepOptimizeState-INTERRUPTED = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+

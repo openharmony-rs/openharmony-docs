@@ -10,7 +10,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startupTasks | Array&lt;string&gt; | 是 | 表示准备执行的启动任务 [StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md#StartupTask)的名称或预加载so名称的数组。 |
+| startupTasks | Array&lt;string&gt; | 是 | 表示准备执行的启动任务 [StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md#startuptask)的名称或预加载so名称的数组。 |
 | config | [StartupConfig](arkts-ability-app-appstartup-startupconfig-startupconfig-i.md) | 否 | 表示启动任务配置信息，包含启动框架超时时间与启动任务监听器配置。 |
 
 **返回值：**
@@ -58,15 +58,15 @@ export default class EntryAbility extends UIAbility {
     try {
       // 手动调用run方法
       startupManager.run(startParams).then(() => {
-        console.info(`StartupTest startupManager run then, startParams = ${startParams}.`);
+        hilog.info(0x0000, 'testTag', 'StartupTest startupManager run then, startParams = %{public}s.', startParams.join(','));
       }).catch((err: Error) => {
         let error = err as BusinessError;
-        console.error(`StartupTest promise catch failed, error code: ${error.code}, error msg: ${error.message}.`);
+        hilog.error(0x0000, 'testTag', 'StartupTest promise catch failed, error code: %{public}d, error msg: %{public}s.', error.code, error.message);
       });
     } catch (error) {
       let errMsg = (error as BusinessError).message;
       let errCode = (error as BusinessError).code;
-      console.error(`Startup.run failed, err code: ${errCode}, err msg: ${errMsg}.`);
+      hilog.error(0x0000, 'testTag', 'startupManager.run failed, err code: %{public}d, err msg: %{public}s.', errCode, errMsg);
     }
   }
 
@@ -81,11 +81,11 @@ export default class EntryAbility extends UIAbility {
 function run(startupTasks: Array<string>, context: common.AbilityStageContext, config: StartupConfig): Promise<void>
 ```
 
-执行启动框架启动任务或加载so文件。支持指定[AbilityStageContext](arkts-ability-abilitystagecontext-c.md#AbilityStageContext)用于启动任务的加载。使 用Promise异步回调。
+执行启动框架启动任务或加载so文件。支持指定[AbilityStageContext](arkts-ability-abilitystagecontext-c.md#abilitystagecontext)用于启动任务的加载。使 用Promise异步回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -99,8 +99,8 @@ function run(startupTasks: Array<string>, context: common.AbilityStageContext, c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startupTasks | Array&lt;string&gt; | 是 | 表示准备执行的启动任务 [StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md#StartupTask)的名称或预加载so名称的数组。 |
-| context | common.AbilityStageContext | 是 | 表示执行启动任务 [StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md#StartupTask)的AbilityStage上下文，作为入参传给启动任务的 [init](arkts-ability-app-appstartup-startuptask-startuptask-c.md#init)。 |
+| startupTasks | Array&lt;string&gt; | 是 | 表示准备执行的启动任务 [StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md#startuptask)的名称或预加载so名称的数组。 |
+| context | common.AbilityStageContext | 是 | 表示执行启动任务 [StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md#startuptask)的AbilityStage上下文，作为入参传给启动任务的 [init](arkts-ability-app-appstartup-startuptask-startuptask-c.md#init)。 |
 | config | [StartupConfig](arkts-ability-app-appstartup-startupconfig-startupconfig-i.md) | 是 | 表示启动任务配置信息，包含启动框架超时时间与启动任务监听器配置。 |
 
 **返回值：**
@@ -151,7 +151,7 @@ export default class MyAbilityStage extends AbilityStage {
       }).catch((err: Error) => {
         let error = err as BusinessError;
         hilog.error(0x0000, 'testTag', `startupManager.run promise catch error code: ${error.code}, error msg: ${error.message}`);
-      })
+      });
     } catch (error) {
       hilog.error(0x0000, 'testTag', `startupManager.run catch error code: ${error.code}, error msg: ${error.message}`);
     }

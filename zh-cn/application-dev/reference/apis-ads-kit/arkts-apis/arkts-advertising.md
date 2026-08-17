@@ -4,7 +4,7 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -18,12 +18,12 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [deleteWebAdInterface](arkts-ads-advertising-deletewebadinterface-f.md#deleteWebAdInterface) | 删除通过registerWebAdInterface注入的广告JavaScript对象（该接口仅对部分系统预置应用开放）。 |
-| [getAdRequestBody](arkts-ads-advertising-getadrequestbody-f.md#getAdRequestBody) | 获取广告请求体，使用Promise异步回调（该接口仅对部分系统预置应用开放）。 |
-| [parseAdResponse](arkts-ads-advertising-parseadresponse-f.md#parseAdResponse) | 解析并处理广告响应体（该接口仅对部分系统预置应用开放）。 |
-| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md#registerWebAdInterface) | 注入广告JavaScript对象到Web组件中（该接口仅对部分系统预置应用开放）。 |
-| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md#registerWebAdInterface) | 注入广告JavaScript对象到Web组件中（该接口仅对部分系统预置应用开放）。 |
-| [showAd](arkts-ads-advertising-showad-f.md#showAd) | 展示全屏广告。 |
+| [deleteWebAdInterface](arkts-ads-advertising-deletewebadinterface-f.md#deletewebadinterface) | 删除通过registerWebAdInterface注入的广告JavaScript对象（该接口仅对部分系统预置应用开放）。 |
+| [getAdRequestBody](arkts-ads-advertising-getadrequestbody-f.md#getadrequestbody) | 获取广告请求体，使用Promise异步回调（该接口仅对部分系统预置应用开放）。 |
+| [parseAdResponse](arkts-ads-advertising-parseadresponse-f.md#parseadresponse) | 解析并处理广告响应体（该接口仅对部分系统预置应用开放）。 |
+| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md#registerwebadinterface) | 注入广告JavaScript对象到Web组件中（该接口仅对部分系统预置应用开放）。 |
+| [registerWebAdInterface](arkts-ads-advertising-registerwebadinterface-f.md#registerwebadinterface) | 注入广告JavaScript对象到Web组件中（该接口仅对部分系统预置应用开放）。 |
+| [showAd](arkts-ads-advertising-showad-f.md#showad) | 展示全屏广告。 |
 
 ### 类
 

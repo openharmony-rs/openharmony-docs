@@ -4,11 +4,11 @@
 export type ExtensionContext = _ExtensionContext
 ```
 
-[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility)组件上下文，继承自Context。
+[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)组件上下文，继承自Context。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

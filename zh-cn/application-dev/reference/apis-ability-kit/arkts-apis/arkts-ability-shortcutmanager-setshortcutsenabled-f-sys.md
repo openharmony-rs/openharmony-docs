@@ -10,7 +10,7 @@ function setShortcutsEnabled(shortcutsInfo: Array<ShortcutInfo>, isEnabled: bool
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function setShortcutsEnabled(shortcutsInfo: Array<ShortcutInfo>, isEnabled: bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shortcutsInfo | Array&lt;ShortcutInfo&gt; | 是 | 待启用或禁用的静态快捷方式。&lt;br&gt;**说明：**&lt;br&gt;本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以 ShortcutInfo中的appIndex和sourceType设置不生效。 |
+| shortcutsInfo | Array&lt;ShortcutInfo&gt; | 是 | 待启用或禁用的静态快捷方式。<br>**说明：**<br>本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以 ShortcutInfo中的appIndex和sourceType设置不生效。 |
 | isEnabled | boolean | 是 | 快捷方式是否启用。true：快捷方式启用；false：快捷方式禁用。 |
 
 **返回值：**

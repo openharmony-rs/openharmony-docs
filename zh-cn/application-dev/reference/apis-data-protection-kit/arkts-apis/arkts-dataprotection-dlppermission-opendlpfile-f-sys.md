@@ -6,11 +6,11 @@
 function openDLPFile(ciphertextFd: number, appId: string): Promise<DLPFile>
 ```
 
-DLP管理应用调用该接口，打开DLP文件。调用成功后返回DLPFile管理对象，可用于管理DLP文件的权限和进行相关操作。使用Promise异步回调。 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用[closeDLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md#closeDLPFile)释放资源。 DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先打开文件获取管理对象。
+DLP管理应用调用该接口，打开DLP文件。调用成功后返回DLPFile管理对象，可用于管理DLP文件的权限和进行相关操作。使用Promise异步回调。 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用[closeDLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md#closedlpfile)释放资源。 DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先打开文件获取管理对象。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -155,7 +155,7 @@ appId = data.signatureInfo.appId; // appId通过应用包信息获取
 file = fileIo.openSync(uri).fd; // file通过文件打开获取fd
 dlpPermission.openDLPFile(file, appId, async (err, res) => { // 打开DLP文件。
   if (err) {
-    console.error('openDLPFile error,', err.code, err.message);
+    console.error(`Failed to open DLPFile. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('res', JSON.stringify(res));
   }

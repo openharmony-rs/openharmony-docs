@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static closeFileDescriptor(fd: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -71,7 +71,7 @@ containFileDescriptors(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ static create(): MessageSequence
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -160,7 +160,7 @@ static dupFileDescriptor(fd: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -216,7 +216,7 @@ getCapacity(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -258,7 +258,7 @@ getRawDataCapacity(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -300,7 +300,7 @@ getReadPosition(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -343,7 +343,7 @@ getReadableBytes(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -386,7 +386,7 @@ getSize(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -428,7 +428,7 @@ getWritableBytes(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -471,7 +471,7 @@ getWritePosition(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -510,11 +510,11 @@ try {
 readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 ```
 
-从MessageSequence读取ArrayBuffer类型数据。 - 必须与[writeArrayBuffer](#writeArrayBuffer)配对使用。 - 读取typeCode必须与写入typeCode一致，顺序必须匹配。 - typeCode必须正确匹配，不匹配会导致数据异常或错误，建议根据业务类型选择合适的[TypeCode](arkts-ipc-rpc-typecode-e.md#TypeCode)。
+从MessageSequence读取ArrayBuffer类型数据。 - 必须与[writeArrayBuffer](#writearraybuffer)配对使用。 - 读取typeCode必须与写入typeCode一致，顺序必须匹配。 - typeCode必须正确匹配，不匹配会导致数据异常或错误，建议根据业务类型选择合适的[TypeCode](arkts-ipc-rpc-typecode-e.md#typecode)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -573,11 +573,11 @@ try {
 readAshmem(): Ashmem
 ```
 
-从MessageSequence读取匿名共享对象。使用前需先调用[mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapReadWriteAshmem)方法进行内存映射。 - readAshmem()获取对象。 - [mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapReadWriteAshmem)映射内存。 - [readDataFromAshmem](arkts-ipc-rpc-ashmem-c.md#readDataFromAshmem)读取数据。 - unmapAshmem()取消映射。 - closeAshmem()关闭对象。 - 必须先映射才能读取数据。 - 数据读取后需要取消映射。 - 及时关闭避免内存泄漏。
+从MessageSequence读取匿名共享对象。使用前需先调用[mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapreadwriteashmem)方法进行内存映射。 - readAshmem()获取对象。 - [mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapreadwriteashmem)映射内存。 - [readDataFromAshmem](arkts-ipc-rpc-ashmem-c.md#readdatafromashmem)读取数据。 - unmapAshmem()取消映射。 - closeAshmem()关闭对象。 - 必须先映射才能读取数据。 - 数据读取后需要取消映射。 - 及时关闭避免内存泄漏。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -647,7 +647,7 @@ readBoolean(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -696,7 +696,7 @@ readBooleanArray(dataIn: boolean[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -747,7 +747,7 @@ readBooleanArray(): boolean[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -792,11 +792,11 @@ try {
 readByte(): int
 ```
 
-从MessageSequence实例中读取字节值。 - 必须与[writeByte](#writeByte)配对使用。 - 一次写入对应一次读取。
+从MessageSequence实例中读取字节值。 - 必须与[writeByte](#writebyte)配对使用。 - 一次写入对应一次读取。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -845,7 +845,7 @@ readByteArray(dataIn: int[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -920,7 +920,7 @@ readByteArray(): int[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -970,7 +970,7 @@ readChar(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1019,7 +1019,7 @@ readCharArray(dataIn: int[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1092,7 +1092,7 @@ readCharArray(): int[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1141,7 +1141,7 @@ readDouble(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1190,7 +1190,7 @@ readDoubleArray(dataIn: double[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1263,7 +1263,7 @@ readDoubleArray(): double[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1308,11 +1308,11 @@ try {
 readException(): void
 ```
 
-从MessageSequence中读取异常。适用于接收远端服务响应后检查异常状态的场景。 - 在IPC/RPC通信的客户端使用。 - 在调用sendMessageRequest收到响应后调用。 - 在每次IPC/RPC调用后优先调用此方法。 - 如有异常立即处理并终止后续数据读取，异常处理后建议调用reclaim()释放MessageSequence对象。 - 此方法与[writeNoException](#writeNoException)方法配对使用。 - 调用顺序：服务端处理请求 → [writeNoException](#writeNoException) → 客户端收到响应 → [readException](#readException) - 如果服务端未调用 [writeNoException](#writeNoException)，调用此方法会失败。
+从MessageSequence中读取异常。适用于接收远端服务响应后检查异常状态的场景。 - 在IPC/RPC通信的客户端使用。 - 在调用sendMessageRequest收到响应后调用。 - 在每次IPC/RPC调用后优先调用此方法。 - 如有异常立即处理并终止后续数据读取，异常处理后建议调用reclaim()释放MessageSequence对象。 - 此方法与[writeNoException](#writenoexception)方法配对使用。 - 调用顺序：服务端处理请求 → [writeNoException](#writenoexception) → 客户端收到响应 → [readException](#readexception) - 如果服务端未调用 [writeNoException](#writenoexception)，调用此方法会失败。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1410,11 +1410,11 @@ try {
 readFileDescriptor(): int
 ```
 
-从MessageSequence中读取文件描述符。接收端读取到的是映射后的新文件描述符编号，与发送端写入的描述符编号不同，但指向同一个文件资源。读取后建议及时使用并关闭，防止资源泄漏。 如需长期使用，可调用dupFileDescriptor复制描述符。 - 必须与[writeFileDescriptor](#writeFileDescriptor)配对使用。 - 不要依赖源端的fd编号。 - 读取后需要管理生命周期。 - 建议及时使用避免资源浪费。 - 使用完毕后及时关闭。
+从MessageSequence中读取文件描述符。接收端读取到的是映射后的新文件描述符编号，与发送端写入的描述符编号不同，但指向同一个文件资源。读取后建议及时使用并关闭，防止资源泄漏。 如需长期使用，可调用dupFileDescriptor复制描述符。 - 必须与[writeFileDescriptor](#writefiledescriptor)配对使用。 - 不要依赖源端的fd编号。 - 读取后需要管理生命周期。 - 建议及时使用避免资源浪费。 - 使用完毕后及时关闭。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1466,7 +1466,7 @@ readFloat(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1515,7 +1515,7 @@ readFloatArray(dataIn: double[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1588,7 +1588,7 @@ readFloatArray(): double[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1637,7 +1637,7 @@ readInt(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1689,7 +1689,7 @@ readIntArray(dataIn: int[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1762,7 +1762,7 @@ readIntArray(): int[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1807,11 +1807,11 @@ try {
 readInterfaceToken(): string
 ```
 
-从MessageSequence对象中读取接口描述符，接口描述符按写入MessageSequence的顺序读取，本地对象可使用该信息检验本次通信。 - 必须与[writeInterfaceToken](#writeInterfaceToken)配对使用。 - 读取前应确保缓冲区中有可读数据。 - 建议在收到IPC请求后立即读取校验。
+从MessageSequence对象中读取接口描述符，接口描述符按写入MessageSequence的顺序读取，本地对象可使用该信息检验本次通信。 - 必须与[writeInterfaceToken](#writeinterfacetoken)配对使用。 - 读取前应确保缓冲区中有可读数据。 - 建议在收到IPC请求后立即读取校验。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1860,7 +1860,7 @@ readLong(): long
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1909,7 +1909,7 @@ readLongArray(dataIn: long[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -1982,7 +1982,7 @@ readLongArray(): long[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2031,7 +2031,7 @@ readParcelable(dataIn: Parcelable): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2102,7 +2102,7 @@ readParcelableArray(parcelableArray: Parcelable[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2176,11 +2176,11 @@ readRawData(size: number): number[]
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [readRawDataBuffer](#readRawDataBuffer)(size: int)
+**替代接口：** [readRawDataBuffer](#readrawdatabuffer)(size: int)
 
 <!--Device-MessageSequence-readRawData(size: number): number[]--><!--Device-MessageSequence-readRawData(size: number): number[]-End-->
 
@@ -2232,11 +2232,11 @@ try {
 readRawDataBuffer(size: int): ArrayBuffer
 ```
 
-从MessageSequence读取原始数据。 - 需与写入时的数据大小匹配。 - 该接口是一次性接口,不允许在一次parcel通信中多次调用。 - 大数据量传输时注意系统资源占用。 - 必须与[writeRawDataBuffer](#writeRawDataBuffer)配对使用。
+从MessageSequence读取原始数据。 - 需与写入时的数据大小匹配。 - 该接口是一次性接口,不允许在一次parcel通信中多次调用。 - 大数据量传输时注意系统资源占用。 - 必须与[writeRawDataBuffer](#writerawdatabuffer)配对使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2299,7 +2299,7 @@ readRemoteObject(): IRemoteObject
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2361,7 +2361,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2424,7 +2424,7 @@ readRemoteObjectArray(): IRemoteObject[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2480,11 +2480,11 @@ try {
 readShort(): int
 ```
 
-从MessageSequence实例中读取短整数值。 - 必须与[writeShort](#writeShort)配对使用。 - 注意写入时的取值范围[-2^15, 2^15-1]，超出此范围会导致数据截断。
+从MessageSequence实例中读取短整数值。 - 必须与[writeShort](#writeshort)配对使用。 - 注意写入时的取值范围[-2^15, 2^15-1]，超出此范围会导致数据截断。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2533,7 +2533,7 @@ readShortArray(dataIn: int[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2606,7 +2606,7 @@ readShortArray(): int[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2655,7 +2655,7 @@ readString(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2707,7 +2707,7 @@ readStringArray(dataIn: string[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2758,7 +2758,7 @@ readStringArray(): string[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2807,7 +2807,7 @@ reclaim(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2842,7 +2842,7 @@ rewindRead(pos: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2854,7 +2854,7 @@ rewindRead(pos: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pos | int | 是 | 开始读取数据的目标位置，以字节为单位。用于重新定位MessageSequence的读指针，值应在 [0, [getSize](#getSize)]范围内。 |
+| pos | int | 是 | 开始读取数据的目标位置，以字节为单位。用于重新定位MessageSequence的读指针，值应在 [0, [getSize](#getsize)]范围内。 |
 
 **错误码：**
 
@@ -2896,7 +2896,7 @@ rewindWrite(pos: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2908,7 +2908,7 @@ rewindWrite(pos: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| pos | int | 是 | 开始写入数据的目标位置，以字节为单位。用于重新定位MessageSequence的写指针，值应在 [0, [getSize](#getSize)]范围内。 |
+| pos | int | 是 | 开始写入数据的目标位置，以字节为单位。用于重新定位MessageSequence的写指针，值应在 [0, [getSize](#getsize)]范围内。 |
 
 **错误码：**
 
@@ -2948,7 +2948,7 @@ setCapacity(size: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -2997,7 +2997,7 @@ setSize(size: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3042,11 +3042,11 @@ try {
 writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
 ```
 
-将ArrayBuffer类型数据写入MessageSequence对象。 - 此方法与[readArrayBuffer](#readArrayBuffer)方法配对使用。 - 写入的typeCode必须与读取的typeCode一致，否则会导致数据异常。 - 调用顺序：先调用writeArrayBuffer()写入数据 → 再调用[readArrayBuffer](#readArrayBuffer)读取数据。 - typeCode参数决定了数据的写入和读取方式。 - 读写typeCode不匹配会导致数据解析错误。 - 必须根据实际数据类型选择正确的[TypeCode](arkts-ipc-rpc-typecode-e.md#TypeCode)枚举值。
+将ArrayBuffer类型数据写入MessageSequence对象。 - 此方法与[readArrayBuffer](#readarraybuffer)方法配对使用。 - 写入的typeCode必须与读取的typeCode一致，否则会导致数据异常。 - 调用顺序：先调用writeArrayBuffer()写入数据 → 再调用[readArrayBuffer](#readarraybuffer)读取数据。 - typeCode参数决定了数据的写入和读取方式。 - 读写typeCode不匹配会导致数据解析错误。 - 必须根据实际数据类型选择正确的[TypeCode](arkts-ipc-rpc-typecode-e.md#typecode)枚举值。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3097,11 +3097,11 @@ try {
 writeAshmem(ashmem: Ashmem): void
 ```
 
-将指定的匿名共享对象写入此MessageSequence。 - 创建Ashmem对象：Ashmem.create()。 - 映射内存并写入数据：[mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapReadWriteAshmem) + [writeDataToAshmem](arkts-ipc-rpc-ashmem-c.md#writeDataToAshmem)。 - 将Ashmem写入MessageSequence：writeAshmem()。 - 接收端读取Ashmem：[readAshmem](#readAshmem)。 - 接收端映射内存并读取数据：mapReadWriteAshmem() + readDataFromAshmem()。 - 此方法与readAshmem()方法配对使用。 - 调用顺序：writeAshmem() → 传输MessageSequence → [readAshmem](#readAshmem) → [mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapReadWriteAshmem) → [readDataFromAshmem](arkts-ipc-rpc-ashmem-c.md#readDataFromAshmem)。 - 使用前需先创建Ashmem对象并写入数据。
+将指定的匿名共享对象写入此MessageSequence。 - 创建Ashmem对象：Ashmem.create()。 - 映射内存并写入数据：[mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapreadwriteashmem) + [writeDataToAshmem](arkts-ipc-rpc-ashmem-c.md#writedatatoashmem)。 - 将Ashmem写入MessageSequence：writeAshmem()。 - 接收端读取Ashmem：[readAshmem](#readashmem)。 - 接收端映射内存并读取数据：mapReadWriteAshmem() + readDataFromAshmem()。 - 此方法与readAshmem()方法配对使用。 - 调用顺序：writeAshmem() → 传输MessageSequence → [readAshmem](#readashmem) → [mapReadWriteAshmem](arkts-ipc-rpc-ashmem-c.md#mapreadwriteashmem) → [readDataFromAshmem](arkts-ipc-rpc-ashmem-c.md#readdatafromashmem)。 - 使用前需先创建Ashmem对象并写入数据。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3158,11 +3158,11 @@ try {
 writeBoolean(val: boolean): void
 ```
 
-将布尔值写入MessageSequence实例。 - 必须与[readBoolean](#readBoolean)配对使用。 - 一次写入对应一次读取。
+将布尔值写入MessageSequence实例。 - 必须与[readBoolean](#readboolean)配对使用。 - 一次写入对应一次读取。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3206,11 +3206,11 @@ try {
 writeBooleanArray(booleanArray: boolean[]): void
 ```
 
-将布尔数组写入MessageSequence实例。 - 必须与[readBooleanArray](#readBooleanArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将布尔数组写入MessageSequence实例。 - 必须与[readBooleanArray](#readbooleanarray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3254,11 +3254,11 @@ try {
 writeByte(val: int): void
 ```
 
-将字节值写入MessageSequence实例。调用此方法后，字节值会被以8位无符号整数形式存入缓冲区当前写指针位置，并自动更新写指针。该方法适用于传输小范围整数或标志位数据。 - 存储范围:[0, 255](无符号)或[-128, 127](有符号)。 - 数据对齐方式为字节对齐。 - 数值必须在字节范围内，超出范围可能导致数据截断。 - 读取时必须使用[readByte](#readByte)方法配对读取。 - 不适合传输大范围数值，大范围数值建议使用[writeInt](#writeInt)/ [writeLong](#writeLong)等。
+将字节值写入MessageSequence实例。调用此方法后，字节值会被以8位无符号整数形式存入缓冲区当前写指针位置，并自动更新写指针。该方法适用于传输小范围整数或标志位数据。 - 存储范围:[0, 255](无符号)或[-128, 127](有符号)。 - 数据对齐方式为字节对齐。 - 数值必须在字节范围内，超出范围可能导致数据截断。 - 读取时必须使用[readByte](#readbyte)方法配对读取。 - 不适合传输大范围数值，大范围数值建议使用[writeInt](#writeint)/ [writeLong](#writelong)等。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3302,11 +3302,11 @@ try {
 writeByteArray(byteArray: int[]): void
 ```
 
-将字节数组写入MessageSequence实例。 - 必须与[readByteArray](#readByteArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将字节数组写入MessageSequence实例。 - 必须与[readByteArray](#readbytearray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3351,11 +3351,11 @@ try {
 writeChar(val: int): void
 ```
 
-将单个字符值写入MessageSequence实例。 - 必须与[readChar](#readChar)配对使用。 - 一次写入对应一次读取。
+将单个字符值写入MessageSequence实例。 - 必须与[readChar](#readchar)配对使用。 - 一次写入对应一次读取。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3399,11 +3399,11 @@ try {
 writeCharArray(charArray: int[]): void
 ```
 
-将单个字符数组写入MessageSequence实例。 - 必须与[readCharArray](#readCharArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将单个字符数组写入MessageSequence实例。 - 必须与[readCharArray](#readchararray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3447,11 +3447,11 @@ try {
 writeDouble(val: double): void
 ```
 
-将双精度浮点值写入MessageSequence实例。 - 必须与[readDouble](#readDouble)配对使用。 - 一次写入对应一次读取。
+将双精度浮点值写入MessageSequence实例。 - 必须与[readDouble](#readdouble)配对使用。 - 一次写入对应一次读取。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3495,11 +3495,11 @@ try {
 writeDoubleArray(doubleArray: double[]): void
 ```
 
-将双精度浮点数组写入MessageSequence实例。 - 必须与[readDoubleArray](#readDoubleArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将双精度浮点数组写入MessageSequence实例。 - 必须与[readDoubleArray](#readdoublearray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3547,7 +3547,7 @@ writeFileDescriptor(fd: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3598,7 +3598,7 @@ writeFloat(val: double): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3610,7 +3610,7 @@ writeFloat(val: double): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| val | double | 是 | 要写入的双精度浮点值。适用于传输浮点数据(如坐标、比例、测量值等)。 必须与[readFloat](#readFloat)配对使用。 |
+| val | double | 是 | 要写入的双精度浮点值。适用于传输浮点数据(如坐标、比例、测量值等)。 必须与[readFloat](#readfloat)配对使用。 |
 
 **错误码：**
 
@@ -3642,11 +3642,11 @@ try {
 writeFloatArray(floatArray: double[]): void
 ```
 
-将双精度浮点数组写入MessageSequence实例。 - 必须与[readFloatArray](#readFloatArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将双精度浮点数组写入MessageSequence实例。 - 必须与[readFloatArray](#readfloatarray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3690,11 +3690,11 @@ try {
 writeInt(val: int): void
 ```
 
-将整数值写入MessageSequence实例。 调用此方法后，整数值会被以32位有符号整数形式存入缓冲区当前写指针位置，并自动更新写指针。该方法适用于传输标准整数数据。对于小范围数值建议使用 [writeByte](#writeByte)/[writeShort](#writeShort)提高效率；对于大范围数值建议 使用[writeLong](#writeLong)。 - 必须与[readInt](#readInt)配对使用。 - 一次写入对应一次读取 - 占用4字节(32位)存储空间。 - 采用系统默认字节序存储。 - 超出范围会导致数据截断或写入失败。
+将整数值写入MessageSequence实例。 调用此方法后，整数值会被以32位有符号整数形式存入缓冲区当前写指针位置，并自动更新写指针。该方法适用于传输标准整数数据。对于小范围数值建议使用 [writeByte](#writebyte)/[writeShort](#writeshort)提高效率；对于大范围数值建议 使用[writeLong](#writelong)。 - 必须与[readInt](#readint)配对使用。 - 一次写入对应一次读取 - 占用4字节(32位)存储空间。 - 采用系统默认字节序存储。 - 超出范围会导致数据截断或写入失败。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3741,11 +3741,11 @@ try {
 writeIntArray(intArray: int[]): void
 ```
 
-将整数数组写入MessageSequence实例。 - 必须与[readIntArray](#readIntArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将整数数组写入MessageSequence实例。 - 必须与[readIntArray](#readintarray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3789,11 +3789,11 @@ try {
 writeInterfaceToken(token: string): void
 ```
 
-将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。适用于需要验证通信双方接口一致性的场景，如跨进程服务调用、安全通信验证以及标识服务端提供的接口类型。建议使用唯一且有意义的描述符字符串（如" com.example.service"），避免使用敏感信息，长度应小于40960。调用此方法后，接口描述符字符串会被序列化并存入MessageSequence缓冲区。远端在接收到通信请求后，可读取该描述符来验证请求来源的合法 性。 - 必须与[readInterfaceToken](#readInterfaceToken)配对使用。 - 长度超过限制会抛出参数错误异常。
+将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。适用于需要验证通信双方接口一致性的场景，如跨进程服务调用、安全通信验证以及标识服务端提供的接口类型。建议使用唯一且有意义的描述符字符串（如" com.example.service"），避免使用敏感信息，长度应小于40960。调用此方法后，接口描述符字符串会被序列化并存入MessageSequence缓冲区。远端在接收到通信请求后，可读取该描述符来验证请求来源的合法 性。 - 必须与[readInterfaceToken](#readinterfacetoken)配对使用。 - 长度超过限制会抛出参数错误异常。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3837,11 +3837,11 @@ try {
 writeLong(val: long): void
 ```
 
-将长整数值写入MessageSequence实例。 - 必须与[readLong](#readLong)配对使用。 - 一次写入对应一次读取。
+将长整数值写入MessageSequence实例。 - 必须与[readLong](#readlong)配对使用。 - 一次写入对应一次读取。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3885,11 +3885,11 @@ try {
 writeLongArray(longArray: long[]): void
 ```
 
-将长整数数组写入MessageSequence实例。 - 必须与[readLongArray](#readLongArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将长整数数组写入MessageSequence实例。 - 必须与[readLongArray](#readlongarray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3933,11 +3933,11 @@ try {
 writeNoException(): void
 ```
 
-向MessageSequence写入“指示未发生异常”的信息。通常在IPC/RPC通信的服务端实现以及onRemoteMessageRequest回调中调用。 - 此方法与[readException](#readException)方法配对使用。 - 服务端在处理请求完成后，应调用writeNoException()写入未发生异常的信息。 - 客户端在收到响应后，应调用[readException](#readException)读取异常信息。 - 如果服务端未调用writeNoException()，客户端调用[readException](#readException)会读取失败。
+向MessageSequence写入“指示未发生异常”的信息。通常在IPC/RPC通信的服务端实现以及onRemoteMessageRequest回调中调用。 - 此方法与[readException](#readexception)方法配对使用。 - 服务端在处理请求完成后，应调用writeNoException()写入未发生异常的信息。 - 客户端在收到响应后，应调用[readException](#readexception)读取异常信息。 - 如果服务端未调用writeNoException()，客户端调用[readException](#readexception)会读取失败。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3992,7 +3992,7 @@ writeParcelable(val: Parcelable): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4056,11 +4056,11 @@ try {
 writeParcelableArray(parcelableArray: Parcelable[]): void
 ```
 
-将可序列化对象数组写入MessageSequence实例。适用于批量传输多个自定义数据结构对象的场景，如传输多条业务记录、批量配置信息、多个实体对象等。 - 必须与[readParcelableArray](#readParcelableArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将可序列化对象数组写入MessageSequence实例。适用于批量传输多个自定义数据结构对象的场景，如传输多条业务记录、批量配置信息、多个实体对象等。 - 必须与[readParcelableArray](#readparcelablearray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4131,11 +4131,11 @@ writeRawData(rawData: number[], size: number): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
-**替代接口：** [writeRawDataBuffer](#writeRawDataBuffer)(rawData: ArrayBuffer, size: int)
+**替代接口：** [writeRawDataBuffer](#writerawdatabuffer)(rawData: ArrayBuffer, size: int)
 
 <!--Device-MessageSequence-writeRawData(rawData: number[], size: number): void--><!--Device-MessageSequence-writeRawData(rawData: number[], size: number): void-End-->
 
@@ -4183,7 +4183,7 @@ writeRawDataBuffer(rawData: ArrayBuffer, size: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4234,11 +4234,11 @@ try {
 writeRemoteObject(obj: IRemoteObject): void
 ```
 
-序列化远程对象并将其写入[MessageSequence](#MessageSequence)对象。调用此方法后，IRemoteObject对象会被序列化为特定格式并存入MessageSequence的缓冲区 中，同时会更新内部写指针位置。该序列化对象可在接收端通过readRemoteObject方法反序列化读取。 - 只能写入有效的IRemoteObject对象，传入无效对象会抛出异常。 - 序列化后的对象占用固定大小的缓冲区空间。 - 写入的对象必须与对应的readRemoteObject方法配对使用。
+序列化远程对象并将其写入[MessageSequence](#messagesequence)对象。调用此方法后，IRemoteObject对象会被序列化为特定格式并存入MessageSequence的缓冲区 中，同时会更新内部写指针位置。该序列化对象可在接收端通过readRemoteObject方法反序列化读取。 - 只能写入有效的IRemoteObject对象，传入无效对象会抛出异常。 - 序列化后的对象占用固定大小的缓冲区空间。 - 写入的对象必须与对应的readRemoteObject方法配对使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4295,11 +4295,11 @@ try {
 writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 ```
 
-将IRemoteObject对象数组写入MessageSequence。适用于需要传递多个远程对象的场景，如批量注册多个服务代理、传递多个回调接口、多服务端点管理等。 - 必须与[readRemoteObjectArray](#readRemoteObjectArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将IRemoteObject对象数组写入MessageSequence。适用于需要传递多个远程对象的场景，如批量注册多个服务代理、传递多个回调接口、多服务端点管理等。 - 必须与[readRemoteObjectArray](#readremoteobjectarray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4355,11 +4355,11 @@ try {
 writeShort(val: int): void
 ```
 
-将短整数值写入MessageSequence实例。 - 超出范围会导致数据截断。 - 必须与[readShort](#readShort)配对使用。 - 一次写入对应一次读取。
+将短整数值写入MessageSequence实例。 - 超出范围会导致数据截断。 - 必须与[readShort](#readshort)配对使用。 - 一次写入对应一次读取。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4403,11 +4403,11 @@ try {
 writeShortArray(shortArray: int[]): void
 ```
 
-将短整数数组写入MessageSequence实例。 - 必须与[readShortArray](#readShortArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将短整数数组写入MessageSequence实例。 - 必须与[readShortArray](#readshortarray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4451,11 +4451,11 @@ try {
 writeString(val: string): void
 ```
 
-将字符串值写入MessageSequence实例。调用此方法后，字符串会被序列化存入缓冲区。写入时会先存储字符串长度，再存储字节数据。 - 此方法与[readString](#readString)方法配对使用。 - 先写入长度，再写入内容。 - 支持多语言字符集。 - 长度信息便于[readString](#readString)确定读取边界。 - 注意区分字符数和字节数，中文字符占用更多字节。 - 长字符串会占用较多缓冲区空间。 - 空字符串也可以正常写入。
+将字符串值写入MessageSequence实例。调用此方法后，字符串会被序列化存入缓冲区。写入时会先存储字符串长度，再存储字节数据。 - 此方法与[readString](#readstring)方法配对使用。 - 先写入长度，再写入内容。 - 支持多语言字符集。 - 长度信息便于[readString](#readstring)确定读取边界。 - 注意区分字符数和字节数，中文字符占用更多字节。 - 长字符串会占用较多缓冲区空间。 - 空字符串也可以正常写入。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -4502,11 +4502,11 @@ try {
 writeStringArray(stringArray: string[]): void
 ```
 
-将字符串数组写入MessageSequence实例。 - 必须与[readStringArray](#readStringArray)配对使用。 - 读取数组长度必须与写入数组长度一致。
+将字符串数组写入MessageSequence实例。 - 必须与[readStringArray](#readstringarray)配对使用。 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

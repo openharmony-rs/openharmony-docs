@@ -4,7 +4,7 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 20
 
@@ -24,7 +24,7 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 20
 
@@ -55,7 +55,7 @@ constructor(locale: string | Array<string>, options?: PluralRulesOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 20
 
@@ -72,7 +72,7 @@ constructor(locale: string | Array<string>, options?: PluralRulesOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
-| options | [PluralRulesOptions](arkts-localization-intl-pluralrulesoptions-i.md) | 否 | 创建单复数对象时设置的配置项。 &lt;br&gt;默认值：所有属性都取默认值时的配置项。 |
+| options | [PluralRulesOptions](arkts-localization-intl-pluralrulesoptions-i.md) | 否 | 创建单复数对象时设置的配置项。 <br>默认值：所有属性都取默认值时的配置项。 |
 
 ## 示例
 
@@ -93,7 +93,7 @@ select(n: double): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 20
 
@@ -115,7 +115,7 @@ select(n: double): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 单复数类别，取值包括："zero"，"one"，"two", "few", "many", "other"。 &lt;br&gt;不同取值的含义请参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
+| string | 单复数类别，取值包括："zero"，"one"，"two", "few", "many", "other"。 <br>不同取值的含义请参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。 |
 
 ## 示例
 

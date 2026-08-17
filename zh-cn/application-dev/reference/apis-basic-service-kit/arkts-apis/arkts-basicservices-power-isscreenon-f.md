@@ -10,11 +10,11 @@ function isScreenOn(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isActive)
+**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isactive)
 
 <!--Device-power-function isScreenOn(callback: AsyncCallback<boolean>): void--><!--Device-power-function isScreenOn(callback: AsyncCallback<boolean>): void-End-->
 
@@ -49,11 +49,11 @@ function isScreenOn(): Promise<boolean>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isActive)
+**替代接口：** [isActive](arkts-basicservices-power-isactive-f.md#isactive)
 
 <!--Device-power-function isScreenOn(): Promise<boolean>--><!--Device-power-function isScreenOn(): Promise<boolean>-End-->
 

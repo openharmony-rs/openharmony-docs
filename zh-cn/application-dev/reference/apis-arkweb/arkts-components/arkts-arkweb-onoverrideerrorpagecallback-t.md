@@ -4,11 +4,11 @@
 type OnOverrideErrorPageCallback = (errorPageEvent: OnErrorReceiveEvent) => string
 ```
 
-The callback of onOverrideErrorPage.
+onOverrideErrorPage的回调函数，网页加载失败时触发。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ The callback of onOverrideErrorPage.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| errorPageEvent | [OnErrorReceiveEvent](arkts-arkweb-onerrorreceiveevent-i.md) | 是 | The information of error. |
+| errorPageEvent | [OnErrorReceiveEvent](arkts-arkweb-onerrorreceiveevent-i.md) | 是 | 网页加载遇到错误时返回的相关信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | Return an HTML text content encoded in Base64. |
+| string | 返回以Base64编码的HTML文本内容。 |
 

@@ -4,11 +4,11 @@ LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的�
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [LRUCache](arkts-arkts-util-lrucache-c.md#LRUCache)
+**替代接口：** [LRUCache](arkts-arkts-util-lrucache-c.md#lrucache)
 
 <!--Device-util-class LruBuffer--><!--Device-util-class LruBuffer-End-->
 
@@ -24,7 +24,7 @@ LruBuffer 算法在缓存空间不足时使用新数据替换最不常使用的�
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -58,11 +58,11 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [afterRemoval](arkts-arkts-util-lrucache-c.md#afterRemoval)
+**替代接口：** [afterRemoval](arkts-arkts-util-lrucache-c.md#afterremoval)
 
 <!--Device-LruBuffer-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void--><!--Device-LruBuffer-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void-End-->
 
@@ -112,7 +112,7 @@ clear(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -141,7 +141,7 @@ constructor(capacity?: number)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -173,7 +173,7 @@ contains(key: K): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -215,11 +215,11 @@ createDefault(key: K): V
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [createDefault](arkts-arkts-util-lrucache-c.md#createDefault)
+**替代接口：** [createDefault](arkts-arkts-util-lrucache-c.md#createdefault)
 
 <!--Device-LruBuffer-createDefault(key: K): V--><!--Device-LruBuffer-createDefault(key: K): V-End-->
 
@@ -254,7 +254,7 @@ entries(): IterableIterator<[K, V]>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -288,7 +288,7 @@ get(key: K): V | undefined
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -330,11 +330,11 @@ getCapacity(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getCapacity](arkts-arkts-util-lrucache-c.md#getCapacity)
+**替代接口：** [getCapacity](arkts-arkts-util-lrucache-c.md#getcapacity)
 
 <!--Device-LruBuffer-getCapacity(): number--><!--Device-LruBuffer-getCapacity(): number-End-->
 
@@ -365,11 +365,11 @@ getCreateCount(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getCreateCount](arkts-arkts-util-lrucache-c.md#getCreateCount)
+**替代接口：** [getCreateCount](arkts-arkts-util-lrucache-c.md#getcreatecount)
 
 <!--Device-LruBuffer-getCreateCount(): number--><!--Device-LruBuffer-getCreateCount(): number-End-->
 
@@ -401,11 +401,11 @@ getMatchCount(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getMatchCount](arkts-arkts-util-lrucache-c.md#getMatchCount)
+**替代接口：** [getMatchCount](arkts-arkts-util-lrucache-c.md#getmatchcount)
 
 <!--Device-LruBuffer-getMatchCount(): number--><!--Device-LruBuffer-getMatchCount(): number-End-->
 
@@ -438,11 +438,11 @@ getMissCount(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getMissCount](arkts-arkts-util-lrucache-c.md#getMissCount)
+**替代接口：** [getMissCount](arkts-arkts-util-lrucache-c.md#getmisscount)
 
 <!--Device-LruBuffer-getMissCount(): number--><!--Device-LruBuffer-getMissCount(): number-End-->
 
@@ -475,11 +475,11 @@ getPutCount(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getPutCount](arkts-arkts-util-lrucache-c.md#getPutCount)
+**替代接口：** [getPutCount](arkts-arkts-util-lrucache-c.md#getputcount)
 
 <!--Device-LruBuffer-getPutCount(): number--><!--Device-LruBuffer-getPutCount(): number-End-->
 
@@ -511,11 +511,11 @@ getRemovalCount(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getRemovalCount](arkts-arkts-util-lrucache-c.md#getRemovalCount)
+**替代接口：** [getRemovalCount](arkts-arkts-util-lrucache-c.md#getremovalcount)
 
 <!--Device-LruBuffer-getRemovalCount(): number--><!--Device-LruBuffer-getRemovalCount(): number-End-->
 
@@ -549,11 +549,11 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [isEmpty](arkts-arkts-util-lrucache-c.md#isEmpty)
+**替代接口：** [isEmpty](arkts-arkts-util-lrucache-c.md#isempty)
 
 <!--Device-LruBuffer-isEmpty(): boolean--><!--Device-LruBuffer-isEmpty(): boolean-End-->
 
@@ -585,7 +585,7 @@ keys(): K[]
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -621,7 +621,7 @@ put(key: K, value: V): V
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -663,7 +663,7 @@ remove(key: K): V | undefined
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -705,11 +705,11 @@ toString(): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#toString)
+**替代接口：** [toString](arkts-arkts-util-lrucache-c.md#tostring)
 
 <!--Device-LruBuffer-toString(): string--><!--Device-LruBuffer-toString(): string-End-->
 
@@ -743,11 +743,11 @@ updateCapacity(newCapacity: number): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [updateCapacity](arkts-arkts-util-lrucache-c.md#updateCapacity)
+**替代接口：** [updateCapacity](arkts-arkts-util-lrucache-c.md#updatecapacity)
 
 <!--Device-LruBuffer-updateCapacity(newCapacity: number): void--><!--Device-LruBuffer-updateCapacity(newCapacity: number): void-End-->
 
@@ -776,7 +776,7 @@ values(): V[]
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -816,7 +816,7 @@ length: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

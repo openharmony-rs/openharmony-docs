@@ -4,7 +4,7 @@ Describes the video Dimensions.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Describes the video Dimensions.
 height?: int
 ```
 
-height of the video resolution. The value should be an integer.Value constraint:The value must be a positive integer. &lt;br&gt;Unit:Pixel.
+height of the video resolution. The value should be an integer.Value constraint:The value must be a positive integer. <br>Unit:Pixel.
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -40,13 +40,13 @@ height of the video resolution. The value should be an integer.Value constraint:
 width?: int
 ```
 
-width of the video resolution. The value should be an integer.Value constraint:The value must be a positive integer. &lt;br&gt;Unit:Pixel.
+width of the video resolution. The value should be an integer.Value constraint:The value must be a positive integer. <br>Unit:Pixel.
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

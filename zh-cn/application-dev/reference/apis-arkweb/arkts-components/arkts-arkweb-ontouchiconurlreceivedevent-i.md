@@ -1,10 +1,10 @@
 # OnTouchIconUrlReceivedEvent
 
-定义设置接收到apple-touch-icon url地址时的回调函数。
+定义接收到apple-touch-icon URL时触发的回调信息，包括URL和预合成状态。适用于需要获取网页图标的场景，提升图标管理的灵活性和用户体验。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 precomposed: boolean
 ```
 
-对应apple-touch-icon是否为预合成。
+对应apple-touch-icon是否为预合成。 true表示对应apple-touch-icon为预合成，false表示对应apple-touch-icon不是预合成。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ url: string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

@@ -17,7 +17,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,9 +36,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [begin](arkts-na-performancemonitor-begin-f-sys.md#begin（系统接口）) | 用于标记用户场景开始，用户场景开始时调用此接口。 |
-| [end](arkts-na-performancemonitor-end-f-sys.md#end（系统接口）) | 用于标记用户场景结束，用户场景结束时调用此接口。 |
-| [recordInputEventTime](arkts-na-performancemonitor-recordinputeventtime-f-sys.md#recordInputEventTime（系统接口）) | 记录动效场景开始前，用户输入触发事件类型与时间。 |
+| [begin](arkts-na-performancemonitor-begin-f-sys.md#begin系统接口) | 用于标记用户场景开始，用户场景开始时调用此接口。 |
+| [end](arkts-na-performancemonitor-end-f-sys.md#end系统接口) | 用于标记用户场景结束，用户场景结束时调用此接口。 |
+| [recordInputEventTime](arkts-na-performancemonitor-recordinputeventtime-f-sys.md#recordinputeventtime系统接口) | 记录动效场景开始前，用户输入触发事件类型与时间。 |
 <!--DelEnd-->
 
 <!--Del-->

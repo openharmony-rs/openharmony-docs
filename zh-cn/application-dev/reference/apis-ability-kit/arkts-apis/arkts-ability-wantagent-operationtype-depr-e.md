@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [OperationType](arkts-ability-wantagent-operationtype-e.md#OperationType)
+**替代接口：** [OperationType](arkts-ability-wantagent-operationtype-e.md#operationtype)
 
 <!--Device-wantAgent-export enum OperationType--><!--Device-wantAgent-export enum OperationType-End-->
 
@@ -24,11 +24,11 @@ UNKNOWN_TYPE = 0
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [UNKNOWN_TYPE](arkts-ability-wantagent-operationtype-e.md#UNKNOWN_TYPE)
+**替代接口：** [UNKNOWN_TYPE](arkts-ability-wantagent-operationtype-e.md#unknowntype)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,11 +46,11 @@ START_ABILITY
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [START_ABILITY](arkts-ability-wantagent-operationtype-e.md#START_ABILITY)
+**替代接口：** [START_ABILITY](arkts-ability-wantagent-operationtype-e.md#startability)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -68,11 +68,11 @@ START_ABILITIES
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [START_ABILITIES](arkts-ability-wantagent-operationtype-e.md#START_ABILITIES)
+**替代接口：** [START_ABILITIES](arkts-ability-wantagent-operationtype-e.md#startabilities)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -90,11 +90,11 @@ START_SERVICE
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [START_SERVICE](arkts-ability-wantagent-operationtype-e.md#START_SERVICE)
+**替代接口：** [START_SERVICE](arkts-ability-wantagent-operationtype-e.md#startservice)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -112,11 +112,11 @@ SEND_COMMON_EVENT
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [SEND_COMMON_EVENT](arkts-ability-wantagent-operationtype-e.md#SEND_COMMON_EVENT)
+**替代接口：** [SEND_COMMON_EVENT](arkts-ability-wantagent-operationtype-e.md#sendcommonevent)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

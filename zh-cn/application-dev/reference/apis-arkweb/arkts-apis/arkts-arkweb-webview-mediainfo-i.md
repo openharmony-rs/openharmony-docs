@@ -1,10 +1,10 @@
 # MediaInfo
 
-[CreateNativeMediaPlayerCallback](../../apis-na/arkts-apis/arkts-na-webview-createnativemediaplayercallback-t.md#CreateNativeMediaPlayerCallback)回调函数的一个参数。包含了网页中媒 体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
+[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md#createnativemediaplayercallback)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建 接管网页媒体播放的播放器。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 attributes: Record<string, string>
 ```
 
-Attributes in **&lt;video&gt;** or **&lt;audio&gt;**.
+`&lt;video&gt;` 或 `&lt;audio&gt;` 标签中的属性。
 
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -38,13 +38,13 @@ Attributes in **&lt;video&gt;** or **&lt;audio&gt;**.
 controlList: string[]
 ```
 
-Value of the **controlslist** attribute in **&lt;video&gt;** or **&lt;audio&gt;**.
+`&lt;video&gt;` 或 `&lt;audio&gt;` 中的 `controlslist` 属性的值。
 
 **类型：** string[]
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -60,13 +60,13 @@ Value of the **controlslist** attribute in **&lt;video&gt;** or **&lt;audio&gt;*
 controlsShown: boolean
 ```
 
-Whether the **controls** attribute exists in **&lt;video&gt;** or **&lt;audio&gt;**. The value **true** means that the **controls** attribute exists in **&lt;video&gt;** or **&lt;audio&gt;**, and **false** means the opposite.
+`&lt;video&gt;` 或 `&lt;audio&gt;` 中是否有 `controls` 属性。 true 表示有，false 表示没有。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -82,13 +82,13 @@ Whether the **controls** attribute exists in **&lt;video&gt;** or **&lt;audio&gt
 embedID: string
 ```
 
-ID of **&lt;video&gt;** or **&lt;audio&gt;** on the web page.
+网页中的 `&lt;video&gt;` 或 `&lt;audio&gt;` 的 ID。
 
 **类型：** string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -102,13 +102,13 @@ ID of **&lt;video&gt;** or **&lt;audio&gt;** on the web page.
 headers: Record<string, string>
 ```
 
-HTTP headers that need to be included in the player's request for media resources.
+播放器请求媒体资源时，需要携带的 HTTP 头。
 
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -122,13 +122,13 @@ HTTP headers that need to be included in the player's request for media resource
 mediaSrcList: MediaSourceInfo[]
 ```
 
-Source of the media. There may be multiple sources. The application needs to select a supported source to play.
+媒体的源。可能有多个源，应用需要选择一个支持的源来播放。
 
-**类型：** [MediaSourceInfo](../../apis-na/arkts-apis/arkts-na-webview-mediasourceinfo-c.md)[]
+**类型：** [MediaSourceInfo](arkts-arkweb-webview-mediasourceinfo-c.md)[]
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -144,13 +144,13 @@ Source of the media. There may be multiple sources. The application needs to sel
 mediaType: MediaType
 ```
 
-Type of the media.
+媒体的类型。
 
 **类型：** MediaType
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -166,13 +166,13 @@ Type of the media.
 muted: boolean
 ```
 
-Whether to mute the player. The value **true** means to mute the player, and **false** means the opposite.
+是否要求静音播放。 true 表示静音播放，false 表示未静音播放。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -188,13 +188,13 @@ Whether to mute the player. The value **true** means to mute the player, and **f
 posterUrl: string
 ```
 
-URL of a poster.
+海报的地址。
 
 **类型：** string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -210,13 +210,13 @@ URL of a poster.
 preload: Preload
 ```
 
-Whether preloading is required.
+是否需要预加载。
 
-**类型：** [Preload](../../apis-na/arkts-apis/arkts-na-webview-preload-e.md)
+**类型：** [Preload](arkts-arkweb-webview-preload-e.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -232,13 +232,13 @@ Whether preloading is required.
 surfaceInfo: NativeMediaPlayerSurfaceInfo
 ```
 
-Surface information used for same-layer rendering.
+用于同层渲染的 surface 信息。
 
-**类型：** [NativeMediaPlayerSurfaceInfo](../../apis-na/arkts-apis/arkts-na-webview-nativemediaplayersurfaceinfo-c.md)
+**类型：** [NativeMediaPlayerSurfaceInfo](arkts-arkweb-webview-nativemediaplayersurfaceinfo-c.md)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

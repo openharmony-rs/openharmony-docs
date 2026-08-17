@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 audioSourceType?: AudioSourceType
 ```
 
-录制的音频源类型。录制音频时该参数为必填参数。&lt;br&gt;**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+录制的音频源类型。录制音频时该参数为必填参数。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **类型：** [AudioSourceType](arkts-media-multimedia-media-audiosourcetype-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ fileGenerationMode?: FileGenerationMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -60,13 +60,13 @@ fileGenerationMode?: FileGenerationMode
 location?: Location
 ```
 
-录制视频的地理位置。默认不记录地理位置信息。&lt;br&gt;此接口从API version 6开始支持，从API version 12开始废弃，建议使用**AVMetadata.location**替代。如果同时设置了两个参数，将使用**AVMetadata.location**。
+录制视频的地理位置。默认不记录地理位置信息。<br>此接口从API version 6开始支持，从API version 12开始废弃，建议使用**AVMetadata.location**替代。如果同时设置了两个参数，将使用**AVMetadata.location**。
 
 **类型：** [Location](arkts-media-multimedia-media-location-i.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -88,7 +88,7 @@ maxDuration?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -108,7 +108,7 @@ metadata?: AVMetadata
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -122,13 +122,13 @@ metadata?: AVMetadata
 profile: AVRecorderProfile
 ```
 
-录制配置参数。此参数为必填参数。&lt;br&gt;**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+录制配置参数。此参数为必填参数。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **类型：** [AVRecorderProfile](arkts-media-multimedia-media-avrecorderprofile-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -144,17 +144,17 @@ profile: AVRecorderProfile
 rotation?: number
 ```
 
-录制视频的旋转角度。MP4视频取值可为0（默认）、90、180或270。&lt;br&gt;此接口从API version 6开始支持，从API version 12开始废弃，建议使用**AVMetadata.videoOrientation**替代。如果同时设置了两个参数，将使用**AVMetadata.videoOrientation**。
+录制视频的旋转角度。MP4视频取值可为0（默认）、90、180或270。<br>此接口从API version 6开始支持，从API version 12开始废弃，建议使用**AVMetadata.videoOrientation**替代。如果同时设置了两个参数，将使用**AVMetadata.videoOrientation**。
 
 **类型：** number
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
-**替代接口：** [videoOrientation](arkts-media-media-avmetadata-i.md#videoOrientation)
+**替代接口：** [videoOrientation](arkts-media-media-avmetadata-i.md#videoorientation)
 
 <!--Device-AVRecorderConfig-rotation?: number--><!--Device-AVRecorderConfig-rotation?: number-End-->
 
@@ -166,13 +166,13 @@ rotation?: number
 url: string
 ```
 
-录制输出URL：fd://xx（fd句柄）。&lt;br&gt;此参数为必填参数。&lt;br&gt;**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+录制输出URL：fd://xx（fd句柄）。<br>此参数为必填参数。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -194,7 +194,7 @@ videoSourceType?: VideoSourceType
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

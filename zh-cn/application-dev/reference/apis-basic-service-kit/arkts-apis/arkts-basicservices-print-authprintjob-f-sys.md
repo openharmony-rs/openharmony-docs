@@ -10,7 +10,7 @@ function authPrintJob(jobId: string, userName: string, password: string): Promis
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -28,9 +28,9 @@ function authPrintJob(jobId: string, userName: string, password: string): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| jobId | string | 是 | 打印作业ID。 &lt;br&gt;要打印的作业ID。 |
-| userName | string | 是 | 用户名。 &lt;br&gt;用户名。 |
-| password | string | 是 | 用户密码。 &lt;br&gt;用户密码。 |
+| jobId | string | 是 | 打印作业ID。 <br>要打印的作业ID。 |
+| userName | string | 是 | 用户名。 <br>用户名。 |
+| password | string | 是 | 用户密码。 <br>用户密码。 |
 
 **返回值：**
 

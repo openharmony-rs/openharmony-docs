@@ -1,12 +1,12 @@
 # WindowExtensionContext（系统接口）
 
-WindowExtensionContext模块是WindowExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#ExtensionContext)。 WindowExtensionContext模块提供[WindowExtensionAbility](arkts-arkui-application-windowextensionability-windowextensionability-c-sys.md#WindowExtensionAbility（系统接口）)具有的能力，包括启动 Ability。 > **说明：** > > - 从API version 21开始废弃，推荐使用[UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#UIExtensionContext)。 > > - 本模块接口为系统接口。 > > - 本模块接口仅可在Stage模型下使用。
+WindowExtensionContext模块是WindowExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#extensioncontext)。 WindowExtensionContext模块提供[WindowExtensionAbility](arkts-arkui-application-windowextensionability-windowextensionability-c-sys.md#windowextensionability系统接口)具有的能力，包括启动 Ability。 > **说明：** > > - 从API version 21开始废弃，推荐使用[UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#uiextensioncontext)。 > > - 本模块接口为系统接口。 > > - 本模块接口仅可在Stage模型下使用。
 
 **继承/实现关系：** WindowExtensionContext extends ExtensionContext
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 21
 
@@ -22,11 +22,11 @@ WindowExtensionContext模块是WindowExtensionAbility的上下文环境，继承
 startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void
 ```
 
-启动Ability，使用callback异步回调。 > **说明：** > > - 从API version 9开始支持，从API version 21开始废弃，推荐使用 > [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startAbility) > 。
+启动Ability，使用callback异步回调。 > **说明：** > > - 从API version 9开始支持，从API version 21开始废弃，推荐使用 > [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability) > 。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 21
 
@@ -99,11 +99,11 @@ class WindowExtAbility extends WindowExtensionAbility {
 startAbility(want: Want, options?: StartOptions): Promise<void>
 ```
 
-启动Ability，使用Promise异步回调。 > **说明：** > > - 从API version 9开始支持，从API version 21开始废弃，推荐使用 > [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startAbility) > 。
+启动Ability，使用Promise异步回调。 > **说明：** > > - 从API version 9开始支持，从API version 21开始废弃，推荐使用 > [UIExtensionContext.startability](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md#startability) > 。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 21
 

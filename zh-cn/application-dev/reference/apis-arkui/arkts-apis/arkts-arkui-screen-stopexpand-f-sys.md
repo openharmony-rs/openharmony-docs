@@ -10,7 +10,7 @@ function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): vo
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 20
 
@@ -31,7 +31,7 @@ function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
@@ -40,6 +40,7 @@ function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): vo
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 屏幕ID需通过getAllScreens()获取
 let expandScreenIds: Array<number> = [1, 2, 3]; // 扩展屏幕ID集合
 // 停止屏幕的扩展模式
 screen.stopExpand(expandScreenIds, (err: BusinessError) => {
@@ -63,7 +64,7 @@ function stopExpand(expandScreen:Array<long>): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 20
 
@@ -89,7 +90,7 @@ function stopExpand(expandScreen:Array<long>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 

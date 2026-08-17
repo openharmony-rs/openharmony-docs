@@ -4,7 +4,7 @@ Tabs组件的控制器，用于控制Tabs组件进行页签切换。不支持一
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ changeIndex(value: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ changeIndex(value: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | int | 是 | 页签在Tabs里的索引值，索引值从0开始。&lt;br/&gt;**说明：** &lt;br/&gt;设置小于0或大于最大数量的值时，取默认值0。 |
+| value | int | 是 | 页签在Tabs里的索引值，索引值从0开始。<br/>**说明：** <br/>设置小于0或大于最大数量的值时，取默认值0。 |
 
 ## constructor
 
@@ -48,7 +48,7 @@ TabsController的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ preloadItems(indices: Array<int> | undefined): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ preloadItems(indices: Array<int> | undefined): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indices | Array&lt;int&gt; \| undefined | 是 | 需预加载的子节点的下标数组。&lt;br/&gt;默认值：空数组。&lt;br/&gt;取值为undefined时，按默认值处理。 |
+| indices | Array&lt;int&gt; \| undefined | 是 | 需预加载的子节点的下标数组。<br/>默认值：空数组。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -94,7 +94,7 @@ preloadItems(indices: Array<int> | undefined): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter invalid. Possible causes: &lt;br&gt; 1. The parameter type is not Array&lt;int&gt;. &lt;br&gt; 2. The parameter is an empty array. &lt;br&gt; 3. The parameter contains an invalid index. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter invalid. Possible causes: <br> 1. The parameter type is not Array&lt;int&gt;. <br> 2. The parameter is an empty array. <br> 3. The parameter contains an invalid index. |
 
 ## setTabBarOpacity
 
@@ -102,11 +102,11 @@ preloadItems(indices: Array<int> | undefined): Promise<void>
 setTabBarOpacity(opacity: double): void
 ```
 
-设置TabBar的不透明度。 > **说明：** > > 当使用 > [bindTabsToScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindTabsToScrollable) > 或 > [bindTabsToNestedScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindTabsToNestedScrollable) > 等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarOpacity接口设置的TabBar不透明度会失效。因此不建议同时使 > 用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarOpacity接口。
+设置TabBar的不透明度。 > **说明：** > > 当使用 > [bindTabsToScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindtabstoscrollable) > 或 > [bindTabsToNestedScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable) > 等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarOpacity接口设置的TabBar不透明度会失效。因此不建议同时使 > 用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarOpacity接口。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -128,11 +128,11 @@ setTabBarOpacity(opacity: double): void
 setTabBarTranslate(translate: TranslateOptions): void
 ```
 
-设置TabBar的平移距离。 > **说明：** > > 当使用 > [bindTabsToScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindTabsToScrollable) > 或 > [bindTabsToNestedScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindTabsToNestedScrollable) > 等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarTranslate接口设置的TabBar平移距离会失效。因此不建议同 > 时使用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarTranslate接口。
+设置TabBar的平移距离。 > **说明：** > > 当使用 > [bindTabsToScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindtabstoscrollable) > 或 > [bindTabsToNestedScrollable](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable) > 等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarTranslate接口设置的TabBar平移距离会失效。因此不建议同 > 时使用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarTranslate接口。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

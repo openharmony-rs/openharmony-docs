@@ -4,7 +4,7 @@ UIUtils是状态管理提供的工具，用于处理可观察数据。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ static addMonitor(valueCallback: MonitorValueCallback | MonitorValueCallback[],
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ static addMonitor(valueInfo: MonitorValueInfo | MonitorValueInfo[],
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ static addMonitor(valueInfo: MonitorValueInfo | MonitorValueInfo[],
 | --- | --- | --- | --- |
 | valueInfo | [MonitorValueInfo](arkts-na-utils-monitorvalueinfo-i.md) \| [MonitorValueInfo](arkts-na-utils-monitorvalueinfo-i.md)[] | 是 | 监听变量的信息或其数组。 |
 | monitorCallback | [MonitorCallback](arkts-na-monitorcallback-t.md) | 是 | 触发监听时调用的回调函数。 |
-| options | [MonitorBaseOptions](arkts-na-utils-monitorbaseoptions-i.md) | 否 | 设置函数的行为，默认行为详见[MonitorBaseOptions](arkts-na-utils-monitorbaseoptions-i.md#MonitorBaseOptions)。 |
+| options | [MonitorBaseOptions](arkts-na-utils-monitorbaseoptions-i.md) | 否 | 设置函数的行为，默认行为详见[MonitorBaseOptions](arkts-na-utils-monitorbaseoptions-i.md#monitorbaseoptions)。 |
 
 **返回值：**
 
@@ -104,7 +104,7 @@ static canBeObserved<T extends object>(source: T): ObservedResult
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -136,7 +136,7 @@ static clearMonitor(monitor: IMonitorDecoratedVariable): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -162,7 +162,7 @@ static getCustomComponentContext<T extends IVariableOwner>(customComponent: T): 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -194,7 +194,7 @@ getLifecycle用于获取自定义组件的生命周期实例。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -226,7 +226,7 @@ static getTarget<T extends object>(source: T): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -258,7 +258,7 @@ static makeBinding<T>(getter: GetterCallback<T>): Binding<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -290,7 +290,7 @@ static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): Mut
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -323,7 +323,7 @@ static makeObserved<T extends object | null | undefined>(source: T): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -355,7 +355,7 @@ static makeObserved<T extends object | null | undefined>(source: T, allowDeep: b
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ function create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpaceName | ColorSpace | 是 | 标准色域类型枚举值。 &lt;br&gt;UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
+| colorSpaceName | ColorSpace | 是 | 标准色域类型枚举值。 <br>UNKNOWN与CUSTOM不可用于直接创建色域对象。 |
 
 **返回值：**
 
@@ -59,7 +59,7 @@ function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManage
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManage
 
 | 类型 | 说明 |
 | --- | --- |
-| ColorSpaceManager | 返回当前创建的色域对象实例。 &lt;br&gt;色域类型定义为[ColorSpace]{ |
+| ColorSpaceManager | 返回当前创建的色域对象实例。 <br>色域类型定义为[ColorSpace]{ |
 
 **错误码：**
 

@@ -2,11 +2,11 @@
 
 Sub component MeasureResult info.
 
-**继承/实现关系：** MeasureResult extends [SizeResult](arkts-arkui-sizeresult-i.md#SizeResult)
+**继承/实现关系：** MeasureResult extends [SizeResult](arkts-arkui-sizeresult-i.md#sizeresult)
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

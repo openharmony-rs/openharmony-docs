@@ -1,14 +1,14 @@
 # AuthenticatorCallback
 
-OAuth认证器回调接口。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthCallback](arkts-basicservices-appaccount-authcallback-i.md#AuthCallback)替代。
+OAuth认证器回调接口。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthCallback](arkts-basicservices-appaccount-authcallback-i.md#authcallback)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md#AuthCallback)
+**替代接口：** [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md#authcallback)
 
 <!--Device-appAccount-interface AuthenticatorCallback--><!--Device-appAccount-interface AuthenticatorCallback-End-->
 
@@ -20,13 +20,13 @@ OAuth认证器回调接口。 > **说明：** > > 从API version 8开始支持�
 onRequestRedirected: (request: Want) => void
 ```
 
-通知请求被跳转。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[onRequestRedirected](#onRequestRedirected)替代。
+通知请求被跳转。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[onRequestRedirected](#onrequestredirected)替代。
 
 **类型：** (request: Want) =&gt; void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -42,13 +42,13 @@ onRequestRedirected: (request: Want) => void
 onResult: (code: number, result: { [key: string]: any }) => void
 ```
 
-通知请求结果。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[onResult](#onResult)替代。
+通知请求结果。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃。建议使用[onResult](#onresult)替代。
 
 **类型：** (code: number, result: { [key: string]: any }) =&gt; void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

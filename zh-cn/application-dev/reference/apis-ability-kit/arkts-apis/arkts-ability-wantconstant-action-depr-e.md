@@ -4,7 +4,7 @@ want操作的常数。用于表示要执行的通用操作。
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -22,7 +22,7 @@ ACTION_HOME = 'ohos.want.action.home'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -40,7 +40,7 @@ ACTION_DIAL = 'ohos.want.action.dial'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -58,7 +58,7 @@ ACTION_SEARCH = 'ohos.want.action.search'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -76,7 +76,7 @@ ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -94,7 +94,7 @@ ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -112,7 +112,7 @@ ACTION_APPLICATION_DETAILS_SETTINGS = 'ohos.settings.application.details'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -130,7 +130,7 @@ ACTION_SET_ALARM = 'ohos.want.action.setAlarm'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -148,7 +148,7 @@ ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -166,7 +166,7 @@ ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -184,7 +184,7 @@ ACTION_DISMISS_ALARM = 'ohos.want.action.dismissAlarm'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -202,7 +202,7 @@ ACTION_DISMISS_TIMER = 'ohos.want.action.dismissTimer'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -220,7 +220,7 @@ ACTION_SEND_SMS = 'ohos.want.action.sendSms'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -238,7 +238,7 @@ ACTION_CHOOSE = 'ohos.want.action.choose'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -256,7 +256,7 @@ ACTION_IMAGE_CAPTURE = 'ohos.want.action.imageCapture'
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -274,7 +274,7 @@ ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -292,7 +292,7 @@ ACTION_SELECT = 'ohos.want.action.select'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -310,7 +310,7 @@ ACTION_SEND_DATA = 'ohos.want.action.sendData'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -328,7 +328,7 @@ ACTION_SEND_MULTIPLE_DATA = 'ohos.want.action.sendMultipleData'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -346,7 +346,7 @@ ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -364,7 +364,7 @@ ACTION_VIEW_DATA = 'ohos.want.action.viewData'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -382,7 +382,7 @@ ACTION_EDIT_DATA = 'ohos.want.action.editData'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -400,7 +400,7 @@ INTENT_PARAMS_INTENT = 'ability.want.params.INTENT'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -418,7 +418,7 @@ INTENT_PARAMS_TITLE = 'ability.want.params.TITLE'
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -436,7 +436,7 @@ ACTION_FILE_SELECT = 'ohos.action.fileSelect'
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -454,7 +454,7 @@ PARAMS_STREAM = 'ability.params.stream'
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -472,7 +472,7 @@ ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

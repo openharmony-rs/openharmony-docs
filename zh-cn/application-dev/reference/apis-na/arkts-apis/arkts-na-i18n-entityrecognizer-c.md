@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(locale?: string)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ constructor(locale?: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| locale | string | 否 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区 组成，例如zh-Hans-CN。 &lt;br&gt;默认值：系统当前区域ID。 |
+| locale | string | 否 | [表示区域ID的字符串](../../../internationalization/i18n-locale-culture.md#实现原理)，由语言、脚本、国家地区 组成，例如zh-Hans-CN。 <br>默认值：系统当前区域ID。 |
 
 **错误码：**
 
@@ -55,7 +55,7 @@ findEntityInfo(text: string): Array<EntityInfoItem>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -75,7 +75,7 @@ findEntityInfo(text: string): Array<EntityInfoItem>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[EntityInfoItem](../../apis-localization-kit/arkts-apis/arkts-localization-i18n-entityinfoitem-i.md)&gt; | 文本中的实体信息列表。 |
+| Array&lt;[EntityInfoItem](arkts-na-i18n-entityinfoitem-i.md)&gt; | 文本中的实体信息列表。 |
 
 **错误码：**
 

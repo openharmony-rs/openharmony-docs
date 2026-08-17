@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 endMargin?: Dimension
 ```
 
-子组件与其下方分割线的距离。&lt;br&gt; 默认值：0vp&lt;br&gt; 非法值：按默认值处理，此时 [getInspectorByKey()](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectorbykey9) 接口获取到的属性值为undefined。
+子组件与其下方分割线的距离。<br> 默认值：0vp<br> 非法值：按默认值处理，此时 [getInspectorByKey()](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectorbykey9) 接口获取到的属性值为undefined。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -26,7 +26,7 @@ endMargin?: Dimension
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ endMargin?: Dimension
 startMargin?: Dimension
 ```
 
-子组件与其上方分割线的距离。&lt;br&gt; 默认值：0vp&lt;br&gt; 非法值：按默认值处理，此时 [getInspectorByKey()](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectorbykey9) 接口获取到的属性值为undefined。
+子组件与其上方分割线的距离。<br> 默认值：0vp<br> 非法值：按默认值处理，此时 [getInspectorByKey()](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectorbykey9) 接口获取到的属性值为undefined。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -50,7 +50,7 @@ startMargin?: Dimension
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

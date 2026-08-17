@@ -4,7 +4,7 @@ LinkIntentParamMapping是 @InsightIntentLink 装饰器的意图参数和uri信�
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ LinkIntentParamMapping是 @InsightIntentLink 装饰器的意图参数和uri信�
 paramCategory?: LinkParamCategory
 ```
 
-表示意图参数类别。 若意图参数类别取值为[LINK](arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md#LinkParamCategory)，系统获取paramName字段对应的意图参数映射名称，并将该意图参数映射名称拼接到uri链接的末尾(以键值对的形式key=value，key为意图参数映射名 称，value为意图参数值)。 若意图参数类别为[WANT](arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md#LinkParamCategory)，系统获取paramName字段对应的意图参数映射名称，并将该意图参数映射名称及取值通过[Want](arkts-ability-app-ability-want-want-c.md#Want) 的parameters字段进行传递。
+表示意图参数类别。 若意图参数类别取值为[LINK](arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md#linkparamcategory)，系统获取paramName字段对应的意图参数映射名称，并将该意图参数映射名称拼接到uri链接的末尾(以键值对的形式key=value，key为意图参数映射名 称，value为意图参数值)。 若意图参数类别为[WANT](arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md#linkparamcategory)，系统获取paramName字段对应的意图参数映射名称，并将该意图参数映射名称及取值通过[Want](arkts-ability-app-ability-want-want-c.md#want) 的parameters字段进行传递。
 
 **类型：** [LinkParamCategory](arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md)
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ paramMappingName?: string
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -72,7 +72,7 @@ paramName: string
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

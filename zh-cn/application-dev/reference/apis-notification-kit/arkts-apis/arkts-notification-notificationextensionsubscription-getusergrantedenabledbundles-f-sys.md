@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
+import { notificationExtensionSubscription } from 'notificationExtensionSubscription';
 ```
 
 ## getUserGrantedEnabledBundles
@@ -16,7 +16,7 @@ function getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise<Bundl
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -32,7 +32,7 @@ function getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise<Bundl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetBundle | BundleOption | 是 | 需要查询的目标应用信息。应用需要具有ohos.permission.SUBSCRIBE_NOTIFICATION权限， 并且实现[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#NotificationSubscriberExtensionAbility)， 否则返回1600022错误码。 |
+| targetBundle | BundleOption | 是 | 需要查询的目标应用信息。应用需要具有ohos.permission.SUBSCRIBE_NOTIFICATION权限， 并且实现[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#notificationsubscriberextensionability)， 否则返回1600022错误码。 |
 
 **返回值：**
 

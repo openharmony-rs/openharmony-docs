@@ -4,7 +4,7 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(options: ProgressButtonV2ColorOptions)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -46,13 +46,13 @@ constructor(options: ProgressButtonV2ColorOptions)
 @Trace public backgroundColor?: ColorMetrics
 ```
 
-按钮背景颜色。&lt;br/&gt;默认值：\\$r('sys.color.ohos_id_color_foreground_contrary')&lt;br/&gt;装饰器类型：@Trace
+按钮背景颜色。<br/>默认值：\\$r('sys.color.ohos_id_color_foreground_contrary')<br/>装饰器类型：@Trace
 
-**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
+**类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -70,13 +70,13 @@ constructor(options: ProgressButtonV2ColorOptions)
 @Trace public borderColor?: ColorMetrics
 ```
 
-按钮描边颜色。&lt;br/&gt;默认值：#330A59F7&lt;br/&gt;装饰器类型：@Trace
+按钮描边颜色。<br/>默认值：#330A59F7<br/>装饰器类型：@Trace
 
-**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
+**类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -94,13 +94,13 @@ constructor(options: ProgressButtonV2ColorOptions)
 @Trace public progressColor?: ColorMetrics
 ```
 
-进度条颜色。&lt;br/&gt;默认值：#330A59F7&lt;br/&gt;装饰器类型：@Trace
+进度条颜色。<br/>默认值：#330A59F7<br/>装饰器类型：@Trace
 
-**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
+**类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -118,13 +118,13 @@ constructor(options: ProgressButtonV2ColorOptions)
 @Trace public textColor?: ColorMetrics
 ```
 
-按钮文本颜色。&lt;br/&gt;默认值：系统默认值，#CE000000&lt;br/&gt;装饰器类型：@Trace
+按钮文本颜色。<br/>默认值：系统默认值，#CE000000<br/>装饰器类型：@Trace
 
-**类型：** [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md)
+**类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

@@ -10,11 +10,11 @@ function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDi
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setNetworkInterfaceDisabledSync)
+**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_NETWORK
 
@@ -78,11 +78,11 @@ function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDi
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setNetworkInterfaceDisabledSync)
+**替代接口：** [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md#setnetworkinterfacedisabledsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_NETWORK
 

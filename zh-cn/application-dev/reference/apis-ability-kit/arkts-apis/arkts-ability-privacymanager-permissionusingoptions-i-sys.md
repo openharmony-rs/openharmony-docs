@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@
 enhancedIdentity?: string
 ```
 
-扩展身份，用于标识调用方的附加身份信息。当需要区分同一应用下不同调用来源的权限使用记录时传入此字段。长度不超过48个字符，调用 [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startUsingPermission（系统接口）)或 [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopUsingPermission（系统接口）)时传入超长值会返回错误码12100001。 默认值：空字符串。
+扩展身份，用于标识调用方的附加身份信息。当需要区分同一应用下不同调用来源的权限使用记录时传入此字段。长度不超过48个字符，调用 [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md#startusingpermission系统接口)或 [stopUsingPermission](arkts-ability-privacymanager-stopusingpermission-f-sys.md#stopusingpermission系统接口)时传入超长值会返回错误码12100001。 默认值：空字符串。
 
 **类型：** string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

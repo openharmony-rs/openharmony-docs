@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ ShapeMask的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ setCircleShape(circle: Circle): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -56,7 +56,7 @@ setCircleShape(circle: Circle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| circle | [Circle](arkts-na-graphics-circle-i.md) | 是 | 圆形的形状。 |
+| circle | [Circle](../../apis-arkui/arkts-apis/arkts-arkui-graphics-circle-i.md) | 是 | 圆形的形状。 |
 
 ## setCommandPath
 
@@ -68,7 +68,7 @@ setCommandPath(path: CommandPath): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -82,7 +82,7 @@ setCommandPath(path: CommandPath): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | [CommandPath](arkts-na-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
+| path | [CommandPath](../../apis-arkui/arkts-apis/arkts-arkui-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
 
 ## setOvalShape
 
@@ -94,7 +94,7 @@ setOvalShape(oval: Rect): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -108,7 +108,7 @@ setOvalShape(oval: Rect): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oval | [Rect](arkts-na-rect-t.md) | 是 | 椭圆形的形状。 |
+| oval | [Rect](../../apis-arkui/arkts-apis/arkts-arkui-rect-t.md) | 是 | 椭圆形的形状。 |
 
 ## setRectShape
 
@@ -120,7 +120,7 @@ setRectShape(rect: Rect): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ setRectShape(rect: Rect): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rect | [Rect](arkts-na-rect-t.md) | 是 | 矩形的形状。 |
+| rect | [Rect](../../apis-arkui/arkts-apis/arkts-arkui-rect-t.md) | 是 | 矩形的形状。 |
 
 ## setRoundRectShape
 
@@ -146,7 +146,7 @@ setRoundRectShape(roundRect: RoundRect): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -160,7 +160,7 @@ setRoundRectShape(roundRect: RoundRect): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| roundRect | [RoundRect](arkts-na-graphics-roundrect-i.md) | 是 | 圆角矩形的形状。 |
+| roundRect | [RoundRect](../../apis-arkui/arkts-apis/arkts-arkui-graphics-roundrect-i.md) | 是 | 圆角矩形的形状。 |
 
 ## fillColor
 
@@ -168,7 +168,7 @@ setRoundRectShape(roundRect: RoundRect): void
 fillColor: int
 ```
 
-遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md#BlendMode)方式 与RenderNode本身的颜色混合，生成最终颜色。 取值限定为整数。
+遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md#blendmode)方式 与RenderNode本身的颜色混合，生成最终颜色。 取值限定为整数。
 
 **类型：** int
 
@@ -176,7 +176,7 @@ fillColor: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -192,7 +192,7 @@ fillColor: int
 strokeColor: int
 ```
 
-遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md#BlendMode) 方式与RenderNode本身的颜色混合，生成最终颜色。 取值限定为整数。
+遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md#blendmode) 方式与RenderNode本身的颜色混合，生成最终颜色。 取值限定为整数。
 
 **类型：** int
 
@@ -200,7 +200,7 @@ strokeColor: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -224,7 +224,7 @@ strokeWidth: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

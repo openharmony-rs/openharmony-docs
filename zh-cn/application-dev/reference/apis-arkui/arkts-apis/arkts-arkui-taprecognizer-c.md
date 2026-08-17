@@ -1,12 +1,12 @@
 # TapRecognizer
 
-点击手势识别器对象，继承自[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#GestureRecognizer)。
+点击手势识别器对象，继承自[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)。
 
-**继承/实现关系：** TapRecognizer extends [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#GestureRecognizer)
+**继承/实现关系：** TapRecognizer extends [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ getTapCount(): number
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -40,5 +40,5 @@ getTapCount(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 预设点击手势识别器连续点击次数阈值。&lt;br/&gt;取值范围：[0, +∞) |
+| number | 预设点击手势识别器连续点击次数阈值。<br/>取值范围：[0, +∞) |
 

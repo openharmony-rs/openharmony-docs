@@ -1,10 +1,10 @@
 # WebMessageExt
 
-The message received or sent from web message port.
+WebMessageExt是[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md#webmessageport)接口中用于接收和发送的拓展数据对象，支持多种数据类型：字符串（STRING）、数值（NUMBER）、布尔值（ BOOLEAN）、二进制数据（ARRAY_BUFFER）、数组（ARRAY）和错误对象（ERROR）。该类为ArkTS侧与HTML5侧之间的跨语言消息通信提供了结构化的数据载体，通过setType/getType设置和获取数据类 型，再通过对应的setter/getter方法读写具体数据。 WebMessageExt与WebMessagePort配合使用：WebMessagePort负责消息通道的建立和消息的收发，WebMessageExt作为消息的有效载荷在不同语言运行时之间传递。使用扩展接口 [postMessageEventExt](arkts-arkweb-webview-webmessageport-i.md#postmessageeventext)/ onMessageEventExt时，消息载 体即为WebMessageExt对象。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ The message received or sent from web message port.
 getArray(): Array<string | number | boolean>
 ```
 
-获取数据对象的数组类型数据。
+获取数据对象的数组类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ getArray(): Array<string | number | boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string \| number \| boolean&gt; | Returns data of Array type |
+| Array&lt;string \| number \| boolean&gt; | 返回数组类型的数据。 |
 
 **错误码：**
 
@@ -50,11 +50,11 @@ getArray(): Array<string | number | boolean>
 getArrayBuffer(): ArrayBuffer
 ```
 
-获取数据对象的原始二进制数据。
+获取数据对象的原始二进制数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -82,11 +82,11 @@ getArrayBuffer(): ArrayBuffer
 getBoolean(): boolean
 ```
 
-获取数据对象的布尔类型数据。
+获取数据对象的布尔类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -114,11 +114,11 @@ getBoolean(): boolean
 getError(): Error
 ```
 
-获取数据对象的错误类型数据。
+获取数据对象的错误类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -146,11 +146,11 @@ getError(): Error
 getNumber(): number
 ```
 
-获取数据对象的数值类型数据。
+获取数据对象的数值类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -178,11 +178,11 @@ getNumber(): number
 getString(): string
 ```
 
-获取数据对象的字符串类型数据。
+获取数据对象的字符串类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -210,11 +210,11 @@ getString(): string
 getType(): WebMessageType
 ```
 
-获取数据对象的类型。
+获取数据对象的类型。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -228,7 +228,7 @@ getType(): WebMessageType
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebMessageType](../../apis-na/arkts-apis/arkts-na-webview-webmessagetype-e.md) | 返回类型为 WebMessageType 的数据。 |
+| [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md) | [WebMessagePort]{ |
 
 ## setArray
 
@@ -236,11 +236,11 @@ getType(): WebMessageType
 setArray(message: Array<string | number | boolean>): void
 ```
 
-设置数据对象的数组类型数据。
+设置数据对象的数组类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -260,7 +260,7 @@ setArray(message: Array<string | number | boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setArrayBuffer
@@ -269,11 +269,11 @@ setArray(message: Array<string | number | boolean>): void
 setArrayBuffer(message: ArrayBuffer): void
 ```
 
-设置数据对象的原始二进制数据。
+设置数据对象的原始二进制数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -293,7 +293,7 @@ setArrayBuffer(message: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setBoolean
@@ -302,11 +302,11 @@ setArrayBuffer(message: ArrayBuffer): void
 setBoolean(message: boolean): void
 ```
 
-设置数据对象的布尔类型数据。
+设置数据对象的布尔类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -326,7 +326,7 @@ setBoolean(message: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setError
@@ -335,11 +335,11 @@ setBoolean(message: boolean): void
 setError(message: Error): void
 ```
 
-设置数据对象的错误对象类型数据。
+设置数据对象的错误对象类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -359,7 +359,7 @@ setError(message: Error): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setNumber
@@ -368,11 +368,11 @@ setError(message: Error): void
 setNumber(message: number): void
 ```
 
-设置数据对象的数值类型数据。
+设置数据对象的数值类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -392,7 +392,7 @@ setNumber(message: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setString
@@ -401,11 +401,11 @@ setNumber(message: number): void
 setString(message: string): void
 ```
 
-设置数据对象的字符串类型数据。
+设置数据对象的字符串类型数据。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -425,7 +425,7 @@ setString(message: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 
 ## setType
@@ -434,11 +434,11 @@ setString(message: string): void
 setType(type: WebMessageType): void
 ```
 
-设置数据对象的类型。
+设置数据对象的类型。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -452,12 +452,12 @@ setType(type: WebMessageType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [WebMessageType](../../apis-na/arkts-apis/arkts-na-webview-webmessagetype-e.md) | 是 | 设置 WebMessageType 类型数据。 |
+| type | [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md) | 是 | [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md#webmessageport)接口所支持的数据类型。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. &lt;br&gt;2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100014](../errorcode-webview.md#17100014-类型和值不匹配) | The type and value of the message do not match. |
 

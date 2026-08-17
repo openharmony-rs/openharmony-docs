@@ -1,12 +1,12 @@
 # TextPickerDialogOptions
 
-文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpickeroptions-i.md#TextPickerOptions)。
+文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpickeroptions-i.md#textpickeroptions)。
 
-**继承/实现关系：** TextPickerDialogOptions extends [TextPickerOptions](arkts-arkui-textpickeroptions-i.md#TextPickerOptions)
+**继承/实现关系：** TextPickerDialogOptions extends [TextPickerOptions](arkts-arkui-textpickeroptions-i.md#textpickeroptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ acceptButtonStyle?: PickerDialogButtonStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ alignment?: DialogAlignment
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -128,7 +128,7 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -152,7 +152,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ canLoop?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -202,7 +202,7 @@ cancelButtonStyle?: PickerDialogButtonStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -228,7 +228,7 @@ defaultPickerItemHeight?: number | string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -250,7 +250,7 @@ defaultTextStyle?: TextPickerTextStyle
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -276,7 +276,7 @@ disableTextStyleAnimation?: boolean
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -294,7 +294,7 @@ disableTextStyleAnimation?: boolean
 disappearTextStyle?: PickerTextStyle
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细等。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff182431', > &lt;br&gt;font: { > &lt;br&gt;size: '14fp', > &lt;br&gt;weight: FontWeight.Regular > &lt;br&gt;} > &lt;br&gt;}
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细等。 > 默认值： > > <br>{ > <br>color: '#ff182431', > <br>font: { > <br>size: '14fp', > <br>weight: FontWeight.Regular > <br>} > <br>}
 
 **类型：** PickerTextStyle
 
@@ -302,7 +302,7 @@ disappearTextStyle?: PickerTextStyle
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -328,7 +328,7 @@ enableHapticFeedback?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -354,7 +354,7 @@ enableHoverMode?: boolean
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -380,7 +380,7 @@ hoverModeArea?: HoverModeAreaType
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -406,7 +406,7 @@ maskRect?: Rectangle
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -432,7 +432,7 @@ offset?: Offset
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -456,7 +456,7 @@ onAccept?: (value: TextPickerResult) => void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -478,7 +478,7 @@ onCancel?: () => void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -500,7 +500,7 @@ onChange?: (value: TextPickerResult) => void
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -522,7 +522,7 @@ onDidAppear?: () => void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -546,7 +546,7 @@ onDidDisappear?: () => void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -570,7 +570,7 @@ onEnterSelectedArea?: Callback<TextPickerResult>
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -594,7 +594,7 @@ onScrollStop?: Callback<TextPickerResult>
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -618,7 +618,7 @@ onWillAppear?: () => void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -642,7 +642,7 @@ onWillDisappear?: () => void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -660,7 +660,7 @@ onWillDisappear?: () => void
 selectedBackgroundStyle?: PickerBackgroundStyle
 ```
 
-设置选中项背景样式。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: \$r('sys.color.comp_background_tertiary'), > &lt;br&gt;borderRadius: \$r('sys.float.corner_radius_level12') > &lt;br&gt;}
+设置选中项背景样式。 > 默认值： > > <br>{ > <br>color: \$r('sys.color.comp_background_tertiary'), > <br>borderRadius: \$r('sys.float.corner_radius_level12') > <br>}
 
 **类型：** [PickerBackgroundStyle](arkts-arkui-pickerbackgroundstyle-i.md)
 
@@ -668,7 +668,7 @@ selectedBackgroundStyle?: PickerBackgroundStyle
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -686,13 +686,13 @@ selectedBackgroundStyle?: PickerBackgroundStyle
 selectedTextStyle?: PickerTextStyle
 ```
 
-设置选中项的文本颜色、字号、字体粗细等。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff007dff', > &lt;br&gt;font: { > &lt;br&gt;size: '20fp', > &lt;br&gt;weight: FontWeight.Medium > &lt;br&gt;} > &lt;br&gt;}
+设置选中项的文本颜色、字号、字体粗细等。 > 默认值： > > <br>{ > <br>color: '#ff007dff', > <br>font: { > <br>size: '20fp', > <br>weight: FontWeight.Medium > <br>} > <br>}
 
 **类型：** PickerTextStyle
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -716,7 +716,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -734,7 +734,7 @@ shadow?: ShadowOptions | ShadowStyle
 textStyle?: PickerTextStyle
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细等。 > 默认值： > > &lt;br&gt;{ > &lt;br&gt;color: '#ff182431', > &lt;br&gt;font: { > &lt;br&gt;size: '16fp', > &lt;br&gt;weight: FontWeight.Regular > &lt;br&gt;} > &lt;br&gt;}
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细等。 > 默认值： > > <br>{ > <br>color: '#ff182431', > <br>font: { > <br>size: '16fp', > <br>weight: FontWeight.Regular > <br>} > <br>}
 
 **类型：** PickerTextStyle
 
@@ -742,7 +742,7 @@ textStyle?: PickerTextStyle
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

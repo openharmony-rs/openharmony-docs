@@ -10,11 +10,11 @@ function getErrorString(errno: number): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [errnoToString](arkts-arkts-util-errnotostring-f.md#errnoToString)
+**替代接口：** [errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring)
 
 <!--Device-util-function getErrorString(errno: number): string--><!--Device-util-function getErrorString(errno: number): string-End-->
 

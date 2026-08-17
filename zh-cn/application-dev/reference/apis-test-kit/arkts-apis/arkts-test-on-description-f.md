@@ -10,7 +10,7 @@ Specifies the description for the target Component.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ Specifies the description for the target Component.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | val | string | 是 | the description value. |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | the [MatchPattern](arkts-test-uitest-matchpattern-e.md#MatchPattern) of description value,set it default [EQUALS](arkts-test-uitest-matchpattern-e.md#EQUALS) if null or undefined. |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | the [MatchPattern](arkts-test-uitest-matchpattern-e.md#matchpattern) of description value,set it default [EQUALS](arkts-test-uitest-matchpattern-e.md#equals) if null or undefined. |
 
 **返回值：**
 

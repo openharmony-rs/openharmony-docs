@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from '@kit.NotificationKit';
+import { notificationSubscribe } from 'notificationSubscribe';
 ```
 
 ## remove
@@ -21,7 +21,7 @@ function remove(
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -117,7 +117,7 @@ function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -212,7 +212,7 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -228,7 +228,7 @@ function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知唯一ID。可以通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onConsume)回调的入参 [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md#SubscribeCallbackData（系统接口）)获取其内部 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)对象中的hashCode。 |
+| hashCode | string | 是 | 通知唯一ID。可以通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参 [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md#subscribecallbackdata系统接口)获取其内部 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)对象中的hashCode。 |
 | reason | RemoveReason | 是 | 通知删除原因。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
@@ -291,7 +291,7 @@ function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncC
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -307,7 +307,7 @@ function remove(hashCodes: Array<String>, reason: RemoveReason, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。可以通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onConsume)回调的入参 [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md#SubscribeCallbackData（系统接口）)获取其内部 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)对象中的hashCode。 |
+| hashCodes | Array&lt;String&gt; | 是 | 通知唯一ID数组集合。可以通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参 [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md#subscribecallbackdata系统接口)获取其内部 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)对象中的hashCode。 |
 | reason | RemoveReason | 是 | 通知删除原因。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定通知回调函数。 |
 
@@ -369,7 +369,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -385,7 +385,7 @@ function remove(hashCode: string, reason: RemoveReason): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hashCode | string | 是 | 通知唯一ID。可以通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onConsume)回调的入参 [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md#SubscribeCallbackData（系统接口）)获取其内部 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#NotificationRequest)对象中的hashCode。 |
+| hashCode | string | 是 | 通知唯一ID。可以通过 [onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)回调的入参 [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md#subscribecallbackdata系统接口)获取其内部 [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)对象中的hashCode。 |
 | reason | RemoveReason | 是 | 通知删除原因。 |
 
 **返回值：**
@@ -446,7 +446,7 @@ function remove(hashCodes: Array<String>, reason: RemoveReason): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

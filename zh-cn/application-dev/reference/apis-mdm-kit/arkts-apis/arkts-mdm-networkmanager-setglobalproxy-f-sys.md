@@ -10,11 +10,11 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: 
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md#setGlobalProxySync)
+**替代接口：** [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md#setglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -86,11 +86,11 @@ function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise<v
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md#setGlobalProxySync)
+**替代接口：** [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md#setglobalproxysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 

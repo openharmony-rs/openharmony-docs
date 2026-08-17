@@ -10,7 +10,7 @@ function createFileAccessHelper(context: Context): FileAccessHelper
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -105,7 +105,7 @@ function createFileAccessHelper(context: Context, wants: Array<Want>): FileAcces
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 

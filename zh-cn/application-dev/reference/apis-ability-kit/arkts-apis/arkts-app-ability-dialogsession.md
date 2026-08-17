@@ -4,7 +4,7 @@ dialogSession模块用于支持系统应用弹框功能。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,10 +23,10 @@ dialogSession模块用于支持系统应用弹框功能。
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md#getDialogSessionInfo) | 通过dialogSessionId获取会话信息。 |
-| [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md#getDialogSessionInfo（系统接口）) | 根据dialogSessionId获取会话信息。 |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#sendDialogResult) | 发送用户请求。使用Promise异步回调。 |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#sendDialogResult（系统接口）) | 发送用户请求。使用callback异步回调。 |
+| [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md#getdialogsessioninfo) | 通过dialogSessionId获取会话信息。 |
+| [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md#getdialogsessioninfo系统接口) | 根据dialogSessionId获取会话信息。 |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult) | 发送用户请求。使用Promise异步回调。 |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult系统接口) | 发送用户请求。使用callback异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

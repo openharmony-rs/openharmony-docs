@@ -10,7 +10,7 @@ function cancelScreenWatermarkImage(admin: Want): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ let wantTemp: Want = {
 try {
     securityManager.cancelScreenWatermarkImage(wantTemp);
     console.info(`Succeeded in canceling screen watermark image.`);
-} catch(err) {
+} catch (err) {
     console.error(`Failed to cancel screen watermark image. Code: ${err.code}, message: ${err.message}`);
 }
 ```

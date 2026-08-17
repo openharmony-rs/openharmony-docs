@@ -7,16 +7,16 @@
 | 名称 | 说明 |
 | --- | --- |
 | [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md) | ChipV2Accessibility定义无障碍属性类。 |
-| [ChipV2CloseIcon](arkts-arkui-arkui-advanced-chipv2-chipv2closeicon-c.md) | ChipV2CloseIcon用于定义ChipV2组件关闭图标的功能属性类，包括无障碍功能属性。 继承自[ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md#ChipV2Accessibility)。 |
+| [ChipV2CloseIcon](arkts-arkui-arkui-advanced-chipv2-chipv2closeicon-c.md) | ChipV2CloseIcon用于定义ChipV2组件关闭图标的功能属性类，包括无障碍功能属性。 继承自[ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md#chipv2accessibility)。 |
 | [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md) | ChipV2Icon定义图标的基类。 |
-| [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md) | ChipV2ImageIcon定义图标图片的基类。 继承自[ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md#ChipV2Icon)。 |
+| [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md) | ChipV2ImageIcon定义图标图片的基类。 继承自[ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md#chipv2icon)。 |
 | [ChipV2Label](arkts-arkui-arkui-advanced-chipv2-chipv2label-c.md) | ChipV2Label定义文本属性类。 |
 | [ChipV2Options](arkts-arkui-arkui-advanced-chipv2-chipv2options-c.md) | ChipV2Options定义ChipV2的样式及具体样式参数。 |
-| [ChipV2PrefixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageicon-c.md) | ChipV2PrefixImageIcon定义前缀图标类。 继承自[ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md#ChipV2ImageIcon)。 |
-| [ChipV2PrefixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymbolicon-c.md) | ChipV2PrefixSymbolIcon定义前缀Symbol图标类。 继承自[ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md#ChipV2SymbolIcon)。 |
-| [ChipV2SuffixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffiximageicon-c.md) | ChipV2SuffixImageIcon定义后缀图标类。 继承自[ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md#ChipV2ImageIcon)。 |
-| [ChipV2SuffixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymbolicon-c.md) | ChipV2SuffixSymbolIcon定义后缀Symbol图标类。 继承自[ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md#ChipV2SymbolIcon)。 |
-| [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md) | ChipV2SymbolIcon定义Symbol图标类。 继承自[ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md#ChipV2Icon)。 |
+| [ChipV2PrefixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageicon-c.md) | ChipV2PrefixImageIcon定义前缀图标类。 继承自[ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md#chipv2imageicon)。 |
+| [ChipV2PrefixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymbolicon-c.md) | ChipV2PrefixSymbolIcon定义前缀Symbol图标类。 继承自[ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md#chipv2symbolicon)。 |
+| [ChipV2SuffixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffiximageicon-c.md) | ChipV2SuffixImageIcon定义后缀图标类。 继承自[ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md#chipv2imageicon)。 |
+| [ChipV2SuffixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymbolicon-c.md) | ChipV2SuffixSymbolIcon定义后缀Symbol图标类。 继承自[ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md#chipv2symbolicon)。 |
+| [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md) | ChipV2SymbolIcon定义Symbol图标类。 继承自[ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md#chipv2icon)。 |
 
 ### 结构体
 
@@ -29,15 +29,15 @@
 | 名称 | 说明 |
 | --- | --- |
 | [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md) | ChipV2AccessibilityConfig定义无障碍属性配置。 |
-| [ChipV2CloseConfig](arkts-arkui-arkui-advanced-chipv2-chipv2closeconfig-i.md) | ChipV2CloseConfig用于定义ChipV2组件关闭图标的功能属性配置，包括无障碍功能属性。 继承自[ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md#ChipV2AccessibilityConfig)。 |
+| [ChipV2CloseConfig](arkts-arkui-arkui-advanced-chipv2-chipv2closeconfig-i.md) | ChipV2CloseConfig用于定义ChipV2组件关闭图标的功能属性配置，包括无障碍功能属性。 继承自[ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md#chipv2accessibilityconfig)。 |
 | [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md) | ChipV2ImageIconConfig定义图标的通用属性配置。 |
 | [ChipV2LabelConfig](arkts-arkui-arkui-advanced-chipv2-chipv2labelconfig-i.md) | ChipV2LabelConfig定义文本属性配置。 |
 | [ChipV2LabelMarginConfig](arkts-arkui-arkui-advanced-chipv2-chipv2labelmarginconfig-i.md) | ChipV2LabelMarginConfig定义文本与左右侧图标之间间距配置。 |
 | [ChipV2LocalizedLabelMarginConfig](arkts-arkui-arkui-advanced-chipv2-chipv2localizedlabelmarginconfig-i.md) | ChipV2LocalizedLabelMarginConfig用于定义本地化文本与左右侧图标之间间距配置。 |
-| [ChipV2PrefixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageiconconfig-i.md) | ChipV2PrefixImageIconConfig定义前缀图标的属性配置。 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#ChipV2ImageIconConfig)。 |
-| [ChipV2PrefixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymboliconconfig-i.md) | ChipV2PrefixSymbolIconConfig定义前缀Symbol图标的属性配置。 继承自[ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md#ChipV2SymbolIconConfig)。 |
-| [ChipV2SuffixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffiximageiconconfig-i.md) | ChipV2SuffixImageIconConfig定义后缀图标的属性配置。 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#ChipV2ImageIconConfig)和[ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md#ChipV2AccessibilityConfig)。 |
-| [ChipV2SuffixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymboliconconfig-i.md) | ChipV2SuffixSymbolIconConfig定义后缀Symbol图标的属性配置。 继承自[ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md#ChipV2SymbolIconConfig)。 |
+| [ChipV2PrefixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageiconconfig-i.md) | ChipV2PrefixImageIconConfig定义前缀图标的属性配置。 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#chipv2imageiconconfig)。 |
+| [ChipV2PrefixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymboliconconfig-i.md) | ChipV2PrefixSymbolIconConfig定义前缀Symbol图标的属性配置。 继承自[ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md#chipv2symboliconconfig)。 |
+| [ChipV2SuffixImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffiximageiconconfig-i.md) | ChipV2SuffixImageIconConfig定义后缀图标的属性配置。 继承自[ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#chipv2imageiconconfig)和[ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md#chipv2accessibilityconfig)。 |
+| [ChipV2SuffixSymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymboliconconfig-i.md) | ChipV2SuffixSymbolIconConfig定义后缀Symbol图标的属性配置。 继承自[ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md#chipv2symboliconconfig)。 |
 | [ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2symboliconconfig-i.md) | ChipV2SymbolIconConfig定义Symbol图标的属性配置。 |
 | [IChipV2OptionsConfig](arkts-arkui-arkui-advanced-chipv2-ichipv2optionsconfig-i.md) | IChipV2OptionsConfig定义ChipV2选项的配置接口。 |
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,17 +20,17 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getWorkStatus) | 通过workId获取延迟任务，使用Callback异步回调。 |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getWorkStatus) | 通过workId获取延迟任务，使用Promise异步回调。 |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#isLastWorkTimeOut) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#isLastWorkTimeOut) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#isLastWorkTimeOut) | 检查延迟任务的最后一次执行是否超时，使用Promise异步回调。 |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainAllWorks) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainAllWorks) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainAllWorks) | 获取当前应用所有的延迟任务，使用Promise异步回调。 |
-| [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md#startWork) | 申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。 |
-| [stopAndClearWorks](arkts-backgroundtasks-workscheduler-stopandclearworks-f.md#stopAndClearWorks) | 停止和取消当前应用所有的延迟任务。 |
-| [stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md#stopWork) | 取消延迟任务。 |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | 通过workId获取延迟任务，使用Callback异步回调。 |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | 通过workId获取延迟任务，使用Promise异步回调。 |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 检查延迟任务的最后一次执行是否超时，使用Promise异步回调。 |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取当前应用所有的延迟任务，使用Promise异步回调。 |
+| [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md#startwork) | 申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。 |
+| [stopAndClearWorks](arkts-backgroundtasks-workscheduler-stopandclearworks-f.md#stopandclearworks) | 停止和取消当前应用所有的延迟任务。 |
+| [stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md#stopwork) | 取消延迟任务。 |
 
 ### 接口
 
@@ -52,7 +52,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [EXECUTE_IMMEDIATE](arkts-backgroundtasks-workscheduler-con-sys.md#EXECUTE_IMMEDIATE) | 请求的任务是否立即执行。 |
-| [WORK_SCHEDULER_CONDITION](arkts-backgroundtasks-workscheduler-con-sys.md#WORK_SCHEDULER_CONDITION) | 当前任务触发时满足的最后一个条件。 |
+| [EXECUTE_IMMEDIATE](arkts-backgroundtasks-workscheduler-con-sys.md#executeimmediate) | 请求的任务是否立即执行。 |
+| [WORK_SCHEDULER_CONDITION](arkts-backgroundtasks-workscheduler-con-sys.md#workschedulercondition) | 当前任务触发时满足的最后一个条件。 |
 <!--DelEnd-->
 

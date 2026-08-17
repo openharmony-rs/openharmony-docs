@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md#RemoveReason（系统接口）)
+**替代接口：** [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md#removereason系统接口)
 
 <!--Device-notification-export enum RemoveReason--><!--Device-notification-export enum RemoveReason-End-->
 
@@ -26,11 +26,11 @@ CLICK_REASON_REMOVE = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [CLICK_REASON_REMOVE](arkts-notification-notificationsubscribe-removereason-e-sys.md#CLICK_REASON_REMOVE)
+**替代接口：** [CLICK_REASON_REMOVE](arkts-notification-notificationsubscribe-removereason-e-sys.md#clickreasonremove)
 
 <!--Device-RemoveReason-CLICK_REASON_REMOVE = 1--><!--Device-RemoveReason-CLICK_REASON_REMOVE = 1-End-->
 
@@ -48,11 +48,11 @@ CANCEL_REASON_REMOVE = 2
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [CANCEL_REASON_REMOVE](arkts-notification-notificationsubscribe-removereason-e-sys.md#CANCEL_REASON_REMOVE)
+**替代接口：** [CANCEL_REASON_REMOVE](arkts-notification-notificationsubscribe-removereason-e-sys.md#cancelreasonremove)
 
 <!--Device-RemoveReason-CANCEL_REASON_REMOVE = 2--><!--Device-RemoveReason-CANCEL_REASON_REMOVE = 2-End-->
 

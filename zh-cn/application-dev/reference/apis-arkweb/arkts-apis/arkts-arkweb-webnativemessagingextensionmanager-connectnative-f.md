@@ -10,7 +10,7 @@ function connectNative(context: UIAbilityContext, want: Want, callback: WebExten
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -56,7 +56,7 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     try {
         let context: common.UIAbilityContext = this.context; // 获取UIAbilityContext
-        let want:Want = {
+        let want: Want = {
           bundleName: 'com.example.app',
           abilityName: 'MyWebNativeMessageExtAbility',
           parameters: {

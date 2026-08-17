@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [CompleteData](arkts-ability-wantagent-completedata-i.md#CompleteData)
+**替代接口：** [CompleteData](arkts-ability-wantagent-completedata-i.md#completedata)
 
 <!--Device-wantAgent-export interface CompleteData--><!--Device-wantAgent-export interface CompleteData-End-->
 
@@ -26,11 +26,11 @@ extraInfo?: { [key: string]: any }
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [extraInfo](arkts-ability-wantagent-completedata-i.md#extraInfo)
+**替代接口：** [extraInfo](arkts-ability-wantagent-completedata-i.md#extrainfo)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -50,11 +50,11 @@ finalCode: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [finalCode](arkts-ability-wantagent-completedata-i.md#finalCode)
+**替代接口：** [finalCode](arkts-ability-wantagent-completedata-i.md#finalcode)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -74,11 +74,11 @@ finalData: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [finalData](arkts-ability-wantagent-completedata-i.md#finalData)
+**替代接口：** [finalData](arkts-ability-wantagent-completedata-i.md#finaldata)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -98,7 +98,7 @@ info: WantAgent
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -122,7 +122,7 @@ want: Want
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

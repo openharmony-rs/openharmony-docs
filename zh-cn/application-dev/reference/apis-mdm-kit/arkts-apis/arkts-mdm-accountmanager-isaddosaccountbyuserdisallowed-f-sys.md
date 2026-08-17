@@ -10,11 +10,11 @@ function isAddOsAccountByUserDisallowed(admin: Want, userId: number): boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md#isOsAccountAdditionDisallowed)
+**替代接口：** [isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md#isosaccountadditiondisallowed)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -37,7 +37,7 @@ function isAddOsAccountByUserDisallowed(admin: Want, userId: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回true表示该用户禁止添加账号。&lt;br/&gt;返回false表示该用户允许添加账号。 |
+| boolean | 返回true表示该用户禁止添加账号。<br/>返回false表示该用户允许添加账号。 |
 
 **错误码：**
 

@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -20,7 +20,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [USER_ID](arkts-performanceanalysis-param-depr-con.md#USER_ID) | 用户自定义ID。 |
-| [DISTRIBUTED_SERVICE_NAME](arkts-performanceanalysis-param-depr-con.md#DISTRIBUTED_SERVICE_NAME) | 分布式服务名称。 |
-| [DISTRIBUTED_SERVICE_INSTANCE_ID](arkts-performanceanalysis-param-depr-con.md#DISTRIBUTED_SERVICE_INSTANCE_ID) | 分布式服务实例ID。 |
+| [USER_ID](arkts-performanceanalysis-param-depr-con.md#userid) | 用户自定义ID。 |
+| [DISTRIBUTED_SERVICE_NAME](arkts-performanceanalysis-param-depr-con.md#distributedservicename) | 分布式服务名称。 |
+| [DISTRIBUTED_SERVICE_INSTANCE_ID](arkts-performanceanalysis-param-depr-con.md#distributedserviceinstanceid) | 分布式服务实例ID。 |
 

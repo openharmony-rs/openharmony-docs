@@ -4,11 +4,11 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
-**替代接口：** [GyroscopeResponse](arkts-sensorservice-sensor-gyroscoperesponse-i.md#GyroscopeResponse)
+**替代接口：** [GyroscopeResponse](arkts-sensorservice-sensor-gyroscoperesponse-i.md#gyroscoperesponse)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -22,13 +22,13 @@
 x: number
 ```
 
-x轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。
+x轴的旋转角速度。单位：rad/s（弧度/秒）。取值范围：取值为实际上报物理量，由硬件传感器决定。
 
 **类型：** number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -48,13 +48,13 @@ x轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报�
 y: number
 ```
 
-y轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。
+y轴的旋转角速度。单位：rad/s（弧度/秒）。取值范围：取值为实际上报物理量，由硬件传感器决定。
 
 **类型：** number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -74,13 +74,13 @@ y轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报�
 z: number
 ```
 
-z轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。
+z轴的旋转角速度。单位：rad/s（弧度/秒）。取值范围：取值为实际上报物理量，由硬件传感器决定。
 
 **类型：** number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 

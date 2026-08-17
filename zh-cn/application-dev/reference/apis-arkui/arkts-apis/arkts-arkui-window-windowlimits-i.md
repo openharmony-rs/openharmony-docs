@@ -1,10 +1,10 @@
 # WindowLimits
 
-窗口尺寸限制参数，应用可以通过[getWindowLimits](arkts-arkui-window-window-i.md#getWindowLimits)获得当前窗口的尺寸限制（单位为px）；从API version 2 2开始，还可以通过[getWindowLimitsVP](arkts-arkui-window-window-i.md#getWindowLimitsVP)获取窗口尺寸限制（单位为vp）。 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为： 1. 应用通过[setWindowLimits](arkts-arkui-window-window-i.md#setWindowLimits)设置窗口尺寸限制。 2. 应用在[startAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startAbility)拉起窗口时通过[StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md#StartOptions)指定窗口尺寸限制（API version 17开始支持）。 3. 应用在[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。 4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。 > **说明：** > > 针对maxWidth、maxHeight、minWidth、minHeight属性： > > - 默认单位为px，从API version 22开始支持通过pixelUnit设置单位为px或vp。 > > - 参数为整数，浮点数会向下取整。 > > - 默认值为0，表示属性不发生变化。 > > - 可生效范围下限值：系统限定的最小高度/宽度。 > > - 可生效范围上限值：系统限定的最大高度/宽度。
+窗口尺寸限制参数，应用可以通过[getWindowLimits](arkts-arkui-window-window-i.md#getwindowlimits)获得当前窗口的尺寸限制（单位为px）；从API version 2 2开始，还可以通过[getWindowLimitsVP](arkts-arkui-window-window-i.md#getwindowlimitsvp)获取窗口尺寸限制（单位为vp）。 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为： 1. 应用通过[setWindowLimits](arkts-arkui-window-window-i.md#setwindowlimits)设置窗口尺寸限制。 2. 应用在[startAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)拉起窗口时通过[StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md#startoptions)指定窗口尺寸限制（API version 17开始支持）。 3. 应用在[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。 4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。 > **说明：** > > 针对maxWidth、maxHeight、minWidth、minHeight属性： > > - 默认单位为px，从API version 22开始支持通过pixelUnit设置单位为px或vp。 > > - 参数为整数，浮点数会向下取整。 > > - 默认值为0，表示属性不发生变化。 > > - 可生效范围下限值：系统限定的最小高度/宽度。 > > - 可生效范围上限值：系统限定的最大高度/宽度。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ maxHeight?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ maxWidth?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ minHeight?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ minWidth?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ pixelUnit?: PixelUnit
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

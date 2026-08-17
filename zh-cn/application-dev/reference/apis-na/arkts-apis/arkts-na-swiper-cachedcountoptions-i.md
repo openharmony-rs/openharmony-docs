@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 independent?: boolean
 ```
 
-cachedCount 是否按组计算。 true表示cachedCount按实际子组件个数计算，不按组计算；false表示如果displayCount.swipeByGroup=true，则cachedCount按组计算，否则按实际子组件个数计算。 默认值： false。 undefined 当设置为true时，cachedCount将根据实际的子组件计数来计算。 独立于displayCount分组计算。 &lt;br&gt;如果启用了SwiftByGroup并且该值为false，则cachedCount将按组计算。 &lt;/p&gt;。
+cachedCount 是否按组计算。 true表示cachedCount按实际子组件个数计算，不按组计算；false表示如果displayCount.swipeByGroup=true，则cachedCount按组计算，否则按实际子组件个数计算。 默认值： false。 undefined 当设置为true时，cachedCount将根据实际的子组件计数来计算。 独立于displayCount分组计算。 <br>如果启用了SwiftByGroup并且该值为false，则cachedCount将按组计算。 &lt;/p&gt;。
 
 **类型：** boolean
 
@@ -26,7 +26,7 @@ cachedCount 是否按组计算。 true表示cachedCount按实际子组件个数�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ isShown?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

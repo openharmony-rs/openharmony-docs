@@ -10,7 +10,7 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -37,7 +37,7 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： &lt;br&gt;1. 必填参数未指定； &lt;br&gt;2. 参数类型不正确； &lt;br&gt;3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
 
 ## 示例
@@ -114,7 +114,7 @@ async function createCollection() {
   const x509Cert = await createX509Cert();
   const x509CRL = await createX509CRL();
   try {
-    const collection: cert.CertCRLCollection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
+    cert.createCertCRLCollection([x509Cert], [x509CRL]);
     console.info('createCertCRLCollection result: success.');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -198,7 +198,7 @@ async function createCollection() {
   const x509CRL = await createX509CRL();
   if (x509Cert != undefined && x509CRL != undefined) {
     try {
-      const collection: cert.CertCRLCollection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
+      cert.createCertCRLCollection([x509Cert], [x509CRL]);
       console.info('createCertCRLCollection result: success.');
     } catch (err) {
       let e: BusinessError = err as BusinessError;

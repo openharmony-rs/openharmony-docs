@@ -1,10 +1,10 @@
 # SystemSoundPlayer
 
-音效播放器提供了加载、卸载和播放系统声音的功能。 SystemSoundPlayer需要和 [@ohos.multimedia.systemSoundManager](arkts-multimedia-systemsoundmanager.md#@ohos.multimedia.systemSoundManager)配合使用， 才能完成管理系统音效的功能。
+音效播放器提供了加载、卸载和播放系统声音的功能。 SystemSoundPlayer需要和 [@ohos.multimedia.systemSoundManager](arkts-multimedia-systemsoundmanager.md#ohosmultimediasystemsoundmanager)配合使用， 才能完成管理系统音效的功能。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ load(soundType: systemSoundManager.SystemSoundType): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,9 +58,9 @@ load(soundType: systemSoundManager.SystemSoundType): Promise<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemSoundPlayer?.load(systemSoundManager.SystemSoundType.PHOTO_SHUTTER).then(() => {
-  console.info('Succeeded in calling the load method.');
+  console.info('Succeeded in loading the system sound.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to call the load method. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to load the system sound. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -74,7 +74,7 @@ play(soundType: systemSoundManager.SystemSoundType): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -110,9 +110,9 @@ play(soundType: systemSoundManager.SystemSoundType): Promise<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemSoundPlayer?.play(systemSoundManager.SystemSoundType.PHOTO_SHUTTER).then(() => {
-  console.info('Succeeded in calling the play method.');
+  console.info('Succeeded in playing the system sound.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to call the play method. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to play the system sound. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -126,7 +126,7 @@ release(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -154,9 +154,9 @@ release(): Promise<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemSoundPlayer?.release().then(() => {
-  console.info('Succeeded in calling the release method.');
+  console.info('Succeeded in releasing the system sound player.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to call the release method. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to release the system sound player. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -170,7 +170,7 @@ unload(soundType: systemSoundManager.SystemSoundType): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -205,9 +205,9 @@ unload(soundType: systemSoundManager.SystemSoundType): Promise<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemSoundPlayer?.unload(systemSoundManager.SystemSoundType.PHOTO_SHUTTER).then(() => {
-  console.info('Succeeded in calling the unload method.');
+  console.info('Succeeded in unloading the system sound.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to call the unload method. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unload the system sound. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

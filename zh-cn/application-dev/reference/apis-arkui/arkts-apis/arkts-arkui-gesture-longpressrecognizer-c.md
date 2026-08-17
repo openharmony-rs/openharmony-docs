@@ -1,12 +1,12 @@
 # LongPressRecognizer
 
-长按手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md#GestureRecognizer)。
+长按手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md#gesturerecognizer)。
 
-**继承/实现关系：** LongPressRecognizer extends [GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md#GestureRecognizer)
+**继承/实现关系：** LongPressRecognizer extends [GestureRecognizer](arkts-arkui-gesture-gesturerecognizer-c.md#gesturerecognizer)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ getAllowableMovement(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ getAllowableMovement(): double
 
 | 类型 | 说明 |
 | --- | --- |
-| double | 长按手势识别器识别的手势的最大移动距离，单位为px。&lt;br/&gt;取值范围：(0, +∞) |
+| double | 长按手势识别器识别的手势的最大移动距离，单位为px。<br/>取值范围：(0, +∞) |
 
 ## getDuration
 
@@ -50,7 +50,7 @@ getDuration(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ getDuration(): int
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。&lt;br/&gt;取值范围：[0, +∞) |
+| int | 返回预设长按手势识别器触发长按最短时间阈值，单位为ms。<br/>取值范围：[0, +∞) |
 
 ## isRepeat
 
@@ -76,7 +76,7 @@ isRepeat(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

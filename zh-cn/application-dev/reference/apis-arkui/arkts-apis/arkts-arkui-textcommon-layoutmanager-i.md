@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ getCharacterPositionAtCoordinate(x: double, y: double): PositionWithAffinity | u
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -36,8 +36,8 @@ getCharacterPositionAtCoordinate(x: double, y: double): PositionWithAffinity | u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | double | 是 | 相对于组件的横坐标。&lt;br/&gt;单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
-| y | double | 是 | 相对于组件的纵坐标。&lt;br/&gt;单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| x | double | 是 | 相对于组件的横坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| y | double | 是 | 相对于组件的纵坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
 
 **返回值：**
 
@@ -55,7 +55,7 @@ getCharacterPositionAtCoordinate(x: double, y: double, encoding?: TextEncoding):
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -69,8 +69,8 @@ getCharacterPositionAtCoordinate(x: double, y: double, encoding?: TextEncoding):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | double | 是 | 相对于组件的横坐标。&lt;br/&gt;单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
-| y | double | 是 | 相对于组件的纵坐标。&lt;br/&gt;单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| x | double | 是 | 相对于组件的横坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| y | double | 是 | 相对于组件的纵坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
 | encoding | [TextEncoding](arkts-arkui-textcommon-textencoding-e.md) | 否 | 字符位置使用的编码类型，默认值为TextEncoding.TEXT_ENCODING_UTF8。 |
 
 **返回值：**
@@ -89,7 +89,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefi
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -121,7 +121,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity | undef
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -168,8 +168,8 @@ getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity | undef
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | double | 是 | 相对于组件的横坐标。&lt;br/&gt;单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
-| y | double | 是 | 相对于组件的纵坐标。&lt;br/&gt;单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| x | double | 是 | 相对于组件的横坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| y | double | 是 | 相对于组件的纵坐标。<br/>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
 
 **返回值：**
 
@@ -187,7 +187,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefin
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 
@@ -219,7 +219,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -252,7 +252,7 @@ getLineCount(): int | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -278,7 +278,7 @@ ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined 获取指定
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -298,7 +298,7 @@ ArkTS-Sta: getLineMetrics(lineNumber: int): LineMetrics | undefined 获取指定
 
 | 类型 | 说明 |
 | --- | --- |
-| [LineMetrics](arkts-arkui-linemetrics-t.md) | 行信息、文本样式信息、以及字体属性信息。&lt;br/&gt;当行号小于0或超出实际行，返回无效值。 |
+| [LineMetrics](arkts-arkui-linemetrics-t.md) | 行信息、文本样式信息、以及字体属性信息。<br/>当行号小于0或超出实际行，返回无效值。 |
 
 ## getRectsForRange
 
@@ -310,7 +310,7 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -87,7 +87,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH
 | 参数项 | 描述 |
 | -- | -- |
 | OH_LowPowerAudioSink* sink | Pointer to an OH_LowPowerAudioSink instance |
-| const OH_AVFormat* format | A pointer to an OH_AVFormat to give the description of the audio track to be decoded |
+| [const OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)* format | A pointer to an OH_AVFormat to give the description of the audio track to be decoded |
 
 **返回：**
 
@@ -112,7 +112,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const
 | 参数项 | 描述 |
 | -- | -- |
 | OH_LowPowerAudioSink* sink | Pointer to an OH_LowPowerAudioSink instance |
-| const OH_AVFormat* format | pointer to an OH_AVFormat instance |
+| [const OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)* format | pointer to an OH_AVFormat instance |
 
 **返回：**
 
@@ -137,7 +137,7 @@ OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | OH_LowPowerAudioSink* sink | Pointer to an OH_LowPowerAudioSink instance |
-| OH_AVFormat* format | pointer to an OH_AVFormat instance |
+| [OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)* format | pointer to an OH_AVFormat instance |
 
 **返回：**
 

@@ -10,7 +10,7 @@ function off(type: 'applicationState', observerId: int, callback: AsyncCallback<
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -25,7 +25,7 @@ function off(type: 'applicationState', observerId: int, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'applicationState' | 是 | 调用接口类型，固定填'applicationState'字符串。 |
-| observerId | int | 是 | 注册的应用状态监听器ID，即 [on('applicationState')](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState)返回的监听器ID。 |
+| observerId | int | 是 | 注册的应用状态监听器ID，即 [on('applicationState')](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate)返回的监听器ID。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当取消注册应用程序状态观测器成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -107,7 +107,7 @@ function off(type: 'applicationState', observerId: int): Promise<void>
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ function off(type: 'applicationState', observerId: int): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'applicationState' | 是 | 调用接口类型，固定填'applicationState'字符串。 |
-| observerId | int | 是 | 注册的应用状态监听器ID，即 [on('applicationState')](arkts-ability-appmanager-onapplicationstate-f.md#on_applicationState)返回的监听器ID。 |
+| observerId | int | 是 | 注册的应用状态监听器ID，即 [on('applicationState')](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate)返回的监听器ID。 |
 
 **返回值：**
 

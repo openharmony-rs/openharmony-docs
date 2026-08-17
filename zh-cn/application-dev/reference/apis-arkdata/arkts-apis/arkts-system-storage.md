@@ -18,8 +18,8 @@
  >
  > - 对于Lite Wearable设备类型，该模块长期维护，可正常使用。
  >
- > - 对于支持该模块的其他设备类型，该模块从API version 6开始不再维护，可以使用模块[`@ohos.data.storage`](arkts-data-storage.md#@ohos.data.storage)。在API
- > version 9后，推荐使用新模块[`@ohos.data.preferences`](arkts-data-preferences.md#@ohos.data.preferences)。
+ > - 对于支持该模块的其他设备类型，该模块从API version 6开始不再维护，可以使用模块[`@ohos.data.storage`](arkts-data-storage.md#ohosdatastorage)。在API
+ > version 9后，推荐使用新模块[`@ohos.data.preferences`](arkts-data-preferences.md#ohosdatapreferences)。
  >
  > - 本模块接口仅可在FA模型下使用。
  >
@@ -31,7 +31,7 @@
  **参数：**
  | 参数名  | 类型                    | 必填 | 说明       |
  | ------- | -------------------- | ---- | ---------- |
- | options | [GetStorageOptions](arkts-arkdata-system-storage-getstorageoptions-i.md#GetStorageOptions) | 是   | 接口配置信息。 |
+ | options | [GetStorageOptions](arkts-arkdata-system-storage-getstorageoptions-i.md#getstorageoptions) | 是   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js
@@ -114,7 +114,7 @@
  **参数：**
  | 参数名  | 类型                   | 必填 | 说明       |
  | ------- | ------------------- | ---- | ---------- |
- | options | [SetStorageOptions](arkts-arkdata-system-storage-setstorageoptions-i.md#SetStorageOptions) | 是   | 接口配置信息。 |
+ | options | [SetStorageOptions](arkts-arkdata-system-storage-setstorageoptions-i.md#setstorageoptions) | 是   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js
@@ -196,7 +196,7 @@
  **参数：**
  | 参数名  | 类型                                        | 必填 | 说明           |
  | ------- | ------------------------------------------- | ---- | -------------- |
- | options | [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md#ClearStorageOptions) | 否   | 接口配置信息。 |
+ | options | [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md#clearstorageoptions) | 否   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js
@@ -276,7 +276,7 @@
  **参数：**
  | 参数名  | 类型                                          | 必填 | 说明           |
  | ------- | --------------------------------------------- | ---- | -------------- |
- | options | [DeleteStorageOptions](arkts-arkdata-system-storage-deletestorageoptions-i.md#DeleteStorageOptions) | 是   | 接口配置信息。 |
+ | options | [DeleteStorageOptions](arkts-arkdata-system-storage-deletestorageoptions-i.md#deletestorageoptions) | 是   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js

@@ -4,7 +4,7 @@ inspector的性能分析（Profiler）工具。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,7 +23,7 @@ inspector的性能分析（Profiler）工具。
 
 | 名称 | 说明 |
 | --- | --- |
-| [registerVsyncCallback](arkts-na-profiler-registervsynccallback-f-sys.md#registerVsyncCallback（系统接口）) | 为profiler注册vsync回调。 AnonyMous Object Rectification. |
-| [unregisterVsyncCallback](arkts-na-profiler-unregistervsynccallback-f-sys.md#unregisterVsyncCallback（系统接口）) | 注销vsync回调。 |
+| [registerVsyncCallback](arkts-na-profiler-registervsynccallback-f-sys.md#registervsynccallback系统接口) | 为profiler注册vsync回调。 AnonyMous Object Rectification. |
+| [unregisterVsyncCallback](arkts-na-profiler-unregistervsynccallback-f-sys.md#unregistervsynccallback系统接口) | 注销vsync回调。 |
 <!--DelEnd-->
 

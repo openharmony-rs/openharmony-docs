@@ -2,11 +2,11 @@
 
 Define DigitIndicator, the indicator type is digit.
 
-**继承/实现关系：** DigitIndicator extends [Indicator](arkts-na-swiper-indicator-c.md#Indicator)
+**继承/实现关系：** DigitIndicator extends [Indicator](arkts-na-swiper-indicator-c.md#indicator)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ DotIndicator的构造函数。 > **说明：** > > - 按压导航点时，导航
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ Swiper组件数字导航点的字体样式。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,7 +58,7 @@ Swiper组件数字导航点的字体样式。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Font](../../apis-arkui/arkts-apis/arkts-arkui-font-i.md) \| undefined | 是 | 设置Swiper组件数字导航点的字体样式。&lt;br/&gt;只支持Font中size和weight参数，family和style设置不生效。&lt;br/&gt;默认值：{ size:?14,?weight:?FontWeight.Normal?}&lt;br/&gt;取值为undefined时，按默认值处理。 |
+| value | [Font](../../apis-arkui/arkts-apis/arkts-arkui-font-i.md) \| undefined | 是 | 设置Swiper组件数字导航点的字体样式。<br/>只支持Font中size和weight参数，family和style设置不生效。<br/>默认值：{ size:?14,?weight:?FontWeight.Normal?}<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -76,7 +76,7 @@ Swiper组件数字导航点的字体颜色。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ Swiper组件数字导航点的字体颜色。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md) \| undefined | 是 | 设置Swiper组件数字导航点的字体颜色。&lt;br/&gt;默认值：'#ff182431'，黑色。&lt;br/&gt;取值为undefined时，按默认值处理 。 |
+| value | [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md) \| undefined | 是 | 设置Swiper组件数字导航点的字体颜色。<br/>默认值：'#ff182431'，黑色。<br/>取值为undefined时，按默认值处理 。 |
 
 **返回值：**
 
@@ -108,7 +108,7 @@ selectedDigitFont(value: Font | undefined): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -122,7 +122,7 @@ selectedDigitFont(value: Font | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Font](../../apis-arkui/arkts-apis/arkts-arkui-font-i.md) \| undefined | 是 | 设置选中Swiper组件数字导航点的字体样式。&lt;br/&gt;默认值：{?size:?14,?weight:?FontWeight.Normal?}&lt;br/&gt;取值为 undefined时，按默认值处理。 |
+| value | [Font](../../apis-arkui/arkts-apis/arkts-arkui-font-i.md) \| undefined | 是 | 设置选中Swiper组件数字导航点的字体样式。<br/>默认值：{?size:?14,?weight:?FontWeight.Normal?}<br/>取值为 undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -140,7 +140,7 @@ selectedFontColor(value: ResourceColor | undefined): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -154,7 +154,7 @@ selectedFontColor(value: ResourceColor | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md) \| undefined | 是 | 设置选中Swiper组件数字导航点的字体颜色。&lt;br/&gt;默认值：'#ff182431'，黑色。&lt;br/&gt;取值为undefined时，按默认值 处理。 |
+| value | [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md) \| undefined | 是 | 设置选中Swiper组件数字导航点的字体颜色。<br/>默认值：'#ff182431'，黑色。<br/>取值为undefined时，按默认值 处理。 |
 
 **返回值：**
 

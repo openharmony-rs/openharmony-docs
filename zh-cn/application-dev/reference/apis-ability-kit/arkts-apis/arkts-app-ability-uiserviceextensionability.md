@@ -7,6 +7,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md) | UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#ExtensionAbility). 主要用于向三方应用提供带界面的服务。 |
+| [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md) | UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability). 主要用于向三方应用提供带界面的服务。 |
 <!--DelEnd-->
 

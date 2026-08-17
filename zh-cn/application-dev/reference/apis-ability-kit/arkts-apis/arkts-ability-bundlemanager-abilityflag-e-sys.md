@@ -4,7 +4,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -20,11 +20,11 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 GET_ABILITY_INFO_DEFAULT = 0x00000000
 ```
 
-获取默认AbilityInfo，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的 AbilityInfo。&lt;!--Del--&gt;通过 [setAbilityEnabled接口](arkts-ability-bundlemanager-setabilityenabled-f-sys.md#setAbilityEnabled（系统接口）) 可设置Ability禁用状态、通过 [isAbilityEnabled接口](arkts-ability-bundlemanager-isabilityenabled-f-sys.md#isAbilityEnabled（系统接口）)可获取 Ability禁用状态。&lt;!--DelEnd--&gt;
+获取默认AbilityInfo，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的 AbilityInfo。&lt;!--Del--&gt;通过 [setAbilityEnabled接口](arkts-ability-bundlemanager-setabilityenabled-f-sys.md#setabilityenabled系统接口) 可设置Ability禁用状态、通过 [isAbilityEnabled接口](arkts-ability-bundlemanager-isabilityenabled-f-sys.md#isabilityenabled系统接口)可获取 Ability禁用状态。&lt;!--DelEnd--&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ GET_ABILITY_INFO_WITH_PERMISSION = 0x00000001
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ GET_ABILITY_INFO_WITH_APPLICATION = 0x00000002
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -90,7 +90,7 @@ GET_ABILITY_INFO_WITH_METADATA = 0x00000004
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -112,7 +112,7 @@ GET_ABILITY_INFO_WITH_DISABLE = 0x00000008
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ GET_ABILITY_INFO_ONLY_SYSTEM_APP = 0x00000010
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -156,7 +156,7 @@ GET_ABILITY_INFO_WITH_APP_LINKING = 0x00000040
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -178,7 +178,7 @@ GET_ABILITY_INFO_WITH_SKILL = 0x00000080
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

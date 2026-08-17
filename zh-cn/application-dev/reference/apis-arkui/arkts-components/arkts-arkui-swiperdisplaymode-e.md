@@ -4,7 +4,7 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -22,11 +22,11 @@ Swiper滑动一页的宽度为Swiper组件自身的宽度。 **说明：**从API
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [STRETCH](#STRETCH)
+**替代接口：** [STRETCH](#stretch)
 
 **卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
 
@@ -42,11 +42,11 @@ AutoLinear
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [AUTO_LINEAR](#AUTO_LINEAR)
+**替代接口：** [AUTO_LINEAR](#autolinear)
 
 **卡片能力：** 从API版本7开始，该接口支持在ArkTS卡片中使用。
 
@@ -64,7 +64,7 @@ Carousel map extension.
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -86,7 +86,7 @@ AUTO_LINEAR
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 12
 

@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md#AudioRendererOptions)
+**替代接口：** [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md#audiorendereroptions)
 
 <!--Device-audio-interface AudioInterrupt--><!--Device-audio-interface AudioInterrupt-End-->
 
@@ -26,7 +26,7 @@ contentType: ContentType
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -48,11 +48,11 @@ pauseWhenDucked: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hintType)
+**替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
 
 <!--Device-AudioInterrupt-pauseWhenDucked: boolean--><!--Device-AudioInterrupt-pauseWhenDucked: boolean-End-->
 
@@ -70,7 +70,7 @@ streamUsage: StreamUsage
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

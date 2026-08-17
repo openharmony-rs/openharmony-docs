@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static getAvailableIDs(): string[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -58,7 +58,7 @@ static getInstance(id: string): Transliterator
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -78,7 +78,7 @@ static getInstance(id: string): Transliterator
 
 | 类型 | 说明 |
 | --- | --- |
-| [Transliterator](arkts-localization-i18n-transliterator-c.md) | 音译对象。 |
+| [Transliterator](../../apis-na/arkts-apis/arkts-na-i18n-transliterator-c.md) | 音译对象。 |
 
 ## 示例
 
@@ -98,7 +98,7 @@ transform(text: string): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

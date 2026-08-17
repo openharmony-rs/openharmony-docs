@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [SideBarContainer](arkts-na-sidebar-sidebarcontainer-f.md#SideBarContainer) | 定义侧边栏组件 |
+| [SideBarContainer](arkts-na-sidebar-sidebarcontainer-f.md#sidebarcontainer) | 定义侧边栏组件 |
 
 ### 接口
 

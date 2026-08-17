@@ -1,12 +1,12 @@
 # BackgroundBlurStyleOptions
 
-继承自[BlurStyleOptions](arkts-na-common-blurstyleoptions-i.md#BlurStyleOptions)。
+继承自[BlurStyleOptions](arkts-na-common-blurstyleoptions-i.md#blurstyleoptions)。
 
-**继承/实现关系：** BackgroundBlurStyleOptions extends [BlurStyleOptions](arkts-na-common-blurstyleoptions-i.md#BlurStyleOptions)
+**继承/实现关系：** BackgroundBlurStyleOptions extends [BlurStyleOptions](arkts-na-common-blurstyleoptions-i.md#blurstyleoptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ inactiveColor?: ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ policy?: BlurStyleActivePolicy
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

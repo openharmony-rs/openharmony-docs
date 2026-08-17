@@ -10,7 +10,7 @@ function queryBundleStatsInfos(admin: Want, startTime: number, endTime: number, 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -27,9 +27,9 @@ function queryBundleStatsInfos(admin: Want, startTime: number, endTime: number, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| startTime | number | 是 | 查询起始时间，单位：毫秒（时间戳）。 &lt;br&gt;取值范围：[0, +∞)。 |
-| endTime | number | 是 | 查询结束时间，单位：毫秒（时间戳）。 &lt;br&gt;取值范围：[0, +∞)。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0的整数。 &lt;br&gt; accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId)等接口来获取。 |
+| startTime | number | 是 | 查询起始时间，单位：毫秒（时间戳）。 <br>取值范围：[0, +∞)。 |
+| endTime | number | 是 | 查询结束时间，单位：毫秒（时间戳）。 <br>取值范围：[0, +∞)。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0的整数。 <br> accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **返回值：**
 
@@ -60,12 +60,13 @@ let wantTemp: Want = {
 
 try {
   // 查询2026/4/15 00:00:00.000 ~ 2026/4/16 23:59:59.999的数据（月份从0开始计算）
-  let startTime: number = new Date(2026, 3, 15, 0, 0, 0, 0).getTime();
-  let endTime: number = new Date(2026, 3, 16, 23, 59, 59, 999).getTime();
+  let startTime: number = new Date(2026, 4, 15, 0, 0, 0, 0).getTime();
+  let endTime: number = new Date(2026, 4, 16, 23, 59, 59, 999).getTime();
   let accountId: number = 100;
-  let result: Array<applicationManager.BundleStatsInfo> = applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
+  let result: Array<applicationManager.BundleStatsInfo> =
+    applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
   console.info(`Succeeded in querying bundle stats infos, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -92,9 +93,10 @@ try {
   let startTime: number = lastMonthFirstDay.getTime();
   let endTime: number = lastMonthLastDay.getTime();
   let accountId: number = 100;
-  let result: Array<applicationManager.BundleStatsInfo> = applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
+  let result: Array<applicationManager.BundleStatsInfo> =
+    applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
   console.info(`Succeeded in querying bundle stats infos, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
 }
 ```

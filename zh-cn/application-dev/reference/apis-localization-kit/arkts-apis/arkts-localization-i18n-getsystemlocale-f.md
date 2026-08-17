@@ -6,15 +6,15 @@
 export function getSystemLocale(): string
 ```
 
-> [System.getSystemLocale](arkts-localization-i18n-system-c.md#getSystemLocaleInstance)代替。 > 获取系统区域ID。
+> [System.getSystemLocale](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getsystemlocaleinstance)代替。 > 获取系统区域ID。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [getSystemLocale](arkts-localization-i18n-system-c.md#getSystemLocale)
+**替代接口：** [getSystemLocale](arkts-localization-i18n-system-c.md#getsystemlocale)
 
 <!--Device-i18n-export function getSystemLocale(): string--><!--Device-i18n-export function getSystemLocale(): string-End-->
 
@@ -25,4 +25,12 @@ export function getSystemLocale(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 系统区域ID。 |
+
+## 示例
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let locale: string = i18n.getSystemLocale();
+```
 

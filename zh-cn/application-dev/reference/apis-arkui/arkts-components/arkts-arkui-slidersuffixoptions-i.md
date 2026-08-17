@@ -2,11 +2,11 @@
 
 Slider后缀组件无障碍信息参数。
 
-**继承/实现关系：** SliderSuffixOptions extends [SliderCustomContentOptions](arkts-arkui-slidercustomcontentoptions-i.md#SliderCustomContentOptions)
+**继承/实现关系：** SliderSuffixOptions extends [SliderCustomContentOptions](arkts-arkui-slidercustomcontentoptions-i.md#slidercustomcontentoptions)
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 

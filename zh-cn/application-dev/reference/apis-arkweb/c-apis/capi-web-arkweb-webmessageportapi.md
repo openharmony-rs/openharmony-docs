@@ -27,9 +27,9 @@ ArkWeb_WebMessagePortAPI是Web消息端口相关Native API结构体。该结构�
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkWeb_ErrorCode (\*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)](#postmessage) | Post message to HTML. |
+| [ArkWeb_ErrorCode (\*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)](#postmessage) | 发送消息到HTML。在Native代码向Web页面传递数据、指令或配置信息时使用，例如表单数据同步、控制指令下发等。 |
 | [void (\*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)](#close) | 关闭消息端口。 |
-| [void (\*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)](#setmessageeventhandler) | Set a callback to receive message from HTML. |
+| [void (\*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)](#setmessageeventhandler) | 设置接收HTML消息的回调。在需要接收和处理来自Web页面的消息、请求或事件通知时使用。例如接收用户输入、状态更新通知等。 |
 
 ## 成员函数说明
 
@@ -41,21 +41,21 @@ ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, c
 
 **描述**
 
-Post message to HTML.
+发送消息到HTML。在Native代码向Web页面传递数据、指令或配置信息时使用，例如表单数据同步、控制指令下发等。
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | The ArkWeb_WebMessagePort. |
-|  const char* webTag | The name of the web component. |
-|  const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | The ArkWeb_WebMessage to send. |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Post Message端口结构体指针。 |
+|  const char* webTag | Web组件名称，用于标识要操作的Web组件。必须是与Web组件绑定的唯一标识符，如果未找到与webTag绑定的Web组件将返回初始化失败错误。 |
+|  const [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 需要发送的消息。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkWeb_ErrorCode | Post message result code.<br>             {@link ARKWEB_SUCCESS} post message success.<br>             {@link ARKWEB_INVALID_PARAM} the parameter verification fails.<br>             {@link ARKWEB_INIT_ERROR} no web associated with this webTag. |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Result code.<br>         <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 执行成功。<br>         <br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。<br>    <br>         <br>可能原因：<br>         <br>- webMessagePort或webMessage参数为空。<br>         <br>- 参数类型不正确。<br>    <br>         <br>解决措施：<br>         <br>- 检查参数是否为空指针。<br>         <br>- 确认参数类型是否符合接口要求。<br>    <br>         <br>[ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode): 初始化失败，没有找到与webTag绑定的Web组件。<br>    <br>         <br>可能原因：<br>         <br>- Web组件未正确初始化。<br>         <br>- webTag参数与实际Web组件名称不匹配。<br>    <br>         <br>解决措施：<br>         <br>- 确认Web组件已完成初始化。<br>         <br>- 检查webTag参数是否与Web组件名称一致。 |
 
 ### close()
 
@@ -81,14 +81,14 @@ void (*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, co
 
 **描述**
 
-Set a callback to receive message from HTML.
+设置接收HTML消息的回调。在需要接收和处理来自Web页面的消息、请求或事件通知时使用。例如接收用户输入、状态更新通知等。
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | The ArkWeb_WebMessagePort. |
-|  const char* webTag | The name of the web component. |
-| [ArkWeb_OnMessageEventHandler](capi-arkweb-type-h.md#arkweb_onmessageeventhandler) messageEventHandler | The handler to receive message from HTML. |
+| const [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) webMessagePort | Post Message端口结构体指针。 |
+|  const char* webTag | Web组件名称。 |
+| [ArkWeb_OnMessageEventHandler](capi-arkweb-type-h.md#arkweb_onmessageeventhandler) messageEventHandler | 处理消息的回调。 |
 
 

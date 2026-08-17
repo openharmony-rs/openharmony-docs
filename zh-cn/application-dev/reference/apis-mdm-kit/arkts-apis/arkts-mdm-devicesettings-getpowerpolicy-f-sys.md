@@ -10,11 +10,11 @@ function getPowerPolicy(admin: Want, powerScene: PowerScene): PowerPolicy
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getValue)
+**替代接口：** [getValue](arkts-mdm-devicesettings-getvalue-f.md#getvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 

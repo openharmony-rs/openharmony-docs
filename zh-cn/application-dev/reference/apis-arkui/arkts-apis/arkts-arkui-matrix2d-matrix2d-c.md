@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ constructor(unit?: LengthMetricsUnit)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,7 +36,7 @@ constructor(unit?: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| unit | [LengthMetricsUnit](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetricsunit-e.md) | 否 | 用来配置Matrix2D对象的单位模式，配置后无法动态更改。&lt;br&gt; 异常值NaN和Infinity按默认值处理。&lt;br&gt; 默认值：DEFAULT。 |
+| unit | [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md) | 否 | 用来配置Matrix2D对象的单位模式，配置后无法动态更改。<br> 异常值NaN和Infinity按默认值处理。<br> 默认值：DEFAULT。 |
 
 ## identity
 
@@ -48,7 +48,7 @@ identity(): Matrix2D
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ invert(): Matrix2D
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ rotate(degree: double, rx?: double, ry?: double): Matrix2D
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,9 +114,9 @@ rotate(degree: double, rx?: double, ry?: double): Matrix2D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| degree | double | 是 | 旋转弧度，取值范围无限制。顺时针方向为正弧度， 可以通过`角度 Math.PI / 180`将角度转换为弧度值传入该接口。&lt;br&gt; 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。&lt;br&gt; 默认单位：弧度。 |
-| rx | double | 否 | 旋转点的水平方向坐标，取值范围无限制。&lt;br&gt; 默认单位：vp。&lt;br&gt; 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。&lt;br&gt; 默认值：0。 |
-| ry | double | 否 | 旋转点的垂直方向坐标，取值范围无限制。&lt;br&gt; 默认单位：vp。&lt;br&gt; 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。&lt;br&gt; 默认值：0。 |
+| degree | double | 是 | 旋转弧度，取值范围无限制。顺时针方向为正弧度， 可以通过`角度 Math.PI / 180`将角度转换为弧度值传入该接口。<br> 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br> 默认单位：弧度。 |
+| rx | double | 否 | 旋转点的水平方向坐标，取值范围无限制。<br> 默认单位：vp。<br> 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br> 默认值：0。 |
+| ry | double | 否 | 旋转点的垂直方向坐标，取值范围无限制。<br> 默认单位：vp。<br> 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br> 默认值：0。 |
 
 **返回值：**
 
@@ -134,7 +134,7 @@ scale(sx?: double, sy?: double): Matrix2D
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -148,8 +148,8 @@ scale(sx?: double, sy?: double): Matrix2D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sx | double | 否 | 水平缩放比例系数，取值范围无限制。&lt;br&gt; 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。&lt;br&gt; 默认值：1.0。 |
-| sy | double | 否 | 垂直缩放比例系数，取值范围无限制。&lt;br&gt; 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。&lt;br&gt; 默认值：1.0。 |
+| sx | double | 否 | 水平缩放比例系数，取值范围无限制。<br> 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br> 默认值：1.0。 |
+| sy | double | 否 | 垂直缩放比例系数，取值范围无限制。<br> 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br> 默认值：1.0。 |
 
 **返回值：**
 
@@ -167,7 +167,7 @@ translate(tx?: double, ty?: double): Matrix2D
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -181,8 +181,8 @@ translate(tx?: double, ty?: double): Matrix2D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tx | double | 否 | 水平方向平移距离，取值范围无限制。&lt;br&gt; 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。&lt;br&gt; 默认单位：vp。&lt;br&gt; 默认值：0。 |
-| ty | double | 否 | 垂直方向平移距离，取值范围无限制。&lt;br&gt; 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。&lt;br&gt; 默认单位：vp。&lt;br&gt; 默认值：0。 |
+| tx | double | 否 | 水平方向平移距离，取值范围无限制。<br> 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br> 默认单位：vp。<br> 默认值：0。 |
+| ty | double | 否 | 垂直方向平移距离，取值范围无限制。<br> 异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br> 默认单位：vp。<br> 默认值：0。 |
 
 **返回值：**
 

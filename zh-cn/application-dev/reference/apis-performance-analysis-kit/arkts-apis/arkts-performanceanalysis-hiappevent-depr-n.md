@@ -1,10 +1,10 @@
 # hiAppEvent
 
-本模块提供了应用事件打点能力，包括对打点数据的落盘，以及对打点功能的管理配置。 > **说明：** > > - 本模块接口从API version 9开始废弃，建议使用新接口[@ohos.hiviewdfx.hiAppEvent](arkts-performanceanalysis-hiappevent-n.md#hiAppEvent)替代。
+本模块提供了应用事件打点能力，包括对打点数据的落盘，以及对打点功能的管理配置。 > **说明：** > > - 本模块接口从API version 9开始废弃，建议使用新接口[@ohos.hiviewdfx.hiAppEvent](arkts-performanceanalysis-hiappevent-n.md#hiappevent)替代。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

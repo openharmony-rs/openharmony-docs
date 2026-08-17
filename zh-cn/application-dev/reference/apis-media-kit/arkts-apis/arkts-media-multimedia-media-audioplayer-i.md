@@ -1,10 +1,10 @@
 # AudioPlayer
 
-> **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVPlayer](arkts-media-media-n.md#media)替代。 音频播放管理类，用于管理和播放音频媒体。在调用AudioPlayer的方法前，需要先通过 [createAudioPlayer()](arkts-media-media-createaudioplayer-f.md#createAudioPlayer)构建一个AudioPlayer实例。
+> **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVPlayer](arkts-media-media-n.md#media)替代。 音频播放管理类，用于管理和播放音频媒体。在调用AudioPlayer的方法前，需要先通过 [createAudioPlayer()](arkts-media-media-createaudioplayer-f.md#createaudioplayer)构建一个AudioPlayer实例。
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -20,15 +20,15 @@
 getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 ```
 
-获取音频轨道信息。需在'dataLoad'事件成功触发后，才能调用。通过回调函数获取返回值。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#getTrackDescription) > 替代。
+获取音频轨道信息。需在'dataLoad'事件成功触发后，才能调用。通过回调函数获取返回值。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription) > 替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#getTrackDescription)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
+**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
 
 <!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void--><!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void-End-->
 
@@ -46,15 +46,15 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 getTrackDescription(): Promise<Array<MediaDescription>>
 ```
 
-获取音频轨道信息。需在'dataLoad'事件成功触发后，才能调用。通过Promise获取返回值。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#getTrackDescription)替代。
+获取音频轨道信息。需在'dataLoad'事件成功触发后，才能调用。通过Promise获取返回值。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#getTrackDescription)()
+**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)()
 
 <!--Device-AudioPlayer-getTrackDescription(): Promise<Array<MediaDescription>>--><!--Device-AudioPlayer-getTrackDescription(): Promise<Array<MediaDescription>>-End-->
 
@@ -72,11 +72,11 @@ getTrackDescription(): Promise<Array<MediaDescription>>
 on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void
 ```
 
-监听音频焦点变化事件，参考[audio.InterruptEvent](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptevent-i.md#InterruptEvent)。 > **说明：** > > 从API version 9开始支持，从API version 9开始废弃，建议使用 > AVPlayer.on('audioInterrupt') > 替代。
+监听音频焦点变化事件，参考[audio.InterruptEvent](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptevent-i.md#interruptevent)。 > **说明：** > > 从API version 9开始支持，从API version 9开始废弃，建议使用 > AVPlayer.on('audioInterrupt') > 替代。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
@@ -103,7 +103,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -118,7 +118,7 @@ on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'bufferingUpdate' | 是 | 音频缓存事件回调类型，支持的事件：'bufferingUpdate'。 |
-| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 音频缓存事件回调方法。&lt;br&gt; BufferingInfoTypevalue值固定为0。 |
+| callback | (infoType: BufferingInfoType, value: number) =&gt; void | 是 | 音频缓存事件回调方法。<br> BufferingInfoTypevalue值固定为0。 |
 
 ## on_dataLoad
 
@@ -130,7 +130,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -144,7 +144,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。&lt;br&gt;- 'play'：完成 play()调用，音频开始播放，触发该事件。&lt;br&gt;- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。&lt;br&gt;- 'stop'：完成stop() 调用，音频停止播放，触发该事件。&lt;br&gt;- 'reset'：完成reset()调用，播放器重置，触发该事件。&lt;br&gt;- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。&lt;br&gt;- 'finish'：完成音频播放后触发该事件。&lt;br&gt;- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成 play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop() 调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on_error
@@ -157,7 +157,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -171,7 +171,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | 播放错误事件回调类型，支持的事件包括：'error'。&lt;br&gt;- 'error'：音频播放中发生错误，触发该事件。 |
+| type | 'error' | 是 | 播放错误事件回调类型，支持的事件包括：'error'。<br>- 'error'：音频播放中发生错误，触发该事件。 |
 | callback | [ErrorCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-errorcallback-t.md) | 是 | 播放错误事件回调方法。 |
 
 ## on_finish
@@ -184,7 +184,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -198,7 +198,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。&lt;br&gt;- 'play'：完成 play()调用，音频开始播放，触发该事件。&lt;br&gt;- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。&lt;br&gt;- 'stop'：完成stop() 调用，音频停止播放，触发该事件。&lt;br&gt;- 'reset'：完成reset()调用，播放器重置，触发该事件。&lt;br&gt;- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。&lt;br&gt;- 'finish'：完成音频播放后触发该事件。&lt;br&gt;- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成 play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop() 调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on_pause
@@ -211,7 +211,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -225,7 +225,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。&lt;br&gt;- 'play'：完成 play()调用，音频开始播放，触发该事件。&lt;br&gt;- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。&lt;br&gt;- 'stop'：完成stop() 调用，音频停止播放，触发该事件。&lt;br&gt;- 'reset'：完成reset()调用，播放器重置，触发该事件。&lt;br&gt;- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。&lt;br&gt;- 'finish'：完成音频播放后触发该事件。&lt;br&gt;- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成 play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop() 调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on_play
@@ -238,7 +238,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -252,7 +252,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。&lt;br&gt;- 'play'：完成 play()调用，音频开始播放，触发该事件。&lt;br&gt;- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。&lt;br&gt;- 'stop'：完成stop() 调用，音频停止播放，触发该事件。&lt;br&gt;- 'reset'：完成reset()调用，播放器重置，触发该事件。&lt;br&gt;- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。&lt;br&gt;- 'finish'：完成音频播放后触发该事件。&lt;br&gt;- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成 play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop() 调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on_reset
@@ -265,7 +265,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -279,7 +279,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。&lt;br&gt;- 'play'：完成 play()调用，音频开始播放，触发该事件。&lt;br&gt;- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。&lt;br&gt;- 'stop'：完成stop() 调用，音频停止播放，触发该事件。&lt;br&gt;- 'reset'：完成reset()调用，播放器重置，触发该事件。&lt;br&gt;- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。&lt;br&gt;- 'finish'：完成音频播放后触发该事件。&lt;br&gt;- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成 play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop() 调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on_stop
@@ -292,7 +292,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -306,7 +306,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。&lt;br&gt;- 'play'：完成 play()调用，音频开始播放，触发该事件。&lt;br&gt;- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。&lt;br&gt;- 'stop'：完成stop() 调用，音频停止播放，触发该事件。&lt;br&gt;- 'reset'：完成reset()调用，播放器重置，触发该事件。&lt;br&gt;- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。&lt;br&gt;- 'finish'：完成音频播放后触发该事件。&lt;br&gt;- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成 play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop() 调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## on_timeUpdate
@@ -319,7 +319,7 @@ on(type: 'timeUpdate', callback: Callback<number>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -333,7 +333,7 @@ on(type: 'timeUpdate', callback: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'timeUpdate' | 是 | 播放事件回调类型，支持的事件包括：'timeUpdate'。&lt;br&gt;- 'timeUpdate'：音频播放时间戳更新，开始播放后自动触发该事件。 |
+| type | 'timeUpdate' | 是 | 播放事件回调类型，支持的事件包括：'timeUpdate'。<br>- 'timeUpdate'：音频播放时间戳更新，开始播放后自动触发该事件。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;number&gt; | 是 | 播放事件回调方法。回调方法入参为更新后的时间戳。 |
 
 ## on_volumeChange
@@ -346,7 +346,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -360,7 +360,7 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。&lt;br&gt;- 'play'：完成 play()调用，音频开始播放，触发该事件。&lt;br&gt;- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。&lt;br&gt;- 'stop'：完成stop() 调用，音频停止播放，触发该事件。&lt;br&gt;- 'reset'：完成reset()调用，播放器重置，触发该事件。&lt;br&gt;- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。&lt;br&gt;- 'finish'：完成音频播放后触发该事件。&lt;br&gt;- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
+| type | 'play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange' | 是 | 播放事件回调类型，支持的事件包括：' play' \| 'pause' \| 'stop' \| 'reset' \| 'dataLoad' \| 'finish' \| 'volumeChange'。<br>- 'play'：完成 play()调用，音频开始播放，触发该事件。<br>- 'pause'：完成 pause()调用，音频暂停播放，触发该事件。<br>- 'stop'：完成stop() 调用，音频停止播放，触发该事件。<br>- 'reset'：完成reset()调用，播放器重置，触发该事件。<br>- 'dataLoad'：完成音频数 据加载后触发该事件，即src属性设置完成后触发该事件。<br>- 'finish'：完成音频播放后触发该事件。<br>- 'volumeChange'：完成 setVolume()调用，播放音量改变后触发该事件。 |
 | callback | () =&gt; void | 是 | 播放事件回调方法。 |
 
 ## pause
@@ -373,7 +373,7 @@ pause(): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -393,7 +393,7 @@ play(): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -413,7 +413,7 @@ release(): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -433,7 +433,7 @@ reset(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -453,7 +453,7 @@ seek(timeMs: number): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -475,15 +475,15 @@ seek(timeMs: number): void
 setVolume(vol: number): void
 ```
 
-设置音量。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用 > [AVPlayer.setVolume](arkts-media-media-avplayer-i.md#setVolume)替代。
+设置音量。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用 > [AVPlayer.setVolume](arkts-media-media-avplayer-i.md#setvolume)替代。
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [setVolume](arkts-media-media-avplayer-i.md#setVolume)
+**替代接口：** [setVolume](arkts-media-media-avplayer-i.md#setvolume)
 
 <!--Device-AudioPlayer-setVolume(vol: number): void--><!--Device-AudioPlayer-setVolume(vol: number): void-End-->
 
@@ -505,7 +505,7 @@ stop(): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -527,7 +527,7 @@ audioInterruptMode?: audio.InterruptMode
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
@@ -549,7 +549,7 @@ readonly currentTime: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -571,7 +571,7 @@ readonly duration: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -593,7 +593,7 @@ fdSrc: AVFileDescriptor
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 9
 
@@ -615,7 +615,7 @@ loop: boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -637,7 +637,7 @@ src: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -661,7 +661,7 @@ readonly state: AudioState
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

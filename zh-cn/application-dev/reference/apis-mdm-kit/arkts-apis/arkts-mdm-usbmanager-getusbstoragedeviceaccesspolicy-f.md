@@ -10,7 +10,7 @@ function getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -45,6 +45,25 @@ function getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
+## 示例
+
+```TypeScript
+import { usbManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(wantTemp);
+  console.info(`Succeeded in getting USB storage device access policy. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get USB storage device access policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 
 ## getUsbStorageDeviceAccessPolicy
 
@@ -56,7 +75,7 @@ function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -93,15 +112,10 @@ function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
 ```TypeScript
 import { usbManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 try {
-  let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(wantTemp);
+  // 参数需根据实际情况进行替换
+  let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(null);
   console.info(`Succeeded in getting USB storage device access policy. Result: ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get USB storage device access policy. Code: ${err.code}, message: ${err.message}`);

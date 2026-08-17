@@ -10,11 +10,11 @@ function setPolicies(admin: Want, appId: string, policies: string, callback: Asy
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setPolicySync)
+**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -79,11 +79,11 @@ function setPolicies(admin: Want, appId: string, policies: string): Promise<void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setPolicySync)
+**替代接口：** [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 

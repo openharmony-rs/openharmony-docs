@@ -1,12 +1,12 @@
 # RectShapeOptions
 
-RectShape 的构造函数参数。 继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md#ShapeSize)。
+RectShape 的构造函数参数。 继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md#shapesize)。
 
-**继承/实现关系：** RectShapeOptions extends [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md#ShapeSize)
+**继承/实现关系：** RectShapeOptions extends [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md#shapesize)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ radius?: double | string | Array<double | string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

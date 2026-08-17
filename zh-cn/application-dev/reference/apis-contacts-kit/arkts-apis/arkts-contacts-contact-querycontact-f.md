@@ -10,11 +10,11 @@ function queryContact(key: string, callback: AsyncCallback<Contact>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#queryContact)(context: Context, key: string, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](#querycontact)(context: Context, key: string, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -56,7 +56,7 @@ function queryContact(context: Context, key: string, callback: AsyncCallback<Con
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -112,11 +112,11 @@ function queryContact(key: string, holder: Holder, callback: AsyncCallback<Conta
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#queryContact)(context: Context, key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -163,7 +163,7 @@ function queryContact(context: Context, key: string, holder: Holder, callback: A
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -224,11 +224,11 @@ function queryContact(key: string, attrs: ContactAttributes, callback: AsyncCall
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#queryContact)(context: Context, key: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](#querycontact)(context: Context, key: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -273,7 +273,7 @@ function queryContact(context: Context, key: string, attrs: ContactAttributes, c
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -332,11 +332,11 @@ function queryContact(key: string, holder: Holder, attrs: ContactAttributes, cal
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#queryContact)(context: Context, key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -386,7 +386,7 @@ function queryContact(context: Context, key: string, holder: Holder, attrs: Cont
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -450,11 +450,11 @@ function queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): 
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [queryContact](#queryContact)(context: Context, key: string, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -505,7 +505,7 @@ function queryContact(context: Context, key: string, holder?: Holder, attrs?: Co
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

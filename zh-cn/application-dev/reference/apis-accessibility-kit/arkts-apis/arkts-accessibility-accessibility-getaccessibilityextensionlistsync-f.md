@@ -9,11 +9,11 @@ function getAccessibilityExtensionListSync(
   ): Array<AccessibilityAbilityInfo>
 ```
 
-查询当前系统内辅助应用列表，支持按条件查询。
+查询当前系统内辅助应用列表，支持按条件查询。 本接口为同步版本，与[accessibility.getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist)（异步版本）功能相 同，如需立即获取结果可使用本接口，如需在非阻塞场景下查询建议使用异步版本。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

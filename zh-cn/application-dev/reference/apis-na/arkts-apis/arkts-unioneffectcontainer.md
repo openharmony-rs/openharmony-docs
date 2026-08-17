@@ -7,8 +7,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [UnionEffectContainer](arkts-na-unioneffectcontainer-unioneffectcontainer-f-sys.md#UnionEffectContainer（系统接口）) | Provides a UnionEffectContainer Component that generates a component fusion effect for descendant components with "useUnionEffect(true)" set inside it, when their distance is less than a certain threshold. |
-| [UnionEffectContainer](arkts-na-unioneffectcontainer-unioneffectcontainer-f-sys.md#UnionEffectContainer（系统接口）) | Defines UnionEffectContainer |
+| [UnionEffectContainer](arkts-na-unioneffectcontainer-unioneffectcontainer-f-sys.md#unioneffectcontainer系统接口) | Provides a UnionEffectContainer Component that generates a component fusion effect for descendant components with "useUnionEffect(true)" set inside it, when their distance is less than a certain threshold. |
+| [UnionEffectContainer](arkts-na-unioneffectcontainer-unioneffectcontainer-f-sys.md#unioneffectcontainer系统接口) | Defines UnionEffectContainer |
 <!--DelEnd-->
 
 ### 接口

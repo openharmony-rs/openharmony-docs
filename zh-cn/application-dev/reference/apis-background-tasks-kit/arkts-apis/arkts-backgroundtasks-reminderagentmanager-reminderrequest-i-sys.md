@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 forceDistributed?: boolean
 ```
 
-通知是否强制进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.forceDistributed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i-sys.md#forceDistributed) - 设置为true时：通知将在所有协同设备上显示。 - 设置为false时：通知将按照协同管控名单显示。 **系统接口：** 此接口为系统接口。
+通知是否强制进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.forceDistributed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i-sys.md#forcedistributed) - 设置为true时：通知将在所有协同设备上显示。 - 设置为false时：通知将按照协同管控名单显示。 **系统接口：** 此接口为系统接口。
 
 **类型：** boolean
 
@@ -26,7 +26,7 @@ forceDistributed?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ forceDistributed?: boolean
 notDistributed?: boolean
 ```
 
-通知是否不进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.notDistributed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i-sys.md#notDistributed) - 设置为true时：通知仅在本设备上显示。 - 设置为false时：通知将在所有协同设备上显示。 **系统接口：** 此接口为系统接口。
+通知是否不进行全场景跨设备协同显示，默认为false。具体请参考 [NotificationRequest.notDistributed](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i-sys.md#notdistributed) - 设置为true时：通知仅在本设备上显示。 - 设置为false时：通知将在所有协同设备上显示。 **系统接口：** 此接口为系统接口。
 
 **类型：** boolean
 
@@ -50,7 +50,7 @@ notDistributed?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function getCallState(callback: AsyncCallback<CallState>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -31,7 +31,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
-        console.error(`getCallState fail, err->${JSON.stringify(err)}`);
+        console.error(`getCallState fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`getCallState success, data->${JSON.stringify(data)}`);
     }
@@ -49,7 +49,7 @@ function getCallState(): Promise<CallState>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -71,7 +71,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.getCallState().then((data: call.CallState) => {
     console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getCallState fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 

@@ -10,7 +10,7 @@ function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean, callba
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean, callba
 | --- | --- | --- | --- |
 | abcPaths | Array&lt;string&gt; | 是 | .abc文件路径。 |
 | deleteOriginalFiles | boolean | 是 | 是否删除.abc文件，true删除，false不删除。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#AsyncCallback)，当获取成功时，err为undefined；否则为错 误对象。 |
+| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，当获取成功时，err为undefined；否则为错 误对象。 |
 
 **错误码：**
 
@@ -73,7 +73,7 @@ function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean): Promi
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

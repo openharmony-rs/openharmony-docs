@@ -8,7 +8,7 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -23,6 +23,6 @@ type AbilityState = 'enable' | 'disable' | 'install'
 | 类型 | 说明 |
 | --- | --- |
 | 'enable' | 表示辅助应用已启用。 |
-| 'disable' | 辅助应用已禁用。 |
-| 'install' | 辅助应用已安装。 |
+| 'disable' | 表示辅助应用已禁用。 |
+| 'install' | 表示辅助应用已安装。 |
 

@@ -10,11 +10,11 @@ declare function lstatSync(path: string): Stat
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [lstatSync](arkts-corefile-file-fs-lstatsync-f.md#lstatSync)
+**替代接口：** [lstatSync](arkts-corefile-file-fs-lstatsync-f.md#lstatsync)
 
 <!--Device-unnamed-declare function lstatSync(path: string): Stat--><!--Device-unnamed-declare function lstatSync(path: string): Stat-End-->
 

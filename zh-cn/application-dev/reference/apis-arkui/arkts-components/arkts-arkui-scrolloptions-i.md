@@ -4,7 +4,7 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 animation?: ScrollAnimationOptions | boolean
 ```
 
-动画配置。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;目前List、Scroll、Grid和WaterFlow支持Boolean类型和ICurve。 &lt;/p&gt; 布尔类型启用默认弹簧动效。 [since 10 - 11] 布尔类型启用默认弹簧动效。 [since 12]
+动画配置。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br>目前List、Scroll、Grid和WaterFlow支持Boolean类型和ICurve。 &lt;/p&gt; 布尔类型启用默认弹簧动效。 [since 10 - 11] 布尔类型启用默认弹簧动效。 [since 12]
 
 **类型：** [ScrollAnimationOptions](arkts-arkui-scrollanimationoptions-i.md) \| boolean
 
@@ -26,7 +26,7 @@ animation?: ScrollAnimationOptions | boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ canOverScroll?: boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -68,13 +68,13 @@ canOverScroll?: boolean
 xOffset: number | string
 ```
 
-水平滚动偏移量。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;不支持设置百分比。 &lt;br&gt;无动画滚动时，设置为小于0的值按0处理。有动画滚动时，默认停在起始位置。通过设置&lt;em&gt;animation&lt;/em&gt;参数，可以在滚动超出边界时启用回弹效果。 &lt;br&gt;该参数仅在滚动轴为x轴时生效。 &lt;/p&gt;
+水平滚动偏移量。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br>不支持设置百分比。 <br>无动画滚动时，设置为小于0的值按0处理。有动画滚动时，默认停在起始位置。通过设置&lt;em&gt;animation&lt;/em&gt;参数，可以在滚动超出边界时启用回弹效果。 <br>该参数仅在滚动轴为x轴时生效。 &lt;/p&gt;
 
 **类型：** number \| string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -92,13 +92,13 @@ xOffset: number | string
 yOffset: number | string
 ```
 
-竖直滚动偏移量。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; &lt;br&gt;不支持设置百分比。 &lt;br&gt;无动画滚动时，设置为小于0的值按0处理。有动画滚动时，默认停在起始位置。通过设置&lt;em&gt;animation&lt;/em&gt;参数，可以在滚动超出边界时启用回弹效果。 &lt;br&gt;该参数仅在滚动轴为y轴时生效。 &lt;/p&gt;
+竖直滚动偏移量。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt; <br>不支持设置百分比。 <br>无动画滚动时，设置为小于0的值按0处理。有动画滚动时，默认停在起始位置。通过设置&lt;em&gt;animation&lt;/em&gt;参数，可以在滚动超出边界时启用回弹效果。 <br>该参数仅在滚动轴为y轴时生效。 &lt;/p&gt;
 
 **类型：** number \| string
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

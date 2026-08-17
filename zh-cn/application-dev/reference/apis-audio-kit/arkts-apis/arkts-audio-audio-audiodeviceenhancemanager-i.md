@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ isEnhancedRoutingSupported(): boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -44,11 +44,11 @@ isEnhancedRoutingSupported(): boolean
 selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise<void>
 ```
 
-为您的应用程序选择输入设备。此设置适用于创建的所有录制流 在您的应用程序下，除非为特定流指定了特定输入设备 [selectInputDeviceForAudioCapturer](#selectInputDeviceForAudioCapturer).当应用程序实现 它自己的UX用于输入设备选择，它可以通过 get AvailableDevices，并使用[getPreferredInputDeviceForCapturerInfo](arkts-audio-audio-audioroutingmanager-i.md#getPreferredInputDeviceForCapturerInfo)接口获取当前 选择的输入设备。当您的应用程序退出或选择的 设备下线。在您的应用程序重新启动或设备重新联机后，您的应用程序必须重新发布选择才能使其生效。如果系统不支持该功能，它将为您的应用程序选择一个默认的输入设备。
+为您的应用程序选择输入设备。此设置适用于创建的所有录制流 在您的应用程序下，除非为特定流指定了特定输入设备 [selectInputDeviceForAudioCapturer](#selectinputdeviceforaudiocapturer).当应用程序实现 它自己的UX用于输入设备选择，它可以通过 get AvailableDevices，并使用[getPreferredInputDeviceForCapturerInfo](arkts-audio-audio-audioroutingmanager-i.md#getpreferredinputdeviceforcapturerinfo)接口获取当前 选择的输入设备。当您的应用程序退出或选择的 设备下线。在您的应用程序重新启动或设备重新联机后，您的应用程序必须重新发布选择才能使其生效。如果系统不支持该功能，它将为您的应用程序选择一个默认的输入设备。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -87,7 +87,7 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -123,11 +123,11 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>
 ```
 
-选择应用程序的输出设备。此设置适用于创建的所有播放流 除非为特定流指定了特定的输出设备 [selectOutputDeviceForAudioRenderer](#selectOutputDeviceForAudioRenderer).当应用程序实现 它自己的UX用于输出设备选择，它可以通过 get AvailableDevices，并使用[getPreferOutputDeviceForRendererInfo](arkts-audio-audio-audioroutingmanager-i.md#getPreferOutputDeviceForRendererInfo)接口获取当前 选定的输出设备。当您的应用程序退出或选择的 设备下线。在您的应用程序重新启动或设备重新联机后，您的应用程序必须重新发布选择才能使其生效。如果系统不支持该功能，则会为您的应用程序选择一个默认的输出设备。
+选择应用程序的输出设备。此设置适用于创建的所有播放流 除非为特定流指定了特定的输出设备 [selectOutputDeviceForAudioRenderer](#selectoutputdeviceforaudiorenderer).当应用程序实现 它自己的UX用于输出设备选择，它可以通过 get AvailableDevices，并使用[getPreferOutputDeviceForRendererInfo](arkts-audio-audio-audioroutingmanager-i.md#getpreferoutputdeviceforrendererinfo)接口获取当前 选定的输出设备。当您的应用程序退出或选择的 设备下线。在您的应用程序重新启动或设备重新联机后，您的应用程序必须重新发布选择才能使其生效。如果系统不支持该功能，则会为您的应用程序选择一个默认的输出设备。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -141,7 +141,7 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| outputDevice | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 通过 [getAvailableDevices](arkts-audio-audio-audioroutingmanager-i.md#getAvailableDevices)接口返回的音频设备描述数组 |
+| outputDevice | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 通过 [getAvailableDevices](arkts-audio-audio-audioroutingmanager-i.md#getavailabledevices)接口返回的音频设备描述数组 |
 
 **返回值：**
 
@@ -166,7 +166,7 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

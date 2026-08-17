@@ -1,14 +1,14 @@
 # GetImagePropertyOptions
 
-表示查询图片属性的索引。 > **说明：** > > [ImagePropertyOptions](arkts-image-image-imagepropertyoptions-i.md#ImagePropertyOptions)代替。
+表示查询图片属性的索引。 > **说明：** > > [ImagePropertyOptions](arkts-image-image-imagepropertyoptions-i.md#imagepropertyoptions)代替。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [ImagePropertyOptions](arkts-image-image-imagepropertyoptions-i.md#ImagePropertyOptions)
+**替代接口：** [ImagePropertyOptions](arkts-image-image-imagepropertyoptions-i.md#imagepropertyoptions)
 
 <!--Device-image-interface GetImagePropertyOptions--><!--Device-image-interface GetImagePropertyOptions-End-->
 
@@ -26,11 +26,11 @@ defaultValue?: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
-**替代接口：** [defaultValue](arkts-image-image-imagepropertyoptions-i.md#defaultValue)
+**替代接口：** [defaultValue](arkts-image-image-imagepropertyoptions-i.md#defaultvalue)
 
 <!--Device-GetImagePropertyOptions-defaultValue?: string--><!--Device-GetImagePropertyOptions-defaultValue?: string-End-->
 
@@ -48,7 +48,7 @@ index?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 

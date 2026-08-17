@@ -2,11 +2,11 @@
 
 图像流资源.
 
-**继承/实现关系：** ImageStream extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md#Image)
+**继承/实现关系：** ImageStream extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md#image)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ readonly surfaceId: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

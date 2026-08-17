@@ -10,7 +10,7 @@ function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallb
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -66,11 +66,11 @@ audio.createAudioRenderer(audioRendererOptions,(err, data) => {
 function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer | null>): void
 ```
 
-Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md#AudioRenderer) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
+Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md#audiorenderer) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -96,7 +96,7 @@ function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRender
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -156,11 +156,11 @@ audio.createAudioRenderer(audioRendererOptions).then((data) => {
 function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer | null>
 ```
 
-Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md#AudioRenderer) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
+Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md#audiorenderer) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

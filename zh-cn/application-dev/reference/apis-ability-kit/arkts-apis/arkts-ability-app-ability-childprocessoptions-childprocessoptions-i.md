@@ -1,10 +1,10 @@
 # ChildProcessOptions
 
-子进程的启动配置选项。通过[childProcessManager](arkts-app-ability-childprocessmanager.md#@ohos.app.ability.childProcessManager)启动子进程时，可以通过 ChildProcessOptions配置子进程启动选项。
+子进程的启动配置选项。通过[childProcessManager](arkts-app-ability-childprocessmanager.md#ohosappabilitychildprocessmanager)启动子进程时，可以通过 ChildProcessOptions配置子进程启动选项。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ isolationMode?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ isolationUid?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

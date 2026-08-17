@@ -1,10 +1,10 @@
 # FrameNode
 
-FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](../../apis-na/arkts-apis/arkts-na-nodecontroller-c.md#NodeController)可通过 BuilderNode持有的FrameNode将其挂载到NodeContainer上， 也可通过FrameNode获取[RenderNode](arkts-arkui-rendernode-c.md#RenderNode)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活 UI组合与自定义渲染需求。&lt;!--RP2--&gt;&lt;!--RP2End--&gt; > **说明：** > > - 当前不支持在预览器中使用FrameNode节点。 > > - FrameNode节点暂不支持拖拽。 > > - FrameNode对象不支持使用JSON序列化。 > > - 在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#FrameNode)对象的接口时，建议使用 > [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)的[runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runScopedTask)接口明确UI > 上下文，参考[执行绑定UI实例的闭包](../../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。 > > - FrameNode的接口中，仅Optional类型的必选参数支持传入null或undefined。
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](arkts-arkui-nodecontroller-c.md#nodecontroller)可通过 BuilderNode持有的FrameNode将其挂载到NodeContainer上， 也可通过FrameNode获取[RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md#rendernode)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活 UI组合与自定义渲染需求。&lt;!--RP2--&gt;&lt;!--RP2End--&gt; > **说明：** > > - 当前不支持在预览器中使用FrameNode节点。 > > - FrameNode节点暂不支持拖拽。 > > - FrameNode对象不支持使用JSON序列化。 > > - 在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md#framenode)对象的接口时，建议使用 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)的[runScopedTask](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#runscopedtask)接口明确UI > 上下文，参考[执行绑定UI实例的闭包](../../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。 > > - FrameNode的接口中，仅Optional类型的必选参数支持传入null或undefined。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ FrameNode表示组件树的实体节点，支持节点树操作、自定义绘�
 addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent<T>): void
 ```
 
-支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](../../apis-na/arkts-apis/arkts-na-framenode-c.md#isModifiable)的返回值为true，否则抛出异常信息。
+支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](../../apis-na/arkts-apis/arkts-na-framenode-c.md#ismodifiable)的返回值为true，否则抛出异常信息。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -175,7 +175,7 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -191,9 +191,9 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiStates | number | 是 | 需要处理目标节点的UI状态。 &lt;br&gt;可以通过位或计算同时指定多个状态，如：targetUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
+| uiStates | number | 是 | 需要处理目标节点的UI状态。 <br>可以通过位或计算同时指定多个状态，如：targetUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
 | statesChangeHandler | [UIStatesChangeHandler](../../apis-na/arkts-apis/arkts-na-uistateschangehandler-t.md) | 是 | 状态变化时的回调函数。 |
-| excludeInner | boolean | 否 | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。 &lt;br&gt; true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
+| excludeInner | boolean | 否 | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。 <br> true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
 
 ## 示例
 
@@ -209,7 +209,7 @@ adoptChild(child: FrameNode): void
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -247,7 +247,7 @@ appendChild(node: FrameNode): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -263,7 +263,7 @@ appendChild(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 需要添加的FrameNode。&lt;br/&gt; node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。&lt;br/&gt; node节点不可以拥有父节 点，否则抛出异常信息。 |
+| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 需要添加的FrameNode。<br/> node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br/> node节点不可以拥有父节 点，否则抛出异常信息。 |
 
 **错误码：**
 
@@ -286,7 +286,7 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -308,7 +308,7 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示动画是否取消成功。&lt;br/&gt;返回值为true：动画取消成功。&lt;br/&gt;返回值为false：动画取消失败。&lt;br/&gt;可能导致动画取消失败的原因：&lt;br/&gt; 1. 节点已经释放，调用过 [dispose]{ |
+| boolean | 表示动画是否取消成功。<br/>返回值为true：动画取消成功。<br/>返回值为false：动画取消失败。<br/>可能导致动画取消失败的原因：<br/> 1. 节点已经释放，调用过 [dispose]{ |
 
 ## 示例
 
@@ -324,7 +324,7 @@ clearChildren(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -356,7 +356,7 @@ FrameNode的构造函数。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -372,7 +372,7 @@ FrameNode的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
+| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 
 ## convertPosition
 
@@ -384,7 +384,7 @@ convertPosition(position: Position, targetNode: FrameNode): Position
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -496,7 +496,7 @@ convertPositionFromWindow(positionByWindow: Position): Position
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -541,7 +541,7 @@ convertPositionToWindow(positionByLocal: Position): Position
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -586,7 +586,7 @@ createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>,
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -603,15 +603,15 @@ createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | property | [AnimationPropertyType](../../apis-na/arkts-apis/arkts-na-enums-animationpropertytype-e.md) | 是 | 动画属性枚举。 |
-| startValue | Optional&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点 上一次设置的属性终值为此次动画的起点值。如果取值为数组，&lt;br/&gt;- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度 （°），表示绕x、y、z轴的旋转角。&lt;br/&gt;- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。&lt; br/&gt;- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。&lt;br/&gt;- 对于AnimationPropertyType.OPACITY，取 值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。&lt;br/&gt;当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当 节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
-| endValue | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。&lt;br/&gt;- 对于AnimationPropertyType.ROTATION，取值格式为 [rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。&lt;br/&gt;- 对于AnimationPropertyType.TRANSLATION，取值格式为 [translateX, translateY]，单位为px，表示沿x、y轴的平移量。&lt;br/&gt;- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩 放比例。&lt;br/&gt;- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。 |
+| startValue | Optional&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点 上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度 （°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。&lt; br/&gt;- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取 值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当 节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
+| endValue | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br/>- 对于AnimationPropertyType.ROTATION，取值格式为 [rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为 [translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩 放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。 |
 | param | AnimateParam | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示动画是否创建成功。&lt;br/&gt;返回值为true：动画创建成功，如果动画参数中设置结束回调，动画结束后会调用结束回调。&lt;br/&gt;返回值为false：动画创建失败，即使动画参数中设置结束回 调，结束回调也不会被调用。&lt;br/&gt;可能导致动画创建失败的原因：&lt;br/&gt; 1. 节点已经释放，调用过[dispose]{ |
+| boolean | 表示动画是否创建成功。<br/>返回值为true：动画创建成功，如果动画参数中设置结束回调，动画结束后会调用结束回调。<br/>返回值为false：动画创建失败，即使动画参数中设置结束回 调，结束回调也不会被调用。<br/>可能导致动画创建失败的原因：<br/> 1. 节点已经释放，调用过[dispose]{ |
 
 ## 示例
 
@@ -627,7 +627,7 @@ static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -643,7 +643,7 @@ static createFrameNodes(uiContext: UIContext, count: number): FrameNode[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
+| uiContext | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 创建对应节点时所需的UI上下文。 |
 | count | number | 是 | 指定创建节点的数量，取值范围为大于零的整型。若给定值小于等于0或不是整数，则返回空数组。 |
 
 **返回值：**
@@ -694,11 +694,11 @@ struct Index {
 dispose(): void
 ```
 
-立即解除当前FrameNode对象对实体FrameNode节点的引用关系。 > **说明：** > > - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getMeasuredSize)、 > [getLayoutPosition](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getLayoutPosition))的时候会导致应用出现jscrash。 > > - 通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getUniqueId)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueID大于0时表示该对象对应一个实体 > FrameNode节点。
+立即解除当前FrameNode对象对实体FrameNode节点的引用关系。 > **说明：** > > - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getmeasuredsize)、 > [getLayoutPosition](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getlayoutposition))的时候会导致应用出现jscrash。 > > - 通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getuniqueid)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueID大于0时表示该对象对应一个实体 > FrameNode节点。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -808,7 +808,7 @@ disposeTree(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1009,7 +1009,7 @@ getChild(index: number): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1025,7 +1025,7 @@ getChild(index: number): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 需要查询的子节点的序列号。&lt;br/&gt;index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
+| index | number | 是 | 需要查询的子节点的序列号。<br/>index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
 
 **返回值：**
 
@@ -1047,7 +1047,7 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -1063,8 +1063,8 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 需要查询的子节点的序列号。&lt;br/&gt;index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
-| expandMode | [ExpandMode](../../apis-na/arkts-apis/arkts-na-framenode-expandmode-e.md) | 否 | 指定子节点展开模式。&lt;br/&gt;默认值：ExpandMode.EXPAND |
+| index | number | 是 | 需要查询的子节点的序列号。<br/>index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
+| expandMode | [ExpandMode](../../apis-na/arkts-apis/arkts-na-framenode-expandmode-e.md) | 否 | 指定子节点展开模式。<br/>默认值：ExpandMode.EXPAND |
 
 **返回值：**
 
@@ -1086,7 +1086,7 @@ getChildrenCount(): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1118,7 +1118,7 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1379,7 +1379,7 @@ getCrossLanguageOptions(): CrossLanguageOptions
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -1411,7 +1411,7 @@ getCustomProperty(name: string): Object | undefined
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1449,7 +1449,7 @@ getFirstChild(): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1481,7 +1481,7 @@ getFirstChildIndexWithoutExpand(): number
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -1513,7 +1513,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1598,11 +1598,11 @@ struct Index {
 getFrameNodeByUniqueId(id: int): FrameNode | null
 ```
 
-以当前节点为根节点，查找并返回指定UniqueID（系统分配的节点唯一标识，该标识可通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getUniqueId)接口获取）的子节点。
+以当前节点为根节点，查找并返回指定UniqueID（系统分配的节点唯一标识，该标识可通过[getUniqueId](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getuniqueid)接口获取）的子节点。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -1688,11 +1688,11 @@ struct Index {
 getGlobalPositionOnDisplay(): Position
 ```
 
-获取FrameNode相对于全局屏幕的位置偏移，单位为VP。与[getPositionToScreen](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getPositionToScreen)的坐标系参考不同，请根据实际场景选择使用。
+获取FrameNode相对于全局屏幕的位置偏移，单位为VP。与[getPositionToScreen](../../apis-na/arkts-apis/arkts-na-framenode-c.md#getpositiontoscreen)的坐标系参考不同，请根据实际场景选择使用。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -1724,7 +1724,7 @@ getId(): string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1756,7 +1756,7 @@ getInspectorInfo(): Object
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1788,7 +1788,7 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -1826,7 +1826,7 @@ getLastChildIndexWithoutExpand(): number
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -1858,7 +1858,7 @@ getLayoutPosition(): Position
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1890,7 +1890,7 @@ getMeasuredSize(): Size
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1906,7 +1906,7 @@ getMeasuredSize(): Size
 
 | 类型 | 说明 |
 | --- | --- |
-| [Size](../../apis-na/arkts-apis/arkts-na-graphics-size-i.md) | 节点测量后的大小，单位为PX。 |
+| [Size](arkts-arkui-graphics-size-i.md) | 节点测量后的大小，单位为PX。 |
 
 ## 示例
 
@@ -1922,7 +1922,7 @@ getNextSibling(): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1954,7 +1954,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -1976,7 +1976,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 | 类型 | 说明 |
 | --- | --- |
-| number[] | 表示FrameNode上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。&lt;br/&gt;对不同属性枚举的返回值格式：&lt;br/&gt;- 当节点已经释放，调用过 [dispose]{ |
+| number[] | 表示FrameNode上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。<br/>对不同属性枚举的返回值格式：<br/>- 当节点已经释放，调用过 [dispose]{ |
 
 ## 示例
 
@@ -1992,7 +1992,7 @@ getNodeType(): string
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2024,7 +2024,7 @@ getOpacity(): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2056,7 +2056,7 @@ getParent(): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2088,7 +2088,7 @@ getPositionToParent(): Position
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2180,7 +2180,7 @@ getPositionToParentWithTransform(): Position
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2272,7 +2272,7 @@ getPositionToScreen(): Position
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2364,7 +2364,7 @@ getPositionToScreenWithTransform(): Position
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2456,7 +2456,7 @@ getPositionToWindow(): Position
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2547,7 +2547,7 @@ getPositionToWindowWithTransform(): Position
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2638,7 +2638,7 @@ getPreviousSibling(): FrameNode | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2666,11 +2666,11 @@ getPreviousSibling(): FrameNode | null
 getRenderNode(): RenderNode | null
 ```
 
-获取FrameNode中持有的[RenderNode](arkts-arkui-rendernode-c.md#RenderNode)。
+获取FrameNode中持有的[RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md#rendernode)。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -2686,7 +2686,7 @@ getRenderNode(): RenderNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](arkts-arkui-rendernode-c.md) | 一个RenderNode对象。若该FrameNode不包含RenderNode，则返回空对象null。如果当前FrameNode为声明式组件创建的节点，则返回null。 |
+| [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 一个RenderNode对象。若该FrameNode不包含RenderNode，则返回空对象null。如果当前FrameNode为声明式组件创建的节点，则返回null。 |
 
 ## 示例
 
@@ -2734,7 +2734,7 @@ getUniqueId(): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2766,7 +2766,7 @@ getUserConfigBorderWidth(): Edges<LengthMetrics>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2782,7 +2782,7 @@ getUserConfigBorderWidth(): Edges<LengthMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetrics-c.md)&gt; | 用户设置的边框宽度。 |
+| [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt; | 用户设置的边框宽度。 |
 
 ## 示例
 
@@ -2798,7 +2798,7 @@ getUserConfigMargin(): Edges<LengthMetrics>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2814,7 +2814,7 @@ getUserConfigMargin(): Edges<LengthMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetrics-c.md)&gt; | 用户设置的外边距。 |
+| [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt; | 用户设置的外边距。 |
 
 ## 示例
 
@@ -2830,7 +2830,7 @@ getUserConfigPadding(): Edges<LengthMetrics>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2846,7 +2846,7 @@ getUserConfigPadding(): Edges<LengthMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetrics-c.md)&gt; | 用户设置的内边距。 |
+| [Edges](arkts-arkui-graphics-edges-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt; | 用户设置的内边距。 |
 
 ## 示例
 
@@ -2862,7 +2862,7 @@ getUserConfigSize(): SizeT<LengthMetrics>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2878,7 +2878,7 @@ getUserConfigSize(): SizeT<LengthMetrics>
 
 | 类型 | 说明 |
 | --- | --- |
-| [SizeT](../../apis-na/arkts-apis/arkts-na-graphics-sizet-i.md)&lt;[LengthMetrics](../../apis-na/arkts-apis/arkts-na-graphics-lengthmetrics-c.md)&gt; | 用户设置的宽高。 |
+| [SizeT](arkts-arkui-graphics-sizet-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt; | 用户设置的宽高。 |
 
 ## 示例
 
@@ -2894,7 +2894,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2910,7 +2910,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 需要添加的子节点。&lt;br/&gt;child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。&lt;br/&gt; child节点不可以拥有父 节点，否则抛出异常信息。 |
+| child | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 需要添加的子节点。<br/>child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅 BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br/> child节点不可以拥有父 节点，否则抛出异常信息。 |
 | sibling | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) \| null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
@@ -2930,11 +2930,11 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 invalidate(): void
 ```
 
-该方法会触发FrameNode自绘制内容的重新渲染，即重新调用[onDraw](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onDraw)方法进行自绘制。
+该方法会触发FrameNode自绘制内容的重新渲染，即重新调用[onDraw](../../apis-na/arkts-apis/arkts-na-framenode-c.md#ondraw)方法进行自绘制。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -2956,7 +2956,7 @@ invalidateAttributes(): void
 
 **起始版本：** 21
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为21。
+**ArkTS模式：** 起始版本为21。
 
 **废弃版本：** -1
 
@@ -3082,7 +3082,7 @@ isAttached(): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -3098,7 +3098,7 @@ isAttached(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否被挂载到主节点树上。&lt;br/&gt;true表示节点被挂载到主节点树上，false表示节点不是被挂载到主节点树上。 |
+| boolean | 节点是否被挂载到主节点树上。<br/>true表示节点被挂载到主节点树上，false表示节点不是被挂载到主节点树上。 |
 
 ## 示例
 
@@ -3114,7 +3114,7 @@ isClipToFrame(): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -3130,7 +3130,7 @@ isClipToFrame(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否剪裁到组件区域。&lt;br/&gt;true表示节点剪裁到组件区域，false表示节点未剪裁到组件区域。 |
+| boolean | 节点是否剪裁到组件区域。<br/>true表示节点剪裁到组件区域，false表示节点未剪裁到组件区域。 |
 
 ## 示例
 
@@ -3146,7 +3146,7 @@ isDisposed(): boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -3178,7 +3178,7 @@ isInRenderState(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3194,7 +3194,7 @@ isInRenderState(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否处于渲染状态。&lt;br/&gt;true：处于渲染状态；false：不处于渲染状态。 |
+| boolean | 节点是否处于渲染状态。<br/>true：处于渲染状态；false：不处于渲染状态。 |
 
 ## 示例
 
@@ -3273,7 +3273,7 @@ isModifiable(): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -3289,7 +3289,7 @@ isModifiable(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 判断当前节点是否可修改。&lt;br/&gt;true表示当前节点可修改，false表示当前节点不可修改。&lt;br/&gt;当节点为 [自定义组件节点](../../../ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经 [dispose]{ |
+| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为 [自定义组件节点](../../../ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经 [dispose]{ |
 
 ## 示例
 
@@ -3301,11 +3301,11 @@ isModifiable(): boolean
 isOnMainTree(): boolean
 ```
 
-查询节点是否被挂载到主节点树上。与[isAttached](../../apis-na/arkts-apis/arkts-na-framenode-c.md#isAttached)均用于判断节点是否挂载到主节点树上，区别在于本接口在节点已调用 [dispose](../../apis-na/arkts-apis/arkts-na-framenode-c.md#dispose)解除引用时会抛出错误码100026，开发者可根据是否需要节点dispose时的错误码校验（即抛出错误码100026）来选择使用本接口或 [isAttached](../../apis-na/arkts-apis/arkts-na-framenode-c.md#isAttached)接口。
+查询节点是否被挂载到主节点树上。与[isAttached](../../apis-na/arkts-apis/arkts-na-framenode-c.md#isattached)均用于判断节点是否挂载到主节点树上，区别在于本接口在节点已调用 [dispose](../../apis-na/arkts-apis/arkts-na-framenode-c.md#dispose)解除引用时会抛出错误码100026，开发者可根据是否需要节点dispose时的错误码校验（即抛出错误码100026）来选择使用本接口或 [isAttached](../../apis-na/arkts-apis/arkts-na-framenode-c.md#isattached)接口。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3321,7 +3321,7 @@ isOnMainTree(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否被挂载到主节点树上。&lt;br/&gt;true表示节点被挂载到主节点树上，false表示节点没有被挂载到主节点树上。 |
+| boolean | 节点是否被挂载到主节点树上。<br/>true表示节点被挂载到主节点树上，false表示节点没有被挂载到主节点树上。 |
 
 **错误码：**
 
@@ -3860,7 +3860,7 @@ isTransferred(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -3876,7 +3876,7 @@ isTransferred(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回FrameNode是否通过transfer.transferStatic或transfer.transferDynamic方法创建。&lt;br/&gt;true：FrameNode通过 transfer.transferStatic或transfer.transferDynamic方法创建。&lt;br/&gt;false：FrameNode不通过transfer.transferStatic或 transfer.transferDynamic方法创建。 |
+| boolean | 返回FrameNode是否通过transfer.transferStatic或transfer.transferDynamic方法创建。<br/>true：FrameNode通过 transfer.transferStatic或transfer.transferDynamic方法创建。<br/>false：FrameNode不通过transfer.transferStatic或 transfer.transferDynamic方法创建。 |
 
 ## isVisible
 
@@ -3888,7 +3888,7 @@ isVisible(): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -3904,7 +3904,7 @@ isVisible(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 节点是否可见。&lt;br/&gt;true表示节点可见，false表示节点不可见。 |
+| boolean | 节点是否可见。<br/>true表示节点可见，false表示节点不可见。 |
 
 ## 示例
 
@@ -3916,11 +3916,11 @@ isVisible(): boolean
 layout(position: Position): void
 ```
 
-调用FrameNode的布局方法，为FrameNode及其子节点指定布局位置，如果布局方法被重写，则调用重写的方法。建议在[onLayout](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onLayout)方法中调用。
+调用FrameNode的布局方法，为FrameNode及其子节点指定布局位置，如果布局方法被重写，则调用重写的方法。建议在[onLayout](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onlayout)方法中调用。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -3948,11 +3948,11 @@ layout(position: Position): void
 measure(constraint: LayoutConstraint): void
 ```
 
-调用FrameNode的测量方法，根据父容器的布局约束，对FrameNode进行测量，计算出尺寸，如果测量方法被重写，则调用重写的方法。建议在[onMeasure](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onMeasure)方法中调用。
+调用FrameNode的测量方法，根据父容器的布局约束，对FrameNode进行测量，计算出尺寸，如果测量方法被重写，则调用重写的方法。建议在[onMeasure](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onmeasure)方法中调用。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -3980,11 +3980,11 @@ measure(constraint: LayoutConstraint): void
 moveTo(targetParent: FrameNode, index?: number): void
 ```
 
-将当前FrameNode移动到目标FrameNode的指定位置。当前FrameNode如果不可修改，抛出异常信息。targetParent为typeNode时会校验子组件类型或个数，不满足时抛出 异常信息，限制情况请查看typeNode描述。 > **说明：** > > 当前仅支持以下类型的[TypedFrameNode](../../apis-na/arkts-apis/arkts-na-framenode-typedframenode-c.md#TypedFrameNode)进行移动操作：[Stack](../../apis-na/arkts-apis/arkts-na-typenode-stack-t.md#Stack)、 > [XComponent](../../apis-na/arkts-apis/arkts-na-typenode-xcomponent-t.md#XComponent)。对于其他类型的节点，移动操作不会生效。 > > 当前仅支持根节点为以下类型组件的[BuilderNode](arkts-arkui-buildernode-c.md#BuilderNode)进行移动操作： > Stack、XComponent、 > EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
+将当前FrameNode移动到目标FrameNode的指定位置。当前FrameNode如果不可修改，抛出异常信息。targetParent为typeNode时会校验子组件类型或个数，不满足时抛出 异常信息，限制情况请查看typeNode描述。 > **说明：** > > 当前仅支持以下类型的[TypedFrameNode](../../apis-na/arkts-apis/arkts-na-framenode-typedframenode-c.md#typedframenode)进行移动操作：[Stack](../../apis-na/arkts-apis/arkts-na-typenode-stack-t.md#stack)、 > [XComponent](../../apis-na/arkts-apis/arkts-na-typenode-xcomponent-t.md#xcomponent)。对于其他类型的节点，移动操作不会生效。 > > 当前仅支持根节点为以下类型组件的[BuilderNode](../../apis-na/arkts-apis/arkts-na-buildernode-c.md#buildernode)进行移动操作： > Stack、XComponent、 > EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -4000,8 +4000,8 @@ moveTo(targetParent: FrameNode, index?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetParent | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 目标父节点。&lt;br/&gt;targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
-| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。&lt;br/ &gt;若参数无效或不指定，则添加到目标FrameNode的最后。&lt;br/&gt;默认值：-1 |
+| targetParent | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 目标父节点。<br/>targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
+| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。&lt;br/ &gt;若参数无效或不指定，则添加到目标FrameNode的最后。<br/>默认值：-1 |
 
 **错误码：**
 
@@ -4020,11 +4020,11 @@ moveTo(targetParent: FrameNode, index?: number): void
 onDraw?(context: DrawContext): void
 ```
 
-FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。 该接口的[DrawContext](../../apis-na/arkts-apis/arkts-na-graphics-drawcontext-c.md#DrawContext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
+FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNode进行内容绘制时被调用。 该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -4040,7 +4040,7 @@ FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNod
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [DrawContext](../../apis-na/arkts-apis/arkts-na-graphics-drawcontext-c.md) | 是 | 图形绘制上下文。自绘制区域无法超出组件自身大小。 |
+| context | [DrawContext](arkts-arkui-graphics-drawcontext-c.md) | 是 | 图形绘制上下文。自绘制区域无法超出组件自身大小。 |
 
 ## 示例
 
@@ -4056,7 +4056,7 @@ FrameNode的自定义布局方法，该方法会重写默认布局方法，在Fr
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -4088,7 +4088,7 @@ FrameNode的自定义测量方法，该方法会重写默认测量方法，在Fr
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -4120,7 +4120,7 @@ recycle(): void
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -4146,7 +4146,7 @@ removeAdoptedChild(child: FrameNode): void
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -4184,7 +4184,7 @@ removeChild(node: FrameNode): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -4222,7 +4222,7 @@ removeSupportedUIStates(uiStates: number): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -4238,7 +4238,7 @@ removeSupportedUIStates(uiStates: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiStates | number | 是 | 需要删除的UI状态。 &lt;br&gt;可以通过位或计算同时指定删除多个状态，如：removeUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
+| uiStates | number | 是 | 需要删除的UI状态。 <br>可以通过位或计算同时指定删除多个状态，如：removeUIStates = UIState.PRESSED  \|  UIState.FOCUSED。 |
 
 ## 示例
 
@@ -4254,7 +4254,7 @@ reuse(): void
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -4276,11 +4276,11 @@ reuse(): void
 setCrossLanguageOptions(options: CrossLanguageOptions): void
 ```
 
-设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前 FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。 > **说明：** > > 当前仅支持[Scroll](../../apis-na/arkts-apis/arkts-na-typenode-scroll-t.md#Scroll)、[Swiper](../../apis-na/arkts-apis/arkts-na-typenode-swiper-t.md#Swiper)、[List](../../apis-na/arkts-apis/arkts-na-typenode-list-t.md#List)、 > [ListItem](../../apis-na/arkts-apis/arkts-na-typenode-listitem-t.md#ListItem)、[ListItemGroup](../../apis-na/arkts-apis/arkts-na-typenode-listitemgroup-t.md#ListItemGroup)、 > [WaterFlow](../../apis-na/arkts-apis/arkts-na-typenode-waterflow-t.md#WaterFlow)、[FlowItem](../../apis-na/arkts-apis/arkts-na-typenode-flowitem-t.md#FlowItem)、[Grid](../../apis-na/arkts-apis/arkts-na-typenode-grid-t.md#Grid)、 > [GridItem](../../apis-na/arkts-apis/arkts-na-typenode-griditem-t.md#GridItem)、[TextInput](../../apis-na/arkts-apis/arkts-na-typenode-textinput-t.md#TextInput)、[TextArea](../../apis-na/arkts-apis/arkts-na-typenode-textarea-t.md#TextArea)、 > [Column](../../apis-na/arkts-apis/arkts-na-typenode-column-t.md#Column)、[Row](../../apis-na/arkts-apis/arkts-na-typenode-row-t.md#Row)、[Stack](../../apis-na/arkts-apis/arkts-na-typenode-stack-t.md#Stack)、 > [Flex](../../apis-na/arkts-apis/arkts-na-typenode-flex-t.md#Flex)、[RelativeContainer](../../apis-na/arkts-apis/arkts-na-typenode-relativecontainer-t.md#RelativeContainer)、 > [Progress](../../apis-na/arkts-apis/arkts-na-typenode-progress-t.md#Progress)、[LoadingProgress](../../apis-na/arkts-apis/arkts-na-typenode-loadingprogress-t.md#LoadingProgress)、 > [Image](../../apis-na/arkts-apis/arkts-na-typenode-image-t.md#Image)、[Button](../../apis-na/arkts-apis/arkts-na-typenode-button-t.md#Button)、[Checkbox](../../apis-na/arkts-apis/arkts-na-typenode-checkbox-t.md#Checkbox)、 > [Radio](../../apis-na/arkts-apis/arkts-na-typenode-radio-t.md#Radio)、[Slider](../../apis-na/arkts-apis/arkts-na-typenode-slider-t.md#Slider)、[Toggle](../../apis-na/arkts-apis/arkts-na-typenode-toggle-t.md#Toggle)、 > [XComponent](../../apis-na/arkts-apis/arkts-na-typenode-xcomponent-t.md#XComponent)类型的[TypedFrameNode](../../apis-na/arkts-apis/arkts-na-framenode-typedframenode-c.md#TypedFrameNode)设置跨ArkTS语言访问选项。
+设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前 FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。 > **说明：** > > 当前仅支持[Scroll](../../apis-na/arkts-apis/arkts-na-typenode-scroll-t.md#scroll)、[Swiper](../../apis-na/arkts-apis/arkts-na-typenode-swiper-t.md#swiper)、[List](../../apis-na/arkts-apis/arkts-na-typenode-list-t.md#list)、 > [ListItem](../../apis-na/arkts-apis/arkts-na-typenode-listitem-t.md#listitem)、[ListItemGroup](../../apis-na/arkts-apis/arkts-na-typenode-listitemgroup-t.md#listitemgroup)、 > [WaterFlow](../../apis-na/arkts-apis/arkts-na-typenode-waterflow-t.md#waterflow)、[FlowItem](../../apis-na/arkts-apis/arkts-na-typenode-flowitem-t.md#flowitem)、[Grid](../../apis-na/arkts-apis/arkts-na-typenode-grid-t.md#grid)、 > [GridItem](../../apis-na/arkts-apis/arkts-na-typenode-griditem-t.md#griditem)、[TextInput](../../apis-na/arkts-apis/arkts-na-typenode-textinput-t.md#textinput)、[TextArea](../../apis-na/arkts-apis/arkts-na-typenode-textarea-t.md#textarea)、 > [Column](../../apis-na/arkts-apis/arkts-na-typenode-column-t.md#column)、[Row](../../apis-na/arkts-apis/arkts-na-typenode-row-t.md#row)、[Stack](../../apis-na/arkts-apis/arkts-na-typenode-stack-t.md#stack)、 > [Flex](../../apis-na/arkts-apis/arkts-na-typenode-flex-t.md#flex)、[RelativeContainer](../../apis-na/arkts-apis/arkts-na-typenode-relativecontainer-t.md#relativecontainer)、 > [Progress](../../apis-na/arkts-apis/arkts-na-typenode-progress-t.md#progress)、[LoadingProgress](../../apis-na/arkts-apis/arkts-na-typenode-loadingprogress-t.md#loadingprogress)、 > [Image](../../apis-na/arkts-apis/arkts-na-typenode-image-t.md#image)、[Button](../../apis-na/arkts-apis/arkts-na-typenode-button-t.md#button)、[Checkbox](../../apis-na/arkts-apis/arkts-na-typenode-checkbox-t.md#checkbox)、 > [Radio](../../apis-na/arkts-apis/arkts-na-typenode-radio-t.md#radio)、[Slider](../../apis-na/arkts-apis/arkts-na-typenode-slider-t.md#slider)、[Toggle](../../apis-na/arkts-apis/arkts-na-typenode-toggle-t.md#toggle)、 > [XComponent](../../apis-na/arkts-apis/arkts-na-typenode-xcomponent-t.md#xcomponent)类型的[TypedFrameNode](../../apis-na/arkts-apis/arkts-na-framenode-typedframenode-c.md#typedframenode)设置跨ArkTS语言访问选项。
 
 **起始版本：** 15
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为15。
+**ArkTS模式：** 起始版本为15。
 
 **废弃版本：** -1
 
@@ -4314,11 +4314,11 @@ setCrossLanguageOptions(options: CrossLanguageOptions): void
 setLayoutPosition(position: Position): void
 ```
 
-设置FrameNode的布局后的位置，默认单位PX。建议在[onLayout](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onLayout)方法中调用，用于设置自定义布局的结果。
+设置FrameNode的布局后的位置，默认单位PX。建议在[onLayout](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onlayout)方法中调用，用于设置自定义布局的结果。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -4346,11 +4346,11 @@ setLayoutPosition(position: Position): void
 setMeasuredSize(size: Size): void
 ```
 
-设置FrameNode的测量后的尺寸，默认单位PX。若设置的宽高为负数，自动取零。建议在[onMeasure](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onMeasure)方法中调用，用于设置自定义测量的结果。
+设置FrameNode的测量后的尺寸，默认单位PX。若设置的宽高为负数，自动取零。建议在[onMeasure](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onmeasure)方法中调用，用于设置自定义测量的结果。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -4366,7 +4366,7 @@ setMeasuredSize(size: Size): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | [Size](../../apis-na/arkts-apis/arkts-na-graphics-size-i.md) | 是 | FrameNode的测量后的尺寸，单位为PX。 |
+| size | [Size](arkts-arkui-graphics-size-i.md) | 是 | FrameNode的测量后的尺寸，单位为PX。 |
 
 ## 示例
 
@@ -4378,11 +4378,11 @@ setMeasuredSize(size: Size): void
 setNeedsLayout(): void
 ```
 
-该方法会将FrameNode标记为需要布局的状态，下一帧将会进行重新布局，触发[onMeasure](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onMeasure)和[onLayout](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onLayout)方 法的调用。
+该方法会将FrameNode标记为需要布局的状态，下一帧将会进行重新布局，触发[onMeasure](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onmeasure)和[onLayout](../../apis-na/arkts-apis/arkts-na-framenode-c.md#onlayout)方 法的调用。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

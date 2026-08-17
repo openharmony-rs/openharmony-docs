@@ -1,10 +1,10 @@
 # SweepGradientOptions
 
-角度渐变参数。 > **说明：** > > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。 > **说明：** > > metricsColors参数的约束： > > [ColorMetrics](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md#ColorMetrics)表示填充的颜色，可以使用[colorWithSpace](../../apis-na/arkts-apis/arkts-na-graphics-colormetrics-c.md#colorWithSpace) > 方法构造指定色域属性的颜色。number表示指定颜色所处的位置，取值范围为[0, 1.0]，0表示需要设置渐变色的容器开始处，1.0表示容器的结束处。为了实现多个颜色渐变效果，多个数组中的number类型参数应递增设置。如果后一个 > 数组中的number类型参数小于前一个数组的number类型参数，将按照等于前一个数组number值处理。
+角度渐变参数。 > **说明：** > > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。 > **说明：** > > metricsColors参数的约束： > > [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md#colormetrics)表示填充的颜色，可以使用[colorWithSpace](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md#colorwithspace) > 方法构造指定色域属性的颜色。number表示指定颜色所处的位置，取值范围为[0, 1.0]，0表示需要设置渐变色的容器开始处，1.0表示容器的结束处。为了实现多个颜色渐变效果，多个数组中的number类型参数应递增设置。如果后一个 > 数组中的number类型参数小于前一个数组的number类型参数，将按照等于前一个数组number值处理。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Defines center point for angle gradient. Anonymous Object Rectification.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ Defines color description for gradients. Anonymous Object Rectification.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ Defines end point of angle gradient. Anonymous Object Rectification.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ Defines color description in ColorMetrics format for gradients. This parameter t
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -124,7 +124,7 @@ Defines gradient colors with repeated coloring. Anonymous Object Rectification.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -150,7 +150,7 @@ Defines the rotation angle of the gradient. Anonymous Object Rectification.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -176,7 +176,7 @@ Defines the starting point of angle gradient. Anonymous Object Rectification.
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 

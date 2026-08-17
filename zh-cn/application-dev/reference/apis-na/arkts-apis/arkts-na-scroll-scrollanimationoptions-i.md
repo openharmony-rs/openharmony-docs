@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@
 canOverScroll?: boolean
 ```
 
-设置滚动动画滚动到边界后，是否转换成越界回弹动画。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 &lt;br&gt;仅在设置为true，且组件的edgeEffect设置为EdgeEffect.Spring时，使用动画滚动到边界会转换为越界回弹动画， 设置为false时，滚动到边界会直接停止动画，不会转换为越界回弹动画。 &lt;/p&gt;
+设置滚动动画滚动到边界后，是否转换成越界回弹动画。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 <br>仅在设置为true，且组件的edgeEffect设置为EdgeEffect.Spring时，使用动画滚动到边界会转换为越界回弹动画， 设置为false时，滚动到边界会直接停止动画，不会转换为越界回弹动画。 &lt;/p&gt;
 
 **类型：** boolean
 
@@ -26,7 +26,7 @@ canOverScroll?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ curve?: Curve | ICurve
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ curve?: Curve | ICurve
 duration?: int
 ```
 
-设置滚动时长。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 取值限定为整数。 &lt;br&gt;设置为小于0的值时，按默认值显示。 &lt;/p&gt;
+设置滚动时长。 &lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;。 取值限定为整数。 <br>设置为小于0的值时，按默认值显示。 &lt;/p&gt;
 
 **类型：** int
 
@@ -74,7 +74,7 @@ duration?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

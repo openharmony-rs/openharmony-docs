@@ -4,7 +4,7 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 style?: ProgressStyle
 ```
 
-指定进度条样式。 从API version 7开始支持，从API version 8开始废弃。建议使用[type](arkts-arkui-progresstype-e.md#ProgressType)替代。 默认值：ProgressStyle.Linear
+指定进度条样式。 从API version 7开始支持，从API version 8开始废弃。建议使用[type](arkts-arkui-progresstype-e.md#progresstype)替代。 默认值：ProgressStyle.Linear
 
 **类型：** [ProgressStyle](arkts-arkui-progressstyle-e.md)
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 
@@ -46,7 +46,7 @@ total?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ type?: Type
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -94,7 +94,7 @@ value: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 

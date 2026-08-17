@@ -10,7 +10,7 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string, callb
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -43,7 +43,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: string) => {
     if (err) {
-        console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
+        console.error(`formatPhoneNumberToE164 fail, 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
     } else {
         console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
@@ -61,7 +61,7 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Prom
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -100,7 +100,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
     console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`formatPhoneNumberToE164 fail, promise: 本次操作异常，err->Code${err.code}, message:${err.message}请稍后重试。`);
 });
 ```
 

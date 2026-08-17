@@ -6,11 +6,11 @@
 function createPanel(ctx: Context, info: PanelInfo): Promise<Panel>
 ```
 
-创建划词面板，用于向用户展示业务相关的操作界面或文本处理结果，使用完毕后需调用[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f-sys.md#destroyPanel（系统接口）)销毁面板释放资源。使用Promise异步回调。 单个划词应用仅允许创建一个[MENU_PANEL](arkts-basicservices-selectioninput-selectionpanel-paneltype-e-sys.md#PanelType（系统接口）)和一个 [MAIN_PANEL](arkts-basicservices-selectioninput-selectionpanel-paneltype-e-sys.md#PanelType（系统接口）)。
+创建划词面板，用于向用户展示业务相关的操作界面或文本处理结果，使用完毕后需调用[destroyPanel](arkts-basicservices-selectionmanager-destroypanel-f-sys.md#destroypanel系统接口)销毁面板释放资源。使用Promise异步回调。 单个划词应用仅允许创建一个[MENU_PANEL](arkts-basicservices-selectioninput-selectionpanel-paneltype-e-sys.md#paneltype系统接口)和一个 [MAIN_PANEL](arkts-basicservices-selectioninput-selectionpanel-paneltype-e-sys.md#paneltype系统接口)。
 
 **起始版本：** 24
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为24。
+**ArkTS模式：** 起始版本为24。
 
 **废弃版本：** -1
 

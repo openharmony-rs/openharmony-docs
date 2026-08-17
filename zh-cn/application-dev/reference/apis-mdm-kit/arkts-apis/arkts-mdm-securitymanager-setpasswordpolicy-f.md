@@ -10,7 +10,7 @@ function setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -55,12 +55,12 @@ let policy: securityManager.PasswordPolicy = {
   complexityRegex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z\\d!@#$%^&*]{8,}$',
   validityPeriod: 1,
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
-  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4,
+  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4
 };
 try {
   securityManager.setPasswordPolicy(wantTemp, policy);
   console.info(`Succeeded in setting password policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```

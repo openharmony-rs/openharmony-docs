@@ -10,11 +10,11 @@ function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#isWifiActiveSync)
+**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -75,11 +75,11 @@ function isWifiActive(admin: Want): Promise<boolean>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#isWifiActiveSync)
+**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 

@@ -10,11 +10,11 @@ function getMac(admin: Want, networkInterface: string, callback: AsyncCallback<s
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getMacSync)
+**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getmacsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -77,11 +77,11 @@ function getMac(admin: Want, networkInterface: string): Promise<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getMacSync)
+**替代接口：** [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md#getmacsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 

@@ -1,10 +1,10 @@
 # Metadata
 
-Metadata类，用于存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-image-image-metadatatype-e.md#MetadataType)。 > **说明：** > > - 本Interface首批接口从API version 13开始支持。
+Metadata类，用于存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-image-image-metadatatype-e.md#metadatatype)。 > **说明：** > > - 本Interface首批接口从API version 13开始支持。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ clone(): Promise<Metadata>
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ Obtains a clone of metadata. This method uses a promise to return the metadata.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -66,11 +66,11 @@ Obtains a clone of metadata. This method uses a promise to return the metadata.
 getAllProperties(): Promise<Record<string, string | null>>
 ```
 
-获取图片中所有元数据的属性和值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#PropertyKey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#FragmentMapPropertyKey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#GifPropertyKey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#HeifsPropertyKey)。
+获取图片中所有元数据的属性和值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#propertykey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#fragmentmappropertykey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#gifpropertykey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#heifspropertykey)。
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -94,7 +94,7 @@ Obtains the value of all properties in an image. This method uses a promise to r
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -118,7 +118,7 @@ getBlob(): Promise<ArrayBuffer>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -140,11 +140,11 @@ getBlob(): Promise<ArrayBuffer>
 getProperties(key: Array<string>): Promise<Record<string, string | null>>
 ```
 
-获取图像中属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#PropertyKey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#FragmentMapPropertyKey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#GifPropertyKey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#HeifsPropertyKey)。
+获取图像中属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#propertykey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#fragmentmappropertykey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#gifpropertykey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#heifspropertykey)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -181,7 +181,7 @@ setBlob(blob: ArrayBuffer): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -215,11 +215,11 @@ setBlob(blob: ArrayBuffer): Promise<void>
 setProperties(records: Record<string, string | null>): Promise<void>
 ```
 
-批量设置图片元数据中的指定属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#PropertyKey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#FragmentMapPropertyKey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#GifPropertyKey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#HeifsPropertyKey)。
+批量设置图片元数据中的指定属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#propertykey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#fragmentmappropertykey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#gifpropertykey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#heifspropertykey)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

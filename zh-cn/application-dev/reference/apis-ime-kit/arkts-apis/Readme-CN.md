@@ -134,7 +134,8 @@
   - [InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md)
   - [Pattern](arkts-ime-inputmethodlist-pattern-i.md)
   - [PatternOptions](arkts-ime-inputmethodlist-patternoptions-i.md)
-- [@ohos.inputMethodSystemPanelManager](arkts-inputmethodsystempanelmanager.md)
+<!--Del-->
+- [@ohos.inputMethodSystemPanelManager](arkts-inputmethodsystempanelmanager.md)<!--DelEnd-->
   <!--Del-->
   - [connectSystemChannel(系统接口)](arkts-ime-inputmethodsystempanelmanager-connectsystemchannel-f-sys.md)<!--DelEnd-->
   <!--Del-->

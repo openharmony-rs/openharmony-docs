@@ -6,7 +6,7 @@ Environment提供设备环境状态的查询能力，可将系统环境变量（
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -24,11 +24,11 @@ static EnvProp<S>(key: string, value: S): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** envProp
+**替代接口：** [envProp](#envprop)
 
 <!--Device-Environment-static EnvProp<S>(key: string, value: S): boolean--><!--Device-Environment-static EnvProp<S>(key: string, value: S): boolean-End-->
 
@@ -38,7 +38,7 @@ static EnvProp<S>(key: string, value: S): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 环境变量名称，支持的范围详见[内置环境变量说明](#Environment)。 |
+| key | string | 是 | 环境变量名称，支持的范围详见[内置环境变量说明](#environment)。 |
 | value | S | 是 | 查询不到环境变量key时，则使用value作为默认值存入AppStorage中。 |
 
 **返回值：**
@@ -64,15 +64,15 @@ static EnvProps(
   ): void
 ```
 
-和EnvProp功能类似，不同点在于参数为数组，可以一次性初始化多个数据。在没有调用EnvProps的情况下，直接使用AppStorage读取环境变量，将无法获取到对应的环 境变量值。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。
+和[EnvProp](#envprop)功能类似，不同点在于参数为数组，可以一次性初始化多个数据。在没有调用EnvProps的情况下，直接使用AppStorage读取环境变量，将无法获取到对应的环 境变量值。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** envProps
+**替代接口：** [envProps](#envprops)
 
 <!--Device-Environment-static EnvProps(    props: {      key: string;      defaultValue: any;    }[],  ): void--><!--Device-Environment-static EnvProps(    props: {      key: string;      defaultValue: any;    }[],  ): void-End-->
 
@@ -94,11 +94,11 @@ static Keys(): Array<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** keys
+**替代接口：** [keys](#keys)
 
 <!--Device-Environment-static Keys(): Array<string>--><!--Device-Environment-static Keys(): Array<string>-End-->
 
@@ -131,7 +131,7 @@ static envProp<S>(key: string, value: S): boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -145,7 +145,7 @@ static envProp<S>(key: string, value: S): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 环境变量名称，支持的范围详见[内置环境变量说明](#Environment)。 |
+| key | string | 是 | 环境变量名称，支持的范围详见[内置环境变量说明](#environment)。 |
 | value | S | 是 | 查询不到环境变量key时，则使用value作为默认值存入AppStorage中。 |
 
 **返回值：**
@@ -164,11 +164,11 @@ envProp具体使用，详见[从UI中访问Environment参数](../../../ui/state-
 static envProps(props: EnvPropsOptions[]): void
 ```
 
-和envProp功能类似，不同点在于参数为数组，可以一次性初始化多个数据。在没有调用envProps的情况下，直接使用AppStorage读取环境变量，将无法获取到对应的环 境变量值。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。
+和[envProp](#envprop)功能类似，不同点在于参数为数组，可以一次性初始化多个数据。在没有调用envProps的情况下，直接使用AppStorage读取环境变量，将无法获取到对应的环 境变量值。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management/arkts-appstorage.md)中。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -203,7 +203,7 @@ static keys(): Array<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

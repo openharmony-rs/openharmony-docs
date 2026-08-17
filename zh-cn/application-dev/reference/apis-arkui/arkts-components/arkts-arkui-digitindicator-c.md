@@ -1,12 +1,12 @@
 # DigitIndicator
 
-构造数字指示器的样式，继承自[Indicator](arkts-arkui-indicator-c.md#Indicator)。 > **说明：** > 按组翻页时，数字导航点显示的子节点数量不包括占位节点。 > 数字导航点文本最大的字体缩放倍数maxFontScale为2。 > 页码的镜像显示依据为系统的RTL状态。
+构造数字指示器的样式，继承自[Indicator](arkts-arkui-indicator-c.md#indicator)。 > **说明：** > 按组翻页时，数字导航点显示的子节点数量不包括占位节点。 > 数字导航点文本最大的字体缩放倍数maxFontScale为2。 > 页码的镜像显示依据为系统的RTL状态。
 
 **继承/实现关系：** DigitIndicator extends Indicator<DigitIndicator>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ DotIndicator的构造函数。 > **说明：** > - 按压导航点时，导航�
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ Swiper组件数字导航点的字体样式。按组翻页时，数字导航点�
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ Swiper组件数字导航点的字体样式。按组翻页时，数字导航点�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 设置Swiper组件数字导航点的字体样式。&lt;br/&gt;只支持Font中size和weight参数，family和style设置不生效。&lt;br/&gt;默认值：&lt;br/&gt;{ size: 14,  weight: FontWeight.Normal } |
+| value | Font | 是 | 设置Swiper组件数字导航点的字体样式。<br/>只支持Font中size和weight参数，family和style设置不生效。<br/>默认值：<br/>{ size: 14,  weight: FontWeight.Normal } |
 
 **返回值：**
 
@@ -84,7 +84,7 @@ Swiper组件数字导航点的字体颜色。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ Swiper组件数字导航点的字体颜色。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 设置Swiper组件数字导航点的字体颜色。&lt;br/&gt;默认值：'#ff182431' |
+| value | ResourceColor | 是 | 设置Swiper组件数字导航点的字体颜色。<br/>默认值：'#ff182431' |
 
 **返回值：**
 
@@ -120,7 +120,7 @@ selectedDigitFont(value: Font): DigitIndicator
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -138,7 +138,7 @@ selectedDigitFont(value: Font): DigitIndicator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 设置选中Swiper组件数字导航点的字体样式。&lt;br/&gt;默认值：&lt;br/&gt;{ size: 14, weight: FontWeight.Normal } |
+| value | Font | 是 | 设置选中Swiper组件数字导航点的字体样式。<br/>默认值：<br/>{ size: 14, weight: FontWeight.Normal } |
 
 **返回值：**
 
@@ -156,7 +156,7 @@ selectedFontColor(value: ResourceColor): DigitIndicator
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -174,7 +174,7 @@ selectedFontColor(value: ResourceColor): DigitIndicator
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | 设置选中Swiper组件数字导航点的字体颜色。&lt;br/&gt;默认值：'#ff182431' |
+| value | ResourceColor | 是 | 设置选中Swiper组件数字导航点的字体颜色。<br/>默认值：'#ff182431' |
 
 **返回值：**
 

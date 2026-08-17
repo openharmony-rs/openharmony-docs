@@ -4,11 +4,11 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-unnamed-declare interface Dir--><!--Device-unnamed-declare interface Dir-End-->
 
@@ -24,11 +24,11 @@ close(): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dir-close(): Promise<void>--><!--Device-Dir-close(): Promise<void>-End-->
 
@@ -59,11 +59,11 @@ close(callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dir-close(callback: AsyncCallback<void>): void--><!--Device-Dir-close(callback: AsyncCallback<void>): void-End-->
 
@@ -94,11 +94,11 @@ closeSync(): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dir-closeSync(): void--><!--Device-Dir-closeSync(): void-End-->
 
@@ -120,11 +120,11 @@ read(): Promise<Dirent>
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dir-read(): Promise<Dirent>--><!--Device-Dir-read(): Promise<Dirent>-End-->
 
@@ -157,11 +157,11 @@ read(callback: AsyncCallback<Dirent>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dir-read(callback: AsyncCallback<Dirent>): void--><!--Device-Dir-read(callback: AsyncCallback<Dirent>): void-End-->
 
@@ -195,11 +195,11 @@ readSync(): Dirent
 
 **起始版本：** 6
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为6。
+**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listFile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
 
 <!--Device-Dir-readSync(): Dirent--><!--Device-Dir-readSync(): Dirent-End-->
 

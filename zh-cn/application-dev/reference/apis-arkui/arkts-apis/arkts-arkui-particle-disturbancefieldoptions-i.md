@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ feather?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ noiseAmplitude?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -74,7 +74,7 @@ noiseFrequency?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ noiseScale?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,13 +116,13 @@ position?: PositionT<double>
 
 场的位置。 默认值{x:0，y:0}。 x、y的取值范围：(-∞, +∞)。
 
-**类型：** [PositionT](../../apis-na/arkts-apis/arkts-na-positiont-t.md)&lt;double&gt;
+**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;double&gt;
 
 **默认值：** {x:0,y:0}
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -146,7 +146,7 @@ shape?: DisturbanceFieldShape
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -164,13 +164,13 @@ size?: SizeT<double>
 
 场的大小。 默认值 {width:0，height:0}。 width和height的取值范围：[0, +∞)。
 
-**类型：** [SizeT](../../apis-na/arkts-apis/arkts-na-graphics-sizet-i.md)&lt;double&gt;
+**类型：** [SizeT](arkts-arkui-graphics-sizet-i.md)&lt;double&gt;
 
 **默认值：** {width:0,height:0}
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -194,7 +194,7 @@ strength?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

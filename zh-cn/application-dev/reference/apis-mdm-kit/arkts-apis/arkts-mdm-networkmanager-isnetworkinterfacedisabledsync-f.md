@@ -10,7 +10,7 @@ function isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): 
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -44,6 +44,27 @@ function isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): 
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
+## 示例
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: boolean = networkManager.isNetworkInterfaceDisabledSync(wantTemp, 'eth0');
+  console.info(`Succeeded in querying network interface is disabled or not, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to query network interface is disabled or not. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 
 ## isNetworkInterfaceDisabledSync
 
@@ -55,7 +76,7 @@ function isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: st
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -93,17 +114,11 @@ function isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: st
 
 ```TypeScript
 import { networkManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
 
 try {
   // 参数需根据实际情况进行替换
-  let result: boolean = networkManager.isNetworkInterfaceDisabledSync(wantTemp, 'eth0');
+  // 参数需根据实际情况进行替换
+  let result: boolean = networkManager.isNetworkInterfaceDisabledSync(null, 'eth0');
   console.info(`Succeeded in querying network interface is disabled or not, result : ${result}`);
 } catch (err) {
   console.error(`Failed to query network interface is disabled or not. Code: ${err.code}, message: ${err.message}`);

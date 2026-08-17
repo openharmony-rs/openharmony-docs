@@ -6,7 +6,7 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -38,7 +38,7 @@ autoCollapse(enable: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | Optional&lt;boolean&gt; | 是 | 是否使用自适应折叠模式。&lt;br/&gt;默认值：true &lt;br/&gt;true：使用自适应折叠模式。&lt;br/&gt;false：不使用自适应折叠模式。 |
+| enable | Optional&lt;boolean&gt; | 是 | 是否使用自适应折叠模式。<br/>默认值：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。 |
 
 **返回值：**
 
@@ -56,7 +56,7 @@ color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ color(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | 文字颜色。&lt;br/&gt;默认值：0xFFFFFF，显示为白色。 |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
@@ -88,7 +88,7 @@ font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -102,7 +102,7 @@ font(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | Optional&lt;Font&gt; | 是 | 字母索引条默认字体样式，用于设置索引条上所有字母的显示效果，包括文字大小、粗细、倾斜角度和字体族等。&lt;br/&gt;默认值：&lt;br/&gt;{&lt;br/&gt;size:'13.0fp',&lt;br/&gt; style:FontStyle.Normal,&lt;br/&gt; weight:500,&lt;br/&gt; family:'HarmonyOS Sans'&lt;br/&gt;} |
+| font | Optional&lt;Font&gt; | 是 | 字母索引条默认字体样式，用于设置索引条上所有字母的显示效果，包括文字大小、粗细、倾斜角度和字体族等。<br/>默认值：<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
@@ -120,7 +120,7 @@ itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ itemSize(size: Optional<LengthMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | Optional&lt;LengthMetrics&gt; | 是 | 弧形索引条索引项区域大小，索引项区域为圆形，即圆形直径。不支持设置为百分比。&lt;br/&gt;默认值：24.0 &lt;br/&gt;单位：vp |
+| size | Optional&lt;LengthMetrics&gt; | 是 | 弧形索引条索引项区域大小，索引项区域为圆形，即圆形直径。不支持设置为百分比。<br/>默认值：24.0 <br/>单位：vp |
 
 **返回值：**
 
@@ -152,7 +152,7 @@ onSelect(handler: Optional<OnSelectCallback>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -184,7 +184,7 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -198,7 +198,7 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | 提示弹窗背景色。&lt;br/&gt;默认值：0xD8404040，显示为微透明的深灰色。 |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 提示弹窗背景色。<br/>默认值：0xD8404040，显示为微透明的深灰色。 |
 
 **返回值：**
 
@@ -212,11 +212,11 @@ popupBackground(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribute
 ```
 
-设置提示弹窗的背景模糊材质。未通过该接口设置时，默认为关闭模糊，对应取值为BlurStyle中的NONE。 > **说明：** > 当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过 > [popupBackground](#popupBackground)设置背景色。
+设置提示弹窗的背景模糊材质。未通过该接口设置时，默认为关闭模糊，对应取值为BlurStyle中的NONE。 > **说明：** > 当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过 > [popupBackground](#popupbackground)设置背景色。
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -230,7 +230,7 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>): ArcAlphabetIndexerAttribut
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | Optional&lt;BlurStyle&gt; | 是 | 设置提示弹窗的背景模糊材质。&lt;br/&gt;默认值：BlurStyle.NONE。 &lt;br/&gt;设置此属性后不建议再设置[popupBackground](#popupBackground)属性。 |
+| style | Optional&lt;BlurStyle&gt; | 是 | 设置提示弹窗的背景模糊材质。<br/>默认值：BlurStyle.NONE。 <br/>设置此属性后不建议再设置[popupBackground](#popupbackground)属性。 |
 
 **返回值：**
 
@@ -248,7 +248,7 @@ popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -262,7 +262,7 @@ popupColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | 提示弹窗文字颜色。&lt;br/&gt;默认值：0xFFFFFF，显示为白色。 |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 提示弹窗文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
@@ -280,7 +280,7 @@ popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -294,7 +294,7 @@ popupFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | Optional&lt;Font&gt; | 是 | 提示弹窗字体样式。&lt;br/&gt;默认值：&lt;br/&gt;{&lt;br/&gt;size:'19.0fp',&lt;br/&gt; style:FontStyle.Normal,&lt;br/&gt; weight:500,&lt;br/&gt; family:'HarmonyOS Sans'&lt;br/&gt;} |
+| font | Optional&lt;Font&gt; | 是 | 提示弹窗字体样式。<br/>默认值：<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
@@ -312,7 +312,7 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -326,7 +326,7 @@ selected(index: Optional<number>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | Optional&lt;number&gt; | 是 | 选中项索引值。若超出有效索引范围，则取默认值0。&lt;br/&gt;默认值：0 &lt;br/&gt;该参数支持 [!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。 |
+| index | Optional&lt;number&gt; | 是 | 选中项索引值。若超出有效索引范围，则取默认值0。<br/>默认值：0 <br/>该参数支持 [!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。 |
 
 **返回值：**
 
@@ -344,7 +344,7 @@ selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttrib
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -358,7 +358,7 @@ selectedBackgroundColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttrib
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | 选中项背景颜色。&lt;br/&gt;默认值：0x1F71FF，显示为深蓝色。 |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 选中项背景颜色。<br/>默认值：0x1F71FF，显示为深蓝色。 |
 
 **返回值：**
 
@@ -376,7 +376,7 @@ selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -390,7 +390,7 @@ selectedColor(color: Optional<ColorMetrics>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | Optional&lt;ColorMetrics&gt; | 是 | 选中项文字颜色。&lt;br/&gt;默认值：0xFFFFFF，显示为白色。 |
+| color | Optional&lt;ColorMetrics&gt; | 是 | 选中项文字颜色。<br/>默认值：0xFFFFFF，显示为白色。 |
 
 **返回值：**
 
@@ -408,7 +408,7 @@ selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -422,7 +422,7 @@ selectedFont(font: Optional<Font>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| font | Optional&lt;Font&gt; | 是 | 选中项文字样式。&lt;br/&gt;默认值：{&lt;br/&gt;size:'13.0fp',&lt;br/&gt; style:FontStyle.Normal,&lt;br/&gt; weight:500 ,&lt;br/&gt; family:'HarmonyOS Sans'&lt;br/&gt;} |
+| font | Optional&lt;Font&gt; | 是 | 选中项文字样式。<br/>默认值：{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500 ,<br/> family:'HarmonyOS Sans'<br/>} |
 
 **返回值：**
 
@@ -440,7 +440,7 @@ usePopup(enabled: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 **起始版本：** 18
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为18。
+**ArkTS模式：** 起始版本为18。
 
 **废弃版本：** -1
 
@@ -454,7 +454,7 @@ usePopup(enabled: Optional<boolean>): ArcAlphabetIndexerAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | Optional&lt;boolean&gt; | 是 | 是否使用提示弹窗。&lt;br/&gt;true表示使用提示弹窗；false表示不使用提示弹窗。&lt;br/&gt;默认值：false |
+| enabled | Optional&lt;boolean&gt; | 是 | 是否使用提示弹窗。<br/>true表示使用提示弹窗；false表示不使用提示弹窗。<br/>默认值：false |
 
 **返回值：**
 

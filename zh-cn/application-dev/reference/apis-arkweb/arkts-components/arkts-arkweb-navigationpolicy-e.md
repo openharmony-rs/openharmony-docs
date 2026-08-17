@@ -1,10 +1,10 @@
 # NavigationPolicy
 
-Enum type for navigationPolicy in OnWindowNewExtEvent.
+WebView中新窗口的打开方式，支持弹窗、新窗口、前台和后台标签页等多种方式。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Enum type for navigationPolicy in OnWindowNewExtEvent.
 NEW_POPUP = 0
 ```
 
-NEW POPUP window.
+在新弹窗中打开。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -36,11 +36,11 @@ NEW POPUP window.
 NEW_WINDOW = 1
 ```
 
-Shift key when clicking.
+在新窗口中打开。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -54,11 +54,11 @@ Shift key when clicking.
 NEW_BACKGROUND_TAB = 2
 ```
 
-Middle mouse button or meta/ctrl key when clicking.
+在新标签页中以后台方式打开。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -72,11 +72,11 @@ Middle mouse button or meta/ctrl key when clicking.
 NEW_FOREGROUND_TAB = 3
 ```
 
-Shift key + Middle mouse button or meta/ctrl key when clicking.
+在新标签页中以前台方式打开。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

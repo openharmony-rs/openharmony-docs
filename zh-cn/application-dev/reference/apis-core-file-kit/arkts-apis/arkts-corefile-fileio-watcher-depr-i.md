@@ -4,11 +4,11 @@ Watcher是文件变化监听的实例，调用Watcher.stop()方法（同步或�
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
-**替代接口：** [Watcher](arkts-corefile-file-fs-watcher-i.md#Watcher)
+**替代接口：** [Watcher](../../apis-na/arkts-apis/arkts-na-watcher-t.md#watcher)
 
 <!--Device-unnamed-declare interface Watcher--><!--Device-unnamed-declare interface Watcher-End-->
 
@@ -24,7 +24,7 @@ stop(): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -62,7 +62,7 @@ stop(callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 

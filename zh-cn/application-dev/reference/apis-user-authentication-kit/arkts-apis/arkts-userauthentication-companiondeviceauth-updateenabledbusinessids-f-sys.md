@@ -10,7 +10,7 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: in
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -28,7 +28,7 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: in
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| templateId | Uint8Array | 是 | 目标模板ID。要更新业务范围的模板的唯一标识，可通过 [getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#getTemplateStatus)获取。 |
+| templateId | Uint8Array | 是 | 目标模板ID。要更新业务范围的模板的唯一标识，可通过 [getTemplateStatus](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md#gettemplatestatus)获取。 |
 | enabledBusinessIds | int[] | 是 | 模板支持的业务ID集合。要启用的业务场景列表，如[BusinessId.DEFAULT]。不同业务ID对应不同的认证场景，应用可根据业务需求配置（厂商自定 义业务ID需 ≥ 10000）。 |
 
 **返回值：**

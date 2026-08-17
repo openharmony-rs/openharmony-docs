@@ -4,7 +4,7 @@ Define the ratio of characters entered by the the percentage of InputCounterOpti
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ It is the color of counter when textField hasn't wanted to exceed the maximum ch
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -48,7 +48,7 @@ It is the color of counter when textField wants to exceed the maximum character 
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ It is the color of counter when textField wants to exceed the maximum character 
 highlightBorder?: boolean
 ```
 
-If the current input character count reaches the maximum character count and users want to exceed the normal input, the border will turn red. If this parameter is true, the red border displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;Whether to highlight the text box border and character counter subscript in red. &lt;br&gt;If options is not set, the text box border and character counter subscript turn red &lt;br&gt;when the number of characters entered reaches the limit. &lt;br&gt;If the character counter is displayed and thresholdPercentage is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. &lt;br&gt;The value true (default) means to highlight the text box border and character counter subscript in red. &lt;/p&gt;
+If the current input character count reaches the maximum character count and users want to exceed the normal input, the border will turn red. If this parameter is true, the red border displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>Whether to highlight the text box border and character counter subscript in red. <br>If options is not set, the text box border and character counter subscript turn red <br>when the number of characters entered reaches the limit. <br>If the character counter is displayed and thresholdPercentage is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. <br>The value true (default) means to highlight the text box border and character counter subscript in red. &lt;/p&gt;
 
 **类型：** boolean
 
@@ -74,7 +74,7 @@ If the current input character count reaches the maximum character count and use
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -92,13 +92,13 @@ If the current input character count reaches the maximum character count and use
 thresholdPercentage?: number
 ```
 
-It is the numerator bit of the percentage and used as a threshold. If the number of characters input reaches the maximum number of characters multiplied by this threshold, the counter is displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: &lt;br&gt;Threshold percentage for displaying the character counter. &lt;br&gt;The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. &lt;br&gt;When displayed, the character counter is in the following format: &lt;br&gt;Number of characters that have been entered/Maximum number of characters allowed. &lt;br&gt;It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. &lt;br&gt;Value range: [1, 100] &lt;br&gt;If the value is not an integer, it is rounded down to the nearest integer. &lt;br&gt;If the value exceeds the valid value range, the character counter is not displayed. &lt;br&gt;If the value is &lt;em&gt;undefined&lt;/em&gt;, the character counter is displayed, but this parameter has no effect. &lt;/p&gt;
+It is the numerator bit of the percentage and used as a threshold. If the number of characters input reaches the maximum number of characters multiplied by this threshold, the counter is displayed. &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: <br>Threshold percentage for displaying the character counter. <br>The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. <br>When displayed, the character counter is in the following format: <br>Number of characters that have been entered/Maximum number of characters allowed. <br>It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. <br>Value range: [1, 100] <br>If the value is not an integer, it is rounded down to the nearest integer. <br>If the value exceeds the valid value range, the character counter is not displayed. <br>If the value is &lt;em&gt;undefined&lt;/em&gt;, the character counter is displayed, but this parameter has no effect. &lt;/p&gt;
 
 **类型：** number
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

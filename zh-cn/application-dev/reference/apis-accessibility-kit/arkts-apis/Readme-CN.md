@@ -69,14 +69,21 @@
   <!--Del-->
   - [AccessibilityFocusScene(系统接口)](arkts-accessibility-accessibility-accessibilityfocusscene-e-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [AccessibilitySourceType(系统接口)](arkts-accessibility-accessibility-accessibilitysourcetype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [FocusMoveResultCode(系统接口)](arkts-accessibility-accessibility-focusmoveresultcode-e-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [FocusRuleType(系统接口)](arkts-accessibility-accessibility-focusruletype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [InjectActionType(系统接口)](arkts-accessibility-accessibility-injectactiontype-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [OperateVirtualNodeResult(系统接口)](arkts-accessibility-accessibility-operatevirtualnoderesult-e-sys.md)<!--DelEnd-->
 - [@ohos.accessibility.GesturePath](arkts-accessibility-gesturepath.md)
   - [GesturePath](arkts-accessibility-accessibility-gesturepath-gesturepath-c.md)
 - [@ohos.accessibility.GesturePoint](arkts-accessibility-gesturepoint.md)
   - [GesturePoint](arkts-accessibility-accessibility-gesturepoint-gesturepoint-c.md)
-- [@ohos.accessibility.config](arkts-accessibility-config.md)
+<!--Del-->
+- [@ohos.accessibility.config](arkts-accessibility-config.md)<!--DelEnd-->
   <!--Del-->
   - [disableAbility(系统接口)](arkts-accessibility-config-disableability-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -110,6 +117,10 @@
   <!--Del-->
   - [setSeniorModeStateForApp(系统接口)](arkts-accessibility-config-setseniormodestateforapp-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [startBlinking(系统接口)](arkts-accessibility-config-startblinking-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [stopBlinking(系统接口)](arkts-accessibility-config-stopblinking-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [AppSeniorModeInfo(系统接口)](arkts-accessibility-config-appseniormodeinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [Config(系统接口)](arkts-accessibility-config-config-i-sys.md)<!--DelEnd-->
@@ -124,6 +135,12 @@
   <!--Del-->
   - [RepeatClickInterval(系统接口)](arkts-accessibility-config-repeatclickinterval-t-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [BlinkingMode(系统接口)](arkts-accessibility-config-blinkingmode-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BlinkingScenario(系统接口)](arkts-accessibility-config-blinkingscenario-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [BlinkResultCode(系统接口)](arkts-accessibility-config-blinkresultcode-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [常量(系统接口)](arkts-accessibility-config-con-sys.md)<!--DelEnd-->
 - [@ohos.application.AccessibilityExtensionAbility](arkts-application-accessibilityextensionability.md)
   - [AccessibilityExtensionAbility](arkts-accessibility-application-accessibilityextensionability-accessibilityextensionability-c.md)
@@ -134,6 +151,8 @@
   - [AccessibilityEventInfo(系统接口)](arkts-accessibility-application-accessibilityextensionability-accessibilityeventinfo-i-sys.md)<!--DelEnd-->
   - [AccessibilityElement](arkts-accessibility-accessibilityelement-t.md)
   - [AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-t.md)
+  <!--Del-->
+  - [AccessibilityVirtualNode(系统接口)](arkts-accessibility-accessibilityvirtualnode-t-sys.md)<!--DelEnd-->
   - [ElementAttributeKeys](arkts-accessibility-elementattributekeys-t.md)
   - [ElementAttributeValues](arkts-accessibility-elementattributevalues-t.md)
   <!--Del-->
@@ -150,6 +169,8 @@
   - [Parameter(系统接口)](arkts-accessibility-parameter-t-sys.md)<!--DelEnd-->
   - [Rect](arkts-accessibility-rect-t.md)
   - [TouchGuideType](arkts-accessibility-touchguidetype-t.md)
+  <!--Del-->
+  - [TouchPosition(系统接口)](arkts-accessibility-touchposition-t-sys.md)<!--DelEnd-->
   - [WindowType](arkts-accessibility-windowtype-t.md)
 - application<!--arkts-accessibilitykit-application-->
   - [AccessibilityExtensionContext](arkts-accessibilityextensioncontext.md)
@@ -165,12 +186,16 @@
     - [AccessibilityGrid(系统接口)](arkts-accessibility-accessibilityextensioncontext-accessibilitygrid-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [AccessibilitySpan(系统接口)](arkts-accessibility-accessibilityextensioncontext-accessibilityspan-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [AccessibilityVirtualNode(系统接口)](arkts-accessibility-accessibilityextensioncontext-accessibilityvirtualnode-i-sys.md)<!--DelEnd-->
     - [ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md)
     <!--Del-->
     - [ElementAttributeValues(系统接口)](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [FocusMoveResult(系统接口)](arkts-accessibility-accessibilityextensioncontext-focusmoveresult-i-sys.md)<!--DelEnd-->
     - [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
+    <!--Del-->
+    - [TouchPosition(系统接口)](arkts-accessibility-accessibilityextensioncontext-touchposition-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [FocusCondition(系统接口)](arkts-accessibility-focuscondition-t-sys.md)<!--DelEnd-->
     - [FocusDirection](arkts-accessibility-focusdirection-t.md)

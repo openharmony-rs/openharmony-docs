@@ -4,7 +4,7 @@ ListItemGroup组件参数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ footer?: CustomBuilder
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ footerComponent?: ComponentContentBase
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ footerStyle?: ListItemGroupHeaderFooterStyle
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -92,7 +92,7 @@ header?: CustomBuilder
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -114,7 +114,7 @@ headerComponent?: ComponentContentBase
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -138,7 +138,7 @@ headerStyle?: ListItemGroupHeaderFooterStyle
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -160,7 +160,7 @@ space?: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -176,13 +176,13 @@ space?: double | string
 spaceWidth?: Dimension
 ```
 
-列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。 &lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt; &lt;br/&gt;设置为负数或者大于等于List内容区长度时，按默认值显示。 &lt;br/&gt;如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。 &lt;/p&gt;。
+列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。 &lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt; <br/>设置为负数或者大于等于List内容区长度时，按默认值显示。 <br/>如果同时设置了spaceWidth和space，则spaceWidth优先生效。当spaceWidth为undefined或null时，space生效。 &lt;/p&gt;。
 
 **类型：** [Dimension](../../apis-arkui/arkts-apis/arkts-arkui-dimension-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -204,7 +204,7 @@ style?: ListItemGroupStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

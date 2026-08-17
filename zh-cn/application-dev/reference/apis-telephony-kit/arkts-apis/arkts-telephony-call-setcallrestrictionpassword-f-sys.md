@@ -10,7 +10,7 @@ function setCallRestrictionPassword(slotId: int, oldPassword: string, newPasswor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ function setCallRestrictionPassword(slotId: int, oldPassword: string, newPasswor
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | 卡槽ID。&lt;br/&gt;- 0：卡槽1。&lt;br/&gt;- 1：卡槽2。 |
+| slotId | int | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | oldPassword | string | 是 | 呼叫限制旧密码。 |
 | newPassword | string | 是 | 呼叫限制新密码。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以回调函数的方式返回修改呼叫限制密码的结果。 |
@@ -68,7 +68,7 @@ function setCallRestrictionPassword(slotId: int, oldPassword: string, newPasswor
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -84,7 +84,7 @@ function setCallRestrictionPassword(slotId: int, oldPassword: string, newPasswor
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| slotId | int | 是 | 卡槽ID。&lt;br/&gt;- 0：卡槽1。&lt;br/&gt;- 1：卡槽2。 |
+| slotId | int | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | oldPassword | string | 是 | 呼叫限制旧密码。 |
 | newPassword | string | 是 | 呼叫限制新密码。 |
 

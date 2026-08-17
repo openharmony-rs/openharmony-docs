@@ -2,11 +2,11 @@
 
 Sendable PixelMap instance.
 
-**继承/实现关系：** PixelMap extends [ISendable](arkts-image-sendableimage-isendable-t.md#ISendable)
+**继承/实现关系：** PixelMap extends [ISendable](arkts-image-sendableimage-isendable-t.md#isendable)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ Apply color space of pixelmap, the pixels will be changed by input color space. 
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -56,18 +56,17 @@ Apply color space of pixelmap, the pixels will be changed by input color space. 
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ApplyColorSpace(pixelMap : sendableImage.PixelMap) {
-    let colorSpaceName = colorSpaceManager.ColorSpace.SRGB; // colorSpaceManager.ColorSpace该对象当前仅支持2in1/PC设备使用。
-    let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
-    pixelMap.applyColorSpace(targetColorSpace).then(() => {
-        console.info('Succeeded in applying color space for pixelmap object.');
-    }).catch((error: BusinessError) => {
-        console.error(`Failed to apply color space for pixelmap object. code is ${error.code}, message is ${error.message}`); 
-    })
+function applyColorSpace(pixelMap: sendableImage.PixelMap) {
+  const colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  const targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  pixelMap.applyColorSpace(targetColorSpace).then(() => {
+    console.info('Succeeded in applying color space.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to apply color space. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -81,7 +80,7 @@ Obtains new pixelmap with alpha information. This method uses a promise to retur
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -100,17 +99,14 @@ Obtains new pixelmap with alpha information. This method uses a promise to retur
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreateAlphaPixelmap(pixelMap : sendableImage.PixelMap) {
-  if (pixelMap != undefined) {
-    pixelMap.createAlphaPixelmap().then((alphaPixelMap: sendableImage.PixelMap) => {
-      console.info('Succeeded in creating alpha pixelmap.');
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to create alpha pixelmap. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+function createAlphaPixelmap(pixelMap: sendableImage.PixelMap) {
+  pixelMap.createAlphaPixelmap().then((alphaPixelMap: sendableImage.PixelMap) => {
+    console.info('Succeeded in creating alpha PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -124,7 +120,7 @@ Obtains new pixelmap with alpha information.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -150,11 +146,20 @@ Obtains new pixelmap with alpha information.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreateAlphaPixelmapSync(pixelMap : sendableImage.PixelMap) {
-  let resPixelMap : sendableImage.PixelMap = pixelMap.createAlphaPixelmapSync();
-  return resPixelMap;
+function createAlphaPixelmapSync(pixelMap: sendableImage.PixelMap) {
+  try {
+    let alphaPixelMap: sendableImage.PixelMap = pixelMap.createAlphaPixelmapSync();
+    if (alphaPixelMap == undefined) {
+      console.error(`Failed to create alpha PixelMap.`);
+      return;
+    }
+    console.info('Succeeded in creating alpha PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
@@ -168,7 +173,7 @@ Crop the image. This method uses a promise to return the result.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -193,20 +198,16 @@ Crop the image. This method uses a promise to return the result.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Crop(pixelMap : sendableImage.PixelMap) {
-  let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
-  if (pixelMap != undefined) {
-    pixelMap.crop(region).then(() => {
-      console.info('Succeeded in cropping pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to crop pixelmap. code is ${err.code}, message is ${err.message}`);
-
-    });
-  }
+function crop(pixelMap: sendableImage.PixelMap) {
+  const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+  pixelMap.crop(region).then(() => {
+    console.info('Succeeded in cropping the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -220,7 +221,7 @@ Crop the image.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -246,13 +247,17 @@ Crop the image.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CropSync(pixelMap : sendableImage.PixelMap) {
-  let region : image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
-  if (pixelMap != undefined) {
+function cropSync(pixelMap: sendableImage.PixelMap) {
+  const region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+  try {
     pixelMap.cropSync(region);
+    console.info('Succeeded in cropping the PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -267,7 +272,7 @@ Image flipping. This method uses a promise to return the result.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -293,20 +298,16 @@ Image flipping. This method uses a promise to return the result.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Flip(pixelMap : sendableImage.PixelMap) {
-  let horizontal: boolean = true;
-  let vertical: boolean = false;
-  if (pixelMap != undefined) {
-    pixelMap.flip(horizontal, vertical).then(() => {
-      console.info('Succeeded in flipping pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to flip pixelmap. code is ${err.code}, message is ${err.message}`);
-
-    })
-  }
+function flip(pixelMap: sendableImage.PixelMap) {
+  const horizontal: boolean = true;
+  const vertical: boolean = false;
+  pixelMap.flip(horizontal, vertical).then(() => {
+    console.info('Succeeded in flipping the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -320,7 +321,7 @@ Image flipping.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -347,13 +348,17 @@ Image flipping.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function FlipSync(pixelMap : sendableImage.PixelMap) {
-  let horizontal : boolean = true;
-  let vertical : boolean = false;
-  if (pixelMap != undefined) {
+function flipSync(pixelMap: sendableImage.PixelMap) {
+  const horizontal: boolean = true;
+  const vertical: boolean = false;
+  try {
     pixelMap.flipSync(horizontal, vertical);
+    console.info('Succeeded in flipping the PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -368,7 +373,7 @@ Obtains the number of bytes in each line of the image pixelmap.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -387,10 +392,8 @@ Obtains the number of bytes in each line of the image pixelmap.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
-
-async function GetBytesNumberPerRow(pixelMap : sendableImage.PixelMap) {
-  let rowCount: number = pixelMap.getBytesNumberPerRow();
+function getBytesNumberPerRow(pixelMap: sendableImage.PixelMap) {
+  let rowBytes: number = pixelMap.getBytesNumberPerRow();
 }
 ```
 
@@ -404,7 +407,7 @@ Get color space of pixelmap.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -429,11 +432,15 @@ Get color space of pixelmap.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function GetColorSpace(pixelMap : sendableImage.PixelMap) {
-  if (pixelMap != undefined) {
-    let csm = pixelMap.getColorSpace();
+function getColorSpace(pixelMap: sendableImage.PixelMap) {
+  try {
+    const csm = pixelMap.getColorSpace();
+    console.info(`Succeeded in getting color space: ${csm.getColorSpaceName()}.`);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to get color space. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -448,7 +455,7 @@ Obtains the density of the image pixelmap.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -467,10 +474,8 @@ Obtains the density of the image pixelmap.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
-
-async function GetDensity(pixelMap : sendableImage.PixelMap) {
-  let getDensity: number = pixelMap.getDensity();
+function getDensity(pixelMap: sendableImage.PixelMap) {
+  let density: number = pixelMap.getDensity();
 }
 ```
 
@@ -484,7 +489,7 @@ Obtains pixelmap information about this image. This method uses a promise to ret
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -503,20 +508,15 @@ Obtains pixelmap information about this image. This method uses a promise to ret
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function GetImageInfo(pixelMap : sendableImage.PixelMap) {
-  if (pixelMap != undefined) {
-    pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
-      if (imageInfo != undefined) {
-        console.info("Succeeded in obtaining the image pixel map information."+ imageInfo.size.height);
-      }
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to obtain the image pixel map information. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+function getImageInfo(pixelMap: sendableImage.PixelMap) {
+  pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+    console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -530,7 +530,7 @@ Get image information from image source.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -556,11 +556,15 @@ Get image information from image source.
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function GetImageInfoSync(pixelMap : sendableImage.PixelMap) {
-  if (pixelMap != undefined) {
-    let imageInfo : image.ImageInfo = pixelMap.getImageInfoSync();
+function getImageInfoSync(pixelMap: sendableImage.PixelMap) {
+  try {
+    let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+    console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -575,7 +579,7 @@ Obtains the total number of bytes of the image pixelmap.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -594,9 +598,7 @@ Obtains the total number of bytes of the image pixelmap.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
-
-async function GetPixelBytesNumber(pixelMap : sendableImage.PixelMap) {
+function getPixelBytesNumber(pixelMap: sendableImage.PixelMap) {
   let pixelBytesNumber: number = pixelMap.getPixelBytesNumber();
 }
 ```
@@ -611,7 +613,7 @@ Marshalling PixelMap and write into MessageSequence.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -636,34 +638,33 @@ Marshalling PixelMap and write into MessageSequence.
 
 ```TypeScript
 // EntryAbility.ets
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
-  pixel_map: sendableImage.PixelMap;
-  constructor(conPixelMap : sendableImage.PixelMap) {
-    this.pixel_map = conPixelMap;
+  pixelMap: sendableImage.PixelMap;
+  constructor(pixelMap: sendableImage.PixelMap) {
+    this.pixelMap = pixelMap;
   }
-  marshalling(messageSequence : rpc.MessageSequence) {
-    this.pixel_map.marshalling(messageSequence);
-    console.info('Succeeded in marshalling a PixelMap.');
+  marshalling(messageSequence: rpc.MessageSequence) {
+    this.pixelMap.marshalling(messageSequence);
+    console.info('Marshalled the PixelMap.');
     return true;
   }
-  unmarshalling(messageSequence : rpc.MessageSequence) {
-    sendableImage.createPixelMap(new ArrayBuffer(96), {size: { height:4, width: 6}}).then((pixelParcel: sendableImage.PixelMap) => {
+  unmarshalling(messageSequence: rpc.MessageSequence) {
+    sendableImage.createPixelMap(new ArrayBuffer(96), {size: { height: 4, width: 6 }}).then((pixelParcel: sendableImage.PixelMap) => {
       pixelParcel.unmarshalling(messageSequence).then(async (pixelMap: sendableImage.PixelMap) => {
-        this.pixel_map = pixelMap;
+        this.pixelMap = pixelMap;
         pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
-          console.info(`Succeeded in unmarshalling a PixelMap. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
-        })
-      })
+          console.info(`Unmarshalled information: height = ${imageInfo.size.height}, width = ${imageInfo.size.width}.`);
+        });
+      });
     });
     return true;
   }
 }
 
-async function Marshalling() {
+async function marshal() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -671,14 +672,11 @@ async function Marshalling() {
   }
   let opts: image.InitializationOptions = {
     editable: true,
-    pixelFormat: 4,
+    pixelFormat: image.PixelMapFormat.BGRA_8888,
     size: { height: 4, width: 6 },
-    alphaType: 3
+    alphaType: image.AlphaType.UNPREMUL
   }
-  let pixelMap: sendableImage.PixelMap | undefined = undefined;
-  await sendableImage.createPixelMap(color, opts).then((srcPixelMap: sendableImage.PixelMap) => {
-    pixelMap = srcPixelMap;
-  })
+  let pixelMap: sendableImage.PixelMap | undefined = await sendableImage.createPixelMap(color, opts);
   if (pixelMap != undefined) {
     // 序列化。
     let parcelable: MySequence = new MySequence(pixelMap);
@@ -686,8 +684,8 @@ async function Marshalling() {
     data.writeParcelable(parcelable);
 
     // 反序列化rpc获取到data。
-    let ret: MySequence = new MySequence(pixelMap);
-    data.readParcelable(ret);
+    let seq: MySequence = new MySequence(pixelMap);
+    data.readParcelable(seq);
   }
 }
 ```
@@ -702,7 +700,7 @@ Set the transparent rate of pixelmap. This method uses a promise to return the r
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -727,18 +725,15 @@ Set the transparent rate of pixelmap. This method uses a promise to return the r
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Opacity(pixelMap : sendableImage.PixelMap) {
-  let rate: number = 0.5;
-  if (pixelMap != undefined) {
-    pixelMap.opacity(rate).then(() => {
-      console.info('Succeeded in setting opacity.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to set opacity. code is ${err.code}, message is ${err.message}`);
-    })
-  }
+function opacity(pixelMap: sendableImage.PixelMap) {
+  const rate: number = 0.5;
+  pixelMap.opacity(rate).then(() => {
+    console.info('Succeeded in setting opacity.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -752,7 +747,7 @@ Set the transparent rate of pixelmap.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -778,12 +773,16 @@ Set the transparent rate of pixelmap.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function OpacitySync(pixelMap : sendableImage.PixelMap) {
-  let rate : number = 0.5;
-  if (pixelMap != undefined) {
+function opacitySync(pixelMap: sendableImage.PixelMap) {
+  const rate: number = 0.5;
+  try {
     pixelMap.opacitySync(rate);
+    console.info('Succeeded in setting opacity.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -798,7 +797,7 @@ Reads image pixelmap data in an area. This method uses a promise to return the d
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -823,24 +822,37 @@ Reads image pixelmap data in an area. This method uses a promise to return the d
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ReadPixels(pixelMap : sendableImage.PixelMap) {
+function readPixelsRGBA(pixelMap: sendableImage.PixelMap) {
   const area: image.PositionArea = {
-    pixels: new ArrayBuffer(8),
+    pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
     stride: 8,
     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
   };
-  if (pixelMap != undefined) {
-    pixelMap.readPixels(area).then(() => {
-      console.info('Succeeded in reading the image data in the area.'); // 符合条件则进入。
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to read the image data in the area. code is ${error.code}, message is ${error.message}`);// 不符合条件则进入。
-    })
-  }
+  pixelMap.readPixels(area).then(() => {
+    console.info('Succeeded in reading the image data in the area from the specified area.');
+    console.info('BGRA data: ', new Uint8Array(area.pixels));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+
+function readPixelsYUV(pixelMap: sendableImage.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(6),  // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 8,
+    region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
+  };
+  pixelMap.readPixels(area).then(() => {
+    console.info('Succeeded in reading the image data in the area from the specified area.');
+    console.info('YUV data: ', new Uint8Array(area.pixels));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -854,7 +866,7 @@ Reads image pixelmap data in an area.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -880,18 +892,22 @@ Reads image pixelmap data in an area.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ReadPixelsSync(pixelMap : sendableImage.PixelMap) {
-  const area : image.PositionArea = {
+function readPixelsSync(pixelMap: sendableImage.PixelMap) {
+  const area: image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
     stride: 8,
     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
   };
-  if (pixelMap != undefined) {
+  try {
     pixelMap.readPixelsSync(area);
+    console.info('Succeeded in reading the image data from the specified area.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -906,7 +922,7 @@ Reads image pixelmap data and writes the data to an ArrayBuffer. This method use
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -932,17 +948,14 @@ Reads image pixelmap data and writes the data to an ArrayBuffer. This method use
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { sendableImage } from '@kit.ImageKit';
 
-async function ReadPixelsToBuffer(pixelMap : sendableImage.PixelMap) {
-  const readBuffer: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  if (pixelMap != undefined) {
-    pixelMap.readPixelsToBuffer(readBuffer).then(() => {
-      console.info('Succeeded in reading image pixel data.'); // 符合条件则进入。 
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to read image pixel data. code is ${error.code}, message is ${error.message}`);// 不符合条件则进入。
-    })
-  }
+function readPixelsToBuffer(pixelMap: sendableImage.PixelMap) {
+  const readBuffer: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  pixelMap.readPixelsToBuffer(readBuffer).then(() => {
+    console.info('Succeeded in reading image pixel data.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -956,7 +969,7 @@ Reads image pixelmap data and writes the data to an ArrayBuffer.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -982,13 +995,16 @@ Reads image pixelmap data and writes the data to an ArrayBuffer.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ReadPixelsToBufferSync(pixelMap: sendableImage.PixelMap) {
-  const bufferSize = pixelMap.getPixelBytesNumber();
-  const readBuffer: ArrayBuffer = new ArrayBuffer(bufferSize);
-  if (pixelMap != undefined) {
+function readPixelsToBufferSync(pixelMap: sendableImage.PixelMap) {
+  const readBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  try {
     pixelMap.readPixelsToBufferSync(readBuffer);
+    console.info('Succeeded in reading image pixel data.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1003,7 +1019,7 @@ Releases this PixelMap object. This method uses a promise to return the result.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1023,16 +1039,13 @@ Releases this PixelMap object. This method uses a promise to return the result.
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { sendableImage } from '@kit.ImageKit';
 
-async function Release(pixelMap: sendableImage.PixelMap) {
-  if (pixelMap != undefined) {
-    await pixelMap.release().then(() => {
-      console.info('Succeeded in releasing pixelmap object.');
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to release pixelmap object. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+function release(pixelMap: sendableImage.PixelMap) {
+  pixelMap.release().then(() => {
+    console.info('Succeeded in releasing the PixelMap object.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to release the PixelMap object. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1046,7 +1059,7 @@ Image rotation. This method uses a promise to return the result.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1071,18 +1084,15 @@ Image rotation. This method uses a promise to return the result.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Rotate(pixelMap : sendableImage.PixelMap) {
-  let angle: number = 90.0;
-  if (pixelMap != undefined) {
-    pixelMap.rotate(angle).then(() => {
-      console.info('Succeeded in rotating pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to rotate pixelmap. code is ${err.code}, message is ${err.message}`);
-    })
-  }
+function rotate(pixelMap: sendableImage.PixelMap) {
+  const angle: number = 90.0;
+  pixelMap.rotate(angle).then(() => {
+    console.info('Succeeded in rotating the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1096,7 +1106,7 @@ Image rotation.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1122,12 +1132,16 @@ Image rotation.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function RotateSync(pixelMap : sendableImage.PixelMap) {
-  let angle : number = 90.0;
-  if (pixelMap != undefined) {
+function rotateSync(pixelMap: sendableImage.PixelMap) {
+  const angle: number = 90.0;
+  try {
     pixelMap.rotateSync(angle);
+    console.info('Succeeded in rotating the PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1142,7 +1156,7 @@ Image zoom in width and height. This method uses a promise to return the result.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1168,20 +1182,16 @@ Image zoom in width and height. This method uses a promise to return the result.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Scale(pixelMap : sendableImage.PixelMap) {
-  let scaleX: number = 2.0;
-  let scaleY: number = 1.0;
-  if (pixelMap != undefined) {
-    pixelMap.scale(scaleX, scaleY).then(() => {
-      console.info('Succeeded in scaling pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to scale pixelmap. code is ${err.code}, message is ${err.message}`);
-
-    })
-  }
+function scale(pixelMap: sendableImage.PixelMap) {
+  const scaleX: number = 2.0;
+  const scaleY: number = 1.0;
+  pixelMap.scale(scaleX, scaleY).then(() => {
+    console.info('Succeeded in scaling the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1195,7 +1205,7 @@ Image zoom in width and height.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1222,13 +1232,17 @@ Image zoom in width and height.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function ScaleSync(pixelMap : sendableImage.PixelMap) {
-  let scaleX: number = 2.0;
-  let scaleY: number = 1.0;
-  if (pixelMap != undefined) {
+function scaleSync(pixelMap: sendableImage.PixelMap) {
+  const scaleX: number = 2.0;
+  const scaleY: number = 1.0;
+  try {
     pixelMap.scaleSync(scaleX, scaleY);
+    console.info('Succeeded in scaling the PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1243,7 +1257,7 @@ Set color space of pixelmap. This method is only used to set the colorspace prop
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1267,14 +1281,18 @@ Set color space of pixelmap. This method is only used to set the colorspace prop
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function SetColorSpace(pixelMap : sendableImage.PixelMap) {
-  let colorSpaceName = colorSpaceManager.ColorSpace.SRGB; // colorSpaceManager.ColorSpace该对象当前仅支持2in1/PC设备使用。
-  let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
-  if (pixelMap != undefined) {
+function setColorSpace(pixelMap: sendableImage.PixelMap) {
+  const colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+  const csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+  try {
     pixelMap.setColorSpace(csm);
+    console.info('Succeeded in setting color space.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to set color space. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1289,7 +1307,7 @@ Image position transformation. This method uses a promise to return the result.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1315,19 +1333,16 @@ Image position transformation. This method uses a promise to return the result.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Translate(pixelMap : sendableImage.PixelMap) {
-  let translateX: number = 50.0;
-  let translateY: number = 10.0;
-  if (pixelMap != undefined) {
-    pixelMap.translate(translateX, translateY).then(() => {
-      console.info('Succeeded in translating pixelmap.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to translate pixelmap. code is ${err.code}, message is ${err.message}`);
-    })
-  }
+function translate(pixelMap: sendableImage.PixelMap) {
+  const translateX: number = 50.0;
+  const translateY: number = 10.0;
+  pixelMap.translate(translateX, translateY).then(() => {
+    console.info('Succeeded in translating the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1341,7 +1356,7 @@ Image position transformation.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1368,13 +1383,17 @@ Image position transformation.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function TranslateSync(pixelMap : sendableImage.PixelMap) {
-  let translateX : number = 50.0;
-  let translateY : number = 10.0;
-  if (pixelMap != undefined) {
+function translateSync(pixelMap: sendableImage.PixelMap) {
+  const translateX: number = 50.0;
+  const translateY: number = 10.0;
+  try {
     pixelMap.translateSync(translateX, translateY);
+    console.info('Succeeded in translating the PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1389,7 +1408,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1421,34 +1440,33 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 ```TypeScript
 // EntryAbility.ets
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
-  pixel_map: sendableImage.PixelMap;
-  constructor(conPixelMap: sendableImage.PixelMap) {
-    this.pixel_map = conPixelMap;
+  pixelMap: sendableImage.PixelMap;
+  constructor(pixelMap: sendableImage.PixelMap) {
+    this.pixelMap = pixelMap;
   }
   marshalling(messageSequence: rpc.MessageSequence) {
-    this.pixel_map.marshalling(messageSequence);
-    console.info('Succeeded in marshalling a PixelMap.');
+    this.pixelMap.marshalling(messageSequence);
+    console.info('Marshalled the PixelMap.');
     return true;
   }
   unmarshalling(messageSequence: rpc.MessageSequence) {
-    sendableImage.createPixelMap(new ArrayBuffer(96), {size: { height:4, width: 6}}).then((pixelParcel : sendableImage.PixelMap) => {
-      pixelParcel.unmarshalling(messageSequence).then(async (pixelMap : sendableImage.PixelMap) => {
-        this.pixel_map = pixelMap;
-        pixelMap.getImageInfo().then((imageInfo : image.ImageInfo) => {
-          console.info(`Succeeded in unmarshalling a PixelMap. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
-        })
-      })
+    sendableImage.createPixelMap(new ArrayBuffer(96), {size: { height: 4, width: 6 }}).then((pixelParcel: sendableImage.PixelMap) => {
+      pixelParcel.unmarshalling(messageSequence).then(async (pixelMap: sendableImage.PixelMap) => {
+        this.pixelMap = pixelMap;
+        pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+          console.info(`Unmarshalled information: height = ${imageInfo.size.height}, width = ${imageInfo.size.width}.`);
+        });
+      });
     });
     return true;
   }
 }
 
-async function Unmarshalling() {
+async function unmarshal() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -1456,23 +1474,20 @@ async function Unmarshalling() {
   }
   let opts: image.InitializationOptions = {
     editable: true,
-    pixelFormat: 4,
+    pixelFormat: image.PixelMapFormat.BGRA_8888,
     size: { height: 4, width: 6 },
-    alphaType: 3
+    alphaType: image.AlphaType.UNPREMUL
   }
-  let pixelMap: sendableImage.PixelMap | undefined = undefined;
-  await sendableImage.createPixelMap(color, opts).then((srcPixelMap : sendableImage.PixelMap) => {
-    pixelMap = srcPixelMap;
-  })
+  let pixelMap: sendableImage.PixelMap | undefined = await sendableImage.createPixelMap(color, opts);
   if (pixelMap != undefined) {
     // 序列化。
     let parcelable: MySequence = new MySequence(pixelMap);
-    let data : rpc.MessageSequence = rpc.MessageSequence.create();
+    let data: rpc.MessageSequence = rpc.MessageSequence.create();
     data.writeParcelable(parcelable);
 
     // 反序列化rpc获取到data。
-    let ret : MySequence = new MySequence(pixelMap);
-    data.readParcelable(ret);
+    let seq: MySequence = new MySequence(pixelMap);
+    data.readParcelable(seq);
   }
 }
 ```
@@ -1487,7 +1502,7 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object. Thi
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1512,22 +1527,19 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object. Thi
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function WriteBufferToPixels(pixelMap : sendableImage.PixelMap) {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+function writeBufferToPixels(pixelMap: sendableImage.PixelMap) {
+  const color: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  if (pixelMap != undefined) {
-    pixelMap.writeBufferToPixels(color).then(() => {
-      console.info("Succeeded in writing data from a buffer to a PixelMap.");
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to write data from a buffer to a PixelMap. code is ${error.code}, message is ${error.message}`);
-    })
-  }
+  pixelMap.writeBufferToPixels(color).then(() => {
+    console.info('Succeeded in writing data from the buffer to the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1541,7 +1553,7 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1567,17 +1579,20 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function WriteBufferToPixelsSync(pixelMap: sendableImage.PixelMap) {
-  const bufferSize = pixelMap.getPixelBytesNumber();
-  const color : ArrayBuffer = new ArrayBuffer(bufferSize);
-  let bufferArr : Uint8Array = new Uint8Array(color);
+function writeBufferToPixelsSync(pixelMap: sendableImage.PixelMap) {
+  const color: ArrayBuffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+  let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  if (pixelMap != undefined) {
+  try {
     pixelMap.writeBufferToPixelsSync(color);
+    console.info('Succeeded in writing data from the buffer to the PixelMap.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1592,7 +1607,7 @@ Writes image pixelmap data to the specified area. This method uses a promise to 
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1617,13 +1632,12 @@ Writes image pixelmap data to the specified area. This method uses a promise to 
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function WritePixels(pixelMap : sendableImage.PixelMap) {
+function writePixelsRGBA(pixelMap: sendableImage.PixelMap) {
   const area: image.PositionArea = {
-    pixels: new ArrayBuffer(8),
+    pixels: new ArrayBuffer(8), // 8为需要创建的像素缓冲区大小，取值为：width * height * 4。
     offset: 0,
     stride: 8,
     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
@@ -1632,13 +1646,29 @@ async function WritePixels(pixelMap : sendableImage.PixelMap) {
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  if (pixelMap != undefined) {
-    pixelMap.writePixels(area).then(() => {
-      console.info('Succeeded to write pixelmap into the specified area.');
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to write pixelmap into the specified area. code is ${error.code}, message is ${error.message}`);
-    })
+  pixelMap.writePixels(area).then(() => {
+    console.info('Succeeded in writing pixels into the specified area.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+
+function writePixelsYUV(pixelMap: sendableImage.PixelMap) {
+  const area: image.PositionArea = {
+    pixels: new ArrayBuffer(6), // 6为需要创建的像素缓冲区大小，取值为：width * height * 1.5。
+    offset: 0,
+    stride: 8, // PixelMap为YUV格式时，writePixels函数不使用该变量。
+    region: { size: { height: 2, width: 2 }, x: 0, y: 0 }
+  };
+  let bufferArr: Uint8Array = new Uint8Array(area.pixels);
+  for (let i = 0; i < bufferArr.length; i++) {
+    bufferArr[i] = i + 1;
   }
+  pixelMap.writePixels(area).then(() => {
+    console.info('Succeeded in writing pixels into the specified area.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1652,7 +1682,7 @@ Writes image pixelmap data to the specified area.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1678,10 +1708,10 @@ Writes image pixelmap data to the specified area.
 ## 示例
 
 ```TypeScript
-import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function WritePixelsSync(pixelMap : sendableImage.PixelMap) {
+function writePixelsSync(pixelMap: sendableImage.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
@@ -1692,8 +1722,12 @@ async function WritePixelsSync(pixelMap : sendableImage.PixelMap) {
   for (let i = 0; i < bufferArr.length; i++) {
     bufferArr[i] = i + 1;
   }
-  if (pixelMap != undefined) {
+  try {
     pixelMap.writePixelsSync(area);
+    console.info('Succeeded in writing pixels into the specified area.');
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1710,7 +1744,7 @@ Whether the image pixelmap can be edited.
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -1732,7 +1766,7 @@ Is it stride Alignment
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ function executeDelayed(delayTime: number, task: Task, priority?: Priority): Pro
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 
@@ -76,7 +76,7 @@ function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: Gen
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 

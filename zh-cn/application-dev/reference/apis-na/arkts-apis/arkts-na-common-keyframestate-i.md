@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 curve?: Curve | string | ICurve
 ```
 
-该关键帧使用的动画曲线。 推荐以Curve或ICurve形式指定。 当类型为string时，为动画插值曲线，取值参考 [AnimateParam](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的curve参数。 默认值：Curve.EaseInOut **说明：** 由于[springMotion](../../apis-arkui/arkts-apis/arkts-arkui-curves-springmotion-f.md#springMotion)、 [responsiveSpringMotion](../../apis-arkui/arkts-apis/arkts-arkui-curves-responsivespringmotion-f.md#responsiveSpringMotion)、 [interpolatingSpring](../../apis-arkui/arkts-apis/arkts-arkui-curves-interpolatingspring-f.md#interpolatingSpring)曲线时长不生效，故不支持这三种曲线。
+该关键帧使用的动画曲线。 推荐以Curve或ICurve形式指定。 当类型为string时，为动画插值曲线，取值参考 [AnimateParam](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的curve参数。 默认值：Curve.EaseInOut **说明：** 由于[springMotion](../../apis-arkui/arkts-apis/arkts-arkui-curves-springmotion-f.md#springmotion)、 [responsiveSpringMotion](../../apis-arkui/arkts-apis/arkts-arkui-curves-responsivespringmotion-f.md#responsivespringmotion)、 [interpolatingSpring](../../apis-arkui/arkts-apis/arkts-arkui-curves-interpolatingspring-f.md#interpolatingspring)曲线时长不生效，故不支持这三种曲线。
 
 **类型：** [Curve](../../apis-arkui/arkts-apis/arkts-arkui-curve-e.md) \| string \| [ICurve](arkts-na-icurve-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -46,7 +46,7 @@ duration: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -68,7 +68,7 @@ event: () => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

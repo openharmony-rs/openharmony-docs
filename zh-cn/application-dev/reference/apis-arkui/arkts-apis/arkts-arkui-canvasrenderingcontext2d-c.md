@@ -2,11 +2,11 @@
 
 CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上绘制，绘制对象可以是形状、文本、图片等。 > **说明：** > > * 建议使用时将CanvasRenderingContext2D对象与Canvas组件封装到同一个自定义组件中，保证两者一一对应且生命周期保持一致。 > > * 本文绘制接口在调用时会存入被关联的Canvas组件的指令队列中。仅当当前帧进入渲染阶段且关联的Canvas组件处于可见状态时， > 这些指令才会从队列中被提取并执行。因此，在Canvas组件不可见的情况下，应尽量避免频繁调用绘制接口， > 以防止指令在队列中堆积，从而避免内存占用过大的问题。 > > * beginPath、moveTo、lineTo、closePath、bezierCurveTo、quadraticCurveTo、arc、arcTo、ellipse、rect和 > roundRect接口只能对CanvasRenderingContext2D中的路径生效，无法对OffscreenCanvasRenderingContext2D和 > Path2D对象中设置的路径生效。 > > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降。
 
-**继承/实现关系：** CanvasRenderingContext2D extends [CanvasRenderer](arkts-arkui-canvasrenderer-c.md#CanvasRenderer)
+**继承/实现关系：** CanvasRenderingContext2D extends [CanvasRenderer](arkts-arkui-canvasrenderer-c.md#canvasrenderer)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ constructor(settings?: RenderingContextSettings)
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -40,7 +40,7 @@ constructor(settings?: RenderingContextSettings)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置CanvasRenderingContext2D对象的参数， 见RenderingContextSettings。 &lt;br&gt;异常值undefined和null按RenderingContextSettings的默认值处理。 |
+| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置CanvasRenderingContext2D对象的参数， 见RenderingContextSettings。 <br>异常值undefined和null按RenderingContextSettings的默认值处理。 |
 
 ## constructor
 
@@ -52,7 +52,7 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -70,8 +70,8 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置CanvasRenderingContext2D对象的参数， 见RenderingContextSettings。 &lt;br&gt;异常值undefined和null按RenderingContextSettings的默认值处理。 |
-| unit | LengthMetricsUnit | 否 | 用来配置CanvasRenderingContext2D对象的单位模式， 配置后无法更改。 &lt;br&gt;异常值undefined、NaN和Infinity按默认值处理。 &lt;br&gt;默认值：DEFAULT。 |
+| settings | [RenderingContextSettings](arkts-arkui-renderingcontextsettings-c.md) | 否 | 用来配置CanvasRenderingContext2D对象的参数， 见RenderingContextSettings。 <br>异常值undefined和null按RenderingContextSettings的默认值处理。 |
+| unit | LengthMetricsUnit | 否 | 用来配置CanvasRenderingContext2D对象的单位模式， 配置后无法更改。 <br>异常值undefined、NaN和Infinity按默认值处理。 <br>默认值：DEFAULT。 |
 
 ## getContext2DFromDrawingContext
 
@@ -83,7 +83,7 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -99,8 +99,8 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| drawingContext | [DrawingRenderingContext](arkts-arkui-drawingrenderingcontext-c.md) | 是 | 一个DrawingRenderingContext类型的对象。 &lt;br&gt;异常值undefined或null按无效值处理。 |
-| options | [RenderingContextOptions](arkts-arkui-renderingcontextoptions-i.md) | 否 | 渲染上下文的配置选项。 &lt;br&gt;异常值undefined或null按默认值处理。 &lt;br&gt;默认值：{ antialias: false } |
+| drawingContext | [DrawingRenderingContext](arkts-arkui-drawingrenderingcontext-c.md) | 是 | 一个DrawingRenderingContext类型的对象。 <br>异常值undefined或null按无效值处理。 |
+| options | [RenderingContextOptions](arkts-arkui-renderingcontextoptions-i.md) | 否 | 渲染上下文的配置选项。 <br>异常值undefined或null按默认值处理。 <br>默认值：{ antialias: false } |
 
 **返回值：**
 
@@ -124,7 +124,7 @@ off(type: 'onAttach', callback?: Callback<void>): void
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -140,8 +140,8 @@ off(type: 'onAttach', callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onAttach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
-| callback | Callback&lt;void&gt; | 否 | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件 发生绑定后触发的回调。 非空则取消订阅发生绑定对应的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| type | 'onAttach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。 <br>异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 否 | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件 发生绑定后触发的回调。 非空则取消订阅发生绑定对应的回调。 <br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ off(type: 'onDetach', callback?: Callback<void>): void
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -175,8 +175,8 @@ off(type: 'onDetach', callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onDetach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
-| callback | Callback&lt;void&gt; | 否 | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件 解除绑定后触发的回调。 非空代表取消订阅解除绑定对应的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| type | 'onDetach' | 是 | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。 <br>异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 否 | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件 解除绑定后触发的回调。 非空代表取消订阅解除绑定对应的回调。 <br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
@@ -194,7 +194,7 @@ on(type: 'onAttach', callback: Callback<void>): void
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -210,8 +210,8 @@ on(type: 'onAttach', callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onAttach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
-| callback | Callback&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件 发生绑定后触发的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| type | 'onAttach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。 <br>异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件 发生绑定后触发的回调。 <br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
@@ -229,7 +229,7 @@ on(type: 'onDetach', callback: Callback<void>): void
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -245,8 +245,8 @@ on(type: 'onDetach', callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'onDetach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
-| callback | Callback&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件 解除绑定后触发的回调。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| type | 'onDetach' | 是 | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。 <br>异常值undefined或null按无效值处理。 |
+| callback | Callback&lt;void&gt; | 是 | 订阅CanvasRenderingContext2D与Canvas组件 解除绑定后触发的回调。 <br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
 
@@ -264,7 +264,7 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -280,7 +280,7 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | ImageAnalyzerConfig | 是 | 执行AI分析所需要的入参，用于配置AI分析的类型（如主体识别、文字识别等）。详见 ImageAnalyzerConfig。 &lt;br&gt;异常值undefined或null按无效值处理。 |
+| config | ImageAnalyzerConfig | 是 | 执行AI分析所需要的入参，用于配置AI分析的类型（如主体识别、文字识别等）。详见 ImageAnalyzerConfig。 <br>异常值undefined或null按无效值处理。 |
 
 **返回值：**
 
@@ -306,7 +306,7 @@ stopImageAnalyzer(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -328,7 +328,7 @@ toDataURL(type?: string, quality?: any): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -344,8 +344,8 @@ toDataURL(type?: string, quality?: any): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 否 | 用于指定图像格式。 &lt;br&gt;可选参数为："image/png"（无损压缩，适合需要精确像素的场景）、"image/jpeg"（有损压缩，适合照片类图像）、"image/webp"（高效压缩，适合网络传输场景）。 &lt;br&gt;异常值undefined或null按默认值处理。 &lt;br&gt;默认值：image/png |
-| quality | any | 否 | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，0-0.5适合快速传输或低带宽场景，0.6-0.8适合普通场景，0.9-1. 0适合高质量需求。如果超出取值范围，将会使用默认值0.92。 &lt;br&gt;异常值undefined、null、NaN和Infinity按默认值处理。 &lt;br&gt;默认值：0.92 |
+| type | string | 否 | 用于指定图像格式。 <br>可选参数为："image/png"（无损压缩，适合需要精确像素的场景）、"image/jpeg"（有损压缩，适合照片类图像）、"image/webp"（高效压缩，适合网络传输场景）。 <br>异常值undefined或null按默认值处理。 <br>默认值：image/png |
+| quality | any | 否 | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，0-0.5适合快速传输或低带宽场景，0.6-0.8适合普通场景，0.9-1. 0适合高质量需求。如果超出取值范围，将会使用默认值0.92。 <br>异常值undefined、null、NaN和Infinity按默认值处理。 <br>默认值：0.92 |
 
 **返回值：**
 
@@ -359,13 +359,13 @@ toDataURL(type?: string, quality?: any): string
 readonly canvas: FrameNode
 ```
 
-获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例。可用于监听关联Canvas组件的可见状态。 &lt;br&gt;默认值：null。
+获取和CanvasRenderingContext2D关联的Canvas组件的FrameNode实例。可用于监听关联Canvas组件的可见状态。 <br>默认值：null。
 
 **类型：** [FrameNode](arkts-arkui-framenode-t.md)
 
 **起始版本：** 13
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为13。
+**ArkTS模式：** 起始版本为13。
 
 **废弃版本：** -1
 
@@ -389,7 +389,7 @@ readonly height: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -413,7 +413,7 @@ readonly width: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 

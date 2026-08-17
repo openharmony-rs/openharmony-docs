@@ -4,7 +4,7 @@ DataAbility谓词用于构造关系型数据库的谓词，提供用于实现不
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** -1
 
@@ -18,7 +18,7 @@ DataAbility谓词用于构造关系型数据库的谓词，提供用于实现不
 
 | 名称 | 说明 |
 | --- | --- |
-| [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md#createRdbPredicates) | 通过表名和DataAbility谓词对象创建Rdb谓词对象。 |
+| [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md#createrdbpredicates) | 通过表名和DataAbility谓词对象创建Rdb谓词对象。 |
 
 ### 类
 

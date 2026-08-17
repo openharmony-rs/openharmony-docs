@@ -4,7 +4,7 @@ util模块提供常用工具函数， 如用于字符串编码和解码的TextEn
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -18,14 +18,14 @@ util模块提供常用工具函数， 如用于字符串编码和解码的TextEn
 
 | 名称 | 说明 |
 | --- | --- |
-| [callbackWrapper](arkts-na-util-callbackwrapper-f.md#callbackWrapper) | Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style. |
-| [errnoToString](arkts-na-util-errnotostring-f.md#errnoToString) | Get the string name of the system errno. |
+| [callbackWrapper](arkts-na-util-callbackwrapper-f.md#callbackwrapper) | Takes an async function (or a function that returns a Promise) and returns a function following the error-first callback style. |
+| [errnoToString](arkts-na-util-errnotostring-f.md#errnotostring) | Get the string name of the system errno. |
 | [format](arkts-na-util-format-f.md#format) | %s: 用于转换除BigInt、Object和-0之外的所有值。BigInt值将以n表示，没有用户定义toString函数的对象使用util.inspect()检查， 选项为{ depth: 0, colors: false, compact: 3 }。 %d: 用于转换除BigInt和Symbol之外的所有值。 %i: 对除BigInt和Symbol之外的所有值使用parseInt(value, 10)。 %f: 对除BigInt和Symbol之外的所有值使用parseFloat(value)。 %j: JSON。如果参数包含循环引用，则替换为字符串'[Circular]'。 %o: Object。对象的通用JavaScript对象格式字符串表示。类似于 util.inspect()，选项为{ showHidden: true, showProxy: true}。这将显示完整对象，包括 不可枚举属性和代理。 %O: Object。对象的通用JavaScript对象格式字符串表示。 %O: Object。对象的通用JavaScript对象格式字符串表示。类似于 util.inspect()，没有选项。这将显示完整对象，不包括不可枚举属性和 代理。 %c: CSS。此说明符被忽略，将跳过传入的任何CSS。 %%: 单个百分号('%')。这不会消耗参数。返回：&lt;string&gt; 格式化的字符串。 |
-| [generateRandomBinaryUUID](arkts-na-util-generaterandombinaryuuid-f.md#generateRandomBinaryUUID) | Generate a random RFC 4122 version 4 binary UUID using a cryptographically secure random number generator. |
-| [generateRandomUUID](arkts-na-util-generaterandomuuid-f.md#generateRandomUUID) | 使用加密安全的随机数生成器生成随机的RFC 4122版本4 UUID。 |
-| [getHash](arkts-na-util-gethash-f.md#getHash) | Get the hash code of an object. |
-| [getMainThreadStackTrace](arkts-na-util-getmainthreadstacktrace-f.md#getMainThreadStackTrace) | Get stack trace of main thread. |
-| [parseUUID](arkts-na-util-parseuuid-f.md#parseUUID) | Parse a UUID from the string standard representation as described in the RFC 4122 version 4. |
+| [generateRandomBinaryUUID](arkts-na-util-generaterandombinaryuuid-f.md#generaterandombinaryuuid) | Generate a random RFC 4122 version 4 binary UUID using a cryptographically secure random number generator. |
+| [generateRandomUUID](arkts-na-util-generaterandomuuid-f.md#generaterandomuuid) | 使用加密安全的随机数生成器生成随机的RFC 4122版本4 UUID。 |
+| [getHash](arkts-na-util-gethash-f.md#gethash) | Get the hash code of an object. |
+| [getMainThreadStackTrace](arkts-na-util-getmainthreadstacktrace-f.md#getmainthreadstacktrace) | Get stack trace of main thread. |
+| [parseUUID](arkts-na-util-parseuuid-f.md#parseuuid) | Parse a UUID from the string standard representation as described in the RFC 4122 version 4. |
 | [promisify](arkts-na-util-promisify-f.md#promisify) | Takes a function following the common error-first callback style, i.e taking an (err, value) => callback as the last argument, and return a function that returns promises. |
 
 ### 类

@@ -4,7 +4,7 @@ URI权限管理模块。用于应用A授权/撤销授权URI给应用B。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -19,17 +19,17 @@ URI权限管理模块。用于应用A授权/撤销授权URI给应用B。
 
 | 名称 | 说明 |
 | --- | --- |
-| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#grantUriPermission) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
-| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#grantUriPermission（系统接口）) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
-| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#grantUriPermission（系统接口）) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
-| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#grantUriPermission（系统接口）) | Grant URI to another application |
-| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#grantUriPermission（系统接口）) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
-| [grantUriPermissionByKey](arkts-ability-uripermissionmanager-granturipermissionbykey-f-sys.md#grantUriPermissionByKey) | 通过UDMF数据唯一标识key，将当前应用的文件URI访问权限授权给目标应用，权限将在目标应用退出后回收。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。 **系统接口**：此接口为系统接口。 |
-| [grantUriPermissionByKeyAsCaller](arkts-ability-uripermissionmanager-granturipermissionbykeyascaller-f-sys.md#grantUriPermissionByKeyAsCaller) | 通过UDMF数据唯一标识key，将指定应用的文件URI访问权限授权给目标应用，权限将在目标应用退出后回收。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。 **系统接口**：此接口为系统接口。 |
-| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeUriPermission) | 撤销授权指定应用的URI。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
-| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeUriPermission（系统接口）) | 撤销授权指定应用的URI。使用callback异步回调。 |
-| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeUriPermission（系统接口）) | 撤销授权指定应用的URI。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
-| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeUriPermission（系统接口）) | 撤销授权指定应用的URI。使用Promise异步回调。 |
-| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeUriPermission（系统接口）) | 撤销授权指定应用的URI。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
+| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#granturipermission) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
+| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#granturipermission系统接口) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
+| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#granturipermission系统接口) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
+| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#granturipermission系统接口) | Grant URI to another application |
+| [grantUriPermission](arkts-ability-uripermissionmanager-granturipermission-f-sys.md#granturipermission系统接口) | 授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
+| [grantUriPermissionByKey](arkts-ability-uripermissionmanager-granturipermissionbykey-f-sys.md#granturipermissionbykey) | 通过UDMF数据唯一标识key，将当前应用的文件URI访问权限授权给目标应用，权限将在目标应用退出后回收。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。 **系统接口**：此接口为系统接口。 |
+| [grantUriPermissionByKeyAsCaller](arkts-ability-uripermissionmanager-granturipermissionbykeyascaller-f-sys.md#granturipermissionbykeyascaller) | 通过UDMF数据唯一标识key，将指定应用的文件URI访问权限授权给目标应用，权限将在目标应用退出后回收。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。 **系统接口**：此接口为系统接口。 |
+| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeuripermission) | 撤销授权指定应用的URI。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
+| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeuripermission系统接口) | 撤销授权指定应用的URI。使用callback异步回调。 |
+| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeuripermission系统接口) | 撤销授权指定应用的URI。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
+| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeuripermission系统接口) | 撤销授权指定应用的URI。使用Promise异步回调。 |
+| [revokeUriPermission](arkts-ability-uripermissionmanager-revokeuripermission-f-sys.md#revokeuripermission系统接口) | 撤销授权指定应用的URI。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 |
 <!--DelEnd-->
 

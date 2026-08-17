@@ -10,7 +10,7 @@ function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function onChangeWithAttribute(displayAttributeOption: Array<string>, callback: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayAttributeOption | Array&lt;string&gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于 [display属性](arkts-display.md#@ohos.display)中包含的属性。 |
+| displayAttributeOption | Array&lt;string&gt; | 是 | 指定需要监听的屏幕属性名称，且仅限于 [display属性](arkts-display.md#ohosdisplay)中包含的属性。 |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;long&gt; | 是 | 回调函数。返回监听到的屏幕ID，该参数为整数。 |
 
 **错误码：**
@@ -42,7 +42,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let attributesChangeCallback: Callback<number> = (data: number) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
-let attributes: Array<string> = ["rotation", "width"];
+let attributes: Array<string> = ['rotation', 'width'];
 display.onChangeWithAttribute(attributes, attributesChangeCallback);
 ```
 

@@ -10,11 +10,11 @@ function isUsbDisabled(admin: Want): boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getDisallowedPolicy)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -36,7 +36,7 @@ function isUsbDisabled(admin: Want): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回true表示USB被禁用。&lt;br/&gt;返回false表示USB未被禁用。 |
+| boolean | 返回true表示USB被禁用。<br/>返回false表示USB未被禁用。 |
 
 **错误码：**
 

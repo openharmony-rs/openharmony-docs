@@ -4,7 +4,7 @@ Avis metadata.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@ Avis metadata.
 readonly delayTime?: int
 ```
 
-Delay of each frame. Unit: ms, The value should be an integer. &lt;br&gt;Unit:ms.
+Delay of each frame. Unit: ms, The value should be an integer. <br>Unit:ms.
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

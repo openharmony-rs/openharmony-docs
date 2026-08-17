@@ -2,7 +2,7 @@
 
 ## 概述
 
-The LowPowerAudioSink sub module provides variables, properties, and functionsfor lowpower audio sink.
+LowPowerAudioSink子模块提供低功耗音频输出的变量、属性和函数。
 
 **起始版本：** 20
 ## 文件汇总

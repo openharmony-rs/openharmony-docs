@@ -10,11 +10,11 @@ function getSystemConfig(name: number): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [getSystemConfig](arkts-arkts-process-processmanager-c.md#getSystemConfig)
+**替代接口：** [getSystemConfig](arkts-arkts-process-processmanager-c.md#getsystemconfig)
 
 <!--Device-process-function getSystemConfig(name: number): number--><!--Device-process-function getSystemConfig(name: number): number-End-->
 

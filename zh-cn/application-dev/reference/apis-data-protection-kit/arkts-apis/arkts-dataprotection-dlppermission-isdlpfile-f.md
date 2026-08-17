@@ -10,7 +10,7 @@ function isDLPFile(fd: number): Promise<boolean>
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -44,14 +44,14 @@ function isDLPFile(fd: number): Promise<boolean>
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 
-let uri = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
+let uri = 'file://docs/storage/Users/currentUser/Documents/test.txt.dlp';
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
     console.info(JSON.stringify(isDLPFile));
-}).catch((error: BusinessError)=> {
-    console.error(error.message);
-}).finally(()=> {
+}).catch((error: BusinessError) => {
+    console.error(`Failed to check if file is DLP file. Code: ${error.code}, message: ${error.message}`);
+}).finally(() => {
     if (file !== undefined) {
         fileIo.closeSync(file);
     }
@@ -69,7 +69,7 @@ function isDLPFile(fd: number, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

@@ -8,7 +8,7 @@ declare type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode'
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 

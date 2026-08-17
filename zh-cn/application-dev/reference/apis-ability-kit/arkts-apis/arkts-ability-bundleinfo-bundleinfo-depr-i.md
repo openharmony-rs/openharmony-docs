@@ -1,14 +1,14 @@
 # BundleInfo
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-BundleInfo](#BundleInfo)替代。
+> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-BundleInfo](#bundleinfo)替代。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [BundleInfo](#BundleInfo)
+**替代接口：** [BundleInfo](#bundleinfo)
 
 <!--Device-unnamed-export interface BundleInfo--><!--Device-unnamed-export interface BundleInfo-End-->
 
@@ -20,7 +20,7 @@
 readonly abilityInfos: Array<AbilityInfo>
 ```
 
-Ability的配置信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getBundleInfo) 接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
+Ability的配置信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) 接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
 
 **类型：** Array&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt;
 
@@ -28,7 +28,7 @@ Ability的配置信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -52,7 +52,7 @@ readonly appId: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -76,7 +76,7 @@ readonly appInfo: ApplicationInfo
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -100,7 +100,7 @@ readonly compatibleVersion: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -122,7 +122,7 @@ readonly cpuAbi: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -144,7 +144,7 @@ Entry是否支持免安装，取值为true表示支持免安装，取值为false
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -166,7 +166,7 @@ Entry的模块名称。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -188,7 +188,7 @@ readonly hapModuleInfos: Array<HapModuleInfo>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -212,7 +212,7 @@ HAP安装时间，单位：毫秒。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -236,7 +236,7 @@ readonly isCompressNativeLibs: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -258,7 +258,7 @@ readonly isSilentInstallation: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -280,7 +280,7 @@ readonly minCompatibleVersionCode: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -304,7 +304,7 @@ readonly name: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -320,7 +320,7 @@ readonly name: string
 readonly reqPermissionDetails: Array<ReqPermissionDetail>
 ```
 
-应用运行时需向系统申请的权限集合的详细信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getBundleInfo) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+应用运行时需向系统申请的权限集合的详细信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
 **类型：** Array&lt;[ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)&gt;
 
@@ -328,7 +328,7 @@ readonly reqPermissionDetails: Array<ReqPermissionDetail>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -352,7 +352,7 @@ readonly reqPermissionStates: Array<number>
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -368,7 +368,7 @@ readonly reqPermissionStates: Array<number>
 readonly reqPermissions: Array<string>
 ```
 
-应用运行时需向系统申请的权限集合 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getBundleInfo) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+应用运行时需向系统申请的权限集合 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
 **类型：** Array&lt;string&gt;
 
@@ -376,7 +376,7 @@ readonly reqPermissions: Array<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -400,7 +400,7 @@ readonly targetVersion: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -424,7 +424,7 @@ readonly type: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -448,7 +448,7 @@ readonly uid: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -472,7 +472,7 @@ HAP更新时间，单位：毫秒。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -496,7 +496,7 @@ readonly vendor: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -520,7 +520,7 @@ readonly versionCode: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -544,7 +544,7 @@ readonly versionName: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

@@ -10,7 +10,7 @@ function grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTo
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,9 +24,9 @@ function grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 目标UDMF数据唯一标识。key必须由调用方通过 [unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md#insertData) 创建，且写入的数据均为有权限授权的文件URI。&lt;br&gt;当前仅支持SYSTEM_SHARE、PICKER和MENU类型的 [UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md#Intention)的key。key的创建与使用方法详见 [标准化数据通路实现数据共享](../../../database/unified-data-channels.md)。 |
-| flag | wantConstant.Flags | 是 | URI的读权限或写权限。支持的取值如下：&lt;br&gt;- FLAG_AUTH_READ_URI_PERMISSION：读权限。&lt;br&gt;- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
-| targetTokenId | int | 是 | 目标应用的身份标识，可以通过 [bundleManager.getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md#getApplicationInfo（系统接口）) 获取。 |
+| key | string | 是 | 目标UDMF数据唯一标识。key必须由调用方通过 [unifiedDataChannel.insertData](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata) 创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的 [UDMF数据通路](../../apis-arkdata/arkts-apis/arkts-arkdata-unifieddatachannel-intention-e.md#intention)的key。key的创建与使用方法详见 [标准化数据通路实现数据共享](../../../database/unified-data-channels.md)。 |
+| flag | wantConstant.Flags | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
+| targetTokenId | int | 是 | 目标应用的身份标识，可以通过 [bundleManager.getApplicationInfo](arkts-ability-bundlemanager-getapplicationinfo-f-sys.md#getapplicationinfo系统接口) 获取。 |
 
 **返回值：**
 

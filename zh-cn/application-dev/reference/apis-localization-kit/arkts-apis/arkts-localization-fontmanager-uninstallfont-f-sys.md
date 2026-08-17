@@ -10,7 +10,7 @@ function uninstallFont(fullName: string): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -26,13 +26,13 @@ function uninstallFont(fullName: string): Promise<int>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullName | string | 是 | 需要卸载的字体名称，可通过打开.ttf或.ttc字体文件获取。 &lt;br&gt;字体名称区分大小写，请确保与实际字体名称完全一致。 |
+| fullName | string | 是 | 需要卸载的字体名称，可通过打开.ttf或.ttc字体文件获取。 <br>字体名称区分大小写，请确保与实际字体名称完全一致。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;int&gt; | Promise对象，返回卸载结果。 &lt;br&gt;- 返回0：卸载成功，字体已从系统字体库中移除。 &lt;br&gt;- 返回其他值：卸载失败，请根据错误码排查原因。 |
+| Promise&lt;int&gt; | Promise对象，返回卸载结果。 <br>- 返回0：卸载成功，字体已从系统字体库中移除。 <br>- 返回其他值：卸载失败，请根据错误码排查原因。 |
 
 **错误码：**
 

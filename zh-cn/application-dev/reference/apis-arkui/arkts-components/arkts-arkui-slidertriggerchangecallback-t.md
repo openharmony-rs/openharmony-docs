@@ -8,7 +8,7 @@ declare type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMod
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,6 +24,6 @@ declare type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMod
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置当前进度值。<br/>取值范围：[[min](arkts-arkui-slideroptions-i.md#SliderOptions)-[max](arkts-arkui-slideroptions-i.md#SliderOptions)] |
+| value | number | 是 | 设置当前进度值。<br/>取值范围：[[min](arkts-arkui-slideroptions-i.md#slideroptions)-[max](arkts-arkui-slideroptions-i.md#slideroptions)] |
 | mode | [SliderChangeMode](arkts-arkui-sliderchangemode-e.md) | 是 | 设置事件触发的相关状态值。 |
 

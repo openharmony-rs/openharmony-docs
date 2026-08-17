@@ -10,7 +10,7 @@ function setLocationPolicy(admin: Want, policy: LocationPolicy): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -27,7 +27,7 @@ function setLocationPolicy(admin: Want, policy: LocationPolicy): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| policy | [LocationPolicy](arkts-mdm-locationmanager-locationpolicy-e.md) | 是 | 位置服务策略。 &lt;br&gt;- 0：默认策略。 &lt;br&gt;- 1：禁用位置服务。 &lt;br&gt;- 2：强制开启位置服务。 |
+| policy | [LocationPolicy](arkts-mdm-locationmanager-locationpolicy-e.md) | 是 | 位置服务策略。 <br>- 0：默认策略。 <br>- 1：禁用位置服务。 <br>- 2：强制开启位置服务。 |
 
 **错误码：**
 
@@ -53,7 +53,7 @@ let wantTemp: Want = {
 try {
   locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
   console.info(`Succeeded in setting location policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```

@@ -1,12 +1,12 @@
 # UserBlowData（系统接口）
 
-用户吹气数据。
+表示用户吹气数据。
 
-**继承/实现关系：** UserBlowData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md#UserStatusData（系统接口）)
+**继承/实现关系：** UserBlowData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md#userstatusdata系统接口)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,13 +22,13 @@
 blowDirection?: int
 ```
 
-吹气方向。取值范围为0到2。0：未吹气，1：从底部麦克风吹气，2：从顶部麦克风吹气。
+表示吹气方向。取值范围[0,2]。0：未吹气，1：底部麦克风，2：顶部麦克风。 取值范围为全体整数。
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -46,13 +46,13 @@ blowDirection?: int
 emotion?: int
 ```
 
-用户情绪级别。取值范围为0到5。0：非常开心，1：有些开心，2：平静，3：有些不开心，4：生气，5：哭泣。
+表示用户情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 取值限定为整数。
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -70,13 +70,13 @@ emotion?: int
 facePosition?: double[]
 ```
 
-面部相对于屏幕的位置。归一化坐标系范围为0到640。
+表示人脸相对于屏幕的坐标位置。数组长度为8，分别表示上下左右四个顶点的x、y坐标，归一化坐标系的取值范围是[0,640]。单位：px
 
 **类型：** double[]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -94,13 +94,13 @@ facePosition?: double[]
 gravityAcceleration?: double[]
 ```
 
-用户运动状态的重力加速度，单位：m/s²。
+表示当前状态下设备的重力加速度。数组长度为3，分别表示x、y、z三个方向的加速度分量，单位：m/s²。
 
 **类型：** double[]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -118,13 +118,13 @@ gravityAcceleration?: double[]
 isGazeStatus?: boolean
 ```
 
-用户是否正在注视屏幕。
+表示用户是否注视屏幕。取值范围[true,false]。
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -142,13 +142,13 @@ isGazeStatus?: boolean
 linearAcceleration?: double[][]
 ```
 
-用户运动状态的线性加速度，单位：m/s²。
+表示当前状态下设备的线性加速度。二维数组，外层表示多个点位的采样，内层为长度3的数组，分别表示x、y、z三个方向的加速度分量，单位：m/s²。
 
 **类型：** double[][]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -166,13 +166,13 @@ linearAcceleration?: double[][]
 strengthLevel?: int
 ```
 
-吹气强度级别。取值范围为[1,12]的整数。
+表示吹气力度。取值范围[1,12]。
 
 **类型：** int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

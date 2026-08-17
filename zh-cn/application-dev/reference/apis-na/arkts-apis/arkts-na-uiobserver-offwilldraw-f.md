@@ -10,7 +10,7 @@ Removes a callback function that was previously registered with `on()`.
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,6 +24,6 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [UIContext](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | The context scope of the observer. |
+| context | [UIContext](arkts-na-arkui-uicontext-uicontext-c.md) | 是 | The context scope of the observer. |
 | callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
 

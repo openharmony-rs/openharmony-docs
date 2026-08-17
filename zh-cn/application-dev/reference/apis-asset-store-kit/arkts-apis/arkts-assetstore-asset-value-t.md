@@ -4,11 +4,11 @@
 declare type Value = boolean | number | Uint8Array
 ```
 
-关键资产属性的内容，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md#AssetMap)的值。
+关键资产属性的内容，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md#assetmap)的值。
 
 **起始版本：** 11
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为11。
+**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** -1
 

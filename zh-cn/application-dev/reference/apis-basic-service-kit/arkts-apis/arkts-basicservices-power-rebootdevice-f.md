@@ -10,11 +10,11 @@ function rebootDevice(reason: string): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot（系统接口）)
+**替代接口：** [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot系统接口)
 
 **需要权限：** ohos.permission.REBOOT
 

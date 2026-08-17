@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -32,7 +32,7 @@
 | --- | --- |
 | [Flags](arkts-ability-wantconstant-flags-e.md) | Want.flags字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。 |
 | [Params](arkts-ability-wantconstant-params-e.md) | want的Params操作的常量。 |
-| [ShowMode](arkts-ability-wantconstant-showmode-e.md) | 表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md#EmbeddableUIAbility)被拉起时的显示模式。 |
+| [ShowMode](arkts-ability-wantconstant-showmode-e.md) | 表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md#embeddableuiability)被拉起时的显示模式。 |
 
 <!--Del-->
 ### 枚举（系统接口）

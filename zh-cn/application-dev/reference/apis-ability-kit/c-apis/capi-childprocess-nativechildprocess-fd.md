@@ -6,7 +6,7 @@ typedef struct NativeChildProcess_Fd {...} NativeChildProcess_Fd
 
 ## 概述
 
-The struct describes the information about the file descriptor passed to the child process.
+传递给子进程的文件描述符信息。
 
 **起始版本：** 13
 
@@ -20,8 +20,8 @@ The struct describes the information about the file descriptor passed to the chi
 
 | 名称 | 描述 |
 | -- | -- |
-| char* fdName |  |
-| int32_t fd |  |
-| struct [NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next |  |
+| char* fdName | 文件描述符的键，最大长度为20字符。 |
+| int32_t fd | 文件描述符的值。 |
+| struct [NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next | 下一个文件描述记录指针。 |
 
 

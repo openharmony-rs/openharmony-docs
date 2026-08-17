@@ -4,7 +4,7 @@ AppStorageV2提供应用级全局共享状态变量的能力，开发者可以�
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -26,7 +26,7 @@ static connect<T extends object>(
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -52,6 +52,26 @@ static connect<T extends object>(
 | --- | --- |
 | T | 创建或获取AppStorageV2数据成功时，返回数据；否则返回undefined。 |
 
+## 示例
+
+```TypeScript
+import { AppStorageV2 } from '@kit.ArkUI';
+
+@ObservedV2
+class SampleClass {
+  @Trace p: number = 0;
+}
+
+// 将key为SampleClass、value为new SampleClass()对象的键值对存储到内存中，并赋值给as1
+const as1: SampleClass | undefined = AppStorageV2.connect(SampleClass, () => new SampleClass());
+
+// 将key为key_as2、value为new SampleClass()对象的键值对存储到内存中，并赋值给as2
+const as2: SampleClass = AppStorageV2.connect(SampleClass, 'key_as2', () => new SampleClass())!;
+
+// key为SampleClass已经在AppStorageV2中，将key为SampleClass的值返回给as3
+const as3: SampleClass = AppStorageV2.connect(SampleClass) as SampleClass;
+```
+
 ## keys
 
 ```TypeScript
@@ -62,7 +82,7 @@ static keys(): Array<string>
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -80,6 +100,13 @@ static keys(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 所有AppStorageV2中的key。 |
 
+## 示例
+
+```TypeScript
+// 假设AppStorageV2中存在两个key（key_as1、key_as2），返回[key_as1、key_as2]赋值给keys
+const keys: Array<string> = AppStorageV2.keys();
+```
+
 ## remove
 
 ```TypeScript
@@ -90,7 +117,7 @@ static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -107,4 +134,17 @@ static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOrType | string \| [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md)&lt;T&gt; | 是 | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
+
+## 示例
+
+```TypeScript
+// 假设AppStorageV2中存在key为key_as2的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove('key_as2');
+
+// 假设AppStorageV2中存在key为SampleClass的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove(SampleClass);
+
+// 假设AppStorageV2中不存在key为key_as1的键，报警告
+AppStorageV2.remove('key_as1');
+```
 

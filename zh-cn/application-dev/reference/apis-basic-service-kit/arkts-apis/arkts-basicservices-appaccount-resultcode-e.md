@@ -1,10 +1,10 @@
 # ResultCode
 
-表示返回码的枚举。 > **说明：**&lt;br/&gt; > > 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看 > [账号管理错误码](../../apis-basic-services-kit/errorcode-account.md)替代。
+表示返回码的枚举。 > **说明：**<br/> > > 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看 > [账号管理错误码](../../apis-basic-services-kit/errorcode-account.md)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -22,7 +22,7 @@ SUCCESS = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -40,7 +40,7 @@ ERROR_ACCOUNT_NOT_EXIST = 10001
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -58,7 +58,7 @@ ERROR_APP_ACCOUNT_SERVICE_EXCEPTION = 10002
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -76,7 +76,7 @@ ERROR_INVALID_PASSWORD = 10003
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -94,7 +94,7 @@ ERROR_INVALID_REQUEST = 10004
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -112,7 +112,7 @@ ERROR_INVALID_RESPONSE = 10005
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -130,7 +130,7 @@ ERROR_NETWORK_EXCEPTION = 10006
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -148,7 +148,7 @@ ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST = 10007
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -166,7 +166,7 @@ ERROR_OAUTH_CANCELED = 10008
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -184,7 +184,7 @@ ERROR_OAUTH_LIST_TOO_LARGE = 10009
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -202,7 +202,7 @@ ERROR_OAUTH_SERVICE_BUSY = 10010
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -220,7 +220,7 @@ ERROR_OAUTH_SERVICE_EXCEPTION = 10011
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -238,7 +238,7 @@ ERROR_OAUTH_SESSION_NOT_EXIST = 10012
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -256,7 +256,7 @@ ERROR_OAUTH_TIMEOUT = 10013
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -274,7 +274,7 @@ ERROR_OAUTH_TOKEN_NOT_EXIST = 10014
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -292,7 +292,7 @@ ERROR_OAUTH_TOKEN_TOO_MANY = 10015
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -310,7 +310,7 @@ ERROR_OAUTH_UNSUPPORT_ACTION = 10016
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -328,7 +328,7 @@ ERROR_OAUTH_UNSUPPORT_AUTH_TYPE = 10017
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -346,7 +346,7 @@ ERROR_PERMISSION_DENIED = 10018
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

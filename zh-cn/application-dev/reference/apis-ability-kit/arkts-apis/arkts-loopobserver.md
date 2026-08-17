@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [LoopObserver](arkts-ability-loopobserver-i.md) | 定义异常监听，可以作为 [ErrorManager.on](arkts-ability-errormanager-onerror-f.md#on_error) 的入参监听当前应用主线程事件处理事件。 |
+| [LoopObserver](arkts-ability-loopobserver-i.md) | 定义异常监听，可以作为 [ErrorManager.on](arkts-ability-errormanager-onerror-f.md#onerror) 的入参监听当前应用主线程事件处理事件。 |
 

@@ -1,10 +1,10 @@
 # HitTestValue
 
-提供点击区域的元素信息。示例代码参考 [getLastHitTest](../../apis-na/arkts-apis/arkts-na-webview-webviewcontroller-c.md#getLastHitTest).
+提供点击区域的元素信息。示例代码参考[getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest)。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ extra: string
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -42,11 +42,11 @@ type: WebHitTestType
 
 当前被点击区域的元素类型。
 
-**类型：** [WebHitTestType](../../apis-na/arkts-apis/arkts-na-webview-webhittesttype-e.md)
+**类型：** [WebHitTestType](arkts-arkweb-webview-webhittesttype-e.md)
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

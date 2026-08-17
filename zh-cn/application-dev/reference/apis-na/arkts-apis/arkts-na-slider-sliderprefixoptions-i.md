@@ -2,11 +2,11 @@
 
 Slider前缀组件无障碍信息参数。
 
-**继承/实现关系：** SliderPrefixOptions extends [SliderCustomContentOptions](arkts-na-slider-slidercustomcontentoptions-i.md#SliderCustomContentOptions)
+**继承/实现关系：** SliderPrefixOptions extends [SliderCustomContentOptions](arkts-na-slider-slidercustomcontentoptions-i.md#slidercustomcontentoptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

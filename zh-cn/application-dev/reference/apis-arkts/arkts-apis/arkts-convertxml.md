@@ -16,7 +16,7 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** -1
 
@@ -30,7 +30,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ConvertXML](arkts-arkts-xml-convertxml-c.md) | ConvertXML类提供将XML文本转换为JavaScript对象的能力。 推荐使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](arkts-arkts-xml-convertxml-c.md#fastConvertToJSObject)进行常规XML文本解析， 当单元素文本内容超过10M时推荐使用[largeConvertToJSObject&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkts-xml-convertxml-c.md#largeConvertToJSObject)。 已废弃的[convertToJSObject](arkts-arkts-xml-convertxml-c.md#convertToJSObject)和[convert](arkts-arkts-xml-convertxml-c.md#convert)方法不再维护， 建议使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](arkts-arkts-xml-convertxml-c.md#fastConvertToJSObject)替代。 |
+| [ConvertXML](arkts-arkts-xml-convertxml-c.md) | ConvertXML类提供将XML文本转换为JavaScript对象的能力。 推荐使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](arkts-arkts-xml-convertxml-c.md#fastconverttojsobject)进行常规XML文本解析， 当单元素文本内容超过10M时推荐使用[largeConvertToJSObject&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkts-xml-convertxml-c.md#largeconverttojsobject)。 已废弃的[convertToJSObject](arkts-arkts-xml-convertxml-c.md#converttojsobject)和[convert](arkts-arkts-xml-convertxml-c.md#convert)方法不再维护， 建议使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](arkts-arkts-xml-convertxml-c.md#fastconverttojsobject)替代。 |
 
 ### 接口
 

@@ -2,11 +2,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [showAlertDialog](arkts-arkui-arkui-uicontext-uicontext-c.md#showAlertDialog)
+**替代接口：** [showAlertDialog](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#showalertdialog)
 
 <!--Device-unnamed-declare class AlertDialog--><!--Device-unnamed-declare class AlertDialog-End-->
 
@@ -18,15 +18,15 @@
 static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions)
 ```
 
-定义警告弹窗并弹出。 > **说明：** showAlertDialog需先获取[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)实例后再进行调用。 > 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#UIContext)中的 > [showAlertDialog](arkts-arkui-arkui-uicontext-uicontext-c.md#showAlertDialog)来明确UI的执行上下文。
+定义警告弹窗并弹出。 > **说明：** showAlertDialog需先获取[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)实例后再进行调用。 > 从API version 10开始，可以通过使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 > [showAlertDialog](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#showalertdialog)来明确UI的执行上下文。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 18
 
-**替代接口：** [showAlertDialog](arkts-arkui-arkui-uicontext-uicontext-c.md#showAlertDialog)
+**替代接口：** [showAlertDialog](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#showalertdialog)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

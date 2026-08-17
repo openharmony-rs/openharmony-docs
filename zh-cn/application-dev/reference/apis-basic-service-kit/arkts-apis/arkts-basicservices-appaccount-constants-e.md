@@ -4,7 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,11 +22,11 @@ ACTION_ADD_ACCOUNT_IMPLICITLY = 'addAccountImplicitly'
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ACTION_CREATE_ACCOUNT_IMPLICITLY](#ACTION_CREATE_ACCOUNT_IMPLICITLY)
+**替代接口：** [ACTION_CREATE_ACCOUNT_IMPLICITLY](#actioncreateaccountimplicitly)
 
 <!--Device-Constants-ACTION_ADD_ACCOUNT_IMPLICITLY = 'addAccountImplicitly'--><!--Device-Constants-ACTION_ADD_ACCOUNT_IMPLICITLY = 'addAccountImplicitly'-End-->
 
@@ -42,11 +42,11 @@ ACTION_AUTHENTICATE = 'authenticate'
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [ACTION_AUTH](#ACTION_AUTH)
+**替代接口：** [ACTION_AUTH](#actionauth)
 
 <!--Device-Constants-ACTION_AUTHENTICATE = 'authenticate'--><!--Device-Constants-ACTION_AUTHENTICATE = 'authenticate'-End-->
 
@@ -62,7 +62,7 @@ ACTION_CREATE_ACCOUNT_IMPLICITLY = "createAccountImplicitly"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ ACTION_AUTH = "auth"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -98,7 +98,7 @@ ACTION_VERIFY_CREDENTIAL = "verifyCredential"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ ACTION_SET_AUTHENTICATOR_PROPERTIES = "setAuthenticatorProperties"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -134,7 +134,7 @@ KEY_NAME = "name"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -152,7 +152,7 @@ KEY_OWNER = "owner"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -170,7 +170,7 @@ KEY_TOKEN = "token"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -188,7 +188,7 @@ KEY_ACTION = "action"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -206,7 +206,7 @@ KEY_AUTH_TYPE = "authType"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -224,7 +224,7 @@ KEY_SESSION_ID = "sessionId"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -242,7 +242,7 @@ KEY_CALLER_PID = "callerPid"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -260,7 +260,7 @@ KEY_CALLER_UID = "callerUid"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -278,7 +278,7 @@ KEY_CALLER_BUNDLE_NAME = "callerBundleName"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -296,7 +296,7 @@ KEY_REQUIRED_LABELS = "requiredLabels"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -314,7 +314,7 @@ KEY_BOOLEAN_RESULT = "booleanResult"
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

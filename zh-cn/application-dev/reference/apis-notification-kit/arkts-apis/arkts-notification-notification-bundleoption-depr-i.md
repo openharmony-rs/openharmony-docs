@@ -4,11 +4,11 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md#BundleOption)
+**替代接口：** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md#bundleoption)
 
 <!--Device-notification-export interface BundleOption--><!--Device-notification-export interface BundleOption-End-->
 
@@ -26,11 +26,11 @@ bundle: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md#BundleOption)
+**替代接口：** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md#bundleoption)
 
 <!--Device-BundleOption-bundle: string--><!--Device-BundleOption-bundle: string-End-->
 
@@ -48,11 +48,11 @@ uid?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md#BundleOption)
+**替代接口：** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md#bundleoption)
 
 <!--Device-BundleOption-uid?: number--><!--Device-BundleOption-uid?: number-End-->
 

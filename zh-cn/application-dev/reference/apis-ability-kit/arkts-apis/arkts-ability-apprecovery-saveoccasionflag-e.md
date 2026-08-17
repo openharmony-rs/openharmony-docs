@@ -1,10 +1,10 @@
 # SaveOccasionFlag
 
-保存条件标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md#enableAppRecovery)接口状态保存时的选项参数，该类型为枚举。
+保存条件标志，[enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md#enableapprecovery)接口状态保存时的选项参数，该类型为枚举。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ SAVE_WHEN_ERROR = 0x0001
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ SAVE_WHEN_BACKGROUND = 0x0002
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

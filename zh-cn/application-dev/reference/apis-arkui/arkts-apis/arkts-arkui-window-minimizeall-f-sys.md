@@ -10,7 +10,7 @@ function minimizeAll(id: long, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ function minimizeAll(id: long, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | long | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md#DisplayState)的ID号，该参数仅支持整数输入。 |
+| id | long | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md#displaystate)的ID号，该参数仅支持整数输入。 |
 | callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调信息。 |
 
 **错误码：**
@@ -102,7 +102,7 @@ function minimizeAll(id: long): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -116,7 +116,7 @@ function minimizeAll(id: long): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | long | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md#DisplayState)的ID号，该参数仅支持整数输入。 |
+| id | long | 是 | 显示设备[Display](arkts-arkui-display-displaystate-e.md#displaystate)的ID号，该参数仅支持整数输入。 |
 
 **返回值：**
 

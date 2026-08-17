@@ -10,11 +10,11 @@ function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: b
 
 **起始版本：** 14
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为14。
+**ArkTS模式：** 起始版本为14。
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicyForAccount](#setDisallowedPolicyForAccount)(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
+**替代接口：** [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount)(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -29,9 +29,9 @@ function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: b
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| feature | string | 是 | feature名称。&lt;br/&gt;- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：&lt;br/&gt;1. 通过 [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy)接口禁用了设备指纹认证能力，再使用本接口传入此参数，会报策略冲突。&lt;br/&gt;2. 通过本接口设置禁用 /启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。此后再通 过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy)接口启用设备指纹认证能力，则所有用户都允许使用设备指纹认证能力。&lt;br/&gt;- print&lt;sup&gt; 20+&lt;/sup&gt;：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用本接口禁用了指定用户的设备打印能 力，再通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy)接口启用设备打印能力，该用户下的设备打印能力仍然被禁用。&lt;br/&gt;- mtpClient&lt; sup&gt;20+&lt;/sup&gt;：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（MediaTransferProtocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过 [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy)接口禁用了设备MTP客户端能力时，再通过本接口禁用某用户MTP客户端写入能力，会报策略冲突。&lt;br/ &gt;- usbStorageDeviceWrite&lt;sup&gt;20+&lt;/sup&gt;：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。&lt;br/&gt; 以下三种情况再通过本接 口禁用某用户USB存储设备写入能力，会报策略冲突。&lt;br/&gt; 1）通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy)接口设置了设备USB能力禁 用。&lt;br/&gt; 2）通过 [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setUsbStorageDeviceAccessPolicy) 接口设置了USB存储设备访问策略为只读/禁用。&lt;br/&gt; 3）通过 [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#addDisallowedUsbDevices)接口添加了存储类型的USB设备禁 用。 &lt;br/&gt;- diskRecoveryKey&lt;sup&gt;20+&lt;/sup&gt;：恢复 [密钥导出](../../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。&lt;br/&gt;- sudo&lt;sup&gt;20+ &lt;/sup&gt;：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。&lt;br/&gt;- distributedTransmissionOutgoing&lt;sup &gt;20+&lt;/sup&gt;：设备间分布式单向传输数据的能力（仅包含向其他设备传输数据）。当已经通过 [setDisallowedPolicyForAccount](#setDisallowedPolicyForAccount)接口禁用了分布式服务，再通过本接口禁用设备间分布式单向传输数 据的能力，会报策略冲突。&lt;br/&gt;- openFileBoost&lt;sup&gt;23+&lt;/sup&gt;：文件打开加速能力，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API， 感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
+| feature | string | 是 | feature名称。<br/>- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：<br/>1. 通过 [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用了设备指纹认证能力，再使用本接口传入此参数，会报策略冲突。<br/>2. 通过本接口设置禁用 /启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。此后再通 过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口启用设备指纹认证能力，则所有用户都允许使用设备指纹认证能力。<br/>- print&lt;sup&gt; 20+&lt;/sup&gt;：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用本接口禁用了指定用户的设备打印能 力，再通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口启用设备打印能力，该用户下的设备打印能力仍然被禁用。<br/>- mtpClient&lt; sup&gt;20+&lt;/sup&gt;：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（MediaTransferProtocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过 [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用了设备MTP客户端能力时，再通过本接口禁用某用户MTP客户端写入能力，会报策略冲突。&lt;br/ &gt;- usbStorageDeviceWrite&lt;sup&gt;20+&lt;/sup&gt;：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<br/> 以下三种情况再通过本接 口禁用某用户USB存储设备写入能力，会报策略冲突。<br/> 1）通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口设置了设备USB能力禁 用。<br/> 2）通过 [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy) 接口设置了USB存储设备访问策略为只读/禁用。<br/> 3）通过 [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md#adddisallowedusbdevices)接口添加了存储类型的USB设备禁 用。 <br/>- diskRecoveryKey&lt;sup&gt;20+&lt;/sup&gt;：恢复 [密钥导出](../../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br/>- sudo&lt;sup&gt;20+ &lt;/sup&gt;：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。<br/>- distributedTransmissionOutgoing&lt;sup &gt;20+&lt;/sup&gt;：设备间分布式单向传输数据的能力（仅包含向其他设备传输数据）。当已经通过 [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount)接口禁用了分布式服务，再通过本接口禁用设备间分布式单向传输数 据的能力，会报策略冲突。<br/>- openFileBoost&lt;sup&gt;23+&lt;/sup&gt;：文件打开加速能力，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API， 感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
 | disallow | boolean | 是 | true表示禁用，false表示启用。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。&lt;br/&gt;accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **错误码：**
 
@@ -74,7 +74,7 @@ function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -91,9 +91,9 @@ function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| feature | [FeatureForAccount](arkts-mdm-restrictions-featureforaccount-e.md) | 是 | 要禁用或允许的用户特性。 &lt;br&gt;当feature值为SUPER_HUB时，如果已经通过 [addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addUserNonStopApps)接口将中转站添加到当 前用户下不可关停的应用列表中，再调用本接口禁用中转站，会发生策略冲突，抛出9200010错误码。可以通过 [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeUserNonStopApps)接口将中 转站从当前用户下不可关停的应用列表中移除来解决冲突。 &lt;br&gt;当feature值为DISTRIBUTED_TRANSMISSION时，如果已经通过 [setDisallowedPolicyForAccount](#setDisallowedPolicyForAccount)接口禁用设备间分布式单向传输数据的能力，再调用本接口禁用分布 式管理服务，会发生策略冲突，抛出9200010错误码。可以通过 [setDisallowedPolicyForAccount](#setDisallowedPolicyForAccount)接口取消禁用设备间分布式单向传输数据来解决冲突。 |
+| feature | [FeatureForAccount](arkts-mdm-restrictions-featureforaccount-e.md) | 是 | 要禁用或允许的用户特性。 <br>当feature值为SUPER_HUB时，如果已经通过 [addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md#addusernonstopapps)接口将中转站添加到当 前用户下不可关停的应用列表中，再调用本接口禁用中转站，会发生策略冲突，抛出9200010错误码。可以通过 [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md#removeusernonstopapps)接口将中 转站从当前用户下不可关停的应用列表中移除来解决冲突。 <br>当feature值为DISTRIBUTED_TRANSMISSION时，如果已经通过 [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount)接口禁用设备间分布式单向传输数据的能力，再调用本接口禁用分布 式管理服务，会发生策略冲突，抛出9200010错误码。可以通过 [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount)接口取消禁用设备间分布式单向传输数据来解决冲突。 |
 | disallow | boolean | 是 | true表示禁用，false表示启用。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。 &lt;br&gt;accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId)等接口来获取。 &lt;br&gt;当feature值为SUPER_HUB时，accountId仅支持传入当前用户的用户ID，不支持跨用户设置。否则会抛出9200012错误码。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。 <br>accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 <br>当feature值为SUPER_HUB时，accountId仅支持传入当前用户的用户ID，不支持跨用户设置。否则会抛出9200012错误码。 |
 
 **错误码：**
 

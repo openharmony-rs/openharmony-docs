@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ DEFAULT = 0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -40,11 +40,11 @@ DEFAULT = 0
 ENABLE = 1
 ```
 
-使能模式。[弹出框Dialog](../../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../../ui/arkts-create-toast.md)、 AlphabetIndexer、ChipGroup、 [Chip](../../apis-na/arkts-apis/arkts-na-arkui-advanced-chip-chip-f.md#Chip)、Select、菜单控制、Toggle、 [SegmentButton](arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md#SegmentButton)、 SegmentButtonV2、Slider、 bindSheet、[SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md#SelectionMenu)组件默认开启沉浸式系统材质； Text设置copyOption后长按或双击触发的文本菜单默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件 本身设置的背景色、模糊、阴影和边框样式。其他组件需开发者主动设置。
+使能模式。[弹出框Dialog](../../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../../ui/arkts-create-toast.md)、 AlphabetIndexer、ChipGroup、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)、Select、菜单控制、Toggle、 [SegmentButton](arkts-arkui-arkui-advanced-segmentbutton-segmentbutton-s.md#segmentbutton)、 SegmentButtonV2、Slider、 bindSheet、[SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md#selectionmenu)组件默认开启沉浸式系统材质； Text设置copyOption后长按或双击触发的文本菜单默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件 本身设置的背景色、模糊、阴影和边框样式。其他组件需开发者主动设置。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -66,7 +66,7 @@ DISABLE = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

@@ -10,7 +10,7 @@ updateSession操作密钥接口。使用callback异步回调。 huks.initSession
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -69,7 +69,7 @@ Updates the key operation by segment. This API uses an asynchronous callback to 
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 
@@ -120,7 +120,7 @@ updateSession操作密钥接口。使用Promise异步回调。 huks.initSession�
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

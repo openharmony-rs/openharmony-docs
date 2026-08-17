@@ -4,7 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@
 CONFLICT_POLICY_DEFAULT = 0
 ```
 
-默认冲突策略，按照端云同步模式[SyncMode](arkts-arkdata-relationalstore-syncmode-e.md#SyncMode)执行。
+默认冲突策略，按照端云同步模式[SyncMode](arkts-arkdata-relationalstore-syncmode-e.md#syncmode)执行。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -42,7 +42,7 @@ CONFLICT_POLICY_TIME_FIRST = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -62,7 +62,7 @@ CONFLICT_POLICY_TEMP_PATH = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

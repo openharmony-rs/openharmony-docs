@@ -2,11 +2,11 @@
 
 BasicPrefetcher是IPrefetcher的基础实现。它提供了一种智能数据预取算法，以根据屏幕上可见区域的实时变化和预取持续时间的变化来决定应预取哪些数据项。它还可以根据用户的滚动操作来确定哪些预取请求应该被取消。 BasicPrefetcher对象不支持使用JSON序列化。
 
-**继承/实现关系：** BasicPrefetcher implements [IPrefetcher](../../apis-na/arkts-apis/arkts-na-arkui-prefetcher-iprefetcher-i.md#IPrefetcher)
+**继承/实现关系：** BasicPrefetcher implements [IPrefetcher](../../apis-na/arkts-apis/arkts-na-arkui-prefetcher-iprefetcher-i.md#iprefetcher)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ constructor(dataSource?: IDataSourcePrefetching)
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -52,7 +52,7 @@ setDataSource(dataSource: IDataSourcePrefetching): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -80,7 +80,7 @@ visibleAreaChanged(minVisible: number, maxVisible: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

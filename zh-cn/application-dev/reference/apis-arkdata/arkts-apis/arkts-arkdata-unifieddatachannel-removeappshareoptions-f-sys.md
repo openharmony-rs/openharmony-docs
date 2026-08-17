@@ -6,11 +6,11 @@
 function removeAppShareOptions(intention: Intention): void
 ```
 
-清除[setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f-sys.md#setAppShareOptions（系统接口）)设置的管控信息。调用成功后，setAppShareOptions设置的管控信息被清除，应用内拖 拽通道数据恢复到默认使用范围。
+清除[setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f-sys.md#setappshareoptions系统接口)设置的管控信息。调用成功后，setAppShareOptions设置的管控信息被清除，应用内拖 拽通道数据恢复到默认使用范围。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

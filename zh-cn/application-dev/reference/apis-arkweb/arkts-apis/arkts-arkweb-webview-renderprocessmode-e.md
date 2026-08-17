@@ -1,10 +1,10 @@
 # RenderProcessMode
 
-Defines the render process mode.
+ArkWeb渲染子进程模式类型，可根据应用对内存占用与渲染进程隔离的需求选择对应的模式。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -18,11 +18,11 @@ Defines the render process mode.
 SINGLE = 0
 ```
 
-ArkWeb single rendering subprocess mode. In this mode, multiple Web pages reuse a rendering subprocess.
+ArkWeb单渲染子进程模式。该模式下，多个Web复用一个渲染子进程。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -38,11 +38,11 @@ ArkWeb single rendering subprocess mode. In this mode, multiple Web pages reuse 
 MULTIPLE = 1
 ```
 
-ArkWeb multi-rendering subprocess mode. In this mode, there is one rendering subprocess per Web.
+ArkWeb多渲染子进程模式。该模式下，每个Web一个渲染子进程。
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 

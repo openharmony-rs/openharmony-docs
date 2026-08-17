@@ -1,10 +1,10 @@
 # BlankScreenDetectionEventInfo
 
-定义检测到白屏时的事件信息。
+提供检测到白屏时的事件信息，包括URL、原因和细节。适用于需要监控页面白屏问题的场景，提升白屏诊断的准确性和用户体验。
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -18,13 +18,13 @@
 blankScreenDetails?: BlankScreenDetails
 ```
 
-本次检测白屏的结果的细节。 如当发现近似白屏的现象产生，这个细节就包含具体命中了多少点。否则没有该属性。
+本次检测白屏的结果的细节。当使用检测有内容的节点检测策略，且检测到的有内容节点数量未超过阈值时，此参数包含当前命中了多少有内容节点等详细信息；未使用该策略或节点数量超过阈值时，此参数为空。
 
 **类型：** [BlankScreenDetails](arkts-arkweb-blankscreendetails-i.md)
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -44,7 +44,7 @@ blankScreenReason: DetectedBlankScreenReason
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -64,7 +64,7 @@ url: string
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 

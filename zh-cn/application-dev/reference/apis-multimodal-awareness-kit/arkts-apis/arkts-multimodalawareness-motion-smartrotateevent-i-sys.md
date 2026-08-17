@@ -1,10 +1,10 @@
 # SmartRotateEvent（系统接口）
 
-智能旋转传感器事件的基础数据结构。
+智能旋转传感器事件的基本数据结构。该事件包含传感器检测到的物理方向和由智能算法计算得出的逻辑方向。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -20,13 +20,13 @@
 logicalOrientation?: LogicalOrientation
 ```
 
-智能算法调整后的逻辑方向。
+智能算法调整后的逻辑方向。当智能算法无法确定方向时，该字段可能为空或不返回。
 
 **类型：** [LogicalOrientation](arkts-multimodalawareness-motion-logicalorientation-e-sys.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -44,13 +44,13 @@ logicalOrientation?: LogicalOrientation
 physicalOrientation: PhysicalOrientation
 ```
 
-重力传感器上报的物理方向。
+重力传感器报告的物理方向。
 
 **类型：** [PhysicalOrientation](arkts-multimodalawareness-motion-physicalorientation-e-sys.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 

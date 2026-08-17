@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [CompletionHandler](arkts-ability-app-ability-completionhandler-completionhandler-c.md) | CompletionHandler提供了 [onRequestSuccess](arkts-ability-app-ability-completionhandler-completionhandler-c.md#onRequestSuccess)和 [onRequestFailure](arkts-ability-app-ability-completionhandler-completionhandler-c.md#onRequestFailure)两个回调函数，分别用来处理拉 起应用成功和失败时的结果。 |
+| [CompletionHandler](arkts-ability-app-ability-completionhandler-completionhandler-c.md) | CompletionHandler提供了 [onRequestSuccess](arkts-ability-app-ability-completionhandler-completionhandler-c.md#onrequestsuccess)和 [onRequestFailure](arkts-ability-app-ability-completionhandler-completionhandler-c.md#onrequestfailure)两个回调函数，分别用来处理拉 起应用成功和失败时的结果。 |
 
 ### 类型
 

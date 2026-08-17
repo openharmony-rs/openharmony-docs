@@ -1,14 +1,14 @@
 # USBEndpoint
 
-通过USB发送和接收数据的端口。通过[USBInterface](arkts-basicservices-usb-usbinterface-i.md#USBInterface)获取。
+通过USB发送和接收数据的端口。通过[USBInterface](arkts-basicservices-usb-usbinterface-i.md#usbinterface)获取。
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md#USBEndpoint)
+**替代接口：** [USBEndpoint](arkts-basicservices-usbmanager-usbendpoint-i.md#usbendpoint)
 
 <!--Device-usb-interface USBEndpoint--><!--Device-usb-interface USBEndpoint-End-->
 
@@ -26,7 +26,7 @@ address: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -48,7 +48,7 @@ attributes: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -70,7 +70,7 @@ direction: USBRequestDirection
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -92,11 +92,11 @@ interfaceId: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [interfaceId](arkts-basicservices-usbmanager-usbendpoint-i.md#interfaceId)
+**替代接口：** [interfaceId](arkts-basicservices-usbmanager-usbendpoint-i.md#interfaceid)
 
 <!--Device-USBEndpoint-interfaceId: number--><!--Device-USBEndpoint-interfaceId: number-End-->
 
@@ -114,7 +114,7 @@ interval: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -136,11 +136,11 @@ maxPacketSize: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
-**替代接口：** [maxPacketSize](arkts-basicservices-usbmanager-usbendpoint-i.md#maxPacketSize)
+**替代接口：** [maxPacketSize](arkts-basicservices-usbmanager-usbendpoint-i.md#maxpacketsize)
 
 <!--Device-USBEndpoint-maxPacketSize: number--><!--Device-USBEndpoint-maxPacketSize: number-End-->
 
@@ -158,7 +158,7 @@ number: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -180,7 +180,7 @@ type: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为8。
+**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

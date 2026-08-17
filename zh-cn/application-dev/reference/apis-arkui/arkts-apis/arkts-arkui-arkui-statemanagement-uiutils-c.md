@@ -4,7 +4,7 @@ UIUtils状态管理相关的工具方法，包括获取代理对象的原始对�
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -22,7 +22,7 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -38,10 +38,10 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | object | 是 | 目标对象，仅支持 [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和 [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。 &lt;br&gt;对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| path | string \| string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。 &lt;br&gt;仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 是 | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。 &lt;br&gt;对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | 否 | 监听函数的配置项，具体可见[MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md#MonitorOptions)。默认为异步回调。 |
+| target | object | 是 | 目标对象，仅支持 [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和 [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。 <br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| path | string \| string[] | 是 | 添加监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定多个监听的变量路径。 <br>仅支持string和string数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 是 | 给对应的状态变量注册的监听函数，即path路径对应的状态变量改变时，会回调对应的函数。 <br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | 否 | 监听函数的配置项，具体可见[MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md#monitoroptions)。默认为异步回调。 |
 
 **错误码：**
 
@@ -61,7 +61,7 @@ static applySync<T>(task: TaskCallback): T
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -147,7 +147,7 @@ static canBeObserved<T extends object>(source: T): ObservedResult
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -163,7 +163,7 @@ static canBeObserved<T extends object>(source: T): ObservedResult
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | T | 是 | 输入一个数据对象，判断其是否可被观察。支持Array、Map、Set和Date类型数据。 &lt;br&gt;具体使用规则，详见[canBeObserved接口：判断对象是否为可被观察对象](../../../ui/state-management/arkts-new-canBeObserved.md)。 |
+| source | T | 是 | 输入一个数据对象，判断其是否可被观察。支持Array、Map、Set和Date类型数据。 <br>具体使用规则，详见[canBeObserved接口：判断对象是否为可被观察对象](../../../ui/state-management/arkts-new-canBeObserved.md)。 |
 
 **返回值：**
 
@@ -175,7 +175,7 @@ static canBeObserved<T extends object>(source: T): ObservedResult
 
 ```TypeScript
 import { UIUtils } from '@kit.ArkUI';
-import { DecoratorInfo, ElementInfo } from '@ohos.arkui.StateManagement';
+import { DecoratorInfo, ElementInfo } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
@@ -288,11 +288,11 @@ export struct School {
 static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void
 ```
 
-删除通过[addMonitor](#addMonitor)给状态管理V2的状态变量添加的监听方法，详见 [addMonitor/clearMonitor](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
+删除通过[addMonitor](#addmonitor)给状态管理V2的状态变量添加的监听方法，详见 [addMonitor/clearMonitor](../../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -308,9 +308,9 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | object | 是 | 目标对象，仅支持 [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和 [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。 &lt;br&gt;对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| path | string \| string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。 &lt;br&gt;仅支持string和数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
-| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 否 | 指定被删除的监听函数。 &lt;br&gt;当开发者不传此参数时，将删除path对应变量注册的所有监听函数。 &lt;br&gt;对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| target | object | 是 | 目标对象，仅支持 [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)和 [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)实例。 <br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| path | string \| string[] | 是 | 删除监听的变量名路径。可指定一个路径或者传入string数组用于一次性指定删除多个状态变量的监听函数。 <br>仅支持string和数组，对于不支持的类型，会抛出运行时错误，错误码见表格。 |
+| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 否 | 指定被删除的监听函数。 <br>当开发者不传此参数时，将删除path对应变量注册的所有监听函数。 <br>对于不支持的类型，会抛出运行时错误，错误码见表格。 |
 
 **错误码：**
 
@@ -330,7 +330,7 @@ static enableV2Compatibility<T extends object>(source: T): T
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -405,7 +405,7 @@ static flushUIUpdates(): void
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -480,7 +480,7 @@ static flushUpdates(): void
 
 **起始版本：** 22
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为22。
+**ArkTS模式：** 起始版本为22。
 
 **废弃版本：** -1
 
@@ -550,11 +550,11 @@ struct Index {
 static getCustomComponentContext<T extends BaseCustomComponent>(customComponent: T): CustomComponentContext
 ```
 
-返回给定@Component(V1)或@ComponentV2的[CustomComponentContext](arkts-arkui-arkui-statemanagement-customcomponentcontext-i.md#CustomComponentContext)。使用它来访问组件的复用池。有关复用池的详细信息，请参阅 [全局复用池：集中化的组件回收与复用](../../../ui/state-management/arkts-global-reuse-pool.md)。
+返回给定@Component(V1)或@ComponentV2的[CustomComponentContext](arkts-arkui-arkui-statemanagement-customcomponentcontext-i.md#customcomponentcontext)。使用它来访问组件的复用池。有关复用池的详细信息，请参阅 [全局复用池：集中化的组件回收与复用](../../../ui/state-management/arkts-global-reuse-pool.md)。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为26.0.0。
+**ArkTS模式：** 起始版本为26.0.0。
 
 **废弃版本：** -1
 
@@ -648,7 +648,7 @@ getLifecycle用于获取自定义组件的生命周期实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -705,7 +705,7 @@ static getTarget<T extends object>(source: T): T
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -765,7 +765,7 @@ static makeBinding<T>(getter: GetterCallback<T>): Binding<T>
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -842,7 +842,7 @@ static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): Mut
 
 **起始版本：** 20
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为20。
+**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** -1
 
@@ -924,7 +924,7 @@ static makeObserved<T extends object>(source: T): T
 
 **起始版本：** 12
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为12。
+**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** -1
 
@@ -940,7 +940,7 @@ static makeObserved<T extends object>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | T | 是 | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。 &lt;br&gt;支持Array、Map、Set和Date。 &lt;br&gt;支持collections.Array、collections.Set和collections.Map。 &lt;br&gt;具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../../ui/state-management/arkts-new-makeObserved.md)。 |
+| source | T | 是 | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。 <br>支持Array、Map、Set和Date。 <br>支持collections.Array、collections.Set和collections.Map。 <br>具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../../ui/state-management/arkts-new-makeObserved.md)。 |
 
 **返回值：**
 
@@ -985,11 +985,11 @@ struct Index {
 static makeV1Observed<T extends object>(source: T): T
 ```
 
-将不可观察的对象包装成状态管理V1可观察的对象，其能力等同于@Observed，可初始化@ObjectLink。 该接口可搭配[enableV2Compatibility](#enableV2Compatibility)应用于状态管理V1和V2混用场景，详见 [状态管理V1和V2混用指导（API version 19及之后）](../../../ui/state-management/arkts-v1-v2-mixusage.md)。
+将不可观察的对象包装成状态管理V1可观察的对象，其能力等同于@Observed，可初始化@ObjectLink。 该接口可搭配[enableV2Compatibility](#enablev2compatibility)应用于状态管理V1和V2混用场景，详见 [状态管理V1和V2混用指导（API version 19及之后）](../../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
 **起始版本：** 19
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为19。
+**ArkTS模式：** 起始版本为19。
 
 **废弃版本：** -1
 
@@ -1005,7 +1005,7 @@ static makeV1Observed<T extends object>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| source | T | 是 | 数据源。支持普通class、Array、Map、Set、Date类型。 &lt;br&gt;不支持@arkts.collections (ArkTS容器集)和 [@Sendable](../../../arkts-utils/arkts-sendable.md)修饰的class。 &lt;br&gt;不支持undefined和null。不支持状态管理V2的数据和[makeObserved](#makeObserved)的返回值。 |
+| source | T | 是 | 数据源。支持普通class、Array、Map、Set、Date类型。 <br>不支持[@arkts.collections (ArkTS容器集)](../../apis-arkts/arkts-apis/arkts-collections.md#arktscollections)和 [@Sendable](../../../arkts-utils/arkts-sendable.md)修饰的class。 <br>不支持undefined和null。不支持状态管理V2的数据和[makeObserved](#makeobserved)的返回值。 |
 
 **返回值：**
 

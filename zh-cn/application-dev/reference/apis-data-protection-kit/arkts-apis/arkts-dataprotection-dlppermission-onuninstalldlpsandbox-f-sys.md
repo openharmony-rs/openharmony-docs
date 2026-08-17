@@ -6,11 +6,11 @@
 function on(type: 'uninstallDLPSandbox', listener: Callback<DLPSandboxState>): void
 ```
 
-注册监听DLP沙箱卸载事件，用于感知沙箱环境的变化。注册成功后，当DLP沙箱被卸载时，系统会通过回调函数通知应用。 调用on注册监听后，建议在不需要监听时调用 [off](arkts-dataprotection-dlppermission-offopendlpfile-f.md#off_openDLPFile)取消监听释放资源。 DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱列表或执行相关的清理操作。
+注册监听DLP沙箱卸载事件，用于感知沙箱环境的变化。注册成功后，当DLP沙箱被卸载时，系统会通过回调函数通知应用。 调用on注册监听后，建议在不需要监听时调用 [off](arkts-dataprotection-dlppermission-offopendlpfile-f.md#offopendlpfile)取消监听释放资源。 DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱列表或执行相关的清理操作。
 
 **起始版本：** 10
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为10。
+**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** -1
 
@@ -45,7 +45,7 @@ function on(type: 'uninstallDLPSandbox', listener: Callback<DLPSandboxState>): v
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.on('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) => {
-  console.info('uninstallDLPSandbox event', info.appIndex, info.bundleName)
+  console.info('uninstallDLPSandbox event', info.appIndex, info.bundleName);
 }); // 订阅。
 ```
 

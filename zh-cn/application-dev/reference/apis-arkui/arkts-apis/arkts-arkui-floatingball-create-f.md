@@ -10,7 +10,7 @@ function create(config: FloatingBallConfiguration): Promise<FloatingBallControll
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -34,9 +34,9 @@ function create(config: FloatingBallConfiguration): Promise<FloatingBallControll
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300019](../errorcode-window.md#1300019-闪控球参数校验错误) | Wrong parameters for operating the floating ball. Possible causes: &lt;br&gt;1.The context parameter is null. &lt;br&gt;2.The FloatingBallConfiguration parameter is null. |
+| [1300019](../errorcode-window.md#1300019-闪控球参数校验错误) | Wrong parameters for operating the floating ball. Possible causes: <br>1.The context parameter is null. <br>2.The FloatingBallConfiguration parameter is null. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible causes: &lt;br&gt;1.The application context or main window is invalid. &lt;br&gt;2.System internal error, such as null pointer or insufficient memory. |
+| [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible causes: <br>1.The application context or main window is invalid. <br>2.System internal error, such as null pointer or insufficient memory. |
 
 ## 示例
 

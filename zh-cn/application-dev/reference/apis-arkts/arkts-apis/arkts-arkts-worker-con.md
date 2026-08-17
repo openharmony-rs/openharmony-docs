@@ -10,11 +10,11 @@ Worker线程用于与宿主线程通信的对象。
 
 **起始版本：** 7
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为7。
+**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
-**替代接口：** [workerPort](#workerPort)
+**替代接口：** [workerPort](#workerport)
 
 <!--Device-worker-const parentPort: DedicatedWorkerGlobalScope--><!--Device-worker-const parentPort: DedicatedWorkerGlobalScope-End-->
 
@@ -30,7 +30,7 @@ Worker线程用于与宿主线程通信的对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** 仅支持ArkTS-Dyn，起始版本为9。
+**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** -1
 

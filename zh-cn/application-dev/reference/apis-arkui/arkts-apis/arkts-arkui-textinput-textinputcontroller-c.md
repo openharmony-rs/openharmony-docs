@@ -6,7 +6,7 @@ TextInput组件的控制器继承自 [TextContentControllerBase](../../../refere
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -24,7 +24,7 @@ caretPosition(value: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -50,7 +50,7 @@ TextInputController的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -70,7 +70,7 @@ setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOpti
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 
@@ -85,7 +85,7 @@ setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | selectionStart | int | 是 | 文本选择区域起始位置，文本框中文字的起始位置为0。 |
-| selectionEnd | int | 是 | 文本选择区域结束位置。当selectionEnd<0时，按照0处理；当selectionEnd大于文本长度时，按照文本长度处理。 |
+| selectionEnd | int | 是 | 文本选择区域结束位置。当selectionEnd&lt;0时，按照0处理；当selectionEnd大于文本长度时，按照文本长度处理。 |
 | options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选中文字时的配置。&lt;br /&gt;默认值：MenuPolicy.DEFAULT |
 
 ## stopEditing
@@ -98,7 +98,7 @@ stopEditing(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 仅支持ArkTS-Sta，起始版本为23。
+**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** -1
 

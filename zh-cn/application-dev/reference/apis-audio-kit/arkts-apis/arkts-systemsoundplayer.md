@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [SystemSoundPlayer](arkts-audio-systemsoundplayer-i.md) | 音效播放器提供了加载、卸载和播放系统声音的功能。 SystemSoundPlayer需要和 [@ohos.multimedia.systemSoundManager](arkts-multimedia-systemsoundmanager.md#@ohos.multimedia.systemSoundManager)配合使用， 才能完成管理系统音效的功能。 |
+| [SystemSoundPlayer](arkts-audio-systemsoundplayer-i.md) | 音效播放器提供了加载、卸载和播放系统声音的功能。 SystemSoundPlayer需要和 [@ohos.multimedia.systemSoundManager](arkts-multimedia-systemsoundmanager.md#ohosmultimediasystemsoundmanager)配合使用， 才能完成管理系统音效的功能。 |
 
