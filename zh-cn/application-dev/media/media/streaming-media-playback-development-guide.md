@@ -94,38 +94,38 @@ this.avPlayer.on('bufferingUpdate', (infoType : media.BufferingInfoType, value :
 
    <!-- @[on('availableBitrates')](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-    ```ts
-    import { media } from '@kit.MediaKit';
-    // 类成员定义avPlayer
-    private avPlayer: media.AVPlayer | null = null;
+```ts
+import { media } from '@kit.MediaKit';
+// 类成员定义avPlayer
+private avPlayer: media.AVPlayer | null = null;
 
-    // 创建avPlayer实例对象。
-    this.avPlayer = await media.createAVPlayer();
-    // 监听当前HLS协议流可用的码率。
-    this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
-      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
-    })
-    ```
+// 创建avPlayer实例对象。
+this.avPlayer = await media.createAVPlayer();
+// 监听当前HLS协议流可用的码率。
+this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
+console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
+})
+```
 
 2. 通过[setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9)接口设置播放码率。若用户设置的码率不在可用码率中，播放器将选择最小且最接近的码率。该接口只能在prepared/playing/paused/completed状态下调用，可通过监听[bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9)事件确认是否生效。
 
   <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-    ```ts
-    import { media } from '@kit.MediaKit';
-    // 类成员定义avPlayer
-    private avPlayer: media.AVPlayer | null = null;
+```ts
+import { media } from '@kit.MediaKit';
+// 类成员定义avPlayer
+private avPlayer: media.AVPlayer | null = null;
 
-    // 创建avPlayer实例对象。
-    this.avPlayer = await media.createAVPlayer();
-    // 监听码率设置是否生效。
-    this.avPlayer.on('bitrateDone', (bitrate: number) => {
-      console.info('bitrateDone called, and bitrate value is: ' + bitrate);
-    })
-    // 设置播放码率。
-    this.bitrate: number = 96000;
-    this.avPlayer.setBitrate(this.bitrate);
-    ```
+// 创建avPlayer实例对象。
+this.avPlayer = await media.createAVPlayer();
+// 监听码率设置是否生效。
+this.avPlayer.on('bitrateDone', (bitrate: number) => {
+console.info('bitrateDone called, and bitrate value is: ' + bitrate);
+})
+// 设置播放码率。
+this.bitrate: number = 96000;
+this.avPlayer.setBitrate(this.bitrate);
+```
 
 ### DASH设置视频起播策略
 
@@ -149,66 +149,66 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
 <!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-    ```ts
-    import { media } from '@kit.MediaKit';
-    // 类成员定义avPlayer
-    private avPlayer: media.AVPlayer | null = null;
+```ts
+import { media } from '@kit.MediaKit';
+// 类成员定义avPlayer
+private avPlayer: media.AVPlayer | null = null;
 
-    // 创建avPlayer实例对象。
-    this.avPlayer = await media.createAVPlayer();
-    this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
-      console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
-    })
-    ```
+// 创建avPlayer实例对象。
+this.avPlayer = await media.createAVPlayer();
+this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
+console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
+})
+```
 
 2. 调用[getTrackDescription](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#gettrackdescription9)获取所有音视频轨道列表。开发者可根据实际需求，基于[MediaDescription](../../reference/apis-media-kit/arkts-apis-media-i.md#mediadescription8)各字段信息，确定目标轨道索引。
 
 <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-    ```ts
-    // 以获取1080p视频轨道索引为例。
-    import { media } from '@kit.MediaKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    public videoTrackIndex: number = 0;
-    // 类成员定义avPlayer
-    private avPlayer: media.AVPlayer | null = null;
-    
-    // 创建avPlayer实例对象。
-    this.avPlayer = await media.createAVPlayer();
-    this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-      if (arrList != null) {
-        for (let i = 0; i < arrList.length; i++) {
-          let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
-          let propertyType: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
-          let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
-          let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
-          if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
-            this.videoTrackIndex = parseInt(propertyIndex?.toString()); // 获取1080p视频轨道索引。
-          }
-        }
-      } else {
-        console.error(`getTrackDescription fail, error:${error}`);
+```ts
+// 以获取1080p视频轨道索引为例。
+import { media } from '@kit.MediaKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+public videoTrackIndex: number = 0;
+// 类成员定义avPlayer
+private avPlayer: media.AVPlayer | null = null;
+
+// 创建avPlayer实例对象。
+this.avPlayer = await media.createAVPlayer();
+this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+  if (arrList != null) {
+    for (let i = 0; i < arrList.length; i++) {
+      let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+      let propertyType: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
+      let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
+      let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
+      if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
+        this.videoTrackIndex = parseInt(propertyIndex?.toString()); // 获取1080p视频轨道索引。
       }
-    });
-    ```
+    }
+  } else {
+    console.error(`getTrackDescription fail, error:${error}`);
+  }
+});
+```
 
 3. 在音视频播放过程中调用[selectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#selecttrack12)选择对应的音视频轨道，或者调用[deselectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#deselecttrack12)取消选择的音视频轨道。
 
 <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-    ```ts
-    import { media } from '@kit.MediaKit';
-    public videoTrackIndex: number = 0;
-        // 类成员定义avPlayer
-    private avPlayer: media.AVPlayer | null = null;
-    
-    // 创建avPlayer实例对象。
-    this.avPlayer = await media.createAVPlayer();
-    // 切换至目标视频轨道。
-    this.avPlayer.selectTrack(this.videoTrackIndex);
-    // 取消选择目标视频轨道。
-    // this.avPlayer.deselectTrack(this.videoTrackIndex);
-    ```
+```ts
+import { media } from '@kit.MediaKit';
+public videoTrackIndex: number = 0;
+// 类成员定义avPlayer
+private avPlayer: media.AVPlayer | null = null;
+
+// 创建avPlayer实例对象。
+this.avPlayer = await media.createAVPlayer();
+// 切换至目标视频轨道。
+this.avPlayer.selectTrack(this.videoTrackIndex);
+// 取消选择目标视频轨道。
+// this.avPlayer.deselectTrack(this.videoTrackIndex);
+```
 
 ## 异常场景说明
 
