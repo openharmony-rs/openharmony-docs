@@ -1,4 +1,4 @@
-# UKey流程示例指导
+# 浏览器双向SSL登录
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -32,7 +32,7 @@
 
 > **注意**
 >
-> 如果要调用底层Extension的三段式能力，需要传入参数中必须包含[OH_HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，且值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
+> 如果要调用底层Extension的三段式能力，需要确保传入参数包含[OH_HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，且值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
 
 ## 实践举例
 
