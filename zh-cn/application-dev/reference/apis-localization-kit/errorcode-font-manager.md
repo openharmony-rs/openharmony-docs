@@ -254,7 +254,7 @@ Font observer not registered.
 
 **错误描述**
 
-注销字体服务死亡观察者时，该观察者未注册。
+安装应用级字体或注销字体服务死亡观察者时，该观察者未注册。
 
 **可能原因**
 
@@ -262,4 +262,4 @@ Font observer not registered.
 
 **处理步骤**
 
-请先调用onFontObserver注册观察者后再执行注销操作。
+请先调用onFontObserver注册观察者后再执行安装应用级字体或注销操作。

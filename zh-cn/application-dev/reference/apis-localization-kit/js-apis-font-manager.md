@@ -109,6 +109,7 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;number&gt;
 | 31100104 | The font file is installed. |
 | 31100105 | Exceeded the maximum number of installed files. |
 | 31100106 | The system ability works abnormally. |
+| 31100503 | Font observer not registered. |
 
 **示例：**
 
