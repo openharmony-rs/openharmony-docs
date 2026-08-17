@@ -74,10 +74,10 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     openDlpFile(dlpUri: string, fileName: string, fd: number) {
-      let want:Want = {
+      let want: Want = {
         'action': 'ohos.want.action.viewData',
         'uri': dlpUri,
-        'parameters' : {
+        'parameters': {
           'fileName': {
             'name': fileName
           },
@@ -110,7 +110,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
         return;
       }
       this.openDlpFile(this.uri, this.fileName, file.fd);
-        
+    
     }
     ```
 
@@ -156,18 +156,21 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
           'parameters': {
             'displayName': fileName
           }
-        };// 请求参数
-        dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
-          this.result = 'startDLPManagerForResult result.resultCode:' + res.resultCode;
-          console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
-          console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.want:' + JSON.stringify(res.want));
-        });
+        }; // 请求参数
+        if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+          dlpPermission.startDLPManagerForResult(context, want).then((res: dlpPermission.DLPManagerResult) => {
+            this.result = 'startDLPManagerForResult result.resultCode:' + res.resultCode;
+            console.info('startDLPManagerForResult res.resultCode:' + res.resultCode);
+            console.info('startDLPManagerForResult res.want:' + JSON.stringify(res.want));
+            hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.resultCode:' + res.resultCode);
+            hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult res.want:' + JSON.stringify(res.want));
+          });
+        }
       } catch (err) {
         this.result = 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message;
         console.error('startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
+        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+          'startDLPManagerForResult error:' + (err as BusinessError).code + (err as BusinessError).message);
       }
     }
     ```
@@ -180,15 +183,17 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     isInSandbox() {
-      dlpPermission.isInSandbox().then((data) => {
-        this.result = 'isInSandbox result: ' + JSON.stringify(data);
-        console.info('isInSandbox result: ' + JSON.stringify(data));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
-      }).catch((err:BusinessError) => {
-        this.result = 'isInSandbox error: ' + JSON.stringify(err);
-        console.error('isInSandbox error: ' + JSON.stringify(err));
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox error: ' + JSON.stringify(err));
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.isInSandbox().then((data) => {
+          this.result = 'isInSandbox result: ' + JSON.stringify(data);
+          console.info('isInSandbox result: ' + JSON.stringify(data));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          this.result = 'isInSandbox error: ' + JSON.stringify(err);
+          console.error('isInSandbox error: ' + JSON.stringify(err));
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox error: ' + JSON.stringify(err));
+        });
+      }
     }
     ```
 
@@ -201,15 +206,17 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     getDLPPermissionInfo() {
-      dlpPermission.getDLPPermissionInfo().then((data) => {
-        this.result = 'getDLPPermissionInfo result: ' + JSON.stringify(data);
-        console.info('getDLPPermissionInfo, result: ' + JSON.stringify(data));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo result: ' + JSON.stringify(data));
-      }).catch((err:BusinessError) => {
-        this.result = 'getDLPPermissionInfo error: ' + JSON.stringify(err);
-        console.error('getDLPPermissionInfo: ' + JSON.stringify(err));
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo error: ' + JSON.stringify(err));
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.getDLPPermissionInfo().then((data) => {
+          this.result = 'getDLPPermissionInfo result: ' + JSON.stringify(data);
+          console.info('getDLPPermissionInfo, result: ' + JSON.stringify(data));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo result: ' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          this.result = 'getDLPPermissionInfo error: ' + JSON.stringify(err);
+          console.error('getDLPPermissionInfo: ' + JSON.stringify(err));
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo error: ' + JSON.stringify(err));
+        });
+      }
     }
     ```
 
@@ -219,13 +226,15 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     getDLPSupportedFileTypes() {
-      dlpPermission.getDLPSupportedFileTypes((err, result) => {
-        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
-        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
-        this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.getDLPSupportedFileTypes((err, result) => {
+          console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+          console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
+          this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
+        });
+      }
     }
     ```
 
@@ -238,25 +247,32 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ``` TypeScript
     isCurrentDlpFile() {
       let file = this.openFile(this.uri);
-      if(!file) {
+      if (!file) {
         this.result = '请打开一个文件！';
         return;
       }
-      dlpPermission.isDLPFile(file.fd).then((res) => {
-        if (res.valueOf()) {
-          this.result = 'isDLPFile result: ' + JSON.stringify(res);
-        } else {
-          this.result = '请打开一个dlp文件! ';
-        }
-        console.info('res', res);
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);
-      }).catch((err:BusinessError) => {
-        this.result = 'isDLPFile error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      }).finally(() => {
-        fileIo.closeSync(file);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.isDLPFile(file.fd).then((res) => {
+          if (res.valueOf()) {
+            this.result = 'isDLPFile result: ' + JSON.stringify(res);
+          } else {
+            this.result = '请打开一个dlp文件! ';
+          }
+          console.info('res', res);
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + res);
+        }).catch((err: BusinessError) => {
+          this.result = 'isDLPFile error: ' + (err as BusinessError).code + (err as BusinessError).message;
+          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        }).finally(() => {
+          try {
+            fileIo.closeSync(file);
+          } catch (e) {
+            console.error('closeSync failed', e);
+          }
+        });
+      }
     }
     ```
     
@@ -271,26 +287,32 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     
     unSubscribe() {
-      try {
-        dlpPermission.off('openDLPFile', this.event); // 取消订阅
-        this.result = 'unSubscribe result: 已取消注册';
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'unSubscribe result: 已取消注册');
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-        this.result = 'unSubscribe error: 取消注册失败';
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        try {
+          dlpPermission.off('openDLPFile', this.event); // 取消订阅
+          this.result = 'unSubscribe result: 已取消注册';
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'unSubscribe result: 已取消注册');
+        } catch (err) {
+          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+          this.result = 'unSubscribe error: 取消注册失败';
+        }
       }
     }
-      
+    
     subscribe() {
-      try {
-        dlpPermission.on('openDLPFile', this.event); // 订阅
-        this.result = 'subscribe result: 已注册';
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'subscribe result: 已注册');
-      } catch (err) {
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-        this.result = 'subscribe error: 注册失败';
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        try {
+          dlpPermission.on('openDLPFile', this.event); // 订阅
+          this.result = 'subscribe result: 已注册';
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'subscribe result: 已注册');
+        } catch (err) {
+          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+          this.result = 'subscribe error: 注册失败';
+        }
       }
     }
     ```
@@ -304,15 +326,18 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     getDLPFileAccessRecords() {
-      dlpPermission.getDLPFileAccessRecords().then((res) => {
-        this.result = 'getDLPFileAccessRecords result: ' + JSON.stringify(res);
-        console.info('res', JSON.stringify(res));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
-      }).catch((err: BusinessError) => {
-        this.result = 'getDLPFileAccessRecords error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.getDLPFileAccessRecords().then((res) => {
+          this.result = 'getDLPFileAccessRecords result: ' + JSON.stringify(res);
+          console.info('res', JSON.stringify(res));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
+        }).catch((err: BusinessError) => {
+          this.result = 'getDLPFileAccessRecords error: ' + (err as BusinessError).code + (err as BusinessError).message;
+          console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        });
+      }
     }
     ```
 
@@ -324,15 +349,18 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     getRetentionSandboxList() {
-      dlpPermission.getRetentionSandboxList().then((res) => {
-        this.result = 'getRetentionSandboxList result: ' + JSON.stringify(res);
-        console.info('res', JSON.stringify(res));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
-      }).catch((err: BusinessError) => {
-        this.result = 'getRetentionSandboxList error' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.getRetentionSandboxList().then((res) => {
+          this.result = 'getRetentionSandboxList result: ' + JSON.stringify(res);
+          console.info('res', JSON.stringify(res));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res' + JSON.stringify(res));
+        }).catch((err: BusinessError) => {
+          this.result = 'getRetentionSandboxList error' + (err as BusinessError).code + (err as BusinessError).message;
+          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        });
+      }
     }
     ```
 11. 设置沙箱应用配置信息。
@@ -341,15 +369,18 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     setSandboxAppConfig() {
-      dlpPermission.setSandboxAppConfig('configInfo').then(() => {
-        this.result = 'setSandboxAppConfig result: 设置沙箱应用配置信息成功';
-        console.info('res', '设置沙箱应用配置信息成功');
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'setSandboxAppConfig result: 设置沙箱应用配置信息成功');
-      }).catch((err: BusinessError) => {
-        this.result = 'setSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.setSandboxAppConfig('configInfo').then(() => {
+          this.result = 'setSandboxAppConfig result: 设置沙箱应用配置信息成功';
+          console.info('res', '设置沙箱应用配置信息成功');
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'setSandboxAppConfig result: 设置沙箱应用配置信息成功');
+        }).catch((err: BusinessError) => {
+          this.result = 'setSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        });
+      }
     }
     ```
 
@@ -360,15 +391,18 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     cleanSandboxAppConfig() {
-      dlpPermission.cleanSandboxAppConfig().then(() => {
-        this.result = 'cleanSandboxAppConfig result: 清理沙箱成功';
-        console.info('res', '清理沙箱成功');
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'cleanSandboxAppConfig result: 清理沙箱成功');
-      }).catch((err: BusinessError) => {
-        this.result = 'cleanSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.cleanSandboxAppConfig().then(() => {
+          this.result = 'cleanSandboxAppConfig result: 清理沙箱成功';
+          console.info('res', '清理沙箱成功');
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'cleanSandboxAppConfig result: 清理沙箱成功');
+        }).catch((err: BusinessError) => {
+          this.result = 'cleanSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        });
+      }
     }
     ```
 
@@ -378,15 +412,18 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     getSandboxAppConfig() {
-      dlpPermission.getSandboxAppConfig().then((res) => {
-        this.result = 'getSandboxAppConfig result: ' + JSON.stringify(res);
-        console.info('res', JSON.stringify(res));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getSandboxAppConfig result: ' + JSON.stringify(res));
-      }).catch((err: BusinessError) => {
-        this.result = 'getSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.getSandboxAppConfig().then((res) => {
+          this.result = 'getSandboxAppConfig result: ' + JSON.stringify(res);
+          console.info('res', JSON.stringify(res));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getSandboxAppConfig result: ' + JSON.stringify(res));
+        }).catch((err: BusinessError) => {
+          this.result = 'getSandboxAppConfig error: ' + (err as BusinessError).code + (err as BusinessError).message;
+          console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        });
+      }
     }
     ```
 
@@ -398,25 +435,28 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     startDLPManagerForResult() {
-      try {
-        let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
-        let want:Want = {
-          'uri': this.uri,
-          'parameters' : {
-            'displayName': this.fileName
-          }
-        }; // 请求参数
-        dlpPermission.startDLPManagerForResult(context, want).then((res) => {
-          this.result = 'startDLPManagerForResult resultCode: ' + res.resultCode;
-          console.info('res.resultCode', res.resultCode);
-          console.info('res.want', JSON.stringify(res.want));
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.resultCode' + res.resultCode);
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.want' + JSON.stringify(res.want));
-        }); // 打开DLP权限管理应用
-      } catch (err) {
-        this.result = 'startDLPManagerForResult error' + err.code + err.message;
-        console.error('error', err.code, err.message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        try {
+          let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+          let want: Want = {
+            'uri': this.uri,
+            'parameters': {
+              'displayName': this.fileName
+            }
+          }; // 请求参数
+          dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+            this.result = 'startDLPManagerForResult resultCode: ' + res.resultCode;
+            console.info('res.resultCode', res.resultCode);
+            console.info('res.want', JSON.stringify(res.want));
+            hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.resultCode' + res.resultCode);
+            hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'res.want' + JSON.stringify(res.want));
+          }); // 打开DLP权限管理应用
+        } catch (err) {
+          this.result = 'startDLPManagerForResult error' + err.code + err.message;
+          console.error('error', err.code, err.message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        }
       }
     }
     ```
@@ -427,15 +467,18 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     isDLPFeature() {
-      dlpPermission.isDLPFeatureProvided().then((res) => {
-        this.result = 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf());
-        console.info('res', JSON.stringify(res.valueOf()));
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf()));
-      }).catch((err: BusinessError) => {
-        this.result = 'isDLPFeatureProvided error: ' + (err as BusinessError).code + (err as BusinessError).message;
-        console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
-      });
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        dlpPermission.isDLPFeatureProvided().then((res) => {
+          this.result = 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf());
+          console.info('res', JSON.stringify(res.valueOf()));
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isDLPFeatureProvided result: ' + JSON.stringify(res.valueOf()));
+        }).catch((err: BusinessError) => {
+          this.result = 'isDLPFeatureProvided error: ' + (err as BusinessError).code + (err as BusinessError).message;
+          console.error('error: ', (err as BusinessError).code, (err as BusinessError).message); // 失败报错
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        });
+      }
     }
     ```
 16. 设置企业应用防护策略。   
@@ -475,34 +518,37 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     setDLPProtectPolicy() {
-      try {
-        let attributeValues: string[] = [ '1' ];
-        let attribute: Attribute = {
-          attributeId: 'DeviceHealthyStatus',
-          attributeValues: attributeValues,
-          valueType: 0,
-          opt: 2
-        }; // 属性信息。
-        let rule: Rule = {
-          ruleId: 'ruleId',
-          attributes: [ attribute ]
-        }; // 规则。
-        let policy: Policy = {
-          rules: [ rule ],
-          policyId: 'policyId',
-          ruleConflictAlg: 0
-        }; // 策略。
-        let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-          policyString: JSON.stringify(policy)
-        };
-        dlpPermission.setEnterprisePolicy(enterprisePolicy);
-        console.info('set enterprise policy success');
-        this.result = 'set enterprise policy success';
-        hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'set enterprise policy success');
-      } catch (err) {
-        console.error('error:' + err.code + err.message); // 失败报错。
-        this.result = 'error:' + err.code + err.message;
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        try {
+          let attributeValues: string[] = ['1'];
+          let attribute: Attribute = {
+            attributeId: 'DeviceHealthyStatus',
+            attributeValues: attributeValues,
+            valueType: 0,
+            opt: 2
+          }; // 属性信息。
+          let rule: Rule = {
+            ruleId: 'ruleId',
+            attributes: [attribute]
+          }; // 规则。
+          let policy: Policy = {
+            rules: [rule],
+            policyId: 'policyId',
+            ruleConflictAlg: 0
+          }; // 策略。
+          let enterprisePolicy: dlpPermission.EnterprisePolicy = {
+            policyString: JSON.stringify(policy)
+          };
+          dlpPermission.setEnterprisePolicy(enterprisePolicy);
+          console.info('set enterprise policy success');
+          this.result = 'set enterprise policy success';
+          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'set enterprise policy success');
+        } catch (err) {
+          console.error('error:' + err.code + err.message); // 失败报错。
+          this.result = 'error:' + err.code + err.message;
+          hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG,
+            'error' + (err as BusinessError).code + (err as BusinessError).message);
+        }
       }
     }
     ```
@@ -513,22 +559,24 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     scanSensitiveInfo() {
       let filepath = this.uri;
       let policies: identifySensitiveContent.Policy[] = [
-        {'sensitiveLabel':'1', 'keywords':[], 'regex':''}
+        { 'sensitiveLabel': '1', 'keywords': [], 'regex': '' }
       ];
-      try {
-        identifySensitiveContent.scanFile(filepath, policies).then(records => {
-          console.info('scanFile finish');
-          this.result = 'scanFile finish';
-          hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'scanFile finish');
-        }).catch((err:Error) => {
+      if (canIUse('SystemCapability.Security.DataLossPrevention')) {
+        try {
+          identifySensitiveContent.scanFile(filepath, policies).then(records => {
+            console.info('scanFile finish');
+            this.result = 'scanFile finish';
+            hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'scanFile finish');
+          }).catch((err: Error) => {
+            console.error('error message', err.message);
+            this.result = 'error message' + err.message;
+            hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
+          })
+        } catch (err) {
           console.error('error message', err.message);
           this.result = 'error message' + err.message;
           hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
-        })
-      } catch (err) {
-        console.error('error message', err.message);
-        this.result = 'error message' + err.message;
-        hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error message' + err.message);
+        }
       }
     }
     ```
