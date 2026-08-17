@@ -676,11 +676,11 @@ WAPI认证方式的枚举。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT | 1 | Default。Wifi6以下的WLAN类别。 |
+| DEFAULT | 1 | Default。Wi-Fi6以下的WLAN类别。 |
 | WIFI6 | 2 | Wifi6。 |
 | WIFI6_PLUS | 3 | Wifi6+。 |
-| WIFI7<sup>15+</sup> | 4 | Wifi7。 |
-| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 |
+| WIFI7<sup>15+</sup> | 4 | Wi-Fi7。 |
+| WIFI7_PLUS<sup>15+</sup> | 5 | Wi-Fi+。 |
 
 ## ConnectSettings
 
@@ -1829,7 +1829,7 @@ IPV4信息。
 
 getIpv6Info(): Ipv6Info
 
-获取Ipv6信息。
+获取IPv6信息。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1870,15 +1870,15 @@ IPv6信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| linkIpv6Address | string | 否 | 否 | 链路Ipv6地址。 |
-| globalIpv6Address | string | 否 | 否 | 全局Ipv6地址。 |
-| randomGlobalIpv6Address | string | 否 | 否 | 随机全局Ipv6地址。 预留字段，暂不支持。|
-| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地Ipv6地址。 |
-| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地Ipv6地址。 |
+| linkIpv6Address | string | 否 | 否 | 链路IPv6地址。 |
+| globalIpv6Address | string | 否 | 否 | 全局IPv6地址。 |
+| randomGlobalIpv6Address | string | 否 | 否 | 随机全局IPv6地址。 预留字段，暂不支持。|
+| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地IPv6地址。 |
+| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地IPv6地址。 |
 | gateway | string | 否 | 否 | 网关。 |
 | netmask | string | 否 | 否 | 网络掩码。 |
-| primaryDNS | string | 否 | 否 | 主DNS服务器Ipv6地址。 |
-| secondDNS | string | 否 | 否 | 备DNS服务器Ipv6地址。 |
+| primaryDNS | string | 否 | 否 | 主DNS服务器IPv6地址。 |
+| secondDNS | string | 否 | 否 | 备DNS服务器IPv6地址。 |
 
 ## wifiManager.getCountryCode
 

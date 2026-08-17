@@ -38,7 +38,7 @@ enableHotspot(): boolean;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 启用WLAN热点是否成功。操作结果， true：成功， false：失败。 |
+  | boolean | 使能WLAN热点是否成功。操作结果， true：成功， false：失败。 |
 
 
 ## wifiext.disableHotspot<sup>(deprecated)</sup>
@@ -59,7 +59,7 @@ disableHotspot(): boolean;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 禁用WLAN是否成功。操作结果， true：成功， false：失败。 |
+  | boolean | 去使能WLAN是否成功。操作结果， true：成功， false：失败。 |
 
 
 ## wifiext.getSupportedPowerModel<sup>(deprecated)</sup>
