@@ -939,7 +939,7 @@ CryptoExtensionAbility不支持以下模块的引用。
 | Connectivity Kit | [@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md) |
 | Connectivity Kit | [@ohos.wifiManagerExt (WLAN扩展接口)](../../reference/apis-connectivity-kit/js-apis-wifiManagerExt.md) |
 | Contacts Kit | [@ohos.contact (联系人)](../../reference/apis-contacts-kit/js-apis-contact.md) |
-| Data Protection Kit | [@ohos.dlpPermission (数据防泄漏)](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) |
+| Data Protection Kit | [@ohos.dlpPermission (数据防泄露)](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) |
 | Distributed Service Kit | [@ohos.distributedDeviceManager (设备管理)](../../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md) |
 | Distributed Service Kit | [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)](../../reference/apis-distributedservice-kit/js-apis-device-manager-sys.md) |
 | Distributed Service Kit | [@ohos.distributedHardware.hardwareManager (分布式硬件管理)(系统接口)](../../reference/apis-distributedservice-kit/js-apis-distributedHardwareManager-sys.md) |
