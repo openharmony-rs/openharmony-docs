@@ -105,10 +105,10 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;number&gt;
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 31100101 | The font does not exist. |
 | 31100102 | The font is not supported. |
-| 31100103 | Font file copy failed. |
+| 31100103 | Failed to copy the font file. |
 | 31100104 | The font file is installed. |
 | 31100105 | Exceeded the maximum number of installed files. |
-| 31100106 | Other error. |
+| 31100106 | The system ability works abnormally. |
 
 **示例：**
 
@@ -158,8 +158,8 @@ uninstallScopeFont(url: string): Promise&lt;number&gt;
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 31100107 | The font file does not exist. |
-| 31100108 | Font file delete error. |
-| 31100109 | Other error. |
+| 31100108 | Failed to delete the font file. |
+| 31100109 | The system ability works abnormally. |
 
 **示例：**
 
@@ -208,7 +208,7 @@ getFontScope(url: string): Promise&lt;FontScope | null&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100110 | System error. |
+| 31100110 | Call failed due to system error. |
 
 **示例：**
 
@@ -305,7 +305,7 @@ offFontObserver(observer: FontClientObserver): void
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 31100503 | Font observer not registered, please register first. |
+| 31100503 | Font observer not registered. |
 
 **示例：**
 

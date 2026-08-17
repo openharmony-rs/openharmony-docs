@@ -106,7 +106,7 @@ Exceeded the maximum number of installed files.
 
 **错误信息**
 
-Other error.
+The system ability works abnormally.
 
 **错误描述**
 
@@ -160,7 +160,7 @@ Failed to delete the font file.
 
 **错误信息**
 
-Other error.
+The system ability works abnormally.
 
 **错误描述**
 
@@ -178,7 +178,7 @@ Other error.
 
 **错误信息**
 
-System error.
+Call failed due to system error.
 
 **错误描述**
 
@@ -250,7 +250,7 @@ Exceeded maximum number of font observers.
 
 **错误信息**
 
-Font observer not registered, please register first.
+Font observer not registered.
 
 **错误描述**
 
