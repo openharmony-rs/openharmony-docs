@@ -646,7 +646,7 @@ Operation failed. Bas observers exceeds the limit.
 
 **处理步骤**
 
-取消部分业务监听后再尝试注册监听操作。
+取消部分业务对电量服务的监听后再尝试注册监听操作。
 
 ### 电量服务请求忙碌
 **错误信息**
@@ -659,7 +659,7 @@ Operation failed. Bas request busy.
 
 **可能原因**
 
-电量服务请求忙碌。例如，同时有多个业务调用bas.getRemoteDeviceBatteryInfo(js-apis-bluetooth-bas-sys.md#basgetremotedevicebatteryinfo)请求读取同个设备的电量信息，达到请求的最大数量后，在未收到设备回复的电量之前，再有业务对相同的设备发起电量读取请求会报此错误。
+电量服务请求忙碌。例如，同时有多个业务调用[bas.getRemoteDeviceBatteryInfo](js-apis-bluetooth-bas-sys.md#basgetremotedevicebatteryinfo)请求读取同个设备的电量信息，达到请求的最大数量后，在未收到设备回复的电量之前，再有业务对相同的设备发起电量读取请求会报此错误。
 
 **处理步骤**
 
