@@ -315,8 +315,9 @@
     
     void StartNativeChildProcess()
     {
+        // ...
         NativeChildProcess_Args args;
-        // 设置entryParams
+        // 设置entryParams，支持传输的最大数据量为150KB
         const size_t entryParamsSize = 10;
         args.entryParams = (char *)malloc(sizeof(char) * entryParamsSize);
         if (args.entryParams != nullptr) {
@@ -335,23 +336,21 @@
         args.fdList.head->fd = fd;
         // 此处只插入一个fd记录，根据需求可以插入更多fd记录到链表中，最多不超过16个
         args.fdList.head->next = NULL;
-        // 创建子进程配置信息对象
-        Ability_ChildProcessConfigs *configs = OH_Ability_CreateChildProcessConfigs();
-        // 设置子进程的进程名
-        OH_Ability_ChildProcessConfigs_SetProcessName(configs, "child");
-
+        NativeChildProcess_Options options = {.isolationMode = NCP_ISOLATION_MODE_ISOLATED};
+    
         // 第一个参数"libchildprocesssample.so:Main"为实现了子进程Main方法的动态库文件名称和入口方法名
         int32_t pid = -1;
         Ability_NativeChildProcess_ErrCode ret =
-            OH_Ability_StartNativeChildProcessWithConfigs("libchildprocesssample.so:Main", args, configs, &pid);
-        // configs对象使用完毕后需要销毁，避免内存泄漏
-        OH_Ability_DestroyChildProcessConfigs(configs);
+            OH_Ability_StartNativeChildProcess("libchildprocesssample.so:Main", args, options, &pid);
         if (ret != NCP_NO_ERROR) {
             // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
             // 子进程未能正常启动时的异常处理
             // ...
         }
-        // ...
+    
+        // 其他逻辑
+    // ...
+    
         // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
     }
     ```
