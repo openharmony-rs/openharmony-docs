@@ -2331,7 +2331,9 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
-获取P2P本端设备信息，使用Promise异步回调。使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法正常获取到本端设备信息。
+获取P2P本端设备信息，使用Promise异步回调。
+
+使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法正常获取到本端设备信息。
 
 **需要权限：** 
 
