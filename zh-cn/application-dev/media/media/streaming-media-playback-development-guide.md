@@ -151,16 +151,7 @@ console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
 
 <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// 以获取1080p视频轨道索引为例。
-import { media } from '@kit.MediaKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-public videoTrackIndex: number = 0;
-// 类成员定义avPlayer
-private avPlayer: media.AVPlayer | null = null;
-
-// 创建avPlayer实例对象。
-this.avPlayer = await media.createAVPlayer();
+``` TypeScript
 this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
   if (arrList != null) {
     for (let i = 0; i < arrList.length; i++) {
@@ -169,7 +160,7 @@ this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.Me
       let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
       let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
       if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
-        this.videoTrackIndex = parseInt(propertyIndex?.toString()); // 获取1080p视频轨道索引。
+        this.videoTrackIndex = parseInt(propertyIndex.toString()); // 获取1080p视频轨道索引。
       }
     }
   } else {
