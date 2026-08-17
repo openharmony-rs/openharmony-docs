@@ -54,7 +54,7 @@ This API is used only in FA Mode, but the current Mode is Stage.
 
 **可能原因**
 
-错误的使用当前工程不支持的模型接口。
+错误地使用当前工程不支持的模型接口。
 
 **处理步骤**
 
@@ -72,7 +72,7 @@ This API is used only in Stage Mode, but the current Mode is FA.
 
 **可能原因**
 
-错误的使用当前工程不支持的模型接口。
+错误地使用当前工程不支持的模型接口。
 
 **处理步骤**
 
