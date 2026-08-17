@@ -161,18 +161,13 @@ this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.Me
 
 <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-import { media } from '@kit.MediaKit';
-public videoTrackIndex: number = 0;
-// 类成员定义avPlayer
-private avPlayer: media.AVPlayer | null = null;
-
-// 创建avPlayer实例对象。
-this.avPlayer = await media.createAVPlayer();
-// 切换至目标视频轨道。
-this.avPlayer.selectTrack(this.videoTrackIndex);
-// 取消选择目标视频轨道。
-// this.avPlayer.deselectTrack(this.videoTrackIndex);
+``` TypeScript
+// 切换至目标视频轨道
+try {
+  this.avPlayer.selectTrack(track);
+} catch (error) {
+  console.error(`${this.tag}: selectTrack failed, error message is = ${JSON.stringify(error.message)}`);
+}
 ```
 
 ## 异常场景说明
