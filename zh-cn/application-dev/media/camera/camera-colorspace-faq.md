@@ -20,7 +20,7 @@
 
 ## 解决措施
 
-通过[getActiveColorSpace（ArkTs）](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md#getactivecolorspace12)或者[getActiveColorSpace（C/C++）](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_getactivecolorspace)查询当前会话生效的色彩空间，处理相机输出流数据时配置正确的色彩空间信息。
+通过[getActiveColorSpace（ArkTs）](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md#getactivecolorspace12)或者[getActiveColorSpace（C/C++）](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_getactivecolorspace)查询当前相机会话生效的色彩空间，处理相机输出流数据时配置正确的色彩空间信息。
 
 根据查询的colorSpace色彩空间信息，相机应用可通过setColorSpace相关接口配置对应的色彩空间参数信息
 
