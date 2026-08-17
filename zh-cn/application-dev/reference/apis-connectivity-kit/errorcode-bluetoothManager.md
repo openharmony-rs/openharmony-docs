@@ -614,6 +614,57 @@ Operation failed. Remote device has an error.
 
 保证对端设备使用正确，再尝试操作。
 
+### 未注册电量服务监听
+**错误信息**
+
+Operation failed. Unregistered bas observer.
+
+**错误描述**
+
+调用方未注册电量服务监听。
+
+**可能原因**
+
+调用方未注册电量服务监听。
+
+**处理步骤**
+
+保证已正常注册电量服务监听，再尝试操作。
+
+### 电量服务监听已达最大数量
+**错误信息**
+
+Operation failed. Bas observers exceeds the limit.
+
+**错误描述**
+
+电量服务监听已达最大数量。
+
+**可能原因**
+
+电量服务监听已达最大数量。
+
+**处理步骤**
+
+取消部分业务监听后再尝试注册监听操作。
+
+### 电量服务请求忙碌
+**错误信息**
+
+Operation failed. Bas request busy.
+
+**错误描述**
+
+电量服务请求忙碌。
+
+**可能原因**
+
+电量服务请求忙碌。例如，同时有多个业务调用bas.getRemoteDeviceBatteryInfo(js-apis-bluetooth-bas-sys.md#basgetremotedevicebatteryinfo)请求读取同个设备的电量信息，达到请求的最大数量后，在未收到设备回复的电量之前，再有业务对相同的设备发起电量读取请求会报此错误。
+
+**处理步骤**
+
+等待电量服务处理完当前请求后再进行操作。
+
 ## 2900100 IPC传输失败
 
 **错误信息**
