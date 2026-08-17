@@ -321,7 +321,7 @@ connectToDevice(config: WifiDeviceConfig): void
     wifiManager.connectToDevice(config);
         
   }catch(error){
-    console.error(`failed, code: ${error.code}, message: ${error.message}`);
+    console.error("failed:" + JSON.stringify(error));
   }
 ```
 
