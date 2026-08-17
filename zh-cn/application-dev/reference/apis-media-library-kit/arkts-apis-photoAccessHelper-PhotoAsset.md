@@ -26,7 +26,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | 是   | 否   | 媒体文件资源URI（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件URI介绍中的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 是   | 否   | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                               |
-| displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度的取值范围为[1, 255]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
+| displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度的取值范围为[1, 255]字符。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。         |
 
 ## get
 
@@ -42,7 +42,7 @@ get(member: string): MemberType
 
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | 是    | 成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要获取的[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)，例如：get title属性fetchColumns: ['title']。 |
+| member | string | 是    | 成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要获取的[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)，例如：获取title属性时，需要在fetchColumns中填入['title']。 |
 
 **返回值：**
 
@@ -97,8 +97,8 @@ set(member: string, value: string): void
 
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度的取值范围为[1, 255]。 |
-| value | string | 是    | 设置成员参数名称，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度的取值范围为[1, 255]字符。 |
+| value | string | 是    | 设置成员参数的值，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
 
 **错误码：**
 
@@ -157,7 +157,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-错误码14000001，请参考 [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)获取有关文件名的格式和长度要求。
+错误码14000001表示显示名称无效，请参考[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)中的DISPLAY_NAME字段获取有关文件名的格式和长度要求。
 
 
 | 错误码ID | 错误信息 |
@@ -183,14 +183,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: ['title'],
     predicates: predicates
   };
+  // 获取照片资源集合。
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  // 获取第一个照片资源对象。
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('photoAsset is undefined');
+    return;
+  }
   let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+  // 获取当前标题值。
   let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
   console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
   photoAsset.set(title, 'newTitle2');
   photoAsset.commitModify((err) => {
-    if (err === undefined) {
+    if (!err) {
       let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
       console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
     } else {
@@ -399,7 +406,7 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -440,7 +447,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnail((err, pixelMap) => {
-    if (err === undefined) {
+    if (!err) {
       console.info('getThumbnail successful ' + pixelMap);
     } else {
       console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
@@ -465,7 +472,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 | 参数名      | 类型                                  | 必填   | 说明               |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 是    | 缩略图尺寸。            |
+| size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 是    | 缩略图尺寸。取值原则：width和height为正整数，单位：像素（px）。 |
 | callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是    | 回调函数。当获取文件的缩略图成功，err为undefined，data为缩略图的PixelMap；否则为错误对象。  |
 
 **错误码：**
@@ -502,7 +509,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let asset = await fetchResult.getFirstObject();
     console.info('asset displayName = ', asset.displayName);
     asset.getThumbnail(size, (err, pixelMap) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('getThumbnail successful ' + pixelMap);
       } else {
         console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
@@ -530,7 +537,7 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| size | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否    | 缩略图尺寸。 |
+| size | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否    | 缩略图尺寸。取值原则：width和height为正整数，不传则使用默认尺寸256×256。单位：像素（px）。 |
 
 **返回值：**
 
@@ -593,13 +600,13 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
+| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]字符（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Promise对象，返回[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)。 |
+| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Promise对象，返回克隆后生成的新[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)对象。 |
 
 **错误码：**
 
@@ -690,7 +697,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
   let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
   photoAsset.getReadOnlyFd((err, fd) => {
-    if (fd !== undefined) {
+    if (!err) {
       console.info('File fd' + fd);
       photoAsset.close(fd);
     } else {
@@ -758,7 +765,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     let fd: number = await photoAsset.getReadOnlyFd();
-    if (fd !== undefined) {
+    if (!err) {
       console.info('File fd' + fd);
       photoAsset.close(fd);
     } else {

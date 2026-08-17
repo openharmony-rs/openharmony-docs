@@ -646,7 +646,7 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
   };
   phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ALBUMS_MODE, fetchOptions,
     async (err, fetchResult) => {
-      if (err !== undefined) {
+      if (err) {
         console.error(`getHiddenAlbumsViewCallback failed with error: ${err.code}, ${err.message}`);
         return;
       }
@@ -910,7 +910,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     phAccessHelper.deleteAssets([asset.uri], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('deleteAssets successfully');
       } else {
         console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
@@ -1059,7 +1059,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getObjectByPosition(expectIndex);
 
     phAccessHelper.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions, (err, index) => {
-      if (err === undefined) {
+      if (!err) {
         console.info(`getPhotoIndex successfully and index is : ${index}`);
       } else {
         console.error(`getPhotoIndex failed; error: ${err.code}, ${err.message}`);
@@ -1207,7 +1207,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.saveFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('saveFormInfo success');
     } else {
       console.error(`saveFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1329,7 +1329,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.removeFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('removeFormInfo success');
     } else {
       console.error(`removeFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1421,7 +1421,7 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给接口调用方的媒体库文件uri列表。Uri已对tokenId对应的应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给接口调用方的媒体库文件URI列表。URI已对tokenId对应的应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1487,7 +1487,7 @@ grantPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Photo
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，0:授权成功。 1:已有权限。-1:授权失败。|
+| Promise&lt;number&gt; | Promise对象，返回授权结果。0表示授权成功。1表示已有权限。-1表示授权失败。 |
 
 **错误码：**
 
@@ -1517,7 +1517,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     console.info('grantPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUriPermission failed, error=' + err);
+    console.error(`grantPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1547,7 +1547,7 @@ grantPhotoUrisPermission(tokenId: number, uriList: Array&lt;string&gt;, photoPer
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，0: 授权成功。 -1:授权失败。|
+| Promise&lt;number&gt; | Promise对象，返回授权结果。0表示授权成功。-1表示授权失败。  |
 
 **错误码：**
 
@@ -1580,7 +1580,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     console.info('grantPhotoUrisPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUrisPermission failed, error=' + err);
+    console.error(`grantPhotoUrisPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1609,7 +1609,7 @@ cancelPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Phot
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，0:取消成功。-1:取消失败。|
+| Promise&lt;number&gt; | Promise对象，返回取消结果。0表示取消成功。-1表示取消失败。 |
 
 **错误码：**
 
@@ -1638,7 +1638,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     console.info('cancelPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('cancelPhotoUriPermission failed, error=' + err);
+    console.error(`cancelPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1659,14 +1659,14 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------  | --------------------------------------- | ---- | --------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 生成缩略图选项。  |
+| predicate  | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 生成缩略图选项。  |
 | callback   | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当成功时标识通知任务结束，err为undefined，否则为错误对象。|
 
 **返回值：**
 
 | 类型                  | 说明                  |
 | --------------------- | -------------------- |
-| Promise&lt;number&gt; | 返回缩略图生成任务id。 |
+| number                | 返回缩略图生成任务ID。 |
 
 **错误码：**
 
@@ -1684,7 +1684,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
 
@@ -1744,7 +1744,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
   console.info(`startThumbnailCreationTask: 第一个回调`);
@@ -1806,6 +1806,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('stopThumbnailCreationTask test start');
+    // taskId为startThumbnailCreationTask接口的返回值，此处为示例值。
     let taskId: number = 75983;
     phAccessHelper.stopThumbnailCreationTask(taskId);
   } catch (err) {
@@ -1851,7 +1852,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
-  class indexProgress {
+  class IndexProgress {
     finishedImageCount: number = 0;
     totalImageCount: number = 0;
     finishedVideoCount: number = 0;
@@ -1863,7 +1864,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let result: string = await phAccessHelper.getIndexConstructProgress();
     console.info('getIndexProgress:' + result);
 
-    let jsonObj: indexProgress = JSON.parse(result);
+    let jsonObj: IndexProgress = JSON.parse(result);
     // ...使用获取到的索引构建进度数据。
   } catch (err) {
     console.error(`getIndexConstructProgress failed, error: ${err.code}, ${err.message}`);
@@ -2300,13 +2301,13 @@ createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, t
 | appId| string | 是 | 需要保存图片/视频文件的应用app id。 |
 | tokenId| number| 是 | 需要短时授权应用的唯一标识。 |
 | authorizationMode| [AuthorizationMode](#authorizationmode12)| 是 | 授权模式。授予应用短期内再次保存无需重复弹框确认。 |
-| PhotoCreationConfig| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | 是 | 保存图片/视频到媒体库的配置。|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | 是 | 保存图片/视频到媒体库的配置。|
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<Array\<string>> | Promise对象，返回给接口调用方的媒体库文件uri列表。Uri已对appId对应的应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。|
+| Promise\<Array\<string>> | Promise对象，返回给接口调用方的媒体库文件URI列表。URI已对appId对应的应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -2625,7 +2626,7 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 | source  | [PhotoCreationSource](#photocreationsource18)         | 是   | 代替应用创建资产传入的应用信息。                                     |
 | albumUri  | string             | 是   | 相册uri。                                     |
 | isAuthorized  |  boolean              | 是   | 是否授权其他应用。true表示授权，false表示不授权。                                     |
-| PhotoCreationConfigs| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | 是 | 保存图片/视频到媒体库的配置。|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | 是 | 保存图片/视频到媒体库的配置。|
 
 **返回值：**
 
@@ -2712,7 +2713,6 @@ on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2772,7 +2772,6 @@ off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;)
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2835,7 +2834,6 @@ on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;):
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -2895,7 +2893,6 @@ off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -2927,7 +2924,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
-监听与智慧分析相册相关的媒体资产的变更情况，该变更携带智慧分析相册变更信息，当且仅当资产变更涉及智慧分析相册信息变更时，才会发送该资产变更通知，通过callback返回资产变化结果，可以注册多个callback。使用callback异步回调。
+监听与智慧分析相册相关的媒体资产变更，当资产变更涉及智慧分析相册信息变更时，通过callback返回资产变化结果，可以注册多个callback。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2949,7 +2946,7 @@ onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
+| 23800151  | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -2957,7 +2954,6 @@ onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -3008,7 +3004,7 @@ offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -3016,7 +3012,6 @@ offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
@@ -3032,9 +3027,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
   try {
     // 注册onCallback1监听。
-    phAccessHelper.offAnalysisPhotoChange(onCallback1);
+    phAccessHelper.onAnalysisPhotoChange(onCallback1);
     // 注册onCallback2监听。
-    phAccessHelper.offAnalysisPhotoChange(onCallback2);
+    phAccessHelper.onAnalysisPhotoChange(onCallback2);
 
     // 关闭onCallback1监听，onCallback2继续监听。
     phAccessHelper.offAnalysisPhotoChange(onCallback1);
@@ -3079,7 +3074,6 @@ on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3139,7 +3133,6 @@ off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): voi
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3202,7 +3195,6 @@ on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3262,7 +3254,6 @@ off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): vo
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3316,7 +3307,7 @@ onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.                                                  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -3324,7 +3315,6 @@ onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3375,7 +3365,7 @@ offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -3383,7 +3373,6 @@ offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3616,7 +3605,7 @@ setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Pr
 
 | 类型                  | 说明                        |
 | --------------------- | --------------------------- |
-| Promise&amp;lt;void&amp;gt;| Promise对象，无返回结果。 |
+| Promise&lt;void&gt;        | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3726,7 +3715,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
+通过克隆前的旧URI列表获取克隆后的当前URI列表。使用Promise异步回调。
 
 为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
 
@@ -3740,7 +3729,7 @@ getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。数组大小范围为[1, 100]。 |
 
 **返回值：**
 
@@ -3785,7 +3774,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
+通过克隆前的旧URI列表获取克隆后的当前URI。使用Promise异步回调。
 
 为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
 
@@ -3799,7 +3788,7 @@ getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。数组大小范围为[1, 100]。 |
 
 **返回值：**
 
@@ -4990,7 +4979,7 @@ createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | 是 | 创建资产的设置列表。 |
+| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | 是 | 创建资产的设置列表。数组的大小不能超过500个。 |
 | isRealTimeThumb | boolean | 是 | 表示创建资产时是否实时生成缩略图。true表示在创建资产时实时生成缩略图，false表示在创建资产时不实时生成缩略图。 |
 | albumUri | string | 否 | 创建资产时指定目标相册的URI。如果未指定，默认值为空字符串。 |
 
@@ -5094,9 +5083,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getDeepOptimizeSpace(): Promise&lt;number&gt;
 
-获取可以深度优化存储空间的大小，单位为字节（byte）。使用Promise异步回调。
+获取可以深度优化存储空间的大小，单位为字节（Byte）。使用Promise异步回调。
 
-> - 此接口耗时较长，建议先调用[canPerformDeepOptimizeSpace](#canperformdeepoptimizespace)确认当前系统状态是否允许执行。
+> - 此接口执行耗时可能较长（耗时长短取决于待处理的数据量），建议先调用[canPerformDeepOptimizeSpace](#canperformdeepoptimizespace)确认当前系统状态是否允许执行。
 > - 仅在返回true时调用此接口。
 
 **起始版本：** 26.0.0
@@ -6074,7 +6063,7 @@ setPending(pendingState: boolean): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-|Promise&lt;boolean&gt; | Promise对象，返回void。 |
+|Promise&lt;void&gt;    | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6099,7 +6088,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset = await phAccessHelper.createAsset(testFileName);
     await photoAsset.setPending(true);
     // add asset resource.
-    photoAsset.setPending(false);
+    await photoAsset.setPending(false);
   } catch (err) {
     console.error(`setPendingPromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
@@ -6570,7 +6559,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### commitEditedAsset<sup>11+</sup>
 
-commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;)
+commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 提交编辑数据以及编辑后的图片或视频。使用callback异步回调。
 
@@ -6712,7 +6701,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### revertToOriginal<sup>11+</sup>
 
-revertToOriginal(callback: AsyncCallback&lt;void&gt;)
+revertToOriginal(callback: AsyncCallback&lt;void&gt;): void
 
 回退到编辑前的状态。使用callback异步回调。
 
@@ -6793,7 +6782,7 @@ revertToOriginal(): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-|Promise&lt;string&gt; | Promise对象，返回void。 |
+|Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6824,10 +6813,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (photoAsset === undefined) {
-      console.error('getHiddenAlbumsViewCallback albums is undefined');
+      console.error('revertToOriginal photoAsset is undefined');
       return;
     }
-    photoAsset.revertToOriginal();
+    await photoAsset.revertToOriginal();
     console.info('revertToOriginal is successful');
   } catch (err) {
     console.error(`revertToOriginalPromiseDemo failed with error: ${err.code}, ${err.message}`);
@@ -7153,7 +7142,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let asset = await fetchResult.getFirstObject();
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnailData(photoAccessHelper.ThumbnailType.LCD).then((buffer: ArrayBuffer) => {
-    console.info('getThumbnailData successful, buffer byteLength = ${buffer.byteLength}');
+    console.info(`getThumbnailData successful, buffer byteLength = ${buffer.byteLength}`);
   }).catch((err: BusinessError) => {
     console.error(`getThumbnailData fail with error: ${err.code}, ${err.message}`);
   });
@@ -7201,7 +7190,6 @@ getKeyFrameThumbnail(beginFrameTimeMs: number, type: ThumbnailType): Promise<ima
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { common }  from '@kit.AbilityKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
@@ -7279,7 +7267,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset = await fetchResult.getFirstObject();
   try {
     let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
-    console.error(`convertImageFormat success.`);
+    console.info(`convertImageFormat success.`);
   } catch (err) {
     console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
   }
@@ -7365,40 +7353,40 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | --- |
-| fileId | number | 否 | 否 | 图片资产标识id。<br>**系统接口**：此接口为系统接口。|
-| uri | string | 否 | 否 | 图片资产uri。<br>**系统接口**：此接口为系统接口。|
-| data | string | 否 | 否 | 图片资产的路径数据。<br>**系统接口**：此接口为系统接口。|
-| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。<br>**系统接口**：此接口为系统接口。|
-| displayName | string | 否 | 否 | 图片资产的显示名称。<br>**系统接口**：此接口为系统接口。|
-| size | number  | 否 | 否 | 图片资产文件大小，单位：字节。<br>**系统接口**：此接口为系统接口。|
-| dataAdded | number | 否 | 否 | 添加了图片资产数据，单位：秒。<br>**系统接口**：此接口为系统接口。|
-| dataModified | number | 否 | 否 | 更改了图片资产数据，单位：秒。<br>**系统接口**：此接口为系统接口。|
-| duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| width | number | 否 | 否 | 图片资产的像素宽度，单位：像素。<br>**系统接口**：此接口为系统接口。|
-| height | number | 否 | 否 | 图片资产的像素高度，单位：像素。<br>**系统接口**：此接口为系统接口。|
-| dataTaken | number | 否 | 否 | 图片资产拍照后存入本地时间，单位：秒。<br>**系统接口**：此接口为系统接口。|
-| orientation | number | 否 | 否 | 图片资产的旋转角度，单位：度（°）。<br>**系统接口**：此接口为系统接口。|
-| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏。<br>**系统接口**：此接口为系统接口。|
-| title | string | 否 | 否 | 图片资产的标题。<br>**系统接口**：此接口为系统接口。|
-| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。<br>**系统接口**：此接口为系统接口。|
-| dataTrashed | number | 否 | 否 | 图片资产是否在回收站中。<br>**系统接口**：此接口为系统接口。|
-| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏。<br>**系统接口**：此接口为系统接口。|
-| userComment | string | 否 | 否 | 图片资产的用户评论信息。<br>**系统接口**：此接口为系统接口。|
-| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。<br>**系统接口**：此接口为系统接口。|
-| dateYear | string | 否 | 否 | 图片资产创建年份时间。<br>**系统接口**：此接口为系统接口。|
-| dateMonth | string | 否 | 否 | 图片资产创建月份时间。<br>**系统接口**：此接口为系统接口。|
-| dateDay | string | 否 | 否 | 图片资产创建日时间。<br>**系统接口**：此接口为系统接口。|
-| pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待。<br>**系统接口**：此接口为系统接口。|
-| dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| dateTrashedMs | number | 否 | 否 | 图片资产数据进回收站后经过时间，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。<br>**系统接口**：此接口为系统接口。|
-| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。<br>**系统接口**：此接口为系统接口。|
-| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。<br>**系统接口**：此接口为系统接口。|
-| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。<br>**系统接口**：此接口为系统接口。|
-| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。<br>**系统接口**：此接口为系统接口。|
-| thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。<br>**系统接口**：此接口为系统接口。|
-| thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变后经过时间，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。<br>**系统接口**：此接口为系统接口。|
+| fileId | number | 否 | 否 | 图片资产标识ID。|
+| uri | string | 否 | 否 | 图片资产URI。|
+| data | string | 否 | 否 | 图片资产的路径数据。|
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
+| displayName | string | 否 | 否 | 图片资产的显示名称。|
+| size | number  | 否 | 否 | 图片资产文件大小，单位：字节（Byte）。|
+| dateAdded | number | 否 | 否 | 添加了图片资产数据，单位：秒（s）。|
+| dateModified | number | 否 | 否 | 更改了图片资产数据，单位：秒（s）。|
+| duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒（ms）。|
+| width | number | 否 | 否 | 图片资产的像素宽度，单位：像素（px）。|
+| height | number | 否 | 否 | 图片资产的像素高度，单位：像素（px）。|
+| dateTaken | number | 否 | 否 | 图片资产的拍摄时间，单位：秒（s）。    |
+| orientation | number | 否 | 否 | 图片资产的旋转角度，单位：度（°）。|
+| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏。|
+| title | string | 否 | 否 | 图片资产的标题。|
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
+| dateTrashed | number | 否 | 否 | 图片资产进回收站的时间，单位：秒（s）。 |
+| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏。|
+| userComment | string | 否 | 否 | 图片资产的用户评论信息。|
+| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
+| dateYear | string | 否 | 否 | 图片资产创建年份时间。|
+| dateMonth | string | 否 | 否 | 图片资产创建月份时间。|
+| dateDay | string | 否 | 否 | 图片资产创建日时间。|
+| pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待。|
+| dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位：毫秒（ms）。|
+| dateTrashedMs | number | 否 | 否 | 图片资产数据进回收站后经过时间，单位：毫秒（ms）。|
+| subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。|
+| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
+| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。|
+| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。|
+| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。|
+| thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。|
+| thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变后经过时间，单位：毫秒（ms）。|
+| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
 
 ## Album
 
@@ -8073,7 +8061,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     // 定义要获取的属性列表。
-    let attrs: [photoAccessHelper.AlbumAttribute] = [
+    let attrs: photoAccessHelper.AlbumAttribute[] = [
       photoAccessHelper.AlbumAttribute.EXTRA_INFO_ATTR
     ];
     // 获取相册属性信息。
@@ -8160,7 +8148,7 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的Context。 |
 | displayName  | string        | 是   | 待创建的图片或者视频文件名。              |
-| options  | [PhotoCreateOptions](#photocreateoptions)        | 否   | 图片或视频的创建选项。              |
+| options  | [PhotoCreateOptions](#photocreateoptions)        | 否   | 图片或视频的创建选项。不指定时使用默认创建选项。 |
 
 **返回值：**
 
@@ -8501,8 +8489,8 @@ setLocation(longitude: number, latitude: number): void
 
 | 参数名  | 类型          | 必填 | 说明    |
 | ------- |-------------| ---- |-------|
-| longitude | number      | 是   | 经度。 |
-| latitude | number | 是   | 纬度。   |
+| longitude | number      | 是   | 经度，取值范围[-180, 180]。单位：度（°）。 |
+| latitude | number | 是   | 纬度，取值范围[-90, 90]。单位：度（°）。 |
 
 **错误码：**
 
@@ -8731,7 +8719,6 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array\<PhotoAsset>
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('deleteAssetsPermanentlyDemo');
@@ -8752,7 +8739,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### setHasAppLink<sup>21+</sup>
 
-setHasAppLink(hasAppLink: int): void
+setHasAppLink(hasAppLink: number): void
 
 设置文件记忆链接的状态信息。
 
@@ -8765,7 +8752,7 @@ setHasAppLink(hasAppLink: int): void
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| hasAppLink | int | 是    | 设置文件记忆链接的状态信息。 |
+| hasAppLink | number | 是    | 设置文件记忆链接的状态信息。0表示未解码，1表示无链接，2表示存在链接。 |
 
 **错误码：**
 
@@ -8782,13 +8769,13 @@ setHasAppLink(hasAppLink: int): void
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
-enum linkType {
+enum LinkType {
   NOT_DECODED = 0,
   LINK_NOT_EXIST = 1,
   LINK_EXIST = 2
 }
 
-async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType, context: Context) {
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: LinkType, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
         photoAccessHelper.getPhotoAccessHelper(context);
@@ -8936,6 +8923,7 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise\<vo
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('setCompositeDisplayModeDemo');
@@ -9074,7 +9062,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array&lt;String&gt;): Promise&lt;void&gt;
 
-通过资产Uri批量彻底删除照片或者视频。使用promise异步回调。
+通过资产URI批量彻底删除照片或者视频。使用Promise异步回调。
 
 > **注意：**
 >
@@ -9144,7 +9132,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
 
-批量删除本地状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+批量删除本地状态的媒体资产（照片或视频）到回收站。使用Promise异步回调。
 
 >**说明：**
 >
@@ -9199,7 +9187,7 @@ async function example(context: Context, assetUri: string) {
 
 static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
 
-批量删除云端状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+批量删除云端状态的媒体资产（照片或视频）到回收站。使用Promise异步回调。
 
 >**说明：**
 >
@@ -9254,7 +9242,7 @@ async function example(context: Context, assetUri: string) {
 
 static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Promise\<void\>
 
-通过资产URI批量彻底删除照片或视频，不经过回收站。使用promise异步回调。
+通过资产URI批量彻底删除照片或视频，不经过回收站。使用Promise异步回调。
 
 > **说明：**
 >
@@ -9313,7 +9301,7 @@ setMovingPhotoVersion(version: number): void
 
 保存动态照片的版本号。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **系统接口**：此接口为系统接口。
 
@@ -9323,7 +9311,7 @@ setMovingPhotoVersion(version: number): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| version | number | 是    | 设置动态照片的版本号信息。 |
+| version | number | 是    | 设置动态照片的版本号信息。目前仅支持取值为9。 |
 
 **错误码：**
 
@@ -9806,7 +9794,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
-    if (albums === undefined) {
+    if (album === undefined) {
       console.error('getHiddenAlbumsViewCallback albums is undefined');
       return;
     }
@@ -10078,7 +10066,7 @@ moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
 | assets | Array&lt;[PhotoAsset](#photoasset)&gt; | 是   | 待从相册中移出的资产数组。 |
-| targetAlbum | Album | 是   | 待移入资产的目标相册。 |
+| targetAlbum | [Album](#album) | 是   | 待移入资产的目标相册。 |
 
 **错误码：**
 
@@ -10450,7 +10438,7 @@ setDisplayLevel(displayLevel: number): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| displayLevel | number | 是    | 设置人像相册的显示级别， 0：取消该人像相册收藏；1：设置人像相册为首届面；2：设置人像相册为更多界面；3：设置人像相册为收藏界面。 |
+| displayLevel | number | 是    | 设置人像相册的显示级别。<br>0表示取消该人像相册收藏、1表示设置人像相册为首界面、2表示设置人像相册为更多界面、3表示设置人像相册为收藏界面。 |
 
 **错误码：**
 
@@ -10550,7 +10538,7 @@ dismissAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| assets | Array&lt;PhotoAsset&gt; | 是    | 需要移除的文件列表。 |
+| assets | Array&lt;[PhotoAsset](#photoasset)&gt; | 是    | 需要移除的文件列表。 |
 
 **错误码：**
 
@@ -10652,7 +10640,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     let changeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
     changeRequest.mergeAlbum(target);
-    changeRequest.setAlbumName("testName");
+    changeRequest.setAlbumName('testName');
     await phAccessHelper.applyChanges(changeRequest);
   } catch (err) {
     console.error(`mergeAlbum failed with error: ${err.code}, ${err.message}`);
@@ -10662,7 +10650,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### placeBefore<sup>11+</sup>
 
-placeBefore(album: Album): void;
+placeBefore(album: Album): void
 
 将当前相册排序到目标相册之前。
 
@@ -10736,7 +10724,6 @@ dismiss(): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('dismissDemo');
@@ -10988,7 +10975,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     if (album != undefined) {
       let highlightAlbum: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(album);
-      highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
+      await highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
     }
     albumFetchResult.close();
   } catch (err) {
@@ -11054,7 +11041,7 @@ async function example(context: Context) {
     let highlightAlbum: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     albumFetchResult.close();
     let changeHighlightAlbumRequest: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(highlightAlbum);
-    changeHighlightAlbumRequest.setSubTitle("testName");
+    changeHighlightAlbumRequest.setSubTitle('testName');
     console.info('setSubTitle success');
   } catch (err) {
     console.error(`setSubTitle with error: ${err}`);
@@ -11328,7 +11315,7 @@ setRelationship(relationship: string): Promise&lt;void&gt;
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function SetRelationshipExample(context: Context, relationship: string) {
+async function setRelationshipExample(context: Context, relationship: string) {
   try {
     console.info('setRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -11600,7 +11587,7 @@ async function example(context: Context) {
     albumFetchResult.close();
     let highlightAlbumChangeAttribute: photoAccessHelper.HighlightAlbumChangeAttribute =
       photoAccessHelper.HighlightAlbumChangeAttribute.IS_VIEWED;
-    let value: string = "1";
+    let value: string = '1';
     let changeRequest: photoAccessHelper.MediaHighlightAlbumChangeRequest =
       new photoAccessHelper.MediaHighlightAlbumChangeRequest(highlightAlbum);
     changeRequest.setHighlightAttribute(highlightAlbumChangeAttribute, value);
@@ -11773,7 +11760,7 @@ getRelationship(): Promise&lt;string&gt;
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function GetRelationshipExample(context: Context) {
+async function getRelationshipExample(context: Context) {
   try {
     console.info('getRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -11880,7 +11867,7 @@ submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWaterm
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | photoAssets | Array<[PhotoAsset](#photoasset)> | 是   | 需要增强照片的[PhotoAsset](#photoasset)集合。 |
-| hasCloudWatermark | boolean | 是   | 增强后图片是否添加云增强水印。 |
+| hasCloudWatermark | boolean | 是   | 增强后图片是否添加云增强水印。true表示添加云增强水印，false表示不添加云增强水印。 |
 
 **返回值：**
 
@@ -12153,7 +12140,6 @@ cancelAllCloudEnhancementTasks(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('cancelAllCloudEnhancementTasksDemo');
@@ -12289,7 +12275,6 @@ syncCloudEnhancementTaskStatus(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('syncCloudEnhancementTaskStatusDemo');
@@ -12726,7 +12711,7 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, Clou
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
+| assetUris | string[] | 是   | 需要下载的原图和视频的URI列表。数组不能为空，数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12779,7 +12764,7 @@ pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12831,7 +12816,7 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12883,7 +12868,7 @@ cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要取消下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要取消下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12956,7 +12941,7 @@ queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataShare
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaDetailsDemo');
@@ -12964,7 +12949,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let taskListStatus : photoAccessHelper.CloudAssetDownloadStatus =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaDetails(predicates);
   } catch (err) {
@@ -13010,7 +12995,7 @@ queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSha
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
@@ -13018,7 +13003,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let count : number =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
   } catch (err) {
@@ -13201,8 +13186,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 媒体库支持图库自定义用户统计行为接口。
 
-**系统接口**：此接口为系统接口。
-
 ### getCustomRecordManagerInstance<sup>20+</sup>
 
 static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager
@@ -13237,8 +13220,6 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 **示例：**
 
 ```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(context: Context) {
   console.info('getCustomRecordManagerInstance');
@@ -13352,7 +13333,7 @@ async function example(context: Context) {
     let record = await fetchResult.getFirstObject();
     console.info('record file id is ' + record.fileId);
   }).catch((err: BusinessError) => {
-    console.error('getCustomRecords fail with error: ${err.code}, ${err.message}');
+    console.error(`getCustomRecords fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13397,14 +13378,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(context: Context) {
   console.info('setCustomRecords');
   let crManager = photoAccessHelper.PhotoAssetCustomRecordManager.getCustomRecordManagerInstance(context);
-  let UpdateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
+  let updateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
     {fileId:1,shareCount:2,lcdJumpCount:3},
     {fileId:2,shareCount:2,lcdJumpCount:3}
   ];
-  crManager.setCustomRecords(UpdateArray).then((failIds) => {
+  crManager.setCustomRecords(updateArray).then((failIds) => {
     console.info('setCustomRecords successful');
   }).catch((err: BusinessError) => {
-    console.error('setCustomRecords file with err: ${err.code}, ${err.message}');
+    console.error(`setCustomRecords file with err: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13506,7 +13487,7 @@ async function example(context: Context) {
   crManager.addShareCount(ids).then((failIds) => {
     console.info('addShareCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addShareCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addShareCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13553,7 +13534,7 @@ async function example(context: Context) {
   crManager.addLcdJumpCount(ids).then((failIds) => {
     console.info('addLcdJumpCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addLcdJumpCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addLcdJumpCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13718,14 +13699,16 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| NICK_NAME_ATTR | 'nickname' | 相册昵称。<br>**系统接口**：此接口为系统接口。 |
-| EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。<br>**系统接口**：此接口为系统接口。 |
-| IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。<br>**系统接口**：此接口为系统接口。 |
-| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
+| NICK_NAME_ATTR | 'nickname' | 相册昵称。 |
+| EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。 |
+| IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。 |
+| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0 |
 
 ## AlbumOperationType
 
@@ -13735,13 +13718,15 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| ADD | 'add' | 对相册属性的新增操作。<br>**系统接口**：此接口为系统接口。 |
-| REMOVE | 'remove' | 对相册属性的移除操作。<br>**系统接口**：此接口为系统接口。 |
-| UPDATE | 'update' | 对相册属性的更新操作。<br>**系统接口**：此接口为系统接口。 |
+| ADD | 'add' | 对相册属性的新增操作。 |
+| REMOVE | 'remove' | 对相册属性的移除操作。 |
+| UPDATE | 'update' | 对相册属性的更新操作。 |
 
 ## AlbumOperation
 
@@ -13751,13 +13736,15 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。<br>**系统接口**：此接口为系统接口。|
-| type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。<br>**系统接口**：此接口为系统接口。 |
-| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20；数组中的每个字符串长度不超过500个字符。<br>**系统接口**：此接口为系统接口。|
+| attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。|
+| type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。 |
+| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20；数组中的每个字符串长度不超过500个字符。|
 
 ## AlbumAttributeInfo
 
@@ -13767,11 +13754,13 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| attrValue | string | 否 | 是 | 相册属性值。<br>**系统接口**：此接口为系统接口。|
+| attrValue | string | 否 | 是 | 相册属性值。|
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -13980,7 +13969,7 @@ try {
 | countProgressListener | [ProgressListener](#progresslistener) | 否 | 是 | 复制操作的数量进度监听器。|
 | taskSignal | [TaskSignal](#tasksignal) | 否 | 是 | 复制操作的中断信号。|
 | resultListener | [ResultListener](#resultlistener) | 否 | 是 | 复制操作的结果监听器。|
-| mode | number | 否 | 是 | 复制操作的自动重命名模式。 |
+| mode | number | 否 | 是 | 复制操作的自动重命名模式。<br>有效值为0和1，0表示支持自动重命名，1表示不支持自动重命名。 |
 
 ## PhotoProxy<sup>11+</sup>
 
