@@ -41243,6 +41243,26 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"child_process_necessary_export_impl",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"child_get_start_params_index",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -41300,6 +41320,31 @@
 					{
 						"end_line":37,
 						"name":"kill_child_process_main",
+						"start_line":20
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"main_process_launch_native_child",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"native_child_process_header",
+						"start_line":21
+					},
+					{
+						"end_line":60,
+						"name":"register_native_child_process_exit",
 						"start_line":20
 					}
 				]
