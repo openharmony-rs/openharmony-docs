@@ -138,22 +138,22 @@ this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
 2. 调用[getTrackDescription](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#gettrackdescription9)获取所有音视频轨道列表。开发者可根据实际需求，基于[MediaDescription](../../reference/apis-media-kit/arkts-apis-media-i.md#mediadescription8)各字段信息，确定目标轨道索引。
 
    <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-   if (arrList != null) {
-    for (let i = 0; i < arrList.length; i++) {
-      let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
-      let propertyType: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
-      let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
-      let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
-      if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
-        this.videoTrackIndex = parseInt(propertyIndex.toString()); // 获取1080p视频轨道索引。
-      }
-    }
-   } else {
-    console.error(`getTrackDescription fail, error:${error}`);
-   }
+     if (arrList != null) {
+       for (let i = 0; i < arrList.length; i++) {
+         let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+         let propertyType: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
+         let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
+         let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
+         if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
+           this.videoTrackIndex = parseInt(propertyIndex.toString()); // 获取1080p视频轨道索引。
+         }
+       }
+     } else {
+       console.error(`getTrackDescription fail, error:${error}`);
+     }
    });
    ```
 
