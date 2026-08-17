@@ -15,10 +15,10 @@
     - [声明式UI描述](state-management/arkts-declarative-ui-description.md)
     - 自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](state-management/arkts-create-custom-components.md)
-      - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
-      - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
-      - [自定义组件生命周期](state-management/arkts-page-custom-components-lifecycle.md)
-      - [自定义组件生命周期](state-management-static/arkts-static-custom-components-new-lifecycle.md)
+      - [\@Component装饰器: 自定义组件（ArkTS-Sta）](../ui/state-management-static/arkts-static-create-component.md)
+      - [\@ComponentV2装饰器：自定义组件（ArkTS-Sta）](../ui/state-management-static/arkts-static-componentv2.md)
+      - [自定义组件生命周期（ArkTS-Dyn）](state-management/arkts-page-custom-components-lifecycle.md)
+      - [自定义组件生命周期（ArkTS-Sta）](state-management-static/arkts-static-custom-components-new-lifecycle.md)
       - [自定义组件生命周期（推荐）](state-management/arkts-custom-components-new-lifecycle.md)
       - [自定义组件的自定义布局](state-management/arkts-page-custom-components-layout.md)
       - [自定义组件成员属性访问限定符使用限制](state-management/arkts-custom-components-access-restrictions.md)
@@ -27,34 +27,34 @@
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md)
         - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - 自定义组件冻结<!--arkts-component-freeze-->
-        - [自定义组件冻结功能（V1）](state-management/arkts-custom-components-freeze.md)
-        - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
-        - [自定义组件冻结功能（V2）](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
-        - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
+        - [自定义组件冻结（V1）（ArkTS-Dyn）](state-management/arkts-custom-components-freeze.md)
+        - [自定义组件冻结（V1）（ArkTS-Sta）](../ui/state-management-static/arkts-static-freeze.md)
+        - [自定义组件冻结（V2）（ArkTS-Dyn）](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
+        - [自定义组件冻结（V2）（ArkTS-Sta）](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
     - UI装饰器<!--arkts-ui-decorators-->
-      - [UI装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
+      - [装饰器总览](../ui/state-management/arkts-ui-decorators-overview.md)
       - 组件扩展<!--arkts-extend-components-->
         - [组件扩展概述](state-management/arkts-extend-components-overview.md)
         - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
-        - [\@LocalBuilder装饰器： 维持组件关系](state-management/arkts-localBuilder.md)
+        - [\@LocalBuilder装饰器：维持组件关系](state-management/arkts-localBuilder.md)
         - [\@BuilderParam装饰器：引用\@Builder函数](state-management/arkts-builderparam.md)
         - [wrapBuilder：封装全局@Builder（ArkTS-Dyn）](state-management/arkts-wrapBuilder.md)
         - [wrapBuilder：封装全局@Builder（ArkTS-Sta）](../ui/state-management/arkts-static-wrapBuilder.md)
-        - [rememberVariable：@Builder内部状态（ArkTS-Sta）](../ui/state-management-static/arkts-static-remembervariable.md)
+        - [rememberVariable: \@Builder内部状态（ArkTS-Sta）](../ui/state-management-static/arkts-static-remembervariable.md)
         - [mutableBuilder：实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md)
-      - [applyStyles：定义组件重用样式（ArkTS-ST）](../ui/state-management/arkts-apply-styles.md)
+      - [applyStyles：定义组件重用样式（ArkTS-Sta）](../ui/state-management/arkts-apply-styles.md)
       - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
       - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
-      - [Function-with-Receiver：定义扩展组件样式（ArkTS-ST）](../ui/state-management/arkts-function-with-receiver.md)
+      - [Function-with-Receiver：定义扩展组件样式（ArkTS-Sta）](../ui/state-management/arkts-function-with-receiver.md)
       - [stateStyles：多态样式](state-management/arkts-statestyles.md)
-      - [\@AnimatableExtend装饰器：定义可动画属性](state-management/arkts-animatable-extend.md)
-      - [\@Require装饰器：校验构造传参](state-management/arkts-require.md)
+      - [@AnimatableExtend装饰器：定义可动画属性](state-management/arkts-animatable-extend.md)
+      - [@Require装饰器：校验构造传参](state-management/arkts-require.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
       - 动态ArkTS<!--arkts-ui-syntactic-sugar-dynamic-->
         - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
         - [!!语法：双向绑定](state-management/arkts-new-binding.md)
       - 静态ArkTS<!--arkts-ui-syntactic-sugar-static-->
-        - [\$$()函数：系统组件双向同步](state-management/arkts-two-way-sync-static.md)
+        - [$$()语法：系统组件双向同步](state-management/arkts-two-way-sync-static.md)
   - 学习UI范式状态管理<!--arkts-state-management-->
     - [状态管理概述](state-management/arkts-state-management-overview.md)
       - [MVVM模式（V1）](state-management/arkts-mvvm.md)
@@ -81,16 +81,16 @@
       - 状态管理（V2）<!--arkts-state-management-v2-->
         - 管理组件拥有的状态<!--arkts-v2-manage-component-state-->
           - [\@Local装饰器：组件内部状态](state-management/arkts-new-local.md)
-          - [\@Param：组件外部输入](state-management/arkts-new-param.md)
-            - [\@Once：初始化同步一次](state-management/arkts-new-once.md)
+          - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
+            - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
           - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
-          - [\@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
+          - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
         - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
           - [\@Monitor装饰器：状态变量修改异步监听](state-management/arkts-new-monitor.md)
           - [\@SyncMonitor装饰器：状态变量修改同步监听](state-management/arkts-new-syncmonitor.md)
           - [\@Computed装饰器：计算属性](state-management/arkts-new-computed.md)
-          - [\@Type装饰器：标记类属性的类型](state-management/arkts-new-type.md)
+          - [\@Type装饰器: 标记类属性的类型](state-management/arkts-new-type.md)
         - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
           - [AppStorageV2: 应用全局UI状态存储](state-management/arkts-new-appstoragev2.md)
           - [PersistenceV2: 持久化存储UI状态](state-management/arkts-new-persistencev2.md)
@@ -100,7 +100,7 @@
           - [canBeObserved接口：判断对象是否可被观察](state-management/arkts-new-canBeObserved.md)
           - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
           - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
-      - [V1-V2迁移概述](state-management/arkts-v1-v2-migration.md)
+      - [状态管理V1向V2迁移指导](state-management/arkts-v1-v2-migration.md)
         - [组件内状态变量迁移](state-management/arkts-v1-v2-migration-inner-component.md)
         - [数据对象状态变量迁移](state-management/arkts-v1-v2-migration-inner-class.md)
         - [应用内状态变量迁移](state-management/arkts-v1-v2-migration-application.md)
@@ -114,7 +114,7 @@
         - [状态管理V1和V2混用指导（API version 19前）](state-management/arkts-v1-v2-mixusage-before-api-version.md)
         - [状态管理V1和V2混用指导（API version 19及之后）](state-management/arkts-v1-v2-mixusage.md)
       - [状态管理优秀实践（ArkTS-Dyn）](state-management/arkts-state-management-best-practices.md)
-      - [状态管理合理使用开发指导](state-management/properly-use-state-management-to-develope.md)
+      - [开发指导](state-management/properly-use-state-management-to-develope.md)
       - [状态管理常见问题](state-management/arkts-state-management-faq.md)
         - [组件内状态管理常见问题](state-management/arkts-state-management-faq-inner-component.md)
         - [数据对象状态管理常见问题](state-management/arkts-state-management-faq-inner-class.md)
@@ -124,7 +124,7 @@
       - 状态管理（V1）<!--arkts-state-management-v1-static-->
         - 管理组件拥有的状态<!--arkts-component-state-management-->
           - [\@State装饰器：组件内状态](state-management-static/arkts-static-state.md)
-          - [@PropRef装饰器：父子单向同步](state-management-static/arkts-static-propref.md)
+          - [\@PropRef装饰器：父子单向同步](state-management-static/arkts-static-propref.md)
           - [\@Link装饰器：父子双向同步](state-management-static/arkts-static-link.md)
           - [\@Provide装饰器和\@Consume装饰器：与后代组件双向同步](state-management-static/arkts-static-provide-and-consume.md)
           - [\@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化](state-management-static/arkts-static-observed-and-objectlink.md)
@@ -140,19 +140,19 @@
         - 管理组件拥有的状态<!--arkts-component-state-management-v2-->
           - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
           - [\@Param装饰器：组件外部输入](state-management-static/arkts-static-new-param.md)
-            - [\@Once：初始化同步一次](state-management-static/arkts-static-new-once.md)
+            - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
           - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
-          - [\@Provider装饰器和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
+          - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
           - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
           - [\@SyncMonitor装饰器：状态变量修改同步监听](state-management-static/arkts-static-new-syncmonitor.md)
           - [\@Computed装饰器：计算属性](state-management-static/arkts-static-new-computed.md)
         - 管理应用拥有的状态<!--arkts-v2-manage-application-state-static-->
-          - [AppStorageV2: 应用全局的UI状态存储](state-management-static/arkts-static-appstoragev2.md)
-          - [PersistenceV2: 持久化储存UI状态](state-management-static/arkts-static-new-persistencev2.md)
+          - [AppStorageV2: 应用全局UI状态存储](state-management-static/arkts-static-appstoragev2.md)
+          - [PersistenceV2: 持久化存储UI状态](state-management-static/arkts-static-new-persistencev2.md)
         - 辅助接口<!--arkts-new-other-state-mgmt-static-->
-          - [getTarget接口：获取状态管理框架包装前的原始对象](state-management-static/arkts-static-new-getTarget.md)
+          - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
           - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management-static/arkts-static-new-addmonitor-clearmonitor.md)
           - [canBeObserved接口：判断对象是否可被观察](state-management-static/arkts-static-new-canBeObserved.md)
