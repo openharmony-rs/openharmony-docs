@@ -36,7 +36,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 
-表示获取所有私有凭据列表，使用Callback回调异步返回结果。
+表示获取所有私有凭据列表。使用Callback异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
