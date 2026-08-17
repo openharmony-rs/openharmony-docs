@@ -104,7 +104,7 @@ getRemoteDeviceBatteryInfo(deviceId: BluetoothAddress): Promise&lt;BatteryInfo&g
 |2900001 | Service stopped.             |
 |2900003 | Bluetooth disabled.                |
 |2900004 | Remote device profile not supported.                |
-|2900099 | Operation failed.                        |
+|2900099 | Operation failed. Possible causes: 1. Unregistered observer. 2. Observers exceeds the limit. 3. Request busy.                 |
 |2901003 | Connection not established.                |
 
 **示例**：
