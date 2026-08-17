@@ -129,15 +129,9 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
 <!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-import { media } from '@kit.MediaKit';
-// 类成员定义avPlayer
-private avPlayer: media.AVPlayer | null = null;
-
-// 创建avPlayer实例对象。
-this.avPlayer = await media.createAVPlayer();
+``` TypeScript
 this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
-console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
+  console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
 })
 ```
 
