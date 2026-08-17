@@ -7960,7 +7960,7 @@ Allows an application to configure the encryption policy for a volume.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -9033,6 +9033,20 @@ Allows an application on the rear armrest screen to connect to the head unit for
 
 **Since**: 26.1.0
 
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+Allows a system application to send the authorization results for model download requests to the model management service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
 ## ohos.permission.ACCESS_FILE_MONITOR_DIR
 
 Allows an application to obtain file management data using the sandbox.
@@ -9074,5 +9088,33 @@ Allows an application to use restricted networks, such as internal networks and 
 **Certificate-based authorization**: true
 
 **Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
+
+Allows a system application to connect to near-field devices and send/receive data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | wearables | tablets | TVs
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
+
+Allows a system application to modify the delayed task parameters of specified applications.
+    
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
 **Valid since**: 26.1.0
