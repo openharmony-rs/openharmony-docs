@@ -1392,7 +1392,9 @@ restoreLocalDeivceName(): void
 
 ### getOsTypeByNetworkId
 
-getOsTypeByNetworkId(networkId: string): number
+ArkTS-Dyn: getOsTypeByNetworkId(networkId: string): number
+
+ArkTS-Sta: getOsTypeByNetworkId(networkId: string): int
 
 根据设备网络ID查询设备操作系统类型。
 
@@ -1406,9 +1408,9 @@ getOsTypeByNetworkId(networkId: string): number
 
 **系统接口**：此接口为系统接口。
 
-**ArkTs-Dyn起始版本**：26.1.0
+**ArkTS-Dyn起始版本**：26.1.0
 
-**ArkTs-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -1420,7 +1422,7 @@ getOsTypeByNetworkId(networkId: string): number
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | 设备操作系统类型。<br>- 10：基于OpenHarmony的操作系统。<br>- 11：非基于OpenHarmony的操作系统。<br>- -1：未知。 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 设备操作系统类型。<br>- 10：基于OpenHarmony的操作系统。<br>- 11：非基于OpenHarmony的操作系统。<br>- -1：未知。 |
 
 **错误码：**
 
@@ -1435,6 +1437,8 @@ getOsTypeByNetworkId(networkId: string): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1443,10 +1447,27 @@ getOsTypeByNetworkId(networkId: string): number
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     let networkId: string = 'test_network_id';
     let osType: number = dmInstance.getOsTypeByNetworkId(networkId);
-    console.info('getOsTypeByNetworkId result: ' + osType);
+    console.info(`getOsTypeByNetworkId result: ${osType}`);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error('getOsTypeByNetworkId errCode:' + e.code + ',errMessage:' + e.message);
+    console.error(`getOsTypeByNetworkId errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let networkId: string = 'test_network_id';
+    let osType: int = dmInstance.getOsTypeByNetworkId(networkId);
+    console.info(`getOsTypeByNetworkId result: ${osType}`);
+  } catch (err) {
+    let e = err as Error;
+    console.error(`getOsTypeByNetworkId errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
