@@ -9050,6 +9050,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MULTI_SCREEN_MANAGER
+
+允许系统应用管理多屏亮灭状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.vehicle.DEVICE_AUTH
 
 允许车辆后排扶手屏应用连接车机，进行设备认证。
