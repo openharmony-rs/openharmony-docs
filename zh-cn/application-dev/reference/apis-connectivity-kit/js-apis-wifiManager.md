@@ -2151,7 +2151,9 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
-获取P2P当前组信息。使用Promise异步回调。使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法获取到当前组信息。
+获取P2P当前组信息。使用Promise异步回调。
+
+使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法获取到当前组信息。
 
 **需要权限：**
 
