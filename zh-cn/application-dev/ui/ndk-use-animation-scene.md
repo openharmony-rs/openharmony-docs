@@ -101,12 +101,12 @@
            ArkUI_CurveHandle curve = data->curve;
            if (option) {
                OH_ArkUI_AnimateOption_Dispose(option);
-               OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                    "Init", "CXX OH_ArkUI_AnimateOption_Dispose  success!");
            }
            if (curve) {
                OH_ArkUI_Curve_DisposeCurve(curve);
-               OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                    "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
            }
            delete data; // 释放结构体
@@ -517,12 +517,12 @@
                    ArkUI_CurveHandle curve = data->curve;
                    if (option) {
                        OH_ArkUI_KeyframeAnimateOption_Dispose(option);
-                       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                            "Init", "CXX OH_ArkUI_KeyframeAnimateOption_Dispose  success!");
                    }
                    if (curve) {
                        OH_ArkUI_Curve_DisposeCurve(curve);
-                       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                            "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
                    }
                    delete data; // 释放结构体
