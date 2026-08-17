@@ -24,7 +24,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 enableSemiWifi(): void
 
-使能WLAN半关闭（STA关闭、其他P2P、Hml可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
+使能WLAN半关闭（STA关闭、其他P2P、HML可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
 
 **系统接口：** 此接口为系统接口。
 
@@ -327,7 +327,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 ## WifiLinkedInfo
 
-提供WLAN扫描的相关信息。
+提供WLAN连接的相关信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1937,7 +1937,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
+| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（Huawei Device Interconnection Network Protocol）（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
 
 ## wifiManager.isRandomMacDisabled<sup>21+</sup>
 
@@ -1955,7 +1955,7 @@ isRandomMacDisabled(): boolean
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | boolean | 是否禁用随机MAC地址。true:禁用随机MAC地址; false:未禁用随机MAC地址，格式为XX:XX:XX:XX:XX:XX。|
+  | boolean | 是否禁用随机MAC地址。true:禁用随机MAC地址; false:未禁用随机MAC地址。|
 
 **错误码：**
 

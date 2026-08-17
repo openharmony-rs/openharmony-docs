@@ -23,7 +23,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 enableHotspot(): void
 
-启用WLAN热点。
+使能WLAN热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -58,7 +58,7 @@ enableHotspot(): void
 
 disableHotspot(): void
 
-禁用WLAN热点。
+去使能WLAN热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。

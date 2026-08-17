@@ -205,7 +205,7 @@ IPv6配置信息。
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | string | 否 | 否 | IPv6地址。 |
 | gateway | string| 否 | 否 | 网关。 |
-| prefixLength | number | 否 | 否 | 前缀长度，取值范围：0~32。 |
+| prefixLength | number | 否 | 否 | 前缀长度，取值范围：0~128（IPv6前缀长度最大128）。 |
 | dnsServers | Array\<string> | 否 | 否 | DNS服务器。 |
 | domains | Array\<string> | 否 | 否 | 域信息。 |
 
@@ -530,7 +530,7 @@ try {
 
 reconnect(): boolean
 
-重新连接网络。与reassociate()的区别：reassociate()用于重新执行关联流程，reconnect()用于重新建立网络连接，请根据实际场景选择使用。
+重新连接网络。与[reassociate](#wifireassociate7)的区别：[reassociate](#wifireassociate7)用于重新执行关联流程，reconnect()用于重新建立网络连接，请根据实际场景选择使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1194,13 +1194,13 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 当有设备离开热点时触发的回调函数，返回离开设备的信息。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
 off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wlan热点sta离开事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
+取消注册WLAN热点sta离开事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1213,7 +1213,7 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 当有设备离开热点时触发的回调函数，返回离开设备的信息。 |
 
   **示例：**
 ```ts

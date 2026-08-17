@@ -165,11 +165,11 @@ WLAN热点信息。
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
-| capabilities | string | 否 | 否 | 热点能力，包括支持的安全协议、加密方式等信息，格式如"[WPA2-PSK-CCMP][ESS]"。 |
+| capabilities | string | 否 | 否 | 热点能力，包括支持的安全协议、加密方式等信息。 |
 | securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | 否 | 否 | WLAN加密类型。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
 | band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHz；2表示5GHz。|
-| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。单位：MHz |
+| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。|
 | channelWidth | number | 否 | 否 | WLAN接入点的带宽，单位为MHz。 |
 | timestamp | number | 否 | 否 | 时间戳，单位为毫秒。 |
 

@@ -509,7 +509,7 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 
 ## WifiInfoElem
 
-WLAN信息元素。
+WLAN热点信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -1689,7 +1689,7 @@ isFeatureSupported(featureId: number): boolean
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | Wifi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B。 |
@@ -1839,7 +1839,7 @@ getIpv6Info(): Ipv6Info
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [Ipv6Info](#ipv6info10) | Ipv6信息，包括链路Ipv6地址、全局Ipv6地址、网关、网络掩码、DNS服务器地址等。 |
+| [Ipv6Info](#ipv6info10) |IPv6信息，包括链路IPv6地址、全局IPv6地址、网关、网络掩码、DNS服务器地址等。 |
 
 **错误码：**
 
@@ -1864,7 +1864,7 @@ getIpv6Info(): Ipv6Info
 ```
 ## Ipv6Info<sup>10+</sup>
 
-Ipv6信息。
+IPv6信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -2226,7 +2226,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
-获取P2P对端设备列表信息。使用Promise异步回调。使用前需确保已通过startDiscoverDevices完成设备发现阶段，否则无法正常获取到对端设备列表信息。
+获取P2P对端设备列表信息。使用Promise异步回调。使用前需确保已通过[startDiscoverDevices](#wifimanagerstartdiscoverdevices)完成设备发现阶段，否则无法正常获取到对端设备列表信息。
 
 **需要权限：**
 
@@ -2331,9 +2331,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
-获取P2P本端设备信息，使用Promise异步回调。
-
-使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法正常获取到本端设备信息。
+获取P2P本端设备信息，使用Promise异步回调。使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法正常获取到本端设备信息。
 
 **需要权限：** 
 
