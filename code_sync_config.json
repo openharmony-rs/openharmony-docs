@@ -43769,5 +43769,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/device/stationary/carAwareness-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"carAwareness_import",
+						"start_line":16
+					},
+					{
+						"end_line":78,
+						"name":"spatialMotion_query",
+						"start_line":65
+					},
+					{
+						"end_line":96,
+						"name":"spatialMotion_subscribe",
+						"start_line":80
+					},
+					{
+						"end_line":108,
+						"name":"spatialMotion_unsubscribe",
+						"start_line":98
+					},
+					{
+						"end_line":124,
+						"name":"realTimeWeather_subscribe",
+						"start_line":110
+					},
+					{
+						"end_line":136,
+						"name":"realTimeWeather_unsubscribe",
+						"start_line":126
+					},
+					{
+						"end_line":152,
+						"name":"refueling_subscribe",
+						"start_line":138
+					},
+					{
+						"end_line":164,
+						"name":"refueling_unsubscribe",
+						"start_line":154
+					}
+				]
+			}
+		]
 	}
 ]
