@@ -474,16 +474,19 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     ArkTS-Sta示例：
 
     <!-- @[enable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopBackJS_Sta/entry/src/main/ets/pages/AudioLoopback.ets) -->  
-
+    
     ``` TypeScript
-    import { BusinessError } from '@kit.BasicServicesKit';
+    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
     // ...
+    // 设置监听事件，启用音频返听。
     async function enable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
       if (audioLoopback !== undefined) {
         try {
           let status = await (audioLoopback as audio.AudioLoopback).getStatus();
           if (status == audio.AudioLoopbackStatus.AVAILABLE_IDLE) {
+            // 注册监听。
             (audioLoopback as audio.AudioLoopback).onStatusChange(statusChangeCallback);
+            // 启动返听。
             let isSuccess = await (audioLoopback as audio.AudioLoopback).enable(true);
             if (isSuccess) {
               console.info('Succeeded in using enable function.');
@@ -504,16 +507,19 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
         // ...
       }
     }
-
+    
+    // 禁用音频返听，关闭监听事件。
     async function disable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
       if (audioLoopback !== undefined) {
         try {
           let status = await (audioLoopback as audio.AudioLoopback).getStatus();
           if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
+            // 禁用返听。
             let isSuccess = await (audioLoopback as audio.AudioLoopback).enable(false);
             if (isSuccess) {
               console.info('Succeeded in using enable function.');
               // ...
+              // 关闭监听。
               (audioLoopback as audio.AudioLoopback).offStatusChange(statusChangeCallback);
             } else {
               status = await (audioLoopback as audio.AudioLoopback).getStatus();
