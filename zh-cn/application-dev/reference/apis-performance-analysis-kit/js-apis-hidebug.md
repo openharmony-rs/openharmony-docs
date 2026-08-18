@@ -1618,7 +1618,7 @@ ArkTS-Sta: getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySu
 | ------- | ----------------------------------------------------------------- |
 | 11400104 | Failed to get the application memory due to a remote exception. |
 
-**示例**：
+**ArkTS-Dyn示例**：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1627,6 +1627,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => {
   console.info(`get graphicsMemory gl: ${ret.gl} graph: ${ret.graph}.`)
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}.`);
+})
+```
+
+**ArkTS-Sta示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => {
+  console.info(`get graphicsMemory gl: ${ret.gl} graph: ${ret.graph}.`)
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}.`);
 })
 ```
@@ -1678,7 +1691,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 | 11400112 | Repeated data dump. |
 | 11400113 | Failed to create dump file. |
 
-**示例**：
+**ArkTS-Dyn**：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1686,6 +1699,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData().then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+**ArkTS-Sta**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+hidebug.dumpJsRawHeapData().then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
@@ -1740,7 +1765,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 | 11400112 | Repeated data dump. |
 | 11400113 | Failed to create dump file. |
 
-**示例**：
+**ArkTS-Dyn示例**：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1749,6 +1774,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+**ArkTS-Sta示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
@@ -1803,7 +1841,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 | 11400112 | Repeated data dump. |
 | 11400113 | Failed to create dump file. |
 
-**示例**：
+**ArkTS-Dyn示例**：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1812,6 +1850,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+**ArkTS-Sta示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
