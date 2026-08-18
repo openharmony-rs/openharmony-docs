@@ -119,7 +119,7 @@ resetExecFrequency(uid: number): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
-let uid: number = 20020220,  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
+let uid: number = 20020220;  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
 try {
   workScheduler.resetExecFrequency(uid);
   console.info('workschedulerLog resetExecFrequency success');
