@@ -1335,8 +1335,8 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 | cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。           |
 | offset          | number          |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。       |
 | zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。           |
-| latitude        | number          |   否    |   否    | 城市纬度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
-| longitude       | number          |   否    |   否    | 城市经度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| latitude        | double          |   否    |   否    | 城市纬度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| longitude       | double          |   否    |   否    | 城市经度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
 | rawOffset       | number          |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。   |
 
 
