@@ -167,7 +167,7 @@ setPowerModel(model: PowerModel): boolean
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[wifiManagerExt.setPowerModel](js-apis-wifiManagerExt.md#wifimanagerextsetpowermodel)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[wifiManagerExt.setPowerMode](js-apis-wifiManagerExt.md#wifimanagerextsetpowermodedeprecated)替代。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
