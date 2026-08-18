@@ -359,7 +359,7 @@ struct Index {
   dialogBuilder(): void {
     TipsDialogV2({
       imageRes: $r('sys.media.ohos_ic_public_voice'),
-      content: '想要卸载这个APP嘛?',
+      content: '想要卸载这个APP吗?',
       title: 'TipsDialogV2',
       checkTips: '不再提示',
       checked: this.checked,
@@ -424,7 +424,7 @@ struct Index {
     TipsDialogV2({
       // 系统麦克风图片资源
       imageRes: $r('sys.media.ohos_ic_public_voice'),
-      content: '想要卸载这个APP嘛?',
+      content: '想要卸载这个APP吗?',
       title: 'TipsDialogV2',
       checkTips: '不再提示',
       checked: this.checked,

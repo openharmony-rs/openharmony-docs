@@ -132,6 +132,7 @@ this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int)
     import { media } from '@kit.MediaKit';
     // 类成员定义avPlayer
     private avPlayer: media.AVPlayer | null = null;
+    private bitrate: number = 0;
 
     // 创建avPlayer实例对象。
     this.avPlayer = await media.createAVPlayer();
@@ -140,7 +141,7 @@ this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int)
       console.info('bitrateDone called, and bitrate value is: ' + bitrate);
     })
     // 设置播放码率。
-    this.bitrate: number = 96000;
+    this.bitrate = 96000;
     this.avPlayer.setBitrate(this.bitrate);
     ```
 

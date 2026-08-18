@@ -30,13 +30,13 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
 | CM_ERROR_NOT_SYSTEM_APP   | 202      | 表示应用程序不是系统应用程序。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
-| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | 表示密码错误。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | 表示密码错误。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## certificateManager.getAllAppPrivateCertificates
 
 getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 
-表示获取所有私有凭据列表，使用Callback回调异步返回结果。
+表示获取所有私有凭据列表。使用Callback异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 

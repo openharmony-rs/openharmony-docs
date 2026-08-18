@@ -1084,7 +1084,7 @@ struct BindContextMenuDemo {
 
 [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)属性可为组件绑定弹窗，并设置弹窗内容，交互逻辑和显示状态。
 
-完整示例和代码如下。
+完整示例和效果如下。
 
 ArkTS-Dyn示例：
 
@@ -1226,7 +1226,7 @@ struct BindPopupDemo {
 
 上述模态转场接口需要绑定到其他组件上，通过监听状态变量改变调起模态界面。同时，也可以通过if范式，通过新增/删除组件实现模态转场效果。
 
-完整示例和代码如下。
+完整示例和效果如下。
 
 ArkTS-Dyn示例：
 

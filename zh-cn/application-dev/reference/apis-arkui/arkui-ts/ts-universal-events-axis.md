@@ -46,7 +46,7 @@ ArkTS-Sta: onAxisEvent(event: Callback\<AxisEvent> | undefined): this
 
 ## AxisEvent
 
-轴事件的对象说明，继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+轴事件的对象说明，继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 ### 属性
 
@@ -199,7 +199,7 @@ hasAxis(axisType: AxisType): boolean
 
 ### 示例1（获取轴事件相关参数）
 
-该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[axisPinch](./ts-gesture-customize-judge.md#属性)和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
+该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[BaseEvent](./ts-universal-events-click.md#baseevent8)的`axisPinch`属性和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
 
 ```ts
 // xxx.ets
