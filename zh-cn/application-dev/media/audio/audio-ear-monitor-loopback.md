@@ -721,7 +721,7 @@ async function disable(updateCallback?: (msg: string, isError: boolean) => void)
 ```
 ArkTS-Sta示例：
 
-<!-- @[all_audioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopBackJS_Sta/entry/src/main/ets/pages/AudioLoopback.ets) -->
+<!-- @[all_audioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopBackJS_Sta/entry/src/main/ets/pages/AudioLoopback.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
