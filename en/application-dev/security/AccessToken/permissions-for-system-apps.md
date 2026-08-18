@@ -9136,7 +9136,7 @@ Allows a system application to modify the delayed task parameters of specified a
 ## ohos.permission.FACTORYRESET_WRITE_CONFIG
 
 Allows an application to restore the vehicle system to factory settings.
-    
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
