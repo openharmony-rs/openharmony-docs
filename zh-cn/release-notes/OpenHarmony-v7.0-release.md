@@ -11,9 +11,7 @@
 
 ## 版本概述
 
-OpenHarmony 7.0 Release版本进一步增强应用开发功能，
-
-OpenHarmony 7.0 Release在标准系统引入了一款新的开发板“展锐P7885芯片开发板”，并针对这款开发板进行一系列能力新增和增强，以及预置应用的适配。
+OpenHarmony 7.0 Release版本进一步增强应用开发功能，在系统层面新增支持展锐P7885芯片开发板（涵盖5G蜂窝通信、统一渲染、GNSS卫星定位、星闪SLE驱动、多类传感器及PCI-E接口），并支持轻量系统小型化适配以减少资源占用。应用框架方面，新增基于ModularObjectExtensionAbility的模块化对象能力及自分发插件管理，ArkUI新增多个V2组件、懒加载布局组件、智慧手势、系统材质、响应式环境变量等能力。媒体领域新增音频PCM处理与播出、广告插播、离线缓存下载、录屏暂停恢复及音频设备增强管理等功能。此外，还新增压缩解压缩模块、窗口模式设置、多线程检测可配置参数、企业账号与应用管理增强、WebSocket自定义端口、内存导出监听以及统一SDK支持等能力。
 
 具体新增能力如下：
 
@@ -115,9 +113,9 @@ setMultithreadingDetectionEnabled接口新增多线程检测可配置参数，�
 
 - 新增ArkTS API，实现应用可以离线缓存下载在线资源。（[ArkTS API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVDownloaderManager.md)）
 
-- 新增ArkTS API和C PAI，支持录屏过程中暂停录制屏幕与恢复录制屏幕的能力。 （[ArkTS API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-i.md#avscreencapturestrategy20)、[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpause)）
+- 新增ArkTS API和C API，支持录屏过程中暂停录制屏幕与恢复录制屏幕的能力。 （[ArkTS API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-i.md#avscreencapturestrategy20)、[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpause)）
 
-- 新增C PAI，支持对指定应用的所有窗口进行屏幕录制。（[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturepickermode)）
+- 新增C API，支持对指定应用的所有窗口进行屏幕录制。（[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturepickermode)）
 
 **音频**
 
