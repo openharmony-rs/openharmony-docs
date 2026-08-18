@@ -11,7 +11,7 @@
 
 ## 版本概述
 
-OpenHarmony 7.0 Release版本进一步增强应用开发功能，在系统层面新增支持展锐P7885芯片开发板（涵盖5G蜂窝通信、统一渲染、GNSS卫星定位、星闪SLE驱动、多类传感器及PCI-E接口），并支持轻量系统小型化适配以减少资源占用。应用框架方面，新增基于ModularObjectExtensionAbility的模块化对象能力及自分发插件管理，ArkUI新增多个V2组件、懒加载布局组件、智慧手势、系统材质、响应式环境变量等能力。媒体领域新增音频PCM处理与播出、广告插播、离线缓存下载、录屏暂停恢复及音频设备增强管理等功能。此外，还新增压缩解压缩模块、窗口模式设置、多线程检测可配置参数、企业账号与应用管理增强、WebSocket自定义端口、内存导出监听以及统一SDK支持等能力。
+OpenHarmony 7.0 Release在Beta1版本的基础上进一步增强了应用开发能力。系统层面，新增支持展锐P7885芯片开发板，并支持轻量系统小型化适配以减少资源占用。应用框架方面，新增基于ModularObjectExtensionAbility的模块化对象能力及自分发插件管理，ArkUI新增多个V2组件、懒加载布局组件、智慧手势、系统材质、响应式环境变量等能力。媒体领域新增音频PCM处理与播出、广告插播、离线缓存下载、录屏暂停恢复及音频设备增强管理等功能。此外，还新增压缩解压缩模块、窗口模式设置、多线程检测可配置参数、企业账号与应用管理增强、WebSocket自定义端口、内存导出监听以及统一SDK支持等能力。
 
 具体新增能力如下：
 
@@ -26,6 +26,8 @@ OpenHarmony 7.0 Release版本进一步增强应用开发功能，在系统层面
 - 板载36 PIN标准PCI-E接口，外接板支持USB+千兆以太网接口或者其他标准PCI-E板卡。
 
 轻量系统支持小型化适配，以减少RAM和ROM的使用，详见[轻量系统小型化适配指导](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-minimal.md)。
+
+上述能力在OpenHarmony 6.1 LTS版本已经提供支持。
 
 ### 元能力
 
@@ -45,16 +47,13 @@ OpenHarmony 7.0 Release版本进一步增强应用开发功能，在系统层面
 
 - 包管理新增pluginBundleManager模块，提供应用对自分发插件的管理能力，包括安装、卸载本地插件。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-pluginBundleManager.md)）
 
-
 ### 分布式数据管理
 
 数据共享能力新增支持发布多个值类型的配置用于多应用共享。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkdata/js-apis-data-dataShare.md#publish20)）
 
-
 ### 图形
 
 绘制模块字体绘制能力新增支持获取文字的轮廓路径，同时支持字体回退能力。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md#gettextpathwithfallback)）
-
 
 ### ArkUI
 
@@ -92,16 +91,13 @@ OpenHarmony 7.0 Release版本进一步增强应用开发功能，在系统层面
 
 - 自定义组件的生命周期新增支持组件由非激活状态转变为激活状态的装饰器[@ComponentActive](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive)，以及组件由激活状态转变为非激活状态的装饰器[@ComponentInactive](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive)。（[指南](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/ui/state-management/arkts-custom-components-new-lifecycle.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84%E6%BF%80%E6%B4%BB%E4%B8%8E%E9%9D%9E%E6%BF%80%E6%B4%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F)）
 
-
 ### 窗口管理
 
 新增支持设置主窗或子窗支持的窗口模式。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes)）
 
-
 ### 语言编译器与运行时
 
-setMultithreadingDetectionEnabled接口新增多线程检测可配置参数，支持开发者配置故障类型、采样频率、故障上报时间间隔（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkts/js-apis-util.md#multithreadingdetectionoptions)）
-
+setMultithreadingDetectionEnabled接口新增多线程检测可配置参数，支持开发者配置故障类型、采样频率、故障上报时间间隔。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkts/js-apis-util.md#multithreadingdetectionoptions)）
 
 ### 媒体
 
@@ -113,7 +109,7 @@ setMultithreadingDetectionEnabled接口新增多线程检测可配置参数，�
 
 - 新增ArkTS API，实现应用可以离线缓存下载在线资源。（[ArkTS API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-AVDownloaderManager.md)）
 
-- 新增ArkTS API和C API，支持录屏过程中暂停录制屏幕与恢复录制屏幕的能力。 （[ArkTS API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-i.md#avscreencapturestrategy20)、[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpause)）
+- 新增ArkTS API和C API，支持录屏过程中暂停录制屏幕与恢复录制屏幕的能力。（[ArkTS API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/arkts-apis-media-i.md#avscreencapturestrategy20)、[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpause)）
 
 - 新增C API，支持对指定应用的所有窗口进行屏幕录制。（[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturepickermode)）
 
@@ -123,15 +119,21 @@ setMultithreadingDetectionEnabled接口新增多线程检测可配置参数，�
 
 - 新增基于C/C++的音频格式转换能力。（[指南](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/media/audio/audio-suite-format-converter.md)）
 
-
 **播控框架**
 
-新增支持设置应用支持的播放倍速列表（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setsupportedplayspeeds)）、设置应用支持的循环模式列表（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setsupportedloopmodes)）、设置应用支持的控制类型列表（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setmediacentercontroltype)）。同时通过AVSessionController支持获取应用支持的播放倍速列表（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#getsupportedplayspeeds)）、获取应用支持的循环模式列表（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#getsupportedloopmodes)）、获取应用支持的控制类型列表（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#getmediacentercontroltype)），以及支持注册播放倍速列表变化的监听事件（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#onsupportedplayspeedschange)）、注册循环模式列表变化的监听事件（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#onsupportedloopmodeschange)）、注册控制类型列表变化的监听事件（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#onmediacentercontroltypechanged)）。
+- 新增支持设置应用支持的播放倍速列表。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setsupportedplayspeeds)）
+- 新增支持设置应用支持的循环模式列表。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setsupportedloopmodes)）
+- 新增支持设置应用支持的控制类型列表。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setmediacentercontroltype)）
+- 通过AVSessionController新增获取应用支持的播放倍速列表。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#getsupportedplayspeeds)）
+- 通过AVSessionController新增获取应用支持的循环模式列表。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#getsupportedloopmodes)）
+- 通过AVSessionController新增获取应用支持的控制类型列表。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#getmediacentercontroltype)）
+- 新增注册播放倍速列表变化的监听事件。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#onsupportedplayspeedschange)）
+- 新增注册循环模式列表变化的监听事件。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#onsupportedloopmodeschange)）
+- 新增注册控制类型列表变化的监听事件。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#onmediacentercontroltypechanged)）
 
 **相机**
 
 C API新增元数据对象扩展概念的声明。（[C API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-camera-kit/capi-metadata-object-ext-h.md)）
-
 
 ### 文件管理
 
@@ -141,13 +143,11 @@ C API新增元数据对象扩展概念的声明。（[C API参考](https://gitco
 
 - 企业设备的账号管理新增创建普通系统账号（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-accountManager.md#accountmanagercreatenormalosaccount)）、移除系统账号（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-accountManager.md#accountmanagerremoveosaccount)）以及切换系统账号（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-accountManager.md#accountmanageractivateosaccount)）的接口。
 
-- 企业设备的应用管理新增支持查询指定应用的窗口状态信息列表。可以查询到应用是否在底部Dock栏，以及当前应用窗口是否在前台显示等信息。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagergetapplicationwindowstates)）
-
+- 企业设备的应用管理新增支持查询指定应用的窗口状态信息列表。可查询应用是否在底部Dock栏、当前应用窗口是否在前台显示等信息。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagergetapplicationwindowstates)）
 
 ### 网络管理
 
 建立WebSocket连接的可选参数新增支持supportOriginPort，可用于控制Origin字段是否携带自定义端口号。（[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)）
-
 
 ### DFX
 
@@ -179,7 +179,6 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 #### [计算器](https://gitcode.com/openharmony/applications_calculator)
 
 - 支持标准计算器/科学计算器。
-
 
 ### 更新预置应用
 
@@ -224,7 +223,6 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 - 支持大图视频播放/照片页浏览。
 - 支持图库Picker。
 
-
 #### [联系人](https://gitcode.com/openharmony/applications_contacts)
 
 - 支持拨号盘搜索及结果快捷操作（详情、黑名单、复制、标记、新建/保存联系人、发短信）。
@@ -232,7 +230,7 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 - 支持联系人搜索、字母索引、智能/自定义群组。
 - 支持联系人新建/编辑/详情（头像、多号码、邮箱、地址、生日等完整字段）。
 - 支持收藏联系人及排序、批量管理。
-- 支持联系人导入/导出、SIM 卡导入、最近删除、重复联系人合并。
+- 支持联系人导入/导出、SIM卡导入、最近删除、重复联系人合并。
 - 支持单人铃声（本地/视频/无铃声）。
 - 支持服务卡片（快捷拨打、未接来电、桌面快捷方式）。
 - 支持联系人Picker。
@@ -250,7 +248,7 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 #### [通话](https://gitcode.com/openharmony/applications_call)
 
 - 支持语音来去电、接听/挂断/拒接、静音、扬声器、音频设备切换。
-- 支持紧急拨号、SOS 连按电源键、紧急位置展示。
+- 支持紧急拨号、SOS连按电源键、紧急位置展示。
 - 支持紧急联系人及自动求助。
 - 支持来电全屏/横幅、铃声/振动。
 - 支持移动数据、APN、数据漫游等设置。
