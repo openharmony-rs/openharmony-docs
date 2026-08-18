@@ -5593,7 +5593,7 @@ getRemoteObject(): rpc.RemoteObject
 
   class MyAuthenticator extends appAccount.Authenticator {
     createAccountImplicitly(
-      options: CreateAccountImplicitlyOptions, callback: AuthCallback) {
+      options: appAccount.CreateAccountImplicitlyOptions, callback: appAccount.AuthCallback) {
       let want: Want = {
         bundleName: 'com.example.accountjsdemo',
         abilityName: 'com.example.accountjsdemo.loginAbility',
@@ -5602,7 +5602,7 @@ getRemoteObject(): rpc.RemoteObject
     }
 
     auth(name: string, authType: string,
-      options: Record<string, Object>, callback: AuthCallback) {
+      options: Record<string, Object>, callback: appAccount.AuthCallback) {
       let result: appAccount.AuthResult = {
         account: {
           name: 'Lisi',
@@ -5610,7 +5610,7 @@ getRemoteObject(): rpc.RemoteObject
         },
         tokenInfo: {
           token: 'xxxxxx',
-          authType: 'getSociaData',
+          authType: 'getSocialData',
         }
       };
       callback.onResult(0, result);
