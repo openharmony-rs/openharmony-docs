@@ -2851,7 +2851,7 @@ NODE_ARC_LIST_ITEM_SWIPE_ACTION = 1020001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 使用[ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象构造。<br>定义ArcListItem的划出组件信息的结构体。通过[OH_ArkUI_ListItemSwipeActionOption_Create](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_create)接口来创建，并且可以使用[OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_setstart)方法设置ListItemSwipeActionItem左侧（垂直布局）或上方（横向布局）内容。 |
+| .object | 使用[ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象构造。<br>定义ArcListItem的划出组件信息的结构体。通过[OH_ArkUI_ListItemSwipeActionOption_Create](capi-list-item-h.md#oh_arkui_listitemswipeactionoption_create)接口来创建，并且可以使用[OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-list-item-h.md#oh_arkui_listitemswipeactionoption_setstart)方法设置ListItemSwipeActionItem左侧（垂直布局）或上方（横向布局）内容。 |
 
 ## NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE
 
