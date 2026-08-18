@@ -578,7 +578,7 @@ WLAN配置信息。
 | password | string | 否 | 否 | 密码。当eapMethod为EAP_PEAP或EAP_PWD时，该字段不能为空串，最大长度为128字节。 |
 | caCertAlias | string | 否 | 否 | CA证书别名。 |
 | caPath | string | 否 | 否 | CA证书路径。 |
-| clientCertAlias | string | 否 | 否 | 客户端证书别名。当eapMethod为EAP_TLS且certEntry为空时，该字段不能为空。 |
+| clientCertAlias | string | 否 | 否 | 客户端证书别名。 |
 | certEntry | Uint8Array | 否 | 否 | CA证书内容。当eapMethod为EAP_TLS时，如果该字段为空，则clientCertAlias不能为空。 |
 | certPassword | string | 否 | 否 | CA证书密码，最大长度为128字节。 |
 | altSubjectMatch | string | 否 | 否 | 替代主题匹配。 |
@@ -1023,7 +1023,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 connectToCandidateConfig(networkId: number): void
 
-应用使用该接口连接到自己添加的候选网络。建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过wifiManager.on('wifiScanStateChange')方法监听到扫描结果刷新后再连接，以提高连接成功率。
+应用使用该接口连接到自己添加的候选网络。建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)方法监听到扫描结果刷新后再连接，以提高连接成功率。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -1375,7 +1375,7 @@ getSignalLevel(rssi: number, band: number): number
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | rssi | number | 是 | 热点的信号强度(dBm)，取值范围为-127至0。 |
+  | rssi | number | 是 | 热点的信号强度(dBm)。 |
   | band | number | 是 | WLAN接入点的频段，1表示2.4GHz；2表示5GHz。 |
 
 **返回值：**
@@ -2458,7 +2458,7 @@ createGroup(config: WifiP2PConfig): void
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceAddress | string | 否 | 否 | 设备地址，格式为MAC地址，例如：00:11:22:33:44:55。 |
-| deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。不指定时默认为随机设备地址类型（RANDOM_DEVICE_ADDRESS）。 |
+| deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 |
 | netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 |
 | passphrase | string | 否 | 否 | 群组密钥。 |
 | groupName | string | 否 | 否 | 群组名称。 |
@@ -2644,7 +2644,7 @@ p2pCancelConnect(): void
 
 startDiscoverDevices(): void
 
-开始发现周围的P2P（Wi-Fi Direct）设备。在需要进行设备间点对点通信（如文件分享、屏幕投屏、无线打印等）前，调用此接口搜索附近可用的P2P设备，发现结果可通过on('p2pPeerDeviceChange')事件获取。
+开始发现周围的P2P（Wi-Fi Direct）设备。在需要进行设备间点对点通信（如文件分享、屏幕投屏、无线打印等）前，调用此接口搜索附近可用的P2P设备，发现结果可通过[wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2ppeerdevicechange)事件获取。
 
 **需要权限：**
 

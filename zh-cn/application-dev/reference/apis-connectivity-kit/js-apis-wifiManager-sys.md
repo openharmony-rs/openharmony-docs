@@ -153,15 +153,15 @@ WLAN配置信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | creatorUid | number | 否 | 是 | 创建用户的ID。 <br> **系统接口：** 此接口为系统接口。 |
-| disableReason | number | 否 | 是 | 禁用原因： <br> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br> 3 - DHCP失败，4 - 暂时无互联网连接 <br> 5 - 认证无凭据，6 - 永久无互联网连接 <br> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br> 9 - 认证无订阅，10 - 私有EAP认证错误 <br> 11 - 未找到网络，12 - 连续失败 <br> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br> 15 - 解除关联原因，16 - 禁用网络选择最大值<br> **系统接口：** 此接口为系统接口。 |
-| randomMacType | number | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址，默认值为0（随机MAC地址）。 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
-| ipType | [IpType](#iptype) | 否 | 是 | IP地址类型，默认值为1（DHCP）。 <br /> **系统接口：** 此接口为系统接口。 |
-| staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
-| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
-| configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接，默认值为true。<br /> **系统接口：** 此接口为系统接口。|
-| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false:不是安全Wi-Fi，true:是安全Wi-Fi，默认值为false。<br /> **系统接口：** 此接口为系统接口。|
+| disableReason | number | 否 | 是 | 禁用原因： <br> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br> 3 - DHCP失败，4 - 暂时无互联网连接 <br> 5 - 认证无凭据，6 - 永久无互联网连接 <br> 7 - 由WLAN管理器禁用，8 - 由于密码错误禁用 <br> 9 - 认证无订阅，10 - 私有EAP认证错误 <br> 11 - 未找到网络，12 - 连续失败 <br> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br> 15 - 解除关联原因，16 - 禁用网络选择最大值<br> **系统接口：** 此接口为系统接口。 |
+| randomMacType | number | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 <br> **系统接口：** 此接口为系统接口。 |
+| randomMacAddr | string | 否 | 是 | MAC地址。<br> **系统接口：** 此接口为系统接口。 |
+| ipType | [IpType](#iptype) | 否 | 是 | IP地址类型。 <br> **系统接口：** 此接口为系统接口。 |
+| staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br> **系统接口：** 此接口为系统接口。 |
+| proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br> **系统接口：** 此接口为系统接口。|
+| configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br>  1 - 允许参与选网，2 - 禁止参与 <br> 3 - 永久禁止参与，4 - 未知 <br> **系统接口：** 此接口为系统接口。|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接。<br> **系统接口：** 此接口为系统接口。|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false:不是安全WLAN，true:是安全WLAN。<br> **系统接口：** 此接口为系统接口。|
 
 ## IpType
 
@@ -188,10 +188,10 @@ IP配置信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IP地址，以32位无符号整数表示（网络字节序）。 |
-| gateway | number | 否 | 否 | 网关地址，以32位无符号整数表示（网络字节序）。 |
+| ipAddress | number | 否 | 否 | IP地址。 |
+| gateway | number | 否 | 否 | 网关地址。 |
 | prefixLength | number | 否 | 否 | 掩码。 |
-| dnsServers | number[] | 否 | 否 | DNS服务器地址数组，每个元素以32位无符号整数表示（网络字节序）。 |
+| dnsServers | number[] | 否 | 否 | DNS服务器。 |
 | domains | Array&lt;string&gt; | 否 | 否 | 域信息。 |
 
 
@@ -205,10 +205,10 @@ Wifi 代理配置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| proxyMethod | ProxyMethod | 否 | 是 | 代理方法，默认值为METHOD_NONE（不使用代理）。 |
+| proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 |
 | pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web地址，需为有效的URL格式（如 http://example.com/proxy.pac）。 |
 | serverHostName | string | 否 | 是 | 手动配置代理的服务器主机名。 |
-| serverPort | number | 否 | 是 | 手动配置代理的服务器端口，取值范围[0, 65535]。 |
+| serverPort | number | 否 | 是 | 手动配置代理的服务器端口。 |
 | exclusionObjects | string | 否 | 是 | 手动配置代理的排除对象，对象用“,”分隔。|
 
 ## ProxyMethod<sup>10+</sup>
@@ -439,7 +439,7 @@ getWifiDetailState(): WifiDetailState
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | [WifiDetailState](#wifidetailstate12) | Wifi开关的详细状态，包含已关闭、已激活、激活中、关闭中、半关闭中、已半关闭等状态。 |
+  | [WifiDetailState](#wifidetailstate12) | WLAN开关的详细状态，包含已关闭、已激活、激活中、关闭中、半关闭中、已半关闭等状态。 |
 
 **错误码：**
 
@@ -1192,11 +1192,11 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8，长度不超过32字节。 |
+| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。 |
 | securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype)| 否 | 否 | 加密类型。 |
 | band | number | 否 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双频段 |
 | channel<sup>10+</sup> | number | 否 | 是 | 热点的信道（2.4GHz：1~14,5GHz：7~196）。 |
-| preSharedKey | string | 否 | 否 | 热点的密钥。WPA/WPA2-PSK加密方式下长度为8-63个字符。 |
+| preSharedKey | string | 否 | 否 | 热点的密钥。 |
 | maxConn | number | 否 | 否 | 最大设备连接数。取值需大于0，具体上限取决于设备支持的最大连接数。 |
 | ipAddress | string | 否 | 是 | DHCP服务器的IP地址，未指定时使用系统默认地址（如192.168.43.1）。|
 
@@ -1297,7 +1297,7 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name | string | 否 | 否 | 设备名称。 |
-| macAddress | string | 否 | 否 | MAC地址，格式为XX:XX:XX:XX:XX:XX。 |
+| macAddress | string | 否 | 否 | MAC地址。 |
 | macAddressType<sup>10+</sup> | [DeviceAddressType](js-apis-wifiManager.md#deviceaddresstype10) | 否 | 是 | MAC地址类型。 |
 | ipAddress | string | 否 | 否 | IP地址，格式为点分十进制（如192.168.1.1）。 |
 
@@ -1936,7 +1936,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（Huawei Device Interconnection Network Protocol）（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
+| isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro（Huawei Device Interconnection Network Protocol）（华为设备互联网络协议）网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br> **系统接口：** 此接口为系统接口。 |
 
 ## wifiManager.isRandomMacDisabled<sup>21+</sup>
 

@@ -912,10 +912,10 @@ try {
 
 | **名称** | **类型** | **可读** | **可写** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8，长度范围1-32字节。 |
+| ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8。 |
 | securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | 是 | 否 | 加密类型。 |
 | band | number | 是 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双模频段 |
-| preSharedKey | string | 是 | 否 | 热点的密钥。长度范围8-63个字符。 |
+| preSharedKey | string | 是 | 否 | 热点的密钥。 |
 | maxConn | number | 是 | 否 | 最大设备连接数。 |
 
 
