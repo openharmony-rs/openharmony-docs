@@ -47,7 +47,7 @@ confirm(authUri : string): void
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.ACCESS_CERT_MANAGER。
+> authUri参数需通过系统证书管理器获取，需配置ohos.permission.ACCESS_CERT_MANAGER权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -74,7 +74,11 @@ confirm(authUri : string): void
 
 confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| string): void
 
-通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。   
+通知Web组件使用从证书管理模块获取的指定凭据和凭据类型。
+
+> **说明：**
+>
+> identity参数需通过系统证书管理器获取，需配置ohos.permission.ACCESS_CERT_MANAGER权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
