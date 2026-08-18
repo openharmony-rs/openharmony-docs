@@ -182,7 +182,7 @@ try {
 offBatteryChange(callback?: Callback&lt;BatteryInfo&gt;): void
 
 取消订阅远端设备电量状态变化事件。
-- 不可与[connection.off('batteryChange')](js-apis-bluetooth-connection.md#connectionoffbatterychange12)混用。
+不可与[connection.off('batteryChange')](js-apis-bluetooth-connection.md#connectionoffbatterychange12)混用。
 
 **起始版本**：26.0.0
 
