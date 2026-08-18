@@ -179,7 +179,7 @@ async function uninstallScopeFont() {
 
 ## getFontScope
 
-getFontScope(url: string): Promise&lt;FontScope | null&gt;
+getFontScope(url: string): Promise&lt;FontScope&gt;
 
 查询指定路径字体的作用范围。使用Promise异步回调。
 
@@ -199,7 +199,7 @@ getFontScope(url: string): Promise&lt;FontScope | null&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[FontScope](#fontscope) \| null&gt; | Promise对象，返回查询结果。<br>- 返回FontScope枚举值：字体已安装，返回其作用范围。<br>- 返回null：字体未安装。 |
+| Promise&lt;[FontScope](#fontscope)&gt; | Promise对象，返回字体的作用范围。 |
 
 **错误码：**
 
@@ -209,6 +209,7 @@ getFontScope(url: string): Promise&lt;FontScope | null&gt;
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 31100107 | The font file does not exist. |
 | 31100110 | Call failed due to system error. |
 
 **示例：**
