@@ -1,4 +1,4 @@
-# OpenHarmony 6.1 Release
+# OpenHarmony 7.0 Release
 
 ## 版权和许可声明
 
@@ -11,9 +11,120 @@
 
 ## 版本概述
 
-OpenHarmony 7.0 Release版本进一步增强应用开发功能，支持对应用更精细化的控制，比如可统计UIAbility启动耗时、可获取通知角标数等；进一步提升动态效果体验，对小语种文字显示进行了优化；进一步增强系统感知能力，ArkWeb可获取网页使用麦克风和摄像头的状态，输入法可感知所在屏幕状态等；进一步丰富了证书管理能力；进一步增强音频控制管理能力、图形处理能力等。
+OpenHarmony 7.0 Release版本进一步增强应用开发功能，
 
-各模块重点新增与增强的特性说明如下：
+OpenHarmony 7.0 Release在标准系统引入了一款新的开发板“展锐P7885芯片开发板”，并针对这款开发板进行一系列能力新增和增强，以及预置应用的适配。
+
+具体新增能力如下：
+
+### 系统
+
+标准系统新增支持“展锐P7885芯片开发板”，支持以下能力：
+- 支持5G蜂窝通信能力，提供驻网、通话、短信、数据功能。
+- 支持统一渲染。
+- 支持GNSS卫星状态信息上报，可识别并上报GPS、北斗、GLONASS等卫星数据。
+- 适配星闪驱动，支持星闪SLE 1.0，支持星闪配对连接和数据传输。
+- 板载适配6类传感器：加速度计、陀螺仪、磁力计、接近传感器、环境光传感器、马达。
+- 板载36 PIN标准PCI-E接口，外接板支持USB+千兆以太网接口或者其他标准PCI-E板卡。
+
+轻量系统支持小型化适配，以减少RAM和ROM的使用，详见[轻量系统小型化适配指导](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/porting/porting-minichip-minimal.md)。
+
+### 新增预置应用
+
+针对展锐P7885芯片开发板，新增如下预置应用：
+
+#### [文件管理](https://gitcode.com/openharmony/applications_filepicker)
+
+- 支持外置存储浏览。
+- 支持文管内访问图库。
+- 支持文件Picker（选择、后缀过滤、批量授权）。
+- 支持通过路径Picker保存文件。
+- 支持文件的打开、分享、重命名、复制、移动、收藏。
+- 支持最近删除、文件属性、列表/宫格等视图。
+
+#### [时钟](https://gitcode.com/openharmony/applications_clock)
+
+- 支持世界时钟/计时器。
+
+#### [计算器](https://gitcode.com/openharmony/applications_calculator)
+
+- 支持标准计算器/科学计算器。
+
+
+### 更新预置应用
+
+针对展锐P7885芯片开发板，如下预置应用在6.1 Release版本的基础上进行了更新：
+
+#### [桌面](https://gitcode.com/openharmony/window_scene_board)
+
+- 支持数字密码/滑动解锁、防暴力破解、锁屏时钟与卡片。
+- 支持4×4桌面图标布局、Dock栏、桌面图标角标、应用快捷方式、桌面编辑模式。
+- 支持卡片/卡片堆叠/文件夹的完整管理。
+- 支持最近任务（锁定、一键清理、滑动删除）。
+- 支持状态栏、控制中心、手势/三键导航。
+- 支持通知中心（列表、分区、组通知、置顶/静默）。
+- 支持实况通知（胶囊/卡片）。
+- 支持系统弹框（关机/低电量）、音量面板。
+- 支持分屏、悬浮窗（智慧多窗）。
+- 支持窗口任务管理（启停、多任务、任务链、持久化恢复）。
+- 支持壁纸库、静态壁纸设置、免打扰模式。
+
+#### [设置](https://gitcode.com/openharmony/applications_settings)
+
+- 支持设置内全局搜索。
+- 支持WLAN/蓝牙/移动网络。
+- 支持壁纸、亮度、深色模式（含定时）、字体与显示大小。
+- 支持声音模式、音量面板、来电/信息/通知铃声。
+- 支持通知和状态栏管理。
+- 支持应用管理、锁屏密码、电池、存储。
+- 支持系统导航、语言与输入法、日期时间、重置、开发者选项。
+- 支持关于设备完整信息（IMEI、序列号、运行内存等）。
+
+#### [相机](https://gitcode.com/openharmony/applications_camera)
+
+- 支持前/后置拍照、前/后置录像。
+- 支持相机Picker（仅拍照/仅录像/拍照+录像）。
+- 支持相机设置页、百宝箱入口。
+
+#### [图库](https://gitcode.com/openharmony/applications_photos)
+
+- 支持照片浏览/大图浏览/大图手势/大图组件。
+- 支持宫格操作/大图菜单操作/卡片操作/相册操作。
+- 支持图片编辑/图库设置。
+- 支持大图视频播放/照片页浏览。
+- 支持图库Picker。
+
+
+#### [联系人](https://gitcode.com/openharmony/applications_contacts)
+
+- 支持拨号盘搜索及结果快捷操作（详情、黑名单、复制、标记、新建/保存联系人、发短信）。
+- 支持通话记录（全部/未接）及长按管理（多选、删除、标记、加入黑名单等）。
+- 支持联系人搜索、字母索引、智能/自定义群组。
+- 支持联系人新建/编辑/详情（头像、多号码、邮箱、地址、生日等完整字段）。
+- 支持收藏联系人及排序、批量管理。
+- 支持联系人导入/导出、SIM 卡导入、最近删除、重复联系人合并。
+- 支持单人铃声（本地/视频/无铃声）。
+- 支持服务卡片（快捷拨打、未接来电、桌面快捷方式）。
+- 支持联系人Picker。
+
+#### [短信](https://gitcode.com/openharmony/applications_mms)
+
+- 支持短信发送，长短信、表情。
+- 支持群发、转发、失败重发。
+- 支持会话列表左滑/长按/滑动多选删除。
+- 支持通知栏整合、标记已读、通知回复。
+- 支持详情页复制、转发、选择文本等操作。
+- 支持列表与详情展示联系人头像。
+- 支持信息收藏、送达报告。
+
+#### [通话](https://gitcode.com/openharmony/applications_call)
+
+- 支持语音来去电、接听/挂断/拒接、静音、扬声器、音频设备切换。
+- 支持紧急拨号、SOS 连按电源键、紧急位置展示。
+- 支持紧急联系人及自动求助。
+- 支持来电全屏/横幅、铃声/振动。
+- 支持移动数据、APN、数据漫游等设置。
+- 支持飞行模式拨号提示、接近光防误触。
 
 ### 元能力
 
@@ -141,7 +252,6 @@ C API新增元数据对象扩展概念的声明。（[C API参考](https://gitco
 
 HiDebug新增支持注册内存导出监听器，用于在内存占用较高或通过hidumper命令手动触发时导出应用内存快照。（[指南](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/dfx/hidebug-guidelines.md#导出内存快照)、[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_registermemdumplistener)）
 
+### 其他
 
-### 设备管理
-
-串口通信能力新增支持对串口通信的管理，包括获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理等。（[指南](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/basic-services/busmanager/serialManager/serial-guidelines.md)、[API参考](https://gitcode.com/OpenHarmony/docs/blob/master/zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-busmanager-serial.md)）
+新增对统一SDK的支持。统一SDK是面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力，为开发者提供远场通信、基础语音、分享服务、基础视觉、桌面拓展、文件预览、推送服务、统一扫码服务等多维度开发能力。详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/6.1-release/README.md)。
