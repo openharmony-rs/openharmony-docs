@@ -1165,8 +1165,12 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();
     for (let i = 0; i < timeZoneCityItemArray.length; i++) {
-        console.info(timeZoneCityItemArray[i].zoneId + ", " + timeZoneCityItemArray[i].cityId + ", " + timeZoneCityItemArray[i].cityDisplayName +
-            ", " + timeZoneCityItemArray[i].offset + "\r\n");
+        console.info("时区ID：" + timeZoneCityItemArray[i].zoneId);
+        console.info("城市ID：" + timeZoneCityItemArray[i].cityId);
+        console.info("城市名称：" + timeZoneCityItemArray[i].cityDisplayName);
+        console.info("时区偏移量：" + timeZoneCityItemArray[i].offset);
+        console.info("时区名称：" + timeZoneCityItemArray[i].zoneDisplayName);
+        console.info("城市坐标(纬度，经度)：" + timeZoneCityItemArray[i].latitude + "，" + timeZoneCityItemArray[i].longitude);
     }
   } catch(error) {
     let err: BusinessError = error as BusinessError;
@@ -1201,10 +1205,12 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | zoneId          | string          |   否    |   否    | 时区ID，例如Asia/Shanghai。              |
 | cityId          | string          |   否    |   否    | 城市ID，例如Shanghai。                   |
-| cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。          |
-| offset          | number             |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。                         |
-| zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。          |
-| rawOffset       | number             |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。                       |
+| cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。           |
+| offset          | number          |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。       |
+| zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。           |
+| latitude        | number          |   否    |   否    | 城市纬度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| longitude       | number          |   否    |   否    | 城市经度坐标，单位为度（°）。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| rawOffset       | number          |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。   |
 
 
 ## SuggestionType<sup>10+</sup>
