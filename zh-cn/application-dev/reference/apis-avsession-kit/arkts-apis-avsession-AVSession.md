@@ -3229,7 +3229,7 @@ offRewind(callback?: TwoParamCallback\<number, CommandInfo>): void
 
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数，用于处理'rewind'操作，参数number是快退的时间，单位为秒（s）。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数，参数number是快退的时间，单位为秒（s）。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -3523,7 +3523,7 @@ off(type: 'commonCommand', callback?: (command: string, args:{[key: string]: Obj
 
 | 参数名   | 类型  |   必填 | 说明  |
 | -------- | --------- | ---- | ----------------------|
-| type     | string    | 是   | 取消对应的监听事件，支持事件`'commonCommand'`。    |
+| type     | string    | 是   | 需要取消的监听事件类型，当前支持的事件类型为`'commonCommand'`。    |
 | callback |(command: string, args:{[key: string]: Object}) => void | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。|
 
 **错误码：**
@@ -4081,7 +4081,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 取消对应的监听事件，支持的事件是'customDataChange'。         |
+| type     | string                           | 是   | 需要取消的监听事件类型，当前支持的事件类型为'customDataChange'。         |
 | callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
 
 **错误码：**
