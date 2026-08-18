@@ -1957,7 +1957,7 @@ type AuthEventKey = 'result' | 'tip'
 
 ### callback<sup>(deprecated)</sup>
 
-callback(result : EventInfo) : void
+callback(result: EventInfo) : void
 
 通过该回调获取认证结果信息或认证过程中的提示信息。
 
