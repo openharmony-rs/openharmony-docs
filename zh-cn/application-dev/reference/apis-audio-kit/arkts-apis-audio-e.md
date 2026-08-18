@@ -820,10 +820,6 @@
 
 表示活跃设备类型的枚举。
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[CommunicationDeviceType](#communicationdevicetype9)替代。
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -832,8 +828,8 @@
 
 | 名称          |  值     | 说明                                                 |
 | ------------- | ------ | ---------------------------------------------------- |
-| SPEAKER       | 2      | 扬声器。                                             |
-| BLUETOOTH_SCO | 7      | 蓝牙设备SCO（Synchronous Connection Oriented）连接。 |
+| SPEAKER       | 2      | 扬声器。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[CommunicationDeviceType](#communicationdevicetype9).SPEAKER替代。 |
+| BLUETOOTH_SCO | 7      | 蓝牙设备SCO（Synchronous Connection Oriented）连接。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[DeviceType](#devicetype).BLUETOOTH_SCO替代。 |
 
 ## InterruptActionType<sup>(deprecated)</sup>
 

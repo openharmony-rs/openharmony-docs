@@ -138,7 +138,7 @@ ArkTS-Sta: getVolumeGroupManagerSync(groupId: int): AudioVolumeGroupManager
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed. |
 
 **示例：**
