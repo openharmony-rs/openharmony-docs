@@ -9132,3 +9132,17 @@ Allows a system application to modify the delayed task parameters of specified a
 **Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
 **Valid since**: 26.1.0
+
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
+
+Allows an application to restore the vehicle system to factory settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
