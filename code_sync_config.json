@@ -37271,6 +37271,11 @@
 						"end_line":230,
 						"name":"audioSessionManager_setDefaultOutputDevice",
 						"start_line":17
+					},
+					{
+						"end_line":322,
+						"name":"audioSessionManager_setMediaOutputDevice",
+						"start_line":18
 					}
 				]
 			}
