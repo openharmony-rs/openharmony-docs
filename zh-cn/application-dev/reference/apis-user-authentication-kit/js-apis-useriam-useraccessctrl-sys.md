@@ -209,11 +209,11 @@ try {
               console.info(`retAuthToken key:${key}`);
             });
           }).catch((error: BusinessError) => {
-            console.error(`Failed to verify auth token. Code: ${error.code}, message: ${error.message}`);
+            console.error(`Failed to verify authToken. Code: ${error.code}, message: ${error.message}`);
           });
       } catch (error) {
         const err: BusinessError = error as BusinessError;
-        console.error(`Failed to verify auth token. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to verify authToken. Code: ${err.code}, message: ${err.message}`);
       }
     }
   });
