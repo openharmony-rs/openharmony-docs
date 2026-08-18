@@ -275,15 +275,15 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    ArkTS-Sta示例：
 
    <!-- @[set_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopBackJS_Sta/entry/src/main/ets/pages/AudioLoopback.ets) -->  
-
+   
    ``` TypeScript
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
    // ...
        try {
          (audioLoopback as audio.AudioLoopback).setReverbPreset(preset);
          console.info('Succeeded in setting reverb preset.');
          // ...
-         currentReverbPreset = (audioLoopback as audio.AudioLoopback).getReverbPreset();
+         currentReverbPreset = (audioLoopback as audio.AudioLoopback).getReverbPreset(); // 查询当前的混响模式，防止设置失败。
        } catch (err) {
          console.error(`Failed to set reverb preset. Code: ${err.code}, message: ${err.message}`);
          // ...
