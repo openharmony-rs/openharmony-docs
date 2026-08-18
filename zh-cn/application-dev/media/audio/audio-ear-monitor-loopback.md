@@ -389,11 +389,16 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     ArkTS-Sta示例：
 
     <!-- @[get_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopBackJS_Sta/entry/src/main/ets/pages/AudioLoopback.ets) -->  
-
+    
     ``` TypeScript
-    import { BusinessError } from '@kit.BasicServicesKit';
+    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
     // ...
-        let equalizerPreset = (audioLoopback as audio.AudioLoopback).getEqualizerPreset();
+        try {
+          let equalizerPreset = (audioLoopback as audio.AudioLoopback).getEqualizerPreset();
+        } catch (err) {
+          console.error(`Failed to get equalizer preset. Code: ${err.code}, message: ${err.message}`);
+          // ...
+        }
     ```
 
 11. 调用[enable](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#enable20)方法，启用或禁用音频返听功能。
