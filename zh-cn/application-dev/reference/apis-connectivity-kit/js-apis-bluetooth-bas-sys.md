@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-bas模块提供了访问BAS（Battery Service，电量服务）相关能力的方法。
+bas模块提供了访问BAS（Battery Service，电量服务）相关能力的方法，包括读取远端设备电量信息、监听远端设备电量信息变化等。
 
 **起始版本**：26.0.0
 
