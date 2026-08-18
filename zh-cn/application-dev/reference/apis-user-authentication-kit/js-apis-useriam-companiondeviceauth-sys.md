@@ -697,7 +697,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`Failed to unsubscribe continuous auth change. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to get status monitor. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
