@@ -1624,7 +1624,7 @@ Allows an application to be set as the user's default browser.
  
 Allows an in-vehicle application to obtain the current vehicle's energy replenishment status.
  
-<!--RP100--><!--RP100End-->
+<!--RP104--><!--RP104End-->
  
 **Permission level**: system_basic
  
@@ -1638,7 +1638,7 @@ Allows an in-vehicle application to obtain the current vehicle's energy replenis
  
 Allows an in-vehicle application to obtain real-time weather information of the vehicle's surroundings.
  
-<!--RP100--><!--RP100End-->
+<!--RP105--><!--RP105End-->
  
 **Permission level**: system_basic
  
@@ -1652,7 +1652,7 @@ Allows an in-vehicle application to obtain real-time weather information of the 
  
 Allows an application on the rear display to call spatial gesture APIs to enable contactless interaction for passengers.
  
-<!--RP100--><!--RP100End-->
+<!--RP106--><!--RP106End-->
  
 **Permission level**: system_basic
  
