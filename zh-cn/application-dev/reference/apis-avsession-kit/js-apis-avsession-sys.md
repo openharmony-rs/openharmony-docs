@@ -48,7 +48,7 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-|  Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise对象。返回对应类别的会话描述的只读对象。 |
+|  Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise对象。返回对应类别的会话描述的只读对象。 |
 
 **错误码：**
 
@@ -163,7 +163,7 @@ ArkTS-Sta: getHistoricalSessionDescriptors(maxSize?: int): Promise\<Array\<Reado
 
 | 类型                                                                        | 说明                                   |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-|  Promise<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\>  | Promise对象。返回所有会话描述的只读对象。 |
+|  Promise<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\>  | Promise对象。返回所有会话描述的只读对象。 |
 
 **错误码：**
 
@@ -245,7 +245,7 @@ ArkTS-Dyn: getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number): Promi
 
 ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int) : Promise\<Array\<Readonly\<AVQueueInfo>>>
 
-获取全部的历史播放歌单。使用Promise异步回调。
+根据指定数量限制获取历史播放歌单。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -261,8 +261,8 @@ ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int) : Promise\<A
 
 | 参数名   | 类型    | 必填 | 说明                                                             |
 | -------- | ------ | ---- | ---------------------------------------------------------------|
-| maxSize  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。                     |
-| maxAppSize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。             |
+| maxSize  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定获取歌曲列表数量的最大值，与获取歌单数量无关。                     |
+| maxAppSize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定获取歌曲列表所属应用数量的最大值，与获取歌单数量无关。             |
 
 **返回值：**
 
@@ -293,7 +293,7 @@ ArkTS-Dyn: getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callba
 
 ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: AsyncCallback\<Array\<Readonly\<AVQueueInfo>>>): void;
 
-获取全部的历史播放歌单。使用callback异步回调。
+根据指定数量限制获取历史播放歌单。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
 
@@ -309,8 +309,8 @@ ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: As
 
 | 参数名   | 类型                                                                            | 必填 | 说明                                                             |
 | -------- | ----------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------|
-| maxSize  | ArkTS-Dyn: number<br>ArkTS-Sta: int                         | 是   | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。                      |
-| maxAppSize | ArkTS-Dyn: number<br>ArkTS-Sta: int                                  | 是   | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。               |
+| maxSize  | ArkTS-Dyn: number<br>ArkTS-Sta: int                         | 是   | 指定获取歌曲列表数量的最大值。                      |
+| maxAppSize | ArkTS-Dyn: number<br>ArkTS-Sta: int                                  | 是   | 指定获取歌曲列表所属应用数量的最大值。               |
 | callback | AsyncCallback<Array<Readonly<[AVQueueInfo](#avqueueinfo11)\>\>\> | 是   | 回调函数。返回所有历史播放歌单的只读对象。                              |
 
 **错误码：**
@@ -478,13 +478,12 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
+  if (audioDevices !== undefined) {
+    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
+      console.info('Succeeded in casting audio.');
+    });
+  }
 });
-
-if (audioDevices !== undefined) {
-  avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
-    console.info('Succeeded in creating controller.');
-  });
-}
 ```
 
 ## avSession.castAudioSessionAll<sup>23+</sup>
@@ -715,7 +714,7 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
+import { avSession } from '@kit.AVSessionKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('Succeeded in starting AV playback.');
@@ -1354,7 +1353,7 @@ on(type: 'sessionServiceDie', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | 是   | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件，检测到会话的服务死亡时触发。 |
-| callback | callback: () => void | 是   | 回调函数。<br>当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | callback: () => void | 是   | 回调函数<br>，当会话服务死亡时触发回调。 |
 
 **错误码：**
 
@@ -1392,7 +1391,7 @@ onSessionServiceDie(callback: NoParamCallback): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| callback | NoParamCallback | 是   | 回调函数。<br>当监听事件注册成功，err为null，否则返回错误对象。 |
+| callback | NoParamCallback | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -1430,7 +1429,7 @@ off(type: 'sessionServiceDie', callback?: () => void): void
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | 是    | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件。|
-| callback | callback: () => void   | 否    | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
+| callback | callback: () => void   | 否    | 需要取消的回调函数，与on接口注册时的回调函数保持一致。<br>如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -1466,7 +1465,7 @@ offSessionServiceDie(callback?: NoParamCallback): void
 
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
-| callback | NoParamCallback   | 否    | 回调函数。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
+| callback | NoParamCallback   | 否    | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。 |
 
 **错误码：**
 
@@ -1587,7 +1586,7 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 | -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
 | type     | string                                                                              | 是  | 事件回调类型，支持的事件为`'distributedSessionChange'`。                    |
 | distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是  | 远端会话类型。                                                       |
-| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -1625,7 +1624,7 @@ offDistributedSessionChange(distributedSessionType: DistributedSessionType, call
 | 参数名   | 类型                                                                                  | 必填 | 说明                                                            |
 | -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
 | distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是  | 远端会话类型。                                                       |
-| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -1940,7 +1939,7 @@ ArkTS-Sta: startCastDeviceDiscovery(filter: int, callback: AsyncCallback\<void>)
 
 | 参数名   | 类型                                  | 必填 | 说明                                  |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 进行设备发现的过滤条件，由ProtocolType的组合而成。 |
+| filter | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 进行设备发现的过滤条件，由ProtocolType通过按位或运算组合而成。 |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。<br>ArkTS-Dyn：当命令发送成功并开始搜索，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当命令发送成功并开始搜索，err为null，否则返回错误对象。 |
 
 **错误码：**
@@ -2163,7 +2162,7 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'deviceAvailable'`，有设备被发现时触发回调。 |
-| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数。<br>ArkTS-Dyn：当监听事件注册成功，err为undefined，否则返回错误对象。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
+| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数<br>ArkTS-Dyn：，参数device是可用设备信息。<br>ArkTS-Sta：当监听事件注册成功，err为null，否则返回错误对象。 |
 
 **错误码：**
 
@@ -2241,7 +2240,7 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | 是    | 事件回调类型，支持事件`'deviceAvailable'`：设备发现回调。|
-| callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | 否    | 用于返回设备信息。|
+| callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | 否    | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。|
 
 **错误码：**
 
@@ -2311,7 +2310,7 @@ on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | 是   | 事件回调类型，支持事件`'deviceOffline'`，有设备下线时触发回调。 |
-| callback | (deviceId: string) => void | 是   | 回调函数，参数deviceId是设备的ID。<br>当监听事件注册成功，err为undefined，否则返回错误对象。 |
+| callback | (deviceId: string) => void | 是   | 回调函数，参数deviceId是设备的ID。<br> |
 
 **错误码：**
 
@@ -2376,8 +2375,6 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 取消设备下线回调的监听。使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -2391,7 +2388,7 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | 是    | 事件回调类型，支持事件`'deviceOffline'`：设备下线回调。|
-| callback | (deviceId: string) => void | 否   | 回调函数，参数deviceId是设备的ID。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (deviceId: string) => void | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。其中参数deviceId是设备的ID。<br><br> |
 
 **错误码：**
 
@@ -2495,11 +2492,15 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context = this.getUIContext().getHostContext() as Context;
-          let sessionId: string = ""; // 供后续函数入参使用。
+        .onClick(async () => {
+          // 获取当前系统中所有session的描述符。
+          let descriptors = await AVSessionManager.getAllSessionDescriptors();
+          if (descriptors.length === 0) {
+            console.error(`No session in system, can not create controller.`);
+            return;
+          }
+          // 取目标session的sessionId创建controller。
+          let sessionId = descriptors[0].sessionId;
 
           let avCastController: avSession.AVCastController;
           avSession.getAVCastController(sessionId, (avcontroller: avSession.AVCastController) => {
@@ -2557,6 +2558,7 @@ startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 **示例：**
 
 ```ts
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2606,6 +2608,7 @@ stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2653,6 +2656,7 @@ stopCasting(session: SessionToken): Promise\<void>
 **示例：**
 
 ```ts
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2706,11 +2710,13 @@ ArkTS-Sta: startDeviceLogging(url: string, maxSize?: int): Promise\<void>
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
-let file = await fileIo.open("filePath");
-let url = file.fd.toString();
-avSession.startDeviceLogging(url, 2048).then(() => {
-  console.info('Succeeded in starting device logging.');
-})
+async function startDeviceLogging() {
+  let file = await fileIo.open("filePath");
+  let url = file.fd.toString();
+  avSession.startDeviceLogging(url, 2048).then(() => {
+    console.info('Succeeded in starting device logging.');
+  });
+}
 ```
 
 ## avSession.stopDeviceLogging<sup>13+</sup>
@@ -2747,7 +2753,7 @@ stopDeviceLogging(): Promise\<void>
 
 ```ts
 avSession.stopDeviceLogging().then(() => {
-  console.info('stopCasting successfully');
+  console.info('Succeeded in stopping device logging.');
 });
 ```
 
@@ -2847,7 +2853,7 @@ off(type: 'deviceLogEvent', callback?: Callback\<DeviceLogEventCode>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'deviceLogEvent'`。             |
-| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void | 否   | 回调函数。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -2952,6 +2958,7 @@ media.createAVRecorder().then((avRecorder) => {
     console.info('Succeeded in getting input surface.');
     surfaceID = surfaceId;
     if (surfaceID) {
+      // 需先通过avSession.getAVCastController获取avCastController实例。
       avCastController.setDisplaySurface(surfaceID).then(() => {
         console.info('Succeeded in setting display surface.');
       });
@@ -3002,6 +3009,7 @@ media.createAVRecorder().then((avRecorder) => {
     console.info('Succeeded in getting input surface.');
     surfaceID = surfaceId;
     if (surfaceID) {
+      // 需先通过avSession.getAVCastController获取avCastController实例。
       avCastController.setDisplaySurface(surfaceID, () => {
           console.info('Succeeded in setting display surface.');
       });
@@ -3043,6 +3051,7 @@ on(type: 'videoSizeChange', callback: (width:number, height:number) => void): vo
 **示例：**
 
 ```ts
+// 需先通过avSession.getAVCastController获取avCastController实例。
 aVCastController.on('videoSizeChange', (width: number, height: number) => {
   console.info(`width ：${width} `);
   console.info(`height：${height} `);
@@ -3181,7 +3190,7 @@ aVCastController.offVideoSizeChange();
 | avQueueName     | string                  | 是   | 歌单（歌曲列表）名称。                                                    |
 | avQueueId       | string                  | 是   | 歌单（歌曲列表）唯一标识Id。                                               |
 | avQueueImage    | image.PixelMap &#124; string |是   | 歌单（歌曲列表）封面图，图片的像素数据或者图片路径地址(本地路径或网络路径)。     |
-| lastPlayedTime  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 歌单最后播放时间。                                                        |
+| lastPlayedTime  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 歌单最后播放时间。单位为毫秒（ms）。参考基准：Unix时间戳。                                                        |
 
 ## DeviceInfo<sup>10+</sup>
 
