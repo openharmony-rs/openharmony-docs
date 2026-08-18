@@ -420,7 +420,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 let reuseUnlockResult: userAuth.ReuseUnlockResult = {
   reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
   reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-}
+};
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;
@@ -474,7 +474,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 let reuseUnlockResult: userAuth.ReuseUnlockResult = {
   reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
   reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-}
+};
 try {
   const rand = cryptoFramework.createRandom();
   const len: number = 16;

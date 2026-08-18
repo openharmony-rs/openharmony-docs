@@ -439,7 +439,7 @@ try {
   const reuseUnlockResult: userAuth.ReuseUnlockResult = {
     reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
     reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-  }
+  };
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
