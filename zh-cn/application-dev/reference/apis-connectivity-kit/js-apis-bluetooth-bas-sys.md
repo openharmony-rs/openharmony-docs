@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -65,7 +65,7 @@ try {
 getRemoteDeviceBatteryInfo(deviceId: BluetoothAddress): Promise&lt;BatteryInfo&gt;
 
 查询远端设备的电量信息。
-- 使用此接口前建议使用[isBasSupported](#basisBasSupported)查询本机是否支持获取远端设备的电量。
+- 使用此接口前建议使用[isBasSupported](#basisbassupported)查询本机是否支持获取远端设备的电量。
 - 只有支持蓝牙标准协议定义的电量服务（UUID：0000180F-0000-1000-8000-00805F9B34FB）的BLE远端设备才支持获取电量信息。
 - 对端蓝牙设备的电量信息变更通过[onBatteryChange](#basonbatterychange)的回调结果获取。
 - 此接口支持使用对端设备的实际MAC地址和随机MAC地址获取电量信息。
@@ -150,7 +150,7 @@ onBatteryChange(callback: Callback&lt;BatteryInfo&gt;): void
 
 | 参数名            | 类型                                      | 必填   | 说明                  |
 | -------------- | --------------------------------------- | ---- | ------------------- |
-| callback | Callback&lt;[BatteryInfo](#batteryinfo)&gt; | 是    | 回调函数。当远端设备电量状态发生变化时调用，返回电量信息。 |
+| callback | Callback&lt;[BatteryInfo](#batteryinfo)&gt; | 是    | 回调函数，返回电量信息。 |
 
 **错误码**：
 
@@ -240,5 +240,5 @@ try {
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否    | 否    | 表示远端设备的MAC地址。 |
+| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否    | 否    | 表示远端设备的地址信息。 |
 | batteryLevel | int | 否    | 否    | 表示设备的电量值。取值范围为[-1, 100]，-1表示没有电量信息，单位: %。 |
