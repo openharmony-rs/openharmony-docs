@@ -170,7 +170,6 @@ WLAN配置信息。
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
-fv
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
