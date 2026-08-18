@@ -362,7 +362,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 avCastController.sendCustomData({customData: 'This is custom data'}).then(() => {
   console.info('Succeeded in sending custom data.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to send custom data, code: ${err.code}, message, code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to send custom data, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
