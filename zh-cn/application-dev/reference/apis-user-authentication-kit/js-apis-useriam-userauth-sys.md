@@ -191,7 +191,7 @@ try {
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
+  console.error(`Failed to operate userAuthWidgetMgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -239,7 +239,7 @@ try {
   console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
+  console.error(`Failed to operate userAuthWidgetMgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -294,7 +294,7 @@ try {
   console.info('get userAuthWidgetMgr instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
+  console.error(`Failed to operate userAuthWidgetMgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -336,7 +336,7 @@ try {
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
+  console.error(`Failed to operate userAuthWidgetMgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
