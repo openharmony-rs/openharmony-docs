@@ -42,7 +42,7 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 ## workScheduler.setExecFrequency
 
-setExecFrequency(frequency: FrequencyInfo): void
+setExecFrequency(info: FrequencyInfo): void
 
 设置应用所在活跃分组的执行频率。
 
@@ -60,7 +60,7 @@ setExecFrequency(frequency: FrequencyInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ---- | ---------------------------------------- |
-| frequencyInfo | [FrequencyInfo](#frequencyinfo) | 是    | 应用所在活跃分组的执行频率信息。|
+| info | [FrequencyInfo](#frequencyinfo) | 是    | 应用所在活跃分组的执行频率信息。|
 
 **错误码：**
 
@@ -82,7 +82,7 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 let frequencyInfo: workScheduler.FrequencyInfo = {
   uid: 20020220,  // 该值为示例UID，开发者需自行替换为实际应用的真实UID
   workId: 1,  // 延迟任务ID
-  interval: 86400000 // 毫秒
+  interval: 86400000 // 单位为毫秒
 }
 try {
   workScheduler.setExecFrequency(frequencyInfo);
@@ -160,4 +160,4 @@ FrequencyInfo作为参数设置时需遵循以下规则：
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
 | uid             | number                            | 否    | 否    |由系统自动分配的UID。          |
 | workId          | number                            | 否    | 否    |用于任务调度系统的延迟任务ID。          |
-| interval        | number                            | 否    | 否    |活跃分组执行频率，单位：ms。         |
+| interval        | number                            | 否    | 否    |活跃分组执行频率，单位：ms，取值范围[7200000, 2147483647)。         |
