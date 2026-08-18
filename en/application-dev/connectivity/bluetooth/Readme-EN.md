@@ -16,7 +16,7 @@
   - [SPP-based Connection and Data Transmission](spp-development-guide.md)
   - [HID Device Development](hid-device-development-guide.md)
 - Bluetooth Low Energy
-  - [BLE Advertising and Scanning Development](ble-development-guide.md)
+  - [BLE Scanning and Advertising](ble-development-guide.md)
   - [GATT-based BLE Connection and Data Transmission Development](gatt-development-guide.md)
 - Bluetooth FAQs<!--bluetooth-faq-->
   - [2900099 Bluetooth API Call Error](bluetooth-faq-2900099-errorcode.md)<!--RP1--><!--RP1End-->
