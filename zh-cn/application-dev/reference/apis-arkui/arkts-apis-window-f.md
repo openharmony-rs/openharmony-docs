@@ -554,7 +554,7 @@ ArkTS-Dyn: shiftAppWindowFocus(sourceWindowId: number, targetWindowId: number): 
 
 ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promise&lt;void&gt;
 
-在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗、子窗范围内的焦点转移。使用Promise异步回调。
+在同应用内将窗口焦点从源窗口转移到目标窗口，仅支持应用主窗口、子窗口范围内的焦点转移。使用Promise异步回调。
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
@@ -577,8 +577,8 @@ ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promis
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 源窗口id，必须是获焦状态。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
-| targetWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| sourceWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 源窗口ID，必须是获焦状态。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
+| targetWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 目标窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
 
 **返回值：**
 
@@ -847,8 +847,8 @@ ArkTS-Sta: shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fi
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
-| targetWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
+| sourceWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 源窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
+| targetWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 目标窗口ID。该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
 | fingerId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 触屏事件的手指唯一标识符。推荐使用[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)对象中touches属性获取id。该参数应为大于等于0的整数，小于0时会返回错误码1300016。             |
 
 **返回值：**
