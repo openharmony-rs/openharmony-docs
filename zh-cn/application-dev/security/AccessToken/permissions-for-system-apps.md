@@ -9164,7 +9164,7 @@
 
 **起始版本**：26.1.0
 
-## ohos.permission.FACTORYRESET_WRITE_CONFIG
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
 允许应用将车辆恢复出厂设置。
 

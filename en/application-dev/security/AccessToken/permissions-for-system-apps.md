@@ -9133,7 +9133,7 @@ Allows a system application to modify the delayed task parameters of specified a
 
 **Valid since**: 26.1.0
 
-## ohos.permission.FACTORYRESET_WRITE_CONFIG
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
 Allows an application to restore the vehicle system to factory settings.
 
