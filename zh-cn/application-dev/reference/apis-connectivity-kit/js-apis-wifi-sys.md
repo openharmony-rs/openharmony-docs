@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifi (WLAN)](js-apis-wifi.md)。
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md)替代。
+> 从API version 9开始废弃，建议使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md)替代。
 
 
 ## 导入模块
@@ -186,9 +186,9 @@ IPv4配置信息。
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IPv4地址，以32位无符号整数表示（网络字节序）。 |
-| gateway | number | 否 | 否 | 网关，以32位无符号整数表示（网络字节序）。 |
-| prefixLength | number | 否 | 否 | 前缀长度，取值范围：0~32。 |
+| ipAddress | number | 否 | 否 | IPv4地址。 |
+| gateway | number | 否 | 否 | 网关。 |
+| prefixLength | number | 否 | 否 | 前缀长度。 |
 | dnsServers | number[] | 否 | 否 | DNS服务器。 |
 | domains | Array&lt;string&gt; | 否 | 否 | 域信息。 |
 
@@ -205,7 +205,7 @@ IPv6配置信息。
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | string | 否 | 否 | IPv6地址。 |
 | gateway | string| 否 | 否 | 网关。 |
-| prefixLength | number | 否 | 否 | 前缀长度，取值范围：0~128（IPv6前缀长度最大128）。 |
+| prefixLength | number | 否 | 否 | 前缀长度。 |
 | dnsServers | Array\<string> | 否 | 否 | DNS服务器。 |
 | domains | Array\<string> | 否 | 否 | 域信息。 |
 
