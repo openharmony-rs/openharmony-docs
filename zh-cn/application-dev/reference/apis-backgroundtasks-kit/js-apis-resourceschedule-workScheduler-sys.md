@@ -44,17 +44,17 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 setExecFrequency(frequency: FrequencyInfo): void
 
-设置应用所在活跃分组的执行频率
+设置应用所在活跃分组的执行频率。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **系统接口：** 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -80,7 +80,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 let frequencyInfo: workScheduler.FrequencyInfo = {
-  uid: 20020220,  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
+  uid: 20020220,  // 该值为示例UID，开发者需自行替换为实际应用的真实UID
   workId: 1,  // 延迟任务ID
   interval: 86400000 // 毫秒
 }
@@ -96,17 +96,17 @@ try {
 
 resetExecFrequency(uid: number): void
 
-重置应用所在活跃分组的执行频率
+重置应用所在活跃分组的执行频率。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **系统接口：** 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -131,7 +131,7 @@ resetExecFrequency(uid: number): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
-let uid: number = 20020220;  // 该值为示例UID，并说明开发者需替换为实际应用的真实UID
+let uid: number = 20020220;  // 该值为示例UID，开发者需自行替换为实际应用的真实UID
 try {
   workScheduler.resetExecFrequency(uid);
   console.info('workschedulerLog resetExecFrequency success');
@@ -143,22 +143,18 @@ try {
 ## FrequencyInfo
 
 执行频率的具体信息，用于设置应用所在活跃分组的执行频率。
+FrequencyInfo作为参数设置时需遵循以下规则：
+- uid、workId、interval为必填项。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **系统接口：** 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
-
->  **说明：**
->
->  FrequencyInfo参数设置时需遵循以下规则：
->
->  1. uid、workId、interval为必填项。
 
 | 名称             | 类型                              | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
