@@ -254,14 +254,18 @@
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
+    #include <hilog/log.h>
+    #include "loghelper.h"
+    
     extern "C" {
     /**
      * 子进程的入口函数，实现子进程的业务逻辑
-     * 函数名称可以自定义，在主进程调用OH_Ability_StartNativeChildProcessWithConfigs方法时指定，此示例中为Main
+     * 函数名称可以自定义，在主进程调用OH_Ability_StartNativeChildProcess方法时指定，此示例中为Main
      * 函数返回后子进程退出
      */
     void Main(NativeChildProcess_Args args)
     {
+        OH_LOG_INFO(LOG_APP, "Main started");
         // 获取传入的entryParams
         char *entryParams = args.entryParams;
         // 获取传入的fd列表
@@ -335,11 +339,12 @@
         args.fdList.head->fd = fd;
         // 此处只插入一个fd记录，根据需求可以插入更多fd记录到链表中，最多不超过16个
         args.fdList.head->next = NULL;
+    
         // 创建子进程配置信息对象
         Ability_ChildProcessConfigs *configs = OH_Ability_CreateChildProcessConfigs();
         // 设置子进程的进程名
         OH_Ability_ChildProcessConfigs_SetProcessName(configs, "child");
-
+    
         // 第一个参数"libchildprocesssample.so:Main"为实现了子进程Main方法的动态库文件名称和入口方法名
         int32_t pid = -1;
         Ability_NativeChildProcess_ErrCode ret =
@@ -351,7 +356,7 @@
             // 子进程未能正常启动时的异常处理
             // ...
         }
-        // ...
+    // ...
         // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
     }
     ```

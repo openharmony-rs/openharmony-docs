@@ -264,7 +264,7 @@
     #include <AbilityKit/native_child_process.h>
     #include <hilog/log.h>
     #include "loghelper.h"
-
+    
     extern "C" {
     /**
      * 子进程的入口函数，实现子进程的业务逻辑

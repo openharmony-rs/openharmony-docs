@@ -149,8 +149,15 @@ static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remotePro
 
 void CreateNativeChildProcess()
 {
+    // 创建子进程配置信息对象
+    Ability_ChildProcessConfigs *configs = OH_Ability_CreateChildProcessConfigs();
+    // 设置子进程的进程名
+    OH_Ability_ChildProcessConfigs_SetProcessName(configs, "childprocess_ipc");
     // 第一个参数"libchildprocesssample.so"为实现了子进程必要导出方法的动态库文件名称
-    int32_t ret = OH_Ability_CreateNativeChildProcess("libchildprocesssample.so", OnNativeChildProcessStarted);
+    Ability_NativeChildProcess_ErrCode ret = OH_Ability_CreateNativeChildProcessWithConfigs("libchildprocesssample.so",
+        configs, OnNativeChildProcessStarted);
+    // configs对象使用完毕后需要销毁，避免内存泄漏
+    OH_Ability_DestroyChildProcessConfigs(configs);
     if (ret != NCP_NO_ERROR) {
         // 子进程未能正常启动时的异常处理
         // ...
