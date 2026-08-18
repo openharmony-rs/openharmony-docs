@@ -1791,7 +1791,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Invalid window type. Only main windows are supported.   |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -1861,7 +1861,7 @@ setWindowMode(mode: WindowMode): Promise&lt;void&gt;
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Invalid window type. Only main windows are supported.|
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -1949,7 +1949,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally.|
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in floating mode.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in the floating mode.|
 
 **示例：**
 
