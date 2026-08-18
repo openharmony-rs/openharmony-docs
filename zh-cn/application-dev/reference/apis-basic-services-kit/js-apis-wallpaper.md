@@ -21,7 +21,7 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-## WallpaperType<sup>7+</sup>
+## WallpaperType
 
 定义壁纸的枚举类型。
 
@@ -45,10 +45,10 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| red | number | 否 | 否 | 表示红色值，范围[0, 255]。 |
-| green | number | 否 | 否 | 表示绿色值，范围[0, 255]。 |
-| blue | number | 否 | 否 | 表示蓝色值，范围[0, 255]。 |
-| alpha | number | 否 | 否 | 表示 alpha 值，范围[0, 255]。 |
+| red | number | 否 | 否 | 表示红色值，范围为 0 到 255。 |
+| green | number | 否 | 否 | 表示绿色值，范围为 0 到 255。 |
+| blue | number | 否 | 否 | 表示蓝色值，范围为 0 到 255。 |
+| alpha | number | 否 | 否 | 表示 alpha 值，范围为 0 到 255。 |
 
 
 ## wallpaper.on('colorChange')<sup>(deprecated)</sup>
@@ -80,8 +80,9 @@ try {
         console.info(`wallpaper color changed.`);
     };
     wallpaper.on('colorChange', listener);
-} catch (error: BusinessError) {
-    console.error(`Failed to on. Code: ${error.code}, message: ${error.message}`);
+} catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -114,21 +115,24 @@ let listener = (colors: Array<wallpaper.RgbaColor>, wallpaperType: wallpaper.Wal
 };
 try {
     wallpaper.on('colorChange', listener);
-} catch (error: BusinessError) {
+} catch (error) {
+    let err = error as BusinessError;
     console.error(`Failed to on. Code: ${error.code}, message: ${error.message}`);
 }
 
 try {
     // 取消订阅listener
     wallpaper.off('colorChange', listener);
-} catch (error: BusinessError) {
-    console.error(`Failed to off. Code: ${error.code}, message: ${error.message}`);
+} catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
 }
 
 try {
     // 取消所有'colorChange'类型的订阅
     wallpaper.off('colorChange');
-} catch (error: BusinessError) {
+} catch (error) {
+    let err = error as BusinessError;
     console.error(`Failed to off. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -137,7 +141,7 @@ try {
 
 getColors(wallpaperType: WallpaperType, callback: AsyncCallback&lt;Array&lt;RgbaColor&gt;&gt;): void
 
-获取指定类型壁纸的主要颜色信息。
+获取指定类型壁纸的主要颜色信息。使用callback异步回调。
 
 > **说明：**
 > 
@@ -149,8 +153,8 @@ getColors(wallpaperType: WallpaperType, callback: AsyncCallback&lt;Array&lt;Rgba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | 是 | 回调函数，返回壁纸的主要颜色信息。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | 是 | 回调函数。当获取壁纸主要颜色信息成功，err为undefined，data为获取到的壁纸主要颜色信息；否则为错误对象。 |
 
 **示例：**
 
@@ -170,7 +174,7 @@ wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessEr
 
 getColors(wallpaperType: WallpaperType): Promise&lt;Array&lt;RgbaColor&gt;&gt;
 
-获取指定类型壁纸的主要颜色信息。
+获取指定类型壁纸的主要颜色信息。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -182,32 +186,31 @@ getColors(wallpaperType: WallpaperType): Promise&lt;Array&lt;RgbaColor&gt;&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | 返回壁纸的主要颜色信息。 |
+| Promise&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | Promise对象，返回壁纸的主要颜色信息。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    let data: Array<wallpaper.RgbaColor> = await wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Array<wallpaper.RgbaColor>) => {
     console.info(`success to getColors: ${JSON.stringify(data)}`);
-} catch (error: BusinessError) {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to getColors. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.getId<sup>(deprecated)</sup>
 
 getId(wallpaperType: WallpaperType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定类型壁纸的ID。
+获取指定类型壁纸的ID。使用callback异步回调。
 
 > **说明：**
 > 
@@ -219,8 +222,8 @@ getId(wallpaperType: WallpaperType, callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数，返回壁纸的ID。如果配置了指定类型的壁纸就返回一个大于等于0的数，否则返回-1。取值范围是-1到（2^31-1）。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当获取壁纸ID成功，err为undefined，data为获取到的壁纸ID；否则为错误对象。 |
 
 **示例：**
 
@@ -240,7 +243,7 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError,
 
 getId(wallpaperType: WallpaperType): Promise&lt;number&gt;
 
-获取指定类型壁纸的ID。
+获取指定类型壁纸的ID。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -252,32 +255,31 @@ getId(wallpaperType: WallpaperType): Promise&lt;number&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | 壁纸的ID。如果配置了这种壁纸类型的壁纸就返回一个大于等于0的数，否则返回-1。取值范围是-1到（2^31-1）。 |
+| Promise&lt;number&gt; | Promise对象，返回壁纸的ID。如果配置了这种壁纸类型的壁纸就返回一个大于等于0的数，否则返回-1。取值范围是-1到（2^31-1）。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    let data: number = await wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) => {
     console.info(`success to getId: ${JSON.stringify(data)}`);
-} catch (error: BusinessError) {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to getId. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.getMinHeight<sup>(deprecated)</sup>
 
 getMinHeight(callback: AsyncCallback&lt;number&gt;): void
 
-获取壁纸的最小高度值。
+获取壁纸的最小高度值。使用callback异步回调。
 
 > **说明：**
 > 
@@ -289,7 +291,7 @@ getMinHeight(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数，返回壁纸的最小高度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的高度值代替。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当获取壁纸的最小高度值（单位为像素）成功，err为undefined，data为获取到的壁纸的最小高度值；否则为错误对象。 |
 
 **示例：**
 
@@ -309,7 +311,7 @@ wallpaper.getMinHeight((error: BusinessError, data: number) => {
 
 getMinHeight(): Promise&lt;number&gt;
 
-获取壁纸的最小高度值。
+获取壁纸的最小高度值。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -321,26 +323,25 @@ getMinHeight(): Promise&lt;number&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | 返回壁纸的最小高度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的高度值代替。 |
+| Promise&lt;number&gt; | Promise对象，返回壁纸的最小高度值，单位为像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的高度值代替。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    let data: number = await wallpaper.getMinHeight();
+wallpaper.getMinHeight().then((data: number) => {
     console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
-} catch (error: BusinessError) {
+}).catch((error: BusinessError) => {
     console.error(`Failed to getMinHeight. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.getMinWidth<sup>(deprecated)</sup>
 
 getMinWidth(callback: AsyncCallback&lt;number&gt;): void
 
-获取壁纸的最小宽度值。
+获取壁纸的最小宽度值。使用callback异步回调。
 
 > **说明：**
 > 
@@ -352,7 +353,7 @@ getMinWidth(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数，壁纸的最小宽度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的宽度值代替。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当获取壁纸的最小宽度值（单位为像素）成功，err为undefined，data为获取到的壁纸的最小宽度值；否则为错误对象。 |
 
 **示例：**
 
@@ -372,7 +373,7 @@ wallpaper.getMinWidth((error: BusinessError, data: number) => {
 
 getMinWidth(): Promise&lt;number&gt;
 
-获取壁纸的最小宽度值。
+获取壁纸的最小宽度值。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -384,26 +385,25 @@ getMinWidth(): Promise&lt;number&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | 壁纸的最小宽度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的宽度值代替。 |
+| Promise&lt;number&gt; | Promise对象，返回壁纸的最小宽度值（单位为像素）。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的宽度值代替。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    let data: number = await wallpaper.getMinWidth();
+wallpaper.getMinWidth().then((data: number) => {
     console.info(`success to getMinWidth: ${JSON.stringify(data)}`);
-} catch (error: BusinessError) {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to getMinWidth. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.getFile<sup>(deprecated)</sup>
 
 getFile(wallpaperType: WallpaperType, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定类型的壁纸文件。
+获取指定类型的壁纸文件。使用callback异步回调。
 
 > **说明：**
 > 
@@ -417,8 +417,8 @@ getFile(wallpaperType: WallpaperType, callback: AsyncCallback&lt;number&gt;): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数，调用成功则返回壁纸文件描述符ID，调用失败则返回error信息。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当获取壁纸文件成功，err为undefined，data为获取到的壁纸文件描述符ID；否则为错误对象。 |
 
 **示例：**
 
@@ -438,7 +438,7 @@ wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 
 getFile(wallpaperType: WallpaperType): Promise&lt;number&gt;
 
-获取指定类型的壁纸文件。
+获取指定类型的壁纸文件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -452,32 +452,31 @@ getFile(wallpaperType: WallpaperType): Promise&lt;number&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | 调用成功则返回壁纸文件描述符ID，调用失败则返回error信息。 |
+| Promise&lt;number&gt; | Promise对象，返回壁纸文件描述符ID。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    let data: number = await wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) => {
     console.info(`success to getFile: ${JSON.stringify(data)}`);
-} catch (error: BusinessError) {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to getFile. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.isChangePermitted<sup>(deprecated)</sup>
 
 isChangePermitted(callback: AsyncCallback&lt;boolean&gt;): void
 
-是否允许应用改变当前用户的壁纸。
+是否允许应用改变当前用户的壁纸。使用callback异步回调。
 
 > **说明：**
 > 
@@ -489,7 +488,7 @@ isChangePermitted(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数，返回是否允许应用改变当前用户的壁纸。如果允许返回true，否则返回false。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示允许应用改变当前用户的壁纸；返回false表示不允许。 |
 
 **示例：**
 
@@ -509,7 +508,7 @@ wallpaper.isChangePermitted((error: BusinessError, data: boolean) => {
 
 isChangePermitted(): Promise&lt;boolean&gt;
 
-是否允许应用改变当前用户的壁纸。
+是否允许应用改变当前用户的壁纸。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -521,26 +520,25 @@ isChangePermitted(): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | 返回是否允许应用改变当前用户的壁纸。如果允许返回true，否则返回false。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示允许应用改变当前用户的壁纸；返回false表示不允许。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    let data: boolean = await wallpaper.isChangePermitted();
+wallpaper.isChangePermitted().then((data: boolean) => {
     console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
-} catch (error: BusinessError) {
+}).catch((error: BusinessError) => {
     console.error(`Failed to isChangePermitted. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.isOperationAllowed<sup>(deprecated)</sup>
 
 isOperationAllowed(callback: AsyncCallback&lt;boolean&gt;): void
 
-是否允许用户设置壁纸。
+是否允许用户设置壁纸。使用callback异步回调。
 
 > **说明：**
 > 
@@ -552,7 +550,7 @@ isOperationAllowed(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数，返回是否允许用户设置壁纸。如果允许返回true，否则返回false。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示允许用户设置壁纸；返回false表示不允许。 |
 
 **示例：**
 
@@ -572,7 +570,7 @@ wallpaper.isOperationAllowed((error: BusinessError, data: boolean) => {
 
 isOperationAllowed(): Promise&lt;boolean&gt;
 
-是否允许用户设置壁纸。
+是否允许用户设置壁纸。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -584,26 +582,25 @@ isOperationAllowed(): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | 异步回调函数，返回是否允许用户设置壁纸。如果允许返回true，否则返回false。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示允许用户设置壁纸；返回false表示不允许。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    let data: boolean = await wallpaper.isOperationAllowed();
+wallpaper.isOperationAllowed().then((data: boolean) => {
     console.info(`success to isOperationAllowed: ${JSON.stringify(data)}`);
-} catch (error: BusinessError) {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to isOperationAllowed. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.reset<sup>(deprecated)</sup>
 
 reset(wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
-移除指定类型的壁纸，恢复为默认显示的壁纸。
+移除指定类型的壁纸，恢复为默认显示的壁纸。使用callback异步回调。
 
 > **说明：**
 > 
@@ -617,8 +614,8 @@ reset(wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当移除壁纸成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -638,7 +635,7 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError)
 
 reset(wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-移除指定类型的壁纸，恢复为默认显示的壁纸。
+移除指定类型的壁纸，恢复为默认显示的壁纸。使用Promise异步回调。
 
 > **说明：**
 >
@@ -652,32 +649,31 @@ reset(wallpaperType: WallpaperType): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    await wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to reset.`);
-} catch (error: BusinessError) {
+}).catch((error: BusinessError) => {
     console.error(`Failed to reset. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.setWallpaper<sup>(deprecated)</sup>
 
 setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
-将指定资源设置为指定类型的壁纸。
+将指定资源设置为指定类型的壁纸。使用callback异步回调。
 
 > **说明：**
 > 
@@ -692,8 +688,8 @@ setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperType, call
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置壁纸成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -706,8 +702,8 @@ let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
         console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
-       return;
-       }
+        return;
+    }
     console.info(`success to setWallpaper.`);
 });
 
@@ -719,8 +715,7 @@ let opts: image.DecodingOptions = {
         width: 2736
     }
 };
-try {
-    let pixelMap: image.PixelMap = await imageSource.createPixelMap(opts);
+imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setWallpaper(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
             console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
@@ -728,16 +723,16 @@ try {
         }
         console.info(`success to setWallpaper.`);
     });
-} catch (error: BusinessError) {
+}).catch((error: BusinessError) => {
     console.error(`Failed to createPixelMap. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
 
 ## wallpaper.setWallpaper<sup>(deprecated)</sup>
 
 setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-将指定资源设置为指定类型的壁纸。
+将指定资源设置为指定类型的壁纸。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -752,13 +747,13 @@ setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperType): Pro
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -768,13 +763,12 @@ import { image } from '@kit.ImageKit';
 
 // source类型为string
 let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
-try {
-    await wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to setWallpaper.`);
-} catch (error: BusinessError) {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
-}
-
+});
+  
 // source类型为image.PixelMap
 let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
@@ -783,15 +777,13 @@ let opts: image.DecodingOptions = {
         width: 2736
     }
 };
-try {
-    let pixelMap: image.PixelMap = await imageSource.createPixelMap(opts);
-    try {
-        await wallpaper.setWallpaper(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM);
+imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
+    wallpaper.setWallpaper(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setWallpaper.`);
-    } catch (error: BusinessError) {
+    }).catch((error: BusinessError) => {
         console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
-    }
-} catch (error: BusinessError) {
+    });
+  }).catch((error: BusinessError) => {
     console.error(`Failed to createPixelMap. Code: ${error.code}, message: ${error.message}`);
-}
+});
 ```
