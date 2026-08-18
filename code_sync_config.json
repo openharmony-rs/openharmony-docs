@@ -27047,7 +27047,7 @@
 						"start_line":17
 					},
 					{
-						"end_line":169,
+						"end_line":176,
 						"name":"main_processIpc_launch_native_child",
 						"start_line":16
 					}
@@ -27062,7 +27062,7 @@
 						"start_line":17
 					},
 					{
-						"end_line":40,
+						"end_line":44,
 						"name":"child_process_necessary_export_impl",
 						"start_line":16
 					}
@@ -27072,7 +27072,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":74,
 						"name":"main_process_launch_native_child",
 						"start_line":16
 					}
@@ -32230,7 +32230,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp",
 				"functions":[
 					{
-						"end_line":169,
+						"end_line":176,
 						"name":"main_processIpc_launch_native_child",
 						"start_line":16
 					}
@@ -46485,7 +46485,7 @@
 						"start_line":17
 					},
 					{
-						"end_line":40,
+						"end_line":44,
 						"name":"child_process_necessary_export_impl",
 						"start_line":16
 					}
@@ -46525,7 +46525,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":74,
 						"name":"main_process_launch_native_child",
 						"start_line":16
 					}
@@ -58274,7 +58274,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":44,
 						"name":"child_process_necessary_export_impl",
 						"start_line":16
 					}
