@@ -22,11 +22,15 @@
 | 适用场景 | 适用于无需传参的轻量ArkTS后台任务，如本地日志归档、配置解析、启动期数据预处理等。| 适用于需要传参或长时运行的ArkTS任务，如接收文件fd进行文档或图片解析、依据参数执行长时数据加工等。| 适用于高性能C/C++计算或复用现有Native库，如音视频编解码、图像处理、计算密集型任务等。|
 | 子进程运行环境 | ArkTS运行时，可调用ArkTS API | ArkTS运行时，可调用ArkTS API | C/C++运行时，无ArkTS运行时 |
 | 是否继承父进程资源 | 仅SELF_FORK模式继承，APP_SPAWN_FORK模式不继承 | 不继承 | 不继承 |
-| 是否支持跨进程通信 | SELF_FORK模式不支持Binder IPC，APP_SPAWN_FORK模式支持 | 支持 | 支持 |
+| 是否支持Binder IPC | SELF_FORK模式不支持，APP_SPAWN_FORK模式支持 | 支持 | 支持 |
 | 子进程销毁方式 | [onStart](../reference/apis-ability-kit/js-apis-app-ability-childProcess.md#childprocessonstart)执行完后自动销毁 | 不自动销毁，需子进程调用[process.abort](../reference/apis-arkts/js-apis-process.md#processabort)销毁 | 入口函数返回后自动销毁 |
 | 是否支持异步ArkTS API | 不支持，仅支持同步 | 支持 | 不适用（子进程为C/C++环境） |
 | 进程隔离模式配置 | 不支持 | 支持（[ChildProcessOptions](../reference/apis-ability-kit/js-apis-app-ability-childProcessOptions.md)的isolationMode） | 支持（[ChildProcessOptions](../reference/apis-ability-kit/js-apis-app-ability-childProcessOptions.md)的isolationMode） |
 | 查询设备是否支持创建子进程 | [childProcessManager.isArkChildProcessSupported](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerisarkchildprocesssupported) | [childProcessManager.isArkChildProcessSupported](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerisarkchildprocesssupported) | [childProcessManager.isNativeChildProcessSupported](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerisnativechildprocesssupported) |
+
+> **说明：**
+>
+> 上述三种创建方式均未提供父子进程间的IPC通道；表中“是否支持Binder IPC”仅表示子进程运行环境具备该能力，并不代表接口本身已向应用层开放父子通信API，如需实现父子进程间的Binder IPC通信，请直接调用[OH_Ability_CreateNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs)接口。
 
 ## 创建基础ArkTS子进程
 
@@ -58,6 +62,8 @@
     [startChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口支持两种子进程启动模式：
     - **SELF_FORK**：从应用自身进程Fork子进程。以该模式启动的子进程会继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出。
     - **APP_SPAWN_FORK**：从AppSpawn Fork子进程。以该模式启动的子进程不会继承父进程资源，可以使用Binder IPC和其他进程通信。
+
+    启动后可在HiLog中搜索“startChildProcess”关键字，查看到“startChildProcess success, pid: xxx”日志表示子进程创建成功；再搜索“DemoProcess onStart”关键字，查看到该日志表示子进程入口函数已执行。
 
     使用Promise异步回调：
 
@@ -183,6 +189,8 @@
 
     在主进程中导入子进程类并调用[startArkChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartarkchildprocess12)方法启动子进程。需要注意，必须在代码中引用子进程类，防止子进程源文件被构建工具优化掉。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
+    启动后可在HiLog中搜索“startArkChildProcess”关键字，查看到“startArkChildProcess success, pid: xxx”日志表示子进程创建成功；再搜索“DemoProcess onStart”关键字，查看到该日志表示子进程入口函数已执行。
+
     <!-- @[arkts_child_process_arg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ArkTsChildProcess/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
@@ -254,6 +262,9 @@
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
+    #include <hilog/log.h>
+    #include "loghelper.h"
+
     extern "C" {
     /**
      * 子进程的入口函数，实现子进程的业务逻辑
@@ -262,6 +273,7 @@
      */
     void Main(NativeChildProcess_Args args)
     {
+        OH_LOG_INFO(LOG_APP, "Main started");
         // 获取传入的entryParams
         char *entryParams = args.entryParams;
         // 获取传入的fd列表
@@ -301,6 +313,8 @@
 3. 在主进程中启动Native子进程。
 
     在主进程中调用[startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)方法启动Native子进程。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
+
+    启动后可在HiLog中搜索“startNativeChildProcess”关键字，查看到“startNativeChildProcess success, pid: xxx”日志表示子进程创建成功；再搜索“Main started”关键字，查看到该日志表示子进程入口函数已执行。
     
     <!-- @[child_get_start_params_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/ets/pages/Index.ets) -->
     

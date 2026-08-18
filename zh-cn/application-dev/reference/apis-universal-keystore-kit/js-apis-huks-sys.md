@@ -23,7 +23,9 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出[TEE](../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，通过promise不会返回密钥材料内容，只用于表示此次调用是否成功。
+指定用户身份生成密钥。使用Promise异步回调。
+
+基于密钥不出[TEE](../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，通过Promise不会返回密钥材料内容，只用于表示此次调用是否成功。
 
 **系统接口：** 此接口为系统接口。
 
@@ -36,8 +38,8 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
 | 参数名   | 类型                        | 必填 | 说明                     |
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。               |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于存放生成key所需的[属性标签枚举](capi-native-huks-type-h.md#枚举)。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
+| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。 |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于存放生成密钥所需的[属性标签枚举](capi-native-huks-type-h.md#枚举)。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
 
@@ -111,9 +113,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -127,7 +129,7 @@ export default function HuksAsUserTest() {
 
 deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份删除密钥，使用Promise方式异步返回结果。
+指定用户身份删除密钥。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -140,8 +142,8 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | 参数名   | 类型                        | 必填 | 说明                                |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名，应为生成key时传入的别名。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于删除时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需删除密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。            |
+| keyAlias | string                      | 是   | 密钥别名，用于指定待删除的密钥。 |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于删除时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需删除密钥的安全级别，<br>可传空，传空默认为CE。 |
 
 **返回值：**
 
@@ -208,7 +210,7 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 /* 2. 删除密钥 */
@@ -220,9 +222,9 @@ async function DeleteKey(keyAlias: string) {
     }]
   }
   await huks.deleteKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("别名为: " + keyAlias + " 密钥删除成功！")
+    console.info(`别名为：${keyAlias} 密钥删除成功！`)
   }).catch((err: BusinessError) => {
-    console.error("密钥删除失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥删除失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -241,7 +243,7 @@ export default function HuksAsUserTest() {
 
 importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份导入明文密钥，使用Promise方式异步返回结果。
+指定用户身份导入明文密钥。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -330,9 +332,9 @@ async function ImportPlainKey(keyAlias: string, importProperties: Array<huks.Huk
     inData: plainKey
   }
   await huks.importKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功导入了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功导入了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥导入失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥导入失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -347,7 +349,7 @@ export default function HuksAsUserTest() {
 
 attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份获取密钥证书，使用Promise方式异步返回结果。
+指定用户身份获取密钥证书。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -361,7 +363,7 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，存放待获取证书密钥的别名。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据。   |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取证书密钥的安全级别，<br>可传空，传空默认为CE。  |
 
 **返回值：**
 
@@ -445,9 +447,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -481,9 +483,9 @@ async function LetKeyAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>)
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.debug(`证书${i}是${data.certChains[i]}`) // 这里是调试信息，实际业务功能开发无需打印证书链。
     }
-    console.info("attest 成功")
+    console.info('attest 成功')
   }).catch((err: BusinessError) => {
-    console.error("attest 失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`attest 失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -502,7 +504,7 @@ export default function HuksAsUserTest() {
 
 anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份获取匿名化密钥证书，使用Promise方式异步返回结果。
+指定用户身份获取匿名化密钥证书。使用Promise异步回调。
 
 该操作需要联网进行，且耗时较长。
 
@@ -518,7 +520,7 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，存放待获取证书密钥的别名。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据。   |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取证书密钥的安全级别，<br>可传空，传空默认为CE。   |
 
 **返回值：**
 
@@ -602,9 +604,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -638,9 +640,9 @@ async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksPar
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`证书${i}是${data.certChains[i]}`)
     }
-    console.info("匿名 attest 成功")
+    console.info('匿名 attest 成功')
   }).catch((err: BusinessError) => {
-    console.error("匿名 attest 失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`匿名 attest 失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -683,7 +685,7 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，存放待获取证书密钥的别名。 |
-| params | [HuksParam[]](js-apis-huks.md#huksparam) | 是   | 用于获取证书时指定所需参数与数据。   |
+| params | [HuksParam[]](js-apis-huks.md#huksparam) | 是   | 用于获取证书时指定所需参数与数据，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取证书密钥的安全级别，<br>可传空，传空默认为CE。   |
 
 **返回值：**
 
@@ -710,7 +712,7 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 | 12000012 | The device environment or input parameter is abnormal. |
 | 12000014 | The memory is insufficient. |
 | 12000018 | The parameter is incorrect. Possible causes: <br>1. A mandatory parameter is left empty. <br>2. The parameter type is incorrect. <br>3. The parameter verification failed. |
-| 12000024 | The operation times out. This may be caused by network jitter. You can try again later. |
+| 12000024 | the provider or UKey is busy. |
 | 12000027 | The network is unavailable. Check network connections. |
 
 **示例：**
@@ -732,7 +734,7 @@ function stringToUint8Array(str: string) {
 
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
-const keyAliasString = "key anon local attest as user";
+const keyAliasString = 'key anon local attest as user';
 
 const challenge = stringToUint8Array('challenge_data');
 
@@ -792,14 +794,13 @@ async function anonAttestKeyItemOfflineAsUser() {
 
   await generateKey(aliasString);
   await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
-    console.info('anonAttestationOffline ok!')
     console.debug(`'CERT:${JSON.stringify(data)}`)
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`CERT${i}是${data.certChains[i]}`)
     }
-    console.info("anonAttestationOffline Success")
+    console.info('离线匿名 attest 成功')
   }).catch((err: BusinessError) => {
-    console.error("anonAttestationOffline fail，erroCode： " + err.code + " erroInfo： " + err.message)
+    console.error(`离线匿名 attest 失败，错误码是：${err.code} 错误信息：${err.message}`)
   })
 }
 ```
@@ -808,7 +809,7 @@ async function anonAttestKeyItemOfflineAsUser() {
 
 importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份安全导入密钥，使用Promise方式异步返回结果。
+指定用户身份安全导入密钥。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -821,7 +822,7 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 | 参数名           | 类型                        | 必填 | 说明                                          |
 | ---------------- | --------------------------- | ---- | --------------------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias         | string                      | 是   | 密钥别名，存放待导入密钥的别名。              |
+| keyAlias         | string                      | 是   | 密钥别名，存放待导入密钥的别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。  |
 | wrappingKeyAlias | string                      | 是   | 密钥别名，对应密钥用于解密加密的密钥数据。    |
 | huksOptions          | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导入时所需TAG和需要导入的加密的密钥数据。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
@@ -866,16 +867,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const initializationVector = '0000000000000000';
-const associatedData = "abababababababab";
-const nonce = "hahahahahaha";
+const associatedData = 'abababababababab';
+const nonce = 'hahahahahaha';
 const tagSize = 16;
 const unsignedInt32Bytes = 4;
-const importedAes192PlainKey = "The aes192 key to import";
-const callerAes256Kek = "This is kek to encrypt aes192 key";
-const callerKeyAlias = "test_caller_key_ecdh_aes192";
-const callerKekAliasAes256 = "test_caller_kek_ecdh_aes256";
-const callerAgreeKeyAliasAes256 = "test_caller_agree_key_ecdh_aes256";
-const importedKeyAliasAes192 = "test_import_key_ecdh_aes192";
+const importedAes192PlainKey = 'The aes192 key to import';
+const callerAes256Kek = 'This is kek to encrypt aes192 key';
+const callerKeyAlias = 'test_caller_key_ecdh_aes192';
+const callerKekAliasAes256 = 'test_caller_kek_ecdh_aes256';
+const callerAgreeKeyAliasAes256 = 'test_caller_agree_key_ecdh_aes256';
+const importedKeyAliasAes192 = 'test_import_key_ecdh_aes192';
 const mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000];
 
 
@@ -1171,19 +1172,18 @@ async function PublicDeleteKeyItemFunc(
 async function PublicImportWrappedKeyFunc(
   userId: number,
   keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter callback importWrappedKeyItemAsUser`);
+  console.info(`enter promise importWrappedKeyItemAsUser`);
   console.info(`publicImportWrappedKeyFunc huksOptions = ${JSON.stringify(huksOptions)}`);
   try {
     await huks.importWrappedKeyItemAsUser(userId, keyAlias, wrappingKeyAlias, huksOptions)
       .then((data) => {
-        console.info(`callback: importWrappedKeyItemAsUser success, data = ${JSON.stringify(data)}`);
-        console.info(`importWrappedKeyItemAsUser 成功 data = ${JSON.stringify(data)}`)
+        console.info(`promise: importWrappedKeyItemAsUser success, data = ${JSON.stringify(data)}`);
       })
       .catch((err: BusinessError) => {
-        console.error(`callback: importWrappedKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
+        console.error(`promise: importWrappedKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
       });
   } catch (error) {
-    console.error(`callback: importWrappedKeyItemAsUser input arg invalid, code: ${error.code}, msg: ${error.message}`);
+    console.error(`promise: importWrappedKeyItemAsUser input arg invalid, code: ${error.code}, msg: ${error.message}`);
   }
 }
 
@@ -1353,10 +1353,10 @@ async function GenerateAndExportPublicKey(
         console.info(`promise: generateKeyItemAsUser success, data = ${JSON.stringify(data)}`);
       })
       .catch((err: BusinessError) => {
-        console.error(`callback: generateKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
+        console.error(`promise: generateKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
       })
   } catch (err) {
-    console.error(`callback: generateKeyItemAsUser invalid, code: ${err.code}, msg: ${err.message}`);
+    console.error(`promise: generateKeyItemAsUser invalid, code: ${err.code}, msg: ${err.message}`);
   }
 
 
@@ -1489,7 +1489,7 @@ export default function HuksAsUserTest() {
 
 exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份导出密钥，使用Promise方式回调异步返回的结果。
+指定用户身份导出密钥。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1503,13 +1503,13 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | -------- | --------------------------- | ---- | -------------------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，应与所用密钥生成时使用的别名相同。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 空对象（此处传空即可）。                     |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导出时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要导出密钥的安全级别，<br>可传空，传空默认为CE。  |
 
 **返回值：**
 
 | 类型                                           | 说明                                                         |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。 当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
 
 **错误码：**
 
@@ -1576,9 +1576,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1591,9 +1591,9 @@ async function ExportPublicKey(keyAlias: string) {
     }]
   }
   await huks.exportKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功将别名为：" + keyAlias + " 的公钥导出, data 的长度为" + data?.outData?.length)
+    console.info(`成功将别名为：${keyAlias} 的公钥导出，data 的长度为${data?.outData?.length}`)
   }).catch((err: BusinessError) => {
-    console.error("密钥导出失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥导出失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1612,7 +1612,7 @@ export default function HuksAsUserTest() {
 
 getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份获取密钥属性，使用Promise回调异步返回结果。
+指定用户身份获取密钥属性。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1626,7 +1626,7 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 | -------- | --------------------------- | ---- | -------------------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，应与所用密钥生成时使用的别名相同。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 空对象（此处传空即可）。                     |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取密钥属性时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取属性的密钥的安全级别，<br>可传空，传空默认为CE。 |
 
 **返回值：**
 
@@ -1696,9 +1696,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1711,9 +1711,9 @@ async function GetKeyProperties(keyAlias: string) {
     }]
   }
   await huks.getKeyItemPropertiesAsUser(userId, keyAlias, options).then((data) => {
-    console.info("获取密钥属性成功！属性为: " + JSON.stringify(data))
+    console.info(`获取密钥属性成功！属性为：${JSON.stringify(data)}`)
   }).catch((err: BusinessError) => {
-    console.error("获取密钥属性失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`获取密钥属性失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1732,7 +1732,7 @@ export default function HuksAsUserTest() {
 
 hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<boolean>
 
-指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。
+指定用户身份判断密钥是否存在。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1746,7 +1746,7 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 所需查找的密钥的别名。   |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需查询密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。     |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需查询密钥的安全级别，<br>可传空，传空默认为CE。|
 
 **返回值：**
 
@@ -1815,9 +1815,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1830,9 +1830,9 @@ async function HasKey(keyAlias: string) {
     }]
   }
   await huks.hasKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("别名为: " + keyAlias + "的密钥查询存在结果" + JSON.stringify(data))
+    console.info(`别名为：${keyAlias}的密钥查询存在结果${JSON.stringify(data)}`)
   }).catch((err: BusinessError) => {
-    console.error("密钥查询失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥查询失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1851,7 +1851,7 @@ export default function HuksAsUserTest() {
 
 initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksSessionHandle>
 
-指定用户身份操作密钥接口，使用Promise方式异步返回结果。huks.initSessionAsUser, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+指定用户身份初始化密钥会话。使用Promise异步回调。huks.initSessionAsUser, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1865,13 +1865,13 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------ |
 | userId   | number                                            | 是   | 用户ID。                 |
 | keyAlias | string                                            | 是   | initSessionAsUser操作密钥的别名。                             |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions)        | 是   | initSessionAsUser参数集合。                                   |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions)        | 是   | 用于初始化密钥会话时所需的参数集合，包括密钥用途、密钥算法、密钥长度等必选参数。 |
 
 **返回值：**
 
 | 类型                                | 说明                                               |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise对象，返回HuksSessionHandle。HuksSessionHandle的handle返回initSessionAsUser生成的handle。 |
+| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise对象，返回HuksSessionHandle，其中handle成员为生成的会话句柄，用于后续[huks.updateSession](js-apis-huks.md#huksupdatesession9-2)、[huks.finishSession](js-apis-huks.md#huksfinishsession9-2)、[huks.abortSession](js-apis-huks.md#huksabortsession9-1)操作。 |
 
 **错误码：**
 
@@ -1907,7 +1907,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
-const initializationVector = '001122334455';
+const initializationVector = '0011223344556677';
 const plainText = '123456789';
 
 function stringToUint8Array(str: string) {
@@ -2005,9 +2005,9 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -2022,16 +2022,16 @@ async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("密钥初始化失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥初始化失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   await huks.finishSession(handle, options).then((data) => {
-    console.info("加密数据成功， 密文是： " + Uint8ArrayToString(data.outData))
+    console.info(`加密数据成功， 密文是：${Uint8ArrayToString(data.outData)}`)
     if (data.outData != undefined) {
       cipherData = data.outData
     }
-    console.info("running time result success!")
+    console.info('running time result success!')
   }).catch((err: BusinessError) => {
-    console.error("加密流程捕获了异常，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`加密流程捕获了异常，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   return cipherData
 }
@@ -2046,12 +2046,12 @@ async function DecryptData(keyAlias: string, decryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("密钥初始化失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥初始化失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   await huks.finishSession(handle, options).then((data) => {
-    console.info("解密成功， 解密的明文是： " + Uint8ArrayToString(data.outData))
+    console.info(`解密成功， 解密的明文是：${Uint8ArrayToString(data.outData)}`)
   }).catch((err: BusinessError) => {
-    console.error("解密流程捕获了异常，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`解密流程捕获了异常，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 

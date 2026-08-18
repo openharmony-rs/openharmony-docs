@@ -7990,7 +7990,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：true
+**是否支持证书授权**：true
 
 **支持设备**：PC/2in1
 
@@ -9050,6 +9050,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MULTI_SCREEN_MANAGER
+
+允许系统应用管理多屏亮灭状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.vehicle.DEVICE_AUTH
 
 允许车辆后排扶手屏应用连接车机，进行设备认证。
@@ -9061,6 +9075,20 @@
 **是否支持证书授权**：true
 
 **支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+允许系统应用将下载模型的授权结果发送给模型管理服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.1.0
 
@@ -9119,5 +9147,19 @@
 **是否支持证书授权**：true
 
 **支持设备**：PC/2in1 | Car | Phone | Wearable | Tablet | TV
+
+**起始版本**：26.1.0
+
+## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
+
+允许系统应用修改指定应用的延迟任务参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2-in-1 | Car | Phone | Tablet | TV | Wearable
 
 **起始版本**：26.1.0

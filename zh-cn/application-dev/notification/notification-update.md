@@ -8,6 +8,14 @@
 
 从API version 18开始，支持应用只更新已发布的通知。主要用于上传下载进度更新、IM会话消息更新等场景。
 
+> **说明：**
+>
+> 从API version 26.1.0开始，对于上传下载等数据传输场景的进度更新，推荐使用长时任务提供的接口[`backgroundTaskManager.updateDataTransferProgress`](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)更新通知进度，无需调用`notificationManager.publish`。使用该接口前，需先申请数据传输类型的长时任务，开发指导请参考[长时任务(ArkTS)](../task-management/continuous-task.md)。
+>
+> 相较于调用`notificationManager.publish`，使用该接口具有以下优势：
+> - 灵活设置传输场景通知的提醒方式：进度达到100时，可通过[ProgressInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#progressinfo)的isMute字段选择静音或响铃加振动提醒。
+> - 与长时任务生命周期绑定：通知随长时任务申请而创建、取消而移除，无需单独维护通知ID和取消逻辑。
+
 ## 接口说明
 
 通知发布更新接口说明详见下表，通知更新可通过入参[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)携带updateOnly字段来指定，不指定该字段默认为false。

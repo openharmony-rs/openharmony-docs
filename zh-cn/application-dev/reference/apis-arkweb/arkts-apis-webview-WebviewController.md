@@ -9298,7 +9298,7 @@ getAttachState(): ControllerAttachState
 
 | 类型         | 说明                 |
 | ------------ | -------------------- |
-| [ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20) | WebViewController与Web组件的绑定状态。 |
+| [ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20) | WebViewController与Web组件的绑定状态。 |
 
 **示例：**
 点击Button可以获取当前WebViewController的绑定状态并输出日志。
@@ -9345,7 +9345,7 @@ on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachSt
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
 
 **示例：**
 
@@ -9364,7 +9364,7 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **示例：**
 
@@ -9424,7 +9424,7 @@ struct WebComponent {
 
 waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
-异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。
+异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9438,7 +9438,7 @@ waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| Promise<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | Promise实例，返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。 |
+| Promise<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | Promise实例，返回当前[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)状态。 |
 
 
 **示例：**
@@ -11367,6 +11367,9 @@ struct WebComponent {
         .onControllerAttached(() => {
           // 启用mainframe和subframe错误页功能
           this.controller.setErrorPageEnabled(true, true);
+          // 查询subframe错误页功能是否已启用
+          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled: " + isSubframeEnabled);
         })
         .onOverrideErrorPage((event) => {
           if (event.request.isMainFrame()) {
@@ -11424,33 +11427,4 @@ getSubframeErrorPageEnabled(): boolean
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
-        .onControllerAttached(() => {
-          // 启用mainframe和subframe错误页功能
-          this.controller.setErrorPageEnabled(true, true);
-          // 查询subframe错误页功能是否已启用
-          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled: " + isSubframeEnabled);
-
-          // 仅启用mainframe错误页功能，不启用subframe
-          this.controller.setErrorPageEnabled(true, false);
-          let isSubframeEnabled2: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled after disable: " + isSubframeEnabled2);
-        })
-    }
-  }
-}
-```
-
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+完整示例代码参考[setErrorPageEnabled](#seterrorpageenabled)。

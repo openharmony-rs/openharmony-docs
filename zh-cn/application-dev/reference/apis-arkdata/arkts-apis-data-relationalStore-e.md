@@ -156,14 +156,14 @@ export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('custom tokenizer example: window stage create begin.');
     let store: relationalStore.RdbStore | undefined = undefined;
-    const SQL_CREATE_TABLE: relationalStore.StoreConfig = {
+    const storeConfig: relationalStore.StoreConfig = {
       name: "MyStore.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
     let customType = relationalStore.Tokenizer.CUSTOM_TOKENIZER;
     let customTypeSupported = relationalStore.isTokenizerSupported(customType);
     if (customTypeSupported) {
-      SQL_CREATE_TABLE.tokenizer = customType;
+      storeConfig.tokenizer = customType;
     } else {
       console.info('custom tokenizer example: not support custom tokenizer.');
       return;

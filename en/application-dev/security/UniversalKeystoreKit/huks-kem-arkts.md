@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=084bf627297e60b1f406ce34f5b473174466f7b3 translatedAt=2026-07-15T02:46:52.904Z pushedAt=2026-07-16T08:19:14.870Z -->
+<!-- md-trans-meta sourceCommit=3780eaa820092ee975c32f64eb288f44d3471751 translatedAt=2026-08-13T08:23:21.275Z pushedAt=2026-08-13T10:20:24.702Z -->
 
 Starting from API version 26.0.0, post-quantum encapsulation and decapsulation algorithms are supported. Taking ML-KEM-768 and ML-KEM-1024 as examples, key encapsulation and decapsulation are performed when keys are managed by HUKS. For specific scenario descriptions and supported algorithm specifications, see [Algorithms Supported for Key Encapsulation](huks-kem-overview.md#supported-algorithms).
 

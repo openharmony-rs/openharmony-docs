@@ -210,6 +210,6 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
-| COMPATIBILITY     | compatibility    | 支持消除兼容性告警。当调用API的起始版本高于工程设置的兼容SDK版本时产生的告警。建议在已做版本判断或兼容性处理时使用，避免盲目抑制告警导致低版本设备运行异常。 |
+| COMPATIBILITY     | compatibility    | 支持消除兼容性告警。当调用API的起始版本高于工程设置的兼容SDK版本时（build-profile.json5中指定的compatibleSdkVersion）产生的告警。建议在已做版本判断或兼容性处理时使用，避免盲目抑制告警导致低版本设备运行异常。 |
 | SYSCAP     | syscap    | 支持消除多设备告警。当调用API的系统能力在目标设备上不支持时产生的告警。 |
 | PERMISSION     | permission    | 支持消除权限告警。当调用需要权限的API但未在配置文件中声明相应权限时产生的告警。<br>**起始版本：** 26.0.0 |

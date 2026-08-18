@@ -1458,7 +1458,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 允许应用访问游戏伴随服务。
 
-获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、通过麦克风获取用户语音数据等。
+获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、获取游戏应用前后台状态等。
 
 <!--RP93--><!--RP93End-->
 
@@ -1624,4 +1624,46 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.MMA_ENERGYREFILL
+ 
+允许车上应用获取当前车辆的补能状态。
+ 
+<!--RP104--><!--RP104End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.1.0
+ 
+## ohos.permission.vehicle.MMA_WEATHER
+ 
+允许车上应用获取车辆所处环境的实时天气。
+ 
+<!--RP105--><!--RP105End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.1.0
+ 
+## ohos.permission.vehicle.MMA_SPATIALACTION
+ 
+允许车内后排屏上应用调用空间手势接口，完成乘客与屏幕隔空交互。
+ 
+<!--RP106--><!--RP106End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
 **起始版本**：26.1.0

@@ -208,9 +208,9 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 
 **参数:**
 
-| 名称 | 描述 |
+| 参数项 | 描述 |
 | -------- | -------- |
-| reason | 触发弹窗关闭的原因，取值为[ArkUI_DismissReason](#arkui_dismissreason)枚举值。 |
+| int32_t reason | 触发弹窗关闭的原因，取值为[ArkUI_DismissReason](#arkui_dismissreason)枚举值。 |
 
 **返回：**
 
@@ -335,9 +335,9 @@ typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, vo
 
 | 参数项 | 描述 |
 | -- | -- |
-| errorCode | 打开弹窗的操作结果。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 由于节点挂载失败，弹窗无法打开。<br>         [ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 由于子窗口创建失败，弹窗无法打开。|
-| dialogId | 弹窗ID。当弹窗无法显示时返回-1。|
-| userData | 表示指向自定义数据的指针。|
+| int32_t errorCode | 打开弹窗的操作结果。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 由于节点挂载失败，弹窗无法打开。<br>         [ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 由于子窗口创建失败，弹窗无法打开。|
+| int32_t dialogId | 弹窗ID。当弹窗无法显示时返回-1。|
+| void* userData | 表示指向自定义数据的指针。|
 
 ### OH_ArkUI_CustomDialog_OpenDialogWithCallback()
 

@@ -2604,10 +2604,10 @@ next(): ReaderIteratorResult
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-| done | boolean | 迭代器是否已完成迭代。true：已完成迭代；false：未完成迭代。 |
-| value | string | 逐行读取的文件文本内容。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| done | boolean | 否 | 否 | 迭代器是否已完成迭代。true：已完成迭代；false：未完成迭代。 |
+| value | string | 否 | 否 | 逐行读取的文件文本内容。 |
 
 ## fileIo.readText
 
@@ -3542,13 +3542,6 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
-| 错误码ID | 错误信息 |
-| ---- | ---- |
-| 13900002 | No such file or directory. |
-| 13900011 | Out of memory. |
-| 13900018 | Not a directory. |
-| 13900020 | Invalid argument. |
-
 **示例：**
 
 ```ts
@@ -3606,13 +3599,6 @@ listFileExtSync(path: string, options?: ListFileExtOptions): string[]
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
-
-| 错误码ID | 错误信息 |
-| ---- | ---- |
-| 13900002 | No such file or directory. |
-| 13900011 | Out of memory. |
-| 13900018 | Not a directory. |
-| 13900020 | Invalid argument. |
 
 **示例：**
 
@@ -4828,7 +4814,7 @@ AtomicFile是一个用于对文件进行原子读写等操作的类。
 
 constructor(path: string)
 
-对于给定路径的文件创建一个AtomicFile类。
+对于给定路径的文件创建一个AtomicFile实例。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -7643,10 +7629,10 @@ filter(name: string): boolean
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-| srcFile | string | 源冲突文件路径。 |
-| destFile | string | 目标冲突文件路径。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| srcFile | string | 否 | 否 | 源冲突文件路径。 |
+| destFile | string | 否 | 否 | 目标冲突文件路径。 |
 
 ## Options<sup>11+</sup>
 
@@ -7654,9 +7640,9 @@ filter(name: string): boolean
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-| encoding | string | 文件编码方式。可选项。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| encoding | string | 否 | 是 | 文件编码方式。可选项。 |
 
 ## WhenceType<sup>11+</sup>
 
@@ -7678,8 +7664,8 @@ filter(name: string): boolean
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| LOCAL | 1 | 文件在本地存在。 |
-| CLOUD | 2 | 文件在云端存在。 |
+| LOCAL | 1 << 0 | 文件在本地存在。 |
+| CLOUD | 1 << 1 | 文件在云端存在。 |
 
 ## AccessModeType<sup>12+</sup>
 
@@ -7727,8 +7713,6 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| offset | number | 否 | 是 | 期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。 |
-| length | number | 否 | 是 | 期望读取数据的长度，单位为Byte。可选，默认文件长度。 |
 | encoding | string | 否 | 是 | 当数据是 string 类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf-8'。   <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## WriteOptions<sup>11+</sup>
@@ -7741,7 +7725,6 @@ filter(name: string): boolean
 | ---- | ---- | ---- | ---- | ---- |
 | offset | number | 否 | 是 | 期望写入文件位置，单位为Byte。可选，默认从当前位置开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | length | number | 否 | 是 | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| encoding | string | 否 | 是 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。 |
 
 ## ListFileExtOptions
 
@@ -7855,7 +7838,7 @@ close(): void
 
 ### seek<sup>12+</sup>
 
-seek(offset: number, whence?: WhenceType): number;
+seek(offset: number, whence?: WhenceType): number
 
 调整可写流的偏移指针位置。
 

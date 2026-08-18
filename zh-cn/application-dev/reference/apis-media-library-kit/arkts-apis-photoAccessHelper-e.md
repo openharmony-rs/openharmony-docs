@@ -509,3 +509,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | DEFAULT |  0 |  根据配置的资产兼容性功能执行转码。|
 | CURRENT |  1 |  不进行转码。资产将以其原始格式返回。|
 | COMPATIBLE |  2 |  所有资产都被转码为最广泛兼容的格式（如JPEG）。|
+
+## PickerColorMode
+ 
+表示Picker的颜色模式的枚举。
+ 
+**起始版本：** 26.1.0
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+ 
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+ 
+| 名称                | 值   | 说明    |
+|-------------------|-----|-------|
+| AUTO | 0   | 颜色跟随系统。 |
+| LIGHT | 1   | 浅色模式。 |
+| DARK | 2   | 深色模式。 |
