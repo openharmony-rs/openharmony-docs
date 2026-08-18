@@ -1342,7 +1342,7 @@ export default class TestAbility extends UIAbility {
  }
  ```
  
->**说明：**
+>**说明:** 
 >
 >若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。
 
