@@ -155,7 +155,7 @@ WLAN配置信息。
 | creatorUid | number | 否 | 是 | 创建用户的ID。 <br> **系统接口：** 此接口为系统接口。 |
 | disableReason | number | 否 | 是 | 禁用原因： <br> -1 - 未知原因，0 - 未禁用，1 - 关联拒绝，2 - 认证失败 <br> 3 - DHCP失败，4 - 暂时无互联网连接 <br> 5 - 认证无凭据，6 - 永久无互联网连接 <br> 7 - 由WIFI管理器禁用，8 - 由于密码错误禁用 <br> 9 - 认证无订阅，10 - 私有EAP认证错误 <br> 11 - 未找到网络，12 - 连续失败 <br> 13 - 由系统禁用，14 - EAP-AKA认证失败 <br> 15 - 解除关联原因，16 - 禁用网络选择最大值<br> **系统接口：** 此接口为系统接口。 |
 | randomMacType | number | 否 | 是 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址，默认值为0（随机MAC地址）。 <br /> **系统接口：** 此接口为系统接口。 |
-| randomMacAddr | string | 否 | 是 | MAC地址，格式为XX:XX:XX:XX:XX:XX。<br /> **系统接口：** 此接口为系统接口。 |
+| randomMacAddr | string | 否 | 是 | MAC地址。<br /> **系统接口：** 此接口为系统接口。 |
 | ipType | [IpType](#iptype) | 否 | 是 | IP地址类型，默认值为1（DHCP）。 <br /> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
@@ -170,7 +170,7 @@ WLAN配置信息。
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
-
+fv
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -280,7 +280,7 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 connectToDevice(config: WifiDeviceConfig): void
 
-连接到指定网络（如果当前已经连接到热点，请先使用disconnect()接口断开连接）。
+连接到指定网络（如果当前已经连接到热点，请先断开连接）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -489,7 +489,7 @@ try {
 
 reassociate(): void
 
-重新关联网络。与reconnect()的区别：reassociate()用于在当前已关联状态下发起重新关联（如漫游至同一ESS内的其他AP），reconnect()用于在断开连接后重新发起连接。根据当前连接状态选择合适的方法。
+重新关联网络。与[reconnect](#wifimanagerreconnect)的区别：reassociate()用于在当前已关联状态下发起重新关联（如漫游至同一ESS内的其他AP），[reconnect](#wifimanagerreconnect)用于在断开连接后重新发起连接。根据当前连接状态选择合适的方法。
 
 **系统接口：** 此接口为系统接口。
 
@@ -865,7 +865,7 @@ try {
 
 startWifiDetection(): void
 
-发起Wi-Fi网络探测，用于检测当前Wi-Fi连接的网络连通性（如是否可访问互联网、是否存在Portal认证页面等），帮助系统判断当前网络是否可用。适用于网络连接后需要验证网络质量的场景。
+发起WLAN网络探测，用于检测当前Wi-Fi连接的网络连通性（如是否可访问互联网、是否存在Portal认证页面等），帮助系统判断当前网络是否可用。适用于网络连接后需要验证网络质量的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -953,7 +953,7 @@ try {
 
 factoryReset(): void
 
-重置WiFi相关配置并关闭WiFi。
+重置WLAN相关配置并关闭WLAN。
 
 **系统接口：** 此接口为系统接口。
 

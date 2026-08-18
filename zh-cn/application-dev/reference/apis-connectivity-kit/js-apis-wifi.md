@@ -58,7 +58,7 @@ try {
 
 scan(): boolean
 
-启动WLAN扫描。调用此方法启动扫描后，需等待扫描完成（可通过监听wifiScanStateChange事件获知），再通过getScanInfos获取扫描结果。
+启动WLAN扫描。调用此方法启动扫描后，需等待扫描完成（可通过监听wifiScanStateChange事件获知），再通过[getScanInfos](#wifigetscaninfosdeprecated)获取扫描结果。
 
 > **说明：**
 >
@@ -986,7 +986,7 @@ wifi.getP2pPeerDevices().then(data => {
 
 createGroup(config: WifiP2PConfig): boolean
 
-创建群组。创建群组后，可调用removeGroup移除已创建的群组。
+创建群组。创建群组后，可调用[removegroup](#wifiremovegroupdeprecated)移除已创建的群组。
 
 > **说明：**
 >
@@ -1098,7 +1098,7 @@ try {
 
 p2pConnect(config: WifiP2PConfig): boolean
 
-执行P2P连接。调用前需先调用startDiscoverDevices发现对端设备，并建议注册p2pConnectionChange、p2pPeerDeviceChange等事件以获取连接状态变化。
+执行P2P连接。调用前需先调用[startDiscoverDevices](#wifistartdiscoverdevicesdeprecated)发现对端设备，并建议注册p2pConnectionChange、p2pPeerDeviceChange等事件以获取连接状态变化。
 
 > **说明：**
 >
@@ -1113,7 +1113,7 @@ p2pConnect(config: WifiP2PConfig): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | 是 | 连接配置信息。需先调用startDiscoverDevices发现设备并通过getP2pPeerDevices获取对端设备地址后设置deviceAddress。 |
+  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | 是 | 连接配置信息。需先调用[startDiscoverDevices](#wifistartdiscoverdevicesdeprecated)发现设备并通过[getP2pPeerDevices](#wifigetp2ppeerdevicesdeprecated)获取对端设备地址后设置deviceAddress。 |
 
 **返回值：**
 

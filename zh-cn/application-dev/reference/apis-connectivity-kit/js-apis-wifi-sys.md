@@ -1048,7 +1048,7 @@ setDeviceName(devName: string): boolean
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | devName | string | 是 | 设备名称。长度范围1-32字节。 |
+  | devName | string | 是 | 设备名称。|
 
 **返回值：**
 
@@ -1181,7 +1181,7 @@ wifi.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta离开事件。
+注册WLAN热点sta离开事件。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
