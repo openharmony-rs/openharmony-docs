@@ -70,8 +70,8 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称       | 类型                                                       | 只读 | 可选 | 说明                                                         |
 | ---------- | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| windowMode | [WindowModeType](#windowmodetype10)                        | 否   | 是   | 用户认证界面的显示类型。DIALOG_BOX适用于大多数认证场景（用户体验较好），FULLSCREEN适用于需要沉浸式认证体验或认证信息较多的场景。不传入时默认为WindowModeType.DIALOG_BOX。<br> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23<br/>**系统接口：** 此接口为系统接口。 |
-| appWindow  | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 否   | 是   | 应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略；若不传入此参数，则认证界面的显示由uiContext控制。<br>**系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 26.0.0 <br/> **ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| windowMode | [WindowModeType](#windowmodetype10)                        | 否   | 是   | 用户认证界面的显示类型。DIALOG_BOX适用于大多数认证场景（用户体验较好），FULLSCREEN适用于需要沉浸式认证体验或认证信息较多的场景。不传入时默认为WindowModeType.DIALOG_BOX。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23<br>**系统接口：** 此接口为系统接口。 |
+| appWindow  | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 否   | 是   | 应用窗口对象。用于以模应用弹窗方式显示身份认证对话框，适用于需要通过窗口对象控制认证对话框显示的场景。如果已提供此参数，则uiContext将被忽略；若不传入此参数，则认证界面的显示由uiContext控制。<br>**系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## NoticeType<sup>10+</sup>
 
@@ -153,7 +153,7 @@ try {
   console.info('sendNotice successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`sendNotice failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to send notice. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -207,11 +207,11 @@ try {
     sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to operate widget mgr. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -260,11 +260,11 @@ try {
     sendCommand: (cmdData: string) => {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to operate widget mgr. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -314,11 +314,11 @@ try {
     sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to operate widget mgr. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -367,11 +367,11 @@ try {
     sendCommand: (cmdData: string) => {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to operate widget mgr. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -432,7 +432,7 @@ try {
   console.info('get userAuthWidgetMgr instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to operate widget mgr. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -506,11 +506,11 @@ try {
     sendCommand: (cmdData) => {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to operate widget mgr. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -528,11 +528,11 @@ try {
     sendCommand: (cmdData: string) => {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to operate widget mgr. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -587,7 +587,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -624,7 +624,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -682,7 +682,7 @@ try {
   const reuseUnlockResult: userAuth.ReuseUnlockResult = {
     reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
     reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-  }
+  };
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -693,7 +693,7 @@ try {
   console.info('query reuse auth result successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`query reuse auth result failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to query reuse auth result. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -711,7 +711,7 @@ try {
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | AuthToken校验失败。verifyAuthToken系统接口错误码，表示验证的AuthToken完整性校验失败，令牌可能被篡改或损坏。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | AuthToken校验失败。verifyAuthToken系统接口错误码，表示验证的AuthToken完整性校验失败，令牌可能被篡改或损坏。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
 | AUTH_TOKEN_EXPIRED<sup>18+</sup>       | 12500016      | AuthToken已过期。verifyAuthToken系统接口错误码，表示AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长（allowableDuration）。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
 | REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | 复用认证结果失败。queryReusableAuthResult系统接口错误码，表示查询可复用的身份认证结果失败，可能原因包括：不存在满足复用条件的认证结果、认证结果已失效或凭据已变更。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
@@ -844,7 +844,7 @@ try {
   console.info('Remote auth callback registered successfully');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`failed to register remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to register remote auth callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -887,6 +887,6 @@ try {
   console.info('Remote auth callback unregistered successfully');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`failed to unregister remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to unregister remote auth callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
