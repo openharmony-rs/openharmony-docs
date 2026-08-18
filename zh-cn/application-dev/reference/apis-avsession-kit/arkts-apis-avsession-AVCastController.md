@@ -400,7 +400,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 avCastController.sendCustomData({customData: 'This is custom data'}).then(() => {
   console.info('Succeeded in sending custom data.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to send custom data, code: ${err.code}, message, code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to send custom data, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -499,7 +499,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 取消对应的监听事件，支持的事件是'customDataChange'。         |
+| type     | string                           | 是   | 需要取消的监听事件类型，当前支持的事件类型为'customDataChange'。         |
 | callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
 
 **错误码：**
@@ -1110,7 +1110,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'playbackStateChange'：当播放状态变化时，触发该事件。 |
 | filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | Array\<keyof AVPlaybackState>表示关注Array中的字段变化。<br>'all'表示关注播放状态所有字段变化。|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。 |
 
@@ -1232,7 +1232,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'playbackStateChange'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'playbackStateChange'。    |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 否   | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                      |
 
 **错误码：**
@@ -1306,7 +1306,7 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'mediaItemChange'`：当播放的媒体内容变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'mediaItemChange'：当播放的媒体内容变化时，触发该事件。 |
 | callback | Callback<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>         | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。                      |
 
 **错误码：**
@@ -1384,7 +1384,7 @@ off(type: 'mediaItemChange'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'mediaItemChange'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'mediaItemChange'。    |
 
 **错误码：**
 
@@ -1452,7 +1452,7 @@ on(type: 'playNext', callback: Callback\<void>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'playNext'`：当播放下一首状态变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'playNext'：当播放下一首状态变化时，触发该事件。 |
 | callback | Callback\<void\>         | 是   | 回调函数。                      |
 
 **错误码：**
@@ -1530,7 +1530,7 @@ off(type: 'playNext'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'playNext'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'playNext'。    |
 
 **错误码：**
 
@@ -1597,7 +1597,7 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'playPrevious'`：当播放上一首状态变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'playPrevious'：当播放上一首状态变化时，触发该事件。 |
 | callback | Callback\<void\>         | 是   | 回调函数。                      |
 
 **错误码：**
@@ -1675,7 +1675,7 @@ off(type: 'playPrevious'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'playPrevious'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'playPrevious'。    |
 
 **错误码：**
 
@@ -1741,7 +1741,7 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'requestPlay'`：当请求播放状态变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'requestPlay'：当请求播放状态变化时，触发该事件。 |
 | callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。 |
 
 **错误码：**
@@ -1815,7 +1815,7 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
-| type     | string                                                      | 是   | 取消对应的监听事件，支持事件`'requestPlay'`。    |
+| type     | string                                                      | 是   | 需要取消的监听事件类型，当前支持的事件类型为'requestPlay'。    |
 | callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)> | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1885,7 +1885,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 
 | 参数名   | 类型             | 必填 | 说明                                                         |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | 是   | 事件回调类型，支持事件`'endOfStream'`：当资源播放结束时，触发该事件。 |
+| type     | string           | 是   | 事件回调类型，支持事件'endOfStream'：当资源播放结束时，触发该事件。 |
 | callback | Callback\<void\> | 是   | 回调函数，当资源播放结束时触发回调。 |
 
 **错误码：**
@@ -1959,7 +1959,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 | 参数名   | 类型             | 必填 | 说明                                                         |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | 是   | 取消对应的监听事件，支持事件`'endOfStream'`。                |
+| type     | string           | 是   | 需要取消的监听事件类型，当前支持的事件类型为'endOfStream'。                |
 | callback | Callback\<void\> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -2031,7 +2031,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                      | 是   | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
+| type     | string                                                      | 是   | 事件回调类型，支持事件'seekDone'：当seek结束时，触发该事件。 |
 | callback |  Callback\<number\> | 是   | 回调函数，返回seek后播放的位置。                             |
 
 **错误码：**
@@ -2109,7 +2109,7 @@ off(type: 'seekDone'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'seekDone'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'seekDone'。    |
 
 **错误码：**
 
@@ -2174,7 +2174,7 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'validCommandChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'validCommandChange'：当检测到会话的合法命令发生改变时，触发该事件。 |
 | callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\>   | 是   | 回调函数。参数commands是有效命令的集合。                     |
 
 **错误码：**
@@ -2252,7 +2252,7 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'validCommandChange'`。         |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'validCommandChange'。         |
 | callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\> | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。          |
 
 **错误码：**
@@ -2324,7 +2324,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 | 参数名   | 类型                                    | 必填 | 说明                                                         |
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                  | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                  | 是   | 事件回调类型，支持事件'videoSizeChange'：当检测到会话的合法命令发生改变时，触发该事件。 |
 | callback | (width: number, height: number) => void | 是   | 回调函数。返回视频尺寸。                                     |
 
 **错误码：**
@@ -2398,7 +2398,7 @@ off(type: 'videoSizeChange'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'videoSizeChange'：当检测到会话的合法命令发生改变时，触发该事件。 |
 
 **错误码：**
 
@@ -2630,7 +2630,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
-| type     | string  | 是   | 事件回调类型，支持事件`'keyRequest'`：当DRM资源播放需要许可证时，触发该事件。 |
+| type     | string  | 是   | 事件回调类型，支持事件'keyRequest'：当DRM资源播放需要许可证时，触发该事件。 |
 | callback | [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 是   | 回调函数，媒体资源及许可证请求数据。|
 
 
@@ -2712,7 +2712,7 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持的事件是`'keyRequest'`。 |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'keyRequest'。 |
 | callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -2888,7 +2888,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlGenericError'。|
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlGenericError'。|
 | callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -3063,7 +3063,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlIoError'。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlIoError'。 |
 | callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -3212,7 +3212,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlParsingError'。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlParsingError'。 |
 | callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -3363,7 +3363,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlDecodingError'。 |
 | callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
 
 **错误码：**
@@ -3508,7 +3508,7 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlAudioRendererError'。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlAudioRendererError'。 |
 | callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -3667,7 +3667,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlDrmError'。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlDrmError'。 |
 | callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
