@@ -19,7 +19,5 @@
 <!--RP1-->
 ### 模拟器支持情况
  
-本Kit支持模拟器。
-
-模拟器与真机存在通用差异，详情请参见[模拟器与真机的差异](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-emulator-specification)。
+本Kit不支持模拟器。
 <!--RP1End-->
