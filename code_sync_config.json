@@ -14669,13 +14669,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets",
-				"functions":[
-					{
-						"end_line":49,
-						"name":"dynamic_focus_project_area_flex",
-						"start_line":18
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/onFocusBlur.ets",
@@ -14864,6 +14858,16 @@
 						"end_line":115,
 						"name":"dynamic_focus_control_manage",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectAreaFocusFlex.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"dynamic_focus_project_area_flex",
+						"start_line":16
 					}
 				]
 			}
