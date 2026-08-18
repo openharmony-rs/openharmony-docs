@@ -1911,7 +1911,7 @@ sim.getVoiceMailNumber(0).then((data: string) => {
 
 setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string, callback: AsyncCallback\<void\>\): void
 
-设置语音信箱信息。使用Promise异步回调。
+设置语音信箱信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
