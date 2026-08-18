@@ -80,10 +80,10 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    ArkTS-Sta示例：
 
    <!-- @[create_AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopBackJS_Sta/entry/src/main/ets/pages/AudioLoopback.ets) -->  
-
+   
    ``` TypeScript
-   import { audio } from '@kit.AudioKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { audio } from '@kit.AudioKit'; // 导入audio模块。
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
    // ...
    let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
    let audioLoopback: audio.AudioLoopback | undefined = undefined;
