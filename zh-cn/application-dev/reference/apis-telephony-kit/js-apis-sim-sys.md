@@ -167,7 +167,7 @@ import { sim } from '@kit.TelephonyKit';
 sim.setDefaultVoiceSlotId(0).then(() => {
     console.info(`setDefaultVoiceSlotId success.`);
 }).catch((err: BusinessError) => {
-    console.error(`setDefaultVoiceSlotId failed. Code: ${err.code}, message: ${err.message}`);
+    console.error(`setDefaultVoiceSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
