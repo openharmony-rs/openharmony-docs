@@ -4375,7 +4375,7 @@ try {
 
 ### updateAccountInfo<sup>18+</sup>
 
-updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccountInfo): Promise&lt;void&gt;
+static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccountInfo): Promise&lt;void&gt;
 
 修改指定域账号信息。使用Promise异步回调。
 
