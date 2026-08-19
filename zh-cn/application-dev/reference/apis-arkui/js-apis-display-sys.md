@@ -516,7 +516,7 @@ ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801     | Capability not supported. Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -605,7 +605,7 @@ ArkTS-Sta: removeVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801     | Capability not supported. Function removeVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -711,7 +711,7 @@ ArkTS-Sta: addVirtualScreenSurface(screenId: long, surfaceId: string, surfaceReg
 | 错误码ID | 错误信息  |
 | ------- | ----------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 801      | Capability not supported. Function addVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. |
 | 1400001  | Invalid display or screen. |
 | 1400003  | This display manager service works abnormally. |
 | 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -833,7 +833,7 @@ ArkTS-Sta: removeVirtualScreenSurface(screenId: long, surfaceId: string): Promis
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 801      | Capability not supported. Function removeVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. |
 | 1400001  | Invalid display or screen. |
 | 1400003  | This display manager service works abnormally. |
 | 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -948,7 +948,7 @@ hasImmersiveWindow(callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -1018,7 +1018,7 @@ hasImmersiveWindow(): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 

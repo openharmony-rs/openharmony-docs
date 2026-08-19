@@ -48,46 +48,6 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 | -------- | -------- |
 | ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
-### getModifierKeyState<sup>12+</sup>
-
-getModifierKeyState?(keys: Array\<string>): boolean
-
-获取修饰键按压状态。报错信息请参考以下错误码。支持修饰键'Ctrl'\|'Alt'\|'Shift'。
-
->  **说明：**
->
-> 此接口不支持在手写笔场景下使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 12
-
-**参数：**
-
-| 参数名 | 类型                              | 必填 | 说明                 |
-| ------ | --------------------------------- | ---- | -------------------- |
-| keys  | Array&lt;string&gt; | 是   | 修饰键列表。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| boolean | 返回修饰键按压状态。当修饰键均处于按压状态时返回true，否则返回false。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
-
 ## 示例
 
 ### 示例1（自定义手势判定）
