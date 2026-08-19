@@ -2107,7 +2107,7 @@ processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
+| code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令。 |
 | -------- | -------- | -------- | -------- |
 | code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令，例如：安装插件。 |
 | message | string | 是 | 要进行处理的信息。 |
