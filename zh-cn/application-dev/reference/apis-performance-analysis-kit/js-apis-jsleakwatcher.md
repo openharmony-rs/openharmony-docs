@@ -258,8 +258,8 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 | 10801003 | The parameter callback is invalid. Input parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例：**
-ArkTS-Dyn示例：
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // 监测ArkTS对象CustomComponent和Window的内存泄漏
@@ -281,7 +281,6 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filePath : Array<string>) => {
 ```
 
 ArkTS-Sta示例：
-
 <!--code_no_check-->
 ```ts
 // 监测ArkTS对象CustomComponent和Window的内存泄漏
