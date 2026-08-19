@@ -210,7 +210,27 @@ Data migration is in progress.
 
 不可重复启动迁移任务，请等待当前任务执行完毕。
 
-## 31100501 字体观察者已注册
+## 31100112 Scope字体未找到
+
+**错误信息**
+
+The scope font is not found.
+
+**错误描述**
+
+卸载或查询scope字体时，未找到指定URL对应的字体记录。
+
+**可能原因**
+
+1. 该scope字体尚未安装。
+2. URL不匹配任何已安装的scope字体。
+3. 调用方bundleName与字体所有者不匹配。
+ 
+**处理步骤**
+
+请检查URL是否正确，并先调用installScopeFont安装字体。
+
+## 31100113 字体观察者已注册
 
 **错误信息**
 
@@ -228,7 +248,7 @@ Font observer already registered.
 
 无需重复注册，如需更新观察者，请先调用offFontObserver注销后再重新注册。
 
-## 31100502 超过字体观察者最大数量
+## 31100114 超过字体观察者最大数量
 
 **错误信息**
 
@@ -246,7 +266,7 @@ Exceeded maximum number of font observers.
 
 请等待其他应用注销观察者后再重试。
 
-## 31100503 字体观察者未注册
+## 31100115 字体观察者未注册
 
 **错误信息**
 
