@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-certificateManagerDialog-export enum CertificateType--><!--Device-certificateManagerDialog-export enum CertificateType-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
@@ -21,10 +17,6 @@ CA_CERT = 1
 CA证书。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ CREDENTIAL_USER = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CertificateType-CREDENTIAL_USER = 2--><!--Device-CertificateType-CREDENTIAL_USER = 2-End-->
@@ -61,10 +49,6 @@ CREDENTIAL_APP = 3
 应用私有凭据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ USB Key证书凭据。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CertificateType-CREDENTIAL_UKEY = 4--><!--Device-CertificateType-CREDENTIAL_UKEY = 4-End-->
@@ -101,10 +81,6 @@ CREDENTIAL_SYSTEM = 5
 系统凭据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

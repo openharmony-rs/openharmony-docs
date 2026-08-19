@@ -4,13 +4,9 @@
 type Transformer = (this: Object, key: string, value: Object) => Object | undefined | null
 ```
 
-用于转换结果的函数类型。 作为[JSON.parse](arkts-arkts-json-parse-f.md#parse)函数的参数时，解析结果中的每个键值对按深度优先顺序（从最内层节点开始，逐层向外）依次调用此函数， this指向当前键值对所属的对象，返回值替换原始值，若返回undefined则该属性将被删除。 作为[JSON.stringify](arkts-arkts-json-stringify-f.md#stringify)函数的参数时， 序列化引擎会按从外到内的顺序对每个属性调用该函数处理，this指向当前属性所属的对象，返回值作为序列化结果。
+用于转换结果的函数类型。 作为[JSON.parse](arkts-arkts-json-parse-f.md)函数的参数时，解析结果中的每个键值对按深度优先顺序（从最内层节点开始，逐层向外）依次调用此函数， this指向当前键值对所属的对象，返回值替换原始值，若返回undefined则该属性将被删除。 作为[JSON.stringify](arkts-arkts-json-stringify-f.md)函数的参数时， 序列化引擎会按从外到内的顺序对每个属性调用该函数处理，this指向当前属性所属的对象，返回值作为序列化结果。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

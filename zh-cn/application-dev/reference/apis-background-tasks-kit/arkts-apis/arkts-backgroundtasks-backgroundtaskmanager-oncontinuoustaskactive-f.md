@@ -1,5 +1,11 @@
 # onContinuousTaskActive
 
+## 导入模块
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+```
+
 ## onContinuousTaskActive
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onContinuousTaskActive(callback: Callback<ContinuousTaskActiveInfo>): v
 注册长时任务激活的监听，使用callback异步回调。应用回前台激活暂停的长时任务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -24,7 +26,7 @@ function onContinuousTaskActive(callback: Callback<ContinuousTaskActiveInfo>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ContinuousTaskActiveInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskactiveinfo-i.md)&gt; | 是 | the callback of continuous task active. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ContinuousTaskActiveInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskactiveinfo-i.md)&gt; | 是 | the callback of continuous task active. |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function onContinuousTaskActive(callback: Callback<ContinuousTaskActiveInfo>): v
 | [9800005](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#9800005-长时任务校验失败) | Continuous task verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';

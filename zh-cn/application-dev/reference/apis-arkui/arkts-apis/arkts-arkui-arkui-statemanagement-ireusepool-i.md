@@ -4,13 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare interface IReusePool--><!--Device-unnamed-export declare interface IReusePool-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
+```
 
 ## getReusableInfo
 
@@ -22,10 +24,6 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 检索此复用池中给定可复用组件类型的回收实例信息。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,7 +46,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 | --- | --- |
 | [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。 <br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。 <br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。 <br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array&lt;IReusableInfo&gt;`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个 `reuseId: undefined`的条目。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -125,10 +123,6 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -150,7 +144,7 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 当空闲任务成功完成时兑现的Promise。Promise对象无返回结果。当预渲染任务执行失败时，Promise会被拒绝。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';

@@ -1,18 +1,20 @@
 # createModuleContext
 
+## 导入模块
+
+```TypeScript
+import { application } from '@kit.AbilityKit';
+```
+
 ## createModuleContext
 
 ```TypeScript
 export function createModuleContext(context: Context, moduleName: string): Promise<Context>
 ```
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md#configuration)资源继承 自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。 > **说明：** > > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-configuration-c.md)资源继承 自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。 > **说明：** > > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,7 +43,7 @@ export function createModuleContext(context: Context, moduleName: string): Promi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, application, common, Want, Context } from '@kit.AbilityKit';

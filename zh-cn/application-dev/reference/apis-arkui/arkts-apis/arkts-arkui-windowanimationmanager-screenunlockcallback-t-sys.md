@@ -8,10 +8,6 @@ type ScreenUnlockCallback = (finishCallback: WindowAnimationFinishedCallback) =>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-windowAnimationManager-type ScreenUnlockCallback = (finishCallback: WindowAnimationFinishedCallback) => void--><!--Device-windowAnimationManager-type ScreenUnlockCallback = (finishCallback: WindowAnimationFinishedCallback) => void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

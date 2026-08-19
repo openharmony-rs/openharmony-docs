@@ -1,5 +1,11 @@
 # isEmbeddedUIExtensionSupported
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## isEmbeddedUIExtensionSupported
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isEmbeddedUIExtensionSupported(): boolean
 开发者通过调用该接口判断[EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md)是否可以在当前设备上使用。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function isEmbeddedUIExtensionSupported(): boolean
 | --- | --- |
 | boolean | 当前设备是否支持[EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md)。返回 true表示当前设备支持；返回false表示当前设备不支持。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityManager, UIAbility } from '@kit.AbilityKit';

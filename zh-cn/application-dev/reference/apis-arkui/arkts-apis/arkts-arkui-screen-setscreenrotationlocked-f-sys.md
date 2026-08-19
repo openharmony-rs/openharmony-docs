@@ -1,5 +1,12 @@
 # setScreenRotationLocked（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## setScreenRotationLocked
 
 ```TypeScript
@@ -9,10 +16,6 @@ function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>
 设置自动转屏开关是否锁定，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screen-function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>): void--><!--Device-screen-function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -25,7 +28,7 @@ function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isLocked | boolean | 是 | 自动转屏开关是否锁定。true为锁定，false为未锁定。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置自动转屏是否锁定成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置自动转屏是否锁定成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -34,7 +37,7 @@ function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -80,10 +83,6 @@ function setScreenRotationLocked(isLocked:boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-screen-function setScreenRotationLocked(isLocked:boolean): Promise<void>--><!--Device-screen-function setScreenRotationLocked(isLocked:boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -109,7 +108,7 @@ function setScreenRotationLocked(isLocked:boolean): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

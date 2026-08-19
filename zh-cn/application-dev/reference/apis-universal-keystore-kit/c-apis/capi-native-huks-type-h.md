@@ -44,18 +44,7 @@
 | [OH_Huks_CipherMode](#oh_huks_ciphermode) | OH_Huks_CipherMode | 加密模式。 |
 | [OH_Huks_KeySize](#oh_huks_keysize) | OH_Huks_KeySize | 算法密钥长度。 |
 | [OH_Huks_KeyAlg](#oh_huks_keyalg) | OH_Huks_KeyAlg | 密钥使用的算法。 |
-| [OH_Huks_AlgSuite](#oh_huks_algsuite) | OH_Huks_AlgSuite | 密文导入所需的算法套件类型。<br>OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式。
-\| x25519_plain_pubkey_length  (4 Byte) \| x25519_plain_pubkey \|  agreekey_aad_length (4 Byte) \| agreekey_aad
-\|   agreekey_nonce_length     (4 Byte) \|   agreekey_nonce    \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\|    kek_enc_data_length      (4 Byte) \|    kek_enc_data     \|    kek_aad_length    (4 Byte) \| kek_aad
-\|      kek_nonce_length       (4 Byte) \|      kek_nonce      \|   kek_aead_tag_len   (4 Byte) \| kek_aead_tag
-\|   key_material_size_len     (4 Byte) \|  key_material_size  \|   key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING对应的密钥材料格式。
-\|  ECC_plain_pubkey_length    (4 Byte) \|  ECC_plain_pubkey   \|  agreekey_aad_length (4 Byte) \| agreekey_aad
-\|   agreekey_nonce_length     (4 Byte) \|   agreekey_nonce    \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\|    kek_enc_data_length      (4 Byte) \|    kek_enc_data     \|    kek_aad_length    (4 Byte) \| kek_aad
-\|      kek_nonce_length       (4 Byte) \|      kek_nonce      \|   kek_aead_tag_len   (4 Byte) \| kek_aead_tag
-\|   key_material_size_len     (4 Byte) \|  key_material_size  \|   key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式。
-\|      kek_SM4_enc_length     (4 Byte) \|      EN_SM4_key     \| importkey_enc_length (4 Byte) \| importkey_enc |
+| [OH_Huks_AlgSuite](#oh_huks_algsuite) | OH_Huks_AlgSuite | 密文导入所需的算法套件类型。<br>OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式。 \| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad \| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag \| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad \| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag \| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING对应的密钥材料格式。 \| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad \| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag \| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad \| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag \| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式。 \| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc |
 | [OH_Huks_KeyGenerateType](#oh_huks_keygeneratetype) | OH_Huks_KeyGenerateType | 生成的密钥类型。 |
 | [OH_Huks_KeyFlag](#oh_huks_keyflag) | OH_Huks_KeyFlag | 密钥的产生方式。 |
 | [OH_Huks_KeyStorageType](#oh_huks_keystoragetype) | OH_Huks_KeyStorageType | 密钥的存储方式。 |
@@ -267,18 +256,7 @@ enum OH_Huks_AlgSuite
 
 **描述**
 
-密文导入所需的算法套件类型。<br>OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式。
-\| x25519_plain_pubkey_length  (4 Byte) \| x25519_plain_pubkey \|  agreekey_aad_length (4 Byte) \| agreekey_aad
-\|   agreekey_nonce_length     (4 Byte) \|   agreekey_nonce    \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\|    kek_enc_data_length      (4 Byte) \|    kek_enc_data     \|    kek_aad_length    (4 Byte) \| kek_aad
-\|      kek_nonce_length       (4 Byte) \|      kek_nonce      \|   kek_aead_tag_len   (4 Byte) \| kek_aead_tag
-\|   key_material_size_len     (4 Byte) \|  key_material_size  \|   key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING对应的密钥材料格式。
-\|  ECC_plain_pubkey_length    (4 Byte) \|  ECC_plain_pubkey   \|  agreekey_aad_length (4 Byte) \| agreekey_aad
-\|   agreekey_nonce_length     (4 Byte) \|   agreekey_nonce    \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag
-\|    kek_enc_data_length      (4 Byte) \|    kek_enc_data     \|    kek_aad_length    (4 Byte) \| kek_aad
-\|      kek_nonce_length       (4 Byte) \|      kek_nonce      \|   kek_aead_tag_len   (4 Byte) \| kek_aead_tag
-\|   key_material_size_len     (4 Byte) \|  key_material_size  \|   key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式。
-\|      kek_SM4_enc_length     (4 Byte) \|      EN_SM4_key     \| importkey_enc_length (4 Byte) \| importkey_enc
+密文导入所需的算法套件类型。<br>OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式。 \| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad \| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag \| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad \| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag \| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING对应的密钥材料格式。 \| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad \| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag \| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad \| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag \| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br>OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式。 \| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc
 
 **起始版本：** 9
 

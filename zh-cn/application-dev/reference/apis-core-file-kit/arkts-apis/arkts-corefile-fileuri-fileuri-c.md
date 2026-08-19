@@ -6,13 +6,15 @@ FileUri表示文件的URI，继承自uri.URI。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-fileUri-class FileUri--><!--Device-fileUri-class FileUri-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
+
+## 导入模块
+
+```TypeScript
+import { fileUri } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -23,10 +25,6 @@ constructor(uriOrPath: string)
 FileUri的构造函数，用于创建FileUri实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -49,7 +47,7 @@ FileUri的构造函数，用于创建FileUri实例。
 | 14300002 | Invalid uri |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let pathDir = this.context.filesDir; // 获取应用沙箱路径。
@@ -68,10 +66,6 @@ getFullDirectoryUri(): string
 获取当前文件URI所在路径的完整目录URI。URI指向目录时直接返回原URI。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -93,7 +87,7 @@ getFullDirectoryUri(): string
 | 13900012 | Permission denied |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -118,10 +112,6 @@ isRemoteUri(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FileUri-isRemoteUri(): boolean--><!--Device-FileUri-isRemoteUri(): boolean-End-->
@@ -140,7 +130,7 @@ isRemoteUri(): boolean
 | --- | --- |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 function isRemoteUriExample() {
@@ -162,10 +152,6 @@ toString(): string
 将当前URI转换为序列化字符串。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

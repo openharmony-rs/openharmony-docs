@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from 'notificationSubscribe';
+import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
 ## subscribeNotification
@@ -15,10 +15,6 @@ function subscribeNotification(subscriber: NotificationSubscriber): Promise<void
 订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -52,7 +48,7 @@ function subscribeNotification(subscriber: NotificationSubscriber): Promise<void
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -100,10 +96,6 @@ function subscribeNotification(subscriber: NotificationSubscriber, info: Notific
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -137,7 +129,7 @@ function subscribeNotification(subscriber: NotificationSubscriber, info: Notific
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,5 +1,11 @@
 # isWifiActive（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+```
+
 ## isWifiActive
 
 ```TypeScript
@@ -10,11 +16,9 @@ function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync)
+**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -31,7 +35,7 @@ function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示Wi-Fi开启，false表示Wi-Fi关闭，否则err 为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示Wi-Fi开启，false表示Wi-Fi关闭，否则err 为错误对象。 |
 
 **错误码：**
 
@@ -43,7 +47,7 @@ function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.MDMKit';
@@ -75,11 +79,9 @@ function isWifiActive(admin: Want): Promise<boolean>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md#iswifiactivesync)
+**替代接口：** [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -113,7 +115,7 @@ function isWifiActive(admin: Want): Promise<boolean>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.MDMKit';

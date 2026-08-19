@@ -4,9 +4,7 @@ Defines the context menu media type, related to onContextMenuShow method.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum ContextMenuMediaType--><!--Device-unnamed-export declare enum ContextMenuMediaType-End-->
 
@@ -22,9 +20,7 @@ Default value, indicating that the current context menu is not associated with a
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ContextMenuMediaType-NONE = 0--><!--Device-ContextMenuMediaType-NONE = 0-End-->
 
@@ -40,9 +36,7 @@ Image.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ContextMenuMediaType-IMAGE = 1--><!--Device-ContextMenuMediaType-IMAGE = 1-End-->
 

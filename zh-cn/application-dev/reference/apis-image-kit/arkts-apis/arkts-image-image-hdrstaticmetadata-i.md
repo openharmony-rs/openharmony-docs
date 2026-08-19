@@ -1,16 +1,18 @@
 # HdrStaticMetadata
 
-静态元数据值，[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md#hdrmetadatakey)中HDR_STATIC_METADATA关键字对应的值。
+静态元数据值，[HdrMetadataKey](arkts-image-image-hdrmetadatakey-e.md)中HDR_STATIC_METADATA关键字对应的值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-interface HdrStaticMetadata--><!--Device-image-interface HdrStaticMetadata-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## displayPrimariesX
 
@@ -23,10 +25,6 @@ The X-coordinate of the primary colors. Specifies the normalized X-coordinates o
 **类型：** Array&lt;double&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HdrStaticMetadata-displayPrimariesX: Array<double>--><!--Device-HdrStaticMetadata-displayPrimariesX: Array<double>-End-->
 
@@ -44,10 +42,6 @@ The Y-coordinate of the primary colors. Specifies the normalized Y-coordinates o
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HdrStaticMetadata-displayPrimariesY: Array<double>--><!--Device-HdrStaticMetadata-displayPrimariesY: Array<double>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -63,10 +57,6 @@ Maximum brightness of displayed content. The value is measured in units of 1, wi
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HdrStaticMetadata-maxContentLightLevel: double--><!--Device-HdrStaticMetadata-maxContentLightLevel: double-End-->
 
@@ -84,10 +74,6 @@ Maximum average brightness of displayed content. The value is measured in units 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HdrStaticMetadata-maxFrameAverageLightLevel: double--><!--Device-HdrStaticMetadata-maxFrameAverageLightLevel: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -103,10 +89,6 @@ Maximum luminance of the image's primary display. The value is measured in units
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HdrStaticMetadata-maxLuminance: double--><!--Device-HdrStaticMetadata-maxLuminance: double-End-->
 
@@ -124,10 +106,6 @@ Minimum luminance of the image's primary display. The value is measured in units
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HdrStaticMetadata-minLuminance: double--><!--Device-HdrStaticMetadata-minLuminance: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -144,10 +122,6 @@ The X-coordinate of the white point value. Specifies the normalized X-coordinate
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HdrStaticMetadata-whitePointX: double--><!--Device-HdrStaticMetadata-whitePointX: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -163,10 +137,6 @@ The Y-coordinate of the white point value. Specifies the normalized Y-coordinate
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HdrStaticMetadata-whitePointY: double--><!--Device-HdrStaticMetadata-whitePointY: double-End-->
 

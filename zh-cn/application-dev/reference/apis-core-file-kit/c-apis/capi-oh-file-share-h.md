@@ -107,7 +107,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。<br>         {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_EPERM} 13900001 - 操作不被允许。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：\n              1. 参数policies或参数result或参数resultNum为空指针；\n              2. 参数policyNum值为0或者超过最大长度(500)；\n              3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。\n          {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_EPERM} 13900001 - 操作不被允许。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileShare_RevokePermission()
 
@@ -136,7 +136,7 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。<br>         {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_EPERM} 13900001 - 操作不被允许。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：\n              1. 参数policies或参数result或参数resultNum为空指针；\n              2. 参数policyNum值为0或者超过最大长度(500)；\n              3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。\n          {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_EPERM} 13900001 - 操作不被允许。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileShare_ActivatePermission()
 
@@ -165,7 +165,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。<br>         {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_EPERM} 13900001 - 操作不被允许。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：\n              1. 参数policies或参数result或参数resultNum为空指针；\n              2. 参数policyNum值为0或者超过最大长度(500)；\n              3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。\n          {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_EPERM} 13900001 - 操作不被允许。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileShare_DeactivatePermission()
 
@@ -194,7 +194,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。<br>         {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_EPERM} 13900001 - 操作不被允许。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：\n              1. 参数policies或参数result或参数resultNum为空指针；\n              2. 参数policyNum值为0或者超过最大长度(500)；\n              3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。\n          {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_EPERM} 13900001 - 操作不被允许。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileShare_CheckPersistentPermission()
 
@@ -223,7 +223,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：<br>             1. 参数policies或参数result或参数resultNum为空指针；<br>             2. 参数policyNum值为0或者超过最大长度(500)；<br>             3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。<br>         {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。<br>         {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_EPERM} 13900001 - 操作不被允许。可能的原因为policies中携带的所有uri都不符合规范或者uri转换出来的路径不存在。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER} 401 - 输入参数无效。可能的原因有：\n              1. 参数policies或参数result或参数resultNum为空指针；\n              2. 参数policyNum值为0或者超过最大长度(500)；\n              3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - 当前设备类型不支持此接口。\n          {@link ERR_PERMISSION_ERROR} 201 - 接口权限校验失败。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_EPERM} 13900001 - 操作不被允许。可能的原因为policies中携带的所有uri都不符合规范或者uri转换出来的路径不存在。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 

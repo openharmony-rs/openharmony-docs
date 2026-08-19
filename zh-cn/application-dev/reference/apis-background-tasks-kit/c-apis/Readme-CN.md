@@ -1,4 +1,4 @@
-# CAPI<!--c-background-tasks-kit-->
+# C API<!--c-background-tasks-kit-->
 
 - 头文件
     - [transient_task_api.h](capi-transient-task-api-h.md)

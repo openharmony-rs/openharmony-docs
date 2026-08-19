@@ -1,5 +1,11 @@
 # register
 
+## 导入模块
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+```
+
 ## register
 
 ```TypeScript
@@ -9,8 +15,6 @@ function register(callback: AsyncCallback<number>): void
 注册流转管理服务，并获取对应的注册token，无过滤条件，使用AsyncCallback方式作为异步方法。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -26,9 +30,9 @@ function register(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -55,8 +59,6 @@ function register(options: ContinuationExtraParams, callback: AsyncCallback<numb
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
@@ -72,9 +74,9 @@ function register(options: ContinuationExtraParams, callback: AsyncCallback<numb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | ContinuationExtraParams | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -105,8 +107,6 @@ function register(options?: ContinuationExtraParams): Promise<number>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
@@ -129,7 +129,7 @@ function register(options?: ContinuationExtraParams): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise形式返回流转管理服务连接后生成的token。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';

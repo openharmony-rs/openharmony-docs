@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export enum Operation--><!--Device-mechanicManager-export enum Operation-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -24,10 +20,6 @@ CONNECT = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Operation-CONNECT = 0--><!--Device-Operation-CONNECT = 0-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -43,10 +35,6 @@ DISCONNECT = 1
 断开操作
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Operation-DISCONNECT = 1--><!--Device-Operation-DISCONNECT = 1-End-->
 

@@ -8,10 +8,6 @@ export declare type LaunchAtomicServiceCallback = (appId: string, options?: Atom
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOptions) => void--><!--Device-unnamed-export declare type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOptions) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

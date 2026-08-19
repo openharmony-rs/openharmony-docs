@@ -1,5 +1,16 @@
 # getCurrentInputMethodSubtype
 
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
+
 ## getCurrentInputMethodSubtype
 
 ```TypeScript
@@ -9,10 +20,6 @@ function getCurrentInputMethodSubtype(): InputMethodSubtype
 获取当前输入法的子类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputMethod-function getCurrentInputMethodSubtype(): InputMethodSubtype--><!--Device-inputMethod-function getCurrentInputMethodSubtype(): InputMethodSubtype-End-->
 
@@ -24,7 +31,7 @@ function getCurrentInputMethodSubtype(): InputMethodSubtype
 | --- | --- |
 | [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | 返回当前输入法子类型对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { InputMethodSubtype } from '@kit.IMEKit';

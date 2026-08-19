@@ -4,10 +4,6 @@ Enumerates the time-lapse recording states.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum TimeLapseRecordState--><!--Device-camera-enum TimeLapseRecordState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -24,10 +20,6 @@ Recording not started.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TimeLapseRecordState-IDLE = 0--><!--Device-TimeLapseRecordState-IDLE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -43,10 +35,6 @@ RECORDING = 1
 Recording.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TimeLapseRecordState-RECORDING = 1--><!--Device-TimeLapseRecordState-RECORDING = 1-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum AnimationType--><!--Device-window-enum AnimationType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ FADE_IN = 1
 表示窗口动画类型为淡入。淡入动画在窗口显示过程中生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnimationType-FADE_IN = 1--><!--Device-AnimationType-FADE_IN = 1-End-->
 

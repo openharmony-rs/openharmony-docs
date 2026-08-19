@@ -8,10 +8,6 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backup-type OnBackupSizeReport = (reportInfo: string) => void--><!--Device-backup-type OnBackupSizeReport = (reportInfo: string) => void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup

@@ -4,13 +4,15 @@ WebP metadata.
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-image-class WebPMetadata--><!--Device-image-class WebPMetadata-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## canvasHeight
 
@@ -23,10 +25,6 @@ Canvas Height. Unit: px, The value should be an integer.
 **类型：** int
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ Canvas Width. Unit: px, The value should be an integer.
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebPMetadata-readonly canvasWidth?: int--><!--Device-WebPMetadata-readonly canvasWidth?: int-End-->
@@ -67,10 +61,6 @@ Delay of each frame. Unit: ms, The value should be an integer.
 **类型：** int
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +80,6 @@ WebP图片动画循环的次数。如果取值为0，则表示不限次数。
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebPMetadata-readonly loopCount?: int--><!--Device-WebPMetadata-readonly loopCount?: int-End-->
@@ -111,10 +97,6 @@ Unclamped delay of each frame. Unit: ms, The value should be an integer.
 **类型：** int
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

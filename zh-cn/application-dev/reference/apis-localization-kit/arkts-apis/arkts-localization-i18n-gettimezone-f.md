@@ -1,5 +1,11 @@
 # getTimeZone
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## getTimeZone
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function getTimeZone(zoneID?: string): TimeZone
 获取时区ID对应的时区对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -32,7 +34,7 @@ export function getTimeZone(zoneID?: string): TimeZone
 | --- | --- |
 | [TimeZone](../../apis-na/arkts-apis/arkts-na-i18n-timezone-c.md) | 时区ID对应的时区对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

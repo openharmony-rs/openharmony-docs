@@ -1,5 +1,11 @@
 # getAllDesktopShortcutInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { shortcutManager } from '@kit.AbilityKit';
+```
+
 ## getAllDesktopShortcutInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllDesktopShortcutInfo(userId: int): Promise<Array<ShortcutInfo>>
 查询指定用户的所有快捷方式信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SHORTCUTS
 
@@ -26,7 +28,7 @@ function getAllDesktopShortcutInfo(userId: int): Promise<Array<ShortcutInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | int | 是 | 被查询的用户id。可以通过 [getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
+| userId | int | 是 | 被查询的用户id。可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
 
 **返回值：**
 
@@ -43,7 +45,7 @@ function getAllDesktopShortcutInfo(userId: int): Promise<Array<ShortcutInfo>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

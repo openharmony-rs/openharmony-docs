@@ -1,5 +1,10 @@
 # configure
 
+## 导入模块
+
+```TypeScript
+```
+
 ## configure
 
 ```TypeScript
@@ -10,11 +15,9 @@ function configure(config: ConfigOption): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [configure](arkts-performanceanalysis-hiappevent-configure-f.md#configure)
+**替代接口：** [configure](arkts-performanceanalysis-hiappevent-configure-f.md)
 
 <!--Device-hiAppEvent-function configure(config: ConfigOption): boolean--><!--Device-hiAppEvent-function configure(config: ConfigOption): boolean-End-->
 
@@ -32,7 +35,7 @@ function configure(config: ConfigOption): boolean
 | --- | --- |
 | boolean | 配置结果，true 表示配置成功，false 表示配置失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 配置应用事件打点功能开关

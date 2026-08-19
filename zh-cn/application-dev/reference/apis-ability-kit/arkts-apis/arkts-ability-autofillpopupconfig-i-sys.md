@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default interface AutoFillPopupConfig--><!--Device-unnamed-export default interface AutoFillPopupConfig-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -25,10 +21,6 @@ placement?: PopupPlacement
 **类型：** [PopupPlacement](arkts-ability-autofillpopupconfig-popupplacement-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,10 +41,6 @@ popupSize?: PopupSize
 **类型：** [PopupSize](arkts-ability-autofillpopupconfig-popupsize-i-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

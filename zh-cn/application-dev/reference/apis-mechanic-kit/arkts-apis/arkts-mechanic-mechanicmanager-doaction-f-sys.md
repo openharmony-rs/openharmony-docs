@@ -1,5 +1,11 @@
 # doAction（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## doAction
 
 ```TypeScript
@@ -9,10 +15,6 @@ function doAction(mechId: int, actionType: ActionType): Promise<Result>
 执行一个动作序列
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function doAction(mechId: int, actionType: ActionType): Promise<Result>--><!--Device-mechanicManager-function doAction(mechId: int, actionType: ActionType): Promise<Result>-End-->
 

@@ -4,15 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace skillManager--><!--Device-unnamed-declare namespace skillManager-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## 导入模块
+
+```TypeScript
+import { skillManager } from '@kit.AbilityKit';
+```
 
 ## 汇总
 
@@ -20,11 +22,11 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAllSkillInfos](arkts-ability-skillmanager-getallskillinfos-f.md#getallskillinfos) | 获取设备上安装应用的所有技能信息。使用Promise异步回调。 |
-| [getSkillInfo](arkts-ability-skillmanager-getskillinfo-f.md#getskillinfo) | 获取指定应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
-| [getSkillInfoForSelf](arkts-ability-skillmanager-getskillinfoforself-f.md#getskillinfoforself) | 获取本应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
-| [getSkillInfos](arkts-ability-skillmanager-getskillinfos-f.md#getskillinfos) | 获取指定应用的所有技能信息。使用Promise异步回调。 |
-| [getSkillInfosForSelf](arkts-ability-skillmanager-getskillinfosforself-f.md#getskillinfosforself) | 获取本应用的所有技能信息。使用Promise异步回调。 |
+| [getAllSkillInfos](arkts-ability-skillmanager-getallskillinfos-f.md) | 获取设备上安装应用的所有技能信息。使用Promise异步回调。 |
+| [getSkillInfo](arkts-ability-skillmanager-getskillinfo-f.md) | 获取指定应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
+| [getSkillInfoForSelf](arkts-ability-skillmanager-getskillinfoforself-f.md) | 获取本应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
+| [getSkillInfos](arkts-ability-skillmanager-getskillinfos-f.md) | 获取指定应用的所有技能信息。使用Promise异步回调。 |
+| [getSkillInfosForSelf](arkts-ability-skillmanager-getskillinfosforself-f.md) | 获取本应用的所有技能信息。使用Promise异步回调。 |
 
 ### 枚举
 

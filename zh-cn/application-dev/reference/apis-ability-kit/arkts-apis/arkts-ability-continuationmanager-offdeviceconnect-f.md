@@ -1,6 +1,12 @@
 # off_deviceConnect
 
-## off_deviceConnect
+## 导入模块
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+```
+
+## off('deviceConnect')
 
 ```TypeScript
 function off(type: 'deviceConnect', callback?: Callback<ContinuationResult>): void
@@ -9,8 +15,6 @@ function off(type: 'deviceConnect', callback?: Callback<ContinuationResult>): vo
 异步方法，取消监听设备连接状态，使用Callback形式返回连接的设备信息。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -27,9 +31,9 @@ function off(type: 'deviceConnect', callback?: Callback<ContinuationResult>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceConnect' | 是 | 取消监听的事件类型，固定值"deviceConnect"。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ContinuationResult&gt; | 否 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ContinuationResult&gt; | 否 | 当用户从设备选择模块中选择设备时调用，返回设备ID、设备类型和设备名称供开发者使用。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';

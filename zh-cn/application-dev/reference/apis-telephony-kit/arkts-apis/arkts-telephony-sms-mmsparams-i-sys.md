@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export interface MmsParams--><!--Device-sms-export interface MmsParams-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
 
 ## data
 
@@ -26,10 +28,6 @@ data: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MmsParams-data: string--><!--Device-MmsParams-data: string-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -42,15 +40,11 @@ data: string
 mmsConfig?: MmsConfig
 ```
 
-彩信配置文件，参考[MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md#mmsconfig系统接口)。
+彩信配置文件，参考[MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md)。
 
 **类型：** [MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmsParams-mmsConfig?: MmsConfig--><!--Device-MmsParams-mmsConfig?: MmsConfig-End-->
 
@@ -70,10 +64,6 @@ mmsc: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MmsParams-mmsc: string--><!--Device-MmsParams-mmsc: string-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -91,10 +81,6 @@ slotId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmsParams-slotId: int--><!--Device-MmsParams-slotId: int-End-->
 

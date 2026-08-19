@@ -14,10 +14,6 @@ TabContent()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TabContentInterface-(): TabContentAttribute--><!--Device-TabContentInterface-(): TabContentAttribute-End-->
@@ -26,12 +22,27 @@ TabContent()
 
 ## 汇总
 
-- [BoardStyle](arkts-arkui-boardstyle-i.md)
-- [DrawableTabBarIndicator](arkts-arkui-drawabletabbarindicator-i.md)
-- [IndicatorStyle](arkts-arkui-indicatorstyle-i.md)
-- [LabelStyle](arkts-arkui-labelstyle-i.md)
-- [TabBarIconStyle](arkts-arkui-tabbariconstyle-i.md)
-- [TabBarOptions](arkts-arkui-tabbaroptions-i.md)
-- [DrawableDescriptor](arkts-arkui-drawabledescriptor-t.md)
-- [LayoutMode](arkts-arkui-layoutmode-e.md)
-- [SelectedMode](arkts-arkui-selectedmode-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [BoardStyle](arkts-arkui-boardstyle-i.md) | 背板风格对象。 |
+| [DrawableTabBarIndicator](arkts-arkui-drawabletabbarindicator-i.md) | 使用图片资源作为下划线的对象。 |
+| [IndicatorStyle](arkts-arkui-indicatorstyle-i.md) | 下划线风格对象。 |
+| [LabelStyle](arkts-arkui-labelstyle-i.md) | label文本和字体的样式对象。 |
+| [TabBarIconStyle](arkts-arkui-tabbariconstyle-i.md) | Label图标样式对象。 |
+| [TabBarOptions](arkts-arkui-tabbaroptions-i.md) | 设置页签内的图片和文字内容。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [DrawableDescriptor](arkts-arkui-drawabledescriptor-t.md) | 作为DrawableTabBarIndicator对象中drawable属性的入参对象。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [LayoutMode](arkts-arkui-layoutmode-e.md) | 页签内容排布方式枚举。 |
+| [SelectedMode](arkts-arkui-selectedmode-e.md) | 选中子页签的显示模式枚举。 |
+

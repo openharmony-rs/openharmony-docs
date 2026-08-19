@@ -1,4 +1,4 @@
-# WithEnvInterface
+# WithEnvInterface(定义WithEnv组件，允许为子组件设置环境属性。)
 
 ```TypeScript
 export declare type WithEnvInterface = () => WithEnvAttribute
@@ -7,10 +7,6 @@ export declare type WithEnvInterface = () => WithEnvAttribute
 定义WithEnv组件的类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

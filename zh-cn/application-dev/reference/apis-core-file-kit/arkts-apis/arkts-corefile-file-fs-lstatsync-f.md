@@ -1,18 +1,22 @@
 # lstatSync
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## lstatSync
 
 ```TypeScript
 declare function lstatSync(path: string): Stat
 ```
 
-以同步方法获取符号链接文件信息。
+以同步方法获取符号链接文件信息，返回符号链接本身的属性而非目标文件的属性。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare function lstatSync(path: string): Stat--><!--Device-unnamed-declare function lstatSync(path: string): Stat-End-->
 
@@ -22,7 +26,7 @@ declare function lstatSync(path: string): Stat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 文件的应用沙箱路径path或URI。<br>**说明：**从API version 22开始，支持传入URI。 |
+| path | string | 是 | 文件的应用沙箱路径或URI。<br>**说明：**从API version 22开始，支持传入URI。 |
 
 **返回值：**
 

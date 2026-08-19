@@ -1,16 +1,18 @@
 # @ohos.telephony.call
 
-该模块提供呼叫管理功能，包括拨打电话、跳转到拨号界面、获取通话状态、格式化电话号码等。 如需订阅通话状态请使用 [`observer.on('callStateChange')`](arkts-telephony-observer-onnetworkstatechange-f.md#onnetworkstatechange) 。
+该模块提供呼叫管理功能，包括拨打电话、跳转到拨号界面、获取通话状态、格式化电话号码等。 如需订阅通话状态请使用 [`observer.on('callStateChange')`](arkts-telephony-observer-onnetworkstatechange-f.md) 。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace call--><!--Device-unnamed-declare namespace call-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
 
 ## 汇总
 
@@ -18,186 +20,186 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [dial](arkts-telephony-call-dial-f.md#dial) | 拨打电话，可设置通话参数。使用callback异步回调。 |
-| [dial](arkts-telephony-call-dial-f.md#dial) | 拨打电话，可设置通话参数。使用Promise异步回调。 |
-| [dial](arkts-telephony-call-dial-f.md#dial) | 拨打电话。使用callback异步回调。 |
-| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber) | 格式化电话号码，可设置格式化参数。使用callback异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。 |
-| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber) | 格式化电话号码，可设置格式化参数。使用Promise异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。 |
-| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md#formatphonenumber) | 格式化电话号码。使用callback异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。 |
-| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md#formatphonenumbertoe164) | 将电话号码格式化为E.164表示形式，使用callback异步回调。 待格式化的电话号码需要与传入的国家码相匹配，如中国电话号码需要传入国家码CN，否则格式化后的电话号码为null。 |
-| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md#formatphonenumbertoe164) | 将电话号码格式化为E.164表示形式，使用Promise异步回调。 待格式化的电话号码需要与传入的国家码相匹配，如中国电话号码需要传入国家码CN，否则格式化后的电话号码为null。 支持所有国家码。 |
-| [getCallState](arkts-telephony-call-getcallstate-f.md#getcallstate) | 获取当前通话状态。使用callback异步回调。 |
-| [getCallState](arkts-telephony-call-getcallstate-f.md#getcallstate) | 获取当前通话状态。使用Promise异步回调。 |
-| [getCallStateSync](arkts-telephony-call-getcallstatesync-f.md#getcallstatesync) | 获取当前通话状态。 |
-| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f.md#getcalltransferinfo) | 获取电话号码的呼叫转移状态。使用Promise异步回调。 |
-| [hasCall](arkts-telephony-call-hascall-f.md#hascall) | 判断是否存在通话。使用callback异步回调。 |
-| [hasCall](arkts-telephony-call-hascall-f.md#hascall) | 判断是否存在通话。使用Promise异步回调。 |
-| [hasCallSync](arkts-telephony-call-hascallsync-f.md#hascallsync) | 判断是否存在通话。 |
-| [hasVoiceCapability](arkts-telephony-call-hasvoicecapability-f.md#hasvoicecapability) | 检查当前设备是否具备语音通话能力。 |
-| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber) | 根据电话号码参数，判断是否是紧急电话号码。使用callback异步回调。 |
-| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber) | 根据电话号码参数，判断是否是紧急电话号码。使用Promise异步回调。 |
-| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md#isemergencyphonenumber) | 判断是否是紧急电话号码。使用callback异步回调。 |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | 跳转到拨号界面，并显示待拨出的号码。使用callback异步回调。只支持在UIAbility中调用。 |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。 |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。 |
-| [makeCall](arkts-telephony-call-makecall-f.md#makecall) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。后台调用需要申请ohos.permission.START_ABILITIES_FROM_BACKGROUND权限。 |
-| [makeCallWithToken](arkts-telephony-call-makecallwithtoken-f.md#makecallwithtoken) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。 |
+| [dial](arkts-telephony-call-dial-f.md) | 拨打电话，可设置通话参数。使用callback异步回调。 |
+| [dial](arkts-telephony-call-dial-f.md) | 拨打电话，可设置通话参数。使用Promise异步回调。 |
+| [dial](arkts-telephony-call-dial-f.md) | 拨打电话。使用callback异步回调。 |
+| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md) | 格式化电话号码，可设置格式化参数。使用callback异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。 |
+| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md) | 格式化电话号码，可设置格式化参数。使用Promise异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。 |
+| [formatPhoneNumber](arkts-telephony-call-formatphonenumber-f.md) | 格式化电话号码。使用callback异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。 |
+| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md) | 将电话号码格式化为E.164表示形式，使用callback异步回调。 待格式化的电话号码需要与传入的国家码相匹配，如中国电话号码需要传入国家码CN，否则格式化后的电话号码为null。 |
+| [formatPhoneNumberToE164](arkts-telephony-call-formatphonenumbertoe164-f.md) | 将电话号码格式化为E.164表示形式，使用Promise异步回调。 待格式化的电话号码需要与传入的国家码相匹配，如中国电话号码需要传入国家码CN，否则格式化后的电话号码为null。 支持所有国家码。 |
+| [getCallState](arkts-telephony-call-getcallstate-f.md) | 获取当前通话状态。使用callback异步回调。 |
+| [getCallState](arkts-telephony-call-getcallstate-f.md) | 获取当前通话状态。使用Promise异步回调。 |
+| [getCallStateSync](arkts-telephony-call-getcallstatesync-f.md) | 获取当前通话状态。 |
+| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f.md) | 获取电话号码的呼叫转移状态。使用Promise异步回调。 |
+| [hasCall](arkts-telephony-call-hascall-f.md) | 判断是否存在通话。使用callback异步回调。 |
+| [hasCall](arkts-telephony-call-hascall-f.md) | 判断是否存在通话。使用Promise异步回调。 |
+| [hasCallSync](arkts-telephony-call-hascallsync-f.md) | 判断是否存在通话。 |
+| [hasVoiceCapability](arkts-telephony-call-hasvoicecapability-f.md) | 检查当前设备是否具备语音通话能力。 |
+| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md) | 根据电话号码参数，判断是否是紧急电话号码。使用callback异步回调。 |
+| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md) | 根据电话号码参数，判断是否是紧急电话号码。使用Promise异步回调。 |
+| [isEmergencyPhoneNumber](arkts-telephony-call-isemergencyphonenumber-f.md) | 判断是否是紧急电话号码。使用callback异步回调。 |
+| [makeCall](arkts-telephony-call-makecall-f.md) | 跳转到拨号界面，并显示待拨出的号码。使用callback异步回调。只支持在UIAbility中调用。 |
+| [makeCall](arkts-telephony-call-makecall-f.md) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。 |
+| [makeCall](arkts-telephony-call-makecall-f.md) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。 |
+| [makeCall](arkts-telephony-call-makecall-f.md) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。后台调用需要申请ohos.permission.START_ABILITIES_FROM_BACKGROUND权限。 |
+| [makeCallWithToken](arkts-telephony-call-makecallwithtoken-f.md) | 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall) | 接听来电。使用callback异步回调。 |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall系统接口) | 接听来电。使用Promise异步回调。 |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall系统接口) | 接听来电。使用callback异步回调。 |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall系统接口) | 接听来电。使用Promise异步回调。 |
-| [answerCall](arkts-telephony-call-answercall-f-sys.md#answercall系统接口) | 接听rtt来电 |
-| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md#cansetcalltransfertime) | 检查是否可以设置呼叫转移时间。使用callback异步回调。 |
-| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md#cansetcalltransfertime系统接口) | 检查是否可以设置呼叫转移时间。使用Promise异步回调。 |
-| [cancelCallUpgrade](arkts-telephony-call-cancelcallupgrade-f-sys.md#cancelcallupgrade) | 视频通话升级过程中取消升级。使用Promise异步回调。 |
-| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md#cancelmuted) | 取消通话中的静音。使用callback异步回调。 |
-| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md#cancelmuted系统接口) | 取消通话中的静音。使用Promise异步回调。 |
-| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md#closeunfinishedussd) | 取消未激活完成的非结构化补充数据业务。使用callback异步回调。 |
-| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md#closeunfinishedussd系统接口) | 取消未激活完成的非结构化补充数据业务。使用Promise异步回调。 |
-| [combineConference](arkts-telephony-call-combineconference-f-sys.md#combineconference) | 合并通话，将两通电话合并成会议电话。使用callback异步回调。 |
-| [combineConference](arkts-telephony-call-combineconference-f-sys.md#combineconference系统接口) | 合并通话，将两通电话合并成会议电话。使用Promise异步回调。 |
-| [controlCamera](arkts-telephony-call-controlcamera-f-sys.md#controlcamera) | 设置使用指定的相机进行视频通话，cameraId为空表示关闭相机。使用Promise异步回调。 |
-| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall) | 拨打电话，可设置通话参数。使用callback异步回调。 |
-| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口) | 拨打电话，可设置通话参数。使用Promise异步回调。 |
-| [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口) | 拨打电话。使用callback异步回调。 |
-| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md#disableimsswitch) | 禁用Ims开关。使用callback异步回调。 |
-| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md#disableimsswitch系统接口) | 禁用Ims开关。使用Promise异步回调。 |
-| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md#enableimsswitch) | 启用Ims开关。使用callback异步回调。 |
-| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md#enableimsswitch系统接口) | 启用Ims开关。使用Promise异步回调。 |
-| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md#getcallidlistforconference) | 获取会议的呼叫Id列表。使用callback异步回调。 |
-| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md#getcallidlistforconference系统接口) | 获取会议的呼叫Id列表。使用Promise异步回调。 |
-| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md#getcallrestrictionstatus) | 获取呼叫限制状态。使用callback异步回调。 |
-| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md#getcallrestrictionstatus系统接口) | 获取呼叫限制状态。使用Promise异步回调。 |
-| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md#getcalltransferinfo系统接口) | 获取呼叫转移信息。使用callback异步回调。 |
-| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md#getcalltransferinfo系统接口) | 获取呼叫转移信息。使用Promise异步回调。 |
-| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md#getcallwaitingstatus) | 获取呼叫等待状态。使用callback异步回调。 |
-| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md#getcallwaitingstatus系统接口) | 获取呼叫等待状态。使用Promise异步回调。 |
-| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md#getmaincallid) | 获取主呼叫Id。使用callback异步回调。 |
-| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md#getmaincallid系统接口) | 获取主呼叫Id。使用Promise异步回调。 |
-| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md#getsubcallidlist) | 获取子呼叫Id列表。使用callback异步回调。 |
-| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md#getsubcallidlist系统接口) | 获取子呼叫Id列表。使用Promise异步回调。 |
-| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md#getvonrstate) | 查询NR语音的开关状态。使用callback异步回调。 |
-| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md#getvonrstate系统接口) | 查询NR语音的开关状态。使用Promise异步回调。 |
-| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md#hangupcall) | 挂断电话。使用callback异步回调。 |
-| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md#hangupcall系统接口) | 挂断电话。使用Promise异步回调。 |
-| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md#hangupcall系统接口) | 挂断电话。使用callback异步回调。 |
-| [holdCall](arkts-telephony-call-holdcall-f-sys.md#holdcall) | 保持通话。使用callback异步回调。 |
-| [holdCall](arkts-telephony-call-holdcall-f-sys.md#holdcall系统接口) | 保持通话。使用Promise异步回调。 |
-| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md#inputdialerspecialcode) | 暗码广播。使用callback异步回调。 |
-| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md#inputdialerspecialcode系统接口) | 暗码广播。使用Promise异步回调。 |
-| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md#isimsswitchenabled) | 判断Ims开关是否启用。使用callback异步回调。 |
-| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md#isimsswitchenabled系统接口) | 判断Ims开关是否启用。使用Promise异步回调。 |
-| [isImsSwitchEnabledSync](arkts-telephony-call-isimsswitchenabledsync-f-sys.md#isimsswitchenabledsync) | 判断Ims开关是否启用。调用此API返回结果。 |
-| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md#isinemergencycall) | 判断是否正在处于紧急呼叫。使用callback异步回调。 |
-| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md#isinemergencycall系统接口) | 判断是否正在处于紧急呼叫。使用Promise异步回调。 |
-| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md#isnewcallallowed) | 判断是否允许再拨打一通新电话。使用callback异步回调。 |
-| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md#isnewcallallowed系统接口) | 判断是否允许再拨打一通新电话。使用Promise异步回调。 |
-| [isRinging](arkts-telephony-call-isringing-f-sys.md#isringing) | 判断是否正在响铃。使用callback异步回调。 |
-| [isRinging](arkts-telephony-call-isringing-f-sys.md#isringing系统接口) | 判断是否正在响铃。使用Promise异步回调。 |
-| [joinConference](arkts-telephony-call-joinconference-f-sys.md#joinconference) | 加入会议。使用callback异步回调。 |
-| [joinConference](arkts-telephony-call-joinconference-f-sys.md#joinconference系统接口) | 加入会议。使用Promise异步回调。 |
-| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md#kickoutfromconference) | 移出电话会议，将指定通话从会议电话中挂断。使用callback异步回调。 |
-| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md#kickoutfromconference系统接口) | 移出电话会议，将指定通话从会议电话中挂断。使用Promise异步回调。 |
-| [muteRinger](arkts-telephony-call-muteringer-f-sys.md#muteringer) | 如果来电铃声响起，设备将停止铃声。否则，此方法不起作用。使用callback异步回调。 |
-| [muteRinger](arkts-telephony-call-muteringer-f-sys.md#muteringer系统接口) | 如果来电铃声响起，设备将停止铃声。否则，此方法不起作用。使用Promise异步回调。 |
-| [offAudioDeviceChange](arkts-telephony-call-offaudiodevicechange-f-sys.md#offaudiodevicechange) | Unsubscribe from the audioDeviceChange event. |
-| [offCallDetailsChange](arkts-telephony-call-offcalldetailschange-f-sys.md#offcalldetailschange) | Unsubscribe from the callDetailsChange event. |
-| [offCallDisconnectedCause](arkts-telephony-call-offcalldisconnectedcause-f-sys.md#offcalldisconnectedcause) | Unsubscribe from the callDisconnectedCause event. |
-| [offCallEventChange](arkts-telephony-call-offcalleventchange-f-sys.md#offcalleventchange) | Unsubscribe from the callEventChange event. |
-| [offCallSessionEvent](arkts-telephony-call-offcallsessionevent-f-sys.md#offcallsessionevent) | Unsubscribe from the callSessionEvent. |
-| [offCameraCapabilitiesChange](arkts-telephony-call-offcameracapabilitieschange-f-sys.md#offcameracapabilitieschange) | Unsubscribe from the cameraCapabilitiesChange event. |
-| [offImsCallModeChange](arkts-telephony-call-offimscallmodechange-f-sys.md#offimscallmodechange) | Unsubscribe from the imsCallModeChange event. |
-| [offMmiCodeResult](arkts-telephony-call-offmmicoderesult-f-sys.md#offmmicoderesult) | Unsubscribe from the mmiCodeResult event. |
-| [offPeerDimensionsChange](arkts-telephony-call-offpeerdimensionschange-f-sys.md#offpeerdimensionschange) | Unsubscribe from the peerDimensionsChange event. |
-| [offPostDialDelay](arkts-telephony-call-offpostdialdelay-f-sys.md#offpostdialdelay) | Unsubscribe from the postDialDelay event. |
-| [offReceiveRttMessage](arkts-telephony-call-offreceiverttmessage-f-sys.md#offreceiverttmessage) | 去订阅rtt消息事件 |
-| [offRttErrCause](arkts-telephony-call-offrtterrcause-f-sys.md#offrtterrcause) | 去订阅rtt通话错误事件 |
-| [offRttModifyInd](arkts-telephony-call-offrttmodifyind-f-sys.md#offrttmodifyind) | 去订阅rtt通话变化事件 |
-| [off_audioDeviceChange](arkts-telephony-call-offaudiodevicechange-f-sys.md#offaudiodevicechange) | 取消订阅audioDeviceChange事件。使用callback异步回调。 |
-| [off_callDetailsChange](arkts-telephony-call-offcalldetailschange-f-sys.md#offcalldetailschange) | 取消订阅callDetailsChange事件。使用callback异步回调。 |
-| [off_callDisconnectedCause](arkts-telephony-call-offcalldisconnectedcause-f-sys.md#offcalldisconnectedcause) | 取消订阅callDisconnectedCause事件。使用callback异步回调。 |
-| [off_callEventChange](arkts-telephony-call-offcalleventchange-f-sys.md#offcalleventchange) | 取消订阅callEventChange事件。使用callback异步回调。 |
-| [off_callSessionEvent](arkts-telephony-call-offcallsessionevent-f-sys.md#offcallsessionevent) | 取消订阅callSessionEvent事件。使用callback异步回调。 |
-| [off_cameraCapabilitiesChange](arkts-telephony-call-offcameracapabilitieschange-f-sys.md#offcameracapabilitieschange) | 取消订阅cameraCapabilitiesChange事件。使用callback异步回调。 |
-| [off_imsCallModeChange](arkts-telephony-call-offimscallmodechange-f-sys.md#offimscallmodechange) | 取消订阅imsCallModeChange事件。使用callback异步回调。 |
-| [off_mmiCodeResult](arkts-telephony-call-offmmicoderesult-f-sys.md#offmmicoderesult) | 取消订阅mmiCodeResult事件。使用callback异步回调。 |
-| [off_peerDimensionsChange](arkts-telephony-call-offpeerdimensionschange-f-sys.md#offpeerdimensionschange) | 取消订阅peerDimensionsChange事件。使用callback异步回调。 |
-| [off_postDialDelay](arkts-telephony-call-offpostdialdelay-f-sys.md#offpostdialdelay) | 取消订阅拨号后延迟事件。使用callback异步回调。 |
-| [onAudioDeviceChange](arkts-telephony-call-onaudiodevicechange-f-sys.md#onaudiodevicechange) | Subscribe to the audioDeviceChange event. |
-| [onCallDetailsChange](arkts-telephony-call-oncalldetailschange-f-sys.md#oncalldetailschange) | Subscribe to the callDetailsChange event. |
-| [onCallDisconnectedCause](arkts-telephony-call-oncalldisconnectedcause-f-sys.md#oncalldisconnectedcause) | Subscribe to the callDisconnectedCause event. |
-| [onCallEventChange](arkts-telephony-call-oncalleventchange-f-sys.md#oncalleventchange) | Subscribe to the callEventChange event. |
-| [onCallSessionEvent](arkts-telephony-call-oncallsessionevent-f-sys.md#oncallsessionevent) | Subscribe to the callSessionEvent. |
-| [onCameraCapabilitiesChange](arkts-telephony-call-oncameracapabilitieschange-f-sys.md#oncameracapabilitieschange) | Subscribe to the cameraCapabilitiesChange event. |
-| [onImsCallModeChange](arkts-telephony-call-onimscallmodechange-f-sys.md#onimscallmodechange) | Subscribe to the imsCallModeChange event. |
-| [onMmiCodeResult](arkts-telephony-call-onmmicoderesult-f-sys.md#onmmicoderesult) | Subscribe to the mmiCodeResult event. |
-| [onPeerDimensionsChange](arkts-telephony-call-onpeerdimensionschange-f-sys.md#onpeerdimensionschange) | Subscribe to the peerDimensionsChange event. |
-| [onPostDialDelay](arkts-telephony-call-onpostdialdelay-f-sys.md#onpostdialdelay) | Subscribe to the postDialDelay event. |
-| [onReceiveRttMessage](arkts-telephony-call-onreceiverttmessage-f-sys.md#onreceiverttmessage) | 订阅RTT消息事件 |
-| [onRttErrCause](arkts-telephony-call-onrtterrcause-f-sys.md#onrtterrcause) | 订阅rtt通话错误事件 |
-| [onRttModifyInd](arkts-telephony-call-onrttmodifyind-f-sys.md#onrttmodifyind) | 订阅rtt通话变化 |
-| [on_audioDeviceChange](arkts-telephony-call-onaudiodevicechange-f-sys.md#onaudiodevicechange) | 订阅通话音频设备切换事件。使用callback异步回调。 |
-| [on_callDetailsChange](arkts-telephony-call-oncalldetailschange-f-sys.md#oncalldetailschange) | 订阅callDetailsChange事件。使用callback异步回调。 |
-| [on_callDisconnectedCause](arkts-telephony-call-oncalldisconnectedcause-f-sys.md#oncalldisconnectedcause) | 订阅callDisconnectedCause事件。使用callback异步回调。 |
-| [on_callEventChange](arkts-telephony-call-oncalleventchange-f-sys.md#oncalleventchange) | 订阅callEventChange事件。使用callback异步回调。 |
-| [on_callSessionEvent](arkts-telephony-call-oncallsessionevent-f-sys.md#oncallsessionevent) | 订阅callSessionEvent事件。使用callback异步回调。 |
-| [on_cameraCapabilitiesChange](arkts-telephony-call-oncameracapabilitieschange-f-sys.md#oncameracapabilitieschange) | 订阅cameraCapabilitiesChange事件。使用callback异步回调。 |
-| [on_imsCallModeChange](arkts-telephony-call-onimscallmodechange-f-sys.md#onimscallmodechange) | 订阅imsCallModeChange事件。使用callback异步回调。 |
-| [on_mmiCodeResult](arkts-telephony-call-onmmicoderesult-f-sys.md#onmmicoderesult) | 订阅mmiCodeResult事件。使用callback异步回调。 |
-| [on_peerDimensionsChange](arkts-telephony-call-onpeerdimensionschange-f-sys.md#onpeerdimensionschange) | 订阅peerDimensionsChange事件。使用callback异步回调。 |
-| [on_postDialDelay](arkts-telephony-call-onpostdialdelay-f-sys.md#onpostdialdelay) | 订阅拨号后延迟事件。使用callback异步回调。 |
-| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md#postdialproceed) | 继续进行通话。使用callback异步回调。 当用户呼叫号码为：“普通电话号码”+“;”+"DTMF字符"(例如：“400xxxxxxx;123”)，并且已经订阅了通话后延迟事件，电话接通后，系统将上报通话后延迟事件，应用可以调用此接口选择是否发送DTMF音。 |
-| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md#postdialproceed系统接口) | 继续进行通话。使用Promise异步回调。 当用户呼叫号码为：“普通电话号码”+“;”+"DTMF字符"(例如：“400xxxxxxx;123”)，并且已经订阅了通话后延迟事件，电话接通后，系统将上报通话后延迟事件，应用可以调用此接口选择是否发送DTMF音。 |
-| [preloadCallUI](arkts-telephony-call-preloadcallui-f-sys.md#preloadcallui) | 预加载通话应用 |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall) | 拒绝来电。使用callback异步回调。 |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall系统接口) | 拒绝来电。使用Promise异步回调。 |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall系统接口) | 拒绝来电。使用callback异步回调。 |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall系统接口) | 拒绝来电。使用callback异步回调。 |
-| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md#rejectcall系统接口) | 拒绝来电。使用callback异步回调。 |
-| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md#removemissedincomingcallnotification) | 删除未接来电通知。使用callback异步回调。 |
-| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md#removemissedincomingcallnotification系统接口) | 删除未接来电通知。使用Promise异步回调。 |
-| [sendCallUiEvent](arkts-telephony-call-sendcalluievent-f-sys.md#sendcalluievent) | 发布通话界面事件。使用Promise异步回调。 |
-| [sendRttMessage](arkts-telephony-call-sendrttmessage-f-sys.md#sendrttmessage) | 发送rtt消息 |
-| [sendUssdResponse](arkts-telephony-call-sendussdresponse-f-sys.md#sendussdresponse) | 用于向运营商发送USSD业务（Unstructured Supplementary Service Data，非结构化补充数据业务）的响应消息。 |
-| [separateConference](arkts-telephony-call-separateconference-f-sys.md#separateconference) | 分离会议电话。使用callback异步回调。 |
-| [separateConference](arkts-telephony-call-separateconference-f-sys.md#separateconference系统接口) | 分离会议电话。使用Promise异步回调。 |
-| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md#setaudiodevice) | 设置通话音频设备。使用callback异步回调。 |
-| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md#setaudiodevice系统接口) | 设置通话音频设备。使用Promise异步回调。 |
-| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md#setcallrestriction) | 设置呼叫限制状态。使用callback异步回调。 |
-| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md#setcallrestriction系统接口) | 设置呼叫限制状态。使用Promise异步回调。 |
-| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md#setcallrestrictionpassword) | 修改呼叫限制密码。使用callback异步回调。 |
-| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md#setcallrestrictionpassword系统接口) | 修改呼叫限制密码。使用Promise异步回调。 |
-| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md#setcalltransfer) | 设置呼叫转移信息。使用callback异步回调。 |
-| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md#setcalltransfer系统接口) | 设置呼叫转移信息。使用Promise异步回调。 |
-| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md#setcallwaiting) | 设置呼叫等待。使用callback异步回调。 |
-| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md#setcallwaiting系统接口) | 设置呼叫等待。使用Promise异步回调。 |
-| [setDeviceDirection](arkts-telephony-call-setdevicedirection-f-sys.md#setdevicedirection) | 设置视频通话画面显示方向为设备方向。使用Promise异步回调。 |
-| [setDisplaySurface](arkts-telephony-call-setdisplaysurface-f-sys.md#setdisplaysurface) | 设置远端画面窗口。使用Promise异步回调。 |
-| [setMuted](arkts-telephony-call-setmuted-f-sys.md#setmuted) | 设置通话中的静音。使用callback异步回调。 |
-| [setMuted](arkts-telephony-call-setmuted-f-sys.md#setmuted系统接口) | 设置通话中的静音。使用Promise异步回调。 |
-| [setPreviewSurface](arkts-telephony-call-setpreviewsurface-f-sys.md#setpreviewsurface) | 设置本端预览画面窗口。使用Promise异步回调。 |
-| [setRttCapability](arkts-telephony-call-setrttcapability-f-sys.md#setrttcapability) | 设置rtt功能 |
-| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md#setvonrstate) | 设置NR语音的开关状态。使用callback异步回调。 |
-| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md#setvonrstate系统接口) | 设置NR语音的开关状态。使用Promise异步回调。 |
-| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md#startdtmf) | 启动双音多频。使用callback异步回调。 |
-| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md#startdtmf系统接口) | 启动双音多频。使用Promise异步回调。 |
-| [startRtt](arkts-telephony-call-startrtt-f-sys.md#startrtt) | 启动rtt |
-| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md#stopdtmf) | 停止双音多频。使用callback异步回调。 |
-| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md#stopdtmf系统接口) | 停止双音多频。使用Promise异步回调。 |
-| [stopRtt](arkts-telephony-call-stoprtt-f-sys.md#stoprtt) | 停止rtt |
-| [switchCall](arkts-telephony-call-switchcall-f-sys.md#switchcall) | 切换呼叫。使用callback异步回调。 |
-| [switchCall](arkts-telephony-call-switchcall-f-sys.md#switchcall系统接口) | 切换呼叫。使用Promise异步回调。 |
-| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md#unholdcall) | 取消保持通话。使用callback异步回调。 |
-| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md#unholdcall系统接口) | 取消保持通话。使用Promise异步回调。 |
-| [unloadCallUI](arkts-telephony-call-unloadcallui-f-sys.md#unloadcallui) | 卸载通话应用 |
-| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md#updateimscallmode) | 更新Ims呼叫模式。使用callback异步回调。 |
-| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md#updateimscallmode系统接口) | 更新Ims呼叫模式。使用Promise异步回调。 |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md) | 接听来电。使用callback异步回调。 |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md) | 接听来电。使用Promise异步回调。 |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md) | 接听来电。使用callback异步回调。 |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md) | 接听来电。使用Promise异步回调。 |
+| [answerCall](arkts-telephony-call-answercall-f-sys.md) | 接听rtt来电 |
+| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md) | 检查是否可以设置呼叫转移时间。使用callback异步回调。 |
+| [canSetCallTransferTime](arkts-telephony-call-cansetcalltransfertime-f-sys.md) | 检查是否可以设置呼叫转移时间。使用Promise异步回调。 |
+| [cancelCallUpgrade](arkts-telephony-call-cancelcallupgrade-f-sys.md) | 视频通话升级过程中取消升级。使用Promise异步回调。 |
+| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md) | 取消通话中的静音。使用callback异步回调。 |
+| [cancelMuted](arkts-telephony-call-cancelmuted-f-sys.md) | 取消通话中的静音。使用Promise异步回调。 |
+| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md) | 取消未激活完成的非结构化补充数据业务。使用callback异步回调。 |
+| [closeUnfinishedUssd](arkts-telephony-call-closeunfinishedussd-f-sys.md) | 取消未激活完成的非结构化补充数据业务。使用Promise异步回调。 |
+| [combineConference](arkts-telephony-call-combineconference-f-sys.md) | 合并通话，将两通电话合并成会议电话。使用callback异步回调。 |
+| [combineConference](arkts-telephony-call-combineconference-f-sys.md) | 合并通话，将两通电话合并成会议电话。使用Promise异步回调。 |
+| [controlCamera](arkts-telephony-call-controlcamera-f-sys.md) | 设置使用指定的相机进行视频通话，cameraId为空表示关闭相机。使用Promise异步回调。 |
+| [dialCall](arkts-telephony-call-dialcall-f-sys.md) | 拨打电话，可设置通话参数。使用callback异步回调。 |
+| [dialCall](arkts-telephony-call-dialcall-f-sys.md) | 拨打电话，可设置通话参数。使用Promise异步回调。 |
+| [dialCall](arkts-telephony-call-dialcall-f-sys.md) | 拨打电话。使用callback异步回调。 |
+| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md) | 禁用Ims开关。使用callback异步回调。 |
+| [disableImsSwitch](arkts-telephony-call-disableimsswitch-f-sys.md) | 禁用Ims开关。使用Promise异步回调。 |
+| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md) | 启用Ims开关。使用callback异步回调。 |
+| [enableImsSwitch](arkts-telephony-call-enableimsswitch-f-sys.md) | 启用Ims开关。使用Promise异步回调。 |
+| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md) | 获取会议的呼叫Id列表。使用callback异步回调。 |
+| [getCallIdListForConference](arkts-telephony-call-getcallidlistforconference-f-sys.md) | 获取会议的呼叫Id列表。使用Promise异步回调。 |
+| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md) | 获取呼叫限制状态。使用callback异步回调。 |
+| [getCallRestrictionStatus](arkts-telephony-call-getcallrestrictionstatus-f-sys.md) | 获取呼叫限制状态。使用Promise异步回调。 |
+| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md) | 获取呼叫转移信息。使用callback异步回调。 |
+| [getCallTransferInfo](arkts-telephony-call-getcalltransferinfo-f-sys.md) | 获取呼叫转移信息。使用Promise异步回调。 |
+| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md) | 获取呼叫等待状态。使用callback异步回调。 |
+| [getCallWaitingStatus](arkts-telephony-call-getcallwaitingstatus-f-sys.md) | 获取呼叫等待状态。使用Promise异步回调。 |
+| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md) | 获取主呼叫Id。使用callback异步回调。 |
+| [getMainCallId](arkts-telephony-call-getmaincallid-f-sys.md) | 获取主呼叫Id。使用Promise异步回调。 |
+| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md) | 获取子呼叫Id列表。使用callback异步回调。 |
+| [getSubCallIdList](arkts-telephony-call-getsubcallidlist-f-sys.md) | 获取子呼叫Id列表。使用Promise异步回调。 |
+| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md) | 查询NR语音的开关状态。使用callback异步回调。 |
+| [getVoNRState](arkts-telephony-call-getvonrstate-f-sys.md) | 查询NR语音的开关状态。使用Promise异步回调。 |
+| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md) | 挂断电话。使用callback异步回调。 |
+| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md) | 挂断电话。使用Promise异步回调。 |
+| [hangUpCall](arkts-telephony-call-hangupcall-f-sys.md) | 挂断电话。使用callback异步回调。 |
+| [holdCall](arkts-telephony-call-holdcall-f-sys.md) | 保持通话。使用callback异步回调。 |
+| [holdCall](arkts-telephony-call-holdcall-f-sys.md) | 保持通话。使用Promise异步回调。 |
+| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md) | 暗码广播。使用callback异步回调。 |
+| [inputDialerSpecialCode](arkts-telephony-call-inputdialerspecialcode-f-sys.md) | 暗码广播。使用Promise异步回调。 |
+| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md) | 判断Ims开关是否启用。使用callback异步回调。 |
+| [isImsSwitchEnabled](arkts-telephony-call-isimsswitchenabled-f-sys.md) | 判断Ims开关是否启用。使用Promise异步回调。 |
+| [isImsSwitchEnabledSync](arkts-telephony-call-isimsswitchenabledsync-f-sys.md) | 判断Ims开关是否启用。调用此API返回结果。 |
+| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md) | 判断是否正在处于紧急呼叫。使用callback异步回调。 |
+| [isInEmergencyCall](arkts-telephony-call-isinemergencycall-f-sys.md) | 判断是否正在处于紧急呼叫。使用Promise异步回调。 |
+| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md) | 判断是否允许再拨打一通新电话。使用callback异步回调。 |
+| [isNewCallAllowed](arkts-telephony-call-isnewcallallowed-f-sys.md) | 判断是否允许再拨打一通新电话。使用Promise异步回调。 |
+| [isRinging](arkts-telephony-call-isringing-f-sys.md) | 判断是否正在响铃。使用callback异步回调。 |
+| [isRinging](arkts-telephony-call-isringing-f-sys.md) | 判断是否正在响铃。使用Promise异步回调。 |
+| [joinConference](arkts-telephony-call-joinconference-f-sys.md) | 加入会议。使用callback异步回调。 |
+| [joinConference](arkts-telephony-call-joinconference-f-sys.md) | 加入会议。使用Promise异步回调。 |
+| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md) | 移出电话会议，将指定通话从会议电话中挂断。使用callback异步回调。 |
+| [kickOutFromConference](arkts-telephony-call-kickoutfromconference-f-sys.md) | 移出电话会议，将指定通话从会议电话中挂断。使用Promise异步回调。 |
+| [muteRinger](arkts-telephony-call-muteringer-f-sys.md) | 如果来电铃声响起，设备将停止铃声。否则，此方法不起作用。使用callback异步回调。 |
+| [muteRinger](arkts-telephony-call-muteringer-f-sys.md) | 如果来电铃声响起，设备将停止铃声。否则，此方法不起作用。使用Promise异步回调。 |
+| [offAudioDeviceChange](arkts-telephony-call-offaudiodevicechange-f-sys.md) | Unsubscribe from the audioDeviceChange event. |
+| [offCallDetailsChange](arkts-telephony-call-offcalldetailschange-f-sys.md) | Unsubscribe from the callDetailsChange event. |
+| [offCallDisconnectedCause](arkts-telephony-call-offcalldisconnectedcause-f-sys.md) | Unsubscribe from the callDisconnectedCause event. |
+| [offCallEventChange](arkts-telephony-call-offcalleventchange-f-sys.md) | Unsubscribe from the callEventChange event. |
+| [offCallSessionEvent](arkts-telephony-call-offcallsessionevent-f-sys.md) | Unsubscribe from the callSessionEvent. |
+| [offCameraCapabilitiesChange](arkts-telephony-call-offcameracapabilitieschange-f-sys.md) | Unsubscribe from the cameraCapabilitiesChange event. |
+| [offImsCallModeChange](arkts-telephony-call-offimscallmodechange-f-sys.md) | Unsubscribe from the imsCallModeChange event. |
+| [offMmiCodeResult](arkts-telephony-call-offmmicoderesult-f-sys.md) | Unsubscribe from the mmiCodeResult event. |
+| [offPeerDimensionsChange](arkts-telephony-call-offpeerdimensionschange-f-sys.md) | Unsubscribe from the peerDimensionsChange event. |
+| [offPostDialDelay](arkts-telephony-call-offpostdialdelay-f-sys.md) | Unsubscribe from the postDialDelay event. |
+| [offReceiveRttMessage](arkts-telephony-call-offreceiverttmessage-f-sys.md) | 去订阅rtt消息事件 |
+| [offRttErrCause](arkts-telephony-call-offrtterrcause-f-sys.md) | 去订阅rtt通话错误事件 |
+| [offRttModifyInd](arkts-telephony-call-offrttmodifyind-f-sys.md) | 去订阅rtt通话变化事件 |
+| [off_audioDeviceChange](arkts-telephony-call-offaudiodevicechange-f-sys.md) | 取消订阅audioDeviceChange事件。使用callback异步回调。 |
+| [off_callDetailsChange](arkts-telephony-call-offcalldetailschange-f-sys.md) | 取消订阅callDetailsChange事件。使用callback异步回调。 |
+| [off_callDisconnectedCause](arkts-telephony-call-offcalldisconnectedcause-f-sys.md) | 取消订阅callDisconnectedCause事件。使用callback异步回调。 |
+| [off_callEventChange](arkts-telephony-call-offcalleventchange-f-sys.md) | 取消订阅callEventChange事件。使用callback异步回调。 |
+| [off_callSessionEvent](arkts-telephony-call-offcallsessionevent-f-sys.md) | 取消订阅callSessionEvent事件。使用callback异步回调。 |
+| [off_cameraCapabilitiesChange](arkts-telephony-call-offcameracapabilitieschange-f-sys.md) | 取消订阅cameraCapabilitiesChange事件。使用callback异步回调。 |
+| [off_imsCallModeChange](arkts-telephony-call-offimscallmodechange-f-sys.md) | 取消订阅imsCallModeChange事件。使用callback异步回调。 |
+| [off_mmiCodeResult](arkts-telephony-call-offmmicoderesult-f-sys.md) | 取消订阅mmiCodeResult事件。使用callback异步回调。 |
+| [off_peerDimensionsChange](arkts-telephony-call-offpeerdimensionschange-f-sys.md) | 取消订阅peerDimensionsChange事件。使用callback异步回调。 |
+| [off_postDialDelay](arkts-telephony-call-offpostdialdelay-f-sys.md) | 取消订阅拨号后延迟事件。使用callback异步回调。 |
+| [onAudioDeviceChange](arkts-telephony-call-onaudiodevicechange-f-sys.md) | Subscribe to the audioDeviceChange event. |
+| [onCallDetailsChange](arkts-telephony-call-oncalldetailschange-f-sys.md) | Subscribe to the callDetailsChange event. |
+| [onCallDisconnectedCause](arkts-telephony-call-oncalldisconnectedcause-f-sys.md) | Subscribe to the callDisconnectedCause event. |
+| [onCallEventChange](arkts-telephony-call-oncalleventchange-f-sys.md) | Subscribe to the callEventChange event. |
+| [onCallSessionEvent](arkts-telephony-call-oncallsessionevent-f-sys.md) | Subscribe to the callSessionEvent. |
+| [onCameraCapabilitiesChange](arkts-telephony-call-oncameracapabilitieschange-f-sys.md) | Subscribe to the cameraCapabilitiesChange event. |
+| [onImsCallModeChange](arkts-telephony-call-onimscallmodechange-f-sys.md) | Subscribe to the imsCallModeChange event. |
+| [onMmiCodeResult](arkts-telephony-call-onmmicoderesult-f-sys.md) | Subscribe to the mmiCodeResult event. |
+| [onPeerDimensionsChange](arkts-telephony-call-onpeerdimensionschange-f-sys.md) | Subscribe to the peerDimensionsChange event. |
+| [onPostDialDelay](arkts-telephony-call-onpostdialdelay-f-sys.md) | Subscribe to the postDialDelay event. |
+| [onReceiveRttMessage](arkts-telephony-call-onreceiverttmessage-f-sys.md) | 订阅RTT消息事件 |
+| [onRttErrCause](arkts-telephony-call-onrtterrcause-f-sys.md) | 订阅rtt通话错误事件 |
+| [onRttModifyInd](arkts-telephony-call-onrttmodifyind-f-sys.md) | 订阅rtt通话变化 |
+| [on_audioDeviceChange](arkts-telephony-call-onaudiodevicechange-f-sys.md) | 订阅通话音频设备切换事件。使用callback异步回调。 |
+| [on_callDetailsChange](arkts-telephony-call-oncalldetailschange-f-sys.md) | 订阅callDetailsChange事件。使用callback异步回调。 |
+| [on_callDisconnectedCause](arkts-telephony-call-oncalldisconnectedcause-f-sys.md) | 订阅callDisconnectedCause事件。使用callback异步回调。 |
+| [on_callEventChange](arkts-telephony-call-oncalleventchange-f-sys.md) | 订阅callEventChange事件。使用callback异步回调。 |
+| [on_callSessionEvent](arkts-telephony-call-oncallsessionevent-f-sys.md) | 订阅callSessionEvent事件。使用callback异步回调。 |
+| [on_cameraCapabilitiesChange](arkts-telephony-call-oncameracapabilitieschange-f-sys.md) | 订阅cameraCapabilitiesChange事件。使用callback异步回调。 |
+| [on_imsCallModeChange](arkts-telephony-call-onimscallmodechange-f-sys.md) | 订阅imsCallModeChange事件。使用callback异步回调。 |
+| [on_mmiCodeResult](arkts-telephony-call-onmmicoderesult-f-sys.md) | 订阅mmiCodeResult事件。使用callback异步回调。 |
+| [on_peerDimensionsChange](arkts-telephony-call-onpeerdimensionschange-f-sys.md) | 订阅peerDimensionsChange事件。使用callback异步回调。 |
+| [on_postDialDelay](arkts-telephony-call-onpostdialdelay-f-sys.md) | 订阅拨号后延迟事件。使用callback异步回调。 |
+| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md) | 继续进行通话。使用callback异步回调。 当用户呼叫号码为：“普通电话号码”+“;”+"DTMF字符"(例如：“400xxxxxxx;123”)，并且已经订阅了通话后延迟事件，电话接通后，系统将上报通话后延迟事件，应用可以调用此接口选择是否发送DTMF音。 |
+| [postDialProceed](arkts-telephony-call-postdialproceed-f-sys.md) | 继续进行通话。使用Promise异步回调。 当用户呼叫号码为：“普通电话号码”+“;”+"DTMF字符"(例如：“400xxxxxxx;123”)，并且已经订阅了通话后延迟事件，电话接通后，系统将上报通话后延迟事件，应用可以调用此接口选择是否发送DTMF音。 |
+| [preloadCallUI](arkts-telephony-call-preloadcallui-f-sys.md) | 预加载通话应用 |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md) | 拒绝来电。使用callback异步回调。 |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md) | 拒绝来电。使用Promise异步回调。 |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md) | 拒绝来电。使用callback异步回调。 |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md) | 拒绝来电。使用callback异步回调。 |
+| [rejectCall](arkts-telephony-call-rejectcall-f-sys.md) | 拒绝来电。使用callback异步回调。 |
+| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md) | 删除未接来电通知。使用callback异步回调。 |
+| [removeMissedIncomingCallNotification](arkts-telephony-call-removemissedincomingcallnotification-f-sys.md) | 删除未接来电通知。使用Promise异步回调。 |
+| [sendCallUiEvent](arkts-telephony-call-sendcalluievent-f-sys.md) | 发布通话界面事件。使用Promise异步回调。 |
+| [sendRttMessage](arkts-telephony-call-sendrttmessage-f-sys.md) | 发送rtt消息 |
+| [sendUssdResponse](arkts-telephony-call-sendussdresponse-f-sys.md) | 用于向运营商发送USSD业务（Unstructured Supplementary Service Data，非结构化补充数据业务）的响应消息。 |
+| [separateConference](arkts-telephony-call-separateconference-f-sys.md) | 分离会议电话。使用callback异步回调。 |
+| [separateConference](arkts-telephony-call-separateconference-f-sys.md) | 分离会议电话。使用Promise异步回调。 |
+| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md) | 设置通话音频设备。使用callback异步回调。 |
+| [setAudioDevice](arkts-telephony-call-setaudiodevice-f-sys.md) | 设置通话音频设备。使用Promise异步回调。 |
+| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md) | 设置呼叫限制状态。使用callback异步回调。 |
+| [setCallRestriction](arkts-telephony-call-setcallrestriction-f-sys.md) | 设置呼叫限制状态。使用Promise异步回调。 |
+| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md) | 修改呼叫限制密码。使用callback异步回调。 |
+| [setCallRestrictionPassword](arkts-telephony-call-setcallrestrictionpassword-f-sys.md) | 修改呼叫限制密码。使用Promise异步回调。 |
+| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md) | 设置呼叫转移信息。使用callback异步回调。 |
+| [setCallTransfer](arkts-telephony-call-setcalltransfer-f-sys.md) | 设置呼叫转移信息。使用Promise异步回调。 |
+| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md) | 设置呼叫等待。使用callback异步回调。 |
+| [setCallWaiting](arkts-telephony-call-setcallwaiting-f-sys.md) | 设置呼叫等待。使用Promise异步回调。 |
+| [setDeviceDirection](arkts-telephony-call-setdevicedirection-f-sys.md) | 设置视频通话画面显示方向为设备方向。使用Promise异步回调。 |
+| [setDisplaySurface](arkts-telephony-call-setdisplaysurface-f-sys.md) | 设置远端画面窗口。使用Promise异步回调。 |
+| [setMuted](arkts-telephony-call-setmuted-f-sys.md) | 设置通话中的静音。使用callback异步回调。 |
+| [setMuted](arkts-telephony-call-setmuted-f-sys.md) | 设置通话中的静音。使用Promise异步回调。 |
+| [setPreviewSurface](arkts-telephony-call-setpreviewsurface-f-sys.md) | 设置本端预览画面窗口。使用Promise异步回调。 |
+| [setRttCapability](arkts-telephony-call-setrttcapability-f-sys.md) | 设置rtt功能 |
+| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md) | 设置NR语音的开关状态。使用callback异步回调。 |
+| [setVoNRState](arkts-telephony-call-setvonrstate-f-sys.md) | 设置NR语音的开关状态。使用Promise异步回调。 |
+| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md) | 启动双音多频。使用callback异步回调。 |
+| [startDTMF](arkts-telephony-call-startdtmf-f-sys.md) | 启动双音多频。使用Promise异步回调。 |
+| [startRtt](arkts-telephony-call-startrtt-f-sys.md) | 启动rtt |
+| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md) | 停止双音多频。使用callback异步回调。 |
+| [stopDTMF](arkts-telephony-call-stopdtmf-f-sys.md) | 停止双音多频。使用Promise异步回调。 |
+| [stopRtt](arkts-telephony-call-stoprtt-f-sys.md) | 停止rtt |
+| [switchCall](arkts-telephony-call-switchcall-f-sys.md) | 切换呼叫。使用callback异步回调。 |
+| [switchCall](arkts-telephony-call-switchcall-f-sys.md) | 切换呼叫。使用Promise异步回调。 |
+| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md) | 取消保持通话。使用callback异步回调。 |
+| [unHoldCall](arkts-telephony-call-unholdcall-f-sys.md) | 取消保持通话。使用Promise异步回调。 |
+| [unloadCallUI](arkts-telephony-call-unloadcallui-f-sys.md) | 卸载通话应用 |
+| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md) | 更新Ims呼叫模式。使用callback异步回调。 |
+| [updateImsCallMode](arkts-telephony-call-updateimscallmode-f-sys.md) | 更新Ims呼叫模式。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

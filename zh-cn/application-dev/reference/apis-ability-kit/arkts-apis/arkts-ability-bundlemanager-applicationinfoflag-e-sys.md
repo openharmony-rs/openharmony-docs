@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-export enum ApplicationInfoFlag--><!--Device-bundleManager-export enum ApplicationInfoFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -23,10 +19,6 @@ FLAG_INSTALLED = 0x00000001
 表示指定用户安装应用的状态为已安装状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationInfoFlag-FLAG_INSTALLED = 0x00000001--><!--Device-ApplicationInfoFlag-FLAG_INSTALLED = 0x00000001-End-->
 
@@ -44,10 +36,6 @@ FLAG_OTHER_INSTALLED = 0x00000010
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationInfoFlag-FLAG_OTHER_INSTALLED = 0x00000010--><!--Device-ApplicationInfoFlag-FLAG_OTHER_INSTALLED = 0x00000010-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -64,10 +52,6 @@ FLAG_PREINSTALLED_APP = 0x00000020
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP = 0x00000020--><!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP = 0x00000020-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -83,10 +67,6 @@ FLAG_PREINSTALLED_APP_UPDATE = 0x00000040
 表示该预置应用的更新状态为已更新。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP_UPDATE = 0x00000040--><!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP_UPDATE = 0x00000040-End-->
 

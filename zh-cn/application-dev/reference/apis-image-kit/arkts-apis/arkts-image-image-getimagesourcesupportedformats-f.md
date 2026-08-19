@@ -1,5 +1,11 @@
 # getImageSourceSupportedFormats
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## getImageSourceSupportedFormats
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getImageSourceSupportedFormats(): string[]
 获取支持解码的图片格式，图片格式以mime type表示。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-function getImageSourceSupportedFormats(): string[]--><!--Device-image-function getImageSourceSupportedFormats(): string[]-End-->
 
@@ -24,7 +26,7 @@ function getImageSourceSupportedFormats(): string[]
 | --- | --- |
 | string[] | 支持解码的图片格式（mime type）列表。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 async function GetImageSourceSupportedFormats() {

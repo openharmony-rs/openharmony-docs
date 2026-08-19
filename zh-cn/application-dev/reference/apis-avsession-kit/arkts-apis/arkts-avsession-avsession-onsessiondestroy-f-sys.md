@@ -1,6 +1,12 @@
 # on_sessionDestroy（系统接口）
 
-## on_sessionDestroy
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
+## on('sessionDestroy')
 
 ```TypeScript
 function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void
@@ -9,10 +15,6 @@ function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => 
 会话的销毁事件监听。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void--><!--Device-avSession-function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void-End-->
 
@@ -35,7 +37,7 @@ function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => 
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

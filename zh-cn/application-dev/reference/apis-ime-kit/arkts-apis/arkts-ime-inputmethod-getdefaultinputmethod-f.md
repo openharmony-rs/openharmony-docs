@@ -1,5 +1,16 @@
 # getDefaultInputMethod
 
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
+
 ## getDefaultInputMethod
 
 ```TypeScript
@@ -9,10 +20,6 @@ function getDefaultInputMethod(): InputMethodProperty
 获取默认输入法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputMethod-function getDefaultInputMethod(): InputMethodProperty--><!--Device-inputMethod-function getDefaultInputMethod(): InputMethodProperty-End-->
 
@@ -30,7 +37,7 @@ function getDefaultInputMethod(): InputMethodProperty
 | --- | --- |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();

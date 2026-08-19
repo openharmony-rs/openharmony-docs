@@ -4,17 +4,24 @@ WLAN IP配置信息。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [IpConfig](arkts-connectivity-wifimanager-ipconfig-i-sys.md#ipconfig系统接口)
+**替代接口：** [IpConfig](arkts-connectivity-wifimanager-ipconfig-i-sys.md)
 
 <!--Device-wifi-interface IpConfig--><!--Device-wifi-interface IpConfig-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## dnsServers
 
@@ -27,8 +34,6 @@ DNS服务器。
 **类型：** number[]
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -52,8 +57,6 @@ domains: Array<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [domains](arkts-connectivity-wifimanager-ipconfig-i-sys.md#domains)
@@ -76,8 +79,6 @@ gateway: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [gateway](arkts-connectivity-wifimanager-ipconfig-i-sys.md#gateway)
@@ -99,8 +100,6 @@ IP地址。
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

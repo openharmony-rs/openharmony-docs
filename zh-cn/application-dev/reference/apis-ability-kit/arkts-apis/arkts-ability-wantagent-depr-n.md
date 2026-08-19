@@ -4,15 +4,18 @@ WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [wantAgent/wantAgent](arkts-ability-wantagent-n.md#wantagent)
+**替代接口：** [wantAgent/wantAgent](arkts-ability-wantagent-n.md)
 
 <!--Device-unnamed-declare namespace wantAgent--><!--Device-unnamed-declare namespace wantAgent-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+```
 
 ## 汇总
 

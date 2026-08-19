@@ -1,18 +1,21 @@
 # attestKeyItem
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## attestKeyItem
 
 ```TypeScript
 function attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void
 ```
 
-获取密钥证书。使用callback异步回调。 &lt;!--RP6--&gt; > **说明：** > > 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。 &lt;!--RP6End--&gt;
+获取密钥证书。使用callback异步回调。 <!--RP6--> > **说明：** > > 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。 <!--RP6End-->
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ATTEST_KEY
 
@@ -26,7 +29,7 @@ function attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，存放待获取证书密钥的别名。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于获取证书时指定所需参数与数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | 是 | 回调函数。当获取密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误 对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksReturnResult](arkts-universalkeystore-huks-huksreturnresult-i.md)&gt; | 是 | 回调函数。当获取密钥证书成功时，err为undefined，data为获取到的HuksReturnResult；否则为错误 对象。 |
 
 **错误码：**
 
@@ -44,7 +47,7 @@ function attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-## 示例
+**示例**
 
 ```TypeScript
 /* 以获取RSA密钥证书为例 */
@@ -148,13 +151,9 @@ async function generateKeyThenAttestKey() {
 function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>
 ```
 
-获取密钥证书。使用Promise异步回调。 &lt;!--RP6--&gt; > **说明：** > > 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。 &lt;!--RP6End--&gt;
+获取密钥证书。使用Promise异步回调。 <!--RP6--> > **说明：** > > 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。 <!--RP6End-->
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ATTEST_KEY
 
@@ -191,7 +190,7 @@ function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-## 示例
+**示例**
 
 ```TypeScript
 /* 以获取RSA密钥证书为例 */

@@ -1,5 +1,11 @@
 # @ohos.app.ability.EnvironmentCallback
 
+## 导入模块
+
+```TypeScript
+import { EnvironmentCallback } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

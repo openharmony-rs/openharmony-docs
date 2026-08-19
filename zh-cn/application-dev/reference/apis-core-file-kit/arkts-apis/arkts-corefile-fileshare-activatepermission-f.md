@@ -1,5 +1,11 @@
 # activatePermission
 
+## 导入模块
+
+```TypeScript
+import { fileShare } from '@kit.CoreFileKit';
+```
+
 ## activatePermission
 
 ```TypeScript
@@ -9,10 +15,6 @@ function activatePermission(policies: Array<PolicyInfo>): Promise<void>
 激活多个已持久化授权的文件或目录，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -42,7 +44,7 @@ function activatePermission(policies: Array<PolicyInfo>): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 13900042 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

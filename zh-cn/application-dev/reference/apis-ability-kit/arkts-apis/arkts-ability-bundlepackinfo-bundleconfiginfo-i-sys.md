@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface BundleConfigInfo--><!--Device-unnamed-export interface BundleConfigInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -26,10 +22,6 @@ readonly bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BundleConfigInfo-readonly bundleName: string--><!--Device-BundleConfigInfo-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -47,10 +39,6 @@ readonly version: Version
 **类型：** [Version](arkts-ability-bundlepackinfo-version-i-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BundleConfigInfo-readonly version: Version--><!--Device-BundleConfigInfo-readonly version: Version-End-->
 

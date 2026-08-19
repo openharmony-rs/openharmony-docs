@@ -1,5 +1,10 @@
 # callbackWrapper
 
+## 导入模块
+
+```TypeScript
+```
+
 ## callbackWrapper
 
 ```TypeScript
@@ -10,9 +15,7 @@ Takes an async function (or a function that returns a Promise) and returns a fun
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-util-function callbackWrapper(original: Function): Function--><!--Device-util-function callbackWrapper(original: Function): Function-End-->
 

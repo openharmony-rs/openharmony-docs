@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum Button--><!--Device-unnamed-export declare enum Button-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -21,10 +17,6 @@ LEFT = 0
 鼠标左键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Button-LEFT = 0--><!--Device-Button-LEFT = 0-End-->
 
@@ -40,10 +32,6 @@ MIDDLE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Button-MIDDLE = 1--><!--Device-Button-MIDDLE = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -57,10 +45,6 @@ RIGHT = 2
 鼠标右键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Button-RIGHT = 2--><!--Device-Button-RIGHT = 2-End-->
 
@@ -76,10 +60,6 @@ SIDE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Button-SIDE = 3--><!--Device-Button-SIDE = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -93,10 +73,6 @@ EXTRA = 4
 鼠标扩展键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Button-EXTRA = 4--><!--Device-Button-EXTRA = 4-End-->
 
@@ -112,10 +88,6 @@ FORWARD = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Button-FORWARD = 5--><!--Device-Button-FORWARD = 5-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -130,10 +102,6 @@ BACK = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Button-BACK = 6--><!--Device-Button-BACK = 6-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -147,10 +115,6 @@ TASK = 7
 鼠标任务键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Button-TASK = 7--><!--Device-Button-TASK = 7-End-->
 

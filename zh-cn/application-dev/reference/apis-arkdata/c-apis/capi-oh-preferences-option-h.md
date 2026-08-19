@@ -105,7 +105,7 @@ int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *f
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 **参考：**
 
@@ -135,7 +135,7 @@ int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 **参考：**
 
@@ -165,7 +165,7 @@ int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 **参考：**
 
@@ -195,7 +195,7 @@ int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preference
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 **参考：**
 
@@ -224,7 +224,7 @@ int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回接口操作执行的状态码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int | 返回接口操作执行的状态码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 **参考：**
 

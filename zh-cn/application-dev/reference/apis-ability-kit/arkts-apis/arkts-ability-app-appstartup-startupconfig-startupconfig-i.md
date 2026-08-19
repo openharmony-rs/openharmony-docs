@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default interface StartupConfig--><!--Device-unnamed-export default interface StartupConfig-End-->
 
 **系统能力：** SystemCapability.Ability.AppStartup
+
+## 导入模块
+
+```TypeScript
+import { StartupConfig } from '@kit.AbilityKit';
+import { StartupConfigEntry } from '@kit.AbilityKit';
+```
 
 ## startupListener
 
@@ -23,10 +26,6 @@ startupListener?: StartupListener
 **类型：** [StartupListener](arkts-ability-app-appstartup-startuplistener-startuplistener-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +46,6 @@ timeoutMs?: int
 **默认值：** 10000
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

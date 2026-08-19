@@ -1,5 +1,11 @@
 # format（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { volumeManager } from '@kit.CoreFileKit';
+```
+
 ## format
 
 ```TypeScript
@@ -9,10 +15,6 @@ function format(volumeId: string, fsType: string, callback: AsyncCallback<void>)
 对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的 卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MOUNT_FORMAT_MANAGER
 
@@ -28,7 +30,7 @@ function format(volumeId: string, fsType: string, callback: AsyncCallback<void>)
 | --- | --- | --- | --- |
 | volumeId | string | 是 | 卷设备id。 |
 | fsType | string | 是 | 文件系统类型(vfat或者exfat)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 对指定卷设备格式化后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 对指定卷设备格式化后的回调。 |
 
 **错误码：**
 
@@ -53,10 +55,6 @@ function format(volumeId: string, fsType: string): Promise<void>
 对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的 卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MOUNT_FORMAT_MANAGER
 

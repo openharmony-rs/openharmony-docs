@@ -8,10 +8,6 @@ export type NotificationPictureContent = _NotificationPictureContent
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export type NotificationPictureContent = _NotificationPictureContent--><!--Device-notificationManager-export type NotificationPictureContent = _NotificationPictureContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

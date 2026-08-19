@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avMusicTemplate-enum PlaybackState--><!--Device-avMusicTemplate-enum PlaybackState-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -21,10 +17,6 @@ PLAYBACK_STATE_PREPARE = 0
 准备中状态。 表示媒体文件尚未准备好播放，媒体正在加载或缓冲中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ PLAYBACK_STATE_PLAY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_PLAY = 1--><!--Device-PlaybackState-PLAYBACK_STATE_PLAY = 1-End-->
@@ -61,10 +49,6 @@ PLAYBACK_STATE_PAUSE = 2
 暂停状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ PLAYBACK_STATE_STOP = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_STOP = 3--><!--Device-PlaybackState-PLAYBACK_STATE_STOP = 3-End-->
@@ -101,10 +81,6 @@ PLAYBACK_STATE_COMPLETED = 4
 播放完成状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,10 +98,6 @@ PLAYBACK_STATE_ERROR = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 5--><!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 5-End-->
@@ -141,10 +113,6 @@ PLAYBACK_STATE_BUFFERING = 6
 缓冲状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

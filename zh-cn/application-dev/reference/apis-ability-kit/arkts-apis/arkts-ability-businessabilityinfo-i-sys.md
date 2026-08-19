@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface BusinessAbilityInfo--><!--Device-unnamed-export interface BusinessAbilityInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -25,10 +21,6 @@ readonly applicationInfo: ApplicationInfo
 **类型：** [ApplicationInfo](arkts-ability-applicationinfo-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BusinessAbilityInfo-readonly applicationInfo: ApplicationInfo--><!--Device-BusinessAbilityInfo-readonly applicationInfo: ApplicationInfo-End-->
 
@@ -48,10 +40,6 @@ readonly bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BusinessAbilityInfo-readonly bundleName: string--><!--Device-BusinessAbilityInfo-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -69,10 +57,6 @@ readonly businessType: businessAbilityRouter.BusinessType
 **类型：** businessAbilityRouter.BusinessType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BusinessAbilityInfo-readonly businessType: businessAbilityRouter.BusinessType--><!--Device-BusinessAbilityInfo-readonly businessType: businessAbilityRouter.BusinessType-End-->
 
@@ -92,10 +76,6 @@ readonly descriptionId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BusinessAbilityInfo-readonly descriptionId: int--><!--Device-BusinessAbilityInfo-readonly descriptionId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -113,10 +93,6 @@ readonly iconId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BusinessAbilityInfo-readonly iconId: int--><!--Device-BusinessAbilityInfo-readonly iconId: int-End-->
 
@@ -136,10 +112,6 @@ readonly labelId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BusinessAbilityInfo-readonly labelId: int--><!--Device-BusinessAbilityInfo-readonly labelId: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -158,10 +130,6 @@ readonly moduleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BusinessAbilityInfo-readonly moduleName: string--><!--Device-BusinessAbilityInfo-readonly moduleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -179,10 +147,6 @@ readonly name: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BusinessAbilityInfo-readonly name: string--><!--Device-BusinessAbilityInfo-readonly name: string-End-->
 

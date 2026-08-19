@@ -74,7 +74,7 @@ int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误。 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetDefaultNet()
 
@@ -102,7 +102,7 @@ int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误。 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_IsDefaultNetMetered()
 
@@ -130,7 +130,7 @@ int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误。 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetConnectionProperties()
 
@@ -159,7 +159,7 @@ int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误。 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetNetCapabilities()
 
@@ -188,7 +188,7 @@ int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetC
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误. 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误. 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetDefaultHttpProxy()
 
@@ -214,7 +214,7 @@ int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误. 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误. 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetAddrInfo()
 
@@ -246,7 +246,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误。 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_FreeDnsResult()
 
@@ -274,7 +274,7 @@ int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误。 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_GetAllNets()
 
@@ -302,7 +302,7 @@ int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 201 - 缺少权限。<br>     <br>401 - 参数错误。 2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 201 - 缺少权限。      <br>401 - 参数错误。 2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OHOS_NetConn_RegisterDnsResolver()
 
@@ -332,7 +332,7 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。 401 - 参数错误。<br>     <br>2100002 - 无法连接到服务。  2100003 - 内部错误。 |
+| int32_t | 0 - 成功。 401 - 参数错误。      <br>2100002 - 无法连接到服务。  2100003 - 内部错误。 |
 
 ### OHOS_NetConn_UnregisterDnsResolver()
 
@@ -356,7 +356,7 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_RegisterDnsResolver()
 
@@ -384,7 +384,7 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果码。<br>     <br>NETMANAGER_EXT_SUCCESS 如果操作成功。<br>     <br>NETMANAGER_ERR_PARAMETER_ERROR 参数错误。请输入正确的参数。 |
+| int32_t | 返回结果码。      <br>NETMANAGER_EXT_SUCCESS 如果操作成功。      <br>NETMANAGER_ERR_PARAMETER_ERROR 参数错误。请输入正确的参数。 |
 
 ### OH_NetConn_UnregisterDnsResolver()
 
@@ -406,7 +406,7 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_RegisterCustomDnsResolver()
 
@@ -430,7 +430,7 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>401 - 参数错误。<br>     <br>2101008 - 解析器已存在。 |
+| int32_t | 0 - 成功。      <br>401 - 参数错误。      <br>2101008 - 解析器已存在。 |
 
 ### OH_NetConn_UnregisterCustomDnsResolver()
 
@@ -448,7 +448,7 @@ int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 
@@ -475,7 +475,7 @@ int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>401 - 参数错误。<br>     <br>2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_SetAppHttpProxy()
 
@@ -501,7 +501,7 @@ int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。      <br>401 - 参数错误。 |
 
 ### OH_NetConn_RegisterAppHttpProxyCallback()
 
@@ -528,7 +528,7 @@ int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange ap
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。      <br>401 - 参数错误。 |
 
 ### OH_NetConn_UnregisterAppHttpProxyCallback()
 
@@ -575,7 +575,7 @@ int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxy
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><li>0 - 成功。</li><br>     <li>201 - 权限被拒。</li><br>     <li>401 - 参数错误。</li></ul> |
+| int32_t | <ul><li>0 - 成功。</li>      <li>201 - 权限被拒。</li>      <li>401 - 参数错误。</li></ul> |
 
 ### OH_NetConn_RegisterNetConnCallback()
 
@@ -606,7 +606,7 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>201 - 缺少权限。<br>     <br>401 - 参数错误。<br>     <br>2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。<br>     <br>2101008 - 回调已注册。<br>     <br>2101022 - 请求数超出了允许的最大值。 |
+| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。      <br>2101008 - 回调已注册。      <br>2101022 - 请求数超出了允许的最大值。 |
 
 ### OH_NetConn_RegisterDefaultNetConnCallback()
 
@@ -635,7 +635,7 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>201 - 缺少权限。<br>     <br>401 - 参数错误。<br>     <br>2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。<br>     <br>2101008 - 回调已注册。<br>     <br>2101022 - 请求数超出了允许的最大值。 |
+| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。      <br>2101008 - 回调已注册。      <br>2101022 - 请求数超出了允许的最大值。 |
 
 ### OH_NetConn_UnregisterNetConnCallback()
 
@@ -663,7 +663,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>201 - 缺少权限。<br>     <br>401 - 参数错误。<br>     <br>2100002 - 无法连接到服务。<br>     <br>2100003 - 内部错误。<br>     <br>2101007 - 回调不存在。 |
+| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100002 - 无法连接到服务。      <br>2100003 - 内部错误。      <br>2101007 - 回调不存在。 |
 
 ### OH_NetConn_SetPacUrl()
 
@@ -689,7 +689,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 | 类型 | 说明 |
 | -- | -- |
-| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。<br>     <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。<br>     <br>[NETCONN_PERMISSION_DENIED](capi-net-connection-type-h.md#netconn_errorcode) 缺少权限。<br>     <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。<br>     <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。<br>     <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
+| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。      <br>[NETCONN_PERMISSION_DENIED](capi-net-connection-type-h.md#netconn_errorcode) 缺少权限。      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
 
 ### OH_NetConn_GetPacUrl()
 
@@ -713,7 +713,7 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 
 | 类型 | 说明 |
 | -- | -- |
-| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。<br>     <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。<br>     <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。<br>     <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。<br>     <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
+| [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode) | 结果定义在 [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode)。      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode) 成功。      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 参数错误。      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode) 无法连接到服务。      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode) 内部错误。 |
 
 ### OH_NetConn_QueryProbeResult()
 
@@ -741,7 +741,7 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>201 - 缺少权限。<br>     <br>401 - 参数错误。<br>     <br>2100003 - 内部错误。 |
+| int32_t | 0 - 成功。      <br>201 - 缺少权限。      <br>401 - 参数错误。      <br>2100003 - 内部错误。 |
 
 ### OH_NetConn_QueryTraceRoute()
 
@@ -769,6 +769,6 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>201 - 缺少权限。 |
+| int32_t | 0 - 成功。      <br>201 - 缺少权限。 |
 
 

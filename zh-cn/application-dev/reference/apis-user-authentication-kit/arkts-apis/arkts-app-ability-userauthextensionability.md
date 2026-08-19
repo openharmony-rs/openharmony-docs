@@ -1,5 +1,11 @@
 # @ohos.app.ability.UserAuthExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { UserAuthExtensionAbility } from '@kit.UserAuthenticationKit';
+```
+
 ## 汇总
 
 ### 类

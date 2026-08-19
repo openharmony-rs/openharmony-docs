@@ -1,5 +1,11 @@
 # getSimAuthentication（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## getSimAuthentication
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSimAuthentication(slotId: int, authType: AuthType, authData: string)
 Performs SIM card authentication.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -50,7 +52,7 @@ Performs SIM card authentication.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

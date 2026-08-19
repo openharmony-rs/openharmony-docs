@@ -1,5 +1,11 @@
 # toSendableValues
 
+## 导入模块
+
+```TypeScript
+import { sendableRelationalStore } from '@kit.ArkData';
+```
+
 ## toSendableValues
 
 ```TypeScript
@@ -9,10 +15,6 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 将不可跨线程传递的数组数据，转换为可跨线程传递的数组数据。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-sendableRelationalStore-function toSendableValues(values: NonSendableValues): collections.Array<ValueType>--><!--Device-sendableRelationalStore-function toSendableValues(values: NonSendableValues): collections.Array<ValueType>-End-->
 
@@ -36,7 +38,7 @@ function toSendableValues(values: NonSendableValues): collections.Array<ValueTyp
 | --- | --- |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { relationalStore, sendableRelationalStore } from '@kit.ArkData';

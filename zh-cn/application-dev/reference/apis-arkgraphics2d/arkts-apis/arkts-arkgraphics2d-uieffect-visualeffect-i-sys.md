@@ -1,16 +1,18 @@
 # VisualEffect
 
-VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。 在调用VisualEffect的方法前，需要先通过[createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md#createeffect)创建一个VisualEffect实例。
+VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。 在调用VisualEffect的方法前，需要先通过[createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md)创建一个VisualEffect实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-uiEffect-interface VisualEffect--><!--Device-uiEffect-interface VisualEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
 
 ## backgroundColorBlender
 
@@ -21,10 +23,6 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 用于改变组件背景颜色的blender，目前仅支持提亮混合器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
@@ -46,7 +44,7 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 | --- | --- |
 | VisualEffect | 返回添加了背景颜色更改效果的VisualEffect。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -97,10 +95,6 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      borderWidth: double): VisualEffect--><!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      borderWidth: double): VisualEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -128,7 +122,7 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -233,10 +227,6 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,      alphaMask?: Mask): VisualEffect--><!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,      alphaMask?: Mask): VisualEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -264,7 +254,7 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -343,10 +333,6 @@ distortionCollapse(distortionParam: DistortionParam): VisualEffect
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-VisualEffect-distortionCollapse(distortionParam: DistortionParam): VisualEffect--><!--Device-VisualEffect-distortionCollapse(distortionParam: DistortionParam): VisualEffect-End-->
@@ -367,7 +353,7 @@ distortionCollapse(distortionParam: DistortionParam): VisualEffect
 | --- | --- |
 | VisualEffect | 返回添加了非线性形变效果的VisualEffect。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from '@kit.ArkGraphics2D';
@@ -406,10 +392,6 @@ liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMa
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,      brightnessParam?: BrightnessParam): VisualEffect--><!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,      brightnessParam?: BrightnessParam): VisualEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -437,7 +419,7 @@ liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMa
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from '@kit.ArkGraphics2D';

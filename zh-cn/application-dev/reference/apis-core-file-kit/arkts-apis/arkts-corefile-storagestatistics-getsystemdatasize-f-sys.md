@@ -1,5 +1,11 @@
 # getSystemDataSize（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getSystemDataSize
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSystemDataSize(): Promise<long>
 获取系统数据的总空间大小，使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
@@ -39,7 +41,7 @@ function getSystemDataSize(): Promise<long>
 | 13600018 | Failed to query the system data size. |
 | 13600001 | IPC error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

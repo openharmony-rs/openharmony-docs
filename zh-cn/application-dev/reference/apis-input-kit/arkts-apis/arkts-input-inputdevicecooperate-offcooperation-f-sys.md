@@ -1,16 +1,20 @@
 # off_cooperation（系统接口）
 
-## off_cooperation
+## 导入模块
+
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
+## off('cooperation')
 
 ```TypeScript
 function off(type: 'cooperation', callback?: AsyncCallback<void>): void
 ```
 
-关闭监听键鼠穿越状态，使用callback异步回调。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用 > [cooperate.off](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-offcooperate-f-sys.md#offcooperate) > 替代。
+关闭监听键鼠穿越状态，使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -26,8 +30,8 @@ function off(type: 'cooperation', callback?: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'cooperation' | 是 | 注册类型，取值“cooperation”。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | 回调函数。当取消注册成功，err为undefined，否则为错误对象。若无此参数，则取消当前应用注册的所有回调函数。 |
+| type | 'cooperation' | 是 | 注册类型，取值'cooperation'。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | 回调函数。当取消注册成功，err为undefined，否则为错误对象。若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
 
@@ -36,7 +40,7 @@ function off(type: 'cooperation', callback?: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { inputDeviceCooperate } from '@kit.InputKit';

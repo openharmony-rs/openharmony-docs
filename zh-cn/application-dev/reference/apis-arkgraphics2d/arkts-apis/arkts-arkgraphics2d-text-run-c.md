@@ -1,16 +1,18 @@
 # Run
 
-文本排版单元，表示一段具有相同样式属性的连续文本片段。Run由[TextLine](arkts-arkgraphics2d-text-textline-c.md#textline)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接 口获取。 下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md#textline)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取Run对象实例，再通过此实例调 用对应方法。
+文本排版单元，表示一段具有相同样式属性的连续文本片段。Run由[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接 口获取。 下列API示例中都需先使用[TextLine](arkts-arkgraphics2d-text-textline-c.md)类的[getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns)接口获取Run对象实例，再通过此实例调 用对应方法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-text-class Run--><!--Device-text-class Run-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
 
 ## getAdvances
 
@@ -21,10 +23,6 @@ getAdvances(range: Range): Array<common2D.Point>
 获取该排版单元指定范围内每个字形的字形宽度数组。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -44,7 +42,7 @@ getAdvances(range: Range): Array<common2D.Point>
 | --- | --- |
 | Array&lt;common2D.Point&gt; | 返回该排版单元中每个字形相对于水平方向的字形宽度数组。其中， [common2D.Point]{ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -73,10 +71,6 @@ getAdvances(range: Range): Array<common2D.Point> | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Run-getAdvances(range: Range): Array<common2D.Point> | undefined--><!--Device-Run-getAdvances(range: Range): Array<common2D.Point> | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -103,10 +97,6 @@ getFont(): drawing.Font
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getFont(): drawing.Font--><!--Device-Run-getFont(): drawing.Font-End-->
@@ -119,7 +109,7 @@ getFont(): drawing.Font
 | --- | --- |
 | drawing.Font | 该排版单元的字体属性对象实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let font = runs[0].getFont();
@@ -135,10 +125,6 @@ getGlyphCount(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getGlyphCount(): int--><!--Device-Run-getGlyphCount(): int-End-->
@@ -151,7 +137,7 @@ getGlyphCount(): int
 | --- | --- |
 | int | 该排版单元中字形数量，整数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let glyphs = runs[0].getGlyphCount();
@@ -167,10 +153,6 @@ getGlyphs(): Array<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getGlyphs(): Array<int>--><!--Device-Run-getGlyphs(): Array<int>-End-->
@@ -183,7 +165,7 @@ getGlyphs(): Array<int>
 | --- | --- |
 | Array&lt;int&gt; | 该排版单元中每个字符对应的字形序号。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let glyph = runs[0].getGlyphs();
@@ -198,10 +180,6 @@ getGlyphs(range: Range): Array<int>
 获取该排版单元指定范围内每个字符的字形序号。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -221,7 +199,7 @@ getGlyphs(range: Range): Array<int>
 | --- | --- |
 | Array&lt;int&gt; | 该排版单元中每个字符对应的字形序号。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -303,10 +281,6 @@ getGlyphs(range: Range): Array<int> | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Run-getGlyphs(range: Range): Array<int> | undefined--><!--Device-Run-getGlyphs(range: Range): Array<int> | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -333,10 +307,6 @@ getImageBounds(): common2D.Rect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getImageBounds(): common2D.Rect--><!--Device-Run-getImageBounds(): common2D.Rect-End-->
@@ -349,7 +319,7 @@ getImageBounds(): common2D.Rect
 | --- | --- |
 | common2D.Rect | 该排版单元的图像边界，单位为物理像素px。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let bounds = runs[0].getImageBounds();
@@ -365,10 +335,6 @@ getOffsets(): Array<common2D.Point>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getOffsets(): Array<common2D.Point>--><!--Device-Run-getOffsets(): Array<common2D.Point>-End-->
@@ -381,7 +347,7 @@ getOffsets(): Array<common2D.Point>
 | --- | --- |
 | Array&lt;common2D.Point&gt; | 该排版单元中每个字形相对于其索引的偏移量。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let offsets = runs[0].getOffsets();
@@ -397,10 +363,6 @@ getPositions(): Array<common2D.Point>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getPositions(): Array<common2D.Point>--><!--Device-Run-getPositions(): Array<common2D.Point>-End-->
@@ -413,7 +375,7 @@ getPositions(): Array<common2D.Point>
 | --- | --- |
 | Array&lt;common2D.Point&gt; | 该排版单元中每个字形相对于每行的字形位置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let positions = runs[0].getPositions();
@@ -428,10 +390,6 @@ getPositions(range: Range): Array<common2D.Point>
 获取该排版单元指定范围内每个字形相对于每行的字形位置数组。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -451,7 +409,7 @@ getPositions(range: Range): Array<common2D.Point>
 | --- | --- |
 | Array&lt;common2D.Point&gt; | 该排版单元中每个字形相对于每行的字形位置。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -534,10 +492,6 @@ getPositions(range: Range): Array<common2D.Point> | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Run-getPositions(range: Range): Array<common2D.Point> | undefined--><!--Device-Run-getPositions(range: Range): Array<common2D.Point> | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -564,10 +518,6 @@ getStringIndices(range?: Range): Array<int>
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getStringIndices(range?: Range): Array<int>--><!--Device-Run-getStringIndices(range?: Range): Array<int>-End-->
@@ -586,7 +536,7 @@ getStringIndices(range?: Range): Array<int>
 | --- | --- |
 | Array&lt;int&gt; | 返回每个字符的索引。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -669,10 +619,6 @@ getStringIndices(range?: Range): Array<int> | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Run-getStringIndices(range?: Range): Array<int> | undefined--><!--Device-Run-getStringIndices(range?: Range): Array<int> | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -699,10 +645,6 @@ getStringRange(): Range
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getStringRange(): Range--><!--Device-Run-getStringRange(): Range-End-->
@@ -715,7 +657,7 @@ getStringRange(): Range
 | --- | --- |
 | Range | 排版单元生成字形的字符范围，Range类型中的start表示字符范围的开始位置，该位置是相对于整个段落的索引，Range类型中的end表示字符范围的长度。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let runStringRange = runs[0].getStringRange();
@@ -733,10 +675,6 @@ getTextDirection(): TextDirection
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getTextDirection(): TextDirection--><!--Device-Run-getTextDirection(): TextDirection-End-->
@@ -749,7 +687,7 @@ getTextDirection(): TextDirection
 | --- | --- |
 | TextDirection | 返回该排版单元的文本方向。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textDirection = runs[0].getTextDirection();
@@ -765,10 +703,6 @@ getTextStyle(): TextStyle
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -783,7 +717,7 @@ getTextStyle(): TextStyle
 | --- | --- |
 | TextStyle | 该排版单元的文本样式。 <br>**说明：** <br>1.`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、 `textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于 [common2D.Color]{ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -905,10 +839,6 @@ getTypographicBounds(): TypographicBounds
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-getTypographicBounds(): TypographicBounds--><!--Device-Run-getTypographicBounds(): TypographicBounds-End-->
@@ -921,7 +851,7 @@ getTypographicBounds(): TypographicBounds
 | --- | --- |
 | [TypographicBounds](arkts-arkgraphics2d-text-typographicbounds-i.md) | 该排版单元的排版边界。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let typographicBounds = runs[0].getTypographicBounds();
@@ -937,10 +867,6 @@ paint(canvas: drawing.Canvas, x: double, y: double): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Run-paint(canvas: drawing.Canvas, x: double, y: double): void--><!--Device-Run-paint(canvas: drawing.Canvas, x: double, y: double): void-End-->
@@ -955,7 +881,7 @@ paint(canvas: drawing.Canvas, x: double, y: double): void
 | x | double | 是 | 绘制的左上角位置的横坐标，浮点数，单位为物理像素px。 |
 | y | double | 是 | 绘制的左上角位置的纵坐标，浮点数，单位为物理像素px。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

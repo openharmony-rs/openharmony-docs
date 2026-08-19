@@ -4,10 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-featureAbility-export enum ErrorCode--><!--Device-featureAbility-export enum ErrorCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
@@ -21,10 +17,6 @@ NO_ERROR = 0
 没有异常。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -42,10 +34,6 @@ INVALID_PARAMETER = -1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-ErrorCode-INVALID_PARAMETER = -1--><!--Device-ErrorCode-INVALID_PARAMETER = -1-End-->
@@ -62,10 +50,6 @@ ABILITY_NOT_FOUND = -2
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-ErrorCode-ABILITY_NOT_FOUND = -2--><!--Device-ErrorCode-ABILITY_NOT_FOUND = -2-End-->
@@ -81,10 +65,6 @@ PERMISSION_DENY = -3
 权限拒绝。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

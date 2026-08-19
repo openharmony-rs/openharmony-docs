@@ -4,9 +4,7 @@ Enum type supplied to [getHitTest](../../apis-arkweb/arkts-apis/arkts-arkweb-web
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-enum WebHitTestType--><!--Device-webview-enum WebHitTestType-End-->
 
@@ -22,9 +20,7 @@ Editable area.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-EDIT_TEXT = 0--><!--Device-WebHitTestType-EDIT_TEXT = 0-End-->
 
@@ -40,9 +36,7 @@ Email address.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-EMAIL = 1--><!--Device-WebHitTestType-EMAIL = 1-End-->
 
@@ -58,9 +52,7 @@ Hyperlink, where **src** is **http**.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-HTTP_ANCHOR = 2--><!--Device-WebHitTestType-HTTP_ANCHOR = 2-End-->
 
@@ -76,9 +68,7 @@ Image with a hyperlink, where **src** is http + HTML::img.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-HTTP_ANCHOR_IMG = 3--><!--Device-WebHitTestType-HTTP_ANCHOR_IMG = 3-End-->
 
@@ -94,9 +84,7 @@ HTML::img tag.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-IMG = 4--><!--Device-WebHitTestType-IMG = 4-End-->
 
@@ -112,9 +100,7 @@ Geographical address.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-MAP = 5--><!--Device-WebHitTestType-MAP = 5-End-->
 
@@ -130,9 +116,7 @@ Phone number.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-PHONE = 6--><!--Device-WebHitTestType-PHONE = 6-End-->
 
@@ -148,9 +132,7 @@ Unknown content.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebHitTestType-UNKNOWN = 7--><!--Device-WebHitTestType-UNKNOWN = 7-End-->
 

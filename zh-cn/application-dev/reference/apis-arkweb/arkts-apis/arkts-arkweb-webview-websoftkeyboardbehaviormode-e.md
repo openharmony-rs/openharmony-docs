@@ -4,10 +4,6 @@ Web软键盘自动控制模式。
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-webview-enum WebSoftKeyboardBehaviorMode--><!--Device-webview-enum WebSoftKeyboardBehaviorMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,10 +18,6 @@ DEFAULT = 0
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebSoftKeyboardBehaviorMode-DEFAULT = 0--><!--Device-WebSoftKeyboardBehaviorMode-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -39,10 +31,6 @@ DISABLE_AUTO_KEYBOARD_ON_ACTIVE = 1
 Web组件在inactive或active状态切换时，系统不再尝试触发软键盘自动隐藏或拉起。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 <!--Device-WebSoftKeyboardBehaviorMode-DISABLE_AUTO_KEYBOARD_ON_ACTIVE = 1--><!--Device-WebSoftKeyboardBehaviorMode-DISABLE_AUTO_KEYBOARD_ON_ACTIVE = 1-End-->
 

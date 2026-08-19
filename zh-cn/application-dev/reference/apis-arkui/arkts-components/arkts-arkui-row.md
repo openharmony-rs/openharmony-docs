@@ -14,10 +14,6 @@ Row(options?: RowOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -42,10 +38,6 @@ Row(options?: RowOptions | RowOptionsV2)
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -64,5 +56,10 @@ Row(options?: RowOptions | RowOptionsV2)
 
 ## 汇总
 
-- [RowOptions](arkts-arkui-rowoptions-i.md)
-- [RowOptionsV2](arkts-arkui-rowoptionsv2-i.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [RowOptions](arkts-arkui-rowoptions-i.md) | 设置Row组件的子组件间距属性。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [RowOptionsV2](arkts-arkui-rowoptionsv2-i.md) | 设置Row组件的子组件间距属性。间距类型SpaceType支持number、string或Resource类型。 |
+

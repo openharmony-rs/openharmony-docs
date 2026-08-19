@@ -8,10 +8,6 @@ export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleResourceManager-export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo--><!--Device-bundleResourceManager-export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource

@@ -14,6 +14,12 @@
 
 ## 汇总
 
+### 结构体
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | ffrt_queue_t | 队列句柄，用于标识不同的队列。 |
+
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
@@ -92,7 +98,7 @@ FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 队列属性初始化成功时返回`0`；<br>         否则返回`-1`。 |
+| FFRT_C_API int | 队列属性初始化成功时返回`0`；          否则返回`-1`。 |
 
 ### ffrt_queue_attr_destroy()
 
@@ -325,7 +331,7 @@ FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API bool | 任务以原生线程执行（线程模式）时返回`true`；<br>         任务以协程执行（默认）时返回`false`。 |
+| FFRT_C_API bool | 任务以原生线程执行（线程模式）时返回`true`；          任务以协程执行（默认）时返回`false`。 |
 
 ### ffrt_queue_create()
 
@@ -351,7 +357,7 @@ FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* na
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_queue_t | 队列创建成功时返回非空的队列句柄；<br>         否则返回空指针。 |
+| FFRT_C_API ffrt_queue_t | 队列创建成功时返回非空的队列句柄；          否则返回空指针。 |
 
 ### ffrt_queue_destroy()
 
@@ -420,7 +426,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
+| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；          否则返回空指针。 |
 
 **参考：**
 
@@ -478,7 +484,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_fun
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；<br>         否则返回空指针。 |
+| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；          否则返回空指针。 |
 
 **参考：**
 
@@ -525,7 +531,7 @@ FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 任务取消成功时返回`0`；<br>         任务已执行完毕或已从队列中移除时返回`1`；<br>         `handle`为空时返回`-1`。 |
+| FFRT_C_API int | 任务取消成功时返回`0`；          任务已执行完毕或已从队列中移除时返回`1`；          `handle`为空时返回`-1`。 |
 
 ### ffrt_get_main_queue()
 

@@ -1,5 +1,11 @@
 # createMediaSourceWithDataSource
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## createMediaSourceWithDataSource
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSou
 通过自定义数据源创建媒体源。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +36,7 @@ function createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSou
 | --- | --- |
 | [MediaSource](arkts-media-multimedia-media-mediasource-i.md) | 返回MediaSource，用于媒体资源设置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';

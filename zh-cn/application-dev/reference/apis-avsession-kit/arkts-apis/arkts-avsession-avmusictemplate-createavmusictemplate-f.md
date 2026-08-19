@@ -1,5 +1,11 @@
 # createAVMusicTemplate
 
+## 导入模块
+
+```TypeScript
+import { avMusicTemplate } from '@kit.AVSessionKit';
+```
+
 ## createAVMusicTemplate
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 创建音频模板，返回音频模板实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

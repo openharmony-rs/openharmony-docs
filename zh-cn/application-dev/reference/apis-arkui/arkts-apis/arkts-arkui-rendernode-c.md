@@ -4,10 +4,6 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export class RenderNode--><!--Device-unnamed-export class RenderNode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ appendChild(node: RenderNode): void
 在RenderNode最后一个子节点后添加新的子节点。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +38,7 @@ appendChild(node: RenderNode): void
 | --- | --- |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -109,10 +101,6 @@ clearChildren(): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -121,7 +109,7 @@ clearChildren(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -182,10 +170,6 @@ RenderNode的构造函数。
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -194,7 +178,7 @@ RenderNode的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -247,10 +231,6 @@ dispose(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -259,7 +239,7 @@ dispose(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -319,13 +299,9 @@ struct Index {
 draw(context: DrawContext): void
 ```
 
-绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。 该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。 > **说明：** > > RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
+绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。 该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。 > **说明：** > > RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -341,7 +317,7 @@ draw(context: DrawContext): void
 | --- | --- | --- | --- |
 | context | [DrawContext](arkts-arkui-graphics-drawcontext-c.md) | 是 | 图形绘制上下文。 |
 
-## 示例
+**示例**
 
 ArkTS侧代码：
 
@@ -497,10 +473,6 @@ getChild(index: number): RenderNode | null
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -521,7 +493,7 @@ getChild(index: number): RenderNode | null
 | --- | --- |
 | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 子节点。若该RenderNode不包含所查询的子节点，则返回空对象null。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -662,10 +634,6 @@ getFirstChild(): RenderNode | null
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -680,7 +648,7 @@ getFirstChild(): RenderNode | null
 | --- | --- |
 | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 首个子节点。若该RenderNode不包含子节点，则返回空对象null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -756,10 +724,6 @@ getNextSibling(): RenderNode | null
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -774,7 +738,7 @@ getNextSibling(): RenderNode | null
 | --- | --- |
 | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 当前RenderNode的下一个同级节点。若该RenderNode不包含下一个同级节点，则返回空对象null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -855,10 +819,6 @@ getPreviousSibling(): RenderNode | null
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -873,7 +833,7 @@ getPreviousSibling(): RenderNode | null
 | --- | --- |
 | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 当前RenderNode的上一个同级节点。若该RenderNode不包含上一个同级节点，则返回空对象null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -954,10 +914,6 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -979,7 +935,7 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | --- | --- |
 | [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -1055,10 +1011,6 @@ invalidate(): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -1067,7 +1019,7 @@ invalidate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 示例
+**示例**
 
 ```TypeScript
 import bridge from 'libentry.so'; // 该 .so 文件由开发者通过 NAPI 编写并生成
@@ -1140,10 +1092,6 @@ isDisposed(): boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -1158,7 +1106,7 @@ isDisposed(): boolean
 | --- | --- |
 | boolean | 后端实体节点是否解除引用。true表示节点已与后端实体节点解除引用，false表示节点未与后端实体节点解除引用。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -1246,10 +1194,6 @@ removeChild(node: RenderNode): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -1264,7 +1208,7 @@ removeChild(node: RenderNode): void
 | --- | --- | --- | --- |
 | node | [RenderNode](../../apis-na/arkts-apis/arkts-na-rendernode-c.md) | 是 | 需要删除的子节点。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';

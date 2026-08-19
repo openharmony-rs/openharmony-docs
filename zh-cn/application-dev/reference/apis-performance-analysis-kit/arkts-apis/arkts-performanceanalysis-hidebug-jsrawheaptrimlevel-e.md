@@ -4,10 +4,6 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-hidebug-enum JsRawHeapTrimLevel--><!--Device-hidebug-enum JsRawHeapTrimLevel-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
@@ -22,10 +18,6 @@ LEVEL 1级别裁剪，主要裁剪字符串。
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_1 = 0--><!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_1 = 0-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
@@ -39,10 +31,6 @@ TRIM_LEVEL_2 = 1
 LEVEL 2级别裁剪，在TRIM_LEVEL_1的基础上，精简了对象地址标识的大小，从8个字节减少到4个字节。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_2 = 1--><!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_2 = 1-End-->
 

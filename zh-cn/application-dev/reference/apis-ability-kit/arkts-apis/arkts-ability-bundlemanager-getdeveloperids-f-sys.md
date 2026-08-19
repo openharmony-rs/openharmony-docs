@@ -1,18 +1,20 @@
 # getDeveloperIds（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getDeveloperIds
 
 ```TypeScript
 function getDeveloperIds(appDistributionType?: int): Array<string>
 ```
 
-根据给定的应用[appDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md#appdistributiontype系统接口)获取当前用户下的所有开发者ID列表。
+根据给定的应用[appDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md)获取当前用户下的所有开发者ID列表。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -42,7 +44,7 @@ function getDeveloperIds(appDistributionType?: int): Array<string>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

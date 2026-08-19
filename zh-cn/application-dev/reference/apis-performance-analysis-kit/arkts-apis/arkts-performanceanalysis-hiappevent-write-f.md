@@ -1,18 +1,20 @@
 # write
 
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## write
 
 ```TypeScript
 function write(info: AppEventInfo): Promise<void>
 ```
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入 系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md#addwatcher)）进行处理。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入 系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行处理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function write(info: AppEventInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md) | 是 | 应用事件对象。其中的事件名称建议避免与 [Event](arkts-performanceanalysis-hiappevent-event-n.md#event)中定义的系统事件名称常量冲突混淆。<br>**起始版本：** 11 |
+| info | [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md) | 是 | 应用事件对象。其中的事件名称建议避免与 [Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量冲突混淆。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -45,7 +47,7 @@ function write(info: AppEventInfo): Promise<void>
 | [11101006](../errorcode-hiappevent.md#11101006-非法的事件参数数组长度) | Invalid array length of the event parameter. |
 | [11100001](../errorcode-hiappevent.md#11100001-打点功能被关闭) | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -102,13 +104,9 @@ hiAppEvent.write({
 function write(info: AppEventInfo, callback: AsyncCallback<void>): void
 ```
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入 系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md#addwatcher)）进行订阅。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入 系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行订阅。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -120,8 +118,8 @@ function write(info: AppEventInfo, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md) | 是 | 应用事件对象。其内部定义的事件名称建议避免与[Event](arkts-performanceanalysis-hiappevent-event-n.md#event)中定义的系统事件名称常量产生冲突。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 打点回调函数。 |
+| info | [AppEventInfo](arkts-performanceanalysis-hiappevent-appeventinfo-i.md) | 是 | 应用事件对象。其内部定义的事件名称建议避免与[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量产生冲突。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 打点回调函数。 |
 
 **错误码：**
 
@@ -136,7 +134,7 @@ function write(info: AppEventInfo, callback: AsyncCallback<void>): void
 | [11101006](../errorcode-hiappevent.md#11101006-非法的事件参数数组长度) | Invalid array length of the event parameter. |
 | [11100001](../errorcode-hiappevent.md#11100001-打点功能被关闭) | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

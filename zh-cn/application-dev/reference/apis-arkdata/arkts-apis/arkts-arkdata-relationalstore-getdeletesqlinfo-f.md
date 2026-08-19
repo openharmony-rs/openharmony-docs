@@ -1,5 +1,11 @@
 # getDeleteSqlInfo
 
+## 导入模块
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData';
+```
+
 ## getDeleteSqlInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo
 获取用于删除数据的SQL语句，此为同步接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-relationalStore-function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo--><!--Device-relationalStore-function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo-End-->
 
@@ -36,7 +38,7 @@ function getDeleteSqlInfo(predicates: RdbPredicates):SqlInfo
 | --- | --- |
 | [14800001](../errorcode-data-rdb.md#14800001-无效的参数) | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

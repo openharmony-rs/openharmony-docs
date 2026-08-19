@@ -1,5 +1,11 @@
 # getPowerSaveMode
 
+## 导入模块
+
+```TypeScript
+import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
+```
+
 ## getPowerSaveMode
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getPowerSaveMode(pid: int): Promise<PowerSaveMode>
 获取进程能效模式。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
@@ -40,7 +42,7 @@ function getPowerSaveMode(pid: int): Promise<PowerSaveMode>
 | [31800002](../../apis-backgroundtasks-kit/errorcode-backgroundProcessManager.md#31800002-参数错误) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

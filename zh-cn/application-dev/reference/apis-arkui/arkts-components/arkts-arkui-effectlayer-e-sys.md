@@ -4,10 +4,6 @@ EffectComponent的渲染层级。
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum EffectLayer--><!--Device-unnamed-declare enum EffectLayer-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,10 +19,6 @@ NONE = 0
 无特效层。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ CHARGE_MOTION = 1
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EffectLayer-CHARGE_MOTION = 1--><!--Device-EffectLayer-CHARGE_MOTION = 1-End-->
@@ -67,10 +55,6 @@ CHARGE_TEXT = 2
 充电文字层。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

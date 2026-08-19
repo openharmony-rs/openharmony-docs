@@ -4,10 +4,6 @@ Enumerates the modes for saving documents.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-picker-export enum DocumentPickerMode--><!--Device-picker-export enum DocumentPickerMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
@@ -21,10 +17,6 @@ DEFAULT = 0
 标准模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ DOWNLOAD = 1
 下载模式。 **注意**： DOWNLOAD模式创建的目录仅用于保存文件，目录之间无访问隔离，不建议保存应用敏感数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,11 @@
 # killProcessesInBatch（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## killProcessesInBatch
 
 ```TypeScript
@@ -9,10 +15,6 @@ function killProcessesInBatch(pids: Array<int>): Promise<void>
 批量终止进程。使用Promise异步回调。 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。 **需要权限**：ohos.permission.KILL_APP_PROCESSES
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KILL_APP_PROCESSES
 
@@ -44,7 +46,7 @@ function killProcessesInBatch(pids: Array<int>): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

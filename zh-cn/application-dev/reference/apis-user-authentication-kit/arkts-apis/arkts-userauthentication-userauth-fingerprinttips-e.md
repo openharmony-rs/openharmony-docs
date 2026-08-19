@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 <!--Device-userAuth-enum FingerprintTips--><!--Device-userAuth-enum FingerprintTips-End-->
@@ -21,8 +19,6 @@ FINGERPRINT_AUTH_TIP_GOOD = 0
 获取的指纹图像良好。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -40,8 +36,6 @@ FINGERPRINT_AUTH_TIP_DIRTY = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 <!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1-End-->
@@ -57,8 +51,6 @@ FINGERPRINT_AUTH_TIP_INSUFFICIENT = 2
 由于检测到的情况，指纹图像噪声太大，无法处理。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -76,8 +68,6 @@ FINGERPRINT_AUTH_TIP_PARTIAL = 3
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 <!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_PARTIAL = 3--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_PARTIAL = 3-End-->
@@ -94,8 +84,6 @@ FINGERPRINT_AUTH_TIP_TOO_FAST = 4
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 <!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_TOO_FAST = 4--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_TOO_FAST = 4-End-->
@@ -111,8 +99,6 @@ FINGERPRINT_AUTH_TIP_TOO_SLOW = 5
 缺少运动，指纹图像无法读取。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 

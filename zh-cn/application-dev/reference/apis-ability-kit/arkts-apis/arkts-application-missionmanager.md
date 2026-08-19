@@ -4,11 +4,9 @@ missionManager模块提供系统任务管理能力，包括对系统任务执行
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [missionManager/missionManager](arkts-app-ability-missionmanager.md#ohosappabilitymissionmanager)
+**替代接口：** [missionManager/missionManager](arkts-app-ability-missionmanager.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -17,6 +15,11 @@ missionManager模块提供系统任务管理能力，包括对系统任务执行
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## 汇总
 

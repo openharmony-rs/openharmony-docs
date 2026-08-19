@@ -1,5 +1,11 @@
 # isDebugState
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## isDebugState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isDebugState(): boolean
 获取应用进程的调试状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function isDebugState(): boolean--><!--Device-hidebug-function isDebugState(): boolean-End-->
 
@@ -24,7 +26,7 @@ function isDebugState(): boolean
 | --- | --- |
 | boolean | 应用进程的Ark层或Native层是否处于调试状态。true：处于调试状态。false：未处于调试状态。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

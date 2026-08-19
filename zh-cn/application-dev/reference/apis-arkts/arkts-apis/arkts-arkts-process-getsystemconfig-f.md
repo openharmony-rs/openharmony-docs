@@ -1,5 +1,11 @@
 # getSystemConfig
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## getSystemConfig
 
 ```TypeScript
@@ -9,8 +15,6 @@ function getSystemConfig(name: number): number
 获取系统配置信息。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -32,7 +36,7 @@ function getSystemConfig(name: number): number
 | --- | --- |
 | number | 返回系统配置信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let _SC_ARG_MAX = 0;

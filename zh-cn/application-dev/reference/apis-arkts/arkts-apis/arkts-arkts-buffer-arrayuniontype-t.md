@@ -22,10 +22,6 @@ ArrayUnionType的特性与方法。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-buffer-type ArrayUnionType =  Array<Int8Array>    | Array<Uint8Array>    | Array<Uint8ClampedArray>    | Array<Int16Array>    | Array<Uint16Array>    | Array<Int32Array>    | Array<Uint32Array>    | Array<Float32Array>    | Array<Float64Array>    | Array<BigInt64Array>    | Array<BigUint64Array>    | Array<string>    | Array<ArrayBuffer>    | Array<DataView>    | Array<Blob>--><!--Device-buffer-type ArrayUnionType =  Array<Int8Array>    | Array<Uint8Array>    | Array<Uint8ClampedArray>    | Array<Int16Array>    | Array<Uint16Array>    | Array<Int32Array>    | Array<Uint32Array>    | Array<Float32Array>    | Array<Float64Array>    | Array<BigInt64Array>    | Array<BigUint64Array>    | Array<string>    | Array<ArrayBuffer>    | Array<DataView>    | Array<Blob>-End-->

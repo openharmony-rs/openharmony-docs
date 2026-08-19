@@ -1,5 +1,10 @@
 # cancelSuspendDelay
 
+## 导入模块
+
+```TypeScript
+```
+
 ## cancelSuspendDelay
 
 ```TypeScript
@@ -10,11 +15,9 @@ function cancelSuspendDelay(requestId: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-f.md#cancelsuspenddelay)
+**替代接口：** [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-f.md)
 
 <!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: number): void--><!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: number): void-End-->
 
@@ -26,7 +29,7 @@ function cancelSuspendDelay(requestId: number): void
 | --- | --- | --- | --- |
 | requestId | number | 是 | 延迟挂起的请求ID。这个值通过调用 [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay)方法获取。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import backgroundTaskManager from '@ohos.backgroundTaskManager';

@@ -1,5 +1,11 @@
 # queryAllAutoStartupApplications（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { autoStartupManager } from '@kit.AbilityKit';
+```
+
 ## queryAllAutoStartupApplications
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryAllAutoStartupApplications(callback: AsyncCallback<Array<AutoStart
 查询自启动应用组件信息。使用callback异步回调。 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_APP_BOOT
 
@@ -28,7 +30,7 @@ function queryAllAutoStartupApplications(callback: AsyncCallback<Array<AutoStart
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md)&gt;&gt; | 是 | 回调函数。当查询自启动应用组件信息成功，err为undefined，data为获取到的Array&lt; [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md#autostartupinfo系统接口)&gt;；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md)&gt;&gt; | 是 | 回调函数。当查询自启动应用组件信息成功，err为undefined，data为获取到的Array&lt; [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md)&gt;；否则为错误对象。 |
 
 **错误码：**
 
@@ -49,10 +51,6 @@ function queryAllAutoStartupApplications(): Promise<Array<AutoStartupInfo>>
 查询自启动应用组件信息。使用Promise异步回调。 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_APP_BOOT
 

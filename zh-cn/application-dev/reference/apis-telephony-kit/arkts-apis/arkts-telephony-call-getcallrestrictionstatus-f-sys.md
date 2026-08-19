@@ -1,5 +1,11 @@
 # getCallRestrictionStatus（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## getCallRestrictionStatus
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getCallRestrictionStatus(slotId: int, type: CallRestrictionType, callba
 获取呼叫限制状态。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -28,7 +30,7 @@ function getCallRestrictionStatus(slotId: int, type: CallRestrictionType, callba
 | --- | --- | --- | --- |
 | slotId | int | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | type | [CallRestrictionType](arkts-telephony-call-callrestrictiontype-e-sys.md) | 是 | 呼叫限制类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RestrictionStatus](arkts-telephony-call-restrictionstatus-e-sys.md)&gt; | 是 | 回调函数。返回限制状态。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RestrictionStatus](arkts-telephony-call-restrictionstatus-e-sys.md)&gt; | 是 | 回调函数。返回限制状态。 |
 
 **错误码：**
 
@@ -42,7 +44,7 @@ function getCallRestrictionStatus(slotId: int, type: CallRestrictionType, callba
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,10 +68,6 @@ function getCallRestrictionStatus(slotId: int, type: CallRestrictionType): Promi
 获取呼叫限制状态。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -104,7 +102,7 @@ function getCallRestrictionStatus(slotId: int, type: CallRestrictionType): Promi
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,5 +1,12 @@
 # publishReminder
 
+## 导入模块
+
+```TypeScript
+import { reminderAgent } from '@kit.BackgroundTasksKit';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
+
 ## publishReminder
 
 ```TypeScript
@@ -9,8 +16,6 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限 [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification) 后才能调用。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -27,9 +32,9 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reminderReq | ReminderRequest | 是 | 需要发布的提醒实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步回调，返回当前发布的提醒的id。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步回调，返回当前发布的提醒的id。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -56,8 +61,6 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** publishReminder
@@ -80,7 +83,7 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | reminder id. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import reminderAgent from '@ohos.reminderAgent';

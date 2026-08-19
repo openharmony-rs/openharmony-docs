@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-enum WifiSecurityType--><!--Device-wifiManager-enum WifiSecurityType-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -22,10 +18,6 @@ WIFI_SEC_TYPE_INVALID = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_INVALID = 0--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_INVALID = 0-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -39,10 +31,6 @@ WIFI_SEC_TYPE_OPEN = 1
 开放
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -60,10 +48,6 @@ WIFI_SEC_TYPE_WEP = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -77,10 +61,6 @@ WIFI_SEC_TYPE_PSK = 3
 预共享密钥（PSK）
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_PSK = 3--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_PSK = 3-End-->
 
@@ -96,10 +76,6 @@ WIFI_SEC_TYPE_SAE = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -113,10 +89,6 @@ WIFI_SEC_TYPE_EAP = 5
 EAP认证。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5-End-->
 
@@ -132,10 +104,6 @@ SUITE_B_192 192位级别。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -149,10 +117,6 @@ WIFI_SEC_TYPE_OWE = 7
 机会性无线加密。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7-End-->
 
@@ -168,10 +132,6 @@ WIFI_SEC_TYPE_WAPI_CERT = 8
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_CERT = 8--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_CERT = 8-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -185,10 +145,6 @@ WIFI_SEC_TYPE_WAPI_PSK = 9
 指定WAPI预共享密钥。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9-End-->
 

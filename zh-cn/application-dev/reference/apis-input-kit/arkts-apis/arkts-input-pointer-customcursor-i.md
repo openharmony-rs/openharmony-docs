@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-interface CustomCursor--><!--Device-pointer-interface CustomCursor-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
 
 ## focusX
 
@@ -18,15 +20,11 @@
 focusX?: int
 ```
 
-自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值 该参数缺省时默认为0，单位为像素（px）。
+自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值，该参数缺省时默认为0，单位为像素（px）。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CustomCursor-focusX?: int--><!--Device-CustomCursor-focusX?: int-End-->
 
@@ -38,15 +36,11 @@ focusX?: int
 focusY?: int
 ```
 
-自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值 该参数缺省时默认为0，单位为像素（px）。
+自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值，该参数缺省时默认为0，单位为像素（px）。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CustomCursor-focusY?: int--><!--Device-CustomCursor-focusY?: int-End-->
 
@@ -63,10 +57,6 @@ pixelMap: image.PixelMap
 **类型：** image.PixelMap
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CustomCursor-pixelMap: image.PixelMap--><!--Device-CustomCursor-pixelMap: image.PixelMap-End-->
 

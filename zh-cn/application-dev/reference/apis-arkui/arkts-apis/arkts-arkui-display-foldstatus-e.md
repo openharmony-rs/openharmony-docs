@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-enum FoldStatus--><!--Device-display-enum FoldStatus-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ FOLD_STATUS_UNKNOWN = 0
 表示设备当前折叠状态无法确定或设备本身不可折叠。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ FOLD_STATUS_EXPANDED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FoldStatus-FOLD_STATUS_EXPANDED = 1--><!--Device-FoldStatus-FOLD_STATUS_EXPANDED = 1-End-->
@@ -61,10 +49,6 @@ FOLD_STATUS_FOLDED = 2
 表示设备当前折叠状态为折叠。如果是双折轴设备，则表示折轴一和折轴二的折叠状态均为折叠。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ FOLD_STATUS_HALF_FOLDED = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3--><!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3-End-->
@@ -101,10 +81,6 @@ FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED = 11
 表示双折轴设备折轴一和折轴二的折叠状态均为完全展开。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED = 21
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FoldStatus-FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED = 21--><!--Device-FoldStatus-FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED = 21-End-->
@@ -141,10 +113,6 @@ FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED = 22
 表示双折轴设备折轴一折叠状态为折叠，折轴二折叠状态为半折叠。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED = 23
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED = 23--><!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED = 23-End-->
@@ -182,10 +146,6 @@ FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED = 12
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FoldStatus-FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED = 12--><!--Device-FoldStatus-FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED = 12-End-->
@@ -201,10 +161,6 @@ FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED = 13
 表示双折轴设备折轴一折叠状态为半折叠，折轴二折叠状态为完全展开。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

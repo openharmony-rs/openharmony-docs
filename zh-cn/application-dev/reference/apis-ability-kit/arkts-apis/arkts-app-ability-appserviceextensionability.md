@@ -1,5 +1,11 @@
 # @ohos.app.ability.AppServiceExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

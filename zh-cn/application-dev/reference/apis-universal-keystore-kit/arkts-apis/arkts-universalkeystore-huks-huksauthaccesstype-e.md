@@ -4,10 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-huks-export enum HuksAuthAccessType--><!--Device-huks-export enum HuksAuthAccessType-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -21,10 +17,6 @@ HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD = 1 << 0
 表示安全访问控制类型为清除密码后密钥无效。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1-End-->
@@ -61,10 +49,6 @@ HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2
 表示安全访问控制类型为该密钥总是有效。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

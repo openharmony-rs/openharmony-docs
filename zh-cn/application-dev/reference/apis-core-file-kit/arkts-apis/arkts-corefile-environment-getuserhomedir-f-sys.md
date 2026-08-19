@@ -1,5 +1,11 @@
 # getUserHomeDir（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { Environment } from '@kit.CoreFileKit';
+```
+
 ## getUserHomeDir
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getUserHomeDir(): string
 获取当前用户下应用沙箱路径的内卡目录，该接口仅对具有该系统能力的设备开放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 

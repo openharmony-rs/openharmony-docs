@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface ToggleAttribute--><!--Device-unnamed-export declare interface ToggleAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<ToggleAttribute> | AttributeModifi
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ToggleAttribute-attributeModifier(modifier: AttributeModifier<ToggleAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-ToggleAttribute-attributeModifier(modifier: AttributeModifier<ToggleAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ contentModifier(modifier: ContentModifier<ToggleConfiguration> | undefined): thi
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ToggleAttribute-contentModifier(modifier: ContentModifier<ToggleConfiguration> | undefined): this--><!--Device-ToggleAttribute-contentModifier(modifier: ContentModifier<ToggleConfiguration> | undefined): this-End-->
 
@@ -74,9 +68,7 @@ onChange(callback: ((isOn: boolean) => void) | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ToggleAttribute-onChange(callback: ((isOn: boolean) => void) | undefined): this--><!--Device-ToggleAttribute-onChange(callback: ((isOn: boolean) => void) | undefined): this-End-->
 
@@ -100,9 +92,7 @@ selectedColor(value: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ToggleAttribute-selectedColor(value: ResourceColor | undefined): this--><!--Device-ToggleAttribute-selectedColor(value: ResourceColor | undefined): this-End-->
 
@@ -126,9 +116,7 @@ switchPointColor(color: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ToggleAttribute-switchPointColor(color: ResourceColor | undefined): this--><!--Device-ToggleAttribute-switchPointColor(color: ResourceColor | undefined): this-End-->
 
@@ -152,9 +140,7 @@ switchStyle(value: SwitchStyle | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ToggleAttribute-switchStyle(value: SwitchStyle | undefined): this--><!--Device-ToggleAttribute-switchStyle(value: SwitchStyle | undefined): this-End-->
 
@@ -180,9 +166,7 @@ Set the attribute modifier of toggle.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

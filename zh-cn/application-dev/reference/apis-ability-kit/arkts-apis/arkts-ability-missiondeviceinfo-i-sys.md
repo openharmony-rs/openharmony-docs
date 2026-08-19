@@ -1,12 +1,8 @@
 # MissionDeviceInfo（系统接口）
 
-可以作为 [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener系统接口) 的入参，表示注册监听时所需参数的枚举。
+可以作为 [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md) 的入参，表示注册监听时所需参数的枚举。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface MissionDeviceInfo--><!--Device-unnamed-export interface MissionDeviceInfo-End-->
 
@@ -25,10 +21,6 @@ deviceId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 

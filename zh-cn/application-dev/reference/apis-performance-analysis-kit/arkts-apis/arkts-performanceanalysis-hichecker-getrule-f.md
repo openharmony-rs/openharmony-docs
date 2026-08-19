@@ -1,5 +1,11 @@
 # getRule
 
+## 导入模块
+
+```TypeScript
+import { hichecker } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getRule
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getRule() : bigint
 获取当前线程规则、进程规则、告警规则的合集。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hichecker-function getRule() : bigint--><!--Device-hichecker-function getRule() : bigint-End-->
 
@@ -24,7 +26,7 @@ function getRule() : bigint
 | --- | --- |
 | bigint | 当前系统中添加的规则。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 添加一条规则

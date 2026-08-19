@@ -1,0 +1,376 @@
+# PrintJobData
+
+定义打印任务的接口。
+
+**起始版本：** 23
+
+<!--Device-print-interface PrintJobData--><!--Device-print-interface PrintJobData-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## 导入模块
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+```
+
+## binaryData
+
+```TypeScript
+binaryData?: Uint8Array
+```
+
+表示待打印二进制数据。
+
+**类型：** Uint8Array
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-binaryData?: Uint8Array--><!--Device-PrintJobData-binaryData?: Uint8Array-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## colorMode
+
+```TypeScript
+colorMode: PrintColorMode
+```
+
+表示色彩模式。
+
+**类型：** [PrintColorMode](arkts-basicservices-print-printcolormode-e.md)
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-colorMode: PrintColorMode--><!--Device-PrintJobData-colorMode: PrintColorMode-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## copyNumber
+
+```TypeScript
+copyNumber: int
+```
+
+表示文件列表副本数。
+
+**类型：** int
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-copyNumber: int--><!--Device-PrintJobData-copyNumber: int-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## docFlavor
+
+```TypeScript
+docFlavor: DocFlavor
+```
+
+表示打印数据来源形式。
+
+**类型：** [DocFlavor](arkts-basicservices-print-docflavor-e.md)
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-docFlavor: DocFlavor--><!--Device-PrintJobData-docFlavor: DocFlavor-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## documentFormat
+
+```TypeScript
+documentFormat: PrintDocumentFormat
+```
+
+表示打印数据格式。
+
+**类型：** [PrintDocumentFormat](arkts-basicservices-print-printdocumentformat-e.md)
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-documentFormat: PrintDocumentFormat--><!--Device-PrintJobData-documentFormat: PrintDocumentFormat-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## duplexMode
+
+```TypeScript
+duplexMode: PrintDuplexMode
+```
+
+表示单双面打印模式。
+
+**类型：** [PrintDuplexMode](arkts-basicservices-print-printduplexmode-e.md)
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-duplexMode: PrintDuplexMode--><!--Device-PrintJobData-duplexMode: PrintDuplexMode-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## fdList
+
+```TypeScript
+fdList?: int[]
+```
+
+表示待打印文件fd列表。
+
+**类型：** int[]
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-fdList?: int[]--><!--Device-PrintJobData-fdList?: int[]-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## isAutoRotate
+
+```TypeScript
+isAutoRotate?: boolean
+```
+
+表示是否自动旋转页面。true表示自动旋转页面，false表示不自动旋转页面。默认值为true。
+
+**类型：** boolean
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-isAutoRotate?: boolean--><!--Device-PrintJobData-isAutoRotate?: boolean-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## isBorderless
+
+```TypeScript
+isBorderless?: boolean
+```
+
+表示是否无边框打印。true表示无边框打印，false表示有边框打印。默认值为true。
+
+**类型：** boolean
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-isBorderless?: boolean--><!--Device-PrintJobData-isBorderless?: boolean-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## isCollate
+
+```TypeScript
+isCollate?: boolean
+```
+
+表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。
+
+**类型：** boolean
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-isCollate?: boolean--><!--Device-PrintJobData-isCollate?: boolean-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## isLandscape
+
+```TypeScript
+isLandscape: boolean
+```
+
+表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。
+
+**类型：** boolean
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-isLandscape: boolean--><!--Device-PrintJobData-isLandscape: boolean-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## isReverse
+
+```TypeScript
+isReverse?: boolean
+```
+
+表示是否逆序打印。true表示逆序打印，false表示顺序打印。默认值为false。
+
+**类型：** boolean
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-isReverse?: boolean--><!--Device-PrintJobData-isReverse?: boolean-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## isSequential
+
+```TypeScript
+isSequential?: boolean
+```
+
+表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。
+
+**类型：** boolean
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-isSequential?: boolean--><!--Device-PrintJobData-isSequential?: boolean-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## jobId
+
+```TypeScript
+jobId?: string
+```
+
+表示打印任务的唯一标识符。
+
+**类型：** string
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-jobId?: string--><!--Device-PrintJobData-jobId?: string-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## jobName
+
+```TypeScript
+jobName: string
+```
+
+表示打印任务名称。
+
+**类型：** string
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-jobName: string--><!--Device-PrintJobData-jobName: string-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## mediaType
+
+```TypeScript
+mediaType?: string
+```
+
+表示打印纸张类型。
+
+**类型：** string
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-mediaType?: string--><!--Device-PrintJobData-mediaType?: string-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## options
+
+```TypeScript
+options?: string
+```
+
+表示以JSON格式字符串化的对象。
+
+**类型：** string
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-options?: string--><!--Device-PrintJobData-options?: string-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## pageSize
+
+```TypeScript
+pageSize: PrintPageSize
+```
+
+表示选定的页面尺寸。
+
+**类型：** [PrintPageSize](arkts-basicservices-print-printpagesize-i.md)
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-pageSize: PrintPageSize--><!--Device-PrintJobData-pageSize: PrintPageSize-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## printQuality
+
+```TypeScript
+printQuality?: PrintQuality
+```
+
+表示打印质量。
+
+**类型：** [PrintQuality](arkts-basicservices-print-printquality-e.md)
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-printQuality?: PrintQuality--><!--Device-PrintJobData-printQuality?: PrintQuality-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## printerId
+
+```TypeScript
+printerId: string
+```
+
+表示打印机ID。
+
+**类型：** string
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintJobData-printerId: string--><!--Device-PrintJobData-printerId: string-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+

@@ -2,13 +2,11 @@
 
 Define DigitIndicator, the indicator type is digit.
 
-**继承/实现关系：** DigitIndicator extends [Indicator](arkts-na-swiper-indicator-c.md#indicator)
+**继承/实现关系：** DigitIndicator extends [Indicator](arkts-na-swiper-indicator-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class DigitIndicator--><!--Device-unnamed-export declare class DigitIndicator-End-->
 
@@ -24,9 +22,7 @@ DotIndicator的构造函数。 > **说明：** > > - 按压导航点时，导航
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,9 +40,7 @@ Swiper组件数字导航点的字体样式。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,9 +70,7 @@ Swiper组件数字导航点的字体颜色。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -108,9 +100,7 @@ selectedDigitFont(value: Font | undefined): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,9 +130,7 @@ selectedFontColor(value: ResourceColor | undefined): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -103,7 +103,7 @@ int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_SOURCE_DATA_INCOMPLETE：图像源数据不完整。<br>     <br>IMAGE_RESULT_SOURCE_DATA：图像源数据错误。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据错误。<br>     <br>IMAGE_RESULT_TOO_LARGE：图像数据太大。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：图像解码EXIF不支持。<br>     <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图像属性不存在。<br>     <br>IMAGE_RESULT_FILE_DAMAGED：文件损坏。<br>     <br>IMAGE_RESULT_FILE_FD_ERROR：文件FD错误。<br>     <br>IMAGE_RESULT_STREAM_SIZE_ERROR：数据流错误。<br>     <br>IMAGE_RESULT_SEEK_FAILED：查找文件失败。<br>     <br>IMAGE_RESULT_PEEK_FAILED：速览文件失败。<br>     <br>IMAGE_RESULT_FREAD_FAILED：读取文件失败。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_SOURCE_DATA_INCOMPLETE：图像源数据不完整。      <br>IMAGE_RESULT_SOURCE_DATA：图像源数据错误。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据错误。      <br>IMAGE_RESULT_TOO_LARGE：图像数据太大。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：图像解码EXIF不支持。      <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图像属性不存在。      <br>IMAGE_RESULT_FILE_DAMAGED：文件损坏。      <br>IMAGE_RESULT_FILE_FD_ERROR：文件FD错误。      <br>IMAGE_RESULT_STREAM_SIZE_ERROR：数据流错误。      <br>IMAGE_RESULT_SEEK_FAILED：查找文件失败。      <br>IMAGE_RESULT_PEEK_FAILED：速览文件失败。      <br>IMAGE_RESULT_FREAD_FAILED：读取文件失败。 |
 
 **参考：**
 
@@ -136,7 +136,7 @@ int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size, struc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
 
 **参考：**
 
@@ -168,7 +168,7 @@ int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd, struct OhosImageSo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
 
 **参考：**
 
@@ -201,7 +201,7 @@ int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
 
 **参考：**
 
@@ -233,7 +233,7 @@ int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
 
 **参考：**
 
@@ -269,7 +269,7 @@ int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* s
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
 
 **参考：**
 
@@ -302,7 +302,7 @@ int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, si
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
 
 **参考：**
 
@@ -331,7 +331,7 @@ int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormat
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。 |
 
 **参考：**
 
@@ -392,7 +392,7 @@ int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native, struct Oh
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。<br>     <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存错误。<br>     <br>IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据异常。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_MALLOC_ABNORMAL：图像错误。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_INIT_ABNORMAL：图片输入数据错误。<br>     <br>IMAGE_RESULT_CROP：裁剪错误。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_ENCODE_FAILED：增加位图失败。<br>     <br>IMAGE_RESULT_HW_DECODE_UNSUPPORT：不支持图片硬解码。<br>     <br>IMAGE_RESULT_HW_DECODE_FAILED：硬解码失败。<br>     <br>IMAGE_RESULT_ERR_IPC：ipc失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_ALPHA_TYPE_ERROR：硬解码失败。<br>     <br>IMAGE_RESULT_ALLOCATER_TYPE_ERROR：硬解码失败。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。      <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存错误。      <br>IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据异常。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_MALLOC_ABNORMAL：图像错误。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_INIT_ABNORMAL：图片输入数据错误。      <br>IMAGE_RESULT_CROP：裁剪错误。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_ENCODE_FAILED：增加位图失败。      <br>IMAGE_RESULT_HW_DECODE_UNSUPPORT：不支持图片硬解码。      <br>IMAGE_RESULT_HW_DECODE_FAILED：硬解码失败。      <br>IMAGE_RESULT_ERR_IPC：ipc失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_ALPHA_TYPE_ERROR：硬解码失败。      <br>IMAGE_RESULT_ALLOCATER_TYPE_ERROR：硬解码失败。 |
 
 **参考：**
 
@@ -423,7 +423,7 @@ int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native, struc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。<br>     <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存错误。<br>     <br>IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据异常。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_MALLOC_ABNORMAL：图像错误。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_INIT_ABNORMAL：图片输入数据错误。<br>     <br>IMAGE_RESULT_CROP：裁剪错误。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_ENCODE_FAILED：增加位图失败。<br>     <br>IMAGE_RESULT_HW_DECODE_UNSUPPORT：不支持图片硬解码。<br>     <br>IMAGE_RESULT_HW_DECODE_FAILED：硬解码失败。<br>     <br>IMAGE_RESULT_ERR_IPC：ipc失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_ALPHA_TYPE_ERROR：硬解码失败。<br>     <br>IMAGE_RESULT_ALLOCATER_TYPE_ERROR：硬解码失败。<br>     <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。<br>     <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。      <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存错误。      <br>IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据异常。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_MALLOC_ABNORMAL：图像错误。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_INIT_ABNORMAL：图片输入数据错误。      <br>IMAGE_RESULT_CROP：裁剪错误。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_ENCODE_FAILED：增加位图失败。      <br>IMAGE_RESULT_HW_DECODE_UNSUPPORT：不支持图片硬解码。      <br>IMAGE_RESULT_HW_DECODE_FAILED：硬解码失败。      <br>IMAGE_RESULT_ERR_IPC：ipc失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_ALPHA_TYPE_ERROR：硬解码失败。      <br>IMAGE_RESULT_ALLOCATER_TYPE_ERROR：硬解码失败。      <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。      <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
 
 **参考：**
 
@@ -453,7 +453,7 @@ int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native, struct Ohos
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。<br>     <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。      <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
 
 **参考：**
 
@@ -483,7 +483,7 @@ int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。<br>     <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。      <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
 
 **参考：**
 
@@ -514,7 +514,7 @@ int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t ind
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。<br>     <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。      <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
 
 **参考：**
 
@@ -545,7 +545,7 @@ int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。<br>     <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。      <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
 
 **参考：**
 
@@ -576,7 +576,7 @@ int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, stru
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。<br>     <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：skia错误。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_DECODE_EXIF_UNSUPPORT：解码的EXIF不支持。      <br>IMAGE_RESULT_PROPERTY_NOT_EXIST：图片属性不存在。 |
 
 **参考：**
 
@@ -606,7 +606,7 @@ int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosIm
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DECODE_FAILED：解码失败。<br>     <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。<br>     <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。<br>     <br>IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。<br>     <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。<br>     <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：Skia第三方库出错。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。<br>     <br>IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存不存在。<br>     <br>IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据异常。<br>     <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。<br>     <br>IMAGE_RESULT_MALLOC_ABNORMAL：图像内存分配异常。<br>     <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。<br>     <br>IMAGE_RESULT_INIT_ABNORMAL：图片输入数据错误。<br>     <br>IMAGE_RESULT_CROP：裁剪失败。<br>     <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。<br>     <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。<br>     <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。<br>     <br>IMAGE_RESULT_ENCODE_FAILED：增加位图失败。<br>     <br>IMAGE_RESULT_HW_DECODE_UNSUPPORT：不支持图片硬解码。<br>     <br>IMAGE_RESULT_HW_DECODE_FAILED：硬解码失败。<br>     <br>IMAGE_RESULT_ERR_IPC：IPC操作失败。<br>     <br>IMAGE_RESULT_INDEX_INVALID：索引无效。<br>     <br>IMAGE_RESULT_ALPHA_TYPE_ERROR：Alpha类型错误。<br>     <br>IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配器类型错误。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DECODE_FAILED：解码失败。      <br>IMAGE_RESULT_DECODE_HEAD_ABNORMAL：图像解码头错误。      <br>IMAGE_RESULT_CREATE_DECODER_FAILED：创建解码器失败。      <br>IMAGE_RESULT_CREATE_ENCODER_FAILED：创建编码器失败。      <br>IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式不对。      <br>IMAGE_RESULT_THIRDPART_SKIA_ERROR：Skia第三方库出错。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。      <br>IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST：共享内存不存在。      <br>IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据异常。      <br>IMAGE_RESULT_DECODE_ABNORMAL：图片解码异常。      <br>IMAGE_RESULT_MALLOC_ABNORMAL：图像内存分配异常。      <br>IMAGE_RESULT_DATA_UNSUPPORT：图片初始化错误。      <br>IMAGE_RESULT_INIT_ABNORMAL：图片输入数据错误。      <br>IMAGE_RESULT_CROP：裁剪失败。      <br>IMAGE_RESULT_UNKNOWN_FORMAT：图片格式未知。      <br>IMAGE_RESULT_PLUGIN_REGISTER_FAILED：注册插件失败。      <br>IMAGE_RESULT_PLUGIN_CREATE_FAILED：创建插件失败。      <br>IMAGE_RESULT_ENCODE_FAILED：增加位图失败。      <br>IMAGE_RESULT_HW_DECODE_UNSUPPORT：不支持图片硬解码。      <br>IMAGE_RESULT_HW_DECODE_FAILED：硬解码失败。      <br>IMAGE_RESULT_ERR_IPC：IPC操作失败。      <br>IMAGE_RESULT_INDEX_INVALID：索引无效。      <br>IMAGE_RESULT_ALPHA_TYPE_ERROR：Alpha类型错误。      <br>IMAGE_RESULT_ALLOCATER_TYPE_ERROR：内存分配器类型错误。 |
 
 **参考：**
 
@@ -635,7 +635,7 @@ int32_t OH_ImageSource_Release(ImageSourceNative* native)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI 环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。<br>     <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。 |
+| int32_t | 参考[IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>OHOS_IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI 环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_GET_DATA_ABNORMAL：获取图片数据异常。      <br>IMAGE_RESULT_DATA_ABNORMAL：输入图片数据错误。 |
 
 **参考：**
 

@@ -1,5 +1,13 @@
 # getTopNavDestinationName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## getTopNavDestinationName
 
 ```TypeScript
@@ -9,10 +17,6 @@ function getTopNavDestinationName(windowId: int): Promise<string>
 获取指定的前台窗口当前栈顶Navigation中的 NavDestination名称，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-window-function getTopNavDestinationName(windowId: int): Promise<string>--><!--Device-window-function getTopNavDestinationName(windowId: int): Promise<string>-End-->
 
@@ -42,7 +46,7 @@ function getTopNavDestinationName(windowId: int): Promise<string>
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { window } from '@kit.ArkUI';

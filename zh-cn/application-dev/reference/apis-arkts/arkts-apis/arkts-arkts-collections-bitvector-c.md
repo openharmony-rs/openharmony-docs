@@ -4,13 +4,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-collections-class BitVector--><!--Device-collections-class BitVector-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { collections } from '@kit.ArkTS';
+```
 
 ## [Symbol.iterator]
 
@@ -21,10 +23,6 @@
 返回一个迭代器，用于迭代 BitVector 中的元素。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,10 +52,6 @@ BitVector 的构造函数。
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-constructor(length: number)--><!--Device-BitVector-constructor(length: number)-End-->
@@ -79,10 +73,6 @@ flipBitByIndex(index: number): void
 翻转 BitVector 指定索引处的 bit 值，0 翻转为 1，1 翻转为 0。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -114,10 +104,6 @@ flipBitsByRange(fromIndex: number, toIndex: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-flipBitsByRange(fromIndex: number, toIndex: number): void--><!--Device-BitVector-flipBitsByRange(fromIndex: number, toIndex: number): void-End-->
@@ -148,10 +134,6 @@ getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
 统计指定范围内获取指定 bit 值的数量。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -191,10 +173,6 @@ getBitsByRange(fromIndex: number, toIndex: number): BitVector
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-getBitsByRange(fromIndex: number, toIndex: number): BitVector--><!--Device-BitVector-getBitsByRange(fromIndex: number, toIndex: number): BitVector-End-->
@@ -212,7 +190,7 @@ getBitsByRange(fromIndex: number, toIndex: number): BitVector
 
 | 类型 | 说明 |
 | --- | --- |
-| [BitVector](arkts-arkts-collections-bitvector-c.md) | 包含所获取 bit 值的 BitVector。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
+| [BitVector](../../apis-na/arkts-apis/arkts-na-collections-bitvector-c.md) | 包含所获取 bit 值的 BitVector。可能的原因： 1.必填参数未指定。 2.参数类型不正确。 |
 
 **错误码：**
 
@@ -231,10 +209,6 @@ getIndexOf(element: number, fromIndex: number, toIndex: number): number
 返回指定 bit 值首次出现时的索引值，查找失败返回 **-1**。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -274,10 +248,6 @@ getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-getLastIndexOf(element: number, fromIndex: number, toIndex: number): number--><!--Device-BitVector-getLastIndexOf(element: number, fromIndex: number, toIndex: number): number-End-->
@@ -315,10 +285,6 @@ has(element: number, fromIndex: number, toIndex: number): boolean
 判断范围内是否包含特定 bit 值。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -358,10 +324,6 @@ pop(): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-pop(): number--><!--Device-BitVector-pop(): number-End-->
@@ -390,10 +352,6 @@ push(element: number): boolean
 在 BitVector 尾部插入元素。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -430,10 +388,6 @@ resize(size: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-resize(size: number): void--><!--Device-BitVector-resize(size: number): void-End-->
@@ -463,10 +417,6 @@ setAllBits(element: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-setAllBits(element: number): void--><!--Device-BitVector-setAllBits(element: number): void-End-->
@@ -495,10 +445,6 @@ setBitsByRange(element: number, fromIndex: number, toIndex: number): void
 将 BitVector 中指定范围的元素均设为特定 bit 值。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -532,10 +478,6 @@ values(): IterableIterator<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BitVector-values(): IterableIterator<number>--><!--Device-BitVector-values(): IterableIterator<number>-End-->
@@ -566,10 +508,6 @@ BitVector 的元素个数。
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

@@ -8,10 +8,6 @@ export type NotificationSubscriber = _NotificationSubscriber
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationSubscribe-export type NotificationSubscriber = _NotificationSubscriber--><!--Device-notificationSubscribe-export type NotificationSubscriber = _NotificationSubscriber-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

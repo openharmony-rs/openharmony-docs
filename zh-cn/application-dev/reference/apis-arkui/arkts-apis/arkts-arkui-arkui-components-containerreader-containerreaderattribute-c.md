@@ -6,13 +6,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare class ContainerReaderAttribute--><!--Device-unnamed-export declare class ContainerReaderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { ContainerReader, ContainerReaderAttribute, BreakpointOptions } from '@kit.ArkUI';
+```
 
 ## breakpointConfig
 
@@ -23,10 +25,6 @@ breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute
 设置断点配置选项，定义触发不同布局行为的尺寸阈值。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,11 +40,11 @@ breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BreakpointOptions](../../apis-na/arkts-apis/arkts-na-arkui-components-containerreader-breakpointoptions-i.md) | 否 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
+| value | [BreakpointOptions](arkts-arkui-arkui-components-containerreader-breakpointoptions-i.md) | 否 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContainerReaderAttribute](../../apis-na/arkts-apis/arkts-na-arkui-components-containerreader-containerreaderattribute-i.md) |  |
+| [ContainerReaderAttribute](arkts-arkui-arkui-components-containerreader-containerreaderattribute-c.md) |  |
 

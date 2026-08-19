@@ -1,5 +1,11 @@
 # clearUpAppData（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## clearUpAppData
 
 ```TypeScript
@@ -9,10 +15,6 @@ function clearUpAppData(bundleName: string, appCloneIndex?: int): Promise<void>
 根据Bundle名称和应用分身索引，清除指定应用的数据。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLEAN_APPLICATION_DATA
 
@@ -45,7 +47,7 @@ function clearUpAppData(bundleName: string, appCloneIndex?: int): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [16000073](../errorcode-ability.md#16000073-传入的appcloneindex是一个无效值) | The app clone index is invalid. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

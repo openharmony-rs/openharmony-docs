@@ -1,18 +1,20 @@
 # removePreferencesFromCacheSync
 
+## 导入模块
+
+```TypeScript
+import { sendablePreferences } from '@kit.ArkData';
+```
+
 ## removePreferencesFromCacheSync
 
 ```TypeScript
 function removePreferencesFromCacheSync(context: Context, options: Options): void
 ```
 
-从缓存中移除指定的Preferences实例，此为同步接口。 应用首次调用[getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用 [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次 getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+从缓存中移除指定的Preferences实例，此为同步接口。 应用首次调用[getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用 [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次 getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -37,7 +39,7 @@ function removePreferencesFromCacheSync(context: Context, options: Options): voi
 | [15501002](../errorcode-preferences.md#15501002-options中传入的datagroupid参数非法) | Invalid dataGroupId. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';

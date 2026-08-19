@@ -1,6 +1,15 @@
 # on_streamChange（系统接口）
 
-## on_streamChange
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
+## on('streamChange')
 
 ```TypeScript
 function on(type: 'streamChange', callback: Callback<number>): void
@@ -9,8 +18,6 @@ function on(type: 'streamChange', callback: Callback<number>): void
 订阅WLAN数据流改变事件。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -29,5 +36,5 @@ function on(type: 'streamChange', callback: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'streamChange' | 是 | 事件名称。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;number&gt; | 是 | 状态改变回调函数。1:向下，2:向上，3:双向 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;number&gt; | 是 | 状态改变回调函数。1:向下，2:向上，3:双向 |
 

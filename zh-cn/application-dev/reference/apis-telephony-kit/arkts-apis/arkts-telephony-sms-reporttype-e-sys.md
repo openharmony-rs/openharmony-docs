@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export enum ReportType--><!--Device-sms-export enum ReportType-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -24,10 +20,6 @@ YES
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReportType-MMS_YES = 128--><!--Device-ReportType-MMS_YES = 128-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -43,10 +35,6 @@ MMS_NO = 129
 NO
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReportType-MMS_NO = 129--><!--Device-ReportType-MMS_NO = 129-End-->
 

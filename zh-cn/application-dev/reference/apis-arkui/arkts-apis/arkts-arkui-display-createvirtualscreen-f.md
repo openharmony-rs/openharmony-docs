@@ -1,5 +1,11 @@
 # createVirtualScreen
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## createVirtualScreen
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createVirtualScreen(config: VirtualScreenConfig): Promise<long>
 创建虚拟屏幕，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
@@ -41,7 +43,7 @@ function createVirtualScreen(config: VirtualScreenConfig): Promise<long>
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

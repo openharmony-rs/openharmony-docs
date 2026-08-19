@@ -207,7 +207,7 @@ typedef void (*OH_HiTrace_TraceEventListener)(bool traceStatus)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (bool traceStatus | 当前应用trace捕获开关状态。true：开启；false：关闭。 |
+| bool traceStatus | 当前应用trace捕获开关状态。true：开启；false：关闭。 |
 
 ### OH_HiTrace_BeginChain()
 
@@ -840,7 +840,7 @@ bool OH_HiTrace_IsTraceEnabled(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 使用hitrace命令行工具等方式开启采集时返回true。<br>     未开启采集或停止采集后返回false，此时调用HiTraceMeter性能跟踪打点接口无效。 |
+| bool | 使用hitrace命令行工具等方式开启采集时返回true。      未开启采集或停止采集后返回false，此时调用HiTraceMeter性能跟踪打点接口无效。 |
 
 ### OH_HiTrace_RegisterTraceListener()
 
@@ -864,7 +864,7 @@ int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 回调注册状态。<br>     >= 0：注册成功，返回用于注销的回调索引，索引范围0到9；<br>     -1：已达到最大回调函数注册数量；<br>     -2：无效参数，参数非[OH_HiTrace_TraceEventListener](capi-trace-h.md#oh_hitrace_traceeventlistener)类型。 |
+| int32_t | 回调注册状态。      >= 0：注册成功，返回用于注销的回调索引，索引范围0到9；      -1：已达到最大回调函数注册数量；      -2：无效参数，参数非[OH_HiTrace_TraceEventListener](capi-trace-h.md#oh_hitrace_traceeventlistener)类型。 |
 
 ### OH_HiTrace_UnregisterTraceListener()
 
@@ -888,6 +888,6 @@ int32_t OH_HiTrace_UnregisterTraceListener(int32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 回调注销状态。<br>     0：注销成功；<br>     -1：目标索引的回调函数未注册；<br>     -2：无效索引，参数index值不在0到9的范围内。 |
+| int32_t | 回调注销状态。      0：注销成功；      -1：目标索引的回调函数未注册；      -2：无效索引，参数index值不在0到9的范围内。 |
 
 

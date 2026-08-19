@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-floatingBall-enum FloatingBallState--><!--Device-floatingBall-enum FloatingBallState-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -22,10 +18,6 @@ STARTED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallState-STARTED = 1--><!--Device-FloatingBallState-STARTED = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -39,10 +31,6 @@ STOPPED = 2
 表示闪控球停止。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallState-STOPPED = 2--><!--Device-FloatingBallState-STOPPED = 2-End-->
 

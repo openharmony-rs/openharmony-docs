@@ -2,61 +2,57 @@
 
 定义坐标属性。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
-**废弃版本：** -1
-
-<!--Device-componentUtils-interface Offset--><!--Device-componentUtils-interface Offset-End-->
+<!--Device-componentUtils-export interface Offset--><!--Device-componentUtils-export interface Offset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
 
 ## x
 
 ```TypeScript
-x: number
+x: double
 ```
 
 x点坐标。 单位: px
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Offset-x: number--><!--Device-Offset-x: number-End-->
+<!--Device-Offset-x: double--><!--Device-Offset-x: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
 
 ```TypeScript
-y: number
+y: double
 ```
 
 y点坐标。 单位: px
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Offset-y: number--><!--Device-Offset-y: number-End-->
+<!--Device-Offset-y: double--><!--Device-Offset-y: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

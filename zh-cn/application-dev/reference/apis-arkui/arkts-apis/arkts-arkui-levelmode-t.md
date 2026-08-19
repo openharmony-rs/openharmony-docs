@@ -1,4 +1,4 @@
-# LevelMode
+# LevelMode(ActionSheet)
 
 ```TypeScript
 declare type LevelMode = import('../api/@ohos.promptAction').LevelMode
@@ -7,10 +7,6 @@ declare type LevelMode = import('../api/@ohos.promptAction').LevelMode
 弹窗的显示层级。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

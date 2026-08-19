@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sharing-enum SharingCode--><!--Device-sharing-enum SharingCode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -23,10 +19,6 @@ SUCCESS = 0
 成功。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SharingCode-SUCCESS = 0--><!--Device-SharingCode-SUCCESS = 0-End-->
 
@@ -44,10 +36,6 @@ REPEATED_REQUEST = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SharingCode-REPEATED_REQUEST = 1--><!--Device-SharingCode-REPEATED_REQUEST = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -63,10 +51,6 @@ NOT_INVITER = 2
 非端云共享的邀请者，表示当前参与者不是端云共享的邀请者。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SharingCode-NOT_INVITER = 2--><!--Device-SharingCode-NOT_INVITER = 2-End-->
 
@@ -84,10 +68,6 @@ NOT_INVITER_OR_INVITEE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SharingCode-NOT_INVITER_OR_INVITEE = 3--><!--Device-SharingCode-NOT_INVITER_OR_INVITEE = 3-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -103,10 +83,6 @@ OVER_QUOTA = 4
 端云共享次数达到上限，表示当前账号可共享的次数达到上限。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SharingCode-OVER_QUOTA = 4--><!--Device-SharingCode-OVER_QUOTA = 4-End-->
 
@@ -124,10 +100,6 @@ TOO_MANY_PARTICIPANTS = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5--><!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -143,10 +115,6 @@ INVALID_ARGS = 6
 无效的参数。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SharingCode-INVALID_ARGS = 6--><!--Device-SharingCode-INVALID_ARGS = 6-End-->
 
@@ -164,10 +132,6 @@ NETWORK_ERROR = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SharingCode-NETWORK_ERROR = 7--><!--Device-SharingCode-NETWORK_ERROR = 7-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -183,10 +147,6 @@ CLOUD_DISABLED = 8
 云开关未打开。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SharingCode-CLOUD_DISABLED = 8--><!--Device-SharingCode-CLOUD_DISABLED = 8-End-->
 
@@ -204,10 +164,6 @@ SERVER_ERROR = 9
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SharingCode-SERVER_ERROR = 9--><!--Device-SharingCode-SERVER_ERROR = 9-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -223,10 +179,6 @@ INNER_ERROR = 10
 系统发生内部错误。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SharingCode-INNER_ERROR = 10--><!--Device-SharingCode-INNER_ERROR = 10-End-->
 
@@ -244,10 +196,6 @@ INVALID_INVITATION = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SharingCode-INVALID_INVITATION = 11--><!--Device-SharingCode-INVALID_INVITATION = 11-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -264,10 +212,6 @@ RATE_LIMIT = 12
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SharingCode-RATE_LIMIT = 12--><!--Device-SharingCode-RATE_LIMIT = 12-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -283,10 +227,6 @@ CUSTOM_ERROR = 1000
 定制错误，小于该枚举值的错误码用于定义系统内部的标准错误码，大于该枚举值的错误码用于使用者自定义错误码。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SharingCode-CUSTOM_ERROR = 1000--><!--Device-SharingCode-CUSTOM_ERROR = 1000-End-->
 

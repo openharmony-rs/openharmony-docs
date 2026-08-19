@@ -14,10 +14,6 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -34,7 +30,22 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 ## 汇总
 
-- [PickerIndicatorStyle](arkts-arkui-pickerindicatorstyle-i.md)
-- [UIPickerComponentOptions](arkts-arkui-uipickercomponentoptions-i.md)
-- [OnUIPickerComponentCallback](arkts-arkui-onuipickercomponentcallback-t.md)
-- [PickerIndicatorType](arkts-arkui-pickerindicatortype-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [PickerIndicatorStyle](arkts-arkui-pickerindicatorstyle-i.md) | 选中项指示器样式的参数说明。 |
+| [UIPickerComponentOptions](arkts-arkui-uipickercomponentoptions-i.md) | UIPickerComponent容器的参数说明。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [OnUIPickerComponentCallback](arkts-arkui-onuipickercomponentcallback-t.md) | 定义[onChange](arkts-arkui-uipickercomponent-attribute.md#onchange)和 [onScrollStop](arkts-arkui-uipickercomponent-attribute.md#onscrollstop)事件的回调类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [PickerIndicatorType](arkts-arkui-pickerindicatortype-e.md) | 设置选中项指示器的类型。 |
+

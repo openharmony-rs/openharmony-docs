@@ -4,10 +4,6 @@ WLAN代理方式。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-enum ProxyMethod--><!--Device-wifiManager-enum ProxyMethod-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -23,10 +19,6 @@ METHOD_NONE = 0
 不使用代理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ProxyMethod-METHOD_NONE = 0--><!--Device-ProxyMethod-METHOD_NONE = 0-End-->
 
@@ -44,10 +36,6 @@ METHOD_AUTO = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ProxyMethod-METHOD_AUTO = 1--><!--Device-ProxyMethod-METHOD_AUTO = 1-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -63,10 +51,6 @@ METHOD_MANUAL = 2
 使用手动配置的代理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ProxyMethod-METHOD_MANUAL = 2--><!--Device-ProxyMethod-METHOD_MANUAL = 2-End-->
 

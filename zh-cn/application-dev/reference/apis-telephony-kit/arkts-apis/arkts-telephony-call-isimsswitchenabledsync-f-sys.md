@@ -1,5 +1,11 @@
 # isImsSwitchEnabledSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## isImsSwitchEnabledSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isImsSwitchEnabledSync(slotId: int): boolean
 判断Ims开关是否启用。调用此API返回结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function isImsSwitchEnabledSync(slotId: int): boolean--><!--Device-call-function isImsSwitchEnabledSync(slotId: int): boolean-End-->
 
@@ -43,7 +45,7 @@ function isImsSwitchEnabledSync(slotId: int): boolean
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let slotId: number = 0;

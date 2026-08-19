@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum LoopMode--><!--Device-avSession-enum LoopMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -21,10 +17,6 @@ LOOP_MODE_SEQUENCE = 0
 顺序播放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ LOOP_MODE_SINGLE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LoopMode-LOOP_MODE_SINGLE = 1--><!--Device-LoopMode-LOOP_MODE_SINGLE = 1-End-->
@@ -61,10 +49,6 @@ LOOP_MODE_LIST = 2
 表单循环。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ LOOP_MODE_SHUFFLE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LoopMode-LOOP_MODE_SHUFFLE = 3--><!--Device-LoopMode-LOOP_MODE_SHUFFLE = 3-End-->
@@ -101,10 +81,6 @@ LOOP_MODE_CUSTOM = 4
 自定义播放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

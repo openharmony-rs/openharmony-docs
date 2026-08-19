@@ -1,5 +1,11 @@
 # queryAppKeyState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screenLockFileManager } from '@kit.AbilityKit';
+```
+
 ## queryAppKeyState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryAppKeyState(dataType: DataType): KeyStatus
 以同步方法查询锁屏下指定类型敏感数据密钥的状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_MEDIA_DATA or ohos.permission.ACCESS_SCREEN_LOCK_ALL_DATA
 
@@ -45,7 +47,7 @@ function queryAppKeyState(dataType: DataType): KeyStatus
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 | [29300001](../errorcode-screenLockFileManager.md#29300001-入参错误) | Invalid DataType. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

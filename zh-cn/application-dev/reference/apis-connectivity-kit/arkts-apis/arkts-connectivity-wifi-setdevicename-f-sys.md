@@ -1,5 +1,14 @@
 # setDeviceName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## setDeviceName
 
 ```TypeScript
@@ -9,8 +18,6 @@ function setDeviceName(devName: string): boolean
 设置WLAN P2P设备名称。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -36,7 +43,7 @@ function setDeviceName(devName: string): boolean
 | --- | --- |
 | boolean | 操作成功时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

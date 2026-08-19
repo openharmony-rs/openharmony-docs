@@ -6,9 +6,7 @@ UnionEffectContainer属性，支持通用属性，支持宽高设置。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface UnionEffectContainerAttribute--><!--Device-unnamed-export declare interface UnionEffectContainerAttribute-End-->
 
@@ -25,9 +23,7 @@ attributeModifier(modifier: AttributeModifier<UnionEffectContainerAttribute>
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UnionEffectContainerAttribute-attributeModifier(modifier: AttributeModifier<UnionEffectContainerAttribute>        | AttributeModifier<CommonMethod> | undefined): this--><!--Device-UnionEffectContainerAttribute-attributeModifier(modifier: AttributeModifier<UnionEffectContainerAttribute>        | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -51,9 +47,7 @@ pointLight(light: PointLightStyle): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UnionEffectContainerAttribute-pointLight(light: PointLightStyle): this--><!--Device-UnionEffectContainerAttribute-pointLight(light: PointLightStyle): this-End-->
 
@@ -77,9 +71,7 @@ setUnionEffectContainerOptions(options?: UnionEffectContainerOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UnionEffectContainerAttribute-setUnionEffectContainerOptions(options?: UnionEffectContainerOptions): this--><!--Device-UnionEffectContainerAttribute-setUnionEffectContainerOptions(options?: UnionEffectContainerOptions): this-End-->
 
@@ -103,9 +95,7 @@ unionMode(mode: UnionMode | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UnionEffectContainerAttribute-unionMode(mode: UnionMode | undefined): this--><!--Device-UnionEffectContainerAttribute-unionMode(mode: UnionMode | undefined): this-End-->
 

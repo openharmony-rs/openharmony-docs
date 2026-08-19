@@ -1,5 +1,12 @@
 # p2pConnect
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## p2pConnect
 
 ```TypeScript
@@ -9,10 +16,6 @@ function p2pConnect(config: WifiP2PConfig): void
 使用指定配置发起与设备的P2P连接。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -36,7 +39,7 @@ function p2pConnect(config: WifiP2PConfig): void
 | [2801001](../errorcode-wifi.md#2801001-p2p模块异常) | Wi-Fi STA disabled. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

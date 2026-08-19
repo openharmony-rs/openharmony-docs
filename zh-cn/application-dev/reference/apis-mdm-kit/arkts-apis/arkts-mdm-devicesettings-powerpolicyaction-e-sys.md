@@ -4,10 +4,6 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-deviceSettings-enum PowerPolicyAction--><!--Device-deviceSettings-enum PowerPolicyAction-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -23,10 +19,6 @@ NONE = 0
 不执行动作。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ AUTO_SUSPEND = 1
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PowerPolicyAction-AUTO_SUSPEND = 1--><!--Device-PowerPolicyAction-AUTO_SUSPEND = 1-End-->
@@ -67,10 +55,6 @@ FORCE_SUSPEND = 2
 强制进入睡眠。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ HIBERNATE = 3
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PowerPolicyAction-HIBERNATE = 3--><!--Device-PowerPolicyAction-HIBERNATE = 3-End-->
@@ -111,10 +91,6 @@ SHUTDOWN = 4
 关机。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

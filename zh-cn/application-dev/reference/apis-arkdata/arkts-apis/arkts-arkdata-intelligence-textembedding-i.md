@@ -1,16 +1,18 @@
-# TextEmbedding
+# TextEmbedding(智慧数据平台)
 
-描述文本嵌入模型的文本嵌入函数。 下列接口都需先使用[intelligence.getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md#gettextembeddingmodel)获取到TextEmbedding实例，再通过此实例调用对 应接口。
+描述文本嵌入模型的文本嵌入函数。 下列接口都需先使用[intelligence.getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md)获取到TextEmbedding实例，再通过此实例调用对 应接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-intelligence-interface TextEmbedding--><!--Device-intelligence-interface TextEmbedding-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+## 导入模块
+
+```TypeScript
+import { intelligence } from '@kit.ArkData';
+```
 
 ## getEmbedding
 
@@ -21,10 +23,6 @@ getEmbedding(text: string): Promise<Array<double>>
 获取给定文本的嵌入向量。使用Promise异步回调。 该接口需先调用[loadModel](#loadmodel)加载嵌入模型，加载成功后调用getEmbedding。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TextEmbedding-getEmbedding(text: string): Promise<Array<double>>--><!--Device-TextEmbedding-getEmbedding(text: string): Promise<Array<double>>-End-->
 
@@ -50,7 +48,7 @@ getEmbedding(text: string): Promise<Array<double>>
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -101,10 +99,6 @@ getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TextEmbedding-getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>--><!--Device-TextEmbedding-getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
@@ -129,7 +123,7 @@ getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -180,10 +174,6 @@ loadModel(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TextEmbedding-loadModel(): Promise<void>--><!--Device-TextEmbedding-loadModel(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
@@ -201,7 +191,7 @@ loadModel(): Promise<void>
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -241,10 +231,6 @@ releaseModel(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TextEmbedding-releaseModel(): Promise<void>--><!--Device-TextEmbedding-releaseModel(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
@@ -262,7 +248,7 @@ releaseModel(): Promise<void>
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

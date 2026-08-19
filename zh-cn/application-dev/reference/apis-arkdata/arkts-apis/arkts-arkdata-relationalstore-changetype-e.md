@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-enum ChangeType--><!--Device-relationalStore-enum ChangeType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -21,10 +17,6 @@ DATA_CHANGE = 0
 表示是数据发生变更。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本10 - 11：ohos.permission.DISTRIBUTED_DATASYNC
@@ -42,10 +34,6 @@ ASSET_CHANGE = 1
 表示是资产附件发生了变更。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本10 - 11：ohos.permission.DISTRIBUTED_DATASYNC

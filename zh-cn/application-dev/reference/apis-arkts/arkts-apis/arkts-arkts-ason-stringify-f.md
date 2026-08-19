@@ -1,5 +1,11 @@
 # stringify
 
+## 导入模块
+
+```TypeScript
+import { ArkTSUtils } from '@kit.ArkTS';
+```
+
 ## stringify
 
 ```TypeScript
@@ -9,10 +15,6 @@ function stringify(value: Object | null | undefined): string
 该方法将ArkTS对象数据转换为JSON字符串，额外支持Map和Set相关类型。 从API 18开始参数修改为Object类型，API 18之前参数只支持ISendable类型 （除Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Uint8ClampedArray、Float32Array外）。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

@@ -47,6 +47,6 @@ int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的错误码。错误码定义详见{@link DeviceManager_ErrorCode}。<br>           返回{@link ERR_OK}，表示执行成功。<br>           返回{@link DM_ERR_FAILED}，表示函数执行失败。<br>           返回{@link DM_ERR_OBTAIN_SERVICE}，表示获取设备管理服务失败。<br>           返回{@link DM_ERR_OBTAIN_BUNDLE_NAME}，表示获取bundleName失败。<br>           返回{@link ERR_INVALID_PARAMETER}，表示参数localDeviceName是空指针或者localDeviceName是非空指针。 |
+| int32_t | 返回执行的错误码。错误码定义详见{@link DeviceManager_ErrorCode}。            返回{@link ERR_OK}，表示执行成功。            返回{@link DM_ERR_FAILED}，表示函数执行失败。            返回{@link DM_ERR_OBTAIN_SERVICE}，表示获取设备管理服务失败。            返回{@link DM_ERR_OBTAIN_BUNDLE_NAME}，表示获取bundleName失败。            返回{@link ERR_INVALID_PARAMETER}，表示参数localDeviceName是空指针或者localDeviceName是非空指针。 |
 
 

@@ -2,15 +2,19 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [I18NUtil](../../apis-na/arkts-apis/arkts-na-i18n-i18nutil-c.md#i18nutil)
+**替代接口：** [I18NUtil](../../apis-na/arkts-apis/arkts-na-i18n-i18nutil-c.md)
 
 <!--Device-i18n-export interface Util--><!--Device-i18n-export interface Util-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
 
 ## unitConvert
 
@@ -21,8 +25,6 @@ unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string,
 将fromUnit的单位转换为toUnit的单位，并根据区域与风格进行格式化。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

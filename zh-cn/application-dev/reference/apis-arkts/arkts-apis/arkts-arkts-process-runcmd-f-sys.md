@@ -1,5 +1,11 @@
 # runCmd（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## runCmd
 
 ```TypeScript
@@ -12,10 +18,6 @@ function runCmd(
 返回一个子进程对象，并 spawn 一个新的 ChildProcess 来运行命令。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-process-function runCmd(    command: string,    options?: ConditionType  ): ChildProcess--><!--Device-process-function runCmd(    command: string,    options?: ConditionType  ): ChildProcess-End-->
 

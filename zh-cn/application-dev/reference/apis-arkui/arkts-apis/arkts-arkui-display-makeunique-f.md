@@ -1,5 +1,11 @@
 # makeUnique
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## makeUnique
 
 ```TypeScript
@@ -9,10 +15,6 @@ function makeUnique(screenId: long): Promise<void>
 将屏幕设置为异源模式，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
@@ -42,7 +44,7 @@ function makeUnique(screenId: long): Promise<void>
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [RichText](arkts-na-richtext-richtext-f.md#richtext) | 定义RichText组件。 |
+| [RichText](arkts-na-richtext-richtext-f.md) | 定义RichText组件。 |
 
 ### 接口
 

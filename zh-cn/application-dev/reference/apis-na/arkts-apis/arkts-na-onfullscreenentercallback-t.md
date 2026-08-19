@@ -8,9 +8,7 @@ Web组件进入全屏时触发的回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void--><!--Device-unnamed-export type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void-End-->
 

@@ -1,5 +1,13 @@
 # createSubWindowAndBindParent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## createSubWindowAndBindParent
 
 ```TypeScript
@@ -10,10 +18,6 @@ function createSubWindowAndBindParent(name: string, parentId: int, ctx: BaseCont
 创建一个子窗，并绑定父窗。使用Promise异步回调。 子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。 建议在父窗销毁后主动销毁创建的子窗。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,7 +53,7 @@ function createSubWindowAndBindParent(name: string, parentId: int, ctx: BaseCont
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. Possible cause: 1. The parent window does not exist or has been destroyed. 2. Invalid window type. Only main windows are supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

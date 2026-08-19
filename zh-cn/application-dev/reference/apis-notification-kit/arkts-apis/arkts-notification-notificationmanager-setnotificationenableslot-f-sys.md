@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## setNotificationEnableSlot
@@ -21,10 +21,6 @@ function setNotificationEnableSlot(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    callback: AsyncCallback<void>  ): void--><!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    callback: AsyncCallback<void>  ): void-End-->
@@ -40,7 +36,7 @@ function setNotificationEnableSlot(
 | bundle | BundleOption | 是 | 应用的包信息。 |
 | type | SlotType | 是 | 指定渠道类型。 |
 | enable | boolean | 是 | 使能状态（true：使能，false：禁止）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置渠道使能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置渠道使能回调函数。 |
 
 **错误码：**
 
@@ -56,7 +52,7 @@ function setNotificationEnableSlot(
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -116,10 +112,6 @@ function setNotificationEnableSlot(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    isForceControl: boolean,    callback: AsyncCallback<void>,  ): void--><!--Device-notificationManager-function setNotificationEnableSlot(    bundle: BundleOption,    type: SlotType,    enable: boolean,    isForceControl: boolean,    callback: AsyncCallback<void>,  ): void-End-->
@@ -136,7 +128,7 @@ function setNotificationEnableSlot(
 | type | SlotType | 是 | 指定渠道类型。 |
 | enable | boolean | 是 | 使能状态（true：使能，false：禁止）。 |
 | isForceControl | boolean | 是 | 渠道开关是否受通知授权开关影响（false：受影响，true：不受影响）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置渠道使能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置渠道使能回调函数。 |
 
 **错误码：**
 
@@ -162,10 +154,6 @@ function setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable:
 设置指定应用的指定渠道类型的使能状态。使用promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -204,7 +192,7 @@ function setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable:
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## setDoNotDisturbDate
@@ -15,10 +15,6 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 设置免打扰时间。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -33,7 +29,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | date | DoNotDisturbDate | 是 | 免打扰时间选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
 **错误码：**
 
@@ -48,7 +44,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -105,10 +101,6 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>--><!--Device-notificationManager-function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>-End-->
@@ -142,7 +134,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -190,10 +182,6 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: Asyn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: AsyncCallback<void>): void-End-->
@@ -208,7 +196,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: Asyn
 | --- | --- | --- | --- |
 | date | DoNotDisturbDate | 是 | 免打扰时间选项。 |
 | userId | int | 是 | 设置免打扰时间的用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
 **错误码：**
 
@@ -224,7 +212,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: Asyn
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -287,10 +275,6 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise<void>--><!--Device-notificationManager-function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise<void>-End-->
@@ -326,7 +310,7 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise<void>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

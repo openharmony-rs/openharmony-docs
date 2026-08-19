@@ -1,5 +1,10 @@
 # fdatasyncSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## fdatasyncSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function fdatasyncSync(fd: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [fdatasyncSync](arkts-corefile-file-fs-fdatasyncsync-f.md#fdatasyncsync)
+**替代接口：** [fdatasyncSync](arkts-corefile-file-fs-fdatasyncsync-f.md)
 
 <!--Device-unnamed-declare function fdatasyncSync(fd: number): void--><!--Device-unnamed-declare function fdatasyncSync(fd: number): void-End-->
 

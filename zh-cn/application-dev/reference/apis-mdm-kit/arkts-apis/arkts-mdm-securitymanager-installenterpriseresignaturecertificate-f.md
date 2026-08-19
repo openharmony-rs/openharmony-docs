@@ -1,18 +1,20 @@
 # installEnterpriseReSignatureCertificate
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## installEnterpriseReSignatureCertificate
 
 ```TypeScript
 function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: int, accountId: int): void
 ```
 
-安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用 [uninstallEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-uninstallenterpriseresignaturecertificate-f.md#uninstallenterpriseresignaturecertificate)进行卸载。 在MDM应用卸载或admin取消激活场景下，已安装的证书会保留在设备上，不会被移除。 在企业应用分发场景下，开发者可以使用重签名证书对企业应用进行二次签名，签名完成后将应用包提供给企业管理员。企业管理员可以将重签名后的应用安装在已部署重签名证书的企业设备上。 企业应用重签名证书使用流程： 1.通过MDM应用安装企业应用重签名证书； 2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名； 3.安装重签名应用（可以通过企业私有应用市场安装）； 4.运行应用。 规格约束： 1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行； 2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用； 3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统 能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
+安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用 [uninstallEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-uninstallenterpriseresignaturecertificate-f.md)进行卸载。 在MDM应用卸载或admin取消激活场景下，已安装的证书会保留在设备上，不会被移除。 在企业应用分发场景下，开发者可以使用重签名证书对企业应用进行二次签名，签名完成后将应用包提供给企业管理员。企业管理员可以将重签名后的应用安装在已部署重签名证书的企业设备上。 企业应用重签名证书使用流程： 1.通过MDM应用安装企业应用重签名证书； 2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名； 3.安装重签名应用（可以通过企业私有应用市场安装）； 4.运行应用。 规格约束： 1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行； 2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用； 3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统 能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -29,7 +31,7 @@ function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: 
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | certificateAlias | string | 是 | 证书别名，必须以'.cer'结尾。 |
 | fd | int | 是 | 表示已存在的重签名证书文件描述符，证书文件需要放置于[应用沙箱目录](../../../file-management/app-sandbox-directory.md)。 |
-| accountId | int | 是 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。*@ohos.account.osAccount** to obtain the user ID. |
+| accountId | int | 是 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。*@ohos.account.osAccount** to obtain the user ID. |
 
 **错误码：**
 
@@ -42,7 +44,7 @@ function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: 
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { securityManager } from '@kit.MDMKit';

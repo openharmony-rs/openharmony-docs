@@ -1,5 +1,11 @@
 # offSystemCommonEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## offSystemCommonEvent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offSystemCommonEvent(callback?: EventProcess): void
 取消注册通用事件回调监听
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

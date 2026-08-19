@@ -1,5 +1,11 @@
 # onContinueStateChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+```
+
 ## onContinueStateChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onContinueStateChange(callback: Callback<ContinueCallbackInfo>): void
 Register continuable info listener to ams.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -28,7 +30,7 @@ Register continuable info listener to ams.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ContinueCallbackInfo](arkts-ability-distributedmissionmanager-continuecallbackinfo-i-sys.md)&gt; | 是 | The callback of continueStateChange. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ContinueCallbackInfo](arkts-ability-distributedmissionmanager-continuecallbackinfo-i-sys.md)&gt; | 是 | The callback of continueStateChange. |
 
 **错误码：**
 

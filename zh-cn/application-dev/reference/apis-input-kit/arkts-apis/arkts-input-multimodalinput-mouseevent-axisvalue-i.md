@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare interface AxisValue--><!--Device-unnamed-export declare interface AxisValue-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## 导入模块
+
+```TypeScript
+import { Action as MouseAction, Axis, AxisValue, Button, MouseEvent, ToolType as MouseToolType } from '@kit.InputKit';
+```
 
 ## axis
 
@@ -23,10 +25,6 @@ axis: Axis
 **类型：** [Axis](arkts-input-multimodalinput-mouseevent-axis-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AxisValue-axis: Axis--><!--Device-AxisValue-axis: Axis-End-->
 
@@ -43,10 +41,6 @@ value: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AxisValue-value: int--><!--Device-AxisValue-value: int-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum FingerprintAction--><!--Device-unnamed-export declare enum FingerprintAction-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -23,10 +19,6 @@ DOWN = 0
 按下事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FingerprintAction-DOWN = 0--><!--Device-FingerprintAction-DOWN = 0-End-->
 
@@ -44,10 +36,6 @@ UP = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FingerprintAction-UP = 1--><!--Device-FingerprintAction-UP = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -63,10 +51,6 @@ SLIDE = 2
 滑动事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FingerprintAction-SLIDE = 2--><!--Device-FingerprintAction-SLIDE = 2-End-->
 
@@ -84,10 +68,6 @@ RETOUCH = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FingerprintAction-RETOUCH = 3--><!--Device-FingerprintAction-RETOUCH = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -103,10 +83,6 @@ CLICK = 4
 双触事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FingerprintAction-CLICK = 4--><!--Device-FingerprintAction-CLICK = 4-End-->
 

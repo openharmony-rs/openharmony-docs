@@ -219,7 +219,7 @@ Maybe wrong password.
 
 **错误信息**
 
-The certificate is untrusted.
+Untrusted certificate.
 
 **错误描述**
 
@@ -267,13 +267,13 @@ Unsupported critical extension.
 
 **处理步骤**
 
-可以通过设置[ignoreErrs]参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
+可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
 
 ## 19030012 主机名不匹配
 
 **错误信息**
 
-Hostname mismatch.
+Hostname mismatch in the certificate.
 
 **错误描述**
 
@@ -285,13 +285,13 @@ Hostname mismatch.
 
 **处理步骤**
 
-检查[hostnames]参数是否正确。若正确，请不要信任该证书。
+检查[hostnames](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030013 邮箱地址不匹配
 
 **错误信息**
 
-Email address mismatch.
+Email address mismatch in the certificate.
 
 **错误描述**
 
@@ -303,13 +303,13 @@ Email address mismatch.
 
 **处理步骤**
 
-检查[emailAddresses]参数是否正确。若正确，请不要信任该证书。
+检查[emailAddresses](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030014 密钥用途不匹配
 
 **错误信息**
 
-Key usage mismatch.
+Key usage mismatch in the certificate.
 
 **错误描述**
 
@@ -321,13 +321,13 @@ Key usage mismatch.
 
 **处理步骤**
 
-检查[keyUsage]参数是否正确。若正确，请不要信任该证书。
+检查[keyUsage](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030015 无法获取证书吊销列表
 
 **错误信息**
 
-CRL not found.
+Failed to obtain the certificate revocation list.
 
 **错误描述**
 
@@ -344,13 +344,13 @@ CRL not found.
 1. 检查是否提供了CRL数据。
 2. 若开启了在线下载CRL，检查证书是否包含CDP扩展。
 3. 若开启了在线下载CRL，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置[ignoreErrs]参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
 ## 19030016 证书吊销列表尚未生效
 
 **错误信息**
 
-CRL not yet valid.
+The certificate revocation list has not taken effect.
 
 **错误描述**
 
@@ -362,15 +362,15 @@ CRL的生效时间晚于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置[ignoreErrs]参数忽略该错误。
-2. 若未配置[date]参数，请检查设备时间是否正确。
-3. 若配置了[date]参数，请检查该参数是否合理。
+1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
 ## 19030017 证书吊销列表已过期
 
 **错误信息**
 
-CRL has expired.
+The certificate revocation list has expired.
 
 **错误描述**
 
@@ -382,15 +382,15 @@ CRL的失效时间早于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的失效时间早于当前验证时间，可以通过设置[ignoreErrs]参数忽略该错误。
-2. 若未配置[date]参数，请检查设备时间是否正确。
-3. 若配置了[date]参数，请检查该参数是否合理。
+1. 若允许CRL的失效时间早于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
 ## 19030018 证书吊销列表签名验证失败
 
 **错误信息**
 
-CRL signature verification failed.
+Failed to verify the signature of the certificate revocation list.
 
 **错误描述**
 
@@ -408,7 +408,7 @@ CRL的签名验证失败，可能是签名错误或颁发者证书不匹配。
 
 **错误信息**
 
-CRL issuer not found.
+Failed to find the issuer of the certificate revocation list.
 
 **错误描述**
 
@@ -426,7 +426,7 @@ CRL issuer not found.
 
 **错误信息**
 
-OCSP response not found.
+Failed to obtain the OCSP response.
 
 **错误描述**
 
@@ -443,13 +443,13 @@ OCSP response not found.
 1. 检查是否提供了OCSP响应数据。
 2. 若开启了在线OCSP检查，检查证书是否包含OCSP URL。
 3. 若开启了在线OCSP检查，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置[ignoreErrs]参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
 ## 19030021 无效的OCSP响应
 
 **错误信息**
 
-OCSP response invalid.
+Invalid OCSP response.
 
 **错误描述**
 
@@ -467,7 +467,7 @@ OCSP响应数据格式错误、无法解析或已过期。
 
 **错误信息**
 
-OCSP signature verification failed.
+Failed to verify the OCSP signature. 
 
 **错误描述**
 
@@ -485,7 +485,7 @@ OCSP响应的签名验证失败，可能是签名错误或签名者证书不匹�
 
 **错误信息**
 
-OCSP certificate status unknown.
+Unknown OCSP certificate status.
 
 **错误描述**
 
@@ -503,7 +503,7 @@ OCSP服务器无法确定证书的状态。
 
 **错误信息**
 
-Network timeout.
+Network connection timed out.
 
 **错误描述**
 

@@ -4,10 +4,6 @@ ASR whisper detection mode.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AsrWhisperDetectionMode--><!--Device-audio-enum AsrWhisperDetectionMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -24,10 +20,6 @@ No operation.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AsrWhisperDetectionMode-BYPASS = 0--><!--Device-AsrWhisperDetectionMode-BYPASS = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -43,10 +35,6 @@ STANDARD = 1
 Use standard whisper detection model.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrWhisperDetectionMode-STANDARD = 1--><!--Device-AsrWhisperDetectionMode-STANDARD = 1-End-->
 

@@ -4,13 +4,16 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-unnamed-export interface FileWriteTextOption--><!--Device-unnamed-export interface FileWriteTextOption-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
+
+## 导入模块
+
+```TypeScript
+```
 
 ## append
 
@@ -23,8 +26,6 @@ append?: boolean
 **类型：** boolean
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -44,8 +45,6 @@ complete?: () => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileWriteTextOption-complete?: () => void--><!--Device-FileWriteTextOption-complete?: () => void-End-->
@@ -63,8 +62,6 @@ encoding?: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -84,8 +81,6 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileWriteTextOption-fail?: (data: string, code: number) => void--><!--Device-FileWriteTextOption-fail?: (data: string, code: number) => void-End-->
@@ -103,8 +98,6 @@ success?: () => void
 **类型：** () =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -124,8 +117,6 @@ text: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileWriteTextOption-text: string--><!--Device-FileWriteTextOption-text: string-End-->
@@ -143,8 +134,6 @@ uri: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 

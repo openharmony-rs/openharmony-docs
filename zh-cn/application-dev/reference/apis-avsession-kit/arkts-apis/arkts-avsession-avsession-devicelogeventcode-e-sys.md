@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum DeviceLogEventCode--><!--Device-avSession-enum DeviceLogEventCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -24,10 +20,6 @@ DEVICE_LOG_FULL = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceLogEventCode-DEVICE_LOG_FULL = 1--><!--Device-DeviceLogEventCode-DEVICE_LOG_FULL = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -43,10 +35,6 @@ DEVICE_LOG_EXCEPTION = 2
 日志写入异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceLogEventCode-DEVICE_LOG_EXCEPTION = 2--><!--Device-DeviceLogEventCode-DEVICE_LOG_EXCEPTION = 2-End-->
 

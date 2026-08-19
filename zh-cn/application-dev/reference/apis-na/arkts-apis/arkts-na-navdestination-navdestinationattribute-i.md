@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface NavDestinationAttribute--><!--Device-unnamed-export declare interface NavDestinationAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<NavDestinationAttribute> | Attribu
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-attributeModifier(modifier: AttributeModifier<NavDestinationAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-NavDestinationAttribute-attributeModifier(modifier: AttributeModifier<NavDestinationAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier | undefined, a
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier | undefined, accessibilityText?: ResourceStr | undefined): this--><!--Device-NavDestinationAttribute-backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier | undefined, accessibilityText?: ResourceStr | undefined): this-End-->
 
@@ -75,9 +69,7 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo> | undefined): this--><!--Device-NavDestinationAttribute-bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo> | undefined): this-End-->
 
@@ -101,9 +93,7 @@ bindToScrollable(scrollers: Array<Scroller> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-bindToScrollable(scrollers: Array<Scroller> | undefined): this--><!--Device-NavDestinationAttribute-bindToScrollable(scrollers: Array<Scroller> | undefined): this-End-->
 
@@ -127,9 +117,7 @@ customTransition(delegate: NavDestinationTransitionDelegate | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-customTransition(delegate: NavDestinationTransitionDelegate | undefined): this--><!--Device-NavDestinationAttribute-customTransition(delegate: NavDestinationTransitionDelegate | undefined): this-End-->
 
@@ -153,9 +141,7 @@ enableNavigationIndicator(enabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-enableNavigationIndicator(enabled: boolean | undefined): this--><!--Device-NavDestinationAttribute-enableNavigationIndicator(enabled: boolean | undefined): this-End-->
 
@@ -179,9 +165,7 @@ enableStatusBar(enabled: boolean | undefined, animated?: boolean | undefined): t
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-enableStatusBar(enabled: boolean | undefined, animated?: boolean | undefined): this--><!--Device-NavDestinationAttribute-enableStatusBar(enabled: boolean | undefined, animated?: boolean | undefined): this-End-->
 
@@ -206,9 +190,7 @@ fullScreenOverlay(fullScreenOverlay: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-fullScreenOverlay(fullScreenOverlay: boolean | undefined): this--><!--Device-NavDestinationAttribute-fullScreenOverlay(fullScreenOverlay: boolean | undefined): this-End-->
 
@@ -232,9 +214,7 @@ hideBackButton(hide: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-hideBackButton(hide: boolean | undefined): this--><!--Device-NavDestinationAttribute-hideBackButton(hide: boolean | undefined): this-End-->
 
@@ -258,9 +238,7 @@ hideTitleBar(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-hideTitleBar(value: boolean | undefined): this--><!--Device-NavDestinationAttribute-hideTitleBar(value: boolean | undefined): this-End-->
 
@@ -284,9 +262,7 @@ hideTitleBar(hide: boolean | undefined, animated: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-hideTitleBar(hide: boolean | undefined, animated: boolean | undefined): this--><!--Device-NavDestinationAttribute-hideTitleBar(hide: boolean | undefined, animated: boolean | undefined): this-End-->
 
@@ -311,9 +287,7 @@ hideToolBar(hide: boolean | undefined, animated?: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-hideToolBar(hide: boolean | undefined, animated?: boolean | undefined): this--><!--Device-NavDestinationAttribute-hideToolBar(hide: boolean | undefined, animated?: boolean | undefined): this-End-->
 
@@ -338,9 +312,7 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType> | undefined, edges?: Arra
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType> | undefined, edges?: Array<LayoutSafeAreaEdge> | undefined): this--><!--Device-NavDestinationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType> | undefined, edges?: Array<LayoutSafeAreaEdge> | undefined): this-End-->
 
@@ -365,9 +337,7 @@ menus(items: Array<NavigationMenuItem> | CustomBuilder | undefined, options?: Na
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder | undefined, options?: NavigationMenuOptions | undefined): this--><!--Device-NavDestinationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder | undefined, options?: NavigationMenuOptions | undefined): this-End-->
 
@@ -392,9 +362,7 @@ mode(value: NavDestinationMode | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-mode(value: NavDestinationMode | undefined): this--><!--Device-NavDestinationAttribute-mode(value: NavDestinationMode | undefined): this-End-->
 
@@ -418,9 +386,7 @@ onActive(callback: Callback<NavDestinationActiveReason> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onActive(callback: Callback<NavDestinationActiveReason> | undefined): this--><!--Device-NavDestinationAttribute-onActive(callback: Callback<NavDestinationActiveReason> | undefined): this-End-->
 
@@ -444,9 +410,7 @@ onBackPressed(callback: (() => boolean) | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onBackPressed(callback: (() => boolean) | undefined): this--><!--Device-NavDestinationAttribute-onBackPressed(callback: (() => boolean) | undefined): this-End-->
 
@@ -470,9 +434,7 @@ onHidden(callback: Callback<VisibilityChangeReason> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onHidden(callback: Callback<VisibilityChangeReason> | undefined): this--><!--Device-NavDestinationAttribute-onHidden(callback: Callback<VisibilityChangeReason> | undefined): this-End-->
 
@@ -496,9 +458,7 @@ onInactive(callback: Callback<NavDestinationActiveReason> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onInactive(callback: Callback<NavDestinationActiveReason> | undefined): this--><!--Device-NavDestinationAttribute-onInactive(callback: Callback<NavDestinationActiveReason> | undefined): this-End-->
 
@@ -522,9 +482,7 @@ onNewParam(callback: Callback<Object | null | undefined> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onNewParam(callback: Callback<Object | null | undefined> | undefined): this--><!--Device-NavDestinationAttribute-onNewParam(callback: Callback<Object | null | undefined> | undefined): this-End-->
 
@@ -548,9 +506,7 @@ onReady(callback: Callback<NavDestinationContext> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onReady(callback: Callback<NavDestinationContext> | undefined): this--><!--Device-NavDestinationAttribute-onReady(callback: Callback<NavDestinationContext> | undefined): this-End-->
 
@@ -574,9 +530,7 @@ onResult(callback: Callback<Object | null | undefined> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onResult(callback: Callback<Object | null | undefined> | undefined): this--><!--Device-NavDestinationAttribute-onResult(callback: Callback<Object | null | undefined> | undefined): this-End-->
 
@@ -600,9 +554,7 @@ onShown(callback: Callback<VisibilityChangeReason> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onShown(callback: Callback<VisibilityChangeReason> | undefined): this--><!--Device-NavDestinationAttribute-onShown(callback: Callback<VisibilityChangeReason> | undefined): this-End-->
 
@@ -626,9 +578,7 @@ onWillAppear(callback: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onWillAppear(callback: VoidCallback | undefined): this--><!--Device-NavDestinationAttribute-onWillAppear(callback: VoidCallback | undefined): this-End-->
 
@@ -652,9 +602,7 @@ onWillDisappear(callback: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onWillDisappear(callback: VoidCallback | undefined): this--><!--Device-NavDestinationAttribute-onWillDisappear(callback: VoidCallback | undefined): this-End-->
 
@@ -678,9 +626,7 @@ onWillHide(callback: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onWillHide(callback: VoidCallback | undefined): this--><!--Device-NavDestinationAttribute-onWillHide(callback: VoidCallback | undefined): this-End-->
 
@@ -704,9 +650,7 @@ onWillShow(callback: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-onWillShow(callback: VoidCallback | undefined): this--><!--Device-NavDestinationAttribute-onWillShow(callback: VoidCallback | undefined): this-End-->
 
@@ -730,9 +674,7 @@ preferredOrientation(orientation: Orientation | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-preferredOrientation(orientation: Orientation | undefined): this--><!--Device-NavDestinationAttribute-preferredOrientation(orientation: Orientation | undefined): this-End-->
 
@@ -756,9 +698,7 @@ recoverable(recoverable: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-recoverable(recoverable: boolean | undefined): this--><!--Device-NavDestinationAttribute-recoverable(recoverable: boolean | undefined): this-End-->
 
@@ -782,9 +722,7 @@ setNavDestinationOptions(moduleInfo?: NavDestinationModuleInfo): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-setNavDestinationOptions(moduleInfo?: NavDestinationModuleInfo): this--><!--Device-NavDestinationAttribute-setNavDestinationOptions(moduleInfo?: NavDestinationModuleInfo): this-End-->
 
@@ -808,9 +746,7 @@ systemBarStyle(style: SystemBarStyle | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-systemBarStyle(style: SystemBarStyle | undefined): this--><!--Device-NavDestinationAttribute-systemBarStyle(style: SystemBarStyle | undefined): this-End-->
 
@@ -834,9 +770,7 @@ systemTransition(type: NavigationSystemTransitionType | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-systemTransition(type: NavigationSystemTransitionType | undefined): this--><!--Device-NavDestinationAttribute-systemTransition(type: NavigationSystemTransitionType | undefined): this-End-->
 
@@ -860,9 +794,7 @@ title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestination
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource | undefined, options?: NavigationTitleOptions | undefined): this--><!--Device-NavDestinationAttribute-title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource | undefined, options?: NavigationTitleOptions | undefined): this-End-->
 
@@ -887,9 +819,7 @@ toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder | undefine
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-NavDestinationAttribute-toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder | undefined, options?: NavigationToolbarOptions | undefined): this--><!--Device-NavDestinationAttribute-toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder | undefined, options?: NavigationToolbarOptions | undefined): this-End-->
 
@@ -916,9 +846,7 @@ default
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

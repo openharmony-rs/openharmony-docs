@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class InputMethodExtensionAbility--><!--Device-unnamed-declare class InputMethodExtensionAbility-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { InputMethodExtensionAbility } from '@kit.IMEKit';
+```
 
 ## onCreate
 
@@ -21,10 +23,6 @@ onCreate(want: Want): void
 生命周期回调，在拉起输入法Extension时调用，用于初始化输入法应用。 - **含义/功能**：系统拉起输入法ExtensionAbility时触发的初始化回调。开发者在该回调中完成输入法应用的所有关键初始化工作，包括获取核心能力对象、创建输入法面板、订阅事件等。 - **使用场景**：当系统根据module.json5配置拉起输入法ExtensionAbility时自动触发。这是输入法应用初始化的唯一入口，所有关键对象的获取和面板创建必须在此回调中完成。 - **使用后效果**：回调执行完成后，输入法应用进入正常运行状态。系统将随后触发键盘显示/隐藏请求、客户端绑定等事件，输入法应用需在此之前完成初始化（如已订阅`on('inputStart')`事件、已创建面板等），否则后续事件 可能无法正常响应。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +36,7 @@ onCreate(want: Want): void
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前Extension相关的Want类型信息，包括Ability名称、bundle名称等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { InputMethodExtensionAbility, InputMethodAbility, KeyboardDelegate, PanelInfo, PanelType, PanelFlag, inputMethodEngine } from '@kit.IMEKit';
@@ -85,17 +83,13 @@ onDestroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodExtensionAbility-onDestroy(): void--><!--Device-InputMethodExtensionAbility-onDestroy(): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## 示例
+**示例**
 
 ```TypeScript
 import { InputMethodExtensionAbility } from '@kit.IMEKit';
@@ -119,10 +113,6 @@ InputMethodExtensionAbility的上下文环境，继承于ExtensionContext。
 **类型：** [InputMethodExtensionContext](arkts-ime-inputmethodextensioncontext-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

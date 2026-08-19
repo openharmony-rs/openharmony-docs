@@ -1,16 +1,17 @@
-# DismissDialogAction
+# DismissDialogAction(CustomDialog)
 
 Dialog关闭的信息。
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface DismissDialogAction--><!--Device-unnamed-declare interface DismissDialogAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## dismiss
 
@@ -23,10 +24,6 @@ Dialog关闭回调函数。开发者需要退出时调用，不需要退出时�
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +44,6 @@ Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog�
 **类型：** DismissReason
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,11 @@
 # resourceToSendableResource
 
+## 导入模块
+
+```TypeScript
+import { sendableResourceManager } from '@kit.LocalizationKit';
+```
+
 ## resourceToSendableResource
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function resourceToSendableResource(resource: Resource): SendableResource
 将Resource对象转换为可用于跨线程传输的SendableResource对象。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +40,7 @@ export function resourceToSendableResource(resource: Resource): SendableResource
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json

@@ -4,10 +4,6 @@ Marquee的动态帧率场景的类型枚举
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export const enum MarqueeDynamicSyncSceneType--><!--Device-unnamed-export const enum MarqueeDynamicSyncSceneType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ ANIMATION = 1
 Scene type is ANIMATION.
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,4 +1,4 @@
-# CAPI<!--c-localization-kit-->
+# C API<!--c-localization-kit-->
 
 - 头文件
     - [errorcode.h](capi-errorcode-h.md)

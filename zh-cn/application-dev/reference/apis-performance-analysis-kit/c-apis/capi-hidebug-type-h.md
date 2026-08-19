@@ -202,7 +202,7 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 | 参数项 | 描述 |
 | -- | -- |
-| (HiDebug_ErrorCode errorCode | 返回结果码，参考{@link HiDebug_ErrorCode}。 |
+| HiDebug_ErrorCode errorCode | 返回结果码，参考{@link HiDebug_ErrorCode}。 |
 | const char\* filePath | 返回采集的trace文件，失败时可能是空指针。 |
 
 ### OH_HiDebug_ProfilingCallback()
@@ -221,6 +221,6 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_HiDebug_ProfilingResult\* result | 资源采集回调函数的参数。 |
+| [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)\* result | 资源采集回调函数的参数。 |
 
 

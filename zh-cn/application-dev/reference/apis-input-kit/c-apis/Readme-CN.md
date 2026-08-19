@@ -1,4 +1,4 @@
-# CAPI<!--c-input-kit-->
+# C API<!--c-input-kit-->
 
 - 头文件
     - [oh_pointer_style.h](capi-oh-pointer-style-h.md)

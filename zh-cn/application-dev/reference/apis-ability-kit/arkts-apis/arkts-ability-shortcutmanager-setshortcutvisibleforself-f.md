@@ -1,5 +1,11 @@
 # setShortcutVisibleForSelf
 
+## 导入模块
+
+```TypeScript
+import { shortcutManager } from '@kit.AbilityKit';
+```
+
 ## setShortcutVisibleForSelf
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>--><!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>-End-->
 
@@ -37,7 +39,7 @@ function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>
 | --- | --- |
 | [17700070](../errorcode-bundle.md#17700070-指定的快捷方式id不合法) | The specified shortcut id is not exist. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

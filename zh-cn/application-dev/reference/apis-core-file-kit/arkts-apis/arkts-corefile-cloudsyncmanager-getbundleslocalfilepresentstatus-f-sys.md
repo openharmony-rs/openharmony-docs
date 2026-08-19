@@ -1,5 +1,11 @@
 # getBundlesLocalFilePresentStatus（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## getBundlesLocalFilePresentStatus
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundlesLocalFilePresentStatus(bundleNames: Array<string>): Promise<A
 对接入云盘的应用，检测其在云盘存储空间内是否存在未上云文件，支持同时查询多个应用。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -45,7 +47,7 @@ function getBundlesLocalFilePresentStatus(bundleNames: Array<string>): Promise<A
 | 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900010 | Try again. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,14 +1,12 @@
 # PinchGestureEvent
 
-继承自[BaseGestureEvent](arkts-arkui-gesture-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。
+继承自[BaseGestureEvent](arkts-arkui-gesture-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。
 
-**继承/实现关系：** PinchGestureEvent extends [BaseGestureEvent](arkts-arkui-gesture-basegestureevent-i.md#basegestureevent)
+**继承/实现关系：** PinchGestureEvent extends [BaseGestureEvent](arkts-arkui-gesture-basegestureevent-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export interface PinchGestureEvent--><!--Device-unnamed-export interface PinchGestureEvent-End-->
 
@@ -26,9 +24,7 @@ pinchCenterX: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,9 +44,7 @@ pinchCenterY: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,9 +64,7 @@ scale: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

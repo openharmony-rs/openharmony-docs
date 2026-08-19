@@ -10,8 +10,6 @@ const MAX_BATCH_SIZE = 128
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** MAX_BATCH_SIZE
@@ -29,8 +27,6 @@ const MAX_KEY_LENGTH = 1024
 数据库中Key允许的最大长度，单位字节。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -50,8 +46,6 @@ const MAX_KEY_LENGTH_DEVICE = 896
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** MAX_KEY_LENGTH_DEVICEs
@@ -69,8 +63,6 @@ const MAX_QUERY_LENGTH = 512000
 最大查询长度，单位字节。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -90,8 +82,6 @@ const MAX_STORE_ID_LENGTH = 128
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** MAX_STORE_ID_LENGTH
@@ -109,8 +99,6 @@ const MAX_VALUE_LENGTH = 4194303
 数据库中Value允许的最大长度，单位字节。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

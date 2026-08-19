@@ -1,5 +1,11 @@
 # updateEnabledBusinessIds（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
+```
+
 ## updateEnabledBusinessIds
 
 ```TypeScript
@@ -9,10 +15,6 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: in
 更新指定伴随设备模板支持的业务范围。用于修改已注册模板的启用业务ID列表，从而控制该模板可参与的业务场景。使用Promise异步回调。 生效机制：更新立即生效，下一次认证按新的业务范围判断，无需重启应用或重新认证。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -47,7 +49,7 @@ function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: in
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

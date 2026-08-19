@@ -4,13 +4,15 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-text-interface TextLayoutResult--><!--Device-text-interface TextLayoutResult-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
 
 ## correctRect
 
@@ -23,10 +25,6 @@ correctRect: TextRectSize
 **类型：** [TextRectSize](arkts-arkgraphics2d-text-textrectsize-i.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +45,6 @@ fitStrRange: Array<Range>
 **类型：** Array&lt;Range&gt;
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum DeviceFlag--><!--Device-audio-enum DeviceFlag-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -21,10 +17,6 @@ OUTPUT_DEVICES_FLAG = 1
 输出设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1--><!--Device-DeviceFlag-OUTPUT_DEVICES_FLAG = 1-End-->
 
@@ -40,10 +32,6 @@ INPUT_DEVICES_FLAG = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceFlag-INPUT_DEVICES_FLAG = 2--><!--Device-DeviceFlag-INPUT_DEVICES_FLAG = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -57,10 +45,6 @@ ALL_DEVICES_FLAG = 3
 所有设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3--><!--Device-DeviceFlag-ALL_DEVICES_FLAG = 3-End-->
 

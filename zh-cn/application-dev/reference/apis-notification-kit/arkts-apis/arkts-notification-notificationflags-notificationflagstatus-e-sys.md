@@ -1,12 +1,8 @@
-# NotificationFlagStatus（系统接口）
+# NotificationFlagStatus(Some states and flags for notifications)（系统接口）
 
 描述通知标志状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum NotificationFlagStatus--><!--Device-unnamed-export enum NotificationFlagStatus-End-->
 
@@ -24,10 +20,6 @@ TYPE_NONE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationFlagStatus-TYPE_NONE = 0--><!--Device-NotificationFlagStatus-TYPE_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -44,10 +36,6 @@ TYPE_OPEN = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationFlagStatus-TYPE_OPEN = 1--><!--Device-NotificationFlagStatus-TYPE_OPEN = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -63,10 +51,6 @@ TYPE_CLOSE = 2
 通知标志关闭。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationFlagStatus-TYPE_CLOSE = 2--><!--Device-NotificationFlagStatus-TYPE_CLOSE = 2-End-->
 

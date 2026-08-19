@@ -4,15 +4,20 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [Button](../../apis-na/arkts-apis/arkts-na-promptaction-button-i.md#button)
+**替代接口：** [Button](../../apis-na/arkts-apis/arkts-na-promptaction-button-i.md)
 
 <!--Device-prompt-interface Button--><!--Device-prompt-interface Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { prompt } from '@kit.ArkUI';
+import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+```
 
 ## color
 
@@ -25,8 +30,6 @@ color: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -47,8 +50,6 @@ text: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

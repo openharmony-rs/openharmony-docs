@@ -4,13 +4,17 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-distributedData-interface UserInfo--><!--Device-distributedData-interface UserInfo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## userId
 
@@ -23,8 +27,6 @@ userId?: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -43,8 +45,6 @@ userType?: UserType
 **类型：** [UserType](arkts-arkdata-distributeddata-usertype-e.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

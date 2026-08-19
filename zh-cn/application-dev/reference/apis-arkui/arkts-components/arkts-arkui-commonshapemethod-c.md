@@ -6,13 +6,14 @@ CommonShapeMethod
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class CommonShapeMethod--><!--Device-unnamed-declare class CommonShapeMethod-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## antiAlias
 
@@ -23,10 +24,6 @@ antiAlias(value: boolean): T
 Indicates whether to enable anti-aliasing
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -40,7 +37,7 @@ Indicates whether to enable anti-aliasing
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | @returns { T } |
+| value | boolean | 是 |  |
 
 **返回值：**
 
@@ -58,10 +55,6 @@ Fill color.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -74,7 +67,7 @@ Fill color.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | @returns { T } |
+| value | ResourceColor | 是 |  |
 
 **返回值：**
 
@@ -92,10 +85,6 @@ fill Opacity
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -108,7 +97,7 @@ fill Opacity
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| string \| Resource | 是 | @returns { T } |
+| value | number \| string \| Resource | 是 |  |
 
 **返回值：**
 
@@ -126,10 +115,6 @@ border Color
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -142,7 +127,7 @@ border Color
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | ResourceColor | 是 | @returns { T } |
+| value | ResourceColor | 是 |  |
 
 **返回值：**
 
@@ -160,10 +145,6 @@ Sets the gap for the border.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -176,7 +157,7 @@ Sets the gap for the border.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | 是 | @returns { T } |
+| value | Array&lt;any&gt; | 是 |  |
 
 **返回值：**
 
@@ -194,10 +175,6 @@ Offset from the start point of the border drawing.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -210,7 +187,7 @@ Offset from the start point of the border drawing.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| string | 是 | @returns { T } |
+| value | number \| string | 是 |  |
 
 **返回值：**
 
@@ -228,10 +205,6 @@ Path endpoint drawing style.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -244,7 +217,7 @@ Path endpoint drawing style.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | LineCapStyle | 是 | @returns { T } |
+| value | LineCapStyle | 是 |  |
 
 **返回值：**
 
@@ -262,10 +235,6 @@ Border corner drawing style.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -278,7 +247,7 @@ Border corner drawing style.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | LineJoinStyle | 是 | @returns { T } |
+| value | LineJoinStyle | 是 |  |
 
 **返回值：**
 
@@ -295,10 +264,6 @@ strokeMiterLimit(value: number | string): T
 Limits for drawing acute angles as bevels
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -330,10 +295,6 @@ Sets the opacity of the border.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -346,7 +307,7 @@ Sets the opacity of the border.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number \| string \| Resource | 是 | @returns { T } |
+| value | number \| string \| Resource | 是 |  |
 
 **返回值：**
 
@@ -364,10 +325,6 @@ Sets the width of the dividing line.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -380,7 +337,7 @@ Sets the width of the dividing line.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Length | 是 | @returns { T } |
+| value | Length | 是 |  |
 
 **返回值：**
 

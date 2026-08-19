@@ -4,10 +4,6 @@ Enumerates the color effect types.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum ColorEffectType--><!--Device-camera-enum ColorEffectType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ NORMAL = 0
 Regular color effect.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ColorEffectType-NORMAL = 0--><!--Device-ColorEffectType-NORMAL = 0-End-->
 
@@ -44,10 +36,6 @@ Bright color effect.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ColorEffectType-BRIGHT = 1--><!--Device-ColorEffectType-BRIGHT = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -64,10 +52,6 @@ Soft color effect.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ColorEffectType-SOFT = 2--><!--Device-ColorEffectType-SOFT = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -83,10 +67,6 @@ BLACK_WHITE = 3
 Black and white color effect.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ColorEffectType-BLACK_WHITE = 3--><!--Device-ColorEffectType-BLACK_WHITE = 3-End-->
 

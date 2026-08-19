@@ -1,5 +1,11 @@
 # decodeImage（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';
+```
+
 ## decodeImage
 
 ```TypeScript
@@ -9,10 +15,6 @@ function decodeImage(encodedImage: image.PixelMap): Promise<string>
 解析图片中携带的信息。通过对应的解码算法从图片中提取嵌入的metadata信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-metadataBinding-function decodeImage(encodedImage: image.PixelMap): Promise<string>--><!--Device-metadataBinding-function decodeImage(encodedImage: image.PixelMap): Promise<string>-End-->
 

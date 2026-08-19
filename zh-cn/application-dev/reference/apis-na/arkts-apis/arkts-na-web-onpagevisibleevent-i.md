@@ -4,9 +4,7 @@ Defines the triggered callback when previous page will no longer be drawn and ne
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnPageVisibleEvent--><!--Device-unnamed-export declare interface OnPageVisibleEvent-End-->
 
@@ -24,9 +22,7 @@ The URL of page.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnPageVisibleEvent-url: string--><!--Device-OnPageVisibleEvent-url: string-End-->
 

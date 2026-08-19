@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace userAuth--><!--Device-unnamed-declare namespace userAuth-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## 汇总
 
@@ -18,23 +21,23 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md#getauthinstance) | 获取AuthInstance对象，用于执行用户身份认证。 |
-| [getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md#getauthlockstate) | 查询指定认证类型的冻结状态，使用Promise异步回调。 |
-| [getAuthenticator](arkts-userauthentication-userauth-getauthenticator-f.md#getauthenticator) | 获取Authenticator对象，用于执行用户身份认证。 |
-| [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md#getavailablestatus) | 查询指定类型和等级的认证能力是否支持。该接口用于检查当前设备是否支持指定的认证类型和认证可信等级，帮助应用在发起认证前判断认证能力是否可用，从而避免不必要的认证不通过。若查询通过（无错误抛出），表示认证能力可用；若抛出错误，应用应 根据错误码判断具体原因并采取相应处理。 |
-| [getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md#getenrolledstate) | 查询凭据注册的状态，以检测用户注册凭据的变更。该接口用于获取指定认证类型的凭据注册信息，包括凭据摘要和数量。应用可通过对比当前查询结果与之前保存的结果，判断用户是否新增或删除了凭据，从而采取相应的业务处理。 |
-| [getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance) | 获取[UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md#userauthinstance)对象，执行用户身份认证，并支持使用统一用户身份认证控件。该接口用于创建一个用户认证实例，配置认证参数和界面参数后，可通过返回 的实例对象启动认证、订阅认证结果等。 |
+| [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md) | 获取AuthInstance对象，用于执行用户身份认证。 |
+| [getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md) | 查询指定认证类型的冻结状态，使用Promise异步回调。 |
+| [getAuthenticator](arkts-userauthentication-userauth-getauthenticator-f.md) | 获取Authenticator对象，用于执行用户身份认证。 |
+| [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md) | 查询指定类型和等级的认证能力是否支持。该接口用于检查当前设备是否支持指定的认证类型和认证可信等级，帮助应用在发起认证前判断认证能力是否可用，从而避免不必要的认证不通过。若查询通过（无错误抛出），表示认证能力可用；若抛出错误，应用应 根据错误码判断具体原因并采取相应处理。 |
+| [getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md) | 查询凭据注册的状态，以检测用户注册凭据的变更。该接口用于获取指定认证类型的凭据注册信息，包括凭据摘要和数量。应用可通过对比当前查询结果与之前保存的结果，判断用户是否新增或删除了凭据，从而采取相应的业务处理。 |
+| [getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md) | 获取[UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md)对象，执行用户身份认证，并支持使用统一用户身份认证控件。该接口用于创建一个用户认证实例，配置认证参数和界面参数后，可通过返回 的实例对象启动认证、订阅认证结果等。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getUserAuthWidgetMgr](arkts-userauthentication-userauth-getuserauthwidgetmgr-f-sys.md#getuserauthwidgetmgr) | 获取身份认证组件管理器对象。用于获取UserAuthWidgetMgr实例，通过该实例可将自定义身份认证控件注册到系统进行统一管理。 |
-| [queryReusableAuthResult](arkts-userauthentication-userauth-queryreusableauthresult-f-sys.md#queryreusableauthresult) | 查询是否有可复用的身份认证结果。该接口用于在发起认证前查询是否存在满足复用条件的认证结果，若存在则直接返回可复用的AuthToken，无需用户再次进行认证交互。 |
-| [registerRemoteAuthCallback](arkts-userauthentication-userauth-registerremoteauthcallback-f-sys.md#registerremoteauthcallback) | 注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。不允许重复注册，在不使用时应调用 [unregisterRemoteAuthCallback](arkts-userauthentication-userauth-registerremoteauthcallback-f-sys.md#registerremoteauthcallback系统接口)取消注册，避免回调无法释放。 |
-| [sendNotice](arkts-userauthentication-userauth-sendnotice-f-sys.md#sendnotice) | 发送来自身份认证组件的通知。在使用统一身份认证控件进行用户身份认证时，该接口用于接收来自统一身份认证组件的通知，并将通知发送给用户认证框架。 |
-| [unregisterRemoteAuthCallback](arkts-userauthentication-userauth-unregisterremoteauthcallback-f-sys.md#unregisterremoteauthcallback) | 注销远程认证回调。该接口用于注销已注册的远程认证回调，注销后系统不再接收远程认证的页面参数请求和认证结果通知。 |
+| [getUserAuthWidgetMgr](arkts-userauthentication-userauth-getuserauthwidgetmgr-f-sys.md) | 获取身份认证组件管理器对象。用于获取UserAuthWidgetMgr实例，通过该实例可将自定义身份认证控件注册到系统进行统一管理。 |
+| [queryReusableAuthResult](arkts-userauthentication-userauth-queryreusableauthresult-f-sys.md) | 查询是否有可复用的身份认证结果。该接口用于在发起认证前查询是否存在满足复用条件的认证结果，若存在则直接返回可复用的AuthToken，无需用户再次进行认证交互。 |
+| [registerRemoteAuthCallback](arkts-userauthentication-userauth-registerremoteauthcallback-f-sys.md) | 注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。不允许重复注册，在不使用时应调用 [unregisterRemoteAuthCallback](arkts-userauthentication-userauth-registerremoteauthcallback-f-sys.md)取消注册，避免回调无法释放。 |
+| [sendNotice](arkts-userauthentication-userauth-sendnotice-f-sys.md) | 发送来自身份认证组件的通知。在使用统一身份认证控件进行用户身份认证时，该接口用于接收来自统一身份认证组件的通知，并将通知发送给用户认证框架。 |
+| [unregisterRemoteAuthCallback](arkts-userauthentication-userauth-unregisterremoteauthcallback-f-sys.md) | 注销远程认证回调。该接口用于注销已注册的远程认证回调，注销后系统不再接收远程认证的页面参数请求和认证结果通知。 |
 <!--DelEnd-->
 
 ### 类
@@ -53,15 +56,15 @@
 | [AuthParam](arkts-userauthentication-userauth-authparam-i.md) | 用户认证相关参数。该接口用于配置用户认证的各项参数，包括挑战值、认证类型列表、认证信任等级、认证结果复用配置等。通过合理配置这些参数，可以满足不同业务场景下的认证需求。 |
 | [AuthResult](arkts-userauthentication-userauth-authresult-i.md) | 表示认证结果的对象。 |
 | [AuthResultInfo](arkts-userauthentication-userauth-authresultinfo-i.md) | 表示认证结果信息，用于描述认证结果。 |
-| [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md) | 用户认证中间状态。该接口用于描述认证过程中产生的各种中间状态信息，包括状态对应的认证类型和具体的状态码。应用可通过[AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md#authtipcallback)获取这些中间状态， 以便在认证过程中提供更精细的用户反馈和状态感知。 |
+| [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md) | 用户认证中间状态。该接口用于描述认证过程中产生的各种中间状态信息，包括状态对应的认证类型和具体的状态码。应用可通过[AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md)获取这些中间状态， 以便在认证过程中提供更精细的用户反馈和状态感知。 |
 | [Authenticator](arkts-userauthentication-userauth-authenticator-i.md) | 认证器对象。 |
-| [EnrolledState](arkts-userauthentication-userauth-enrolledstate-i.md) | 用户注册凭据的状态。该接口用于描述用户已注册的认证凭据（如人脸、指纹、伴随设备）的当前状态，包括凭据摘要和数量。应用可通过[getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md#getenrolledstate)接口查 询凭据状态，用于检测用户凭据是否发生变化（如新增或删除指纹/人脸/伴随设备），以便做出相应的业务处理。 |
+| [EnrolledState](arkts-userauthentication-userauth-enrolledstate-i.md) | 用户注册凭据的状态。该接口用于描述用户已注册的认证凭据（如人脸、指纹、伴随设备）的当前状态，包括凭据摘要和数量。应用可通过[getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md)接口查 询凭据状态，用于检测用户凭据是否发生变化（如新增或删除指纹/人脸/伴随设备），以便做出相应的业务处理。 |
 | [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md) | 返回认证结果的回调对象。该接口定义了认证结果的回调方法，用于在认证完成后获取认证结果。应用通过实现onResult方法，可以在认证通过时获取认证令牌，在认证不通过时获取错误码和相关信息。 |
 | [IUserAuthCallback](arkts-userauthentication-userauth-iuserauthcallback-i.md) | 返回认证结果的回调对象。 |
 | [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md) | 复用解锁认证结果。该接口用于配置认证结果复用的相关参数，包括复用模式和有效时长。通过合理配置认证结果复用，可以在保证安全性的前提下提升用户体验，避免用户频繁重复认证。 |
 | [TipInfo](arkts-userauthentication-userauth-tipinfo-i.md) | 表示认证过程中的提示信息，用于提供认证过程的反馈。 |
-| [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md) | 用于执行用户身份认证，并支持使用统一用户身份认证控件。该接口提供了完整的用户认证能力，包括订阅认证结果、订阅认证中间状态、启动认证和取消认证等操作。通过统一认证控件，可以为用户提供标准化的认证界面和一致的认证体验。 使用以下接口前，需先通过[getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md#getuserauthinstance)方法获取UserAuthInstance对象。 |
-| [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md) | 用户认证结果。认证通过时，返回认证类型和认证通过的令牌信息；认证不通过时，返回相应的错误码。该接口用于描述认证完成后的结果信息，应用可通过[IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md#iauthcallback)的 onResult回调获取此结果。 |
+| [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md) | 用于执行用户身份认证，并支持使用统一用户身份认证控件。该接口提供了完整的用户认证能力，包括订阅认证结果、订阅认证中间状态、启动认证和取消认证等操作。通过统一认证控件，可以为用户提供标准化的认证界面和一致的认证体验。 使用以下接口前，需先通过[getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md)方法获取UserAuthInstance对象。 |
+| [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md) | 用户认证结果。认证通过时，返回认证类型和认证通过的令牌信息；认证不通过时，返回相应的错误码。该接口用于描述认证完成后的结果信息，应用可通过[IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)的 onResult回调获取此结果。 |
 | [WidgetParam](arkts-userauthentication-userauth-widgetparam-i.md) | 用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式，包括标题、导航按钮文本、窗口模式等。通过合理配置这些参数，可以为用户提供清晰的认证引导和良好的交互体验。 |
 
 <!--Del-->
@@ -126,6 +129,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [MAX_ALLOWABLE_REUSE_DURATION](arkts-userauthentication-userauth-con.md#maxallowablereuseduration) | 永久锁定时长，单位为毫秒。取值为0x7fffffffff，代表认证永久锁定，不代表具体锁定时长。 取值范围为全体整数。 |
-| [PERMANENT_LOCKOUT_DURATION](arkts-userauthentication-userauth-con.md#permanentlockoutduration) | 永久锁定时长，单位为毫秒。取值为0x7fffffffff，代表认证永久锁定，不代表具体锁定时长。 取值范围为全体整数。 |
+| [MAX_ALLOWABLE_REUSE_DURATION](arkts-userauthentication-userauth-con.md#max_allowable_reuse_duration) | 永久锁定时长，单位为毫秒。取值为0x7fffffffff，代表认证永久锁定，不代表具体锁定时长。 取值范围为全体整数。 |
+| [PERMANENT_LOCKOUT_DURATION](arkts-userauthentication-userauth-con.md#permanent_lockout_duration) | 永久锁定时长，单位为毫秒。取值为0x7fffffffff，代表认证永久锁定，不代表具体锁定时长。 取值范围为全体整数。 |
 

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## isNotificationEnabled
@@ -15,10 +15,6 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 获取指定应用的通知使能状态。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -33,7 +29,7 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
 
@@ -47,7 +43,7 @@ function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boo
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -101,10 +97,6 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function isNotificationEnabled(bundle: BundleOption): Promise<boolean>--><!--Device-notificationManager-function isNotificationEnabled(bundle: BundleOption): Promise<boolean>-End-->
@@ -137,7 +129,7 @@ function isNotificationEnabled(bundle: BundleOption): Promise<boolean>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -182,10 +174,6 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本9 - 10：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -199,7 +187,7 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true，表示允许发布通知；返回false，表示禁止发布通知；调用失败返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true，表示允许发布通知；返回false，表示禁止发布通知；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -214,7 +202,7 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found.<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -259,10 +247,6 @@ function isNotificationEnabled(): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本9 - 10：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -290,7 +274,7 @@ function isNotificationEnabled(): Promise<boolean>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found.<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -328,10 +312,6 @@ function isNotificationEnabled(userId: int, callback: AsyncCallback<boolean>): v
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function isNotificationEnabled(userId: int, callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isNotificationEnabled(userId: int, callback: AsyncCallback<boolean>): void-End-->
@@ -345,7 +325,7 @@ function isNotificationEnabled(userId: int, callback: AsyncCallback<boolean>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userId | int | 是 | 指定的用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
 
@@ -359,7 +339,7 @@ function isNotificationEnabled(userId: int, callback: AsyncCallback<boolean>): v
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -410,10 +390,6 @@ function isNotificationEnabled(userId: int): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function isNotificationEnabled(userId: int): Promise<boolean>--><!--Device-notificationManager-function isNotificationEnabled(userId: int): Promise<boolean>-End-->
@@ -446,7 +422,7 @@ function isNotificationEnabled(userId: int): Promise<boolean>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -14,10 +14,6 @@ Text(content?: string | Resource, value?: TextOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -35,11 +31,21 @@ Text(content?: string | Resource, value?: TextOptions)
 
 ## 汇总
 
-- [TextMarqueeOptions](arkts-arkui-textmarqueeoptions-i.md)
-- [TextOptions](arkts-arkui-textoptions-i.md)
-- [TextOverflowOptions](arkts-arkui-textoverflowoptions-i.md)
-- [MarqueeStartPolicy](arkts-arkui-marqueestartpolicy-e.md)
-- [MarqueeState](arkts-arkui-marqueestate-e.md)
-- [MarqueeUpdatePolicy](arkts-arkui-marqueeupdatepolicy-e.md)
-- [TextResponseType](arkts-arkui-textresponsetype-e.md)
-- [TextSpanType](arkts-arkui-textspantype-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [TextMarqueeOptions](arkts-arkui-textmarqueeoptions-i.md) | Marquee初始化参数。 |
+| [TextOptions](arkts-arkui-textoptions-i.md) | Text初始化参数。 |
+| [TextOverflowOptions](arkts-arkui-textoverflowoptions-i.md) | 文本超长显示方式对象。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [MarqueeStartPolicy](arkts-arkui-marqueestartpolicy-e.md) | Marquee的滚动方式，可选择默认持续滚动或条件触发滚动。 |
+| [MarqueeState](arkts-arkui-marqueestate-e.md) | Marquee状态回调的返回值。 |
+| [MarqueeUpdatePolicy](arkts-arkui-marqueeupdatepolicy-e.md) | 跑马灯组件属性更新后，跑马灯的滚动策略。 |
+| [TextResponseType](arkts-arkui-textresponsetype-e.md) | 选择菜单的响应类型。 |
+| [TextSpanType](arkts-arkui-textspantype-e.md) | Span类型信息。 |
+

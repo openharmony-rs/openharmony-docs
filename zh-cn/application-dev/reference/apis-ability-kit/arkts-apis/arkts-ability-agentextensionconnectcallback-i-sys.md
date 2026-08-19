@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface AgentExtensionConnectCallback--><!--Device-unnamed-export interface AgentExtensionConnectCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -23,10 +19,6 @@ onAuth(handshakeData: string): void
 接收来自AgentExtensionAbility服务端的安全认证的回调接口。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +44,6 @@ onData(data: string): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AgentExtensionConnectCallback-onData(data: string): void--><!--Device-AgentExtensionConnectCallback-onData(data: string): void-End-->
@@ -79,10 +67,6 @@ onDisconnect(): void
 与AgentExtensionAbility服务端断开连接时触发的回调接口。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

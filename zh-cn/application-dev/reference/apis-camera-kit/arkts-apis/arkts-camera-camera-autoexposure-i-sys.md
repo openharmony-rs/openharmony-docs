@@ -1,18 +1,21 @@
 # AutoExposure
 
-AutoExposure继承自[AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md#autoexposurequery)。 自动曝光类，对设备自动曝光（AE）操作。
+AutoExposure继承自[AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md)。 自动曝光类，对设备自动曝光（AE）操作。
 
-**继承/实现关系：** AutoExposure extends [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md#autoexposurequery)
+**继承/实现关系：** AutoExposure extends [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface AutoExposure--><!--Device-camera-interface AutoExposure-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## getExposureMeteringMode
 
@@ -23,10 +26,6 @@ getExposureMeteringMode(): ExposureMeteringMode
 获取当前曝光测光模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -59,10 +58,6 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 设置曝光测光模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 

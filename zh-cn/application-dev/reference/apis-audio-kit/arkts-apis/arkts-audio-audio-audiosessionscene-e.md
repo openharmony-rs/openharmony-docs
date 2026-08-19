@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioSessionScene--><!--Device-audio-enum AudioSessionScene-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -21,10 +17,6 @@ AUDIO_SESSION_SCENE_MEDIA = 0
 媒体音频会话场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_MEDIA = 0--><!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_MEDIA = 0-End-->
 
@@ -40,10 +32,6 @@ AUDIO_SESSION_SCENE_GAME = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_GAME = 1--><!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_GAME = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -57,10 +45,6 @@ AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2
 VoIP语音通话音频会话场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2--><!--Device-AudioSessionScene-AUDIO_SESSION_SCENE_VOICE_COMMUNICATION = 2-End-->
 

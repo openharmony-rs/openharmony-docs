@@ -1,5 +1,11 @@
 # createKVManager
 
+## 导入模块
+
+```TypeScript
+import { distributedKVStore } from '@kit.ArkData';
+```
+
 ## createKVManager
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createKVManager(config: KVManagerConfig): KVManager
 创建一个KVManager对象实例，用于管理数据库对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +40,7 @@ function createKVManager(config: KVManagerConfig): KVManager
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
-## 示例
+**示例**
 
 Stage模型下的示例：
 

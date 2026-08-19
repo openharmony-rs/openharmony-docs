@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-cdsm-enum CdsmConnectionState--><!--Device-cdsm-enum CdsmConnectionState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -21,10 +17,6 @@ DISCONNECTED = 0
 成员已断开连接
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,10 +33,6 @@ CONNECTED = 1
 成员已连接
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

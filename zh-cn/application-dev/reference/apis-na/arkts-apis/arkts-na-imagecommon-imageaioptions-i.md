@@ -1,12 +1,10 @@
 # ImageAIOptions
 
-图像AI分析选项。 > **说明：** > > 该特性中的参数types优先级高于[ImageAnalyzerConfig](arkts-na-imagecommon-imageanalyzerconfig-i.md#imageanalyzerconfig)中的参数types，两者同时设置时以该特性设置的值为准。 > > 该特性依赖设备能力，且需要和对应组件的enableAnalyzer接口 > （例如Image组件）搭配使用。
+图像AI分析选项。 > **说明：** > > 该特性中的参数types优先级高于[ImageAnalyzerConfig](arkts-na-imagecommon-imageanalyzerconfig-i.md)中的参数types，两者同时设置时以该特性设置的值为准。 > > 该特性依赖设备能力，且需要和对应组件的enableAnalyzer接口 > （例如Image组件）搭配使用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface ImageAIOptions--><!--Device-unnamed-export declare interface ImageAIOptions-End-->
 
@@ -24,9 +22,7 @@ aiController?: ImageAnalyzerController | ESValue
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,9 +42,7 @@ types?: ImageAnalyzerType[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

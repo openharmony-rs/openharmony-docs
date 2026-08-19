@@ -4,15 +4,20 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [ActionMenuSuccessResponse](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenusuccessresponse-i.md#actionmenusuccessresponse)
+**替代接口：** [ActionMenuSuccessResponse](../../apis-na/arkts-apis/arkts-na-promptaction-actionmenusuccessresponse-i.md)
 
 <!--Device-prompt-interface ActionMenuSuccessResponse--><!--Device-prompt-interface ActionMenuSuccessResponse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { prompt } from '@kit.ArkUI';
+import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+```
 
 ## index
 
@@ -25,8 +30,6 @@ index: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

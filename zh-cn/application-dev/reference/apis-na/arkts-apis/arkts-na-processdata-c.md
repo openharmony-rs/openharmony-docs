@@ -2,10 +2,6 @@
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class ProcessData--><!--Device-unnamed-declare class ProcessData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ bundleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ProcessData-bundleName: string--><!--Device-ProcessData-bundleName: string-End-->
 
@@ -42,10 +34,6 @@ isContinuousTask: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ProcessData-isContinuousTask: boolean--><!--Device-ProcessData-isContinuousTask: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -61,10 +49,6 @@ isKeepAlive: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ProcessData-isKeepAlive: boolean--><!--Device-ProcessData-isKeepAlive: boolean-End-->
 
@@ -82,10 +66,6 @@ pid: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ProcessData-pid: int--><!--Device-ProcessData-pid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -102,10 +82,6 @@ state: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ProcessData-state: int--><!--Device-ProcessData-state: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -121,10 +97,6 @@ uid: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ProcessData-uid: int--><!--Device-ProcessData-uid: int-End-->
 

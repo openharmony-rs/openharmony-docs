@@ -4,13 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-cert-interface CertValidationResult--><!--Device-cert-interface CertValidationResult-End-->
 
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## certChain
 
@@ -20,13 +24,9 @@ readonly certChain: Array<X509Cert>
 
 验证后的证书链。验证成功时返回完整的证书链，从终端实体证书到信任锚点。可用于后续的证书信息查询或其他验证操作。
 
-**类型：** Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt;
+**类型：** Array&lt;X509Cert&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

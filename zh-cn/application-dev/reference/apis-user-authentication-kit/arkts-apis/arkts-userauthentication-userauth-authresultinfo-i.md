@@ -4,15 +4,20 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
-**替代接口：** [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md#userauthresult)
+**替代接口：** [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md)
 
 <!--Device-userAuth-interface AuthResultInfo--><!--Device-userAuth-interface AuthResultInfo-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## lockoutDuration
 
@@ -25,8 +30,6 @@ lockoutDuration?: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -48,8 +51,6 @@ remainAttempts?: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **替代接口：** [remainingAuthAttempts](arkts-userauthentication-userauth-authlockstate-i.md#remainingauthattempts)
@@ -70,8 +71,6 @@ result: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **替代接口：** [result](arkts-userauthentication-userauth-userauthresult-i.md#result)
@@ -91,8 +90,6 @@ token?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 

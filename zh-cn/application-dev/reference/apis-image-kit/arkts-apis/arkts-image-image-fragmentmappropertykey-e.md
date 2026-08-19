@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-enum FragmentMapPropertyKey--><!--Device-image-enum FragmentMapPropertyKey-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ X_IN_ORIGINAL = 'XInOriginal'
 水印裁剪图左上角在原始图中的X坐标。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FragmentMapPropertyKey-X_IN_ORIGINAL = 'XInOriginal'--><!--Device-FragmentMapPropertyKey-X_IN_ORIGINAL = 'XInOriginal'-End-->
 
@@ -40,10 +32,6 @@ Y_IN_ORIGINAL = 'YInOriginal'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FragmentMapPropertyKey-Y_IN_ORIGINAL = 'YInOriginal'--><!--Device-FragmentMapPropertyKey-Y_IN_ORIGINAL = 'YInOriginal'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -58,10 +46,6 @@ WIDTH = 'FragmentImageWidth'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FragmentMapPropertyKey-WIDTH = 'FragmentImageWidth'--><!--Device-FragmentMapPropertyKey-WIDTH = 'FragmentImageWidth'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -75,10 +59,6 @@ HEIGHT = 'FragmentImageHeight'
 水印裁剪图的高。单位：像素（px）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FragmentMapPropertyKey-HEIGHT = 'FragmentImageHeight'--><!--Device-FragmentMapPropertyKey-HEIGHT = 'FragmentImageHeight'-End-->
 

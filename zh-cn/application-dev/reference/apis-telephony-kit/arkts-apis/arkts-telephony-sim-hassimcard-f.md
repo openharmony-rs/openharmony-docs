@@ -1,5 +1,11 @@
 # hasSimCard
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## hasSimCard
 
 ```TypeScript
@@ -10,10 +16,6 @@ Checks whether a SIM card is inserted in a specified slot.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sim-function hasSimCard(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-sim-function hasSimCard(slotId: int, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
@@ -23,7 +25,7 @@ Checks whether a SIM card is inserted in a specified slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | int | 是 | Indicates the card slot index number, ranging from 0 to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Indicates the callback for hasSimCard. Returns {@code true} if a SIM card is inserted; return {@code false} otherwise. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Indicates the callback for hasSimCard. Returns {@code true} if a SIM card is inserted; return {@code false} otherwise. |
 
 **错误码：**
 
@@ -35,7 +37,7 @@ Checks whether a SIM card is inserted in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -56,10 +58,6 @@ function hasSimCard(slotId: int): Promise<boolean>
 Checks whether a SIM card is inserted in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sim-function hasSimCard(slotId: int): Promise<boolean>--><!--Device-sim-function hasSimCard(slotId: int): Promise<boolean>-End-->
 
@@ -87,7 +85,7 @@ Checks whether a SIM card is inserted in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

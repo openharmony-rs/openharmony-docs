@@ -1,14 +1,10 @@
 # NotificationPictureContent
 
-描述附有图片的通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)。 > **说明：** > > - 当该类型通知与其他通知形成组通知时，该通知类型的展示效果默认为折叠态， > 显示的标题与正文为该类型继承的NotificationBasicContent中的`title`与`text`。 > 当该类型通知单独展示，没有与其他通知形成组通知时，该通知类型的展示效果 > 默认为展开态，显示的标题为展开时的标题`expandedTitle`， > 显示的正文为该类型继承的NotificationBasicContent中的`text`+该类型的图片内容`picture`。 > > - 用户点击成组展示的通知，查看各个通知详情时，该通知的展示效果变化为展开态。 > > - 实际显示效果依赖于设备能力和通知中心UI样式。
+描述附有图片的通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。 > **说明：** > > - 当该类型通知与其他通知形成组通知时，该通知类型的展示效果默认为折叠态， > 显示的标题与正文为该类型继承的NotificationBasicContent中的`title`与`text`。 > 当该类型通知单独展示，没有与其他通知形成组通知时，该通知类型的展示效果 > 默认为展开态，显示的标题为展开时的标题`expandedTitle`， > 显示的正文为该类型继承的NotificationBasicContent中的`text`+该类型的图片内容`picture`。 > > - 用户点击成组展示的通知，查看各个通知详情时，该通知的展示效果变化为展开态。 > > - 实际显示效果依赖于设备能力和通知中心UI样式。
 
-**继承/实现关系：** NotificationPictureContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md#notificationbasiccontent)
+**继承/实现关系：** NotificationPictureContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface NotificationPictureContent--><!--Device-unnamed-export interface NotificationPictureContent-End-->
 
@@ -26,10 +22,6 @@ briefText: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationPictureContent-briefText: string--><!--Device-NotificationPictureContent-briefText: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -46,10 +38,6 @@ expandedTitle: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationPictureContent-expandedTitle: string--><!--Device-NotificationPictureContent-expandedTitle: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -65,10 +53,6 @@ picture: image.PixelMap
 **类型：** image.PixelMap
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationPictureContent-picture: image.PixelMap--><!--Device-NotificationPictureContent-picture: image.PixelMap-End-->
 

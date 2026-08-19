@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-interface Configuration--><!--Device-window-interface Configuration-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## defaultDensityEnabled
 
@@ -24,10 +28,6 @@ defaultDensityEnabled?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Configuration-defaultDensityEnabled?: boolean--><!--Device-Configuration-defaultDensityEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -40,15 +40,11 @@ defaultDensityEnabled?: boolean
 zIndex?: int
 ```
 
-当前系统窗口的层级，仅在[WindowType](arkts-arkui-window-windowtype-e.md#windowtype)为TYPE_DYNAMIC时生效。
+当前系统窗口的层级，仅在[WindowType](arkts-arkui-window-windowtype-e.md)为TYPE_DYNAMIC时生效。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Configuration-zIndex?: int--><!--Device-Configuration-zIndex?: int-End-->
 

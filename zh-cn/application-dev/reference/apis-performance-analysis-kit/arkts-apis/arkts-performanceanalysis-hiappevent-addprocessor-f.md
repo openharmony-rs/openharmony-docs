@@ -1,18 +1,20 @@
 # addProcessor
 
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## addProcessor
 
 ```TypeScript
 function addProcessor(processor: Processor): long
 ```
 
-添加数据处理者配置信息，用于配置处理者接收的事件名等信息。事件发生后处理者可以接收事件。 该接口为同步接口，包含耗时操作。为了确保性能，建议使用[addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md#addprocessorfromconfig)异步接口或者交由子线程执行。
+添加数据处理者配置信息，用于配置处理者接收的事件名等信息。事件发生后处理者可以接收事件。 该接口为同步接口，包含耗时操作。为了确保性能，建议使用[addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md)异步接口或者交由子线程执行。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +40,7 @@ function addProcessor(processor: Processor): long
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

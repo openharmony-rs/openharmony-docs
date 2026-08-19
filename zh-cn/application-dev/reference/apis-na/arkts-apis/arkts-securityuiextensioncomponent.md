@@ -7,7 +7,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [SecurityUIExtensionComponent](arkts-na-securityuiextensioncomponent-securityuiextensioncomponent-f-sys.md#securityuiextensioncomponent系统接口) | 定义SecurityUIExtensionComponent组件。 |
+| [SecurityUIExtensionComponent](arkts-na-securityuiextensioncomponent-securityuiextensioncomponent-f-sys.md) | 定义SecurityUIExtensionComponent组件。 |
 <!--DelEnd-->
 
 <!--Del-->

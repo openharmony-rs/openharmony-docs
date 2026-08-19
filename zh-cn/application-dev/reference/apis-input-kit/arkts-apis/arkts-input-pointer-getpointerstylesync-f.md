@@ -1,5 +1,11 @@
 # getPointerStyleSync
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## getPointerStyleSync
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getPointerStyleSync(windowId: int): PointerStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function getPointerStyleSync(windowId: int): PointerStyle--><!--Device-pointer-function getPointerStyleSync(windowId: int): PointerStyle-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -22,7 +24,7 @@ function getPointerStyleSync(windowId: int): PointerStyle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | int | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局 鼠标光标样式。<br>如果通过[setPointerStyleSync](arkts-input-pointer-setpointerstylesync-f.md#setpointerstylesync)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+| windowId | int | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局 鼠标光标样式。<br>如果通过[setPointerStyleSync](arkts-input-pointer-setpointerstylesync-f.md)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值：**
 
@@ -36,7 +38,7 @@ function getPointerStyleSync(windowId: int): PointerStyle
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

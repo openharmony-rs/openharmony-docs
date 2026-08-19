@@ -1,5 +1,11 @@
 # registerVsyncCallback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+```
+
 ## registerVsyncCallback
 
 ```TypeScript
@@ -9,10 +15,6 @@ function registerVsyncCallback(callback: (info: string) => void): void
 为profiler注册vsync回调。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 <!--Device-Profiler-function registerVsyncCallback(callback: (info: string) => void): void--><!--Device-Profiler-function registerVsyncCallback(callback: (info: string) => void): void-End-->
 

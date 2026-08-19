@@ -1,18 +1,20 @@
 # removeOsAccount
 
+## 导入模块
+
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+```
+
 ## removeOsAccount
 
 ```TypeScript
 function removeOsAccount(admin: Want, accountId: number): Promise<void>
 ```
 
-移除系统账号。当前仅支持手机、平板设备使用，可以移除使用[createNormalOsAccount](arkts-mdm-accountmanager-createnormalosaccount-f.md#createnormalosaccount)创建的普通系统账号（normal类型）和 [addOsAccountAsync](arkts-mdm-accountmanager-addosaccountasync-f.md#addosaccountasync)创建的系统账号（admin、normal、guest类型），不可移除默认系统账号（ID为100）。
+移除系统账号。当前仅支持手机、平板设备使用，可以移除使用[createNormalOsAccount](arkts-mdm-accountmanager-createnormalosaccount-f.md)创建的普通系统账号（normal类型）和 [addOsAccountAsync](arkts-mdm-accountmanager-addosaccountasync-f.md)创建的系统账号（admin、normal、guest类型），不可移除默认系统账号（ID为100）。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -48,7 +50,7 @@ function removeOsAccount(admin: Want, accountId: number): Promise<void>
 | [9201041](../errorcode-enterpriseDeviceManager.md#9201041-系统账号类型受限) | Restricted account. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { accountManager } from '@kit.MDMKit';

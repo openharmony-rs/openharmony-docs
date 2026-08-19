@@ -361,7 +361,7 @@ typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t e
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture \*capture | 指向OH_AVScreenCapture实例的指针。 |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) \*capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t errorCode | 指定错误码。 |
 
 ### OH_AVScreenCaptureOnAudioBufferAvailable()
@@ -380,7 +380,7 @@ typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *cap
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture \*capture | 指向OH_AVScreenCapture实例的指针。 |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) \*capture | 指向OH_AVScreenCapture实例的指针。 |
 | bool isReady | 音频缓存区是否可用。true表示音频缓存区可用，false表示音频缓存区不可用。 |
 | [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) type | 音频源类型。 |
 
@@ -400,7 +400,7 @@ typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *cap
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture \*capture | 指向OH_AVScreenCapture实例的指针。 |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) \*capture | 指向OH_AVScreenCapture实例的指针。 |
 | bool isReady | 视频缓存区是否可用。true表示视频缓存区可用，false表示视频缓存区不可用。 |
 
 ### OH_AVScreenCapture_OnStateChange()
@@ -419,7 +419,7 @@ typedef void (*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capt
 
 | 参数项 | 描述 |
 | -- | -- |
-| (struct OH_AVScreenCapture \*capture | 指向OH_AVScreenCapture实例的指针。 |
+| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) \*capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVScreenCaptureStateCode](capi-native-avscreen-capture-base-h.md#oh_avscreencapturestatecode) stateCode | 指定状态码。 |
 | void \*userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
@@ -439,7 +439,7 @@ typedef void (*OH_AVScreenCapture_OnError)(OH_AVScreenCapture *capture, int32_t 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture \*capture | 指向OH_AVScreenCapture实例的指针。 |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) \*capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t errorCode | 指定错误码。 |
 | void \*userData | 指向应用设置该回调处理方法时提供的自定义数据的指针。 |
 
@@ -459,7 +459,7 @@ typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture \*capture | 指向OH_AVScreenCapture实例的指针。 |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) \*capture | 指向OH_AVScreenCapture实例的指针。 |
 | [OH_AVBuffer](../AVCodecKit/capi-core-oh-avbuffer.md) \*buffer | 指向OH_AVBuffer缓存区实例的指针，该回调方法执行结束返回后，数据缓存区不再有效。 |
 | [OH_AVScreenCaptureBufferType](capi-native-avscreen-capture-base-h.md#oh_avscreencapturebuffertype) bufferType | 可用缓存区的数据类型。 |
 | int64_t timestamp | 时间戳，单位纳秒。 |
@@ -481,7 +481,7 @@ typedef void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* c
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture\* capture | Pointer to an OH_AVScreenCapture instance |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)\* capture | Pointer to an OH_AVScreenCapture instance |
 | [OH_AVScreenCaptureContentChangedEvent](capi-native-avscreen-capture-base-h.md#oh_avscreencapturecontentchangedevent) event | enum for content change event |
 | [OH_Rect](capi-avscreencapture-oh-rect.md)\* area | capture content rect position |
 | void \*userData | Pointer to user specific data |
@@ -502,7 +502,7 @@ typedef void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture\* capture | Pointer to an OH_AVScreenCapture instance |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)\* capture | Pointer to an OH_AVScreenCapture instance |
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)\* selections | The recording parameter informationselected by the user on the authorization interface |
 | void \*userData | Pointer to user specific data |
 
@@ -522,7 +522,7 @@ typedef void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture,
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVScreenCapture\* capture | Pointer to an OH_AVScreenCapture instance |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)\* capture | Pointer to an OH_AVScreenCapture instance |
 | [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)\* privacyProtect | Pointer to privacy protect info |
 | void \*userData | Pointer to user specific data |
 

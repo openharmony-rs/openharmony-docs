@@ -1,5 +1,10 @@
 # stat
 
+## 导入模块
+
+```TypeScript
+```
+
 ## stat
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function stat(path: string): Promise<Stat>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [stat](arkts-corefile-file-fs-stat-f.md#stat)
+**替代接口：** [stat](arkts-corefile-file-fs-stat-f.md)
 
 <!--Device-unnamed-declare function stat(path: string): Promise<Stat>--><!--Device-unnamed-declare function stat(path: string): Promise<Stat>-End-->
 
@@ -43,11 +46,9 @@ declare function stat(path: string, callback: AsyncCallback<Stat>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [stat](arkts-corefile-file-fs-stat-f.md#stat)
+**替代接口：** [stat](arkts-corefile-file-fs-stat-f.md)
 
 <!--Device-unnamed-declare function stat(path: string, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function stat(path: string, callback: AsyncCallback<Stat>): void-End-->
 
@@ -58,5 +59,5 @@ declare function stat(path: string, callback: AsyncCallback<Stat>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 待获取文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | 是 | 异步获取文件的信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | 是 | 异步获取文件的信息之后的回调。 |
 

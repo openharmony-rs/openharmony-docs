@@ -151,7 +151,7 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_TextPickerRangeContentArray*](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | 返回指向ArkUI_TextPickerRangeContentArray数组对象的指针（数组长度由length参数指定）。如果返回空指针，<br> 表示创建失败。 |
+| [ArkUI_TextPickerRangeContentArray*](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | 返回指向ArkUI_TextPickerRangeContentArray数组对象的指针（数组长度由length参数指定）。如果返回空指针，  表示创建失败。 |
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex()
 
@@ -233,7 +233,7 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray*](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | 返回指向ArkUI_TextCascadePickerRangeContentArray数组对象的指针（数组长度由length参数指定）。如果返回空指针，<br> 表示创建失败。 |
+| [ArkUI_TextCascadePickerRangeContentArray*](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | 返回指向ArkUI_TextCascadePickerRangeContentArray数组对象的指针（数组长度由length参数指定）。如果返回空指针，  表示创建失败。 |
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex()
 
@@ -315,7 +315,7 @@ ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerInd
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_PickerIndicatorStyle*](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)实例的指针。如果返回空指针，表示创建失败，<br> 失败原因可能是地址空间已满或类型不支持。 |
+| [ArkUI_PickerIndicatorStyle*](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)实例的指针。如果返回空指针，表示创建失败，  失败原因可能是地址空间已满或类型不支持。 |
 
 ### OH_ArkUI_PickerIndicatorStyle_Dispose()
 

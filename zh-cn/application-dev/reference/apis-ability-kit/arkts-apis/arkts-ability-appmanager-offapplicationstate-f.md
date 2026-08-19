@@ -1,6 +1,12 @@
 # off_applicationState
 
-## off_applicationState
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
+## off('applicationState')
 
 ```TypeScript
 function off(type: 'applicationState', observerId: int, callback: AsyncCallback<void>): void
@@ -9,10 +15,6 @@ function off(type: 'applicationState', observerId: int, callback: AsyncCallback<
 注销应用状态监听器。使用callback异步回调。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -26,7 +28,7 @@ function off(type: 'applicationState', observerId: int, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | type | 'applicationState' | 是 | 调用接口类型，固定填'applicationState'字符串。 |
 | observerId | int | 是 | 注册的应用状态监听器ID，即 [on('applicationState')](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate)返回的监听器ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当取消注册应用程序状态观测器成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当取消注册应用程序状态观测器成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function off(type: 'applicationState', observerId: int, callback: AsyncCallback<
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';
@@ -97,7 +99,7 @@ try {
 ```
 
 
-## off_applicationState
+## off('applicationState')
 
 ```TypeScript
 function off(type: 'applicationState', observerId: int): Promise<void>
@@ -106,10 +108,6 @@ function off(type: 'applicationState', observerId: int): Promise<void>
 注销应用状态监听器。使用Promise异步回调。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -138,7 +136,7 @@ function off(type: 'applicationState', observerId: int): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

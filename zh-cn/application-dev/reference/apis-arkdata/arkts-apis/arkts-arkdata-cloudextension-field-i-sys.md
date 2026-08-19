@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export interface Field--><!--Device-cloudExtension-export interface Field-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudExtension } from '@kit.ArkData';
+```
 
 ## alias
 
@@ -25,10 +27,6 @@ alias: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Field-alias: string--><!--Device-Field-alias: string-End-->
 
@@ -48,10 +46,6 @@ colName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Field-colName: string--><!--Device-Field-colName: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -69,10 +63,6 @@ nullable: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Field-nullable: boolean--><!--Device-Field-nullable: boolean-End-->
 
@@ -92,10 +82,6 @@ primary: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Field-primary: boolean--><!--Device-Field-primary: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -113,10 +99,6 @@ type: FieldType
 **类型：** FieldType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Field-type: FieldType--><!--Device-Field-type: FieldType-End-->
 

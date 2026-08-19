@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export interface SmsSegmentsInfo--><!--Device-sms-export interface SmsSegmentsInfo-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
 
 ## encodeCount
 
@@ -25,10 +27,6 @@ encodeCount: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SmsSegmentsInfo-encodeCount: int--><!--Device-SmsSegmentsInfo-encodeCount: int-End-->
 
@@ -48,10 +46,6 @@ encodeCountRemaining: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SmsSegmentsInfo-encodeCountRemaining: int--><!--Device-SmsSegmentsInfo-encodeCountRemaining: int-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -70,10 +64,6 @@ scheme: SmsEncodingScheme
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SmsSegmentsInfo-scheme: SmsEncodingScheme--><!--Device-SmsSegmentsInfo-scheme: SmsEncodingScheme-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -91,10 +81,6 @@ splitCount: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SmsSegmentsInfo-splitCount: int--><!--Device-SmsSegmentsInfo-splitCount: int-End-->
 

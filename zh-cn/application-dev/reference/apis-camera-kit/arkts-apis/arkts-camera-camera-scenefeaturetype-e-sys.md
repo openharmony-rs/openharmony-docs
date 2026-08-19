@@ -4,10 +4,6 @@ Enumerates the scene features.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum SceneFeatureType--><!--Device-camera-enum SceneFeatureType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ MOON_CAPTURE_BOOST = 0
 Moon scene. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneFeatureType-MOON_CAPTURE_BOOST = 0--><!--Device-SceneFeatureType-MOON_CAPTURE_BOOST = 0-End-->
 
@@ -44,10 +36,6 @@ Scene where a tripod is used for photo capture. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneFeatureType-TRIPOD_DETECTION = 1--><!--Device-SceneFeatureType-TRIPOD_DETECTION = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -63,10 +51,6 @@ LOW_LIGHT_BOOST = 2
 Scene for long exposure photography. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2--><!--Device-SceneFeatureType-LOW_LIGHT_BOOST = 2-End-->
 

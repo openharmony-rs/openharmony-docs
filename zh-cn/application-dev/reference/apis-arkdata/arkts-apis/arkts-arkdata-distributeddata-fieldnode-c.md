@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** FieldNode
@@ -13,6 +11,12 @@
 <!--Device-distributedData-class FieldNode--><!--Device-distributedData-class FieldNode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## appendChild
 
@@ -23,8 +27,6 @@ appendChild(child: FieldNode): boolean
 在当前 FieldNode 中添加一个子节点。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -46,7 +48,7 @@ appendChild(child: FieldNode): boolean
 | --- | --- |
 | boolean | 返回true表示子节点成功添加到FieldNode；返回false则表示操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import ddm from '@ohos.data.distributedData';
@@ -78,8 +80,6 @@ constructor(name: string)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** constructor
@@ -106,8 +106,6 @@ default: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** default
@@ -128,8 +126,6 @@ nullable: boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** nullable
@@ -149,8 +145,6 @@ type: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

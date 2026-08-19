@@ -2,61 +2,57 @@
 
 定义尺寸属性。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
-**废弃版本：** -1
-
-<!--Device-componentUtils-interface Size--><!--Device-componentUtils-interface Size-End-->
+<!--Device-componentUtils-export interface Size--><!--Device-componentUtils-export interface Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
 
 ## height
 
 ```TypeScript
-height: number
+height: double
 ```
 
 组件高度。 单位: px
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Size-height: number--><!--Device-Size-height: number-End-->
+<!--Device-Size-height: double--><!--Device-Size-height: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
 
 ```TypeScript
-width: number
+width: double
 ```
 
 组件宽度。 单位: px
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-Size-width: number--><!--Device-Size-width: number-End-->
+<!--Device-Size-width: double--><!--Device-Size-width: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

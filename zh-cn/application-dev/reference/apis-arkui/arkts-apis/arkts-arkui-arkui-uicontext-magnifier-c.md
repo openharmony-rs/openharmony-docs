@@ -4,13 +4,18 @@
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export class Magnifier--><!--Device-unnamed-export class Magnifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
+import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
+import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+```
 
 ## bind
 
@@ -21,10 +26,6 @@ bind(id: string): void
 绑定放大镜与指定id的组件。 > **说明：**> > 使用前需先通过UIContext中的getMagnifier()方法获取Magnifier实例。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +41,7 @@ bind(id: string): void
 | --- | --- | --- | --- |
 | id | string | 是 | 组件id，可通过通用属性id或key设置。当组件id为空字符串或未找到匹配id的组件时，不显示放大镜。 |
 
-## 示例
+**示例**
 
 请参考[getMagnifier](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getmagnifier)的示例。
 
@@ -53,10 +54,6 @@ show(x: number, y: number): void
 设置放大镜显示的组件内容相对于组件左上角的位置，设置成功后放大镜会对以该坐标点为中心的区域内容进行放大显示。 > **说明：**> > - 使用前需先通过UIContext中的getMagnifier()方法获取Magnifier实例。 > > - 调用此方法前，需先调用[bind](#bind)方法绑定目标组件。 > > - 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -73,7 +70,7 @@ show(x: number, y: number): void
 | x | number | 是 | 放大镜显示的组件内容相对于组件左上角的水平方向坐标，单位为vp。当坐标值大于组件宽度或小于0时不显示放大镜；传入undefined时不生效，保持放大镜当前的显示状态。 |
 | y | number | 是 | 放大镜显示的组件内容相对于组件左上角的垂直方向坐标，单位为vp。当坐标值大于组件高度或小于0时不显示放大镜；传入undefined时不生效，保持放大镜当前的显示状态。 |
 
-## 示例
+**示例**
 
 请参考[getMagnifier](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getmagnifier)的示例。
 
@@ -87,10 +84,6 @@ unbind(): void
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -99,7 +92,7 @@ unbind(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 示例
+**示例**
 
 请参考[getMagnifier](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getmagnifier)的示例。
 

@@ -1,5 +1,12 @@
 # anonAttestKeyItemOffline
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## anonAttestKeyItemOffline
 
 ```TypeScript
@@ -9,10 +16,6 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 离线模式下获取匿名化密钥证书。使用Promise异步回调。 > **说明：** > > - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书，推荐优先使用离线匿名密钥证明。 > > - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。 > **说明：**> > > - Offline key attestation depends on the network. You need to periodically connect to the network to use this API > to update the offline certificate. Offline anonymous key attestation is recommended. > > > - Offline anonymous key attestation requires that the local time be accurate. Otherwise, the peer end may fail to > verify the certificate expiration。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,7 +54,7 @@ function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promis
 | [12000027](../errorcode-huks.md#12000027-网络不可用) | The network is unavailable. Check network connections. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | The operation times out. This may be caused by network jitter. You can try again later. |
 
-## 示例
+**示例**
 
 ```TypeScript
 /* 以离线获取ECC匿名化密钥证书为例 */

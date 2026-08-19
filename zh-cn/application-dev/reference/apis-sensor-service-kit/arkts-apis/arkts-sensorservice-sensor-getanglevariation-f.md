@@ -1,5 +1,11 @@
 # getAngleVariation
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## getAngleVariation
 
 ```TypeScript
@@ -11,10 +17,6 @@ function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatr
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatrix: Array<double>,    callback: AsyncCallback<Array<double>>): void--><!--Device-sensor-function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatrix: Array<double>,    callback: AsyncCallback<Array<double>>): void-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -25,7 +27,7 @@ function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatr
 | --- | --- | --- | --- |
 | currentRotationMatrix | Array&lt;double&gt; | 是 | 当前旋转矩阵。 |
 | preRotationMatrix | Array&lt;double&gt; | 是 | 相对旋转矩阵。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;double&gt;&gt; | 是 | 回调函数，异步返回绕z、x、y轴方向的旋转角度，单位：°（度）。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;double&gt;&gt; | 是 | 回调函数，异步返回绕z、x、y轴方向的旋转角度，单位：°（度）。 |
 
 **错误码：**
 
@@ -34,7 +36,7 @@ function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatr
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -125,10 +127,6 @@ function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatr
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatrix: Array<double>): Promise<Array<double>>--><!--Device-sensor-function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatrix: Array<double>): Promise<Array<double>>-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -153,7 +151,7 @@ function getAngleVariation(currentRotationMatrix: Array<double>, preRotationMatr
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

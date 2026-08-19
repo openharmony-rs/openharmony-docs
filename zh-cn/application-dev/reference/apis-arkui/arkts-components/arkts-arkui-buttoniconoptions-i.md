@@ -4,13 +4,14 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface ButtonIconOptions--><!--Device-unnamed-declare interface ButtonIconOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## hidden
 
@@ -23,10 +24,6 @@ Defines whether an icon is hidden.
 **类型：** string \| PixelMap \| Resource
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +43,6 @@ Defines whether an icon is shown.
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ButtonIconOptions-shown: string | PixelMap | Resource--><!--Device-ButtonIconOptions-shown: string | PixelMap | Resource-End-->
@@ -67,10 +60,6 @@ Defines whether an icon is switching.
 **类型：** string \| PixelMap \| Resource
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

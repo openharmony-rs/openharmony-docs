@@ -1,5 +1,12 @@
 # getDeviceConfig（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## getDeviceConfig
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getDeviceConfig(networkId: int): WifiDeviceConfig
 根据网络ID获取单条WLAN配置。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
 

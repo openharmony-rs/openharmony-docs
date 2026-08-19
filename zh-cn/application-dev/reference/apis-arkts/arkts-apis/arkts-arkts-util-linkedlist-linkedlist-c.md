@@ -4,13 +4,16 @@ LinkedList底层通过双向链表实现，每个节点都包含对前一个元�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class LinkedList--><!--Device-unnamed-declare class LinkedList-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+```
 
 ## $_iterator
 
@@ -21,10 +24,6 @@ $_iterator(): IterableIterator<T>
 返回一个迭代器，每一项都是一个ArkTS对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +37,7 @@ $_iterator(): IterableIterator<T>
 | --- | --- |
 | IterableIterator&lt;T&gt; |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -71,10 +70,6 @@ while(!temp.done) {
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-[Symbol.iterator](): IterableIterator<T>--><!--Device-LinkedList-[Symbol.iterator](): IterableIterator<T>-End-->
@@ -93,7 +88,7 @@ while(!temp.done) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -134,10 +129,6 @@ add(element: T): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-add(element: T): boolean--><!--Device-LinkedList-add(element: T): boolean-End-->
@@ -162,7 +153,7 @@ add(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -214,10 +205,6 @@ addFirst(element: T): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-addFirst(element: T): void--><!--Device-LinkedList-addFirst(element: T): void-End-->
@@ -236,7 +223,7 @@ addFirst(element: T): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The addFirst method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -286,10 +273,6 @@ clear(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-clear(): void--><!--Device-LinkedList-clear(): void-End-->
@@ -302,7 +285,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -340,10 +323,6 @@ clone(): LinkedList<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-clone(): LinkedList<T>--><!--Device-LinkedList-clone(): LinkedList<T>-End-->
@@ -362,7 +341,7 @@ clone(): LinkedList<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clone method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -398,10 +377,6 @@ LinkedList的构造函数。调用后，创建一个空的LinkedList实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-constructor()--><!--Device-LinkedList-constructor()-End-->
@@ -414,7 +389,7 @@ LinkedList的构造函数。调用后，创建一个空的LinkedList实例。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The LinkedList's constructor cannot be directly invoked. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -438,10 +413,6 @@ convertToArray(): Array<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-convertToArray(): Array<T>--><!--Device-LinkedList-convertToArray(): Array<T>-End-->
@@ -460,7 +431,7 @@ convertToArray(): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The convertToArray method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -496,10 +467,6 @@ forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => vo
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => void, thisArg?: Object): void--><!--Device-LinkedList-forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => void, thisArg?: Object): void-End-->
@@ -519,7 +486,7 @@ forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList<T>) => vo
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -546,10 +513,6 @@ forEach(callbackFn: LinkedListForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -573,10 +536,6 @@ get(index: int): T
 根据下标获取LinkedList中的元素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -603,7 +562,7 @@ get(index: int): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range.<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -645,10 +604,6 @@ getFirst(): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-getFirst(): T--><!--Device-LinkedList-getFirst(): T-End-->
@@ -668,7 +623,7 @@ getFirst(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getFirst method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -704,10 +659,6 @@ getIndexOf(element: T): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-getIndexOf(element: T): int--><!--Device-LinkedList-getIndexOf(element: T): int-End-->
@@ -732,7 +683,7 @@ getIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -774,10 +725,6 @@ getLast(): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-getLast(): T--><!--Device-LinkedList-getLast(): T-End-->
@@ -797,7 +744,7 @@ getLast(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLast method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -833,10 +780,6 @@ getLastIndexOf(element: T): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-getLastIndexOf(element: T): int--><!--Device-LinkedList-getLastIndexOf(element: T): int-End-->
@@ -861,7 +804,7 @@ getLastIndexOf(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getLastIndexOf method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -903,10 +846,6 @@ has(element: T): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-has(element: T): boolean--><!--Device-LinkedList-has(element: T): boolean-End-->
@@ -931,7 +870,7 @@ has(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList = new LinkedList<string>();
@@ -949,10 +888,6 @@ insert(index: int, element: T): void
 在长度范围内任意位置插入指定元素，可插入位置区间为[0, LinkedList.length]，在linkedList.length处插入时即在linkedList尾部添加元素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -974,7 +909,7 @@ insert(index: int, element: T): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The insert method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1008,10 +943,6 @@ remove(element: T): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-remove(element: T): boolean--><!--Device-LinkedList-remove(element: T): boolean-End-->
@@ -1036,7 +967,7 @@ remove(element: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1072,10 +1003,6 @@ removeByIndex(index: number): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeByIndex(index: number): T--><!--Device-LinkedList-removeByIndex(index: number): T-End-->
@@ -1101,7 +1028,7 @@ removeByIndex(index: number): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeByIndex method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -1123,10 +1050,6 @@ removeByIndex(index: int): T | undefined
 删除并返回此linkedList中指定下标位置的元素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1153,7 +1076,7 @@ removeByIndex(index: int): T | undefined
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of "index" is out of range. It must be >= 0 && &lt;= \\${length}. Received value is: \\${index} |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -1175,10 +1098,6 @@ removeFirst(): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeFirst(): T--><!--Device-LinkedList-removeFirst(): T-End-->
@@ -1198,7 +1117,7 @@ removeFirst(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeFirst method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -1221,10 +1140,6 @@ removeFirst(): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeFirst(): T | undefined--><!--Device-LinkedList-removeFirst(): T | undefined-End-->
@@ -1243,7 +1158,7 @@ removeFirst(): T | undefined
 | --- | --- |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -1264,10 +1179,6 @@ removeFirstFound(element: T): boolean
 删除第一次出现的指定元素。如果LinkedList中不存在指定元素，会抛出错误。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1295,7 +1206,7 @@ removeFirstFound(element: T): boolean
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 | [10200017](../errorcode-utils.md#10200017-删除不存在的元素错误) | The element does not exist in this container. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1330,10 +1241,6 @@ removeLast(): T
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeLast(): T--><!--Device-LinkedList-removeLast(): T-End-->
@@ -1353,7 +1260,7 @@ removeLast(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeLast method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList = new LinkedList<number>();
@@ -1376,10 +1283,6 @@ removeLast(): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-removeLast(): T | undefined--><!--Device-LinkedList-removeLast(): T | undefined-End-->
@@ -1398,7 +1301,7 @@ removeLast(): T | undefined
 | --- | --- |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let linkedList: LinkedList<int> = new LinkedList<int>();
@@ -1419,10 +1322,6 @@ removeLastFound(element: T): boolean
 删除最后一次出现的指定元素。如果LinkedList中不存在指定元素，会抛出错误。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1450,7 +1349,7 @@ removeLastFound(element: T): boolean
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty. |
 | [10200017](../errorcode-utils.md#10200017-删除不存在的元素错误) | The element does not exist in this container. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1485,10 +1384,6 @@ set(index: int, element: T): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LinkedList-set(index: int, element: T): T--><!--Device-LinkedList-set(index: int, element: T): T-End-->
@@ -1516,7 +1411,7 @@ set(index: int, element: T): T
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+ |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1553,10 +1448,6 @@ LinkedList的元素个数。
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

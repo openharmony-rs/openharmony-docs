@@ -1,5 +1,10 @@
 # getTotalBytes
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getTotalBytes
 
 ```TypeScript
@@ -9,8 +14,6 @@ function getTotalBytes(path: string, callback: AsyncCallback<number>): void
 异步方法获取指定文件系统总字节数，使用callback形式返回结果。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -25,9 +28,9 @@ function getTotalBytes(path: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 需要查询的文件系统的文件路径 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步获取总字节数之后的回调 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步获取总字节数之后的回调 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import common from '@ohos.app.ability.common';
@@ -54,8 +57,6 @@ function getTotalBytes(path: string): Promise<number>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getTotalBytes
@@ -76,7 +77,7 @@ function getTotalBytes(path: string): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | 返回总字节数 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';

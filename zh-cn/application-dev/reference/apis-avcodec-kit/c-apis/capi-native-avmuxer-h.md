@@ -86,7 +86,7 @@ OH_AVErrCode OH_AVMuxer_SetRotation(OH_AVMuxer *muxer, int32_t rotation)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}：执行成功。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或rotation无效。<br>     <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。 |
+| OH_AVErrCode | {@link AV_ERR_OK}：执行成功。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或rotation无效。      <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。 |
 
 ### OH_AVMuxer_SetFormat()
 
@@ -111,7 +111,7 @@ OH_AVErrCode OH_AVMuxer_SetFormat(OH_AVMuxer *muxer, OH_AVFormat *format)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}：设置format参数正确。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或format无效。<br>     <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。 |
+| OH_AVErrCode | {@link AV_ERR_OK}：设置format参数正确。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或format无效。      <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。 |
 
 ### OH_AVMuxer_AddTrack()
 
@@ -137,7 +137,7 @@ OH_AVErrCode OH_AVMuxer_AddTrack(OH_AVMuxer *muxer, int32_t *trackIndex, OH_AVFo
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或trackIndex无效，或trackFormat无效。<br>     <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。<br>     <br>{@link AV_ERR_UNSUPPORT}：不支持的mime类型。<br>     <br>{@link AV_ERR_NO_MEMORY}：申请内存失败。<br>     <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
+| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或trackIndex无效，或trackFormat无效。      <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。      <br>{@link AV_ERR_UNSUPPORT}：不支持的mime类型。      <br>{@link AV_ERR_NO_MEMORY}：申请内存失败。      <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
 
 ### OH_AVMuxer_Start()
 
@@ -161,7 +161,7 @@ OH_AVErrCode OH_AVMuxer_Start(OH_AVMuxer *muxer)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针。<br>     <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。<br>     <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
+| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针。      <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。      <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
 
 ### OH_AVMuxer_WriteSample()
 
@@ -192,7 +192,7 @@ OH_AVErrCode OH_AVMuxer_WriteSample(OH_AVMuxer *muxer, uint32_t trackIndex, OH_A
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或trackIndex无效，或sample无效，或info无效。<br>     <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。<br>     <br>{@link AV_ERR_NO_MEMORY}：申请内存失败。<br>     <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
+| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或trackIndex无效，或sample无效，或info无效。      <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。      <br>{@link AV_ERR_NO_MEMORY}：申请内存失败。      <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
 
 ### OH_AVMuxer_WriteSampleBuffer()
 
@@ -218,7 +218,7 @@ OH_AVErrCode OH_AVMuxer_WriteSampleBuffer(OH_AVMuxer *muxer, uint32_t trackIndex
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或trackIndex无效，或sample无效。<br>     <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。<br>     <br>{@link AV_ERR_NO_MEMORY}：申请内存失败。<br>     <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
+| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针，或trackIndex无效，或sample无效。      <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。      <br>{@link AV_ERR_NO_MEMORY}：申请内存失败。      <br>{@link AV_ERR_UNKNOWN}：未知错误。 |
 
 ### OH_AVMuxer_Stop()
 
@@ -242,7 +242,7 @@ OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针。<br>     <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。 |
+| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针。      <br>{@link AV_ERR_OPERATE_NOT_PERMIT}：不允许调用该接口，请检查接口调用顺序。 |
 
 ### OH_AVMuxer_Destroy()
 
@@ -266,6 +266,6 @@ OH_AVErrCode OH_AVMuxer_Destroy(OH_AVMuxer *muxer)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。<br>     <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针。 |
+| OH_AVErrCode | {@link AV_ERR_OK：执行成功}。      <br>{@link AV_ERR_INVALID_VAL}：muxer为空指针。 |
 
 

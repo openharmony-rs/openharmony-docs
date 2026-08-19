@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-export enum ModuleType--><!--Device-bundleManager-export enum ModuleType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -21,10 +17,6 @@ ENTRY = 1
 应用的主模块，作为应用的入口，提供了应用的基础功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ FEATURE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ModuleType-FEATURE = 2--><!--Device-ModuleType-FEATURE = 2-End-->
@@ -61,10 +49,6 @@ SHARED = 3
 应用的[动态共享库](../../../quick-start/in-app-hsp.md)模块。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

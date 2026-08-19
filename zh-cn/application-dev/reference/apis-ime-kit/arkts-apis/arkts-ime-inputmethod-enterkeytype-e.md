@@ -4,10 +4,6 @@ Enter键的功能类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethod-export enum EnterKeyType--><!--Device-inputMethod-export enum EnterKeyType-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -21,10 +17,6 @@ UNSPECIFIED = 0
 未指定。 **使用场景：**编辑框不指定Enter键具体功能时使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnterKeyType-UNSPECIFIED = 0--><!--Device-EnterKeyType-UNSPECIFIED = 0-End-->
 
@@ -40,10 +32,6 @@ NONE。 **使用场景：**Enter键无特定行为，仅作为换行或普通按
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EnterKeyType-NONE--><!--Device-EnterKeyType-NONE-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -57,10 +45,6 @@ GO
 前往。 **使用场景：**适用于URL输入框，Enter键触发"前往"操作，如打开链接。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnterKeyType-GO--><!--Device-EnterKeyType-GO-End-->
 
@@ -76,10 +60,6 @@ SEARCH
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EnterKeyType-SEARCH--><!--Device-EnterKeyType-SEARCH-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -93,10 +73,6 @@ SEND
 发送。 **使用场景：**适用于消息发送框，Enter键触发发送操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnterKeyType-SEND--><!--Device-EnterKeyType-SEND-End-->
 
@@ -112,10 +88,6 @@ NEXT
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EnterKeyType-NEXT--><!--Device-EnterKeyType-NEXT-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -129,10 +101,6 @@ DONE
 完成。 **使用场景：**适用于单步骤表单的最后输入框，Enter键表示输入完成。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnterKeyType-DONE--><!--Device-EnterKeyType-DONE-End-->
 
@@ -148,10 +116,6 @@ PREVIOUS
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EnterKeyType-PREVIOUS--><!--Device-EnterKeyType-PREVIOUS-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -165,10 +129,6 @@ NEWLINE
 换行。 **使用场景：**适用于多行文本编辑框，Enter键插入换行符。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnterKeyType-NEWLINE--><!--Device-EnterKeyType-NEWLINE-End-->
 

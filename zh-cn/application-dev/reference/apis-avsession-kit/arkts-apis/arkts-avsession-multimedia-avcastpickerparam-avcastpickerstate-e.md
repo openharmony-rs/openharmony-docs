@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum AVCastPickerState--><!--Device-unnamed-export declare enum AVCastPickerState-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -19,10 +15,6 @@ STATE_APPEARING = 0
 ```
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -37,10 +29,6 @@ STATE_DISAPPEARING = 1
 ```
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

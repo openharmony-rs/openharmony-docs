@@ -1,18 +1,20 @@
 # getFontWeightScale（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { uiAppearance } from '@kit.ArkUI';
+```
+
 ## getFontWeightScale
 
 ```TypeScript
 function getFontWeightScale(): number
 ```
 
-获取系统当前的字体粗细缩放比例。该比例为系统设置中用户配置的字体粗细相对于默认字体粗细的倍数，取值范围请参考系统字体粗细设置。开发者可基于该比例值调整应用内字体粗细，以适配用户的字体粗细偏好设置。 &lt;!--Del--&gt; > **说明：** > 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请 > [ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration) > 权限。 &lt;!--DelEnd--&gt;
+获取系统当前的字体粗细缩放比例。该比例为系统设置中用户配置的字体粗细相对于默认字体粗细的倍数，取值范围请参考系统字体粗细设置。开发者可基于该比例值调整应用内字体粗细，以适配用户的字体粗细偏好设置。 <!--Del--> > **说明：** > 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请 > [ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration) > 权限。 <!--DelEnd-->
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本12 - 19：ohos.permission.UPDATE_CONFIGURATION
@@ -37,7 +39,7 @@ function getFontWeightScale(): number
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 12 - 19 |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12 - 19 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiAppearance } from '@kit.ArkUI';

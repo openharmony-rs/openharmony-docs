@@ -1,5 +1,13 @@
 # getWindowsByCoordinate
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## getWindowsByCoordinate
 
 ```TypeScript
@@ -11,10 +19,6 @@ function getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, y?
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-window-function getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, y?: int):      Promise<Array<Window>>--><!--Device-window-function getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, y?: int):      Promise<Array<Window>>-End-->
@@ -25,7 +29,7 @@ function getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, y?
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 查询窗口所在的displayId，该参数应为整数，传入非整数会忽略掉小数部分，可以在窗口属性 [WindowProperties](arkts-arkui-window-windowproperties-i.md#windowproperties)中获取。 |
+| displayId | long | 是 | 查询窗口所在的displayId，该参数应为整数，传入非整数会忽略掉小数部分，可以在窗口属性 [WindowProperties](arkts-arkui-window-windowproperties-i.md)中获取。 |
 | windowNumber | int | 否 | 查询的窗口数量，该参数应为大于0的整数，传入非整数会忽略掉小数部分，未设置或小于等于0返回所有满足条件的窗口。 |
 | x | int | 否 | 查询的x坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。 |
 | y | int | 否 | 查询的y坐标，以屏幕左上角为原点，该参数应为非负整数，传入非整数会忽略掉小数部分，未设置或小于0返回所有可见窗口。 |
@@ -44,7 +48,7 @@ function getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, y?
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

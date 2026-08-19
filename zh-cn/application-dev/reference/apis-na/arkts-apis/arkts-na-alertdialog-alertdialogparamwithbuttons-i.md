@@ -1,14 +1,12 @@
 # AlertDialogParamWithButtons
 
-继承自[AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md#alertdialogparam)。
+继承自[AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md)。
 
-**继承/实现关系：** AlertDialogParamWithButtons extends [AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md#alertdialogparam)
+**继承/实现关系：** AlertDialogParamWithButtons extends [AlertDialogParam](arkts-na-alertdialog-alertdialogparam-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface AlertDialogParamWithButtons--><!--Device-unnamed-export declare interface AlertDialogParamWithButtons-End-->
 
@@ -26,9 +24,7 @@ primaryButton: AlertDialogButtonBaseOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,9 +44,7 @@ secondaryButton: AlertDialogButtonBaseOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

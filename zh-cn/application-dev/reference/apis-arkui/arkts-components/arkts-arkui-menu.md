@@ -14,10 +14,6 @@ Menu()
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MenuInterface-(): MenuAttribute--><!--Device-MenuInterface-(): MenuAttribute-End-->
@@ -26,4 +22,9 @@ Menu()
 
 ## 汇总
 
-- [SubMenuExpandingMode](arkts-arkui-submenuexpandingmode-e.md)
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [SubMenuExpandingMode](arkts-arkui-submenuexpandingmode-e.md) | Menu子菜单展开样式枚举。 |
+

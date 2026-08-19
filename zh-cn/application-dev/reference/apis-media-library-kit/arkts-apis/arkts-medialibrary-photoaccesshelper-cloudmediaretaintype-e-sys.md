@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum CloudMediaRetainType--><!--Device-photoAccessHelper-enum CloudMediaRetainType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -24,10 +20,6 @@ RETAIN_FORCE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudMediaRetainType-RETAIN_FORCE = 0--><!--Device-CloudMediaRetainType-RETAIN_FORCE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -43,10 +35,6 @@ HDC_RETAIN_FORCE = 1
 删除原文件在家庭存储设备的本地元数据和缩略图。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-CloudMediaRetainType-HDC_RETAIN_FORCE = 1--><!--Device-CloudMediaRetainType-HDC_RETAIN_FORCE = 1-End-->
 

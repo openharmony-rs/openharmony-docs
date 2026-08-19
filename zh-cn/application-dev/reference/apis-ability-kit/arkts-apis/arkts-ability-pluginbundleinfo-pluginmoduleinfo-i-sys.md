@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface PluginModuleInfo--><!--Device-unnamed-export interface PluginModuleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -25,10 +21,6 @@ readonly description: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PluginModuleInfo-readonly description: string--><!--Device-PluginModuleInfo-readonly description: string-End-->
 
@@ -48,10 +40,6 @@ readonly descriptionId: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PluginModuleInfo-readonly descriptionId: long--><!--Device-PluginModuleInfo-readonly descriptionId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -69,10 +57,6 @@ readonly moduleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PluginModuleInfo-readonly moduleName: string--><!--Device-PluginModuleInfo-readonly moduleName: string-End-->
 

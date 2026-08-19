@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface XComponentAttribute--><!--Device-unnamed-export declare interface XComponentAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<XComponentAttribute> | AttributeMo
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-attributeModifier(modifier: AttributeModifier<XComponentAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-XComponentAttribute-attributeModifier(modifier: AttributeModifier<XComponentAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ enableAnalyzer(enable: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-enableAnalyzer(enable: boolean | undefined): this--><!--Device-XComponentAttribute-enableAnalyzer(enable: boolean | undefined): this-End-->
 
@@ -74,9 +68,7 @@ enableSecure(isSecure: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-enableSecure(isSecure: boolean | undefined): this--><!--Device-XComponentAttribute-enableSecure(isSecure: boolean | undefined): this-End-->
 
@@ -100,9 +92,7 @@ enableTransparentLayer(enabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-enableTransparentLayer(enabled: boolean | undefined): this--><!--Device-XComponentAttribute-enableTransparentLayer(enabled: boolean | undefined): this-End-->
 
@@ -126,9 +116,7 @@ hdrBrightness(brightness: double | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-hdrBrightness(brightness: double | undefined): this--><!--Device-XComponentAttribute-hdrBrightness(brightness: double | undefined): this-End-->
 
@@ -152,9 +140,7 @@ hdrBrightness(brightness: double | undefined, type?: HdrType): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-hdrBrightness(brightness: double | undefined, type?: HdrType): this--><!--Device-XComponentAttribute-hdrBrightness(brightness: double | undefined, type?: HdrType): this-End-->
 
@@ -179,9 +165,7 @@ onDestroy(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-onDestroy(event: VoidCallback | undefined): this--><!--Device-XComponentAttribute-onDestroy(event: VoidCallback | undefined): this-End-->
 
@@ -205,9 +189,7 @@ onLoad(callback: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-XComponentAttribute-onLoad(callback: VoidCallback | undefined): this--><!--Device-XComponentAttribute-onLoad(callback: VoidCallback | undefined): this-End-->
 
@@ -233,9 +215,7 @@ setXComponentOptions(params: XComponentParameters | XComponentOptions | NativeXC
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -265,9 +245,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

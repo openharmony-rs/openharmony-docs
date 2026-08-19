@@ -4,13 +4,50 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-util-class TextDecoder--><!--Device-util-class TextDecoder-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -22,17 +59,13 @@ constructor()
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecoder-constructor()--><!--Device-TextDecoder-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 let textDecoder = new util.TextDecoder();
@@ -51,8 +84,6 @@ constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean 
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [create](#create)
@@ -66,9 +97,9 @@ constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | encoding | string | 否 | 编码格式。默认格式为 **'utf-8'**。 |
-| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关的选项，包含 **fatal** 和 **ignoreBOM**。 |
+| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关的选项，包含 **fatal** 和 **ignoreBOM**。此参数不填时，对应各属性取其默认值 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
@@ -83,10 +114,6 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 创建一个 **TextDecoder** 对象。提供与已弃用的带参构造函数相同的功能。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -107,7 +134,7 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 | --- | --- |
 | [TextDecoder](arkts-arkts-util-textdecoder-c.md) | 创建的 **TextDecoder** 对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textDecoderOptions: util.TextDecoderOptions = {
@@ -130,8 +157,6 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [decodeToString](#decodetostring)
@@ -153,7 +178,7 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 | --- | --- |
 | string | 获取到的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
@@ -180,10 +205,6 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecoder-decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string--><!--Device-TextDecoder-decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string-End-->
@@ -203,7 +224,7 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 | --- | --- |
 | string | 获取到的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 当解析不含有\0的字节的示例代码
@@ -250,8 +271,6 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 **替代接口：** [decodeToString](#decodetostring)
@@ -275,7 +294,7 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 | --- | --- |
 | string | 获取到的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textDecoderOptions: util.TextDecoderOptions = {
@@ -311,10 +330,6 @@ readonly encoding: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecoder-readonly encoding: string--><!--Device-TextDecoder-readonly encoding: string-End-->
@@ -333,10 +348,6 @@ readonly fatal: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecoder-readonly fatal: boolean--><!--Device-TextDecoder-readonly fatal: boolean-End-->
@@ -354,10 +365,6 @@ readonly ignoreBOM = false
 **类型：** false
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

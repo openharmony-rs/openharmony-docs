@@ -7,7 +7,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [DistortionComponent](arkts-na-distortioncomponent-distortioncomponent-f-sys.md#distortioncomponent系统接口) | Defines a DistortionComponent that provides spatial distortion visual effects. |
+| [DistortionComponent](arkts-na-distortioncomponent-distortioncomponent-f-sys.md) | Defines a DistortionComponent that provides spatial distortion visual effects. |
 <!--DelEnd-->
 
 ### 接口

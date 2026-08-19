@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-interface TableDetails--><!--Device-relationalStore-interface TableDetails-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## 导入模块
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData';
+```
 
 ## download
 
@@ -23,10 +25,6 @@ download: Statistic
 **类型：** [Statistic](arkts-arkdata-relationalstore-statistic-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TableDetails-download: Statistic--><!--Device-TableDetails-download: Statistic-End-->
 
@@ -43,10 +41,6 @@ upload: Statistic
 **类型：** [Statistic](arkts-arkdata-relationalstore-statistic-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TableDetails-upload: Statistic--><!--Device-TableDetails-upload: Statistic-End-->
 

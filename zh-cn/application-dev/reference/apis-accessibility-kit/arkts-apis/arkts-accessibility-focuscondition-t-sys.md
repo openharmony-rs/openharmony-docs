@@ -9,10 +9,6 @@ export type FocusCondition = 'forward' | 'backward' |
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'--><!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core

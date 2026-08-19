@@ -1,5 +1,11 @@
 # connectNative
 
+## 导入模块
+
+```TypeScript
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+```
+
 ## connectNative
 
 ```TypeScript
@@ -9,10 +15,6 @@ function connectNative(context: UIAbilityContext, want: Want, callback: WebExten
 将当前Ability连接到指定的Web原生消息扩展Ability。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WEB_NATIVE_MESSAGING
 
@@ -42,7 +44,7 @@ function connectNative(context: UIAbilityContext, want: Want, callback: WebExten
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

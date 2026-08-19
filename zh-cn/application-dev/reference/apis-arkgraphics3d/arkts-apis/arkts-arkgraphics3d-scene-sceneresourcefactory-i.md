@@ -1,14 +1,10 @@
 # SceneResourceFactory
 
-场景资源工厂.
+用于创建3D场景中资源的接口，例如相机、光源等，继承自RenderResourceFactory。
 
-**继承/实现关系：** SceneResourceFactory extends [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md#renderresourcefactory)
+**继承/实现关系：** SceneResourceFactory extends [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface SceneResourceFactory--><!--Device-unnamed-export interface SceneResourceFactory-End-->
 
@@ -20,13 +16,9 @@
 createCamera(params: SceneNodeParameters): Promise<Camera>
 ```
 
-Create a camera.
+根据节点参数创建相机，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters): Promise<Camera>--><!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters): Promise<Camera>-End-->
 
@@ -36,15 +28,15 @@ Create a camera.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 创建相机的参数 |
+| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 场景节点参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Camera](arkts-arkgraphics3d-scenenodes-camera-i.md)&gt; | 返回创建的相机 |
+| Promise&lt;[Camera](arkts-arkgraphics3d-scenenodes-camera-i.md)&gt; | Promise对象，返回相机对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneNodeParameters, Camera, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
@@ -73,13 +65,9 @@ function createCameraPromise(): Promise<Camera> {
 createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise<Camera>
 ```
 
-Create a camera.
+根据节点参数与相机参数创建相机，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise<Camera>--><!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise<Camera>-End-->
 
@@ -89,16 +77,16 @@ Create a camera.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 创建相机的参数 |
-| cameraParams | [CameraParameters](arkts-arkgraphics3d-scene-cameraparameters-i.md) | 是 | 相机特定的额外参数 |
+| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 场景节点参数。 |
+| cameraParams | [CameraParameters](arkts-arkgraphics3d-scene-cameraparameters-i.md) | 是 | 相机参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Camera](arkts-arkgraphics3d-scenenodes-camera-i.md)&gt; | 返回创建的相机 |
+| Promise&lt;[Camera](arkts-arkgraphics3d-scenenodes-camera-i.md)&gt; | Promise对象，返回相机对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneNodeParameters, Camera, SceneResourceFactory, Scene, CameraParameters,
@@ -129,13 +117,9 @@ function createCameraPromise(): Promise<Camera> {
 createEffect(params: EffectParameters): Promise<Effect>
 ```
 
-创建特效.
+根据特效参数创建特效对象，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createEffect(params: EffectParameters): Promise<Effect>--><!--Device-SceneResourceFactory-createEffect(params: EffectParameters): Promise<Effect>-End-->
 
@@ -145,15 +129,15 @@ createEffect(params: EffectParameters): Promise<Effect>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [EffectParameters](arkts-arkgraphics3d-scene-effectparameters-i.md) | 是 | 创建特效的参数. |
+| params | [EffectParameters](arkts-arkgraphics3d-scene-effectparameters-i.md) | 是 | 特效参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Effect](arkts-arkgraphics3d-sceneresources-effect-i.md)&gt; | 返回创建的特效. |
+| Promise&lt;[Effect](arkts-arkgraphics3d-sceneresources-effect-i.md)&gt; | Promise对象，返回特效对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
@@ -184,13 +168,9 @@ function createEffect() : Promise<Effect> {
 createEnvironment(params: SceneResourceParameters): Promise<Environment>
 ```
 
-Create an environment.
+根据场景资源参数创建环境，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createEnvironment(params: SceneResourceParameters): Promise<Environment>--><!--Device-SceneResourceFactory-createEnvironment(params: SceneResourceParameters): Promise<Environment>-End-->
 
@@ -200,15 +180,15 @@ Create an environment.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建环境对象的参数 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 场景资源参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Environment](arkts-arkgraphics3d-sceneresources-environment-i.md)&gt; | 返回创建的环境 |
+| Promise&lt;[Environment](arkts-arkgraphics3d-sceneresources-environment-i.md)&gt; | Promise对象，返回环境对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Environment, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
@@ -238,13 +218,9 @@ function createEnvironmentPromise(): Promise<Environment> {
 createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry>
 ```
 
-创建几何节点.
+根据场景节点参数和网格数据创建几何对象，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry>--><!--Device-SceneResourceFactory-createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry>-End-->
 
@@ -254,16 +230,16 @@ createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 创建几何体的参数 |
-| mesh | [MeshResource](arkts-arkgraphics3d-sceneresources-meshresource-i.md) | 是 | resource - 几何体的网格数据 |
+| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 场景节点参数。 |
+| mesh | [MeshResource](arkts-arkgraphics3d-sceneresources-meshresource-i.md) | 是 | 网格数据参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Geometry](arkts-arkgraphics3d-scenenodes-geometry-i.md)&gt; | 返回创建的几何体 |
+| Promise&lt;[Geometry](arkts-arkgraphics3d-scenenodes-geometry-i.md)&gt; | Promise对象，返回几何对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneResourceFactory, Scene, Geometry, CubeGeometry } from '@kit.ArkGraphics3D';
@@ -299,13 +275,9 @@ function createGeometryPromise() : Promise<Geometry> {
 createLight(params: SceneNodeParameters, lightType: LightType): Promise<Light>
 ```
 
-Create a light.
+根据节点参数和灯光类型创建灯光，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createLight(params: SceneNodeParameters, lightType: LightType): Promise<Light>--><!--Device-SceneResourceFactory-createLight(params: SceneNodeParameters, lightType: LightType): Promise<Light>-End-->
 
@@ -315,16 +287,16 @@ Create a light.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | the param of creating a light |
-| lightType | [LightType](arkts-arkgraphics3d-scenenodes-lighttype-e.md) | 是 | 光源类型 |
+| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 场景节点参数。 |
+| lightType | [LightType](arkts-arkgraphics3d-scenenodes-lighttype-e.md) | 是 | 灯光类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Light](arkts-arkgraphics3d-scenenodes-light-i.md)&gt; | 返回创建的光源 |
+| Promise&lt;[Light](arkts-arkgraphics3d-scenenodes-light-i.md)&gt; | Promise对象，返回灯光对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneNodeParameters, LightType, Light, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
@@ -353,13 +325,9 @@ function createLightPromise() : Promise<Light> {
 createMaterial(params: SceneResourceParameters, materialType: MaterialType): Promise<Material>
 ```
 
-Create a material.
+根据场景资源参数和材质类型创建材质，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createMaterial(params: SceneResourceParameters, materialType: MaterialType): Promise<Material>--><!--Device-SceneResourceFactory-createMaterial(params: SceneResourceParameters, materialType: MaterialType): Promise<Material>-End-->
 
@@ -369,16 +337,16 @@ Create a material.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | the param of creating a material |
-| materialType | [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md) | 是 | 材质类型 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 场景资源参数。 |
+| materialType | [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md) | 是 | 材质类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Material](arkts-arkgraphics3d-sceneresources-material-i.md)&gt; | 返回创建的材质 |
+| Promise&lt;[Material](arkts-arkgraphics3d-sceneresources-material-i.md)&gt; | Promise对象，返回材质对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { MaterialType, Material, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
@@ -407,13 +375,9 @@ function createMaterialPromise() : Promise<Material> {
 createNode(params: SceneNodeParameters): Promise<Node>
 ```
 
-Create a node.
+创建节点，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceFactory-createNode(params: SceneNodeParameters): Promise<Node>--><!--Device-SceneResourceFactory-createNode(params: SceneNodeParameters): Promise<Node>-End-->
 
@@ -423,15 +387,15 @@ Create a node.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 创建节点的参数 |
+| params | [SceneNodeParameters](arkts-arkgraphics3d-scene-scenenodeparameters-i.md) | 是 | 场景节点参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Node](arkts-arkgraphics3d-scenenodes-node-i.md)&gt; | 返回创建的节点 |
+| Promise&lt;[Node](arkts-arkgraphics3d-scenenodes-node-i.md)&gt; | Promise对象，返回节点对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneNodeParameters, SceneResourceFactory, Scene, Node } from '@kit.ArkGraphics3D';

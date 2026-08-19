@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum MonitorEvent--><!--Device-unnamed-export enum MonitorEvent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -24,10 +20,6 @@ MONITOR_TYPE_ENTRY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MonitorEvent-MONITOR_TYPE_ENTRY = 1--><!--Device-MonitorEvent-MONITOR_TYPE_ENTRY = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -43,10 +35,6 @@ MONITOR_TYPE_LEAVE = 2
 退出地理围栏。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MonitorEvent-MONITOR_TYPE_LEAVE = 2--><!--Device-MonitorEvent-MONITOR_TYPE_LEAVE = 2-End-->
 

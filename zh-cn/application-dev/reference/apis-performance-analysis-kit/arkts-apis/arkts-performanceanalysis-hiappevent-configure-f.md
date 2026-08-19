@@ -1,5 +1,11 @@
 # configure
 
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## configure
 
 ```TypeScript
@@ -9,10 +15,6 @@ function configure(config: ConfigOption): void
 应用事件打点配置方法，支持配置打点开关和目录存储配额大小。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -33,7 +35,7 @@ function configure(config: ConfigOption): void
 | [11103001](../errorcode-hiappevent.md#11103001-非法的最大存储配额值) | Invalid max storage quota value. Possibly caused by incorrectly formatted. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 配置打点开关为关闭状态

@@ -81,7 +81,7 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_AnyNativeAPI*](capi-web-arkweb-anynativeapi.md) | 根据传入的API类型，返回对应的Native API结构体指针，结构体第一个成员为当前结构体的大小，可用于访问Controller、Component、CookieManager等具体的Native API功能。<br>     若传入的API类型在当前系统版本不支持（如ARKWEB_NATIVE_JAVASCRIPT_VALUE在18以下版本不可用），则返回NULL。 |
+| [ArkWeb_AnyNativeAPI*](capi-web-arkweb-anynativeapi.md) | 根据传入的API类型，返回对应的Native API结构体指针，结构体第一个成员为当前结构体的大小，可用于访问Controller、Component、CookieManager等具体的Native API功能。      若传入的API类型在当前系统版本不支持（如ARKWEB_NATIVE_JAVASCRIPT_VALUE在18以下版本不可用），则返回NULL。 |
 
 ### OH_ArkWeb_RegisterScrollCallback()
 

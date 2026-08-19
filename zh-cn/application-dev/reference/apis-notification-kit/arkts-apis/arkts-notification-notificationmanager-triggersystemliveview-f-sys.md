@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## triggerSystemLiveView
@@ -15,10 +15,6 @@ function triggerSystemLiveView(bundle: BundleOption, notificationId: int, button
 触发系统实况窗。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -56,7 +52,7 @@ function triggerSystemLiveView(bundle: BundleOption, notificationId: int, button
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

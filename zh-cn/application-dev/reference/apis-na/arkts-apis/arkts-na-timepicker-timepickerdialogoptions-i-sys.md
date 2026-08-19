@@ -1,14 +1,12 @@
 # TimePickerDialogOptions
 
-时间选择器弹窗选项。 继承自[TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md#timepickeroptions)。
+时间选择器弹窗选项。 继承自[TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md)。
 
-**继承/实现关系：** TimePickerDialogOptions extends [TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md#timepickeroptions)
+**继承/实现关系：** TimePickerDialogOptions extends [TimePickerOptions](arkts-na-timepicker-timepickeroptions-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface TimePickerDialogOptions--><!--Device-unnamed-export declare interface TimePickerDialogOptions-End-->
 
@@ -28,9 +26,7 @@ distortionMode?: DistortionMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,9 +50,7 @@ edgeLightMode?: EdgeLightMode
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

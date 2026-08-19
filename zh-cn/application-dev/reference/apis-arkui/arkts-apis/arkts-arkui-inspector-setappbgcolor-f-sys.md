@@ -1,5 +1,11 @@
 # setAppBgColor（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+```
+
 ## setAppBgColor
 
 ```TypeScript
@@ -9,10 +15,6 @@ declare function setAppBgColor(value: string): void
 设置应用背景颜色。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare function setAppBgColor(value: string): void--><!--Device-unnamed-declare function setAppBgColor(value: string): void-End-->
 

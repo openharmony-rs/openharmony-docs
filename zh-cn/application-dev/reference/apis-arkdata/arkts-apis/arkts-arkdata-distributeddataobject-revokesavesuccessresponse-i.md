@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedDataObject-interface RevokeSaveSuccessResponse--><!--Device-distributedDataObject-interface RevokeSaveSuccessResponse-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## sessionId
 
@@ -23,10 +25,6 @@ sessionId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RevokeSaveSuccessResponse-sessionId: string--><!--Device-RevokeSaveSuccessResponse-sessionId: string-End-->
 

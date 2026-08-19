@@ -4,13 +4,16 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-huks-export interface HuksReturnResult--><!--Device-huks-export interface HuksReturnResult-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
+
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
 
 ## certChains
 
@@ -24,10 +27,6 @@ certChains?: Array<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksReturnResult-certChains?: Array<string>--><!--Device-HuksReturnResult-certChains?: Array<string>-End-->
@@ -40,15 +39,11 @@ certChains?: Array<string>
 outData?: Uint8Array
 ```
 
-表示 [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession) 操作之后获取到的challenge信息。默认为undefined。
+表示 [initSession](arkts-universalkeystore-huks-initsession-f.md) 操作之后获取到的challenge信息。默认为undefined。
 
 **类型：** Uint8Array
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -62,15 +57,11 @@ outData?: Uint8Array
 properties?: Array<HuksParam>
 ```
 
-表示 [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession) 操作之后获取到的challenge信息。默认为undefined。
+表示 [initSession](arkts-universalkeystore-huks-initsession-f.md) 操作之后获取到的challenge信息。默认为undefined。
 
 **类型：** Array&lt;[HuksParam](arkts-universalkeystore-huks-huksparam-i.md)&gt;
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -89,10 +80,6 @@ sharedSecret?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

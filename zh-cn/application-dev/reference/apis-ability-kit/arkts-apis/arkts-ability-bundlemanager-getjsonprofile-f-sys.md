@@ -1,5 +1,11 @@
 # getJsonProfile（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getJsonProfile
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getJsonProfile(profileType: ProfileType, bundleName: string, moduleName
 以同步的方法根据给定的profileType、bundleName和moduleName查询相应配置文件的JSON字符串。 获取调用方自己的配置文件时不需要权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -29,7 +31,7 @@ function getJsonProfile(profileType: ProfileType, bundleName: string, moduleName
 | profileType | [ProfileType](arkts-ability-bundlemanager-profiletype-e-sys.md) | 是 | 表示要查询的配置文件类型。 |
 | bundleName | string | 是 | 表示要查询应用程序的bundleName。 |
 | moduleName | string | 否 | 表示要查询应用程序的module的名称，缺省时在入口模块中查找。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。<br>**起始版本：** 12 |
+| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -50,7 +52,7 @@ function getJsonProfile(profileType: ProfileType, bundleName: string, moduleName
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

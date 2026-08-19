@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
 **废弃版本：** 24
 
 <!--Device-userStatus-export enum UserAgeGroup--><!--Device-userStatus-export enum UserAgeGroup-End-->
@@ -22,8 +20,6 @@ OTHERS = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
 **废弃版本：** 24
 
 <!--Device-UserAgeGroup-OTHERS = 0--><!--Device-UserAgeGroup-OTHERS = 0-End-->
@@ -39,8 +35,6 @@ CHILD = 1
 表示是儿童操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 24
 

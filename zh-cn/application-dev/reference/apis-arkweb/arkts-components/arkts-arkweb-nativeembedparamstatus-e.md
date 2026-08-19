@@ -4,10 +4,6 @@
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum NativeEmbedParamStatus--><!--Device-unnamed-declare enum NativeEmbedParamStatus-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ ADD = 0
 添加param元素。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 <!--Device-NativeEmbedParamStatus-ADD = 0--><!--Device-NativeEmbedParamStatus-ADD = 0-End-->
 
@@ -40,10 +32,6 @@ UPDATE = 1
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-NativeEmbedParamStatus-UPDATE = 1--><!--Device-NativeEmbedParamStatus-UPDATE = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -57,10 +45,6 @@ DELETE = 2
 删除param元素。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 <!--Device-NativeEmbedParamStatus-DELETE = 2--><!--Device-NativeEmbedParamStatus-DELETE = 2-End-->
 

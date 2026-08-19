@@ -1,4 +1,4 @@
-# CAPI<!--c-performance-analysis-kit-->
+# C API<!--c-performance-analysis-kit-->
 
 - 头文件
     - [trace.h](capi-trace-h.md)

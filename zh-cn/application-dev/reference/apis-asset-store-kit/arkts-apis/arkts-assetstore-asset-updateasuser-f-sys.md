@@ -1,5 +1,11 @@
 # updateAsUser（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## updateAsUser
 
 ```TypeScript
@@ -9,10 +15,6 @@ function updateAsUser(userId: number, query: AssetMap, attributesToUpdate: Asset
 在指定用户空间中更新符合条件的一条关键资产。使用Promise异步回调。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -56,7 +58,7 @@ function updateAsUser(userId: number, query: AssetMap, attributesToUpdate: Asset
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

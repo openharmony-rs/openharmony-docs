@@ -1,5 +1,11 @@
 # grantSharedDirectoryPermission（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fileShare } from '@kit.CoreFileKit';
+```
+
 ## grantSharedDirectoryPermission
 
 ```TypeScript
@@ -9,10 +15,6 @@ function grantSharedDirectoryPermission(): Promise<void>
 授予应用捐献目录的临时访问权限。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SHARED_FILE
 
@@ -39,7 +41,7 @@ function grantSharedDirectoryPermission(): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,12 +1,8 @@
-# ProcessPriority
+# ProcessPriority(后台子进程管控)
 
 子进程压制档位。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-backgroundProcessManager-export enum ProcessPriority--><!--Device-backgroundProcessManager-export enum ProcessPriority-End-->
 
@@ -22,10 +18,6 @@ PROCESS_BACKGROUND = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ProcessPriority-PROCESS_BACKGROUND = 1--><!--Device-ProcessPriority-PROCESS_BACKGROUND = 1-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -39,10 +31,6 @@ PROCESS_INACTIVE = 2
 推荐正在执行播放音频、导航等用户可感知业务的后台子进程时设置该档位。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ProcessPriority-PROCESS_INACTIVE = 2--><!--Device-ProcessPriority-PROCESS_INACTIVE = 2-End-->
 

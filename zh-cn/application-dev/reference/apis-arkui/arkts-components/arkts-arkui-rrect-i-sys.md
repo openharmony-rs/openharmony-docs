@@ -4,15 +4,16 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface RRect--><!--Device-unnamed-interface RRect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## height
 
@@ -25,10 +26,6 @@ height: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-RRect-height: number--><!--Device-RRect-height: number-End-->
 
@@ -48,10 +45,6 @@ left: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-RRect-left: number--><!--Device-RRect-left: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -69,10 +62,6 @@ radius: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-RRect-radius: number--><!--Device-RRect-radius: number-End-->
 
@@ -92,10 +81,6 @@ top: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-RRect-top: number--><!--Device-RRect-top: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -113,10 +98,6 @@ width: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-RRect-width: number--><!--Device-RRect-width: number-End-->
 

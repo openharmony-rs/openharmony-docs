@@ -1,16 +1,18 @@
-# HuksExternalErrorInfo
+# HuksExternalErrorInfo(External Key Management)
 
 详细错误信息
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-huksExternalCrypto-export interface HuksExternalErrorInfo--><!--Device-huksExternalCrypto-export interface HuksExternalErrorInfo-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+## 导入模块
+
+```TypeScript
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
 
 ## errno
 
@@ -23,10 +25,6 @@ errno: number
 **类型：** number
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +43,6 @@ errorDesc: string
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

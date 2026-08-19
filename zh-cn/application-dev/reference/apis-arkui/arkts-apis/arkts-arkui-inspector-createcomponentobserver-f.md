@@ -1,5 +1,11 @@
 # createComponentObserver
 
+## 导入模块
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+```
+
 ## createComponentObserver
 
 ```TypeScript
@@ -9,8 +15,6 @@ function createComponentObserver(id: string): ComponentObserver
 绑定指定组件，返回对应的监听句柄。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 18
 
@@ -36,7 +40,7 @@ function createComponentObserver(id: string): ComponentObserver
 | --- | --- |
 | [ComponentObserver](arkts-arkui-inspector-componentobserver-i.md) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let listener: inspector.ComponentObserver = inspector.createComponentObserver('COMPONENT_ID'); // 监听id为COMPONENT_ID的组件回调事件

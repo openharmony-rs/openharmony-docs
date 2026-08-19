@@ -4,13 +4,15 @@ ChipGroupV2组件提供操作块群组容器，支持单选或多选、自定义
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare struct ChipGroupV2--><!--Device-unnamed-export declare struct ChipGroupV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2ItemStyleConfig, ChipGroupV2ItemStyle, ChipGroupV2SpaceConfig, ChipGroupV2Space, ChipGroupV2IconItemConfig, ChipGroupV2SymbolItemConfig, ChipGroupV2PaddingConfig, ChipGroupV2Padding, ChipGroupV2IconGroupSuffix, ChipGroupV2 } from '@kit.ArkUI';
+```
 
 ## $items
 
@@ -24,10 +26,6 @@ ChipV2项的双向绑定回调方法，当需要监听或修改ChipV2项列表�
 **类型：** Callback&lt;[ChipGroupV2Items](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2items-c.md)&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +48,6 @@ ChipV2项的双向绑定回调方法，当需要监听或修改ChipV2项列表�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -69,15 +63,11 @@ ChipV2项的双向绑定回调方法，当需要监听或修改ChipV2项列表�
   chipGroupPadding?: ChipGroupV2Padding
 ```
 
-设置ChipGroupV2的上下内边距，以控制整体高度。类型为[ChipGroupV2Padding](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2padding-c.md#chipgroupv2padding)。 默认值：{ top: 14, bottom: 14 } 单位：vp 值为undefined时，按默认值处理。
+设置ChipGroupV2的上下内边距，以控制整体高度。类型为[ChipGroupV2Padding](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2padding-c.md)。 默认值：{ top: 14, bottom: 14 } 单位：vp 值为undefined时，按默认值处理。
 
 **类型：** [ChipGroupV2Padding](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2padding-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,15 +84,11 @@ ChipV2项的双向绑定回调方法，当需要监听或修改ChipV2项列表�
   chipGroupSpace?: ChipGroupV2Space
 ```
 
-左右内边距及ChipV2之间间距。设置后可调整ChipGroupV2的左右内边距和ChipV2之间的间距，增大间距使布局更宽松，减小间距使布局更紧凑。参考 [ChipGroupV2Space](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2space-c.md#chipgroupv2space)类型。 默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 } 单位：vp 值为undefined时，按默认值处理。
+左右内边距及ChipV2之间间距。设置后可调整ChipGroupV2的左右内边距和ChipV2之间的间距，增大间距使布局更宽松，减小间距使布局更紧凑。参考 [ChipGroupV2Space](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2space-c.md)类型。 默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 } 单位：vp 值为undefined时，按默认值处理。
 
 **类型：** [ChipGroupV2Space](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2space-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -119,15 +105,11 @@ ChipV2项的双向绑定回调方法，当需要监听或修改ChipV2项列表�
   itemStyle?: ChipGroupV2ItemStyle
 ```
 
-ChipV2的style属性，如颜色、大小等，参考[ChipGroupV2ItemStyle](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyle-c.md#chipgroupv2itemstyle)类型。 默认值： { size: ChipV2Size.NORMAL, backgroundColor: \$r('sys.color.ohos_id_color_button_normal'), fontColor: \$r(' sys.color.ohos_id_color_text_primary'), selectedFontColor: \$r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: \$r('sys.color.ohos_id_color_emphasize') } 值为undefined时，按默认值处理。 图标填充色（[fillColor](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#chipv2imageiconconfig)和 [activatedFillColor](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md#chipv2imageiconconfig)）的设置与对应的字体颜色保持一致：未选中状态下fillColor与 [fontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md#chipgroupv2itemstyleconfig)保持一致，选中状态下activatedFillColor与 [selectedFontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md#chipgroupv2itemstyleconfig)保持一致。如果需要设置不同的颜色，可以在传入items时使用 [prefixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md#chipgroupv2itemconfig)和[suffixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md#chipgroupv2itemconfig)。
+ChipV2的style属性，如颜色、大小等，参考[ChipGroupV2ItemStyle](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyle-c.md)类型。 默认值： { size: ChipV2Size.NORMAL, backgroundColor: \$r('sys.color.ohos_id_color_button_normal'), fontColor: \$r(' sys.color.ohos_id_color_text_primary'), selectedFontColor: \$r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: \$r('sys.color.ohos_id_color_emphasize') } 值为undefined时，按默认值处理。 图标填充色（[fillColor](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md)和 [activatedFillColor](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md)）的设置与对应的字体颜色保持一致：未选中状态下fillColor与 [fontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md)保持一致，选中状态下activatedFillColor与 [selectedFontColor](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyleconfig-i.md)保持一致。如果需要设置不同的颜色，可以在传入items时使用 [prefixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)和[suffixSymbolIcon](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)。
 
 **类型：** [ChipGroupV2ItemStyle](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemstyle-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -145,15 +127,11 @@ ChipV2的style属性，如颜色、大小等，参考[ChipGroupV2ItemStyle](arkt
   items: ChipGroupV2Items
 ```
 
-每个ChipV2的特定属性，参考[ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md#chipgroupv2itemconfig)类型。 值为undefined或空数组时，ChipGroupV2不渲染内部的[ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md#chipv2)。
+每个ChipV2的特定属性，参考[ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)类型。 值为undefined或空数组时，ChipGroupV2不渲染内部的[ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md)。
 
 **类型：** [ChipGroupV2Items](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2items-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,10 +154,6 @@ ChipV2的style属性，如颜色、大小等，参考[ChipGroupV2ItemStyle](arkt
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -200,10 +174,6 @@ ChipV2状态改变时的回调方法，用于响应ChipV2选中状态变化。�
 **类型：** Callback&lt;Array&lt;number&gt;&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -226,10 +196,6 @@ ChipV2状态改变时的回调方法，用于响应ChipV2选中状态变化。�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -250,10 +216,6 @@ ChipV2状态改变时的回调方法，用于响应ChipV2选中状态变化。�
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

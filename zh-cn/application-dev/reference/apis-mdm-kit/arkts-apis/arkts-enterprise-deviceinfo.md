@@ -4,15 +4,17 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace deviceInfo--><!--Device-unnamed-declare namespace deviceInfo-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceInfo } from '@kit.MDMKit';
+```
 
 ## 汇总
 
@@ -20,18 +22,18 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md#getdeviceinfo) | 获取设备信息。 |
+| [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md) | 获取设备信息。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getdevicename) | 获取设备名称，使用callback异步回调。 |
-| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getdevicename系统接口) | 获取设备名称，使用Promise异步回调。 |
-| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getdeviceserial) | 获取设备序列号，使用callback异步回调。 |
-| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getdeviceserial系统接口) | 获取设备序列号，使用Promise异步回调。 |
-| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion) | 获取设备版本号，使用callback异步回调。 |
-| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion系统接口) | 获取设备版本号，使用Promise异步回调。 |
+| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md) | 获取设备名称，使用callback异步回调。 |
+| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md) | 获取设备名称，使用Promise异步回调。 |
+| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md) | 获取设备序列号，使用callback异步回调。 |
+| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md) | 获取设备序列号，使用Promise异步回调。 |
+| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md) | 获取设备版本号，使用callback异步回调。 |
+| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md) | 获取设备版本号，使用Promise异步回调。 |
 <!--DelEnd-->
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-taskpool-class Task--><!--Device-taskpool-class Task-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
 
 ## addDependency
 
@@ -21,10 +23,6 @@ addDependency(...tasks: Task[]): void
 为当前任务添加对其他任务的依赖。使用该方法前需先构造**Task**实例。该任务和被依赖的任务不能是任务组任务、串行队列任务、 异步队列任务、已执行任务或周期任务。存在依赖关系的任务（依赖其他任务的任务或被依赖的任务）执行后不可再次执行。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,7 +44,7 @@ addDependency(...tasks: Task[]): void
 | [10200056](../errorcode-utils.md#10200056-任务已被asyncrunner执行) | The task has been executed by the AsyncRunner.<br>**适用版本：** 18+ |
 | [10200052](../errorcode-utils.md#10200052-周期性任务不能具有依赖项) | The periodic task cannot have a dependency.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -89,10 +87,6 @@ Task的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-constructor(func: Function, ...args: Object[])--><!--Device-Task-constructor(func: Function, ...args: Object[])-End-->
@@ -112,7 +106,7 @@ Task的构造函数。
 | --- | --- |
 | [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -134,10 +128,6 @@ Task的构造函数用于创建任务，并可指定任务名称。
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-constructor(name: string, func: Function, ...args: Object[])--><!--Device-Task-constructor(name: string, func: Function, ...args: Object[])-End-->
@@ -158,7 +148,7 @@ Task的构造函数用于创建任务，并可指定任务名称。
 | --- | --- |
 | [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -182,10 +172,6 @@ static isCanceled(): boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-static isCanceled(): boolean--><!--Device-Task-static isCanceled(): boolean-End-->
@@ -198,7 +184,7 @@ static isCanceled(): boolean
 | --- | --- |
 | boolean | 如果当前正在运行的任务被取消返回**true**，否则返回**false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -256,10 +242,6 @@ isDone(): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-isDone(): boolean--><!--Device-Task-isDone(): boolean-End-->
@@ -272,7 +254,7 @@ isDone(): boolean
 | --- | --- |
 | boolean | 检查结果。任务执行完成时返回**true**，任务未执行完成时返回**false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -315,10 +297,6 @@ onEnqueued(callback: CallbackFunction): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-onEnqueued(callback: CallbackFunction): void--><!--Device-Task-onEnqueued(callback: CallbackFunction): void-End-->
@@ -337,7 +315,7 @@ onEnqueued(callback: CallbackFunction): void
 | --- | --- |
 | [10200034](../errorcode-utils.md#10200034-已执行的任务不支持注册监听器) | The executed task does not support the registration of listeners. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -370,10 +348,6 @@ onExecutionFailed(callback: CallbackFunctionWithError): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-onExecutionFailed(callback: CallbackFunctionWithError): void--><!--Device-Task-onExecutionFailed(callback: CallbackFunctionWithError): void-End-->
@@ -392,7 +366,7 @@ onExecutionFailed(callback: CallbackFunctionWithError): void
 | --- | --- |
 | [10200034](../errorcode-utils.md#10200034-已执行的任务不支持注册监听器) | The executed task does not support the registration of listeners. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -429,10 +403,6 @@ onExecutionSucceeded(callback: CallbackFunction): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-onExecutionSucceeded(callback: CallbackFunction): void--><!--Device-Task-onExecutionSucceeded(callback: CallbackFunction): void-End-->
@@ -451,7 +421,7 @@ onExecutionSucceeded(callback: CallbackFunction): void
 | --- | --- |
 | [10200034](../errorcode-utils.md#10200034-已执行的任务不支持注册监听器) | The executed task does not support the registration of listeners. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -484,10 +454,6 @@ onReceiveData(callback?: Function): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-onReceiveData(callback?: Function): void--><!--Device-Task-onReceiveData(callback?: Function): void-End-->
@@ -500,7 +466,7 @@ onReceiveData(callback?: Function): void
 | --- | --- | --- | --- |
 | callback | Function | 否 | 处理数据的回调函数，发送到宿主线程的数据将会作为入参传入该回调函数。不传参可以取消注册的回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -537,10 +503,6 @@ onStartExecution(callback: CallbackFunction): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-onStartExecution(callback: CallbackFunction): void--><!--Device-Task-onStartExecution(callback: CallbackFunction): void-End-->
@@ -559,7 +521,7 @@ onStartExecution(callback: CallbackFunction): void
 | --- | --- |
 | [10200034](../errorcode-utils.md#10200034-已执行的任务不支持注册监听器) | The executed task does not support the registration of listeners. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -592,10 +554,6 @@ removeDependency(...tasks: Task[]): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-removeDependency(...tasks: Task[]): void--><!--Device-Task-removeDependency(...tasks: Task[]): void-End-->
@@ -616,7 +574,7 @@ removeDependency(...tasks: Task[]): void
 | [10200056](../errorcode-utils.md#10200056-任务已被asyncrunner执行) | The task has been executed by the AsyncRunner.<br>**适用版本：** 18+ |
 | [10200052](../errorcode-utils.md#10200052-周期性任务不能具有依赖项) | The periodic task cannot have a dependency.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -663,10 +621,6 @@ static sendData(...args: Object[]): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-static sendData(...args: Object[]): void--><!--Device-Task-static sendData(...args: Object[]): void-End-->
@@ -688,7 +642,7 @@ static sendData(...args: Object[]): void
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200022](../errorcode-utils.md#10200022-未在任务池中调用的函数) | The function is not called in the TaskPool thread. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -755,10 +709,6 @@ setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-setCloneList(cloneList: Object[] | ArrayBuffer[]): void--><!--Device-Task-setCloneList(cloneList: Object[] | ArrayBuffer[]): void-End-->
@@ -777,7 +727,7 @@ setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 | --- | --- |
 | [10200029](../errorcode-utils.md#10200029-无法将arraybuffer同时设置为transferlist和clonelist) | An ArrayBuffer cannot be set as both a transfer list and a clone list. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // sendable.ets
@@ -916,10 +866,6 @@ setTransferList(transfer?: ArrayBuffer[]): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-setTransferList(transfer?: ArrayBuffer[]): void--><!--Device-Task-setTransferList(transfer?: ArrayBuffer[]): void-End-->
@@ -938,7 +884,7 @@ setTransferList(transfer?: ArrayBuffer[]): void
 | --- | --- |
 | [10200029](../errorcode-utils.md#10200029-无法将arraybuffer同时设置为transferlist和clonelist) | An ArrayBuffer cannot be set as both a transfer list and a clone list.<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -985,10 +931,6 @@ arguments?: Object[]
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-arguments?: Object[]--><!--Device-Task-arguments?: Object[]-End-->
@@ -1009,10 +951,6 @@ cpuDuration: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-cpuDuration: number--><!--Device-Task-cpuDuration: number-End-->
@@ -1030,10 +968,6 @@ function: Function
 **类型：** Function
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1055,10 +989,6 @@ ioDuration: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-ioDuration: number--><!--Device-Task-ioDuration: number-End-->
@@ -1076,10 +1006,6 @@ name: string
 **类型：** string
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1101,10 +1027,6 @@ taskId: number
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Task-taskId: number--><!--Device-Task-taskId: number-End-->
@@ -1124,10 +1046,6 @@ totalDuration: number
 **默认值：** 0
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

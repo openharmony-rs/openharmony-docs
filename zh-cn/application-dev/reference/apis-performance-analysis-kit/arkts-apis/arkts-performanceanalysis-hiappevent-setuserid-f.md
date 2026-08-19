@@ -1,18 +1,20 @@
 # setUserId
 
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## setUserId
 
 ```TypeScript
 function setUserId(name: string, value: string): void
 ```
 
-设置用户ID值。用于在配置[Processor](arkts-performanceanalysis-hiappevent-processor-i.md#processor)数据处理者时进行关联。
+设置用户ID值。用于在配置[Processor](arkts-performanceanalysis-hiappevent-processor-i.md)数据处理者时进行关联。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -33,7 +35,7 @@ function setUserId(name: string, value: string): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

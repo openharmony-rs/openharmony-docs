@@ -4,13 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare struct ComposeListItemV2--><!--Device-unnamed-export declare struct ComposeListItemV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, OperateButtonV2, OperateButtonV2Options, OperateCheckV2, OperateCheckV2Options, OperateIconV2, OperateIconV2Options, OperateItemV2, OperateItemV2Options } from '@kit.ArkUI';
+```
 
 ## contentItemV2
 
@@ -21,13 +23,9 @@
 
 定义列表项左侧以及中间元素。 默认不设置或设置为undefined时，不显示左侧和中间元素。
 
-**类型：** [ContentItemV2](../../apis-na/arkts-apis/arkts-na-arkui-advanced-composelistitemv2-contentitemv2-c.md)
+**类型：** [ContentItemV2](arkts-arkui-arkui-advanced-composelistitemv2-contentitemv2-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,13 +44,9 @@
 
 定义列表项右侧元素。 默认不设置或设置为undefined时，不显示右侧元素。
 
-**类型：** [OperateItemV2](../../apis-na/arkts-apis/arkts-na-arkui-advanced-composelistitemv2-operateitemv2-c.md)
+**类型：** [OperateItemV2](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

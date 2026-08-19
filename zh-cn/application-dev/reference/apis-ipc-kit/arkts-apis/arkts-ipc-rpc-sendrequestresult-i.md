@@ -4,15 +4,19 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [RequestResult](arkts-ipc-rpc-requestresult-i.md#requestresult)
+**替代接口：** [RequestResult](arkts-ipc-rpc-requestresult-i.md)
 
 <!--Device-rpc-interface SendRequestResult--><!--Device-rpc-interface SendRequestResult-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+## 导入模块
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+```
 
 ## code
 
@@ -25,8 +29,6 @@ code: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -48,8 +50,6 @@ data: MessageParcel
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [data](arkts-ipc-rpc-requestresult-i.md#data)
@@ -70,8 +70,6 @@ errCode: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [errCode](arkts-ipc-rpc-requestresult-i.md#errcode)
@@ -91,8 +89,6 @@ reply: MessageParcel
 **类型：** [MessageParcel](arkts-ipc-rpc-messageparcel-c.md)
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

@@ -1,5 +1,10 @@
 # writeSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## writeSync
 
 ```TypeScript
@@ -19,11 +24,9 @@ declare function writeSync(
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [writeSync](arkts-corefile-file-fs-writesync-f.md#writesync)
+**替代接口：** [writeSync](arkts-corefile-file-fs-writesync-f.md)
 
 <!--Device-unnamed-declare function writeSync(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): number--><!--Device-unnamed-declare function writeSync(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): number-End-->
 

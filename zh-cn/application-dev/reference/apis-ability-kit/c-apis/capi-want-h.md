@@ -90,7 +90,7 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 销毁want成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want参数无效。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 销毁want成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want参数无效。 |
 
 ### OH_AbilityBase_SetWantElement()
 
@@ -115,7 +115,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, Abil
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置element成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空，element参数无效。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置element成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空，element参数无效。 |
 
 ### OH_AbilityBase_GetWantElement()
 
@@ -140,7 +140,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, Abil
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取element成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空，element参数无效。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取element成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空，element参数无效。 |
 
 ### OH_AbilityBase_SetWantCharParam()
 
@@ -166,7 +166,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置param成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置param成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_GetWantCharParam()
 
@@ -193,7 +193,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取param成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取param成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_AddWantFd()
 
@@ -219,7 +219,7 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 添加want文件描述符成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 添加want文件描述符成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_GetWantFd()
 
@@ -245,7 +245,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const cha
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want文件描述符成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want文件描述符成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_SetWantUri()
 
@@ -270,7 +270,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中uri字符串成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中uri字符串成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_GetWantUri()
 
@@ -296,7 +296,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中URI字符串成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中URI字符串成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_SetWantInt32Param()
 
@@ -322,7 +322,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中int32_t类型的值成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中int32_t类型的值成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_GetWantInt32Param()
 
@@ -348,7 +348,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中int32_t类型的值成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中int32_t类型的值成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_SetWantBoolParam()
 
@@ -374,7 +374,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中bool类型的值成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中bool类型的值成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_GetWantBoolParam()
 
@@ -400,7 +400,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中bool类型的值成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中bool类型的值成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_SetWantDoubleParam()
 
@@ -426,7 +426,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中double类型的值成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 设置want中double类型的值成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 ### OH_AbilityBase_GetWantDoubleParam()
 
@@ -452,6 +452,6 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。<br>     <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中double类型的值成功。<br>     <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
+| [AbilityBase_ErrorCode](capi-ability-base-common-h.md#abilitybase_errorcode) | 返回执行结果。      <br>ABILITY_BASE_ERROR_CODE_NO_ERROR - 获取want中double类型的值成功。      <br>ABILITY_BASE_ERROR_CODE_PARAM_INVALID - want为空或非法入参。 |
 
 

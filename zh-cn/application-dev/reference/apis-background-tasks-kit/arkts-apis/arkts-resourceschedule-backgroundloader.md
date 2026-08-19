@@ -1,24 +1,8 @@
 # @ohos.resourceschedule.backgroundLoader
 
-/*
- Copyright (c) 2026 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
-
+后台预取接口
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,16 +10,22 @@
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
+## 导入模块
+
+```TypeScript
+import { backgroundLoader } from '@kit.BackgroundTasksKit';
+```
+
 ## 汇总
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask) | 结束后台加载任务。 |
-| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo) | 获取后台预取任务信息。 |
-| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask) | 注册后台加载任务。 使用 callee.on(ON_START)来接受系统测触发的任务 |
-| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask) | 取消注册后台加载任务。 |
+| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md) | 结束后台加载任务。 |
+| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md) | 获取后台预取任务信息。 |
+| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md) | 注册后台加载任务。 使用 callee.on(ON_START)来接受系统测触发的任务 |
+| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md) | 取消注册后台加载任务。 |
 
 ### 接口
 
@@ -54,6 +44,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ON_START](arkts-backgroundtasks-backgroundloader-con.md#onstart) | 监听任务启动的方法 |
-| [ON_STOP](arkts-backgroundtasks-backgroundloader-con.md#onstop) | 监听任务结束的方法 |
+| [ON_START](arkts-backgroundtasks-backgroundloader-con.md#on_start) | 监听任务启动的方法 |
+| [ON_STOP](arkts-backgroundtasks-backgroundloader-con.md#on_stop) | 监听任务结束的方法 |
 

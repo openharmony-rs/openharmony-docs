@@ -1,16 +1,18 @@
-# ColorSpaceManager
+# ColorSpaceManager(色彩管理)
 
-当前色域对象实例。 下列API示例中都需先使用[create()](arkts-arkgraphics2d-colorspacemanager-create-f.md#create)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
+当前色域对象实例。 下列API示例中都需先使用[create()](arkts-arkgraphics2d-colorspacemanager-create-f.md)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-colorSpaceManager-interface ColorSpaceManager--><!--Device-colorSpaceManager-interface ColorSpaceManager-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## 导入模块
+
+```TypeScript
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+```
 
 ## getColorSpaceName
 
@@ -21,10 +23,6 @@ getColorSpaceName(): ColorSpace
 获取色域类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace--><!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace-End-->
 
@@ -42,7 +40,7 @@ getColorSpaceName(): ColorSpace
 | --- | --- |
 | [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.<br>**适用版本：** 9 - 22 |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {
@@ -64,10 +62,6 @@ getGamma(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ColorSpaceManager-getGamma(): double--><!--Device-ColorSpaceManager-getGamma(): double-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
@@ -84,7 +78,7 @@ getGamma(): double
 | --- | --- |
 | [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.<br>**适用版本：** 9 - 22 |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {
@@ -106,10 +100,6 @@ getWhitePoint(): Array<double>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ColorSpaceManager-getWhitePoint(): Array<double>--><!--Device-ColorSpaceManager-getWhitePoint(): Array<double>-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
@@ -126,7 +116,7 @@ getWhitePoint(): Array<double>
 | --- | --- |
 | [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal.<br>**适用版本：** 9 - 22 |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## setDistributedEnabled
@@ -15,10 +15,6 @@ function setDistributedEnabled(enable: boolean, deviceType: string): Promise<voi
 设置设备是否支持跨设备协同通知。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -48,7 +44,7 @@ function setDistributedEnabled(enable: boolean, deviceType: string): Promise<voi
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

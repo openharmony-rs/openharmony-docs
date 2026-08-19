@@ -4,15 +4,16 @@ CLI命令信息。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-abilityToolAccessCtrl-interface CliCmdInfo--><!--Device-abilityToolAccessCtrl-interface CliCmdInfo-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## cliCmdName
 
@@ -25,10 +26,6 @@ CLI主命令名称。
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-CliCmdInfo-cliCmdName: string--><!--Device-CliCmdInfo-cliCmdName: string-End-->
 
@@ -47,10 +44,6 @@ CLI子命令名。
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-CliCmdInfo-subCliCmdName: string--><!--Device-CliCmdInfo-subCliCmdName: string-End-->
 

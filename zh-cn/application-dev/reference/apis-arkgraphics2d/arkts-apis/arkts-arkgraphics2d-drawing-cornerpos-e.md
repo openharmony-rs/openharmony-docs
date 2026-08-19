@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum CornerPos--><!--Device-drawing-enum CornerPos-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ TOP_LEFT_POS = 0
 左上角圆角位置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CornerPos-TOP_LEFT_POS = 0--><!--Device-CornerPos-TOP_LEFT_POS = 0-End-->
 
@@ -40,10 +32,6 @@ TOP_RIGHT_POS = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CornerPos-TOP_RIGHT_POS = 1--><!--Device-CornerPos-TOP_RIGHT_POS = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -58,10 +46,6 @@ BOTTOM_RIGHT_POS = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CornerPos-BOTTOM_RIGHT_POS = 2--><!--Device-CornerPos-BOTTOM_RIGHT_POS = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -75,10 +59,6 @@ BOTTOM_LEFT_POS = 3
 左下角圆角位置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CornerPos-BOTTOM_LEFT_POS = 3--><!--Device-CornerPos-BOTTOM_LEFT_POS = 3-End-->
 

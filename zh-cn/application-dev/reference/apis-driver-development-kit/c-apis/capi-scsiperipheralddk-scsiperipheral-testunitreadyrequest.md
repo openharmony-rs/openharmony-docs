@@ -6,7 +6,7 @@ typedef struct ScsiPeripheral_TestUnitReadyRequest {...} ScsiPeripheral_TestUnit
 
 ## 概述
 
-命令（test unit ready）的请求结构体。
+SCSI命令（TEST UNIT READY）的请求结构体，通常用于确认逻辑单元是否就绪（逻辑单元是SCSI设备中可独立寻址的I/O操作实体）。
 
 **起始版本：** 18
 
@@ -20,7 +20,7 @@ typedef struct ScsiPeripheral_TestUnitReadyRequest {...} ScsiPeripheral_TestUnit
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t control | Control字段，用于指定一些控制信息。 |
+| uint8_t control | Control字段，用于指定SCSI命令的控制标志，如优先级、链接命令等控制选项。 |
 | uint32_t timeout | 超时时间（单位：毫秒）。 |
 
 

@@ -1,5 +1,11 @@
 # isValid
 
+## 导入模块
+
+```TypeScript
+import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
+```
+
 ## isValid
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isValid(id: HiTraceId): boolean
 判断HiTraceId是否有效，同步接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean--><!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean-End-->
 
@@ -30,7 +32,7 @@ function isValid(id: HiTraceId): boolean
 | --- | --- |
 | boolean | true：HiTraceId有效；false：HiTraceId无效。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 开始跟踪，跟踪标志是DEFAULT。

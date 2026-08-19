@@ -1,12 +1,8 @@
 # AbilityFirstFrameStateData（系统接口）
 
-定义了首帧绘制完成事件回调上报的数据结构。通过 [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) 注册监听Ability首帧绘制完成事件后，可使用 [AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md#abilityfirstframestateobserver系统接口)的 [onAbilityFirstFrameDrawn](arkts-ability-abilityfirstframestateobserver-i-sys.md#onabilityfirstframedrawn) 回调获取上报的数据结构。
+定义了首帧绘制完成事件回调上报的数据结构。通过 [on](arkts-ability-appmanager-onapplicationstate-f.md#onapplicationstate) 注册监听Ability首帧绘制完成事件后，可使用 [AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md)的 [onAbilityFirstFrameDrawn](arkts-ability-abilityfirstframestateobserver-i-sys.md#onabilityfirstframedrawn) 回调获取上报的数据结构。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface AbilityFirstFrameStateData--><!--Device-unnamed-export interface AbilityFirstFrameStateData-End-->
 
@@ -25,10 +21,6 @@ Ability名称。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityFirstFrameStateData-abilityName: string--><!--Device-AbilityFirstFrameStateData-abilityName: string-End-->
 
@@ -50,10 +42,6 @@ DLP沙盒的索引。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityFirstFrameStateData-appIndex: int--><!--Device-AbilityFirstFrameStateData-appIndex: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -71,10 +59,6 @@ bundleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityFirstFrameStateData-bundleName: string--><!--Device-AbilityFirstFrameStateData-bundleName: string-End-->
 
@@ -96,10 +80,6 @@ isColdStart: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityFirstFrameStateData-isColdStart: boolean--><!--Device-AbilityFirstFrameStateData-isColdStart: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -117,10 +97,6 @@ moduleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityFirstFrameStateData-moduleName: string--><!--Device-AbilityFirstFrameStateData-moduleName: string-End-->
 

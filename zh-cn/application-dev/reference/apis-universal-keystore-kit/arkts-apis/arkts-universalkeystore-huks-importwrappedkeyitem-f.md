@@ -1,5 +1,12 @@
 # importWrappedKeyItem
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## importWrappedKeyItem
 
 ```TypeScript
@@ -11,13 +18,9 @@ function importWrappedKeyItem(
   ): void
 ```
 
-Imports a wrapped key. This API uses an asynchronous callback to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#hukskeysecuritylevel)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
+Imports a wrapped key. This API uses an asynchronous callback to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +37,7 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 | keyAlias | string | 是 | Alias of the wrapped key to import. |
 | wrappingKeyAlias | string | 是 | Alias of the data used to unwrap the key imported. |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Tags required for the import and the wrapped key to import. The algorithm, key purpose, and key length are mandatory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, no **err** value is returned; otherwise, an error code is returned. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, no **err** value is returned; otherwise, an error code is returned. |
 
 **错误码：**
 
@@ -62,7 +65,7 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
@@ -241,13 +244,9 @@ function huksImportWrappedKey() {
 function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions): Promise<void>
 ```
 
-Imports a wrapped key. This API uses a promise to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md#hukskeysecuritylevel)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
+Imports a wrapped key. This API uses a promise to return the result. > **说明：** > > 导入[HuksKeySecurityLevel](arkts-universalkeystore-huks-hukskeysecuritylevel-e.md)中定义的SE安全级别加密密钥需要ohos.permission.ACCESS_SE_KEY权限。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -295,7 +294,7 @@ Imports a wrapped key. This API uses a promise to return the result. > **说明�
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

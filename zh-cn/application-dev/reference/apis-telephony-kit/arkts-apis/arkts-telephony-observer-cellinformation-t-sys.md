@@ -8,10 +8,6 @@ Describes current cell information.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-type CellInformation = radio.CellInformation--><!--Device-observer-type CellInformation = radio.CellInformation-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry

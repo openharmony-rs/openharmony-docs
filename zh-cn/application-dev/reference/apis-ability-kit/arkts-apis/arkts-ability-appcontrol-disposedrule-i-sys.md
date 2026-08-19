@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appControl-export interface DisposedRule--><!--Device-appControl-export interface DisposedRule-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+```
 
 ## componentType
 
@@ -25,10 +27,6 @@ componentType: ComponentType
 **类型：** ComponentType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DisposedRule-componentType: ComponentType--><!--Device-DisposedRule-componentType: ComponentType-End-->
 
@@ -48,10 +46,6 @@ controlType: ControlType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DisposedRule-controlType: ControlType--><!--Device-DisposedRule-controlType: ControlType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -69,10 +63,6 @@ disposedType: DisposedType
 **类型：** [DisposedType](arkts-ability-appcontrol-disposedtype-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DisposedRule-disposedType: DisposedType--><!--Device-DisposedRule-disposedType: DisposedType-End-->
 
@@ -92,10 +82,6 @@ elementList: Array<ElementName>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DisposedRule-elementList: Array<ElementName>--><!--Device-DisposedRule-elementList: Array<ElementName>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -114,10 +100,6 @@ priority: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DisposedRule-priority: int--><!--Device-DisposedRule-priority: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -135,10 +117,6 @@ want: Want
 **类型：** [Want](arkts-ability-app-ability-want-want-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DisposedRule-want: Want--><!--Device-DisposedRule-want: Want-End-->
 

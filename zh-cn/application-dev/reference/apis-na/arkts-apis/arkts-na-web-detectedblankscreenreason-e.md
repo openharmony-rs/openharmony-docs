@@ -1,12 +1,10 @@
 # DetectedBlankScreenReason
 
-Enum type supplied to [BlankScreenDetectionEventInfo](arkts-na-web-blankscreendetectioneventinfo-i.md#blankscreendetectioneventinfo) when onDetectedBlankScreen being called.
+Enum type supplied to [BlankScreenDetectionEventInfo](arkts-na-web-blankscreendetectioneventinfo-i.md) when onDetectedBlankScreen being called.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum DetectedBlankScreenReason--><!--Device-unnamed-export declare enum DetectedBlankScreenReason-End-->
 
@@ -22,9 +20,7 @@ None of any contentful nodes have been detected.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-DetectedBlankScreenReason-NO_CONTENTFUL_NODES = 0--><!--Device-DetectedBlankScreenReason-NO_CONTENTFUL_NODES = 0-End-->
 
@@ -40,9 +36,7 @@ Web has detected a few of contentful nodes but below the threshold.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-DetectedBlankScreenReason-SUB_THRESHOLD_CONTENTFUL_NODES = 1--><!--Device-DetectedBlankScreenReason-SUB_THRESHOLD_CONTENTFUL_NODES = 1-End-->
 

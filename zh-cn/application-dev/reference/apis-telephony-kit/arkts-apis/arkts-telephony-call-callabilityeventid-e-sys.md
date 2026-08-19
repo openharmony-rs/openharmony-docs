@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export enum CallAbilityEventId--><!--Device-call-export enum CallAbilityEventId-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -23,10 +19,6 @@ EVENT_DIAL_NO_CARRIER = 1
 拨号无载波事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallAbilityEventId-EVENT_DIAL_NO_CARRIER = 1--><!--Device-CallAbilityEventId-EVENT_DIAL_NO_CARRIER = 1-End-->
 
@@ -44,10 +36,6 @@ EVENT_INVALID_FDN_NUMBER = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallAbilityEventId-EVENT_INVALID_FDN_NUMBER = 2--><!--Device-CallAbilityEventId-EVENT_INVALID_FDN_NUMBER = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -63,10 +51,6 @@ EVENT_HOLD_CALL_FAILED = 3
 保持通话失败事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallAbilityEventId-EVENT_HOLD_CALL_FAILED = 3--><!--Device-CallAbilityEventId-EVENT_HOLD_CALL_FAILED = 3-End-->
 
@@ -84,10 +68,6 @@ EVENT_SWAP_CALL_FAILED = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallAbilityEventId-EVENT_SWAP_CALL_FAILED = 4--><!--Device-CallAbilityEventId-EVENT_SWAP_CALL_FAILED = 4-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -103,10 +83,6 @@ EVENT_COMBINE_CALL_FAILED = 5
 合并通话失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallAbilityEventId-EVENT_COMBINE_CALL_FAILED = 5--><!--Device-CallAbilityEventId-EVENT_COMBINE_CALL_FAILED = 5-End-->
 
@@ -124,10 +100,6 @@ EVENT_SPLIT_CALL_FAILED = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallAbilityEventId-EVENT_SPLIT_CALL_FAILED = 6--><!--Device-CallAbilityEventId-EVENT_SPLIT_CALL_FAILED = 6-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -144,10 +116,6 @@ EVENT_SHOW_FULL_SCREEN = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallAbilityEventId-EVENT_SHOW_FULL_SCREEN = 7--><!--Device-CallAbilityEventId-EVENT_SHOW_FULL_SCREEN = 7-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -163,10 +131,6 @@ EVENT_SHOW_FLOAT_WINDOW = 8
 悬浮窗显示通话界面。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallAbilityEventId-EVENT_SHOW_FLOAT_WINDOW = 8--><!--Device-CallAbilityEventId-EVENT_SHOW_FLOAT_WINDOW = 8-End-->
 

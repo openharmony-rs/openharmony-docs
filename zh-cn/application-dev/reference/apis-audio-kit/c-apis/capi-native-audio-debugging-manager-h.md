@@ -54,7 +54,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDebuggingManager(OH_AudioDebugging
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。<br> [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
+| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
 
 ### OH_AudioDebuggingManager_PrintAppInfo()
 
@@ -79,7 +79,7 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintAppInfo(OH_AudioDebuggingMan
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。<br> [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
+| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)管理器的参数为nullptr。 |
 
 ### OH_AudioDebuggingManager_PrintRendererInfo()
 
@@ -105,7 +105,7 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。<br> {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；<br> 2.渲染器的param为nullptr； |
+| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；  2.渲染器的param为nullptr； |
 
 ### OH_AudioDebuggingManager_PrintCapturerInfo()
 
@@ -131,7 +131,7 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。<br> {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；<br> 2.捕获器的参数为nullptr； |
+| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；  2.捕获器的参数为nullptr； |
 
 ### OH_AudioDebuggingManager_PrintSessionInfo()
 
@@ -157,6 +157,6 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintSessionInfo(OH_AudioDebuggin
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。<br> {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；<br> 2.session的param为nullptr； |
+| OH_AudioCommon_Result | 如果执行成功，则返回[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)。  {@链接AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.管理器的参数为nullptr；  2.session的param为nullptr； |
 
 

@@ -1,14 +1,10 @@
 # Environment
 
-环境资源.
+环境类型，继承自SceneResource。
 
-**继承/实现关系：** Environment extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)
+**继承/实现关系：** Environment extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Environment--><!--Device-unnamed-export interface Environment-End-->
 
@@ -20,15 +16,11 @@
 backgroundType: EnvironmentBackgroundType
 ```
 
-环境背景类型.
+环境背景类型。
 
 **类型：** [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Environment-backgroundType: EnvironmentBackgroundType--><!--Device-Environment-backgroundType: EnvironmentBackgroundType-End-->
 
@@ -40,15 +32,11 @@ backgroundType: EnvironmentBackgroundType
 environmentImage?: Image | null
 ```
 
-环境图像.
+环境图片，默认为undefined。
 
 **类型：** [Image](arkts-arkgraphics3d-sceneresources-image-i.md) \| null
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Environment-environmentImage?: Image | null--><!--Device-Environment-environmentImage?: Image | null-End-->
 
@@ -60,15 +48,11 @@ environmentImage?: Image | null
 environmentMapFactor: Vec4
 ```
 
-环境贴图因子.
+环境地图系数。
 
 **类型：** [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Environment-environmentMapFactor: Vec4--><!--Device-Environment-environmentMapFactor: Vec4-End-->
 
@@ -80,17 +64,13 @@ environmentMapFactor: Vec4
 environmentRotation?: Quaternion
 ```
 
-环境旋转
+环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。
 
 **类型：** [Quaternion](arkts-arkgraphics3d-scenetypes-quaternion-i.md)
 
-**默认值：** Quaternion {x:0, y:0, z:0, w:1} 单位四元数（无旋转）
+**默认值：** undefined
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -104,15 +84,11 @@ environmentRotation?: Quaternion
 indirectDiffuseFactor: Vec4
 ```
 
-环境间接漫反射因子.
+间接散射系数。
 
 **类型：** [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Environment-indirectDiffuseFactor: Vec4--><!--Device-Environment-indirectDiffuseFactor: Vec4-End-->
 
@@ -124,15 +100,11 @@ indirectDiffuseFactor: Vec4
 indirectSpecularFactor: Vec4
 ```
 
-环境间接镜面反射因子.
+间接反射系数。
 
 **类型：** [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Environment-indirectSpecularFactor: Vec4--><!--Device-Environment-indirectSpecularFactor: Vec4-End-->
 
@@ -144,15 +116,11 @@ indirectSpecularFactor: Vec4
 irradianceCoefficients?: Vec3[]
 ```
 
-辐射系数（九个Vec3的数组）.
+辐射系数，默认为undefined。
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Environment-irradianceCoefficients?: Vec3[]--><!--Device-Environment-irradianceCoefficients?: Vec3[]-End-->
 
@@ -164,15 +132,11 @@ irradianceCoefficients?: Vec3[]
 radianceImage?: Image | null
 ```
 
-环境辐射图像.
+辐射图片，默认为undefined。
 
 **类型：** [Image](arkts-arkgraphics3d-sceneresources-image-i.md) \| null
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Environment-radianceImage?: Image | null--><!--Device-Environment-radianceImage?: Image | null-End-->
 

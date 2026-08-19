@@ -55,7 +55,7 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 0 - 成功。<br>     <br>2305001 - 未指定的错误。<br>     <br>2305002 - 无法获取颁发者证书。<br>     <br>2305003 - 无法获取证书吊销列表（CRL）。<br>     <br>2305004 - 无法解密证书签名。<br>     <br>2305005 - 无法解密CRL签名。<br>     <br>2305006 - 无法解码颁发者公钥。<br>     <br>2305007 - 证书签名失败。<br>     <br>2305008 - CRL签名失败。<br>     <br>2305009 - 证书尚未生效。<br>     <br>2305010 - 证书已过期。<br>     <br>2305011 - CRL尚未有效。<br>     <br>2305012 - CRL已过期。<br>     <br>2305023 - 证书已被吊销。<br>     <br>2305024 - 证书颁发机构（CA）无效。<br>     <br>2305027 - 证书不受信任。 |
+| uint32_t | 0 - 成功。      <br>2305001 - 未指定的错误。      <br>2305002 - 无法获取颁发者证书。      <br>2305003 - 无法获取证书吊销列表（CRL）。      <br>2305004 - 无法解密证书签名。      <br>2305005 - 无法解密CRL签名。      <br>2305006 - 无法解码颁发者公钥。      <br>2305007 - 证书签名失败。      <br>2305008 - CRL签名失败。      <br>2305009 - 证书尚未生效。      <br>2305010 - 证书已过期。      <br>2305011 - CRL尚未有效。      <br>2305012 - CRL已过期。      <br>2305023 - 证书已被吊销。      <br>2305024 - 证书颁发机构（CA）无效。      <br>2305027 - 证书不受信任。 |
 
 ### OH_NetStack_GetPinSetForHostName()
 
@@ -82,7 +82,7 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>401 - 参数设置错误。<br>     <br>2305999 - 内存错误。 |
+| int32_t | 0 - 成功。      <br>401 - 参数设置错误。      <br>2305999 - 内存错误。 |
 
 ### OH_NetStack_GetCertificatesForHostName()
 
@@ -109,7 +109,7 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>401 - 参数设置错误。<br>     <br>2305999 - 内存错误。 |
+| int32_t | 0 - 成功。      <br>401 - 参数设置错误。      <br>2305999 - 内存错误。 |
 
 ### OH_Netstack_DestroyCertificatesContent()
 
@@ -155,7 +155,7 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>201 - 权限被拒。<br>     <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。      <br>201 - 权限被拒。      <br>401 - 参数错误。 |
 
 ### OH_Netstack_IsCleartextPermittedByHostName()
 
@@ -182,7 +182,7 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>201 - 权限被拒。<br>     <br>401 - 参数错误。 |
+| int32_t | 0 - 成功。      <br>201 - 权限被拒。      <br>401 - 参数错误。 |
 
 ### OH_Netstack_IsCleartextCfgByComponent()
 
@@ -207,7 +207,7 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     <br>2100001 - 无效的参数值。 |
+| int32_t | 0 - 成功。      <br>2100001 - 无效的参数值。 |
 
 ### OH_NetStack_CreateAndVerifySortedCertChain()
 
@@ -240,7 +240,7 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBl
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 0 - 成功。<br>         2305001 - 未指定的错误。<br>         2305002 - 无法获取颁发者证书。<br>         2305004 - 无法解密证书签名。<br>         2305006 - 无法解码颁发者公钥。<br>         2305007 - 证书签名失败。<br>         2305009 - 证书尚未生效。<br>         2305010 - 证书已过期。<br>         2305024 - 无效的证书颁发机构(CA)。<br>         2305062 - 主机名验证失败。<br>         2305027 - 证书不受信任。 |
+| uint32_t | 0 - 成功。          2305001 - 未指定的错误。          2305002 - 无法获取颁发者证书。          2305004 - 无法解密证书签名。          2305006 - 无法解码颁发者公钥。          2305007 - 证书签名失败。          2305009 - 证书尚未生效。          2305010 - 证书已过期。          2305024 - 无效的证书颁发机构(CA)。          2305062 - 主机名验证失败。          2305027 - 证书不受信任。 |
 
 ### OH_NetStack_FreeCertChain()
 

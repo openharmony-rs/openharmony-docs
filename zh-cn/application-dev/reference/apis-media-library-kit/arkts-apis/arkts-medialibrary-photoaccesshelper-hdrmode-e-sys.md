@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum HdrMode--><!--Device-photoAccessHelper-enum HdrMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ DEFAULT = 0
 默认类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-HdrMode-DEFAULT = 0--><!--Device-HdrMode-DEFAULT = 0-End-->
 
@@ -44,10 +36,6 @@ HDR_ISO_SINGLE = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-HdrMode-HDR_ISO_SINGLE = 1--><!--Device-HdrMode-HDR_ISO_SINGLE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ HDR_ISO_DUAL = 2
 符合ISO标准的双层HDR图片。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-HdrMode-HDR_ISO_DUAL = 2--><!--Device-HdrMode-HDR_ISO_DUAL = 2-End-->
 
@@ -84,10 +68,6 @@ HDR_CUVA = 3
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-HdrMode-HDR_CUVA = 3--><!--Device-HdrMode-HDR_CUVA = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -104,10 +84,6 @@ HDR_VIVID_SINGLE = 4
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-HdrMode-HDR_VIVID_SINGLE = 4--><!--Device-HdrMode-HDR_VIVID_SINGLE = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -123,10 +99,6 @@ HDR_VIVID_DUAL = 5
 符合HDR Vivid标准的双层图片。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-HdrMode-HDR_VIVID_DUAL = 5--><!--Device-HdrMode-HDR_VIVID_DUAL = 5-End-->
 

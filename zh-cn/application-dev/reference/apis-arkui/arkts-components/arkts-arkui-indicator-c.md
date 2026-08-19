@@ -4,13 +4,14 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class Indicator--><!--Device-unnamed-declare class Indicator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## bottom
 
@@ -21,10 +22,6 @@ bottom(value: Length): T
 导航点底部相对于Swiper的位置。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,10 +55,6 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -77,7 +70,7 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bottom | LengthMetrics \| Length | 是 | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交 叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
-| ignoreSize | boolean | 是 | 设置是否忽略导航点本身大小，默认false。<br/>设置为true时，忽略导航点大小，可以将导航点更靠近Swiper底部；设置为false时，不忽略导航点大小，导航点按默认大小布局。使用方法可以参考 [示例9演示导航点space与bottom](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例9演示导航点space与bottom)。&lt;br /&gt; 说明：[数字导航点](arkts-arkui-digitindicator-c.md#digitindicator)ignoreSize属性，不生效的场景如下：<br/> • 当vertical 设 置为false，且bottom > 0。<br/> • 当vertical 设置为true时：<br/>1、bottom > 0 时。<br/> 2、 bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。 |
+| ignoreSize | boolean | 是 | 设置是否忽略导航点本身大小，默认false。<br/>设置为true时，忽略导航点大小，可以将导航点更靠近Swiper底部；设置为false时，不忽略导航点大小，导航点按默认大小布局。使用方法可以参考 [示例9演示导航点space与bottom](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例9演示导航点space与bottom)。&lt;br /&gt; 说明：[数字导航点](arkts-arkui-digitindicator-c.md)ignoreSize属性，不生效的场景如下：<br/> • 当vertical 设 置为false，且bottom > 0。<br/> • 当vertical 设置为true时：<br/>1、bottom > 0 时。<br/> 2、 bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。 |
 
 **返回值：**
 
@@ -94,10 +87,6 @@ static digit(): DigitIndicator
 返回一个DigitIndicator对象。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -125,10 +114,6 @@ static dot(): DotIndicator
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -154,10 +139,6 @@ end(value: LengthMetrics): T
 在RTL模式下为导航点距离Swiper组件左边的距离，在LTR模式下为导航点距离Swiper组件右边的距离。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -191,10 +172,6 @@ left(value: Length): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -226,10 +203,6 @@ right(value: Length): T
 导航点右侧相对于Swiper的位置。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -263,10 +236,6 @@ start(value: LengthMetrics): T
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -298,10 +267,6 @@ top(value: Length): T
 导航点顶部相对于Swiper的位置。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

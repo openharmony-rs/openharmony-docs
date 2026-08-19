@@ -1,5 +1,11 @@
 # createSystemSoundPlayer
 
+## 导入模块
+
+```TypeScript
+import { systemSoundManager } from '@kit.AudioKit';
+```
+
 ## createSystemSoundPlayer
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>
 创建系统音效播放器对象。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-systemSoundManager-function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>--><!--Device-systemSoundManager-function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>-End-->
 
@@ -30,7 +32,7 @@ function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>
 | --- | --- |
 | [5400101](../../apis-media-kit/errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

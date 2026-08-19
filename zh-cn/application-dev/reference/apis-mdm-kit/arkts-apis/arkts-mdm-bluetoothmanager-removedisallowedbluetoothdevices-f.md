@@ -1,5 +1,11 @@
 # removeDisallowedBluetoothDevices
 
+## 导入模块
+
+```TypeScript
+import { bluetoothManager } from '@kit.MDMKit';
+```
+
 ## removeDisallowedBluetoothDevices
 
 ```TypeScript
@@ -9,10 +15,6 @@ function removeDisallowedBluetoothDevices(admin: Want, deviceIds: Array<string>)
 移除蓝牙设备禁用名单。若移除禁用名单中的部分蓝牙设备，则当前设备不允许连接禁用名单内剩余的蓝牙设备。若移除禁用名单中的所有蓝牙设备，则当前设备可以连接任意的蓝牙设备。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
@@ -37,7 +39,7 @@ function removeDisallowedBluetoothDevices(admin: Want, deviceIds: Array<string>)
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bluetoothManager } from '@kit.MDMKit';

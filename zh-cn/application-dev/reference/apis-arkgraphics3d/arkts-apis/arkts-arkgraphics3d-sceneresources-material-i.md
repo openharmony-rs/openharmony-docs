@@ -1,14 +1,10 @@
 # Material
 
-材质类型，继承自[SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)。
+材质类型，继承自SceneResource。
 
-**继承/实现关系：** Material extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)
+**继承/实现关系：** Material extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Material--><!--Device-unnamed-export interface Material-End-->
 
@@ -26,10 +22,6 @@ alphaCutoff?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Material-alphaCutoff?: double--><!--Device-Material-alphaCutoff?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -44,13 +36,9 @@ blend?: Blend
 
 **类型：** [Blend](arkts-arkgraphics3d-sceneresources-blend-i.md)
 
-**默认值：** undefined, which means that blending is disabled.
+**默认值：** undefined
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Material-blend?: Blend--><!--Device-Material-blend?: Blend-End-->
 
@@ -68,10 +56,6 @@ cullMode?: CullMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Material-cullMode?: CullMode--><!--Device-Material-cullMode?: CullMode-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -88,10 +72,6 @@ readonly materialType: MaterialType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Material-readonly materialType: MaterialType--><!--Device-Material-readonly materialType: MaterialType-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -106,13 +86,9 @@ polygonMode?: PolygonMode
 
 **类型：** [PolygonMode](arkts-arkgraphics3d-sceneresources-polygonmode-e.md)
 
-**默认值：** PolygonMode.FILL 填充多边形模式
+**默认值：** PolygonMode.FILL
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Material-polygonMode?: PolygonMode--><!--Device-Material-polygonMode?: PolygonMode-End-->
 
@@ -130,10 +106,6 @@ renderSort?: RenderSort
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Material-renderSort?: RenderSort--><!--Device-Material-renderSort?: RenderSort-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -149,10 +121,6 @@ shadowReceiver?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Material-shadowReceiver?: boolean--><!--Device-Material-shadowReceiver?: boolean-End-->
 

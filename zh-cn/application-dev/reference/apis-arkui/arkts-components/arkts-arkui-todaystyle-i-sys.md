@@ -4,8 +4,6 @@ Non current day style.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 <!--Device-unnamed-interface TodayStyle--><!--Device-unnamed-interface TodayStyle-End-->
@@ -13,6 +11,11 @@ Non current day style.
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## focusedAreaBackgroundColor
 
@@ -25,8 +28,6 @@ Background color of the focus area.
 **类型：** ResourceColor
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -50,8 +51,6 @@ Focus area radius.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -74,8 +73,6 @@ Style of focus color.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -97,8 +94,6 @@ Focus on Lunar Colors.
 **类型：** ResourceColor
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 

@@ -1,14 +1,10 @@
 # SpotLight
 
-聚光灯类型，继承自[Light](arkts-arkgraphics3d-scenenodes-light-i.md#light)。 聚光灯会朝某个方向发出锥形光，强度随着圆锥角度的衰减由innerAngle和outerAngle两个参数定义。 另外与点光源类似，强度也会随着距离光源位置的增加而衰减。 > > **注意：** > > 用户需要保证设置的innerAngle与outerAngle值是合理的。当outerAngle设置的值大于PI/2时，内部会强制其等于PI/2。 > 当outerAngle设置的值小于innerAngle时，内部会强制其等于innerAngle。
+聚光灯类型，继承自Light。 聚光灯会朝某个方向发出锥形光，强度随着圆锥角度的衰减由innerAngle和outerAngle两个参数定义。另外与点光源类似，强度也会随着距离光源位置的增加而衰减。 > **注意：** > > 用户需要保证设置的innerAngle与outerAngle值是合理的。 > 当outerAngle设置的值大于PI/2时，内部会强制其等于PI/2。 > 当outerAngle设置的值小于innerAngle时，内部会强制其等于innerAngle。
 
-**继承/实现关系：** SpotLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md#light)
+**继承/实现关系：** SpotLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface SpotLight--><!--Device-unnamed-export interface SpotLight-End-->
 
@@ -28,10 +24,6 @@ innerAngle?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SpotLight-innerAngle?: double--><!--Device-SpotLight-innerAngle?: double-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -46,13 +38,9 @@ outerAngle?: double
 
 **类型：** double
 
-**默认值：** PI / 4.0 π/4 弧度
+**默认值：** PI / 4.0
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SpotLight-outerAngle?: double--><!--Device-SpotLight-outerAngle?: double-End-->
 

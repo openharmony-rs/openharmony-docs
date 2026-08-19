@@ -1,5 +1,10 @@
 # chown
 
+## 导入模块
+
+```TypeScript
+```
+
 ## chown
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function chown(path: string, uid: number, gid: number): Promise<void>
 基于文件路径改变文件所有者，使用Promise异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -43,8 +46,6 @@ declare function chown(path: string, uid: number, gid: number, callback: AsyncCa
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-unnamed-declare function chown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function chown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void-End-->
@@ -58,5 +59,5 @@ declare function chown(path: string, uid: number, gid: number, callback: AsyncCa
 | path | string | 是 | 待改变文件的应用沙箱路径。 |
 | uid | number | 是 | 新的UID。 |
 | gid | number | 是 | 新的GID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
 

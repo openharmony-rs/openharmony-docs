@@ -8,10 +8,6 @@ export type ShortcutWant = _ShortcutWant
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-shortcutManager-export type ShortcutWant = _ShortcutWant--><!--Device-shortcutManager-export type ShortcutWant = _ShortcutWant-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher

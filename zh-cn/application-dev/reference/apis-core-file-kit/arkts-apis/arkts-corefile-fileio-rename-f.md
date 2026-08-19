@@ -1,5 +1,10 @@
 # rename
 
+## 导入模块
+
+```TypeScript
+```
+
 ## rename
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [rename](arkts-corefile-file-fs-rename-f.md#rename)
+**替代接口：** [rename](arkts-corefile-file-fs-rename-f.md)
 
 <!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>-End-->
 
@@ -44,11 +47,9 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [rename](arkts-corefile-file-fs-rename-f.md#rename)
+**替代接口：** [rename](arkts-corefile-file-fs-rename-f.md)
 
 <!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void-End-->
 
@@ -60,5 +61,5 @@ declare function rename(oldPath: string, newPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | oldPath | string | 是 | 目标文件的当前应用沙箱路径。 |
 | newPath | string | 是 | 目标文件的新应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步重命名文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步重命名文件之后的回调。 |
 

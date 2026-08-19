@@ -10,10 +10,6 @@ const DISTRIBUTED_SERVICE_INSTANCE_ID: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-param-const DISTRIBUTED_SERVICE_INSTANCE_ID: string--><!--Device-param-const DISTRIBUTED_SERVICE_INSTANCE_ID: string-End-->
@@ -30,10 +26,6 @@ const DISTRIBUTED_SERVICE_NAME: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-param-const DISTRIBUTED_SERVICE_NAME: string--><!--Device-param-const DISTRIBUTED_SERVICE_NAME: string-End-->
@@ -49,10 +41,6 @@ const USER_ID: string
 用户自定义ID。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,11 @@
 # @ohos.app.ability.CompletionHandlerForAbilityStartCallback
 
+## 导入模块
+
+```TypeScript
+import { CompletionHandlerForAbilityStartCallback, AbilityStartFailureCode } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

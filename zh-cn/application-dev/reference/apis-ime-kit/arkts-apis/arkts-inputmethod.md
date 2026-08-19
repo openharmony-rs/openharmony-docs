@@ -4,13 +4,20 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace inputMethod--><!--Device-unnamed-declare namespace inputMethod-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
 
 ## 汇总
 
@@ -18,35 +25,35 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getController](arkts-ime-inputmethod-getcontroller-f.md#getcontroller) | 获取客户端实例[InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md#inputmethodcontroller)。 **含义/功能**：获取当前应用的输入法客户端控制器实例，用于后续与输入法进行交互（绑定、显示/隐藏键盘、同步编辑框状态等）。 **使用场景：**当前台应用（如备忘录、聊天应用）需要控制输入法的显示/隐藏、绑定/解绑、同步编辑框信息时，必须先通过此接口获取InputMethodController实例。 **使用后效果**：返回一个InputMethodController实例，后续可通过该实例调用attach、showTextInput、hideTextInput、detach等一系列接口与输入法交互。 |
-| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md#getcurrentinputmethod) | 使用同步方法获取当前输入法。 **含义/功能**：获取当前正在使用的输入法属性信息。 **使用场景：**当应用需要知道当前活跃的输入法是哪个（如判断输入法名称、获取输入法id用于后续切换操作）时使用。 **使用后效果**：返回当前输入法的InputMethodProperty对象。 |
-| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f.md#getcurrentinputmethodsubtype) | 获取当前输入法的子类型。 |
-| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f.md#getdefaultinputmethod) | 获取默认输入法。 |
-| [getInputMethodController](arkts-ime-inputmethod-getinputmethodcontroller-f.md#getinputmethodcontroller) | 获取客户端实例[InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md#inputmethodcontroller)。 |
-| [getInputMethodSetting](arkts-ime-inputmethod-getinputmethodsetting-f.md#getinputmethodsetting) | 获取客户端设置实例[InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md#inputmethodsetting)。 |
-| [getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting) | 获取客户端设置实例[InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md#inputmethodsetting)。 **含义/功能**：获取输入法设置实例，用于查询输入法列表、订阅输入法变化事件、查询面板可见性等配置管理操作。 **使用场景：**当应用需要查询已安装/已激活输入法列表、订阅输入法切换事件、或显示输入法选择对话框时，必须先通过此接口获取InputMethodSetting实例。 **使用后效果**：返回一个InputMethodSetting实例，后续可通过该实例调用getInputMethods、listInputMethodSubtype、on('imeChange')等接口。 |
-| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f.md#getsysteminputmethodconfigability) | 获取系统输入法设置界面Ability信息。 |
-| [offAttachmentDidFail](arkts-ime-inputmethod-offattachmentdidfail-f.md#offattachmentdidfail) | 取消订阅绑定失败事件。使用callback异步回调。 |
-| [onAttachmentDidFail](arkts-ime-inputmethod-onattachmentdidfail-f.md#onattachmentdidfail) | 订阅绑定失败事件。使用callback异步回调。 |
-| [setSimpleKeyboardEnabled](arkts-ime-inputmethod-setsimplekeyboardenabled-f.md#setsimplekeyboardenabled) | 编辑框应用设置简单键盘标志。 |
-| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。 |
-| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md#switchcurrentinputmethodandsubtype) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。 |
-| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype) | 切换当前输入法的子类型。使用callback异步回调。 |
-| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md#switchcurrentinputmethodsubtype) | 切换当前输入法的子类型。使用promise异步回调。 |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod) | 切换输入法，使用callback异步回调。 **含义/功能**：将当前输入法切换为指定的目标输入法。 **使用场景：**当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。 **使用后效果**：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。 **异步返回方式**：使用callback异步回调。成功时err为undefined，data为true；失败时返回BusinessError对象。 |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md#switchinputmethod) | 切换输入法，使用promise异步回调。 **含义/功能**：将当前输入法切换为指定的目标输入法。 **使用场景：**当前输入法应用需要切换到另一个输入法时使用。 **使用后效果**：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。 **异步返回方式**：使用Promise异步回调。成功时返回true，失败时返回BusinessError对象。 |
+| [getController](arkts-ime-inputmethod-getcontroller-f.md) | 获取客户端实例[InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md)。 **含义/功能**：获取当前应用的输入法客户端控制器实例，用于后续与输入法进行交互（绑定、显示/隐藏键盘、同步编辑框状态等）。 **使用场景：**当前台应用（如备忘录、聊天应用）需要控制输入法的显示/隐藏、绑定/解绑、同步编辑框信息时，必须先通过此接口获取InputMethodController实例。 **使用后效果**：返回一个InputMethodController实例，后续可通过该实例调用attach、showTextInput、hideTextInput、detach等一系列接口与输入法交互。 |
+| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md) | 使用同步方法获取当前输入法。 **含义/功能**：获取当前正在使用的输入法属性信息。 **使用场景：**当应用需要知道当前活跃的输入法是哪个（如判断输入法名称、获取输入法id用于后续切换操作）时使用。 **使用后效果**：返回当前输入法的InputMethodProperty对象。 |
+| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f.md) | 获取当前输入法的子类型。 |
+| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f.md) | 获取默认输入法。 |
+| [getInputMethodController](arkts-ime-inputmethod-getinputmethodcontroller-f.md) | 获取客户端实例[InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md)。 |
+| [getInputMethodSetting](arkts-ime-inputmethod-getinputmethodsetting-f.md) | 获取客户端设置实例[InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md)。 |
+| [getSetting](arkts-ime-inputmethod-getsetting-f.md) | 获取客户端设置实例[InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md)。 **含义/功能**：获取输入法设置实例，用于查询输入法列表、订阅输入法变化事件、查询面板可见性等配置管理操作。 **使用场景：**当应用需要查询已安装/已激活输入法列表、订阅输入法切换事件、或显示输入法选择对话框时，必须先通过此接口获取InputMethodSetting实例。 **使用后效果**：返回一个InputMethodSetting实例，后续可通过该实例调用getInputMethods、listInputMethodSubtype、on('imeChange')等接口。 |
+| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f.md) | 获取系统输入法设置界面Ability信息。 |
+| [offAttachmentDidFail](arkts-ime-inputmethod-offattachmentdidfail-f.md) | 取消订阅绑定失败事件。使用callback异步回调。 |
+| [onAttachmentDidFail](arkts-ime-inputmethod-onattachmentdidfail-f.md) | 订阅绑定失败事件。使用callback异步回调。 |
+| [setSimpleKeyboardEnabled](arkts-ime-inputmethod-setsimplekeyboardenabled-f.md) | 编辑框应用设置简单键盘标志。 |
+| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。 |
+| [switchCurrentInputMethodAndSubtype](arkts-ime-inputmethod-switchcurrentinputmethodandsubtype-f.md) | 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。 |
+| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md) | 切换当前输入法的子类型。使用callback异步回调。 |
+| [switchCurrentInputMethodSubtype](arkts-ime-inputmethod-switchcurrentinputmethodsubtype-f.md) | 切换当前输入法的子类型。使用promise异步回调。 |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md) | 切换输入法，使用callback异步回调。 **含义/功能**：将当前输入法切换为指定的目标输入法。 **使用场景：**当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。 **使用后效果**：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。 **异步返回方式**：使用callback异步回调。成功时err为undefined，data为true；失败时返回BusinessError对象。 |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md) | 切换输入法，使用promise异步回调。 **含义/功能**：将当前输入法切换为指定的目标输入法。 **使用场景：**当前输入法应用需要切换到另一个输入法时使用。 **使用后效果**：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。 **异步返回方式**：使用Promise异步回调。成功时返回true，失败时返回BusinessError对象。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f-sys.md#getcurrentinputmethod系统接口) | 获取指定用户的当前输入法。 |
-| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md#getcurrentinputmethodsubtype系统接口) | 获取指定用户的当前输入法子类型。 |
-| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md#getdefaultinputmethod系统接口) | 获取指定用户的默认输入法。 |
-| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f-sys.md#getsysteminputmethodconfigability系统接口) | 获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。 |
-| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f-sys.md#switchinputmethod系统接口) | 切换输入法，使用promise异步回调。 |
-| [switchInputMethodWithUserId](arkts-ime-inputmethod-switchinputmethodwithuserid-f-sys.md#switchinputmethodwithuserid) | 切换输入法，使用promise异步回调。 |
+| [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f-sys.md) | 获取指定用户的当前输入法。 |
+| [getCurrentInputMethodSubtype](arkts-ime-inputmethod-getcurrentinputmethodsubtype-f-sys.md) | 获取指定用户的当前输入法子类型。 |
+| [getDefaultInputMethod](arkts-ime-inputmethod-getdefaultinputmethod-f-sys.md) | 获取指定用户的默认输入法。 |
+| [getSystemInputMethodConfigAbility](arkts-ime-inputmethod-getsysteminputmethodconfigability-f-sys.md) | 获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。 |
+| [switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f-sys.md) | 切换输入法，使用promise异步回调。 |
+| [switchInputMethodWithUserId](arkts-ime-inputmethod-switchinputmethodwithuserid-f-sys.md) | 切换输入法，使用promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口
@@ -57,9 +64,9 @@
 | [CursorInfo](arkts-ime-inputmethod-cursorinfo-i.md) | 光标信息。 |
 | [FunctionKey](arkts-ime-inputmethod-functionkey-i.md) | 输入法功能键类型。 |
 | [InputAttribute](arkts-ime-inputmethod-inputattribute-i.md) | 编辑框属性，包含文本输入类型和Enter键功能类型。 |
-| [InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md) | 下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md#getcontroller)获取到InputMethodController实例，再通过实例调用对应方法。 InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作： - **绑定管理**：通过 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach)解除绑定。attach和 detach必须配对使用。 - **键盘控制**：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput)拉 起软键盘进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput)隐 藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。 - **编辑框状态同步**：通过 [updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor) 、 [changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection) 、 [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) 等接口向输入法同步光标、选区、属性等编辑框状态信息。 - **事件订阅**：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。 典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` > **注意：** > > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。 |
+| [InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i.md) | 下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。 InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作： - **绑定管理**：通过 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach)解除绑定。attach和 detach必须配对使用。 - **键盘控制**：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput)拉 起软键盘进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput)隐 藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。 - **编辑框状态同步**：通过 [updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor) 、 [changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection) 、 [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) 等接口向输入法同步光标、选区、属性等编辑框状态信息。 - **事件订阅**：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。 典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` > **注意：** > > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。 |
 | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 输入法应用属性。 |
-| [InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md) | InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取到InputMethodSetting实例后，通过实例调用。 |
+| [InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md) | InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取到InputMethodSetting实例后，通过实例调用。 |
 | [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md) | 输入法软键盘的窗口信息。 |
 | [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md) | 自定义通信对象。 |
 | [Movement](arkts-ime-inputmethod-movement-i.md) | 选中文本时，光标移动的方向。 |
@@ -71,8 +78,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i-sys.md) | 下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md#getcontroller)获取到InputMethodController实例，再通过实例调用对应方法。 InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作： - **绑定管理**：通过 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach)解除绑定。attach和 detach必须配对使用。 - **键盘控制**：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput)拉 起软键盘进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput)隐 藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。 - **编辑框状态同步**：通过 [updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor) 、 [changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection) 、 [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) 等接口向输入法同步光标、选区、属性等编辑框状态信息。 - **事件订阅**：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。 典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` > **注意：** > > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。 |
-| [InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i-sys.md) | InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取到InputMethodSetting实例后，通过实例调用。 |
+| [InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i-sys.md) | 下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。 InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作： - **绑定管理**：通过 [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) 建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach)解除绑定。attach和 detach必须配对使用。 - **键盘控制**：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput)拉 起软键盘进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput)隐 藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。 - **编辑框状态同步**：通过 [updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor) 、 [changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection) 、 [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) 等接口向输入法同步光标、选区、属性等编辑框状态信息。 - **事件订阅**：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。 典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` > **注意：** > > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。 |
+| [InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i-sys.md) | InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取到InputMethodSetting实例后，通过实例调用。 |
 | [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i-sys.md) | 输入法软键盘的窗口信息。 |
 <!--DelEnd-->
 
@@ -112,5 +119,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [MAX_TYPE_NUM](arkts-ime-inputmethod-con.md#maxtypenum) | 可支持的最大输入法个数。 |
+| [MAX_TYPE_NUM](arkts-ime-inputmethod-con.md#max_type_num) | 可支持的最大输入法个数。 |
 

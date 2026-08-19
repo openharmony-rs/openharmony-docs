@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export enum CallType--><!--Device-call-export enum CallType-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -23,10 +19,6 @@ TYPE_CS = 0
 CS通话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallType-TYPE_CS = 0--><!--Device-CallType-TYPE_CS = 0-End-->
 
@@ -44,10 +36,6 @@ IMS通话。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallType-TYPE_IMS = 1--><!--Device-CallType-TYPE_IMS = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -63,10 +51,6 @@ TYPE_OTT = 2
 OTT通话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallType-TYPE_OTT = 2--><!--Device-CallType-TYPE_OTT = 2-End-->
 
@@ -84,10 +68,6 @@ TYPE_ERR_CALL = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallType-TYPE_ERR_CALL = 3--><!--Device-CallType-TYPE_ERR_CALL = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -104,10 +84,6 @@ VoIP通话。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallType-TYPE_VOIP = 4--><!--Device-CallType-TYPE_VOIP = 4-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -123,10 +99,6 @@ TYPE_XCALL = 5
 XCALL通话。 **起始版本:** 26.0.0
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-CallType-TYPE_XCALL = 5--><!--Device-CallType-TYPE_XCALL = 5-End-->
 

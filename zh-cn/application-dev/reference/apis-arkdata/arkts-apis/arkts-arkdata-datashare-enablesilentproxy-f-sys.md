@@ -1,5 +1,12 @@
 # enableSilentProxy（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dataShare } from '@kit.ArkData';
+import { dataSharePredicates } from '@kit.ArkData';
+```
+
 ## enableSilentProxy
 
 ```TypeScript
@@ -9,10 +16,6 @@ function enableSilentProxy(context: Context, uri?: string): Promise<void>
 开启静默访问。使用Promise异步回调。 使用规则： - 数据提供方调用此接口，来开启静默访问功能。 - 此接口设置的开启结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考 [data_share_config.json配置](../../../database/share-data-by-datashareextensionability-sys.md)。 - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有开启过相关uri，那么会按照此接口的配置来开启静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验 Datashare的开启状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,7 +46,7 @@ function enableSilentProxy(context: Context, uri?: string): Promise<void>
 | [15700011](../errorcode-datashare.md#15700011-uri不存在) | The URI does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

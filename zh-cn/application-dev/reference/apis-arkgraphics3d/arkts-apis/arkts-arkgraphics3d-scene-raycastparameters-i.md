@@ -1,12 +1,8 @@
 # RaycastParameters
 
-如何执行射线检测.
+射线检测参数配置，用于定义射线检测的行为。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RaycastParameters--><!--Device-unnamed-export interface RaycastParameters-End-->
 
@@ -18,15 +14,11 @@
 rootNode?: Node
 ```
 
-如果定义，则仅搜索该节点层级下的节点 如果未定义，则搜索场景中的所有节点
+限定检测范围：仅检测该节点及其子节点。未设置时检测全场景。
 
 **类型：** [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RaycastParameters-rootNode?: Node--><!--Device-RaycastParameters-rootNode?: Node-End-->
 

@@ -1,5 +1,11 @@
 # getSmsSegmentsInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
+
 ## getSmsSegmentsInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean, ca
 获取短信段信息。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean, callback: AsyncCallback<SmsSegmentsInfo>): void--><!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean, callback: AsyncCallback<SmsSegmentsInfo>): void-End-->
 
@@ -27,7 +29,7 @@ function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean, ca
 | slotId | int | 是 | SIM卡槽ID：<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | message | string | 是 | 消息。 |
 | force7bit | boolean | 是 | 是否使用7 bit编码，默认false。<br/>-true：是<br/>-false：否 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[SmsSegmentsInfo](arkts-telephony-sms-smssegmentsinfo-i-sys.md)&gt; | 是 | 指示用于获取短信短信息的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[SmsSegmentsInfo](arkts-telephony-sms-smssegmentsinfo-i-sys.md)&gt; | 是 | 指示用于获取短信短信息的回调函数。 |
 
 **错误码：**
 
@@ -40,7 +42,7 @@ function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean, ca
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';
@@ -62,10 +64,6 @@ function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean): P
 获取短信段信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean): Promise<SmsSegmentsInfo>--><!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean): Promise<SmsSegmentsInfo>-End-->
 
@@ -98,7 +96,7 @@ function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean): P
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';

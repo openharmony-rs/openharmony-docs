@@ -10,10 +10,6 @@ const EXECUTE_IMMEDIATE: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-workScheduler-const EXECUTE_IMMEDIATE: string--><!--Device-workScheduler-const EXECUTE_IMMEDIATE: string-End-->
@@ -31,10 +27,6 @@ const WORK_SCHEDULER_CONDITION: string
 当前任务触发时满足的最后一个条件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

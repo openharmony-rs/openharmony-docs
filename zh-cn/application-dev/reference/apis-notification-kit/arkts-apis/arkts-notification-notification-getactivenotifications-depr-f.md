@@ -1,5 +1,13 @@
 # getActiveNotifications
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+import { notificationSubscribe } from '@kit.NotificationKit';
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
+```
+
 ## getActiveNotifications
 
 ```TypeScript
@@ -10,11 +18,9 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md#getactivenotifications)
+**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md)
 
 <!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void--><!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void-End-->
 
@@ -24,7 +30,7 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)&gt;&gt; | 是 | 获取当前应用通知列表回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)&gt;&gt; | 是 | 获取当前应用通知列表回调函数。 |
 
 
 ## getActiveNotifications
@@ -37,11 +43,9 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md#getactivenotifications)
+**替代接口：** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md)
 
 <!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>--><!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>-End-->
 

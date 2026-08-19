@@ -1,5 +1,11 @@
 # create
 
+## 导入模块
+
+```TypeScript
+import { floatView } from '@kit.ArkUI';
+```
+
 ## create
 
 ```TypeScript
@@ -9,10 +15,6 @@ function create(config: FloatViewConfiguration): Promise<FloatViewController>
 创建标准悬浮窗控制器。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +42,7 @@ function create(config: FloatViewConfiguration): Promise<FloatViewController>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. This window context is abnormal. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid template type. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

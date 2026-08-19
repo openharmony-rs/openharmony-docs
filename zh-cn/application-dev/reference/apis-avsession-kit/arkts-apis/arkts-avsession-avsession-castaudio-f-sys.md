@@ -1,5 +1,11 @@
 # castAudio（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## castAudio
 
 ```TypeScript
@@ -9,10 +15,6 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 投播会话到指定设备列表。结果通过callback异步回调方式返回。 需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -28,7 +30,7 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 | --- | --- | --- | --- |
 | session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) \| 'all' | 是 | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
 | audioDevices | Array&lt;audio.AudioDeviceDescriptor&gt; | 是 | 媒体设备列表。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当投播成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当投播成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -41,7 +43,7 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600104](../errorcode-avsession.md#6600104-远端会话连接失败) | The remote session connection failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -70,10 +72,6 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 投播会话到指定设备列表。结果通过Promise异步回调方式返回。 调用此接口之前，需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -107,7 +105,7 @@ function castAudio(session: SessionToken | 'all', audioDevices: Array<audio.Audi
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600104](../errorcode-avsession.md#6600104-远端会话连接失败) | The remote session connection failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';

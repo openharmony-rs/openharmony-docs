@@ -139,7 +139,7 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID}  函数参数异常。<br>     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID}  函数参数异常。      <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_GridLayoutOptions_GetIrregularIndexes()
 
@@ -165,7 +165,7 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>     <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。<br>     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。      <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。      <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
 
@@ -183,7 +183,7 @@ Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)\* option | Grid布局选项。 |
+| rkUI_GridLayoutOptions\* option | Grid布局选项。 |
 | void\* userData | 用户自定义数据。 |
 | ArkUI_GridItemSize (\*callback)(int32_t itemIndex | 根据index获取指定Item占用的行列数。itemIndex: GridItem索引值，取值范围来自[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-node-grid-h.md#oh_arkui_gridlayoutoptions_setirregularindexes). |
 
@@ -203,7 +203,7 @@ Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的�
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)\* option | Grid布局选项。 |
+| rkUI_GridLayoutOptions\* option | Grid布局选项。 |
 | void\* userData | 用户自定义数据。 |
 | ArkUI_GridItemRect (\*callback)(int32_t itemIndex | Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。 |
 

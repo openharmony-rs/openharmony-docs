@@ -1,5 +1,12 @@
 # description
 
+## 导入模块
+
+```TypeScript
+import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
+import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
+```
+
 ## description
 
 ```TypeScript
@@ -10,10 +17,6 @@ Specifies the description for the target Component.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ON-export function description(val: string, pattern?: MatchPattern): On--><!--Device-ON-export function description(val: string, pattern?: MatchPattern): On-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
@@ -23,7 +26,7 @@ Specifies the description for the target Component.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | val | string | 是 | the description value. |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | the [MatchPattern](arkts-test-uitest-matchpattern-e.md#matchpattern) of description value,set it default [EQUALS](arkts-test-uitest-matchpattern-e.md#equals) if null or undefined. |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | the [MatchPattern](arkts-test-uitest-matchpattern-e.md) of description value,set it default [EQUALS](arkts-test-uitest-matchpattern-e.md#equals) if null or undefined. |
 
 **返回值：**
 

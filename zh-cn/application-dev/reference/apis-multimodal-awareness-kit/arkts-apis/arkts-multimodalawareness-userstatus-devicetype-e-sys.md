@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-userStatus-export enum DeviceType--><!--Device-userStatus-export enum DeviceType-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
@@ -23,10 +19,6 @@ UNKNOWN_TYPE = 0
 表示设备类型未知。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ PC = 0x0C
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DeviceType-PC = 0x0C--><!--Device-DeviceType-PC = 0x0C-End-->
@@ -68,10 +56,6 @@ PHONE = 0x0E
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DeviceType-PHONE = 0x0E--><!--Device-DeviceType-PHONE = 0x0E-End-->
@@ -89,10 +73,6 @@ TABLET = 0x11
 表示平板设备。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

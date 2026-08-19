@@ -1,18 +1,23 @@
 # By
 
-UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。 By提供的API能力具有以下几个特点： 1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。 2、控件属性支持多种匹配模式。 3、支持控件绝对定位，相对定位，可通过[By.isBefore&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isbefore)和 [By.isAfter&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isafter)等API限定邻近控件特征进行辅助定位。 By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[On&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#on)替代。
+UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。 By提供的API能力具有以下几个特点： 1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。 2、控件属性支持多种匹配模式。 3、支持控件绝对定位，相对定位，可通过[By.isBefore&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isbefore)和 [By.isAfter&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isafter)等API限定邻近控件特征进行辅助定位。 By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[On&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [On](arkts-test-uitest-on-c.md#on)
+**替代接口：** [On](arkts-test-uitest-on-c.md)
 
 <!--Device-unnamed-declare class By--><!--Device-unnamed-declare class By-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
+
+## 导入模块
+
+```TypeScript
+import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
+import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
+```
 
 ## clickable
 
@@ -23,8 +28,6 @@ clickable(b?: boolean): By
 指定目标控件的可点击状态属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[clickable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#clickable)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -46,7 +49,7 @@ clickable(b?: boolean): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件的可点击状态属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -64,8 +67,6 @@ enabled(b?: boolean): By
 指定目标控件的使能状态属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[enabled&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#enabled)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -87,7 +88,7 @@ enabled(b?: boolean): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件的使能状态属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -105,8 +106,6 @@ focused(b?: boolean): By
 指定目标控件的获焦状态属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[focused&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#focused)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -128,7 +127,7 @@ focused(b?: boolean): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件的获焦状态属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -146,8 +145,6 @@ id(id: number): By
 指定目标控件id属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[id&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#id)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -169,7 +166,7 @@ id(id: number): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件id属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -187,8 +184,6 @@ isAfter(by: By): By
 指定目标控件位于给出的特征属性控件之后，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isafter)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -210,7 +205,7 @@ isAfter(by: By): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件位于给出的特征属性控件之后的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -229,8 +224,6 @@ isBefore(by: By): By
 指定目标控件位于给出的特征属性控件之前，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isbefore)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -252,7 +245,7 @@ isBefore(by: By): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件位于给出的特征属性控件之前的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -271,8 +264,6 @@ key(key: string): By
 指定目标控件key值属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[id&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#id)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -294,7 +285,7 @@ key(key: string): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件key值属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -312,8 +303,6 @@ scrollable(b?: boolean): By
 指定目标控件的可滑动状态属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#scrollable)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -335,7 +324,7 @@ scrollable(b?: boolean): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件的可滑动状态属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -353,8 +342,6 @@ selected(b?: boolean): By
 指定目标控件的被选中状态属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[selected&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#selected)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -376,7 +363,7 @@ selected(b?: boolean): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件的被选中状态属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -395,8 +382,6 @@ text(txt: string, pattern?: MatchPattern): By
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [text](arkts-test-uitest-on-c.md#text)
@@ -410,7 +395,7 @@ text(txt: string, pattern?: MatchPattern): By
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | txt | string | 是 | 指定控件文本，用于匹配目标控件文本。 |
-| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md#matchpattern)。 |
+| pattern | [MatchPattern](arkts-test-uitest-matchpattern-e.md) | 否 | 指定的文本匹配模式，默认为[EQUALS](arkts-test-uitest-matchpattern-e.md)。 |
 
 **返回值：**
 
@@ -418,7 +403,7 @@ text(txt: string, pattern?: MatchPattern): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件文本属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -436,8 +421,6 @@ type(tp: string): By
 指定目标控件的控件类型属性，返回By对象自身。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[type&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#type)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -459,7 +442,7 @@ type(tp: string): By
 | --- | --- |
 | [By](arkts-test-uitest-by-c.md) | 返回指定目标控件的控件类型属性的By对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets

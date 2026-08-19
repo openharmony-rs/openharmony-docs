@@ -4,10 +4,6 @@ EventHub是系统提供的基于发布-订阅模式实现的事件通信机制�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class EventHub--><!--Device-unnamed-declare class EventHub-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ emit(event: string, ...args: Object[]): void
 触发指定事件。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,7 +39,7 @@ emit(event: string, ...args: Object[]): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -92,10 +84,6 @@ emit(event: string, ...args: (Object|null|undefined)[]): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EventHub-emit(event: string, ...args: (Object|null|undefined)[]): void--><!--Device-EventHub-emit(event: string, ...args: (Object|null|undefined)[]): void-End-->
@@ -109,7 +97,7 @@ emit(event: string, ...args: (Object|null|undefined)[]): void
 | event | string | 是 | 事件名称。 |
 | args | (Object \| null \| undefined)[] | 是 | 可变参数，事件触发时，传递给回调函数的参数。 |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 
@@ -158,10 +146,6 @@ off(event: string, callback?: Function): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -183,7 +167,7 @@ off(event: string, callback?: Function): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -223,10 +207,6 @@ on(event: string, callback: Function): void
 订阅指定事件。 > **说明：** > > callback被emit触发时，调用方是EventHub对象，如果要修改callback中this的指向，可以使用箭头函数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

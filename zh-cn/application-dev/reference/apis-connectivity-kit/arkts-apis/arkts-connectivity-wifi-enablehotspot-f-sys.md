@@ -1,5 +1,14 @@
 # enableHotspot（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## enableHotspot
 
 ```TypeScript
@@ -10,11 +19,9 @@ function enableHotspot(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [enableHotspot](arkts-connectivity-wifimanager-enablehotspot-f-sys.md#enablehotspot系统接口)
+**替代接口：** [enableHotspot](arkts-connectivity-wifimanager-enablehotspot-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -30,7 +37,7 @@ function enableHotspot(): boolean
 | --- | --- |
 | boolean | 操作成功时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

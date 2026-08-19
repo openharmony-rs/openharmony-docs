@@ -1,5 +1,11 @@
 # getWant
 
+## 导入模块
+
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+```
+
 ## getWant
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getWant(callback: AsyncCallback<Want>): void
 获取要拉起的Ability对应的Want。使用callback异步回调。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -24,9 +26,9 @@ function getWant(callback: AsyncCallback<Want>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | 是 | 回调函数，返回want信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | 是 | 回调函数，返回want信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { featureAbility } from '@kit.AbilityKit';
@@ -52,10 +54,6 @@ function getWant(): Promise<Want>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-featureAbility-function getWant(): Promise<Want>--><!--Device-featureAbility-function getWant(): Promise<Want>-End-->
@@ -68,7 +66,7 @@ function getWant(): Promise<Want>
 | --- | --- |
 | Promise&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | Promise对象，返回want信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { featureAbility } from '@kit.AbilityKit';

@@ -1,6 +1,15 @@
 # off_p2pDiscoveryChange
 
-## off_p2pDiscoveryChange
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
+## off('p2pDiscoveryChange')
 
 ```TypeScript
 function off(type: 'p2pDiscoveryChange', callback?: Callback<number>): void
@@ -9,8 +18,6 @@ function off(type: 'p2pDiscoveryChange', callback?: Callback<number>): void
 取消订阅P2P发现事件。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -27,9 +34,9 @@ function off(type: 'p2pDiscoveryChange', callback?: Callback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'p2pDiscoveryChange' | 是 | 事件名称。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;number&gt; | 否 | 状态改变回调函数 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;number&gt; | 否 | 状态改变回调函数 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

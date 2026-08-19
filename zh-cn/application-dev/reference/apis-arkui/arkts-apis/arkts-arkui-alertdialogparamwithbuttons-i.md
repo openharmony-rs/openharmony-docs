@@ -1,18 +1,19 @@
-# AlertDialogParamWithButtons
+# AlertDialogParamWithButtons(AlertDialog)
 
-继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)。
+继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。
 
-**继承/实现关系：** AlertDialogParamWithButtons extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)
+**继承/实现关系：** AlertDialogParamWithButtons extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface AlertDialogParamWithButtons--><!--Device-unnamed-declare interface AlertDialogParamWithButtons-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## primaryButton
 
@@ -25,10 +26,6 @@ primaryButton: AlertDialogButtonBaseOptions
 **类型：** [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -47,10 +44,6 @@ secondaryButton: AlertDialogButtonBaseOptions
 **类型：** [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

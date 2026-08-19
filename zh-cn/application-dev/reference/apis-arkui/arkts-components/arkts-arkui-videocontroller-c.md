@@ -6,13 +6,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class VideoController--><!--Device-unnamed-declare class VideoController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -23,10 +24,6 @@ constructor()
 VideoController的构造函数。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,10 +41,6 @@ exitFullscreen()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoController-exitFullscreen()--><!--Device-VideoController-exitFullscreen()-End-->
@@ -64,10 +57,6 @@ pause()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoController-pause()--><!--Device-VideoController-pause()-End-->
@@ -83,10 +72,6 @@ requestFullscreen(value: boolean)
 请求全屏播放。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -110,10 +95,6 @@ reset(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -132,10 +113,6 @@ setCurrentTime(value: number)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoController-setCurrentTime(value: number)--><!--Device-VideoController-setCurrentTime(value: number)-End-->
@@ -146,7 +123,7 @@ setCurrentTime(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 视频播放进度位置。 <br>取值范围：[0, [duration](arkts-arkui-preparedinfo-i.md#preparedinfo)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。 <br>单位：s <br>从API version 8开始，支持设置视频的跳转模式，详见 [setCurrentTime&lt;sup&gt;8+&lt;/sup&gt;](#setcurrenttime)。 |
+| value | number | 是 | 视频播放进度位置。 <br>取值范围：[0, [duration](arkts-arkui-preparedinfo-i.md)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。 <br>单位：s <br>从API version 8开始，支持设置视频的跳转模式，详见 [setCurrentTime&lt;sup&gt;8+&lt;/sup&gt;](#setcurrenttime)。 |
 
 ## setCurrentTime
 
@@ -158,10 +135,6 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoController-setCurrentTime(value: number, seekMode: SeekMode)--><!--Device-VideoController-setCurrentTime(value: number, seekMode: SeekMode)-End-->
@@ -172,7 +145,7 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 视频播放进度位置。 <br>取值范围：[0, [duration](arkts-arkui-preparedinfo-i.md#preparedinfo)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。 <br>单位：s |
+| value | number | 是 | 视频播放进度位置。 <br>取值范围：[0, [duration](arkts-arkui-preparedinfo-i.md)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。 <br>单位：s |
 | seekMode | [SeekMode](arkts-arkui-seekmode-e.md) | 是 | 跳转模式。 <br>异常值undefined、null、NaN和Infinity按PreviousKeyframe处理。 |
 
 ## start
@@ -184,10 +157,6 @@ start()
 开始播放。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -204,10 +173,6 @@ stop()
 停止播放，显示当前帧，再次播放时从头开始播放。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

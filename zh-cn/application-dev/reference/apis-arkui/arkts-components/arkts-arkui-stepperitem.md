@@ -14,8 +14,6 @@ StepperItem()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 22
 
 **替代接口：** SwiperAttribute
@@ -28,4 +26,9 @@ StepperItem()
 
 ## 汇总
 
-- [ItemState](arkts-arkui-itemstate-e.md)
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ItemState](arkts-arkui-itemstate-e.md) | 步骤导航器nextLabel的显示状态。 |
+

@@ -1,5 +1,11 @@
 # getDeviceAltitude
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## getDeviceAltitude
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDeviceAltitude(seaPressure: double, currentPressure: double, callbac
 根据气压值获取海拔高度。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double, callback: AsyncCallback<double>): void--><!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double, callback: AsyncCallback<double>): void-End-->
 
@@ -24,7 +26,7 @@ function getDeviceAltitude(seaPressure: double, currentPressure: double, callbac
 | --- | --- | --- | --- |
 | seaPressure | double | 是 | 海平面气压值，单位：hPa（百帕）。 |
 | currentPressure | double | 是 | 指定的气压值，单位：hPa（百帕）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;double&gt; | 是 | 回调函数，异步返回指定的气压值对应的海拔高度，单位：m（米）。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;double&gt; | 是 | 回调函数，异步返回指定的气压值对应的海拔高度，单位：m（米）。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function getDeviceAltitude(seaPressure: double, currentPressure: double, callbac
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -96,10 +98,6 @@ function getDeviceAltitude(seaPressure: double, currentPressure: double): Promis
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double): Promise<double>--><!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double): Promise<double>-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -124,7 +122,7 @@ function getDeviceAltitude(seaPressure: double, currentPressure: double): Promis
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

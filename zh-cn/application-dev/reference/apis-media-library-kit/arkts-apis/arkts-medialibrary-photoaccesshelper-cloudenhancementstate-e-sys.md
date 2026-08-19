@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum CloudEnhancementState--><!--Device-photoAccessHelper-enum CloudEnhancementState-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ UNAVAILABLE = 0
 云增强不可用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudEnhancementState-UNAVAILABLE = 0--><!--Device-CloudEnhancementState-UNAVAILABLE = 0-End-->
 
@@ -44,10 +36,6 @@ AVAILABLE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudEnhancementState-AVAILABLE = 1--><!--Device-CloudEnhancementState-AVAILABLE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -64,10 +52,6 @@ EXECUTING = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudEnhancementState-EXECUTING = 2--><!--Device-CloudEnhancementState-EXECUTING = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -83,10 +67,6 @@ COMPLETED = 3
 云增强已完成。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudEnhancementState-COMPLETED = 3--><!--Device-CloudEnhancementState-COMPLETED = 3-End-->
 

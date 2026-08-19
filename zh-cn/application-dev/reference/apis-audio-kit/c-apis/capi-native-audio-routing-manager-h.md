@@ -24,8 +24,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef int32_t (\*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray
-)](#oh_audioroutingmanager_ondevicechangedcallback) | OH_AudioRoutingManager_OnDeviceChangedCallback | 此函数指针将指向用于返回更改的音频设备描述符的回调函数，可能返回多个音频设备描述符。 |
+| [typedef int32_t (\*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_ondevicechangedcallback) | OH_AudioRoutingManager_OnDeviceChangedCallback | 此函数指针将指向用于返回更改的音频设备描述符的回调函数，可能返回多个音频设备描述符。 |
 | [typedef int32_t (\*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_onpreferredoutputdevicechangedcallback) | OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback | 此函数指针指向用于返回优先级最高的输出设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。 |
 | [typedef int32_t (\*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_onpreferredinputdevicechangedcallback) | OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback | 此函数指针指向用于返回优先级最高的输入设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。 |
 | [OH_AudioCommon_Result OH_AudioManager_GetAudioRoutingManager(OH_AudioRoutingManager **audioRoutingManager)](#oh_audiomanager_getaudioroutingmanager) | - | 查询音频路由管理器句柄，该句柄应设置为路由相关函数中的第一个参数。 |
@@ -49,8 +48,7 @@
 ### OH_AudioRoutingManager_OnDeviceChangedCallback()
 
 ```c
-typedef int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray
-)
+typedef int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
 **描述**
@@ -63,7 +61,7 @@ typedef int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioDevice_ChangeType type | 设备连接状态类型。 [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype)已连接或断开。 |
+| [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) type | 设备连接状态类型。 [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype)已连接或断开。 |
 | [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) \*audioDeviceDescriptorArray | 音频设备描述符数组，指向[OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 来释放DeviceDescriptor数组。 |
 
 ### OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback()
@@ -82,7 +80,7 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioDeviceDescriptorArray \*audioDeviceDescriptorArray | 音频设备描述符数组。<br>设置音频设备描述符值的指针变量，不能单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) \*audioDeviceDescriptorArray | 音频设备描述符数组。<br>设置音频设备描述符值的指针变量，不能单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
 
 ### OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback()
 
@@ -100,7 +98,7 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback)(
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioDeviceDescriptorArray \*audioDeviceDescriptorArray | 音频设备描述符数组。<br>设置音频设备描述符值的指针变量，不能单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) \*audioDeviceDescriptorArray | 音频设备描述符数组。<br>设置音频设备描述符值的指针变量，不能单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
 
 ### OH_AudioManager_GetAudioRoutingManager()
 
@@ -150,7 +148,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1. 参数audioRoutingManager为nullptr；<br>     <br>2. 参数deviceFlag无效；<br>     <br>3. 参数audioDeviceDescriptorArray为nullptr。<br>     <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1. 参数audioRoutingManager为nullptr；      <br>2. 参数deviceFlag无效；      <br>3. 参数audioDeviceDescriptorArray为nullptr。      <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
 
 ### OH_AudioRoutingManager_GetAvailableDevices()
 
@@ -176,7 +174,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRouting
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1.参数audioRoutingManager为nullptr；<br>     <br>2.参数deviceUsage无效;<br>     <br>3.参数audioDeviceDescriptorArray为nullptr。<br>     <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1.参数audioRoutingManager为nullptr；      <br>2.参数deviceUsage无效;      <br>3.参数audioDeviceDescriptorArray为nullptr。      <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
 
 ### OH_AudioRoutingManager_GetPreferredOutputDevice()
 
@@ -202,7 +200,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1.参数audioRoutingManager为nullptr;<br>     <br>2.参数streamUsage无效;<br>     <br>3.参数audioDeviceDescriptorArray为nullptr。<br>     <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1.参数audioRoutingManager为nullptr;      <br>2.参数streamUsage无效;      <br>3.参数audioDeviceDescriptorArray为nullptr。      <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
 
 ### OH_AudioRoutingManager_GetPreferredInputDevice()
 
@@ -228,7 +226,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRou
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1.参数audioRoutingManager为nullptr;<br>     <br>2.参数sourceType无效;<br>     <br>3.参数audioDeviceDescriptorArray为nullptr。<br>     <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1.参数audioRoutingManager为nullptr;      <br>2.参数sourceType无效;      <br>3.参数audioDeviceDescriptorArray为nullptr。      <br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
 
 ### OH_AudioRoutingManager_RegisterDeviceChangeCallback()
 
@@ -254,7 +252,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterDeviceChangeCallback(OH_Aud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1. 参数audioRoutingManager为nullptr；<br>     <br>2. 参数deviceFlag无效；<br>     <br>3. 参数callback为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1. 参数audioRoutingManager为nullptr；      <br>2. 参数deviceFlag无效；      <br>3. 参数callback为nullptr。 |
 
 ### OH_AudioRoutingManager_UnregisterDeviceChangeCallback()
 
@@ -279,7 +277,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterDeviceChangeCallback(OH_A
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1. 参数audioRoutingManager为nullptr；<br>     <br>2. 参数callback为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1. 参数audioRoutingManager为nullptr；      <br>2. 参数callback为nullptr。 |
 
 ### OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback()
 
@@ -305,7 +303,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredOutputDevicesChang
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
 
 ### OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback()
 
@@ -330,7 +328,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredOutputDevicesCha
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
 
 ### OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback()
 
@@ -356,7 +354,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredInputDevicesChange
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
 
 ### OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback()
 
@@ -381,7 +379,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredInputDevicesChan
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
 
 ### OH_AudioRoutingManager_ReleaseDevices()
 
@@ -406,7 +404,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_ReleaseDevices(OH_AudioRoutingManag
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1. 参数audioRoutingManager为nullptr；<br>     <br>2. 参数audioDeviceDescriptorArray为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1. 参数audioRoutingManager为nullptr；      <br>2. 参数audioDeviceDescriptorArray为nullptr。 |
 
 ### OH_AudioRoutingManager_OnDeviceBlockStatusCallback()
 
@@ -424,7 +422,7 @@ typedef void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDevic
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioDeviceDescriptorArray \*audioDeviceDescriptorArray | 音频设备描述符数组应当被释放，获取请调用[OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices)接口。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) \*audioDeviceDescriptorArray | 音频设备描述符数组应当被释放，获取请调用[OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices)接口。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
 | [OH_AudioDevice_BlockStatus](capi-native-audio-device-base-h.md#oh_audiodevice_blockstatus) status | 音频设备的堵塞状态。 |
 | void \*userData | 用户自定义数据指针。 |
 
@@ -451,7 +449,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_IsMicBlockDetectionSupported(OH_Aud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1.参数audioRoutingManager为nullptr；<br>     <br>2.参数supported为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1.参数audioRoutingManager为nullptr；      <br>2.参数supported为nullptr。 |
 
 ### OH_AudioRoutingManager_SetMicBlockStatusCallback()
 
@@ -477,6 +475,6 @@ OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioR
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>     <br>1.参数audioRoutingManager为nullptr；<br>     <br>2.参数callback为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：      <br>1.参数audioRoutingManager为nullptr；      <br>2.参数callback为nullptr。 |
 
 

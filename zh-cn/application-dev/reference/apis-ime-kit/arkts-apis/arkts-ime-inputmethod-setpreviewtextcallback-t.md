@@ -8,10 +8,6 @@ export type SetPreviewTextCallback = (text: string, range: Range) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethod-export type SetPreviewTextCallback = (text: string, range: Range) => void--><!--Device-inputMethod-export type SetPreviewTextCallback = (text: string, range: Range) => void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-systemSoundManager-enum RingtoneType--><!--Device-systemSoundManager-enum RingtoneType-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -24,11 +20,9 @@ RINGTONE_TYPE_DEFAULT = 0
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [RINGTONE_TYPE_SIM_CARD_0](#ringtonetypesimcard0)
+**替代接口：** [RINGTONE_TYPE_SIM_CARD_0](#ringtone_type_sim_card_0)
 
 <!--Device-RingtoneType-RINGTONE_TYPE_DEFAULT = 0--><!--Device-RingtoneType-RINGTONE_TYPE_DEFAULT = 0-End-->
 
@@ -46,10 +40,6 @@ sim卡1的铃声。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RingtoneType-RINGTONE_TYPE_SIM_CARD_0 = 0--><!--Device-RingtoneType-RINGTONE_TYPE_SIM_CARD_0 = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -66,11 +56,9 @@ RINGTONE_TYPE_MULTISIM = 1
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [RINGTONE_TYPE_SIM_CARD_1](#ringtonetypesimcard1)
+**替代接口：** [RINGTONE_TYPE_SIM_CARD_1](#ringtone_type_sim_card_1)
 
 <!--Device-RingtoneType-RINGTONE_TYPE_MULTISIM = 1--><!--Device-RingtoneType-RINGTONE_TYPE_MULTISIM = 1-End-->
 
@@ -87,10 +75,6 @@ RINGTONE_TYPE_SIM_CARD_1 = 1
 sim卡2的铃声。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RingtoneType-RINGTONE_TYPE_SIM_CARD_1 = 1--><!--Device-RingtoneType-RINGTONE_TYPE_SIM_CARD_1 = 1-End-->
 

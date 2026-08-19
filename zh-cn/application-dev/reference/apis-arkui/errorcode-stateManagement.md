@@ -18,7 +18,7 @@ The target is not a custom component instance or V2 class instance.
 
 **错误描述**
 
-addMonitor/clearMonitor的目标对象参数不合法。
+[addMonitor](./js-apis-stateManagement.md#addmonitor20)/[clearMonitor](./js-apis-stateManagement.md#clearmonitor20)的目标对象参数不合法。
 
 **可能原因**
 
@@ -110,11 +110,11 @@ Not supported type! The type should have function constructor signature.
 
 **错误描述**
 
-使用AppStorageV2的connect或PersistenceV2的connect和globalConnect时，type参数类型不合法。
+使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)的[connect](./js-apis-stateManagement.md#connect)或[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[connect](./js-apis-stateManagement.md#connect)和[globalConnect](./js-apis-stateManagement.md#globalconnect18)时，type参数类型不合法。
 
 **可能原因**
 
-使用AppStorageV2的connect或PersistenceV2的connect和globalConnect时，type参数类型不是TypeConstructorWithArgs\<T\>类型。
+使用AppStorageV2的connect或PersistenceV2的connect和globalConnect时，type参数类型不是[TypeConstructorWithArgs\<T\>](./js-apis-stateManagement.md#typeconstructorwithargst)类型。
 
 **处理步骤**
 
@@ -128,7 +128,7 @@ The default creator should be function when first connect.
 
 **错误描述**
 
-首次使用AppStorageV2的connect或PersistenceV2的connect和globalConnect时，defaultCreator默认数据的构造器不是StorageDefaultCreator\<T\>。
+首次使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)的[connect](./js-apis-stateManagement.md#connect)或[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[connect](./js-apis-stateManagement.md#connect)和[globalConnect](./js-apis-stateManagement.md#globalconnect18)时，defaultCreator默认数据的构造器不是[StorageDefaultCreator\<T\>](./js-apis-stateManagement.md#storagedefaultcreatort)。
 
 **可能原因**
 
@@ -136,7 +136,7 @@ defaultCreator不是StorageDefaultCreator\<T\>类型。
 
 **处理步骤**
 
-确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考globalConnect。
+确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect](./js-apis-stateManagement.md#globalconnect18)。
 
 ## 140105 PersistenceV2混用connect和globalConnect并使用相同的key
 
@@ -146,7 +146,7 @@ ERROR, Duplicate key used when connect
 
 **错误描述**
 
-connect和globalConnect使用相同的key。
+[connect](./js-apis-stateManagement.md#connect)和[globalConnect](./js-apis-stateManagement.md#globalconnect18)使用相同的key。
 
 **可能原因**
 
@@ -164,11 +164,11 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **错误描述**
 
-使用PersistenceV2的globalConnect存储数据设置的加密级别不在EL1-EL5范围内。
+使用[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[globalConnect](./js-apis-stateManagement.md#globalconnect18)存储数据设置的加密级别不在EL1-EL5范围内。
 
 **可能原因**
 
-设置globalConnect参数ConnectOptions的areaMode属性范围不在EL1-EL5内。
+设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptionst18)的[areaMode](./js-apis-stateManagement.md#connectoptionst18)属性范围不在EL1-EL5内。
 
 **处理步骤**
 
@@ -182,7 +182,7 @@ The type of target mismatches the type of source.
 
 **错误描述**
 
-使用AppStorageV2的connect或PersistenceV2的connect和globalConnect时，发生类型不匹配错误。
+使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)的[connect](./js-apis-stateManagement.md#connect)或[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[connect](./js-apis-stateManagement.md#connect)和[globalConnect](./js-apis-stateManagement.md#globalconnect18)时，发生类型不匹配错误。
 
 **可能原因**
 
@@ -202,7 +202,7 @@ Miss @Type.
 
 **错误描述**
 
-PersistenceV2的globalConnect时，缺少[\@Type](../../ui/state-management/arkts-new-type.md)装饰器。
+[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[globalConnect](./js-apis-stateManagement.md#globalconnect18)时，缺少[\@Type](../../ui/state-management/arkts-new-type.md)装饰器。
 
 **可能原因**
 
@@ -228,7 +228,7 @@ PersistenceV2的globalConnect时，缺少[\@Type](../../ui/state-management/arkt
 
 **处理步骤**
 
-不在\@Builder装饰的函数内部修改入参属性，可使用MutableBinding代替，示例请参考[在@Builder装饰的函数内部修改入参内容](../../ui/state-management/arkts-builder.md#在builder装饰的函数内部修改入参内容)。
+不在\@Builder装饰的函数内部修改入参属性，可使用[MutableBinding](./js-apis-stateManagement.md#mutablebindingt20)代替，示例请参考[在@Builder装饰的函数内部修改入参内容](../../ui/state-management/arkts-builder.md#在builder装饰的函数内部修改入参内容)。
 
 ## 140110 在UI中使用非@Track装饰的属性发生运行时报错
 
@@ -267,7 +267,7 @@ Illegal usage of not @Track'ed property on UI!
 **处理步骤**
 
 1. 确保初始化\@Consume时，其父组件上存在相同key的\@Provide变量，或设置默认值，示例见[\@Consume限制条件](../../ui/state-management/arkts-provide-and-consume.md#限制条件)。
-2. 确保创建\@Consume所在组件时，父组件及其祖先节点生命周期未结束，即aboutToDisappear未调用。
+2. 确保创建\@Consume所在组件时，父组件及其祖先节点生命周期未结束，即[aboutToDisappear](./arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)未调用。
 
 ## 140113 复用\@ComponentV2自定义组件但工具链版本过低
 
@@ -303,7 +303,7 @@ duplicate @Provide property. Property with this name is provided by one of the a
 
 **处理步骤**
 
-保证在同一个组件，包括其父组件和其祖先节点中，\@Provide的key不同。或将相同key设置为可重写，即设置ProvideOptions中的allowOverride参数，示例见[\@Provide支持allowOverride参数](../../ui/state-management/arkts-provide-and-consume.md#provide支持allowoverride参数)。
+保证在同一个组件，包括其父组件和其祖先节点中，\@Provide的key不同。或将相同key设置为可重写，即设置[ProvideOptions](./arkui-ts/ts-state-management-provide.md#provideoptions11)中的allowOverride参数，示例见[\@Provide支持allowOverride参数](../../ui/state-management/arkts-provide-and-consume.md#provide支持allowoverride参数)。
 
 ## 140115 状态管理V1状态变量使用了非法的类型
 
@@ -331,12 +331,30 @@ The key is invalid, key must be string or TypeConstructorWithArgs type.
 
 **错误描述**
 
-使用AppStorageV2、PersistenceV2的remove接口和PersistenceV2的save接口传入key不合法。
+使用[AppStorageV2](./js-apis-stateManagement.md#appstoragev2)、[PersistenceV2](./js-apis-stateManagement.md#persistencev2)的[remove](./js-apis-stateManagement.md#remove)接口和PersistenceV2的[save](./js-apis-stateManagement.md#save)接口传入key不合法。
 
 **可能原因**
 
-key不是string或TypeConstructorWithArgs\<T\>类型。
+key不是string或[TypeConstructorWithArgs\<T\>](./js-apis-stateManagement.md#typeconstructorwithargst)类型。
 
 **处理步骤**
 
 确保调用AppStorageV2、PersistenceV2的remove接口和PersistenceV2的save接口时传入的key参数为string或TypeConstructorWithArgs\<T\>类型。
+
+## 140123 @Link装饰变量的数据源不是状态变量
+
+**错误信息**
+
+The data source of the @Link-decorated variable 'xxx' in custom component 'yyy' is not a state variable.
+
+**错误描述**
+
+自定义组件'yyy'中用@Link装饰的变量'xxx'的数据源不是状态变量。
+
+**可能原因**
+
+父组件初始化子组件@Link变量时，未直接传入状态变量（如通过方法调用返回或使用三元表达式），或传入了非状态变量。
+
+**处理步骤**
+
+父组件初始化子组件@Link变量时，应该直接传入父组件的状态变量，参考@Link[变量的传递/访问规则说明](../../ui/state-management/arkts-link.md#变量的传递访问规则说明)。

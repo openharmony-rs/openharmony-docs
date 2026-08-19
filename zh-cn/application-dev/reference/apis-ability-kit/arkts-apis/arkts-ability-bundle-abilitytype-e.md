@@ -1,14 +1,12 @@
 # AbilityType
 
-> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [bundleManager.AbilityType](arkts-ability-bundlemanager-abilitytype-e.md#abilitytype)替代。 Ability组件类型。
+> **说明：** > > 从API version 7开始支持，从API version 9开始废弃，建议使用 > [bundleManager.AbilityType](arkts-ability-bundlemanager-abilitytype-e.md)替代。 Ability组件类型。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md#abilitytype)
+**替代接口：** [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md)
 
 <!--Device-bundle-export enum AbilityType--><!--Device-bundle-export enum AbilityType-End-->
 
@@ -24,8 +22,6 @@ UNKNOWN = 0
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-AbilityType-UNKNOWN = 0--><!--Device-AbilityType-UNKNOWN = 0-End-->
@@ -39,8 +35,6 @@ PAGE = 1
 ```
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -58,8 +52,6 @@ SERVICE = 2
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [SERVICE](arkts-ability-bundlemanager-abilitytype-e.md#service)
@@ -75,8 +67,6 @@ DATA = 3
 ```
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

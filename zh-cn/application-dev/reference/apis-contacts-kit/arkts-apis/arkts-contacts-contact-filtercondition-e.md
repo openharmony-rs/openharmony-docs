@@ -4,10 +4,6 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-contact-enum FilterCondition--><!--Device-contact-enum FilterCondition-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -21,10 +17,6 @@ EQUAL_TO = 1
 对应字段等于某值，值类型为string。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ NOT_EQUAL_TO = 2
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FilterCondition-NOT_EQUAL_TO = 2--><!--Device-FilterCondition-NOT_EQUAL_TO = 2-End-->
@@ -61,10 +49,6 @@ IN = 3
 对应字段值在某数组中，值类型为string。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ IS_NOT_NULL = 0
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FilterCondition-IS_NOT_NULL = 0--><!--Device-FilterCondition-IS_NOT_NULL = 0-End-->
@@ -102,10 +82,6 @@ NOT_IN = 4
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FilterCondition-NOT_IN = 4--><!--Device-FilterCondition-NOT_IN = 4-End-->
@@ -121,10 +97,6 @@ CONTAINS = 5
 对应字段值包含某值，值类型为string
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

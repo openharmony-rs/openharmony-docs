@@ -1,16 +1,20 @@
 # ChildProcess
 
-开发者自定义子进程的基类。通过[childProcessManager](arkts-app-ability-childprocessmanager.md#ohosappabilitychildprocessmanager)启动子进程时，需要继承此类并重写 入口方法。
+开发者自定义子进程的基类。通过[childProcessManager](arkts-app-ability-childprocessmanager.md)启动子进程时，需要继承此类并重写 入口方法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class ChildProcess--><!--Device-unnamed-declare class ChildProcess-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { ChildProcess } from '@kit.AbilityKit';
+import { ChildProcessArgs } from '@kit.AbilityKit';
+import { ChildProcessOptions } from '@kit.AbilityKit';
+```
 
 ## onStart
 
@@ -18,13 +22,9 @@
 onStart(args?: ChildProcessArgs): void
 ```
 
-子进程的入口方法，通过[childProcessManager](arkts-app-ability-childprocessmanager.md#ohosappabilitychildprocessmanager)启动子进程后调用。
+子进程的入口方法，通过[childProcessManager](arkts-app-ability-childprocessmanager.md)启动子进程后调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +38,7 @@ onStart(args?: ChildProcessArgs): void
 | --- | --- | --- | --- |
 | args | [ChildProcessArgs](arkts-ability-app-ability-childprocessargs-childprocessargs-i.md) | 否 | 传递到子进程的参数。参数为可选，不传或传null时使用默认配置启动。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';

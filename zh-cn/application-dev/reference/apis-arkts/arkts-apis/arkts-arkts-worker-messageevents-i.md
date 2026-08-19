@@ -2,17 +2,19 @@
 
 消息类，持有Worker线程间传递的数据。
 
-**继承/实现关系：** MessageEvents extends [Event](arkts-arkts-worker-event-i.md#event)
+**继承/实现关系：** MessageEvents extends [Event](arkts-arkts-worker-event-i.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface MessageEvents--><!--Device-unnamed-export interface MessageEvents-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
+```
 
 ## data
 
@@ -25,10 +27,6 @@ readonly data: any
 **类型：** any
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

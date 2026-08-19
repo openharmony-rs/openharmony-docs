@@ -1,5 +1,10 @@
 # lchown
 
+## 导入模块
+
+```TypeScript
+```
+
 ## lchown
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function lchown(path: string, uid: number, gid: number): Promise<void>
 基于文件路径改变文件所有者，更改符号链接本身的所有者，而不是符号链接所指向的实际文件，使用Promise异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -43,8 +46,6 @@ declare function lchown(path: string, uid: number, gid: number, callback: AsyncC
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void-End-->
@@ -58,5 +59,5 @@ declare function lchown(path: string, uid: number, gid: number, callback: AsyncC
 | path | string | 是 | 待打开文件的应用沙箱路径。 |
 | uid | number | 是 | 新的UID。 |
 | gid | number | 是 | 新的GID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
 

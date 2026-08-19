@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-systemSoundManager-enum ToneHapticsMode--><!--Device-systemSoundManager-enum ToneHapticsMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -23,10 +19,6 @@ NONE = 0
 无振动模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneHapticsMode-NONE = 0--><!--Device-ToneHapticsMode-NONE = 0-End-->
 
@@ -44,10 +36,6 @@ SYNC = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneHapticsMode-SYNC = 1--><!--Device-ToneHapticsMode-SYNC = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -63,10 +51,6 @@ NON_SYNC = 2
 非同步模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneHapticsMode-NON_SYNC = 2--><!--Device-ToneHapticsMode-NON_SYNC = 2-End-->
 

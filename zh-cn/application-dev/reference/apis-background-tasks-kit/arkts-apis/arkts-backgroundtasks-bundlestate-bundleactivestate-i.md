@@ -2,13 +2,17 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-bundleState-interface BundleActiveState--><!--Device-bundleState-interface BundleActiveState-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
+
+## 导入模块
+
+```TypeScript
+import { bundleState } from '@kit.BackgroundTasksKit';
+```
 
 ## appUsagePriorityGroup
 
@@ -21,8 +25,6 @@ The usage priority group of the application.
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -42,8 +44,6 @@ The bundle name.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleActiveState-bundleName?: string--><!--Device-BundleActiveState-bundleName?: string-End-->
@@ -61,8 +61,6 @@ The shortcut ID.
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -82,8 +80,6 @@ The class name.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleActiveState-nameOfClass?: string--><!--Device-BundleActiveState-nameOfClass?: string-End-->
@@ -102,8 +98,6 @@ The time when this state occurred, in milliseconds. <br> Unit:ms
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleActiveState-stateOccurredTime?: number--><!--Device-BundleActiveState-stateOccurredTime?: number-End-->
@@ -121,8 +115,6 @@ The state type.
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

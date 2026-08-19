@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
@@ -23,8 +21,6 @@ Auto = 0
 根据设备宽度自动匹配合适的尺寸类型。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -44,8 +40,6 @@ XS
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
@@ -63,8 +57,6 @@ SM
 小宽度类型设备，宽度320vp-600vp。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -84,8 +76,6 @@ MD
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
@@ -103,8 +93,6 @@ LG
 大宽度类型设备，宽度≥840vp。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

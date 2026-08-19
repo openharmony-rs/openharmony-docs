@@ -1,5 +1,11 @@
 # getCallStateSync
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## getCallStateSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getCallStateSync(): CallState
 获取当前通话状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function getCallStateSync(): CallState--><!--Device-call-function getCallStateSync(): CallState-End-->
 
@@ -24,7 +26,7 @@ function getCallStateSync(): CallState
 | --- | --- |
 | CallState | 返回获取到的通话状态。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let callState: call.CallState = call.getCallStateSync();

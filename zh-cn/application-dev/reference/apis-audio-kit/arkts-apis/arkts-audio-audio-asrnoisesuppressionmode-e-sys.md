@@ -4,10 +4,6 @@ ASR noise suppression mode.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AsrNoiseSuppressionMode--><!--Device-audio-enum AsrNoiseSuppressionMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -23,10 +19,6 @@ BYPASS = 0
 Bypass noise suppression.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrNoiseSuppressionMode-BYPASS = 0--><!--Device-AsrNoiseSuppressionMode-BYPASS = 0-End-->
 
@@ -44,10 +36,6 @@ Standard noise suppression.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AsrNoiseSuppressionMode-STANDARD = 1--><!--Device-AsrNoiseSuppressionMode-STANDARD = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -64,10 +52,6 @@ Near field noise suppression.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AsrNoiseSuppressionMode-NEAR_FIELD = 2--><!--Device-AsrNoiseSuppressionMode-NEAR_FIELD = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -83,10 +67,6 @@ FAR_FIELD = 3
 Far field noise suppression.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3--><!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-stationary-enum ActivityState--><!--Device-stationary-enum ActivityState-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
@@ -22,10 +18,6 @@ ENTER = 1
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-ActivityState-ENTER = 1--><!--Device-ActivityState-ENTER = 1-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
@@ -39,10 +31,6 @@ EXIT = 2
 退出状态，表示设备当前未处于静止状态。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-ActivityState-EXIT = 2--><!--Device-ActivityState-EXIT = 2-End-->
 

@@ -1,5 +1,11 @@
 # getUsbStorageDeviceAccessPolicy
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.MDMKit';
+```
+
 ## getUsbStorageDeviceAccessPolicy
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 获取USB存储设备（baseClass = 0x08）访问策略。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本26.0.0+：ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
@@ -45,7 +47,7 @@ function getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { usbManager } from '@kit.MDMKit';
@@ -74,10 +76,6 @@ function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 获取USB存储设备（baseClass = 0x08）访问策略。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
 
@@ -108,7 +106,7 @@ function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { usbManager } from '@kit.MDMKit';

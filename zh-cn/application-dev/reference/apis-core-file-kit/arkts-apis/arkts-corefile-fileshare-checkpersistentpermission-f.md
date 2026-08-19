@@ -1,5 +1,11 @@
 # checkPersistentPermission
 
+## 导入模块
+
+```TypeScript
+import { fileShare } from '@kit.CoreFileKit';
+```
+
 ## checkPersistentPermission
 
 ```TypeScript
@@ -9,10 +15,6 @@ function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<b
 校验所选择的多个文件或目录URI是否已持久化授权，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-fileShare-function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<boolean>>--><!--Device-fileShare-function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<boolean>>-End-->
 
@@ -38,7 +40,7 @@ function checkPersistentPermission(policies: Array<PolicyInfo>): Promise<Array<b
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | 13900042 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Particle](arkts-arkui-particle-particle-f.md#particle) | Defines Particle |
+| [Particle](arkts-arkui-particle-particle-f.md) | Defines Particle |
 
 ### 接口
 

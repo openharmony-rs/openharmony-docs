@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum HideSensitiveType--><!--Device-photoAccessHelper-enum HideSensitiveType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ HIDE_LOCATION_AND_SHOOTING_PARAM = 0
 脱敏地理位置和拍摄参数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HideSensitiveType-HIDE_LOCATION_AND_SHOOTING_PARAM = 0--><!--Device-HideSensitiveType-HIDE_LOCATION_AND_SHOOTING_PARAM = 0-End-->
 
@@ -44,10 +36,6 @@ HIDE_LOCATION_ONLY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HideSensitiveType-HIDE_LOCATION_ONLY = 1--><!--Device-HideSensitiveType-HIDE_LOCATION_ONLY = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ HIDE_SHOOTING_PARAM_ONLY = 2
 脱敏拍摄参数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HideSensitiveType-HIDE_SHOOTING_PARAM_ONLY = 2--><!--Device-HideSensitiveType-HIDE_SHOOTING_PARAM_ONLY = 2-End-->
 
@@ -84,10 +68,6 @@ NO_HIDE_SENSITIVE_TYPE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HideSensitiveType-NO_HIDE_SENSITIVE_TYPE = 3--><!--Device-HideSensitiveType-NO_HIDE_SENSITIVE_TYPE = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -103,10 +83,6 @@ DEFAULT = 4
 根据 [ohos.permission.MEDIA_LOCATION](../../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location) 权限进行脱敏。规格为： - 有ohos.permission.MEDIA_LOCATION权限：不脱敏。 - 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HideSensitiveType-DEFAULT = 4--><!--Device-HideSensitiveType-DEFAULT = 4-End-->
 

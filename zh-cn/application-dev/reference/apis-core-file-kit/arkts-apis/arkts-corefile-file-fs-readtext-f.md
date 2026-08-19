@@ -1,5 +1,13 @@
 # readText
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## readText
 
 ```TypeScript
@@ -9,13 +17,9 @@ declare function readText(
 ): Promise<string>
 ```
 
-基于文本方式读取文件（即直接读取文件的文本内容），使用promise异步回调。
+基于文本方式读取文件（即直接读取文件的文本内容）。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -28,7 +32,7 @@ declare function readText(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
-| options | [ReadTextOptions](../../apis-na/arkts-apis/arkts-na-file-fs-readtextoptions-i.md) | 否 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>- length ，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8' 。<br>**起始版本：** 11 |
+| options | [ReadTextOptions](../../apis-na/arkts-apis/arkts-na-file-fs-readtextoptions-i.md) | 否 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>- length ，number类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8' 。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -62,13 +66,9 @@ declare function readText(
 declare function readText(filePath: string, callback: AsyncCallback<string>): void
 ```
 
-基于文本方式读取文件内容，使用callback异步回调。
+基于文本方式读取文件内容。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -81,7 +81,7 @@ declare function readText(filePath: string, callback: AsyncCallback<string>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
 
 **错误码：**
 
@@ -112,13 +112,9 @@ declare function readText(
 ): void
 ```
 
-基于文本方式读取文件内容，使用callback异步回调。
+基于文本方式读取文件内容，支持配置读取选项。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -131,8 +127,8 @@ declare function readText(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
-| options | [ReadTextOptions](../../apis-na/arkts-apis/arkts-na-file-fs-readtextoptions-i.md) | 是 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>- length ，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>- encoding，string类型，表示数据的编码方式，默认'utf-8'，仅支持'utf-8'。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
+| options | [ReadTextOptions](../../apis-na/arkts-apis/arkts-na-file-fs-readtextoptions-i.md) | 是 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>- length ，number类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>- encoding，string类型，表示数据的编码方式，默认'utf-8'，仅支持'utf-8'。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
 
 **错误码：**
 

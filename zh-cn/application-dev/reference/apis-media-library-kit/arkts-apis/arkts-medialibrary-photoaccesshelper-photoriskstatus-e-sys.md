@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum PhotoRiskStatus--><!--Device-photoAccessHelper-enum PhotoRiskStatus-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ UNIDENTIFIED = 0
 默认类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ APPROVED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoRiskStatus-APPROVED = 1--><!--Device-PhotoRiskStatus-APPROVED = 1-End-->
@@ -68,10 +56,6 @@ SUSPICIOUS = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoRiskStatus-SUSPICIOUS = 2--><!--Device-PhotoRiskStatus-SUSPICIOUS = 2-End-->
@@ -89,10 +73,6 @@ REJECTED = 3
 确认风险图片。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

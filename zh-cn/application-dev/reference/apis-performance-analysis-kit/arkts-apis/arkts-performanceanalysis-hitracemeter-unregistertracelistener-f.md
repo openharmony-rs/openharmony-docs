@@ -1,5 +1,11 @@
 # unregisterTraceListener
 
+## 导入模块
+
+```TypeScript
+import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+```
+
 ## unregisterTraceListener
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unregisterTraceListener(index: int): int
 注销通过registerTraceListener()注册的trace捕获开关通知回调函数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function unregisterTraceListener(index: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 已注册回调函数索引，取值范围[0, 9]，即 [registerTraceListener()](arkts-performanceanalysis-hitracemeter-registertracelistener-f.md#registertracelistener)调用成功时的返回值。 |
+| index | int | 是 | 已注册回调函数索引，取值范围[0, 9]，即 [registerTraceListener()](arkts-performanceanalysis-hitracemeter-registertracelistener-f.md)调用成功时的返回值。 |
 
 **返回值：**
 
@@ -32,7 +34,7 @@ function unregisterTraceListener(index: int): int
 | --- | --- |
 | int | 回调注销状态。 0：注销成功； -1：目标索引的回调函数未注册； -2：无效索引，参数index值不在[0, 9]范围内。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 注销应用trace捕获开关通知回调，index为hiTraceMeter.registerTraceListener返回的回调索引

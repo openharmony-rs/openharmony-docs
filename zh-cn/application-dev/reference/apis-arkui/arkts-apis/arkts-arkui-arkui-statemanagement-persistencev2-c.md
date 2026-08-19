@@ -1,18 +1,20 @@
 # PersistenceV2
 
-继承自[AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)，PersistenceV2提供UI状态的持久化存储能力，支持将应用状态数据持久化到磁盘，在应用重启后恢复数据，适用于需要保留UI状态数据的场景。具体UI使用说 明，详见[PersistenceV2(持久化存储UI状态)](../../../ui/state-management/arkts-new-persistencev2.md)。
+继承自[AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md)，PersistenceV2提供UI状态的持久化存储能力，支持将应用状态数据持久化到磁盘，在应用重启后恢复数据，适用于需要保留UI状态数据的场景。具体UI使用说 明，详见[PersistenceV2(持久化存储UI状态)](../../../ui/state-management/arkts-new-persistencev2.md)。
 
-**继承/实现关系：** PersistenceV2 extends [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md#appstoragev2)
+**继承/实现关系：** PersistenceV2 extends [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare class PersistenceV2--><!--Device-unnamed-export declare class PersistenceV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
+```
 
 ## globalConnect
 
@@ -25,10 +27,6 @@ static globalConnect<T extends object>(
 将键值对数据存储在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通 过获取默认值的构造器构造默认值，并返回。如果通过globalConnect连接的对象是 [\@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象 [\@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会自动持久 化，如需持久化非\@Trace属性的变化，可调用[PersistenceV2.save](#save)接口手动存储。 > **说明：** > > 1、若未指定key，使用默认构造器defaultCreator返回数据的类名作为key存入PersistenceV2中。 > > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。 > > 3、同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。 > > 4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255个字符，使用非法字符或空字符的行为是未定义的。 > > 5、关联[\@Observed](../../../ui/state-management/arkts-observed-and-objectlink.md)对象时，因为该类型的name属性未定义， > 需要指定key或者自定义name属性。 > > 6、数据的存储路径为应用级别，不同module使用相同的key和相同的加密分区进行globalConnect，存储的数据副本应用仅有一份。 > > 7、globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。 > > 8、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key不可以一样，否则会crash。 > > 9、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA， > 使用说明见[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,10 +60,6 @@ static globalConnect<T extends CollectionType<S>, S extends object>(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -86,7 +80,7 @@ static globalConnect<T extends CollectionType<S>, S extends object>(
 | --- | --- |
 | T | 创建或获取数据成功时，返回数据；否则返回undefined。 |
 
-## 示例
+**示例**
 
 如下展示globalConnect持久化Map类型的示例代码：
 
@@ -136,10 +130,6 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -154,7 +144,7 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 | --- | --- | --- | --- |
 | callback | [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) \| undefined | 是 | 持久化失败时的回调函数。回调参数包括：key（出错的键值）、reason（出错原因类型，取值为'quota'、' serialization'或'unknown'）、message（出错的详细信息）和oldValue（反序列化失败时返回的旧数据，可选）。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 持久化失败时调用
@@ -173,10 +163,6 @@ static save<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -191,7 +177,7 @@ static save<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 | --- | --- | --- | --- |
 | keyOrType | string \| [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md)&lt;T&gt; | 是 | 需要持久化的key；如果指定的是type类型，持久化的key为type的name。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 @ObservedV2

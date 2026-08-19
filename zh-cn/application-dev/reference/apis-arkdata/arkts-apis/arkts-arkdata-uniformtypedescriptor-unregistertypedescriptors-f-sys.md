@@ -1,5 +1,11 @@
 # unregisterTypeDescriptors（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { uniformTypeDescriptor } from '@kit.ArkData';
+```
+
 ## unregisterTypeDescriptors
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unregisterTypeDescriptors(typeIds: Array<string>): Promise<void>
 从系统中注销一个或多个标准化数据类型。使用Promise异步回调。注销后，该数据类型将不再被系统识别，依赖该数据类型的数据可能无法正常处理，请确保在注销前已清理相关数据依赖。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
 

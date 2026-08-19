@@ -4,8 +4,6 @@ Non current day style.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 <!--Device-unnamed-interface NonCurrentDayStyle--><!--Device-unnamed-interface NonCurrentDayStyle-End-->
@@ -13,6 +11,11 @@ Non current day style.
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## nonCurrentMonthDayColor
 
@@ -25,8 +28,6 @@ Non-current month day color.
 **类型：** ResourceColor
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -50,8 +51,6 @@ Lunar style of non-current month.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -74,8 +73,6 @@ Non-Current Month Off Day Marker Color.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -97,8 +94,6 @@ Non-Current Month Workday Marker Color.
 **类型：** ResourceColor
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 

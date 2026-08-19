@@ -4,10 +4,6 @@ Enumerates audio effect flags.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum EffectFlag--><!--Device-audio-enum EffectFlag-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -24,10 +20,6 @@ Audio render effect.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0--><!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -43,10 +35,6 @@ CAPTURE_EFFECT_FLAG = 1
 Audio capture effect.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1--><!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1-End-->
 

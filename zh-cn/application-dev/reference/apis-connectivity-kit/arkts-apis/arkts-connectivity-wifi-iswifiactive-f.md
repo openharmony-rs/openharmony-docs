@@ -1,5 +1,14 @@
 # isWifiActive
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## isWifiActive
 
 ```TypeScript
@@ -10,11 +19,9 @@ function isWifiActive(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [isWifiActive](arkts-connectivity-wifimanager-iswifiactive-f.md#iswifiactive)
+**替代接口：** [isWifiActive](arkts-connectivity-wifimanager-iswifiactive-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -28,7 +35,7 @@ function isWifiActive(): boolean
 | --- | --- |
 | boolean | WLAN已使能时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

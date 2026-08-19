@@ -1,18 +1,20 @@
 # pick
 
+## 导入模块
+
+```TypeScript
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## pick
 
 ```TypeScript
 function pick(): Promise<PickInfo>
 ```
 
-获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](arkts-arkui-screenshot-capture-f.md#capture)接口实现），使用Promise异步回调。
+获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](arkts-arkui-screenshot-capture-f.md)接口实现），使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -33,7 +35,7 @@ function pick(): Promise<PickInfo>
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported on this device. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

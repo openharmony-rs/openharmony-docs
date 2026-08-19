@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioConcurrencyMode--><!--Device-audio-enum AudioConcurrencyMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -21,10 +17,6 @@ CONCURRENCY_DEFAULT = 0
 默认使用系统策略。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ CONCURRENCY_MIX_WITH_OTHERS = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AudioConcurrencyMode-CONCURRENCY_MIX_WITH_OTHERS = 1--><!--Device-AudioConcurrencyMode-CONCURRENCY_MIX_WITH_OTHERS = 1-End-->
@@ -62,10 +50,6 @@ CONCURRENCY_DUCK_OTHERS = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AudioConcurrencyMode-CONCURRENCY_DUCK_OTHERS = 2--><!--Device-AudioConcurrencyMode-CONCURRENCY_DUCK_OTHERS = 2-End-->
@@ -81,10 +65,6 @@ CONCURRENCY_PAUSE_OTHERS = 3
 暂停其他音频。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

@@ -1,18 +1,19 @@
-# IsolatedOptions（系统接口）
+# IsolatedOptions(System API)（系统接口）
 
 用于在IsolatedComponent构造时传递构造参数。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface IsolatedOptions--><!--Device-unnamed-declare interface IsolatedOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## want
 
@@ -25,10 +26,6 @@ want: Want
 **类型：** [Want](arkts-arkui-want-t-sys.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,10 +46,6 @@ worker: RestrictedWorker
 **类型：** [RestrictedWorker](arkts-arkui-restrictedworker-t-sys.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface ChangeData--><!--Device-photoAccessHelper-interface ChangeData-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## sharedAlbumAssets
 
@@ -23,10 +25,6 @@ sharedAlbumAssets of the same type
 **类型：** Array&lt;[SharedAlbumAsset](arkts-medialibrary-photoaccesshelper-sharedalbumasset-i-sys.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ChangeData-sharedAlbumAssets: Array<SharedAlbumAsset>--><!--Device-ChangeData-sharedAlbumAssets: Array<SharedAlbumAsset>-End-->
 
@@ -46,10 +44,6 @@ sharedExtraPhotoAssets of the same type
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ChangeData-sharedExtraPhotoAssets: Array<SharedPhotoAsset>--><!--Device-ChangeData-sharedExtraPhotoAssets: Array<SharedPhotoAsset>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -67,10 +61,6 @@ sharedPhotoAssets of the same type
 **类型：** Array&lt;SharedPhotoAsset&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ChangeData-sharedPhotoAssets: Array<SharedPhotoAsset>--><!--Device-ChangeData-sharedPhotoAssets: Array<SharedPhotoAsset>-End-->
 

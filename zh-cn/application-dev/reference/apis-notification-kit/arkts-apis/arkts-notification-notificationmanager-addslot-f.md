@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## addSlot
@@ -15,10 +15,6 @@ function addSlot(type: SlotType, callback: AsyncCallback<void>): void
 创建指定类型的通知渠道。使用callback异步回调。 通知渠道NotificationSlot定义了通知的提醒方式（如提示音、振动、横幅等）和级别。 发布通知前，应用需先创建对应类型的通知渠道，或者发布通知时系统将自动创建对应类型的通知渠道。 同一类型的通知渠道只能创建一个。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-notificationManager-function addSlot(type: SlotType, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function addSlot(type: SlotType, callback: AsyncCallback<void>): void-End-->
 
@@ -37,7 +33,7 @@ removeAllSlots 删除所有渠道通知。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | SlotType | 是 | 要创建的通知渠道的类型。不同的渠道类型对应不同的默认SlotLevel， 影响通知的提醒方式。例如SOCIAL_COMMUNICATION对应LEVEL_HIGH （状态栏图标+横幅+提示音），CONTENT_INFORMATION对应LEVEL_MIN （状态栏不显示图标+无横幅+无提示音）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当创建指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当创建指定类型的通知渠道成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -49,7 +45,7 @@ removeAllSlots 删除所有渠道通知。
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -94,10 +90,6 @@ function addSlot(type: SlotType): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-function addSlot(type: SlotType): Promise<void>--><!--Device-notificationManager-function addSlot(type: SlotType): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -132,7 +124,7 @@ removeAllSlots 删除当前应用的所有渠道通知。
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

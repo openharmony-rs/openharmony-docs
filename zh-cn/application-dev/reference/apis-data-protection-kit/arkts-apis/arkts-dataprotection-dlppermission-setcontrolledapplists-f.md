@@ -1,5 +1,11 @@
 # setControlledAppLists
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## setControlledAppLists
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setControlledAppLists(appLists: Array<string>, userId?: number): Promis
 设置受企业DLP控制的应用程序列表。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.DLP_POLICY_MANAGER
 
@@ -46,7 +48,7 @@ function setControlledAppLists(appLists: Array<string>, userId?: number): Promis
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [19100024](../errorcode-dlp.md#19100024-个人空间用户不支持设置受控应用) | The specified userId belongs to a personal space user and cannot be managed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

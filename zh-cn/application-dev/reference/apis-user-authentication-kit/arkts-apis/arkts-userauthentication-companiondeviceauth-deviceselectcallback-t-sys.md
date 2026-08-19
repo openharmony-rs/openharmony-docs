@@ -8,10 +8,6 @@ type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResult
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-companionDeviceAuth-type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResult--><!--Device-companionDeviceAuth-type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResult-End-->
@@ -24,7 +20,7 @@ type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResult
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selectPurpose | int | 是 | 选择目的。用于标识当前设备选择的意图，取值参见[SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md#selectpurpose系统接口)。 SELECT_ADD_DEVICE(1)表示选择添加模板的设备，SELECT_AUTH_DEVICE(2)表示选择认证设备。厂商可自定义扩展值（大于等于10000）。应用应根据selectPurpose返回包含对应设备信息 的DeviceSelectResult。 |
+| selectPurpose | int | 是 | 选择目的。用于标识当前设备选择的意图，取值参见[SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md)。 SELECT_ADD_DEVICE(1)表示选择添加模板的设备，SELECT_AUTH_DEVICE(2)表示选择认证设备。厂商可自定义扩展值（大于等于10000）。应用应根据selectPurpose返回包含对应设备信息 的DeviceSelectResult。 |
 
 **返回值：**
 

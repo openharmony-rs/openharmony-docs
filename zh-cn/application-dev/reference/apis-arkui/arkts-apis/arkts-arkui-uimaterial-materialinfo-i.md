@@ -4,13 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-uiMaterial-interface MaterialInfo--><!--Device-uiMaterial-interface MaterialInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+```
 
 ## state
 
@@ -20,15 +22,11 @@ state: MaterialState
 
 材质使能状态配置。
 
-**类型：** [MaterialState](../../apis-na/arkts-apis/arkts-na-uimaterial-materialstate-e.md)
+**类型：** [MaterialState](arkts-arkui-uimaterial-materialstate-e.md)
 
 **默认值：** MaterialState.DEFAULT
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,10 +49,6 @@ type: MaterialType
 **默认值：** MaterialType.IMMERSIVE
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,13 +4,9 @@
 declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 ```
 
-当折叠状态改变时触发的回调&lt;!--RP4--&gt;，仅在横屏状态下生效&lt;!--RP4End--&gt;。
+当折叠状态改变时触发的回调<!--RP4-->，仅在横屏状态下生效<!--RP4End-->。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

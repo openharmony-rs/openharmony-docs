@@ -692,7 +692,7 @@ typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t thr
 
 | 参数项 | 描述 |
 | -- | -- |
-| (JSVM_VM vm | 堆使用量达到阈值的VM实例。 |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 堆使用量达到阈值的VM实例。 |
 | uint64_t threshold | 堆使用量阈值（以字节为单位）。 |
 | void\* data | 原生指针数据。 |
 

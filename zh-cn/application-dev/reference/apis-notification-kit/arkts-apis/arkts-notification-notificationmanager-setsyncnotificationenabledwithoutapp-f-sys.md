@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## setSyncNotificationEnabledWithoutApp
@@ -15,8 +15,6 @@ function setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, call
 设置是否将通知同步到未安装应用的设备(callback形式)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
@@ -34,7 +32,7 @@ function setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, call
 | --- | --- | --- | --- |
 | userId | int | 是 | 用户ID。 |
 | enable | boolean | 是 | 是否启用（true：使能，false：禁止）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置是否将通知同步到未安装应用的设备的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置是否将通知同步到未安装应用的设备的回调函数。 |
 
 **错误码：**
 
@@ -49,7 +47,7 @@ function setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, call
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -98,8 +96,6 @@ function setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): Pro
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
 **废弃版本：** 26.0.0
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
@@ -136,7 +132,7 @@ function setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): Pro
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

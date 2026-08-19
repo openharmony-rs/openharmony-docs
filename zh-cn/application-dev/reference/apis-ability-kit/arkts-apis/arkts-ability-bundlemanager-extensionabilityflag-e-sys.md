@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-enum ExtensionAbilityFlag--><!--Device-bundleManager-enum ExtensionAbilityFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -23,10 +19,6 @@ GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000
 用于获取默认extensionAbilityInfo。获取的extensionAbilityInfo不包含permission、metadata 和禁用的extensionAbilityInfo。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000-End-->
 
@@ -44,10 +36,6 @@ GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -63,10 +51,6 @@ GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION = 0x00000002
 用于获取包含applicationInfo的extensionAbilityInfo。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION = 0x00000002--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION = 0x00000002-End-->
 
@@ -84,10 +68,6 @@ GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -103,10 +83,6 @@ GET_EXTENSION_ABILITY_INFO_WITH_SKILL = 0x00000010
 用于获取包含skills的extensionAbilityInfo。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_SKILL = 0x00000010--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_SKILL = 0x00000010-End-->
 

@@ -879,7 +879,7 @@ int32_t OH_NativeWindow_WriteToParcel(OHNativeWindow *window, OHIPCParcel *parce
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - parcel为空或window为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - parcel为空或window为空。 |
 
 ### OH_NativeWindow_ReadFromParcel()
 
@@ -906,7 +906,7 @@ int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **win
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - parcel为空或parcel不包含window。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - parcel为空或parcel不包含window。 |
 
 ### OH_NativeWindow_GetLastFlushedBufferV2()
 
@@ -935,7 +935,7 @@ int32_t OH_NativeWindow_GetLastFlushedBufferV2(OHNativeWindow *window, OHNativeW
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空或buffer为空或fenceFd为空。<br>     NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - buffer状态错误。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空或buffer为空或fenceFd为空。\n      NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - buffer状态错误。 |
 
 ### OH_NativeWindow_SetColorSpace()
 
@@ -962,7 +962,7 @@ int32_t OH_NativeWindow_SetColorSpace(OHNativeWindow *window, OH_NativeBuffer_Co
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。<br>     NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - colorSpace状态错误。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。\n      NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - colorSpace状态错误。 |
 
 ### OH_NativeWindow_GetColorSpace()
 
@@ -989,7 +989,7 @@ int32_t OH_NativeWindow_GetColorSpace(OHNativeWindow *window, OH_NativeBuffer_Co
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。<br>     NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - colorSpace状态错误。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。\n      NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - colorSpace状态错误。 |
 
 ### OH_NativeWindow_SetMetadataValue()
 
@@ -1018,7 +1018,7 @@ int32_t OH_NativeWindow_SetMetadataValue(OHNativeWindow *window, OH_NativeBuffer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window或metadata为空。<br>     NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - metadata状态错误。<br>     NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window或metadata为空。\n      NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - metadata状态错误。\n      NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
 
 ### OH_NativeWindow_GetMetadataValue()
 
@@ -1047,7 +1047,7 @@ int32_t OH_NativeWindow_GetMetadataValue(OHNativeWindow *window, OH_NativeBuffer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window、metadata或size为空。<br>     NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - metadata状态错误。<br>     NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window、metadata或size为空。\n      NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - metadata状态错误。\n      NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
 
 ### OH_NativeWindow_CleanCache()
 
@@ -1073,7 +1073,7 @@ int32_t OH_NativeWindow_CleanCache(OHNativeWindow *window)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。<br>     NATIVE_ERROR_CONSUMER_DISCONNECTED 41211000 - consumer断开连接。<br>     NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。\n      NATIVE_ERROR_CONSUMER_DISCONNECTED 41211000 - consumer断开连接。\n      NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
 
 ### OH_NativeWindow_PreAllocBuffers()
 
@@ -1128,7 +1128,7 @@ int32_t OH_NativeWindow_LockBuffer(OHNativeWindow* window, Region region, OHNati
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window或buffer为空。<br>     NATIVE_ERROR_UNKNOWN 50002000 - window的surface成员为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window或buffer为空。\n      NATIVE_ERROR_UNKNOWN 50002000 - window的surface成员为空。 |
 
 ### OH_NativeWindow_UnlockAndFlushBuffer()
 
@@ -1154,7 +1154,7 @@ int32_t OH_NativeWindow_UnlockAndFlushBuffer(OHNativeWindow* window)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。<br>     NATIVE_ERROR_UNKNOWN 50002000 - window的surface成员为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window为空。\n      NATIVE_ERROR_UNKNOWN 50002000 - window的surface成员为空。 |
 
 ### OH_NativeWindow_Set3DMetadataValue()
 
@@ -1183,7 +1183,7 @@ int32_t OH_NativeWindow_Set3DMetadataValue(OHNativeWindow *window, OH_NativeBuff
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window或metadata为空。<br>     NATIVE_ERROR_UNKNOWN 50002000 - 设置3D元数据失败。<br>     NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window或metadata为空。\n      NATIVE_ERROR_UNKNOWN 50002000 - 设置3D元数据失败。\n      NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
 
 ### OH_NativeWindow_Get3DMetadataValue()
 
@@ -1212,6 +1212,6 @@ int32_t OH_NativeWindow_Get3DMetadataValue(OHNativeWindow *window, OH_NativeBuff
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window、metadata或size为空。<br>     NATIVE_ERROR_UNKNOWN 50002000 - 内存拷贝或分配失败，或者获取3D元数据失败。<br>     NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - window、metadata或size为空。\n      NATIVE_ERROR_UNKNOWN 50002000 - 内存拷贝或分配失败，或者获取3D元数据失败。\n      NATIVE_ERROR_UNSUPPORTED 50102000 - 不支持的metadata key。 |
 
 

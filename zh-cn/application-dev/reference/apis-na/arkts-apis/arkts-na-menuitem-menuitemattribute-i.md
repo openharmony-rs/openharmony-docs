@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface MenuItemAttribute--><!--Device-unnamed-export declare interface MenuItemAttribute-End-->
 
@@ -23,9 +21,7 @@ attributeModifier(
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-attributeModifier(        modifier: AttributeModifier<MenuItemAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-MenuItemAttribute-attributeModifier(        modifier: AttributeModifier<MenuItemAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -49,9 +45,7 @@ contentFont(value: Font | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-contentFont(value: Font | undefined): this--><!--Device-MenuItemAttribute-contentFont(value: Font | undefined): this-End-->
 
@@ -75,9 +69,7 @@ contentFontColor(value: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-contentFontColor(value: ResourceColor | undefined): this--><!--Device-MenuItemAttribute-contentFontColor(value: ResourceColor | undefined): this-End-->
 
@@ -101,9 +93,7 @@ labelFont(value: Font | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-labelFont(value: Font | undefined): this--><!--Device-MenuItemAttribute-labelFont(value: Font | undefined): this-End-->
 
@@ -127,9 +117,7 @@ labelFontColor(value: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-labelFontColor(value: ResourceColor | undefined): this--><!--Device-MenuItemAttribute-labelFontColor(value: ResourceColor | undefined): this-End-->
 
@@ -153,9 +141,7 @@ onChange(callback: ((selected: boolean) => void) | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-onChange(callback: ((selected: boolean) => void) | undefined): this--><!--Device-MenuItemAttribute-onChange(callback: ((selected: boolean) => void) | undefined): this-End-->
 
@@ -179,9 +165,7 @@ selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier | undefined): this--><!--Device-MenuItemAttribute-selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier | undefined): this-End-->
 
@@ -205,9 +189,7 @@ selected(value: boolean | undefined | Bindable<boolean>): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-MenuItemAttribute-selected(value: boolean | undefined | Bindable<boolean>): this--><!--Device-MenuItemAttribute-selected(value: boolean | undefined | Bindable<boolean>): this-End-->
 
@@ -233,9 +215,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

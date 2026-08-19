@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum PointMode--><!--Device-drawing-enum PointMode-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ POINTS = 0
 分别绘制每个点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointMode-POINTS = 0--><!--Device-PointMode-POINTS = 0-End-->
 
@@ -40,10 +32,6 @@ LINES = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PointMode-LINES = 1--><!--Device-PointMode-LINES = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -57,10 +45,6 @@ POLYGON = 2
 将点阵列绘制为开放多边形。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointMode-POLYGON = 2--><!--Device-PointMode-POLYGON = 2-End-->
 

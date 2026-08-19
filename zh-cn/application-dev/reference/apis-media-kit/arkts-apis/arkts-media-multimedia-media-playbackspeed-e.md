@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum PlaybackSpeed--><!--Device-unnamed-enum PlaybackSpeed-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -21,10 +17,6 @@ SPEED_FORWARD_0_75_X = 0
 表示视频播放正常播速的0.75倍。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ SPEED_FORWARD_1_00_X = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackSpeed-SPEED_FORWARD_1_00_X = 1--><!--Device-PlaybackSpeed-SPEED_FORWARD_1_00_X = 1-End-->
@@ -61,10 +49,6 @@ SPEED_FORWARD_1_25_X = 2
 表示视频播放正常播速的1.25倍。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ SPEED_FORWARD_1_75_X = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackSpeed-SPEED_FORWARD_1_75_X = 3--><!--Device-PlaybackSpeed-SPEED_FORWARD_1_75_X = 3-End-->
@@ -101,10 +81,6 @@ SPEED_FORWARD_2_00_X = 4
 表示视频播放正常播速的2.00倍。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ SPEED_FORWARD_0_50_X = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackSpeed-SPEED_FORWARD_0_50_X = 5--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_50_X = 5-End-->
@@ -141,10 +113,6 @@ SPEED_FORWARD_1_50_X = 6
 表示视频播放正常播速的1.50倍。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ SPEED_FORWARD_3_00_X = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackSpeed-SPEED_FORWARD_3_00_X = 7--><!--Device-PlaybackSpeed-SPEED_FORWARD_3_00_X = 7-End-->
@@ -182,10 +146,6 @@ SPEED_FORWARD_0_25_X = 8
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackSpeed-SPEED_FORWARD_0_25_X = 8--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_25_X = 8-End-->
@@ -201,10 +161,6 @@ SPEED_FORWARD_0_125_X = 9
 表示视频播放正常播速的0.125倍。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

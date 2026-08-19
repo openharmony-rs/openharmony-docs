@@ -4,13 +4,16 @@ DatePickerComponentOptions定义日期时间选择器组件的选项。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare class DatePickerComponentOptions--><!--Device-unnamed-export declare class DatePickerComponentOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## dateOptions
 
@@ -20,13 +23,11 @@ dateOptions?: DateOptions
 
 日期选项。
 
-**类型：** [DateOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md)
+**类型：** [DateOptions](arkts-na-arkui-advanced-datepickercomponent-dateoptions-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,15 +43,13 @@ displayMode?: DisplayMode
 
 选择器的显示模式。 默认值：DisplayMode.DATE
 
-**类型：** [DisplayMode](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-datepickercomponent-displaymode-e.md)
+**类型：** [DisplayMode](arkts-na-arkui-advanced-datepickercomponent-displaymode-e.md)
 
 **默认值：** DisplayMode.DATE
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,13 +65,11 @@ timeOptions?: TimeOptions
 
 时间选项。
 
-**类型：** [TimeOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-datepickercomponent-timeoptions-c.md)
+**类型：** [TimeOptions](arkts-na-arkui-advanced-datepickercomponent-timeoptions-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-taskpool-class SequenceRunner--><!--Device-taskpool-class SequenceRunner-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -21,10 +23,6 @@ constructor(priority?: Priority)
 SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +36,7 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。
 | --- | --- | --- | --- |
 | priority | Priority | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -54,10 +52,6 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。该
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SequenceRunner-constructor(name: string, priority?: Priority)--><!--Device-SequenceRunner-constructor(name: string, priority?: Priority)-End-->
@@ -71,7 +65,7 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。该
 | name | string | 是 | 串行队列的名字。 |
 | priority | Priority | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner("runner1", taskpool.Priority.LOW);
@@ -86,10 +80,6 @@ execute(task: Task): Promise<Object>
 执行串行任务。使用该方法前需先构造**SequenceRunner**实例。串行队列不能执行任务组任务、其他串行队列任务、异步队列任务、 有依赖关系的任务和已执行的任务。使用Promise异步回调。 > **说明：** > > - 不支持加入存在依赖的任务。 > > - 前面的任务执行失败或取消不会影响后续任务的执行。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -119,7 +109,7 @@ execute(task: Task): Promise<Object>
 | [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again.<br>**适用版本：** 12+ |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent

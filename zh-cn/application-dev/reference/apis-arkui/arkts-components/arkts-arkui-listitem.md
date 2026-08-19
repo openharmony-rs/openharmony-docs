@@ -14,10 +14,6 @@ ListItem(value?: ListItemOptions)
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -44,8 +40,6 @@ ListItem(value?: string)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** listItem/ListItemInterface
@@ -64,12 +58,22 @@ ListItem(value?: string)
 
 ## 汇总
 
-- [ListItemOptions](arkts-arkui-listitemoptions-i.md)
-- [SwipeActionItem](arkts-arkui-swipeactionitem-i.md)
-- [SwipeActionOptions](arkts-arkui-swipeactionoptions-i.md)
-- [EditMode](arkts-arkui-editmode-e.md)
-- [ListItemStyle](arkts-arkui-listitemstyle-e.md)
-- [ListItemSwipeActionDirection](arkts-arkui-listitemswipeactiondirection-e.md)
-- [Sticky](arkts-arkui-sticky-e.md)
-- [SwipeActionState](arkts-arkui-swipeactionstate-e.md)
-- [SwipeEdgeEffect](arkts-arkui-swipeedgeeffect-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ListItemOptions](arkts-arkui-listitemoptions-i.md) | ListItem组件参数。 |
+| [SwipeActionItem](arkts-arkui-swipeactionitem-i.md) | SwipeActionItem用于配置[SwipeActionOptions](arkts-arkui-swipeactionoptions-i.md)中的start或end划出项，包括划出时显示的操作项、长距离操作区域的距离阈值，以及进入、退出长距离操作 区域、抬手触发操作和状态变化时的回调。 作为start划出项时，List为垂直布局时显示在ListItem左侧，List为水平布局时显示在ListItem上方；作为end划出项时，List为垂直布局时显示在ListItem右侧，List为水平布局时显示在ListItem下 方。 |
+| [SwipeActionOptions](arkts-arkui-swipeactionoptions-i.md) | start和end对应的@builder函数中顶层必须是单个组件（如果顶层是if/else、ForEach等渲染控制语句，则必须保证其仅能生成单个组件），否则会引发未定义行为。 滑动手势只在ListItem区域上生效，如果子组件滑出ListItem区域外，在ListItem以外部分不会响应滑动手势。所以在多列模式下，建议不要将划出组件设置太宽。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [EditMode](arkts-arkui-editmode-e.md) | ListItem元素编辑模式枚举。 |
+| [ListItemStyle](arkts-arkui-listitemstyle-e.md) | ListItem组件卡片样式枚举。 |
+| [ListItemSwipeActionDirection](arkts-arkui-listitemswipeactiondirection-e.md) | ListItem划出菜单的展开方向。 |
+| [Sticky](arkts-arkui-sticky-e.md) | ListItem吸顶效果枚举。 |
+| [SwipeActionState](arkts-arkui-swipeactionstate-e.md) | 列表项滑动状态枚举。 |
+| [SwipeEdgeEffect](arkts-arkui-swipeedgeeffect-e.md) | 滑动效果枚举。 |
+

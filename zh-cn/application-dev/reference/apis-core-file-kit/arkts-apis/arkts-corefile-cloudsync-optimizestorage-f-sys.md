@@ -1,5 +1,12 @@
 # optimizeStorage（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## optimizeStorage
 
 ```TypeScript
@@ -9,10 +16,6 @@ function optimizeStorage():Promise<void>
 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
@@ -37,7 +40,7 @@ function optimizeStorage():Promise<void>
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

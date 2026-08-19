@@ -2,7 +2,9 @@
 
 ## 概述
 
-Provide fileio APIS.
+fileio模块接口定义，提供获取文件存储位置的native接口，帮助应用根据文件存储位置选择合适的访问策略等。
+
+**引用文件：** <filemanagement/fileio/oh_fileio.h>
 
 **库：** libohfileio.so
 
@@ -46,6 +48,6 @@ Obtains the location of a file.
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码<br>          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>          {@link ERR_ENOENT} 13900002 - No such file or directory.<br>          {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_ENOENT} 13900002 - No such file or directory.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 

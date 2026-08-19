@@ -4,10 +4,6 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-huks-export enum HuksAuthStorageLevel--><!--Device-huks-export enum HuksAuthStorageLevel-End-->
 
 **系统能力：** 
@@ -23,10 +19,6 @@ HUKS_AUTH_STORAGE_LEVEL_DE = 0
 表示密钥仅在开机后可访问。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +38,6 @@ HUKS_AUTH_STORAGE_LEVEL_CE = 1
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_CE = 1--><!--Device-HuksAuthStorageLevel-HUKS_AUTH_STORAGE_LEVEL_CE = 1-End-->
@@ -67,10 +55,6 @@ HUKS_AUTH_STORAGE_LEVEL_ECE = 2
 表示密钥仅在解锁状态时可访问。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

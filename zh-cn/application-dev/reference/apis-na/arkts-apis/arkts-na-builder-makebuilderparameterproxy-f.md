@@ -14,9 +14,7 @@ Make Proxy for Builder parameter.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,7 +28,7 @@ Make Proxy for Builder parameter.
 | --- | --- | --- | --- |
 | instance | T | 是 | Builder parameter instance |
 | propertyGetters | Map&lt;string, [BuilderParameterCallback](arkts-na-builderparametercallback-t.md)&gt; | 是 | getter callbacks for each property name |
-| initializer | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;T&gt; | 否 | optional callback to initialize proxied instance |
+| initializer | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;T&gt; | 否 | optional callback to initialize proxied instance |
 
 **返回值：**
 

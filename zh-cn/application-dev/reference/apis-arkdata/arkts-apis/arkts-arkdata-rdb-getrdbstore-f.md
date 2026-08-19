@@ -1,5 +1,10 @@
 # getRdbStore
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getRdbStore
 
 ```TypeScript
@@ -10,11 +15,9 @@ function getRdbStore(context: Context, config: StoreConfig, version: number, cal
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore)
+**替代接口：** [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md)
 
 <!--Device-rdb-function getRdbStore(context: Context, config: StoreConfig, version: number, callback: AsyncCallback<RdbStore>): void--><!--Device-rdb-function getRdbStore(context: Context, config: StoreConfig, version: number, callback: AsyncCallback<RdbStore>): void-End-->
 
@@ -27,7 +30,7 @@ function getRdbStore(context: Context, config: StoreConfig, version: number, cal
 | context | Context | 是 | 应用的上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见Context。 |
 | config | StoreConfig | 是 | 与此RDB存储相关的数据库配置。 |
 | version | number | 是 | 数据库版本。 <br>目前暂不支持通过version自动识别数据库升级降级操作，只能由开发者自行维护。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;RdbStore&gt; | 是 | 回调函数。当操作成功，err为undefined，data为RdbStore对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;RdbStore&gt; | 是 | 回调函数。当操作成功，err为undefined，data为RdbStore对象；否则为错误对象。 |
 
 
 ## getRdbStore
@@ -39,8 +42,6 @@ function getRdbStore(context: Context, config: StoreConfig, version: number): Pr
 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作，使用Promise异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

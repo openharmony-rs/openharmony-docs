@@ -4,13 +4,16 @@ AtomicFile是一个用于对文件进行原子读写等操作的类。 在写操
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-export class AtomicFile--><!--Device-fileIo-export class AtomicFile-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -22,9 +25,7 @@ constructor(path: string)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-constructor(path: string)--><!--Device-AtomicFile-constructor(path: string)-End-->
 
@@ -40,7 +41,7 @@ constructor(path: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) |  |
 
 ## delete
 
@@ -52,9 +53,7 @@ delete(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-delete(): void--><!--Device-AtomicFile-delete(): void-End-->
 
@@ -64,11 +63,11 @@ delete(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
-| 13900027 | Read-only file system |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
+| 13900027 |  |
 
 ## failWrite
 
@@ -80,9 +79,7 @@ failWrite(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-failWrite(): void--><!--Device-AtomicFile-failWrite(): void-End-->
 
@@ -92,7 +89,7 @@ failWrite(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900042 | Internal error |
+| 13900042 |  |
 
 ## finishWrite
 
@@ -104,9 +101,7 @@ finishWrite(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-finishWrite(): void--><!--Device-AtomicFile-finishWrite(): void-End-->
 
@@ -116,7 +111,7 @@ finishWrite(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900042 | Internal error |
+| 13900042 |  |
 
 ## getBaseFile
 
@@ -128,9 +123,7 @@ getBaseFile(): File
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-getBaseFile(): File--><!--Device-AtomicFile-getBaseFile(): File-End-->
 
@@ -146,10 +139,10 @@ getBaseFile(): File
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900005 | IO error |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
+| 13900005 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
 
 ## openRead
 
@@ -161,9 +154,7 @@ openRead(): ReadStream
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-openRead(): ReadStream--><!--Device-AtomicFile-openRead(): ReadStream-End-->
 
@@ -179,10 +170,10 @@ openRead(): ReadStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
 
 ## readFully
 
@@ -194,9 +185,7 @@ readFully(): ArrayBuffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-readFully(): ArrayBuffer--><!--Device-AtomicFile-readFully(): ArrayBuffer-End-->
 
@@ -212,8 +201,8 @@ readFully(): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900005 | I/O error |
-| 13900042 | Internal error |
+| 13900005 |  |
+| 13900042 |  |
 
 ## startWrite
 
@@ -225,9 +214,7 @@ startWrite(): WriteStream
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AtomicFile-startWrite(): WriteStream--><!--Device-AtomicFile-startWrite(): WriteStream-End-->
 
@@ -243,9 +230,9 @@ startWrite(): WriteStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
-| 13900027 | Read-only file system |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
+| 13900027 |  |
 

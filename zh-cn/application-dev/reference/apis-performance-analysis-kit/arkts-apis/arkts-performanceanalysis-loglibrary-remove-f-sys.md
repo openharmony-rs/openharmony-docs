@@ -1,5 +1,11 @@
 # remove（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+```
+
 ## remove
 
 ```TypeScript
@@ -9,10 +15,6 @@ function remove(logType: string, logName: string): void
 以同步方法删除指定日志类型的指定文件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
@@ -38,7 +40,7 @@ function remove(logType: string, logName: string): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

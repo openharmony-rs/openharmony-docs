@@ -1,12 +1,8 @@
 # LayerMask
 
-定义节点的图层掩码.
+用于定义节点的图层掩码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface LayerMask--><!--Device-unnamed-export interface LayerMask-End-->
 
@@ -18,13 +14,9 @@
 getEnabled(index: int): boolean
 ```
 
-获取图层掩码是否启用.
+获取指定图层下标图层掩码的使能状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LayerMask-getEnabled(index: int): boolean--><!--Device-LayerMask-getEnabled(index: int): boolean-End-->
 
@@ -34,15 +26,15 @@ getEnabled(index: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 图层掩码 |
+| index | int | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 图层掩码是否启用 |
+| boolean | 返回特定下标的图层是否使能。true表示使用图层掩码，false表示不使用。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, Node } from '@kit.ArkGraphics3D';
@@ -70,13 +62,9 @@ function layerMask(): void {
 setEnabled(index: int, enabled: boolean): void
 ```
 
-设置图层掩码是否启用.
+将特定下标的图层掩码使能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LayerMask-setEnabled(index: int, enabled: boolean): void--><!--Device-LayerMask-setEnabled(index: int, enabled: boolean): void-End-->
 
@@ -86,10 +74,10 @@ setEnabled(index: int, enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | int | 是 | 图层掩码 |
-| enabled | boolean | 是 | 图层掩码是否启用 |
+| index | int | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
+| enabled | boolean | 是 | 要设置的使能状态。true表示使用图层掩码，false表示不使用。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, Node } from '@kit.ArkGraphics3D';

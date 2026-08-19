@@ -1,5 +1,33 @@
 # ArkTS API<!--arkts-multimodalawarenesskit-->
 
+- [@ohos.multimodalAwareness.carAwareness](arkts-multimodalawareness-carawareness.md)
+  - [getAllCapabilityList](arkts-multimodalawareness-carawareness-getallcapabilitylist-f.md)
+  <!--Del-->
+  - [getCarAwareness(系统接口)](arkts-multimodalawareness-carawareness-getcarawareness-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offCarAwareness(系统接口)](arkts-multimodalawareness-carawareness-offcarawareness-f-sys.md)<!--DelEnd-->
+  - [offRealTimeWeather](arkts-multimodalawareness-carawareness-offrealtimeweather-f.md)
+  - [offRefueling](arkts-multimodalawareness-carawareness-offrefueling-f.md)
+  - [offSpatialMotion](arkts-multimodalawareness-carawareness-offspatialmotion-f.md)
+  <!--Del-->
+  - [onCarAwareness(系统接口)](arkts-multimodalawareness-carawareness-oncarawareness-f-sys.md)<!--DelEnd-->
+  - [onRealTimeWeather](arkts-multimodalawareness-carawareness-onrealtimeweather-f.md)
+  - [onRefueling](arkts-multimodalawareness-carawareness-onrefueling-f.md)
+  - [onSpatialMotion](arkts-multimodalawareness-carawareness-onspatialmotion-f.md)
+  <!--Del-->
+  - [updateSpatialActionEnableStatus(系统接口)](arkts-multimodalawareness-carawareness-updatespatialactionenablestatus-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [updateSpatialActionZone(系统接口)](arkts-multimodalawareness-carawareness-updatespatialactionzone-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [CarAwarenessInfo(系统接口)](arkts-multimodalawareness-carawareness-carawarenessinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [CarAwarenessOptions(系统接口)](arkts-multimodalawareness-carawareness-carawarenessoptions-i-sys.md)<!--DelEnd-->
+  - [RealTimeWeatherInfo](arkts-multimodalawareness-carawareness-realtimeweatherinfo-i.md)
+  - [RefuelingInfo](arkts-multimodalawareness-carawareness-refuelinginfo-i.md)
+  - [SpatialMotionInfo](arkts-multimodalawareness-carawareness-spatialmotioninfo-i.md)
+  - [Capability](arkts-multimodalawareness-carawareness-capability-e.md)
+  <!--Del-->
+  - [Capability(系统接口)](arkts-multimodalawareness-carawareness-capability-e-sys.md)<!--DelEnd-->
 - [@ohos.multimodalAwareness.deviceStatus](arkts-multimodalawareness-devicestatus.md)
   <!--Del-->
   - [getDeviceRotationRadian(系统接口)](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md)<!--DelEnd-->

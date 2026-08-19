@@ -1,5 +1,11 @@
 # onHotkeyChange
 
+## 导入模块
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+```
+
 ## onHotkeyChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ function onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyO
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputConsumer-function onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyOptions>): void--><!--Device-inputConsumer-function onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyOptions>): void-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
@@ -23,7 +25,7 @@ function onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyO
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hotkeyOptions | [HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md) | 是 | 快捷键选项。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md)&gt; | 是 | 回调函数，获取满足条件的组合按键输入事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md)&gt; | 是 | 回调函数，获取满足条件的组合按键输入事件。 |
 
 **错误码：**
 
@@ -34,7 +36,7 @@ function onHotkeyChange(hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyO
 | [4200002](../errorcode-inputconsumer.md#4200002-快捷键被系统注册) | The hotkey has been used by the system. |
 | [4200003](../errorcode-inputconsumer.md#4200003-快捷键已经被其他应用注册) | The hotkey has been subscribed to by another. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';

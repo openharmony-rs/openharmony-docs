@@ -4,15 +4,18 @@ Watcher是文件变化监听的实例，调用Watcher.stop()方法（同步或�
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
-**替代接口：** [Watcher](../../apis-na/arkts-apis/arkts-na-watcher-t.md#watcher)
+**替代接口：** [Watcher](../../apis-na/arkts-apis/arkts-na-watcher-t.md)
 
 <!--Device-unnamed-declare interface Watcher--><!--Device-unnamed-declare interface Watcher-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## stop
 
@@ -23,8 +26,6 @@ stop(): Promise<void>
 关闭watcher监听，使用Promise异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -40,7 +41,7 @@ stop(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | return Promise |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -62,8 +63,6 @@ stop(callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [stop](arkts-corefile-file-fs-watcher-i.md#stop)
@@ -76,9 +75,9 @@ stop(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以异步方法关闭watcher监听之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以异步方法关闭watcher监听之后的回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";

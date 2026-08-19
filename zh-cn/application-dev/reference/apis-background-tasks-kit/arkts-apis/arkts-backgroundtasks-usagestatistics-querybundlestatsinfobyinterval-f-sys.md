@@ -1,5 +1,11 @@
 # queryBundleStatsInfoByInterval（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
+
 ## queryBundleStatsInfoByInterval
 
 ```TypeScript
@@ -14,10 +20,6 @@ function queryBundleStatsInfoByInterval(
 通过指定时间段间隔（天、周、月、年），查询应用使用时长的统计信息，使用Callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -34,7 +36,7 @@ function queryBundleStatsInfoByInterval(
 | byInterval | IntervalType | 是 | 查询类型。 |
 | begin | long | 是 | 起始时间，单位：ms。 |
 | end | long | 是 | 结束时间，单位：ms。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;BundleStatsInfo&gt;&gt; | 是 | 回调函数。 当查询成功，err为undefined，data为指定时间段间隔内，应用使用时长的统计信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;BundleStatsInfo&gt;&gt; | 是 | 回调函数。 当查询成功，err为undefined，data为指定时间段间隔内，应用使用时长的统计信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -51,7 +53,7 @@ function queryBundleStatsInfoByInterval(
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 | [10000007](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -84,10 +86,6 @@ function queryBundleStatsInfoByInterval(
 通过指定时间段间隔（天、周、月、年），查询应用使用时长的统计信息，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -126,7 +124,7 @@ function queryBundleStatsInfoByInterval(
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 | [10000007](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

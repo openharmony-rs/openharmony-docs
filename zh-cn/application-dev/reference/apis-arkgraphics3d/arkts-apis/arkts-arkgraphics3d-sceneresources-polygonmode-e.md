@@ -1,12 +1,8 @@
 # PolygonMode
 
-多边形模式枚举.
+控制多边形绘制模式的枚举。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum PolygonMode--><!--Device-unnamed-export enum PolygonMode-End-->
 
@@ -18,13 +14,9 @@
 FILL = 0
 ```
 
-渲染整个多边形
+绘制多边形的每个面。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolygonMode-FILL = 0--><!--Device-PolygonMode-FILL = 0-End-->
 
@@ -36,13 +28,9 @@ FILL = 0
 LINE = 1
 ```
 
-仅渲染多边形的边（线框）
+仅绘制多边形线框。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolygonMode-LINE = 1--><!--Device-PolygonMode-LINE = 1-End-->
 
@@ -54,13 +42,9 @@ LINE = 1
 POINT = 2
 ```
 
-仅渲染多边形的顶点
+仅绘制多边形顶点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolygonMode-POINT = 2--><!--Device-PolygonMode-POINT = 2-End-->
 

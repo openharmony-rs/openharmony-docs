@@ -17,10 +17,6 @@ type AxisType =
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputDevice-type AxisType =    'touchmajor'    | 'touchminor'    | 'orientation'    | 'x'    | 'y'    | 'pressure'    | 'toolminor'    | 'toolmajor'    | 'null'--><!--Device-inputDevice-type AxisType =    'touchmajor'    | 'touchminor'    | 'orientation'    | 'x'    | 'y'    | 'pressure'    | 'toolminor'    | 'toolmajor'    | 'null'-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice

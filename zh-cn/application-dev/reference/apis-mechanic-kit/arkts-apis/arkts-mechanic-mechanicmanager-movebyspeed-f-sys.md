@@ -1,5 +1,11 @@
 # moveBySpeed（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## moveBySpeed
 
 ```TypeScript
@@ -9,10 +15,6 @@ function moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise<R
 以特定速度移动一个具身设备
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise<Result>--><!--Device-mechanicManager-function moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise<Result>-End-->
 

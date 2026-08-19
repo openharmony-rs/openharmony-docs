@@ -4,15 +4,19 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-interface RotateOptions--><!--Device-window-interface RotateOptions-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## pivotX
 
@@ -25,10 +29,6 @@ pivotX?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotateOptions-pivotX?: double--><!--Device-RotateOptions-pivotX?: double-End-->
 
@@ -48,10 +48,6 @@ pivotY?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotateOptions-pivotY?: double--><!--Device-RotateOptions-pivotY?: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -69,10 +65,6 @@ x?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotateOptions-x?: double--><!--Device-RotateOptions-x?: double-End-->
 
@@ -92,10 +84,6 @@ y?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotateOptions-y?: double--><!--Device-RotateOptions-y?: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -113,10 +101,6 @@ z?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotateOptions-z?: double--><!--Device-RotateOptions-z?: double-End-->
 

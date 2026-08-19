@@ -1,5 +1,11 @@
 # @ohos.app.ability.ApplicationStateChangeCallback
 
+## 导入模块
+
+```TypeScript
+import { ApplicationStateChangeCallback } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

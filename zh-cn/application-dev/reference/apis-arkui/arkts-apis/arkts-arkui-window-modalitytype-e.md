@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum ModalityType--><!--Device-window-enum ModalityType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ WINDOW_MODALITY = 0
 当仅需要其父级窗口不响应用户操作时，可选此参数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ APPLICATION_MODALITY = 1
 除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。 该枚举在支持并处于[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持 [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

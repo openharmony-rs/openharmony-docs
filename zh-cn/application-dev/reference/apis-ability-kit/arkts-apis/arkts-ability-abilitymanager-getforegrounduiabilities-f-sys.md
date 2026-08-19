@@ -1,5 +1,11 @@
 # getForegroundUIAbilities（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## getForegroundUIAbilities
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getForegroundUIAbilities(callback: AsyncCallback<Array<AbilityStateData
 获取前台正在运行的应用Ability的信息。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
 
@@ -26,7 +28,7 @@ function getForegroundUIAbilities(callback: AsyncCallback<Array<AbilityStateData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;AbilityStateData&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;AbilityStateData&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function getForegroundUIAbilities(callback: AsyncCallback<Array<AbilityStateData
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityManager } from '@kit.AbilityKit';
@@ -64,10 +66,6 @@ function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_RUNNING_INFO
 
 <!--Device-abilityManager-function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>--><!--Device-abilityManager-function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>-End-->
@@ -90,7 +88,7 @@ function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityManager } from '@kit.AbilityKit';

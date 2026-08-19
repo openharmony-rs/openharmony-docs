@@ -1,5 +1,12 @@
 # stopExpand（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## stopExpand
 
 ```TypeScript
@@ -9,8 +16,6 @@ function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): vo
 停止屏幕的扩展模式，使用callback异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 20
 
@@ -25,7 +30,7 @@ function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | expandScreen | Array&lt;long&gt; | 是 | 扩展屏幕ID集合，其中ID为整数。 expandScreen数组大小不应超过1000。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当停止屏幕扩展模式成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当停止屏幕扩展模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -35,7 +40,7 @@ function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): vo
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -63,8 +68,6 @@ function stopExpand(expandScreen:Array<long>): Promise<void>
 停止屏幕的扩展模式，使用Promise异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 20
 
@@ -94,7 +97,7 @@ function stopExpand(expandScreen:Array<long>): Promise<void>
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

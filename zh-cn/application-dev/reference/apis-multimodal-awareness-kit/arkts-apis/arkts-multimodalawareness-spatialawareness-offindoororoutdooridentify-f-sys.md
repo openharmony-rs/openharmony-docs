@@ -1,5 +1,11 @@
 # offIndoorOrOutdoorIdentify（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
+```
+
 ## offIndoorOrOutdoorIdentify
 
 ```TypeScript
@@ -10,10 +16,6 @@ function offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParam
 取消订阅门内外识别接口。停止运行已订阅的门内外识别算法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
@@ -30,7 +32,7 @@ function offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParam
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | configParams | [DistanceMeasurementConfigParams](arkts-multimodalawareness-spatialawareness-distancemeasurementconfigparams-i-sys.md) | 是 | 测距接口配置参数 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DoorPositionResponse](arkts-multimodalawareness-spatialawareness-doorpositionresponse-i-sys.md)&gt; | 否 | 表示取消指定的callback通知。如果输入空、undefined或null，则取消configParams订阅的所有门 内外识别通知事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DoorPositionResponse](arkts-multimodalawareness-spatialawareness-doorpositionresponse-i-sys.md)&gt; | 否 | 表示取消指定的callback通知。如果输入空、undefined或null，则取消configParams订阅的所有门 内外识别通知事件。 |
 
 **错误码：**
 
@@ -43,7 +45,7 @@ function offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParam
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';

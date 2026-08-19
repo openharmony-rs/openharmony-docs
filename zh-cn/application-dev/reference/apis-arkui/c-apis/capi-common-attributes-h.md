@@ -37,7 +37,7 @@ Defines the common property and method types for the native module.
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | 创建一个截图选项，当返回值不再使用时必须通过{@link OH_ArkUI_DestroySnapshotOptions()}释放。 |
+| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | 创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。 |
 | [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | 销毁截图选项指针。 |
 | [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | 配置截图选项中的缩放属性。 |
 | [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | 设置截图选项中的色彩空间。 |
@@ -197,7 +197,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 **描述**
 
-创建一个截图选项，当返回值不再使用时必须通过{@link OH_ArkUI_DestroySnapshotOptions()}释放。
+创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。
 
 **起始版本：** 15
 
@@ -248,7 +248,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码<br>    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_SnapshotOptions_SetColorMode()
 
@@ -274,7 +274,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_SnapshotOptions_SetDynamicRangeMode()
 
@@ -300,7 +300,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>	<br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 	<br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
@@ -362,7 +362,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>   <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>   <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>   <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。    <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
 
@@ -387,7 +387,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>   <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>   <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常<br>   <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常    <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
 
@@ -412,7 +412,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
 
@@ -438,7 +438,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。<br>    <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。     <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 
@@ -486,6 +486,6 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 获取可见区域计算模式。<br>    当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，<br>    因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。<br>    而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。<br>    默认值：false |
+| bool | 获取可见区域计算模式。     当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，     因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。     而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。     默认值：false |
 
 

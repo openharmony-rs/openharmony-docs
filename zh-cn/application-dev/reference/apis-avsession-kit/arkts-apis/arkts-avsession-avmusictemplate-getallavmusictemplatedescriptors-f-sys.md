@@ -1,5 +1,11 @@
 # getAllAVMusicTemplateDescriptors（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avMusicTemplate } from '@kit.AVSessionKit';
+```
+
 ## getAllAVMusicTemplateDescriptors
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescript
 获取所有的音频模板描述，返回音频模板描述的集合。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 

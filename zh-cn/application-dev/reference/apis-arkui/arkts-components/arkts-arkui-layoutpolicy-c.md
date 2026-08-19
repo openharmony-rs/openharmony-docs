@@ -4,13 +4,14 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class LayoutPolicy--><!--Device-unnamed-declare class LayoutPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## fixAtIdealSize
 
@@ -23,10 +24,6 @@ static readonly fixAtIdealSize: LayoutPolicy
 **类型：** [LayoutPolicy](arkts-arkui-layoutpolicy-c.md)
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +47,6 @@ static readonly matchParent: LayoutPolicy
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -75,10 +68,6 @@ static readonly wrapContent: LayoutPolicy
 **类型：** [LayoutPolicy](arkts-arkui-layoutpolicy-c.md)
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

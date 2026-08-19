@@ -1,18 +1,19 @@
-# AlertDialogParamWithConfirm
+# AlertDialogParamWithConfirm(AlertDialog)
 
-继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus
+继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。 confirm参数优先级：fontColor、backgroundColor > style > defaultFocus
 
-**继承/实现关系：** AlertDialogParamWithConfirm extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)
+**继承/实现关系：** AlertDialogParamWithConfirm extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface AlertDialogParamWithConfirm--><!--Device-unnamed-declare interface AlertDialogParamWithConfirm-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## confirm
 
@@ -25,10 +26,6 @@ confirm?: AlertDialogButtonBaseOptions
 **类型：** [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

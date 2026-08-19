@@ -10,10 +10,6 @@ const MAX_TYPE_NUM: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethod-const MAX_TYPE_NUM: int--><!--Device-inputMethod-const MAX_TYPE_NUM: int-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

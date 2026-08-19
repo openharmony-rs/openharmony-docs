@@ -1,5 +1,10 @@
 # symlinkSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## symlinkSync
 
 ```TypeScript
@@ -10,9 +15,7 @@ function symlinkSync(target: string, srcPath: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function symlinkSync(target: string, srcPath: string): void--><!--Device-fileIo-function symlinkSync(target: string, srcPath: string): void-End-->
 

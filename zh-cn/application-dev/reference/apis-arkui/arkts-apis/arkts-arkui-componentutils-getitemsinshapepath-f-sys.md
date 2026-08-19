@@ -1,18 +1,22 @@
 # getItemsInShapePath（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
+
 ## getItemsInShapePath
 
 ```TypeScript
 function getItemsInShapePath(value: GetItemsInShapePathParams): Array<ImageItem>
 ```
 
-获取位于选定区域内的图像对象。
+Get the image objects located within the selected area.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,11 +30,11 @@ function getItemsInShapePath(value: GetItemsInShapePathParams): Array<ImageItem>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [GetItemsInShapePathParams](arkts-arkui-componentutils-getitemsinshapepathparams-i-sys.md) | 是 | 获取形状路径中图像的选项。 |
+| value | [GetItemsInShapePathParams](arkts-arkui-componentutils-getitemsinshapepathparams-i-sys.md) | 是 | options to get images in shapePath. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[ImageItem](arkts-arkui-componentutils-imageitem-i-sys.md)&gt; | 返回位于选定区域内的图像对象。 |
+| Array&lt;[ImageItem](arkts-arkui-componentutils-imageitem-i-sys.md)&gt; | Returns the image objects located within the selected area. |
 

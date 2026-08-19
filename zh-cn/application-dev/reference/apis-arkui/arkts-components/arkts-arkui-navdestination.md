@@ -14,10 +14,6 @@ NavDestination()
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NavDestinationInterface-(): NavDestinationAttribute--><!--Device-NavDestinationInterface-(): NavDestinationAttribute-End-->
@@ -26,17 +22,32 @@ NavDestination()
 
 ## 汇总
 
-- [NavDestinationCommonTitle](arkts-arkui-navdestinationcommontitle-i.md)
-- [NavDestinationContext](arkts-arkui-navdestinationcontext-i.md)
-- [NavDestinationCustomTitle](arkts-arkui-navdestinationcustomtitle-i.md)
-- [NavDestinationTransition](arkts-arkui-navdestinationtransition-i.md)
-- [NestedScrollInfo](arkts-arkui-nestedscrollinfo-i.md)
-- [RouteMapConfig](arkts-arkui-routemapconfig-i.md)
-- [NavDestinationTransitionDelegate](arkts-arkui-navdestinationtransitiondelegate-t.md)
-- [Orientation](arkts-arkui-orientation-t.md)
-- [RestoreStateCallback](arkts-arkui-restorestatecallback-t.md)
-- [SaveStateCallback](arkts-arkui-savestatecallback-t.md)
-- [NavDestinationActiveReason](arkts-arkui-navdestinationactivereason-e.md)
-- [NavDestinationMode](arkts-arkui-navdestinationmode-e.md)
-- [NavigationSystemTransitionType](arkts-arkui-navigationsystemtransitiontype-e.md)
-- [VisibilityChangeReason](arkts-arkui-visibilitychangereason-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [NavDestinationCommonTitle](arkts-arkui-navdestinationcommontitle-i.md) | NavDestination通用标题。 |
+| [NavDestinationContext](arkts-arkui-navdestinationcontext-i.md) | NavDestination上下文信息。 |
+| [NavDestinationCustomTitle](arkts-arkui-navdestinationcustomtitle-i.md) | NavDestination自定义标题。 |
+| [NavDestinationTransition](arkts-arkui-navdestinationtransition-i.md) | NavDestination自定义动画接口。 |
+| [NestedScrollInfo](arkts-arkui-nestedscrollinfo-i.md) | 嵌套可滚动容器组件信息。 |
+| [RouteMapConfig](arkts-arkui-routemapconfig-i.md) | 路由配置信息。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [NavDestinationTransitionDelegate](arkts-arkui-navdestinationtransitiondelegate-t.md) | NavDestination自定义转场动画的代理函数。 |
+| [Orientation](arkts-arkui-orientation-t.md) | 页面显示方向的枚举类型。 |
+| [RestoreStateCallback](arkts-arkui-restorestatecallback-t.md) | 自定义页面状态恢复回调。 |
+| [SaveStateCallback](arkts-arkui-savestatecallback-t.md) | 自定义页面状态保存回调。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [NavDestinationActiveReason](arkts-arkui-navdestinationactivereason-e.md) | NavDestination激活态或者非激活态变化的原因。 |
+| [NavDestinationMode](arkts-arkui-navdestinationmode-e.md) | NavDestination类型。 |
+| [NavigationSystemTransitionType](arkts-arkui-navigationsystemtransitiontype-e.md) | 系统转场动画类型。 |
+| [VisibilityChangeReason](arkts-arkui-visibilitychangereason-e.md) | NavDestination可见性发生变化的原因。 |
+

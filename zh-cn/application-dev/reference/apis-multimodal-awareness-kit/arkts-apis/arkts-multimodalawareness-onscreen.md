@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace onScreen--><!--Device-unnamed-declare namespace onScreen-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+## 导入模块
+
+```TypeScript
+import { onScreen } from '@kit.MultimodalAwarenessKit';
+```
 
 ## 汇总
 
@@ -19,16 +21,16 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [apperceive](arkts-multimodalawareness-onscreen-apperceive-f-sys.md#apperceive) | 主动触发屏幕内容感知，获取屏幕内容进行快照分析。 |
-| [capture](arkts-multimodalawareness-onscreen-capture-f-sys.md#capture) | 主动触发屏幕内容感知，获取页面信息。 |
-| [getPageContent](arkts-multimodalawareness-onscreen-getpagecontent-f-sys.md#getpagecontent) | 在需要抓取内容的窗口在桌面上时，调用该接口以获取屏上内容。 |
-| [interact](arkts-multimodalawareness-onscreen-interact-f-sys.md#interact) | 主动触发屏幕行为交互，实现对界面行为的识别与行为反馈。例如：当capList能力列表为JumpContext时，点击后通过反馈信息精准跳转至指定段落并实现文字高亮。 <br>当capList能力列表为InjectEvent时，点击后执行相应的点击事件。 |
-| [offReadingScreenPermissionListener](arkts-multimodalawareness-onscreen-offreadingscreenpermissionlistener-f-sys.md#offreadingscreenpermissionlistener) | 关闭屏幕内容访问权限监测。 |
-| [onReadingScreenPermissionListener](arkts-multimodalawareness-onscreen-onreadingscreenpermissionlistener-f-sys.md#onreadingscreenpermissionlistener) | 开启屏幕内容访问权限监测，实时返回授权状态。 |
-| [sendControlEvent](arkts-multimodalawareness-onscreen-sendcontrolevent-f-sys.md#sendcontrolevent) | 在需要控制的窗口在桌面上时，在调用[onScreen.getPageContent](arkts-multimodalawareness-onscreen-getpagecontent-f-sys.md#getpagecontent系统接口)后，根据其返回的段落信息，调用该接口发送屏上控制事件。 |
-| [subscribe](arkts-multimodalawareness-onscreen-subscribe-f-sys.md#subscribe) | 开启屏幕内容主动感知，并订阅屏幕感知结果。 |
-| [trigger](arkts-multimodalawareness-onscreen-trigger-f-sys.md#trigger) | 主动触发屏幕内容感知，获取当前屏幕感知结果。 |
-| [unsubscribe](arkts-multimodalawareness-onscreen-unsubscribe-f-sys.md#unsubscribe) | 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。 |
+| [apperceive](arkts-multimodalawareness-onscreen-apperceive-f-sys.md) | 主动触发屏幕内容感知，获取屏幕内容进行快照分析。 |
+| [capture](arkts-multimodalawareness-onscreen-capture-f-sys.md) | 主动触发屏幕内容感知，获取页面信息。 |
+| [getPageContent](arkts-multimodalawareness-onscreen-getpagecontent-f-sys.md) | 在需要抓取内容的窗口在桌面上时，调用该接口以获取屏上内容。 |
+| [interact](arkts-multimodalawareness-onscreen-interact-f-sys.md) | 主动触发屏幕行为交互，实现对界面行为的识别与行为反馈。例如：当capList能力列表为JumpContext时，点击后通过反馈信息精准跳转至指定段落并实现文字高亮。 <br>当capList能力列表为InjectEvent时，点击后执行相应的点击事件。 |
+| [offReadingScreenPermissionListener](arkts-multimodalawareness-onscreen-offreadingscreenpermissionlistener-f-sys.md) | 关闭屏幕内容访问权限监测。 |
+| [onReadingScreenPermissionListener](arkts-multimodalawareness-onscreen-onreadingscreenpermissionlistener-f-sys.md) | 开启屏幕内容访问权限监测，实时返回授权状态。 |
+| [sendControlEvent](arkts-multimodalawareness-onscreen-sendcontrolevent-f-sys.md) | 在需要控制的窗口在桌面上时，在调用[onScreen.getPageContent](arkts-multimodalawareness-onscreen-getpagecontent-f-sys.md)后，根据其返回的段落信息，调用该接口发送屏上控制事件。 |
+| [subscribe](arkts-multimodalawareness-onscreen-subscribe-f-sys.md) | 开启屏幕内容主动感知，并订阅屏幕感知结果。 |
+| [trigger](arkts-multimodalawareness-onscreen-trigger-f-sys.md) | 主动触发屏幕内容感知，获取当前屏幕感知结果。 |
+| [unsubscribe](arkts-multimodalawareness-onscreen-unsubscribe-f-sys.md) | 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。 |
 <!--DelEnd-->
 
 <!--Del-->

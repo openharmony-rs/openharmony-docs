@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSync-enum State--><!--Device-cloudSync-enum State-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -21,10 +17,6 @@ RUNNING = 0
 云文件正在下载中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-State-RUNNING = 0--><!--Device-State-RUNNING = 0-End-->
 
@@ -40,10 +32,6 @@ COMPLETED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-State-COMPLETED = 1--><!--Device-State-COMPLETED = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -58,10 +46,6 @@ FAILED = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-State-FAILED = 2--><!--Device-State-FAILED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -75,10 +59,6 @@ STOPPED = 3
 云文件下载已停止。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-State-STOPPED = 3--><!--Device-State-STOPPED = 3-End-->
 

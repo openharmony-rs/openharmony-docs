@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-enum RebuildType--><!--Device-relationalStore-enum RebuildType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -21,10 +17,6 @@ NONE = 0
 表示数据库未进行重建。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RebuildType-NONE = 0--><!--Device-RebuildType-NONE = 0-End-->
 
@@ -40,10 +32,6 @@ REBUILT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RebuildType-REBUILT = 1--><!--Device-RebuildType-REBUILT = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -54,13 +42,9 @@ REBUILT = 1
 REPAIRED = 2
 ```
 
-表示数据库进行了修复，恢复了未损坏的数据，当前只有向量数据库（在[StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md#storeconfig)中配置vector为true）具备该能力。
+表示数据库进行了修复，恢复了未损坏的数据，当前只有向量数据库（在[StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md)中配置vector为true）具备该能力。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RebuildType-REPAIRED = 2--><!--Device-RebuildType-REPAIRED = 2-End-->
 

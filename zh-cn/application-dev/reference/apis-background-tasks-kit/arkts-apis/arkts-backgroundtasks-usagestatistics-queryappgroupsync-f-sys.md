@@ -1,5 +1,11 @@
 # queryAppGroupSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
+
 ## queryAppGroupSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryAppGroupSync(): int
 查询当前应用的优先级分组，使用同步方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -43,7 +45,7 @@ function queryAppGroupSync(): int
 | [10000005](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { usageStatistics } from '@kit.BackgroundTasksKit';
@@ -61,10 +63,6 @@ function queryAppGroupSync(bundleName: string): int
 查询指定bundleName应用的优先级分组，使用同步方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -102,7 +100,7 @@ function queryAppGroupSync(bundleName: string): int
 | [10000005](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { usageStatistics } from '@kit.BackgroundTasksKit';

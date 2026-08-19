@@ -2,13 +2,11 @@
 
 使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制， 绘制对象可以是形状、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓存区， 然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制， 绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。
 
-**继承/实现关系：** OffscreenCanvasRenderingContext2D extends [CanvasRenderer](arkts-na-canvas-canvasrenderer-c.md#canvasrenderer)
+**继承/实现关系：** OffscreenCanvasRenderingContext2D extends [CanvasRenderer](arkts-na-canvas-canvasrenderer-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class OffscreenCanvasRenderingContext2D--><!--Device-unnamed-export declare class OffscreenCanvasRenderingContext2D-End-->
 
@@ -24,9 +22,7 @@ constructor(width: double, height: double, settings?: RenderingContextSettings, 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,9 +49,7 @@ toDataURL(type?: string, quality?: double): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,9 +80,7 @@ transferToImageBitmap(): ImageBitmap | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

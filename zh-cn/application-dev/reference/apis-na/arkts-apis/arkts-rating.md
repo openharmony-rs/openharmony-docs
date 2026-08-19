@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Rating](arkts-na-rating-rating-f.md#rating) | Defines Rating Component. |
+| [Rating](arkts-na-rating-rating-f.md) | Defines Rating Component. |
 
 ### 接口
 

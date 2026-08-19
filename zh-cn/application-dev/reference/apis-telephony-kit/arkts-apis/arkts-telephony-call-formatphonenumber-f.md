@@ -1,5 +1,11 @@
 # formatPhoneNumber
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## formatPhoneNumber
 
 ```TypeScript
@@ -9,10 +15,6 @@ function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, ca
 格式化电话号码，可设置格式化参数。使用callback异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, callback: AsyncCallback<string>): void--><!--Device-call-function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, callback: AsyncCallback<string>): void-End-->
 
@@ -24,7 +26,7 @@ function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, ca
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
 | options | [NumberFormatOptions](arkts-telephony-call-numberformatoptions-i.md) | 是 | 格式化参数，如国家码。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回格式化电话号码的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回格式化电话号码的结果。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, ca
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -63,10 +65,6 @@ function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): 
 格式化电话号码，可设置格式化参数。使用Promise异步回调。 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): Promise<string>--><!--Device-call-function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): Promise<string>-End-->
 
@@ -95,7 +93,7 @@ function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): 
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -121,10 +119,6 @@ function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>): void--><!--Device-call-function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -134,7 +128,7 @@ function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回格式化电话号码的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回格式化电话号码的结果。 |
 
 **错误码：**
 
@@ -146,7 +140,7 @@ function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>)
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

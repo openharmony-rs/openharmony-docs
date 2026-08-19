@@ -1,5 +1,12 @@
 # @ohos.util.PlainArray
 
+## 导入模块
+
+```TypeScript
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+```
+
 ## 汇总
 
 ### 类

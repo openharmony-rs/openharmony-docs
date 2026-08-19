@@ -1,6 +1,11 @@
 # on_colorChange
 
-## on_colorChange
+## 导入模块
+
+```TypeScript
+```
+
+## on('colorChange')
 
 ```TypeScript
 function on(type: 'colorChange', callback: (colors: Array<RgbaColor>, wallpaperType: WallpaperType) => void): void
@@ -9,8 +14,6 @@ function on(type: 'colorChange', callback: (colors: Array<RgbaColor>, wallpaperT
 订阅壁纸颜色变化结果上报事件。不支持多线程并发调用。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -25,7 +28,7 @@ function on(type: 'colorChange', callback: (colors: Array<RgbaColor>, wallpaperT
 | type | 'colorChange' | 是 |  |
 | callback | (colors: Array&lt;[RgbaColor](arkts-na-wallpaper-rgbacolor-i.md)&gt;, wallpaperType: WallpaperType) =&gt; void | 是 |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

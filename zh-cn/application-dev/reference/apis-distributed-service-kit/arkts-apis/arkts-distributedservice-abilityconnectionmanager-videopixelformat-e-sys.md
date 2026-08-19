@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-abilityConnectionManager-export enum VideoPixelFormat--><!--Device-abilityConnectionManager-export enum VideoPixelFormat-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
@@ -23,10 +19,6 @@ UNKNOWN = -1
 未知格式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ NV12。yuv 420 semiplanar。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-VideoPixelFormat-NV12 = 0--><!--Device-VideoPixelFormat-NV12 = 0-End-->
@@ -67,10 +55,6 @@ NV21 = 1
 NV21。yvu 420 semiplanar。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

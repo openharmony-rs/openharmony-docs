@@ -4,13 +4,15 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-taskpool-class TaskPoolInfo--><!--Device-taskpool-class TaskPoolInfo-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
 
 ## taskInfos
 
@@ -23,10 +25,6 @@ taskInfos: TaskInfo[]
 **类型：** TaskInfo[]
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ threadInfos: ThreadInfo[]
 **类型：** [ThreadInfo](arkts-arkts-taskpool-threadinfo-c.md)[]
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -1,18 +1,20 @@
 # getControlledAppLists
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## getControlledAppLists
 
 ```TypeScript
 function getControlledAppLists(): Promise<Array<string>>
 ```
 
-获取当前用户受企业DLP控制的应用程序列表。使用Promise异步回调。 > **说明：** > > 该接口仅能查询通过 > [setControlledAppLists](arkts-dataprotection-dlppermission-setcontrolledapplists-f.md#setcontrolledapplists) > 设置的受企业DLP控制的应用程序列表。
+获取当前用户受企业DLP控制的应用程序列表。使用Promise异步回调。 > **说明：** > > 该接口仅能查询通过 > [setControlledAppLists](arkts-dataprotection-dlppermission-setcontrolledapplists-f.md) > 设置的受企业DLP控制的应用程序列表。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.DLP_POLICY_MANAGER
 
@@ -36,7 +38,7 @@ function getControlledAppLists(): Promise<Array<string>>
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

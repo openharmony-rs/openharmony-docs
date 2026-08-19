@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum CloudMediaAssetTaskStatus--><!--Device-photoAccessHelper-enum CloudMediaAssetTaskStatus-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ DOWNLOADING = 0
 当前任务下载中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudMediaAssetTaskStatus-DOWNLOADING = 0--><!--Device-CloudMediaAssetTaskStatus-DOWNLOADING = 0-End-->
 
@@ -44,10 +36,6 @@ PAUSED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudMediaAssetTaskStatus-PAUSED = 1--><!--Device-CloudMediaAssetTaskStatus-PAUSED = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ IDLE = 2
 当前无下载任务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudMediaAssetTaskStatus-IDLE = 2--><!--Device-CloudMediaAssetTaskStatus-IDLE = 2-End-->
 

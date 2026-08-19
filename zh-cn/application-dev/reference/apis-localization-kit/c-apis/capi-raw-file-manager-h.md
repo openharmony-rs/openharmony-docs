@@ -56,7 +56,7 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 | 类型 | 说明 |
 | -- | -- |
-| [NativeResourceManager *](capi-rawfile-nativeresourcemanager.md) | 返回NativeResourceManager对象的指针。若初始化失败，返回NULL，可能原因为参数env或jsResMgr无效。<br>     <br>该指针由此函数分配内存，使用完后须调用[OH_ResourceManager_ReleaseNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_releasenativeresourcemanager)释放。 |
+| [NativeResourceManager *](capi-rawfile-nativeresourcemanager.md) | 返回NativeResourceManager对象的指针。若初始化失败，返回NULL，可能原因为参数env或jsResMgr无效。      <br>该指针由此函数分配内存，使用完后须调用[OH_ResourceManager_ReleaseNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_releasenativeresourcemanager)释放。 |
 
 ### OH_ResourceManager_ReleaseNativeResourceManager()
 

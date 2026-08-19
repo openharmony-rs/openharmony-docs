@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [XComponent](arkts-na-xcomponent-xcomponent-f.md#xcomponent) | 定义XComponent组件。要求在组件属性设置开始时调用setXComponentOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
+| [XComponent](arkts-na-xcomponent-xcomponent-f.md) | 定义XComponent组件。要求在组件属性设置开始时调用setXComponentOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
 
 ### 类
 

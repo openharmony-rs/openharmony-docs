@@ -1,5 +1,11 @@
 # setDefaultSmsSlotId（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
+
 ## setDefaultSmsSlotId
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setDefaultSmsSlotId(slotId: int, callback: AsyncCallback<void>): void
 设置发送短信的默认SIM卡槽ID。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -27,7 +29,7 @@ function setDefaultSmsSlotId(slotId: int, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | int | 是 | SIM卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2<br/>- -1：清除默认配置 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置发送短信的默认SIM卡槽ID的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设置发送短信的默认SIM卡槽ID的回调函数。 |
 
 **错误码：**
 
@@ -42,7 +44,7 @@ function setDefaultSmsSlotId(slotId: int, callback: AsyncCallback<void>): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';
@@ -63,10 +65,6 @@ function setDefaultSmsSlotId(slotId: int): Promise<void>
 设置发送短信的默认SIM卡槽ID。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -101,7 +99,7 @@ function setDefaultSmsSlotId(slotId: int): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';

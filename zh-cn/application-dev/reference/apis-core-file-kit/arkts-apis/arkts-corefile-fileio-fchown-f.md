@@ -1,5 +1,10 @@
 # fchown
 
+## 导入模块
+
+```TypeScript
+```
+
 ## fchown
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function fchown(fd: number, uid: number, gid: number): Promise<void>
 基于文件描述符改变文件所有者，使用Promise异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -43,8 +46,6 @@ declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCal
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCallback<void>): void-End-->
@@ -58,5 +59,5 @@ declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCal
 | fd | number | 是 | 待改变文件的文件描述符。 |
 | uid | number | 是 | 文件所有者的UID。 |
 | gid | number | 是 | 文件所有组的GID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步改变文件所有者之后的回调。 |
 

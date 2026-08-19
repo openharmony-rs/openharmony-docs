@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export enum SmsShortCodeType--><!--Device-sms-export enum SmsShortCodeType-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -23,10 +19,6 @@ SMS_SHORT_CODE_TYPE_UNKNOWN = -1
 未知短信短码类型
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_UNKNOWN = -1-End-->
 
@@ -44,10 +36,6 @@ SMS_SHORT_CODE_TYPE_NOT_PREMIUM = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_NOT_PREMIUM = 0--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_NOT_PREMIUM = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -63,10 +51,6 @@ SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1
 潜在付费短码类型
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1--><!--Device-SmsShortCodeType-SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM = 1-End-->
 

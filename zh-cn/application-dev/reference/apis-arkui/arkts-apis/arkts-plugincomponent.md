@@ -2,6 +2,12 @@
 
 插件组件管理器，提供插件组件的请求、推送和事件监听等管理能力。
 
+## 导入模块
+
+```TypeScript
+import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 命名空间

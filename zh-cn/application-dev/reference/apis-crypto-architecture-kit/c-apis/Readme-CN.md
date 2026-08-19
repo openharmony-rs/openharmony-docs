@@ -1,4 +1,4 @@
-# CAPI<!--c-crypto-architecture-kit-->
+# C API<!--c-crypto-architecture-kit-->
 
 - 头文件
     - [crypto_sym_key.h](capi-crypto-sym-key-h.md)

@@ -4,13 +4,9 @@
 export type Position3 = Vec3
 ```
 
-3D位置信息, 单位为世界坐标系下的场景单位（例如cm、m、km等）.
+用于表示3维空间中物体的位置。 类型为三维向量，单位为世界坐标系下的场景单位（比如cm、m、km等），可取任意值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export type Position3 = Vec3--><!--Device-unnamed-export type Position3 = Vec3-End-->
 

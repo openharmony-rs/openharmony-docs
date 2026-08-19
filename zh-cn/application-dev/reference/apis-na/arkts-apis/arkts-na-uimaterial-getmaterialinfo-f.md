@@ -1,5 +1,10 @@
 # getMaterialInfo
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getMaterialInfo
 
 ```TypeScript
@@ -10,9 +15,7 @@ export function getMaterialInfo(): MaterialInfo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,5 +27,5 @@ export function getMaterialInfo(): MaterialInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [MaterialInfo](arkts-na-uimaterial-materialinfo-i.md) | 返回当前应用的材质配置信息，包含材质使能状态和材质类型。 |
+| [MaterialInfo](../../apis-arkui/arkts-apis/arkts-arkui-uimaterial-materialinfo-i.md) | 返回当前应用的材质配置信息，包含材质使能状态和材质类型。 |
 

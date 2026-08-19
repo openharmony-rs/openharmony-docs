@@ -1,5 +1,11 @@
 # authUkeyPin（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## authUkeyPin
 
 ```TypeScript
@@ -9,10 +15,6 @@ function authUkeyPin(resourceId: string, params: Array<HuksExternalCryptoParam>)
 PIN码认证。使用Promise异步回调。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 <!--Device-huksExternalCrypto-function authUkeyPin(resourceId: string, params: Array<HuksExternalCryptoParam>): Promise<void>--><!--Device-huksExternalCrypto-function authUkeyPin(resourceId: string, params: Array<HuksExternalCryptoParam>): Promise<void>-End-->
 
@@ -24,8 +26,8 @@ PIN码认证。使用Promise异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | Ukey中某容器的资源ID，可通过 [导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog) 获取，其结果中附带resourceId。 |
-| params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | 是 | 操作时需传入的参数，必选TAG： [HUKS_EXT_CRYPTO_TAG_UKEY_PIN](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#huksexternalcryptotagtype) 。 |
+| resourceId | string | 是 | Ukey中某容器的资源ID，可通过 [导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md) 获取，其结果中附带resourceId。 |
+| params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | 是 | 操作时需传入的参数，必选TAG： [HUKS_EXT_CRYPTO_TAG_UKEY_PIN](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md) 。 |
 
 **返回值：**
 
@@ -50,7 +52,7 @@ PIN码认证。使用Promise异步回调。
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

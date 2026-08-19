@@ -1,14 +1,12 @@
 # BadgeParamWithNumber
 
-BadgeParamWithNumber继承自[BadgeParam](arkts-na-badge-badgeparam-i.md#badgeparam)，具有BadgeParam的全部属性。
+BadgeParamWithNumber继承自[BadgeParam](arkts-na-badge-badgeparam-i.md)，具有BadgeParam的全部属性。
 
-**继承/实现关系：** BadgeParamWithNumber extends [BadgeParam](arkts-na-badge-badgeparam-i.md#badgeparam)
+**继承/实现关系：** BadgeParamWithNumber extends [BadgeParam](arkts-na-badge-badgeparam-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface BadgeParamWithNumber--><!--Device-unnamed-export declare interface BadgeParamWithNumber-End-->
 
@@ -26,9 +24,7 @@ count: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,9 +46,7 @@ maxCount?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

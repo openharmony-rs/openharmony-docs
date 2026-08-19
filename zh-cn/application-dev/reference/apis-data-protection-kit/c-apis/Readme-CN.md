@@ -1,4 +1,4 @@
-# CAPI<!--c-data-protection-kit-->
+# C API<!--c-data-protection-kit-->
 
 - 头文件
     - [dlp_permission_api.h](capi-dlp-permission-api-h.md)

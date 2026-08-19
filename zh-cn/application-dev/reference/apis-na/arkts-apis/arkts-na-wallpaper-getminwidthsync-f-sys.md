@@ -1,5 +1,10 @@
 # getMinWidthSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getMinWidthSync
 
 ```TypeScript
@@ -9,10 +14,6 @@ function getMinWidthSync(): int
 获取壁纸的最小宽度值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-wallpaper-function getMinWidthSync(): int--><!--Device-wallpaper-function getMinWidthSync(): int-End-->
 
@@ -32,7 +33,7 @@ function getMinWidthSync(): int
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

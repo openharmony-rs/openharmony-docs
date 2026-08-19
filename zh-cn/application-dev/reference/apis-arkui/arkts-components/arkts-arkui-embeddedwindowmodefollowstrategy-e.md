@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum EmbeddedWindowModeFollowStrategy--><!--Device-unnamed-declare enum EmbeddedWindowModeFollowStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ FOLLOW_HOST_WINDOW_MODE = 0
 表示窗口模式跟随宿主。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE = 1
 表示窗口模式跟随EmbeddedUIExtensionAbility。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

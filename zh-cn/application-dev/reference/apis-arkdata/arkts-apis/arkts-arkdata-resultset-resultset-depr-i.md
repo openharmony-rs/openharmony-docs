@@ -1,14 +1,12 @@
 # ResultSet
 
-结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。 > **说明：** > > 从API Version 9开始，该接口不再维护，推荐使用新接口[ResultSet](arkts-arkdata-relationalstore-resultset-i.md#resultset)。
+结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。 > **说明：** > > 从API Version 9开始，该接口不再维护，推荐使用新接口[ResultSet](arkts-arkdata-relationalstore-resultset-i.md)。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [relationalStore](arkts-data-relationalstore.md#ohosdatarelationalstore)
+**替代接口：** [relationalStore](arkts-data-relationalstore.md)
 
 <!--Device-unnamed-export interface ResultSet--><!--Device-unnamed-export interface ResultSet-End-->
 
@@ -24,8 +22,6 @@ close(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** close
@@ -34,7 +30,7 @@ close(): void
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicatesClose = new dataRdb.RdbPredicates("EMPLOYEE");
@@ -56,8 +52,6 @@ getBlob(columnIndex: number): Uint8Array
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** getBlob
@@ -78,7 +72,7 @@ getBlob(columnIndex: number): Uint8Array
 | --- | --- |
 | Uint8Array | 以字节数组的形式返回指定列的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
@@ -93,8 +87,6 @@ getColumnIndex(columnName: string): number
 根据指定的列名获取列索引。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -116,7 +108,7 @@ getColumnIndex(columnName: string): number
 | --- | --- |
 | number | 返回指定列的索引。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const success = resultSet.goToFirstRow();
@@ -138,8 +130,6 @@ getColumnName(columnIndex: number): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** getColumnName
@@ -160,7 +150,7 @@ getColumnName(columnIndex: number): string
 | --- | --- |
 | string | 返回指定列的名称。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const id = resultSet.getColumnName(0);
@@ -177,8 +167,6 @@ getDouble(columnIndex: number): number
 以double形式获取当前行中指定列的值。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -200,7 +188,7 @@ getDouble(columnIndex: number): number
 | --- | --- |
 | number | 以double形式返回指定列的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
@@ -215,8 +203,6 @@ getLong(columnIndex: number): number
 以Long形式获取当前行中指定列的值。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -238,7 +224,7 @@ getLong(columnIndex: number): number
 | --- | --- |
 | number | 以Long形式返回指定列的值。<br/>该接口支持的数据范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议使用 getDouble。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
@@ -253,8 +239,6 @@ getString(columnIndex: number): string
 以字符串形式获取当前行中指定列的值。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -276,7 +260,7 @@ getString(columnIndex: number): string
 | --- | --- |
 | string | 以字符串形式返回指定列的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
@@ -291,8 +275,6 @@ goTo(offset: number): boolean
 向前或向后移至结果集的指定行，相对于其当前位置偏移。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -314,7 +296,7 @@ goTo(offset: number): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicatesgoto = new dataRdb.RdbPredicates("EMPLOYEE");
@@ -337,8 +319,6 @@ goToFirstRow(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** goToFirstRow
@@ -353,7 +333,7 @@ goToFirstRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集到第一行，则为true；否则为false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicatesgoFirst = new dataRdb.RdbPredicates("EMPLOYEE");
@@ -376,8 +356,6 @@ goToLastRow(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** goToLastRow
@@ -392,7 +370,7 @@ goToLastRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集到最后一行，则为true；否则为false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicatesgoLast = new dataRdb.RdbPredicates("EMPLOYEE");
@@ -415,8 +393,6 @@ goToNextRow(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** goToNextRow
@@ -431,7 +407,7 @@ goToNextRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集到下一行，则为true；否则为false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicatesgoNext = new dataRdb.RdbPredicates("EMPLOYEE");
@@ -454,8 +430,6 @@ goToPreviousRow(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** goToPreviousRow
@@ -470,7 +444,7 @@ goToPreviousRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集到上一行，则为true；否则为false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicatesgoPrev = new dataRdb.RdbPredicates("EMPLOYEE");
@@ -493,8 +467,6 @@ goToRow(position: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** goToRow
@@ -515,7 +487,7 @@ goToRow(position: number): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicatesgotorow = new dataRdb.RdbPredicates("EMPLOYEE");
@@ -538,8 +510,6 @@ isColumnNull(columnIndex: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** isColumnNull
@@ -560,7 +530,7 @@ isColumnNull(columnIndex: number): boolean
 | --- | --- |
 | boolean | 如果当前行中指定列的值为null，则返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const isColumnNull = resultSet.isColumnNull(resultSet.getColumnIndex("CODES"));
@@ -577,8 +547,6 @@ columnCount: number 获取结果集中的列数。
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -600,8 +568,6 @@ columnNames: Array&lt;string&gt; 获取结果集中所有列的名称。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** columnNames
@@ -621,8 +587,6 @@ isAtFirstRow: boolean 检查结果集是否位于第一行。
 **类型：** boolean
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -644,8 +608,6 @@ isAtLastRow: boolean 检查结果集是否位于最后一行。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** isAtLastRow
@@ -665,8 +627,6 @@ isClosed: boolean 检查当前结果集是否关闭。
 **类型：** boolean
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -688,8 +648,6 @@ isEnded: boolean 检查结果集是否位于最后一行之后。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** isEnded
@@ -709,8 +667,6 @@ isStarted: boolean 检查指针是否移动过。
 **类型：** boolean
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -732,8 +688,6 @@ rowCount: number 获取结果集中的行数。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** rowCount
@@ -753,8 +707,6 @@ rowIndex: number 获取结果集当前行的索引。
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

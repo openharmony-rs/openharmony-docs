@@ -4,15 +4,20 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
-**替代接口：** [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md#iauthcallback)
+**替代接口：** [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)
 
 <!--Device-userAuth-interface AuthEvent--><!--Device-userAuth-interface AuthEvent-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## callback
 
@@ -23,8 +28,6 @@ callback(result: EventInfo): void
 通过该回调获取认证结果信息或认证过程中的提示信息。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -40,7 +43,7 @@ callback(result: EventInfo): void
 | --- | --- | --- | --- |
 | result | EventInfo | 是 | 返回的认证结果信息或提示信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

@@ -1,20 +1,21 @@
 # RichEditorController
 
-RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md#richeditorbasecontroller)。 > **说明：** > > 当内容的长度超过组件显示区域的高度时，调用插入接口（例如[addTextSpan](#addtextspan)、 > [addImageSpan](#addimagespan)、[addBuilderSpan](#addbuilderspan) > 、[addSymbolSpan](#addsymbolspan)），组件会自动滚动内容使得插入内容末尾可见。
+RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md)。 > **说明：** > > 当内容的长度超过组件显示区域的高度时，调用插入接口（例如[addTextSpan](#addtextspan)、 > [addImageSpan](#addimagespan)、[addBuilderSpan](#addbuilderspan) > 、[addSymbolSpan](#addsymbolspan)），组件会自动滚动内容使得插入内容末尾可见。
 
 ## 导入对象 ```ts controller: RichEditorController = new RichEditorController(); ```
 
-**继承/实现关系：** RichEditorController extends [RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md#richeditorbasecontroller)
+**继承/实现关系：** RichEditorController extends [RichEditorBaseController](arkts-arkui-richeditorbasecontroller-c.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class RichEditorController--><!--Device-unnamed-declare class RichEditorController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## addBuilderSpan
 
@@ -22,13 +23,9 @@ RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-r
 addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanOptions): number
 ```
 
-在RichEditor中添加用户自定义布局（BuilderSpan）。 > **说明：** > > - RichEditor组件添加占位Span，占位Span调用系统的measure方法计算真实的长宽和位置。 > > - 可通过[RichEditorBuilderSpanOptions](arkts-arkui-richeditorbuilderspanoptions-i.md#richeditorbuilderspanoptions)设置此builder在RichEditor中的index（一个文字为一个单位）。 > > - 此占位Span不可获焦，支持拖拽，支持部分通用属性，占位、删除等能力等同于ImageSpan，长度视为一个文字。 > > - 支持通过bindSelectionMenu设置自定义菜单。 > > - 不支持通过[getSpans](#getspans)，[getSelection](#getselection)， > onSelect，aboutToDelete获取 > builderSpan信息。 > > - 不支持通过[updateSpanStyle](#updatespanstyle)， > [updateParagraphStyle](#updateparagraphstyle)等方式更新builder。 > > - 对此builder节点进行复制或粘贴不生效。 > > - builder的布局约束由RichEditor传入，如果builder里最外层组件不设置大小，则会用RichEditor的大小作为maxSize。 > > - builder的手势相关事件机制与通用手势事件相同，如果builder中未设置透传，则仅有builder中的子组件响应。 > > - 如果组件光标闪烁，插入后光标位置更新为新插入builder的后面。 > > - 对[addBuilderSpan](#addbuilderspan)的节点文本， > enableDataDetector、 > dataDetectorConfig、 > enableSelectedDataDetector功能不会生效。 > 通用属性仅支持size、padding、margin、 > aspectRatio、borderStyle、 > borderWidth、borderColor、 > borderRadius、 > backgroundColor、 > backgroundBlurStyle > 、opacity、 > blur、 > backdropBlur、 > shadow、 > grayscale、 > brightness、saturate > 、contrast、 > invert、 > sepia、 > hueRotate、 > colorBlend、 > linearGradientBlur、 > clip、mask、 > foregroundBlurStyle > 、accessibilityGroup、 > accessibilityText、 > accessibilityDescription、 > accessibilityLevel、 > sphericalEffect、 > lightUpEffect、 > pixelStretchEffect。
+在RichEditor中添加用户自定义布局（BuilderSpan）。 > **说明：** > > - RichEditor组件添加占位Span，占位Span调用系统的measure方法计算真实的长宽和位置。 > > - 可通过[RichEditorBuilderSpanOptions](arkts-arkui-richeditorbuilderspanoptions-i.md)设置此builder在RichEditor中的index（一个文字为一个单位）。 > > - 此占位Span不可获焦，支持拖拽，支持部分通用属性，占位、删除等能力等同于ImageSpan，长度视为一个文字。 > > - 支持通过bindSelectionMenu设置自定义菜单。 > > - 不支持通过[getSpans](#getspans)，[getSelection](#getselection)， > onSelect，aboutToDelete获取 > builderSpan信息。 > > - 不支持通过[updateSpanStyle](#updatespanstyle)， > [updateParagraphStyle](#updateparagraphstyle)等方式更新builder。 > > - 对此builder节点进行复制或粘贴不生效。 > > - builder的布局约束由RichEditor传入，如果builder里最外层组件不设置大小，则会用RichEditor的大小作为maxSize。 > > - builder的手势相关事件机制与通用手势事件相同，如果builder中未设置透传，则仅有builder中的子组件响应。 > > - 如果组件光标闪烁，插入后光标位置更新为新插入builder的后面。 > > - 对[addBuilderSpan](#addbuilderspan)的节点文本， > enableDataDetector、 > dataDetectorConfig、 > enableSelectedDataDetector功能不会生效。 > 通用属性仅支持size、padding、margin、 > aspectRatio、borderStyle、 > borderWidth、borderColor、 > borderRadius、 > backgroundColor、 > backgroundBlurStyle > 、opacity、 > blur、 > backdropBlur、 > shadow、 > grayscale、 > brightness、saturate > 、contrast、 > invert、 > sepia、 > hueRotate、 > colorBlend、 > linearGradientBlur、 > clip、mask、 > foregroundBlurStyle > 、accessibilityGroup、 > accessibilityText、 > accessibilityDescription、 > accessibilityLevel、 > sphericalEffect、 > lightUpEffect、 > pixelStretchEffect。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -61,10 +58,6 @@ addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImageSpanOptions
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -95,10 +88,6 @@ addSymbolSpan(value: Resource, options?: RichEditorSymbolSpanOptions ): number
 在RichEditor中添加图标小符号（SymbolSpan）。如果组件光标闪烁，插入后光标位置更新为新插入SymbolSpan的后面。 SymbolSpan暂不支持手势、复制操作和拖拽处理。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -131,10 +120,6 @@ addTextSpan(content: ResourceStr, options?: RichEditorTextSpanOptions): number
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -166,10 +151,6 @@ deleteSpans(value?: RichEditorRange): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -193,10 +174,6 @@ fromStyledString(value: StyledString): Array<RichEditorSpan>
 将属性字符串转换为span信息。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -234,10 +211,6 @@ getParagraphs(value?: RichEditorRange): Array<RichEditorParagraphResult>
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -268,10 +241,6 @@ getSelection(): RichEditorSelection
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -295,10 +264,6 @@ getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorT
 获取span信息。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -329,10 +294,6 @@ toStyledString(value: RichEditorRange): StyledString
 将给定范围的组件内容转换成属性字符串，SymbolSpan和BuilderSpan不支持转换。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -370,10 +331,6 @@ updateParagraphStyle(value: RichEditorParagraphStyleOptions): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -397,10 +354,6 @@ updateSpanStyle(value: RichEditorUpdateTextSpanStyleOptions | RichEditorUpdateIm
 更新文本、图片或SymbolSpan样式。 若只更新了一个Span的部分内容，则会根据更新部分、未更新部分将该Span拆分为多个Span。当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。 使用该接口更新文本、图片或SymbolSpan样式时默认不会关闭自定义文本选择菜单。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

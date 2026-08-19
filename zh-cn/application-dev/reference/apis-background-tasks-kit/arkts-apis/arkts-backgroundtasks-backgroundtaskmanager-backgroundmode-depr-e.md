@@ -4,11 +4,9 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-e.md#backgroundmode)
+**替代接口：** [BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-e.md)
 
 <!--Device-backgroundTaskManager-export enum BackgroundMode--><!--Device-backgroundTaskManager-export enum BackgroundMode-End-->
 
@@ -23,8 +21,6 @@ DATA_TRANSFER = 1
 数据传输。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -44,8 +40,6 @@ AUDIO_PLAYBACK = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** AUDIO_PLAYBACK
@@ -63,8 +57,6 @@ AUDIO_RECORDING = 3
 录音。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -84,8 +76,6 @@ LOCATION = 4
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** LOCATION
@@ -103,8 +93,6 @@ BLUETOOTH_INTERACTION = 5
 蓝牙相关。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -124,8 +112,6 @@ MULTI_DEVICE_CONNECTION = 6
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** MULTI_DEVICE_CONNECTION
@@ -143,8 +129,6 @@ TASK_KEEPING = 9
 计算任务（仅在特定设备生效）。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

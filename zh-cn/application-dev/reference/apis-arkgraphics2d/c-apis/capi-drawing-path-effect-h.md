@@ -78,7 +78,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateComposePathEffect(OH_Drawing_PathEffect*
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。<br>     <br>如果返回nullptr，则创建失败，原因是outer或者inner为nullptr。 |
+| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。      <br>如果返回nullptr，则创建失败，原因是outer或者inner为nullptr。 |
 
 ### OH_Drawing_CreateCornerPathEffect()
 
@@ -102,7 +102,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateCornerPathEffect(float radius)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。<br>     <br>如果返回nullptr，则创建失败，原因是radius小于等于0。 |
+| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。      <br>如果返回nullptr，则创建失败，原因是radius小于等于0。 |
 
 ### OH_Drawing_CreateDashPathEffect()
 
@@ -180,7 +180,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreatePathDashEffect(const OH_Drawing_Path* pa
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。<br>     <br>如果返回nullptr，则创建失败，原因是path为nullptr或者advance小于等于0。 |
+| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。      <br>如果返回nullptr，则创建失败，原因是path为nullptr或者advance小于等于0。 |
 
 ### OH_Drawing_CreateSumPathEffect()
 
@@ -205,7 +205,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreateSumPathEffect(OH_Drawing_PathEffect* fir
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。<br>     <br>如果返回nullptr，则创建失败，原因是firstPathEffect或者secondPathEffect为nullptr。 |
+| [OH_Drawing_PathEffect*](capi-drawing-oh-drawing-patheffect.md) | 返回指向创建的路径效果对象[OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md)的指针。      <br>如果返回nullptr，则创建失败，原因是firstPathEffect或者secondPathEffect为nullptr。 |
 
 ### OH_Drawing_PathEffectDestroy()
 

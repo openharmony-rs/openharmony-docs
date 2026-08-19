@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-interface Position--><!--Device-display-interface Position-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
 
 ## x
 
@@ -23,10 +25,6 @@ x: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Position-x: long--><!--Device-Position-x: long-End-->
 
@@ -43,10 +41,6 @@ y: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Position-y: long--><!--Device-Position-y: long-End-->
 

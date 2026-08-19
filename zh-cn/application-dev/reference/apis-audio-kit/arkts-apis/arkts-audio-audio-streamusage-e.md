@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum StreamUsage--><!--Device-audio-enum StreamUsage-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -21,10 +17,6 @@ STREAM_USAGE_UNKNOWN = 0
 未知类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,11 +34,9 @@ STREAM_USAGE_MEDIA = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
-**替代接口：** [STREAM_USAGE_AUDIOBOOK](#streamusageaudiobook)
+**替代接口：** [STREAM_USAGE_AUDIOBOOK](#stream_usage_audiobook)
 
 <!--Device-StreamUsage-STREAM_USAGE_MEDIA = 1--><!--Device-StreamUsage-STREAM_USAGE_MEDIA = 1-End-->
 
@@ -61,10 +51,6 @@ STREAM_USAGE_MUSIC = 1
 音乐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +68,6 @@ VoIP语音通话（该流类型起播时，会触发开启3A算法）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StreamUsage-STREAM_USAGE_VOICE_COMMUNICATION = 2--><!--Device-StreamUsage-STREAM_USAGE_VOICE_COMMUNICATION = 2-End-->
@@ -101,10 +83,6 @@ STREAM_USAGE_VOICE_ASSISTANT = 3
 语音播报。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +100,6 @@ STREAM_USAGE_ALARM = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StreamUsage-STREAM_USAGE_ALARM = 4--><!--Device-StreamUsage-STREAM_USAGE_ALARM = 4-End-->
@@ -141,10 +115,6 @@ STREAM_USAGE_VOICE_MESSAGE = 5
 语音消息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -162,11 +132,9 @@ STREAM_USAGE_NOTIFICATION_RINGTONE = 6
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
-**替代接口：** [STREAM_USAGE_RINGTONE](#streamusageringtone)
+**替代接口：** [STREAM_USAGE_RINGTONE](#stream_usage_ringtone)
 
 <!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION_RINGTONE = 6--><!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION_RINGTONE = 6-End-->
 
@@ -181,10 +149,6 @@ STREAM_USAGE_RINGTONE = 6
 铃声。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -202,10 +166,6 @@ STREAM_USAGE_NOTIFICATION = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION = 7--><!--Device-StreamUsage-STREAM_USAGE_NOTIFICATION = 7-End-->
@@ -221,10 +181,6 @@ STREAM_USAGE_ACCESSIBILITY = 8
 无障碍。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -242,10 +198,6 @@ STREAM_USAGE_MOVIE = 10
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StreamUsage-STREAM_USAGE_MOVIE = 10--><!--Device-StreamUsage-STREAM_USAGE_MOVIE = 10-End-->
@@ -261,10 +213,6 @@ STREAM_USAGE_GAME = 11
 游戏。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -282,10 +230,6 @@ STREAM_USAGE_AUDIOBOOK = 12
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StreamUsage-STREAM_USAGE_AUDIOBOOK = 12--><!--Device-StreamUsage-STREAM_USAGE_AUDIOBOOK = 12-End-->
@@ -302,10 +246,6 @@ STREAM_USAGE_NAVIGATION = 13
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StreamUsage-STREAM_USAGE_NAVIGATION = 13--><!--Device-StreamUsage-STREAM_USAGE_NAVIGATION = 13-End-->
@@ -321,10 +261,6 @@ STREAM_USAGE_VIDEO_COMMUNICATION = 17
 VoIP视频通话（该流类型起播时，会触发开启3A算法）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

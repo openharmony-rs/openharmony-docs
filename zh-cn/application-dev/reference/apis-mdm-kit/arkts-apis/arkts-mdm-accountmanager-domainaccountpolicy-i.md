@@ -4,13 +4,15 @@
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 <!--Device-accountManager-interface DomainAccountPolicy--><!--Device-accountManager-interface DomainAccountPolicy-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+```
 
 ## authenticationValidityPeriod
 
@@ -23,10 +25,6 @@ authenticationValidityPeriod?: number
 **类型：** number
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ passwordExpirationNotification?: number
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DomainAccountPolicy-passwordExpirationNotification?: number--><!--Device-DomainAccountPolicy-passwordExpirationNotification?: number-End-->
@@ -67,10 +61,6 @@ passwordValidityPeriod?: number
 **类型：** number
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -24,13 +24,11 @@ struct OhosImageSourceUpdateData {...}
 | size_t bufferSize = 0 |  |
 | uint32_t offset = 0 |  |
 | uint32_t updateLength = 0 |  |
-| int8_t isCompleted = 0;
-#else |  |
+| int8_t isCompleted = 0; #else |  |
 | uint8_t* buffer |  |
 | size_t bufferSize |  |
 | uint32_t offset |  |
 | uint32_t updateLength |  |
-| int8_t isCompleted;
-#endif |  |
+| int8_t isCompleted; #endif |  |
 
 

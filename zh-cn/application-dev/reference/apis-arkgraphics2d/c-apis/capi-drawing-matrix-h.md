@@ -253,7 +253,7 @@ bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果设置成功，则返回true；如果设置失败，则返回false。特殊情况：<br>     <br>如果源矩形src的宽高任意一个小于等于0，则返回false，并将矩阵设置为单位矩阵；<br>     <br>如果目标矩形dst的宽高任意一个小于等于0，则返回true，并将矩阵设置为除透视缩放系数为1外其余值皆为0的矩阵。 |
+| bool | 如果设置成功，则返回true；如果设置失败，则返回false。特殊情况：      <br>如果源矩形src的宽高任意一个小于等于0，则返回false，并将矩阵设置为单位矩阵；      <br>如果目标矩形dst的宽高任意一个小于等于0，则返回true，并将矩阵设置为除透视缩放系数为1外其余值皆为0的矩阵。 |
 
 ### OH_Drawing_MatrixPreRotate()
 
@@ -442,7 +442,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixGetAll(OH_Drawing_Matrix* matrix, float va
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示成功获取矩阵的所有元素值。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示matrix或value为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回错误码。      <br>返回OH_DRAWING_SUCCESS，表示成功获取矩阵的所有元素值。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示matrix或value为NULL。 |
 
 ### OH_Drawing_MatrixPreConcat()
 
@@ -467,7 +467,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示成功执行左乘方法。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示a或b为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回错误码。      <br>返回OH_DRAWING_SUCCESS，表示成功执行左乘方法。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示a或b为NULL。 |
 
 ### OH_Drawing_MatrixGetValue()
 
@@ -728,7 +728,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixIsAffine(const OH_Drawing_Matrix* matrix, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix或isAffine为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix或isAffine为NULL。 |
 
 ### OH_Drawing_MatrixPreSkew()
 
@@ -756,7 +756,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixPreSkew(OH_Drawing_Matrix* matrix, float k
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix为NULL。 |
 
 ### OH_Drawing_MatrixRectStaysRect()
 
@@ -781,7 +781,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixRectStaysRect(const OH_Drawing_Matrix* mat
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix或isRectStaysRect为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix或isRectStaysRect为NULL。 |
 
 ### OH_Drawing_MatrixSetSinCos()
 
@@ -809,7 +809,7 @@ OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示matrix为NULL。 |
 
 ### OH_Drawing_MatrixDestroy()
 

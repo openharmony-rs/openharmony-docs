@@ -4,10 +4,6 @@ Indicates the contact types.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sim-export enum ContactType--><!--Device-sim-export enum ContactType-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
@@ -23,10 +19,6 @@ GENERAL_CONTACT = 1
 Indicates the common contact number.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContactType-GENERAL_CONTACT = 1--><!--Device-ContactType-GENERAL_CONTACT = 1-End-->
 
@@ -44,10 +36,6 @@ Indicates the fixed dialing number.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContactType-FIXED_DIALING = 2--><!--Device-ContactType-FIXED_DIALING = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
@@ -63,10 +51,6 @@ SDN_DIALING = 3
 业务拨号号码。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-ContactType-SDN_DIALING = 3--><!--Device-ContactType-SDN_DIALING = 3-End-->
 

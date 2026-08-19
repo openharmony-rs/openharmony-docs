@@ -173,14 +173,14 @@ typedef OH_Archive_ProgressType (*OH_Archive_ProgressHandlerWithData)(int32_t pr
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t progress | 处理进度百分比，取值范围为[0, 100]。 |
+| int32_t progress | 处理进度百分比，取值范围为[0, 100]。 |
 | void \*userData | 指向用户自定义数据的指针，在调用回调时传入。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Archive_ProgressType](capi-oh-archive-h.md#oh_archive_progresstype) | OH_ARCHIVE_PROGRESS_CONTINUE - 继续当前压缩/解压缩操作。<br>         OH_ARCHIVE_PROGRESS_CANCEL - 取消当前压缩/解压缩操作。 |
+| [OH_Archive_ProgressType](capi-oh-archive-h.md#oh_archive_progresstype) | OH_ARCHIVE_PROGRESS_CONTINUE - 继续当前压缩/解压缩操作。\n          OH_ARCHIVE_PROGRESS_CANCEL - 取消当前压缩/解压缩操作。 |
 
 ### OH_Archive_Stream_OutputHandler()
 
@@ -199,7 +199,7 @@ typedef uint64_t (*OH_Archive_Stream_OutputHandler)(const void* data, uint64_t s
 | 参数项 | 描述 |
 | -- | -- |
 | void\* userData | 用户自定义上下文，将在回调中传回。 |
-| (const void\* data | 指向压缩数据的指针。 |
+| const void\* data | 指向压缩数据的指针。 |
 | uint64_t size | 压缩数据的长度。 |
 
 **返回：**

@@ -1,5 +1,11 @@
 # partition（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { volumeManager } from '@kit.CoreFileKit';
+```
+
 ## partition
 
 ```TypeScript
@@ -9,10 +15,6 @@ function partition(diskId: string, type: int, callback: AsyncCallback<void>): vo
 对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。 不支持对光盘进行分区。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MOUNT_FORMAT_MANAGER
 
@@ -28,7 +30,7 @@ function partition(diskId: string, type: int, callback: AsyncCallback<void>): vo
 | --- | --- | --- | --- |
 | diskId | string | 是 | 卷设备所属的磁盘id。 |
 | type | int | 是 | 分区类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 对磁盘设备进行分区。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 对磁盘设备进行分区。 |
 
 **错误码：**
 
@@ -51,10 +53,6 @@ function partition(diskId: string, type: int): Promise<void>
 对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。 不支持对光盘进行分区。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MOUNT_FORMAT_MANAGER
 

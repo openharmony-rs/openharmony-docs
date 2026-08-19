@@ -1,5 +1,11 @@
 # getSystemSize（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getSystemSize
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSystemSize(callback: AsyncCallback<long>): void
 异步获取系统数据的空间大小（单位为Byte），以callback方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
@@ -26,7 +28,7 @@ function getSystemSize(callback: AsyncCallback<long>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 获取系统数据的空间大小之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 获取系统数据的空间大小之后的回调。 |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function getSystemSize(callback: AsyncCallback<long>): void
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -81,10 +83,6 @@ function getSystemSize(): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
 <!--Device-storageStatistics-function getSystemSize(): Promise<long>--><!--Device-storageStatistics-function getSystemSize(): Promise<long>-End-->
@@ -109,7 +107,7 @@ function getSystemSize(): Promise<long>
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-enum HmacAlgo--><!--Device-relationalStore-enum HmacAlgo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -21,10 +17,6 @@ SHA1 = 0
 HMAC_SHA1算法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HmacAlgo-SHA1 = 0--><!--Device-HmacAlgo-SHA1 = 0-End-->
 
@@ -40,10 +32,6 @@ HMAC_SHA256算法。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HmacAlgo-SHA256 = 1--><!--Device-HmacAlgo-SHA256 = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -57,10 +45,6 @@ SHA512 = 2
 HMAC_SHA512算法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HmacAlgo-SHA512 = 2--><!--Device-HmacAlgo-SHA512 = 2-End-->
 

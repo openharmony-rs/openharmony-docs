@@ -1,5 +1,11 @@
 # convertToAbilityStageContext
 
+## 导入模块
+
+```TypeScript
+import { sendableContextManager } from '@kit.AbilityKit';
+```
+
 ## convertToAbilityStageContext
 
 ```TypeScript
@@ -9,10 +15,6 @@ function convertToAbilityStageContext(sendableContext: SendableContext): common.
 将SendableContext对象转换为AbilityStageContext。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +42,7 @@ function convertToAbilityStageContext(sendableContext: SendableContext): common.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 
-## 示例
+**示例**
 
 主线程传递Context：
 

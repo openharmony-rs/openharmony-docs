@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-effectKit-enum PictureComplexityDegree--><!--Device-effectKit-enum PictureComplexityDegree-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -23,10 +19,6 @@ UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0
 默认值，图片内容复杂度未知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0--><!--Device-PictureComplexityDegree-UNKNOWN_COMPLEXITY_DEGREE_PICTURE = 0-End-->
 
@@ -44,10 +36,6 @@ PURE_PICTURE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PictureComplexityDegree-PURE_PICTURE = 1--><!--Device-PictureComplexityDegree-PURE_PICTURE = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -64,10 +52,6 @@ MODERATE_COMPLEXITY_PICTURE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2--><!--Device-PictureComplexityDegree-MODERATE_COMPLEXITY_PICTURE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -83,10 +67,6 @@ VERY_FLOWERY_PICTURE = 3
 图片内容复杂度为复杂。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PictureComplexityDegree-VERY_FLOWERY_PICTURE = 3--><!--Device-PictureComplexityDegree-VERY_FLOWERY_PICTURE = 3-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-enum Field--><!--Device-relationalStore-enum Field-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -21,10 +17,6 @@ CURSOR_FIELD = '#_cursor'
 用于cursor查找的字段名。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Field-CURSOR_FIELD = '#_cursor'--><!--Device-Field-CURSOR_FIELD = '#_cursor'-End-->
 
@@ -40,10 +32,6 @@ ORIGIN_FIELD = '#_origin'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Field-ORIGIN_FIELD = '#_origin'--><!--Device-Field-ORIGIN_FIELD = '#_origin'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -57,10 +45,6 @@ DELETED_FLAG_FIELD = '#_deleted_flag'
 用于cursor查找的结果集返回时填充的字段，表示云端删除的数据同步到本地后数据是否清理。 返回的结果集中，该字段对应的value为false表示数据未清理，true表示数据已清理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Field-DELETED_FLAG_FIELD = '#_deleted_flag'--><!--Device-Field-DELETED_FLAG_FIELD = '#_deleted_flag'-End-->
 
@@ -76,10 +60,6 @@ DATA_STATUS_FIELD = '#_data_status'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Field-DATA_STATUS_FIELD = '#_data_status'--><!--Device-Field-DATA_STATUS_FIELD = '#_data_status'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -93,10 +73,6 @@ OWNER_FIELD = '#_cloud_owner'
 用于共享表中查找owner时，返回的结果集中填充的字段，表示当前共享记录的共享发起者。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Field-OWNER_FIELD = '#_cloud_owner'--><!--Device-Field-OWNER_FIELD = '#_cloud_owner'-End-->
 
@@ -112,10 +88,6 @@ PRIVILEGE_FIELD = '#_cloud_privilege'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Field-PRIVILEGE_FIELD = '#_cloud_privilege'--><!--Device-Field-PRIVILEGE_FIELD = '#_cloud_privilege'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -129,10 +101,6 @@ SHARING_RESOURCE_FIELD = '#_sharing_resource_field'
 用于数据共享查找共享数据的共享资源时，返回的结果集中填充的字段，表示共享数据的共享资源标识。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Field-SHARING_RESOURCE_FIELD = '#_sharing_resource_field'--><!--Device-Field-SHARING_RESOURCE_FIELD = '#_sharing_resource_field'-End-->
 

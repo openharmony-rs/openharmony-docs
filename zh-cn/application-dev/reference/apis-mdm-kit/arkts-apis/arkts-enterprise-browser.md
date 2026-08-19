@@ -4,15 +4,17 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace browser--><!--Device-unnamed-declare namespace browser-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { browser } from '@kit.MDMKit';
+```
 
 ## 汇总
 
@@ -20,22 +22,22 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getManagedBrowserPolicy](arkts-mdm-browser-getmanagedbrowserpolicy-f.md#getmanagedbrowserpolicy) | 通过应用包名获取指定浏览器的浏览器策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
-| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync) | 通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
-| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync) | 通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
-| [getSelfManagedBrowserPolicy](arkts-mdm-browser-getselfmanagedbrowserpolicy-f.md#getselfmanagedbrowserpolicy) | 获取当前设备浏览器策略。 |
-| [getSelfManagedBrowserPolicyVersion](arkts-mdm-browser-getselfmanagedbrowserpolicyversion-f.md#getselfmanagedbrowserpolicyversion) | 获取当前设备浏览器策略版本。 |
-| [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md#setmanagedbrowserpolicy) | 为指定的浏览器设置浏览器策略，适用于企业统一管理员工浏览器行为的场景，例如配置浏览器安全策略等。成功后会发布系统公共事件 [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)。 |
-| [setPolicySync](arkts-mdm-browser-setpolicysync-f.md#setpolicysync) | 为指定的浏览器设置浏览器子策略，适用于企业统一管理员工浏览器行为的场景。 |
+| [getManagedBrowserPolicy](arkts-mdm-browser-getmanagedbrowserpolicy-f.md) | 通过应用包名获取指定浏览器的浏览器策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
+| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md) | 通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
+| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md) | 通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
+| [getSelfManagedBrowserPolicy](arkts-mdm-browser-getselfmanagedbrowserpolicy-f.md) | 获取当前设备浏览器策略。 |
+| [getSelfManagedBrowserPolicyVersion](arkts-mdm-browser-getselfmanagedbrowserpolicyversion-f.md) | 获取当前设备浏览器策略版本。 |
+| [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md) | 为指定的浏览器设置浏览器策略，适用于企业统一管理员工浏览器行为的场景，例如配置浏览器安全策略等。成功后会发布系统公共事件 [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)。 |
+| [setPolicySync](arkts-mdm-browser-setpolicysync-f.md) | 为指定的浏览器设置浏览器子策略，适用于企业统一管理员工浏览器行为的场景。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md#getpolicies) | 获取指定浏览器的策略，使用callback异步回调。 |
-| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md#getpolicies系统接口) | 获取指定浏览器的策略，使用Promise异步回调。 |
-| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md#setpolicies) | 为指定的浏览器设置浏览策略，使用callback异步回调。 |
-| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md#setpolicies系统接口) | 为指定的浏览器设置浏览策略，使用Promise异步回调。 |
+| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md) | 获取指定浏览器的策略，使用callback异步回调。 |
+| [getPolicies](arkts-mdm-browser-getpolicies-f-sys.md) | 获取指定浏览器的策略，使用Promise异步回调。 |
+| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md) | 为指定的浏览器设置浏览策略，使用callback异步回调。 |
+| [setPolicies](arkts-mdm-browser-setpolicies-f-sys.md) | 为指定的浏览器设置浏览策略，使用Promise异步回调。 |
 <!--DelEnd-->
 

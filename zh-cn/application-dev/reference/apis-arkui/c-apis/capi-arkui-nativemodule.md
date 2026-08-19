@@ -10,14 +10,15 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | 名称 | 描述 |
 | -- | -- |
 | [native_material.h](capi-native-material-h.md) | 提供ArkUI在Native侧的沉浸式材质类型和API声明，用于实现半透明模糊背景、光感交互反馈等沉浸式UI效果。 |
+| [native_gesture.h](capi-native-gesture-h.md) | 提供NativeGesture接口的类型定义，支持手势识别器、手势事件、手势打断、触摸识别器、手势收集干预以及手势参数查询与设置等能力，适用于应用通过Native接口处理手势识别、手势冲突和手势收集干预等场景。手势识别管线按优先级和竞争规则进行识别，可通过打断回调拦截手势；手势收集干预机制允许在手势收集阶段动态干预手势的收集流程。 |
 | [native_animate.h](capi-native-animate-h.md) | 提供ArkUI在Native侧的动画接口定义集合。native_animate.h中的接口需要在主线程上调用。 |
 | [native_type_visual.h](capi-native-type-visual-h.md) | Defines the visual effect types for the native module. |
 | [native_node.h](capi-native-node-h.md) | Provides type definitions for <b>NativeNode</b> APIs. |
 | [native_node_ani.h](capi-native-node-ani-h.md) | 提供ArkTS1.2的FrameNode转换NodeHandle的方式。 |
-| [native_key_event.h](capi-native-key-event-h.md) | Declares the APIs of **NativeKeyEvent**. |
-| [drag_and_drop.h](capi-drag-and-drop-h.md) | Declares the APIs of **NativeDrag**. |
+| [native_key_event.h](capi-native-key-event-h.md) | 提供NativeKeyEvent相关接口定义。 |
+| [drag_and_drop.h](capi-drag-and-drop-h.md) | 提供NativeDrag相关接口定义。 |
 | [native_interface.h](capi-native-interface-h.md) | Provides a unified entry for the native module APIs. |
-| [native_interface_focus.h](capi-native-interface-focus-h.md) | Declares APIs for focus management, mainly used for actively transferring focus, managing the default focustransfer behavior, and controlling the focus activation state. |
+| [native_interface_focus.h](capi-native-interface-focus-h.md) | 定义焦点管理的相关接口，主要用于主动转移焦点或管理控制焦点转移默认行为，控制焦点激活态。 |
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module. |
 | [native_dialog.h](capi-native-dialog-h.md) | 提供ArkUI在Native侧的自定义弹窗接口定义集合。 |
 | [error_code.h](capi-error-code-h.md) | Defines the error code for the native module. |

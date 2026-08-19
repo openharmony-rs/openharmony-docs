@@ -4,15 +4,22 @@ WLAN连接信息。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [WifiLinkedInfo](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#wifilinkedinfo)
+**替代接口：** [WifiLinkedInfo](arkts-connectivity-wifimanager-wifilinkedinfo-i.md)
 
 <!--Device-wifi-interface WifiLinkedInfo--><!--Device-wifi-interface WifiLinkedInfo-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## chload
 
@@ -25,8 +32,6 @@ chload: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -50,8 +55,6 @@ WLAN连接的ID(唯一标识)。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [networkId](arkts-connectivity-wifimanager-wifilinkedinfo-i-sys.md#networkid)
@@ -74,8 +77,6 @@ snr: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [snr](arkts-connectivity-wifimanager-wifilinkedinfo-i-sys.md#snr)
@@ -97,8 +98,6 @@ suppState: SuppState
 **类型：** SuppState
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

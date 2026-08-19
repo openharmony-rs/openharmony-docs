@@ -1,5 +1,11 @@
 # createController（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## createController
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createController(sessionId: string, callback: AsyncCallback<AVSessionCo
 根据会话ID创建会话控制器。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -27,7 +29,7 @@ function createController(sessionId: string, callback: AsyncCallback<AVSessionCo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 会话ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVSessionController](arkts-avsession-avsession-avsessioncontroller-i.md)&gt; | 是 | 回调函数。返回会话控制器实例，可查看会话ID， <br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVSessionController](arkts-avsession-avsession-avsessioncontroller-i.md)&gt; | 是 | 回调函数。返回会话控制器实例，可查看会话ID， <br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function createController(sessionId: string, callback: AsyncCallback<AVSessionCo
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let currentAVcontroller: avSession.AVSessionController | undefined = undefined;
@@ -59,10 +61,6 @@ function createController(sessionId: string): Promise<AVSessionController>
 根据会话ID创建会话控制器。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本23+：ohos.permission.MANAGE_MEDIA_RESOURCES or ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
@@ -95,7 +93,7 @@ function createController(sessionId: string): Promise<AVSessionController>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 9 - 22 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

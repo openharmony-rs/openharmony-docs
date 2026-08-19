@@ -1,5 +1,11 @@
 # createPixelMap
 
+## 导入模块
+
+```TypeScript
+import { sendableImage } from '@kit.ImageKit';
+```
+
 ## createPixelMap
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createPixelMap(colors: ArrayBuffer, options: image.InitializationOption
 Create PixelMap by data buffer.
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-sendableImage-function createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promise<PixelMap>--><!--Device-sendableImage-function createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promise<PixelMap>-End-->
 
@@ -31,7 +33,7 @@ Create PixelMap by data buffer.
 | --- | --- |
 | Promise&lt;PixelMap&gt; | A Promise instance used to return the PixelMap object. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';

@@ -10,7 +10,11 @@
   <!--Del-->
   - [registerDeviceSelectCallback(系统接口)](arkts-userauthentication-companiondeviceauth-registerdeviceselectcallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [registerPasscodePromptCallback(系统接口)](arkts-userauthentication-companiondeviceauth-registerpasscodepromptcallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [unregisterDeviceSelectCallback(系统接口)](arkts-userauthentication-companiondeviceauth-unregisterdeviceselectcallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterPasscodePromptCallback(系统接口)](arkts-userauthentication-companiondeviceauth-unregisterpasscodepromptcallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [updateEnabledBusinessIds(系统接口)](arkts-userauthentication-companiondeviceauth-updateenabledbusinessids-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -22,6 +26,8 @@
   <!--Del-->
   - [DeviceStatus(系统接口)](arkts-userauthentication-companiondeviceauth-devicestatus-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [PasscodePromptParams(系统接口)](arkts-userauthentication-companiondeviceauth-passcodepromptparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [StatusMonitor(系统接口)](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TemplateStatus(系统接口)](arkts-userauthentication-companiondeviceauth-templatestatus-i-sys.md)<!--DelEnd-->
@@ -31,6 +37,10 @@
   - [ContinuousAuthStatusCallback(系统接口)](arkts-userauthentication-companiondeviceauth-continuousauthstatuscallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DeviceSelectCallback(系统接口)](arkts-userauthentication-companiondeviceauth-deviceselectcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PasscodePromptCallback(系统接口)](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PasscodeSubmitCallback(系统接口)](arkts-userauthentication-companiondeviceauth-passcodesubmitcallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TemplateStatusCallback(系统接口)](arkts-userauthentication-companiondeviceauth-templatestatuscallback-t-sys.md)<!--DelEnd-->
   <!--Del-->

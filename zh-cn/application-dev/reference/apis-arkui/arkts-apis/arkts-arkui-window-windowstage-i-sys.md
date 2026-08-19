@@ -1,16 +1,20 @@
 # WindowStage
 
-窗口管理器。管理各个基本窗口单元，即[Window](arkts-arkui-window-n.md#window)实例。 下列API示例中都需在[onWindowStageCreate()](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)函数中使用WindowStage 的实例调用对应方法。
+窗口管理器。管理各个基本窗口单元，即[Window](arkts-arkui-window-n.md)实例。 下列API示例中都需在[onWindowStageCreate()](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)函数中使用WindowStage 的实例调用对应方法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-window-interface WindowStage--><!--Device-window-interface WindowStage-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## disableWindowDecor
 
@@ -21,10 +25,6 @@ disableWindowDecor(): void
 禁止窗口装饰。 禁止窗口装饰后，当主窗口进入全屏沉浸状态时，此时鼠标Hover到上方窗口标题栏热区上会显示悬浮标题栏。若想禁用悬浮标题栏显示，请使用 [setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown)接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +42,7 @@ disableWindowDecor(): void
 | [1300005](../errorcode-window.md#1300005-windowstage异常) | This window stage is abnormal. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 // EntryAbility.ets
@@ -67,10 +67,6 @@ removeImageForRecent(): Promise<void>
 移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本26.0.0+：ohos.permission.MANAGE_RECENT_SNAPSHOT
@@ -108,10 +104,6 @@ setImageForRecent(imageResource: long | image.PixelMap, value: ImageFit): Promis
 设置应用在多任务中和Dock栏悬停时显示的图片，使用Promise异步回调。 > **说明：** > > 调用该接口前，建议先通过loadContent方法或者setUIContent > 方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本26.0.0+：ohos.permission.MANAGE_RECENT_SNAPSHOT
@@ -158,10 +150,6 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowStage-setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>--><!--Device-WindowStage-setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>-End-->
@@ -193,7 +181,7 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -229,10 +217,6 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowStage-setShowOnLockScreen(showOnLockScreen: boolean): void--><!--Device-WindowStage-setShowOnLockScreen(showOnLockScreen: boolean): void-End-->
@@ -256,7 +240,7 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 | [1300005](../errorcode-window.md#1300005-windowstage异常) | This window stage is abnormal. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

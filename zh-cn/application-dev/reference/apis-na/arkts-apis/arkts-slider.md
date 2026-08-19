@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Slider](arkts-na-slider-slider-f.md#slider) | Defines Slider Component. |
+| [Slider](arkts-na-slider-slider-f.md) | Defines Slider Component. |
 
 ### 类
 

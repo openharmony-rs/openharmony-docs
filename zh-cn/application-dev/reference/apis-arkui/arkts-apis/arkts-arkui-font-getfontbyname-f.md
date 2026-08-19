@@ -1,16 +1,20 @@
 # getFontByName
 
+## 导入模块
+
+```TypeScript
+import { font } from '@kit.ArkUI';
+```
+
 ## getFontByName
 
 ```TypeScript
 function getFontByName(fontName: string): FontInfo
 ```
 
-根据传入的系统字体名称获取系统字体的相关信息。 > **说明：** > > -getFontByName需要先通过[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 > [getFont](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取 > [Font](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)对象，然后通过该对象进行调用。且直接使用getFontByName可能导致 > [UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。 > > - 从API version 10开始，可以通过使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 > [getFont](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的 > [Font](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)对象。
+根据传入的系统字体名称获取系统字体的相关信息。 > **说明：** > > -getFontByName需要先通过[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)中的 > [getFont](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取 > [Font](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)对象，然后通过该对象进行调用。且直接使用getFontByName可能导致 > [UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。 > > - 从API version 10开始，可以通过使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)中的 > [getFont](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的 > [Font](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)对象。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 18
 

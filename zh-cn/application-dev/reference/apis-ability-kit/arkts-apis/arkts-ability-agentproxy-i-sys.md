@@ -4,10 +4,6 @@ AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送�
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface AgentProxy--><!--Device-unnamed-export interface AgentProxy-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -23,10 +19,6 @@ authorize(handshakeData: string): void
 向AgentExtensionAbility发送鉴权。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -57,10 +49,6 @@ sendData(data: string): void
 向AgentExtensionAbility发送数据。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

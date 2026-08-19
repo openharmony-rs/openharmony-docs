@@ -4,9 +4,7 @@ Defines the largest content paint rendering of web page.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface LargestContentfulPaint--><!--Device-unnamed-export declare interface LargestContentfulPaint-End-->
 
@@ -24,9 +22,7 @@ Bits per pixel of maximum image.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LargestContentfulPaint-imageBPP?: double--><!--Device-LargestContentfulPaint-imageBPP?: double-End-->
 
@@ -44,9 +40,7 @@ Load end time of largest image. <br>Unit:milliseconds.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LargestContentfulPaint-largestImageLoadEndTime?: long--><!--Device-LargestContentfulPaint-largestImageLoadEndTime?: long-End-->
 
@@ -64,9 +58,7 @@ Load start time of largest image. <br>Unit:milliseconds.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LargestContentfulPaint-largestImageLoadStartTime?: long--><!--Device-LargestContentfulPaint-largestImageLoadStartTime?: long-End-->
 
@@ -84,9 +76,7 @@ Paint time of largest image. <br>Unit:milliseconds.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LargestContentfulPaint-largestImagePaintTime?: long--><!--Device-LargestContentfulPaint-largestImagePaintTime?: long-End-->
 
@@ -104,9 +94,7 @@ Paint time of largest text. <br>Unit:milliseconds.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LargestContentfulPaint-largestTextPaintTime?: long--><!--Device-LargestContentfulPaint-largestTextPaintTime?: long-End-->
 
@@ -124,9 +112,7 @@ Start time of navigation, in microseconds. <br>Unit:microseconds.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LargestContentfulPaint-navigationStartTime?: long--><!--Device-LargestContentfulPaint-navigationStartTime?: long-End-->
 

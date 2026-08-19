@@ -1,5 +1,10 @@
 # readSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## readSync
 
 ```TypeScript
@@ -18,11 +23,9 @@ declare function readSync(
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [readSync](arkts-corefile-file-fs-readsync-f.md#readsync)
+**替代接口：** [readSync](arkts-corefile-file-fs-readsync-f.md)
 
 <!--Device-unnamed-declare function readSync(  fd: number,  buffer: ArrayBuffer,  options?: {    offset?: number;    length?: number;    position?: number;  }): number--><!--Device-unnamed-declare function readSync(  fd: number,  buffer: ArrayBuffer,  options?: {    offset?: number;    length?: number;    position?: number;  }): number-End-->
 

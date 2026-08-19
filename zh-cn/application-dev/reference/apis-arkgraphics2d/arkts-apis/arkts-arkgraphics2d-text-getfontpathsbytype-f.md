@@ -1,5 +1,11 @@
 # getFontPathsByType
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## getFontPathsByType
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 获取指定字体类型的所有字体文件路径。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -32,7 +34,7 @@ function getFontPathsByType(fontType: SystemFontType): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 字体文件路径列表。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

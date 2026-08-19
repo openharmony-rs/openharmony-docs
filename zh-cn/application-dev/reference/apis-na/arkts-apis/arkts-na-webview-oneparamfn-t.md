@@ -8,9 +8,7 @@ The function with one parameter.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-type OneParamFn<T,V=void> = (param: T) => V--><!--Device-webview-type OneParamFn<T,V=void> = (param: T) => V-End-->
 

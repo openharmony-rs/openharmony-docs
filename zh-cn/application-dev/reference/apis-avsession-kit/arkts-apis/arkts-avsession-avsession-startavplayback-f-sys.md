@@ -1,5 +1,11 @@
 # startAVPlayback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## startAVPlayback
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startAVPlayback(bundleName: string, assetId: string): Promise<void>
 启动媒体播放应用程序。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -44,7 +46,7 @@ function startAVPlayback(bundleName: string, assetId: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -64,10 +66,6 @@ function startAVPlayback(bundleName: string, assetId: string, info: CommandInfo)
 携带启动参数的冷启动应用播放接口
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 

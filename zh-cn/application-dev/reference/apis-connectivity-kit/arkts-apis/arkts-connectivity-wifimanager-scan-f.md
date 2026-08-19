@@ -1,5 +1,12 @@
 # scan
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## scan
 
 ```TypeScript
@@ -10,11 +17,9 @@ function scan(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 10
 
-**替代接口：** [startScan](arkts-connectivity-wifimanager-startscan-f.md#startscan)
+**替代接口：** [startScan](arkts-connectivity-wifimanager-startscan-f.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
@@ -30,7 +35,7 @@ function scan(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

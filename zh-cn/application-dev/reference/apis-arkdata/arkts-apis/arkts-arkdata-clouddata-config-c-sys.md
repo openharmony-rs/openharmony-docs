@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudData-class Config--><!--Device-cloudData-class Config-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudData } from '@kit.ArkData';
+```
 
 ## batchQueryLastSyncInfo
 
@@ -26,10 +28,6 @@ static batchQueryLastSyncInfo(
 批量查询上一次端云同步的信息，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -63,7 +61,7 @@ static batchQueryLastSyncInfo(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -101,10 +99,6 @@ static changeAppCloudSwitch(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static changeAppCloudSwitch(      accountId: string,      bundleName: string,      status: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-Config-static changeAppCloudSwitch(      accountId: string,      bundleName: string,      status: boolean,      callback: AsyncCallback<void>    ): void-End-->
@@ -120,7 +114,7 @@ static changeAppCloudSwitch(
 | accountId | string | 是 | 已登录的云账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
 | status | boolean | 是 | 应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当修改单个应用端云协同开关成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当修改单个应用端云协同开关成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -131,7 +125,7 @@ static changeAppCloudSwitch(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -161,10 +155,6 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 修改单个应用端云协同开关，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -197,7 +187,7 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -230,10 +220,6 @@ static changeAppCloudSwitch(
 修改单个应用端云协同开关，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -268,7 +254,7 @@ static changeAppCloudSwitch(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -312,10 +298,6 @@ static clear(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static clear(      accountId: string,      appActions: Record<string, ClearAction>,      callback: AsyncCallback<void>    ): void--><!--Device-Config-static clear(      accountId: string,      appActions: Record<string, ClearAction>,      callback: AsyncCallback<void>    ): void-End-->
@@ -330,7 +312,7 @@ static clear(
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
 | appActions | Record&lt;string, [ClearAction](arkts-arkdata-clouddata-clearaction-e-sys.md)&gt; | 是 | 要清除数据的应用信息及清除规则。<br>**起始版本：** 10 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当清除本地下载的云端数据成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当清除本地下载的云端数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -341,7 +323,7 @@ static clear(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -376,10 +358,6 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static clear(accountId: string, appActions: Record<string, ClearAction>): Promise<void>--><!--Device-Config-static clear(accountId: string, appActions: Record<string, ClearAction>): Promise<void>-End-->
@@ -410,7 +388,7 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -447,10 +425,6 @@ static clear(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -483,7 +457,7 @@ static clear(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -533,10 +507,6 @@ static cloudSync(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static cloudSync(      bundleName: string,      storeId: string,      mode: relationalStore.SyncMode,      progress: Callback<relationalStore.ProgressDetails>    ): Promise<void>--><!--Device-Config-static cloudSync(      bundleName: string,      storeId: string,      mode: relationalStore.SyncMode,      progress: Callback<relationalStore.ProgressDetails>    ): Promise<void>-End-->
@@ -552,7 +522,7 @@ static cloudSync(
 | bundleName | string | 是 | 待端云同步数据的应用包名。 |
 | storeId | string | 是 | 待端云同步的数据库名。 |
 | mode | relationalStore.SyncMode | 是 | 端云同步类型。 |
-| progress | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;relationalStore.ProgressDetails&gt; | 是 | 同步进度回调。返回ProgressDetails实例对象。 |
+| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;relationalStore.ProgressDetails&gt; | 是 | 同步进度回调。返回ProgressDetails实例对象。 |
 
 **返回值：**
 
@@ -569,7 +539,7 @@ static cloudSync(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, <br>usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, <br>application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -603,10 +573,6 @@ static cloudSyncEx(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -623,7 +589,7 @@ static cloudSyncEx(
 | --- | --- | --- | --- |
 | bundleInfo | BundleInfo | 是 | 应用包信息配置。BundleInfo的实例对象。 |
 | config | relationalStore.CloudSyncConfig | 是 | 云同步配置。 |
-| progress | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;relationalStore.ProgressDetails&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
+| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;relationalStore.ProgressDetails&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
 
 **返回值：**
 
@@ -640,7 +606,7 @@ static cloudSyncEx(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, <br>usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application is not a system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cloudData } from '@kit.ArkData';
@@ -682,10 +648,6 @@ static disableCloud(accountId: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static disableCloud(accountId: string, callback: AsyncCallback<void>): void--><!--Device-Config-static disableCloud(accountId: string, callback: AsyncCallback<void>): void-End-->
@@ -699,7 +661,7 @@ static disableCloud(accountId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当关闭端云协同成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当关闭端云协同成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -710,7 +672,7 @@ static disableCloud(accountId: string, callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -739,10 +701,6 @@ static disableCloud(accountId: string): Promise<void>
 关闭端云协同，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -773,7 +731,7 @@ static disableCloud(accountId: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -805,10 +763,6 @@ static enableCloud(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static enableCloud(      accountId: string,      switches: Record<string, boolean>,      callback: AsyncCallback<void>    ): void--><!--Device-Config-static enableCloud(      accountId: string,      switches: Record<string, boolean>,      callback: AsyncCallback<void>    ): void-End-->
@@ -823,7 +777,7 @@ static enableCloud(
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
 | switches | Record&lt;string, boolean&gt; | 是 | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当打开端云协同功能成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当打开端云协同功能成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -834,7 +788,7 @@ static enableCloud(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -864,10 +818,6 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 打开端云协同开关，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -899,7 +849,7 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -927,10 +877,6 @@ static notifyDataChange(extInfo: ExtraData, userId?: int): Promise<void>
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -962,7 +908,7 @@ static notifyDataChange(extInfo: ExtraData, userId?: int): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, which is usually returned by &lt;b&gt;VerifyAccessToken&lt;/b&gt;. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1018,10 +964,6 @@ static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void--><!--Device-Config-static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void-End-->
@@ -1035,7 +977,7 @@ static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | extInfo | ExtraData | 是 | 透传数据，包含通知数据变更后的应用信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1046,7 +988,7 @@ static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, which is usually returned by &lt;b&gt;VerifyAccessToken&lt;/b&gt;. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1079,10 +1021,6 @@ static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback<void>): void--><!--Device-Config-static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback<void>): void-End-->
@@ -1097,7 +1035,7 @@ static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback
 | --- | --- | --- | --- |
 | extInfo | ExtraData | 是 | 透传数据，包含通知数据变更后的应用信息。 |
 | userId | int | 是 | 用户ID，对应为系统中现有的用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1108,7 +1046,7 @@ static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, which is usually returned by &lt;b&gt;VerifyAccessToken&lt;/b&gt;. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1168,10 +1106,6 @@ static notifyDataChange(accountId: string, bundleName: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static notifyDataChange(accountId: string, bundleName: string): Promise<void>--><!--Device-Config-static notifyDataChange(accountId: string, bundleName: string): Promise<void>-End-->
@@ -1202,7 +1136,7 @@ static notifyDataChange(accountId: string, bundleName: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1231,10 +1165,6 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-Config-static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
@@ -1249,7 +1179,7 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 | --- | --- | --- | --- |
 | accountId | string | 是 | 已登录的云账号ID。 |
 | bundleName | string | 是 | 应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当通知云端的数据变更成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当通知云端的数据变更成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1260,7 +1190,7 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1294,10 +1224,6 @@ static offSyncInfoChanged(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1313,7 +1239,7 @@ static offSyncInfoChanged(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleInfos | Array&lt;BundleInfo&gt; | 是 | 取消订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。取消订阅时应用信息的storeId需要与订 阅时保持一致。 |
-| progress | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | 否 | 回调函数。如果传入此参数，则取消订阅指定的回调函数；如果不传此参数，则取消该 应用的所有订阅。 |
+| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | 否 | 回调函数。如果传入此参数，则取消订阅指定的回调函数；如果不传此参数，则取消该 应用的所有订阅。 |
 
 **错误码：**
 
@@ -1324,7 +1250,7 @@ static offSyncInfoChanged(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1376,10 +1302,6 @@ static onSyncInfoChanged(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1395,7 +1317,7 @@ static onSyncInfoChanged(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleInfos | Array&lt;BundleInfo&gt; | 是 | 订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
-| progress | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | 是 | 回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用 包名，内层Record的键为数据库名。 |
+| progress | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Record&lt;string, Record&lt;string, [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md)&gt;&gt;&gt; | 是 | 回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用 包名，内层Record的键为数据库名。 |
 
 **错误码：**
 
@@ -1406,7 +1328,7 @@ static onSyncInfoChanged(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1440,10 +1362,6 @@ static queryLastSyncInfo(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static queryLastSyncInfo(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, SyncInfo>>--><!--Device-Config-static queryLastSyncInfo(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, SyncInfo>>-End-->
@@ -1475,7 +1393,7 @@ static queryLastSyncInfo(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1509,10 +1427,6 @@ static queryStatistics(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
 <!--Device-Config-static queryStatistics(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, Array<StatisticInfo>>>--><!--Device-Config-static queryStatistics(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, Array<StatisticInfo>>>-End-->
@@ -1544,7 +1458,7 @@ static queryStatistics(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1569,10 +1483,6 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array<commonType.V
 设置全局云同步策略，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -1604,7 +1514,7 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array<commonType.V
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1625,10 +1535,6 @@ static stopCloudSync(bundleInfos: Array<BundleInfo>): Promise<void>
 停止与云端的数据同步，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDDATA_CONFIG
 
@@ -1661,7 +1567,7 @@ static stopCloudSync(bundleInfos: Array<BundleInfo>): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, <br>usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | if permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cloudData } from '@kit.ArkData';

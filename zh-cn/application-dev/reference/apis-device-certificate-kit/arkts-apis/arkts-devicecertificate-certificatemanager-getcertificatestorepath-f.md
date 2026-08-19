@@ -1,5 +1,12 @@
 # getCertificateStorePath
 
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## getCertificateStorePath
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getCertificateStorePath(property: CertStoreProperty): string
 表示获取证书的存储路径。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-certificateManager-function getCertificateStorePath(property: CertStoreProperty): string--><!--Device-certificateManager-function getCertificateStorePath(property: CertStoreProperty): string-End-->
 
@@ -38,7 +41,7 @@ function getCertificateStorePath(property: CertStoreProperty): string
 | [17500009](../errorcode-certManager.md#17500009-不支持指定的证书存储路径) | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm.<br>**适用版本：** 20+ |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

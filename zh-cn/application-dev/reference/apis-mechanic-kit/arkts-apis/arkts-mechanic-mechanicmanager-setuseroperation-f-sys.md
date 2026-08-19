@@ -1,5 +1,11 @@
 # setUserOperation（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## setUserOperation
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setUserOperation(operation: Operation, mac: string, params: string): vo
 设置用户操作
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_MECHANIC_HARDWARE
 
@@ -38,7 +40,7 @@ function setUserOperation(operation: Operation, mac: string, params: string): vo
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 console.info('User operate');

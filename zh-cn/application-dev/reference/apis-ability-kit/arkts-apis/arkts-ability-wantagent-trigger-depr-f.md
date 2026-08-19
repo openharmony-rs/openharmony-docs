@@ -1,5 +1,10 @@
 # trigger
 
+## 导入模块
+
+```TypeScript
+```
+
 ## trigger
 
 ```TypeScript
@@ -10,11 +15,9 @@ function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [trigger](arkts-ability-wantagent-trigger-f.md#trigger)
+**替代接口：** [trigger](arkts-ability-wantagent-trigger-f.md)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -28,9 +31,9 @@ function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
 | triggerInfo | [TriggerInfo](arkts-ability-triggerinfo-triggerinfo-i.md) | 是 | TriggerInfo对象。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;CompleteData&gt; | 否 | 主动激发WantAgent实例的回调方法。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;CompleteData&gt; | 否 | 主动激发WantAgent实例的回调方法。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';

@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-proxyChannelManager-interface ChannelInfo--><!--Device-proxyChannelManager-interface ChannelInfo-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## 导入模块
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+```
 
 ## linkType
 
@@ -18,15 +20,11 @@
 linkType: LinkType
 ```
 
-代理通道的链路类型，取值范围见[LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md#linktype)，目前仅支持LINK_BR（蓝牙BR协议）。
+代理通道的链路类型，取值范围见[LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md)，目前仅支持LINK_BR（蓝牙BR协议）。
 
 **类型：** [LinkType](arkts-distributedservice-proxychannelmanager-linktype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ peerDevAddr: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ChannelInfo-peerDevAddr: string--><!--Device-ChannelInfo-peerDevAddr: string-End-->
@@ -67,10 +61,6 @@ peerUuid: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

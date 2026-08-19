@@ -1,12 +1,8 @@
 # VibratorStopMode
 
-停止振动的模式。在调用 [vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration) 或[vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)接口时，需要使用此参数类型指定停止的振 动模式。停止模式和[VibrateEffect&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-vibrateeffect-t.md#vibrateeffect)中下发的模式为对应关系：VIBRATOR_STOP_MODE_TIME对应VibrateTime 类型，VIBRATOR_STOP_MODE_PRESET对应VibratePreset类型。
+停止振动的模式。在调用 [vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md) 或[vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md)接口时，需要使用此参数类型指定停止的振 动模式。停止模式和[VibrateEffect&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-vibrateeffect-t.md)中下发的模式为对应关系：VIBRATOR_STOP_MODE_TIME对应VibrateTime 类型，VIBRATOR_STOP_MODE_PRESET对应VibratePreset类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-vibrator-enum VibratorStopMode--><!--Device-vibrator-enum VibratorStopMode-End-->
 
@@ -18,13 +14,9 @@
 VIBRATOR_STOP_MODE_TIME = 'time'
 ```
 
-停止[VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md#vibratetime)类型（duration模式）的振动。需与startVibration时使用的VibrateTime类型对应。
+停止[VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md)类型（duration模式）的振动。需与startVibration时使用的VibrateTime类型对应。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorStopMode-VIBRATOR_STOP_MODE_TIME = 'time'--><!--Device-VibratorStopMode-VIBRATOR_STOP_MODE_TIME = 'time'-End-->
 
@@ -36,13 +28,9 @@ VIBRATOR_STOP_MODE_TIME = 'time'
 VIBRATOR_STOP_MODE_PRESET = 'preset'
 ```
 
-停止[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md#vibratepreset)类型（预置EffectId模式）的振动。需与startVibration时使用的VibratePreset类型对应。
+停止[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)类型（预置EffectId模式）的振动。需与startVibration时使用的VibratePreset类型对应。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorStopMode-VIBRATOR_STOP_MODE_PRESET = 'preset'--><!--Device-VibratorStopMode-VIBRATOR_STOP_MODE_PRESET = 'preset'-End-->
 

@@ -196,7 +196,7 @@ The desktop lyrics feature of this application is not enabled.
 
 **处理步骤**
 
-调用enableDesktopLyric接口启用桌面歌词功能。
+调用[enableDesktopLyric](./arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口启用桌面歌词功能。
 
 ## 6600111 当前设备不支持桌面歌词功能
 
@@ -214,7 +214,7 @@ The desktop lyrics feature is not supported.
 
 **处理步骤**
 
-建议使用isDesktopLyricSupported接口查询当前设备是否支持桌面歌词功能。
+建议使用[isDesktopLyricSupported](./arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口查询当前设备是否支持桌面歌词功能。
 
 ## 6611000 投播控制器出现未知错误
 
@@ -1197,7 +1197,7 @@ DRM许可证已过期。
 
 当前远端设备的DRM出现异常，更新DRM组件之后重新发起会话。
 
-## 6616100 DRM进程秘钥响应错误
+## 6616100 DRM进程密钥响应错误
 
 **错误信息**
 
@@ -1205,11 +1205,11 @@ An error occurs when the DRM processes the key response.
 
 **错误描述**
 
-DRM进程秘钥响应错误。
+DRM进程密钥响应错误。
 
 **可能原因**
 
-DRM秘钥响应的处理过程出现了问题。
+DRM密钥响应的处理过程出现了问题。
 
 **处理步骤**
 

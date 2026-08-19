@@ -1,5 +1,11 @@
 # isControlSupported
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## isControlSupported
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isControlSupported(mechDeviceType?: MechDeviceType): boolean
 判断当前设备是否支持某类设备的具身控制
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function isControlSupported(mechDeviceType?: MechDeviceType): boolean--><!--Device-mechanicManager-function isControlSupported(mechDeviceType?: MechDeviceType): boolean-End-->
 
@@ -30,7 +32,7 @@ function isControlSupported(mechDeviceType?: MechDeviceType): boolean
 | --- | --- |
 | boolean | Returns whether control is supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 console.info('Check whether control is supported');

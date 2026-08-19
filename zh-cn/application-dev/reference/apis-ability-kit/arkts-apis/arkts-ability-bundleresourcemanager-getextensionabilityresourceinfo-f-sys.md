@@ -1,5 +1,11 @@
 # getExtensionAbilityResourceInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+```
+
 ## getExtensionAbilityResourceInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityTyp
 根据应用包名、扩展组件类型、资源信息标志、应用分身ID获取应用的扩展组件资源。使用同步方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
@@ -46,7 +48,7 @@ function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityTyp
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager, bundleResourceManager } from '@kit.AbilityKit';

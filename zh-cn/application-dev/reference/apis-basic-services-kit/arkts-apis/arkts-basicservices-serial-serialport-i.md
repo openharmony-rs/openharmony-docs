@@ -1,0 +1,479 @@
+# SerialPort
+
+串口对象，提供串口设备的信息和通信能力。
+
+**起始版本：** 26.0.0
+
+<!--Device-serial-interface SerialPort--><!--Device-serial-interface SerialPort-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+## 导入模块
+
+```TypeScript
+import { serial } from '@kit.BasicServicesKit';
+```
+
+## close
+
+```TypeScript
+close(): Promise<void>
+```
+
+关闭串口设备。使用Promise异步回调。用于断开与串口设备的通信连接，如应用退出、设备切换、任务完成后释放串口资源等场景。需在串口打开后调用。 **配对调用：** - 必须先调用open()打开串口，才能调用close()关闭串口 - 调用close()后释放串口资源，如需再次使用需要重新调用open()
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-close(): Promise<void>--><!--Device-SerialPort-close(): Promise<void>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## drain
+
+```TypeScript
+drain(): Promise<void>
+```
+
+等待所有写请求完成。使用Promise异步回调。需在串口打开后调用。用于确保所有数据写入完成后再进行后续操作，如数据传输完成后关闭串口、发送数据后等待硬件响应等场景。 **调用顺序：** - 必须先调用open()打开串口，才能调用drain() - 应在write()之后调用drain()，确保写入数据完全发送 - 建议在close()之前调用drain()，确保所有数据完整传输后再关闭串口 - 未调用open()就调用drain()会抛出错误码35700005（Port not open） **与flush的区别：** - drain等待写缓冲区中的数据正常发送完成，适用于需要确保数据完整传输的场景；flush直接丢弃缓冲区中的所有数据，适用于需要快速清空缓冲区或丢弃无效数据的场景。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-drain(): Promise<void>--><!--Device-SerialPort-drain(): Promise<void>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## flush
+
+```TypeScript
+flush(): Promise<void>
+```
+
+清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。需在串口打开后调用。 用于丢弃缓冲区中无效或过时的数据，如数据传输出错时清空缓冲区重传、切换通信协议时清理旧数据等场景。 **调用顺序：** - 必须先调用open()打开串口，才能调用flush()清空缓冲区 - 未调用open()就调用flush()会抛出错误码35700005（Port not open） **与drain的区别：** flush直接丢弃缓冲区中的所有数据，适用于需要快速清空缓冲区或丢弃无效数据的场景；drain等待写缓冲区中的数据正常发送完成，适用于需要确保数据完整传输的场景。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-flush(): Promise<void>--><!--Device-SerialPort-flush(): Promise<void>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## getCts
+
+```TypeScript
+getCts(): Promise<boolean>
+```
+
+获取CTS（清除发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询硬件流控的清除发送信号状态，判断是否可以发送数据，如启用RTS/CTS硬件流控时检查发送权、与支持硬件流控的设备通信前检查状态等场景。 **调用顺序：** - 必须先调用open()打开串口，才能调用getCts()获取CTS信号 - 未调用open()就调用getCts()会抛出错误码35700005（Port not open） **与getDsr的区别：** - getCts查询CTS信号（清除发送），属于RTS/CTS硬件流控信号，用于判断是否可以发送数据；getDsr查询DSR信号（数据设备就绪），属于DTR/DSR设备状态信号，用于判断通信设备是否准备就绪。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-getCts(): Promise<boolean>--><!--Device-SerialPort-getCts(): Promise<boolean>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象，返回CTS信号状态，返回true表示可以发送数据，返回false表示不可以发送数据。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## getDsr
+
+```TypeScript
+getDsr(): Promise<boolean>
+```
+
+获取DSR（数据设备就绪）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询数据设备就绪信号状态，判断通信设备是否准备就绪，如检查设备连接状态、在设备准备就绪后开始通信等场景。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-getDsr(): Promise<boolean>--><!--Device-SerialPort-getDsr(): Promise<boolean>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象，返回DSR信号状态；true表示数据设备就绪；false表示数据设备未就绪。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## offDataRead
+
+```TypeScript
+offDataRead(callback?: Callback<Uint8Array>): void
+```
+
+取消监听串口接收数据事件。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。 **配对调用：** - 与onDataRead()方法配对使用，用于取消onDataRead()注册的监听 - 可以取消所有监听，也可以取消指定的监听回调
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-offDataRead(callback?: Callback<Uint8Array>): void--><!--Device-SerialPort-offDataRead(callback?: Callback<Uint8Array>): void-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;Uint8Array&gt; | 否 | 回调函数。传入callback时，取消指定的串口数据接收监听；不传入callback时，清除所有串口数据接收监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## offDisconnect
+
+```TypeScript
+offDisconnect(callback?: Callback<void>): void
+```
+
+取消监听串口断开事件。需在串口打开后调用。用于不再需要监听串口断开事件时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。 **调用顺序：** - 必须先调用open()打开串口，才能调用offDisconnect()取消监听 - 未调用open()就调用offDisconnect()会抛出错误码35700005（Port not open） **配对调用：** - 与onDisconnect()方法配对使用，用于取消onDisconnect()注册的监听 - 可以取消所有监听，也可以取消指定的监听回调
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-offDisconnect(callback?: Callback<void>): void--><!--Device-SerialPort-offDisconnect(callback?: Callback<void>): void-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数，需先通过onDisconnect()注册回调后才能取消。传入callback时，取消指定的串口断开事件监听； 不传入callback时，清除所有串口断开事件监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## onDataRead
+
+```TypeScript
+onDataRead(callback: Callback<Uint8Array>): void
+```
+
+监听串口接收数据事件。使用callback异步回调，返回接收到的数据。需在串口打开后调用，调用[close](#close)后，所有回调将被清除。 用于实时接收串口设备发送的数据，如传感器数据监测、设备状态反馈、实时数据采集等场景。 **配对调用：** - 与offDataRead()方法配对使用，offDataRead()用于取消监听 - 建议在不需要监听时调用offDataRead()释放监听资源 **调用顺序：** - 必须先调用open()打开串口，才能调用onDataRead()监听数据 - 未调用open()就调用onDataRead()会抛出错误码35700005（Port not open）
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-onDataRead(callback: Callback<Uint8Array>): void--><!--Device-SerialPort-onDataRead(callback: Callback<Uint8Array>): void-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回串口接收到的数据。用于监听串口数据接收事件，注册回调后，串口接收到数据时会触发该回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## onDisconnect
+
+```TypeScript
+onDisconnect(callback: Callback<void>): void
+```
+
+监听串口断开事件。使用callback异步回调。调用close后，所有回调将被清除。用于监听串口连接断开事件，如USB虚拟串口拔出、设备断电、连接中断时及时处理异常状态、提示用户或尝试重连等场景。 **配对调用：** - 与offDisconnect()方法配对使用，offDisconnect()用于取消监听 - 建议在不需要监听时调用offDisconnect()释放监听资源 **调用顺序：** - 必须先调用open()打开串口，才能调用onDisconnect()监听断开事件 - 未调用open()就调用onDisconnect()会抛出错误码35700005（Port not open）
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-onDisconnect(callback: Callback<void>): void--><!--Device-SerialPort-onDisconnect(callback: Callback<void>): void-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，串口断开时触发。用于监听串口断开事件，注册回调后，串口设备断开连接时会触发该回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## open
+
+```TypeScript
+open(config?: SerialConfigs): Promise<void>
+```
+
+打开串口设备。使用Promise异步回调。用于建立与串口设备的通信连接，如传感器数据采集、设备控制命令发送、串口打印机等场景。 **配对调用：** - 调用open()后，必须在使用完毕后调用close()释放串口资源 - 未调用close()会导致串口资源泄漏，可能影响其他应用的串口使用
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-open(config?: SerialConfigs): Promise<void>--><!--Device-SerialPort-open(config?: SerialConfigs): Promise<void>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| config | [SerialConfigs](arkts-basicservices-serial-serialconfigs-i.md) | 否 | 串口通信参数。不传入config参数时，使用SerialConfigs的默认配置打开串口。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700002](../errorcode-busmanager-serial.md#35700002-参数错误) | Invalid parameter. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700004](../errorcode-busmanager-serial.md#35700004-端口已被占用) | Port already in use. |
+| [35700007](../errorcode-busmanager-serial.md#35700007-需要用户授权) | User authorization required. |
+
+## sendBrk
+
+```TypeScript
+sendBrk(): Promise<void>
+```
+
+发送BRK（中断）信号。使用Promise异步回调。需在串口打开后调用。用于向设备发送中断信号，如紧急停止设备通信、通知设备复位、特殊协议要求的信号交互等场景。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-sendBrk(): Promise<void>--><!--Device-SerialPort-sendBrk(): Promise<void>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## setDtr
+
+```TypeScript
+setDtr(enable: boolean): Promise<void>
+```
+
+设置DTR（数据终端就绪）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制数据终端就绪信号，如向设备通知终端准备就绪、通过DTR信号控制设备上电或复位、与需要DTR信号检测的设备通信等场景。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-setDtr(enable: boolean): Promise<void>--><!--Device-SerialPort-setDtr(enable: boolean): Promise<void>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enable | boolean | 是 | DTR信号状态，true表示数据终端就绪；false表示数据终端未就绪。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## setRts
+
+```TypeScript
+setRts(enable: boolean): Promise<void>
+```
+
+设置RTS（请求发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制硬件流控的请求发送信号，如启用RTS/CTS硬件流控时控制发送权、与支持硬件流控的设备通信等场景。 **调用顺序：** - 必须先调用open()打开串口，才能调用setRts()设置RTS信号 - 未调用open()就调用setRts()会抛出错误码35700005（Port not open） **与setDtr的区别：** setRts和setDtr分别控制RTS/CTS和DTR/DSR两种硬件信号。RTS/CTS主要用于数据流控制，可通过SerialConfigs.rtscts启用自动流控； DTR/DSR主要用于设备状态控制和检测，用于特殊协议或设备状态管理。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-setRts(enable: boolean): Promise<void>--><!--Device-SerialPort-setRts(enable: boolean): Promise<void>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enable | boolean | 是 | RTS信号状态，true表示请求发送数据，false表示不请求发送数据。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+
+## write
+
+```TypeScript
+write(data: Uint8Array, timeout?: int): Promise<int>
+```
+
+向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。用于向连接的串口设备发送控制命令、数据包、配置参数等，如工业控制、设备调试、数据采集等场景。需在串口打开后调用。 **调用顺序：** - 必须先调用open()打开串口，才能调用write()发送数据 - 未调用open()就调用write()会抛出错误码35700005（Port not open）
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-write(data: Uint8Array, timeout?: int): Promise<int>--><!--Device-SerialPort-write(data: Uint8Array, timeout?: int): Promise<int>-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| data | Uint8Array | 是 | 待发送的数据。长度范围：(0, 4096]。发送超过4096字节的数据时，建议分多次调用write方法发送。 |
+| timeout | int | 否 | 超时时间，取值范围：[0, 300000]，整数，单位为毫秒。默认值0表示当数据无法写入串口时，不等待直接返回写入长度0。 传入负数、非整数或大于300000时返回错误码35700002。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
+| [35700002](../errorcode-busmanager-serial.md#35700002-参数错误) | Invalid parameter. |
+| [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |
+| [35700005](../errorcode-busmanager-serial.md#35700005-端口未打开) | Port not open. |
+| [35700006](../errorcode-busmanager-serial.md#35700006-传输超时) | Transmission timeout. |
+
+## portInfo
+
+```TypeScript
+readonly portInfo: SerialPortInfo
+```
+
+串口设备信息。
+
+**类型：** [SerialPortInfo](arkts-basicservices-serial-serialportinfo-i.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SerialPort-readonly portInfo: SerialPortInfo--><!--Device-SerialPort-readonly portInfo: SerialPortInfo-End-->
+
+**系统能力：** SystemCapability.BusManager.Serial
+

@@ -1,12 +1,8 @@
-# ModelType
+# ModelType(Defines 3D component)
 
 模型类型枚举
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare enum ModelType--><!--Device-unnamed-declare enum ModelType-End-->
 
@@ -21,10 +17,6 @@ TEXTURE = 0
 渲染到纹理，GPU将此纹理合成到屏幕.
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ SURFACE = 1
 渲染到表面，专有硬件将此表面合成到屏幕.
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

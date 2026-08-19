@@ -1,5 +1,11 @@
 # transmitInfrared（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { infraredEmitter } from '@kit.InputKit';
+```
+
 ## transmitInfrared
 
 ```TypeScript
@@ -9,10 +15,6 @@ function transmitInfrared(infraredFrequency: long, pattern: Array<long>): void
 产生特定频率和特定电平大小的红外信号。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
@@ -37,7 +39,7 @@ function transmitInfrared(infraredFrequency: long, pattern: Array<long>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application.<br>**适用版本：** 12 - 14 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

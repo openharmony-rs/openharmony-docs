@@ -1,16 +1,17 @@
 # ScrollResult
 
-[OnWillScrollCallback](arkts-arkui-onwillscrollcallback-t.md#onwillscrollcallback)返回值对象。
+[OnWillScrollCallback](arkts-arkui-onwillscrollcallback-t.md)返回值对象。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class ScrollResult--><!--Device-unnamed-declare class ScrollResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## offsetRemain
 
@@ -23,10 +24,6 @@ offsetRemain: number
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

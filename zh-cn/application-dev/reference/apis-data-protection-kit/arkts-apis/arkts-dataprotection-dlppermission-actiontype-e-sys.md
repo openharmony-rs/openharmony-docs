@@ -4,10 +4,6 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-dlpPermission-export enum ActionType--><!--Device-dlpPermission-export enum ActionType-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -24,10 +20,6 @@ NOT_OPEN = 0
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-ActionType-NOT_OPEN = 0--><!--Device-ActionType-NOT_OPEN = 0-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -43,10 +35,6 @@ OPEN = 1
 表示超过权限管控时间后，登录账号仍可打开DLP文件，且拥有编辑权限。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-ActionType-OPEN = 1--><!--Device-ActionType-OPEN = 1-End-->
 

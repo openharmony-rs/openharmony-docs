@@ -1,5 +1,11 @@
 # createPixelMapFromSurfaceWithTransformationSync
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## createPixelMapFromSurfaceWithTransformationSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, tran
 Creates a PixelMap object based on the ID of a Surface with transformation.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +44,7 @@ Creates a PixelMap object based on the ID of a Surface with transformation.
 | [7600104](../errorcode-image.md#7600104-获取图像数据失败) | Failed to get the data from Surface. |
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

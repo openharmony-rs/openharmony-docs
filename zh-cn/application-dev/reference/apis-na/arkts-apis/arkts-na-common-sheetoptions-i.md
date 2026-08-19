@@ -1,14 +1,12 @@
 # SheetOptions
 
-继承自[BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)。 半模态页面内容选项。
+继承自[BindOptions](arkts-na-common-bindoptions-i.md)。 半模态页面内容选项。
 
-**继承/实现关系：** SheetOptions extends [BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)
+**继承/实现关系：** SheetOptions extends [BindOptions](arkts-na-common-bindoptions-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface SheetOptions--><!--Device-unnamed-export declare interface SheetOptions-End-->
 
@@ -28,9 +26,7 @@ blurStyle?: BlurStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,9 +48,7 @@ borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,9 +68,7 @@ borderStyle?: BorderStyle | EdgeStyles
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,9 +88,7 @@ borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -120,9 +110,7 @@ detentSelection?: SheetSize | Length
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -142,9 +130,7 @@ detents?: SingleLengthDetent | DoubleLengthDetents | TripleLengthDetents
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -166,9 +152,7 @@ dragBar?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -182,7 +166,7 @@ dragBar?: boolean
 effectEdge?: int
 ```
 
-设置半模态面板内容区边缘回弹效果，支持单边生效。 **默认值**：默认双边生效，即[EffectEdge](arkts-na-common-effectedge-e.md#effectedge).START | [EffectEdge](arkts-na-common-effectedge-e.md#effectedge).END（即数值3）。 **说明：** 1. 仅上边缘生效：[EffectEdge](arkts-na-common-effectedge-e.md#effectedge).START。 2. 仅下边缘生效：[EffectEdge](arkts-na-common-effectedge-e.md#effectedge).END。 3. 双边生效：[EffectEdge](arkts-na-common-effectedge-e.md#effectedge).START | [EffectEdge](arkts-na-common-effectedge-e.md#effectedge).END（即数值3）。 4. 双边不生效：[EffectEdge](arkts-na-common-effectedge-e.md#effectedge).START & [EffectEdge](arkts-na-common-effectedge-e.md#effectedge).END（即数值0）。
+设置半模态面板内容区边缘回弹效果，支持单边生效。 **默认值**：默认双边生效，即[EffectEdge](arkts-na-common-effectedge-e.md).START | [EffectEdge](arkts-na-common-effectedge-e.md).END（即数值3）。 **说明：** 1. 仅上边缘生效：[EffectEdge](arkts-na-common-effectedge-e.md).START。 2. 仅下边缘生效：[EffectEdge](arkts-na-common-effectedge-e.md).END。 3. 双边生效：[EffectEdge](arkts-na-common-effectedge-e.md).START | [EffectEdge](arkts-na-common-effectedge-e.md).END（即数值3）。 4. 双边不生效：[EffectEdge](arkts-na-common-effectedge-e.md).START & [EffectEdge](arkts-na-common-effectedge-e.md).END（即数值0）。
 
 **类型：** int
 
@@ -190,9 +174,7 @@ effectEdge?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -214,9 +196,7 @@ enableFloatingDragBar?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -238,9 +218,7 @@ enableHoverMode?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -262,9 +240,7 @@ enableOutsideInteractive?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -286,9 +262,7 @@ height?: SheetSize | Length
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,9 +284,7 @@ hoverModeArea?: HoverModeAreaType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -334,9 +306,7 @@ keyboardAvoidMode?: SheetKeyboardAvoidMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -356,9 +326,7 @@ maskColor?: ResourceColor
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -380,9 +348,7 @@ bindSheet全屏模态样式的系统转场方式。 默认值：ModalTransition.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -404,9 +370,7 @@ mode?: SheetMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -428,9 +392,7 @@ onDetentsDidChange?: Callback<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -450,9 +412,7 @@ onHeightDidChange?: Callback<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -472,9 +432,7 @@ onTypeDidChange?: Callback<SheetType>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -494,9 +452,7 @@ onWidthDidChange?: Callback<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -510,15 +466,13 @@ onWidthDidChange?: Callback<int>
 onWillDismiss?: Callback<DismissSheetAction>
 ```
 
-半模态页面的交互式关闭回调函数。允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。 **说明：** 当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数[DismissSheetAction](arkts-na-common-dismisssheetaction-i.md#dismisssheetaction) 中的reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。 如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。 侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。 在onWillDismiss回调中，不能再做onWillDismiss拦截。 建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。
+半模态页面的交互式关闭回调函数。允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。 **说明：** 当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数[DismissSheetAction](arkts-na-common-dismisssheetaction-i.md) 中的reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。 如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。 侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。 在onWillDismiss回调中，不能再做onWillDismiss拦截。 建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。
 
 **类型：** [Callback](arkts-na-callback-t.md)&lt;[DismissSheetAction](arkts-na-common-dismisssheetaction-i.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -538,9 +492,7 @@ onWillSpringBackWhenDismiss?: Callback<SpringBackAction>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -562,9 +514,7 @@ placement?: Placement
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -586,9 +536,7 @@ placementOnTarget?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -608,9 +556,7 @@ preferType?: SheetType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -630,9 +576,7 @@ radius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -654,9 +598,7 @@ radiusRenderStrategy?: RenderStrategy
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -678,9 +620,7 @@ scrollSizeMode?: ScrollSizeMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -700,9 +640,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -722,9 +660,7 @@ shouldDismiss?: (sheetDismiss: SheetDismiss) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -746,9 +682,7 @@ showClose?: boolean | Resource
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -770,9 +704,7 @@ showInSubWindow?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -792,9 +724,7 @@ systemMaterial?: SystemUiMaterial
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -814,9 +744,7 @@ title?: SheetTitleOptions | CustomBuilder
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -836,9 +764,7 @@ uiContext?: UIContext
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -858,9 +784,7 @@ width?: Dimension
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

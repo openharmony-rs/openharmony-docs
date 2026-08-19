@@ -1,5 +1,11 @@
 # @ohos.application.DistributedExtensionContext
 
+## 导入模块
+
+```TypeScript
+import { DistributedExtensionContext } from '@kit.DistributedServiceKit';
+```
+
 ## 汇总
 
 ### 类

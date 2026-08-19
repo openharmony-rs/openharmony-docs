@@ -14,8 +14,6 @@ GridContainer(value?: GridContainerOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** grid_col/GridColInterface and grid_row/GridRowInterface
@@ -32,5 +30,15 @@ GridContainer(value?: GridContainerOptions)
 
 ## 汇总
 
-- [GridContainerOptions](arkts-arkui-gridcontaineroptions-i.md)
-- [SizeType](arkts-arkui-sizetype-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [GridContainerOptions](arkts-arkui-gridcontaineroptions-i.md) | 栅格栅格布局容器配置参数对象，用于设置GridContainer组件的列数、设备宽度类型、列间距和两侧间距。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [SizeType](arkts-arkui-sizetype-e.md) | 设备宽度类型枚举，用于在栅格布局中区分不同宽度的设备类型，实现响应式布局。 |
+

@@ -4,13 +4,15 @@ WebCookieManager是Web组件的cookie管理器，提供对Web组件中cookie的�
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-webview-class WebCookieManager--><!--Device-webview-class WebCookieManager-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## clearAllCookies
 
@@ -21,10 +23,6 @@ static clearAllCookies(): Promise<void>
 清除所有cookie（包括会话cookie和持久化cookie），使用Promise异步回调。如需仅清除会话cookie，请使用 [clearSessionCookie](#clearsessioncookie)。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -54,10 +52,6 @@ static clearAllCookies(callback: AsyncCallback<void>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static clearAllCookies(callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static clearAllCookies(callback: AsyncCallback<void>): void-End-->
@@ -68,7 +62,7 @@ static clearAllCookies(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取清除所有cookie是否成功。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取清除所有cookie是否成功。 |
 
 **错误码：**
 
@@ -85,10 +79,6 @@ static clearAllCookiesSync(incognito?: boolean): void
 清除所有cookie（包括会话cookie和持久化cookie）。如需仅清除会话cookie，请使用 [clearSessionCookieSync](#clearsessioncookiesync)。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -111,10 +101,6 @@ static clearSessionCookie(): Promise<void>
 清除所有会话cookie。使用Promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -144,10 +130,6 @@ static clearSessionCookie(callback: AsyncCallback<void>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static clearSessionCookie(callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static clearSessionCookie(callback: AsyncCallback<void>): void-End-->
@@ -158,7 +140,7 @@ static clearSessionCookie(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取清除所有会话cookie是否成功。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取清除所有会话cookie是否成功。 |
 
 **错误码：**
 
@@ -176,10 +158,6 @@ static clearSessionCookieSync(): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static clearSessionCookieSync(): void--><!--Device-WebCookieManager-static clearSessionCookieSync(): void-End-->
@@ -195,10 +173,6 @@ static configCookie(url: string, value: string): Promise<void>
 为指定url设置单个cookie的值。使用Promise异步回调。 > **说明：** > > - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。 > > - cookie每30s周期性保存到磁盘中，也可以使用接口 > [saveCookieAsync](#savecookieasync)进行强制落盘。 > > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。 > > - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。 > > - 若通过configCookie进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。 > > - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。 > > - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -237,10 +211,6 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-WebCookieManager-static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise<void>--><!--Device-WebCookieManager-static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -278,10 +248,6 @@ static configCookie(url: string, value: string, callback: AsyncCallback<void>): 
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static configCookie(url: string, value: string, callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static configCookie(url: string, value: string, callback: AsyncCallback<void>): void-End-->
@@ -294,7 +260,7 @@ static configCookie(url: string, value: string, callback: AsyncCallback<void>): 
 | --- | --- | --- | --- |
 | url | string | 是 | 要设置的cookie所属的url，建议使用完整的url。 |
 | value | string | 是 | 要设置的cookie的值。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取设置cookie的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取设置cookie的结果。 |
 
 **错误码：**
 
@@ -313,10 +279,6 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 为指定url设置单个cookie的值。 > **说明：** > > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。 > > - cookie每30s周期性保存到磁盘中，也可以使用接口 > [saveCookieAsync](#savecookieasync)进行强制落盘。 > > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。 > > - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。 > > - 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。 > > - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。 > > - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -350,10 +312,6 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-WebCookieManager-static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void--><!--Device-WebCookieManager-static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -385,8 +343,6 @@ static deleteEntireCookie(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **替代接口：** [clearAllCookiesSync](#clearallcookiessync)
@@ -405,8 +361,6 @@ static deleteSessionCookie(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **替代接口：** [clearSessionCookieSync](#clearsessioncookiesync)
@@ -424,10 +378,6 @@ static existCookie(incognito?: boolean): boolean
 判断是否存在cookie。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -457,10 +407,6 @@ static fetchAllCookies(incognito: boolean):  Promise<Array<WebHttpCookie>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WebCookieManager-static fetchAllCookies(incognito: boolean):  Promise<Array<WebHttpCookie>>--><!--Device-WebCookieManager-static fetchAllCookies(incognito: boolean):  Promise<Array<WebHttpCookie>>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -486,10 +432,6 @@ static fetchCookie(url: string): Promise<string>
 获取指定url对应cookie的值。使用Promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -526,10 +468,6 @@ static fetchCookie(url: string, incognito: boolean): Promise<string>
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-WebCookieManager-static fetchCookie(url: string, incognito: boolean): Promise<string>--><!--Device-WebCookieManager-static fetchCookie(url: string, incognito: boolean): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -563,10 +501,6 @@ static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: b
 获取指定url对应的cookies，可以通过参数incognito指定是否获取隐私模式下的cookies，也可以通过参数includePartitionedCookies指定是否获取第一方partitioned cookie。 使用Promise异步回调。 26.0.0
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -604,10 +538,6 @@ static fetchCookie(url: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static fetchCookie(url: string, callback: AsyncCallback<string>): void--><!--Device-WebCookieManager-static fetchCookie(url: string, callback: AsyncCallback<string>): void-End-->
@@ -619,7 +549,7 @@ static fetchCookie(url: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 要获取cookie的url，建议使用完整的url。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，用于获取cookie。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，用于获取cookie。 |
 
 **错误码：**
 
@@ -637,10 +567,6 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 获取指定url对应cookie的值。 > **说明：** > > - 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。 > > - 为了获取可正常使用的cookie值，fetchCookieSync建议传入完整链接。 > > - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -678,10 +604,6 @@ static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCooki
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebCookieManager-static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string--><!--Device-WebCookieManager-static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string-End-->
@@ -717,8 +639,6 @@ static getCookie(url: string): string
 获取指定url对应cookie的值。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -757,10 +677,6 @@ static isCookieAllowed(): boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static isCookieAllowed(): boolean--><!--Device-WebCookieManager-static isCookieAllowed(): boolean-End-->
@@ -783,10 +699,6 @@ static isThirdPartyCookieAllowed(): boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static isThirdPartyCookieAllowed(): boolean--><!--Device-WebCookieManager-static isThirdPartyCookieAllowed(): boolean-End-->
@@ -808,10 +720,6 @@ static putAcceptCookieEnabled(accept: boolean): void
 设置WebCookieManager实例是否拥有发送和接收cookie的权限。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -841,10 +749,6 @@ static putAcceptThirdPartyCookieEnabled(accept: boolean): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static putAcceptThirdPartyCookieEnabled(accept: boolean): void--><!--Device-WebCookieManager-static putAcceptThirdPartyCookieEnabled(accept: boolean): void-End-->
@@ -872,10 +776,6 @@ static saveCookieAsync(): Promise<void>
 将当前可通过fetchCookie获取到的所有需要持久化的cookie保存到磁盘中。使用Promise异步回调。 > **说明：** > > - saveCookieAsync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session > cookie写入磁盘。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -905,10 +805,6 @@ static saveCookieAsync(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCookieManager-static saveCookieAsync(callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static saveCookieAsync(callback: AsyncCallback<void>): void-End-->
@@ -919,7 +815,7 @@ static saveCookieAsync(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取cookie是否成功保存。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，用于获取cookie是否成功保存。 |
 
 **错误码：**
 
@@ -937,10 +833,6 @@ static saveCookieSync(): void
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-WebCookieManager-static saveCookieSync(): void--><!--Device-WebCookieManager-static saveCookieSync(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -954,8 +846,6 @@ static setCookie(url: string, value: string): void
 为指定url设置单个cookie的值。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -989,10 +879,6 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 设置是否延后初始化ArkWeb内核，不调用该方法时，默认不延后初始化ArkWeb内核。 > **说明：** > > - 该接口是全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。 > > - 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化 > ArkWeb内核，后续需自行初始化ArkWeb内核。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 <!--Device-WebCookieManager-static setLazyInitializeWebEngine(lazy: boolean): void--><!--Device-WebCookieManager-static setLazyInitializeWebEngine(lazy: boolean): void-End-->
 

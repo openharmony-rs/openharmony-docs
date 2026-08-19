@@ -1,5 +1,11 @@
 # uninstallFont（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fontManager } from '@kit.LocalizationKit';
+```
+
 ## uninstallFont
 
 ```TypeScript
@@ -9,10 +15,6 @@ function uninstallFont(fullName: string): Promise<int>
 根据字体名称从系统字体库中卸载已安装的字体文件。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.UPDATE_FONT
 

@@ -1,5 +1,11 @@
 # getBundleNameByUid
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getBundleNameByUid
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundleNameByUid(uid: int, callback: AsyncCallback<string>): void
 根据给定的uid获取对应应用的bundleName。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -25,7 +27,7 @@ function getBundleNameByUid(uid: int, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | int | 是 | 表示应用程序的UID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，当获取成功时，err为undefined， data为获取到的BundleName；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取成功时，err为undefined， data为获取到的BundleName；否则为错误对象。 |
 
 **错误码：**
 
@@ -35,7 +37,7 @@ function getBundleNameByUid(uid: int, callback: AsyncCallback<string>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [17700021](../errorcode-bundle.md#17700021-指定的uid无效) | The uid is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -68,10 +70,6 @@ function getBundleNameByUid(uid: int): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 <!--Device-bundleManager-function getBundleNameByUid(uid: int): Promise<string>--><!--Device-bundleManager-function getBundleNameByUid(uid: int): Promise<string>-End-->
@@ -98,7 +96,7 @@ function getBundleNameByUid(uid: int): Promise<string>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [17700021](../errorcode-bundle.md#17700021-指定的uid无效) | The uid is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

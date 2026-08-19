@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class ArcButtonOptions--><!--Device-unnamed-export declare class ArcButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -22,9 +25,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-constructor(options: CommonArcButtonOptions)--><!--Device-ArcButtonOptions-constructor(options: CommonArcButtonOptions)-End-->
 
@@ -49,9 +50,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public backgroundBlurStyle: BlurStyle--><!--Device-ArcButtonOptions-@Trace  public backgroundBlurStyle: BlurStyle-End-->
 
@@ -70,9 +69,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public backgroundColor: ColorMetrics--><!--Device-ArcButtonOptions-@Trace  public backgroundColor: ColorMetrics-End-->
 
@@ -91,9 +88,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public fontColor: ColorMetrics--><!--Device-ArcButtonOptions-@Trace  public fontColor: ColorMetrics-End-->
 
@@ -112,9 +107,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public fontFamily: string | Resource--><!--Device-ArcButtonOptions-@Trace  public fontFamily: string | Resource-End-->
 
@@ -133,9 +126,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public fontMargin: LocalizedMargin--><!--Device-ArcButtonOptions-@Trace  public fontMargin: LocalizedMargin-End-->
 
@@ -154,9 +145,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public fontSize: LengthMetrics--><!--Device-ArcButtonOptions-@Trace  public fontSize: LengthMetrics-End-->
 
@@ -175,9 +164,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public fontStyle: FontStyle--><!--Device-ArcButtonOptions-@Trace  public fontStyle: FontStyle-End-->
 
@@ -196,9 +183,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public label: ResourceStr--><!--Device-ArcButtonOptions-@Trace  public label: ResourceStr-End-->
 
@@ -213,13 +198,11 @@ constructor(options: CommonArcButtonOptions)
 
 弧形按钮点击动作触发该回调。
 
-**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ClickEvent&gt;
+**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ClickEvent&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public onClick?: Callback<ClickEvent>--><!--Device-ArcButtonOptions-@Trace  public onClick?: Callback<ClickEvent>-End-->
 
@@ -234,13 +217,11 @@ constructor(options: CommonArcButtonOptions)
 
 弧形按钮手指触摸动作触发该回调。
 
-**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;TouchEvent&gt;
+**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;TouchEvent&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public onTouch?: Callback<TouchEvent>--><!--Device-ArcButtonOptions-@Trace  public onTouch?: Callback<TouchEvent>-End-->
 
@@ -259,9 +240,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public position: ArcButtonPosition--><!--Device-ArcButtonOptions-@Trace  public position: ArcButtonPosition-End-->
 
@@ -280,9 +259,7 @@ constructor(options: CommonArcButtonOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public pressedFontColor: ColorMetrics--><!--Device-ArcButtonOptions-@Trace  public pressedFontColor: ColorMetrics-End-->
 
@@ -295,15 +272,13 @@ constructor(options: CommonArcButtonOptions)
   public progressConfig?: ArcButtonProgressConfig
 ```
 
-ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（ 示例1），设置后表现为进度条样式（ 示例2），进度条样式不受 [ArcButtonStyleMode](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonstylemode-e.md#arcbuttonstylemode)属性设置影响。 默认值：[ArcButtonProgressConfig](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md#arcbuttonprogressconfig) 的各项子属性均取其默认值。
+ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（ 示例1），设置后表现为进度条样式（ 示例2），进度条样式不受 [ArcButtonStyleMode](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonstylemode-e.md)属性设置影响。 默认值：[ArcButtonProgressConfig](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md) 的各项子属性均取其默认值。
 
 **类型：** [ArcButtonProgressConfig](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -324,9 +299,7 @@ ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public shadowColor: ColorMetrics--><!--Device-ArcButtonOptions-@Trace  public shadowColor: ColorMetrics-End-->
 
@@ -345,9 +318,7 @@ ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public shadowEnabled: boolean--><!--Device-ArcButtonOptions-@Trace  public shadowEnabled: boolean-End-->
 
@@ -366,9 +337,7 @@ ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public status: ArcButtonStatus--><!--Device-ArcButtonOptions-@Trace  public status: ArcButtonStatus-End-->
 
@@ -381,15 +350,13 @@ ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮�
   public styleMode: ArcButtonStyleMode
 ```
 
-弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md#arcbuttonprogressconfig)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT
+弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonprogressconfig-c.md)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT
 
 **类型：** [ArcButtonStyleMode](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-arcbutton-arcbuttonstylemode-e.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonOptions-@Trace  public styleMode: ArcButtonStyleMode--><!--Device-ArcButtonOptions-@Trace  public styleMode: ArcButtonStyleMode-End-->
 

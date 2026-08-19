@@ -1,5 +1,11 @@
 # getDisplayByIdSync
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## getDisplayByIdSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDisplayByIdSync(displayId: long): Display
 根据displayId获取对应的Display对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function getDisplayByIdSync(displayId: long): Display
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayId | long | 是 | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过 [WindowProperties](arkts-arkui-window-windowproperties-i.md#windowproperties)的displayId属性获取到准确的displayId作为入参。 |
+| displayId | long | 是 | 屏幕ID。该参数仅支持整数输入，该参数大于等于0。需要确保displayId准确才能成功获取到对应结果。可以通过 [WindowProperties](arkts-arkui-window-windowproperties-i.md)的displayId属性获取到准确的displayId作为入参。 |
 
 **返回值：**
 
@@ -39,7 +41,7 @@ function getDisplayByIdSync(displayId: long): Display
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. Possible causes: Display is null, display id corresponding display does not exist. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationCapsule--><!--Device-unnamed-export interface NotificationCapsule-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ capsuleButtons?: Array<NotificationIconButton>
 **类型：** Array&lt;[NotificationIconButton](arkts-notification-notificationcontent-notificationiconbutton-i-sys.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationCapsule-capsuleButtons?: Array<NotificationIconButton>--><!--Device-NotificationCapsule-capsuleButtons?: Array<NotificationIconButton>-End-->
 
@@ -46,10 +38,6 @@ content?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationCapsule-content?: string--><!--Device-NotificationCapsule-content?: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -67,10 +55,6 @@ time?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationCapsule-time?: int--><!--Device-NotificationCapsule-time?: int-End-->
 

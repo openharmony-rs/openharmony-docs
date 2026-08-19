@@ -1,18 +1,20 @@
 # isDefaultApplicationSync
 
+## 导入模块
+
+```TypeScript
+import { defaultAppManager } from '@kit.AbilityKit';
+```
+
 ## isDefaultApplicationSync
 
 ```TypeScript
 function isDefaultApplicationSync(type: string): boolean
 ```
 
-以同步方法根据系统已定义的应用类型或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-data-uniformtypedescriptor.md#ohosdatauniformtypedescriptor标准化数据定义与描述)类型判断当前应用是否是该类型的默认 应用，使用boolean形式返回结果。
+以同步方法根据系统已定义的应用类型或者[UniformDataType](../../apis-arkdata/arkts-apis/arkts-data-uniformtypedescriptor.md)类型判断当前应用是否是该类型的默认 应用，使用boolean形式返回结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-defaultAppManager-function isDefaultApplicationSync(type: string): boolean--><!--Device-defaultAppManager-function isDefaultApplicationSync(type: string): boolean-End-->
 
@@ -22,7 +24,7 @@ function isDefaultApplicationSync(type: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 要查询的应用类型，取[ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md#applicationtype)或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-data-uniformtypedescriptor.md#ohosdatauniformtypedescriptor标准化数据定义与描述)类型中的值。 |
+| type | string | 是 | 要查询的应用类型，取[ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md)或者 [UniformDataType](../../apis-arkdata/arkts-apis/arkts-data-uniformtypedescriptor.md)类型中的值。 |
 
 **返回值：**
 
@@ -37,7 +39,7 @@ function isDefaultApplicationSync(type: string): boolean
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { defaultAppManager } from '@kit.AbilityKit';

@@ -1,14 +1,12 @@
 # ScrollableTargetInfo
 
-手势识别器对应的滚动类容器组件的信息，继承于[EventTargetInfo](arkts-arkui-gesture-eventtargetinfo-c.md#eventtargetinfo)。
+手势识别器对应的滚动类容器组件的信息，继承于[EventTargetInfo](arkts-arkui-gesture-eventtargetinfo-c.md)。
 
-**继承/实现关系：** ScrollableTargetInfo extends [EventTargetInfo](arkts-arkui-gesture-eventtargetinfo-c.md#eventtargetinfo)
+**继承/实现关系：** ScrollableTargetInfo extends [EventTargetInfo](arkts-arkui-gesture-eventtargetinfo-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class ScrollableTargetInfo--><!--Device-unnamed-export declare class ScrollableTargetInfo-End-->
 
@@ -24,9 +22,7 @@ isBegin(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,9 +46,7 @@ isEnd(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

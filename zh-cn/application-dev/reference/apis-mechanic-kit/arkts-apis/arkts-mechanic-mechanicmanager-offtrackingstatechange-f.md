@@ -1,5 +1,11 @@
 # offTrackingStateChange
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## offTrackingStateChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ function offTrackingStateChange(callback?: Callback<TrackingEventInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-function offTrackingStateChange(callback?: Callback<TrackingEventInfo>): void--><!--Device-mechanicManager-function offTrackingStateChange(callback?: Callback<TrackingEventInfo>): void-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -22,7 +24,7 @@ function offTrackingStateChange(callback?: Callback<TrackingEventInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[TrackingEventInfo](arkts-mechanic-mechanicmanager-trackingeventinfo-i.md)&gt; | 否 | Callback used to return the tracking event information. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[TrackingEventInfo](arkts-mechanic-mechanicmanager-trackingeventinfo-i.md)&gt; | 否 | Callback used to return the tracking event information. |
 
 **错误码：**
 

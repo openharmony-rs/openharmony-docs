@@ -135,7 +135,7 @@ Proxy方法被执行的回调（有返回值）。用于在JavaScript调用注�
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char\* webTag | Web组件名称。 |
+| const char\* webTag | Web组件名称。 |
 | [const ArkWeb_JavaScriptBridgeData](capi-web-arkweb-javascriptbridgedata.md)\* dataArray | 数组数据。 |
 | size_t arraySize | 数组大小。 |
 | void\* userData | 用户自定义的数据。 |
@@ -168,7 +168,7 @@ Web组件滚动时的回调函数。
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char\* webTag | Web组件名称。 |
+| const char\* webTag | Web组件名称。 |
 | void\* userData | 用户自定义的数据。 |
 | double x | X轴滚动偏移。单位：vp。 |
 | double y | Y轴滚动偏移。单位：vp。 |
@@ -189,7 +189,7 @@ typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_We
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char\* webTag | Web组件名称。 |
+| const char\* webTag | Web组件名称。 |
 | [const ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) port | Post Message端口。 |
 | [const ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) message | Post Message数据。 |
 | void\* userData | 用户自定义的数据。 |

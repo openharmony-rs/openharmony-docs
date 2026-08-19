@@ -8,10 +8,6 @@ export type CursorContextChangeCallback = (x: double, y: double, height: double)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export type CursorContextChangeCallback = (x: double, y: double, height: double) => void--><!--Device-inputMethodEngine-export type CursorContextChangeCallback = (x: double, y: double, height: double) => void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

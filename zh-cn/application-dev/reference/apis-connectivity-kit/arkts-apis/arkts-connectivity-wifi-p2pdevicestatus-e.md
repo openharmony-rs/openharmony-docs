@@ -4,11 +4,9 @@ P2P设备状态。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [P2pDeviceStatus](arkts-connectivity-wifimanager-p2pdevicestatus-e.md#p2pdevicestatus)
+**替代接口：** [P2pDeviceStatus](arkts-connectivity-wifimanager-p2pdevicestatus-e.md)
 
 <!--Device-wifi-enum P2pDeviceStatus--><!--Device-wifi-enum P2pDeviceStatus-End-->
 
@@ -23,8 +21,6 @@ CONNECTED = 0
 表示P2P设备已连接。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -44,8 +40,6 @@ INVITED = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [INVITED](arkts-connectivity-wifimanager-p2pdevicestatus-e.md#invited)
@@ -63,8 +57,6 @@ FAILED = 2
 表示P2P设备失败。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -84,8 +76,6 @@ AVAILABLE = 3
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [AVAILABLE](arkts-connectivity-wifimanager-p2pdevicestatus-e.md#available)
@@ -103,8 +93,6 @@ UNAVAILABLE = 4
 表示P2P设备不可用。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

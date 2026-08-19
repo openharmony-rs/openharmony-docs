@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-workScheduler-export enum StorageRequest--><!--Device-workScheduler-export enum StorageRequest-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
@@ -21,10 +17,6 @@ STORAGE_LEVEL_LOW = 0
 表示这个触发条件是存储空间不足。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ STORAGE_LEVEL_OKAY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StorageRequest-STORAGE_LEVEL_OKAY = 1--><!--Device-StorageRequest-STORAGE_LEVEL_OKAY = 1-End-->
@@ -61,10 +49,6 @@ STORAGE_LEVEL_LOW_OR_OKAY = 2
 表示这个触发条件是存储空间不足或者从存储空间不足恢复到正常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

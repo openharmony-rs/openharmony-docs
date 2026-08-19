@@ -2,8 +2,6 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 7
 
 <!--Device-unnamed-export interface ActionResult--><!--Device-unnamed-export interface ActionResult-End-->
@@ -13,8 +11,7 @@
 ## 导入模块
 
 ```TypeScript
-import { ActionResult } from 'ActionResult';
-import { ShowNotificationOptions } from 'ShowNotificationOptions';
+import { Notification, ActionResult, ShowNotificationOptions } from '@kit.NotificationKit';
 ```
 
 ## abilityName
@@ -28,8 +25,6 @@ abilityName: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 
@@ -49,8 +44,6 @@ bundleName: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 7
 
 <!--Device-ActionResult-bundleName: string--><!--Device-ActionResult-bundleName: string-End-->
@@ -68,8 +61,6 @@ uri: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 

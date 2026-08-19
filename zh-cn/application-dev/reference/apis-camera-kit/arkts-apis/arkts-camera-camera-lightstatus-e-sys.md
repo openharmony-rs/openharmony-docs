@@ -4,10 +4,6 @@ Enumerates the camera light statuses, which are obtained by calling VideoSession
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum LightStatus--><!--Device-camera-enum LightStatus-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -24,10 +20,6 @@ Normal lighting conditions.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-LightStatus-NORMAL = 0--><!--Device-LightStatus-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -43,10 +35,6 @@ INSUFFICIENT = 1
 Insufficient lighting (too dark).
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LightStatus-INSUFFICIENT = 1--><!--Device-LightStatus-INSUFFICIENT = 1-End-->
 

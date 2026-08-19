@@ -1,12 +1,8 @@
 # Aabb
 
-轴对齐边界盒.
+轴对齐边界盒，主要用于判断空间中的物体是否重叠。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Aabb--><!--Device-unnamed-export interface Aabb-End-->
 
@@ -18,15 +14,11 @@
 aabbMax: Vec3
 ```
 
-AABB最大角点的坐标, 单位为世界坐标系下的场景单位（例如cm、m、km等）.
+轴对齐边界盒的大值点，单位为世界坐标系下的场景单位（比如cm、m、km等）。
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Aabb-aabbMax: Vec3--><!--Device-Aabb-aabbMax: Vec3-End-->
 
@@ -38,15 +30,11 @@ AABB最大角点的坐标, 单位为世界坐标系下的场景单位（例如cm
 aabbMin: Vec3
 ```
 
-AABB最小角点的坐标, 单位为世界坐标系下的场景单位（例如cm、m、km等）.
+轴对齐边界盒的小值点，单位为世界坐标系下的场景单位（比如cm、m、km等）。
 
 **类型：** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Aabb-aabbMin: Vec3--><!--Device-Aabb-aabbMin: Vec3-End-->
 

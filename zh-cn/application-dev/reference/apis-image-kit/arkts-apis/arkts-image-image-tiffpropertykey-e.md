@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-image-enum TiffPropertyKey--><!--Device-image-enum TiffPropertyKey-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ COMPRESSION = 'TiffCompression'
 Compression scheme used for image data (e.g., None, LZW, JPEG, Deflate).
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ Defines how pixel colors are interpreted (e.g., RGB, grayscale).
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'--><!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'-End-->
@@ -61,10 +49,6 @@ TRANSFER_FUNCTION = 'TiffTransferFunction'
 Tone transfer curve mapping pixel values to output intensity.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ Indicates image orientation for correct display rotation/flip.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'--><!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'-End-->
@@ -101,10 +81,6 @@ X_RESOLUTION = 'TiffXResolution'
 Horizontal resolution (pixels per resolution unit).
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,10 +98,6 @@ Vertical resolution (pixels per resolution unit).
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'--><!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'-End-->
@@ -141,10 +113,6 @@ RESOLUTION_UNIT = 'TiffResolutionUnit'
 Unit for X/Y resolution.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -162,10 +130,6 @@ Chromaticity coordinates of the reference white point.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'--><!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'-End-->
@@ -181,10 +145,6 @@ PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'
 Chromaticity coordinates of the RGB primaries.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -202,10 +162,6 @@ Height of each image tile in pixels.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'--><!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'-End-->
@@ -221,10 +177,6 @@ TILE_WIDTH = 'TiffTileWidth'
 Width of each image tile in pixels.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,10 +194,6 @@ Name of the document or image.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'--><!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'-End-->
@@ -261,10 +209,6 @@ IMAGE_DESCRIPTION = 'TiffImageDescription'
 Description of the image content.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -282,10 +226,6 @@ Name of the image creator or artist.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-ARTIST = 'TiffArtist'--><!--Device-TiffPropertyKey-ARTIST = 'TiffArtist'-End-->
@@ -301,10 +241,6 @@ COPYRIGHT = 'TiffCopyright'
 Copyright notice for the image.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -322,10 +258,6 @@ Date and time associated with the image (typically last modification).
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-DATE_TIME = 'TiffDateTime'--><!--Device-TiffPropertyKey-DATE_TIME = 'TiffDateTime'-End-->
@@ -341,10 +273,6 @@ MAKE = 'TiffMake'
 Manufacturer of the capture device.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -362,10 +290,6 @@ Model name/number of the capture device.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-MODEL = 'TiffModel'--><!--Device-TiffPropertyKey-MODEL = 'TiffModel'-End-->
@@ -382,10 +306,6 @@ Software used to create or process the image.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-SOFTWARE = 'TiffSoftware'--><!--Device-TiffPropertyKey-SOFTWARE = 'TiffSoftware'-End-->
@@ -401,10 +321,6 @@ HOST_COMPUTER = 'TiffHostComputer'
 Host computer/system used for image processing.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

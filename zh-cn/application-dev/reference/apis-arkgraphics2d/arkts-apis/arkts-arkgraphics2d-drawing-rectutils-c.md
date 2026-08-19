@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-class RectUtils--><!--Device-drawing-class RectUtils-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## centerX
 
@@ -21,10 +23,6 @@ static centerX(rect: common2D.Rect): double
 获取矩形中心的x轴坐标，中心x轴坐标为矩形左边界与右边界之和的一半。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static centerX(rect: common2D.Rect): double--><!--Device-RectUtils-static centerX(rect: common2D.Rect): double-End-->
 
@@ -52,10 +50,6 @@ static centerY(rect: common2D.Rect): double
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static centerY(rect: common2D.Rect): double--><!--Device-RectUtils-static centerY(rect: common2D.Rect): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -81,10 +75,6 @@ static contains(rect: common2D.Rect, other: common2D.Rect): boolean
 判断一个矩形是否完全包含另外一个矩形。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static contains(rect: common2D.Rect, other: common2D.Rect): boolean--><!--Device-RectUtils-static contains(rect: common2D.Rect, other: common2D.Rect): boolean-End-->
 
@@ -112,10 +102,6 @@ static contains(rect: common2D.Rect, left: double, top: double, right: double, b
 判断一个矩形是否完全包含另外一个矩形（另一个矩形分别用左上右下坐标表示）。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static contains(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): boolean--><!--Device-RectUtils-static contains(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): boolean-End-->
 
@@ -147,10 +133,6 @@ static contains(rect: common2D.Rect, x: double, y: double): boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static contains(rect: common2D.Rect, x: double, y: double): boolean--><!--Device-RectUtils-static contains(rect: common2D.Rect, x: double, y: double): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -179,10 +161,6 @@ static getHeight(rect: common2D.Rect): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static getHeight(rect: common2D.Rect): double--><!--Device-RectUtils-static getHeight(rect: common2D.Rect): double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -208,10 +186,6 @@ static getWidth(rect: common2D.Rect): double
 获取矩形的宽度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static getWidth(rect: common2D.Rect): double--><!--Device-RectUtils-static getWidth(rect: common2D.Rect): double-End-->
 
@@ -239,10 +213,6 @@ static inset(rect: common2D.Rect, left: double, top: double, right: double, bott
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static inset(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): void--><!--Device-RectUtils-static inset(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -266,10 +236,6 @@ static intersect(rect: common2D.Rect, other: common2D.Rect): boolean
 计算两个矩形的交集区域，并将交集结果更新到第一个入参代表的矩形区域。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static intersect(rect: common2D.Rect, other: common2D.Rect): boolean--><!--Device-RectUtils-static intersect(rect: common2D.Rect, other: common2D.Rect): boolean-End-->
 
@@ -298,10 +264,6 @@ static isEmpty(rect: common2D.Rect): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static isEmpty(rect: common2D.Rect): boolean--><!--Device-RectUtils-static isEmpty(rect: common2D.Rect): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -327,10 +289,6 @@ static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean
 判断两个矩形是否相等。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean--><!--Device-RectUtils-static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean-End-->
 
@@ -359,10 +317,6 @@ static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean--><!--Device-RectUtils-static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -390,10 +344,6 @@ static makeCopy(src: common2D.Rect): common2D.Rect
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static makeCopy(src: common2D.Rect): common2D.Rect--><!--Device-RectUtils-static makeCopy(src: common2D.Rect): common2D.Rect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -419,10 +369,6 @@ static makeCopy(src: common2D.Rect): common2D.Rect | undefined
 拷贝一个矩形。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static makeCopy(src: common2D.Rect): common2D.Rect | undefined--><!--Device-RectUtils-static makeCopy(src: common2D.Rect): common2D.Rect | undefined-End-->
 
@@ -450,10 +396,6 @@ static makeEmpty(): common2D.Rect
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static makeEmpty(): common2D.Rect--><!--Device-RectUtils-static makeEmpty(): common2D.Rect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -474,10 +416,6 @@ static makeEmpty(): common2D.Rect | undefined
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static makeEmpty(): common2D.Rect | undefined--><!--Device-RectUtils-static makeEmpty(): common2D.Rect | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -497,10 +435,6 @@ static makeLtrb(left: number, top: number, right: number, bottom: number): commo
 创建指定上下左右边界的矩形。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static makeLtrb(left: number, top: number, right: number, bottom: number): common2D.Rect--><!--Device-RectUtils-static makeLtrb(left: number, top: number, right: number, bottom: number): common2D.Rect-End-->
 
@@ -531,10 +465,6 @@ static makeLtrb(left: double, top: double, right: double, bottom: double): commo
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static makeLtrb(left: double, top: double, right: double, bottom: double): common2D.Rect | undefined--><!--Device-RectUtils-static makeLtrb(left: double, top: double, right: double, bottom: double): common2D.Rect | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -564,10 +494,6 @@ static offset(rect: common2D.Rect, dx: double, dy: double): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static offset(rect: common2D.Rect, dx: double, dy: double): void--><!--Device-RectUtils-static offset(rect: common2D.Rect, dx: double, dy: double): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -589,10 +515,6 @@ static offsetTo(rect: common2D.Rect, newLeft: double, newTop: double): void
 将矩形平移到指定位置。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static offsetTo(rect: common2D.Rect, newLeft: double, newTop: double): void--><!--Device-RectUtils-static offsetTo(rect: common2D.Rect, newLeft: double, newTop: double): void-End-->
 
@@ -616,10 +538,6 @@ static setEmpty(rect: common2D.Rect): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static setEmpty(rect: common2D.Rect): void--><!--Device-RectUtils-static setEmpty(rect: common2D.Rect): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -639,10 +557,6 @@ static setLtrb(rect: common2D.Rect, left: double, top: double, right: double, bo
 使用传入的“左上右下”的值更新当前矩形的左上右下边界值。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static setLtrb(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): void--><!--Device-RectUtils-static setLtrb(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): void-End-->
 
@@ -668,10 +582,6 @@ static setRect(rect: common2D.Rect, other: common2D.Rect): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static setRect(rect: common2D.Rect, other: common2D.Rect): void--><!--Device-RectUtils-static setRect(rect: common2D.Rect, other: common2D.Rect): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -693,10 +603,6 @@ static sort(rect: common2D.Rect): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RectUtils-static sort(rect: common2D.Rect): void--><!--Device-RectUtils-static sort(rect: common2D.Rect): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -716,10 +622,6 @@ static union(rect: common2D.Rect, other: common2D.Rect): void
 计算两个矩形的并集区域，并将并集结果更新到第一个入参代表的矩形区域。如果第一个入参矩形为空，则将并集结果更新到第二个入参代表的矩形区域；如果第二个入参的矩形为空，则不进行任何操作。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-RectUtils-static union(rect: common2D.Rect, other: common2D.Rect): void--><!--Device-RectUtils-static union(rect: common2D.Rect, other: common2D.Rect): void-End-->
 

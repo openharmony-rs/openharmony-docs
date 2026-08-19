@@ -1,16 +1,18 @@
-# MatchResult
+# MatchResult(Identify sensitive file)
 
 表示敏感内容的识别结果。
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-identifySensitiveContent-export interface MatchResult--><!--Device-identifySensitiveContent-export interface MatchResult-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
+
+## 导入模块
+
+```TypeScript
+import { identifySensitiveContent } from '@kit.DataProtectionKit';
+```
 
 ## matchContent
 
@@ -23,10 +25,6 @@ readonly matchContent: string
 **类型：** string
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 <!--Device-MatchResult-readonly matchContent: string--><!--Device-MatchResult-readonly matchContent: string-End-->
 
@@ -44,10 +42,6 @@ readonly matchNumber: number
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-MatchResult-readonly matchNumber: number--><!--Device-MatchResult-readonly matchNumber: number-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -63,10 +57,6 @@ readonly sensitiveLabel: string
 **类型：** string
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 <!--Device-MatchResult-readonly sensitiveLabel: string--><!--Device-MatchResult-readonly sensitiveLabel: string-End-->
 

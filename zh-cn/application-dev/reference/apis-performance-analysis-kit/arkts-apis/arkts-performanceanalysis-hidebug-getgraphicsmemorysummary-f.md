@@ -1,5 +1,11 @@
 # getGraphicsMemorySummary
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getGraphicsMemorySummary
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary
 获取应用显存数据，使用Promise进行异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +40,7 @@ function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary
 | --- | --- |
 | [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-cpuusage统计异常) | Failed to get the application memory due to a remote exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

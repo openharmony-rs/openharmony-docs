@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum TextEncoding--><!--Device-drawing-enum TextEncoding-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ TEXT_ENCODING_UTF8 = 0
 UTF-8或ASCII编码，UTF-8使用1-4个字节表示字符，ASCII使用1个字节表示字符。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ TEXT_ENCODING_UTF16 = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextEncoding-TEXT_ENCODING_UTF16 = 1--><!--Device-TextEncoding-TEXT_ENCODING_UTF16 = 1-End-->
@@ -62,10 +50,6 @@ TEXT_ENCODING_UTF32 = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextEncoding-TEXT_ENCODING_UTF32 = 2--><!--Device-TextEncoding-TEXT_ENCODING_UTF32 = 2-End-->
@@ -81,10 +65,6 @@ TEXT_ENCODING_GLYPH_ID = 3
 使用2个字节表示glyph index。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

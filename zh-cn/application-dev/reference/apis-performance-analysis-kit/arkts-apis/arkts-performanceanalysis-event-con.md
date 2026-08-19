@@ -10,10 +10,6 @@ const ADDRESS_SANITIZER: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const ADDRESS_SANITIZER: string--><!--Device-event-const ADDRESS_SANITIZER: string-End-->
@@ -29,10 +25,6 @@ const APP_CRASH: string
 应用崩溃事件。系统事件名称常量。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -50,10 +42,6 @@ const APP_FREEZE: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const APP_FREEZE: string--><!--Device-event-const APP_FREEZE: string-End-->
@@ -69,10 +57,6 @@ const APP_HICOLLIE: string
 应用任务执行超时事件。系统事件名称常量。 **原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +74,6 @@ const APP_KILLED: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const APP_KILLED: string--><!--Device-event-const APP_KILLED: string-End-->
@@ -109,10 +89,6 @@ const APP_LAUNCH: string
 应用启动耗时事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -130,10 +106,6 @@ const AUDIO_JANK_FRAME: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const AUDIO_JANK_FRAME: string--><!--Device-event-const AUDIO_JANK_FRAME: string-End-->
@@ -149,10 +121,6 @@ const BATTERY_USAGE: string
 应用24h功耗器件分解统计事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -170,10 +138,6 @@ const CPU_USAGE_HIGH: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const CPU_USAGE_HIGH: string--><!--Device-event-const CPU_USAGE_HIGH: string-End-->
@@ -189,10 +153,6 @@ const DISTRIBUTED_SERVICE_START: string
 分布式服务启动事件。预留的应用事件名称常量。 **原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -210,10 +170,6 @@ const MAIN_THREAD_JANK: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const MAIN_THREAD_JANK: string--><!--Device-event-const MAIN_THREAD_JANK: string-End-->
@@ -229,10 +185,6 @@ const RESOURCE_OVERLIMIT: string
 应用资源泄漏事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -250,10 +202,6 @@ ArkWeb抛滑丢帧事件。系统事件名称常量。 **原子化服务API：**
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const SCROLL_ARKWEB_FLING_JANK: string--><!--Device-event-const SCROLL_ARKWEB_FLING_JANK: string-End-->
@@ -269,10 +217,6 @@ const SCROLL_JANK: string
 应用滑动丢帧事件。系统事件名称常量。 **原子化服务API：** 从API version 12开始，该参数支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -290,10 +234,6 @@ const USER_LOGIN: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const USER_LOGIN: string--><!--Device-event-const USER_LOGIN: string-End-->
@@ -310,10 +250,6 @@ const USER_LOGOUT: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-event-const USER_LOGOUT: string--><!--Device-event-const USER_LOGOUT: string-End-->
@@ -329,10 +265,6 @@ const appFreezeWarning: string
 应用冻屏告警事件。系统事件名称常量。 26.0.0 **模型约束：** 此接口仅可在Stage模型下使用。 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

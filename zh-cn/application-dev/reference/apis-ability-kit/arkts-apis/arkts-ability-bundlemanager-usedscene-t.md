@@ -8,10 +8,6 @@ export type UsedScene = _UsedScene
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-export type UsedScene = _UsedScene--><!--Device-bundleManager-export type UsedScene = _UsedScene-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core

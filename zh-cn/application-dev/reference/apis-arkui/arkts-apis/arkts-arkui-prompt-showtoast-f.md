@@ -1,5 +1,12 @@
 # showToast
 
+## 导入模块
+
+```TypeScript
+import { prompt } from '@kit.ArkUI';
+import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+```
+
 ## showToast
 
 ```TypeScript
@@ -9,8 +16,6 @@ function showToast(options: ShowToastOptions): void
 创建并显示文本提示框。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -26,7 +31,7 @@ function showToast(options: ShowToastOptions): void
 | --- | --- | --- | --- |
 | options | ShowToastOptions | 是 | 文本弹窗选项。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import prompt from '@ohos.prompt'

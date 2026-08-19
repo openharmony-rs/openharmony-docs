@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum AutoFillType--><!--Device-unnamed-export enum AutoFillType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -21,10 +17,6 @@ UNSPECIFIED = 0
 表示未指定的类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ PASSWORD = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-PASSWORD = 1--><!--Device-AutoFillType-PASSWORD = 1-End-->
@@ -65,10 +53,6 @@ USER_NAME = 2
 用户名的类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,10 +72,6 @@ NEW_PASSWORD = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-NEW_PASSWORD = 3--><!--Device-AutoFillType-NEW_PASSWORD = 3-End-->
@@ -109,10 +89,6 @@ FULL_STREET_ADDRESS = 4
 详细地址类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,10 +108,6 @@ HOUSE_NUMBER = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-HOUSE_NUMBER = 5--><!--Device-AutoFillType-HOUSE_NUMBER = 5-End-->
@@ -153,10 +125,6 @@ DISTRICT_ADDRESS = 6
 区/县类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,10 +144,6 @@ CITY_ADDRESS = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-CITY_ADDRESS = 7--><!--Device-AutoFillType-CITY_ADDRESS = 7-End-->
@@ -197,10 +161,6 @@ PROVINCE_ADDRESS = 8
 省类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,10 +180,6 @@ COUNTRY_ADDRESS = 9
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-COUNTRY_ADDRESS = 9--><!--Device-AutoFillType-COUNTRY_ADDRESS = 9-End-->
@@ -241,10 +197,6 @@ PERSON_FULL_NAME = 10
 姓名类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,10 +216,6 @@ PERSON_LAST_NAME = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-PERSON_LAST_NAME = 11--><!--Device-AutoFillType-PERSON_LAST_NAME = 11-End-->
@@ -285,10 +233,6 @@ PERSON_FIRST_NAME = 12
 名字类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -308,10 +252,6 @@ PHONE_NUMBER = 13
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-PHONE_NUMBER = 13--><!--Device-AutoFillType-PHONE_NUMBER = 13-End-->
@@ -329,10 +269,6 @@ PHONE_COUNTRY_CODE = 14
 国家和地区代码类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -352,10 +288,6 @@ FULL_PHONE_NUMBER = 15
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-FULL_PHONE_NUMBER = 15--><!--Device-AutoFillType-FULL_PHONE_NUMBER = 15-End-->
@@ -373,10 +305,6 @@ EMAIL_ADDRESS = 16
 邮箱地址类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -396,10 +324,6 @@ BANK_CARD_NUMBER = 17
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-BANK_CARD_NUMBER = 17--><!--Device-AutoFillType-BANK_CARD_NUMBER = 17-End-->
@@ -417,10 +341,6 @@ ID_CARD_NUMBER = 18
 身份证号类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -440,10 +360,6 @@ NICKNAME = 24
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-NICKNAME = 24--><!--Device-AutoFillType-NICKNAME = 24-End-->
@@ -461,10 +377,6 @@ DETAIL_INFO_WITHOUT_STREET = 25
 无街道地址类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -484,10 +396,6 @@ FORMAT_ADDRESS = 26
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-FORMAT_ADDRESS = 26--><!--Device-AutoFillType-FORMAT_ADDRESS = 26-End-->
@@ -505,10 +413,6 @@ PASSPORT_NUMBER = 27
 护照号。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -528,10 +432,6 @@ VALIDITY = 28
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-VALIDITY = 28--><!--Device-AutoFillType-VALIDITY = 28-End-->
@@ -549,10 +449,6 @@ ISSUE_AT = 29
 护照签发地。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -572,10 +468,6 @@ ORGANIZATION = 30
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-ORGANIZATION = 30--><!--Device-AutoFillType-ORGANIZATION = 30-End-->
@@ -593,10 +485,6 @@ TAX_ID = 31
 税号。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -616,10 +504,6 @@ ADDRESS_CITY_AND_STATE = 32
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-ADDRESS_CITY_AND_STATE = 32--><!--Device-AutoFillType-ADDRESS_CITY_AND_STATE = 32-End-->
@@ -637,10 +521,6 @@ FLIGHT_NUMBER = 33
 航班号。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -660,10 +540,6 @@ LICENSE_NUMBER = 34
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-LICENSE_NUMBER = 34--><!--Device-AutoFillType-LICENSE_NUMBER = 34-End-->
@@ -681,10 +557,6 @@ LICENSE_FILE_NUMBER = 35
 驾驶证档案编号。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -704,10 +576,6 @@ LICENSE_PLATE = 36
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-LICENSE_PLATE = 36--><!--Device-AutoFillType-LICENSE_PLATE = 36-End-->
@@ -726,10 +594,6 @@ ENGINE_NUMBER = 37
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillType-ENGINE_NUMBER = 37--><!--Device-AutoFillType-ENGINE_NUMBER = 37-End-->
@@ -747,10 +611,6 @@ LICENSE_CHASSIS_NUMBER = 38
 车辆识别号。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

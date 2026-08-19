@@ -4,13 +4,17 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export class TaskSignal--><!--Device-unnamed-export class TaskSignal-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
 
 ## cancel
 
@@ -21,10 +25,6 @@ cancel(): void
 取消拷贝任务。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-TaskSignal-cancel(): void--><!--Device-TaskSignal-cancel(): void-End-->
 
@@ -38,7 +38,7 @@ cancel(): void
 | 13900010 | Try again |
 | 13900043 | No task can be canceled. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -129,8 +129,6 @@ onCancel(): Promise<string>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
 **废弃版本：** 24
 
 <!--Device-TaskSignal-onCancel(): Promise<string>--><!--Device-TaskSignal-onCancel(): Promise<string>-End-->
@@ -151,7 +149,7 @@ onCancel(): Promise<string>
 | 13900008 | Bad file descriptor |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { TaskSignal } from '@kit.CoreFileKit';

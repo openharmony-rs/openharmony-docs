@@ -100,7 +100,7 @@ OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVDemuxer *](capi-avdemuxer-oh-avdemuxer.md) | 返回一个指向OH_AVDemuxer实例的指针。<br> 如果执行成功，则返回指向OH_AVDemuxer实例的指针，否则返回NULL。<br> 可能的失败原因：<br> 1. source无效，即空指针或非OH_AVSource实例。<br> 2. 非OH_AVSource实例。 |
+| [OH_AVDemuxer *](capi-avdemuxer-oh-avdemuxer.md) | 返回一个指向OH_AVDemuxer实例的指针。\n  如果执行成功，则返回指向OH_AVDemuxer实例的指针，否则返回NULL。\n  可能的失败原因：\n  1. source无效，即空指针或非OH_AVSource实例。\n  2. 非OH_AVSource实例。 |
 
 ### OH_AVDemuxer_Destroy()
 
@@ -126,7 +126,7 @@ OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：当输入的demuxer指针为空或非解封装器实例。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：当输入的demuxer指针为空或非解封装器实例。 |
 
 ### OH_AVDemuxer_SelectTrackByID()
 
@@ -153,7 +153,7 @@ OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackI
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. 轨道的索引超出范围。<br>                           3. 不支持读取轨道。<br>         AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：\n                            1. 输入的demuxer指针为空或为非解封装器实例。\n                            2. 轨道的索引超出范围。\n                            3. 不支持读取轨道。\n          AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。 |
 
 ### OH_AVDemuxer_UnselectTrackByID()
 
@@ -180,7 +180,7 @@ OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的demuxer指针为空或为非解封装器实例。<br>         AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：输入的demuxer指针为空或为非解封装器实例。\n          AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。 |
 
 ### OH_AVDemuxer_ReadSample()
 
@@ -213,7 +213,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. 轨道的索引超出范围。<br>                           3. 不支持读取轨道。<br>                           4. 输入sample为空。<br>                           5. 输入info为空。<br>         AV_ERR_OPERATE_NOT_PERMIT：<br>                           1. 轨道的索引没有被选中。<br>                           2. demuxer没有正确的初始化。<br>         AV_ERR_NO_MEMORY：sample容量不足以存储所有帧数据。<br>         AV_ERR_UNKNOWN：无法从文件中读取或解析帧。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：\n                            1. 输入的demuxer指针为空或为非解封装器实例。\n                            2. 轨道的索引超出范围。\n                            3. 不支持读取轨道。\n                            4. 输入sample为空。\n                            5. 输入info为空。\n          AV_ERR_OPERATE_NOT_PERMIT：\n                            1. 轨道的索引没有被选中。\n                            2. demuxer没有正确的初始化。\n          AV_ERR_NO_MEMORY：sample容量不足以存储所有帧数据。\n          AV_ERR_UNKNOWN：无法从文件中读取或解析帧。 |
 
 ### OH_AVDemuxer_ReadSampleBuffer()
 
@@ -241,7 +241,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. sample为空指针。<br>                           3. 轨道的索引超出范围。<br>                           4. 输入sample为空。<br>         AV_ERR_OPERATE_NOT_PERMIT：<br>                           1. 轨道的索引没有被选中。<br>                           2. demuxer没有正确的初始化。<br>         AV_ERR_NO_MEMORY：sample容量不足以存储所有帧数据。<br>         AV_ERR_UNKNOWN：无法从文件中读取或解析帧。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：\n                            1. 输入的demuxer指针为空或为非解封装器实例。\n                            2. sample为空指针。\n                            3. 轨道的索引超出范围。\n                            4. 输入sample为空。\n          AV_ERR_OPERATE_NOT_PERMIT：\n                            1. 轨道的索引没有被选中。\n                            2. demuxer没有正确的初始化。\n          AV_ERR_NO_MEMORY：sample容量不足以存储所有帧数据。\n          AV_ERR_UNKNOWN：无法从文件中读取或解析帧。 |
 
 ### OH_AVDemuxer_SeekToTime()
 
@@ -269,7 +269,7 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. 毫秒值超出范围。<br>         AV_ERR_OPERATE_NOT_PERMIT：<br>                           1. 轨道的索引没有被选中。<br>                           2. demuxer没有正确的初始化。<br>                           3. 资源无法seek。<br>         AV_ERR_UNKNOWN：<br>                           1. seek失败。<br>                           2. OH_AVSeekMode选择SEEK_MODE_NEXT_SYNC，并且时间点后无I帧，可能会跳转失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：\n                            1. 输入的demuxer指针为空或为非解封装器实例。\n                            2. 毫秒值超出范围。\n          AV_ERR_OPERATE_NOT_PERMIT：\n                            1. 轨道的索引没有被选中。\n                            2. demuxer没有正确的初始化。\n                            3. 资源无法seek。\n          AV_ERR_UNKNOWN：\n                            1. seek失败。\n                            2. OH_AVSeekMode选择SEEK_MODE_NEXT_SYNC，并且时间点后无I帧，可能会跳转失败。 |
 
 ### OH_AVDemuxer_SetMediaKeySystemInfoCallback()
 
@@ -300,7 +300,7 @@ OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, D
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>         AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。<br>         AV_ERR_INVALID_VAL：输入的demuxer指针为空或为非解封装器实例。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n          AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。\n          AV_ERR_INVALID_VAL：输入的demuxer指针为空或为非解封装器实例。 |
 
 ### OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback()
 
@@ -327,7 +327,7 @@ OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *dem
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>         AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。<br>         AV_ERR_INVALID_VAL：输入的demuxer指针为空或为非解封装器实例。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n          AV_ERR_OPERATE_NOT_PERMIT：demuxer没有正确的初始化。\n          AV_ERR_INVALID_VAL：输入的demuxer指针为空或为非解封装器实例。 |
 
 ### OH_AVDemuxer_GetMediaKeySystemInfo()
 
@@ -354,6 +354,6 @@ OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_Media
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br>         AV_ERR_OPERATE_NOT_PERMIT：解封装引擎未初始化或初始化失败。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. mediaKeySystemInfo为nullptr。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n          AV_ERR_OPERATE_NOT_PERMIT：解封装引擎未初始化或初始化失败。\n          AV_ERR_INVALID_VAL：\n                            1. 输入的demuxer指针为空或为非解封装器实例。\n                            2. mediaKeySystemInfo为nullptr。 |
 
 

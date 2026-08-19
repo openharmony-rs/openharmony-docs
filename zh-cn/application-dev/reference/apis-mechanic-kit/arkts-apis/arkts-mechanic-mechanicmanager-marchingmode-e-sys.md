@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export enum MarchingMode--><!--Device-mechanicManager-export enum MarchingMode-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -24,10 +20,6 @@ TURN_THEN_MOVE = 0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-MarchingMode-TURN_THEN_MOVE = 0--><!--Device-MarchingMode-TURN_THEN_MOVE = 0-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -43,10 +35,6 @@ TURNING_MOVING = 1
 边移动边转动
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-MarchingMode-TURNING_MOVING = 1--><!--Device-MarchingMode-TURNING_MOVING = 1-End-->
 

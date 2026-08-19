@@ -1,5 +1,10 @@
 # unregisterMissionListener（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## unregisterMissionListener
 
 ```TypeScript
@@ -10,11 +15,9 @@ function unregisterMissionListener(listenerId: number, callback: AsyncCallback<v
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [off](arkts-ability-missionmanager-offmission-f-sys.md#offmission)
+**替代接口：** [off](arkts-ability-missionmanager-offmission-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -29,9 +32,9 @@ function unregisterMissionListener(listenerId: number, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由registerMissionListener方法返回。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 执行结果回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 执行结果回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';
@@ -80,11 +83,9 @@ function unregisterMissionListener(listenerId: number): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [off](arkts-ability-missionmanager-offmission-f-sys.md#offmission)
+**替代接口：** [off](arkts-ability-missionmanager-offmission-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -106,7 +107,7 @@ function unregisterMissionListener(listenerId: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';

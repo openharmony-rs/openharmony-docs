@@ -1,5 +1,11 @@
 # createMediaKeySystem
 
+## 导入模块
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+```
+
 ## createMediaKeySystem
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createMediaKeySystem(name: string): MediaKeySystem
 Creates a MediaKeySystem instance.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -41,7 +43,7 @@ Creates a MediaKeySystem instance.
 | [24700101](../errorcode-drm.md#24700101-未知错误) | All unknown errors. |
 | [24700103](../errorcode-drm.md#24700103-mediakeysystem数量达到极限) | Meet max MediaKeySystem num limit. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { drm } from '@kit.DrmKit';
@@ -61,10 +63,6 @@ function createMediaKeySystem(name: string): MediaKeySystem | undefined
 Creates a MediaKeySystem instance.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-drm-function createMediaKeySystem(name: string): MediaKeySystem | undefined--><!--Device-drm-function createMediaKeySystem(name: string): MediaKeySystem | undefined-End-->
 

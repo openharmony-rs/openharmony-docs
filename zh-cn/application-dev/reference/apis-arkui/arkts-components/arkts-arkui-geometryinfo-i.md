@@ -1,18 +1,19 @@
 # GeometryInfo
 
-父组件（自定义组件）布局信息，继承自[SizeResult](arkts-arkui-sizeresult-i.md#sizeresult)。
+父组件（自定义组件）布局信息，继承自[SizeResult](arkts-arkui-sizeresult-i.md)。
 
-**继承/实现关系：** GeometryInfo extends [SizeResult](arkts-arkui-sizeresult-i.md#sizeresult)
+**继承/实现关系：** GeometryInfo extends [SizeResult](arkts-arkui-sizeresult-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface GeometryInfo--><!--Device-unnamed-declare interface GeometryInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## borderWidth
 
@@ -25,10 +26,6 @@ borderWidth: EdgeWidth
 **类型：** EdgeWidth
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +47,6 @@ margin: Margin
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -73,10 +66,6 @@ padding: Padding
 **类型：** Padding
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

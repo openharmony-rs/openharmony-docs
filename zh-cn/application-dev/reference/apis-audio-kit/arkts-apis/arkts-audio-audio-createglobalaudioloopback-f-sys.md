@@ -1,5 +1,12 @@
 # createGlobalAudioLoopback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
+
 ## createGlobalAudioLoopback
 
 ```TypeScript
@@ -9,10 +16,6 @@ function createGlobalAudioLoopback(mode: AudioLoopbackMode, isController: boolea
 创建全局音频环回实例，提供低时延入耳监听功能。 硬件音频环回只能在支持的平台中创建，应用程序可以使用 > **说明：**> [isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported)先检查。 > 系统中应该只有一个拥有全局环回的主实例，其他 > 是控制器。控制器可以通过向主设备发送命令来管理全局环回。 > 实例，并从中监听状态变化。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

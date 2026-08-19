@@ -8,10 +8,6 @@ export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChanged
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-notificationSubscribe-export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChangedCallback--><!--Device-notificationSubscribe-export type EnabledSilentReminderChangedCallback = _EnabledSilentReminderChangedCallback-End-->

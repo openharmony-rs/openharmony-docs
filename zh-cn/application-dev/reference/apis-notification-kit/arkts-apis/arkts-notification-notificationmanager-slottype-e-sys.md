@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export enum SlotType--><!--Device-notificationManager-export enum SlotType-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -21,10 +17,6 @@ EMERGENCY_INFORMATION = 10
 紧急事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SlotType-EMERGENCY_INFORMATION = 10--><!--Device-SlotType-EMERGENCY_INFORMATION = 10-End-->
 

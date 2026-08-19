@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 <!--Device-unnamed-declare enum PanelMode--><!--Device-unnamed-declare enum PanelMode-End-->
@@ -21,8 +19,6 @@ Mini = 0
 类型为minibar和foldable时，为最小状态；类型为temporary，则不生效。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 12
 
@@ -42,8 +38,6 @@ Half
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -61,8 +55,6 @@ Full
 类全屏状态。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 12
 

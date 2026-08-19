@@ -1,12 +1,8 @@
 # LightType
 
-光源类型枚举.
+光源类型枚举。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum LightType--><!--Device-unnamed-export enum LightType-End-->
 
@@ -18,13 +14,9 @@
 DIRECTIONAL = 1
 ```
 
-平行光.
+平行光类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LightType-DIRECTIONAL = 1--><!--Device-LightType-DIRECTIONAL = 1-End-->
 
@@ -36,13 +28,9 @@ DIRECTIONAL = 1
 SPOT = 2
 ```
 
-聚光灯.
+聚光灯类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LightType-SPOT = 2--><!--Device-LightType-SPOT = 2-End-->
 

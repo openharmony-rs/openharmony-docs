@@ -8,10 +8,6 @@ export type FocusType = 'accessibility' | 'normal'
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export type FocusType = 'accessibility' | 'normal'--><!--Device-unnamed-export type FocusType = 'accessibility' | 'normal'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core

@@ -4,8 +4,6 @@ Declares interval type.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-bundleState-export enum IntervalType--><!--Device-bundleState-export enum IntervalType-End-->
@@ -21,8 +19,6 @@ BY_OPTIMIZED = 0
 Indicates the interval type that will determine the optimal interval based on the start and end time.
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -40,8 +36,6 @@ Indicates the daily interval.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-IntervalType-BY_DAILY = 1--><!--Device-IntervalType-BY_DAILY = 1-End-->
@@ -57,8 +51,6 @@ BY_WEEKLY = 2
 Indicates the weekly interval.
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -76,8 +68,6 @@ Indicates the monthly interval.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-IntervalType-BY_MONTHLY = 3--><!--Device-IntervalType-BY_MONTHLY = 3-End-->
@@ -93,8 +83,6 @@ BY_ANNUALLY = 4
 Indicates the annually interval.
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

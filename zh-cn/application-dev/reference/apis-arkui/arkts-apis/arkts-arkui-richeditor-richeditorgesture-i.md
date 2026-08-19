@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface RichEditorGesture--><!--Device-unnamed-export declare interface RichEditorGesture-End-->
 
@@ -18,15 +16,13 @@
 onClick?: Callback<ClickEvent>
 ```
 
-[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md#clickevent)为用户点击事件。 点击完成时回调事件。 双击时，第一次点击触发回调事件。
+[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md)为用户点击事件。 点击完成时回调事件。 双击时，第一次点击触发回调事件。
 
 **类型：** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md)&gt;
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,9 +42,7 @@ onLongPress?: Callback<GestureEvent>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

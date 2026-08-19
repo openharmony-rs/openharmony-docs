@@ -1,5 +1,11 @@
 # move（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+```
+
 ## move
 
 ```TypeScript
@@ -9,10 +15,6 @@ function move(logType: string, logName: string, dest: string): Promise<void>
 移动指定日志类型的指定文件到目标应用目录下。使用Promise回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
@@ -45,7 +47,7 @@ function move(logType: string, logName: string, dest: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -99,10 +101,6 @@ function move(logType: string, logName: string, dest: string, callback: AsyncCal
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
 <!--Device-logLibrary-function move(logType: string, logName: string, dest: string, callback: AsyncCallback<void>): void--><!--Device-logLibrary-function move(logType: string, logName: string, dest: string, callback: AsyncCallback<void>): void-End-->
@@ -118,7 +116,7 @@ function move(logType: string, logName: string, dest: string, callback: AsyncCal
 | logType | string | 是 | 日志类型字符串，例如“HILOG”, "FAULTLOG", "BETACLUB", "REMOTELOG"等。 |
 | logName | string | 是 | 日志文件名称。 |
 | dest | string | 是 | 目标目录，需填入相对目录名称。传入dest字串后，日志文件将保存到应用缓存路径下的"hiview/*dest*"文件夹，即"../cache/hiview/*dest*"。可填入多 层目录。 <br>如果传入空字串，将保存到根目录下，即应用缓存路径下的hiview文件夹。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，可以在回调函数中处理接口返回值。0表示移动成功，其它值表示移动失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，可以在回调函数中处理接口返回值。0表示移动成功，其它值表示移动失败。 |
 
 **错误码：**
 
@@ -129,7 +127,7 @@ function move(logType: string, logName: string, dest: string, callback: AsyncCal
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,13 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-insightIntent-interface IntentEntity--><!--Device-insightIntent-interface IntentEntity-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { insightIntent } from '@kit.AbilityKit';
+import { insightIntentDriver } from '@kit.AbilityKit';
+import { insightIntentProvider } from '@kit.AbilityKit';
+```
 
 ## entityId
 
@@ -23,10 +27,6 @@ entityId: string
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

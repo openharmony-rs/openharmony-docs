@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export interface DialOptions--><!--Device-call-export interface DialOptions-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
 
 ## accountId
 
@@ -23,10 +25,6 @@ accountId?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DialOptions-accountId?: int--><!--Device-DialOptions-accountId?: int-End-->
 
@@ -46,10 +44,6 @@ dialScene?: DialScene
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DialOptions-dialScene?: DialScene--><!--Device-DialOptions-dialScene?: DialScene-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -68,10 +62,6 @@ dialType?: DialType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DialOptions-dialType?: DialType--><!--Device-DialOptions-dialType?: DialType-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -89,10 +79,6 @@ videoState?: VideoStateType
 **类型：** [VideoStateType](arkts-telephony-call-videostatetype-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DialOptions-videoState?: VideoStateType--><!--Device-DialOptions-videoState?: VideoStateType-End-->
 

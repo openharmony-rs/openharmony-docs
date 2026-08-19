@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export enum CallWaitingStatus--><!--Device-call-export enum CallWaitingStatus-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -24,10 +20,6 @@ CALL_WAITING_DISABLE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallWaitingStatus-CALL_WAITING_DISABLE = 0--><!--Device-CallWaitingStatus-CALL_WAITING_DISABLE = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -43,10 +35,6 @@ CALL_WAITING_ENABLE = 1
 启用呼叫等待。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallWaitingStatus-CALL_WAITING_ENABLE = 1--><!--Device-CallWaitingStatus-CALL_WAITING_ENABLE = 1-End-->
 

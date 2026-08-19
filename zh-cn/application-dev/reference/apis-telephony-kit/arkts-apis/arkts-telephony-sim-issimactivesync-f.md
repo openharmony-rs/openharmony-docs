@@ -1,5 +1,11 @@
 # isSimActiveSync
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## isSimActiveSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isSimActiveSync(slotId: int): boolean
 Checks whether the SIM card in a specified slot is activated.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sim-function isSimActiveSync(slotId: int): boolean--><!--Device-sim-function isSimActiveSync(slotId: int): boolean-End-->
 
@@ -30,7 +32,7 @@ Checks whether the SIM card in a specified slot is activated.
 | --- | --- |
 | boolean | Returns { |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sim } from '@kit.TelephonyKit';

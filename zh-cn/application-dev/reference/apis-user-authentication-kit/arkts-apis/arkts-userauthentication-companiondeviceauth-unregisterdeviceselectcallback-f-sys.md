@@ -1,5 +1,11 @@
 # unregisterDeviceSelectCallback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
+```
+
 ## unregisterDeviceSelectCallback
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unregisterDeviceSelectCallback(): void
 取消注册伴随设备选择回调。取消后，系统将不再调用应用注册的设备选择回调，设备选择将回退到系统默认行为。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -32,7 +34,7 @@ function unregisterDeviceSelectCallback(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -58,7 +58,7 @@ ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includ
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。<br>         <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): 获取cookie成功。<br>         <br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode): 无效的URL。可能原因：URL格式不正确、URL为空或不符合规范。<br>         <br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode): cookieValue参数无效。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。          <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): 获取cookie成功。          <br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode): 无效的URL。可能原因：URL格式不正确、URL为空或不符合规范。          <br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode): cookieValue参数无效。 |
 
 ### configCookieSync()
 
@@ -83,7 +83,7 @@ ArkWeb_ErrorCode (*configCookieSync)(const char* url,const char* cookieValue, bo
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。<br>         <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): 设置cookie成功。<br>         <br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode): 无效的URL。可能原因：URL格式不正确、URL为空或不符合规范。<br>         <br>[ARKWEB_INVALID_COOKIE_VALUE](capi-arkweb-error-code-h.md#arkweb_errorcode): cookieValue参数无效。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | 返回值错误码。          <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode): 设置cookie成功。          <br>[ARKWEB_INVALID_URL](capi-arkweb-error-code-h.md#arkweb_errorcode): 无效的URL。可能原因：URL格式不正确、URL为空或不符合规范。          <br>[ARKWEB_INVALID_COOKIE_VALUE](capi-arkweb-error-code-h.md#arkweb_errorcode): cookieValue参数无效。 |
 
 ### existCookies()
 

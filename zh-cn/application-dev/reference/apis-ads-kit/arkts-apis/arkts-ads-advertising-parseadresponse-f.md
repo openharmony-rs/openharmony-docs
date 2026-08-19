@@ -1,5 +1,14 @@
 # parseAdResponse
 
+## 导入模块
+
+```TypeScript
+import { AdComponent } from '@kit.AdsKit';
+import { AdsServiceExtensionAbility, RespCallback } from '@kit.AdsKit';
+import { AutoAdComponent } from '@kit.AdsKit';
+import { advertising } from '@kit.AdsKit';
+```
+
 ## parseAdResponse
 
 ```TypeScript
@@ -9,10 +18,6 @@ function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,
 解析并处理广告响应体（该接口仅对部分系统预置应用开放）。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-advertising-function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context: common.UIAbilityContext): void--><!--Device-advertising-function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context: common.UIAbilityContext): void-End-->
 
@@ -35,7 +40,7 @@ function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,
 | [21800005](../errorcode-ads.md#21800005-广告数据解析失败) | Failed to parse the ad response. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
-## 示例
+**示例**
 
 其中context的获取方式参见[各类context的获取方式](../../../application-models/application-context-stage.md#context的获取方式)。
 

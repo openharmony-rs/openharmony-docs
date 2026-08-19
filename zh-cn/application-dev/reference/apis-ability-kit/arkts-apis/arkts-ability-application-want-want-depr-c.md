@@ -4,15 +4,18 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [Want/Want](arkts-ability-app-ability-want-want-c.md#want)
+**替代接口：** [Want/Want](arkts-ability-app-ability-want-want-c.md)
 
 <!--Device-unnamed-export default class Want--><!--Device-unnamed-export default class Want-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
+
+## 导入模块
+
+```TypeScript
+```
 
 ## abilityName
 
@@ -25,8 +28,6 @@ abilityName?: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -48,8 +49,6 @@ action?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [action](arkts-ability-app-ability-want-want-c.md#action)
@@ -69,8 +68,6 @@ bundleName?: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -92,8 +89,6 @@ deviceId?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [deviceId](arkts-ability-app-ability-want-want-c.md#deviceid)
@@ -113,8 +108,6 @@ entities?: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -136,8 +129,6 @@ flags?: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [flags](arkts-ability-app-ability-want-want-c.md#flags)
@@ -157,8 +148,6 @@ parameters?: { [key: string]: any }
 **类型：** { [key: string]: any }
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -180,8 +169,6 @@ type?: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [type](arkts-ability-app-ability-want-want-c.md#type)
@@ -201,8 +188,6 @@ uri?: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

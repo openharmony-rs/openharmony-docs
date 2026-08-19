@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cert-enum EncodingFormat--><!--Device-cert-enum EncodingFormat-End-->
 
 **系统能力：** SystemCapability.Security.Cert
@@ -21,10 +17,6 @@ FORMAT_DER = 0
 DER格式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ PEM格式。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-EncodingFormat-FORMAT_PEM = 1--><!--Device-EncodingFormat-FORMAT_PEM = 1-End-->
@@ -61,10 +49,6 @@ FORMAT_PKCS7 = 2
 PKCS7格式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

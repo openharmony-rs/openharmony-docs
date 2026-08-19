@@ -1,5 +1,11 @@
 # restartSelfAtomicService
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## restartSelfAtomicService
 
 ```TypeScript
@@ -9,10 +15,6 @@ function restartSelfAtomicService(context: Context): void
 重启当前原子化服务。 > **说明：** > > - 当前仅支持以独立窗口方式拉起原子化服务。 > > - 在调用本接口成功后的3秒内，再次调用本接口、 > [ApplicationContext.restartApp()](arkts-ability-applicationcontext-c.md#restartapp)或 > [UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartapp)接口中的任一接口，系统将返回错误码1 > 6000064。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function restartSelfAtomicService(context: Context): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-c.md) | 是 | 当前Ability的上下文。<br>**说明：**当前仅支持 [UIAbilityContext](arkts-ability-uiabilitycontext-c.md#uiabilitycontext)。&lt;/br&gt; |
+| context | [Context](arkts-ability-context-c.md) | 是 | 当前Ability的上下文。<br>**说明：**当前仅支持 [UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。&lt;/br&gt; |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function restartSelfAtomicService(context: Context): void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
 | [16000090](../errorcode-ability.md#16000090-调用方不是原子化服务) | The caller is not an atomic service. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, EmbeddableUIAbility, Want, abilityManager } from '@kit.AbilityKit';

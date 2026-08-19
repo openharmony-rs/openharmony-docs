@@ -4,10 +4,6 @@ Indicates the Authentication type
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sim-export enum AuthType--><!--Device-sim-export enum AuthType-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
@@ -24,10 +20,6 @@ Authentication type is EAP-SIM. See RFC 4186
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuthType-SIM_AUTH_EAP_SIM_TYPE = 128--><!--Device-AuthType-SIM_AUTH_EAP_SIM_TYPE = 128-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
@@ -43,10 +35,6 @@ SIM_AUTH_EAP_AKA_TYPE = 129
 Authentication type is EAP-AKA. See RFC 4187
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuthType-SIM_AUTH_EAP_AKA_TYPE = 129--><!--Device-AuthType-SIM_AUTH_EAP_AKA_TYPE = 129-End-->
 

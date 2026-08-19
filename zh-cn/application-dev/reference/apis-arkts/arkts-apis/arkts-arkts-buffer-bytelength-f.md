@@ -1,5 +1,11 @@
 # byteLength
 
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
+
 ## byteLength
 
 ```TypeScript
@@ -12,10 +18,6 @@ function byteLength(
 根据不同的编码格式，返回指定数据的字节数。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -36,7 +38,7 @@ function byteLength(
 | --- | --- |
 | number | 返回指定字符串的字节数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';
@@ -60,10 +62,6 @@ function byteLength(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-buffer-function byteLength(    doc: string | Buffer | TypedArray | DataView | ArrayBuffer,    encoding?: BufferEncoding  ): int--><!--Device-buffer-function byteLength(    doc: string | Buffer | TypedArray | DataView | ArrayBuffer,    encoding?: BufferEncoding  ): int-End-->
@@ -75,7 +73,7 @@ function byteLength(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | doc | string \| [Buffer](arkts-arkts-buffer-buffer-c.md) \| TypedArray \| DataView \| ArrayBuffer | 是 | 要计算字节长度的字符串或其他数据对象。 |
-| encoding | BufferEncoding | 否 | 编码格式。默认值：'utf8'。 |
+| encoding | BufferEncoding | 否 | 编码格式（doc参数为string类型时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -83,7 +81,7 @@ function byteLength(
 | --- | --- |
 | int | 返回指定字符串的字节数 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { buffer } from '@kit.ArkTS';

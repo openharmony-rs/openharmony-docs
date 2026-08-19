@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnPdfScrollEvent--><!--Device-unnamed-export declare interface OnPdfScrollEvent-End-->
 
@@ -24,9 +22,7 @@ url:string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnPdfScrollEvent-url:string--><!--Device-OnPdfScrollEvent-url:string-End-->
 

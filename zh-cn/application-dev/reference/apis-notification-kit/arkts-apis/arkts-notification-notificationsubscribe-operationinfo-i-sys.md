@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationSubscribe-export interface OperationInfo--><!--Device-notificationSubscribe-export interface OperationInfo-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -17,7 +13,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from 'notificationSubscribe';
+import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
 ## actionName
@@ -26,15 +22,11 @@ import { notificationSubscribe } from 'notificationSubscribe';
 actionName?: string
 ```
 
-描述通知中显示的操作按钮（与通知 [NotificationActionButton](arkts-notification-notificationactionbutton-notificationactionbutton-i.md#notificationactionbutton)中title字段保持一致）。
+描述通知中显示的操作按钮（与通知 [NotificationActionButton](arkts-notification-notificationactionbutton-notificationactionbutton-i.md)中title字段保持一致）。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-OperationInfo-actionName?: string--><!--Device-OperationInfo-actionName?: string-End-->
 
@@ -54,10 +46,6 @@ buttonIndex?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-OperationInfo-buttonIndex?: int--><!--Device-OperationInfo-buttonIndex?: int-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -76,10 +64,6 @@ operationType?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-OperationInfo-operationType?: int--><!--Device-OperationInfo-operationType?: int-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -92,15 +76,11 @@ operationType?: int
 userInput?: string
 ```
 
-用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知 [NotificationUserInput](arkts-notification-notificationuserinput-notificationuserinput-i.md#notificationuserinput)中inputKey字段保持一致）。
+用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知 [NotificationUserInput](arkts-notification-notificationuserinput-notificationuserinput-i.md)中inputKey字段保持一致）。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-OperationInfo-userInput?: string--><!--Device-OperationInfo-userInput?: string-End-->
 

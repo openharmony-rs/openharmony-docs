@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 12
 
 <!--Device-unnamed-declare enum PanelHeight--><!--Device-unnamed-declare enum PanelHeight-End-->
@@ -21,8 +19,6 @@ WRAP_CONTENT = 'wrapContent'
 PanelType的类型为CUSTOM时，自适应内容高度。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 12
 

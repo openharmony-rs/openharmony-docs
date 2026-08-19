@@ -2,6 +2,11 @@
 
 定义手势竞争结果。
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 命名空间
@@ -19,19 +24,19 @@
 | [GestureHandler](arkts-arkui-gesturehandler-c.md) | 手势处理器的基础类型。 |
 | [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md) | 手势识别器对象。 |
 | [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) | 长按手势处理器对象类型。 |
-| [LongPressRecognizer](arkts-arkui-longpressrecognizer-c.md) | 长按手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)。 |
+| [LongPressRecognizer](arkts-arkui-longpressrecognizer-c.md) | 长按手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)。 |
 | [PanGestureHandler](arkts-arkui-pangesturehandler-c.md) | 滑动手势处理器对象类型。 |
 | [PanGestureOptions](arkts-arkui-pangestureoptions-c.md) | 定义PanGesture配置参数选项。 |
 | [PanRecognizer](arkts-arkui-panrecognizer-c.md) | 手势识别器对象。 |
 | [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) | 捏合手势处理器对象类型。 |
-| [PinchRecognizer](arkts-arkui-pinchrecognizer-c.md) | 捏合手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)。 |
+| [PinchRecognizer](arkts-arkui-pinchrecognizer-c.md) | 捏合手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)。 |
 | [RotationGestureHandler](arkts-arkui-rotationgesturehandler-c.md) | 旋转手势处理器对象类型。 |
-| [RotationRecognizer](arkts-arkui-rotationrecognizer-c.md) | 旋转手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)。 |
-| [ScrollableTargetInfo](arkts-arkui-scrollabletargetinfo-c.md) | 手势识别器对应的滚动类容器组件的信息，继承于[EventTargetInfo](arkts-arkui-eventtargetinfo-c.md#eventtargetinfo)。 |
+| [RotationRecognizer](arkts-arkui-rotationrecognizer-c.md) | 旋转手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)。 |
+| [ScrollableTargetInfo](arkts-arkui-scrollabletargetinfo-c.md) | 手势识别器对应的滚动类容器组件的信息，继承于[EventTargetInfo](arkts-arkui-eventtargetinfo-c.md)。 |
 | [SwipeGestureHandler](arkts-arkui-swipegesturehandler-c.md) | 快滑手势处理器对象类型。 |
-| [SwipeRecognizer](arkts-arkui-swiperecognizer-c.md) | 快滑手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)。 |
+| [SwipeRecognizer](arkts-arkui-swiperecognizer-c.md) | 快滑手势识别器对象，继承于[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)。 |
 | [TapGestureHandler](arkts-arkui-tapgesturehandler-c.md) | 点击手势处理器对象类型。 |
-| [TapRecognizer](arkts-arkui-taprecognizer-c.md) | 点击手势识别器对象，继承自[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)。 |
+| [TapRecognizer](arkts-arkui-taprecognizer-c.md) | 点击手势识别器对象，继承自[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)。 |
 | [TouchRecognizer](arkts-arkui-touchrecognizer-c.md) | 触摸识别器对象。 |
 
 ### 接口
@@ -47,25 +52,25 @@
 | [GestureGroupInterface](arkts-arkui-gesturegroupinterface-i.md) | 手势识别组合，即两种及以上手势组合为复合手势，支持顺序识别、并发识别和互斥识别。 |
 | [GestureInfo](arkts-arkui-gestureinfo-i.md) | 手势信息类型。 |
 | [GestureInterface](arkts-arkui-gestureinterface-i.md) | 定义Gesture接口。 |
-| [LongPressGestureEvent](arkts-arkui-longpressgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
-| [LongPressGestureHandlerOptions](arkts-arkui-longpressgesturehandleroptions-i.md) | 长按手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md#basehandleroptions)。 |
+| [LongPressGestureEvent](arkts-arkui-longpressgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
+| [LongPressGestureHandlerOptions](arkts-arkui-longpressgesturehandleroptions-i.md) | 长按手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md)。 |
 | [LongPressGestureInterface](arkts-arkui-longpressgestureinterface-i.md) | 用于触发长按手势事件，触发长按手势的最少手指数为1，默认最短长按时间为500毫秒。可配置duration参数控制最短长按时长。 |
-| [PanGestureEvent](arkts-arkui-pangestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
-| [PanGestureHandlerOptions](arkts-arkui-pangesturehandleroptions-i.md) | 滑动手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md#basehandleroptions)。 |
+| [PanGestureEvent](arkts-arkui-pangestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
+| [PanGestureHandlerOptions](arkts-arkui-pangesturehandleroptions-i.md) | 滑动手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md)。 |
 | [PanGestureInterface](arkts-arkui-pangestureinterface-i.md) | 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。 |
-| [PinchGestureEvent](arkts-arkui-pinchgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
-| [PinchGestureHandlerOptions](arkts-arkui-pinchgesturehandleroptions-i.md) | 捏合手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md#basehandleroptions)。 |
+| [PinchGestureEvent](arkts-arkui-pinchgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
+| [PinchGestureHandlerOptions](arkts-arkui-pinchgesturehandleroptions-i.md) | 捏合手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md)。 |
 | [PinchGestureInterface](arkts-arkui-pinchgestureinterface-i.md) | 用于触发捏合手势，最少需要2指，最多5指，最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。 |
-| [RotationGestureEvent](arkts-arkui-rotationgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
-| [RotationGestureHandlerOptions](arkts-arkui-rotationgesturehandleroptions-i.md) | 旋转手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md#basehandleroptions)。 |
+| [RotationGestureEvent](arkts-arkui-rotationgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
+| [RotationGestureHandlerOptions](arkts-arkui-rotationgesturehandleroptions-i.md) | 旋转手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md)。 |
 | [RotationGestureInterface](arkts-arkui-rotationgestureinterface-i.md) | 用于触发旋转手势，最少需要2指，最多5指，最小改变度数为1度。该手势不支持通过触控板双指旋转操作触发。 |
-| [SwipeGestureEvent](arkts-arkui-swipegestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
-| [SwipeGestureHandlerOptions](arkts-arkui-swipegesturehandleroptions-i.md) | 快滑手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md#basehandleroptions)。 |
+| [SwipeGestureEvent](arkts-arkui-swipegestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
+| [SwipeGestureHandlerOptions](arkts-arkui-swipegesturehandleroptions-i.md) | 快滑手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md)。 |
 | [SwipeGestureInterface](arkts-arkui-swipegestureinterface-i.md) | 用于触发快滑手势，滑动速度需大于速度阈值，默认最小速度为100vp/s。 |
-| [TapGestureEvent](arkts-arkui-tapgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
-| [TapGestureHandlerOptions](arkts-arkui-tapgesturehandleroptions-i.md) | 点击手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md#basehandleroptions)。 |
+| [TapGestureEvent](arkts-arkui-tapgestureevent-i.md) | 继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。 |
+| [TapGestureHandlerOptions](arkts-arkui-tapgesturehandleroptions-i.md) | 点击手势处理器配置参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md)。 |
 | [TapGestureInterface](arkts-arkui-tapgestureinterface-i.md) | 支持单击、双击和多次点击事件的识别。 |
-| [TapGestureParameters](arkts-arkui-tapgestureparameters-i.md) | 点击手势参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md#basehandleroptions)。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [TapGestureParameters](arkts-arkui-tapgestureparameters-i.md) | 点击手势参数。继承自[BaseHandlerOptions](arkts-arkui-basehandleroptions-i.md)。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
 
 ### 枚举
 

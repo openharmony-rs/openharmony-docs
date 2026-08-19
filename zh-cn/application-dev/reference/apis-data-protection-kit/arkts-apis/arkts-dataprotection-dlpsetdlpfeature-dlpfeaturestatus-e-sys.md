@@ -1,12 +1,8 @@
-# DlpFeatureStatus（系统接口）
+# DlpFeatureStatus(设置数据防泄漏入口)（系统接口）
 
 DLP特性开关状态的枚举。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-dlpSetDlpFeature-export enum DlpFeatureStatus--><!--Device-dlpSetDlpFeature-export enum DlpFeatureStatus-End-->
 
@@ -23,10 +19,6 @@ NOT_ENABLED_FEATURE = 0
 表示关闭DLP特性开关。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +37,6 @@ ENABLED_FEATURE = 1
 表示开启DLP特性开关。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

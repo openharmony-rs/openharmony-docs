@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioVolumeType--><!--Device-audio-enum AudioVolumeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -21,10 +17,6 @@ VOICE_CALL = 0
 语音电话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioVolumeType-VOICE_CALL = 0--><!--Device-AudioVolumeType-VOICE_CALL = 0-End-->
 
@@ -40,10 +32,6 @@ RINGTONE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioVolumeType-RINGTONE = 2--><!--Device-AudioVolumeType-RINGTONE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -57,10 +45,6 @@ MEDIA = 3
 媒体。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioVolumeType-MEDIA = 3--><!--Device-AudioVolumeType-MEDIA = 3-End-->
 
@@ -76,10 +60,6 @@ ALARM = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioVolumeType-ALARM = 4--><!--Device-AudioVolumeType-ALARM = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -94,10 +74,6 @@ ACCESSIBILITY = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioVolumeType-ACCESSIBILITY = 5--><!--Device-AudioVolumeType-ACCESSIBILITY = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -111,10 +87,6 @@ VOICE_ASSISTANT = 9
 语音助手。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioVolumeType-VOICE_ASSISTANT = 9--><!--Device-AudioVolumeType-VOICE_ASSISTANT = 9-End-->
 

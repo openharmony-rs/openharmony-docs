@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface RingtoneOptions--><!--Device-unnamed-export interface RingtoneOptions-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -26,10 +22,6 @@ loop: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RingtoneOptions-loop: boolean--><!--Device-RingtoneOptions-loop: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -47,10 +39,6 @@ volume: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RingtoneOptions-volume: double--><!--Device-RingtoneOptions-volume: double-End-->
 

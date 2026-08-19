@@ -1,5 +1,11 @@
 # isCaptured
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## isCaptured
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isCaptured(): boolean
 检查设备的屏幕显示信息是否被获取。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -32,7 +34,7 @@ function isCaptured(): boolean
 | --- | --- |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let ret: boolean = false;
@@ -50,10 +52,6 @@ function isCaptured(bundleNameList: Array<string>): boolean
 检查该设备是否被bundle名称列表中的任何应用抓拍、投影或录制。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,7 +80,7 @@ function isCaptured(bundleNameList: Array<string>): boolean
 | [1400004](../errorcode-display.md#1400004-参数异常) | Parameter error. Possible cause: 1.The size of bundleNameList is larger than 100. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

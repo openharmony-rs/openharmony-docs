@@ -4,13 +4,15 @@ TestRunner模块提供了框架测试的能力。包括准备单元测试环境�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface TestRunner--><!--Device-unnamed-interface TestRunner-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { TestRunner } from '@kit.TestKit';
+```
 
 ## onPrepare
 
@@ -22,17 +24,13 @@ onPrepare(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TestRunner-onPrepare(): void--><!--Device-TestRunner-onPrepare(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { TestRunner } from '@kit.TestKit';
@@ -59,17 +57,13 @@ onRun(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TestRunner-onRun(): void--><!--Device-TestRunner-onRun(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { TestRunner } from '@kit.TestKit';
@@ -105,10 +99,6 @@ onPrepare: OnPrepareFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TestRunner-onPrepare: OnPrepareFn--><!--Device-TestRunner-onPrepare: OnPrepareFn-End-->
@@ -127,10 +117,6 @@ onRun: OnRunFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TestRunner-onRun: OnRunFn--><!--Device-TestRunner-onRun: OnRunFn-End-->
@@ -148,10 +134,6 @@ onStop?: OnStopFn
 **类型：** [OnStopFn](arkts-test-onstopfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,11 @@
 # getInstalledBundleStorageStats
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+```
+
 ## getInstalledBundleStorageStats
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getInstalledBundleStorageStats(admin: Want, bundleNames: Array<string>,
 获取设备指定用户下已安装应用的存储占用信息。使用Promise异步回调。 > **说明：** > > 1.仅能获取已安装应用的存储占用信息。 > > 2.bundleNames参数为empty或全部传入未安装的应用包名，会抛出9200012错误码。 > > 3.bundleNames参数传递的包名部分应用已安装，部分应用未安装时，接口返回正常，已安装的应用返回实际的存储占用信息，未安装的应用存储占用信息为0。 > > 4.该接口支持跨用户查询，比如可以在100用户下，查询101用户下的某些应用的存储占用信息。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_ALL_BUNDLE_INFO
 
@@ -28,7 +30,7 @@ function getInstalledBundleStorageStats(admin: Want, bundleNames: Array<string>,
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleNames | Array&lt;string&gt; | 是 | 应用包名列表。取值范围：小于等于200个应用包名。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。 <br> accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。*@ohos.account.osAccount** to obtain the user ID. |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。 <br> accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。*@ohos.account.osAccount** to obtain the user ID. |
 
 **返回值：**
 
@@ -45,7 +47,7 @@ function getInstalledBundleStorageStats(admin: Want, bundleNames: Array<string>,
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

@@ -1,5 +1,11 @@
 # getGraphicsMemory
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getGraphicsMemory
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getGraphicsMemory(): Promise<int>
 获取应用显存总大小（gl + graph），使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -32,7 +34,7 @@ function getGraphicsMemory(): Promise<int>
 | --- | --- |
 | [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-cpuusage统计异常) | Failed to get the application memory due to a remote exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

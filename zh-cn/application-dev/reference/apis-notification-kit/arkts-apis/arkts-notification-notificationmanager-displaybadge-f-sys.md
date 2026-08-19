@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## displayBadge
@@ -15,10 +15,6 @@ function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCall
 设定指定应用的角标使能状态。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -34,7 +30,7 @@ function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
 | enable | boolean | 是 | 使能状态（true：使能，false：禁止）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设定角标使能回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设定角标使能回调函数。 |
 
 **错误码：**
 
@@ -49,7 +45,7 @@ function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -99,10 +95,6 @@ function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>--><!--Device-notificationManager-function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>-End-->
@@ -137,7 +129,7 @@ function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

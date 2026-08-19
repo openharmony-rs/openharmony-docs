@@ -4,15 +4,17 @@ Absolute euler angles relative to the home position.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export interface EulerAngles--><!--Device-mechanicManager-export interface EulerAngles-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
 
 ## pitch
 
@@ -25,10 +27,6 @@ pitch?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EulerAngles-pitch?: double--><!--Device-EulerAngles-pitch?: double-End-->
 
@@ -48,10 +46,6 @@ roll?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EulerAngles-roll?: double--><!--Device-EulerAngles-roll?: double-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -69,10 +63,6 @@ yaw?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EulerAngles-yaw?: double--><!--Device-EulerAngles-yaw?: double-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface Validity--><!--Device-unnamed-export interface Validity-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -26,10 +22,6 @@ readonly notAfter: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Validity-readonly notAfter: long--><!--Device-Validity-readonly notAfter: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -47,10 +39,6 @@ readonly notBefore: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Validity-readonly notBefore: long--><!--Device-Validity-readonly notBefore: long-End-->
 

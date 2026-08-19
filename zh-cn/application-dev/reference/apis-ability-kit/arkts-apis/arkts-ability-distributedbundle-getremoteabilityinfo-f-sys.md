@@ -1,5 +1,11 @@
 # getRemoteAbilityInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { distributedBundle } from '@kit.AbilityKit';
+```
+
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -9,8 +15,6 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用callback异步回调。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -29,7 +33,7 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-elementname-elementname-depr-i.md) | 是 | 获得的ElementName信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
 
 
 ## getRemoteAbilityInfo
@@ -41,8 +45,6 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 根据给定的ElementName获取有关远程设备AbilityInfo信息，使用Promise异步回调。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

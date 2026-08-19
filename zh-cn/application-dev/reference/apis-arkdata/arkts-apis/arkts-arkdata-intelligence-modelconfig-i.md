@@ -1,16 +1,18 @@
-# ModelConfig
+# ModelConfig(智慧数据平台)
 
 管理嵌入模型的配置信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-intelligence-interface ModelConfig--><!--Device-intelligence-interface ModelConfig-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+## 导入模块
+
+```TypeScript
+import { intelligence } from '@kit.ArkData';
+```
 
 ## cachePath
 
@@ -23,10 +25,6 @@ cachePath?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ModelConfig-cachePath?: string--><!--Device-ModelConfig-cachePath?: string-End-->
 
@@ -44,10 +42,6 @@ isNpuAvailable: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ModelConfig-isNpuAvailable: boolean--><!--Device-ModelConfig-isNpuAvailable: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
@@ -58,15 +52,11 @@ isNpuAvailable: boolean
 modelInfo?: CloudModelInfo
 ```
 
-云侧模型类型和版本信息，在使用文本向量模型时配置，通过[getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md#getsupportedcloudmodel)接口获取支持的模型信息，默认值为空。
+云侧模型类型和版本信息，在使用文本向量模型时配置，通过[getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md)接口获取支持的模型信息，默认值为空。
 
 **类型：** [CloudModelInfo](arkts-arkdata-intelligence-cloudmodelinfo-i.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,10 +76,6 @@ networkPolicy?: NetworkPolicy
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ModelConfig-networkPolicy?: NetworkPolicy--><!--Device-ModelConfig-networkPolicy?: NetworkPolicy-End-->
@@ -107,10 +93,6 @@ version: ModelVersion
 **类型：** [ModelVersion](arkts-arkdata-intelligence-modelversion-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ModelConfig-version: ModelVersion--><!--Device-ModelConfig-version: ModelVersion-End-->
 

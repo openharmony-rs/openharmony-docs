@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum StreamUsage--><!--Device-audio-enum StreamUsage-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -21,10 +17,6 @@ STREAM_USAGE_SYSTEM = 9
 System usage, such as screen lock or key click.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StreamUsage-STREAM_USAGE_SYSTEM = 9--><!--Device-StreamUsage-STREAM_USAGE_SYSTEM = 9-End-->
 
@@ -42,10 +34,6 @@ DTMF dial tone usage.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-StreamUsage-STREAM_USAGE_DTMF = 14--><!--Device-StreamUsage-STREAM_USAGE_DTMF = 14-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -61,10 +49,6 @@ STREAM_USAGE_ENFORCED_TONE = 15
 Enforced tone usage, such as camera shutter.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StreamUsage-STREAM_USAGE_ENFORCED_TONE = 15--><!--Device-StreamUsage-STREAM_USAGE_ENFORCED_TONE = 15-End-->
 
@@ -82,10 +66,6 @@ Ultrasonic playing usage. This type is only used for msdp condition.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-StreamUsage-STREAM_USAGE_ULTRASONIC = 16--><!--Device-StreamUsage-STREAM_USAGE_ULTRASONIC = 16-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -102,10 +82,6 @@ Voice call assistant type. This type is only used for call assistant functionali
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-StreamUsage-STREAM_USAGE_VOICE_CALL_ASSISTANT = 21--><!--Device-StreamUsage-STREAM_USAGE_VOICE_CALL_ASSISTANT = 21-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -121,10 +97,6 @@ STREAM_USAGE_ANNOUNCEMENT = 22
 Announcement alarm usage.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -143,10 +115,6 @@ STREAM_USAGE_EMERGENCY = 23
 Emergency alarm usage.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

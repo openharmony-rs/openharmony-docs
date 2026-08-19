@@ -1,5 +1,11 @@
 # setPolicySync
 
+## 导入模块
+
+```TypeScript
+import { browser } from '@kit.MDMKit';
+```
+
 ## setPolicySync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setPolicySync(admin: Want, appId: string, policyName: string, policyVal
 为指定的浏览器设置浏览器子策略，适用于企业统一管理员工浏览器行为的场景。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -40,7 +42,7 @@ function setPolicySync(admin: Want, appId: string, policyName: string, policyVal
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { browser } from '@kit.MDMKit';

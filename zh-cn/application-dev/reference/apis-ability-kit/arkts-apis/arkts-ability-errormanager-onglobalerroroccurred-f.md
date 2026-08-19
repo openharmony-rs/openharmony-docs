@@ -1,6 +1,12 @@
 # on_globalErrorOccurred
 
-## on_globalErrorOccurred
+## 导入模块
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+```
+
+## on('globalErrorOccurred')
 
 ```TypeScript
 function on(type: 'globalErrorOccurred', observer: GlobalObserver): void
@@ -9,10 +15,6 @@ function on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 在进程中的任意线程中注册 `errormanager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +36,7 @@ function on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';

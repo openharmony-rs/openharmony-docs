@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Menu](arkts-na-menu-menu-f.md#menu) | Defines Menu Component. |
+| [Menu](arkts-na-menu-menu-f.md) | Defines Menu Component. |
 
 ### 接口
 

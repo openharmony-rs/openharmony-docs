@@ -6,13 +6,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface TapGestureInterface--><!--Device-unnamed-interface TapGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -20,13 +21,9 @@
 (value?: TapGestureParameters): TapGestureInterface
 ```
 
-创建点击手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#gestureinterface)。 触发点击手势事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的SourceType值为KEY或JOYSTICK。
+创建点击手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)。 触发点击手势事件的设备类型为键盘或手柄时，事件的SourceTool值为Unknown，事件的SourceType值为KEY或JOYSTICK。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -55,10 +52,6 @@ onAction(event: (event: GestureEvent) => void): TapGestureInterface
 点击手势识别成功回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

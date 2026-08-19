@@ -1,5 +1,11 @@
 # addOsAccountAsync
 
+## 导入模块
+
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+```
+
 ## addOsAccountAsync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountT
 后台添加账号。使用Promise异步回调。适用于企业批量创建账号或远程管理场景，无需用户交互即可完成账号创建，提升管理效率。 > **说明：** > > 创建账号的流程比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -46,7 +48,7 @@ function addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountT
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { accountManager } from '@kit.MDMKit';

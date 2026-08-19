@@ -1,12 +1,8 @@
 # Scene
 
-定义3D场景.
+用于设置场景。Scene采用树状层次结构组织场景节点，根节点（root）作为场景的入口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare class Scene--><!--Device-unnamed-export declare class Scene-End-->
 
@@ -18,13 +14,9 @@
 cloneNode(node: Node, parent: Node, name: string): Node | null
 ```
 
-克隆以输入节点为根节点的节点或子树
+在当前所在场景中克隆节点，不支持跨场景克隆节点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-cloneNode(node: Node, parent: Node, name: string): Node | null--><!--Device-Scene-cloneNode(node: Node, parent: Node, name: string): Node | null-End-->
 
@@ -34,17 +26,17 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要克隆的输入节点 |
-| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 克隆节点将被设置为其子节点的父节点 |
-| name | string | 是 | 克隆节点的名称 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 被克隆的节点。 |
+| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 被克隆的节点在当前所在场景中的目标父节点。被克隆的节点node和目标父节点parent需要属于同一个场景scene。 |
+| name | string | 是 | 克隆节点的名称，由开发者自定义，无特殊要求。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 克隆结果，如果克隆失败则返回null. |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 返回克隆节点。克隆失败则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, Node } from '@kit.ArkGraphics3D';
@@ -72,13 +64,9 @@ function CloneNode() {
 createComponent(node: Node, name: string): Promise<SceneComponent>
 ```
 
-创建新组件.
+在指定节点上创建新的组件，根据组件名称异步创建并附加到节点上，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-createComponent(node: Node, name: string): Promise<SceneComponent>--><!--Device-Scene-createComponent(node: Node, name: string): Promise<SceneComponent>-End-->
 
@@ -88,16 +76,16 @@ createComponent(node: Node, name: string): Promise<SceneComponent>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 组件附加到的节点 |
-| name | string | 是 | 要加载的组件名称. 有效名称由各插件定义. |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 组件需要附加到的节点。 |
+| name | string | 是 | 要创建的组件名称，由各插件定义有效名称。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md)&gt; | 新添加的组件. |
+| Promise&lt;[SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md)&gt; | Promise对象，返回新创建的场景组件。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, SceneComponent } from '@kit.ArkGraphics3D';
@@ -127,19 +115,15 @@ function createComponentTest(): Promise<SceneComponent> {
 destroy(): void
 ```
 
-释放所有原生场景资源. 所有TS引用将变为undefined.
+销毁场景，释放所有的场景资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-destroy(): void--><!--Device-Scene-destroy(): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene } from '@kit.ArkGraphics3D';
@@ -162,13 +146,9 @@ function destroy(): void {
 getComponent(node: Node, name: string): SceneComponent | null
 ```
 
-通过名称获取组件.
+根据指定的组件名称，从给定节点上获取对应的组件实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-getComponent(node: Node, name: string): SceneComponent | null--><!--Device-Scene-getComponent(node: Node, name: string): SceneComponent | null-End-->
 
@@ -178,16 +158,16 @@ getComponent(node: Node, name: string): SceneComponent | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 组件附加到的节点. |
-| name | string | 是 | 组件名称 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 组件附加的节点。 |
+| name | string | 是 | 需要获取的组件名称，必须为系统预定义或已注册的自定义组件名称，且需符合命名规范。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md) |  |
+| [SceneComponent](arkts-arkgraphics3d-scene-scenecomponent-i.md) | 返回对应名称的组件对象，若未找到则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene } from '@kit.ArkGraphics3D';
@@ -217,13 +197,9 @@ function getComponentTest() {
 static getDefaultRenderContext(): RenderContext | null
 ```
 
-获取默认渲染上下文
+获取当前图形对象所关联的渲染上下文。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-static getDefaultRenderContext(): RenderContext | null--><!--Device-Scene-static getDefaultRenderContext(): RenderContext | null-End-->
 
@@ -233,9 +209,9 @@ static getDefaultRenderContext(): RenderContext | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) | 默认RenderContext实例 |
+| [RenderContext](arkts-arkgraphics3d-scene-rendercontext-i.md) | 返回当前对象关联的渲染上下文，若对象尚未关联任何渲染上下文，则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, RenderContext } from '@kit.ArkGraphics3D';
@@ -257,13 +233,9 @@ function getDefaultRenderContextTest() {
 getNodeByPath(path: string, type?: NodeType): Node | null
 ```
 
-通过路径获取节点.
+通过路径获取节点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-getNodeByPath(path: string, type?: NodeType): Node | null--><!--Device-Scene-getNodeByPath(path: string, type?: NodeType): Node | null-End-->
 
@@ -273,16 +245,16 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 节点路径 |
-| type | [NodeType](arkts-arkgraphics3d-scenenodes-nodetype-e.md) | 否 | 验证节点类型，如果不匹配则返回null |
+| path | string | 是 | 场景节点层次中的路径。每层之间使用'/'符号进行分割。 |
+| type | [NodeType](arkts-arkgraphics3d-scenenodes-nodetype-e.md) | 否 | 预期返回的节点类型。当需要确保返回特定类型的节点时传入此参数，不传入时返回路径上找到的第一个节点（不限制类型）。默认值为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 如果通过路径找到节点 |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 返回请求节点的实例，如果没有找到或者找到的节点类型与传入的参数不相符则返回空。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, Node } from '@kit.ArkGraphics3D';
@@ -305,13 +277,9 @@ function getNode(): void {
 getResourceFactory(): SceneResourceFactory
 ```
 
-获取资源工厂.
+获取场景资源工厂对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-getResourceFactory(): SceneResourceFactory--><!--Device-Scene-getResourceFactory(): SceneResourceFactory-End-->
 
@@ -321,9 +289,9 @@ getResourceFactory(): SceneResourceFactory
 
 | 类型 | 说明 |
 | --- | --- |
-| [SceneResourceFactory](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md) | 如果通过路径找到节点 |
+| [SceneResourceFactory](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md) | 返回场景资源工厂对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
@@ -346,13 +314,9 @@ function getFactory(): void {
 importNode(name: string, node: Node, parent: Node | null): Node
 ```
 
-将节点导入场景. 原始节点可能来自另一个场景. 节点将被克隆，导入后对旧节点的修改将不可见.
+一般用于从其他场景导入节点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-importNode(name: string, node: Node, parent: Node | null): Node--><!--Device-Scene-importNode(name: string, node: Node, parent: Node | null): Node-End-->
 
@@ -362,17 +326,17 @@ importNode(name: string, node: Node, parent: Node | null): Node
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 新创建节点的名称. |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要导入的节点. |
-| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 是 | 父节点，根节点为null |
+| name | string | 是 | 导入节点后的名称，由开发者自定义，无特殊要求。 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 被导入的节点。 |
+| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 是 | 被导入节点在新场景中的父节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 新创建的节点. |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 被导入的节点。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene } from '@kit.ArkGraphics3D';
@@ -402,13 +366,9 @@ function ImportNodeTest() {
 importScene(name: string, scene: Scene, parent: Node | null): Node
 ```
 
-将场景作为节点导入场景. 节点层级将出现在父节点下. 场景中的所有动画将被复制.
+在当前场景中导入其他场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-importScene(name: string, scene: Scene, parent: Node | null): Node--><!--Device-Scene-importScene(name: string, scene: Scene, parent: Node | null): Node-End-->
 
@@ -418,17 +378,17 @@ importScene(name: string, scene: Scene, parent: Node | null): Node
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 新创建节点的名称 |
-| scene | [Scene](arkts-arkgraphics3d-scene-c.md) | 是 | The scene to be imported. |
-| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 是 | 父节点，根节点为null |
+| name | string | 是 | 导入场景的根节点名称，由开发者自定义，无特殊要求。 |
+| scene | [Scene](arkts-arkgraphics3d-scene-c.md) | 是 | 被导入的场景。 |
+| parent | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null | 是 | 被导入场景在新场景中的父节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 新创建的节点. |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 被导入场景的根节点。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene } from '@kit.ArkGraphics3D';
@@ -452,13 +412,9 @@ function ImportSceneTest() {
 static load(uri? : ResourceStr): Promise<Scene>
 ```
 
-通过传入的资源路径加载资源，使用Promise异步回调。 调用后，应该在Scene使用完毕时调用[destroy](#destroy)释放资源，否则可能导致资源泄漏。
+通过传入的资源路径加载资源，使用Promise异步回调。 调用后，应该在Scene使用完毕时调用destroy释放资源，否则可能导致资源泄漏。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-static load(uri? : ResourceStr): Promise<Scene>--><!--Device-Scene-static load(uri? : ResourceStr): Promise<Scene>-End-->
 
@@ -476,7 +432,7 @@ static load(uri? : ResourceStr): Promise<Scene>
 | --- | --- |
 | Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise对象，返回场景对象。 |
 
-## 示例
+**示例**
 
 示例1：通过rawfile加载（相对路径）
 
@@ -530,13 +486,9 @@ async function loadModelFromAbsolutePath(context: common.UIAbilityContext): Prom
 renderFrame(params?: RenderParameters): boolean
 ```
 
-为所有活动相机渲染新帧.
+通过该接口可以实现按需渲染，例如控制渲染帧率。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scene-renderFrame(params?: RenderParameters): boolean--><!--Device-Scene-renderFrame(params?: RenderParameters): boolean-End-->
 
@@ -546,15 +498,15 @@ renderFrame(params?: RenderParameters): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [RenderParameters](arkts-arkgraphics3d-scene-renderparameters-i.md) | 否 | 渲染参数 |
+| params | [RenderParameters](arkts-arkgraphics3d-scene-renderparameters-i.md) | 否 | 渲染参数，默认值为undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 如果渲染被调度则返回true，否则返回false |
+| boolean | 渲染被成功调度返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene } from '@kit.ArkGraphics3D';

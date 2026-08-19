@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-bundle-export enum InstallErrorCode--><!--Device-bundle-export enum InstallErrorCode-End-->
@@ -21,8 +19,6 @@ SUCCESS = 0
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -40,8 +36,6 @@ STATUS_INSTALL_FAILURE = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE = 1--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE = 1-End-->
@@ -57,8 +51,6 @@ STATUS_INSTALL_FAILURE_ABORTED = 2
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -76,8 +68,6 @@ STATUS_INSTALL_FAILURE_INVALID = 3
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_INVALID = 3--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_INVALID = 3-End-->
@@ -93,8 +83,6 @@ STATUS_INSTALL_FAILURE_CONFLICT = 4
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -112,8 +100,6 @@ STATUS_INSTALL_FAILURE_STORAGE = 5
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_STORAGE = 5--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_STORAGE = 5-End-->
@@ -129,8 +115,6 @@ STATUS_INSTALL_FAILURE_INCOMPATIBLE = 6
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -148,8 +132,6 @@ STATUS_UNINSTALL_FAILURE = 7
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE = 7--><!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE = 7-End-->
@@ -165,8 +147,6 @@ STATUS_UNINSTALL_FAILURE_BLOCKED = 8
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -184,8 +164,6 @@ STATUS_UNINSTALL_FAILURE_ABORTED = 9
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_ABORTED = 9--><!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_ABORTED = 9-End-->
@@ -201,8 +179,6 @@ STATUS_UNINSTALL_FAILURE_CONFLICT = 10
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -220,8 +196,6 @@ STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT = 0x0B
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT = 0x0B--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT = 0x0B-End-->
@@ -237,8 +211,6 @@ STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED = 0x0C
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -256,8 +228,6 @@ STATUS_RECOVER_FAILURE_INVALID = 0x0D
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_RECOVER_FAILURE_INVALID = 0x0D--><!--Device-InstallErrorCode-STATUS_RECOVER_FAILURE_INVALID = 0x0D-End-->
@@ -273,8 +243,6 @@ STATUS_ABILITY_NOT_FOUND = 0x40
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -292,8 +260,6 @@ STATUS_BMS_SERVICE_ERROR = 0x41
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_BMS_SERVICE_ERROR = 0x41--><!--Device-InstallErrorCode-STATUS_BMS_SERVICE_ERROR = 0x41-End-->
@@ -309,8 +275,6 @@ STATUS_FAILED_NO_SPACE_LEFT = 0x42
 缺少卸载权限。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -328,8 +292,6 @@ STATUS_GRANT_REQUEST_PERMISSIONS_FAILED = 0x43
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_GRANT_REQUEST_PERMISSIONS_FAILED = 0x43--><!--Device-InstallErrorCode-STATUS_GRANT_REQUEST_PERMISSIONS_FAILED = 0x43-End-->
@@ -346,8 +308,6 @@ STATUS_INSTALL_PERMISSION_DENIED = 0x44
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-InstallErrorCode-STATUS_INSTALL_PERMISSION_DENIED = 0x44--><!--Device-InstallErrorCode-STATUS_INSTALL_PERMISSION_DENIED = 0x44-End-->
@@ -363,8 +323,6 @@ STATUS_UNINSTALL_PERMISSION_DENIED = 0x45
 缺少卸载权限。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

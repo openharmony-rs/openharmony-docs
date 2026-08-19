@@ -1,4 +1,4 @@
-# ImmersiveMode
+# ImmersiveMode(ActionSheet)
 
 ```TypeScript
 declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
@@ -7,10 +7,6 @@ declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 弹窗的蒙层效果。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

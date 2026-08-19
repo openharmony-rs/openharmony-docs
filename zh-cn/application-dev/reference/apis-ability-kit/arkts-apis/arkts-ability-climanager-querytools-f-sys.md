@@ -1,5 +1,11 @@
 # queryTools（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cliManager } from '@kit.AbilityKit';
+```
+
 ## queryTools
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryTools(): Promise<Array<ToolInfo>>
 查询所有CLI工具的详细信息，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.QUERY_CLI_TOOL
 

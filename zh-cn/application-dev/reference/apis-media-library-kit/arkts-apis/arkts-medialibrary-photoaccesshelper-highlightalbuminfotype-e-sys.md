@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum HighlightAlbumInfoType--><!--Device-photoAccessHelper-enum HighlightAlbumInfoType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ COVER_INFO = 0
 封面信息类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HighlightAlbumInfoType-COVER_INFO = 0--><!--Device-HighlightAlbumInfoType-COVER_INFO = 0-End-->
 
@@ -44,10 +36,6 @@ PLAY_INFO = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HighlightAlbumInfoType-PLAY_INFO = 1--><!--Device-HighlightAlbumInfoType-PLAY_INFO = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ ALBUM_INFO = 2
 相册信息类别。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-HighlightAlbumInfoType-ALBUM_INFO = 2--><!--Device-HighlightAlbumInfoType-ALBUM_INFO = 2-End-->
 

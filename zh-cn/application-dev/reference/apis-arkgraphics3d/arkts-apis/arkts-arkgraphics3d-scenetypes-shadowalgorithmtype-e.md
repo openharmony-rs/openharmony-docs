@@ -1,12 +1,8 @@
 # ShadowAlgorithmType
 
-阴影算法类型
+阴影算法的枚举类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum ShadowAlgorithmType--><!--Device-unnamed-export enum ShadowAlgorithmType-End-->
 
@@ -18,13 +14,9 @@
 PCF = 0
 ```
 
-PCF算法（百分比邻近过滤）
+百分比邻近过滤算法。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

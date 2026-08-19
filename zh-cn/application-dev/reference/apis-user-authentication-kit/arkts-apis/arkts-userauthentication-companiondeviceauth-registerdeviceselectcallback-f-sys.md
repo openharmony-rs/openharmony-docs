@@ -1,5 +1,11 @@
 # registerDeviceSelectCallback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
+```
+
 ## registerDeviceSelectCallback
 
 ```TypeScript
@@ -9,10 +15,6 @@ function registerDeviceSelectCallback(callback: DeviceSelectCallback): void
 注册伴随设备选择回调。当系统需要用户选择伴随设备时，会调用此回调，应用需在回调中返回用户选择的设备信息。通过此回调，应用可以实现自定义的设备选择逻辑，如弹出设备选择界面让用户选择。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -38,7 +40,7 @@ function registerDeviceSelectCallback(callback: DeviceSelectCallback): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

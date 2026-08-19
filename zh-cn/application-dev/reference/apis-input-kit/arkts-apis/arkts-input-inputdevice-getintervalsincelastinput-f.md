@@ -1,5 +1,12 @@
 # getIntervalSinceLastInput
 
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
 ## getIntervalSinceLastInput
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getIntervalSinceLastInput(): Promise<long>
 获取距离上次系统输入事件的时间间隔（包含设备休眠时间），使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputDevice-function getIntervalSinceLastInput(): Promise<long>--><!--Device-inputDevice-function getIntervalSinceLastInput(): Promise<long>-End-->
 
@@ -24,7 +27,7 @@ function getIntervalSinceLastInput(): Promise<long>
 | --- | --- |
 | Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位为微秒（μs）。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,15 +4,17 @@ KioskManager模块提供Kiosk模式管理能力，包括系统进入/退出Kiosk
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace kioskManager--><!--Device-unnamed-declare namespace kioskManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { kioskManager } from '@kit.AbilityKit';
+```
 
 ## 汇总
 
@@ -20,15 +22,15 @@ KioskManager模块提供Kiosk模式管理能力，包括系统进入/退出Kiosk
 
 | 名称 | 说明 |
 | --- | --- |
-| [enterKioskMode](arkts-ability-kioskmanager-enterkioskmode-f.md#enterkioskmode) | 进入Kiosk模式。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
-| [exitKioskMode](arkts-ability-kioskmanager-exitkioskmode-f.md#exitkioskmode) | 退出Kiosk模式。使用Promise异步回调。 该接口仅对已进入Kiosk模式的应用生效。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
+| [enterKioskMode](arkts-ability-kioskmanager-enterkioskmode-f.md) | 进入Kiosk模式。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
+| [exitKioskMode](arkts-ability-kioskmanager-exitkioskmode-f.md) | 退出Kiosk模式。使用Promise异步回调。 该接口仅对已进入Kiosk模式的应用生效。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getKioskStatus](arkts-ability-kioskmanager-getkioskstatus-f-sys.md#getkioskstatus) | 获取系统Kiosk模式的状态信息（包括当前系统是否处于Kiosk模式、进入Kiosk模式应用的名称和UID）。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
+| [getKioskStatus](arkts-ability-kioskmanager-getkioskstatus-f-sys.md) | 获取系统Kiosk模式的状态信息（包括当前系统是否处于Kiosk模式、进入Kiosk模式应用的名称和UID）。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
 <!--DelEnd-->
 
 ### 类型

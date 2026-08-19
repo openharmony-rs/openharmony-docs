@@ -4,10 +4,6 @@ Audio render target.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum RenderTarget--><!--Device-audio-enum RenderTarget-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -24,10 +20,6 @@ Playback. Under this target, the audio renderer will be played out. This is the 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RenderTarget-PLAYBACK = 0--><!--Device-RenderTarget-PLAYBACK = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -40,13 +32,9 @@ Playback. Under this target, the audio renderer will be played out. This is the 
 INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1
 ```
 
-Inject to voice communication capture. Under this target, the audio renderer will be injected to audio capture with source type of [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-audio-audio-sourcetype-e.md#sourcetypevoicecommunication) when the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-audio-audio-audioscene-e.md#audioscenevoicechat).
+Inject to voice communication capture. Under this target, the audio renderer will be injected to audio capture with source type of [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-audio-audio-sourcetype-e.md#source_type_voice_communication) when the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-audio-audio-audioscene-e.md#audio_scene_voice_chat).
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1--><!--Device-RenderTarget-INJECT_TO_VOICE_COMMUNICATION_CAPTURE = 1-End-->
 

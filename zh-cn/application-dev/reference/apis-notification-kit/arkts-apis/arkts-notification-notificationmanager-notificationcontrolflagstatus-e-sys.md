@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export enum NotificationControlFlagStatus--><!--Device-notificationManager-export enum NotificationControlFlagStatus-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0
 关闭声音提示功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0-End-->
 
@@ -44,10 +36,6 @@ NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -63,10 +51,6 @@ NOTIFICATION_STATUS_CLOSE_BANNER = 1 << 2
 关闭横幅提示功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_BANNER = 1 << 2--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_BANNER = 1 << 2-End-->
 
@@ -84,10 +68,6 @@ NOTIFICATION_STATUS_CLOSE_LIGHT_SCREEN = 1 << 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LIGHT_SCREEN = 1 << 3--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LIGHT_SCREEN = 1 << 3-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -104,10 +84,6 @@ NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -123,10 +99,6 @@ NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON = 1 << 5
 关闭状态栏图标提示功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON = 1 << 5--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON = 1 << 5-End-->
 

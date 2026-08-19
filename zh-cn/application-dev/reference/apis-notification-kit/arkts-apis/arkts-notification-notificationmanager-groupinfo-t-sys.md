@@ -8,10 +8,6 @@ export type GroupInfo = _GroupInfo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-notificationManager-export type GroupInfo = _GroupInfo--><!--Device-notificationManager-export type GroupInfo = _GroupInfo-End-->

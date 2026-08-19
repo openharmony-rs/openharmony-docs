@@ -1,5 +1,12 @@
 # setScanAlwaysAllowed（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## setScanAlwaysAllowed
 
 ```TypeScript
@@ -9,10 +16,6 @@ function setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 用户可以在WLAN关闭时触发扫描。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 

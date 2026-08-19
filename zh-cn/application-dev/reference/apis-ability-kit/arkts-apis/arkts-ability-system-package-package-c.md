@@ -4,13 +4,17 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 9
 
 <!--Device-unnamed-export default class Package--><!--Device-unnamed-export default class Package-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
+
+## 导入模块
+
+```TypeScript
+import { Package, CheckPackageHasInstalledOptions, CheckPackageHasInstalledResponse } from '@kit.AbilityKit';
+```
 
 ## hasInstalled
 
@@ -22,11 +26,9 @@ static hasInstalled(options: CheckPackageHasInstalledOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 9
 
-**替代接口：** [canOpenLink](arkts-ability-bundlemanager-canopenlink-f.md#canopenlink)
+**替代接口：** [canOpenLink](arkts-ability-bundlemanager-canopenlink-f.md)
 
 <!--Device-Package-static hasInstalled(options: CheckPackageHasInstalledOptions): void--><!--Device-Package-static hasInstalled(options: CheckPackageHasInstalledOptions): void-End-->
 

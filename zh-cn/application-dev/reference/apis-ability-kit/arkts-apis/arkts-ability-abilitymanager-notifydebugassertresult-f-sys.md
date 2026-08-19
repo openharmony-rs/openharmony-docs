@@ -1,5 +1,11 @@
 # notifyDebugAssertResult（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## notifyDebugAssertResult
 
 ```TypeScript
@@ -9,10 +15,6 @@ function notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise
 将断言调试结果通知应用程序。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFY_DEBUG_ASSERT_RESULT
 
@@ -46,7 +48,7 @@ function notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityManager, UIExtensionAbility, wantConstant, Want, UIExtensionContentSession } from '@kit.AbilityKit';

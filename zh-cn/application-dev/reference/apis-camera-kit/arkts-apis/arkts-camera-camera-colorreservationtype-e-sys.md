@@ -4,10 +4,6 @@ Enumerates the color reservation types.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum ColorReservationType--><!--Device-camera-enum ColorReservationType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -24,10 +20,6 @@ No color reservation.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ColorReservationType-NONE = 0--><!--Device-ColorReservationType-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -43,10 +35,6 @@ PORTRAIT = 1
 Portrait color reservation.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ColorReservationType-PORTRAIT = 1--><!--Device-ColorReservationType-PORTRAIT = 1-End-->
 

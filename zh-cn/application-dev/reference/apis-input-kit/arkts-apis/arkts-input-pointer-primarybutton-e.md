@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-enum PrimaryButton--><!--Device-pointer-enum PrimaryButton-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -22,10 +18,6 @@ LEFT = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PrimaryButton-LEFT = 0--><!--Device-PrimaryButton-LEFT = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -39,10 +31,6 @@ RIGHT = 1
 鼠标右键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PrimaryButton-RIGHT = 1--><!--Device-PrimaryButton-RIGHT = 1-End-->
 

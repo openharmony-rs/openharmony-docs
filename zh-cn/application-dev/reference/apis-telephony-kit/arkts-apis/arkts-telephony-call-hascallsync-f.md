@@ -1,5 +1,11 @@
 # hasCallSync
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## hasCallSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function hasCallSync(): boolean
 判断是否存在通话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function hasCallSync(): boolean--><!--Device-call-function hasCallSync(): boolean-End-->
 
@@ -24,7 +26,7 @@ function hasCallSync(): boolean
 | --- | --- |
 | boolean | 返回判断是否存在通话。返回true表示当前存在通话，false表示当前不存在通话。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let hasCall: boolean = call.hasCallSync();

@@ -2,10 +2,6 @@
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default class ApplicationStateObserver--><!--Device-unnamed-export default class ApplicationStateObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -19,10 +15,6 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 Ability状态发生变化时执行的回调函数。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void--><!--Device-ApplicationStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void-End-->
 
@@ -44,10 +36,6 @@ onAppStarted(appStateData: AppStateData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationStateObserver-onAppStarted(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onAppStarted(appStateData: AppStateData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -67,10 +55,6 @@ onAppStopped(appStateData: AppStateData): void
 应用最后一个进程销毁时执行的回调函数。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationStateObserver-onAppStopped(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onAppStopped(appStateData: AppStateData): void-End-->
 
@@ -92,10 +76,6 @@ onForegroundApplicationChanged(appStateData: AppStateData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationStateObserver-onForegroundApplicationChanged(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onForegroundApplicationChanged(appStateData: AppStateData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -116,10 +96,6 @@ onProcessCreated(processData: ProcessData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationStateObserver-onProcessCreated(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessCreated(processData: ProcessData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -128,7 +104,7 @@ onProcessCreated(processData: ProcessData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| processData | [ProcessData](../../apis-na/arkts-apis/arkts-na-processdata-t.md) | 是 | 进程数据信息。 |
+| processData | [ProcessData](arkts-ability-processdata-t.md) | 是 | 进程数据信息。 |
 
 ## onProcessDied
 
@@ -140,10 +116,6 @@ onProcessDied(processData: ProcessData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationStateObserver-onProcessDied(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessDied(processData: ProcessData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -152,7 +124,7 @@ onProcessDied(processData: ProcessData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| processData | [ProcessData](../../apis-na/arkts-apis/arkts-na-processdata-t.md) | 是 | 进程数据信息。 |
+| processData | [ProcessData](arkts-ability-processdata-t.md) | 是 | 进程数据信息。 |
 
 ## onProcessStateChanged
 
@@ -164,10 +136,6 @@ onProcessStateChanged(processData: ProcessData): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationStateObserver-onProcessStateChanged(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessStateChanged(processData: ProcessData): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -176,5 +144,5 @@ onProcessStateChanged(processData: ProcessData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| processData | [ProcessData](../../apis-na/arkts-apis/arkts-na-processdata-t.md) | 是 | 进程数据信息。 |
+| processData | [ProcessData](arkts-ability-processdata-t.md) | 是 | 进程数据信息。 |
 

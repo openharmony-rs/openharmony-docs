@@ -8,10 +8,6 @@ type ProgressListener = (progress: Progress) => void
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-type ProgressListener = (progress: Progress) => void--><!--Device-unnamed-type ProgressListener = (progress: Progress) => void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO

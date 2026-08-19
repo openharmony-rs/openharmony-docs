@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-stream-class Readable--><!--Device-stream-class Readable-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { stream } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -22,17 +24,13 @@ constructor()
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-constructor()--><!--Device-Readable-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 let readableStream = new stream.Readable();
@@ -48,10 +46,6 @@ constructor(options: ReadableOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-constructor(options: ReadableOptions)--><!--Device-Readable-constructor(options: ReadableOptions)-End-->
@@ -64,7 +58,7 @@ constructor(options: ReadableOptions)
 | --- | --- | --- | --- |
 | options | [ReadableOptions](arkts-arkts-stream-readableoptions-i.md) | 是 | Readable构造函数的选项信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let option : stream.ReadableOptions = {
@@ -79,13 +73,9 @@ let readableStream = new stream.Readable(option);
 doInitialize(callback: Function): void
 ```
 
-需要由开发者实现此API。在可读流首次调用[on](arkts-arkts-stream-writable-c.md#onstring)时调用此API。使用异步回调返回结果。
+需要由开发者实现此API。在可读流首次调用[on](#on_string)时调用此API。使用异步回调返回结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -99,7 +89,7 @@ doInitialize(callback: Function): void
 | --- | --- | --- | --- |
 | callback | Function | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -147,10 +137,6 @@ doRead(size: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-doRead(size: int): void--><!--Device-Readable-doRead(size: int): void-End-->
@@ -163,7 +149,7 @@ doRead(size: int): void
 | --- | --- | --- | --- |
 | size | int | 是 | 读取数据的字节数。取值范围：0 &lt;= size &lt;= Number.MAX_VALUE。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -211,10 +197,6 @@ isPaused(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-isPaused(): boolean--><!--Device-Readable-isPaused(): boolean-End-->
@@ -227,7 +209,7 @@ isPaused(): boolean
 | --- | --- |
 | boolean | 返回流是否处于暂停模式。true表示流处于暂停模式，false表示流未处于暂停模式。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -275,10 +257,6 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-off(event: string, callback?: Callback<emitter.EventData>): void--><!--Device-Readable-off(event: string, callback?: Callback<emitter.EventData>): void-End-->
@@ -290,9 +268,9 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件回调类型，支持的事件包括：'close' \| 'data' \| 'end' \| 'error' \| 'readable' \| 'pause' \| 'resume'。 - 'close'：完成push()调用，传入null值，触发该事件。 - 'data'：当流传递给消费者一个数据块时触发该事件。 - 'end'：完成push()调用，传入null值，触发该事件。 - 'error'：流发生异常时触发。 - 'readable'：当有可从流中读取的数据时触发该事件。 - 'pause'：完成pause()调用，触发该事件。 - 'resume'：完成resume()调用，触发该事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;emitter.EventData&gt; | 否 | 指定事件的要注销的回调函数。不传入时注销指定事件的所有回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;emitter.EventData&gt; | 否 | 指定事件的要注销的回调函数。不传入时注销指定事件的所有回调函数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -354,10 +332,6 @@ off(event: string, callback?: Function): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-off(event: string, callback?: Function): void--><!--Device-Readable-off(event: string, callback?: Function): void-End-->
@@ -381,10 +355,6 @@ on(event: string, callback: Callback<emitter.EventData>): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-on(event: string, callback: Callback<emitter.EventData>): void--><!--Device-Readable-on(event: string, callback: Callback<emitter.EventData>): void-End-->
@@ -396,9 +366,9 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | string | 是 | 事件回调类型，支持的事件包括：'close' \| 'data' \| 'end' \| 'error' \| 'readable' \| 'pause' \| 'resume'。 - 'close'：完成push()调用，传入null值，触发该事件。 - 'data'：当流传递给消费者一个数据块时触发该事件。 - 'end'：完成push()调用，传入null值，触发该事件。 - 'error'：流发生异常时触发。 - 'readable'：当有可从流中读取的数据时触发该事件。 - 'pause'：完成pause()调用，触发该事件。 - 'resume'：完成resume()调用，触发该事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;emitter.EventData&gt; | 是 | 回调函数，返回事件数据。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;emitter.EventData&gt; | 是 | 回调函数，返回事件数据。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -450,10 +420,6 @@ on(event: string, callback: Function): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-on(event: string, callback: Function): void--><!--Device-Readable-on(event: string, callback: Function): void-End-->
@@ -477,10 +443,6 @@ pause(): Readable
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-pause(): Readable--><!--Device-Readable-pause(): Readable-End-->
@@ -493,7 +455,7 @@ pause(): Readable
 | --- | --- |
 | [Readable](arkts-arkts-stream-readable-c.md) | 当前可读流本身。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -539,10 +501,6 @@ pipe(destination: Writable, options?: Object): Writable
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-pipe(destination: Writable, options?: Object): Writable--><!--Device-Readable-pipe(destination: Writable, options?: Object): Writable-End-->
@@ -562,7 +520,7 @@ pipe(destination: Writable, options?: Object): Writable
 | --- | --- |
 | [Writable](arkts-arkts-stream-writable-c.md) | 返回当前可写流对象。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -634,10 +592,6 @@ push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean--><!--Device-Readable-push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean-End-->
@@ -657,7 +611,7 @@ push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 | --- | --- |
 | boolean | 可读流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区已满。输入null时，固定返回false表示推送结束，没有数据块可推送。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -705,10 +659,6 @@ read(size?: number): string | null
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-read(size?: number): string | null--><!--Device-Readable-read(size?: number): string | null-End-->
@@ -733,7 +683,7 @@ read(size?: number): string | null
 | --- | --- |
 | [10200038](../errorcode-utils.md#10200038-doread接口未实现) | The doRead method has not been implemented. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -783,10 +733,6 @@ read(size?: int): buffer.Buffer | string | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-read(size?: int): buffer.Buffer | string | null--><!--Device-Readable-read(size?: int): buffer.Buffer | string | null-End-->
@@ -821,10 +767,6 @@ resume(): Readable
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-resume(): Readable--><!--Device-Readable-resume(): Readable-End-->
@@ -837,7 +779,7 @@ resume(): Readable
 | --- | --- |
 | [Readable](arkts-arkts-stream-readable-c.md) | 当前可读流本身。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -883,10 +825,6 @@ setEncoding(encoding?: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-setEncoding(encoding?: string): boolean--><!--Device-Readable-setEncoding(encoding?: string): boolean-End-->
@@ -905,7 +843,7 @@ setEncoding(encoding?: string): boolean
 | --- | --- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -951,10 +889,6 @@ unpipe(destination?: Writable): Readable
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Readable-unpipe(destination?: Writable): Readable--><!--Device-Readable-unpipe(destination?: Writable): Readable-End-->
@@ -973,7 +907,7 @@ unpipe(destination?: Writable): Readable
 | --- | --- |
 | [Readable](arkts-arkts-stream-readable-c.md) | 返回当前可读流对象。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

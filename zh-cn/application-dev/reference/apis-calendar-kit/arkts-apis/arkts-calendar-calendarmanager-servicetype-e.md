@@ -4,10 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-calendarManager-export enum ServiceType--><!--Device-calendarManager-export enum ServiceType-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -21,10 +17,6 @@ MEETING = 'Meeting'
 一键入会。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ WATCHING = 'Watching'
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ServiceType-WATCHING = 'Watching'--><!--Device-ServiceType-WATCHING = 'Watching'-End-->
@@ -61,10 +49,6 @@ REPAYMENT = 'Repayment'
 一键还款。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ LIVE = 'Live'
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ServiceType-LIVE = 'Live'--><!--Device-ServiceType-LIVE = 'Live'-End-->
@@ -101,10 +81,6 @@ SHOPPING = 'Shopping'
 一键购物。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ TRIP = 'Trip'
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ServiceType-TRIP = 'Trip'--><!--Device-ServiceType-TRIP = 'Trip'-End-->
@@ -141,10 +113,6 @@ CLASS = 'Class'
 一键上课。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ SPORTS_EVENTS = 'SportsEvents'
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ServiceType-SPORTS_EVENTS = 'SportsEvents'--><!--Device-ServiceType-SPORTS_EVENTS = 'SportsEvents'-End-->
@@ -181,10 +145,6 @@ SPORTS_EXERCISE = 'SportsExercise'
 一键运动。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

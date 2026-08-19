@@ -1,4 +1,4 @@
-# CAPI<!--c-arkts-->
+# C API<!--c-arkts-->
 
 - 头文件
     - [jsvm.h](capi-jsvm-h.md)

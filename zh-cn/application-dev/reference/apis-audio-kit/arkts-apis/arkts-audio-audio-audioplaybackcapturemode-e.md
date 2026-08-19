@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioPlaybackCaptureMode--><!--Device-audio-enum AudioPlaybackCaptureMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
@@ -21,10 +17,6 @@ MODE_DEFAULT = 0x0
 默认模式。录制大部分音频流，但不包括提示音流和隐私流。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ MODE_MEDIA = 0x1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioPlaybackCaptureMode-MODE_MEDIA = 0x1--><!--Device-AudioPlaybackCaptureMode-MODE_MEDIA = 0x1-End-->
@@ -61,10 +49,6 @@ MODE_EXCLUDING_SELF = 0x8000
 排除自身模式。录制除应用自身播放的音频以外的音频流。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

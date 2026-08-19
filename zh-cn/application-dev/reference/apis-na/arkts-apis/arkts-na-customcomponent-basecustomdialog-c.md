@@ -2,13 +2,11 @@
 
 Definition of base custom dialog class.
 
-**继承/实现关系：** BaseCustomDialog extends [ExtendableComponent](arkts-na-extendablecomponent-extendablecomponent-c.md#extendablecomponent)
+**继承/实现关系：** BaseCustomDialog extends [ExtendableComponent](arkts-na-extendablecomponent-extendablecomponent-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare abstract class BaseCustomDialog--><!--Device-unnamed-export declare abstract class BaseCustomDialog-End-->
 
@@ -29,9 +27,7 @@ Definition of base custom dialog class.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -57,9 +53,7 @@ Constructor to use to create a custom dialog instance.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

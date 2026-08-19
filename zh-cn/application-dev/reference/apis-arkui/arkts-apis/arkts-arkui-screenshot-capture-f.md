@@ -1,18 +1,20 @@
 # capture
 
+## 导入模块
+
+```TypeScript
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## capture
 
 ```TypeScript
 function capture(options?: CaptureOption): Promise<image.PixelMap>
 ```
 
-获取屏幕全屏截图，使用Promise异步回调。 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](arkts-arkui-screenshot-pick-f.md#pick)接口可实现区域截屏。
+获取屏幕全屏截图，使用Promise异步回调。 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](arkts-arkui-screenshot-pick-f.md)接口可实现区域截屏。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE or ohos.permission.CUSTOM_SCREEN_RECORDING
@@ -45,7 +47,7 @@ function capture(options?: CaptureOption): Promise<image.PixelMap>
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

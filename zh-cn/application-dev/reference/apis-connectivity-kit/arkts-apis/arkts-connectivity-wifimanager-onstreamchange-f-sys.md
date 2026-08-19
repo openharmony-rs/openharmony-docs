@@ -1,5 +1,12 @@
 # onStreamChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## onStreamChange
 
 ```TypeScript
@@ -9,10 +16,6 @@ function onStreamChange(callback: Callback<int>): void
 注册WLAN流量改变事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -26,7 +29,7 @@ function onStreamChange(callback: Callback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;int&gt; | 是 | 状态改变回调函数。返回1：下行流量，2：上行流量，3：双向流量。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;int&gt; | 是 | 状态改变回调函数。返回1：下行流量，2：上行流量，3：双向流量。 |
 
 **错误码：**
 

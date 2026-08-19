@@ -1,5 +1,11 @@
 # rotateToEulerAngles（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## rotateToEulerAngles
 
 ```TypeScript
@@ -9,10 +15,6 @@ function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): P
 将机械设备旋转到绝对角度
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise<Result>--><!--Device-mechanicManager-function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise<Result>-End-->
 
@@ -42,7 +44,7 @@ function rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): P
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let degree: mechanicManager.EulerAngles = {

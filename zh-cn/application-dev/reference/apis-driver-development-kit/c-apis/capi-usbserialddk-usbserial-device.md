@@ -6,7 +6,7 @@ typedef struct UsbSerial_Device UsbSerial_Device
 
 ## 概述
 
-USB串口设备数据结构（不透明）。
+USB串口设备数据结构（不透明），用于表示USB串口设备。开发者应通过{@link OH_UsbSerial_Open}接口函数获取此结构体实例。
 
 **起始版本：** 18
 

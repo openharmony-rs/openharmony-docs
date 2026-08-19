@@ -1,16 +1,18 @@
-# Button
+# Button(弹窗)
 
 定义按钮的提示信息。
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface Button--><!--Device-unnamed-export interface Button-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuccessResponse, ShowToastOptions } from '@kit.ArkUI';
+```
 
 ## color
 
@@ -23,10 +25,6 @@ color: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ text: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

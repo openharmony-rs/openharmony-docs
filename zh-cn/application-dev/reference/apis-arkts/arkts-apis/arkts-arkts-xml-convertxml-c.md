@@ -4,13 +4,15 @@ ConvertXML类提供将XML文本转换为JavaScript对象的能力。 推荐使�
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-xml-class ConvertXML--><!--Device-xml-class ConvertXML-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { convertxml } from '@kit.ArkTS';
+```
 
 ## convert
 
@@ -21,8 +23,6 @@ convert(xml: string, options?: ConvertOptions): Object
 将XML文本转换为Object类型对象。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)替代。 > > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。本接口转换后的对象以换行符（LF）表示换行。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -45,7 +45,7 @@ convert(xml: string, options?: ConvertOptions): Object
 | --- | --- |
 | Object | 转换后的JavaScript对象，包含解析后的XML结构信息，具体属性键名由ConvertOptions定义。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let xml =
@@ -89,8 +89,6 @@ convertToJSObject(xml: string, options?: ConvertOptions): Object
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 14
 
 **替代接口：** [fastConvertToJSObject](#fastconverttojsobject)
@@ -120,7 +118,7 @@ convertToJSObject(xml: string, options?: ConvertOptions): Object
 | --- | --- |
 | [10200002](../errorcode-utils.md#10200002-参数解析错误) | Invalid xml string. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,10 +169,6 @@ fastConvertToJSObject(xml: string, options?: ConvertOptions): Object
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ConvertXML-fastConvertToJSObject(xml: string, options?: ConvertOptions): Object--><!--Device-ConvertXML-fastConvertToJSObject(xml: string, options?: ConvertOptions): Object-End-->
@@ -200,7 +194,7 @@ fastConvertToJSObject(xml: string, options?: ConvertOptions): Object
 | --- | --- |
 | [10200002](../errorcode-utils.md#10200002-参数解析错误) | Invalid xml string. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -250,10 +244,6 @@ largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -281,7 +271,7 @@ largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 | --- | --- |
 | [10200002](../errorcode-utils.md#10200002-参数解析错误) | Invalid xml string. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -2,11 +2,9 @@
 
 提供获取组件绘制区域坐标和大小的能力。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -14,20 +12,20 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
+
 ## 汇总
-
-### 函数
-
-| 名称 | 说明 |
-| --- | --- |
-| [getRectangleById](arkts-arkui-componentutils-getrectanglebyid-f.md#getrectanglebyid) | 根据组件ID获取组件实例对象，通过组件实例对象将获取的坐标位置和大小同步返回给开发者。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getItemsInShapePath](arkts-arkui-componentutils-getitemsinshapepath-f-sys.md#getitemsinshapepath) | 获取位于选定区域内的图像对象。 |
+| [getItemsInShapePath](arkts-arkui-componentutils-getitemsinshapepath-f-sys.md) | Get the image objects located within the selected area. |
 <!--DelEnd-->
 
 ### 接口
@@ -46,9 +44,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [GetItemsInShapePathParams](arkts-arkui-componentutils-getitemsinshapepathparams-i-sys.md) | 需要获取图像对象时设置的图像选项。 |
-| [ImageItem](arkts-arkui-componentutils-imageitem-i-sys.md) | 带有布局信息的图像对象。 |
-| [Rotation2D](arkts-arkui-componentutils-rotation2d-i-sys.md) | 描述二维空间中的旋转，可以通过旋转角度和旋转中心来定义。 |
+| [GetItemsInShapePathParams](arkts-arkui-componentutils-getitemsinshapepathparams-i-sys.md) | Image options setted when need to get the image objects. |
+| [ImageItem](arkts-arkui-componentutils-imageitem-i-sys.md) | Image object with layout information. |
+| [Rotation2D](arkts-arkui-componentutils-rotation2d-i-sys.md) | Describe a rotate in 2D, which can be defined by rotation angle and rotation center. |
 <!--DelEnd-->
 
 ### 类型

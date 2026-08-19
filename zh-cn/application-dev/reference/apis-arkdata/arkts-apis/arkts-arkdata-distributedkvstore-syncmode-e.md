@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedKVStore-enum SyncMode--><!--Device-distributedKVStore-enum SyncMode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
@@ -21,10 +17,6 @@ PULL_ONLY
 表示只能从远端拉取数据到本端。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ PUSH_ONLY
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SyncMode-PUSH_ONLY--><!--Device-SyncMode-PUSH_ONLY-End-->
@@ -61,10 +49,6 @@ PUSH_PULL
 表示从本端推送数据到远端，然后从远端拉取数据到本端。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

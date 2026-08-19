@@ -1,5 +1,11 @@
 # transformPoint
 
+## 导入模块
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+```
+
 ## transformPoint
 
 ```TypeScript
@@ -9,8 +15,6 @@ function transformPoint(options: [number, number]): [number, number]
 Matrix的坐标点转换函数，可以将当前的变换效果作用到一个坐标点上。 > **说明：**
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 

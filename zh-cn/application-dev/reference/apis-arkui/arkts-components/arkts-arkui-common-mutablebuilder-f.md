@@ -1,18 +1,19 @@
 # mutableBuilder
 
+## 导入模块
+
+```TypeScript
+```
+
 ## mutableBuilder
 
 ```TypeScript
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>
 ```
 
-`mutableBuilder`是一个泛型函数，它返回一个`MutableBuilder`对象，只接受一个全局的`@Builder`函数作为其参数。 `mutableBuilder`函数返回的[MutableBuilder](arkts-arkui-mutablebuilder-c.md#mutablebuilder)对象，其`builder`属性方法只能在自定义组件的`build`函数或`@Builder`装饰的函数内部被调用。
+`mutableBuilder`是一个泛型函数，它返回一个`MutableBuilder`对象，只接受一个全局的`@Builder`函数作为其参数。 `mutableBuilder`函数返回的[MutableBuilder](arkts-arkui-mutablebuilder-c.md)对象，其`builder`属性方法只能在自定义组件的`build`函数或`@Builder`装饰的函数内部被调用。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

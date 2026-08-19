@@ -4,15 +4,18 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [ConfigOption](arkts-performanceanalysis-hiappevent-configoption-i.md#configoption)
+**替代接口：** [ConfigOption](arkts-performanceanalysis-hiappevent-configoption-i.md)
 
 <!--Device-hiAppEvent-interface ConfigOption--><!--Device-hiAppEvent-interface ConfigOption-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+## 导入模块
+
+```TypeScript
+```
 
 ## disable
 
@@ -25,8 +28,6 @@ disable?: boolean
 **类型：** boolean
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -47,8 +48,6 @@ maxStorage?: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface ShortcutInfo--><!--Device-unnamed-export interface ShortcutInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
@@ -25,10 +21,6 @@ appIndex: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShortcutInfo-appIndex: int--><!--Device-ShortcutInfo-appIndex: int-End-->
 
@@ -48,10 +40,6 @@ bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShortcutInfo-bundleName: string--><!--Device-ShortcutInfo-bundleName: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
@@ -69,10 +57,6 @@ hostAbility?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShortcutInfo-hostAbility?: string--><!--Device-ShortcutInfo-hostAbility?: string-End-->
 
@@ -92,10 +76,6 @@ icon?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShortcutInfo-icon?: string--><!--Device-ShortcutInfo-icon?: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
@@ -113,10 +93,6 @@ iconId?: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShortcutInfo-iconId?: long--><!--Device-ShortcutInfo-iconId?: long-End-->
 
@@ -136,10 +112,6 @@ id: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShortcutInfo-id: string--><!--Device-ShortcutInfo-id: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
@@ -157,10 +129,6 @@ label?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShortcutInfo-label?: string--><!--Device-ShortcutInfo-label?: string-End-->
 
@@ -180,10 +148,6 @@ labelId?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShortcutInfo-labelId?: long--><!--Device-ShortcutInfo-labelId?: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
@@ -201,10 +165,6 @@ moduleName?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShortcutInfo-moduleName?: string--><!--Device-ShortcutInfo-moduleName?: string-End-->
 
@@ -224,10 +184,6 @@ sourceType: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShortcutInfo-sourceType: int--><!--Device-ShortcutInfo-sourceType: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
@@ -245,10 +201,6 @@ wants?: Array<ShortcutWant>
 **类型：** Array&lt;[ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-i-sys.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShortcutInfo-wants?: Array<ShortcutWant>--><!--Device-ShortcutInfo-wants?: Array<ShortcutWant>-End-->
 

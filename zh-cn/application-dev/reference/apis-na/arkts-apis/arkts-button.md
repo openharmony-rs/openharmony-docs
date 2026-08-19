@@ -6,8 +6,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Button](arkts-na-button-button-f.md#button) | 使用文本内容创建相应的按钮组件，此时Button无法包含子组件。 文本内容默认单行显示。 |
-| [Button](arkts-na-button-button-f.md#button) | Defines Button Component. |
+| [Button](arkts-na-button-button-f.md) | 使用文本内容创建相应的按钮组件，此时Button无法包含子组件。 文本内容默认单行显示。 |
+| [Button](arkts-na-button-button-f.md) | Defines Button Component. |
 
 ### 类
 

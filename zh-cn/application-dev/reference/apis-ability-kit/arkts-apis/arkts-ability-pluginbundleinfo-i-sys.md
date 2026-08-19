@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface PluginBundleInfo--><!--Device-unnamed-export interface PluginBundleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -25,10 +21,6 @@ readonly icon: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PluginBundleInfo-readonly icon: string--><!--Device-PluginBundleInfo-readonly icon: string-End-->
 
@@ -48,10 +40,6 @@ readonly iconId: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PluginBundleInfo-readonly iconId: long--><!--Device-PluginBundleInfo-readonly iconId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -69,10 +57,6 @@ readonly label: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PluginBundleInfo-readonly label: string--><!--Device-PluginBundleInfo-readonly label: string-End-->
 
@@ -92,10 +76,6 @@ readonly labelId: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PluginBundleInfo-readonly labelId: long--><!--Device-PluginBundleInfo-readonly labelId: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -113,10 +93,6 @@ readonly pluginBundleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PluginBundleInfo-readonly pluginBundleName: string--><!--Device-PluginBundleInfo-readonly pluginBundleName: string-End-->
 
@@ -136,10 +112,6 @@ readonly pluginModuleInfos: Array<PluginModuleInfo>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PluginBundleInfo-readonly pluginModuleInfos: Array<PluginModuleInfo>--><!--Device-PluginBundleInfo-readonly pluginModuleInfos: Array<PluginModuleInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -158,10 +130,6 @@ readonly versionCode: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PluginBundleInfo-readonly versionCode: long--><!--Device-PluginBundleInfo-readonly versionCode: long-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -179,10 +147,6 @@ readonly versionName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PluginBundleInfo-readonly versionName: string--><!--Device-PluginBundleInfo-readonly versionName: string-End-->
 

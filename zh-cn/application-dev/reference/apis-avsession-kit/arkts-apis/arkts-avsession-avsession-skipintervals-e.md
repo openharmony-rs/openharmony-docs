@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum SkipIntervals--><!--Device-avSession-enum SkipIntervals-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -19,10 +15,6 @@ SECONDS_10 = 10
 ```
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SkipIntervals-SECONDS_10 = 10--><!--Device-SkipIntervals-SECONDS_10 = 10-End-->
 
@@ -36,10 +28,6 @@ SECONDS_15 = 15
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SkipIntervals-SECONDS_15 = 15--><!--Device-SkipIntervals-SECONDS_15 = 15-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -51,10 +39,6 @@ SECONDS_30 = 30
 ```
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SkipIntervals-SECONDS_30 = 30--><!--Device-SkipIntervals-SECONDS_30 = 30-End-->
 

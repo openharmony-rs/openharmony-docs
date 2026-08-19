@@ -100,7 +100,7 @@ OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Canvas*](capi-drawing-oh-drawing-canvas.md) | 返回指向获取的画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。返回的指针不需要由调用者管理，<br> 其生命周期由对应的surface对象管理。调用<br>     [OH_Drawing_SurfaceDestroy](capi-drawing-surface-h.md#oh_drawing_surfacedestroy)销毁surface对象后，不应再使用该画布对象。 |
+| [OH_Drawing_Canvas*](capi-drawing-oh-drawing-canvas.md) | 返回指向获取的画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。返回的指针不需要由调用者管理，  其生命周期由对应的surface对象管理。调用      [OH_Drawing_SurfaceDestroy](capi-drawing-surface-h.md#oh_drawing_surfacedestroy)销毁surface对象后，不应再使用该画布对象。 |
 
 ### OH_Drawing_SurfaceFlush()
 
@@ -124,7 +124,7 @@ OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数surface为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数surface为NULL。 |
 
 ### OH_Drawing_SurfaceDestroy()
 

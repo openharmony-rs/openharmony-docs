@@ -1,5 +1,11 @@
 # list（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+```
+
 ## list
 
 ```TypeScript
@@ -9,10 +15,6 @@ function list(logType: string): LogEntry[]
 以同步方法查询指定类型的日志文件列表，接收string类型的对象作为参数，返回指定类型日志的文件列表信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
@@ -42,7 +44,7 @@ function list(logType: string): LogEntry[]
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

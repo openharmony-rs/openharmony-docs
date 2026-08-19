@@ -1,5 +1,11 @@
 # getDataSummary（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dragInteraction } from '@kit.ArkUI';
+```
+
 ## getDataSummary
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDataSummary(): Array<Summary>
 获取所有拖拽对象的摘要。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-dragInteraction-function getDataSummary(): Array<Summary>--><!--Device-dragInteraction-function getDataSummary(): Array<Summary>-End-->
 
@@ -32,7 +34,7 @@ function getDataSummary(): Array<Summary>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();

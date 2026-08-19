@@ -1,5 +1,10 @@
 # lstatSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## lstatSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function lstatSync(path: string): Stat
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [lstatSync](arkts-corefile-file-fs-lstatsync-f.md#lstatsync)
+**替代接口：** [lstatSync](arkts-corefile-file-fs-lstatsync-f.md)
 
 <!--Device-unnamed-declare function lstatSync(path: string): Stat--><!--Device-unnamed-declare function lstatSync(path: string): Stat-End-->
 

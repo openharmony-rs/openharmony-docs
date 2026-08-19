@@ -4,10 +4,6 @@ Native Messaging的错误列表。
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-webNativeMessagingExtensionManager-export enum NmErrorCode--><!--Device-webNativeMessagingExtensionManager-export enum NmErrorCode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ PERMISSION_DENY = 17100203
 由于缺少 ohos.permission.WEB_NATIVE_MESSAGING，权限被拒绝。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ WANT_CONTENT_ERROR = 17100202
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-NmErrorCode-WANT_CONTENT_ERROR = 17100202--><!--Device-NmErrorCode-WANT_CONTENT_ERROR = 17100202-End-->
@@ -61,10 +49,6 @@ INNER_ERROR = 17100201
 原生消息的内部错误。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,12 @@
 # @ohos.util.LightWeightSet
 
+## 导入模块
+
+```TypeScript
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+```
+
 ## 汇总
 
 ### 类

@@ -4,13 +4,15 @@ AtomicServiceSearch为开发者提供满足定制化需求的功能，内容包�
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare struct AtomicServiceSearch--><!--Device-unnamed-export declare struct AtomicServiceSearch-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceSearch, InputFilterParams, SearchButtonParams, MenuAlignParams, SearchParams, SelectParams, OperationParams, } from '@kit.ArkUI';
+```
 
 ## controller
 
@@ -23,10 +25,6 @@ Search组件控制器，用于设置输入光标的位置、退出编辑态等�
 **类型：** SearchController
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ operation?: OperationParams
 **类型：** [OperationParams](arkts-arkui-atomicservice-atomicservicesearch-operationparams-i.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -69,10 +63,6 @@ operation?: OperationParams
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AtomicServiceSearch-@Prop  placeholder?: ResourceStr--><!--Device-AtomicServiceSearch-@Prop  placeholder?: ResourceStr-End-->
@@ -91,10 +81,6 @@ search搜索区可支持的事件及样式。默认值为undefined。
 **类型：** [SearchParams](arkts-arkui-atomicservice-atomicservicesearch-searchparams-i.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -115,10 +101,6 @@ select选择区的内容、事件及样式。默认值为undefined。
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AtomicServiceSearch-@Prop  select?: SelectParams--><!--Device-AtomicServiceSearch-@Prop  select?: SelectParams-End-->
@@ -137,10 +119,6 @@ select选择区的内容、事件及样式。默认值为undefined。
 **类型：** ResourceStr
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

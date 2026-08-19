@@ -1,5 +1,16 @@
 # switchCurrentInputMethodSubtype
 
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
+
 ## switchCurrentInputMethodSubtype
 
 ```TypeScript
@@ -9,10 +20,6 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: A
 切换当前输入法的子类型。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本9 - 10：ohos.permission.CONNECT_IME_ABILITY
@@ -26,7 +33,7 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | 是 | 目标输入法子类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当输入法子类型切换成功，err为undefined，data为true；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当输入法子类型切换成功，err为undefined，data为true；否则为错误对象。 |
 
 **错误码：**
 
@@ -37,7 +44,7 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: A
 | [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails.<br>**适用版本：** 9 - 10 |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -109,10 +116,6 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise<bo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本9 - 10：ohos.permission.CONNECT_IME_ABILITY
 
@@ -141,7 +144,7 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise<bo
 | [201](../../errorcode-universal.md#201-权限校验失败) | permissions check fails.<br>**适用版本：** 9 - 10 |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

@@ -1,20 +1,26 @@
 # getTopWindow
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## getTopWindow
 
 ```TypeScript
 function getTopWindow(callback: AsyncCallback<Window>): void
 ```
 
-获取当前应用内最后显示的窗口，使用callback异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用 > [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+获取当前应用内最后显示的窗口，使用callback异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用 > [getLastWindow()](arkts-arkui-window-getlastwindow-f.md)替代。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -26,9 +32,9 @@ function getTopWindow(callback: AsyncCallback<Window>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Window](arkts-arkui-window-window-i.md)&gt; | 是 | 回调函数。返回当前应用内最后显示的窗口对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Window](arkts-arkui-window-window-i.md)&gt; | 是 | 回调函数。返回当前应用内最后显示的窗口对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -52,15 +58,13 @@ window.getTopWindow((err: BusinessError, data) => {
 function getTopWindow(): Promise<Window>
 ```
 
-获取当前应用内最后显示的窗口，使用Promise异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+获取当前应用内最后显示的窗口，使用Promise异步回调。 > **说明：** > > 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md)替代。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -74,7 +78,7 @@ function getTopWindow(): Promise<Window>
 | --- | --- |
 | Promise&lt;[Window](arkts-arkui-window-window-i.md)&gt; | Promise对象。返回当前应用内最后显示的窗口对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -96,15 +100,13 @@ promise.then((data)=> {
 function getTopWindow(ctx: BaseContext): Promise<Window>
 ```
 
-获取当前应用内最后显示的窗口，使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+获取当前应用内最后显示的窗口，使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>--><!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>-End-->
 
@@ -122,7 +124,7 @@ function getTopWindow(ctx: BaseContext): Promise<Window>
 | --- | --- |
 | Promise&lt;[Window](arkts-arkui-window-window-i.md)&gt; | Promise对象。返回当前应用内最后显示的窗口对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // EntryAbility.ets
@@ -151,15 +153,13 @@ export default class EntryAbility extends UIAbility {
 function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 ```
 
-获取当前应用内最后显示的窗口，使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，参数ctx传入null或undefined时，可能会导致callback无法得到执行，建议使用 > [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+获取当前应用内最后显示的窗口，使用callback异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，参数ctx传入null或undefined时，可能会导致callback无法得到执行，建议使用 > [getLastWindow()](arkts-arkui-window-getlastwindow-f.md)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void-End-->
 
@@ -170,9 +170,9 @@ function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ctx | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用上下文信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Window](arkts-arkui-window-window-i.md)&gt; | 是 | 回调函数。返回当前应用内最后显示的窗口对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Window](arkts-arkui-window-window-i.md)&gt; | 是 | 回调函数。返回当前应用内最后显示的窗口对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // EntryAbility.ets

@@ -4,11 +4,9 @@ Ability生命周期状态。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [AbilityLifecycleState](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#abilitylifecyclestate)
+**替代接口：** [AbilityLifecycleState](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md)
 
 <!--Device-abilityDelegatorRegistry-export enum AbilityLifecycleState--><!--Device-abilityDelegatorRegistry-export enum AbilityLifecycleState-End-->
 
@@ -23,8 +21,6 @@ UNINITIALIZED = 0
 表示无效状态。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -44,8 +40,6 @@ CREATE = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [CREATE](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#create)
@@ -63,8 +57,6 @@ FOREGROUND = 2
 表示Ability处于前台状态。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -84,8 +76,6 @@ BACKGROUND = 3
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [BACKGROUND](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#background)
@@ -103,8 +93,6 @@ DESTROY = 4
 表示Ability处于已销毁状态。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

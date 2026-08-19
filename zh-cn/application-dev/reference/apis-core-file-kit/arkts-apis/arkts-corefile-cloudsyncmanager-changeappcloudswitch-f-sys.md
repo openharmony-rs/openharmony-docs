@@ -1,5 +1,11 @@
 # changeAppCloudSwitch（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## changeAppCloudSwitch
 
 ```TypeScript
@@ -9,10 +15,6 @@ function changeAppCloudSwitch(accountId: string, bundleName: string, status: boo
 异步方法修改应用的端云文件同步开关。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise<void>--><!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise<void>-End-->
 
@@ -42,7 +44,7 @@ function changeAppCloudSwitch(accountId: string, bundleName: string, status: boo
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -83,10 +85,6 @@ function changeAppCloudSwitch(accountId: string, bundleName: string, status: boo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback<void>): void--><!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -100,7 +98,7 @@ function changeAppCloudSwitch(accountId: string, bundleName: string, status: boo
 | accountId | string | 是 | 账号Id。 |
 | bundleName | string | 是 | 应用包名 |
 | status | boolean | 是 | 修改的应用云同步开关状态。true为打开；false为关闭。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步修改应用的端云文件同步开关之后。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步修改应用的端云文件同步开关之后。 |
 
 **错误码：**
 
@@ -110,7 +108,7 @@ function changeAppCloudSwitch(accountId: string, bundleName: string, status: boo
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

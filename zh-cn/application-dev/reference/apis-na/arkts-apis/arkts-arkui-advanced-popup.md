@@ -1,12 +1,17 @@
 # @ohos.arkui.advanced.Popup
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [Popup](arkts-na-arkui-advanced-popup-popup-f.md#popup) |  |
+| [Popup](arkts-na-arkui-advanced-popup-popup-f.md) |  |
 
 ### 接口
 

@@ -53,12 +53,9 @@ Defines a set of text common enum and interface.
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray*    items, void*                       userData
-)](#arkui_textcreatemenucallback) | ArkUI_TextCreateMenuCallback | 文本菜单创建事件回调函数，在文本菜单创建时会触发此回调函数，开发者可在此函数中设置菜单数据。 |
-| [typedef void (\*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray*    items, void*                       userData
-)](#arkui_textpreparemenucallback) | ArkUI_TextPrepareMenuCallback | 文本菜单准备事件回调函数，当文本选择区域变化后显示菜单之前会触发此回调函数，开发者可在此函数中配置菜单数据。 |
-| [typedef bool (\*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem*    item, int32_t                      start, int32_t                      end, void*                        userData
-)](#arkui_textmenuitemclickcallback) | ArkUI_TextMenuItemClickCallback | 文本菜单项点击事件回调函数，在菜单项被点击时触发此回调函数，开发者可在此函数中对系统默认处理行为进行拦截。 |
+| [typedef void (\*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)](#arkui_textcreatemenucallback) | ArkUI_TextCreateMenuCallback | 文本菜单创建事件回调函数，在文本菜单创建时会触发此回调函数，开发者可在此函数中设置菜单数据。 |
+| [typedef void (\*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)](#arkui_textpreparemenucallback) | ArkUI_TextPrepareMenuCallback | 文本菜单准备事件回调函数，当文本选择区域变化后显示菜单之前会触发此回调函数，开发者可在此函数中配置菜单数据。 |
+| [typedef bool (\*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData)](#arkui_textmenuitemclickcallback) | ArkUI_TextMenuItemClickCallback | 文本菜单项点击事件回调函数，在菜单项被点击时触发此回调函数，开发者可在此函数中对系统默认处理行为进行拦截。 |
 | [ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()](#oh_arkui_showcounterconfig_create) | - | 创建文本输入框计数器的配置对象。 |
 | [void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)](#oh_arkui_showcounterconfig_dispose) | - | 销毁文本输入框计数器的配置对象。 |
 | [void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* config, uint32_t color)](#oh_arkui_showcounterconfig_setcountertextcolor) | - | 设置文本输入框未达到最大字符数时计数器的颜色。 |
@@ -155,7 +152,7 @@ enum ArkUI_TextDirection
 | ARKUI_TEXT_DIRECTION_LTR = 0 | 文本排版方向从左到右。 |
 | ARKUI_TEXT_DIRECTION_RTL = 1 | 文本排版方向从右到左。 |
 | ARKUI_TEXT_DIRECTION_DEFAULT = 2 | 文本排版方向遵循组件布局。 |
-| ARKUI_TEXT_DIRECTION_AUTO = 3 | 遵循自身实际文本内容的排版方向，如果文本为     RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 |
+| ARKUI_TEXT_DIRECTION_AUTO = 3 | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 |
 
 ### ArkUI_EnterKeyType
 
@@ -429,8 +426,7 @@ enum ArkUI_TextResponseType
 ### ArkUI_TextCreateMenuCallback()
 
 ```c
-typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray*    items, void*                       userData
-)
+typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)
 ```
 
 **描述**
@@ -443,14 +439,13 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray*    items, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (ArkUI_TextMenuItemArray\*    items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，                在回调函数中开发者可以调用{@link OH_ArkUI_TextMenuItemArray_Insert}，{@link OH_ArkUI_TextMenuItemArray_Erase}进行数组修改。 |
-| void\*                       userData | 用户自定义数据。 |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)\* items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，                在回调函数中开发者可以调用{@link OH_ArkUI_TextMenuItemArray_Insert}，{@link OH_ArkUI_TextMenuItemArray_Erase}进行数组修改。 |
+| void\* userData | 用户自定义数据。 |
 
 ### ArkUI_TextPrepareMenuCallback()
 
 ```c
-typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray*    items, void*                       userData
-)
+typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)
 ```
 
 **描述**
@@ -463,14 +458,13 @@ typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray*    items,
 
 | 参数项 | 描述 |
 | -- | -- |
-| (ArkUI_TextMenuItemArray\*    items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，                在回调函数中开发者可以调用{@link OH_ArkUI_TextMenuItemArray_Insert}，{@link OH_ArkUI_TextMenuItemArray_Erase}进行数组修改。 |
-| void\*                       userData | 用户自定义数据。 |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)\* items | 指向ArkUI_TextMenuItemArray对象的指针，该数组对象由系统内部创建并释放，                在回调函数中开发者可以调用{@link OH_ArkUI_TextMenuItemArray_Insert}，{@link OH_ArkUI_TextMenuItemArray_Erase}进行数组修改。 |
+| void\* userData | 用户自定义数据。 |
 
 ### ArkUI_TextMenuItemClickCallback()
 
 ```c
-typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem*    item, int32_t                      start, int32_t                      end, void*                        userData
-)
+typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData)
 ```
 
 **描述**
@@ -483,16 +477,16 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem*    ite
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const ArkUI_TextMenuItem\*    item | 指向ArkUI_TextMenuItem对象的指针，表示被点击的文本菜单项。 |
-| int32_t                      start | 选中文本起始索引。 |
-| int32_t                      end | 选中文本结束索引。 |
-| void\*                        userData | 用户自定义数据。 |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)\* item | 指向ArkUI_TextMenuItem对象的指针，表示被点击的文本菜单项。 |
+| int32_t start | 选中文本起始索引。 |
+| int32_t end | 选中文本结束索引。 |
+| void\* userData | 用户自定义数据。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否拦截系统默认处理行为。<br>         true：拦截系统默认处理行为，如点击"粘贴"、"复制"等文本菜单项时不再执行系统默认处理行为，仅执行开发者自定义处理行为。<br>         false：不拦截系统默认处理行为，如点击"粘贴"、"复制"等文本菜单项时先执行开发者自定义处理行为，再执行系统默认处理行为。 |
+| bool | 是否拦截系统默认处理行为。          true：拦截系统默认处理行为，如点击"粘贴"、"复制"等文本菜单项时不再执行系统默认处理行为，仅执行开发者自定义处理行为。          false：不拦截系统默认处理行为，如点击"粘贴"、"复制"等文本菜单项时先执行开发者自定义处理行为，再执行系统默认处理行为。 |
 
 ### OH_ArkUI_ShowCounterConfig_Create()
 
@@ -590,7 +584,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 返回文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB，如果未通过<br>      [OH_ArkUI_ShowCounterConfig_SetCounterTextColor](capi-text-common-h.md#oh_arkui_showcounterconfig_setcountertextcolor)接口设置计数器颜色，则返回0。 |
+| uint32_t | 返回文本输入框未达到最大字符数时计数器的颜色，格式为0xARGB，如果未通过       [OH_ArkUI_ShowCounterConfig_SetCounterTextColor](capi-text-common-h.md#oh_arkui_showcounterconfig_setcountertextcolor)接口设置计数器颜色，则返回0。 |
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor()
 
@@ -614,7 +608,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounte
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 返回文本输入框超出最大字符数时计数器的颜色，格式为0xARGB，如果未通过<br>      [OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor](capi-text-common-h.md#oh_arkui_showcounterconfig_setcountertextoverflowcolor)接口设置计数器颜色，则返回0。 |
+| uint32_t | 返回文本输入框超出最大字符数时计数器的颜色，格式为0xARGB，如果未通过       [OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor](capi-text-common-h.md#oh_arkui_showcounterconfig_setcountertextoverflowcolor)接口设置计数器颜色，则返回0。 |
 
 ### OH_ArkUI_TextMenuItem_Create()
 

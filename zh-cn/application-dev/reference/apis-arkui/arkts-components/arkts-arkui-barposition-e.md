@@ -4,10 +4,6 @@ Tabs页签位置枚举。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum BarPosition--><!--Device-unnamed-declare enum BarPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ Start
 vertical属性设置为true时，页签位于容器左侧；vertical属性设置为false时，页签位于容器顶部。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ End
 vertical属性设置为true时，页签位于容器右侧；vertical属性设置为false时，页签位于容器底部。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

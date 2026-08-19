@@ -1,5 +1,11 @@
 # getApplicationQuickFixInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { quickFixManager } from '@kit.AbilityKit';
+```
+
 ## getApplicationQuickFixInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getApplicationQuickFixInfo(bundleName: string, callback: AsyncCallback<
 获取应用的快速修复信息。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -27,7 +29,7 @@ function getApplicationQuickFixInfo(bundleName: string, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ApplicationQuickFixInfo](arkts-ability-quickfixmanager-applicationquickfixinfo-i-sys.md)&gt; | 是 | 回调函数。返回应用的快速修复信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ApplicationQuickFixInfo](arkts-ability-quickfixmanager-applicationquickfixinfo-i-sys.md)&gt; | 是 | 回调函数。返回应用的快速修复信息。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function getApplicationQuickFixInfo(bundleName: string, callback: AsyncCallback<
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [18500001](../errorcode-ability.md#18500001-指定的包名无效) | The bundle does not exist or no patch has been applied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { quickFixManager } from '@kit.AbilityKit';
@@ -69,10 +71,6 @@ function getApplicationQuickFixInfo(bundleName: string): Promise<ApplicationQuic
 获取应用的快速修复信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -104,7 +102,7 @@ function getApplicationQuickFixInfo(bundleName: string): Promise<ApplicationQuic
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [18500001](../errorcode-ability.md#18500001-指定的包名无效) | The bundle does not exist or no patch has been applied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { quickFixManager } from '@kit.AbilityKit';

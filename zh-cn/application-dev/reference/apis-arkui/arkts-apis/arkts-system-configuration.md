@@ -1,5 +1,11 @@
 # @system.configuration
 
+## 导入模块
+
+```TypeScript
+import { Configuration, LocaleResponse } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 类

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-enum AVErrorCode--><!--Device-media-enum AVErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -21,10 +17,6 @@ AVERR_SESSION_NOT_EXIST = 5400109
 The parameter value means session does not exist
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVErrorCode-AVERR_SESSION_NOT_EXIST = 5400109--><!--Device-AVErrorCode-AVERR_SESSION_NOT_EXIST = 5400109-End-->
 

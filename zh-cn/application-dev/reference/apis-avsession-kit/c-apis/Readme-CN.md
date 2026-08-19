@@ -1,4 +1,4 @@
-# CAPI<!--c-avsession-kit-->
+# C API<!--c-avsession-kit-->
 
 - 头文件
     - [native_avmetadata.h](capi-native-avmetadata-h.md)

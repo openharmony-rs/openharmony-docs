@@ -4,13 +4,19 @@ JsGeolocation是Web组件在收到网页地理位置权限请求时，提供给�
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class JsGeolocation--><!--Device-unnamed-declare class JsGeolocation-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## constructor
 
@@ -21,10 +27,6 @@ constructor()
 JsGeolocation的构造函数。构造函数本身不直接被应用调用，通常通过[onGeolocationShow事件](arkts-arkweb-web-attribute.md#ongeolocationshow)回调获取JsGeolocation实 例。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +44,6 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void--><!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void-End-->
@@ -58,5 +56,5 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 | --- | --- | --- | --- |
 | origin | string | 是 | 发起地理位置权限请求的网页源，用于标识特定网站的地理位置请求来源。 <br>origin格式必须遵循RFC 6454中定义的格式。 |
 | allow | boolean | 是 | 设置的地理位置权限状态。 <br>true表示开启地理位置权限，false表示不开启地理位置权限。 |
-| retain | boolean | 是 | 是否允许将地理位置权限状态保存到系统中。可通过 [GeolocationPermissions](../arkts-apis/arkts-arkweb-webview-geolocationpermissions-c.md#geolocationpermissions)接口管理保存到系统的地理位置权限。 <br>true表示保存地理位置权限状态到系统，false表示不保存到系统。 |
+| retain | boolean | 是 | 是否允许将地理位置权限状态保存到系统中。可通过 [GeolocationPermissions](../arkts-apis/arkts-arkweb-webview-geolocationpermissions-c.md)接口管理保存到系统的地理位置权限。 <br>true表示保存地理位置权限状态到系统，false表示不保存到系统。 |
 

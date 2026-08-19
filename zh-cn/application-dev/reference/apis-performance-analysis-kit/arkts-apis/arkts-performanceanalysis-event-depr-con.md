@@ -10,8 +10,6 @@ const DISTRIBUTED_SERVICE_START: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** DISTRIBUTED_SERVICE_START
@@ -30,8 +28,6 @@ const USER_LOGIN: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** USER_LOGIN
@@ -49,8 +45,6 @@ const USER_LOGOUT: string
 用户登出事件。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

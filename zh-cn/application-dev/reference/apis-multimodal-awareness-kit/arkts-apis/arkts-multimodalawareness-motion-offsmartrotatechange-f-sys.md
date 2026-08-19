@@ -1,5 +1,11 @@
 # offSmartRotateChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { motion } from '@kit.MultimodalAwarenessKit';
+```
+
 ## offSmartRotateChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offSmartRotateChange(callback?: Callback<SmartRotateEvent>): void
 取消订阅智能旋转传感器事件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function offSmartRotateChange(callback?: Callback<SmartRotateEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SmartRotateEvent](arkts-multimodalawareness-motion-smartrotateevent-i-sys.md)&gt; | 否 | 要注销的回调函数。若不填，则取消该智能旋转事件的所有回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SmartRotateEvent](arkts-multimodalawareness-motion-smartrotateevent-i-sys.md)&gt; | 否 | 要注销的回调函数。若不填，则取消该智能旋转事件的所有回调。 |
 
 **错误码：**
 

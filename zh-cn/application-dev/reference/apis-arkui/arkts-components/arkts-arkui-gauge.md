@@ -14,10 +14,6 @@ Gauge(options: GaugeOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -34,7 +30,12 @@ Gauge(options: GaugeOptions)
 
 ## 汇总
 
-- [GaugeConfiguration](arkts-arkui-gaugeconfiguration-i.md)
-- [GaugeIndicatorOptions](arkts-arkui-gaugeindicatoroptions-i.md)
-- [GaugeOptions](arkts-arkui-gaugeoptions-i.md)
-- [GaugeShadowOptions](arkts-arkui-gaugeshadowoptions-i.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [GaugeConfiguration](arkts-arkui-gaugeconfiguration-i.md) | 开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。 |
+| [GaugeIndicatorOptions](arkts-arkui-gaugeindicatoroptions-i.md) | 数据量规图表指针选项。 |
+| [GaugeOptions](arkts-arkui-gaugeoptions-i.md) | 数据量规图表选项。 |
+| [GaugeShadowOptions](arkts-arkui-gaugeshadowoptions-i.md) | GaugeShadowOptions继承自MultiShadowOptions，具有MultiShadowOptions的全部属性。 |
+

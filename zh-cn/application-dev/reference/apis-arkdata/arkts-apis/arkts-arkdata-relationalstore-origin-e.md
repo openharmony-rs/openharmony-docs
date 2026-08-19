@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-enum Origin--><!--Device-relationalStore-enum Origin-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -21,10 +17,6 @@ LOCAL = 0
 表示本地数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Origin-LOCAL = 0--><!--Device-Origin-LOCAL = 0-End-->
 
@@ -40,10 +32,6 @@ CLOUD = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Origin-CLOUD = 1--><!--Device-Origin-CLOUD = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -57,10 +45,6 @@ REMOTE = 2
 表示端端同步的数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Origin-REMOTE = 2--><!--Device-Origin-REMOTE = 2-End-->
 

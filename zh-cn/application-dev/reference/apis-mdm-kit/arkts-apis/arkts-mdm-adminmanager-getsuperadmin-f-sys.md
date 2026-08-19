@@ -1,5 +1,11 @@
 # getSuperAdmin（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## getSuperAdmin
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSuperAdmin(): Promise<Want>
 查询首用户（u100）下的超级设备管理应用。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +36,7 @@ function getSuperAdmin(): Promise<Want>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';

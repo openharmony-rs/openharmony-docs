@@ -1,5 +1,11 @@
 # getHistoricalAVQueueInfos（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## getHistoricalAVQueueInfos
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: Asyn
 获取全部的历史播放歌单。结果通过callback异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -28,7 +30,7 @@ function getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: Asyn
 | --- | --- | --- | --- |
 | maxSize | int | 是 | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。 |
 | maxAppSize | int | 是 | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;Readonly&lt;[AVQueueInfo](arkts-avsession-avsession-avqueueinfo-i-sys.md)&gt;&gt;&gt; | 是 | 回调函数。返回所有历史播放歌单的只读对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;Readonly&lt;[AVQueueInfo](arkts-avsession-avsession-avqueueinfo-i-sys.md)&gt;&gt;&gt; | 是 | 回调函数。返回所有历史播放歌单的只读对象。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int, callback: Asyn
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]) => { 
@@ -57,10 +59,6 @@ function getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int): Promise<Array
 获取全部的历史播放歌单。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -90,7 +88,7 @@ function getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int): Promise<Array
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {

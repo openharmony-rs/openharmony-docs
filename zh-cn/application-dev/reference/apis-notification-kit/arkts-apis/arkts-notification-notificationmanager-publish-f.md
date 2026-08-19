@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## publish
@@ -15,10 +15,6 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 发布通知。使用callback异步回调。 发布通知后，通知将以通知卡片的形式展示在设备的通知中心、状态栏等位置。 如果新发布通知与已发布通知的ID和标签都相同，则新通知将取代原有通知，实现通知的更新效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-notificationManager-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
 
@@ -37,7 +33,7 @@ cancelAll 取消当前应用所有已发布的通知。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | request | NotificationRequest | 是 | 设置发布通知的内容和相关配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当发布通知成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当发布通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -59,7 +55,7 @@ cancelAll 取消当前应用所有已发布的通知。
 | [1600005](../errorcode-notification.md#1600005-通知渠道关闭) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist.<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -128,10 +124,6 @@ function publish(request: NotificationRequest): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-function publish(request: NotificationRequest): Promise<void>--><!--Device-notificationManager-function publish(request: NotificationRequest): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -176,7 +168,7 @@ cancelAll 取消当前应用所有已发布的通知。
 | [1600005](../errorcode-notification.md#1600005-通知渠道关闭) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist.<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

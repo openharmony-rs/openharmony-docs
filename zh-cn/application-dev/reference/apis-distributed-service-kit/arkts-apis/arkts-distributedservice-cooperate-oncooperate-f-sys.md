@@ -1,6 +1,12 @@
 # on_cooperate（系统接口）
 
-## on_cooperate
+## 导入模块
+
+```TypeScript
+import { cooperate } from '@kit.DistributedServiceKit';
+```
+
+## on('cooperate')
 
 ```TypeScript
 function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: CooperateMsg }>): void
@@ -9,8 +15,6 @@ function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: Coop
 注册监听键鼠穿越状态。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -27,7 +31,7 @@ function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: Coop
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cooperate' | 是 | 监听类型，取值为'cooperate' |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ networkId: string, msg: CooperateMsg }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ networkId: string, msg: CooperateMsg }&gt; | 是 |  |
 
 **错误码：**
 
@@ -36,7 +40,7 @@ function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: Coop
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cooperate } from '@kit.DistributedServiceKit';

@@ -1,5 +1,11 @@
 # getRotationLimits（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## getRotationLimits
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getRotationLimits(mechId: int): RotationLimits
 Obtains the maximum rotation angles relative to the reference point for the specified mechanical device.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function getRotationLimits(mechId: int): RotationLimits--><!--Device-mechanicManager-function getRotationLimits(mechId: int): RotationLimits-End-->
 
@@ -40,7 +42,7 @@ Obtains the maximum rotation angles relative to the reference point for the spec
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
-## 示例
+**示例**
 
 ```TypeScript
 console.info('Query rotation limit information');

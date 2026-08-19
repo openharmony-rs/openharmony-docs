@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-commonType-enum AssetStatus--><!--Device-commonType-enum AssetStatus-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
@@ -21,10 +17,6 @@ ASSET_NORMAL
 表示资产状态正常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AssetStatus-ASSET_NORMAL--><!--Device-AssetStatus-ASSET_NORMAL-End-->
 
@@ -40,10 +32,6 @@ ASSET_INSERT
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AssetStatus-ASSET_INSERT--><!--Device-AssetStatus-ASSET_INSERT-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
@@ -57,10 +45,6 @@ ASSET_UPDATE
 表示资产需要更新到云端。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AssetStatus-ASSET_UPDATE--><!--Device-AssetStatus-ASSET_UPDATE-End-->
 
@@ -76,10 +60,6 @@ ASSET_DELETE
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AssetStatus-ASSET_DELETE--><!--Device-AssetStatus-ASSET_DELETE-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
@@ -94,10 +74,6 @@ ASSET_ABNORMAL
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AssetStatus-ASSET_ABNORMAL--><!--Device-AssetStatus-ASSET_ABNORMAL-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
@@ -111,10 +87,6 @@ ASSET_DOWNLOADING
 表示资产正在下载到本地设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AssetStatus-ASSET_DOWNLOADING--><!--Device-AssetStatus-ASSET_DOWNLOADING-End-->
 

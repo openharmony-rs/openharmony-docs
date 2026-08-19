@@ -4,8 +4,6 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 9
 
 **替代接口：** Cipher
@@ -13,6 +11,12 @@
 <!--Device-unnamed-export default class Cipher--><!--Device-unnamed-export default class Cipher-End-->
 
 **系统能力：** SystemCapability.Security.Cipher
+
+## 导入模块
+
+```TypeScript
+import { Cipher, CipherAesOptions, CipherResponse, CipherRsaOptions } from '@kit.CryptoArchitectureKit';
+```
 
 ## aes
 
@@ -23,8 +27,6 @@ static aes(options: CipherAesOptions): void
 使用AES对数据进行加密或解密。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 
@@ -49,8 +51,6 @@ static rsa(options: CipherRsaOptions): void
 使用RSA对数据进行加密或解密。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 9
 

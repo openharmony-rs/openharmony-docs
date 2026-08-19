@@ -1,5 +1,11 @@
 # addContacts
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## addContacts
 
 ```TypeScript
@@ -9,10 +15,6 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 批量添加联系人。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -43,7 +45,7 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 | [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 

@@ -1,5 +1,11 @@
 # getSeniorModeStateForApp（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+```
+
 ## getSeniorModeStateForApp
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSeniorModeStateForApp(bundleName: string, appIndex?: int): Promise<b
 查询应用“长辈模式”的状态。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
@@ -46,7 +48,7 @@ function getSeniorModeStateForApp(bundleName: string, appIndex?: int): Promise<b
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. <br>A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { config } from '@kit.AccessibilityKit';

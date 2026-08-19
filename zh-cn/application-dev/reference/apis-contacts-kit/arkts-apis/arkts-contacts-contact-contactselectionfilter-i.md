@@ -4,13 +4,15 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-contact-interface ContactSelectionFilter--><!--Device-contact-interface ContactSelectionFilter-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## filterClause
 
@@ -23,10 +25,6 @@ filterClause: FilterClause
 **类型：** [FilterClause](arkts-contacts-contact-filterclause-i.md)
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ filterType: FilterType
 **类型：** FilterType
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 

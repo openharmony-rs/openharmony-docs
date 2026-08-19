@@ -1,5 +1,11 @@
 # createAbilityConnectionSession
 
+## 导入模块
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+```
+
 ## createAbilityConnectionSession
 
 ```TypeScript
@@ -10,10 +16,6 @@ function createAbilityConnectionSession(serviceName: string, context: Context, p
 创建应用间的协同会话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERNET and ohos.permission.GET_NETWORK_INFO and ohos.permission.SET_NETWORK_INFO and ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -46,7 +48,7 @@ function createAbilityConnectionSession(serviceName: string, context: Context, p
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

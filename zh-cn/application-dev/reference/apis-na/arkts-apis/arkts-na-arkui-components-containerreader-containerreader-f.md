@@ -1,5 +1,10 @@
 # ContainerReader
 
+## 导入模块
+
+```TypeScript
+```
+
 ## ContainerReader
 
 ```TypeScript
@@ -14,9 +19,7 @@ export declare function ContainerReader(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,14 +31,14 @@ export declare function ContainerReader(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ContainerReaderInfo](arkts-na-arkui-components-containerreader-containerreaderinfo-i.md) | 是 | 容器读取配置选项，包含尺寸数据和断点配置。 |
+| value | [ContainerReaderInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-components-containerreader-containerreaderinfo-i.md) | 是 | 容器读取配置选项，包含尺寸数据和断点配置。 |
 | content_ | CustomBuilder | 否 | container |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContainerReaderAttribute](arkts-na-arkui-components-containerreader-containerreaderattribute-i.md) |  |
+| [ContainerReaderAttribute](../../apis-arkui/arkts-apis/arkts-arkui-arkui-components-containerreader-containerreaderattribute-c.md) |  |
 
 
 ## ContainerReader
@@ -52,9 +55,7 @@ Defines ContainerReader Component.
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.1.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -66,12 +67,12 @@ Defines ContainerReader Component.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style_ | CustomBuilderT&lt;[ContainerReaderInfo](arkts-na-arkui-components-containerreader-containerreaderinfo-i.md)&gt; | 是 | The custom builder function for container content. |
+| style_ | CustomBuilderT&lt;[ContainerReaderInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-components-containerreader-containerreaderinfo-i.md)&gt; | 是 | The custom builder function for container content. |
 | content_ | CustomBuilder | 否 | The configuration options for containerreader. |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ContainerReaderAttribute](arkts-na-arkui-components-containerreader-containerreaderattribute-i.md) | The attribute of the containerreader |
+| [ContainerReaderAttribute](../../apis-arkui/arkts-apis/arkts-arkui-arkui-components-containerreader-containerreaderattribute-c.md) | The attribute of the containerreader |
 

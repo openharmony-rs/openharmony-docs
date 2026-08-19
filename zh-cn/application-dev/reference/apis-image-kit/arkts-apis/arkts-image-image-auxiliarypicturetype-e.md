@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-enum AuxiliaryPictureType--><!--Device-image-enum AuxiliaryPictureType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ GAINMAP = 1
 增益图（Gain Map）。 用于更准确地生成HDR图像。 HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](arkts-image-image-pixelmap-i.md#getmetadata)）共同计算亮度映射关系。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPictureType-GAINMAP = 1--><!--Device-AuxiliaryPictureType-GAINMAP = 1-End-->
 
@@ -40,10 +32,6 @@ DEPTH_MAP = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPictureType-DEPTH_MAP = 2--><!--Device-AuxiliaryPictureType-DEPTH_MAP = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -57,10 +45,6 @@ UNREFOCUS_MAP = 3
 未重对焦原图（UnReFocus Map）。 用于保存拍摄时未重对焦的图片像素内容。 可用于人像虚化等后期处理，便于用户自由选择焦点区域。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3--><!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3-End-->
 
@@ -76,10 +60,6 @@ LINEAR_MAP = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPictureType-LINEAR_MAP = 4--><!--Device-AuxiliaryPictureType-LINEAR_MAP = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -94,10 +74,6 @@ FRAGMENT_MAP = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPictureType-FRAGMENT_MAP = 5--><!--Device-AuxiliaryPictureType-FRAGMENT_MAP = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -111,10 +87,6 @@ LHDR_GAINMAP = 10
 特殊增益图（LHDR Gain Map）。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,11 @@
 # getDynamicIcon（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getDynamicIcon
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDynamicIcon(bundleName: string): Promise<string>
 根据给定的bundleName获得动态图标对应的moduleName。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -44,7 +46,7 @@ function getDynamicIcon(bundleName: string): Promise<string>
 | [17700306](../errorcode-bundle.md#17700306-动态图标查询失败) | Failed to obtain the dynamic icon. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

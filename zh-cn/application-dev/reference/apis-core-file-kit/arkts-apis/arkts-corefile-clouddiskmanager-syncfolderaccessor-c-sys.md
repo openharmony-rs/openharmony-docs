@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudDiskManager-class SyncFolderAccessor--><!--Device-cloudDiskManager-class SyncFolderAccessor-End-->
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudDiskManager } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -23,10 +25,6 @@ constructor()
 SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -43,7 +41,7 @@ SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例�
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -77,10 +75,6 @@ getAllSyncFolders(): Promise<Array<SyncFolder>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO
 
 <!--Device-SyncFolderAccessor-getAllSyncFolders(): Promise<Array<SyncFolder>>--><!--Device-SyncFolderAccessor-getAllSyncFolders(): Promise<Array<SyncFolder>>-End-->
@@ -106,7 +100,7 @@ getAllSyncFolders(): Promise<Array<SyncFolder>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | [34400003](../errorcode-clouddiskmanager-sys.md#34400003-ipc通信失败) | IPC communication failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

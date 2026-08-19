@@ -76,7 +76,7 @@ typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVTranscoder \*transcoder | The pointer to an OH_AVTranscoder instance. |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | The pointer to an OH_AVTranscoder instance. |
 | [OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state) state | Indicates the transcoder state. For details, see [OH_AVTranscoder_State](capi-avtranscoder-base-h.md#oh_avtranscoder_state). |
 | void \*userData | Pointer to user specific data. |
 
@@ -96,7 +96,7 @@ typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t err
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVTranscoder \*transcoder | Pointer to an OH_AVTranscoder instance. |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | Pointer to an OH_AVTranscoder instance. |
 | int32_t errorCode | Error code.{@link AV_ERR_NO_MEMORY} if memory is insufficient.{@link AV_ERR_IO} if IO access failed.{@link AV_ERR_INVALID_STATE} if current state does not support this operation.{@link AV_ERR_UNSUPPORT} if unsupported function.{@link AV_ERR_INVALID_VAL} if the parameter check failed.{@link AV_ERR_OPERATE_NOT_PERMIT} if operation not allowed. |
 | const char \*errorMsg | Error message. |
 | void \*userData | Pointer to user specific data. |
@@ -117,7 +117,7 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVTranscoder \*transcoder | Pointer to an OH_AVTranscoder instance. |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) \*transcoder | Pointer to an OH_AVTranscoder instance. |
 | int32_t progress | Transcoding progress, in percentage. |
 | void \*userData | Pointer to user specific data. |
 

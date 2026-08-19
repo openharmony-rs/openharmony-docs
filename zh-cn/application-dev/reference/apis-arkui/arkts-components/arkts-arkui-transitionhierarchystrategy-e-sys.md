@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum TransitionHierarchyStrategy--><!--Device-unnamed-declare enum TransitionHierarchyStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,10 +19,6 @@ NONE = 0
 None mode. Source and target staty in the original level in the hierarchy during geometry transition.
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +39,6 @@ ADAPTIVE = 1
 ADAPTIVE mode. Lower level one of source and target is elevated to higher level of both, indicating that two elements are in same high level.
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

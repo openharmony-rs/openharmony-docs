@@ -1,5 +1,11 @@
 # getLauncherAbilityResourceInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+```
+
 ## getLauncherAbilityResourceInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int)
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的LauncherAbilityResourceInfo。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
@@ -27,7 +29,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定查询应用的包名。 |
-| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md#resourceflag系统接口).GET_RESOURCE_INFO_ALL。 |
+| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md).GET_RESOURCE_INFO_ALL。 |
 
 **返回值：**
 
@@ -44,7 +46,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int)
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleResourceManager } from '@kit.AbilityKit';
@@ -74,10 +76,6 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int,
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
 <!--Device-bundleResourceManager-function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int, appIndex?: int): Array<LauncherAbilityResourceInfo>--><!--Device-bundleResourceManager-function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int, appIndex?: int): Array<LauncherAbilityResourceInfo>-End-->
@@ -91,7 +89,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定查询应用的包名。 |
-| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md#resourceflag系统接口).GET_RESOURCE_INFO_ALL。 |
+| resourceFlags | int | 否 | 指定返回的LauncherAbilityResourceInfo所包含的信息，默认值为 [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md).GET_RESOURCE_INFO_ALL。 |
 | appIndex | int | 否 | 指定查询应用分身的ID，默认值为0。 |
 
 **返回值：**
@@ -110,7 +108,7 @@ function getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: int,
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleResourceManager } from '@kit.AbilityKit';

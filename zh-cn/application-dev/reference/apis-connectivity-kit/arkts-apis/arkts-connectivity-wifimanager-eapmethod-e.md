@@ -4,10 +4,6 @@ WLAN EAP认证方式。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-enum EapMethod--><!--Device-wifiManager-enum EapMethod-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -21,10 +17,6 @@ EAP_NONE
 不指定。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EapMethod-EAP_NONE--><!--Device-EapMethod-EAP_NONE-End-->
 
@@ -40,10 +32,6 @@ PEAP类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EapMethod-EAP_PEAP--><!--Device-EapMethod-EAP_PEAP-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -57,10 +45,6 @@ EAP_TLS
 TLS类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EapMethod-EAP_TLS--><!--Device-EapMethod-EAP_TLS-End-->
 
@@ -76,10 +60,6 @@ TTLS类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EapMethod-EAP_TTLS--><!--Device-EapMethod-EAP_TTLS-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -93,10 +73,6 @@ EAP_PWD
 PWD类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EapMethod-EAP_PWD--><!--Device-EapMethod-EAP_PWD-End-->
 
@@ -112,10 +88,6 @@ SIM类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EapMethod-EAP_SIM--><!--Device-EapMethod-EAP_SIM-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -129,10 +101,6 @@ EAP_AKA
 AKA类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EapMethod-EAP_AKA--><!--Device-EapMethod-EAP_AKA-End-->
 
@@ -148,10 +116,6 @@ AKA Prime类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EapMethod-EAP_AKA_PRIME--><!--Device-EapMethod-EAP_AKA_PRIME-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -165,10 +129,6 @@ EAP_UNAUTH_TLS
 UNAUTH TLS类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EapMethod-EAP_UNAUTH_TLS--><!--Device-EapMethod-EAP_UNAUTH_TLS-End-->
 

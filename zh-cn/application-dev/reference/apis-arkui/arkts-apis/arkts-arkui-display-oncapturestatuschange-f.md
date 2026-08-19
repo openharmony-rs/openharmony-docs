@@ -1,5 +1,11 @@
 # onCaptureStatusChange
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## onCaptureStatusChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ Register the callback for device capture, casting, or recording status changes.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-function onCaptureStatusChange(callback: Callback<boolean>): void--><!--Device-display-function onCaptureStatusChange(callback: Callback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -22,7 +24,7 @@ Register the callback for device capture, casting, or recording status changes.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 是 | Callback used to return the device capture, casting, or recording status. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 是 | Callback used to return the device capture, casting, or recording status. |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ Register the callback for device capture, casting, or recording status changes.
 | --- | --- |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Callback } from '@kit.BasicServicesKit';

@@ -1,5 +1,11 @@
 # dial
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## dial
 
 ```TypeScript
@@ -10,11 +16,9 @@ function dial(phoneNumber: string, options: DialOptions, callback: AsyncCallback
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口)
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -28,9 +32,9 @@ function dial(phoneNumber: string, options: DialOptions, callback: AsyncCallback
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
 | options | [DialOptions](arkts-telephony-call-dialoptions-i.md) | 是 | 通话参数，选择为语音通话还是视频通话。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回true为成功，false为失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回true为成功，false为失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -54,11 +58,9 @@ function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口)
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -79,7 +81,7 @@ function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | 以Promise形式返回拨打电话的结果，返回true为成功，false为失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -105,11 +107,9 @@ function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md#dialcall系统接口)
+**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -122,9 +122,9 @@ function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回true为成功，false为失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，返回true为成功，false为失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

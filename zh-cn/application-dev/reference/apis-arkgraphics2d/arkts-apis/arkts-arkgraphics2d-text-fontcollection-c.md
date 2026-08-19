@@ -1,16 +1,18 @@
 # FontCollection
 
-字体集，用于管理文本排版所需的字体资源。FontCollection为[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md#paragraphbuilder)提供字体匹配和字形查找能力，是文本排版管线的基础组件。提供全局实例 （[getGlobalInstance](#getglobalinstance)）和本地实例（ [getLocalInstance](#getlocalinstance)），全局实例加载的字体在应用内共享，适用于普通应用场景；本地实例各实例独立，加载的字体仅对当前实例生效、实 例间互不影响，推荐卡片场景使用。支持通过[loadFontSync](#loadfontsync)或 [loadFont](#loadfont)加载自定义字体。
+字体集，用于管理文本排版所需的字体资源。FontCollection为[ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md)提供字体匹配和字形查找能力，是文本排版管线的基础组件。提供全局实例 （[getGlobalInstance](#getglobalinstance)）和本地实例（ [getLocalInstance](#getlocalinstance)），全局实例加载的字体在应用内共享，适用于普通应用场景；本地实例各实例独立，加载的字体仅对当前实例生效、实 例间互不影响，推荐卡片场景使用。支持通过[loadFontSync](#loadfontsync)或 [loadFont](#loadfont)加载自定义字体。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-text-class FontCollection--><!--Device-text-class FontCollection-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
 
 ## clearCaches
 
@@ -22,10 +24,6 @@ clearCaches(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
@@ -34,7 +32,7 @@ clearCaches(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -83,10 +81,6 @@ static getGlobalInstance(): FontCollection
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FontCollection-static getGlobalInstance(): FontCollection--><!--Device-FontCollection-static getGlobalInstance(): FontCollection-End-->
@@ -99,7 +93,7 @@ static getGlobalInstance(): FontCollection
 | --- | --- |
 | [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | 应用全局FontCollection实例对象，可用于管理字体加载、卸载和排版等操作。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -158,10 +152,6 @@ static getLocalInstance(): FontCollection
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
@@ -176,7 +166,7 @@ static getLocalInstance(): FontCollection
 | --- | --- |
 | [FontCollection](arkts-arkgraphics2d-text-fontcollection-c.md) | 本地FontCollection实例对象，推荐卡片场景使用，可用于管理字体加载、卸载和排版等操作。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { text } from '@kit.ArkGraphics2D'
@@ -189,13 +179,9 @@ let fontCollection = text.FontCollection.getLocalInstance();
 loadFont(name: string, path: string | Resource): Promise<void>
 ```
 
-加载自定义字体。使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf。
+加载自定义字体。使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -224,7 +210,7 @@ loadFont(name: string, path: string | Resource): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -287,13 +273,9 @@ struct RenderTest {
 loadFontSync(name: string, path: string | Resource): void
 ```
 
-同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf。
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -310,7 +292,7 @@ loadFontSync(name: string, path: string | Resource): void
 | name | string | 是 | 加载字体后，调用该字体所使用的名称。 |
 | path | string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 需要导入的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -391,13 +373,9 @@ struct RenderTest {
 loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void
 ```
 
-同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、 ttc。
+同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、 ttc。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -428,7 +406,7 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void
 | [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
 | [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -516,13 +494,9 @@ struct Index {
 loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>
 ```
 
-加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf、ttc。
+加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含： ttf、otf、ttc。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -559,7 +533,7 @@ loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<v
 | [25900005](../errorcode-drawing.md#25900005-获取文件大小失败) | Failed to get the file size. |
 | [25900004](../errorcode-drawing.md#25900004-文件定位失败) | File seek failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -658,10 +632,6 @@ setParagraphCachesEnabled(enable: boolean): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -676,7 +646,7 @@ setParagraphCachesEnabled(enable: boolean): void
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 是否启用排版段落缓存。true表示启用，false表示禁用。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -725,10 +695,6 @@ unloadFont(name: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
@@ -749,7 +715,7 @@ unloadFont(name: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -831,10 +797,6 @@ unloadFontSync(name: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
@@ -849,7 +811,7 @@ unloadFontSync(name: string): void
 | --- | --- | --- | --- |
 | name | string | 是 | 需要取消注册的字体别名，与加载字体时使用的别名相同。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

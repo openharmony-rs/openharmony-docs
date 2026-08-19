@@ -1,12 +1,10 @@
 # promptAction
 
-创建并显示即时反馈、对话框和操作菜单。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。 > > - 本模块不支持在[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#uiability)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。 > > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见 > [UIContext](arkts-na-arkui-uicontext-uicontext-c.md#uicontext)说明。建议&lt;!--Del--&gt;在除 > [ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)等无UI界面的场景外，均&lt;!--DelEnd--&gt;使用 > UIContext中的弹窗方法。
+创建并显示即时反馈、对话框和操作菜单。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。 > > - 本模块不支持在[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。 > > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见 > [UIContext](arkts-na-arkui-uicontext-uicontext-c.md)说明。建议<!--Del-->在除 > [ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用 > UIContext中的弹窗方法。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -14,14 +12,19 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [openToast](arkts-na-promptaction-opentoast-f.md#opentoast) | 显示即时反馈并通过Promise返回其id。 |
-| [closeToast](arkts-na-promptaction-closetoast-f.md#closetoast) | 关闭即时反馈。 |
+| [openToast](arkts-na-promptaction-opentoast-f.md) | 显示即时反馈并通过Promise返回其id。 |
+| [closeToast](arkts-na-promptaction-closetoast-f.md) | 关闭即时反馈。 |
 
 ### 类
 

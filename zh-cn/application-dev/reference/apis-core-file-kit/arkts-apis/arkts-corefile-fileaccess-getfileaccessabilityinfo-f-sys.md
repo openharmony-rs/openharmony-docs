@@ -1,5 +1,11 @@
 # getFileAccessAbilityInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fileAccess } from '@kit.CoreFileKit';
+```
+
 ## getFileAccessAbilityInfo
 
 ```TypeScript
@@ -9,8 +15,6 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -28,7 +32,7 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | 是 | The callback is used to return a Array&lt;Want&gt; object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | 是 | The callback is used to return a Array&lt;Want&gt; object. |
 
 **错误码：**
 
@@ -65,7 +69,7 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -96,8 +100,6 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 以异步方法获取系统内extension配置为fileAccess类型的所有Want信息。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -152,7 +154,7 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

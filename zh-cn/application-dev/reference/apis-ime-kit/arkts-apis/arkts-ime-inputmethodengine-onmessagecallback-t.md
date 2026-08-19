@@ -8,10 +8,6 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void--><!--Device-inputMethodEngine-type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

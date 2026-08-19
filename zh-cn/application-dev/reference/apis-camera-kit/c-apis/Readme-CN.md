@@ -1,4 +1,4 @@
-# CAPI<!--c-camera-kit-->
+# C API<!--c-camera-kit-->
 
 - 头文件
     - [camera.h](capi-camera-h.md)

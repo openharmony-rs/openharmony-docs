@@ -1,5 +1,11 @@
 # @ohos.application.DataShareExtensionAbility
 
+## 导入模块
+
+```TypeScript
+import { DataShareExtensionAbility } from '@kit.ArkData';
+```
+
 ## 汇总
 
 <!--Del-->

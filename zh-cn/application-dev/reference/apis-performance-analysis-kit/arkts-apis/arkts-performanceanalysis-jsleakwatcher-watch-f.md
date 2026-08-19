@@ -1,5 +1,11 @@
 # watch
 
+## 导入模块
+
+```TypeScript
+import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
+```
+
 ## watch
 
 ```TypeScript
@@ -9,10 +15,6 @@ function watch(obj: object, msg: string): void
 注册待检测泄漏的对象。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-jsLeakWatcher-function watch(obj: object, msg: string): void--><!--Device-jsLeakWatcher-function watch(obj: object, msg: string): void-End-->
 
@@ -25,7 +27,7 @@ function watch(obj: object, msg: string): void
 | obj | object | 是 | 需要检测的对象。<br>**说明：**可传入任何非null的ArkTS对象，不支持undefined和基本类型。 |
 | msg | string | 是 | 自定义对象信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let obj:Object = new Object();

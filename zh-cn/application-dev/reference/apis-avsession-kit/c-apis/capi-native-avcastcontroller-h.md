@@ -74,7 +74,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChang
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)\* playbackState | the [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)pointer variable which will be set the changed playback state. |
 | userdata | userdata which is passed by register. |
 
@@ -94,7 +94,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(O
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
 | OH_AVSession_AVQueueItem\* avQueueItem | the [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)pointer variable which will be set the changed media item info. |
 | userdata | userdata which is passed by register |
 
@@ -114,7 +114,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayNext)(OH_AVCas
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
 | userdata | userdata which is passed by register. |
 
 ### OH_AVCastControllerCallback_PlayPrevious()
@@ -133,7 +133,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayPrevious)(OH_A
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
 | userdata | userdata which is passed by register. |
 
 ### OH_AVCastControllerCallback_SeekDone()
@@ -152,7 +152,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_SeekDone)(OH_AVCas
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
 | int32_t position | position value after seek. |
 | userdata | userdata which is passed by register. |
 
@@ -172,7 +172,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_EndOfStream)(OH_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
 | userdata | userdata which is passed by register. |
 
 ### OH_AVCastControllerCallback_Error()
@@ -191,7 +191,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_Error)(OH_AVCastCo
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCastController\* avcastcontroller | the OH_AVCastController instance pointer. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
 | userdata | userdata which is passed by register. |
 | [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) error | cast play error code |
 
@@ -217,7 +217,7 @@ AVSession_ErrCode OH_AVCastController_Destroy(OH_AVCastController* avcastcontrol
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：参数avcastcontroller为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avcastcontroller为nullptr。 |
 
 ### OH_AVCastController_GetPlaybackState()
 
@@ -242,7 +242,7 @@ AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avca
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数playbackState为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数playbackState为nullptr。 |
 
 ### OH_AVCastController_RegisterPlaybackStateChangedCallback()
 
@@ -269,7 +269,7 @@ AVSession_ErrCode OH_AVCastController_RegisterPlaybackStateChangedCallback(OH_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。<br>                                         3. 参数filter是无效的。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。\n                                          3. 参数filter是无效的。 |
 
 ### OH_AVCastController_UnregisterPlaybackStateChangedCallback()
 
@@ -294,7 +294,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterPlaybackStateChangedCallback(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_RegisterMediaItemChangedCallback()
 
@@ -320,7 +320,7 @@ AVSession_ErrCode OH_AVCastController_RegisterMediaItemChangedCallback(OH_AVCast
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_UnregisterMediaItemChangedCallback()
 
@@ -345,7 +345,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterMediaItemChangedCallback(OH_AVCa
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_RegisterPlayNextCallback()
 
@@ -371,7 +371,7 @@ AVSession_ErrCode OH_AVCastController_RegisterPlayNextCallback(OH_AVCastControll
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_UnregisterPlayNextCallback()
 
@@ -396,7 +396,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterPlayNextCallback(OH_AVCastContro
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_RegisterPlayPreviousCallback()
 
@@ -422,7 +422,7 @@ AVSession_ErrCode OH_AVCastController_RegisterPlayPreviousCallback(OH_AVCastCont
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_UnregisterPlayPreviousCallback()
 
@@ -447,7 +447,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterPlayPreviousCallback(OH_AVCastCo
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_RegisterSeekDoneCallback()
 
@@ -473,7 +473,7 @@ AVSession_ErrCode OH_AVCastController_RegisterSeekDoneCallback(OH_AVCastControll
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_UnregisterSeekDoneCallback()
 
@@ -498,7 +498,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastContro
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_RegisterEndOfStreamCallback()
 
@@ -524,7 +524,7 @@ AVSession_ErrCode OH_AVCastController_RegisterEndOfStreamCallback(OH_AVCastContr
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_UnregisterEndOfStreamCallback()
 
@@ -549,7 +549,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterEndOfStreamCallback(OH_AVCastCon
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_RegisterErrorCallback()
 
@@ -575,7 +575,7 @@ AVSession_ErrCode OH_AVCastController_RegisterErrorCallback(OH_AVCastController*
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_UnregisterErrorCallback()
 
@@ -600,7 +600,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterErrorCallback(OH_AVCastControlle
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数callback为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数callback为nullptr。 |
 
 ### OH_AVCastController_SendCommonCommand()
 
@@ -625,7 +625,7 @@ AVSession_ErrCode OH_AVCastController_SendCommonCommand(OH_AVCastController* avc
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：参数avcastcontroller为nullptr。<br>         AV_SESSION_ERR_CODE_COMMAND_INVALID：参数avCastControlcommand是无效的。<br>         AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：参数avcastcontroller为nullptr。\n          AV_SESSION_ERR_CODE_COMMAND_INVALID：参数avCastControlcommand是无效的。\n          AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
 
 ### OH_AVCastController_SendSeekCommand()
 
@@ -650,7 +650,7 @@ AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcas
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数seekTimeMS是无效的。<br>         AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数seekTimeMS是无效的。\n          AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
 
 ### OH_AVCastController_SendFastForwardCommand()
 
@@ -675,7 +675,7 @@ AVSession_ErrCode OH_AVCastController_SendFastForwardCommand(OH_AVCastController
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数forwardTimeS是无效的。<br>         AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数forwardTimeS是无效的。\n          AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
 
 ### OH_AVCastController_SendRewindCommand()
 
@@ -700,7 +700,7 @@ AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avc
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数rewindTimeS是无效的。<br>         AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数rewindTimeS是无效的。\n          AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
 
 ### OH_AVCastController_SendSetSpeedCommand()
 
@@ -725,7 +725,7 @@ AVSession_ErrCode OH_AVCastController_SendSetSpeedCommand(OH_AVCastController* a
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数speed是无效的。<br>         AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数speed是无效的。\n          AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
 
 ### OH_AVCastController_SendVolumeCommand()
 
@@ -750,7 +750,7 @@ AVSession_ErrCode OH_AVCastController_SendVolumeCommand(OH_AVCastController* avc
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数avcastcontroller为nullptr。<br>                                         2. 参数volume是无效的。<br>         AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_SERVICE_EXCEPTION：服务器内部错误。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数avcastcontroller为nullptr。\n                                          2. 参数volume是无效的。\n          AV_SESSION_ERR_CODE_REMOTE_CONNECTION_NOT_EXIST：远程连接未建立。 |
 
 ### OH_AVCastController_Prepare()
 

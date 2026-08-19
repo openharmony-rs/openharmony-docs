@@ -1,5 +1,11 @@
 # isIdleStateSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
+
 ## isIdleStateSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isIdleStateSync(bundleName: string): boolean
 查询指定的应用是否为常用应用（GroupType值≤30），使用同步方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -48,7 +50,7 @@ function isIdleStateSync(bundleName: string): boolean
 | [10000004](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { usageStatistics } from '@kit.BackgroundTasksKit';

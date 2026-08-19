@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum StyledStringKey--><!--Device-unnamed-declare enum StyledStringKey-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -18,13 +14,9 @@
 FONT = 0
 ```
 
-字体样式键。[TextStyle](arkts-arkui-textstyle-c.md#textstyle)所属键。
+字体样式键。[TextStyle](arkts-arkui-textstyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +32,9 @@ FONT = 0
 DECORATION = 1
 ```
 
-文本装饰线样式键。[DecorationStyle](arkts-arkui-decorationstyle-c.md#decorationstyle)所属键。
+文本装饰线样式键。[DecorationStyle](arkts-arkui-decorationstyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,13 +50,9 @@ DECORATION = 1
 BASELINE_OFFSET = 2
 ```
 
-文本基线偏移量样式键。[BaselineOffsetStyle](arkts-arkui-baselineoffsetstyle-c.md#baselineoffsetstyle)所属键。
+文本基线偏移量样式键。[BaselineOffsetStyle](arkts-arkui-baselineoffsetstyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,13 +68,9 @@ BASELINE_OFFSET = 2
 LETTER_SPACING = 3
 ```
 
-文本字符间距样式键。[LetterSpacingStyle](arkts-arkui-letterspacingstyle-c.md#letterspacingstyle)所属键。
+文本字符间距样式键。[LetterSpacingStyle](arkts-arkui-letterspacingstyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,13 +86,9 @@ LETTER_SPACING = 3
 TEXT_SHADOW = 4
 ```
 
-文本阴影样式键。[TextShadowStyle](arkts-arkui-textshadowstyle-c.md#textshadowstyle)所属键。
+文本阴影样式键。[TextShadowStyle](arkts-arkui-textshadowstyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,13 +104,9 @@ TEXT_SHADOW = 4
 LINE_HEIGHT = 5
 ```
 
-文本行高样式键。[LineHeightStyle](arkts-arkui-lineheightstyle-c.md#lineheightstyle)所属键。
+文本行高样式键。[LineHeightStyle](arkts-arkui-lineheightstyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -150,13 +122,9 @@ LINE_HEIGHT = 5
 BACKGROUND_COLOR = 6
 ```
 
-文本背景色样式键。[BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md#backgroundcolorstyle)所属键。
+文本背景色样式键。[BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md)所属键。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -172,13 +140,9 @@ BACKGROUND_COLOR = 6
 URL = 7
 ```
 
-超链接样式键。[UrlStyle](arkts-arkui-urlstyle-c.md#urlstyle)所属键。
+超链接样式键。[UrlStyle](arkts-arkui-urlstyle-c.md)所属键。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -194,13 +158,9 @@ URL = 7
 LINE_SPACING = 8
 ```
 
-文本行间距样式键。[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md#linespacingstyle)所属键。
+文本行间距样式键。[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md)所属键。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,13 +176,9 @@ LINE_SPACING = 8
 GESTURE = 100
 ```
 
-事件手势键。[GestureStyle](arkts-arkui-gesturestyle-c.md#gesturestyle)所属键。
+事件手势键。[GestureStyle](arkts-arkui-gesturestyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -238,13 +194,9 @@ GESTURE = 100
 PARAGRAPH_STYLE = 200
 ```
 
-段落样式键。[ParagraphStyle](arkts-arkui-paragraphstyle-c.md#paragraphstyle)所属键。
+段落样式键。[ParagraphStyle](arkts-arkui-paragraphstyle-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -260,13 +212,9 @@ PARAGRAPH_STYLE = 200
 IMAGE = 300
 ```
 
-图片键。[ImageAttachment](arkts-arkui-imageattachment-c.md#imageattachment)所属键。
+图片键。[ImageAttachment](arkts-arkui-imageattachment-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -282,13 +230,9 @@ IMAGE = 300
 CUSTOM_SPAN = 400
 ```
 
-自定义绘制Span键。[CustomSpan](arkts-arkui-customspan-c.md#customspan)所属键。
+自定义绘制Span键。[CustomSpan](arkts-arkui-customspan-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -304,13 +248,9 @@ CUSTOM_SPAN = 400
 USER_DATA = 500
 ```
 
-UserDataSpan键。[UserDataSpan](arkts-arkui-userdataspan-c.md#userdataspan)所属键。
+UserDataSpan键。[UserDataSpan](arkts-arkui-userdataspan-c.md)所属键。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

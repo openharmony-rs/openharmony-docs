@@ -8,10 +8,6 @@ type NormalizeUriFn = (uri: string, callback: AsyncCallback<string>) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-type NormalizeUriFn = (uri: string, callback: AsyncCallback<string>) => void--><!--Device-unnamed-type NormalizeUriFn = (uri: string, callback: AsyncCallback<string>) => void-End-->
@@ -25,5 +21,5 @@ type NormalizeUriFn = (uri: string, callback: AsyncCallback<string>) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the uri to normalize. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | Returns the normalized uri if the data share supports URI normalization. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | Returns the normalized uri if the data share supports URI normalization. |
 

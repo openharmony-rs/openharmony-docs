@@ -4,9 +4,7 @@ Enum type supplied to [runJavaScriptExt](../../apis-arkweb/arkts-apis/arkts-arkw
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-enum JsMessageType--><!--Device-webview-enum JsMessageType-End-->
 
@@ -22,9 +20,7 @@ Unsupported data type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsMessageType-NOT_SUPPORT--><!--Device-JsMessageType-NOT_SUPPORT-End-->
 
@@ -40,9 +36,7 @@ The string data type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsMessageType-STRING--><!--Device-JsMessageType-STRING-End-->
 
@@ -58,9 +52,7 @@ The number data type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsMessageType-NUMBER--><!--Device-JsMessageType-NUMBER-End-->
 
@@ -76,9 +68,7 @@ The boolean data type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsMessageType-BOOLEAN--><!--Device-JsMessageType-BOOLEAN-End-->
 
@@ -94,9 +84,7 @@ The arraybuffer data type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsMessageType-ARRAY_BUFFER--><!--Device-JsMessageType-ARRAY_BUFFER-End-->
 
@@ -112,9 +100,7 @@ The array data type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsMessageType-ARRAY--><!--Device-JsMessageType-ARRAY-End-->
 

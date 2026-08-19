@@ -51,14 +51,14 @@ Incorrect ability type.
 
 1. 被调用方（服务端）的Ability类型与调用方（客户端）接口期望的类型不匹配。
 2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。<!--Del-->
-3. 调用[connectAgentExtensionAbility]时，入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName不匹配。<!--DelEnd-->
+3. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName不匹配。<!--DelEnd-->
 
 **处理步骤**
 
 1. 检查Want中的bundleName、moduleName和abilityName是否正确。
-2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->[startServiceExtensionAbility]方法启动或用<!--DelEnd-->[connectServiceExtensionAbility()]方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
+2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动或用<!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
 3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。<!--Del-->
-4. 调用[connectAgentExtensionAbility]时，确保入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName保持一致。<!--DelEnd-->
+4. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，确保入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName保持一致。<!--DelEnd-->
 
 ## 16000003 指定的ID不存在
 
@@ -94,7 +94,7 @@ Cannot start an invisible component.
 
 **处理步骤**
 
-1. [Stage模型](../../application-models/ability-terminology.md#stage模型)下，拉起应用时抛出16000004异常，表示被拉应用调用失败，需要检查被拉应用module.json5的Ability字段的[exported](../../quick-start/module-configuration-file.md#abilities标签)配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
+1. [Stage模型](../../application-models/ability-terminology.md#stage模型)下，拉起应用时抛出16000004异常，表示无法启动不可见组件，需要检查被拉应用module.json5的Ability字段的[exported](../../quick-start/module-configuration-file.md#abilities标签)配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
 2. 若应用需要拉起exported为false的ability，请申请ohos.permission.START_INVISIBLE_ABILITY权限（该权限仅系统应用可申请）。
 
 ## 16000005 指定的进程权限校验失败
@@ -293,9 +293,9 @@ Redirection to a third-party application is not allowed in API version greater t
 
 **处理步骤**
 
-使用隐式启动方式或通过[openLink]跳转其他应用。
+使用隐式启动方式或通过[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)跳转其他应用。
 
-## 16000019 隐式启动未查找到匹配应用
+## 16000019 隐式启动未查找到匹配Ability
 
 **错误信息**
 
@@ -335,6 +335,26 @@ The context is not ability context.
 使用UIAbilityContext或ExtensionContext对象作为入参，或者使用继承了UIAbilityContext或ExtensionContext类的对象作为入参。
 <!--DelEnd-->
 
+## 16000021 模块名不存在
+
+**错误信息**
+
+The module name does not exist.
+
+**错误描述**
+
+模块名不存在。
+
+**可能原因**
+
+1. 传入的moduleName参数为空。
+2. HAP/HSP包中不存在moduleName对应的模块。
+
+**处理步骤**
+
+1. 确保传入的moduleName参数不为空。
+2. 确保传入的moduleName是在HAP/HSP包中存在的模块名。
+
 ## 16000050 内部错误
 
 **错误信息**
@@ -347,7 +367,7 @@ Internal error.
 
 **可能原因**
 
-1. 启动Ability时传入的[Want]数据过大。
+1. 启动Ability时传入的[Want](./js-apis-app-ability-want.md#约束限制)数据过大。
 2. 设备解锁前拉起非系统应用。
 3. 隐式拉起时未安装应用市场App。
 4. 开发者无法处理的系统内部错误。包括但不限于：内部对象为空指针、处理超时、IPC跨进程通信失败、包管理获取应用信息失败、系统服务获取失败、启动的Ability实例已达到上限等。
@@ -356,12 +376,12 @@ Internal error.
 
 **处理步骤**
 
-1. 对于启动Ability失败时，可以检查传入的[Want]数据是否过大。
+1. 对于启动Ability失败时，可以检查传入的[Want](./js-apis-app-ability-want.md#约束限制)数据是否过大。
 2. 确保在设备解锁前只拉起系统应用，或者延迟拉起非系统应用直到设备解锁。
 3. 确保设备上已安装应用市场App，或者在拉起应用前检查应用市场App是否已安装。
 4. 对于开发者无法处理的系统内部错误，请尝试重新调用该接口，或者重启设备。
 
-## 16000053 非顶层应用
+## 16000053 非顶层Ability
 
 **错误信息**
 
@@ -369,17 +389,17 @@ The ability is not on the top of the UI.
 
 **错误描述**
 
-当前应用未显示在界面顶层时，方法将返回该错误码。
+当前Ability未显示在界面顶层时，方法将返回该错误码。
 
 **可能原因**
 
-用户执行免安装启动时需要确保应用在前台，但应用未显示在界面顶层。
+用户执行免安装启动时需要确保Ability在前台，但Ability未显示在界面顶层。
 
 **处理步骤**
 
-1. 请确保当前应用已启动并处于前台运行状态。
-2. 请核实应用界面是否完全显示，且未被其他应用窗口遮挡或最小化。
-3. 如设备启用了分屏或多窗口模式，请确保当前应用为焦点窗口。
+1. 请确保当前Ability已启动并处于前台运行状态。
+2. 请核实Ability界面是否完全显示，且未被其他Ability窗口遮挡或最小化。
+3. 如设备启用了分屏或多窗口模式，请确保当前Ability为焦点窗口。
 
 ## 16000055 免安装超时
 
@@ -650,11 +670,11 @@ App clone is not supported.
 
 **可能原因**
 
-该应用没有在app.json5配置文件[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签中配置应用分身字段，导致该应用不支持分身模式，调用[getCurrentAppCloneIndex]接口时返回该错误码。
+该应用没有在app.json5配置文件[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签中配置应用分身字段，导致该应用不支持分身模式，调用[getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12)接口时返回该错误码。
 
 **处理步骤**
 
-参考[应用多实例的配置方法](../../quick-start/multiInstance.md)，在app.json5配置文件中配置multiAppMode标签，开启应用分身功能后，再调用[getCurrentAppCloneIndex]接口。
+参考[应用多实例的配置方法](../../quick-start/multiInstance.md)，在app.json5配置文件中配置multiAppMode标签，开启应用分身功能后，再调用[getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12)接口。
 
 ## 16000072 不支持应用多开
 
@@ -668,18 +688,18 @@ App clone or multi-instance is not supported.
 
 **可能原因**
 
-调用[startAbility]、[startAbilityForResult]等启动Ability接口时，如果目标应用不支持应用多开，则返回该错误码。
+调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，如果目标应用不支持应用多开，则返回该错误码。
 
 <!--Del-->
-调用[getRunningMultiAppInfo]查询不支持应用多开的应用多开信息，则返回该错误码。
+调用[getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)查询不支持应用多开的应用多开信息，则返回该错误码。
 <!--DelEnd-->
 
 **处理步骤**
 
-调用[startAbility]、[startAbilityForResult]等启动Ability接口时，确保目标应用支持应用多开，并在app.json5配置文件中配置[multiAppMode]标签开启应用分身功能。
+调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，确保目标应用支持应用多开，并在app.json5配置文件中配置[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签开启应用分身功能。
 
 <!--Del-->
-调用[getRunningMultiAppInfo]时确保查询的应用支持应用多开。
+调用[getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)时确保查询的应用支持应用多开。
 <!--DelEnd-->
 
 ## 16000073 传入的appCloneIndex是一个无效值
@@ -749,19 +769,19 @@ BackToCaller is not supported.
 
 **错误信息**
 
-The app instance key is invalid.
+The app instance key does not exist.
 
 **错误描述**
 
-指定的[APP_INSTANCE_KEY]不存在时，返回该错误码。
+指定的[APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)不存在时，返回该错误码。
 
 **可能原因**
 
-应用的实例中不存在该[APP_INSTANCE_KEY]指定的实例。
+应用的实例中不存在该[APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)指定的实例。
 
 **处理步骤**
 
-确保传入的[APP_INSTANCE_KEY]是一个有效值。
+确保传入的[APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)是一个有效值。
 
 ## 16000077 应用的实例数量已达到上限
 
@@ -809,7 +829,7 @@ The APP_INSTANCE_KEY cannot be specified.
 
 **错误描述**
 
-[APP_INSTANCE_KEY]和[CREATE_APP_INSTANCE_KEY]不支持同时指定。当指定[CREATE_APP_INSTANCE_KEY]的同时指定[APP_INSTANCE_KEY]，返回该错误码。
+[APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)和[CREATE_APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)不支持同时指定。当指定[CREATE_APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)的同时指定[APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)，返回该错误码。
 
 **可能原因**
 
@@ -817,7 +837,7 @@ The APP_INSTANCE_KEY cannot be specified.
 
 **处理步骤**
 
-参数[APP_INSTANCE_KEY]和[CREATE_APP_INSTANCE_KEY]只支持二选一。
+参数[APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)和[CREATE_APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)只支持二选一。
 
 ## 16000080 不支持创建新实例
 
@@ -827,7 +847,7 @@ Creating a new instance is not supported.
 
 **错误描述**
 
-只允许应用使用[CREATE_APP_INSTANCE_KEY]创建自己的实例，不允许应用间启动时为其他应用创建实例。否则，返回该错误码。
+只允许应用使用[CREATE_APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)创建自己的实例，不允许应用间启动时为其他应用创建实例。否则，返回该错误码。
 
 **可能原因**
 
@@ -835,7 +855,7 @@ Creating a new instance is not supported.
 
 **处理步骤**
 
-删除参数[CREATE_APP_INSTANCE_KEY]。
+删除参数[CREATE_APP_INSTANCE_KEY](js-apis-app-ability-wantConstant.md#params)。
 
 <!--Del-->
 ## 16000081 获取目标应用信息失败
@@ -846,7 +866,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[@ohos.application.uriPermissionManager (URI权限管理)(系统接口)]时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[@ohos.application.uriPermissionManager (URI权限管理)(系统接口)](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -992,7 +1012,7 @@ Failed to get the file URI from the key.
 **处理步骤**
 
 1. 确保key是由调用方创建的。
-2. 确保key属于特定业务的数据通路。参考[UDMF数据通路]。
+2. 确保key属于特定业务的数据通路。参考[UDMF数据通路](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention)。
 3. 确保创建key时在UDMF中写入的数据都为文件URI。
 
 ## 16000092 无权限授权URI
@@ -1259,7 +1279,7 @@ Want中的deviceId不为空且非本机的设备ID。
 
 将Want中的deviceId字段设为空，或配置为本机的deviceId。
 
-## 16000125 不支持启动插件
+## 16000125 不支持启动插件UIAbility
 
 **错误信息**
 
@@ -1382,7 +1402,7 @@ Cross-device execution failed due to a connection error.
 
 **可能原因**
 
-入参[ExecuteParam]中的deviceId不为空且无效。
+入参[ExecuteParam](../apis-ability-kit/js-apis-app-ability-insightIntentDriver-sys.md#executeparam)中的deviceId不为空且无效。
 
 **处理步骤**
 
@@ -1478,11 +1498,11 @@ The caller is not in the appIdentifierAllowList of the target application.
 
 **可能原因**
 
-[startAppServiceExtensionAbility]、[stopAppServiceExtensionAbility]接口调用方的app-identifier不在目标[AppServiceExtensionAbility]的[appIdentifierAllowList]中。
+[startAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)、[stopAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#stopappserviceextensionability20)接口调用方的app-identifier不在目标[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中。
 
 **处理步骤**
 
-将接口调用方的app-identifier配置在目标[AppServiceExtensionAbility]的[appIdentifierAllowList]中。
+将接口调用方的app-identifier配置在目标[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中。
 
 ## 16000201 目标服务还未启动
 
@@ -1496,12 +1516,12 @@ The target service has not been started yet.
 
 **可能原因**
 
-使用[connectAppServiceExtensionAbility]接口时服务端还未启动且当前应用无权限拉起目标服务。
+使用[connectAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)接口时服务端还未启动且当前应用无权限拉起目标服务。
 
 **处理步骤**
 
 1. 等待服务端启动后重新连接。
-2. 由当前应用拉起目标服务时，需要将接口调用方的app-identifier配置在目标[AppServiceExtensionAbility]的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中。
+2. 由当前应用拉起目标服务时，需要将接口调用方的app-identifier配置在目标[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)的[appIdentifierAllowList](../../quick-start/module-configuration-file.md#extensionabilities标签)中。
 
 ## 16200001 通用组件客户端(Caller)已回收
 
@@ -1656,7 +1676,7 @@ The target application is not the current application.
 
 **错误信息**
 
-The bundle does not exist or no patch has been applied.
+Invalid bundle name.
 
 **错误描述**
 
@@ -1734,15 +1754,15 @@ The observer does not exist.
 
 **错误描述**
 
-当监听器不存在时，方法将返回该错误码。
+当observer不存在时，方法将返回该错误码。
 
 **可能原因**
 
-当前监听器不存在或者已注销。
+当前observer不存在或者已注销。
 
 **处理步骤**
 
-请检查是否有重复注销监听器。
+请检查是否有重复注销observer。
 
 <!--Del-->
 ## 16300005 指定的包信息不存在
@@ -1767,7 +1787,7 @@ The target bundle does not exist.
 
 **错误信息**
 
-The target bundle has no MainAbility.
+The target bundle has no main UIAbility.
 
 **错误描述**
 
@@ -1837,7 +1857,7 @@ Internal error.
 1. 确认系统内存是否足够，设备使用的系统版本是否存在异常。
 2. 尝试重启设备。
 
-## 29600002 图片编辑内部错误
+## 29600002 图片输入错误
 
 **错误信息**
 
@@ -1975,7 +1995,7 @@ The input bundleName is not a system HSP.
 
 **错误描述**
 
-通过[createSystemHspModuleResourceManager]接口创建[ResourceManager]时，如果传入的bundleName不属于[系统级HSP](../../quick-start/application-package-glossary.md#系统级hsp)的模块，将返回该错误码。
+通过[createSystemHspModuleResourceManager](js-apis-inner-application-context-sys.md#createsystemhspmoduleresourcemanager12)接口创建[ResourceManager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager)时，如果传入的bundleName不属于[系统级HSP](../../quick-start/application-package-glossary.md#系统级hsp)的模块，将返回该错误码。
 
 **可能原因**
 
@@ -1989,7 +2009,7 @@ The input bundleName is not a system HSP.
 
 **错误信息**
 
-Invalid main element type.
+The main element is not an appService ExtensionAbility.
 
 **错误描述**
 
@@ -2129,8 +2149,8 @@ Cannot exit because there is an unfinished request.
 
 当前进程存在未完成的请求：
 
-1. 进程中存在未完成的[onNewProcessRequest]请求。
-2. 当启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility运行在独立进程时，当前进程中存在未完成的[onAcceptWant]请求。
+1. 进程中存在未完成的[onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11)请求。
+2. 当启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility运行在独立进程时，当前进程中存在未完成的[onAcceptWant](js-apis-app-ability-abilityStage.md#onacceptwant)请求。
 
 **处理步骤**
 
@@ -2653,12 +2673,12 @@ The specified agentId does not exist.
 **可能原因**
 
 1. 目标应用中不存在指定agentId对应的AgentCard。<!--Del-->
-2. 调用[connectAgentExtensionAbility]时，入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName不匹配。<!--DelEnd-->
+2. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName不匹配。<!--DelEnd-->
 
 **处理步骤**
 
 1. 检查目标应用的静态配置信息，重新传入正确的agentId。<!--Del-->
-2. 调用[connectAgentExtensionAbility]时，确保入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName保持一致。<!--DelEnd-->
+2. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，确保入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName保持一致。<!--DelEnd-->
 
 ## 35600002 IPC消息发送失败
 
@@ -2721,7 +2741,7 @@ No tool with the specified name exists.
 
 **错误信息**
 
-Maximum number of processes has been reached.
+Maximum number of concurrent tools has been reached.
 
 **错误描述**
 
@@ -2847,7 +2867,7 @@ The function execution timed out.
 检查函数执行过程和执行环境，稍后重试。
 <!--DelEnd-->
 
-## 16000161 当前进程的处理流程尚未结束，无法调用此API
+## 16000161 当前进程延迟退出未处于等待状态，无法调用此API
 
 **错误信息**
 

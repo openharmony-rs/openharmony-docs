@@ -8,10 +8,6 @@ export type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export type NotificationLiveViewContent = _NotificationLiveViewContent--><!--Device-notificationManager-export type NotificationLiveViewContent = _NotificationLiveViewContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

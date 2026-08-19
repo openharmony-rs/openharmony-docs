@@ -4,13 +4,15 @@ IPC上下文信息，包括PID和UID、本端和对端设备ID、检查接口调
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-rpc-class CallingInfo--><!--Device-rpc-class CallingInfo-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+## 导入模块
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+```
 
 ## callerPid
 
@@ -25,10 +27,6 @@ readonly callerPid: number
 **默认值：** -1
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallingInfo-readonly callerPid: number--><!--Device-CallingInfo-readonly callerPid: number-End-->
 
@@ -48,10 +46,6 @@ readonly callerTokenId: number
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallingInfo-readonly callerTokenId: number--><!--Device-CallingInfo-readonly callerTokenId: number-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -69,10 +63,6 @@ readonly callerUid: number
 **默认值：** -1
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallingInfo-readonly callerUid: number--><!--Device-CallingInfo-readonly callerUid: number-End-->
 
@@ -92,10 +82,6 @@ readonly isLocalCalling: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallingInfo-readonly isLocalCalling: boolean--><!--Device-CallingInfo-readonly isLocalCalling: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -110,13 +96,7 @@ readonly localDeviceId: string
 
 **类型：** string
 
-**默认值：** @syscap SystemCapability.Communication.IPC.Core @FaAndStageModel
-
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallingInfo-readonly localDeviceId: string--><!--Device-CallingInfo-readonly localDeviceId: string-End-->
 
@@ -132,13 +112,7 @@ readonly remoteDeviceId: string
 
 **类型：** string
 
-**默认值：** @syscap SystemCapability.Communication.IPC.Core @FaAndStageModel
-
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallingInfo-readonly remoteDeviceId: string--><!--Device-CallingInfo-readonly remoteDeviceId: string-End-->
 

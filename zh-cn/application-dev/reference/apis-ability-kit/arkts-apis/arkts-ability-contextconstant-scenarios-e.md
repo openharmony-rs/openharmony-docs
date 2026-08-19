@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-contextConstant-export enum Scenarios--><!--Device-contextConstant-export enum Scenarios-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -18,13 +14,9 @@
 SCENARIO_MOVE_MISSION_TO_FRONT = 0x00000001
 ```
 
-&lt;!--RP1--&gt;系统接口missionManager.moveMissionToFront接口触发的UIAbility到前台场景。&lt;!--RP1End--&gt;
+<!--RP1-->系统接口missionManager.moveMissionToFront接口触发的UIAbility到前台场景。<!--RP1End-->
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ SCENARIO_SHOW_ABILITY = 0x00000002
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -65,10 +53,6 @@ SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT = 0x00000004
 [backToCallerAbilityWithResult](arkts-ability-uiabilitycontext-c.md#backtocallerabilitywithresult) 接口触发的UIAbility到前台场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

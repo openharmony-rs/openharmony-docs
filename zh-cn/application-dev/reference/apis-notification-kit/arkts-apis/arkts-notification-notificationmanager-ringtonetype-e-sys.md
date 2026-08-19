@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export enum RingtoneType--><!--Device-notificationManager-export enum RingtoneType-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ RINGTONE_TYPE_SYSTEM = 0
 表示系统自定义铃声。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0--><!--Device-RingtoneType-RINGTONE_TYPE_SYSTEM = 0-End-->
 
@@ -44,10 +36,6 @@ RINGTONE_TYPE_LOCAL = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RingtoneType-RINGTONE_TYPE_LOCAL = 1--><!--Device-RingtoneType-RINGTONE_TYPE_LOCAL = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -64,10 +52,6 @@ RINGTONE_TYPE_ONLINE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RingtoneType-RINGTONE_TYPE_ONLINE = 2--><!--Device-RingtoneType-RINGTONE_TYPE_ONLINE = 2-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -83,10 +67,6 @@ RINGTONE_TYPE_NONE = 3
 表示非自定义铃声。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3--><!--Device-RingtoneType-RINGTONE_TYPE_NONE = 3-End-->
 

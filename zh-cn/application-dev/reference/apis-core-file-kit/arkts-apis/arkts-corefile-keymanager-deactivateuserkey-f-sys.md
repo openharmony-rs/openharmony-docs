@@ -1,5 +1,11 @@
 # deactivateUserKey（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { keyManager } from '@kit.CoreFileKit';
+```
+
 ## deactivateUserKey
 
 ```TypeScript
@@ -9,10 +15,6 @@ function deactivateUserKey(userId: long):void
 用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）**
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.STORAGE_MANAGER_CRYPT
 
@@ -39,7 +41,7 @@ function deactivateUserKey(userId: long):void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

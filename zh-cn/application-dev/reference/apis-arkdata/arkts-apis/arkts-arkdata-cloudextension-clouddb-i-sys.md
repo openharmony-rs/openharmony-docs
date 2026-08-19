@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export interface CloudDB--><!--Device-cloudExtension-export interface CloudDB-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudExtension } from '@kit.ArkData';
+```
 
 ## delete
 
@@ -26,10 +28,6 @@ delete(
 删除云数据库表中的指定数据。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudDB-delete(      table: string,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-delete(      table: string,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
 
@@ -50,7 +48,7 @@ delete(
 | --- | --- |
 | Promise&lt;Array&lt;Result&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回被删除的数据和删除结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -116,10 +114,6 @@ generateId(count: int): Promise<Result<Array<string>>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudDB-generateId(count: int): Promise<Result<Array<string>>>--><!--Device-CloudDB-generateId(count: int): Promise<Result<Array<string>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -138,7 +132,7 @@ generateId(count: int): Promise<Result<Array<string>>>
 | --- | --- |
 | Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt; | Promise对象，以Result结构将生成的ID以数组形式返回。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -215,10 +209,6 @@ heartbeat(lockId: int): Promise<Result<LockInfo>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudDB-heartbeat(lockId: int): Promise<Result<LockInfo>>--><!--Device-CloudDB-heartbeat(lockId: int): Promise<Result<LockInfo>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -237,7 +227,7 @@ heartbeat(lockId: int): Promise<Result<LockInfo>>
 | --- | --- |
 | Promise&lt;Result&lt;LockInfo&gt;&gt; | Promise对象，返回锁的信息，包含加锁时长和锁的ID。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -323,10 +313,6 @@ insert(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudDB-insert(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-insert(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -347,7 +333,7 @@ insert(
 | --- | --- |
 | Promise&lt;Array&lt;Result&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回插入的数据和插入结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -420,10 +406,6 @@ lock(): Promise<Result<LockInfo>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudDB-lock(): Promise<Result<LockInfo>>--><!--Device-CloudDB-lock(): Promise<Result<LockInfo>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -436,7 +418,7 @@ lock(): Promise<Result<LockInfo>>
 | --- | --- |
 | Promise&lt;Result&lt;LockInfo&gt;&gt; | Promise对象，返回加锁的信息，包含加锁时长和锁的ID。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -518,10 +500,6 @@ query(table: string, fields: Array<string>, queryCount: int, queryCursor: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudDB-query(table: string, fields: Array<string>, queryCount: int, queryCursor: string): Promise<Result<CloudData>>--><!--Device-CloudDB-query(table: string, fields: Array<string>, queryCount: int, queryCursor: string): Promise<Result<CloudData>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -543,7 +521,7 @@ query(table: string, fields: Array<string>, queryCount: int, queryCursor: string
 | --- | --- |
 | Promise&lt;Result&lt;[CloudData](arkts-arkdata-cloudextension-clouddata-i-sys.md)&gt;&gt; | Promise对象，返回被查询的数据和查询结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -623,10 +601,6 @@ unlock(lockId: int): Promise<Result<boolean>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudDB-unlock(lockId: int): Promise<Result<boolean>>--><!--Device-CloudDB-unlock(lockId: int): Promise<Result<boolean>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -645,7 +619,7 @@ unlock(lockId: int): Promise<Result<boolean>>
 | --- | --- |
 | Promise&lt;Result&lt;boolean&gt;&gt; | Promise对象，返回解锁结果，true表示解锁成功，false表示解锁失败。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -721,10 +695,6 @@ update(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CloudDB-update(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>--><!--Device-CloudDB-update(      table: string,      values: Array<Record<string, CloudType>>,      extensions: Array<Record<string, CloudType>>    ): Promise<Array<Result<Record<string, CloudType>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -745,7 +715,7 @@ update(
 | --- | --- |
 | Promise&lt;Array&lt;Result&lt;Record&lt;string, [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md)&gt;&gt;&gt;&gt; | Promise对象，返回更新的数据和更新结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

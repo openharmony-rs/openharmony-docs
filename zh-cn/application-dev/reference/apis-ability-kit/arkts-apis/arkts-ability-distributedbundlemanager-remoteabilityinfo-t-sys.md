@@ -8,10 +8,6 @@ export type RemoteAbilityInfo = _RemoteAbilityInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo--><!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework

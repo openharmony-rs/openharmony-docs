@@ -1,16 +1,18 @@
 # ChildProcessArgs
 
-传递到子进程的参数。[childProcessManager](arkts-app-ability-childprocessmanager.md#ohosappabilitychildprocessmanager)启动子进程时，可以通过 ChildProcessArgs传递参数到子进程中。
+传递到子进程的参数。[childProcessManager](arkts-app-ability-childprocessmanager.md)启动子进程时，可以通过 ChildProcessArgs传递参数到子进程中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface ChildProcessArgs--><!--Device-unnamed-export interface ChildProcessArgs-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { ChildProcessArgs } from '@kit.AbilityKit';
+```
 
 ## entryParams
 
@@ -23,10 +25,6 @@ entryParams?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +43,6 @@ fds?: Record<string, int>
 **类型：** Record&lt;string, int&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

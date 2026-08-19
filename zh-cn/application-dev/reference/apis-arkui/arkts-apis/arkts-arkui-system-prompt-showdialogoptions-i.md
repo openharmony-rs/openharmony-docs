@@ -1,16 +1,18 @@
-# ShowDialogOptions
+# ShowDialogOptions(弹窗)
 
 定义显示对话框的选项。
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface ShowDialogOptions--><!--Device-unnamed-export interface ShowDialogOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuccessResponse, ShowToastOptions } from '@kit.ArkUI';
+```
 
 ## buttons
 
@@ -23,10 +25,6 @@ buttons?: [Button, Button?, Button?]
 **类型：** [Button, Button?, Button?]
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ cancel?: (data: string, code: string) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ShowDialogOptions-cancel?: (data: string, code: string) => void--><!--Device-ShowDialogOptions-cancel?: (data: string, code: string) => void-End-->
@@ -67,10 +61,6 @@ complete?: (data: string) => void
 **类型：** (data: string) =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +80,6 @@ message?: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ShowDialogOptions-message?: string--><!--Device-ShowDialogOptions-message?: string-End-->
@@ -112,10 +98,6 @@ success?: (data: ShowDialogSuccessResponse) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ShowDialogOptions-success?: (data: ShowDialogSuccessResponse) => void--><!--Device-ShowDialogOptions-success?: (data: ShowDialogSuccessResponse) => void-End-->
@@ -133,10 +115,6 @@ title?: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

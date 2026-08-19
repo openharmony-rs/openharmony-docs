@@ -4,15 +4,18 @@ TransitionOptions通过指定结构体内的参数来指定转场效果。 > **�
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
-**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md#transitioneffect)
+**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)
 
 <!--Device-unnamed-declare interface TransitionOptions--><!--Device-unnamed-declare interface TransitionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## opacity
 
@@ -25,8 +28,6 @@ opacity?: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -48,8 +49,6 @@ rotate?: RotateOptions
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [rotate](arkts-arkui-transitioneffect-c.md#rotate)
@@ -69,8 +68,6 @@ scale?: ScaleOptions
 **类型：** [ScaleOptions](arkts-arkui-scaleoptions-i.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -92,8 +89,6 @@ translate?: TranslateOptions
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [translate](arkts-arkui-transitioneffect-c.md#translate)
@@ -114,11 +109,9 @@ type?: TransitionType
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
-**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md#transitioneffect)
+**替代接口：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)
 
 <!--Device-TransitionOptions-type?: TransitionType--><!--Device-TransitionOptions-type?: TransitionType-End-->
 

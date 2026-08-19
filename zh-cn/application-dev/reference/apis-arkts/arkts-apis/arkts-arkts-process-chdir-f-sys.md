@@ -1,5 +1,11 @@
 # chdir（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## chdir
 
 ```TypeScript
@@ -9,10 +15,6 @@ function chdir(dir: string): void
 修改当前目录。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-process-function chdir(dir: string): void--><!--Device-process-function chdir(dir: string): void-End-->
 

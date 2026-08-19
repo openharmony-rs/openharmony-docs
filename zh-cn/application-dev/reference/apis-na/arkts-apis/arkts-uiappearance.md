@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-declare namespace uiAppearance--><!--Device-unnamed-declare namespace uiAppearance-End-->
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
+
+## 导入模块
+
+```TypeScript
+```
 
 ## 汇总
 
@@ -18,19 +21,19 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDarkMode](arkts-na-uiappearance-getdarkmode-f.md#getdarkmode) | Acquire the current dark-mode. |
-| [getFontScale](arkts-na-uiappearance-getfontscale-f.md#getfontscale) | Acquire the current font-scale. |
-| [getFontWeightScale](arkts-na-uiappearance-getfontweightscale-f.md#getfontweightscale) | Acquire the current font-weight-scale. |
+| [getDarkMode](arkts-na-uiappearance-getdarkmode-f.md) | Acquire the current dark-mode. |
+| [getFontScale](arkts-na-uiappearance-getfontscale-f.md) | Acquire the current font-scale. |
+| [getFontWeightScale](arkts-na-uiappearance-getfontweightscale-f.md) | Acquire the current font-weight-scale. |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [setDarkMode](arkts-na-uiappearance-setdarkmode-f-sys.md#setdarkmode系统接口) | 设置系统深色模式。使用callback异步回调。 |
-| [setDarkMode](arkts-na-uiappearance-setdarkmode-f-sys.md#setdarkmode系统接口) | 设置系统深色模式。使用Promise异步回调。 |
-| [setFontScale](arkts-na-uiappearance-setfontscale-f-sys.md#setfontscale系统接口) | 设置系统字体大小。 |
-| [setFontWeightScale](arkts-na-uiappearance-setfontweightscale-f-sys.md#setfontweightscale系统接口) | 设置系统字体粗细。 |
+| [setDarkMode](arkts-na-uiappearance-setdarkmode-f-sys.md) | 设置系统深色模式。使用callback异步回调。 |
+| [setDarkMode](arkts-na-uiappearance-setdarkmode-f-sys.md) | 设置系统深色模式。使用Promise异步回调。 |
+| [setFontScale](arkts-na-uiappearance-setfontscale-f-sys.md) | 设置系统字体大小。 |
+| [setFontWeightScale](arkts-na-uiappearance-setfontweightscale-f-sys.md) | 设置系统字体粗细。 |
 <!--DelEnd-->
 
 ### 枚举

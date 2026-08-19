@@ -1,5 +1,10 @@
 # getStorageSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getStorageSync
 
 ```TypeScript
@@ -9,8 +14,6 @@ function getStorageSync(path: string): Storage
 读取指定文件，将数据加载到Storage实例，用于数据操作。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

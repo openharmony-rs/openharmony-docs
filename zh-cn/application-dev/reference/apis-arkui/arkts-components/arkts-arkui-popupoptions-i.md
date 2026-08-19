@@ -4,13 +4,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface PopupOptions--><!--Device-unnamed-declare interface PopupOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## arrowHeight
 
@@ -25,10 +26,6 @@ arrowHeight?: Dimension
 **默认值：** 8.0_vp.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +47,6 @@ Popup箭头在气泡处的偏移。 箭头在气泡上下方时，数值为0表�
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PopupOptions-arrowOffset?: Length--><!--Device-PopupOptions-arrowOffset?: Length-End-->
@@ -71,10 +64,6 @@ arrowPointPosition?: ArrowPointPosition
 **类型：** ArrowPointPosition
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,10 +87,6 @@ arrowWidth?: Dimension
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -123,10 +108,6 @@ autoCancel?: boolean
 **默认值：** true
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -150,10 +131,6 @@ avoidTarget?: AvoidanceMode
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -176,10 +153,6 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -199,10 +172,6 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **类型：** [BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -224,10 +193,6 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -248,10 +213,6 @@ borderLinearGradient?: PopupBorderLinearGradient
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -271,10 +232,6 @@ borderWidth?: Dimension
 **类型：** Dimension
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -297,10 +254,6 @@ colorMode?: AnchoredColorMode
 **默认值：** AnchoredColorMode.FOLLOW_TARGET
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -326,10 +279,6 @@ enableArrow?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -351,10 +300,6 @@ Popup组件是否响应悬停态（半折叠状态）变化，即在悬停态下
 **默认值：** false
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -378,10 +323,6 @@ followTransformOfTarget?: boolean
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
@@ -404,10 +345,6 @@ keyboardAvoidMode?: KeyboardAvoidMode
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -427,10 +364,6 @@ levelMode?: LevelMode
 **类型：** LevelMode
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -452,10 +385,6 @@ mask?: boolean | { color: ResourceColor }
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -476,10 +405,6 @@ message: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PopupOptions-message: string--><!--Device-PopupOptions-message: string-End-->
@@ -497,10 +422,6 @@ messageOptions?: PopupMessageOptions
 **类型：** [PopupMessageOptions](arkts-arkui-popupmessageoptions-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -523,10 +444,6 @@ offset?: Position
 **默认值：** { x: 0, y: 0 } [since 11]
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -569,10 +486,6 @@ onStateChange?: (event: {
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @since 10     */    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @atomicservice     * @since 11     */    isVisible: boolean  }) => void--><!--Device-PopupOptions-onStateChange?: (event: {    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @since 10     */    /**     * is Visible.     *     * @type { boolean }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @stagemodelonly     * @crossplatform     * @atomicservice     * @since 11     */    isVisible: boolean  }) => void-End-->
@@ -590,10 +503,6 @@ onWillDismiss?: boolean | Callback<DismissPopupAction>
 **类型：** boolean \| [Callback](arkts-arkui-callback-i.md)&lt;[DismissPopupAction](arkts-arkui-dismisspopupaction-i.md)&gt;
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -615,10 +524,6 @@ outlineLinearGradient?: PopupBorderLinearGradient
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -638,10 +543,6 @@ outlineWidth?: Dimension
 **类型：** Dimension
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -665,10 +566,6 @@ placement?: Placement
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -689,8 +586,6 @@ placementOnTop?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [placement](#placement)
@@ -705,15 +600,11 @@ placementOnTop?: boolean
 popupColor?: Color | string | Resource | number
 ```
 
-气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。 默认值：透明色TRANSPARENT加模糊背景填充效果[COMPONENT_ULTRA_THICK](arkts-arkui-blurstyle-e.md#blurstyle)。
+气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。 默认值：透明色TRANSPARENT加模糊背景填充效果[COMPONENT_ULTRA_THICK](arkts-arkui-blurstyle-e.md)。
 
 **类型：** Color \| string \| Resource \| number
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -787,10 +678,6 @@ primaryButton?: {
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PopupOptions-primaryButton?: {    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    value: string;    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    action: () => void;  }--><!--Device-PopupOptions-primaryButton?: {    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    value: string;    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    action: () => void;  }-End-->
@@ -810,10 +697,6 @@ radius?: Dimension
 **默认值：** 20.0_vp.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -887,10 +770,6 @@ secondaryButton?: {
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PopupOptions-secondaryButton?: {    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    value: string;    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    action: () => void;  }--><!--Device-PopupOptions-secondaryButton?: {    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * Button text value     *     * @type { string }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    value: string;    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @since 7     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @since 10     */    /**     * action     *     * @type { function }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @crossplatform     * @atomicservice     * @since 11     */    action: () => void;  }-End-->
@@ -910,10 +789,6 @@ shadow?: ShadowOptions | ShadowStyle
 **默认值：** ShadowStyle.OUTER_DEFAULT_MD.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -937,10 +812,6 @@ showInSubWindow?: boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PopupOptions-showInSubWindow?: boolean--><!--Device-PopupOptions-showInSubWindow?: boolean-End-->
@@ -958,10 +829,6 @@ systemMaterial?: SystemUiMaterial
 **类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -983,10 +850,6 @@ targetSpace?: Length
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -1007,10 +870,6 @@ transition?: TransitionEffect
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -1030,10 +889,6 @@ width?: Dimension
 **类型：** Dimension
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,11 @@
 # @ohos.arkui.components.ContainerReader
 
+## 导入模块
+
+```TypeScript
+import { ContainerReader, ContainerReaderAttribute, BreakpointOptions } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 类

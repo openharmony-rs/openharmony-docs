@@ -4,10 +4,6 @@ Enumerates the beauty types.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum BeautyType--><!--Device-camera-enum BeautyType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ AUTO = 0
 Automatic.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BeautyType-AUTO = 0--><!--Device-BeautyType-AUTO = 0-End-->
 
@@ -44,10 +36,6 @@ Skin smoothing.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BeautyType-SKIN_SMOOTH = 1--><!--Device-BeautyType-SKIN_SMOOTH = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -63,10 +51,6 @@ FACE_SLENDER = 2
 Face slimming.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BeautyType-FACE_SLENDER = 2--><!--Device-BeautyType-FACE_SLENDER = 2-End-->
 
@@ -84,10 +68,6 @@ Skin tone perfection.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BeautyType-SKIN_TONE = 3--><!--Device-BeautyType-SKIN_TONE = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -103,10 +83,6 @@ SKIN_TONE_BRIGHT = 4
 Skin tone bright beauty type.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BeautyType-SKIN_TONE_BRIGHT = 4--><!--Device-BeautyType-SKIN_TONE_BRIGHT = 4-End-->
 
@@ -124,10 +100,6 @@ Eye big eyes beauty type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BeautyType-EYE_BIG_EYES = 5--><!--Device-BeautyType-EYE_BIG_EYES = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -143,10 +115,6 @@ HAIR_HAIRLINE = 6
 Hair hairline beauty type.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BeautyType-HAIR_HAIRLINE = 6--><!--Device-BeautyType-HAIR_HAIRLINE = 6-End-->
 
@@ -164,10 +132,6 @@ Face makeup beauty type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BeautyType-FACE_MAKEUP = 7--><!--Device-BeautyType-FACE_MAKEUP = 7-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -184,10 +148,6 @@ Head shrink beauty type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BeautyType-HEAD_SHRINK = 8--><!--Device-BeautyType-HEAD_SHRINK = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -203,10 +163,6 @@ NOSE_SLENDER = 9
 Nose slender beauty type.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BeautyType-NOSE_SLENDER = 9--><!--Device-BeautyType-NOSE_SLENDER = 9-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface Rect--><!--Device-unnamed-export interface Rect-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -23,10 +19,6 @@ height: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Rect-height: int--><!--Device-Rect-height: int-End-->
 
@@ -44,10 +36,6 @@ left: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Rect-left: int--><!--Device-Rect-left: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -64,10 +52,6 @@ top: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Rect-top: int--><!--Device-Rect-top: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -83,10 +67,6 @@ width: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Rect-width: int--><!--Device-Rect-width: int-End-->
 

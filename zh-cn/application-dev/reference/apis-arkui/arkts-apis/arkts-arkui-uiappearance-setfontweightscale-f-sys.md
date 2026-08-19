@@ -1,5 +1,11 @@
 # setFontWeightScale（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { uiAppearance } from '@kit.ArkUI';
+```
+
 ## setFontWeightScale
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setFontWeightScale(fontWeightScale: number): Promise<void>
 设置系统字体粗细。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
@@ -42,7 +44,7 @@ function setFontWeightScale(fontWeightScale: number): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiAppearance } from '@kit.ArkUI';

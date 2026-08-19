@@ -1,18 +1,20 @@
 # publishReminder
 
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
+
 ## publishReminder
 
 ```TypeScript
 function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<int>): void
 ```
 
-发布后台代理提醒。使用callback异步回调。 > **说明：** > > 该接口需要申请通知弹窗权限 > [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification) > 后调用。 >
+发布后台代理提醒。使用callback异步回调。 > **说明：** > > 该接口需要申请通知弹窗权限 > [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md) > 后调用。 >
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -25,7 +27,7 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<i
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | reminderReq | ReminderRequest | 是 | 需要发布的代理提醒实例。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。 当代理提醒发布成功，err为undefined，data为当前发布提醒的id；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。 当代理提醒发布成功，err为undefined，data为当前发布提醒的id；否则为错误对象。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<i
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [1700002](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700002-提醒数量超出限制) | The number of reminders exceeds the limit. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -88,13 +90,9 @@ reminderAgentManager.publishReminder(timer, publishCallback);
 function publishReminder(reminderReq: ReminderRequest): Promise<int>
 ```
 
-发布后台代理提醒。使用Promise异步回调。 > **说明：** > > 该接口需要申请通知弹窗权限 > [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification) > 后调用。 >
+发布后台代理提醒。使用Promise异步回调。 > **说明：** > > 该接口需要申请通知弹窗权限 > [notificationManager.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager-requestenablenotification-f.md) > 后调用。 >
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -123,7 +121,7 @@ function publishReminder(reminderReq: ReminderRequest): Promise<int>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [1700002](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700002-提醒数量超出限制) | The number of reminders exceeds the limit. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

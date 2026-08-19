@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace bundleMonitor--><!--Device-unnamed-declare namespace bundleMonitor-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { bundleMonitor } from '@kit.AbilityKit';
+```
 
 ## 汇总
 
@@ -21,14 +23,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [offAdd](arkts-ability-bundlemonitor-offadd-f-sys.md#offadd) | 注销监听应用的安装。 |
-| [offRemove](arkts-ability-bundlemonitor-offremove-f-sys.md#offremove) | 注销监听应用的卸载。 |
-| [offUpdate](arkts-ability-bundlemonitor-offupdate-f-sys.md#offupdate) | 注销监听应用的更新。 |
-| [off_BundleChangedEvent](arkts-ability-bundlemonitor-offbundlechangedevent-f-sys.md#offbundlechangedevent) | 注销监听应用的安装，卸载，更新。使用callback异步回调。 |
-| [onAdd](arkts-ability-bundlemonitor-onadd-f-sys.md#onadd) | 注册监听应用的安装。 |
-| [onRemove](arkts-ability-bundlemonitor-onremove-f-sys.md#onremove) | 注册监听应用的卸载。 |
-| [onUpdate](arkts-ability-bundlemonitor-onupdate-f-sys.md#onupdate) | 注册监听应用的更新。 |
-| [on_BundleChangedEvent](arkts-ability-bundlemonitor-onbundlechangedevent-f-sys.md#onbundlechangedevent) | 注册监听应用的安装、卸载、更新。使用callback异步回调。 |
+| [offAdd](arkts-ability-bundlemonitor-offadd-f-sys.md) | 注销监听应用的安装。 |
+| [offRemove](arkts-ability-bundlemonitor-offremove-f-sys.md) | 注销监听应用的卸载。 |
+| [offUpdate](arkts-ability-bundlemonitor-offupdate-f-sys.md) | 注销监听应用的更新。 |
+| [off_BundleChangedEvent](arkts-ability-bundlemonitor-offbundlechangedevent-f-sys.md#off_bundlechangedevent) | 注销监听应用的安装，卸载，更新。使用callback异步回调。 |
+| [onAdd](arkts-ability-bundlemonitor-onadd-f-sys.md) | 注册监听应用的安装。 |
+| [onRemove](arkts-ability-bundlemonitor-onremove-f-sys.md) | 注册监听应用的卸载。 |
+| [onUpdate](arkts-ability-bundlemonitor-onupdate-f-sys.md) | 注册监听应用的更新。 |
+| [on_BundleChangedEvent](arkts-ability-bundlemonitor-onbundlechangedevent-f-sys.md#on_bundlechangedevent) | 注册监听应用的安装、卸载、更新。使用callback异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-backgroundTaskManager-export enum ContinuousTaskDetailedCancelReason--><!--Device-backgroundTaskManager-export enum ContinuousTaskDetailedCancelReason-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -21,10 +17,6 @@ USER_CANCEL_REMOVE_NOTIFICATION = 3
 用户移除通知。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4-End-->
@@ -61,10 +49,6 @@ SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING = 6
 申请AUDIO_PLAYBACK类型长时任务，但是未播放音视频。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7-End-->
@@ -101,10 +81,6 @@ SYSTEM_CANCEL_NOT_USE_LOCATION = 8
 申请LOCATION类型长时任务，但是未使用定位导航。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,10 +98,6 @@ SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9-End-->
@@ -141,10 +113,6 @@ SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10
 申请MULTI_DEVICE_CONNECTION类型长时任务，但是未使用多设备互联。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -162,10 +130,6 @@ SYSTEM_CANCEL_USE_ILLEGALLY = 11
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11-End-->
@@ -181,10 +145,6 @@ SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE = 12
 申请DATA_TRANSFER类型长时任务，但是进度长时间（首次更新超过10分钟）未更新。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -202,10 +162,6 @@ SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13-End-->
@@ -221,10 +177,6 @@ SYSTEM_CANCEL_USER_UNAUTHORIZED = 14
 申请特殊场景类型长时任务，但是用户未授权。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

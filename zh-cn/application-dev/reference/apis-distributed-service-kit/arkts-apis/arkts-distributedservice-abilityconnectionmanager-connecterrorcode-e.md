@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-abilityConnectionManager-export enum ConnectErrorCode--><!--Device-abilityConnectionManager-export enum ConnectErrorCode-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
@@ -21,10 +17,6 @@ CONNECTED_SESSION_EXISTS = 0
 表示应用之间存在已连接的会话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ PEER_APP_REJECTED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1--><!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1-End-->
@@ -61,10 +49,6 @@ LOCAL_WIFI_NOT_OPEN = 2
 表示本端WiFi未开启。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ PEER_WIFI_NOT_OPEN = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3--><!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3-End-->
@@ -102,10 +82,6 @@ PEER_ABILITY_NO_ONCOLLABORATE = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectErrorCode-PEER_ABILITY_NO_ONCOLLABORATE = 4--><!--Device-ConnectErrorCode-PEER_ABILITY_NO_ONCOLLABORATE = 4-End-->
@@ -121,10 +97,6 @@ SYSTEM_INTERNAL_ERROR = 5
 表示系统内部错误。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

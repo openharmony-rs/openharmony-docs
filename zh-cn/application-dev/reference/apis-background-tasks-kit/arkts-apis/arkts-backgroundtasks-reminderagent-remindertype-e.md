@@ -4,11 +4,9 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [ReminderType](arkts-backgroundtasks-reminderagentmanager-remindertype-e.md#remindertype)
+**替代接口：** [ReminderType](arkts-backgroundtasks-reminderagentmanager-remindertype-e.md)
 
 <!--Device-reminderAgent-export enum ReminderType--><!--Device-reminderAgent-export enum ReminderType-End-->
 
@@ -23,8 +21,6 @@ REMINDER_TYPE_TIMER = 0
 表示提醒类型：倒计时。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -44,8 +40,6 @@ REMINDER_TYPE_CALENDAR = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** REMINDER_TYPE_CALENDAR
@@ -63,8 +57,6 @@ REMINDER_TYPE_ALARM = 2
 表示提醒类型：闹钟。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

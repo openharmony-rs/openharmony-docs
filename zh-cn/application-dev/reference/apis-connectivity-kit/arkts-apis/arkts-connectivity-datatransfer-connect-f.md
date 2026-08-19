@@ -1,5 +1,11 @@
 # connect
 
+## 导入模块
+
+```TypeScript
+import { dataTransfer } from '@kit.ConnectivityKit';
+```
+
 ## connect
 
 ```TypeScript
@@ -9,10 +15,6 @@ function connect(params: ConnectionParams): Promise<void>
 连接服务端。如果连接成功，则可以向服务端发送数据。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 

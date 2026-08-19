@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-companionDeviceAuth-enum DeviceIdType--><!--Device-companionDeviceAuth-enum DeviceIdType-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
@@ -23,10 +19,6 @@ UNIFIED_DEVICE_ID = 1
 统一设备ID。系统预设的设备业务标识类型，用于跨设备的统一设备识别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +37,6 @@ VENDOR_BEGIN = 10000
 厂商自定义设备ID类型取值起点。厂商可在此值基础上自定义扩展设备ID类型，实际取值需大于等于10000，避免与系统保留值[1-9999]冲突。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

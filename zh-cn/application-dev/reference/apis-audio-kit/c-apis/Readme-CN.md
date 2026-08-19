@@ -1,4 +1,4 @@
-# CAPI<!--c-audio-kit-->
+# C API<!--c-audio-kit-->
 
 - 头文件
     - [native_midi.h](capi-native-midi-h.md)

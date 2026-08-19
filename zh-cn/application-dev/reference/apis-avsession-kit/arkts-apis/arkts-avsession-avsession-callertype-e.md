@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum CallerType--><!--Device-avSession-enum CallerType-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -21,10 +17,6 @@ TYPE_CAST = 'cast'
 调用方来自投播。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallerType-TYPE_CAST = 'cast'--><!--Device-CallerType-TYPE_CAST = 'cast'-End-->
 
@@ -40,10 +32,6 @@ TYPE_BLUETOOTH = 'bluetooth'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallerType-TYPE_BLUETOOTH = 'bluetooth'--><!--Device-CallerType-TYPE_BLUETOOTH = 'bluetooth'-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -57,10 +45,6 @@ TYPE_NEARLINK = 'nearlink'
 调用方来自星闪。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -77,10 +61,6 @@ TYPE_APP = 'app'
 调用方来自应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallerType-TYPE_APP = 'app'--><!--Device-CallerType-TYPE_APP = 'app'-End-->
 

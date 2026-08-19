@@ -1,5 +1,10 @@
 # attachId
 
+## 导入模块
+
+```TypeScript
+```
+
 ## attachId
 
 ```TypeScript
@@ -10,11 +15,9 @@ function attachId(uri: string, id: number): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [attachId](arkts-ability-datauriutils-attachid-f.md#attachid)
+**替代接口：** [attachId](arkts-ability-datauriutils-attachid-f.md)
 
 <!--Device-dataUriUtils-function attachId(uri: string, id: number): string--><!--Device-dataUriUtils-function attachId(uri: string, id: number): string-End-->
 
@@ -33,7 +36,7 @@ function attachId(uri: string, id: number): string
 | --- | --- |
 | string | 返回附加ID之后的uri对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import dataUriUtils from '@ohos.ability.dataUriUtils';

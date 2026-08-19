@@ -1,5 +1,11 @@
 # translate
 
+## 导入模块
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+```
+
 ## translate
 
 ```TypeScript
@@ -9,8 +15,6 @@ function translate(options: TranslateOption): Matrix4Transit
 Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。 > **说明：**
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 

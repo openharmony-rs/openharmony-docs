@@ -7,8 +7,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [PluginComponent](arkts-na-plugincomponent-plugincomponent-f-sys.md#plugincomponent系统接口) | 创建插件组件，用于显示外部应用提供的UI。 |
-| [PluginComponent](arkts-na-plugincomponent-plugincomponent-f-sys.md#plugincomponent系统接口) | 定义PluginComponent组件。它要求在组件属性设置开始时调用setPluginComponentOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
+| [PluginComponent](arkts-na-plugincomponent-plugincomponent-f-sys.md) | 创建插件组件，用于显示外部应用提供的UI。 |
+| [PluginComponent](arkts-na-plugincomponent-plugincomponent-f-sys.md) | 定义PluginComponent组件。它要求在组件属性设置开始时调用setPluginComponentOptions， 并在组件属性设置结束时调用applyAttributeFinish。 |
 <!--DelEnd-->
 
 <!--Del-->

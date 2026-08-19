@@ -4,10 +4,6 @@
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-webview-enum PressureLevel--><!--Device-webview-enum PressureLevel-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ MEMORY_PRESSURE_LEVEL_MODERATE = 1
 中等内存压力等级。这个等级下，Web内核会尝试释放重新分配开销较小且不需要立即使用的缓存。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ MEMORY_PRESSURE_LEVEL_CRITICAL = 2
 严重内存压力等级。这个等级下，Web内核会尝试释放所有可能的内存缓存。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 

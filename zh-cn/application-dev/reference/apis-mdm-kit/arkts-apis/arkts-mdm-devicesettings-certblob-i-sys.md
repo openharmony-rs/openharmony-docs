@@ -4,17 +4,21 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [CertBlob](arkts-mdm-securitymanager-certblob-i.md#certblob)
+**替代接口：** [CertBlob](arkts-mdm-securitymanager-certblob-i.md)
 
 <!--Device-deviceSettings-export interface CertBlob--><!--Device-deviceSettings-export interface CertBlob-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+```
 
 ## alias
 
@@ -27,8 +31,6 @@ alias: string
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 
@@ -53,8 +55,6 @@ inData: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 26.0.0
 

@@ -4,13 +4,19 @@ WebResourceError是Web组件中提供资源加载失败错误信息的类。该�
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class WebResourceError--><!--Device-unnamed-declare class WebResourceError-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## constructor
 
@@ -21,10 +27,6 @@ constructor()
 WebResourceError的构造函数，创建WebResourceError对象，用于封装Web组件资源加载失败时的错误信息。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,13 +40,9 @@ WebResourceError的构造函数，创建WebResourceError对象，用于封装Web
 getCustomErrorCode(): number
 ```
 
-获取加载资源的自定义错误码。自定义错误码通过[WebSchemeHandlerResponse](../arkts-apis/arkts-arkweb-webview-webschemehandlerresponse-c.md#webschemehandlerresponse)的 [setCustomErrorCode](../arkts-apis/arkts-arkweb-webview-webschemehandlerresponse-c.md#setcustomerrorcode)设置， 并通过[onErrorReceive](arkts-arkweb-web-attribute.md#onerrorreceive)事件直接传递给应用。
+获取加载资源的自定义错误码。自定义错误码通过[WebSchemeHandlerResponse](../arkts-apis/arkts-arkweb-webview-webschemehandlerresponse-c.md)的 [setCustomErrorCode](../arkts-apis/arkts-arkweb-webview-webschemehandlerresponse-c.md#setcustomerrorcode)设置， 并通过[onErrorReceive](arkts-arkweb-web-attribute.md#onerrorreceive)事件直接传递给应用。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceError-getCustomErrorCode(): number--><!--Device-WebResourceError-getCustomErrorCode(): number-End-->
 
@@ -65,10 +63,6 @@ getErrorCode(): number
 获取加载资源的错误码。用于判断资源加载失败的具体原因（如网络错误、服务器错误、权限问题等），以便开发者根据错误类型采取相应的处理策略（如重试、提示用户、降级显示等）。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -91,10 +85,6 @@ getErrorInfo(): string
 获取加载资源的错误信息。用于详细描述资源加载失败的具体原因，开发者可将错误信息输出到日志用于调试分析，或向用户显示友好的错误提示。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

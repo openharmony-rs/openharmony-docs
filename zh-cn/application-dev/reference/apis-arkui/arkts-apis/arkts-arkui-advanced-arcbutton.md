@@ -1,5 +1,11 @@
 # @ohos.arkui.advanced.ArcButton
 
+## 导入模块
+
+```TypeScript
+import { ArcButton, ArcButtonOptions, ArcButtonProgressConfig, ArcButtonPosition, ArcButtonStyleMode, ArcButtonStatus } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 类

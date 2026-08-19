@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedDeviceManager-interface DiscoverySuccessResult--><!--Device-distributedDeviceManager-interface DiscoverySuccessResult-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## 导入模块
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## device
 
@@ -23,10 +25,6 @@ device: DeviceBasicInfo
 **类型：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DiscoverySuccessResult-device: DeviceBasicInfo--><!--Device-DiscoverySuccessResult-device: DeviceBasicInfo-End-->
 

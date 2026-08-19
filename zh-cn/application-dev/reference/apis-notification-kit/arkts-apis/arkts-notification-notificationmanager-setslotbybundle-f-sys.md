@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## setSlotByBundle
@@ -12,13 +12,9 @@ import { notificationManager } from 'notificationManager';
 function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback<void>): void
 ```
 
-设置指定应用的通知渠道。使用callback异步回调。 设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md#addslot)创建通知渠道。
+设置指定应用的通知渠道。使用callback异步回调。 设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md)创建通知渠道。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -34,7 +30,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
 | slot | NotificationSlot | 是 | 通知渠道。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设定通知渠道回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 设定通知渠道回调函数。 |
 
 **错误码：**
 
@@ -49,7 +45,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -101,13 +97,9 @@ notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCal
 function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<void>
 ```
 
-设置指定应用的通知渠道。使用Promise异步回调。 设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md#addslot)创建通知渠道。
+设置指定应用的通知渠道。使用Promise异步回调。 设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f.md)创建通知渠道。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -143,7 +135,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,5 +1,11 @@
 # isNewCallAllowed（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## isNewCallAllowed
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isNewCallAllowed(callback: AsyncCallback<boolean>): void
 判断是否允许再拨打一通新电话。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function isNewCallAllowed(callback: AsyncCallback<boolean>): void--><!--Device-call-function isNewCallAllowed(callback: AsyncCallback<boolean>): void-End-->
 
@@ -24,7 +26,7 @@ function isNewCallAllowed(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 以回调函数的方式返回结果。true表示允许拨打，false表示不可拨打。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 以回调函数的方式返回结果。true表示允许拨打，false表示不可拨打。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function isNewCallAllowed(callback: AsyncCallback<boolean>): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,10 +64,6 @@ function isNewCallAllowed(): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-function isNewCallAllowed(): Promise<boolean>--><!--Device-call-function isNewCallAllowed(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -87,7 +85,7 @@ function isNewCallAllowed(): Promise<boolean>
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

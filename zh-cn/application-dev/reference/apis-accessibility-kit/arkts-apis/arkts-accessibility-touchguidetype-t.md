@@ -8,10 +8,6 @@ type TouchGuideType = 'touchBegin' | 'touchEnd' | 'touchGuideGesture'
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-type TouchGuideType = 'touchBegin' | 'touchEnd' | 'touchGuideGesture'--><!--Device-unnamed-type TouchGuideType = 'touchBegin' | 'touchEnd' | 'touchGuideGesture'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core

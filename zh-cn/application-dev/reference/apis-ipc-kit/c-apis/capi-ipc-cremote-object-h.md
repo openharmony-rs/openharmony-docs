@@ -36,8 +36,7 @@
 | [OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)](#oh_ipcremotestub_create) | - | 创建OHIPCRemoteStub对象，用于Stub端创建服务端对象，处理来自Proxy端的远端数据请求。- 服务端需要提供跨进程服务能力时，创建Stub对象作为服务端实体。- 实现自定义IPC通信协议的服务端部分 - 构建RPC服务端服务能力。- 创建Stub对象后，通常需要通过OH_IPCRemoteProxy相关接口将Stub对象注册到服务管理器，供Proxy端发现和连接。- requestCallback中应避免耗时操作，以免阻塞IPC通信。- 如需处理耗时任务，可在回调中返回错误码并使用线程池异步处理。- 确保userData的生命周期覆盖Stub对象的生命周期，避免悬空指针。- 调用[OH_IPCRemoteStub_Create()]{@link oh_ipcremotestub_create}创建对象后，必须在使用完毕后调用[OH_IPCRemoteStub_Destroy()]{@link oh_ipcremotestub_destroy}销毁对象释放资源。- 未销毁会导致内存泄漏。 |
 | [void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)](#oh_ipcremotestub_destroy) | - | 销毁OHIPCRemoteStub对象。- 服务端不再需要提供IPC服务时，释放Stub对象。- 服务端退出或模块卸载时，清理IPC资源。- 与[OH_IPCRemoteStub_Create()]{@link oh_ipcremotestub_create}配对使用。- 必须在Stub对象不再被使用时调用。- 销毁后会自动触发destroyCallback回调释放userData。- 销毁后不能再使用该Stub对象进行任何操作。 |
 | [void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)](#oh_ipcremoteproxy_destroy) | - | 销毁OHIPCRemoteProxy对象。- 客户端不再需要调用远端服务时，释放Proxy对象。- 客户端退出或模块卸载时，清理IPC资源。- 必须先调用[OH_IPCRemoteProxy_RemoveDeathRecipient()]{@link oh_ipcremoteproxy_removedeathrecipient}移除所有已添加的死亡监听。- 如果未移除监听就销毁Proxy对象，将导致死亡监听回调异常或内存泄漏。- 销毁后不能再调用该Proxy的任何方法。 |
-| [#pragma pack(4)
-typedef struct {](#pack) | - | IPC消息选项定义，用于配置IPC通信过程中的请求参数。 |
+| [#pragma pack(4) typedef struct {](#pack) | - | IPC消息选项定义，用于配置IPC通信过程中的请求参数。 |
 | [int OH_IPCRemoteProxy_SendRequest(const OHIPCRemoteProxy *proxy, uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, const OH_IPC_MessageOption *option)](#oh_ipcremoteproxy_sendrequest) | - | IPC消息发送函数，用于Proxy端向远端Stub发送IPC消息请求，支持同步和异步两种通信模式。- 客户端需要跨进程调用服务端能力时，发送请求并获取响应。- 实现客户端与服务端的IPC通信交互。- 调用远端服务的业务接口。- 同步模式适用于需要等待结果的请求，如查询操作；异步模式适用于无需等待结果的请求，如日志上报。- 同步调用会阻塞当前线程，应避免在UI线程中使用，以免造成卡顿。- 异步调用虽然不阻塞线程，但仍需注意调用频率，避免过度占用IPC通道。- 建议在调用前先使用[OH_IPCRemoteProxy_IsRemoteDead()]{@link oh_ipcremoteproxy_isremotedead}检查远端是否存活。- 调用失败时，建议根据返回的错误码进行相应的重试或错误处理。- 频繁的IPC调用会影响性能，建议合理设计通信协议，减少调用次数。 |
 | [int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **descriptor, int32_t *len, OH_IPC_MemAllocator allocator)](#oh_ipcremoteproxy_getinterfacedescriptor) | - | 从Stub端获取接口描述符。接口描述符是Stub对象的唯一标识，用于识别远端服务类型、进行服务版本兼容性检查或者验证远端服务是否实现了特定接口。函数通过IPC调用从远端Stub获取描述符字符串，并使用用户提供的内存分配器存储结果。- 返回的描述符字符串内存由用户提供的allocator分配，用户使用完毕后必须主动释放，否则会造成内存泄漏。即使函数调用失败，也需要检查descriptor是否非空并释放。 |
 | [typedef void (\*OH_OnDeathRecipientCallback)(void *userData)](#oh_ondeathrecipientcallback) | OH_OnDeathRecipientCallback | 远端OHIPCRemoteStub对象死亡通知的回调函数类型。当远端Stub对象所在进程异常退出或被系统杀死时，系统会触发此回调通知客户端。回调函数在Binder线程中执行，注意线程安全。回调中不建议进行复杂的IPC操作，避免潜在的死锁风险。常用于客户端需要感知服务端异常退出或崩溃、需要在服务端对象死亡时进行资源清理或状态重置以及需要实现服务端存活监控和故障恢复机制。 |
@@ -88,7 +87,7 @@ Stub端用于处理远端数据请求的回调函数。当Proxy端通过[OH_IPCR
 
 | 参数项 | 描述 |
 | -- | -- |
-| (uint32_t code | 用户定义的IPC命令字，范围：[0x01, 0x00ffffff]。建议按业务模块分段定义code值，避免不同功能命令冲突。例如：0x01-0x100用于基础功能，0x101-0x200用于扩展功能。 |
+| uint32_t code | 用户定义的IPC命令字，范围：[0x01, 0x00ffffff]。建议按业务模块分段定义code值，避免不同功能命令冲突。例如：0x01-0x100用于基础功能，0x101-0x200用于扩展功能。 |
 | [const OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) \*data | 请求数据对象指针，不会为空，函数内不允许释放。 |
 | [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md) \*reply | 响应数据对象指针，不会为空，函数内不允许释放。如果函数返回错误，该值不允许写入数据。 |
 | void \*userData | 用户私有数据，当需要在回调函数中访问用户自定义数据时传入此参数，不需要访问用户数据时可以传NULL。为NULL时回调函数无法访问用户私有数据。 |
@@ -97,7 +96,7 @@ Stub端用于处理远端数据请求的回调函数。当Proxy端通过[OH_IPCR
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br> 否则返回用户自定义错误码或系统错误码，自定义错误码范围：[1909001, 1909999]；<br> 如果用户自定义错误码超出范围，将返回{@link OH_IPC_ErrorCode#OH_IPC_INVALID_USER_ERROR_CODE}。 |
+| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；  否则返回用户自定义错误码或系统错误码，自定义错误码范围：[1909001, 1909999]；  如果用户自定义错误码超出范围，将返回{@link OH_IPC_ErrorCode#OH_IPC_INVALID_USER_ERROR_CODE}。 |
 
 ### OH_OnRemoteDestroyCallback()
 
@@ -117,7 +116,7 @@ typedef void (*OH_OnRemoteDestroyCallback)(void *userData)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*userData | 用户私有数据，当需要在回调函数中访问用户自定义数据时传入此参数，不需要访问用户数据时可为NULL。传入NULL时回调函数无法访问用户私有数据。 |
+| void \*userData | 用户私有数据，当需要在回调函数中访问用户自定义数据时传入此参数，不需要访问用户数据时可为NULL。传入NULL时回调函数无法访问用户私有数据。 |
 
 ### OH_IPCRemoteStub_Create()
 
@@ -191,8 +190,7 @@ void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)
 ### pack()
 
 ```c
-#pragma pack(4)
-typedef struct {
+#pragma pack(4) typedef struct {
 ```
 
 **描述**
@@ -229,7 +227,7 @@ IPC消息发送函数，用于Proxy端向远端Stub发送IPC消息请求，支�
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 发送成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br> 参数不合法时返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br> 远端OHIPCRemoteStub对象死亡返回{@link OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT}；<br> code超出范围返回{@link OH_IPC_ErrorCode#OH_IPC_CODE_OUT_OF_RANGE}；<br> 其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}或用户自定义错误码（范围：[1909001, 1909999]）。 |
+| int | 发送成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；  参数不合法时返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；  远端OHIPCRemoteStub对象死亡返回{@link OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT}；  code超出范围返回{@link OH_IPC_ErrorCode#OH_IPC_CODE_OUT_OF_RANGE}；  其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}或用户自定义错误码（范围：[1909001, 1909999]）。 |
 
 ### OH_IPCRemoteProxy_GetInterfaceDescriptor()
 
@@ -258,7 +256,7 @@ int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **des
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 发送成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br> 参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br> 远端OHIPCRemoteStub对象死亡返回{@link OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT}；<br> 内存分配失败返回{@link OH_IPC_ErrorCode#OH_IPC_MEM_ALLOCATOR_ERROR}；<br> 序列化读失败返回{@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR}或用户自定义错误码。 |
+| int | 发送成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；  参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；  远端OHIPCRemoteStub对象死亡返回{@link OH_IPC_ErrorCode#OH_IPC_DEAD_REMOTE_OBJECT}；  内存分配失败返回{@link OH_IPC_ErrorCode#OH_IPC_MEM_ALLOCATOR_ERROR}；  序列化读失败返回{@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR}或用户自定义错误码。 |
 
 ### OH_OnDeathRecipientCallback()
 
@@ -278,7 +276,7 @@ typedef void (*OH_OnDeathRecipientCallback)(void *userData)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*userData | 用户私有数据指针，当需要在死亡通知回调中访问用户自定义数据时传入此参数，不需要访问用户数据时可以不传或传NULL。为NULL时回调函数中无法访问用户私有数据。 |
+| void \*userData | 用户私有数据指针，当需要在死亡通知回调中访问用户自定义数据时传入此参数，不需要访问用户数据时可以不传或传NULL。为NULL时回调函数中无法访问用户私有数据。 |
 
 ### OH_OnDeathRecipientDestroyCallback()
 
@@ -298,7 +296,7 @@ OHIPCDeathRecipient对象销毁回调函数类型。常用于需要在死亡监�
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*userData | 用户私有数据指针，当需要在死亡通知回调中访问用户自定义数据时传入此参数，不需要访问用户数据时可以不传或传NULL。为NULL时回调函数中无法访问用户私有数据。 |
+| void \*userData | 用户私有数据指针，当需要在死亡通知回调中访问用户自定义数据时传入此参数，不需要访问用户数据时可以不传或传NULL。为NULL时回调函数中无法访问用户私有数据。 |
 
 ### OH_IPCDeathRecipient_Create()
 
@@ -373,7 +371,7 @@ int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecip
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br> 参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br> 其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
+| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；  参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；  其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
 
 ### OH_IPCRemoteProxy_RemoveDeathRecipient()
 
@@ -400,7 +398,7 @@ int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRe
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br> 参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br> 其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
+| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；  参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；  其它返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
 
 ### OH_IPCRemoteProxy_IsRemoteDead()
 

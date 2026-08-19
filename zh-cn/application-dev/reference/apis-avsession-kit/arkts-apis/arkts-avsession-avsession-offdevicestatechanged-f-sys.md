@@ -1,5 +1,11 @@
 # offDeviceStateChanged（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## offDeviceStateChanged
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offDeviceStateChanged(callback?: Callback<DeviceState>): void
 Unregisters a system callback for the device connection phase.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -26,7 +28,7 @@ Unregisters a system callback for the device connection phase.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeviceState](arkts-avsession-avsession-devicestate-i-sys.md)&gt; | 否 | Callback used to return the device information. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeviceState](arkts-avsession-avsession-devicestate-i-sys.md)&gt; | 否 | Callback used to return the device information. |
 
 **错误码：**
 

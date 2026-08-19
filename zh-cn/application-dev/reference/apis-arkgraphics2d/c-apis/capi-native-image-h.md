@@ -73,7 +73,7 @@ typedef void (*OH_OnFrameAvailable)(void *context)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*context | 用户自定义的上下文信息，会在回调触发时返回给用户。 |
+| void \*context | 用户自定义的上下文信息，会在回调触发时返回给用户。 |
 
 ### OH_NativeImage_Create()
 
@@ -389,7 +389,7 @@ int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 0 - 成功。<br>     40001000 - image为空。 |
+| int32_t | 0 - 成功。\n      40001000 - image为空。 |
 
 ### OH_NativeImage_GetBufferMatrix()
 
@@ -416,7 +416,7 @@ int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。<br>     NATIVE_ERROR_MEM_OPERATION_ERROR 30001000 - 内存操作错误，获取变换矩阵失败。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。\n      NATIVE_ERROR_MEM_OPERATION_ERROR 30001000 - 内存操作错误，获取变换矩阵失败。 |
 
 ### OH_NativeImage_AcquireNativeWindowBuffer()
 
@@ -444,7 +444,7 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNative
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image、nativeWindowBuffer、fenceFd为空。<br>     NATIVE_ERROR_NO_BUFFER 40601000 - 无buffer可供消费。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image、nativeWindowBuffer、fenceFd为空。\n      NATIVE_ERROR_NO_BUFFER 40601000 - 无buffer可供消费。 |
 
 ### OH_NativeImage_ReleaseNativeWindowBuffer()
 
@@ -472,7 +472,7 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNative
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image、nativeWindowBuffer为空。<br>     NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - nativeWindowBuffer状态非法。<br>     NATIVE_ERROR_BUFFER_NOT_IN_CACHE 41210000 - nativeWindowBuffer不在缓存中。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image、nativeWindowBuffer为空。\n      NATIVE_ERROR_BUFFER_STATE_INVALID 41207000 - nativeWindowBuffer状态非法。\n      NATIVE_ERROR_BUFFER_NOT_IN_CACHE 41210000 - nativeWindowBuffer不在缓存中。 |
 
 ### OH_ConsumerSurface_Create()
 
@@ -519,7 +519,7 @@ int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
 
 ### OH_ConsumerSurface_SetDefaultSize()
 
@@ -547,7 +547,7 @@ int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空，或width、height小于等于0。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空，或width、height小于等于0。 |
 
 ### OH_NativeImage_SetDropBufferMode()
 
@@ -574,7 +574,7 @@ int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
 
 ### OH_NativeImage_CreateWithSingleBufferMode()
 
@@ -654,7 +654,7 @@ int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
 
 ### OH_NativeImage_GetColorSpace()
 
@@ -709,7 +709,7 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image、nativeWindowBuffer、fenceFd为空。<br>     NATIVE_ERROR_NO_BUFFER 40601000 - 无buffer可供消费。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image、nativeWindowBuffer、fenceFd为空。\n      NATIVE_ERROR_NO_BUFFER 40601000 - 无buffer可供消费。 |
 
 ### OH_NativeImage_IsReleased()
 
@@ -736,7 +736,7 @@ int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image或isReleased为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image或isReleased为空。 |
 
 ### OH_NativeImage_Release()
 
@@ -762,6 +762,6 @@ int32_t OH_NativeImage_Release(OH_NativeImage* image)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
+| int32_t | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - image为空。 |
 
 

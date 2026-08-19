@@ -4,13 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare class TreeListenerV2--><!--Device-unnamed-export declare class TreeListenerV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## offNodeAdd
 
@@ -22,9 +25,7 @@ offNodeAdd(callback?: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +37,7 @@ offNodeAdd(callback?: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeClick
 
@@ -48,9 +49,7 @@ offNodeClick(callback?: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,7 +61,7 @@ offNodeClick(callback?: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeDelete
 
@@ -74,9 +73,7 @@ offNodeDelete(callback?: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,7 +85,7 @@ offNodeDelete(callback?: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeModify
 
@@ -100,9 +97,7 @@ offNodeModify(callback?: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,7 +109,7 @@ offNodeModify(callback?: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 否 |  |
 
 ## offNodeMove
 
@@ -126,9 +121,7 @@ offNodeMove(callback?: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -140,7 +133,7 @@ offNodeMove(callback?: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 否 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 否 |  |
 
 ## onNodeAdd
 
@@ -152,9 +145,7 @@ onNodeAdd(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -166,7 +157,7 @@ onNodeAdd(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onNodeClick
 
@@ -178,9 +169,7 @@ onNodeClick(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -192,7 +181,7 @@ onNodeClick(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onNodeDelete
 
@@ -204,9 +193,7 @@ onNodeDelete(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -218,7 +205,7 @@ onNodeDelete(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onNodeModify
 
@@ -230,9 +217,7 @@ onNodeModify(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,7 +229,7 @@ onNodeModify(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onNodeMove
 
@@ -256,9 +241,7 @@ onNodeMove(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -270,7 +253,7 @@ onNodeMove(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeAdd
 
@@ -282,9 +265,7 @@ onceNodeAdd(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -296,7 +277,7 @@ onceNodeAdd(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeClick
 
@@ -308,9 +289,7 @@ onceNodeClick(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -322,7 +301,7 @@ onceNodeClick(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeDelete
 
@@ -334,9 +313,7 @@ onceNodeDelete(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -348,7 +325,7 @@ onceNodeDelete(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeModify
 
@@ -360,9 +337,7 @@ onceNodeModify(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -374,7 +349,7 @@ onceNodeModify(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 
 ## onceNodeMove
 
@@ -386,9 +361,7 @@ onceNodeMove(callback: OnChangedCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -400,5 +373,5 @@ onceNodeMove(callback: OnChangedCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnChangedCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangedcallback-t.md) | 是 |  |
+| callback | [OnChangedCallback](arkts-na-onchangedcallback-t.md) | 是 |  |
 

@@ -14,10 +14,6 @@ use new function to set the value.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -42,10 +38,6 @@ Circle(value?: CircleOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -62,4 +54,9 @@ Circle(value?: CircleOptions)
 
 ## 汇总
 
-- [CircleOptions](arkts-arkui-circleoptions-i.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [CircleOptions](arkts-arkui-circleoptions-i.md) | 用于描述Circle组件绘制属性。 |
+

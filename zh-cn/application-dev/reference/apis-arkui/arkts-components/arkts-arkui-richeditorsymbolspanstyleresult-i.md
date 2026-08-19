@@ -4,13 +4,14 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface RichEditorSymbolSpanStyleResult--><!--Device-unnamed-declare interface RichEditorSymbolSpanStyleResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## effectStrategy
 
@@ -23,10 +24,6 @@ SymbolSpan组件动效策略。 默认值：SymbolEffectStrategy.NONE。
 **类型：** SymbolEffectStrategy
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +45,6 @@ SymbolSpan组件颜色。 默认值：不同渲染策略下默认值不同。
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -71,10 +64,6 @@ SymbolSpan组件大小，默认单位为fp。 默认值：跟随主题。
 **类型：** number \| string \| Resource
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +85,6 @@ SymbolSpan组件粗细。 number类型取值[100,900]，取值间隔为100，默
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -119,10 +104,6 @@ SymbolSpan组件渲染策略。 默认值：SymbolRenderingStrategy.SINGLE。
 **类型：** SymbolRenderingStrategy
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,15 +4,19 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [Unicode](../../apis-na/arkts-apis/arkts-na-i18n-unicode-c.md#unicode)
+**替代接口：** [Unicode](../../apis-na/arkts-apis/arkts-na-i18n-unicode-c.md)
 
 <!--Device-i18n-export class Character--><!--Device-i18n-export class Character-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
 
 ## getType
 
@@ -23,8 +27,6 @@ getType(ch: string): string
 获取输入的字符的一般类别值。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -56,8 +58,6 @@ isDigit(ch: string): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isDigit](../../apis-na/arkts-apis/arkts-na-i18n-unicode-c.md#isdigit)
@@ -87,8 +87,6 @@ isIdeograph(ch: string): boolean
 判断输入的字符是否是表意文字。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -120,8 +118,6 @@ isLetter(ch: string): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isLetter](../../apis-na/arkts-apis/arkts-na-i18n-unicode-c.md#isletter)
@@ -151,8 +147,6 @@ isLowerCase(ch: string): boolean
 判断输入的字符是否是小写字母。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -184,8 +178,6 @@ isRTL(ch: string): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isRTL](../../apis-na/arkts-apis/arkts-na-i18n-unicode-c.md#isrtl)
@@ -215,8 +207,6 @@ isSpaceChar(ch: string): boolean
 判断输入的字符是否是空格符。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -248,8 +238,6 @@ isUpperCase(ch: string): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isUpperCase](../../apis-na/arkts-apis/arkts-na-i18n-unicode-c.md#isuppercase)
@@ -279,8 +267,6 @@ isWhitespace(ch: string): boolean
 判断输入的字符是否是空白符。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

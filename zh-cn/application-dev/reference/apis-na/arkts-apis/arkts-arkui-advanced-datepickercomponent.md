@@ -1,5 +1,10 @@
 # @ohos.arkui.advanced.DatePickerComponent
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 类
@@ -7,10 +12,10 @@
 | 名称 | 说明 |
 | --- | --- |
 | [CommonOptions](arkts-na-arkui-advanced-datepickercomponent-commonoptions-c.md) | CommonOptions定义日期时间选择器的通用选项。 |
-| [DateOptions](arkts-na-arkui-advanced-datepickercomponent-dateoptions-c.md) | DateOptions定义日期选择器的选项。 继承于[CommonOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md#commonoptions)。 |
+| [DateOptions](arkts-na-arkui-advanced-datepickercomponent-dateoptions-c.md) | DateOptions定义日期选择器的选项。 继承于[CommonOptions](arkts-na-arkui-advanced-datepickercomponent-commonoptions-c.md)。 |
 | [DatePickerComponentOptions](arkts-na-arkui-advanced-datepickercomponent-datepickercomponentoptions-c.md) | DatePickerComponentOptions定义日期时间选择器组件的选项。 |
 | [DatePickerComponentResult](arkts-na-arkui-advanced-datepickercomponent-datepickercomponentresult-c.md) | DatePickerComponentResult定义日期时间选择器的选择结果。 |
-| [TimeOptions](arkts-na-arkui-advanced-datepickercomponent-timeoptions-c.md) | TimeOptions定义时间选择器的选项。 继承于[CommonOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md#commonoptions)。 |
+| [TimeOptions](arkts-na-arkui-advanced-datepickercomponent-timeoptions-c.md) | TimeOptions定义时间选择器的选项。 继承于[CommonOptions](arkts-na-arkui-advanced-datepickercomponent-commonoptions-c.md)。 |
 
 ### 结构体
 

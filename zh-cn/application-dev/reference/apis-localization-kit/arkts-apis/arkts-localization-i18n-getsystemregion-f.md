@@ -1,5 +1,11 @@
 # getSystemRegion
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## getSystemRegion
 
 ```TypeScript
@@ -9,8 +15,6 @@ export function getSystemRegion(): string
 获取系统地区。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -26,7 +30,7 @@ export function getSystemRegion(): string
 | --- | --- |
 | string | 系统地区ID。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

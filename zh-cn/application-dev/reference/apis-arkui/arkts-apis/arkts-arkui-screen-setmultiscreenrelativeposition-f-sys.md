@@ -1,5 +1,12 @@
 # setMultiScreenRelativePosition（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## setMultiScreenRelativePosition
 
 ```TypeScript
@@ -10,10 +17,6 @@ function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOp
 仅在扩展模式下，设置主屏和扩展屏幕的位置信息，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screen-function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions,    secondaryScreenOptions: MultiScreenPositionOptions): Promise<void>--><!--Device-screen-function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions,    secondaryScreenOptions: MultiScreenPositionOptions): Promise<void>-End-->
 
@@ -43,7 +46,7 @@ function setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOp
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

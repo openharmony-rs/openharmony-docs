@@ -1,5 +1,11 @@
 # @ohos.atomicservice.InterstitialDialogAction
 
+## 导入模块
+
+```TypeScript
+import { InterstitialDialogAction, IconStyle, TitlePosition, BottomOffset } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 类

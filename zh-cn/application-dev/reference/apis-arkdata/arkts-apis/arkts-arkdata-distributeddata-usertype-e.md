@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-distributedData-enum UserType--><!--Device-distributedData-enum UserType-End-->
@@ -21,8 +19,6 @@ SAME_USER_ID = 0
 使用同一账号登录不同设备的用户。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

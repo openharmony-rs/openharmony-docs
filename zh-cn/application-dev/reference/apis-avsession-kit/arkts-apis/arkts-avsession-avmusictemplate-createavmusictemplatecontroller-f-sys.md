@@ -1,5 +1,11 @@
 # createAVMusicTemplateController（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avMusicTemplate } from '@kit.AVSessionKit';
+```
+
 ## createAVMusicTemplateController
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createAVMusicTemplateController(sessionId: string): AVMusicTemplateCont
 创建音频模板控制器，返回音频模板控制器对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 

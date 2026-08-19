@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class StartupConfigEntry--><!--Device-unnamed-declare class StartupConfigEntry-End-->
 
 **系统能力：** SystemCapability.Ability.AppStartup
+
+## 导入模块
+
+```TypeScript
+import { StartupConfigEntry } from '@kit.AbilityKit';
+```
 
 ## onConfig
 
@@ -21,10 +23,6 @@ onConfig?(): StartupConfig
 在回调[AbilityStage.onCreate](arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)前，若该AbilityStage对应的HAP中启动框架配置 文件中[定义了启动框架配置](../../../application-models/app-startup.md#定义启动参数配置)，则会触发该回调。 开发者可以在该回调中设置启动框架配置信息，详细使用方法可参考[设置启动参数](../../../application-models/app-startup.md#设置启动参数)章节。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +36,7 @@ onConfig?(): StartupConfig
 | --- | --- |
 | [StartupConfig](arkts-ability-app-appstartup-startupconfig-startupconfig-i.md) | 启动框架配置信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
@@ -79,10 +77,6 @@ onConfig(): StartupConfig
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartupConfigEntry-onConfig(): StartupConfig--><!--Device-StartupConfigEntry-onConfig(): StartupConfig-End-->
@@ -105,10 +99,6 @@ onRequestCustomMatchRule(want: Want): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartupConfigEntry-onRequestCustomMatchRule(want: Want): string--><!--Device-StartupConfigEntry-onRequestCustomMatchRule(want: Want): string-End-->
@@ -127,7 +117,7 @@ onRequestCustomMatchRule(want: Want): string
 | --- | --- |
 | string | 返回自定义匹配规则值，用于匹配启动任务是否自动执行。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { StartupConfigEntry, Want } from '@kit.AbilityKit';

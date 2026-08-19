@@ -1,5 +1,11 @@
 # onHoverHandChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { motion } from '@kit.MultimodalAwarenessKit';
+```
+
 ## onHoverHandChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onHoverHandChange(detectionArea: HoverHandDetectionArea, callback: Call
 订阅悬停手势事件，并立即开始5秒检测。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -27,7 +29,7 @@ function onHoverHandChange(detectionArea: HoverHandDetectionArea, callback: Call
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | detectionArea | [HoverHandDetectionArea](arkts-multimodalawareness-motion-hoverhanddetectionarea-i-sys.md) | 是 | 悬停手势矩形检测区域。 <br> 重复调用将覆盖之前设置的检测区域。 <br> 若检测区域超出屏幕边界，默认检测重叠区域。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[HoverHandAction](arkts-multimodalawareness-motion-hoverhandaction-e-sys.md)&gt; | 是 | 回调函数，返回悬停手势动作。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[HoverHandAction](arkts-multimodalawareness-motion-hoverhandaction-e-sys.md)&gt; | 是 | 回调函数，返回悬停手势动作。 |
 
 **错误码：**
 
@@ -50,10 +52,6 @@ function onHoverHandChange(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-motion-function onHoverHandChange(    detectionArea: HoverHandDetectionArea, duration: int, callback: Callback<HoverHandAction>): void--><!--Device-motion-function onHoverHandChange(    detectionArea: HoverHandDetectionArea, duration: int, callback: Callback<HoverHandAction>): void-End-->
@@ -68,7 +66,7 @@ function onHoverHandChange(
 | --- | --- | --- | --- |
 | detectionArea | [HoverHandDetectionArea](arkts-multimodalawareness-motion-hoverhanddetectionarea-i-sys.md) | 是 | 悬停手势矩形检测区域。 <br> 重复调用将覆盖之前设置的检测区域。 <br> 若检测区域超出屏幕边界，默认检测重叠区域。 |
 | duration | int | 是 | 检测时长。单位：秒，取值范围为[1,10]的整数。 <br> 时长到期后自动结束订阅，需重新调用以重启检测。 <br> 悬停手势事件为高功耗事件，建议开发者根据需要设置时长。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[HoverHandAction](arkts-multimodalawareness-motion-hoverhandaction-e-sys.md)&gt; | 是 | 回调函数，返回悬停手势动作。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[HoverHandAction](arkts-multimodalawareness-motion-hoverhandaction-e-sys.md)&gt; | 是 | 回调函数，返回悬停手势动作。 |
 
 **错误码：**
 

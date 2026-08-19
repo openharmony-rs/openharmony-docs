@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace inputMethodEngine--><!--Device-unnamed-declare namespace inputMethodEngine-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethodEngine } from '@kit.IMEKit';
+```
 
 ## 汇总
 
@@ -18,12 +20,12 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createKeyboardDelegate](arkts-ime-inputmethodengine-createkeyboarddelegate-f.md#createkeyboarddelegate) | 获取客户端编辑事件监听代理实例[KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md#keyboarddelegate)。输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。 |
-| [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md#getinputmethodability) | 获取输入法应用客户端实例[InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md#inputmethodability)（输入法能力对象），仅支持输入法应用调用。 输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件、创建/销毁输入法面板等。 |
-| [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md#getinputmethodability) | 获取输入法应用客户端实例[InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md#inputmethodability)（输入法能力对象），仅支持输入法应用调用。 |
-| [getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md#getinputmethodengine) | 获取输入法应用客户端实例[InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md#inputmethodengine)（输入法引擎）。 输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件等。 |
-| [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md#getkeyboarddelegate) | 获取客户端编辑事件监听代理实例[KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md#keyboarddelegate)（键盘代理对象）。 输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。 |
-| [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md#getkeyboarddelegate) | 获取客户端编辑事件监听代理实例[KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md#keyboarddelegate)（键盘代理对象）。 输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。 |
+| [createKeyboardDelegate](arkts-ime-inputmethodengine-createkeyboarddelegate-f.md) | 获取客户端编辑事件监听代理实例[KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md)。输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。 |
+| [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md) | 获取输入法应用客户端实例[InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md)（输入法能力对象），仅支持输入法应用调用。 输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件、创建/销毁输入法面板等。 |
+| [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md) | 获取输入法应用客户端实例[InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md)（输入法能力对象），仅支持输入法应用调用。 |
+| [getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md) | 获取输入法应用客户端实例[InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md)（输入法引擎）。 输入法应用获取该实例后，可订阅软键盘显示/隐藏请求事件等。 |
+| [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md) | 获取客户端编辑事件监听代理实例[KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md)（键盘代理对象）。 输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。 |
+| [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md) | 获取客户端编辑事件监听代理实例[KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md)（键盘代理对象）。 输入法应用获取该实例后，可订阅物理键盘按键事件、选中文本变化事件等。 |
 
 ### 接口
 
@@ -34,12 +36,12 @@
 | [EnhancedPanelRect](arkts-ime-inputmethodengine-enhancedpanelrect-i.md) | 增强的输入法面板位置、大小信息，包含自定义避让区域、自定义热区。 |
 | [ImmersiveEffect](arkts-ime-inputmethodengine-immersiveeffect-i.md) | 沉浸效果。 |
 | [InputClient](arkts-ime-inputmethodengine-inputclient-i.md) | InputClient是输入法客户端对象，代表当前绑定到输入法应用的编辑框客户端。InputClient实例通过InputMethodAbility的 on('inputStart') 事件回调获取，每个绑定事件对应一个InputClient实例，输入法应用通过该实例与编辑框进行文本交互。 **核心功能概述：** - **文本获取**：通过 [getForward](arkts-ime-inputmethodengine-inputclient-i.md#getforward)/ [getForwardSync](arkts-ime-inputmethodengine-inputclient-i.md#getforwardsync)获取光标前的文本，通过 [getBackward](arkts-ime-inputmethodengine-inputclient-i.md#getbackward)/ [getBackwardSync](arkts-ime-inputmethodengine-inputclient-i.md#getbackwardsync)获取光标后的文本，用于分析已输入内容并提供智能补全。 - **文本编辑**：通过 [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)/ [insertTextSync](arkts-ime-inputmethodengine-inputclient-i.md#inserttextsync)插入文本，通过 [deleteForward](arkts-ime-inputmethodengine-inputclient-i.md#deleteforward)/ [deleteForwardSync](arkts-ime-inputmethodengine-inputclient-i.md#deleteforwardsync)删除光标前的文本，通过 [deleteBackward](arkts-ime-inputmethodengine-inputclient-i.md#deletebackward) /[deleteBackwardSync](arkts-ime-inputmethodengine-inputclient-i.md#deletebackwardsync)删除光标后的文本。 - **功能键与光标**：通过 [sendKeyFunction](arkts-ime-inputmethodengine-inputclient-i.md#sendkeyfunction) 发送功能键（如回车键），通过 [moveCursor](arkts-ime-inputmethodengine-inputclient-i.md#movecursor)/ [moveCursorSync](arkts-ime-inputmethodengine-inputclient-i.md#movecursorsync)移动光标。 - **选区操作**：通过 [selectByRange](arkts-ime-inputmethodengine-inputclient-i.md#selectbyrange)/ [selectByRangeSync](arkts-ime-inputmethodengine-inputclient-i.md#selectbyrangesync)按范围选中文本，通过 [selectByMovement](arkts-ime-inputmethodengine-inputclient-i.md#selectbymovement) /[selectByMovementSync](arkts-ime-inputmethodengine-inputclient-i.md#selectbymovementsync)按方向选中文本。 - **编辑框属性**：通过 [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute) /[getEditorAttributeSync](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattributesync)获取编辑框属性信息（输入类型、回车键类型等），据此调整键 盘布局。 - **文本预览**：通过[setPreviewText](arkts-ime-inputmethodengine-inputclient-i.md#setpreviewtext)/ [setPreviewTextSync](arkts-ime-inputmethodengine-inputclient-i.md#setpreviewtextsync)设置预览文本，通过 [finishTextPreview](arkts-ime-inputmethodengine-inputclient-i.md#finishtextpreview)/ [finishTextPreviewSync](arkts-ime-inputmethodengine-inputclient-i.md#finishtextpreviewsync)结束文本预览。 - **私有通信**：通过[sendPrivateCommand](arkts-ime-inputmethodengine-inputclient-i.md#sendprivatecommand)向应用发送私有命令，通过 [sendMessage](arkts-ime-inputmethodengine-inputclient-i.md#sendmessage)/ [recvMessage](arkts-ime-inputmethodengine-inputclient-i.md#recvmessage)进行消息通信。 下列API均需使用 on('inputStart') 获取到InputClient实例后，通过实例调用。 |
-| [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md) | InputMethodAbility是输入法应用的核心能力对象，提供输入法生命周期管理、面板创建与销毁、事件订阅等功能。输入法应用通过 [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md#getinputmethodability)获取该实例。 下列API均需使用[getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md#getinputmethodability)获取到InputMethodAbility实例后，通过实例调用。 |
-| [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md) | 下列API均需使用[getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md#getinputmethodengine)获取到InputMethodEngine实例后，通过实例调用。 |
+| [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md) | InputMethodAbility是输入法应用的核心能力对象，提供输入法生命周期管理、面板创建与销毁、事件订阅等功能。输入法应用通过 [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md)获取该实例。 下列API均需使用[getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md)获取到InputMethodAbility实例后，通过实例调用。 |
+| [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md) | 下列API均需使用[getInputMethodEngine](arkts-ime-inputmethodengine-getinputmethodengine-f.md)获取到InputMethodEngine实例后，通过实例调用。 |
 | [KeyEvent](arkts-ime-inputmethodengine-keyevent-i.md) | 按键属性值。 |
 | [KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md) | 面板中的键盘区域。 |
 | [KeyboardController](arkts-ime-inputmethodengine-keyboardcontroller-i.md) | 下列API均需使用 on('inputStart') 获取到KeyboardController实例后，通过实例调用。 |
-| [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md) | KeyboardDelegate是键盘事件监听代理对象，用于输入法应用监听物理键盘按键事件和编辑框文本/光标/选区变化事件。输入法应用通过 [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md#getkeyboarddelegate)获取该实例。 **核心功能概述：** - **物理键盘按键事件**：通过on('keyDown'\|'keyUp')订阅物理按键的按下/抬起事件，通过on('keyEvent')订阅更完整的按键事件（含组合键信息）。callback返回true表示按键事件被消费，返回 false表示不消费。 - **光标与选区变化事件**：通过on('cursorContextChange')订阅光标位置变化事件，通过on('selectionChange')订阅文本选区变化事件。输入法应用可根据这些事件调整候选词位置或输入策略。 - **文本变化事件**：通过on('textChange')订阅编辑框文本内容变化事件，输入法应用可据此更新候选词或输入建议。 - **编辑框属性变化事件**：通过on('editorAttributeChanged')订阅编辑框属性变化事件，输入法应用可根据编辑框属性变化动态调整键盘布局。 **使用场景：** - 开发物理键盘快捷键处理功能时，订阅on('keyDown'\|'keyUp')或on('keyEvent')事件拦截特定按键。 - 需要根据编辑框实时状态（光标、选区、文本、属性）调整输入法行为时，订阅对应的on事件。 下列API均需使用[getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md#getkeyboarddelegate)获取到KeyboardDelegate实例后，通过实例调用。 |
+| [KeyboardDelegate](arkts-ime-inputmethodengine-keyboarddelegate-i.md) | KeyboardDelegate是键盘事件监听代理对象，用于输入法应用监听物理键盘按键事件和编辑框文本/光标/选区变化事件。输入法应用通过 [getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md)获取该实例。 **核心功能概述：** - **物理键盘按键事件**：通过on('keyDown'\|'keyUp')订阅物理按键的按下/抬起事件，通过on('keyEvent')订阅更完整的按键事件（含组合键信息）。callback返回true表示按键事件被消费，返回 false表示不消费。 - **光标与选区变化事件**：通过on('cursorContextChange')订阅光标位置变化事件，通过on('selectionChange')订阅文本选区变化事件。输入法应用可根据这些事件调整候选词位置或输入策略。 - **文本变化事件**：通过on('textChange')订阅编辑框文本内容变化事件，输入法应用可据此更新候选词或输入建议。 - **编辑框属性变化事件**：通过on('editorAttributeChanged')订阅编辑框属性变化事件，输入法应用可根据编辑框属性变化动态调整键盘布局。 **使用场景：** - 开发物理键盘快捷键处理功能时，订阅on('keyDown'\|'keyUp')或on('keyEvent')事件拦截特定按键。 - 需要根据编辑框实时状态（光标、选区、文本、属性）调整输入法行为时，订阅对应的on事件。 下列API均需使用[getKeyboardDelegate](arkts-ime-inputmethodengine-getkeyboarddelegate-f.md)获取到KeyboardDelegate实例后，通过实例调用。 |
 | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | 自定义通信对象。 |
 | [Movement](arkts-ime-inputmethodengine-movement-i.md) | 选中文本时，光标移动的方向 |
 | [Panel](arkts-ime-inputmethodengine-panel-i.md) | Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的 [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel) 接口获取，使用完毕后需调用 [destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel) 销毁以释放资源。createPanel与destroyPanel必须配对调用。 **核心功能概述：** - **页面加载**：通过 [setUiContent](arkts-ime-inputmethodengine-panel-i.md#setuicontent)为面板加载键盘页面内容， 支持加载普通页面和与LocalStorage关联的页面。 - **显示与隐藏**：通过[show](arkts-ime-inputmethodengine-panel-i.md#show)显示面板，通过 [hide](arkts-ime-inputmethodengine-panel-i.md#hide)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件 监听状态变化。 - **尺寸与位置调整**：通过 [resize](arkts-ime-inputmethodengine-panel-i.md#resize)调整面板尺寸，通过 [moveTo](arkts-ime-inputmethodengine-panel-i.md#moveto)移动面板位置，通过 [startMoving](arkts-ime-inputmethodengine-panel-i.md#startmoving)拖拽移动面板，通过 [adjustPanelRect](arkts-ime-inputmethodengine-panel-i.md#adjustpanelrect)/ [updatePanelRect](arkts-ime-inputmethodengine-panel-i.md#updatepanelrect)/ [updateRegion](arkts-ime-inputmethodengine-panel-i.md#updateregion)调整面板区域。 - **模式设置**：通过[changeFlag](arkts-ime-inputmethodengine-panel-i.md#changeflag)切换面板固定态/浮动态，通过 [setPrivacyMode](arkts-ime-inputmethodengine-panel-i.md#setprivacymode)设置隐私模式，通过 [setImmersiveMode](arkts-ime-inputmethodengine-panel-i.md#setimmersivemode)/ [getImmersiveMode](arkts-ime-inputmethodengine-panel-i.md#getimmersivemode)设置/获取沉浸模式。 - **事件监听**：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。 **面板生命周期：** 1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)中创建Panel实例并指定面板类型和标志位。 2. 调用[setUiContent](arkts-ime-inputmethodengine-panel-i.md#setuicontent)加载键盘页面内容。 3. 调用[show](arkts-ime-inputmethodengine-panel-i.md#show)显示面板，用户可交互。 4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。 5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel)销毁面板，释放资源。 下列API均需使用 [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel) 获取到Panel实例后，通过实例调用。 |
@@ -107,42 +109,42 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [CURSOR_DOWN](arkts-ime-inputmethodengine-con.md#cursordown) | 光标下移。 |
-| [CURSOR_LEFT](arkts-ime-inputmethodengine-con.md#cursorleft) | 光标左移。 |
-| [CURSOR_RIGHT](arkts-ime-inputmethodengine-con.md#cursorright) | 光标右移。 |
-| [CURSOR_UP](arkts-ime-inputmethodengine-con.md#cursorup) | 光标上移。 |
-| [DISPLAY_MODE_FULL](arkts-ime-inputmethodengine-con.md#displaymodefull) | 编辑框显示为全屏。 |
-| [DISPLAY_MODE_PART](arkts-ime-inputmethodengine-con.md#displaymodepart) | 编辑框显示为半屏。 |
-| [ENTER_KEY_TYPE_DONE](arkts-ime-inputmethodengine-con.md#enterkeytypedone) | “回车”功能键。 |
-| [ENTER_KEY_TYPE_GO](arkts-ime-inputmethodengine-con.md#enterkeytypego) | “前往”功能键。 |
-| [ENTER_KEY_TYPE_NEWLINE](arkts-ime-inputmethodengine-con.md#enterkeytypenewline) | “换行”功能键。 |
-| [ENTER_KEY_TYPE_NEXT](arkts-ime-inputmethodengine-con.md#enterkeytypenext) | “下一个”功能键。 |
-| [ENTER_KEY_TYPE_PREVIOUS](arkts-ime-inputmethodengine-con.md#enterkeytypeprevious) | “前一个”功能键。 |
-| [ENTER_KEY_TYPE_SEARCH](arkts-ime-inputmethodengine-con.md#enterkeytypesearch) | “搜索”功能键。 |
-| [ENTER_KEY_TYPE_SEND](arkts-ime-inputmethodengine-con.md#enterkeytypesend) | “发送”功能键。 |
-| [ENTER_KEY_TYPE_UNSPECIFIED](arkts-ime-inputmethodengine-con.md#enterkeytypeunspecified) | 无功能键。 |
-| [FLAG_SELECTING](arkts-ime-inputmethodengine-con.md#flagselecting) | 编辑框处于选择状态。 |
-| [FLAG_SINGLE_LINE](arkts-ime-inputmethodengine-con.md#flagsingleline) | 编辑框为单行。 |
-| [OPTION_ASCII](arkts-ime-inputmethodengine-con.md#optionascii) | 允许输入ASCII值。 |
-| [OPTION_AUTO_CAP_CHARACTERS](arkts-ime-inputmethodengine-con.md#optionautocapcharacters) | 允许输入字符。 |
-| [OPTION_AUTO_CAP_SENTENCES](arkts-ime-inputmethodengine-con.md#optionautocapsentences) | 允许输入句子。 |
-| [OPTION_AUTO_WORDS](arkts-ime-inputmethodengine-con.md#optionautowords) | 允许输入单词。 |
-| [OPTION_MULTI_LINE](arkts-ime-inputmethodengine-con.md#optionmultiline) | 允许输入多行。 |
-| [OPTION_NONE](arkts-ime-inputmethodengine-con.md#optionnone) | 不指定编辑框输入属性。 |
-| [OPTION_NO_FULLSCREEN](arkts-ime-inputmethodengine-con.md#optionnofullscreen) | 半屏样式。 |
-| [PATTERN_DATETIME](arkts-ime-inputmethodengine-con.md#patterndatetime) | 日期编辑框。 |
-| [PATTERN_EMAIL](arkts-ime-inputmethodengine-con.md#patternemail) | 邮件编辑框。 |
-| [PATTERN_NEW_PASSWORD](arkts-ime-inputmethodengine-con.md#patternnewpassword) | 新密码编辑框。 |
-| [PATTERN_NULL](arkts-ime-inputmethodengine-con.md#patternnull) | 无特殊性编辑框。 |
-| [PATTERN_NUMBER](arkts-ime-inputmethodengine-con.md#patternnumber) | 数字编辑框。 |
-| [PATTERN_NUMBER_DECIMAL](arkts-ime-inputmethodengine-con.md#patternnumberdecimal) | 带小数点的数字编辑框。 |
-| [PATTERN_ONE_TIME_CODE](arkts-ime-inputmethodengine-con.md#patternonetimecode) | 验证码编辑框。 |
-| [PATTERN_PASSWORD](arkts-ime-inputmethodengine-con.md#patternpassword) | 密码编辑框。 |
-| [PATTERN_PASSWORD_NUMBER](arkts-ime-inputmethodengine-con.md#patternpasswordnumber) | 数字密码编辑框。 |
-| [PATTERN_PASSWORD_SCREEN_LOCK](arkts-ime-inputmethodengine-con.md#patternpasswordscreenlock) | 锁屏密码编辑框。 |
-| [PATTERN_PHONE](arkts-ime-inputmethodengine-con.md#patternphone) | 电话号码编辑框。 |
-| [PATTERN_TEXT](arkts-ime-inputmethodengine-con.md#patterntext) | 文本编辑框。 |
-| [PATTERN_URI](arkts-ime-inputmethodengine-con.md#patternuri) | 超链接编辑框。 |
-| [PATTERN_USER_NAME](arkts-ime-inputmethodengine-con.md#patternusername) | 用户名编辑框。 |
-| [WINDOW_TYPE_INPUT_METHOD_FLOAT](arkts-ime-inputmethodengine-con.md#windowtypeinputmethodfloat) | 输入法应用窗口风格标识。 |
+| [CURSOR_DOWN](arkts-ime-inputmethodengine-con.md#cursor_down) | 光标下移。 |
+| [CURSOR_LEFT](arkts-ime-inputmethodengine-con.md#cursor_left) | 光标左移。 |
+| [CURSOR_RIGHT](arkts-ime-inputmethodengine-con.md#cursor_right) | 光标右移。 |
+| [CURSOR_UP](arkts-ime-inputmethodengine-con.md#cursor_up) | 光标上移。 |
+| [DISPLAY_MODE_FULL](arkts-ime-inputmethodengine-con.md#display_mode_full) | 编辑框显示为全屏。 |
+| [DISPLAY_MODE_PART](arkts-ime-inputmethodengine-con.md#display_mode_part) | 编辑框显示为半屏。 |
+| [ENTER_KEY_TYPE_DONE](arkts-ime-inputmethodengine-con.md#enter_key_type_done) | “回车”功能键。 |
+| [ENTER_KEY_TYPE_GO](arkts-ime-inputmethodengine-con.md#enter_key_type_go) | “前往”功能键。 |
+| [ENTER_KEY_TYPE_NEWLINE](arkts-ime-inputmethodengine-con.md#enter_key_type_newline) | “换行”功能键。 |
+| [ENTER_KEY_TYPE_NEXT](arkts-ime-inputmethodengine-con.md#enter_key_type_next) | “下一个”功能键。 |
+| [ENTER_KEY_TYPE_PREVIOUS](arkts-ime-inputmethodengine-con.md#enter_key_type_previous) | “前一个”功能键。 |
+| [ENTER_KEY_TYPE_SEARCH](arkts-ime-inputmethodengine-con.md#enter_key_type_search) | “搜索”功能键。 |
+| [ENTER_KEY_TYPE_SEND](arkts-ime-inputmethodengine-con.md#enter_key_type_send) | “发送”功能键。 |
+| [ENTER_KEY_TYPE_UNSPECIFIED](arkts-ime-inputmethodengine-con.md#enter_key_type_unspecified) | 无功能键。 |
+| [FLAG_SELECTING](arkts-ime-inputmethodengine-con.md#flag_selecting) | 编辑框处于选择状态。 |
+| [FLAG_SINGLE_LINE](arkts-ime-inputmethodengine-con.md#flag_single_line) | 编辑框为单行。 |
+| [OPTION_ASCII](arkts-ime-inputmethodengine-con.md#option_ascii) | 允许输入ASCII值。 |
+| [OPTION_AUTO_CAP_CHARACTERS](arkts-ime-inputmethodengine-con.md#option_auto_cap_characters) | 允许输入字符。 |
+| [OPTION_AUTO_CAP_SENTENCES](arkts-ime-inputmethodengine-con.md#option_auto_cap_sentences) | 允许输入句子。 |
+| [OPTION_AUTO_WORDS](arkts-ime-inputmethodengine-con.md#option_auto_words) | 允许输入单词。 |
+| [OPTION_MULTI_LINE](arkts-ime-inputmethodengine-con.md#option_multi_line) | 允许输入多行。 |
+| [OPTION_NONE](arkts-ime-inputmethodengine-con.md#option_none) | 不指定编辑框输入属性。 |
+| [OPTION_NO_FULLSCREEN](arkts-ime-inputmethodengine-con.md#option_no_fullscreen) | 半屏样式。 |
+| [PATTERN_DATETIME](arkts-ime-inputmethodengine-con.md#pattern_datetime) | 日期编辑框。 |
+| [PATTERN_EMAIL](arkts-ime-inputmethodengine-con.md#pattern_email) | 邮件编辑框。 |
+| [PATTERN_NEW_PASSWORD](arkts-ime-inputmethodengine-con.md#pattern_new_password) | 新密码编辑框。 |
+| [PATTERN_NULL](arkts-ime-inputmethodengine-con.md#pattern_null) | 无特殊性编辑框。 |
+| [PATTERN_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_number) | 数字编辑框。 |
+| [PATTERN_NUMBER_DECIMAL](arkts-ime-inputmethodengine-con.md#pattern_number_decimal) | 带小数点的数字编辑框。 |
+| [PATTERN_ONE_TIME_CODE](arkts-ime-inputmethodengine-con.md#pattern_one_time_code) | 验证码编辑框。 |
+| [PATTERN_PASSWORD](arkts-ime-inputmethodengine-con.md#pattern_password) | 密码编辑框。 |
+| [PATTERN_PASSWORD_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_password_number) | 数字密码编辑框。 |
+| [PATTERN_PASSWORD_SCREEN_LOCK](arkts-ime-inputmethodengine-con.md#pattern_password_screen_lock) | 锁屏密码编辑框。 |
+| [PATTERN_PHONE](arkts-ime-inputmethodengine-con.md#pattern_phone) | 电话号码编辑框。 |
+| [PATTERN_TEXT](arkts-ime-inputmethodengine-con.md#pattern_text) | 文本编辑框。 |
+| [PATTERN_URI](arkts-ime-inputmethodengine-con.md#pattern_uri) | 超链接编辑框。 |
+| [PATTERN_USER_NAME](arkts-ime-inputmethodengine-con.md#pattern_user_name) | 用户名编辑框。 |
+| [WINDOW_TYPE_INPUT_METHOD_FLOAT](arkts-ime-inputmethodengine-con.md#window_type_input_method_float) | 输入法应用窗口风格标识。 |
 

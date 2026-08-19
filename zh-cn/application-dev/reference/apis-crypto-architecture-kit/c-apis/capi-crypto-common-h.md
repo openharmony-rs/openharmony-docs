@@ -4,6 +4,8 @@
 
 定义加解密通用的数据结构和错误码。
 
+**引用文件：** <CryptoArchitectureKit/crypto_common.h>
+
 **库：** libohcrypto.so
 
 **系统能力：** SystemCapability.Security.CryptoFramework

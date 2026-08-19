@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hiSysEvent-enum RuleType--><!--Device-hiSysEvent-enum RuleType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -23,10 +19,6 @@ WHOLE_WORD = 1
 全词匹配类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RuleType-WHOLE_WORD = 1--><!--Device-RuleType-WHOLE_WORD = 1-End-->
 
@@ -44,10 +36,6 @@ PREFIX = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RuleType-PREFIX = 2--><!--Device-RuleType-PREFIX = 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -63,10 +51,6 @@ REGULAR = 3
 正则匹配类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RuleType-REGULAR = 3--><!--Device-RuleType-REGULAR = 3-End-->
 

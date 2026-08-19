@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-interface WaterfallDisplayAreaRects--><!--Device-display-interface WaterfallDisplayAreaRects-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
 
 ## bottom
 
@@ -23,10 +25,6 @@ readonly bottom: Rect
 **类型：** Rect
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ readonly left: Rect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WaterfallDisplayAreaRects-readonly left: Rect--><!--Device-WaterfallDisplayAreaRects-readonly left: Rect-End-->
@@ -68,10 +62,6 @@ readonly right: Rect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WaterfallDisplayAreaRects-readonly right: Rect--><!--Device-WaterfallDisplayAreaRects-readonly right: Rect-End-->
@@ -89,10 +79,6 @@ readonly top: Rect
 **类型：** Rect
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

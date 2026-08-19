@@ -4,15 +4,19 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
-**替代接口：** [DeviceManager](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#devicemanager)
+**替代接口：** [DeviceManager](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md)
 
 <!--Device-deviceManager-interface DeviceManager--><!--Device-deviceManager-interface DeviceManager-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## authenticateDevice
 
@@ -27,8 +31,6 @@ authenticateDevice(
 认证设备。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -48,7 +50,7 @@ authenticateDevice(
 | --- | --- | --- | --- |
 | deviceInfo | DeviceInfo | 是 | 设备信息。 |
 | authParam | AuthParam | 是 | 认证参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ deviceId: string, pinToken?: number }&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ deviceId: string, pinToken?: number }&gt; | 是 |  |
 
 **错误码：**
 
@@ -57,7 +59,7 @@ authenticateDevice(
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -134,8 +136,6 @@ deleteCredential(queryInfo: string, callback: AsyncCallback<{ resultInfo: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
@@ -151,7 +151,7 @@ deleteCredential(queryInfo: string, callback: AsyncCallback<{ resultInfo: string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | queryInfo | string | 是 | 删除凭据信息。长度范围1~64000字符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ resultInfo: string }&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ resultInfo: string }&gt; | 是 |  |
 
 **错误码：**
 
@@ -160,7 +160,7 @@ deleteCredential(queryInfo: string, callback: AsyncCallback<{ resultInfo: string
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified queryInfo is greater than 5999. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -208,8 +208,6 @@ getDeviceInfo(networkId: string, callback: AsyncCallback<DeviceInfo>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [getDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getdevicename)
@@ -227,7 +225,7 @@ getDeviceInfo(networkId: string, callback: AsyncCallback<DeviceInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | networkId | string | 是 | 设备的网络标识。长度范围1~255字符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceInfo&gt; | 是 | 获取指定设备信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceInfo&gt; | 是 | 获取指定设备信息。 |
 
 **错误码：**
 
@@ -236,7 +234,7 @@ getDeviceInfo(networkId: string, callback: AsyncCallback<DeviceInfo>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -270,8 +268,6 @@ getDeviceInfo(networkId: string): Promise<DeviceInfo>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [getDeviceName](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getdevicename)
@@ -303,7 +299,7 @@ getDeviceInfo(networkId: string): Promise<DeviceInfo>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -330,8 +326,6 @@ getLocalDeviceInfo(callback: AsyncCallback<DeviceInfo>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 **替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getlocaldevicenetworkid)
@@ -348,7 +342,7 @@ getLocalDeviceInfo(callback: AsyncCallback<DeviceInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceInfo&gt; | 是 | 获取本地设备信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceInfo&gt; | 是 | 获取本地设备信息。 |
 
 **错误码：**
 
@@ -357,7 +351,7 @@ getLocalDeviceInfo(callback: AsyncCallback<DeviceInfo>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -390,8 +384,6 @@ getLocalDeviceInfo(): Promise<DeviceInfo>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 **替代接口：** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getlocaldevicenetworkid)
@@ -416,7 +408,7 @@ getLocalDeviceInfo(): Promise<DeviceInfo>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -440,8 +432,6 @@ getLocalDeviceInfoSync(): DeviceInfo
 同步获取本地设备信息。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -469,7 +459,7 @@ getLocalDeviceInfoSync(): DeviceInfo
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -495,8 +485,6 @@ getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 **替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
@@ -513,7 +501,7 @@ getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;DeviceInfo&gt;&gt; | 是 | 获取所有可信设备列表的回调，返回设备信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;DeviceInfo&gt;&gt; | 是 | 获取所有可信设备列表的回调，返回设备信息。 |
 
 **错误码：**
 
@@ -522,7 +510,7 @@ getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -554,8 +542,6 @@ getTrustedDeviceList(): Promise<Array<DeviceInfo>>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 **替代接口：** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)()
@@ -580,7 +566,7 @@ getTrustedDeviceList(): Promise<Array<DeviceInfo>>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -604,8 +590,6 @@ getTrustedDeviceListSync(): Array<DeviceInfo>
 同步获取所有可信设备列表。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -633,7 +617,7 @@ getTrustedDeviceListSync(): Array<DeviceInfo>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -658,8 +642,6 @@ getTrustedDeviceListSync(isRefresh: boolean): Array<DeviceInfo>
 打开软总线系统端的心跳模式，让周围处于下线状态的可信设备快速上线，同时刷新已上线的可信设备列表。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -692,7 +674,7 @@ getTrustedDeviceListSync(isRefresh: boolean): Array<DeviceInfo>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -718,8 +700,6 @@ importCredential(credentialInfo: string, callback: AsyncCallback<{ resultInfo: s
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
@@ -735,7 +715,7 @@ importCredential(credentialInfo: string, callback: AsyncCallback<{ resultInfo: s
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | credentialInfo | string | 是 | 导入凭据信息。长度范围1~64000字符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ resultInfo: string }&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ resultInfo: string }&gt; | 是 |  |
 
 **错误码：**
 
@@ -744,7 +724,7 @@ importCredential(credentialInfo: string, callback: AsyncCallback<{ resultInfo: s
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified credentialInfo is greater than 5999. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -811,7 +791,7 @@ try {
 }
 ```
 
-## off_deviceFound
+## off('deviceFound')
 
 ```TypeScript
 off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: DeviceInfo }>): void
@@ -820,8 +800,6 @@ off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: Devi
 取消注册设备发现回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -840,7 +818,7 @@ off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: Devi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceFound' | 是 | 取消注册设备发现回调，固定为deviceFound。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, device: DeviceInfo }&gt; | 否 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, device: DeviceInfo }&gt; | 否 |  |
 
 **错误码：**
 
@@ -849,7 +827,7 @@ off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: Devi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -879,7 +857,7 @@ try {
 }
 ```
 
-## off_deviceStateChange
+## off('deviceStateChange')
 
 ```TypeScript
 off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAction, device: DeviceInfo }>): void
@@ -888,8 +866,6 @@ off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAc
 取消注册设备状态回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -908,7 +884,7 @@ off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAc
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceStateChange' | 是 | 根据应用程序的包名取消注册设备状态回调，固定为deviceStateChange。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ action: DeviceStateChangeAction, device: DeviceInfo }&gt; | 否 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ action: DeviceStateChangeAction, device: DeviceInfo }&gt; | 否 |  |
 
 **错误码：**
 
@@ -917,7 +893,7 @@ off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAc
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -947,7 +923,7 @@ try {
 }
 ```
 
-## off_discoverFail
+## off('discoverFail')
 
 ```TypeScript
 off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: number }>): void
@@ -956,8 +932,6 @@ off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: num
 取消注册设备发现失败回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -976,7 +950,7 @@ off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: num
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'discoverFail' | 是 | 取消注册设备发现失败回调，固定为discoverFail。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, reason: number }&gt; | 否 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, reason: number }&gt; | 否 |  |
 
 **错误码：**
 
@@ -985,7 +959,7 @@ off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: num
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1007,7 +981,7 @@ try {
 }
 ```
 
-## off_publishFail
+## off('publishFail')
 
 ```TypeScript
 off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number }>): void
@@ -1016,8 +990,6 @@ off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number
 取消注册设备发布失败回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1034,7 +1006,7 @@ off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'publishFail' | 是 | 取消注册设备发布失败回调，固定为publishFail。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number, reason: number }&gt; | 否 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number, reason: number }&gt; | 否 |  |
 
 **错误码：**
 
@@ -1043,7 +1015,7 @@ off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1065,7 +1037,7 @@ try {
 }
 ```
 
-## off_publishSuccess
+## off('publishSuccess')
 
 ```TypeScript
 off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void
@@ -1074,8 +1046,6 @@ off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void
 取消注册设备发布成功回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1092,7 +1062,7 @@ off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'publishSuccess' | 是 | 取消注册设备发布成功回调，固定为publishSuccess。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number }&gt; | 否 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number }&gt; | 否 |  |
 
 **错误码：**
 
@@ -1101,7 +1071,7 @@ off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1122,7 +1092,7 @@ try {
 }
 ```
 
-## off_serviceDie
+## off('serviceDie')
 
 ```TypeScript
 off(type: 'serviceDie', callback?: () => void): void
@@ -1131,8 +1101,6 @@ off(type: 'serviceDie', callback?: () => void): void
 取消注册设备管理服务死亡监听。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -1160,7 +1128,7 @@ off(type: 'serviceDie', callback?: () => void): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1177,7 +1145,7 @@ try {
 }
 ```
 
-## off_uiStateChange
+## off('uiStateChange')
 
 ```TypeScript
 off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void
@@ -1186,8 +1154,6 @@ off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void
 取消ui状态变更回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1206,7 +1172,7 @@ off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'uiStateChange' | 是 | 取消注册的设备管理器 ui 状态回调，固定为uiStateChange。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ param: string }&gt; | 否 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ param: string }&gt; | 否 |  |
 
 **错误码：**
 
@@ -1215,7 +1181,7 @@ off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1230,7 +1196,7 @@ try {
 }
 ```
 
-## on_deviceFound
+## on('deviceFound')
 
 ```TypeScript
 on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: DeviceInfo }>): void
@@ -1239,8 +1205,6 @@ on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: Device
 注册发现设备回调监听。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -1259,7 +1223,7 @@ on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: Device
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceFound' | 是 | 注册设备发现回调，以便在发现周边设备时通知应用程序，固定为deviceFound。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, device: DeviceInfo }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, device: DeviceInfo }&gt; | 是 |  |
 
 **错误码：**
 
@@ -1268,7 +1232,7 @@ on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: Device
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1298,7 +1262,7 @@ try {
 }
 ```
 
-## on_deviceStateChange
+## on('deviceStateChange')
 
 ```TypeScript
 on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeAction, device: DeviceInfo }>): void
@@ -1307,8 +1271,6 @@ on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeActi
 注册设备状态回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -1327,7 +1289,7 @@ on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeActi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deviceStateChange' | 是 | 注册设备状态回调，固定为deviceStateChange。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ action: DeviceStateChangeAction, device: DeviceInfo }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ action: DeviceStateChangeAction, device: DeviceInfo }&gt; | 是 |  |
 
 **错误码：**
 
@@ -1336,7 +1298,7 @@ on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeActi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1366,7 +1328,7 @@ try {
 }
 ```
 
-## on_discoverFail
+## on('discoverFail')
 
 ```TypeScript
 on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: number }>): void
@@ -1375,8 +1337,6 @@ on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: numbe
 注册设备发现失败回调监听。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -1395,7 +1355,7 @@ on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: numbe
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'discoverFail' | 是 | 注册设备发现失败回调，以便在发现周边设备失败时通知应用程序，固定为discoverFail。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, reason: number }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ subscribeId: number, reason: number }&gt; | 是 |  |
 
 **错误码：**
 
@@ -1404,7 +1364,7 @@ on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: numbe
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1426,7 +1386,7 @@ try {
 }
 ```
 
-## on_publishFail
+## on('publishFail')
 
 ```TypeScript
 on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }>): void
@@ -1435,8 +1395,6 @@ on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }
 注册设备发布失败回调监听。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1453,7 +1411,7 @@ on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'publishFail' | 是 | 注册设备发布失败回调，以便在发布设备失败时通知应用程序，固定为publishFail。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number, reason: number }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number, reason: number }&gt; | 是 |  |
 
 **错误码：**
 
@@ -1462,7 +1420,7 @@ on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1484,7 +1442,7 @@ try {
 }
 ```
 
-## on_publishSuccess
+## on('publishSuccess')
 
 ```TypeScript
 on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void
@@ -1493,8 +1451,6 @@ on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void
 注册发布设备发现回调监听。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1511,7 +1467,7 @@ on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'publishSuccess' | 是 | 注册发布设备成功回调，以便将发布成功时通知应用程序，固定为publishSuccess。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ publishId: number }&gt; | 是 |  |
 
 **错误码：**
 
@@ -1520,7 +1476,7 @@ on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1541,7 +1497,7 @@ try {
 }
 ```
 
-## on_serviceDie
+## on('serviceDie')
 
 ```TypeScript
 on(type: 'serviceDie', callback: () => void): void
@@ -1550,8 +1506,6 @@ on(type: 'serviceDie', callback: () => void): void
 注册设备管理服务死亡监听。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -1579,7 +1533,7 @@ on(type: 'serviceDie', callback: () => void): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1596,7 +1550,7 @@ try {
 }
 ```
 
-## on_uiStateChange
+## on('uiStateChange')
 
 ```TypeScript
 on(type: 'uiStateChange', callback: Callback<{ param: string }>): void
@@ -1605,8 +1559,6 @@ on(type: 'uiStateChange', callback: Callback<{ param: string }>): void
 ui状态变更回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -1625,7 +1577,7 @@ ui状态变更回调。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'uiStateChange' | 是 | 注册的设备管理器 ui 状态回调，以便在状态改变时通知应用，固定为uiStateChange。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ param: string }&gt; | 是 |  |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;{ param: string }&gt; | 是 |  |
 
 **错误码：**
 
@@ -1634,7 +1586,7 @@ ui状态变更回调。
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified eventType is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1672,8 +1624,6 @@ publishDeviceDiscovery(publishInfo: PublishInfo): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
@@ -1700,7 +1650,7 @@ publishDeviceDiscovery(publishInfo: PublishInfo): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1741,11 +1691,9 @@ release(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
-**替代接口：** [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md#releasedevicemanager)
+**替代接口：** [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md)
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
 
@@ -1763,7 +1711,7 @@ release(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1788,8 +1736,6 @@ requestCredentialRegisterInfo(requestInfo: string, callback: AsyncCallback<{ reg
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
@@ -1805,7 +1751,7 @@ requestCredentialRegisterInfo(requestInfo: string, callback: AsyncCallback<{ reg
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | requestInfo | string | 是 | 请求凭据信息。最大长度255字符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ registerInfo: string }&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ registerInfo: string }&gt; | 是 |  |
 
 **错误码：**
 
@@ -1814,7 +1760,7 @@ requestCredentialRegisterInfo(requestInfo: string, callback: AsyncCallback<{ reg
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified requestInfo is greater than 255. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1859,8 +1805,6 @@ setUserOperation(operateAction: number, params: string): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **替代接口：** [replyUiAction](arkts-distributedservice-distributeddevicemanager-devicemanager-i-sys.md#replyuiaction)
@@ -1888,7 +1832,7 @@ setUserOperation(operateAction: number, params: string): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1922,8 +1866,6 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 **替代接口：** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
@@ -1952,7 +1894,7 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo): void
 | [11600104](../../apis-distributedservice-kit/errorcode-device-manager.md#11600104-发现业务不可用) | Discovery unavailable. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -1998,8 +1940,6 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo, filterOptions?: string): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **替代接口：** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
@@ -2029,7 +1969,7 @@ startDeviceDiscovery(subscribeInfo: SubscribeInfo, filterOptions?: string): void
 | [11600104](../../apis-distributedservice-kit/errorcode-device-manager.md#11600104-发现业务不可用) | Discovery unavailable. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -2097,8 +2037,6 @@ stopDeviceDiscovery(subscribeId: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 **替代接口：** [stopDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#stopdiscovering)
@@ -2126,7 +2064,7 @@ stopDeviceDiscovery(subscribeId: number): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -2152,8 +2090,6 @@ unAuthenticateDevice(deviceInfo: DeviceInfo): void
 解除认证设备。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -2182,7 +2118,7 @@ unAuthenticateDevice(deviceInfo: DeviceInfo): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -2223,8 +2159,6 @@ unPublishDeviceDiscovery(publishId: number): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
@@ -2250,7 +2184,7 @@ unPublishDeviceDiscovery(publishId: number): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 
@@ -2277,8 +2211,6 @@ verifyAuthInfo(authInfo: AuthInfo, callback: AsyncCallback<{ deviceId: string, l
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 **需要权限：** ohos.permission.ACCESS_SERVICE_DM
@@ -2294,7 +2226,7 @@ verifyAuthInfo(authInfo: AuthInfo, callback: AsyncCallback<{ deviceId: string, l
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | authInfo | [AuthInfo](arkts-distributedservice-devicemanager-authinfo-i-sys.md) | 是 | 认证信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ deviceId: string, level: number }&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ deviceId: string, level: number }&gt; | 是 |  |
 
 **错误码：**
 
@@ -2303,7 +2235,7 @@ verifyAuthInfo(authInfo: AuthInfo, callback: AsyncCallback<{ deviceId: string, l
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 示例中的初始化请参见deviceManager.createDeviceManager。
 

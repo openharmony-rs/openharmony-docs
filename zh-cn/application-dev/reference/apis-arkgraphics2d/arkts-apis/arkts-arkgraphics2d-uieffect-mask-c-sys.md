@@ -4,15 +4,17 @@ Mask效果类，作为Filter以及VisualEffect的输入使用。不同类型的M
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uiEffect-class Mask--><!--Device-uiEffect-class Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
 
 ## createPixelMapMask
 
@@ -24,10 +26,6 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 通过输入的pixelMap，以及pixelMap的待绘制区域、挂载节点的绘制区域和绘制区域外填充的颜色创建具有缩放效果的Mask实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      fillColor?: Color): Mask--><!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      fillColor?: Color): Mask-End-->
 
@@ -56,7 +54,7 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -107,10 +105,6 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap): Mask--><!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -135,7 +129,7 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from '@kit.ArkGraphics2D';
@@ -225,10 +219,6 @@ static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,      gradients: Array<[double, double]>): Mask--><!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,      gradients: Array<[double, double]>): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -266,10 +256,6 @@ static createRippleMask(center: common2D.Point, radius: double, width: double, o
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Mask-static createRippleMask(center: common2D.Point, radius: double, width: double, offset?: double): Mask--><!--Device-Mask-static createRippleMask(center: common2D.Point, radius: double, width: double, offset?: double): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -297,7 +283,7 @@ static createRippleMask(center: common2D.Point, radius: double, width: double, o
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -343,10 +329,6 @@ static createUseEffectMask(useEffect: boolean): Mask
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Mask-static createUseEffectMask(useEffect: boolean): Mask--><!--Device-Mask-static createUseEffectMask(useEffect: boolean): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -371,7 +353,7 @@ static createUseEffectMask(useEffect: boolean): Mask
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from '@kit.ArkGraphics2D';
@@ -440,10 +422,6 @@ static createWaveGradientMask(center: common2D.Point, width: double, propagation
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,      blurRadius: double, turbulenceStrength?: double): Mask--><!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,      blurRadius: double, turbulenceStrength?: double): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -472,7 +450,7 @@ static createWaveGradientMask(center: common2D.Point, width: double, propagation
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from "@kit.ArkGraphics2D";

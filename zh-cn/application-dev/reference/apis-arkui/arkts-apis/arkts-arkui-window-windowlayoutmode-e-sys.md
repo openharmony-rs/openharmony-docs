@@ -4,8 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
 **废弃版本：** 26.0.0
 
 <!--Device-window-enum WindowLayoutMode--><!--Device-window-enum WindowLayoutMode-End-->
@@ -24,8 +22,6 @@ WINDOW_LAYOUT_MODE_CASCADE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
 **废弃版本：** 26.0.0
 
 <!--Device-WindowLayoutMode-WINDOW_LAYOUT_MODE_CASCADE = 0--><!--Device-WindowLayoutMode-WINDOW_LAYOUT_MODE_CASCADE = 0-End-->
@@ -43,8 +39,6 @@ WINDOW_LAYOUT_MODE_TILE = 1
 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 

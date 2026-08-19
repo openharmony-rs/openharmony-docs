@@ -1,18 +1,20 @@
 # queryAtomicServiceStartupRule（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## queryAtomicServiceStartupRule
 
 ```TypeScript
 function queryAtomicServiceStartupRule(context: Context, appId: string): Promise<AtomicServiceStartupRule>
 ```
 
-查询嵌入式拉起[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md#embeddableuiability)的规则。使用Promise异步回调。 该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+查询嵌入式拉起[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)的规则。使用Promise异步回调。 该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function queryAtomicServiceStartupRule(context: Context, appId: string): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-c.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明：**目前仅支持 [UIAbilityContext](arkts-ability-uiabilitycontext-c.md#uiabilitycontext)。 |
+| context | [Context](arkts-ability-context-c.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明：**目前仅支持 [UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。 |
 | appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
 
 **返回值：**
@@ -43,7 +45,7 @@ function queryAtomicServiceStartupRule(context: Context, appId: string): Promise
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityManager, UIAbility } from '@kit.AbilityKit';

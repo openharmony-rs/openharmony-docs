@@ -1,12 +1,8 @@
-# BundleOption
+# BundleOption(Some common definitions)
 
 描述BundleOption信息，即应用的包信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface BundleOption--><!--Device-unnamed-export interface BundleOption-End-->
 
@@ -24,10 +20,6 @@ bundle: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BundleOption-bundle: string--><!--Device-BundleOption-bundle: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -43,10 +35,6 @@ uid?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BundleOption-uid?: int--><!--Device-BundleOption-uid?: int-End-->
 

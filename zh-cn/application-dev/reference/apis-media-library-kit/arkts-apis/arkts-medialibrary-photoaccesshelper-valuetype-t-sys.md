@@ -8,10 +8,6 @@ type ValueType = int | long | double | string | boolean | Uint8Array | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-type ValueType = int | long | double | string | boolean | Uint8Array | null--><!--Device-photoAccessHelper-type ValueType = int | long | double | string | boolean | Uint8Array | null-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

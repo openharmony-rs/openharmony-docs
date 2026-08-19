@@ -1,5 +1,14 @@
 # p2pConnect
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## p2pConnect
 
 ```TypeScript
@@ -10,11 +19,9 @@ function p2pConnect(config: WifiP2PConfig): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [p2pConnect](arkts-connectivity-wifimanager-p2pconnect-f.md#p2pconnect)
+**替代接口：** [p2pConnect](arkts-connectivity-wifimanager-p2pconnect-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -34,7 +41,7 @@ function p2pConnect(config: WifiP2PConfig): boolean
 | --- | --- |
 | boolean | 操作成功时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

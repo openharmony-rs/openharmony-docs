@@ -1,5 +1,12 @@
 # enableHotspot（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## enableHotspot
 
 ```TypeScript
@@ -9,10 +16,6 @@ function enableHotspot(): void
 启动WLAN热点功能。 此方法为异步方法。WLAN热点使能后，WLAN可能会被关闭。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -31,7 +34,7 @@ function enableHotspot(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot模块异常) | Operation failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

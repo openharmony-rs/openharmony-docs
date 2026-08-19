@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-onScreen-export interface ReadingScreenPermissionStatus--><!--Device-onScreen-export interface ReadingScreenPermissionStatus-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { onScreen } from '@kit.MultimodalAwarenessKit';
+```
 
 ## readingCode
 
@@ -20,15 +22,11 @@
 readingCode?: int
 ```
 
-如果屏幕无法读取，将返回相应的状态码，参考[CollectStrategy](arkts-multimodalawareness-onscreen-collectstrategy-e-sys.md#collectstrategy系统接口)。
+如果屏幕无法读取，将返回相应的状态码，参考[CollectStrategy](arkts-multimodalawareness-onscreen-collectstrategy-e-sys.md)。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,10 +47,6 @@ readingState: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

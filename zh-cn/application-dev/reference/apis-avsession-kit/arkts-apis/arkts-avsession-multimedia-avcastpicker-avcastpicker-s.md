@@ -1,16 +1,19 @@
 # AVCastPicker
 
-本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。 > **说明：** > > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。&lt;!--Del--&gt; > > - 当前组件的使用，依赖于设备支持“设备选择界面”。当前暂无OpenHarmony设备支持，需要OEM厂商实现具体的“设备选择界面”。&lt;!--DelEnd--&gt;
+本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。 > **说明：** > > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。<!--Del--> > > - 当前组件的使用，依赖于设备支持“设备选择界面”。当前暂无OpenHarmony设备支持，需要OEM厂商实现具体的“设备选择界面”。<!--DelEnd-->
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare struct AVCastPicker--><!--Device-unnamed-declare struct AVCastPicker-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+## 导入模块
+
+```TypeScript
+import { AVCastPicker } from '@kit.AVSessionKit';
+import { AVCastPickerState, AVCastPickerStyle, AVCastPickerColorMode } from '@kit.AVSessionKit';
+```
 
 ## activeColor
 
@@ -24,10 +27,6 @@
 **类型：** [Color](../../apis-na/arkts-apis/arkts-na-enums-color-e.md) \| number \| string
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -48,10 +47,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVCastPicker-@Prop  colorMode?: AVCastPickerColorMode--><!--Device-AVCastPicker-@Prop  colorMode?: AVCastPickerColorMode-End-->
@@ -70,10 +65,6 @@
 **类型：** CustomBuilder
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -94,10 +85,6 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVCastPicker-@Prop  normalColor?: Color | number | string--><!--Device-AVCastPicker-@Prop  normalColor?: Color | number | string-End-->
@@ -115,10 +102,6 @@ onStateChange?: (state: AVCastPickerState) => void
 **类型：** (state: AVCastPickerState) =&gt; void
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -139,10 +122,6 @@ onStateChange?: (state: AVCastPickerState) => void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVCastPicker-@Prop  pickerStyle?: AVCastPickerStyle--><!--Device-AVCastPicker-@Prop  pickerStyle?: AVCastPickerStyle-End-->
@@ -156,15 +135,11 @@ onStateChange?: (state: AVCastPickerState) => void
   sessionType?: string
 ```
 
-会话类型，可参考[AVSessionType](arkts-avsession-avsession-avsessiontype-t.md#avsessiontype)。默认值为当前应用创建的AVSessionType。
+会话类型，可参考[AVSessionType](arkts-avsession-avsession-avsessiontype-t.md)。默认值为当前应用创建的AVSessionType。
 
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

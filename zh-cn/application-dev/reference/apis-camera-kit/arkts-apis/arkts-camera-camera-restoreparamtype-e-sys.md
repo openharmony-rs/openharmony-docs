@@ -4,10 +4,6 @@ Enumerates the types of the parameters used for prelaunch.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum RestoreParamType--><!--Device-camera-enum RestoreParamType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ NO_NEED_RESTORE_PARAM = 0
 The parameter used for prelaunch is not required.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RestoreParamType-NO_NEED_RESTORE_PARAM = 0--><!--Device-RestoreParamType-NO_NEED_RESTORE_PARAM = 0-End-->
 
@@ -44,10 +36,6 @@ Persistent parameter type. This parameter is used to restore stream information 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RestoreParamType-PRESISTENT_DEFAULT_PARAM = 1--><!--Device-RestoreParamType-PRESISTENT_DEFAULT_PARAM = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -63,10 +51,6 @@ TRANSIENT_ACTIVE_PARAM = 2
 Temporary parameter type. This parameter is used to restore stream information only within a period of time after the camera application is closed. Its priority is higher than that of the persistent parameter.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RestoreParamType-TRANSIENT_ACTIVE_PARAM = 2--><!--Device-RestoreParamType-TRANSIENT_ACTIVE_PARAM = 2-End-->
 

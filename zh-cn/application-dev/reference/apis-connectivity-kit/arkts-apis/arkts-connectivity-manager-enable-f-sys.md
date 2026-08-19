@@ -1,5 +1,11 @@
 # enable（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { manager } from '@kit.ConnectivityKit';
+```
+
 ## enable
 
 ```TypeScript
@@ -9,10 +15,6 @@ function enable(): void
 开启星闪。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
 

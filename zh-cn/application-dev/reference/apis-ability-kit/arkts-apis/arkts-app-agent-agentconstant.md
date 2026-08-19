@@ -1,30 +1,20 @@
 # @ohos.app.agent.agentConstant
 
-/*
- Copyright (c) 2026 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
-
+agentConstant模块提供Agent相关的常量，包括Agent卡片类型[AgentCardType](arkts-ability-agentconstant-agentcardtype-e.md)，用于在调用Agent相关接口（如 agentManager）时标识和区分Agent卡片的类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace agentConstant--><!--Device-unnamed-declare namespace agentConstant-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { agentConstant } from '@kit.AbilityKit';
+```
 
 ## 汇总
 

@@ -1,16 +1,18 @@
-# KeysInfo
+# KeysInfo(Defines the DRM capability.)
 
 媒体密钥中密钥信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drm-interface KeysInfo--><!--Device-drm-interface KeysInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+## 导入模块
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+```
 
 ## keyId
 
@@ -23,10 +25,6 @@ keyId: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ value: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

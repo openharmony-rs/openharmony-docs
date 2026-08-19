@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace workScheduler--><!--Device-unnamed-declare namespace workScheduler-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+## 导入模块
+
+```TypeScript
+import { workScheduler } from '@kit.BackgroundTasksKit';
+```
 
 ## 汇总
 
@@ -20,23 +22,40 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | 通过workId获取延迟任务，使用Callback异步回调。 |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | 通过workId获取延迟任务，使用Promise异步回调。 |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | 检查延迟任务的最后一次执行是否超时，使用Promise异步回调。 |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | 获取当前应用所有的延迟任务，使用Promise异步回调。 |
-| [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md#startwork) | 申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。 |
-| [stopAndClearWorks](arkts-backgroundtasks-workscheduler-stopandclearworks-f.md#stopandclearworks) | 停止和取消当前应用所有的延迟任务。 |
-| [stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md#stopwork) | 取消延迟任务。 |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md) | 通过workId获取延迟任务，使用Callback异步回调。 |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md) | 通过workId获取延迟任务，使用Promise异步回调。 |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md) | 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。 |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md) | 检查延迟任务的最后一次执行是否超时，使用Promise异步回调。 |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md) | 获取当前应用所有的延迟任务，使用Callback异步回调。 |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md) | 获取当前应用所有的延迟任务，使用Promise异步回调。 |
+| [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md) | 申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。 |
+| [stopAndClearWorks](arkts-backgroundtasks-workscheduler-stopandclearworks-f.md) | 停止和取消当前应用所有的延迟任务。 |
+| [stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md) | 取消延迟任务。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [resetExecFrequency](arkts-backgroundtasks-workscheduler-resetexecfrequency-f-sys.md) | 重置执行频率信息。 |
+| [setExecFrequency](arkts-backgroundtasks-workscheduler-setexecfrequency-f-sys.md) | 设置执行频率信息. |
+<!--DelEnd-->
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
 | [WorkInfo](arkts-backgroundtasks-workscheduler-workinfo-i.md) | 延迟任务的具体信息, 用于设置延迟任务的触发条件等。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [FrequencyInfo](arkts-backgroundtasks-workscheduler-frequencyinfo-i-sys.md) | 执行频率信息. |
+<!--DelEnd-->
 
 ### 枚举
 
@@ -52,7 +71,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [EXECUTE_IMMEDIATE](arkts-backgroundtasks-workscheduler-con-sys.md#executeimmediate) | 请求的任务是否立即执行。 |
-| [WORK_SCHEDULER_CONDITION](arkts-backgroundtasks-workscheduler-con-sys.md#workschedulercondition) | 当前任务触发时满足的最后一个条件。 |
+| [EXECUTE_IMMEDIATE](arkts-backgroundtasks-workscheduler-con-sys.md#execute_immediate) | 请求的任务是否立即执行。 |
+| [WORK_SCHEDULER_CONDITION](arkts-backgroundtasks-workscheduler-con-sys.md#work_scheduler_condition) | 当前任务触发时满足的最后一个条件。 |
 <!--DelEnd-->
 

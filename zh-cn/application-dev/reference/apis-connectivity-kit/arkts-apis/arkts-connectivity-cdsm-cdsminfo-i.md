@@ -4,13 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-cdsm-interface CdsmInfo--><!--Device-cdsm-interface CdsmInfo-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+## 导入模块
+
+```TypeScript
+import { cdsm } from '@kit.ConnectivityKit';
+```
 
 ## members
 
@@ -23,10 +25,6 @@ members: CdsmMemberInfo[]
 **类型：** [CdsmMemberInfo](arkts-connectivity-cdsm-cdsmmemberinfo-i.md)[]
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

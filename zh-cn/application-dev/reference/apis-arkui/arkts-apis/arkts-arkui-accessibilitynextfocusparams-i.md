@@ -4,13 +4,14 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface AccessibilityNextFocusParams--><!--Device-unnamed-declare interface AccessibilityNextFocusParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## isConsiderDescendants
 
@@ -23,10 +24,6 @@ descendantMode -确定焦点搜索是否应考虑 在下一个可访问性焦点
 **类型：** boolean
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

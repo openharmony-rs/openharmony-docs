@@ -1,5 +1,11 @@
 # init
 
+## 导入模块
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+```
+
 ## init
 
 ```TypeScript
@@ -27,9 +33,7 @@ Matrix的构造函数，可以通过传入的参数创建一个四阶矩阵，�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

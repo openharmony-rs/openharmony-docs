@@ -1,5 +1,10 @@
 # disconnectNative
 
+## 导入模块
+
+```TypeScript
+```
+
 ## disconnectNative
 
 ```TypeScript
@@ -10,9 +15,7 @@ function disconnectNative(connectionId: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **需要权限：** ohos.permission.WEB_NATIVE_MESSAGING
 
@@ -26,7 +29,7 @@ function disconnectNative(connectionId: int): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| connectionId | int | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由 [connectNative](../../apis-arkweb/arkts-apis/arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative)方法返回。建立连接后需要通过disconnectNative释放。需使用由 connectNative返回的有效连接ID。 |
+| connectionId | int | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由 [connectNative](../../apis-arkweb/arkts-apis/arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md)方法返回。建立连接后需要通过disconnectNative释放。需使用由 connectNative返回的有效连接ID。 |
 
 **返回值：**
 

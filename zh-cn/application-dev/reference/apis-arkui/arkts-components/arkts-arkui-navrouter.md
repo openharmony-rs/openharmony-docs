@@ -14,8 +14,6 @@ NavRouter()
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 13
 
 **替代接口：** NavDestinationAttribute
@@ -35,8 +33,6 @@ NavRouter(value: RouteInfo)
 提供路由信息，指定点击NavRouter时，要跳转的NavDestination页面。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 13
 
@@ -58,5 +54,15 @@ NavRouter(value: RouteInfo)
 
 ## 汇总
 
-- [RouteInfo](arkts-arkui-routeinfo-i.md)
-- [NavRouteMode](arkts-arkui-navroutemode-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [RouteInfo](arkts-arkui-routeinfo-i.md) | 路由信息。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [NavRouteMode](arkts-arkui-navroutemode-e.md) | 路由模式。 |
+

@@ -1,5 +1,11 @@
 # getInspectorNodeById（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inspector } from '@kit.ArkUI';
+```
+
 ## getInspectorNodeById
 
 ```TypeScript
@@ -9,8 +15,6 @@ declare function getInspectorNodeById(id: number): object
 根据节点id获取inspector节点信息。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

@@ -1,5 +1,12 @@
 # onDeviceConfigChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## onDeviceConfigChange
 
 ```TypeScript
@@ -9,10 +16,6 @@ function onDeviceConfigChange(callback: Callback<int>): void
 注册设备配置改变事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -26,7 +29,7 @@ function onDeviceConfigChange(callback: Callback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;int&gt; | 是 | 状态改变回调函数。, 0: config is added, 1: config is changed, 2: config is removed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;int&gt; | 是 | 状态改变回调函数。, 0: config is added, 1: config is changed, 2: config is removed. |
 
 **错误码：**
 

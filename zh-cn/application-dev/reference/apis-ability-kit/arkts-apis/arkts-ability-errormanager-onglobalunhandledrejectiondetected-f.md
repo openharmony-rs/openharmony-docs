@@ -1,6 +1,12 @@
 # on_globalUnhandledRejectionDetected
 
-## on_globalUnhandledRejectionDetected
+## 导入模块
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+```
+
+## on('globalUnhandledRejectionDetected')
 
 ```TypeScript
 function on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
@@ -9,10 +15,6 @@ function on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver):
 在进程中任意线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +36,7 @@ function on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver):
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';

@@ -4,11 +4,9 @@ Flags说明。用于表示处理Want的方式。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [Flags](arkts-ability-wantconstant-flags-e.md#flags)
+**替代接口：** [Flags](arkts-ability-wantconstant-flags-e.md)
 
 <!--Device-wantConstant-export enum Flags--><!--Device-wantConstant-export enum Flags-End-->
 
@@ -24,11 +22,9 @@ FLAG_AUTH_READ_URI_PERMISSION = 0x00000001
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [FLAG_AUTH_READ_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flagauthreaduripermission)
+**替代接口：** [FLAG_AUTH_READ_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flag_auth_read_uri_permission)
 
 <!--Device-Flags-FLAG_AUTH_READ_URI_PERMISSION = 0x00000001--><!--Device-Flags-FLAG_AUTH_READ_URI_PERMISSION = 0x00000001-End-->
 
@@ -44,11 +40,9 @@ FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [FLAG_AUTH_WRITE_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flagauthwriteuripermission)
+**替代接口：** [FLAG_AUTH_WRITE_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flag_auth_write_uri_permission)
 
 <!--Device-Flags-FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002--><!--Device-Flags-FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002-End-->
 
@@ -63,8 +57,6 @@ FLAG_ABILITY_FORWARD_RESULT = 0x00000004
 将结果返回给元能力。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -82,8 +74,6 @@ FLAG_ABILITY_CONTINUATION = 0x00000008
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Flags-FLAG_ABILITY_CONTINUATION = 0x00000008--><!--Device-Flags-FLAG_ABILITY_CONTINUATION = 0x00000008-End-->
@@ -99,8 +89,6 @@ FLAG_NOT_OHOS_COMPONENT = 0x00000010
 指定组件是否属于OHOS。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -118,8 +106,6 @@ FLAG_ABILITY_FORM_ENABLED = 0x00000020
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Flags-FLAG_ABILITY_FORM_ENABLED = 0x00000020--><!--Device-Flags-FLAG_ABILITY_FORM_ENABLED = 0x00000020-End-->
@@ -135,8 +121,6 @@ FLAG_ABILITYSLICE_MULTI_DEVICE = 0x00000100
 支持分布式调度系统中的多设备启动。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -154,8 +138,6 @@ FLAG_START_FOREGROUND_ABILITY = 0x00000200
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Flags-FLAG_START_FOREGROUND_ABILITY = 0x00000200--><!--Device-Flags-FLAG_START_FOREGROUND_ABILITY = 0x00000200-End-->
@@ -172,11 +154,9 @@ FLAG_INSTALL_ON_DEMAND = 0x00000800
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [FLAG_INSTALL_ON_DEMAND](arkts-ability-wantconstant-flags-e.md#flaginstallondemand)
+**替代接口：** [FLAG_INSTALL_ON_DEMAND](arkts-ability-wantconstant-flags-e.md#flag_install_on_demand)
 
 <!--Device-Flags-FLAG_INSTALL_ON_DEMAND = 0x00000800--><!--Device-Flags-FLAG_INSTALL_ON_DEMAND = 0x00000800-End-->
 
@@ -192,8 +172,6 @@ FLAG_INSTALL_WITH_BACKGROUND_MODE = 0x80000000
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Flags-FLAG_INSTALL_WITH_BACKGROUND_MODE = 0x80000000--><!--Device-Flags-FLAG_INSTALL_WITH_BACKGROUND_MODE = 0x80000000-End-->
@@ -206,11 +184,9 @@ FLAG_INSTALL_WITH_BACKGROUND_MODE = 0x80000000
 FLAG_ABILITY_CLEAR_MISSION = 0x00008000
 ```
 
-指示清除其他任务的操作。可以为传递给 **FeatureAbility** 中 [startAbility](arkts-ability-featureability-startability-f.md#startability) 方法的**Want**设置此标志，并且必须与**FLAG_ABILITY_NEW_MISSION**一起使用。
+指示清除其他任务的操作。可以为传递给 **FeatureAbility** 中 [startAbility](arkts-ability-featureability-startability-f.md) 方法的**Want**设置此标志，并且必须与**FLAG_ABILITY_NEW_MISSION**一起使用。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -228,8 +204,6 @@ FLAG_ABILITY_NEW_MISSION = 0x10000000
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Flags-FLAG_ABILITY_NEW_MISSION = 0x10000000--><!--Device-Flags-FLAG_ABILITY_NEW_MISSION = 0x10000000-End-->
@@ -245,8 +219,6 @@ FLAG_ABILITY_MISSION_TOP = 0x20000000
 指示如果启动能力的现有实例已位于任务堆栈的顶部，则将重用该实例。否则，将创建一个新的能力实例。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

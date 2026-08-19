@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## cancelAsBundle
@@ -21,10 +21,6 @@ function cancelAsBundle(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 <!--Device-notificationManager-function cancelAsBundle(    id: int,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void--><!--Device-notificationManager-function cancelAsBundle(    id: int,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void-End-->
@@ -40,7 +36,7 @@ function cancelAsBundle(
 | id | int | 是 | 通知ID。 |
 | representativeBundle | string | 是 | 被代理应用的包名。 |
 | userId | int | 是 | 用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 取消代理通知的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 取消代理通知的回调方法。 |
 
 **错误码：**
 
@@ -56,7 +52,7 @@ function cancelAsBundle(
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -108,10 +104,6 @@ function cancelAsBundle(id: int, representativeBundle: string, userId: int): Pro
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 <!--Device-notificationManager-function cancelAsBundle(id: int, representativeBundle: string, userId: int): Promise<void>--><!--Device-notificationManager-function cancelAsBundle(id: int, representativeBundle: string, userId: int): Promise<void>-End-->
@@ -148,7 +140,7 @@ function cancelAsBundle(id: int, representativeBundle: string, userId: int): Pro
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -194,10 +186,6 @@ function cancelAsBundle(representativeBundle: BundleOption, id: int): Promise<vo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 <!--Device-notificationManager-function cancelAsBundle(representativeBundle: BundleOption, id: int): Promise<void>--><!--Device-notificationManager-function cancelAsBundle(representativeBundle: BundleOption, id: int): Promise<void>-End-->
@@ -234,7 +222,7 @@ function cancelAsBundle(representativeBundle: BundleOption, id: int): Promise<vo
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

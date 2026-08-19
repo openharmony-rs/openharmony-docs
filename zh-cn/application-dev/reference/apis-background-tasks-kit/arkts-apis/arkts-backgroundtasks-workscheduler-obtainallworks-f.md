@@ -1,5 +1,11 @@
 # obtainAllWorks
 
+## 导入模块
+
+```TypeScript
+import { workScheduler } from '@kit.BackgroundTasksKit';
+```
+
 ## obtainAllWorks
 
 ```TypeScript
@@ -9,8 +15,6 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 10
 
@@ -26,7 +30,7 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
 **返回值：**
 
@@ -54,10 +58,6 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-workScheduler-function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void--><!--Device-workScheduler-function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void-End-->
@@ -68,7 +68,7 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[WorkInfo](arkts-backgroundtasks-workscheduler-workinfo-i.md)&gt;&gt; | 是 | 回调函数，获取成功时，返回当前应用所有的延迟任务列表，否则抛出异常。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[WorkInfo](arkts-backgroundtasks-workscheduler-workinfo-i.md)&gt;&gt; | 是 | 回调函数，获取成功时，返回当前应用所有的延迟任务列表，否则抛出异常。 |
 
 **错误码：**
 
@@ -79,7 +79,7 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 | [9700002](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -122,10 +122,6 @@ function obtainAllWorks(): Promise<Array<WorkInfo>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-workScheduler-function obtainAllWorks(): Promise<Array<WorkInfo>>--><!--Device-workScheduler-function obtainAllWorks(): Promise<Array<WorkInfo>>-End-->
@@ -147,7 +143,7 @@ function obtainAllWorks(): Promise<Array<WorkInfo>>
 | [9700002](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

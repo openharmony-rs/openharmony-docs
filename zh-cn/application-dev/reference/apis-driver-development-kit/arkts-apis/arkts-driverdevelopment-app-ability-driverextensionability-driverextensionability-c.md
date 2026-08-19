@@ -4,13 +4,15 @@ DriverExtensionAbility模块提供驱动相关扩展能力，提供驱动创建�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class DriverExtensionAbility--><!--Device-unnamed-declare class DriverExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
+
+## 导入模块
+
+```TypeScript
+import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevelopmentKit';
+```
 
 ## onConnect
 
@@ -18,13 +20,9 @@ DriverExtensionAbility模块提供驱动相关扩展能力，提供驱动创建�
 onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>
 ```
 
-Extension生命周期回调，会在[onCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)之后回调。返回一个 [RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md#remoteobject)对象，用于客户端和服务端进行通信。
+Extension生命周期回调，会在[onCreate](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)之后回调。返回一个 [RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象，用于客户端和服务端进行通信。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +42,7 @@ Extension生命周期回调，会在[onCreate](../../apis-ability-kit/arkts-apis
 | --- | --- |
 | rpc.RemoteObject | 一个RemoteObject对象，用于客户端和服务端进行通信；或一个Promise对象，返回用于通信的 RemoteObject对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
@@ -68,7 +66,7 @@ class DriverExt extends DriverExtensionAbility {
 }
 ```
 
-如果生成返回值[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md#remoteobject)依赖一个异步接口，可以使用异步生命周期：
+如果生成返回值[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)依赖一个异步接口，可以使用异步生命周期：
 
 ```TypeScript
 import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
@@ -107,10 +105,6 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DriverExtensionAbility-onDisconnect(want: Want): void | Promise<void>--><!--Device-DriverExtensionAbility-onDisconnect(want: Want): void | Promise<void>-End-->
@@ -123,7 +117,7 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
@@ -160,10 +154,6 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DriverExtensionAbility-onDisconnect(want: Want): undefined | Promise<void>--><!--Device-DriverExtensionAbility-onDisconnect(want: Want): undefined | Promise<void>-End-->
@@ -192,10 +182,6 @@ onDump(params: Array<string>): Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DriverExtensionAbility-onDump(params: Array<string>): Array<string>--><!--Device-DriverExtensionAbility-onDump(params: Array<string>): Array<string>-End-->
@@ -214,7 +200,7 @@ onDump(params: Array<string>): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 一个string类型的数组，用于转存客户端信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class DriverExt extends DriverExtensionAbility {
@@ -235,10 +221,6 @@ Extension生命周期回调，在创建时回调，执行初始化业务逻辑�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DriverExtensionAbility-onInit(want: Want): void--><!--Device-DriverExtensionAbility-onInit(want: Want): void-End-->
@@ -251,7 +233,7 @@ Extension生命周期回调，在创建时回调，执行初始化业务逻辑�
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
@@ -274,17 +256,13 @@ Extension生命周期回调，在销毁时回调，执行资源清理等操作�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DriverExtensionAbility-onRelease(): void--><!--Device-DriverExtensionAbility-onRelease(): void-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-## 示例
+**示例**
 
 ```TypeScript
 class DriverExt extends DriverExtensionAbility {
@@ -305,10 +283,6 @@ DriverExtension的上下文环境，继承自ExtensionContext。
 **类型：** [DriverExtensionContext](arkts-driverdevelopment-driverextensioncontext-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -2,15 +2,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-storageStatistics-export interface StorageStats--><!--Device-storageStatistics-export interface StorageStats-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
 
 ## app
 
@@ -23,10 +25,6 @@ app: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StorageStats-app: long--><!--Device-StorageStats-app: long-End-->
 
@@ -46,10 +44,6 @@ audio: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-StorageStats-audio: long--><!--Device-StorageStats-audio: long-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
@@ -67,10 +61,6 @@ file: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StorageStats-file: long--><!--Device-StorageStats-file: long-End-->
 
@@ -90,10 +80,6 @@ image: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-StorageStats-image: long--><!--Device-StorageStats-image: long-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
@@ -112,10 +98,6 @@ total: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-StorageStats-total: long--><!--Device-StorageStats-total: long-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
@@ -133,10 +115,6 @@ video: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StorageStats-video: long--><!--Device-StorageStats-video: long-End-->
 

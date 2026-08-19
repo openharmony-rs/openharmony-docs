@@ -1,18 +1,21 @@
 # Flash
 
-Flash继承自[FlashQuery](arkts-camera-camera-flashquery-i.md#flashquery)。 闪光灯类，对设备闪光灯操作。
+Flash继承自[FlashQuery](arkts-camera-camera-flashquery-i.md)。 闪光灯类，对设备闪光灯操作。
 
-**继承/实现关系：** Flash extends [FlashQuery](arkts-camera-camera-flashquery-i.md#flashquery)
+**继承/实现关系：** Flash extends [FlashQuery](arkts-camera-camera-flashquery-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface Flash--><!--Device-camera-interface Flash-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## getFlashMode
 
@@ -23,10 +26,6 @@ getFlashMode(): FlashMode
 获取当前设备的闪光灯模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -56,10 +55,6 @@ offFlashStateChange(callback?: Callback<FlashState>): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -72,7 +67,7 @@ offFlashStateChange(callback?: Callback<FlashState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FlashState](arkts-camera-camera-flashstate-e.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FlashState](arkts-camera-camera-flashstate-e.md)&gt; | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 ## onFlashStateChange
 
@@ -83,10 +78,6 @@ onFlashStateChange(callback: Callback<FlashState>): void
 订阅闪光灯状态变化事件回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -100,7 +91,7 @@ onFlashStateChange(callback: Callback<FlashState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FlashState](arkts-camera-camera-flashstate-e.md)&gt; | 是 | 回调函数，用于获取闪光灯状态变化信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FlashState](arkts-camera-camera-flashstate-e.md)&gt; | 是 | 回调函数，用于获取闪光灯状态变化信息。 |
 
 ## setFlashMode
 
@@ -111,10 +102,6 @@ setFlashMode(flashMode: FlashMode): void
 设置闪光灯模式。 进行设置之前，需要先检查： 1. 设备是否支持闪光灯，可使用方法[hasFlash](arkts-camera-camera-flashquery-i.md#hasflash)。 2. 设备是否支持指定的闪光灯模式，可使用方法[isFlashModeSupported](arkts-camera-camera-flashquery-i.md#isflashmodesupported)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

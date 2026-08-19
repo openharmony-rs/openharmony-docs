@@ -4,10 +4,6 @@ ASR voice mute mode.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AsrVoiceMuteMode--><!--Device-audio-enum AsrVoiceMuteMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -23,10 +19,6 @@ OUTPUT_MUTE = 0
 Mute the local output stream.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0--><!--Device-AsrVoiceMuteMode-OUTPUT_MUTE = 0-End-->
 
@@ -44,10 +36,6 @@ Mute the local MIC input stream.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AsrVoiceMuteMode-INPUT_MUTE = 1--><!--Device-AsrVoiceMuteMode-INPUT_MUTE = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -63,10 +51,6 @@ TTS_MUTE  = 2
 Send tts output stream to TX and mute the local output stream.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-TTS_MUTE  = 2--><!--Device-AsrVoiceMuteMode-TTS_MUTE  = 2-End-->
 
@@ -84,10 +68,6 @@ Mute the voice call stream.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AsrVoiceMuteMode-CALL_MUTE = 3--><!--Device-AsrVoiceMuteMode-CALL_MUTE = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -103,10 +83,6 @@ OUTPUT_MUTE_EX = 4
 Based on the OUTPUT_MUTE, send output stream to voice call record.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrVoiceMuteMode-OUTPUT_MUTE_EX = 4--><!--Device-AsrVoiceMuteMode-OUTPUT_MUTE_EX = 4-End-->
 

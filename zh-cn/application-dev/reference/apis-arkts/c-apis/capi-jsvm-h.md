@@ -281,7 +281,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Init(const JSVM_InitOptions* options)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CreateVM()
 
@@ -306,7 +306,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateVM(const JSVM_CreateVMOptions* options, JS
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n |
 
 ### OH_JSVM_SetMicrotaskPolicy()
 
@@ -331,7 +331,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm, JSVM_MicrotaskPol
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 如果接口调用成功，返回 JSVM_OK。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 如果接口调用成功，返回 JSVM_OK。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。\n |
 
 ### OH_JSVM_DestroyVM()
 
@@ -355,7 +355,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。\n |
 
 ### OH_JSVM_CreateProxy()
 
@@ -382,7 +382,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env, JSVM_Value target, JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果 target 或 handler 非 JS 对象。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。\n          [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果 target 或 handler 非 JS 对象。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_IsProxy()
 
@@ -408,7 +408,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env, JSVM_Value value, bool* is
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。\n |
 
 ### OH_JSVM_ProxyGetTarget()
 
@@ -434,7 +434,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env, JSVM_Value value, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。<br>         [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status) 如果 value 非 Javascript Proxy。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示接口调用成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。\n          [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status) 如果 value 非 Javascript Proxy。\n |
 
 ### OH_JSVM_OpenVMScope()
 
@@ -459,7 +459,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm, JSVM_VMScope* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CloseVMScope()
 
@@ -484,7 +484,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm, JSVM_VMScope scope)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateEnv()
 
@@ -511,7 +511,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm, size_t propertyCount, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateEnvFromSnapshot()
 
@@ -537,7 +537,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnvFromSnapshot(JSVM_VM vm, size_t index, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_DestroyEnv()
 
@@ -561,7 +561,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DestroyEnv(JSVM_Env env)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_OpenEnvScope()
 
@@ -586,7 +586,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenEnvScope(JSVM_Env env, JSVM_EnvScope* result
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CloseEnvScope()
 
@@ -611,7 +611,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseEnvScope(JSVM_Env env, JSVM_EnvScope scope)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetVM()
 
@@ -636,7 +636,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env, JSVM_VM* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CompileScript()
 
@@ -666,7 +666,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env, JSVM_Value script, c
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         {@link JSVM_CANT_RUN_JS } 表示当前无法执行JS。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          {@link JSVM_CANT_RUN_JS } 表示当前无法执行JS。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CompileScriptWithOrigin()
 
@@ -697,7 +697,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env, JSVM_Value
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         {@link JSVM_CANT_RUN_JS } 表示当前无法执行JS。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。\n          {@link JSVM_CANT_RUN_JS } 表示当前无法执行JS。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CompileScriptWithOptions()
 
@@ -725,7 +725,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env, JSVM_Valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数无效。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数无效。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CreateCodeCache()
 
@@ -752,7 +752,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env, JSVM_Script script
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。\n |
 
 ### OH_JSVM_RunScript()
 
@@ -778,7 +778,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env, JSVM_Script script, JSVM
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_SetInstanceData()
 
@@ -805,7 +805,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env, void* data, JSVM_F
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetInstanceData()
 
@@ -830,7 +830,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetInstanceData(JSVM_Env env, void** data)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetLastErrorInfo()
 
@@ -855,7 +855,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetLastErrorInfo(JSVM_Env env, const JSVM_Extend
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_Throw()
 
@@ -880,7 +880,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Throw(JSVM_Env env, JSVM_Value error)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_ThrowError()
 
@@ -906,7 +906,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowError(JSVM_Env env, const char* code, const
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_ThrowTypeError()
 
@@ -932,7 +932,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowTypeError(JSVM_Env env, const char* code, c
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_ThrowRangeError()
 
@@ -958,7 +958,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowRangeError(JSVM_Env env, const char* code, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_ThrowSyntaxError()
 
@@ -984,7 +984,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ThrowSyntaxError(JSVM_Env env, const char* code,
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsError()
 
@@ -1010,7 +1010,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsError(JSVM_Env env, JSVM_Value value, bool* re
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateError()
 
@@ -1037,7 +1037,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateError(JSVM_Env env, JSVM_Value code, JSVM_
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_CreateTypeError()
 
@@ -1064,7 +1064,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypeError(JSVM_Env env, JSVM_Value code, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_CreateRangeError()
 
@@ -1091,7 +1091,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateRangeError(JSVM_Env env, JSVM_Value code, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_CreateSyntaxError()
 
@@ -1118,7 +1118,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSyntaxError(JSVM_Env env, JSVM_Value code,
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_GetAndClearLastException()
 
@@ -1143,7 +1143,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetAndClearLastException(JSVM_Env env, JSVM_Valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsExceptionPending()
 
@@ -1168,7 +1168,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsExceptionPending(JSVM_Env env, bool* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_OpenHandleScope()
 
@@ -1193,7 +1193,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenHandleScope(JSVM_Env env, JSVM_HandleScope* 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CloseHandleScope()
 
@@ -1218,7 +1218,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseHandleScope(JSVM_Env env, JSVM_HandleScope 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。\n |
 
 ### OH_JSVM_OpenEscapableHandleScope()
 
@@ -1243,7 +1243,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenEscapableHandleScope(JSVM_Env env, JSVM_Esca
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CloseEscapableHandleScope()
 
@@ -1268,7 +1268,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseEscapableHandleScope(JSVM_Env env, JSVM_Esc
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_HANDLE_SCOPE_MISMATCH](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。\n |
 
 ### OH_JSVM_EscapeHandle()
 
@@ -1295,7 +1295,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_EscapeHandle(JSVM_Env env, JSVM_EscapableHandleS
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_ESCAPE_CALLED_TWICE](capi-jsvm-types-h.md#jsvm_status) 表示scope对象已被关闭。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_ESCAPE_CALLED_TWICE](capi-jsvm-types-h.md#jsvm_status) 表示scope对象已被关闭。\n |
 
 ### OH_JSVM_CreateReference()
 
@@ -1322,7 +1322,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateReference(JSVM_Env env, JSVM_Value value, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_DeleteReference()
 
@@ -1347,7 +1347,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteReference(JSVM_Env env, JSVM_Ref ref)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_ReferenceRef()
 
@@ -1373,7 +1373,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceRef(JSVM_Env env, JSVM_Ref ref, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_ReferenceUnref()
 
@@ -1399,7 +1399,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReferenceUnref(JSVM_Env env, JSVM_Ref ref, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。\n |
 
 ### OH_JSVM_GetReferenceValue()
 
@@ -1425,7 +1425,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceValue(JSVM_Env env, JSVM_Ref ref, JS
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateArray()
 
@@ -1450,7 +1450,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateArrayWithLength()
 
@@ -1476,7 +1476,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env, size_t lengt
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateArraybuffer()
 
@@ -1503,7 +1503,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env, size_t byteLengt
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_AllocateArrayBufferBackingStoreData()
 
@@ -1529,7 +1529,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteL
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示内存申请失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示内存申请失败。\n |
 
 ### OH_JSVM_FreeArrayBufferBackingStoreData()
 
@@ -1553,7 +1553,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的 data 是空指针。\n |
 
 ### OH_JSVM_CreateArrayBufferFromBackingStoreData()
 
@@ -1582,7 +1582,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env e
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：<br>         1. offset + arrayBufferSize > backingStoreSize。<br>         2. backingStoreSize 或者 arrayBufferSize 为 0。<br>         3. data 或者 result 为空。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示触发了下面描述的异常情况之一：\n          1. offset + arrayBufferSize > backingStoreSize。\n          2. backingStoreSize 或者 arrayBufferSize 为 0。\n          3. data 或者 result 为空。\n |
 
 ### OH_JSVM_CreateDate()
 
@@ -1608,7 +1608,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env, double time, JSVM_Value
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CreateExternal()
 
@@ -1636,7 +1636,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env, void* data, JSVM_Fi
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateObject()
 
@@ -1661,7 +1661,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateSymbol()
 
@@ -1687,7 +1687,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSymbol(JSVM_Env env, JSVM_Value descriptio
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_SymbolFor()
 
@@ -1714,7 +1714,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SymbolFor(JSVM_Env env, const char* utf8descript
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateTypedarray()
 
@@ -1743,7 +1743,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateTypedarray(JSVM_Env env, JSVM_TypedarrayTy
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CreateDataview()
 
@@ -1771,7 +1771,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataview(JSVM_Env env, size_t length, JSVM
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CreateInt32()
 
@@ -1797,7 +1797,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt32(JSVM_Env env, int32_t value, JSVM_Va
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateUint32()
 
@@ -1823,7 +1823,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateUint32(JSVM_Env env, uint32_t value, JSVM_
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateInt64()
 
@@ -1849,7 +1849,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateInt64(JSVM_Env env, int64_t value, JSVM_Va
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateDouble()
 
@@ -1875,7 +1875,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDouble(JSVM_Env env, double value, JSVM_Va
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateBigintInt64()
 
@@ -1901,7 +1901,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintInt64(JSVM_Env env, int64_t value, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateBigintUint64()
 
@@ -1927,7 +1927,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintUint64(JSVM_Env env, uint64_t value,
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateBigintWords()
 
@@ -1955,7 +1955,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateBigintWords(JSVM_Env env, int signBit, siz
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CreateStringLatin1()
 
@@ -1982,7 +1982,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringLatin1(JSVM_Env env, const char* str
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CreateStringUtf16()
 
@@ -2009,7 +2009,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf16(JSVM_Env env, const char16_t* 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CreateStringUtf8()
 
@@ -2036,7 +2036,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateStringUtf8(JSVM_Env env, const char* str, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_GetArrayLength()
 
@@ -2062,7 +2062,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetArrayLength(JSVM_Env env, JSVM_Value value, u
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_ARRAY_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是Array类型。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_ARRAY_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是Array类型。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_GetArraybufferInfo()
 
@@ -2089,7 +2089,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetArraybufferInfo(JSVM_Env env, JSVM_Value arra
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n |
 
 ### OH_JSVM_GetPrototype()
 
@@ -2115,7 +2115,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPrototype(JSVM_Env env, JSVM_Value object, JS
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_GetTypedarrayInfo()
 
@@ -2145,7 +2145,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetTypedarrayInfo(JSVM_Env env, JSVM_Value typed
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n |
 
 ### OH_JSVM_GetDataviewInfo()
 
@@ -2174,7 +2174,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDataviewInfo(JSVM_Env env, JSVM_Value datavie
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数非外部的JSVM_Value。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数非外部的JSVM_Value。 |
 
 ### OH_JSVM_GetDateValue()
 
@@ -2200,7 +2200,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetDateValue(JSVM_Env env, JSVM_Value value, dou
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_DATE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不是Date类型。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_DATE_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不是Date类型。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_GetValueBool()
 
@@ -2226,7 +2226,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBool(JSVM_Env env, JSVM_Value value, boo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BOOLEAN_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是boolean类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_BOOLEAN_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是boolean类型。\n |
 
 ### OH_JSVM_GetValueDouble()
 
@@ -2252,7 +2252,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueDouble(JSVM_Env env, JSVM_Value value, d
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。\n |
 
 ### OH_JSVM_GetValueBigintInt64()
 
@@ -2279,7 +2279,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintInt64(JSVM_Env env, JSVM_Value val
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。\n |
 
 ### OH_JSVM_GetValueBigintUint64()
 
@@ -2306,7 +2306,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintUint64(JSVM_Env env, JSVM_Value va
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。\n |
 
 ### OH_JSVM_GetValueBigintWords()
 
@@ -2334,7 +2334,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueBigintWords(JSVM_Env env, JSVM_Value val
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是BigInt类型。\n |
 
 ### OH_JSVM_GetValueExternal()
 
@@ -2360,7 +2360,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueExternal(JSVM_Env env, JSVM_Value value,
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数非外部的JSVM_Value。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数非外部的JSVM_Value。 |
 
 ### OH_JSVM_GetValueInt32()
 
@@ -2386,7 +2386,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt32(JSVM_Env env, JSVM_Value value, in
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。\n |
 
 ### OH_JSVM_GetValueInt64()
 
@@ -2412,7 +2412,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueInt64(JSVM_Env env, JSVM_Value value, in
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。\n |
 
 ### OH_JSVM_GetValueStringLatin1()
 
@@ -2440,7 +2440,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringLatin1(JSVM_Env env, JSVM_Value va
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_GetValueStringUtf8()
 
@@ -2468,7 +2468,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf8(JSVM_Env env, JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_GetValueStringUtf16()
 
@@ -2496,7 +2496,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueStringUtf16(JSVM_Env env, JSVM_Value val
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n |
 
 ### OH_JSVM_GetValueUint32()
 
@@ -2522,7 +2522,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetValueUint32(JSVM_Env env, JSVM_Value value, u
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是number类型。\n |
 
 ### OH_JSVM_GetBoolean()
 
@@ -2548,7 +2548,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetBoolean(JSVM_Env env, bool value, JSVM_Value*
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetGlobal()
 
@@ -2573,7 +2573,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetGlobal(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetNull()
 
@@ -2598,7 +2598,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNull(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetUndefined()
 
@@ -2623,7 +2623,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetUndefined(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CoerceToBool()
 
@@ -2649,7 +2649,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBool(JSVM_Env env, JSVM_Value value, JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CoerceToNumber()
 
@@ -2675,7 +2675,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToNumber(JSVM_Env env, JSVM_Value value, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成Number。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_NUMBER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成Number。\n |
 
 ### OH_JSVM_CoerceToObject()
 
@@ -2701,7 +2701,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToObject(JSVM_Env env, JSVM_Value value, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成Object。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成Object。\n |
 
 ### OH_JSVM_CoerceToString()
 
@@ -2727,7 +2727,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToString(JSVM_Env env, JSVM_Value value, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成String。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成String。\n |
 
 ### OH_JSVM_Typeof()
 
@@ -2753,7 +2753,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Typeof(JSVM_Env env, JSVM_Value value, JSVM_Valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n |
 
 ### OH_JSVM_Instanceof()
 
@@ -2780,7 +2780,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Instanceof(JSVM_Env env, JSVM_Value object, JSVM
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_FUNCTION_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是Function类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_FUNCTION_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是Function类型。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_IsArray()
 
@@ -2806,7 +2806,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsArray(JSVM_Env env, JSVM_Value value, bool* re
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsArraybuffer()
 
@@ -2832,7 +2832,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsArraybuffer(JSVM_Env env, JSVM_Value value, bo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsDate()
 
@@ -2858,7 +2858,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDate(JSVM_Env env, JSVM_Value value, bool* isD
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsTypedarray()
 
@@ -2884,7 +2884,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsTypedarray(JSVM_Env env, JSVM_Value value, boo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsDataview()
 
@@ -2910,7 +2910,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDataview(JSVM_Env env, JSVM_Value value, bool*
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_StrictEquals()
 
@@ -2937,7 +2937,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StrictEquals(JSVM_Env env, JSVM_Value lhs, JSVM_
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_Equals()
 
@@ -2964,7 +2964,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Equals(JSVM_Env env, JSVM_Value lhs, JSVM_Value 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_DetachArraybuffer()
 
@@ -2989,7 +2989,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DetachArraybuffer(JSVM_Env env, JSVM_Value array
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         如果[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是可分析的ArrayBuffer。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          如果[JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是可分析的ArrayBuffer。\n |
 
 ### OH_JSVM_IsDetachedArraybuffer()
 
@@ -3015,7 +3015,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsDetachedArraybuffer(JSVM_Env env, JSVM_Value v
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetPropertyNames()
 
@@ -3041,7 +3041,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPropertyNames(JSVM_Env env, JSVM_Value object
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_GetAllPropertyNames()
 
@@ -3070,7 +3070,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetAllPropertyNames(JSVM_Env env, JSVM_Value obj
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_SetProperty()
 
@@ -3097,7 +3097,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetProperty(JSVM_Env env, JSVM_Value object, JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_GetProperty()
 
@@ -3124,7 +3124,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetProperty(JSVM_Env env, JSVM_Value object, JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_HasProperty()
 
@@ -3151,7 +3151,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasProperty(JSVM_Env env, JSVM_Value object, JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_DeleteProperty()
 
@@ -3178,7 +3178,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteProperty(JSVM_Env env, JSVM_Value object, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_HasOwnProperty()
 
@@ -3205,7 +3205,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasOwnProperty(JSVM_Env env, JSVM_Value object, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_NAME_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示期望传入名字不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_NAME_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示期望传入名字不合法。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_SetNamedProperty()
 
@@ -3232,7 +3232,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetNamedProperty(JSVM_Env env, JSVM_Value object
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_GetNamedProperty()
 
@@ -3259,7 +3259,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNamedProperty(JSVM_Env env, JSVM_Value object
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_HasNamedProperty()
 
@@ -3286,7 +3286,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasNamedProperty(JSVM_Env env, JSVM_Value object
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_SetElement()
 
@@ -3313,7 +3313,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetElement(JSVM_Env env, JSVM_Value object, uint
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_GetElement()
 
@@ -3340,7 +3340,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetElement(JSVM_Env env, JSVM_Value object, uint
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_HasElement()
 
@@ -3367,7 +3367,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_HasElement(JSVM_Env env, JSVM_Value object, uint
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_DeleteElement()
 
@@ -3394,7 +3394,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeleteElement(JSVM_Env env, JSVM_Value object, u
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_DefineProperties()
 
@@ -3421,7 +3421,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineProperties(JSVM_Env env, JSVM_Value object
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_ObjectFreeze()
 
@@ -3446,7 +3446,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectFreeze(JSVM_Env env, JSVM_Value object)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_ObjectSeal()
 
@@ -3471,7 +3471,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSeal(JSVM_Env env, JSVM_Value object)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CallFunction()
 
@@ -3500,7 +3500,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env, JSVM_Value recv, JSVM
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CreateFunction()
 
@@ -3528,7 +3528,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunction(JSVM_Env env, const char* utf8nam
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_GetCbInfo()
 
@@ -3557,7 +3557,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetCbInfo(JSVM_Env env, JSVM_CallbackInfo cbinfo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetNewTarget()
 
@@ -3583,7 +3583,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetNewTarget(JSVM_Env env, JSVM_CallbackInfo cbi
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_NewInstance()
 
@@ -3611,7 +3611,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env, JSVM_Value constructor
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_DefineClass()
 
@@ -3641,7 +3641,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClass(JSVM_Env env, const char* utf8name, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_Wrap()
 
@@ -3670,7 +3670,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Wrap(JSVM_Env env, JSVM_Value jsObject, void* na
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_Unwrap()
 
@@ -3696,7 +3696,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_Unwrap(JSVM_Env env, JSVM_Value jsObject, void**
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_RemoveWrap()
 
@@ -3722,7 +3722,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RemoveWrap(JSVM_Env env, JSVM_Value jsObject, vo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_TypeTagObject()
 
@@ -3748,7 +3748,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TypeTagObject(JSVM_Env env, JSVM_Value value, co
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CheckObjectTypeTag()
 
@@ -3775,7 +3775,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CheckObjectTypeTag(JSVM_Env env, JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_AddFinalizer()
 
@@ -3804,7 +3804,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddFinalizer(JSVM_Env env, JSVM_Value jsObject, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不合法。\n |
 
 ### OH_JSVM_GetVersion()
 
@@ -3829,7 +3829,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVersion(JSVM_Env env, uint32_t* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetVMInfo()
 
@@ -3853,7 +3853,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetVMInfo(JSVM_VMInfo* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_AdjustExternalMemory()
 
@@ -3879,7 +3879,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AdjustExternalMemory(JSVM_Env env, int64_t chang
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_MemoryPressureNotification()
 
@@ -3904,7 +3904,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_MemoryPressureNotification(JSVM_Env env, JSVM_Me
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreatePromise()
 
@@ -3930,7 +3930,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePromise(JSVM_Env env, JSVM_Deferred* defer
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_ResolveDeferred()
 
@@ -3956,7 +3956,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ResolveDeferred(JSVM_Env env, JSVM_Deferred defe
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_RejectDeferred()
 
@@ -3982,7 +3982,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RejectDeferred(JSVM_Env env, JSVM_Deferred defer
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_IsPromise()
 
@@ -4008,7 +4008,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsPromise(JSVM_Env env, JSVM_Value value, bool* 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_PromiseRegisterHandler()
 
@@ -4036,7 +4036,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PromiseRegisterHandler(JSVM_Env env, JSVM_Value 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 如果 env 或 promise 为空，或 onFulfilled 和 onRejected 同时为空。<br>         [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status) 如果 promise 非 JS 的 Promise 类型，或 onFulfilled、onRejected 非 JS 的 Function 类型。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 如果存在 JS 异常待处理。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 如果 API 执行错误。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 如果 env 或 promise 为空，或 onFulfilled 和 onRejected 同时为空。\n          [JSVM_INVALID_TYPE](capi-jsvm-types-h.md#jsvm_status) 如果 promise 非 JS 的 Promise 类型，或 onFulfilled、onRejected 非 JS 的 Function 类型。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 如果存在 JS 异常待处理。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 如果 API 执行错误。\n |
 
 ### OH_JSVM_JsonParse()
 
@@ -4062,7 +4062,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_JsonParse(JSVM_Env env, JSVM_Value jsonString, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的参数不是string类型。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_JsonStringify()
 
@@ -4088,7 +4088,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_JsonStringify(JSVM_Env env, JSVM_Value jsonObjec
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n |
 
 ### OH_JSVM_CreateSnapshot()
 
@@ -4116,7 +4116,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm, size_t contextCount, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_GetHeapStatistics()
 
@@ -4141,7 +4141,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetHeapStatistics(JSVM_VM vm, JSVM_HeapStatistic
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_StartCpuProfiler()
 
@@ -4166,7 +4166,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StartCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler* r
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_StopCpuProfiler()
 
@@ -4193,7 +4193,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_StopCpuProfiler(JSVM_VM vm, JSVM_CpuProfiler pro
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_TakeHeapSnapshot()
 
@@ -4219,7 +4219,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TakeHeapSnapshot(JSVM_VM vm, JSVM_OutputStream s
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_TakeRawHeapSnapshot()
 
@@ -4245,7 +4245,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TakeRawHeapSnapshot(JSVM_VM vm, JSVM_OutputStrea
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回JSVM函数执行结果码。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm或stream为NULL。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示其他所有情况。 |
+| JSVM_EXTERN JSVM_Status | 返回JSVM函数执行结果码。          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm或stream为NULL。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示其他所有情况。 |
 
 ### OH_JSVM_SetHeapThresholdCallback()
 
@@ -4272,7 +4272,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHeapThresholdCallback(JSVM_VM vm, uint64_t th
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回JSVM函数执行结果码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm或callback为NULL，或threshold为零或超过heapSizeLimit，或VM已注册堆阈值回调。 |
+| JSVM_EXTERN JSVM_Status | 返回JSVM函数执行结果码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm或callback为NULL，或threshold为零或超过heapSizeLimit，或VM已注册堆阈值回调。 |
 
 ### OH_JSVM_ClearHeapThresholdCallback()
 
@@ -4299,7 +4299,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ClearHeapThresholdCallback(JSVM_VM vm, uint64_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回JSVM函数执行结果码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm或callback为NULL，或（threshold, callback, data）与已注册的回调不匹配。 |
+| JSVM_EXTERN JSVM_Status | 返回JSVM函数执行结果码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm或callback为NULL，或（threshold, callback, data）与已注册的回调不匹配。 |
 
 ### OH_JSVM_OpenInspector()
 
@@ -4325,7 +4325,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspector(JSVM_Env env, const char* host, ui
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_CloseInspector()
 
@@ -4349,7 +4349,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_WaitForDebugger()
 
@@ -4374,7 +4374,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env, bool breakNextLine
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_DefineClassWithPropertyHandler()
 
@@ -4406,7 +4406,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env, con
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示执行的过程中产生了JS异常。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示有未知的原因导致执行失败。\n |
 
 ### OH_JSVM_IsLocked()
 
@@ -4431,7 +4431,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_AcquireLock()
 
@@ -4455,7 +4455,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_ReleaseLock()
 
@@ -4479,7 +4479,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsUndefined()
 
@@ -4505,7 +4505,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env, JSVM_Value value, bool
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsNull()
 
@@ -4531,7 +4531,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env, JSVM_Value value, bool* isN
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsNullOrUndefined()
 
@@ -4557,7 +4557,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env, JSVM_Value value
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsBoolean()
 
@@ -4583,7 +4583,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBoolean(JSVM_Env env, JSVM_Value value, bool* 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsNumber()
 
@@ -4609,7 +4609,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNumber(JSVM_Env env, JSVM_Value value, bool* i
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsString()
 
@@ -4635,7 +4635,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsString(JSVM_Env env, JSVM_Value value, bool* i
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsSymbol()
 
@@ -4661,7 +4661,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbol(JSVM_Env env, JSVM_Value value, bool* i
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsFunction()
 
@@ -4687,7 +4687,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env, JSVM_Value value, bool*
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsObject()
 
@@ -4713,7 +4713,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env, JSVM_Value value, bool* i
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_IsBigInt()
 
@@ -4739,7 +4739,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env, JSVM_Value value, bool* i
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功，这个API不会触发任何异常。\n |
 
 ### OH_JSVM_CreateMap()
 
@@ -4764,7 +4764,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n |
 
 ### OH_JSVM_IsMap()
 
@@ -4790,7 +4790,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env, JSVM_Value value, bool* isMa
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n |
 
 ### OH_JSVM_IsConstructor()
 
@@ -4816,7 +4816,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env, JSVM_Value value, bo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n |
 
 ### OH_JSVM_CreateRegExp()
 
@@ -4843,7 +4843,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env, JSVM_Value value, JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。<br>         {@link JSVM_PENDING_EXCPTION } 表示API在运行时抛出异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n          {@link JSVM_PENDING_EXCPTION } 表示API在运行时抛出异常。\n |
 
 ### OH_JSVM_ObjectGetPrototypeOf()
 
@@ -4869,7 +4869,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env, JSVM_Value ob
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。<br>         {@link JSVM_PENDING_EXCPTION } 表示API在运行时抛出异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n          {@link JSVM_PENDING_EXCPTION } 表示API在运行时抛出异常。\n |
 
 ### OH_JSVM_ObjectSetPrototypeOf()
 
@@ -4895,7 +4895,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env, JSVM_Value ob
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示设置原型失败。如循环设置原型时，会触发该失败。<br>         {@link JSVM_PENDING_EXCPTION } 表示API在运行时抛出异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示设置原型失败。如循环设置原型时，会触发该失败。\n          {@link JSVM_PENDING_EXCPTION } 表示API在运行时抛出异常。\n |
 
 ### OH_JSVM_CreateSet()
 
@@ -4920,7 +4920,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n |
 
 ### OH_JSVM_IsSet()
 
@@ -4946,7 +4946,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSet(JSVM_Env env, JSVM_Value value, bool* isSe
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示输入参数不合法。\n |
 
 ### OH_JSVM_CoerceToBigInt()
 
@@ -4972,7 +4972,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CoerceToBigInt(JSVM_Env env, JSVM_Value value, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BigInt。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 如果传入的JavaScript值无法转换成BigInt。\n |
 
 ### OH_JSVM_IsRegExp()
 
@@ -4998,7 +4998,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsRegExp(JSVM_Env env, JSVM_Value value, bool* r
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_CreateFunctionWithScript()
 
@@ -5028,7 +5028,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env, const cha
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示输入的JavaScript无法编译成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示输入的JavaScript无法编译成功。\n |
 
 ### OH_JSVM_PumpMessageLoop()
 
@@ -5053,7 +5053,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm, bool* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回JSVM函数结果代码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回JSVM函数结果代码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_PerformMicrotaskCheckpoint()
 
@@ -5077,7 +5077,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回JSVM函数结果代码。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回JSVM函数结果代码。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_IsCallable()
 
@@ -5103,7 +5103,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool*
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_RetainScript()
 
@@ -5128,7 +5128,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示脚本为空或已被保存过。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示脚本为空或已被保存过。\n |
 
 ### OH_JSVM_ReleaseScript()
 
@@ -5153,7 +5153,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示脚本为空或未被保存过。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示脚本为空或未被保存过。\n |
 
 ### OH_JSVM_OpenInspectorWithName()
 
@@ -5179,7 +5179,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env, int pid, con
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。\n |
 
 ### OH_JSVM_CompileWasmModule()
 
@@ -5209,7 +5209,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmModule(JSVM_Env env, const uint8_t *w
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmBytecode 参数为空，或传入的数据长度参数无效。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmBytecode 参数为空，或传入的数据长度参数无效。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示编译失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。\n |
 
 ### OH_JSVM_CompileWasmFunction()
 
@@ -5236,7 +5236,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileWasmFunction(JSVM_Env env, JSVM_Value was
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmModule 参数为空，或 wasmModule 不是一个真正的 WebAssembly 模块。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示函数索引越界，或编译失败。<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示 env 或 wasmModule 参数为空，或 wasmModule 不是一个真正的 WebAssembly 模块。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示函数索引越界，或编译失败。\n          [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status) 表示发生了异常。\n |
 
 ### OH_JSVM_IsWasmModuleObject()
 
@@ -5262,7 +5262,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsWasmModuleObject(JSVM_Env env, JSVM_Value valu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_CreateWasmCache()
 
@@ -5289,7 +5289,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateWasmCache(JSVM_Env env, JSVM_Value wasmMod
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示缓存生成失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示缓存生成失败。\n |
 
 ### OH_JSVM_ReleaseCache()
 
@@ -5315,7 +5315,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseCache(JSVM_Env env, const uint8_t* cacheD
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数，或 cacheType 参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数，或 cacheType 参数不合法。\n |
 
 ### OH_JSVM_IsBigIntObject()
 
@@ -5341,7 +5341,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBigIntObject(JSVM_Env env, JSVM_Value value, b
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_IsBooleanObject()
 
@@ -5367,7 +5367,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBooleanObject(JSVM_Env env, JSVM_Value value, 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_IsStringObject()
 
@@ -5393,7 +5393,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsStringObject(JSVM_Env env, JSVM_Value value, b
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_IsNumberObject()
 
@@ -5419,7 +5419,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsNumberObject(JSVM_Env env, JSVM_Value value, b
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_IsSymbolObject()
 
@@ -5445,7 +5445,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSymbolObject(JSVM_Env env, JSVM_Value value, b
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolAsyncIterator()
 
@@ -5470,7 +5470,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolAsyncIterator(JSVM_Env env, JSVM_Value*
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolHasInstance()
 
@@ -5495,7 +5495,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolHasInstance(JSVM_Env env, JSVM_Value* r
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolIsConcatSpreadable()
 
@@ -5520,7 +5520,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIsConcatSpreadable(JSVM_Env env, JSVM_V
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolMatch()
 
@@ -5545,7 +5545,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolMatch(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolReplace()
 
@@ -5570,7 +5570,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolReplace(JSVM_Env env, JSVM_Value* resul
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolSearch()
 
@@ -5595,7 +5595,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSearch(JSVM_Env env, JSVM_Value* result
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolSplit()
 
@@ -5620,7 +5620,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolSplit(JSVM_Env env, JSVM_Value* result)
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolToPrimitive()
 
@@ -5645,7 +5645,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToPrimitive(JSVM_Env env, JSVM_Value* r
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolUnscopables()
 
@@ -5670,7 +5670,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolUnscopables(JSVM_Env env, JSVM_Value* r
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolToStringTag()
 
@@ -5695,7 +5695,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolToStringTag(JSVM_Env env, JSVM_Value* r
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_GetSymbolIterator()
 
@@ -5720,7 +5720,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSymbolIterator(JSVM_Env env, JSVM_Value* resu
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入了空指针参数。\n |
 
 ### OH_JSVM_TraceStart()
 
@@ -5747,7 +5747,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStart(size_t count, const JSVM_TraceCategor
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。 。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) categories 或者 count 输入不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。 。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) categories 或者 count 输入不合法。\n |
 
 ### OH_JSVM_TraceStop()
 
@@ -5772,7 +5772,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_TraceStop(JSVM_OutputStream stream, void* stream
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) stream 或者 streamData 为空。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) stream 或者 streamData 为空。\n |
 
 ### OH_JSVM_AddHandlerForGC()
 
@@ -5800,7 +5800,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_AddHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeFo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的vm或者handler为空或者handler已经被添加过了。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的vm或者handler为空或者handler已经被添加过了。\n |
 
 ### OH_JSVM_RemoveHandlerForGC()
 
@@ -5827,7 +5827,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTim
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的vm或者handler为空或者handler已经被删除过了或者<br> 这个handler从来没有被添加过。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的vm或者handler为空或者handler已经被删除过了或者  这个handler从来没有被添加过。\n |
 
 ### OH_JSVM_SetHandlerForOOMError()
 
@@ -5852,7 +5852,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForOOMError(JSVM_VM vm, JSVM_HandlerFo
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。\n |
 
 ### OH_JSVM_SetDebugOption()
 
@@ -5878,7 +5878,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption de
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 如果传入的env为空指针，返回此错误码。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 如果传入的env为空指针，返回此错误码。\n |
 
 ### OH_JSVM_SetHandlerForFatalError()
 
@@ -5903,7 +5903,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm, JSVM_Handler
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。\n |
 
 ### OH_JSVM_SetHandlerForPromiseReject()
 
@@ -5928,7 +5928,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm, JSVM_Hand
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示函数执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示vm为空。\n |
 
 ### OH_JSVM_DefineClassWithOptions()
 
@@ -5961,7 +5961,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env, const char*
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的指针参数里面存在空指针。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示传入的utf8name | constructor | properties无效，导致执行失败。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入的指针参数里面存在空指针。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示传入的utf8name | constructor | properties无效，导致执行失败。\n |
 
 ### OH_JSVM_CreateExternalStringLatin1()
 
@@ -5991,7 +5991,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* s
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env, str 和 copied 中任一值为空。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env, str 和 copied 中任一值为空。\n |
 
 ### OH_JSVM_CreateExternalStringUtf16()
 
@@ -6021,7 +6021,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env, str 和 copied 中任一值为空。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env, str 和 copied 中任一值为空。\n |
 
 ### OH_JSVM_CreatePrivate()
 
@@ -6047,7 +6047,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env, JSVM_Value descripti
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env 和 result 中任一值为空。<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 description 不是字符串。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数中 env 和 result 中任一值为空。\n          [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 description 不是字符串。\n |
 
 ### OH_JSVM_SetPrivate()
 
@@ -6074,7 +6074,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env, JSVM_Value object, JSVM
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示设置 private 属性失败，同时没有异常产生。<br>         {@link JSVM_PENDING_EXCPTION } 表示发生了异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。\n          [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示设置 private 属性失败，同时没有异常产生。\n          {@link JSVM_PENDING_EXCPTION } 表示发生了异常。\n |
 
 ### OH_JSVM_GetPrivate()
 
@@ -6101,7 +6101,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env, JSVM_Value object, JSVM
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示获取 private 属性失败，同时没有异常产生。<br>         {@link JSVM_PENDING_EXCPTION } 表示发生了异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。\n          [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示获取 private 属性失败，同时没有异常产生。\n          {@link JSVM_PENDING_EXCPTION } 表示发生了异常。\n |
 
 ### OH_JSVM_DeletePrivate()
 
@@ -6127,7 +6127,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env, JSVM_Value object, J
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。<br>         [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示删除 private 属性失败，同时没有异常产生。<br>         {@link JSVM_PENDING_EXCPTION } 表示发生了异常。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示任一传入参数为空或者 key 不是一个 private key 对象。\n          [JSVM_OBJECT_EXPECTED](capi-jsvm-types-h.md#jsvm_status) 表示传入的 object 不是一个真正的 JavaScript object。\n          [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) 表示删除 private 属性失败，同时没有异常产生。\n          {@link JSVM_PENDING_EXCPTION } 表示发生了异常。\n |
 
 ### OH_JSVM_CreateDataReference()
 
@@ -6154,7 +6154,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env, JSVM_Data data
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n |
 
 ### OH_JSVM_GetReferenceData()
 
@@ -6180,7 +6180,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env, JSVM_Ref ref, JSV
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。\n |
 
 ### OH_JSVM_BackgroundDeserialize()
 
@@ -6206,7 +6206,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。\n |
 
 ### OH_JSVM_ReleaseDeserializeResult()
 
@@ -6230,7 +6230,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult 
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。\n |
 
 ### OH_JSVM_CreateArrayBufferFromExternalMemory()
 
@@ -6260,6 +6260,6 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env
 
 | 类型 | 说明 |
 | -- | -- |
-| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示出现了以下场景：result 为空、byteLength > 0 时但 externalData 为空、<br>         externalData 未按 8 字节对齐，byteLength 超过引擎支持的 ArrayBuffer 最大大小。 |
+| JSVM_EXTERN JSVM_Status | 返回执行状态码 JSVM_Status。          [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。\n          [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示出现了以下场景：result 为空、byteLength > 0 时但 externalData 为空、          externalData 未按 8 字节对齐，byteLength 超过引擎支持的 ArrayBuffer 最大大小。\n |
 
 

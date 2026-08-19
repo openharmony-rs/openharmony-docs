@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationRequest--><!--Device-unnamed-export interface NotificationRequest-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ readonly agentBundle?: BundleOption
 **类型：** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationRequest-readonly agentBundle?: BundleOption--><!--Device-NotificationRequest-readonly agentBundle?: BundleOption-End-->
 
@@ -46,10 +38,6 @@ readonly appInstanceKey?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationRequest-readonly appInstanceKey?: string--><!--Device-NotificationRequest-readonly appInstanceKey?: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -68,10 +56,6 @@ classification?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationRequest-classification?: string--><!--Device-NotificationRequest-classification?: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -89,8 +73,6 @@ readonly creatorInstanceKey?: number
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 15
 
@@ -114,10 +96,6 @@ readonly deviceId?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationRequest-readonly deviceId?: string--><!--Device-NotificationRequest-readonly deviceId?: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -132,13 +110,9 @@ extendInfo?: Record<string, RecordData>
 
 系统应用发布通知时的自定义扩展参数。默认为空。
 
-**类型：** Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationRequest-extendInfo?: Record<string, RecordData>--><!--Device-NotificationRequest-extendInfo?: Record<string, RecordData>-End-->
 
@@ -160,10 +134,6 @@ forceDistributed?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationRequest-forceDistributed?: boolean--><!--Device-NotificationRequest-forceDistributed?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -181,10 +151,6 @@ groupInfo?: GroupInfo
 **类型：** [GroupInfo](arkts-notification-notificationrequest-groupinfo-i-sys.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -207,10 +173,6 @@ isRemoveAllowed?: boolean
 **默认值：** true
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本11+：ohos.permission.SET_UNREMOVABLE_NOTIFICATION
@@ -235,10 +197,6 @@ notDistributed?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationRequest-notDistributed?: boolean--><!--Device-NotificationRequest-notDistributed?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -251,15 +209,11 @@ notDistributed?: boolean
 notificationControlFlags?: long
 ```
 
-通知提醒方式管控。默认值为0。 可以通过此接口减少当前通知的提醒方式。与 [NotificationControlFlagStatus](arkts-notification-notificationmanager-notificationcontrolflagstatus-e-sys.md#notificationcontrolflagstatus系统接口)的 枚举进行按位或运算得到该参数。
+通知提醒方式管控。默认值为0。 可以通过此接口减少当前通知的提醒方式。与 [NotificationControlFlagStatus](arkts-notification-notificationmanager-notificationcontrolflagstatus-e-sys.md)的 枚举进行按位或运算得到该参数。
 
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationRequest-notificationControlFlags?: long--><!--Device-NotificationRequest-notificationControlFlags?: long-End-->
 
@@ -273,15 +227,11 @@ notificationControlFlags?: long
 overlayIcon?: image.PixelMap
 ```
 
-通知重叠图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。 未设置`overlayIcon`时，通知将不展示重叠图标。 此接口只在[notificationSlotType](arkts-notification-notificationrequest-notificationrequest-i.md#notificationrequest)类型设置为SOCIAL_COMMUNICATION时生效。 建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。
+通知重叠图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过 [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)获取），超出后设置不生效。 未设置`overlayIcon`时，通知将不展示重叠图标。 此接口只在[notificationSlotType](arkts-notification-notificationrequest-notificationrequest-i.md)类型设置为SOCIAL_COMMUNICATION时生效。 建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。
 
 **类型：** image.PixelMap
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationRequest-overlayIcon?: image.PixelMap--><!--Device-NotificationRequest-overlayIcon?: image.PixelMap-End-->
 
@@ -301,10 +251,6 @@ representativeBundle?: BundleOption
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationRequest-representativeBundle?: BundleOption--><!--Device-NotificationRequest-representativeBundle?: BundleOption-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -322,10 +268,6 @@ readonly source?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationRequest-readonly source?: int--><!--Device-NotificationRequest-readonly source?: int-End-->
 
@@ -345,10 +287,6 @@ trigger?:Trigger
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationRequest-trigger?:Trigger--><!--Device-NotificationRequest-trigger?:Trigger-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -366,10 +304,6 @@ unifiedGroupInfo?: UnifiedGroupInfo
 **类型：** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationRequest-unifiedGroupInfo?: UnifiedGroupInfo--><!--Device-NotificationRequest-unifiedGroupInfo?: UnifiedGroupInfo-End-->
 

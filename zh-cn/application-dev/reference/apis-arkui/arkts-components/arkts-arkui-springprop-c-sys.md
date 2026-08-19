@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 22
 
 <!--Device-unnamed-declare class SpringProp--><!--Device-unnamed-declare class SpringProp-End-->
@@ -13,6 +11,12 @@
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { Animator, AnimatorOptions, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+```
 
 ## constructor
 
@@ -23,8 +27,6 @@ constructor(mass: number, stiffness: number, damping: number)
 构造器参数。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 22
 

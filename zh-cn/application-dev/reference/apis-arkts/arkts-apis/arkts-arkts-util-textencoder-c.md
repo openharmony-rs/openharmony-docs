@@ -4,13 +4,50 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-util-class TextEncoder--><!--Device-util-class TextEncoder-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -22,17 +59,13 @@ constructor()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextEncoder-constructor()--><!--Device-TextEncoder-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 let textEncoder = new util.TextEncoder();
@@ -48,10 +81,6 @@ constructor(encoding?: string)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextEncoder-constructor(encoding?: string)--><!--Device-TextEncoder-constructor(encoding?: string)-End-->
@@ -64,7 +93,7 @@ constructor(encoding?: string)
 | --- | --- | --- | --- |
 | encoding | string | 否 | 编码格式。默认格式为 **'utf-8'**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textEncoder = new util.TextEncoder("utf-8");
@@ -79,10 +108,6 @@ static create(encoding?: string): TextEncoder
 创建一个 **TextEncoder** 对象。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -102,7 +127,7 @@ static create(encoding?: string): TextEncoder
 | --- | --- |
 | [TextEncoder](arkts-arkts-util-textencoder-c.md) | TextEncoder** 对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textEncoder = util.TextEncoder.create("utf-8");
@@ -117,8 +142,6 @@ encode(input?: string): Uint8Array
 将输入内容编码为 Uint8Array 对象。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -140,7 +163,7 @@ encode(input?: string): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textEncoder = new util.TextEncoder();
@@ -158,10 +181,6 @@ encodeInto(input?: string): Uint8Array
 将输入内容编码为 Uint8Array 对象。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -181,7 +200,7 @@ encodeInto(input?: string): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textEncoder = new util.TextEncoder();
@@ -199,8 +218,6 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 将生成的 UTF-8 编码文本写入到数组中。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -223,7 +240,7 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 | --- | --- |
 | { read: number; written: number } | 获取到的对象。**read** 表示已编码的字符数，**written** 表示已编码字符所占用的字节数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textEncoder = new util.TextEncoder();
@@ -243,10 +260,6 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 对输入内容进行编码，并将结果存储到 Uint8Array 对象中。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -268,7 +281,7 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 | object | 返回该对象，其中 read 表示已编码的字符数，written 表示已编码字符所占用的字节数。<br>**适用版本：** 9 - 10 |
 | [EncodeIntoUint8ArrayInfo](arkts-arkts-util-encodeintouint8arrayinfo-i.md) | 获取到的对象。**read** 表示已编码的字符数，**written** 表示已编码字符所占用的 字节数。<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 let textEncoder = new util.TextEncoder();
@@ -294,10 +307,6 @@ readonly encoding = 'utf-8'
 **类型：** 'utf-8'
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

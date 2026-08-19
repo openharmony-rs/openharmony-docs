@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationExtensionSubscription } from 'notificationExtensionSubscription';
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## setUserGrantedBundleState
@@ -17,10 +17,6 @@ function setUserGrantedBundleState(targetBundle: BundleOption,
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,    enabledBundles: BundleOption[], enabled: boolean): Promise<void>--><!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,    enabledBundles: BundleOption[], enabled: boolean): Promise<void>-End-->
@@ -33,7 +29,7 @@ function setUserGrantedBundleState(targetBundle: BundleOption,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetBundle | BundleOption | 是 | 需要设置的目标应用信息。应用需要具有ohos.permission.SUBSCRIBE_NOTIFICATION权限， 并且实现[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#notificationsubscriberextensionability)， 否则返回1600022错误码。 |
+| targetBundle | BundleOption | 是 | 需要设置的目标应用信息。应用需要具有ohos.permission.SUBSCRIBE_NOTIFICATION权限， 并且实现[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)， 否则返回1600022错误码。 |
 | enabledBundles | BundleOption[] | 是 | 被授权的应用信息列表。 |
 | enabled | boolean | 是 | 表示“已获取的本机通知”的应用授权状态是否启用，true表示已启用，false表示未启用。 |
 
@@ -53,7 +49,7 @@ function setUserGrantedBundleState(targetBundle: BundleOption,
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,13 +4,14 @@ CommonMethod.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class CommonMethod--><!--Device-unnamed-declare class CommonMethod-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## advancedBlendMode
 
@@ -21,10 +22,6 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 将当前组件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。不能与 [blendMode](arkts-arkui-commonmethod-c.md#blendmode)接口同时使用。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -57,10 +54,6 @@ constructor.
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CommonMethod-constructor()--><!--Device-CommonMethod-constructor()-End-->
@@ -78,10 +71,6 @@ edgeLight(params: EdgeLightParams | undefined): T
 为组件添加边缘流光效果。边缘流光效果会在组件的边缘创建发光效果，从指定位置开始并沿边缘延伸，此效果可以增强组件的视觉吸引力并突出显示重要组件。 > **说明：** > > - 仅设置edgeLight不会产生边缘流光效果，需结合 > [animateTo](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)更改position参数达到流光效果。可参考 > [示例4（设置组件边缘流光效果）](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#示例4设置组件边缘流光效果)。 > > > - 当position参数以对角线方式变更时，边缘流光将沿倾斜角45°的方式运行。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -111,10 +100,6 @@ excludeFromRenderGroup(exclude: boolean | undefined): T
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CommonMethod-excludeFromRenderGroup(exclude: boolean | undefined): T--><!--Device-CommonMethod-excludeFromRenderGroup(exclude: boolean | undefined): T-End-->
@@ -142,10 +127,6 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 将空间效果应用于组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -179,10 +160,6 @@ useUnionEffect(value: boolean | undefined): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CommonMethod-useUnionEffect(value: boolean | undefined): T--><!--Device-CommonMethod-useUnionEffect(value: boolean | undefined): T-End-->
@@ -212,10 +189,6 @@ useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T
 指定当前组件是否参与祖先组件UnionEffectContainer的融合效果
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

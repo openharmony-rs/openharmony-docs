@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum RenderProcessNotRespondingReason--><!--Device-unnamed-declare enum RenderProcessNotRespondingReason-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,10 +18,6 @@ INPUT_TIMEOUT = 0
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-RenderProcessNotRespondingReason-INPUT_TIMEOUT = 0--><!--Device-RenderProcessNotRespondingReason-INPUT_TIMEOUT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -39,10 +31,6 @@ NAVIGATION_COMMIT_TIMEOUT = 1
 新的网页加载导航响应超时。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-RenderProcessNotRespondingReason-NAVIGATION_COMMIT_TIMEOUT = 1--><!--Device-RenderProcessNotRespondingReason-NAVIGATION_COMMIT_TIMEOUT = 1-End-->
 

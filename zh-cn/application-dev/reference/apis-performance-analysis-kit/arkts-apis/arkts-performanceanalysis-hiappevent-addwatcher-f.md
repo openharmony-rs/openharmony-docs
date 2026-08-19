@@ -1,5 +1,11 @@
 # addWatcher
 
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## addWatcher
 
 ```TypeScript
@@ -9,10 +15,6 @@ function addWatcher(watcher: Watcher): AppEventPackageHolder
 添加事件观察者。可通过事件观察者的回调函数监听事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -43,7 +45,7 @@ function addWatcher(watcher: Watcher): AppEventPackageHolder
 | [11102005](../errorcode-hiappevent.md#11102005-非法的超时值) | Invalid timeout value. Possibly caused by the timeout value is less than zero. |
 | [11102004](../errorcode-hiappevent.md#11102004-非法的大小值) | Invalid size value. Possibly caused by the size value is less than zero. |
 
-## 示例
+**示例**
 
 方法一：设置回调条件triggerCondition，实现onTrigger()回调。当满足回调条件时，系统将自动触发回调。
 

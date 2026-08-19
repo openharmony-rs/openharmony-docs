@@ -1,5 +1,11 @@
 # isLoggable
 
+## 导入模块
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
 ## isLoggable
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isLoggable(domain: int, tag: string, level: LogLevel): boolean
 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +36,7 @@ function isLoggable(domain: int, tag: string, level: LogLevel): boolean
 | --- | --- |
 | boolean | 如果返回true，则该领域标识、日志标识和级别的日志可以打印，否则不能打印。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);

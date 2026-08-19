@@ -1,12 +1,8 @@
 # Vec2
 
-定义Vec2（二维向量）.
+二维向量，通常用于表示2D空间中的点或方向，由x和y两个分量组成。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Vec2--><!--Device-unnamed-export interface Vec2-End-->
 
@@ -18,15 +14,11 @@
 x: double
 ```
 
-vec2的X分量.
+x轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec2-x: double--><!--Device-Vec2-x: double-End-->
 
@@ -38,15 +30,11 @@ vec2的X分量.
 y: double
 ```
 
-vec2的Y分量.
+y轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec2-y: double--><!--Device-Vec2-y: double-End-->
 

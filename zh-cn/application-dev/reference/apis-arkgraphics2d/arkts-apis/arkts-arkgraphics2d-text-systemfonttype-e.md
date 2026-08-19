@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-text-enum SystemFontType--><!--Device-text-enum SystemFontType-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ ALL = 1 << 0
 所有字体类型，包括系统字体类型、风格字体类型和用户已安装字体类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ GENERIC = 1 << 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SystemFontType-GENERIC = 1 << 1--><!--Device-SystemFontType-GENERIC = 1 << 1-End-->
@@ -61,10 +49,6 @@ STYLISH = 1 << 2
 风格字体类型。风格字体类型是专为2in1设备设计的字体类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ INSTALLED = 1 << 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SystemFontType-INSTALLED = 1 << 3--><!--Device-SystemFontType-INSTALLED = 1 << 3-End-->
@@ -101,10 +81,6 @@ CUSTOMIZED = 1 << 4
 自定义字体类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

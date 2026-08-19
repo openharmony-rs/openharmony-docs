@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum LiveViewTypes--><!--Device-unnamed-export enum LiveViewTypes-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ LIVE_VIEW_ACTIVITY = 0
 实时活动类（进度类）系统实况
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LiveViewTypes-LIVE_VIEW_ACTIVITY = 0--><!--Device-LiveViewTypes-LIVE_VIEW_ACTIVITY = 0-End-->
 
@@ -44,10 +36,6 @@ LIVE_VIEW_INSTANT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-LiveViewTypes-LIVE_VIEW_INSTANT = 1--><!--Device-LiveViewTypes-LIVE_VIEW_INSTANT = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -63,10 +51,6 @@ LIVE_VIEW_LONG_TERM = 2
 长时任务类系统实况
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LiveViewTypes-LIVE_VIEW_LONG_TERM = 2--><!--Device-LiveViewTypes-LIVE_VIEW_LONG_TERM = 2-End-->
 

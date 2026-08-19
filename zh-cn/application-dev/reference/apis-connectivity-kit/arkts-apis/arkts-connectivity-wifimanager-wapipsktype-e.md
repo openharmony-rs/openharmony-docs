@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-enum WapiPskType--><!--Device-wifiManager-enum WapiPskType-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -22,10 +18,6 @@ WAPI预共享密钥的ASCII字符类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WapiPskType-WAPI_PSK_ASCII = 0--><!--Device-WapiPskType-WAPI_PSK_ASCII = 0-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -39,10 +31,6 @@ WAPI_PSK_HEX = 1
 WAPI预共享密钥的HEX字符类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WapiPskType-WAPI_PSK_HEX = 1--><!--Device-WapiPskType-WAPI_PSK_HEX = 1-End-->
 

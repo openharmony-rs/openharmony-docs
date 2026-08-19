@@ -4,15 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export interface MechEvent--><!--Device-mechanicManager-export interface MechEvent-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
 
 ## event
 
@@ -25,10 +27,6 @@ event: MechEventType
 **类型：** [MechEventType](arkts-mechanic-mechanicmanager-mecheventtype-e-sys.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-MechEvent-event: MechEventType--><!--Device-MechEvent-event: MechEventType-End-->
 
@@ -47,10 +45,6 @@ mechId: int
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-MechEvent-mechId: int--><!--Device-MechEvent-mechId: int-End-->
 

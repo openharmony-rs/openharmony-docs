@@ -1,5 +1,11 @@
 # createFileAccessHelper（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fileAccess } from '@kit.CoreFileKit';
+```
+
 ## createFileAccessHelper
 
 ```TypeScript
@@ -9,8 +15,6 @@ function createFileAccessHelper(context: Context): FileAccessHelper
 以同步方法创建连接当前系统内所有文件管理服务的helper对象。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -71,7 +75,7 @@ function createFileAccessHelper(context: Context): FileAccessHelper
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -104,8 +108,6 @@ function createFileAccessHelper(context: Context, wants: Array<Want>): FileAcces
 以同步方法创建连接指定wants的helper对象。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -167,7 +169,7 @@ function createFileAccessHelper(context: Context, wants: Array<Want>): FileAcces
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

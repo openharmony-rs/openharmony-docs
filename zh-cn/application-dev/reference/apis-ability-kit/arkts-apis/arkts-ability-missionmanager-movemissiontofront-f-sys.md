@@ -1,5 +1,11 @@
 # moveMissionToFront（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## moveMissionToFront
 
 ```TypeScript
@@ -9,10 +15,6 @@ function moveMissionToFront(missionId: int, callback: AsyncCallback<void>): void
 把指定任务ID的任务切到前台。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -38,7 +40,7 @@ function moveMissionToFront(missionId: int, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';
@@ -72,10 +74,6 @@ function moveMissionToFront(missionId: int, options: StartOptions, callback: Asy
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function moveMissionToFront(missionId: int, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-missionManager-function moveMissionToFront(missionId: int, options: StartOptions, callback: AsyncCallback<void>): void-End-->
@@ -101,7 +99,7 @@ function moveMissionToFront(missionId: int, options: StartOptions, callback: Asy
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';
@@ -136,10 +134,6 @@ function moveMissionToFront(missionId: int, options?: StartOptions): Promise<voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function moveMissionToFront(missionId: int, options?: StartOptions): Promise<void>--><!--Device-missionManager-function moveMissionToFront(missionId: int, options?: StartOptions): Promise<void>-End-->
@@ -170,7 +164,7 @@ function moveMissionToFront(missionId: int, options?: StartOptions): Promise<voi
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';

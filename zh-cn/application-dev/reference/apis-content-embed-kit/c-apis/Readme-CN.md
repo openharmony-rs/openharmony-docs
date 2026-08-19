@@ -1,4 +1,4 @@
-# CAPI<!--c-content-embed-kit-->
+# C API<!--c-content-embed-kit-->
 
 - 头文件
     - [content_embed_proxy.h](capi-content-embed-proxy-h.md)

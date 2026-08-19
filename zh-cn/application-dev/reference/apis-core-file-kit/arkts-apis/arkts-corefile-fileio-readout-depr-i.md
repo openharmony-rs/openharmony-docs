@@ -4,13 +4,16 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-unnamed-declare interface ReadOut--><!--Device-unnamed-declare interface ReadOut-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## buffer
 
@@ -23,8 +26,6 @@ buffer: ArrayBuffer
 **类型：** ArrayBuffer
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -44,8 +45,6 @@ bytesRead: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-ReadOut-bytesRead: number--><!--Device-ReadOut-bytesRead: number-End-->
@@ -63,8 +62,6 @@ offset: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

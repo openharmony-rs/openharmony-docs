@@ -45,7 +45,7 @@ OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVImageGenerator*](capi-avimagegenerator-oh-avimagegenerator.md) | 创建成功时返回指向OH_AVImageGenerator实例的指针，否则返回空指针。<br> 可能的失败原因：HstEngineFactory未能创建AVMetadataHelperEngine。 |
+| [OH_AVImageGenerator*](capi-avimagegenerator-oh-avimagegenerator.md) | 创建成功时返回指向OH_AVImageGenerator实例的指针，否则返回空指针。  可能的失败原因：HstEngineFactory未能创建AVMetadataHelperEngine。 |
 
 ### OH_AVImageGenerator_SetFDSource()
 
@@ -72,7 +72,7 @@ OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入的generator为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_NO_MEMORY：内部内存分配失败。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：输入的generator为空指针或参数无效。  AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。  AV_ERR_NO_MEMORY：内部内存分配失败。 |
 
 ### OH_AVImageGenerator_FetchFrameByTime()
 
@@ -92,14 +92,14 @@ OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator
 | -- | -- |
 | [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* generator | 指向OH_AVImageGenerator实例的指针。 |
 | int64_t timeUs | 需要获取的视频帧在视频中的时间点，单位为微秒（μs）。 |
-| [OH_AVImageGenerator_QueryOptions](capi-avimage-generator-base-h.md#oh_avimagegenerator_queryoptions) options | 关于给定时间Us和视频帧之间关系的时间选项。 |
-| OH_PixelmapNative** pixelMap | 获取的视频帧对象。 |
+| OH_AVImageGenerator_QueryOptions options | 关于给定时间Us和视频帧之间关系的时间选项。 |
+| [OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md)** pixelMap | 获取的视频帧对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入的generator为空指针或参数无效。<br> AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br> AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br> AV_ERR_NO_MEMORY：内部内存分配失败。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：输入的generator为空指针或参数无效。  AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。  AV_ERR_UNSUPPORTED_FORMAT：格式不支持。  AV_ERR_NO_MEMORY：内部内存分配失败。 |
 
 ### OH_AVImageGenerator_Release()
 
@@ -123,6 +123,6 @@ OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：输入的generator为空指针或参数无效。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：输入的generator为空指针或参数无效。 |
 
 

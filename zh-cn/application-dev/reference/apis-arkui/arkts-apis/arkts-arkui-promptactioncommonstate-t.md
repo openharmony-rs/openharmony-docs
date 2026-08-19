@@ -1,4 +1,4 @@
-# PromptActionCommonState
+# PromptActionCommonState(CustomDialog)
 
 ```TypeScript
 declare type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState
@@ -7,10 +7,6 @@ declare type PromptActionCommonState = import('../api/@ohos.promptAction').promp
 自定义弹窗的状态。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

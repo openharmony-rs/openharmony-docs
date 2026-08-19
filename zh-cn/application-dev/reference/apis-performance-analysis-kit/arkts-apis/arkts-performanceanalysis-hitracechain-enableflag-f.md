@@ -1,5 +1,11 @@
 # enableFlag
 
+## 导入模块
+
+```TypeScript
+import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
+```
+
 ## enableFlag
 
 ```TypeScript
@@ -9,10 +15,6 @@ function enableFlag(id: HiTraceId, flag: HiTraceFlag): void
 启用HiTraceId中指定的跟踪标志，同步接口。用于在业务流程中动态调整跟踪行为，例如在调试时启用TP_INFO标志以打印埋点信息、在需要跟踪异步调用时 启用INCLUDE_ASYNC标志、在需要禁用日志关联时启用DISABLE_LOG标志。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hiTraceChain-function enableFlag(id: HiTraceId, flag: HiTraceFlag): void--><!--Device-hiTraceChain-function enableFlag(id: HiTraceId, flag: HiTraceFlag): void-End-->
 
@@ -25,7 +27,7 @@ function enableFlag(id: HiTraceId, flag: HiTraceFlag): void
 | id | [HiTraceId](arkts-performanceanalysis-hitracechain-hitraceid-i.md) | 是 | 需要启用指定跟踪标志的HiTraceId实例。 |
 | flag | [HiTraceFlag](arkts-performanceanalysis-hitracechain-hitraceflag-e.md) | 是 | 指定的跟踪标志。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 开始跟踪，跟踪标志是INCLUDE_ASYNC。

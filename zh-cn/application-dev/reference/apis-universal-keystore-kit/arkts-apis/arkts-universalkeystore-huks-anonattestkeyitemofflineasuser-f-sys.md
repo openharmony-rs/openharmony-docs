@@ -1,5 +1,12 @@
 # anonAttestKeyItemOfflineAsUser（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## anonAttestKeyItemOfflineAsUser
 
 ```TypeScript
@@ -10,10 +17,6 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 离线获取匿名证明证书。该接口使用promise返回结果。此操作不需要每次都需要网络连接， 比anonAttestKeyItemAsUser函数性能高。 > **说明：**> > > -离线密钥证明依赖于网络。您需要定期连接网络才能使用此API更新离线证书。 > > > -离线匿名密钥证明要求本地时间准确。否则，可能导致对端无法正常工作。验证证书过期。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -59,7 +62,7 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 | [12000012](../errorcode-huks.md#12000012-外部错误) | The device environment or input parameter is abnormal. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The queried entity does not exist. |
 
-## 示例
+**示例**
 
 以下代码示例接口调用的前置条件同上文generateKeyItemAsUser的前置条件
 

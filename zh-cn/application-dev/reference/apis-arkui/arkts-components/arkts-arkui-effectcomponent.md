@@ -14,10 +14,6 @@ EffectComponent()
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EffectComponentInterface-(): EffectComponentAttribute--><!--Device-EffectComponentInterface-(): EffectComponentAttribute-End-->
@@ -36,10 +32,6 @@ EffectComponent(options?: EffectComponentOptions)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute--><!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute-End-->
@@ -56,5 +48,15 @@ EffectComponent(options?: EffectComponentOptions)
 
 ## 汇总
 
-- [EffectComponentOptions](arkts-arkui-effectcomponentoptions-i-sys.md)
-- [EffectLayer](arkts-arkui-effectlayer-e-sys.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [EffectComponentOptions](arkts-arkui-effectcomponentoptions-i-sys.md) | 设置当前EffectComponent构造参数，包含EffectComponent的渲染层级。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [EffectLayer](arkts-arkui-effectlayer-e-sys.md) | EffectComponent的渲染层级。 |
+

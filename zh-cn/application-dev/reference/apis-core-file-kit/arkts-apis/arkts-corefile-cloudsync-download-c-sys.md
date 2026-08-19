@@ -4,15 +4,18 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSync-class Download--><!--Device-cloudSync-class Download-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -24,17 +27,13 @@ constructor()
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Download-constructor()--><!--Device-Download-constructor()-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 let download = new cloudSync.Download()
@@ -50,10 +49,6 @@ Unsubscribes from download progress event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-offProgress(callback: Callback<DownloadProgress>): void--><!--Device-Download-offProgress(callback: Callback<DownloadProgress>): void-End-->
@@ -66,7 +61,7 @@ Unsubscribes from download progress event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;DownloadProgress&gt; | 是 | callback function with a `DownloadProgress` argument. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;DownloadProgress&gt; | 是 | callback function with a `DownloadProgress` argument. |
 
 **错误码：**
 
@@ -77,7 +72,7 @@ Unsubscribes from download progress event.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let download = new cloudSync.Download();
@@ -98,10 +93,6 @@ Unsubscribes all callbacks objects from download progress event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-offProgress(): void--><!--Device-Download-offProgress(): void-End-->
@@ -118,7 +109,7 @@ Unsubscribes all callbacks objects from download progress event.
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let download = new cloudSync.Download();
@@ -139,10 +130,6 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-off(evt: 'progress', callback: (pg: DownloadProgress) => void): void--><!--Device-Download-off(evt: 'progress', callback: (pg: DownloadProgress) => void): void-End-->
@@ -156,7 +143,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | evt | 'progress' | 是 | 取消订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | (pg: DownloadProgress) =&gt; void | 是 | 回调函数。云文件下载过程事件，入参为 [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md#downloadprogress)，返回值为void。 |
+| callback | (pg: DownloadProgress) =&gt; void | 是 | 回调函数。云文件下载过程事件，入参为 [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
@@ -167,7 +154,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let download = new cloudSync.Download();
@@ -190,10 +177,6 @@ off(evt: 'progress'): void
 云图下载对象移除'progress'类型的所有回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
@@ -218,7 +201,7 @@ off(evt: 'progress'): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let download = new cloudSync.Download();
@@ -240,10 +223,6 @@ Subscribes to download progress change event. This method uses a callback to get
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-onProgress(callback: Callback<DownloadProgress>): void--><!--Device-Download-onProgress(callback: Callback<DownloadProgress>): void-End-->
@@ -256,7 +235,7 @@ Subscribes to download progress change event. This method uses a callback to get
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;DownloadProgress&gt; | 是 | callback function with a `DownloadProgress` argument. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;DownloadProgress&gt; | 是 | callback function with a `DownloadProgress` argument. |
 
 **错误码：**
 
@@ -267,7 +246,7 @@ Subscribes to download progress change event. This method uses a callback to get
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let download = new cloudSync.Download();
@@ -287,10 +266,6 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-on(evt: 'progress', callback: (pg: DownloadProgress) => void): void--><!--Device-Download-on(evt: 'progress', callback: (pg: DownloadProgress) => void): void-End-->
@@ -304,7 +279,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | evt | 'progress' | 是 | 订阅的事件类型，取值为'progress'（下载过程事件）。 |
-| callback | (pg: DownloadProgress) =&gt; void | 是 | 回调函数。云文件下载过程事件，入参为 [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md#downloadprogress)，返回值为void。 |
+| callback | (pg: DownloadProgress) =&gt; void | 是 | 回调函数。云文件下载过程事件，入参为 [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md)，返回值为void。 |
 
 **错误码：**
 
@@ -315,7 +290,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let download = new cloudSync.Download();
@@ -334,10 +309,6 @@ start(uri: string): Promise<void>
 异步方法启动云文件下载。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
@@ -369,7 +340,7 @@ start(uri: string): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13900025 | No space left on device. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -418,10 +389,6 @@ start(uri: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-start(uri: string, callback: AsyncCallback<void>): void--><!--Device-Download-start(uri: string, callback: AsyncCallback<void>): void-End-->
@@ -435,7 +402,7 @@ start(uri: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 待下载文件uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步启动云文件下载。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
@@ -447,7 +414,7 @@ start(uri: string, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13900025 | No space left on device. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -492,10 +459,6 @@ stop(uri: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-stop(uri: string): Promise<void>--><!--Device-Download-stop(uri: string): Promise<void>-End-->
@@ -524,7 +487,7 @@ stop(uri: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -565,10 +528,6 @@ stop(uri: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-Download-stop(uri: string, callback: AsyncCallback<void>): void--><!--Device-Download-stop(uri: string, callback: AsyncCallback<void>): void-End-->
@@ -582,7 +541,7 @@ stop(uri: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 待下载文件uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步停止云文件下载。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 
@@ -592,7 +551,7 @@ stop(uri: string, callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

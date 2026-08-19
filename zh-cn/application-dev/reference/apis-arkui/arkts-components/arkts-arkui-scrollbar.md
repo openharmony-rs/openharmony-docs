@@ -10,10 +10,6 @@ ScrollBar(value: ScrollBarOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ScrollBarInterface-(value: ScrollBarOptions): ScrollBarAttribute--><!--Device-ScrollBarInterface-(value: ScrollBarOptions): ScrollBarAttribute-End-->
@@ -28,5 +24,15 @@ ScrollBar(value: ScrollBarOptions)
 
 ## 汇总
 
-- [ScrollBarOptions](arkts-arkui-scrollbaroptions-i.md)
-- [ScrollBarDirection](arkts-arkui-scrollbardirection-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ScrollBarOptions](arkts-arkui-scrollbaroptions-i.md) | 滚动条组件参数。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ScrollBarDirection](arkts-arkui-scrollbardirection-e.md) | 滚动条方向枚举。 |
+

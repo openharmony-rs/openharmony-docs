@@ -4,13 +4,15 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-taskpool-export class AsyncRunner--><!--Device-taskpool-export class AsyncRunner-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -21,10 +23,6 @@ constructor(runningCapacity: number, waitingCapacity?: number)
 AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一个非全局的异步队列，即使传入的参数相同， 也会返回不同的异步队列。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -39,7 +37,7 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 | runningCapacity | number | 是 | 指定任务执行的最大并发度，该值必须为正整数。如果传入负数，会报错；如果传入非整数， 会向下取整。 |
 | waitingCapacity | number | 否 | 指定等待任务的列表容量，该值必须大于等于0。如果传入负数，会报错；如果传入非整数， 会向下取整。默认值为**0**，表示等待任务列表的容量没有限制。如果传入大于0的值，则表示排队策略为丢弃策略，当加入的任务数量 超过该值时，等待列表中处于队头的任务会被丢弃。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
@@ -55,10 +53,6 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AsyncRunner-constructor(name: string, runningCapacity: number, waitingCapacity?: number)--><!--Device-AsyncRunner-constructor(name: string, runningCapacity: number, waitingCapacity?: number)-End-->
@@ -73,7 +67,7 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 | runningCapacity | number | 是 | 指定任务执行的最大并发度，该值必须为正整数。如果传入负数，会报错；如果传入非整数， 会向下取整。 |
 | waitingCapacity | number | 否 | 指定等待任务的列表容量，该值必须大于等于0。如果传入负数，会报错；如果传入非整数， 会向下取整。默认值为**0**，表示等待任务列表的容量没有限制。如果传入大于0的值，则表示排队策略为丢弃策略，当加入的任务数量 超过该值时，等待列表中处于队头的任务会被丢弃。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
@@ -88,10 +82,6 @@ execute(task: Task, priority?: Priority): Promise<Object>
 执行异步任务。使用该方法前需要先构造**AsyncRunner**实例。使用Promise异步回调。 > **说明：** > > - 不支持执行任务组中的任务。 > > - 不支持执行串行队列中的任务。 > > - 不支持执行其他异步队列任务。 > > - 不支持执行周期性任务。 > > - 不支持执行延迟任务。 > > - 不支持执行存在依赖的任务。 > > - 不支持执行已执行过的任务。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -122,7 +112,7 @@ execute(task: Task, priority?: Priority): Promise<Object>
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200054](../errorcode-utils.md#10200054-异步队列任务被丢弃) | The asyncRunner task is discarded. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';

@@ -4,15 +4,18 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dataShare-interface DataShareHelperOptions--><!--Device-dataShare-interface DataShareHelperOptions-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { dataShare } from '@kit.ArkData';
+import { dataSharePredicates } from '@kit.ArkData';
+```
 
 ## isProxy
 
@@ -20,17 +23,13 @@
 isProxy?: boolean
 ```
 
-默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelperoptions系统接口)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在， 当数据库不存在时， [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md#createdatasharehelper系统接口) 会拉起数据提供者创建数据库。
+默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelperoptions系统接口)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在， 当数据库不存在时， [createDataShareHelper](arkts-arkdata-datashare-createdatasharehelper-f-sys.md) 会拉起数据提供者创建数据库。
 
 **类型：** boolean
 
 **默认值：** false
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,10 +52,6 @@ waitTime?: int
 **默认值：** 2
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,10 +8,6 @@ export type ModuleConfigInfo = _ModuleConfigInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-freeInstall-export type ModuleConfigInfo = _ModuleConfigInfo--><!--Device-freeInstall-export type ModuleConfigInfo = _ModuleConfigInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall

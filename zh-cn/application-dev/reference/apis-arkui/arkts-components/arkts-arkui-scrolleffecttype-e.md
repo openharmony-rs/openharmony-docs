@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum ScrollEffectType--><!--Device-unnamed-declare enum ScrollEffectType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ COMMON_BLUR = 0
 普通模糊样式，对标题栏背景应用统一模糊效果，模糊背景伴随透明渐变出现或消失。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ GRADUAL_BLUR = 1
 渐变模糊样式，对标题栏背景应用统一模糊效果，具有清晰边界。标题栏内容在滑动前后改变颜色或状态，滑动过程中跟随手势线性变化。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -12,8 +12,6 @@ Animator(value: string)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 22
 
 <!--Device-AnimatorInterface-(value: string): AnimatorAttribute--><!--Device-AnimatorInterface-(value: string): AnimatorAttribute-End-->

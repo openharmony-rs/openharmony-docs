@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-image-enum JfifPropertyKey--><!--Device-image-enum JfifPropertyKey-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ X_DENSITY = 'JfifXDensity'
 JFIF x density.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ JFIF y density.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-JfifPropertyKey-Y_DENSITY = 'JfifYDensity'--><!--Device-JfifPropertyKey-Y_DENSITY = 'JfifYDensity'-End-->
@@ -61,10 +49,6 @@ DENSITY_UNIT = 'JfifDensityUnit'
 JFIF density unit.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ JFIF version.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-JfifPropertyKey-VERSION = 'JfifVersion'--><!--Device-JfifPropertyKey-VERSION = 'JfifVersion'-End-->
@@ -101,10 +81,6 @@ IS_PROGRESSIVE = 'JfifIsProgressive'
 whether the JFIF image is progressive.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,10 @@
 # @ohos.arkui.advanced.EditableTitleBarV2
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 类

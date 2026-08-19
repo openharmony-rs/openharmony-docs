@@ -1,16 +1,18 @@
 # Filter
 
-Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前， 需要先通过[createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md#createfilter)创建一个Filter实例。
+Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前， 需要先通过[createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md)创建一个Filter实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-uiEffect-interface Filter--><!--Device-uiEffect-interface Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
 
 ## bezierWarp
 
@@ -21,10 +23,6 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 将贝塞尔曲线变形的效果添加至组件上。该效果通过在图层边界上创建封闭的贝塞尔曲线，实现对图像的精准扭曲和形状调整。 贝塞尔曲线共有四段，首尾顺次相连，每段包含一个顶点和两个切点。典型应用场景包括人脸形变特效、卡片透视变形等。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Filter-bezierWarp(controlPoints: Array<common2D.Point>): Filter--><!--Device-Filter-bezierWarp(controlPoints: Array<common2D.Point>): Filter-End-->
 
@@ -50,7 +48,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -119,10 +117,6 @@ blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Filter-blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter--><!--Device-Filter-blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter-End-->
@@ -143,7 +137,7 @@ blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter
 | --- | --- |
 | Filter | 返回模糊气泡上升滤镜。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from '@kit.ArkGraphics2D';
@@ -205,10 +199,6 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,        alphaMask?: Mask): Filter--><!--Device-Filter-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,        alphaMask?: Mask): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -236,7 +226,7 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -308,10 +298,6 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      displacementMap?: Mask): Filter--><!--Device-Filter-contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      displacementMap?: Mask): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -339,7 +325,7 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -435,10 +421,6 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: double, mas
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-directionLight(direction: common2D.Point3d, color: Color, intensity: double, mask?: Mask, factor?: double): Filter--><!--Device-Filter-directionLight(direction: common2D.Point3d, color: Color, intensity: double, mask?: Mask, factor?: double): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -467,7 +449,7 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: double, mas
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect, common2D } from "@kit.ArkGraphics2D";
@@ -514,10 +496,6 @@ displacementDistort(displacementMap: Mask, factor?: [double, double]): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-displacementDistort(displacementMap: Mask, factor?: [double, double]): Filter--><!--Device-Filter-displacementDistort(displacementMap: Mask, factor?: [double, double]): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -543,7 +521,7 @@ displacementDistort(displacementMap: Mask, factor?: [double, double]): Filter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -601,10 +579,6 @@ distort(distortionK: double): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-distort(distortionK: double): Filter--><!--Device-Filter-distort(distortionK: double): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -629,7 +603,7 @@ distort(distortionK: double): Filter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -665,10 +639,6 @@ edgeLight(alpha: double, color?: Color, mask?: Mask, bloom?: boolean): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-edgeLight(alpha: double, color?: Color, mask?: Mask, bloom?: boolean): Filter--><!--Device-Filter-edgeLight(alpha: double, color?: Color, mask?: Mask, bloom?: boolean): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -696,7 +666,7 @@ edgeLight(alpha: double, color?: Color, mask?: Mask, bloom?: boolean): Filter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -757,10 +727,6 @@ flyInFlyOutEffect(degree: double, flyMode: FlyMode): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-flyInFlyOutEffect(degree: double, flyMode: FlyMode): Filter--><!--Device-Filter-flyInFlyOutEffect(degree: double, flyMode: FlyMode): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -786,7 +752,7 @@ flyInFlyOutEffect(degree: double, flyMode: FlyMode): Filter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -822,10 +788,6 @@ hdrBrightnessRatio(ratio: double): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本24+：ohos.permission.HDR_BRIGHTNESS
 
@@ -854,7 +816,7 @@ hdrBrightnessRatio(ratio: double): Filter
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败，应用无权限使用该API，需要申请权限。<br>**适用版本：** 24+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。<br>**适用版本：** 20 - 23 |
 
-## 示例
+**示例**
 
 ```TypeScript
 filter.hdrBrightnessRatio(2.0)
@@ -869,10 +831,6 @@ heatDistortion(param: HeatDistortionEffectParam): Filter
 应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲效果。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -894,7 +852,7 @@ heatDistortion(param: HeatDistortionEffectParam): Filter
 | --- | --- |
 | Filter | 返回添加了热浪扭曲效果的Filter。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from '@kit.ArkGraphics2D';
@@ -936,10 +894,6 @@ maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], g
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double],      bFactor?: [double, double]): Filter--><!--Device-Filter-maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double],      bFactor?: [double, double]): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -978,10 +932,6 @@ maskTransition(alphaMask: Mask, factor?: double, inverse?: boolean): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-maskTransition(alphaMask: Mask, factor?: double, inverse?: boolean): Filter--><!--Device-Filter-maskTransition(alphaMask: Mask, factor?: double, inverse?: boolean): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -1008,7 +958,7 @@ maskTransition(alphaMask: Mask, factor?: double, inverse?: boolean): Filter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect, common2D } from "@kit.ArkGraphics2D";
@@ -1063,10 +1013,6 @@ pixelStretch(stretchSizes: Array<double>, tileMode: TileMode): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-pixelStretch(stretchSizes: Array<double>, tileMode: TileMode): Filter--><!--Device-Filter-pixelStretch(stretchSizes: Array<double>, tileMode: TileMode): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -1086,7 +1032,7 @@ pixelStretch(stretchSizes: Array<double>, tileMode: TileMode): Filter
 | --- | --- |
 | Filter | 返回挂载了边缘像素扩展效果的Filter。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1123,10 +1069,6 @@ radiusGradientBlur(radius: double, gradientParam: LinearGradientBlurOptions): Fi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-radiusGradientBlur(radius: double, gradientParam: LinearGradientBlurOptions): Filter--><!--Device-Filter-radiusGradientBlur(radius: double, gradientParam: LinearGradientBlurOptions): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -1152,7 +1094,7 @@ radiusGradientBlur(radius: double, gradientParam: LinearGradientBlurOptions): Fi
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1214,10 +1156,6 @@ variableRadiusBlur(radius: double, radiusMap: Mask): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-variableRadiusBlur(radius: double, radiusMap: Mask): Filter--><!--Device-Filter-variableRadiusBlur(radius: double, radiusMap: Mask): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -1243,7 +1181,7 @@ variableRadiusBlur(radius: double, radiusMap: Mask): Filter
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uiEffect } from "@kit.ArkGraphics2D";
@@ -1275,10 +1213,6 @@ waterRipple(progress: double, waveCount: int, x: double, y: double, rippleMode: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-waterRipple(progress: double, waveCount: int, x: double, y: double, rippleMode: WaterRippleMode): Filter--><!--Device-Filter-waterRipple(progress: double, waveCount: int, x: double, y: double, rippleMode: WaterRippleMode): Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -1307,7 +1241,7 @@ waterRipple(progress: double, waveCount: int, x: double, y: double, rippleMode: 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | 权限校验失败，非系统应用调用系统接口。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

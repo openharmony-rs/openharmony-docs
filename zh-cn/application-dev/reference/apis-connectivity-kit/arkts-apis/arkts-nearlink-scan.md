@@ -4,15 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace scan--><!--Device-unnamed-declare namespace scan-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.ConnectivityKit';
+```
 
 ## 汇总
 
@@ -20,10 +22,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md#offdevicefound) | 取消订阅星闪扫描结果。 |
-| [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md#ondevicefound) | 订阅NearLink扫描结果。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
-| [startScan](arkts-connectivity-scan-startscan-f.md#startscan) | 开始使用过滤器扫描指定的NearLink设备。 如果不想使用过滤器，可以将过滤器参数设置为{@code null}。 |
-| [stopScan](arkts-connectivity-scan-stopscan-f.md#stopscan) | 停止扫描。 |
+| [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md) | 取消订阅星闪扫描结果。 |
+| [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md) | 订阅NearLink扫描结果。 只有授予了ohos.permission.NEARLINK_ACCESS权限的应用程序才能访问此事件。 如果应用被赋予了ohos.permission.GET_NEARLINK_PEER_MAC权限。 回调返回真实设备地址，否则返回随机设备地址。 |
+| [startScan](arkts-connectivity-scan-startscan-f.md) | 开始使用过滤器扫描指定的NearLink设备。 如果不想使用过滤器，可以将过滤器参数设置为{@code null}。 |
+| [stopScan](arkts-connectivity-scan-stopscan-f.md) | 停止扫描。 |
 
 ### 接口
 

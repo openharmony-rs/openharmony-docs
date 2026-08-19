@@ -4,13 +4,16 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-unnamed-export interface FileReadTextOption--><!--Device-unnamed-export interface FileReadTextOption-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
+
+## 导入模块
+
+```TypeScript
+```
 
 ## complete
 
@@ -23,8 +26,6 @@ complete?: () => void
 **类型：** () =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -44,8 +45,6 @@ encoding?: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileReadTextOption-encoding?: string--><!--Device-FileReadTextOption-encoding?: string-End-->
@@ -63,8 +62,6 @@ fail?: (data: string, code: number) => void
 **类型：** (data: string, code: number) =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -84,8 +81,6 @@ length?: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileReadTextOption-length?: number--><!--Device-FileReadTextOption-length?: number-End-->
@@ -103,8 +98,6 @@ position?: number
 **类型：** number
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -124,8 +117,6 @@ success?: (data: FileReadTextResponse) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileReadTextOption-success?: (data: FileReadTextResponse) => void--><!--Device-FileReadTextOption-success?: (data: FileReadTextResponse) => void-End-->
@@ -143,8 +134,6 @@ uri: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 

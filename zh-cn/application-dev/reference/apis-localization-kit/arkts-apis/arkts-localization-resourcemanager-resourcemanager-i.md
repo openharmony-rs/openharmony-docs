@@ -1,16 +1,18 @@
 # ResourceManager
 
-提供访问应用资源和系统资源的能力，可访问的资源范围为当前Context对应的HAP/HSP模块中的资源以及所有的系统资源。 > **说明：** > > - ResourceManager涉及到的方法，仅限基于TS扩展的声明式开发范式使用。 > > - 资源文件在工程的resources目录中定义，通过resName、resId、Resource对象等可以获取对应的字符串、字符串数组、颜色等资源值，resName为资源名称，resId可通过`\$r(资源地址).id`的方式 > 获取，例如`\$r('app.string.test').id`。 > > - 单HAP包获取自身资源、跨HAP/HSP包获取资源，由于入参为Resource的接口相比于入参为resName、resId的接口耗时更长，因此更推荐使用参数为resName或resId的接口。跨HAP/HSP包获取资源， > **需要先使用[createModuleContext](../../apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f.md#createmodulecontext)创建对应module的context**， > 再调用参数为resName或resId的接口。更多请参考[资源访问](../../../quick-start/resource-categories-and-access.md#资源访问)。 > > - 在API version 22及之前版本，中间码HAR、字节码HAR通过资源ID相关接口访问资源时，因ID无效会抛出异常；从API version 23开始，中间码HAR、字节码HAR通过资源ID相关接口可以正常访问资源， > 更多请参考[资源访问](../../../quick-start/resource-categories-and-access.md#资源访问)。
+提供访问应用资源和系统资源的能力，可访问的资源范围为当前Context对应的HAP/HSP模块中的资源以及所有的系统资源。 > **说明：** > > - ResourceManager涉及到的方法，仅限基于TS扩展的声明式开发范式使用。 > > - 资源文件在工程的resources目录中定义，通过resName、resId、Resource对象等可以获取对应的字符串、字符串数组、颜色等资源值，resName为资源名称，resId可通过`\$r(资源地址).id`的方式 > 获取，例如`\$r('app.string.test').id`。 > > - 单HAP包获取自身资源、跨HAP/HSP包获取资源，由于入参为Resource的接口相比于入参为resName、resId的接口耗时更长，因此更推荐使用参数为resName或resId的接口。跨HAP/HSP包获取资源， > **需要先使用[createModuleContext](../../apis-ability-kit/arkts-apis/arkts-ability-application-createmodulecontext-f.md)创建对应module的context**， > 再调用参数为resName或resId的接口。更多请参考[资源访问](../../../quick-start/resource-categories-and-access.md#资源访问)。 > > - 在API version 22及之前版本，中间码HAR、字节码HAR通过资源ID相关接口访问资源时，因ID无效会抛出异常；从API version 23开始，中间码HAR、字节码HAR通过资源ID相关接口可以正常访问资源， > 更多请参考[资源访问](../../../quick-start/resource-categories-and-access.md#资源访问)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-resourceManager-export interface ResourceManager--><!--Device-resourceManager-export interface ResourceManager-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+## 导入模块
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+```
 
 ## addResource
 
@@ -21,10 +23,6 @@ addResource(path: string) : void
 应用运行时加载指定的overlay资源，实现主题切换或资源覆盖。 > **说明：**> > rawfile和resfile目录不支持资源覆盖。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -45,7 +43,7 @@ addResource(path: string) : void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001010](../errorcode-resource-manager.md#9001010-无效的overlay路径) | Invalid overlay path. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -76,10 +74,6 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-closeRawFd(path: string, callback: _AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFd(path: string, callback: _AsyncCallback<void>): void-End-->
@@ -100,7 +94,7 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -168,10 +162,6 @@ closeRawFd(path: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-closeRawFd(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFd(path: string): Promise<void>-End-->
@@ -197,7 +187,7 @@ closeRawFd(path: string): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -261,10 +251,6 @@ closeRawFdSync(path: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-closeRawFdSync(path: string): void--><!--Device-ResourceManager-closeRawFdSync(path: string): void-End-->
@@ -284,7 +270,7 @@ closeRawFdSync(path: string): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -317,8 +303,6 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [closeRawFd](#closerawfd)(path: string, callback: _AsyncCallback&lt;void&gt;)
@@ -334,7 +318,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile文件的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -358,8 +342,6 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [closeRawFd](#closerawfd)(path: string)
@@ -380,7 +362,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -399,10 +381,6 @@ getBoolean(resId: long): boolean
 获取指定资源ID值对应的布尔值，使用同步方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -431,7 +409,7 @@ getBoolean(resId: long): boolean
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/boolean.json
@@ -500,8 +478,6 @@ getBoolean(resource: Resource): boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getBoolean](#getboolean)(resId: long)
@@ -535,7 +511,7 @@ getBoolean(resource: Resource): boolean
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/boolean.json
@@ -579,10 +555,6 @@ getBooleanByName(resName: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getBooleanByName(resName: string): boolean--><!--Device-ResourceManager-getBooleanByName(resName: string): boolean-End-->
@@ -610,7 +582,7 @@ getBooleanByName(resName: string): boolean
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/boolean.json
@@ -654,10 +626,6 @@ getColor(resId: long, callback: _AsyncCallback<long>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getColor(resId: long, callback: _AsyncCallback<long>): void--><!--Device-ResourceManager-getColor(resId: long, callback: _AsyncCallback<long>): void-End-->
@@ -680,7 +648,7 @@ getColor(resId: long, callback: _AsyncCallback<long>): void
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -759,10 +727,6 @@ getColor(resId: long): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getColor(resId: long): Promise<long>--><!--Device-ResourceManager-getColor(resId: long): Promise<long>-End-->
@@ -790,7 +754,7 @@ getColor(resId: long): Promise<long>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -869,8 +833,6 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getColor](#getcolor)(resId: long, callback: _AsyncCallback&lt;long&gt;)
@@ -899,7 +861,7 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -942,8 +904,6 @@ getColor(resource: Resource): Promise<number>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getColor](#getcolor)(resId: long)
@@ -977,7 +937,7 @@ getColor(resource: Resource): Promise<number>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1020,10 +980,6 @@ getColorByName(resName: string, callback: _AsyncCallback<long>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getColorByName(resName: string, callback: _AsyncCallback<long>): void--><!--Device-ResourceManager-getColorByName(resName: string, callback: _AsyncCallback<long>): void-End-->
@@ -1046,7 +1002,7 @@ getColorByName(resName: string, callback: _AsyncCallback<long>): void
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1124,10 +1080,6 @@ getColorByName(resName: string): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getColorByName(resName: string): Promise<long>--><!--Device-ResourceManager-getColorByName(resName: string): Promise<long>-End-->
@@ -1155,7 +1107,7 @@ getColorByName(resName: string): Promise<long>
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1233,10 +1185,6 @@ getColorByNameSync(resName: string) : long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getColorByNameSync(resName: string) : long--><!--Device-ResourceManager-getColorByNameSync(resName: string) : long-End-->
@@ -1264,7 +1212,7 @@ getColorByNameSync(resName: string) : long
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1308,10 +1256,6 @@ getColorSync(resId: long) : long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getColorSync(resId: long) : long--><!--Device-ResourceManager-getColorSync(resId: long) : long-End-->
@@ -1339,7 +1283,7 @@ getColorSync(resId: long) : long
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1408,8 +1352,6 @@ getColorSync(resource: Resource) : number
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getColorSync](#getcolorsync)(resId: long)
@@ -1443,7 +1385,7 @@ getColorSync(resource: Resource) : number
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/color.json
@@ -1487,10 +1429,6 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getConfiguration(callback: _AsyncCallback<Configuration>): void--><!--Device-ResourceManager-getConfiguration(callback: _AsyncCallback<Configuration>): void-End-->
@@ -1503,7 +1441,7 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 | --- | --- | --- | --- |
 | callback | _AsyncCallback&lt;Configuration&gt; | 是 | 回调函数，返回设备的Configuration。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1594,10 +1532,6 @@ getConfiguration(): Promise<Configuration>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getConfiguration(): Promise<Configuration>--><!--Device-ResourceManager-getConfiguration(): Promise<Configuration>-End-->
@@ -1610,7 +1544,7 @@ getConfiguration(): Promise<Configuration>
 | --- | --- |
 | Promise&lt;Configuration&gt; | Promise对象，返回设备的Configuration。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1689,10 +1623,6 @@ getConfigurationSync(): Configuration
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getConfigurationSync(): Configuration--><!--Device-ResourceManager-getConfigurationSync(): Configuration-End-->
@@ -1705,7 +1635,7 @@ getConfigurationSync(): Configuration
 | --- | --- |
 | Configuration | 设备的Configuration。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1733,10 +1663,6 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void--><!--Device-ResourceManager-getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void-End-->
@@ -1749,7 +1675,7 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 | --- | --- | --- | --- |
 | callback | _AsyncCallback&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1813,10 +1739,6 @@ getDeviceCapability(): Promise<DeviceCapability>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDeviceCapability(): Promise<DeviceCapability>--><!--Device-ResourceManager-getDeviceCapability(): Promise<DeviceCapability>-End-->
@@ -1829,7 +1751,7 @@ getDeviceCapability(): Promise<DeviceCapability>
 | --- | --- |
 | Promise&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | Promise对象，返回设备的DeviceCapability。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1886,10 +1808,6 @@ getDeviceCapabilitySync(): DeviceCapability
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDeviceCapabilitySync(): DeviceCapability--><!--Device-ResourceManager-getDeviceCapabilitySync(): DeviceCapability-End-->
@@ -1902,7 +1820,7 @@ getDeviceCapabilitySync(): DeviceCapability
 | --- | --- |
 | [DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md) | 设备的DeviceCapability。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1930,10 +1848,6 @@ getDouble(resId: long): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDouble(resId: long): double--><!--Device-ResourceManager-getDouble(resId: long): double-End-->
@@ -1960,7 +1874,7 @@ getDouble(resId: long): double
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/float.json
@@ -2007,10 +1921,6 @@ getDoubleByName(resName: string): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDoubleByName(resName: string): double--><!--Device-ResourceManager-getDoubleByName(resName: string): double-End-->
@@ -2037,7 +1947,7 @@ getDoubleByName(resName: string): double
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/float.json
@@ -2084,10 +1994,6 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string-End-->
@@ -2117,7 +2023,7 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-根据当前名称获取的资源格式化失败) | Failed to format the resource obtained based on the resource name. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2172,10 +2078,6 @@ getDoublePluralStringByNameSync(resName: string, num: double, ...args: (string |
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDoublePluralStringByNameSync(resName: string, num: double, ...args: (string | double)[]): string--><!--Device-ResourceManager-getDoublePluralStringByNameSync(resName: string, num: double, ...args: (string | double)[]): string-End-->
@@ -2215,10 +2117,6 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string-End-->
@@ -2248,7 +2146,7 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2330,10 +2228,6 @@ getDoublePluralStringValueSync(resId: long, num: double, ...args: (string | doub
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDoublePluralStringValueSync(resId: long, num: double, ...args: (string | double)[]): string--><!--Device-ResourceManager-getDoublePluralStringValueSync(resId: long, num: double, ...args: (string | double)[]): string-End-->
@@ -2373,8 +2267,6 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
 **废弃版本：** 20
 
 **替代接口：** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
@@ -2410,7 +2302,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2466,10 +2358,6 @@ getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescripto
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor--><!--Device-ResourceManager-getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor-End-->
@@ -2481,14 +2369,14 @@ getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescripto
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | type | int | 否 | 图标类型。默认值为0。 <br>0：表示获取应用自身图标资源。 <br>1：表示获取主题资源包中应用的分层图标资源。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [DrawableDescriptor](../../apis-na/arkts-apis/arkts-na-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源ID值对应的DrawableDescriptor对象。 |
+| [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源ID值对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
@@ -2498,7 +2386,7 @@ getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescripto
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2584,8 +2472,6 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getDrawableDescriptor](#getdrawabledescriptor)(resId: long, density?: int, type?: int)
@@ -2603,14 +2489,14 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | type | number | 否 | 图标类型。默认值为0。 <br>0：表示获取应用自身图标资源。 <br>1：表示获取主题资源包中应用的分层图标资源。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [DrawableDescriptor](../../apis-na/arkts-apis/arkts-na-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源ID值对应的DrawableDescriptor对象。 |
+| [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源ID值对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
@@ -2620,7 +2506,7 @@ getDrawableDescriptor(resource: Resource, density?: number, type?: number): Draw
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -2665,10 +2551,6 @@ getDrawableDescriptorByName(resName: string, density?: int, type?: int): Drawabl
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor--><!--Device-ResourceManager-getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor-End-->
@@ -2680,14 +2562,14 @@ getDrawableDescriptorByName(resName: string, density?: int, type?: int): Drawabl
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | type | int | 否 | 图标类型。默认值为0。 <br>0：表示获取应用自身图标资源。 <br>1：表示获取主题资源包中应用的分层图标资源。 <br>2：表示获取主题资源包中应用的动态图标资源。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [DrawableDescriptor](../../apis-na/arkts-apis/arkts-na-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源名称对应的DrawableDescriptor对象。 |
+| [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md) | 资源名称对应的DrawableDescriptor对象。 |
 
 **错误码：**
 
@@ -2697,7 +2579,7 @@ getDrawableDescriptorByName(resName: string, density?: int, type?: int): Drawabl
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -2744,10 +2626,6 @@ getInt(resId: long): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getInt(resId: long): int--><!--Device-ResourceManager-getInt(resId: long): int-End-->
@@ -2774,7 +2652,7 @@ getInt(resId: long): int
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -2820,10 +2698,6 @@ getIntByName(resName: string): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getIntByName(resName: string): int--><!--Device-ResourceManager-getIntByName(resName: string): int-End-->
@@ -2850,7 +2724,7 @@ getIntByName(resName: string): int
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -2895,10 +2769,6 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string-End-->
@@ -2928,7 +2798,7 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-根据当前名称获取的资源格式化失败) | Failed to format the resource obtained based on the resource name. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -2983,10 +2853,6 @@ getIntPluralStringByNameSync(resName: string, num: int, ...args: (string | doubl
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getIntPluralStringByNameSync(resName: string, num: int, ...args: (string | double)[]): string--><!--Device-ResourceManager-getIntPluralStringByNameSync(resName: string, num: int, ...args: (string | double)[]): string-End-->
@@ -3026,10 +2892,6 @@ getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | n
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | number>): string--><!--Device-ResourceManager-getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | number>): string-End-->
@@ -3059,7 +2921,7 @@ getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | n
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -3141,10 +3003,6 @@ getIntPluralStringValueSync(resId: long, num: int,...args: (string | double)[]):
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getIntPluralStringValueSync(resId: long, num: int,...args: (string | double)[]): string--><!--Device-ResourceManager-getIntPluralStringValueSync(resId: long, num: int,...args: (string | double)[]): string-End-->
@@ -3184,8 +3042,6 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
 **废弃版本：** 20
 
 **替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
@@ -3221,7 +3077,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -3277,10 +3133,6 @@ getLocales(includeSystem?: boolean): Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>--><!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>-End-->
@@ -3305,7 +3157,7 @@ getLocales(includeSystem?: boolean): Array<string>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -3351,8 +3203,6 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getMediaContent](#getmediacontent)(resId: long, callback: _AsyncCallback&lt;Uint8Array&gt;)
@@ -3368,7 +3218,7 @@ getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
 | resId | number | 是 | 资源ID值。 |
 | callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID值对应的媒体文件内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -3392,8 +3242,6 @@ getMedia(resId: number): Promise<Uint8Array>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getMediaContent](#getmediacontent)(resId: long)
@@ -3414,7 +3262,7 @@ getMedia(resId: number): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回资源ID值对应的媒体文件内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3438,8 +3286,6 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getMediaContentBase64](#getmediacontentbase64)(resId: long, callback: _AsyncCallback&lt;string&gt;)
@@ -3455,7 +3301,7 @@ getMediaBase64(resId: number, callback: AsyncCallback<string>): void
 | resId | number | 是 | 资源ID值。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -3479,8 +3325,6 @@ getMediaBase64(resId: number): Promise<string>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getMediaContentBase64](#getmediacontentbase64)(resId: long)
@@ -3501,7 +3345,7 @@ getMediaBase64(resId: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的图片资源Base64编码。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3525,10 +3369,6 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void-End-->
@@ -3550,7 +3390,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3614,10 +3454,6 @@ getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<str
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<string>): void-End-->
@@ -3629,7 +3465,7 @@ getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<str
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
@@ -3640,7 +3476,7 @@ getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<str
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3704,10 +3540,6 @@ getMediaBase64ByName(resName: string): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string): Promise<string>--><!--Device-ResourceManager-getMediaBase64ByName(resName: string): Promise<string>-End-->
@@ -3734,7 +3566,7 @@ getMediaBase64ByName(resName: string): Promise<string>
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3794,10 +3626,6 @@ getMediaBase64ByName(resName: string, density: int): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int): Promise<string>--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int): Promise<string>-End-->
@@ -3809,7 +3637,7 @@ getMediaBase64ByName(resName: string, density: int): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -3825,7 +3653,7 @@ getMediaBase64ByName(resName: string, density: int): Promise<string>
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3885,10 +3713,6 @@ getMediaBase64ByNameSync(resName: string, density?: int): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByNameSync(resName: string, density?: int): string--><!--Device-ResourceManager-getMediaBase64ByNameSync(resName: string, density?: int): string-End-->
@@ -3900,7 +3724,7 @@ getMediaBase64ByNameSync(resName: string, density?: int): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -3916,7 +3740,7 @@ getMediaBase64ByNameSync(resName: string, density?: int): string
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -3955,10 +3779,6 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void-End-->
@@ -3980,7 +3800,7 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -4044,10 +3864,6 @@ getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Arra
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Array>): void-End-->
@@ -4059,7 +3875,7 @@ getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Arra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
@@ -4070,7 +3886,7 @@ getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Arra
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -4134,10 +3950,6 @@ getMediaByName(resName: string): Promise<Uint8Array>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaByName(resName: string): Promise<Uint8Array>-End-->
@@ -4164,7 +3976,7 @@ getMediaByName(resName: string): Promise<Uint8Array>
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -4224,10 +4036,6 @@ getMediaByName(resName: string, density: int): Promise<Uint8Array>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string, density: int): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaByName(resName: string, density: int): Promise<Uint8Array>-End-->
@@ -4239,7 +4047,7 @@ getMediaByName(resName: string, density: int): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -4255,7 +4063,7 @@ getMediaByName(resName: string, density: int): Promise<Uint8Array>
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -4315,10 +4123,6 @@ getMediaByNameSync(resName: string, density?: int): Uint8Array
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaByNameSync(resName: string, density?: int): Uint8Array--><!--Device-ResourceManager-getMediaByNameSync(resName: string, density?: int): Uint8Array-End-->
@@ -4330,7 +4134,7 @@ getMediaByNameSync(resName: string, density?: int): Uint8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -4346,7 +4150,7 @@ getMediaByNameSync(resName: string, density?: int): Uint8Array
 | [9001003](../errorcode-resource-manager.md#9001003-无效的资源名称) | Invalid resource name. |
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -4385,8 +4189,6 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContent](#getmediacontent)(resId: long, callback: _AsyncCallback&lt;Uint8Array&gt;)
@@ -4414,7 +4216,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4450,8 +4252,6 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContent](#getmediacontent)(resId: long, density: int, callback: _AsyncCallback&lt;Uint8Array&gt;)
@@ -4469,7 +4269,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
@@ -4480,7 +4280,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4516,8 +4316,6 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContent](#getmediacontent)(resId: long)
@@ -4550,7 +4348,7 @@ getMediaContent(resource: Resource): Promise<Uint8Array>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4584,8 +4382,6 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContent](#getmediacontent)(resId: long, density: int)
@@ -4603,7 +4399,7 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -4619,7 +4415,7 @@ getMediaContent(resource: Resource, density: number): Promise<Uint8Array>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4653,10 +4449,6 @@ getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void-End-->
@@ -4678,7 +4470,7 @@ getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -4745,10 +4537,6 @@ getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>): void-End-->
@@ -4760,7 +4548,7 @@ getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
@@ -4771,7 +4559,7 @@ getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>)
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -4836,10 +4624,6 @@ getMediaContent(resId: long): Promise<Uint8Array>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resId: long): Promise<Uint8Array>-End-->
@@ -4866,7 +4650,7 @@ getMediaContent(resId: long): Promise<Uint8Array>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -4927,10 +4711,6 @@ getMediaContent(resId: long, density: int): Promise<Uint8Array>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long, density: int): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resId: long, density: int): Promise<Uint8Array>-End-->
@@ -4942,7 +4722,7 @@ getMediaContent(resId: long, density: int): Promise<Uint8Array>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -4958,7 +4738,7 @@ getMediaContent(resId: long, density: int): Promise<Uint8Array>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -5019,8 +4799,6 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContentBase64](#getmediacontentbase64)(resId: long, callback: _AsyncCallback&lt;string&gt;)
@@ -5048,7 +4826,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5084,8 +4862,6 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContentBase64](#getmediacontentbase64)(resId: long, density: int, callback: _AsyncCallback&lt;string&gt;)
@@ -5103,7 +4879,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
@@ -5114,7 +4890,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5150,8 +4926,6 @@ getMediaContentBase64(resource: Resource): Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContentBase64](#getmediacontentbase64)(resId: long)
@@ -5184,7 +4958,7 @@ getMediaContentBase64(resource: Resource): Promise<string>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5218,8 +4992,6 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContentBase64](#getmediacontentbase64)(resId: long, density: int)
@@ -5237,7 +5009,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -5253,7 +5025,7 @@ getMediaContentBase64(resource: Resource, density: number): Promise<string>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5287,10 +5059,6 @@ getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void-End-->
@@ -5312,7 +5080,7 @@ getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -5377,10 +5145,6 @@ getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string>): void-End-->
@@ -5392,7 +5156,7 @@ getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 | callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
@@ -5403,7 +5167,7 @@ getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -5468,10 +5232,6 @@ getMediaContentBase64(resId: long): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resId: long): Promise<string>-End-->
@@ -5498,7 +5258,7 @@ getMediaContentBase64(resId: long): Promise<string>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -5559,10 +5319,6 @@ getMediaContentBase64(resId: long, density: int): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int): Promise<string>-End-->
@@ -5574,7 +5330,7 @@ getMediaContentBase64(resId: long, density: int): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -5590,7 +5346,7 @@ getMediaContentBase64(resId: long, density: int): Promise<string>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -5651,10 +5407,6 @@ getMediaContentBase64Sync(resId: long, density?: int): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64Sync(resId: long, density?: int): string--><!--Device-ResourceManager-getMediaContentBase64Sync(resId: long, density?: int): string-End-->
@@ -5666,7 +5418,7 @@ getMediaContentBase64Sync(resId: long, density?: int): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -5682,7 +5434,7 @@ getMediaContentBase64Sync(resId: long, density?: int): string
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -5753,8 +5505,6 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContentBase64Sync](#getmediacontentbase64sync)(resId: long, density?: int)
@@ -5772,7 +5522,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -5788,7 +5538,7 @@ getMediaContentBase64Sync(resource: Resource, density?: number): string
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -5826,10 +5576,6 @@ getMediaContentSync(resId: long, density?: int): Uint8Array
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getMediaContentSync(resId: long, density?: int): Uint8Array--><!--Device-ResourceManager-getMediaContentSync(resId: long, density?: int): Uint8Array-End-->
@@ -5841,7 +5587,7 @@ getMediaContentSync(resId: long, density?: int): Uint8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | long | 是 | 资源ID值。 |
-| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | int | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -5857,7 +5603,7 @@ getMediaContentSync(resId: long, density?: int): Uint8Array
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -5928,8 +5674,6 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getMediaContentSync](#getmediacontentsync)(resId: long, density?: int)
@@ -5947,7 +5691,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | Resource | 是 | 资源信息。 |
-| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md#screendensity)。 |
+| density | number | 否 | 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。取值具体请参考枚举 [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
 
 **返回值：**
 
@@ -5963,7 +5707,7 @@ getMediaContentSync(resource: Resource, density?: number): Uint8Array
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Incorrect parameter types; 2 .Parameter verification failed. |
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -6001,10 +5745,6 @@ getNumber(resId: number): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getNumber(resId: number): number--><!--Device-ResourceManager-getNumber(resId: number): number-End-->
@@ -6032,7 +5772,7 @@ getNumber(resId: number): number
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -6103,8 +5843,6 @@ getNumber(resource: Resource): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getNumber](#getnumber)(resId: number)
@@ -6138,7 +5876,7 @@ getNumber(resource: Resource): number
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -6183,10 +5921,6 @@ getNumberByName(resName: string): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getNumberByName(resName: string): number--><!--Device-ResourceManager-getNumberByName(resName: string): number-End-->
@@ -6214,7 +5948,7 @@ getNumberByName(resName: string): number
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/integer.json
@@ -6285,10 +6019,6 @@ getOverrideConfiguration(): Configuration
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getOverrideConfiguration(): Configuration--><!--Device-ResourceManager-getOverrideConfiguration(): Configuration-End-->
@@ -6301,7 +6031,7 @@ getOverrideConfiguration(): Configuration
 | --- | --- |
 | Configuration | 差异化资源的配置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -6334,10 +6064,6 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager--><!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager-End-->
@@ -6362,7 +6088,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -6395,8 +6121,6 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
@@ -6413,7 +6137,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 | num | number | 是 | 数量值。根据当前语言的 [单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -6439,8 +6163,6 @@ getPluralString(resId: number, num: number): Promise<string>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number)
@@ -6462,7 +6184,7 @@ getPluralString(resId: number, num: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的指定数量的单复数字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6485,8 +6207,6 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 获取指定资源名称，指定资源数量的单复数字符串。使用callback异步回调。 > **说明：**> > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考 > [语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 18
 
@@ -6515,7 +6235,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6563,8 +6283,6 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringByNameSync](#getintpluralstringbynamesync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
@@ -6597,7 +6315,7 @@ getPluralStringByName(resName: string, num: number): Promise<string>
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6645,8 +6363,6 @@ getPluralStringByNameSync(resName: string, num: number): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringByNameSync](#getintpluralstringbynamesync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
@@ -6679,7 +6395,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6728,8 +6444,6 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
@@ -6759,7 +6473,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6814,8 +6528,6 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
@@ -6850,7 +6562,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6904,8 +6616,6 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
@@ -6933,7 +6643,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -6982,8 +6692,6 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
@@ -7016,7 +6724,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -7064,8 +6772,6 @@ getPluralStringValueSync(resId: number, num: number): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
@@ -7098,7 +6804,7 @@ getPluralStringValueSync(resId: number, num: number): string
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -7147,8 +6853,6 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 18
 
 **替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
@@ -7183,7 +6887,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/plural.json
@@ -7238,10 +6942,6 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void-End-->
@@ -7262,7 +6962,7 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -7334,10 +7034,6 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>-End-->
@@ -7363,7 +7059,7 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -7429,10 +7125,6 @@ getRawFdSync(path: string): RawFileDescriptor
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFdSync(path: string): RawFileDescriptor--><!--Device-ResourceManager-getRawFdSync(path: string): RawFileDescriptor-End-->
@@ -7458,7 +7150,7 @@ getRawFdSync(path: string): RawFileDescriptor
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -7488,8 +7180,6 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getRawFileContent](#getrawfilecontent)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
@@ -7505,7 +7195,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 | callback | AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回rawfile文件内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -7531,8 +7221,6 @@ getRawFile(path: string): Promise<Uint8Array>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getRawFileContent](#getrawfilecontent)(path: string)
@@ -7553,7 +7241,7 @@ getRawFile(path: string): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回rawfile文件内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7577,10 +7265,6 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void-End-->
@@ -7601,7 +7285,7 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -7665,10 +7349,6 @@ getRawFileContent(path: string): Promise<Uint8Array>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>-End-->
@@ -7694,7 +7374,7 @@ getRawFileContent(path: string): Promise<Uint8Array>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -7754,10 +7434,6 @@ getRawFileContentSync(path: string): Uint8Array
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array--><!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array-End-->
@@ -7783,7 +7459,7 @@ getRawFileContentSync(path: string): Uint8Array
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -7813,8 +7489,6 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getRawFd](#getrawfd)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
@@ -7830,7 +7504,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
 | callback | AsyncCallback&lt;RawFileDescriptor&gt; | 是 | 回调函数，返回rawfile文件的文件描述符（fd）。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -7858,8 +7532,6 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getRawFd](#getrawfd)(path: string)
@@ -7880,7 +7552,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 | --- | --- |
 | Promise&lt;RawFileDescriptor&gt; | Promise对象，返回rawfile文件的文件描述符（fd）。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7906,10 +7578,6 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void-End-->
@@ -7930,7 +7598,7 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -7998,10 +7666,6 @@ getRawFileList(path: string): Promise<Array<string>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFileList(path: string): Promise<Array<string>>--><!--Device-ResourceManager-getRawFileList(path: string): Promise<Array<string>>-End-->
@@ -8027,7 +7691,7 @@ getRawFileList(path: string): Promise<Array<string>>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -8095,10 +7759,6 @@ getRawFileListSync(path: string): Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getRawFileListSync(path: string): Array<string>--><!--Device-ResourceManager-getRawFileListSync(path: string): Array<string>-End-->
@@ -8124,7 +7784,7 @@ getRawFileListSync(path: string): Array<string>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -8157,10 +7817,6 @@ getResourceName(resId: long): string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -8187,7 +7843,7 @@ getResourceName(resId: long): string
 | --- | --- |
 | [9001001](../errorcode-resource-manager.md#9001001-无效的资源id) | Invalid resource ID. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -8256,8 +7912,6 @@ getString(resId: number, callback: AsyncCallback<string>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getStringValue](#getstringvalue)(resId: long, callback: _AsyncCallback&lt;string&gt;)
@@ -8273,7 +7927,7 @@ getString(resId: number, callback: AsyncCallback<string>): void
 | resId | number | 是 | 资源ID值。 |
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -8297,8 +7951,6 @@ getString(resId: number): Promise<string>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getStringValue](#getstringvalue)(resId: long)
@@ -8319,7 +7971,7 @@ getString(resId: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回资源ID值对应的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8343,8 +7995,6 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getStringArrayValue](#getstringarrayvalue)(resId: long, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;)
@@ -8360,7 +8010,7 @@ getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void
 | resId | number | 是 | 资源ID值。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 resourceManager.getResourceManager((error, mgr) => {
@@ -8384,8 +8034,6 @@ getStringArray(resId: number): Promise<Array<string>>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [getStringArrayValue](#getstringarrayvalue)(resId: long)
@@ -8406,7 +8054,7 @@ getStringArray(resId: number): Promise<Array<string>>
 | --- | --- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回资源ID值对应的字符串数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8430,10 +8078,6 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void-End-->
@@ -8456,7 +8100,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8542,10 +8186,6 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringArrayByName(resName: string): Promise<Array<string>>--><!--Device-ResourceManager-getStringArrayByName(resName: string): Promise<Array<string>>-End-->
@@ -8573,7 +8213,7 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8655,10 +8295,6 @@ getStringArrayByNameSync(resName: string): Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringArrayByNameSync(resName: string): Array<string>--><!--Device-ResourceManager-getStringArrayByNameSync(resName: string): Array<string>-End-->
@@ -8686,7 +8322,7 @@ getStringArrayByNameSync(resName: string): Array<string>
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8734,8 +8370,6 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getStringArrayValue](#getstringarrayvalue)(resId: long, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;)
@@ -8764,7 +8398,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8811,8 +8445,6 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getStringArrayValue](#getstringarrayvalue)(resId: long)
@@ -8846,7 +8478,7 @@ getStringArrayValue(resource: Resource): Promise<Array<string>>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -8893,10 +8525,6 @@ getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void-End-->
@@ -8919,7 +8547,7 @@ getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9006,10 +8634,6 @@ getStringArrayValue(resId: long): Promise<Array<string>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringArrayValue(resId: long): Promise<Array<string>>--><!--Device-ResourceManager-getStringArrayValue(resId: long): Promise<Array<string>>-End-->
@@ -9037,7 +8661,7 @@ getStringArrayValue(resId: long): Promise<Array<string>>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9120,10 +8744,6 @@ getStringArrayValueSync(resId: long): Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringArrayValueSync(resId: long): Array<string>--><!--Device-ResourceManager-getStringArrayValueSync(resId: long): Array<string>-End-->
@@ -9151,7 +8771,7 @@ getStringArrayValueSync(resId: long): Array<string>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9224,8 +8844,6 @@ getStringArrayValueSync(resource: Resource): Array<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getStringArrayValueSync](#getstringarrayvaluesync)(resId: long)
@@ -9259,7 +8877,7 @@ getStringArrayValueSync(resource: Resource): Array<string>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/strarray.json
@@ -9307,10 +8925,6 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringByName(resName: string, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getStringByName(resName: string, callback: _AsyncCallback<string>): void-End-->
@@ -9333,7 +8947,7 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9411,10 +9025,6 @@ getStringByName(resName: string): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringByName(resName: string): Promise<string>--><!--Device-ResourceManager-getStringByName(resName: string): Promise<string>-End-->
@@ -9442,7 +9052,7 @@ getStringByName(resName: string): Promise<string>
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9516,10 +9126,6 @@ getStringByNameSync(resName: string): string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringByNameSync(resName: string): string--><!--Device-ResourceManager-getStringByNameSync(resName: string): string-End-->
@@ -9547,7 +9153,7 @@ getStringByNameSync(resName: string): string
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9591,10 +9197,6 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: Array<string | number>): string--><!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: Array<string | number>): string-End-->
@@ -9624,7 +9226,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 | [9001008](../errorcode-resource-manager.md#9001008-根据当前名称获取的资源格式化失败) | Failed to format the resource obtained based on the resource name. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9668,10 +9270,6 @@ getStringByNameSync(resName: string, ...args: (string | double)[]): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: (string | double)[]): string--><!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: (string | double)[]): string-End-->
@@ -9710,10 +9308,6 @@ getStringSync(resId: long): string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringSync(resId: long): string--><!--Device-ResourceManager-getStringSync(resId: long): string-End-->
@@ -9741,7 +9335,7 @@ getStringSync(resId: long): string
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9785,10 +9379,6 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringSync(resId: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getStringSync(resId: number, ...args: Array<string | number>): string-End-->
@@ -9818,7 +9408,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -9887,10 +9477,6 @@ getStringSync(resId: long, ...args: (string | double)[]): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringSync(resId: long, ...args: (string | double)[]): string--><!--Device-ResourceManager-getStringSync(resId: long, ...args: (string | double)[]): string-End-->
@@ -9929,8 +9515,6 @@ getStringSync(resource: Resource): string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getStringSync](#getstringsync)(resId: long)
@@ -9964,7 +9548,7 @@ getStringSync(resource: Resource): string
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10008,8 +9592,6 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 20
 
 **替代接口：** [getStringSync](#getstringsync)(resId: number, ...args: Array&lt;string | number&gt;)
@@ -10045,7 +9627,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 | [9001007](../errorcode-resource-manager.md#9001007-根据当前id获取的资源格式化失败) | Failed to format the resource obtained based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10089,8 +9671,6 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getStringValue](#getstringvalue)(resId: long, callback: _AsyncCallback&lt;string&gt;)
@@ -10119,7 +9699,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10162,8 +9742,6 @@ getStringValue(resource: Resource): Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 20
 
 **替代接口：** [getStringValue](#getstringvalue)(resId: long)
@@ -10197,7 +9775,7 @@ getStringValue(resource: Resource): Promise<string>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -10228,10 +9806,6 @@ getStringValue(resId: long, callback: _AsyncCallback<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringValue(resId: long, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getStringValue(resId: long, callback: _AsyncCallback<string>): void-End-->
@@ -10254,7 +9828,7 @@ getStringValue(resId: long, callback: _AsyncCallback<string>): void
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10333,10 +9907,6 @@ getStringValue(resId: long): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getStringValue(resId: long): Promise<string>--><!--Device-ResourceManager-getStringValue(resId: long): Promise<string>-End-->
@@ -10364,7 +9934,7 @@ getStringValue(resId: long): Promise<string>
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 资源文件路径: src/main/resources/base/element/string.json
@@ -10439,10 +10009,6 @@ getSymbol(resId: long) : long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getSymbol(resId: long) : long--><!--Device-ResourceManager-getSymbol(resId: long) : long-End-->
@@ -10470,7 +10036,7 @@ getSymbol(resId: long) : long
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -10527,8 +10093,6 @@ getSymbol(resource: Resource) : number
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 20
 
 **替代接口：** [getSymbol](#getsymbol)(resId: long)
@@ -10562,7 +10126,7 @@ getSymbol(resource: Resource) : number
 | [9001002](../errorcode-resource-manager.md#9001002-根据当前资源id未找到匹配的资源) | No matching resource is found based on the resource ID. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -10594,10 +10158,6 @@ getSymbolByName(resName: string) : long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-getSymbolByName(resName: string) : long--><!--Device-ResourceManager-getSymbolByName(resName: string) : long-End-->
@@ -10625,7 +10185,7 @@ getSymbolByName(resName: string) : long
 | [9001004](../errorcode-resource-manager.md#9001004-根据当前资源名称未找到匹配的资源) | No matching resource is found based on the resource name. |
 | [9001006](../errorcode-resource-manager.md#9001006-资源存在循环引用) | The resource is referenced cyclically. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -10657,10 +10217,6 @@ isRawDir(path: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-isRawDir(path: string): boolean--><!--Device-ResourceManager-isRawDir(path: string): boolean-End-->
@@ -10686,7 +10242,7 @@ isRawDir(path: string): boolean
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001005](../errorcode-resource-manager.md#9001005-无效的相对路径) | Invalid relative path. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -10725,8 +10281,6 @@ release()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -10735,7 +10289,7 @@ release()
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-## 示例
+**示例**
 
 ```TypeScript
 try {
@@ -10754,10 +10308,6 @@ removeResource(path: string) : void
 应用运行时移除指定的overlay资源，还原被覆盖前的资源。 > **说明：**> > rawfile和resfile目录不支持资源覆盖。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -10778,7 +10328,7 @@ removeResource(path: string) : void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 | [9001010](../errorcode-resource-manager.md#9001010-无效的overlay路径) | Invalid overlay path. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -10810,10 +10360,6 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void--><!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void-End-->
@@ -10832,7 +10378,7 @@ updateOverrideConfiguration(configuration: Configuration): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

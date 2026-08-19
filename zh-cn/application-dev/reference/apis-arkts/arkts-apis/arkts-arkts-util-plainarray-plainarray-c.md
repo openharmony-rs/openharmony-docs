@@ -4,13 +4,16 @@ PlainArray可用于存储具有关联关系的key-value键值对集合，其中k
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class PlainArray--><!--Device-unnamed-declare class PlainArray-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+```
 
 ## $_iterator
 
@@ -21,10 +24,6 @@ $_iterator(): IterableIterator<[int, T]>
 返回一个迭代器，每一项都是一个ArkTS对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +37,7 @@ $_iterator(): IterableIterator<[int, T]>
 | --- | --- |
 | IterableIterator&lt;[int, T]&gt; |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray: PlainArray<string> = new PlainArray<string>();
@@ -64,10 +63,6 @@ while(!temp.done) {
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlainArray-[Symbol.iterator](): IterableIterator<[number, T]>--><!--Device-PlainArray-[Symbol.iterator](): IterableIterator<[number, T]>-End-->
@@ -86,7 +81,7 @@ while(!temp.done) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -122,10 +117,6 @@ add(key: int, value: T): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlainArray-add(key: int, value: T): void--><!--Device-PlainArray-add(key: int, value: T): void-End-->
@@ -145,7 +136,7 @@ add(key: int, value: T): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -163,10 +154,6 @@ clear(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlainArray-clear(): void--><!--Device-PlainArray-clear(): void-End-->
@@ -179,7 +166,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -200,10 +187,6 @@ clone(): PlainArray<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlainArray-clone(): PlainArray<T>--><!--Device-PlainArray-clone(): PlainArray<T>-End-->
@@ -222,7 +205,7 @@ clone(): PlainArray<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clone method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -242,10 +225,6 @@ PlainArray的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlainArray-constructor()--><!--Device-PlainArray-constructor()-End-->
@@ -258,7 +237,7 @@ PlainArray的构造函数。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The PlainArray's constructor cannot be directly invoked. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -273,10 +252,6 @@ forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => vo
 在遍历PlainArray实例对象中每一个元素的过程中，对每个元素执行回调函数。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -297,7 +272,7 @@ forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => vo
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -332,10 +307,6 @@ forEach(callbackFn: PlainArrayForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlainArray-forEach(callbackFn: PlainArrayForEachCb<T>): void--><!--Device-PlainArray-forEach(callbackFn: PlainArrayForEachCb<T>): void-End-->
@@ -348,7 +319,7 @@ forEach(callbackFn: PlainArrayForEachCb<T>): void
 | --- | --- | --- | --- |
 | callbackFn | [PlainArrayForEachCb](arkts-arkts-plainarrayforeachcb-t.md)&lt;T&gt; | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { PlainArrayForEachCb } from '@kit.ArkTS';
@@ -371,10 +342,6 @@ get(key: number): T
 获取指定key所对应的value。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -400,7 +367,7 @@ get(key: number): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -419,10 +386,6 @@ get(key: int): T | undefined
 查询与指定key关联的value。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -448,7 +411,7 @@ get(key: int): T | undefined
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray: PlainArray<string> = new PlainArray<string>();
@@ -466,10 +429,6 @@ getIndexOfKey(key: int): int
 查找指定key对应的下标值，如果未找到则返回-1。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -495,7 +454,7 @@ getIndexOfKey(key: int): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOfKey method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -514,10 +473,6 @@ getIndexOfValue(value: T): int
 查找指定value元素第一次出现的下标值，如果未找到则返回-1。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -543,7 +498,7 @@ getIndexOfValue(value: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOfValue method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -562,10 +517,6 @@ getKeyAt(index: int): int
 查找指定下标元素键值对中的key值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -591,7 +542,7 @@ getKeyAt(index: int): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getKeyAt method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -610,10 +561,6 @@ getValueAt(index: int): T
 查找指定下标元素键值对中的value值，失败则返回undefined。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -640,7 +587,7 @@ getValueAt(index: int): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getValueAt method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -659,10 +606,6 @@ has(key: int): boolean
 判断容器中是否包含指定key。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -688,7 +631,7 @@ has(key: int): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -706,10 +649,6 @@ isEmpty(): boolean
 判断容器是否为空。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -729,7 +668,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -746,10 +685,6 @@ remove(key: number): T
 删除指定key对应的键值对。指定key不存在时，返回undefined。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -775,7 +710,7 @@ remove(key: number): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -794,10 +729,6 @@ remove(key: int): T | undefined
 如果存在指定key对应的键值对，则删除并返回该值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -823,7 +754,7 @@ remove(key: int): T | undefined
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray: PlainArray<string> = new PlainArray<string>();
@@ -841,10 +772,6 @@ removeAt(index: number): T
 删除指定下标对应的元素。指定[0, PlainArray.length-1]以外的值时会返回undefined。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -870,7 +797,7 @@ removeAt(index: number): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeAt method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -889,10 +816,6 @@ removeAt(index: int): T | undefined
 如果存在指定下标的键值对，则删除并返回该值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -918,7 +841,7 @@ removeAt(index: int): T | undefined
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray: PlainArray<string> = new PlainArray<string>();
@@ -936,10 +859,6 @@ removeRangeFrom(index: int, size: int): int
 删除指定范围内的元素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -967,7 +886,7 @@ removeRangeFrom(index: int, size: int): int
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeRangeFrom method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -987,10 +906,6 @@ setValueAt(index: int, value: T): void
 替换容器中指定下标对应键值对中的value值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1012,7 +927,7 @@ setValueAt(index: int, value: T): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setValueAt method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1048,10 +963,6 @@ toString(): String
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlainArray-toString(): String--><!--Device-PlainArray-toString(): String-End-->
@@ -1070,7 +981,7 @@ toString(): String
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let plainArray = new PlainArray<string>();
@@ -1091,10 +1002,6 @@ PlainArray的元素个数。
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

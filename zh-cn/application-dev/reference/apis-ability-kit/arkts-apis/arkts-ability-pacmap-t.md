@@ -8,10 +8,6 @@ export type PacMap = Record<string, int | double | string | boolean | Array<stri
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export type PacMap = Record<string, int | double | string | boolean | Array<string | int | double | boolean> | null>--><!--Device-unnamed-export type PacMap = Record<string, int | double | string | boolean | Array<string | int | double | boolean> | null>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel

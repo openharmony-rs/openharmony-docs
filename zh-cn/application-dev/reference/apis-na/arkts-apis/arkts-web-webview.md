@@ -4,13 +4,16 @@ This module provides the capability to manage web modules.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-declare namespace webview--><!--Device-unnamed-declare namespace webview-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+```
 
 ## 汇总
 
@@ -18,7 +21,7 @@ This module provides the capability to manage web modules.
 
 | 名称 | 说明 |
 | --- | --- |
-| [once_string](arkts-na-webview-oncestring-f.md#oncestring) | Subscribe to a callback of a specified type of web event once. |
+| [once_string](arkts-na-webview-oncestring-f.md#once_string) | Subscribe to a callback of a specified type of web event once. |
 
 ### 类
 
@@ -56,7 +59,7 @@ This module provides the capability to manage web modules.
 
 | 名称 | 说明 |
 | --- | --- |
-| [BackForwardList](arkts-na-webview-backforwardlist-i.md) | Provides back and forward history list information method. related to [HistoryItem](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-historyitem-i.md#historyitem). |
+| [BackForwardList](arkts-na-webview-backforwardlist-i.md) | Provides back and forward history list information method. related to [HistoryItem](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-historyitem-i.md). |
 | [BlanklessFrameInterpolationInfo](arkts-na-webview-blanklessframeinterpolationinfo-i.md) | Defines the frame interpolation information. Device behavior differences: Only the mobile phone is supported. For other devices, 801 is returned. |
 | [BlanklessInfo](arkts-na-webview-blanklessinfo-i.md) | Defines the blankless information. |
 | [BlanklessLoadingParam](arkts-na-webview-blanklessloadingparam-i.md) | Defines the blankless loading parameter. Device behavior differences: Only the mobile phone is supported. For other devices, 801 is returned. |
@@ -92,7 +95,7 @@ This module provides the capability to manage web modules.
 | [MediaPlaybackState](arkts-na-webview-mediaplaybackstate-e.md) | 当前网页的播控状态。 |
 | [MediaType](arkts-na-webview-mediatype-e.md) | 表示媒体类型。 |
 | [NetworkState](arkts-na-webview-networkstate-e.md) | 播放器的网络状态。 |
-| [OfflineResourceType](arkts-na-webview-offlineresourcetype-e.md) | Enum type supplied to [OfflineResourceMap](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-offlineresourcemap-i.md#offlineresourcemap) for indicating the type of resource. |
+| [OfflineResourceType](arkts-na-webview-offlineresourcetype-e.md) | Enum type supplied to [OfflineResourceMap](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-offlineresourcemap-i.md) for indicating the type of resource. |
 | [PlaybackStatus](arkts-na-webview-playbackstatus-e.md) | [handleStatusChanged](../../../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md#handlestatuschanged) 接口参数， 用于表示播放器的播放状态。 |
 | [Preload](arkts-na-webview-preload-e.md) | 播放器预加载媒体数据。 |
 | [PressureLevel](arkts-na-webview-pressurelevel-e.md) | The memory pressure level that can be set. |
@@ -107,7 +110,7 @@ This module provides the capability to manage web modules.
 | [SourceType](arkts-na-webview-sourcetype-e.md) | 表示媒体源的类型。 |
 | [SuspendType](arkts-na-webview-suspendtype-e.md) | 表示播放器的挂起类型。 |
 | [UserAgentFormFactor](arkts-na-webview-useragentformfactor-e.md) | The form factors for User-Agent metadata. |
-| [WebBlanklessErrorCode](arkts-na-webview-webblanklesserrorcode-e.md) | Enumerates the error codes of blankless. For details, see [setBlanklessLoadingWithKey](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey) or [BlanklessInfo](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-blanklessinfo-i.md#blanklessinfo). |
+| [WebBlanklessErrorCode](arkts-na-webview-webblanklesserrorcode-e.md) | Enumerates the error codes of blankless. For details, see [setBlanklessLoadingWithKey](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey) or [BlanklessInfo](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-blanklessinfo-i.md). |
 | [WebDestroyMode](arkts-na-webview-webdestroymode-e.md) | Enum type supplied to SetWebDestroyMode for indicating the web component destroy mode. |
 | [WebDownloadErrorCode](arkts-na-webview-webdownloaderrorcode-e.md) | Defines the error code for download. |
 | [WebDownloadState](arkts-na-webview-webdownloadstate-e.md) | Defines the state for download. |

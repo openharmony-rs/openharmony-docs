@@ -1,5 +1,11 @@
 # on_BundleChangedEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleMonitor } from '@kit.AbilityKit';
+```
+
 ## on_BundleChangedEvent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function on(type: BundleChangedEvent, callback: Callback<BundleChangedInfo>): vo
 注册监听应用的安装、卸载、更新。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -27,7 +29,7 @@ function on(type: BundleChangedEvent, callback: Callback<BundleChangedInfo>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [BundleChangedEvent](arkts-ability-bundlemonitor-bundlechangedevent-t-sys.md) | 是 | 注册监听的事件类型。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md)&gt; | 是 | 回调函数，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md)&gt; | 是 | 回调函数，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function on(type: BundleChangedEvent, callback: Callback<BundleChangedInfo>): vo
 | [201](../../errorcode-universal.md#201-权限校验失败) | Verify permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleMonitor } from '@kit.AbilityKit';

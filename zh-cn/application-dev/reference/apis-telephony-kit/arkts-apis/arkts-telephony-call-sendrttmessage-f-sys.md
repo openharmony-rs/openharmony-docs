@@ -1,5 +1,11 @@
 # sendRttMessage（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## sendRttMessage
 
 ```TypeScript
@@ -9,10 +15,6 @@ function sendRttMessage(callId: int, rttMessage: string): Promise<void>
 发送rtt消息
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PLACE_CALL
 

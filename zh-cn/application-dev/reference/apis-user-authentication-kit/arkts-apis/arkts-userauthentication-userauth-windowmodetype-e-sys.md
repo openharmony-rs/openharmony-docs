@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-enum WindowModeType--><!--Device-userAuth-enum WindowModeType-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -24,10 +20,6 @@ DIALOG_BOX = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowModeType-DIALOG_BOX = 1--><!--Device-WindowModeType-DIALOG_BOX = 1-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -43,10 +35,6 @@ FULLSCREEN = 2
 全屏类型。身份认证界面以全屏形式显示，适用于需要沉浸式认证体验或认证信息较多需要更大展示空间的场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WindowModeType-FULLSCREEN = 2--><!--Device-WindowModeType-FULLSCREEN = 2-End-->
 

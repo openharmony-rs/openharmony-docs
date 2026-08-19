@@ -1,5 +1,10 @@
 # onWallpaperChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## onWallpaperChange
 
 ```TypeScript
@@ -9,10 +14,6 @@ function onWallpaperChange(callback: WallpaperChangeObserver): void
 订阅壁纸变化通知事件。不支持多线程并发调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-wallpaper-function onWallpaperChange(callback: WallpaperChangeObserver): void--><!--Device-wallpaper-function onWallpaperChange(callback: WallpaperChangeObserver): void-End-->
 

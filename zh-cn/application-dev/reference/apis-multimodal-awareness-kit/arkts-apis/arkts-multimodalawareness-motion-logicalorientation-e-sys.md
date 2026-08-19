@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-motion-export enum LogicalOrientation--><!--Device-motion-export enum LogicalOrientation-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
@@ -23,10 +19,6 @@ UNKNOWN = -1
 表示方向未知或无法确定（例如非握持状态）。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ UPRIGHT = 0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-LogicalOrientation-UPRIGHT = 0--><!--Device-LogicalOrientation-UPRIGHT = 0-End-->
@@ -67,10 +55,6 @@ LEFT = 1
 表示向左。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ INVERTED = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-LogicalOrientation-INVERTED = 2--><!--Device-LogicalOrientation-INVERTED = 2-End-->
@@ -111,10 +91,6 @@ RIGHT = 3
 表示向右。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

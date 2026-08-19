@@ -1,5 +1,11 @@
 # addContact
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## addContact
 
 ```TypeScript
@@ -9,8 +15,6 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 添加联系人。使用callback异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -27,9 +31,9 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -65,10 +69,6 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -83,7 +83,7 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
 | contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -92,7 +92,7 @@ function addContact(context: Context, contact: Contact, callback: AsyncCallback<
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -130,8 +130,6 @@ function addContact(contact: Contact): Promise<number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [addContact](#addcontact)(context: Context, contact: Contact)
@@ -154,7 +152,7 @@ function addContact(contact: Contact): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回添加的联系人id。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
@@ -185,10 +183,6 @@ function addContact(context: Context, contact: Contact): Promise<number>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -217,7 +211,7 @@ function addContact(context: Context, contact: Contact): Promise<number>
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 

@@ -1,5 +1,11 @@
 # on_string（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## on_string
 
 ```TypeScript
@@ -9,10 +15,6 @@ function on(type: string, listener: EventListener): void
 注册事件。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-process-function on(type: string, listener: EventListener): void--><!--Device-process-function on(type: string, listener: EventListener): void-End-->
 

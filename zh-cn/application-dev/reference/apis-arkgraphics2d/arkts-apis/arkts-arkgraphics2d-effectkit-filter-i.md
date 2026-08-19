@@ -1,16 +1,18 @@
 # Filter
 
-图像效果类，用于通过链式调用将指定效果添加到效果链表中，适用于图片滤镜处理、视觉效果增强、图像美化等场景。 在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect)创建一个Filter实例。 在添加效果后，需调用[getEffectPixelMap](#geteffectpixelmap)获取处理后的图像。
+图像效果类，用于通过链式调用将指定效果添加到效果链表中，适用于图片滤镜处理、视觉效果增强、图像美化等场景。 在调用Filter的方法前，需要先通过[createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md)创建一个Filter实例。 在添加效果后，需调用[getEffectPixelMap](#geteffectpixelmap)获取处理后的图像。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-effectKit-interface Filter--><!--Device-effectKit-interface Filter-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { effectKit } from '@kit.ArkGraphics2D';
+```
 
 ## blur
 
@@ -21,10 +23,6 @@ blur(radius: double): Filter
 将模糊效果添加到效果链表中，返回链表的实例。着色器平铺模式使用DECAL，如需指定平铺模式， 可使用[blur](#blur)接口。 常用于实现背景虚化效果、隐私信息遮挡、毛玻璃背景效果、弹窗背景模糊等场景。 > **说明：** > > 该接口为静态模糊接口，为静态图像提供模糊化效果，如果要对组件进行实时渲染的模糊，可以使用[动态模糊](../../../ui/arkts-blur-effect.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,7 +44,7 @@ blur(radius: double): Filter
 | --- | --- |
 | Filter | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -119,10 +117,6 @@ blur(radius: double, tileMode: TileMode): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-blur(radius: double, tileMode: TileMode): Filter--><!--Device-Filter-blur(radius: double, tileMode: TileMode): Filter-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -140,7 +134,7 @@ blur(radius: double, tileMode: TileMode): Filter
 | --- | --- |
 | Filter | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -213,10 +207,6 @@ brightness(bright: double): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -237,7 +227,7 @@ brightness(bright: double): Filter
 | --- | --- |
 | Filter | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -306,13 +296,9 @@ struct Index {
 getEffectPixelMap(): Promise<image.PixelMap>
 ```
 
-获取已添加链表效果的源图像的image.PixelMap，默认使用CPU渲染，使用Promise异步回调。 如需指定渲染模式，可使用[getEffectPixelMap](#geteffectpixelmap)接口。 常用于图片处理后需要保存或显示结果的场景。 > **说明：** > > 该方法默认使用CPU渲染，着色器平铺模式仅支持DECAL，其他模式（CLAMP、REPEAT、MIRROR）暂不支持。 如需使用GPU渲染或了解渲染模式对TileMode的影响，请参见[TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md#tilemode)和 [getEffectPixelMap](#geteffectpixelmap)。
+获取已添加链表效果的源图像的image.PixelMap，默认使用CPU渲染，使用Promise异步回调。 如需指定渲染模式，可使用[getEffectPixelMap](#geteffectpixelmap)接口。 常用于图片处理后需要保存或显示结果的场景。 > **说明：** > > 该方法默认使用CPU渲染，着色器平铺模式仅支持DECAL，其他模式（CLAMP、REPEAT、MIRROR）暂不支持。 如需使用GPU渲染或了解渲染模式对TileMode的影响，请参见[TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md)和 [getEffectPixelMap](#geteffectpixelmap)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -328,7 +314,7 @@ getEffectPixelMap(): Promise<image.PixelMap>
 | --- | --- |
 | Promise&lt;image.PixelMap&gt; | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -360,10 +346,6 @@ getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
@@ -376,7 +358,7 @@ getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| useCpuRender | boolean | 是 | 指定渲染模式。true表示使用CPU渲染，false表示使用GPU渲染。 使用GPU渲染时，着色器效果平铺模式[TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md#tilemode)的支持范围与CPU渲染不同，详见TileMode说明。 |
+| useCpuRender | boolean | 是 | 指定渲染模式。true表示使用CPU渲染，false表示使用GPU渲染。 使用GPU渲染时，着色器效果平铺模式[TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md)的支持范围与CPU渲染不同，详见TileMode说明。 |
 
 **返回值：**
 
@@ -384,7 +366,7 @@ getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>
 | --- | --- |
 | Promise&lt;image.PixelMap&gt; | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -416,8 +398,6 @@ getPixelMap(): image.PixelMap
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
 **替代接口：** [getEffectPixelMap](#geteffectpixelmap)
@@ -432,7 +412,7 @@ getPixelMap(): image.PixelMap
 | --- | --- |
 | image.PixelMap | 已添加效果的源图像的image.PixelMap。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from "@kit.ImageKit";
@@ -463,10 +443,6 @@ grayscale(): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -481,7 +457,7 @@ grayscale(): Filter
 | --- | --- |
 | Filter | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -553,10 +529,6 @@ invert(): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-invert(): Filter--><!--Device-Filter-invert(): Filter-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -567,7 +539,7 @@ invert(): Filter
 | --- | --- |
 | Filter | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';
@@ -639,10 +611,6 @@ setColorMatrix(colorMatrix: Array<double>): Filter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Filter-setColorMatrix(colorMatrix: Array<double>): Filter--><!--Device-Filter-setColorMatrix(colorMatrix: Array<double>): Filter-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -665,7 +633,7 @@ setColorMatrix(colorMatrix: Array<double>): Filter
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 输入参数错误。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';

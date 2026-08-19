@@ -4,13 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-audio-interface AudioDebuggingManager--><!--Device-audio-interface AudioDebuggingManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## printAppInfo
 
@@ -21,10 +24,6 @@ printAppInfo(fd: int): void
 显示当前应用进程的完整运行时快照。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +46,6 @@ printCapturerInfo(capturer: AudioCapturer, fd: int): void
 打印目标音频捕获程序实例的完整音频运行时快照。 快照将包含流、管道、卷和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -75,10 +70,6 @@ printLoopbackInfo(loopback: AudioLoopback, fd: int): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioDebuggingManager-printLoopbackInfo(loopback: AudioLoopback, fd: int): void--><!--Device-AudioDebuggingManager-printLoopbackInfo(loopback: AudioLoopback, fd: int): void-End-->
@@ -102,10 +93,6 @@ printRendererInfo(renderer: AudioRenderer, fd: int): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioDebuggingManager-printRendererInfo(renderer: AudioRenderer, fd: int): void--><!--Device-AudioDebuggingManager-printRendererInfo(renderer: AudioRenderer, fd: int): void-End-->
@@ -128,10 +115,6 @@ printSessionInfo(session: AudioSessionManager, fd: int): void
 打印目标音频会话管理器实例的完整音频运行时快照。 快照将包含会话状态、场景、策略和设备信息。 请注意，不同版本的信息详情和格式可能会有所不同，它只能用于 手动调试，用户不应依赖实际功能实现或文件的信息 内容提取。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

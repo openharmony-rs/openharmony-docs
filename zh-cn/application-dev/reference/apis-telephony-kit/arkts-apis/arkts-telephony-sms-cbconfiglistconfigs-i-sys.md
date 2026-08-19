@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export interface CBConfigListConfigs--><!--Device-sms-export interface CBConfigListConfigs-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
 
 ## messageIds
 
@@ -25,10 +27,6 @@ messageIds: int[]
 **类型：** int[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CBConfigListConfigs-messageIds: int[]--><!--Device-CBConfigListConfigs-messageIds: int[]-End-->
 
@@ -48,10 +46,6 @@ ranType: RanType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CBConfigListConfigs-ranType: RanType--><!--Device-CBConfigListConfigs-ranType: RanType-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -69,10 +63,6 @@ slotId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CBConfigListConfigs-slotId: int--><!--Device-CBConfigListConfigs-slotId: int-End-->
 

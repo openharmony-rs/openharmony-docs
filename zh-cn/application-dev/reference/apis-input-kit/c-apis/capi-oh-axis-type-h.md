@@ -2,9 +2,9 @@
 
 ## 概述
 
-Defines the device axis event struct and enumerates device axis events. The axis type defines the physicalbehavior characteristics of an input device in different interaction scenarios. The system uses the axis type todistinguish and transmit different gesture interaction information.
+**引用文件：** <multimodalinput/oh_axis_type.h>
 
-**库：** liboh_input.so
+**库：** libohinput.so
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -38,11 +38,11 @@ enum InputEvent_AxisType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AXIS_TYPE_UNKNOWN = 0 |  |
-| AXIS_TYPE_SCROLL_VERTICAL = 1 |  |
-| AXIS_TYPE_SCROLL_HORIZONTAL = 2 |  |
-| AXIS_TYPE_PINCH = 3 |  |
-| AXIS_TYPE_ROTATE = 4 |  |
+| AXIS_TYPE_UNKNOWN = 0 | 未知轴类型，通常作为初始值。<br>**起始版本：** 12 |
+| AXIS_TYPE_SCROLL_VERTICAL = 1 | 垂直滚动轴，当您滚动鼠标滚轮或在触控板上进行单指或双指滑动时，垂直滚动轴的状态改变。<br>**起始版本：** 12 |
+| AXIS_TYPE_SCROLL_HORIZONTAL = 2 | 水平滚动轴，当您滚动鼠标滚轮或在触控板上进行双指滑动时，水平滚动轴的状态发生变化。<br>**起始版本：** 12 |
+| AXIS_TYPE_PINCH = 3 | 捏合轴，用于描述触控板上的双指捏合手势。<br>**起始版本：** 12 |
+| AXIS_TYPE_ROTATE = 4 | 旋转轴，用于描述触控板上的双指旋转手势。<br>**起始版本：** 12 |
 
 ### InputEvent_AxisEventType
 
@@ -75,9 +75,9 @@ enum InputEvent_AxisAction
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AXIS_ACTION_CANCEL = 0 |  |
-| AXIS_ACTION_BEGIN = 1 |  |
-| AXIS_ACTION_UPDATE = 2 |  |
-| AXIS_ACTION_END = 3 |  |
+| AXIS_ACTION_CANCEL = 0 | 轴事件取消。<br>**起始版本：** 12 |
+| AXIS_ACTION_BEGIN = 1 | 轴事件开始。<br>**起始版本：** 12 |
+| AXIS_ACTION_UPDATE = 2 | 轴事件更新。<br>**起始版本：** 12 |
+| AXIS_ACTION_END = 3 | 轴事件结束。<br>**起始版本：** 12 |
 
 

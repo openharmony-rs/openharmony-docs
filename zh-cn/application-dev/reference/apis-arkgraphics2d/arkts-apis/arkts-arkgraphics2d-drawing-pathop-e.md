@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum PathOp--><!--Device-drawing-enum PathOp-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ DIFFERENCE = 0
 差集操作，保留第一条路径中不与第二条路径重叠的区域。适用于需要从路径中减去某些区域的场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathOp-DIFFERENCE = 0--><!--Device-PathOp-DIFFERENCE = 0-End-->
 
@@ -40,10 +32,6 @@ INTERSECT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathOp-INTERSECT = 1--><!--Device-PathOp-INTERSECT = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -57,10 +45,6 @@ UNION = 2
 并集操作，合并两条路径的所有区域。适用于需要合并多个路径的场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathOp-UNION = 2--><!--Device-PathOp-UNION = 2-End-->
 
@@ -76,10 +60,6 @@ XOR = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathOp-XOR = 3--><!--Device-PathOp-XOR = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -93,10 +73,6 @@ REVERSE_DIFFERENCE = 4
 反向差集操作，保留第二条路径中不与第一条路径重叠的区域。适用于需要反向减去路径的场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathOp-REVERSE_DIFFERENCE = 4--><!--Device-PathOp-REVERSE_DIFFERENCE = 4-End-->
 

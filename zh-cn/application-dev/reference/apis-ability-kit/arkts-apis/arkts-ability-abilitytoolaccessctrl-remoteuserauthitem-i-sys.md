@@ -4,15 +4,16 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-abilityToolAccessCtrl-interface RemoteUserAuthItem--><!--Device-abilityToolAccessCtrl-interface RemoteUserAuthItem-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## authResult
 
@@ -25,10 +26,6 @@ authResult: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-RemoteUserAuthItem-authResult: string--><!--Device-RemoteUserAuthItem-authResult: string-End-->
 
@@ -47,10 +44,6 @@ permission: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-RemoteUserAuthItem-permission: string--><!--Device-RemoteUserAuthItem-permission: string-End-->
 

@@ -1,4 +1,4 @@
-# CAPI<!--c-distributed-service-kit-->
+# C API<!--c-distributed-service-kit-->
 
 - 头文件
     - [oh_device_manager_err_code.h](capi-oh-device-manager-err-code-h.md)

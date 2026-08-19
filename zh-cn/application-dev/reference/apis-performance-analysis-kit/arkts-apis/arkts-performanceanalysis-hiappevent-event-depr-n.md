@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** Event
@@ -14,13 +12,18 @@
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 常量
 
 | 名称 | 说明 |
 | --- | --- |
-| [USER_LOGIN](arkts-performanceanalysis-event-depr-con.md#userlogin) | 用户登录事件。 |
-| [USER_LOGOUT](arkts-performanceanalysis-event-depr-con.md#userlogout) | 用户登出事件。 |
-| [DISTRIBUTED_SERVICE_START](arkts-performanceanalysis-event-depr-con.md#distributedservicestart) | 分布式服务启动事件。 |
+| [USER_LOGIN](arkts-performanceanalysis-event-depr-con.md#user_login) | 用户登录事件。 |
+| [USER_LOGOUT](arkts-performanceanalysis-event-depr-con.md#user_logout) | 用户登出事件。 |
+| [DISTRIBUTED_SERVICE_START](arkts-performanceanalysis-event-depr-con.md#distributed_service_start) | 分布式服务启动事件。 |
 

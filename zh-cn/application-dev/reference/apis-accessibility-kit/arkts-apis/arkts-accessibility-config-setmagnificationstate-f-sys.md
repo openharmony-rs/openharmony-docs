@@ -1,5 +1,11 @@
 # setMagnificationState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+```
+
 ## setMagnificationState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setMagnificationState(state: boolean): void
 设置放大效果的启用状态。放大效果依赖放大手势功能，仅在放大手势功能已启用的前提下，本接口的设置才会生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
@@ -37,7 +39,7 @@ function setMagnificationState(state: boolean): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300007](../errorcode-accessibility.md#9300007-触发放大功能失败) | Trigger magnification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { config } from '@kit.AccessibilityKit';

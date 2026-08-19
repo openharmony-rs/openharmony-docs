@@ -56,7 +56,7 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数deviceInfo为nullptr。<br>                                         2. 参数aVCastCategory为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数aVCastCategory为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceId()
 
@@ -81,7 +81,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, ch
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数deviceInfo为nullptr。<br>                                         2. 参数deviceId为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceId为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceName()
 
@@ -106,7 +106,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数deviceInfo为nullptr。<br>                                         2. 参数deviceName为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceName为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceType()
 
@@ -131,7 +131,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数deviceInfo为nullptr。<br>                                         2. 参数deviceType为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceType为nullptr。 |
 
 ### OH_DeviceInfo_GetSupportedProtocols()
 
@@ -156,6 +156,6 @@ AVSession_ErrCode OH_DeviceInfo_GetSupportedProtocols(AVSession_DeviceInfo *devi
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER：<br>                                         1. 参数deviceInfo为nullptr。<br>                                         2. 参数deviceProtocolType为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceProtocolType为nullptr。 |
 
 

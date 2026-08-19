@@ -2,9 +2,9 @@
 
 ## 概述
 
-Provides functions such as input event injection, key state query, device hot swapping listener, eventinterception, hotkey management, mouse cursor management, input device information query, and injection permissionmanagement.
+**引用文件：** <multimodalinput/oh_input_manager.h>
 
-**库：** liboh_input.so
+**库：** libohinput.so
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -18,9 +18,9 @@ Provides functions such as input event injection, key state query, device hot sw
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) | Input_InterceptorEventCallback | Defines the structure for the interceptor of event callbacks,including mouseCallback, touchCallback, and axisCallback. |
-| [Input_DeviceListener](capi-input-input-devicelistener.md) | Input_DeviceListener | Defines the struct for listening for device hot swapping. It is applicable to applications that need torespond to input device connection and disconnection in real time, such as games and music players. By listening fordevice hot swapping events, applications can update the input status in a timely manner, improving user experienceand avoiding exceptions caused by device disconnection. |
-| [Input_KeyState](capi-input-input-keystate.md) | Input_KeyState | 定义按键信息，用于标识按键行为。例如，“Ctrl”按键信息包含键值和键状态。适用于快捷键处理、输入事件状态管理、按键状态检测等场景。 |
+| [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) | Input_InterceptorEventCallback | 拦截回调事件结构体，用于定义输入事件拦截所需的回调函数类型，支持拦截鼠标事件、触屏输入事件、按键事件和轴事件。 |
+| [Input_DeviceListener](capi-input-input-devicelistener.md) | Input_DeviceListener | 定义一个结构体用于监听设备热插拔，该功能适用于需要实时响应输入设备连接和断开场景的应用程序，如游戏、音乐播放器等。通过监听设备热插拔事件，应用程序可以及时更新输入状态，提升用户体验，避免因设备断开导致的异常情况。 |
+| [Input_KeyState](capi-input-input-keystate.md) | Input_KeyState | 定义按键信息，用于标识按键行为。例如，”Ctrl”按键信息包含键值和键状态。适用于快捷键处理、输入事件状态管理、按键状态检测等场景。 |
 | [Input_KeyEvent](capi-input-input-keyevent.md) | Input_KeyEvent | 按键事件对象，用于表示用户按键操作产生的输入事件，包含按键码、按键状态等信息，可用于处理键盘输入和实现按键响应功能。 |
 | [Input_MouseEvent](capi-input-input-mouseevent.md) | Input_MouseEvent | 鼠标事件对象，用于表示用户鼠标操作产生的输入事件，包含点击信息、坐标、点击动作事件等信息，可用于处理鼠标事件输入和实现鼠标事件响应的功能。 |
 | [Input_TouchEvent](capi-input-input-touchevent.md) | Input_TouchEvent | 触屏输入事件对象，用于表示触屏输入的详细信息，包括触摸点位置、触摸状态、时间戳等。 |
@@ -135,7 +135,7 @@ Provides functions such as input event injection, key state query, device hot sw
 | [int32_t OH_Input_GetTouchEventGlobalX(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventglobalx) | - | 获取触屏输入事件以主屏左上角为原点的全局坐标系的X坐标。 |
 | [void OH_Input_SetTouchEventGlobalY(struct Input_TouchEvent* touchEvent, int32_t globalY)](#oh_input_settoucheventglobaly) | - | 设置触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标。 |
 | [int32_t OH_Input_GetTouchEventGlobalY(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventglobaly) | - | 获取触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标。 |
-| [Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent, double pressure)](#oh_input_settoucheventpressure) | - | 设置触屏输入事件的压力。如果未设置压力值，或者不在合法范围内，默认值是0.0。 |
+| [Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent, double pressure)](#oh_input_settoucheventpressure) | - | 设置触屏输入事件的压力。如果未设置压力值，或设置的值不在[0.0, 1.0]范围内，默认值是0.0。 |
 | [double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventpressure) | - | 获取触屏输入事件的压力。 |
 | [void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t windowX)](#oh_input_settoucheventwindowx) | - | 设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。如果未设置，默认值是0。 |
 | [int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventwindowx) | - | 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。 |
@@ -198,7 +198,7 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | 获取设置的所有快捷键。 |
 | [void OH_Input_SetRepeat(Input_Hotkey* hotkey, bool isRepeat)](#oh_input_setrepeat) | - | 设置是否上报重复key事件。 |
 | [Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)](#oh_input_getrepeat) | - | 获取是否上报重复key事件。 |
-| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | 订阅快捷键事件。 |
+| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | 订阅快捷键事件。<br>*说明：<br>订阅快捷键事件时，对于preKeys和finalKey有以下约束：<br>1. preKeys：修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 4]，无顺序要求。例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。<br>2. finalKey：被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[Input_KeyCode](capi-oh-key-code-h.md#input_keycode)。例如，Ctrl+Shift+Esc中，Esc称为被修饰键。 |
 | [Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_removehotkeymonitor) | - | 取消订阅快捷键。 |
 | [Input_Result OH_Input_GetDeviceIds(int32_t *deviceIds, int32_t inSize, int32_t *outSize)](#oh_input_getdeviceids) | - | 获取所有输入设备的ID列表。 |
 | [Input_Result OH_Input_GetDevice(int32_t deviceId, Input_DeviceInfo **deviceInfo)](#oh_input_getdevice) | - | 获取输入设备信息。 |
@@ -224,7 +224,7 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)](#oh_input_cursorinfo_getstyle) | - | 获取指定鼠标光标信息对象对应的光标样式。 |
 | [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | 获取指定鼠标光标信息对象对应的光标大小档位。 |
 | [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | 获取指定鼠标光标信息对象对应的光标颜色，使用32位ARGB整数表示。 |
-| [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style,pointer size level, and pointer color. |
+| [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | 获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。 |
 | [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | 查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。 |
 | [Input_Result OH_Input_SetPointerVisible(bool visible)](#oh_input_setpointervisible) | - | 设置当前窗口的鼠标光标的显示或隐藏状态。 |
 | [Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)](#oh_input_getpointerstyle) | - | 获取指定窗口的鼠标光标样式。此接口仅支持获取本应用进程内窗口的鼠标光标样式。 |
@@ -411,9 +411,9 @@ enum InputEvent_SourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SOURCE_TYPE_MOUSE = 1 |  |
-| SOURCE_TYPE_TOUCHSCREEN = 2 |  |
-| SOURCE_TYPE_TOUCHPAD = 3 |  |
+| SOURCE_TYPE_MOUSE = 1 | 表示输入源生成鼠标光标移动、按键按下和释放以及滚轮滚动的事件。<br>**起始版本：** 12 |
+| SOURCE_TYPE_TOUCHSCREEN = 2 | 表示输入源产生触摸屏多点触屏输入事件。<br>**起始版本：** 12 |
+| SOURCE_TYPE_TOUCHPAD = 3 | 表示输入源产生触控板多点触屏输入事件。<br>**起始版本：** 12 |
 
 ### Input_Result
 
@@ -436,16 +436,16 @@ enum Input_Result
 | INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。 |
 | INPUT_SERVICE_EXCEPTION = 3800001 | 服务异常。 |
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | 应用创建拦截后，再次执行创建拦截的操作。 |
-| INPUT_OCCUPIED_BY_SYSTEM = 4200002 |  |
-| INPUT_OCCUPIED_BY_OTHER = 4200003 |  |
-| INPUT_KEYBOARD_DEVICE_NOT_EXIST = 3900002 |  |
-| INPUT_INJECTION_AUTHORIZING = 3900005 |  |
-| INPUT_INJECTION_OPERATION_FREQUENT = 3900006 |  |
-| INPUT_INJECTION_AUTHORIZED = 3900007 |  |
-| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 |  |
-| INPUT_APP_NOT_FOCUSED = 3900009 |  |
-| INPUT_DEVICE_NO_POINTER = 3900010 |  |
-| INPUT_INVALID_WINDOWID = 26500001 |  |
+| INPUT_OCCUPIED_BY_SYSTEM = 4200002 | 已经被系统应用占用。<br>**起始版本：** 14 |
+| INPUT_OCCUPIED_BY_OTHER = 4200003 | 已经被其他应用占用。<br>**起始版本：** 14 |
+| INPUT_KEYBOARD_DEVICE_NOT_EXIST = 3900002 | 未连接键盘设备。<br>**起始版本：** 15 |
+| INPUT_INJECTION_AUTHORIZING = 3900005 | 正在授权中。<br>**起始版本：** 20 |
+| INPUT_INJECTION_OPERATION_FREQUENT = 3900006 | 重复请求。<br>**起始版本：** 20 |
+| INPUT_INJECTION_AUTHORIZED = 3900007 | 当前应用已经授权。<br>**起始版本：** 20 |
+| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 | 其它应用已经授权。<br>**起始版本：** 20 |
+| INPUT_APP_NOT_FOCUSED = 3900009 | 当前应用不是焦点应用。<br>**起始版本：** 20 |
+| INPUT_DEVICE_NO_POINTER = 3900010 | 无鼠标类输入外设。<br>**起始版本：** 20 |
+| INPUT_INVALID_WINDOWID = 26500001 | 无效的窗口ID。<br>**起始版本：** 22 |
 
 ### Input_TouchEventToolType
 
@@ -461,14 +461,14 @@ enum Input_TouchEventToolType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TOOL_TYPE_FINGER = 0 |  |
-| TOOL_TYPE_PEN = 1 |  |
-| TOOL_TYPE_RUBBER = 2 |  |
-| TOOL_TYPE_BRUSH = 3 |  |
-| TOOL_TYPE_PENCIL = 4 |  |
-| TOOL_TYPE_AIRBRUSH = 5 |  |
-| TOOL_TYPE_MOUSE = 6 |  |
-| TOOL_TYPE_LENS = 7 |  |
+| TOOL_TYPE_FINGER = 0 | 表示手指。<br>**起始版本：** 24 |
+| TOOL_TYPE_PEN = 1 | 表示手写笔设备。<br>**起始版本：** 24 |
+| TOOL_TYPE_RUBBER = 2 | 表示橡皮擦类设备。<br>**起始版本：** 24 |
+| TOOL_TYPE_BRUSH = 3 | 表示画笔类设备。<br>**起始版本：** 24 |
+| TOOL_TYPE_PENCIL = 4 | 表示铅笔类设备。<br>**起始版本：** 24 |
+| TOOL_TYPE_AIRBRUSH = 5 | 表示喷枪类设备。<br>**起始版本：** 24 |
+| TOOL_TYPE_MOUSE = 6 | 表示鼠标设备。<br>**起始版本：** 24 |
+| TOOL_TYPE_LENS = 7 | 表示透镜类设备。<br>**起始版本：** 24 |
 
 
 ## 函数说明
@@ -489,7 +489,7 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Input_Hotkey\* hotkey | hotkey 快捷键对象的实例。 |
+| [Input_Hotkey](capi-input-input-hotkey.md)\* hotkey | hotkey 快捷键对象的实例。 |
 
 ### Input_KeyEventCallback()
 
@@ -507,7 +507,7 @@ typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const Input_KeyEvent\* keyEvent | 按键事件对象，通过[OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent)接口可以创建按键事件对象。<br>使用完需使用[OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent)接口销毁按键事件对象。 |
+| [const Input_KeyEvent](capi-input-input-keyevent.md)\* keyEvent | 按键事件对象，通过[OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent)接口可以创建按键事件对象。<br>使用完需使用[OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent)接口销毁按键事件对象。 |
 
 ### Input_MouseEventCallback()
 
@@ -525,7 +525,7 @@ typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const Input_MouseEvent\* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
+| [const Input_MouseEvent](capi-input-input-mouseevent.md)\* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
 
 ### Input_TouchEventCallback()
 
@@ -543,7 +543,7 @@ typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const Input_TouchEvent\* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](capi-oh-input-manager-h.md#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](capi-oh-input-manager-h.md#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| [const Input_TouchEvent](capi-input-input-touchevent.md)\* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](capi-oh-input-manager-h.md#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](capi-oh-input-manager-h.md#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
 
 ### Input_AxisEventCallback()
 
@@ -561,7 +561,7 @@ typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const Input_AxisEvent\* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
+| [const Input_AxisEvent](capi-input-input-axisevent.md)\* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
 
 ### Input_DeviceAddedCallback()
 
@@ -579,7 +579,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 ### Input_DeviceRemovedCallback()
 
@@ -597,7 +597,7 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 ### Input_InjectAuthorizeCallback()
 
@@ -615,7 +615,7 @@ typedef void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedSt
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Input_InjectionStatus authorizedStatus | 注入权限状态。 |
+| [Input_InjectionStatus](capi-oh-input-manager-h.md#input_injectionstatus) authorizedStatus | 注入权限状态。 |
 
 ### OH_Input_GetKeyState()
 
@@ -702,7 +702,7 @@ void OH_Input_SetKeyCode(struct Input_KeyState* keyState, int32_t keyCode)
 | 参数项 | 描述 |
 | -- | -- |
 | [struct Input_KeyState](capi-input-input-keystate.md)* keyState | 按键状态的枚举对象，具体请参考[Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction)。 |
-| int32_t keyCode | 按键键值，具体请参考{@link KeyCode}。 |
+| int32_t keyCode | 按键键值，具体请参考[Input_KeyCode](capi-oh-key-code-h.md#input_keycode)。 |
 
 ### OH_Input_GetKeyCode()
 
@@ -808,6 +808,8 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 注入按键事件。<br>如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。<br>从API version 20开始，建议先使用[OH_Input_RequestInjection](capi-oh-input-manager-h.md#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](capi-oh-input-manager-h.md#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
@@ -822,7 +824,7 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectKeyEvent 函数返回值。<br>     <br>若注入成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；<br>     <br>若缺少权限，返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若参数错误，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
+| int32_t | OH_Input_InjectKeyEvent 函数返回值。      <br>若注入成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；      <br>若缺少权限，返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若参数错误，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_GetKeySwitch()
 
@@ -956,7 +958,7 @@ void OH_Input_SetKeyEventKeyCode(struct Input_KeyEvent* keyEvent, int32_t keyCod
 | 参数项 | 描述 |
 | -- | -- |
 | [struct Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | 按键事件对象，通过[OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent)接口可以创建按键事件对象。<br>使用完需使用[OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent)接口销毁按键事件对象。 |
-| int32_t keyCode | 按键键值，具体请参考{@link KeyCode}。 |
+| int32_t keyCode | 按键键值，具体请参考[Input_KeyCode](capi-oh-key-code-h.md#input_keycode)。 |
 
 ### OH_Input_GetKeyEventKeyCode()
 
@@ -1148,7 +1150,7 @@ Input_Result OH_Input_GetKeyEventId(const struct Input_KeyEvent* keyEvent, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetKeyEventId 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetKeyEventId 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_AddKeyEventHook()
 
@@ -1174,7 +1176,7 @@ Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_AddKeyEventHook 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。<br>     <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示不支持该功能。<br>     <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示权限验证失败。<br>     <br>[INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result) 表示重复设置钩子。一个进程仅支持设置一个钩子。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_AddKeyEventHook 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。      <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示不支持该功能。      <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示权限验证失败。      <br>[INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result) 表示重复设置钩子。一个进程仅支持设置一个钩子。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_RemoveKeyEventHook()
 
@@ -1198,7 +1200,7 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_RemoveKeyEventHook 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。如果之前没有添加对应钩子，移除时也会返回成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_RemoveKeyEventHook 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。如果之前没有添加对应钩子，移除时也会返回成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_DispatchToNextHandler()
 
@@ -1222,7 +1224,7 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_DispatchToNextHandler 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。可通过[OH_Input_GetKeyEventId](capi-oh-input-manager-h.md#oh_input_getkeyeventid)查看传入的eventId是否准确。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_DispatchToNextHandler 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。可通过[OH_Input_GetKeyEventId](capi-oh-input-manager-h.md#oh_input_getkeyeventid)查看传入的eventId是否准确。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_InjectMouseEvent()
 
@@ -1233,6 +1235,8 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 **描述**
 
 使用以指定屏幕左上角为原点的相对坐标系的坐标注入鼠标事件。<br>如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。<br>从API version 20开始，建议先使用[OH_Input_RequestInjection](capi-oh-input-manager-h.md#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](capi-oh-input-manager-h.md#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -1248,7 +1252,7 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectMouseEvent 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。<br>     <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectMouseEvent 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。      <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示缺少权限。 |
 
 ### OH_Input_InjectMouseEventGlobal()
 
@@ -1274,7 +1278,7 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectMouseEventGlobal 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。<br>     <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectMouseEventGlobal 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。      <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示缺少权限。 |
 
 ### OH_Input_CreateMouseEvent()
 
@@ -1570,7 +1574,7 @@ void OH_Input_SetMouseEventAxisValue(struct Input_MouseEvent* mouseEvent, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [struct Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
-| float axisValue | 轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位）,零表示没有滚动。 |
+| float axisValue | 轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位），零表示没有滚动。 |
 
 ### OH_Input_GetMouseEventAxisValue()
 
@@ -1849,7 +1853,7 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEvent 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。 |
+| int32_t | OH_Input_InjectTouchEvent 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。 |
 
 ### OH_Input_InjectTouchEventGlobal()
 
@@ -1875,7 +1879,7 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEventGlobal 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。<br>     <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectTouchEventGlobal 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注入成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。      <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) 表示缺少权限。 |
 
 ### OH_Input_CreateTouchEvent()
 
@@ -2150,7 +2154,7 @@ int64_t OH_Input_GetTouchEventActionTime(const struct Input_TouchEvent* touchEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回触屏输入事件发生的时间。 |
+| int64_t | 返回触屏输入事件发生的时间，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。 |
 
 ### OH_Input_SetTouchEventWindowId()
 
@@ -2340,7 +2344,7 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 
 **描述**
 
-设置触屏输入事件的压力。如果未设置压力值，或者不在合法范围内，默认值是0.0。
+设置触屏输入事件的压力。如果未设置压力值，或设置的值不在[0.0, 1.0]范围内，默认值是0.0。
 
 **起始版本：** 24
 
@@ -2355,7 +2359,7 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetTouchEventPressure 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetTouchEventPressure 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_GetTouchEventPressure()
 
@@ -2533,7 +2537,7 @@ Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetTouchEventToolType 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetTouchEventToolType 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_GetTouchEventToolType()
 
@@ -2569,6 +2573,8 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 当前应用申请注入权限，包括申请注入按键事件[OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent)、注入触屏输入事件[OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent)、注入鼠标事件[OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent)等注入操作的权限。<br>从API版本26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。
 
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2581,7 +2587,7 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>     <br>INPUT_SUCCESS = 0 申请授权成功，等待用户授权结果并回调授权状态。<br>     <br>INPUT_PARAMETER_ERROR = 401  参数错误，参数callback为空。<br>     <br>INPUT_DEVICE_NOT_SUPPORTED = 801  表示不支持该功能。<br>     <br>INPUT_SERVICE_EXCEPTION = 3800001  服务异常。<br>     <br>INPUT_INJECTION_AUTHORIZING =  3900005 正在授权中。<br>     <br>INPUT_INJECTION_OPERATION_FREQUENT = 3900006 重复请求（当前应用连续申请授权弹窗成功，间隔时间不超过3秒）。<br>     <br>INPUT_INJECTION_AUTHORIZED = 3900007 当前应用已经授权。<br>     <br>INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008   其它应用已经授权。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。      <br>INPUT_SUCCESS = 0 申请授权成功，等待用户授权结果并回调授权状态。      <br>INPUT_PARAMETER_ERROR = 401  参数错误，参数callback为空。      <br>INPUT_DEVICE_NOT_SUPPORTED = 801  表示不支持该功能。      <br>INPUT_SERVICE_EXCEPTION = 3800001  服务异常。      <br>INPUT_INJECTION_AUTHORIZING =  3900005 正在授权中。      <br>INPUT_INJECTION_OPERATION_FREQUENT = 3900006 重复请求（当前应用连续申请授权弹窗成功，间隔时间不超过3秒）。      <br>INPUT_INJECTION_AUTHORIZED = 3900007 当前应用已经授权。      <br>INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008   其它应用已经授权。 |
 
 ### OH_Input_CancelInjection()
 
@@ -2619,7 +2625,7 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>     <br>INPUT_SUCCESS = 0 查询成功。<br>     <br>INPUT_PARAMETER_ERROR = 401  参数错误，参数status为空。<br>     <br>INPUT_SERVICE_EXCEPTION = 3800001  服务异常。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。      <br>INPUT_SUCCESS = 0 查询成功。      <br>INPUT_PARAMETER_ERROR = 401  参数错误，参数status为空。      <br>INPUT_SERVICE_EXCEPTION = 3800001  服务异常。 |
 
 ### OH_Input_CreateAxisEvent()
 
@@ -2877,7 +2883,7 @@ Input_Result OH_Input_GetAxisEventAxisValue(const Input_AxisEvent* axisEvent, In
 | -- | -- |
 | [const Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
 | [InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype) axisType | 轴类型，具体请参考[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)。 |
-| double* axisValue | 出参，返回轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位）,零表示没有滚动。 |
+| double* axisValue | 出参，返回轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位），零表示没有滚动。 |
 
 **返回：**
 
@@ -3178,7 +3184,7 @@ Input_Result OH_Input_SetAxisEventGlobalX(struct Input_AxisEvent* axisEvent, int
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent是空指针。 |
 
 ### OH_Input_GetAxisEventGlobalX()
 
@@ -3203,7 +3209,7 @@ Input_Result OH_Input_GetAxisEventGlobalX(const Input_AxisEvent* axisEvent, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent或者globalX是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent或者globalX是空指针。 |
 
 ### OH_Input_SetAxisEventGlobalY()
 
@@ -3228,7 +3234,7 @@ Input_Result OH_Input_SetAxisEventGlobalY(struct Input_AxisEvent* axisEvent, int
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent是空指针。 |
 
 ### OH_Input_GetAxisEventGlobalY()
 
@@ -3253,7 +3259,7 @@ Input_Result OH_Input_GetAxisEventGlobalY(const Input_AxisEvent* axisEvent, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent或者globalY是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示axisEvent或者globalY是空指针。 |
 
 ### OH_Input_AddKeyEventMonitor()
 
@@ -3281,7 +3287,7 @@ Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加按键事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加按键事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_AddMouseEventMonitor()
 
@@ -3309,7 +3315,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加鼠标事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加鼠标事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_AddTouchEventMonitor()
 
@@ -3337,7 +3343,7 @@ Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加触屏输入事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加触屏输入事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_AddAxisEventMonitorForAll()
 
@@ -3365,7 +3371,7 @@ Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_AddAxisEventMonitor()
 
@@ -3394,7 +3400,7 @@ Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_RemoveKeyEventMonitor()
 
@@ -3422,7 +3428,7 @@ Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除按键事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除按键事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_RemoveMouseEventMonitor()
 
@@ -3450,7 +3456,7 @@ Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除鼠标事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除鼠标事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_RemoveTouchEventMonitor()
 
@@ -3478,7 +3484,7 @@ Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除触屏输入事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除触屏输入事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_RemoveAxisEventMonitorForAll()
 
@@ -3506,7 +3512,7 @@ Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callb
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_RemoveAxisEventMonitor()
 
@@ -3535,7 +3541,7 @@ Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventT
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除轴事件监听成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空或者没有被添加监听，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_AddKeyEventInterceptor()
 
@@ -3564,7 +3570,7 @@ Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, In
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加按键事件的拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result)；<br>     <br>若服务异常；则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加按键事件的拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result)；      <br>若服务异常；则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_AddInputEventInterceptor()
 
@@ -3593,7 +3599,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加输入事件的拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result)；<br>     <br>若服务异常；则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若添加输入事件的拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若callback为空，则返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)；若重复添加拦截器，则返回[INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result)；      <br>若服务异常；则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_RemoveKeyEventInterceptor()
 
@@ -3615,7 +3621,7 @@ Input_Result OH_Input_RemoveKeyEventInterceptor(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除按键事件拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除按键事件拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_RemoveInputEventInterceptor()
 
@@ -3637,7 +3643,7 @@ Input_Result OH_Input_RemoveInputEventInterceptor(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除输入事件拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>     <br>若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 若移除输入事件拦截成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若权限校验失败，则返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；      <br>若服务异常，则返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_GetIntervalSinceLastInput()
 
@@ -3663,7 +3669,7 @@ Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetIntervalSinceLastInput 函数返回值。<br>     <br>若获取时间间隔成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若服务异常，返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)；若参数错误，返回<br>     [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetIntervalSinceLastInput 函数返回值。      <br>若获取时间间隔成功，则返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若服务异常，返回[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)；若参数错误，返回      [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_CreateHotkey()
 
@@ -3753,7 +3759,7 @@ Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetPreKeys 函数返回值。<br>     <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetPreKeys 函数返回值。      <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_SetFinalKey()
 
@@ -3801,7 +3807,7 @@ Input_Result OH_Input_GetFinalKey(const Input_Hotkey *hotkey, int32_t *finalKeyC
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetFinalKey 函数返回值。<br>     <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；<br>     <br>若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetFinalKey 函数返回值。      <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；      <br>若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_CreateAllSystemHotkeys()
 
@@ -3827,7 +3833,7 @@ Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Hotkey **](capi-input-input-hotkey.md) | OH_Input_CreateAllSystemHotkeys 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 创建实例数组的双指针成功。 |
+| [Input_Hotkey **](capi-input-input-hotkey.md) | OH_Input_CreateAllSystemHotkeys 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 创建实例数组的双指针成功。 |
 
 ### OH_Input_DestroyAllSystemHotkeys()
 
@@ -3875,7 +3881,7 @@ Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetAllSystemHotkeys 函数返回值。<br>     <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；<br>     <br>若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetAllSystemHotkeys 函数返回值。      <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；      <br>若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_SetRepeat()
 
@@ -3923,7 +3929,7 @@ Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetRepeat 函数返回值。<br>     <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；<br>     <br>若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetRepeat 函数返回值。      <br>若获取成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；      <br>若获取失败，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_AddHotkeyMonitor()
 
@@ -3933,7 +3939,7 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 **描述**
 
-订阅快捷键事件。
+订阅快捷键事件。<br>*说明：<br>订阅快捷键事件时，对于preKeys和finalKey有以下约束：<br>1. preKeys：修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 4]，无顺序要求。例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。<br>2. finalKey：被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[Input_KeyCode](capi-oh-key-code-h.md#input_keycode)。例如，Ctrl+Shift+Esc中，Esc称为被修饰键。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3950,7 +3956,7 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_AddHotkeyMonitor 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示订阅组合按键成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 参数检查失败。<br>     <br>[INPUT_OCCUPIED_BY_SYSTEM](capi-oh-input-manager-h.md#input_result) 该快捷键已被系统占用，可以通过接口[OH_Input_GetAllSystemHotkeys](capi-oh-input-manager-h.md#oh_input_getallsystemhotkeys)查询所有的系统快捷键。<br>     <br>[INPUT_OCCUPIED_BY_OTHER](capi-oh-input-manager-h.md#input_result) 已被抢占订阅。<br>     <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示不支持该功能。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_AddHotkeyMonitor 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示订阅组合按键成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 参数检查失败。      <br>[INPUT_OCCUPIED_BY_SYSTEM](capi-oh-input-manager-h.md#input_result) 该快捷键已被系统占用，可以通过接口[OH_Input_GetAllSystemHotkeys](capi-oh-input-manager-h.md#oh_input_getallsystemhotkeys)查询所有的系统快捷键。      <br>[INPUT_OCCUPIED_BY_OTHER](capi-oh-input-manager-h.md#input_result) 已被抢占订阅。      <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示不支持该功能。 |
 
 ### OH_Input_RemoveHotkeyMonitor()
 
@@ -3977,7 +3983,7 @@ Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_Hotk
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_RemoveHotkeyMonitor 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 取消订阅组合按键成功， [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_RemoveHotkeyMonitor 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 取消订阅组合按键成功， [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 参数检查失败。 |
 
 ### OH_Input_GetDeviceIds()
 
@@ -4005,7 +4011,7 @@ Input_Result OH_Input_GetDeviceIds(int32_t *deviceIds, int32_t inSize, int32_t *
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceIds或outSize为空指针或inSize小于0。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceIds或outSize为空指针或inSize小于0。 |
 
 ### OH_Input_GetDevice()
 
@@ -4032,7 +4038,7 @@ Input_Result OH_Input_GetDevice(int32_t deviceId, Input_DeviceInfo **deviceInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo为空指针或deviceId无效。<br>     <br>可以通过 [OH_Input_GetDeviceIds](capi-oh-input-manager-h.md#oh_input_getdeviceids) 表示接口查询系统支持的设备ID。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo为空指针或deviceId无效。      <br>可以通过 [OH_Input_GetDeviceIds](capi-oh-input-manager-h.md#oh_input_getdeviceids) 表示接口查询系统支持的设备ID。 |
 
 ### OH_Input_CreateDeviceInfo()
 
@@ -4099,7 +4105,7 @@ Input_Result OH_Input_GetKeyboardType(int32_t deviceId, int32_t *keyboardType)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示设备ID为无效值或者keyboardType是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示设备ID为无效值或者keyboardType是空指针。 |
 
 ### OH_Input_GetDeviceId()
 
@@ -4126,7 +4132,7 @@ Input_Result OH_Input_GetDeviceId(Input_DeviceInfo *deviceInfo, int32_t *id)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者ID是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者ID是空指针。 |
 
 ### OH_Input_GetDeviceName()
 
@@ -4153,7 +4159,7 @@ Input_Result OH_Input_GetDeviceName(Input_DeviceInfo *deviceInfo, char **name)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者name是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者name是空指针。 |
 
 ### OH_Input_GetCapabilities()
 
@@ -4180,7 +4186,7 @@ Input_Result OH_Input_GetCapabilities(Input_DeviceInfo *deviceInfo, int32_t *cap
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者capabilities是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者capabilities是空指针。 |
 
 ### OH_Input_GetDeviceVersion()
 
@@ -4207,7 +4213,7 @@ Input_Result OH_Input_GetDeviceVersion(Input_DeviceInfo *deviceInfo, int32_t *ve
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者version是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者version是空指针。 |
 
 ### OH_Input_GetDeviceProduct()
 
@@ -4234,7 +4240,7 @@ Input_Result OH_Input_GetDeviceProduct(Input_DeviceInfo *deviceInfo, int32_t *pr
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者product是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者product是空指针。 |
 
 ### OH_Input_GetDeviceVendor()
 
@@ -4261,7 +4267,7 @@ Input_Result OH_Input_GetDeviceVendor(Input_DeviceInfo *deviceInfo, int32_t *ven
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者vendor是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者vendor是空指针。 |
 
 ### OH_Input_GetDeviceAddress()
 
@@ -4288,7 +4294,7 @@ Input_Result OH_Input_GetDeviceAddress(Input_DeviceInfo *deviceInfo, char **addr
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者address是空指针。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示deviceInfo或者address是空指针。 |
 
 ### OH_Input_RegisterDeviceListener()
 
@@ -4314,7 +4320,7 @@ Input_Result OH_Input_RegisterDeviceListener(Input_DeviceListener* listener)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_RegisterDeviceListener 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注册成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示listener 为NULL。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_RegisterDeviceListener 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示注册成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示listener 为NULL。 |
 
 ### OH_Input_UnregisterDeviceListener()
 
@@ -4340,7 +4346,7 @@ Input_Result OH_Input_UnregisterDeviceListener(Input_DeviceListener* listener)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_UnregisterDeviceListener 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示取消注册成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示listener 为 NULL 或者 listener 未被注册。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示由于服务异常调用失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_UnregisterDeviceListener 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示取消注册成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示listener 为 NULL 或者 listener 未被注册。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示由于服务异常调用失败。 |
 
 ### OH_Input_UnregisterDeviceListeners()
 
@@ -4360,7 +4366,7 @@ Input_Result OH_Input_UnregisterDeviceListeners()
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_UnregisterDeviceListener 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示调用成功。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示由于服务异常调用失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_UnregisterDeviceListener 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示调用成功。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示由于服务异常调用失败。 |
 
 ### OH_Input_GetFunctionKeyState()
 
@@ -4387,7 +4393,7 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetFunctionKeyState 函数返回值。<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示获取状态成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。<br>     <br>[INPUT_KEYBOARD_DEVICE_NOT_EXIST](capi-oh-input-manager-h.md#input_result) 表示键盘设备不存在。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetFunctionKeyState 函数返回值。      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示获取状态成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。      <br>[INPUT_KEYBOARD_DEVICE_NOT_EXIST](capi-oh-input-manager-h.md#input_result) 表示键盘设备不存在。 |
 
 ### OH_Input_QueryMaxTouchPoints()
 
@@ -4411,7 +4417,7 @@ Input_Result OH_Input_QueryMaxTouchPoints(int32_t *count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_QueryMaxTouchPoints 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示查询成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_QueryMaxTouchPoints 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示查询成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。 |
 
 ### OH_Input_GetPointerLocation()
 
@@ -4437,7 +4443,7 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetPointerLocation 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示查询成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常。<br>     <br>[INPUT_APP_NOT_FOCUSED](capi-oh-input-manager-h.md#input_result) 表示当前应用不是焦点应用。<br>     <br>[INPUT_DEVICE_NO_POINTER](capi-oh-input-manager-h.md#input_result) 表示无鼠标类输入外设。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetPointerLocation 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示查询成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常。      <br>[INPUT_APP_NOT_FOCUSED](capi-oh-input-manager-h.md#input_result) 表示当前应用不是焦点应用。      <br>[INPUT_DEVICE_NO_POINTER](capi-oh-input-manager-h.md#input_result) 表示无鼠标类输入外设。 |
 
 ### OH_Input_CursorInfo_Create()
 
@@ -4498,7 +4504,7 @@ Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* v
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_IsVisible 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_IsVisible 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_CursorInfo_GetStyle()
 
@@ -4517,13 +4523,13 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](capi-oh-input-manager-h.md#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](capi-oh-input-manager-h.md#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。 |
-| [Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)* style | Cursor style of the cursorInfo. |
+| [Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)* style | 鼠标光标信息的光标样式枚举，具体请参考[Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_GetStyle 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败或者光标不可见。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_GetStyle 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败或者光标不可见。 |
 
 ### OH_Input_CursorInfo_GetSizeLevel()
 
@@ -4548,7 +4554,7 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_GetSizeLevel 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败或者光标不可见。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_GetSizeLevel 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败或者光标不可见。 |
 
 ### OH_Input_CursorInfo_GetColor()
 
@@ -4573,7 +4579,7 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_GetColor 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败或者光标不可见。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorInfo_GetColor 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败或者光标不可见。 |
 
 ### OH_Input_GetMouseEventCursorInfo()
 
@@ -4583,7 +4589,7 @@ Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mou
 
 **描述**
 
-Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style,pointer size level, and pointer color.
+获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。
 
 **起始版本：** 22
 
@@ -4591,14 +4597,14 @@ Obtains the mouse pointer information of the mouse event, including the pointer 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const struct Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse event object. You can obtain the mouse event object from the callback of{@link OH_Input_AddMouseEventMonitor()} or {@link OH_Input_AddInputEventInterceptor()}. |
-| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call {@link OH_Input_CursorInfo_Create()} to create amouse pointer information object. |
+| [const struct Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象。可以通过[OH_Input_AddMouseEventMonitor](capi-oh-input-manager-h.md#oh_input_addmouseeventmonitor)或者[OH_Input_AddInputEventInterceptor](capi-oh-input-manager-h.md#oh_input_addinputeventinterceptor)接口的回调函数中获取鼠标事件对象。 |
+| [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 鼠标光标信息对象，可以通过[OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create)接口创建鼠标光标信息对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the OH_Input_GetMouseEventCursorInfo function.<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) if the operation is successful;<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) if the parameter verification fails. |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetMouseEventCursorInfo 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功；      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_GetCursorInfo()
 
@@ -4617,13 +4623,13 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 鼠标光标信息对象，可以通过[OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create)接口创建鼠标光标信息对象。 |
-| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelmap | PixelMap位图对象，如果该参数非空且光标为应用自定义，则会返回光标的PixelMap位图对象，否则不返回PixelMap位图对象。首先通过{@link OH_PixelmapInitializationOptions_Create}接口创建OH_PixelmapInitializationOptions对象，然后调用{@link OH_PixelmapInitializationOptions_SetWidth}接口设置大于0的宽度，调用{@link OH_PixelmapInitializationOptions_SetHeight}接口设置大于0的高度，最后以该OH_PixelmapInitializationOptions对象作为入参调用{@link OH_PixelmapNative_CreateEmptyPixelmap}接口创建PixelMap位图对象。<br>使用完需要先调用{@link OH_PixelmapNative_Release}接口释放PixelMap位图对象，然后调用{@link OH_PixelmapNative_Destroy}接口销毁PixelMap位图对象。 |
+| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelmap | PixelMap位图对象，如果该参数非空且光标为应用自定义，则会返回光标的PixelMap位图对象，否则不返回PixelMap位图对象。首先通过{@link pixelmap_native.h#OH_PixelmapInitializationOptions_Create}接口创建OH_PixelmapInitializationOptions对象，然后调用{@link pixelmap_native.h#OH_PixelmapInitializationOptions_SetWidth}接口设置大于0的宽度，调用{@link pixelmap_native.h#OH_PixelmapInitializationOptions_SetHeight}接口设置大于0的高度，最后以该OH_PixelmapInitializationOptions对象作为入参调用{@link pixelmap_native.h#OH_PixelmapNative_CreateEmptyPixelmap}接口创建PixelMap位图对象。<br>使用完需要先调用{@link pixelmap_native.h#OH_PixelmapNative_Release}接口释放PixelMap位图对象，然后调用{@link pixelmap_native.h#OH_PixelmapNative_Destroy}接口销毁PixelMap位图对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetCursorInfo 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetCursorInfo 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_SetPointerVisible()
 
@@ -4647,7 +4653,7 @@ Input_Result OH_Input_SetPointerVisible(bool visible)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetPointerVisible 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示设备不支持。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetPointerVisible 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示设备不支持。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_GetPointerStyle()
 
@@ -4665,14 +4671,14 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>仅支持传入当前窗口和全局窗口的ID，传入其他ID返回全局窗口的默认光标样式，当前窗口ID可以通过{@link getWindowProperties}获取。 |
+| int32_t windowId | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>仅支持传入当前窗口和全局窗口的ID，传入其他ID返回全局窗口的默认光标样式，当前窗口ID可以通过{@link oh_window.h#getWindowProperties}获取。 |
 | int32_t *pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)的枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetPointerStyle 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_GetPointerStyle 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_SetPointerStyle()
 
@@ -4690,14 +4696,14 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 窗口ID。取值范围为大于等于0的整数。<br>仅支持传入当前窗口的光标样式，传入其他窗口ID本接口可以运行成功但设置不生效，当前窗口ID可以通过{@link getWindowProperties}获取。 |
+| int32_t windowId | 窗口ID。取值范围为大于等于0的整数。<br>仅支持传入当前窗口的光标样式，传入其他窗口ID本接口可以运行成功但设置不生效，当前窗口ID可以通过{@link oh_window.h#getWindowProperties}获取。 |
 | int32_t pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)的枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetPointerStyle 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetPointerStyle 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_CustomCursor_Create()
 
@@ -4715,7 +4721,7 @@ Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)* pixelMap | [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)自定义鼠标光标像素图。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
+| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)* pixelMap | {@link pixelmap_native.h#OH_PixelmapNative}自定义鼠标光标像素图。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
 | int32_t anchorX | 自定义鼠标光标焦点的水平坐标。该坐标受自定义鼠标光标大小的限制。最小值为0，最大值为资源图的宽度最大值，单位为像素（px）。 |
 | int32_t anchorY | 自定义鼠标光标焦点的垂直坐标。该坐标受自定义鼠标光标大小的限制。最小值为0，最大值为资源图的高度最大值，单位为像素（px）。 |
 
@@ -4760,13 +4766,13 @@ Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor,
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CustomCursor](capi-input-input-customcursor.md)* customCursor | 自定义鼠标光标资源[Input_CustomCursor](capi-input-input-customcursor.md)。 |
-| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelMap | [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)自定义鼠标光标像素图。 |
+| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelMap | {@link pixelmap_native.h#OH_PixelmapNative}自定义鼠标光标像素图。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CustomCursor_GetPixelMap 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CustomCursor_GetPixelMap 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_CustomCursor_GetAnchor()
 
@@ -4792,7 +4798,7 @@ Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, i
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CustomCursor_GetAnchor 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CustomCursor_GetAnchor 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_CursorConfig_Create()
 
@@ -4859,7 +4865,7 @@ Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConf
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorConfig_IsFollowSystem 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_CursorConfig_IsFollowSystem 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。 |
 
 ### OH_Input_SetCustomCursor()
 
@@ -4885,7 +4891,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetCustomCursor 函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。<br>     <br>[INPUT_INVALID_WINDOWID](capi-oh-input-manager-h.md#input_result) 表示窗口ID无效。<br>     <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示设备不支持。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_SetCustomCursor 函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) 表示操作成功。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数检查失败。      <br>[INPUT_INVALID_WINDOWID](capi-oh-input-manager-h.md#input_result) 表示窗口ID无效。      <br>[INPUT_DEVICE_NOT_SUPPORTED](capi-oh-input-manager-h.md#input_result) 表示设备不支持。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_BindInputDeviceToDisplay()
 
@@ -4896,6 +4902,8 @@ Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t di
 **描述**
 
 绑定指定输入设备到指定屏幕。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **需要权限：** ohos.permission.INPUT_DEVICE_CONFIGURATOR
 
@@ -4912,6 +4920,6 @@ Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t di
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：<br>     <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)表示操作成功。<br>     <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)表示权限校验失败。<br>     <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)表示参数检查失败（输入设备不存在，显示屏设备不存在，或者输入设备不是手写笔设备）。<br>     <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)表示服务异常，请重试。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：      <br>[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)表示操作成功。      <br>[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)表示权限校验失败。      <br>[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)表示参数检查失败（输入设备不存在，显示屏设备不存在，或者输入设备不是手写笔设备）。      <br>[INPUT_SERVICE_EXCEPTION](capi-oh-input-manager-h.md#input_result)表示服务异常，请重试。 |
 
 

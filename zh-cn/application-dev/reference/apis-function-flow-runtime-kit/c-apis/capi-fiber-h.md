@@ -39,7 +39,7 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md)\* fiber | 指向待初始化的纤程结构的指针。 |
+| frt_fiber_t\* fiber | 指向待初始化的纤程结构的指针。 |
 | void(\*func)(void\*) | 纤程将执行的入口函数。 |
 | void\* arg | 传递给入口函数的参数。 |
 | void\* stack | 指向纤程栈所用内存区域的指针。 |
@@ -49,7 +49,7 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 纤程初始化成功时返回`ffrt_success`；<br>         `stack_size`过小（不足以容纳纤程上下文）时返回`ffrt_error_inval`。 |
+| FFRT_C_API int | 纤程初始化成功时返回`ffrt_success`；          `stack_size`过小（不足以容纳纤程上下文）时返回`ffrt_error_inval`。 |
 
 ### ffrt_fiber_switch()
 

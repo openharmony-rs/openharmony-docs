@@ -1,5 +1,11 @@
 # setVirtualScreenSurface
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## setVirtualScreenSurface
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setVirtualScreenSurface(screenId: long, surfaceId: string): Promise<voi
 设置虚拟屏幕的surfaceId。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
@@ -24,7 +26,7 @@ function setVirtualScreenSurface(screenId: long, surfaceId: string): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| screenId | long | 是 | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](arkts-arkui-display-createvirtualscreen-f.md#createvirtualscreen)接口成功创建对 应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
+| screenId | long | 是 | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](arkts-arkui-display-createvirtualscreen-f.md)接口成功创建对 应虚拟屏幕时的返回值，该参数仅支持整数输入。 |
 | surfaceId | string | 是 | 代表虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 
 **返回值：**
@@ -42,7 +44,7 @@ function setVirtualScreenSurface(screenId: long, surfaceId: string): Promise<voi
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

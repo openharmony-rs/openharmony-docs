@@ -8,10 +8,6 @@ ExtensionRunningInfo二级模块。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-abilityManager-export type ExtensionRunningInfo = _ExtensionRunningInfo--><!--Device-abilityManager-export type ExtensionRunningInfo = _ExtensionRunningInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

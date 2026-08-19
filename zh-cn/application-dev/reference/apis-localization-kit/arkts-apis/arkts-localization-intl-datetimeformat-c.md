@@ -1,10 +1,8 @@
-# DateTimeFormat
+# DateTimeFormat(国际化-Intl)
 
 提供日期格式化的能力。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -13,6 +11,12 @@
 <!--Device-intl-export class DateTimeFormat--><!--Device-intl-export class DateTimeFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+```
 
 ## constructor
 
@@ -23,8 +27,6 @@ constructor()
 创建时间日期格式化对象。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 20
 
@@ -38,7 +40,7 @@ constructor()
 
 **系统能力：** SystemCapability.Global.I18n
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -56,8 +58,6 @@ constructor(locale: string | Array<string>, options?: DateTimeOptions)
 创建时间日期格式化对象。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -78,7 +78,7 @@ constructor(locale: string | Array<string>, options?: DateTimeOptions)
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
 | options | DateTimeOptions | 否 | 创建时间日期格式化对象时可设置的配置项。 <br>若所有选项均未设置时，year、month、day三个属性的默认值为numeric。 <br>默认值：所有属性都取默认值时的配置项。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -99,8 +99,6 @@ format(date: Date): string
 对时间日期进行格式化，返回格式化后的时间日期字符串。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -126,7 +124,7 @@ format(date: Date): string
 | --- | --- |
 | string | 格式化后的时间日期字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -150,8 +148,6 @@ formatRange(startDate: Date, endDate: Date): string
 对时间日期段进行格式化，返回格式化后的时间日期段字符串。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -178,7 +174,7 @@ formatRange(startDate: Date, endDate: Date): string
 | --- | --- |
 | string | 格式化后的时间日期段字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -200,8 +196,6 @@ resolvedOptions(): DateTimeOptions
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.DateTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions)
@@ -220,7 +214,7 @@ resolvedOptions(): DateTimeOptions
 | --- | --- |
 | DateTimeOptions | 时间日期格式化对象设置的配置项。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

@@ -1,5 +1,11 @@
 # setKeepAliveForAppServiceExtension（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## setKeepAliveForAppServiceExtension
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean
 为AppServiceExtensionAbility设置保活或取消保活。使用Promise异步回调。 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。 > **说明：** > > - 仅当应用安装在userId为1的用户下，且应用中entry类型的HAP的module.json5配置文件中的mainElement字段配置为AppServiceExtensionAbility时，该接口才生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -48,7 +50,7 @@ function setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean
 | [16000202](../errorcode-ability.md#16000202-仅支持为appservice类型的extensionability设置保活) | Invalid main element type. |
 | [16000203](../errorcode-ability.md#16000203-无法更改appserviceextensionability保活状态) | Cannot change the keep-alive status. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface LifeCycle--><!--Device-unnamed-export declare interface LifeCycle-End-->
 
@@ -20,9 +18,7 @@ aboutToAppear(): void
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-LifeCycle-aboutToAppear(): void--><!--Device-LifeCycle-aboutToAppear(): void-End-->
 
@@ -34,9 +30,7 @@ aboutToDisappear(): void
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-LifeCycle-aboutToDisappear(): void--><!--Device-LifeCycle-aboutToDisappear(): void-End-->
 
@@ -48,9 +42,7 @@ onDidBuild(): void
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-LifeCycle-onDidBuild(): void--><!--Device-LifeCycle-onDidBuild(): void-End-->
 
@@ -64,9 +56,7 @@ onDidBuild函数在执行自定义组件的build()函数之后执行，开发者
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,10 +8,6 @@ Indicates executeAction parameter.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export type Parameter = _Parameter--><!--Device-unnamed-export type Parameter = _Parameter-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core

@@ -1,5 +1,12 @@
 # showActionMenu
 
+## 导入模块
+
+```TypeScript
+import { prompt } from '@kit.ArkUI';
+import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+```
+
 ## showActionMenu
 
 ```TypeScript
@@ -9,8 +16,6 @@ function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<Acti
 创建并显示操作菜单，菜单响应结果异步返回。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -25,9 +30,9 @@ function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<Acti
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | ActionMenuOptions | 是 | 操作菜单选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ActionMenuSuccessResponse&gt; | 是 | 菜单响应结果回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ActionMenuSuccessResponse&gt; | 是 | 菜单响应结果回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import prompt from '@ohos.prompt'
@@ -63,8 +68,6 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** showActionMenu
@@ -85,7 +88,7 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 | --- | --- |
 | Promise&lt;ActionMenuSuccessResponse&gt; | 菜单响应结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import prompt from '@ohos.prompt'

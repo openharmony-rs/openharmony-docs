@@ -1,4 +1,4 @@
-# OnContentWillChangeCallback
+# OnContentWillChangeCallback(Provides an advanced struct of tabs for atomic services)
 
 ```TypeScript
 export type OnContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean
@@ -7,10 +7,6 @@ export type OnContentWillChangeCallback = (currentIndex: number, comingIndex: nu
 页面内容即将发生变化时触发的回调函数，用于拦截页面切换，开发者可通过返回值控制是否允许切换。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

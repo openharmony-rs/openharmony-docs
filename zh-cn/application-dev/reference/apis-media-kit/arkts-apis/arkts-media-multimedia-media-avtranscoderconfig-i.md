@@ -4,13 +4,15 @@ Describes the video transcoding parameters.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface AVTranscoderConfig--><!--Device-unnamed-interface AVTranscoderConfig-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## audioBitrate
 
@@ -23,10 +25,6 @@ Bitrate of the output audio, in bit/s. The value range is [1-500000]. The defaul
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ Encoding format of the output audio. Currently, only AAC is supported. The defau
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVTranscoderConfig-audioCodec?: CodecMimeType--><!--Device-AVTranscoderConfig-audioCodec?: CodecMimeType-End-->
@@ -67,10 +61,6 @@ Indicates whether to enable B Frame Encoding for reduce file size.
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +80,6 @@ Container format of the output video file. Currently, only MP4 is supported.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVTranscoderConfig-fileFormat: ContainerFormatType--><!--Device-AVTranscoderConfig-fileFormat: ContainerFormatType-End-->
@@ -111,10 +97,6 @@ Bitrate of the output video, in bit/s. The default bitrate depends on the resolu
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -134,10 +116,6 @@ Encoding format of the output video. Currently, only AVC and HEVC are supported.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVTranscoderConfig-videoCodec?: CodecMimeType--><!--Device-AVTranscoderConfig-videoCodec?: CodecMimeType-End-->
@@ -156,10 +134,6 @@ Height of the output video frame, in px. The value range is [240 - 2160]. The de
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVTranscoderConfig-videoFrameHeight?: int--><!--Device-AVTranscoderConfig-videoFrameHeight?: int-End-->
@@ -177,10 +151,6 @@ Width of the output video frame, in px. The value range is [240 - 3840]. The def
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

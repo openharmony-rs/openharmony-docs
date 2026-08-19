@@ -1,5 +1,11 @@
 # getPointerColorSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## getPointerColorSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getPointerColorSync(): int
 获取鼠标光标颜色，使用同步方式返回结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-pointer-function getPointerColorSync(): int--><!--Device-pointer-function getPointerColorSync(): int-End-->
 
@@ -32,7 +34,7 @@ function getPointerColorSync(): int
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

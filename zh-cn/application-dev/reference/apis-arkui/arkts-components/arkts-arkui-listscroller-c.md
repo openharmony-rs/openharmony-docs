@@ -8,13 +8,14 @@ List组件的滚动控制器，通过它控制List组件的滚动，仅支持一
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class ListScroller--><!--Device-unnamed-declare class ListScroller-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## closeAllSwipeActions
 
@@ -25,10 +26,6 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 将EXPANDED状态的ListItem收起，并设置回调事件。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,10 +57,6 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 获取ListItemGroup中的ListItem的大小和相对于List的位置。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -103,10 +96,6 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -144,10 +133,6 @@ scrollToItemInGroup(index: number, indexInGroup:number, smooth?: boolean, align?
 滑动到指定的ListItemGroup中指定的ListItem。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

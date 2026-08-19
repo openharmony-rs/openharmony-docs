@@ -1,5 +1,11 @@
 # dataMigration（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fontManager } from '@kit.LocalizationKit';
+```
+
 ## dataMigration
 
 ```TypeScript
@@ -9,10 +15,6 @@ function dataMigration(callback: DataMigrationCallback): int
 设备升级时使用的数据迁移接口，用于启动迁移任务，通过回调函数实时反馈迁移进度和结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.UPDATE_FONT
 

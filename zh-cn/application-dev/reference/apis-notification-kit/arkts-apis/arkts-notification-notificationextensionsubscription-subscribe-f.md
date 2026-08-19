@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationExtensionSubscription } from 'notificationExtensionSubscription';
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
 ## subscribe
@@ -15,10 +15,6 @@ function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>
 订阅通知扩展。使用蓝牙模块相关接口获取蓝牙设备的唯一地址后方可订阅。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SUBSCRIBE_NOTIFICATION
 
@@ -53,7 +49,7 @@ getSubscribeInfo 获取应用通知扩展订阅信息。
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600023](../errorcode-notification.md#1600023-应用未实现notificationsubscriberextensionability) | The application does not implement the NotificationSubscriberExtensionAbility. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

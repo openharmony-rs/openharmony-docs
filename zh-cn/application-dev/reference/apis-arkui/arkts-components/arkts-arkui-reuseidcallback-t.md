@@ -4,13 +4,9 @@
 declare type ReuseIdCallback = () => string
 ```
 
-ReuseId callback type. It is used to compute reuseId.
+获取复用标识ID的回调方法。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

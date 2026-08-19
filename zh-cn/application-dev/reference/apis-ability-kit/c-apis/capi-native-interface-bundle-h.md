@@ -54,7 +54,7 @@ OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md) | 返回新创建的OH_NativeBundle_ApplicationInfo对象。如果返回的对象中的属性值为NULL，则表示创建失败。<br>     <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md) | 返回新创建的OH_NativeBundle_ApplicationInfo对象。如果返回的对象中的属性值为NULL，则表示创建失败。      <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetAppId()
 
@@ -72,7 +72,7 @@ char* OH_NativeBundle_GetAppId()
 
 | 类型 | 说明 |
 | -- | -- |
-| char* | 返回一个新创建的字符串，用于指示appID信息。如果返回的对象为NULL，则表示创建失败。<br>     <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| char* | 返回一个新创建的字符串，用于指示appID信息。如果返回的对象为NULL，则表示创建失败。      <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetAppIdentifier()
 
@@ -90,7 +90,7 @@ char* OH_NativeBundle_GetAppIdentifier()
 
 | 类型 | 说明 |
 | -- | -- |
-| char* | 返回一个新创建的字符串，用于指示应用程序标识符信息。如果返回的对象为NULL，则表示创建失败。<br>     <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| char* | 返回一个新创建的字符串，用于指示应用程序标识符信息。如果返回的对象为NULL，则表示创建失败。      <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetMainElementName()
 
@@ -108,7 +108,7 @@ OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | 返回新创建的OH_NativeBundle_ElementName对象。如果返回的对象中的属性值为NULL，则表示创建失败。<br>     <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | 返回新创建的OH_NativeBundle_ElementName对象。如果返回的对象中的属性值为NULL，则表示创建失败。      <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetCompatibleDeviceType()
 
@@ -126,7 +126,7 @@ char* OH_NativeBundle_GetCompatibleDeviceType()
 
 | 类型 | 说明 |
 | -- | -- |
-| char* | 返回一个新创建的字符串，用于指示兼容设备类型。如果返回的对象为NULL，则表示创建失败。<br>     <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| char* | 返回一个新创建的字符串，用于指示兼容设备类型。如果返回的对象为NULL，则表示创建失败。      <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_IsDebugMode()
 
@@ -174,7 +174,7 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | 返回模块元数据数组，如果返回的对象为NULL，则表示获取失败。<br>     <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | 返回模块元数据数组，如果返回的对象为NULL，则表示获取失败。      <br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 
@@ -202,6 +202,6 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, O
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | <ul><li>如果调用成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。</li><li><br>     如果调用方没有正确的权限，返回[BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。</li></ul> |
+| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | <ul><li>如果调用成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。</li><li>      如果调用方没有正确的权限，返回[BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。</li></ul> |
 
 

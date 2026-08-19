@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Checkbox](arkts-na-checkbox-checkbox-f.md#checkbox) | Defines Checkbox Component. |
+| [Checkbox](arkts-na-checkbox-checkbox-f.md) | Defines Checkbox Component. |
 
 ### 接口
 

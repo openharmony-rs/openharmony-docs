@@ -1,5 +1,11 @@
 # getSystemMemInfo
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getSystemMemInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSystemMemInfo(): SystemMemInfo
 获取系统内存信息。读取/proc/meminfo节点的数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getSystemMemInfo(): SystemMemInfo--><!--Device-hidebug-function getSystemMemInfo(): SystemMemInfo-End-->
 
@@ -24,7 +26,7 @@ function getSystemMemInfo(): SystemMemInfo
 | --- | --- |
 | [SystemMemInfo](arkts-performanceanalysis-hidebug-systemmeminfo-i.md) | 系统内存信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

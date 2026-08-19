@@ -1,5 +1,11 @@
 # getPersistentPolicy（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fileShare } from '@kit.CoreFileKit';
+```
+
 ## getPersistentPolicy
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getPersistentPolicy(tokenID: int): Promise<Array<PolicyInfo>>
 获取应用程序的持久化授权策略，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_FILE_ACCESS_PERSIST
 
@@ -47,7 +49,7 @@ function getPersistentPolicy(tokenID: int): Promise<Array<PolicyInfo>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

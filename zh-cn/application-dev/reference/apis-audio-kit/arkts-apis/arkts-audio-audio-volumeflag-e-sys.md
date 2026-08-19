@@ -4,10 +4,6 @@ Enumerates volume related operations. Flags should be powers of 2!
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum VolumeFlag--><!--Device-audio-enum VolumeFlag-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -23,10 +19,6 @@ FLAG_SHOW_SYSTEM_UI = 1
 Show system volume bar.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VolumeFlag-FLAG_SHOW_SYSTEM_UI = 1--><!--Device-VolumeFlag-FLAG_SHOW_SYSTEM_UI = 1-End-->
 

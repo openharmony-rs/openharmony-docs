@@ -14,10 +14,6 @@ RemoteWindow(target: WindowAnimationTarget)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-RemoteWindowInterface-(target: WindowAnimationTarget): RemoteWindowAttribute--><!--Device-RemoteWindowInterface-(target: WindowAnimationTarget): RemoteWindowAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -32,5 +28,10 @@ RemoteWindow(target: WindowAnimationTarget)
 
 ## 汇总
 
-- [RRect](arkts-arkui-rrect-i-sys.md)
-- [WindowAnimationTarget](arkts-arkui-windowanimationtarget-i-sys.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [RRect](arkts-arkui-rrect-i-sys.md) | 圆角矩形。 |
+| [WindowAnimationTarget](arkts-arkui-windowanimationtarget-i-sys.md) | 目标窗口，用来远程控制实现动画。 |
+

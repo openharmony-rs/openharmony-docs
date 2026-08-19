@@ -107,7 +107,7 @@ HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ThreadCpuUsagePtr | 返回所有线程CPU使用情况，见{@link HiDebug_ThreadCpuUsagePtr}。<br>     <br>若返回结果为null，可能因未获取到线程相关数据所致。 |
+| HiDebug_ThreadCpuUsagePtr | 返回所有线程CPU使用情况，见{@link HiDebug_ThreadCpuUsagePtr}。      <br>若返回结果为null，可能因未获取到线程相关数据所致。 |
 
 ### OH_HiDebug_FreeThreadCpuUsage()
 
@@ -226,7 +226,7 @@ HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 0 - 成功。<br>     <br>{@link HIDEBUG_INVALID_ARGUMENT} 401 - fileName参数为空指针或者传入的length参数过小或者limitSize参数小于等于0。<br>     <br>11400102 - 已经开启了一个trace。<br>     <br>11400103 - 没有权限去开启trace。<br>     <br>11400104 - 系统内部错误。 |
+| HiDebug_ErrorCode | 0 - 成功。      <br>{@link HIDEBUG_INVALID_ARGUMENT} 401 - fileName参数为空指针或者传入的length参数过小或者limitSize参数小于等于0。      <br>11400102 - 已经开启了一个trace。      <br>11400103 - 没有权限去开启trace。      <br>11400104 - 系统内部错误。 |
 
 ### OH_HiDebug_StopAppTraceCapture()
 
@@ -244,7 +244,7 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 0 - 成功。<br>     <br>11400104 - 系统内部错误。<br>     <br>11400105 - 当前没有trace正在运行 |
+| HiDebug_ErrorCode | 0 - 成功。      <br>11400104 - 系统内部错误。      <br>11400105 - 当前没有trace正在运行 |
 
 ### OH_HiDebug_RequestTrace()
 
@@ -269,7 +269,7 @@ HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config,
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果码：<br>     <br>HIDEBUG_SUCCESS：采集成功。<br>     <br>HIDEBUG_TRACE_ABNORMAL：远程服务异常或状态异常。<br>     <br>OH_HIDEBUG_TRACE_STORAGE_LIMIT：trace存储达到限制。目录下存储的trace文件大于等于3份时，返回失败。<br>     <br>HIDEBUG_RESOURCE_UNAVAILABLE：采集资源限制。 |
+| HiDebug_ErrorCode | 返回结果码：      <br>HIDEBUG_SUCCESS：采集成功。      <br>HIDEBUG_TRACE_ABNORMAL：远程服务异常或状态异常。      <br>OH_HIDEBUG_TRACE_STORAGE_LIMIT：trace存储达到限制。目录下存储的trace文件大于等于3份时，返回失败。      <br>HIDEBUG_RESOURCE_UNAVAILABLE：采集资源限制。 |
 
 ### OH_HiDebug_GetGraphicsMemory()
 
@@ -293,7 +293,7 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 0 - 接口获取成功。<br>     <br>401 - 无效参数，所传递参数为空指针。<br>     <br>11400104 - 系统内部错误。 |
+| HiDebug_ErrorCode | 0 - 接口获取成功。      <br>401 - 无效参数，所传递参数为空指针。      <br>11400104 - 系统内部错误。 |
 
 ### OH_HiDebug_SetMallocDispatchTable()
 
@@ -317,7 +317,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果具体可参考{@link HiDebug_ErrorCode}：<br>     <br>{@link HIDEBUG_SUCCESS} 成功设置自定义内存操作函数。<br>     <br>{@link HIDEBUG_INVALID_ARGUMENT} 无效参数。 |
+| HiDebug_ErrorCode | 返回结果具体可参考{@link HiDebug_ErrorCode}：      <br>{@link HIDEBUG_SUCCESS} 成功设置自定义内存操作函数。      <br>{@link HIDEBUG_INVALID_ARGUMENT} 无效参数。 |
 
 ### OH_HiDebug_GetDefaultMallocDispatchTable()
 
@@ -392,7 +392,7 @@ typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const Hi
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* pc | 传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的需要解析的pc地址。 |
+| void\* pc | 传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的需要解析的pc地址。 |
 | void\* arg | 传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的arg值。 |
 | [const HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)\* frame | 由传入[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口的pc地址解析后的得到栈信息[HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)指针，该指针指向内容仅在该函数作用域内有效。 |
 
@@ -421,7 +421,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果具体可参考{@link HiDebug_ErrorCode}：<br>     <br>{@link HIDEBUG_SUCCESS} 成功获取到详细的栈信息，且该函数传入的callback被调用。<br>     <br>{@link HIDEBUG_INVALID_ARGUMENT} 无效参数。<br>     <br>{@link HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS} 无法根据传入的pc地址找到对应的符号。 |
+| HiDebug_ErrorCode | 返回结果具体可参考{@link HiDebug_ErrorCode}：      <br>{@link HIDEBUG_SUCCESS} 成功获取到详细的栈信息，且该函数传入的callback被调用。      <br>{@link HIDEBUG_INVALID_ARGUMENT} 无效参数。      <br>{@link HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS} 无法根据传入的pc地址找到对应的符号。 |
 
 ### OH_HiDebug_CreateBacktraceObject()
 
@@ -482,7 +482,7 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果具体可参考{@link HiDebug_ErrorCode}：<br>     <br>HIDEBUG_SUCCESS 成功获取到应用显存数据。<br>     <br>HIDEBUG_INVALID_ARGUMENT 无效参数。<br>     <br>HIDEBUG_TRACE_ABNORMAL 系统内部错误。 |
+| HiDebug_ErrorCode | 返回结果具体可参考{@link HiDebug_ErrorCode}：      <br>HIDEBUG_SUCCESS 成功获取到应用显存数据。      <br>HIDEBUG_INVALID_ARGUMENT 无效参数。      <br>HIDEBUG_TRACE_ABNORMAL 系统内部错误。 |
 
 ### OH_HiDebug_ThreadLiteSamplingCallback()
 
@@ -500,7 +500,7 @@ typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char\* stacks | 采样得到的调用栈内容。 |
+| const char\* stacks | 采样得到的调用栈内容。 |
 
 ### OH_HiDebug_RequestThreadLiteSampling()
 
@@ -523,7 +523,7 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果码：<br>     <br>HIDEBUG_SUCCESS：采样成功完成。<br>     <br>HIDEBUG_INVALID_ARGUMENT：无效参数。<br>     <br>HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。<br>     <br>HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。<br>     <br>HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
+| HiDebug_ErrorCode | 返回结果码：      <br>HIDEBUG_SUCCESS：采样成功完成。      <br>HIDEBUG_INVALID_ARGUMENT：无效参数。      <br>HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。      <br>HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。      <br>HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
 
 ### OH_HiDebug_SetCrashObj()
 
@@ -592,7 +592,7 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果码：<br>     <br>HIDEBUG_RES_PROF_SUCCESS：启动资源采集成功。<br>     <br>HIDEBUG_RES_PROF_INVALID_ARG：资源采集参数无效。<br>     <br>HIDEBUG_RES_PROF_INVALID_MAX_DURATION：资源采集最大持续时间参数无效。<br>     <br>HIDEBUG_RES_PROF_INVALID_FILTER_SIZE：资源采集过滤大小参数无效。<br>     <br>HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH：资源采集最大回栈深度参数无效。<br>     <br>HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL：资源采集统计间隔参数无效。<br>     <br>HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL：资源采集采样大小参数无效。<br>     <br>HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE：资源采集类型参数无效。<br>     <br>HIDEBUG_RES_PROF_PERMISSION_DENIED：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>     <br>HIDEBUG_RES_PROF_ALREADY_STARTED：资源采集重复启动。<br>     <br>HIDEBUG_RES_PROF_PROCESS_OVERLIMIT：资源采集进程数超出 4 个限制。<br>     <br>HIDEBUG_RES_PROF_CONFLICT：资源采集与命令行工具或系统采集任务冲突。<br>     <br>HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED：资源采集每日配额超出 10 次限制。<br>     <br>HIDEBUG_RES_PROF_CPU_OVERLOADED：系统 CPU 处于高负载状态，CPU 占用率超过 70%。<br>     <br>HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL：内存可用空间紧张，可用空间少于 15%。<br>     <br>HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL：存储可用空间紧张，可用空间少于 15%。<br>     <br>HIDEBUG_RES_PROF_FAILURE：启动资源采集失败。 |
+| HiDebug_ErrorCode | 返回结果码：      <br>HIDEBUG_RES_PROF_SUCCESS：启动资源采集成功。      <br>HIDEBUG_RES_PROF_INVALID_ARG：资源采集参数无效。      <br>HIDEBUG_RES_PROF_INVALID_MAX_DURATION：资源采集最大持续时间参数无效。      <br>HIDEBUG_RES_PROF_INVALID_FILTER_SIZE：资源采集过滤大小参数无效。      <br>HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH：资源采集最大回栈深度参数无效。      <br>HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL：资源采集统计间隔参数无效。      <br>HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL：资源采集采样大小参数无效。      <br>HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE：资源采集类型参数无效。      <br>HIDEBUG_RES_PROF_PERMISSION_DENIED：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。      <br>HIDEBUG_RES_PROF_ALREADY_STARTED：资源采集重复启动。      <br>HIDEBUG_RES_PROF_PROCESS_OVERLIMIT：资源采集进程数超出 4 个限制。      <br>HIDEBUG_RES_PROF_CONFLICT：资源采集与命令行工具或系统采集任务冲突。      <br>HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED：资源采集每日配额超出 10 次限制。      <br>HIDEBUG_RES_PROF_CPU_OVERLOADED：系统 CPU 处于高负载状态，CPU 占用率超过 70%。      <br>HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL：内存可用空间紧张，可用空间少于 15%。      <br>HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL：存储可用空间紧张，可用空间少于 15%。      <br>HIDEBUG_RES_PROF_FAILURE：启动资源采集失败。 |
 
 ### OH_HiDebug_StopProfiler()
 
@@ -610,7 +610,7 @@ HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果码：<br>     <br>HIDEBUG_RES_PROF_SUCCESS：已成功停止资源采集。<br>     <br>HIDEBUG_RES_PROF_NOT_STARTED：资源采集未启动，停止失败。<br>     <br>HIDEBUG_RES_PROF_FAILURE：停止资源采集失败。 |
+| HiDebug_ErrorCode | 返回结果码：      <br>HIDEBUG_RES_PROF_SUCCESS：已成功停止资源采集。      <br>HIDEBUG_RES_PROF_NOT_STARTED：资源采集未启动，停止失败。      <br>HIDEBUG_RES_PROF_FAILURE：停止资源采集失败。 |
 
 ### OH_HiDebug_MemDumpListener()
 
@@ -628,7 +628,7 @@ Callback triggered for listening. You can use FDs to write memory data in your a
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t fd | FD used to write memory data in the app. |
+| int32_t fd | FD used to write memory data in the app. |
 | [OH_HiDebug_MemListenerType](capi-hidebug-type-h.md#oh_hidebug_memlistenertype) tag | Callback type. You can process the related logic based on the callback type. |
 | bool mayReportToOEM | Whether the data will be uploaded to the OEM. If the value is true, the data will be uploadedto the OEM. Pay attention to data privacy and security issues. |
 | const char\* arg | Callback argument. You can pass different arguments based on the value of type. |
@@ -662,7 +662,7 @@ HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebu
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果码：<br>     <br>HIDEBUG_SUCCESS：操作成功。<br>     <br>HIDEBUG_INVALID_ARGUMENT：无效参数。 |
+| HiDebug_ErrorCode | 返回结果码：      <br>HIDEBUG_SUCCESS：操作成功。      <br>HIDEBUG_INVALID_ARGUMENT：无效参数。 |
 
 ### OH_HiDebug_UnregisterMemDumpListener()
 
@@ -686,7 +686,7 @@ HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
 
 | 类型 | 说明 |
 | -- | -- |
-| HiDebug_ErrorCode | 返回结果码：<br>     <br>HIDEBUG_SUCCESS：操作成功。<br>     <br>HIDEBUG_INVALID_ARGUMENT：无效参数。 |
+| HiDebug_ErrorCode | 返回结果码：      <br>HIDEBUG_SUCCESS：操作成功。      <br>HIDEBUG_INVALID_ARGUMENT：无效参数。 |
 
 ### OH_HiDebug_AcquireAsyncContext()
 

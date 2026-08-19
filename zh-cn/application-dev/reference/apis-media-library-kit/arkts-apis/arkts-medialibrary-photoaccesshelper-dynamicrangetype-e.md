@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-export enum DynamicRangeType--><!--Device-photoAccessHelper-export enum DynamicRangeType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -22,10 +18,6 @@ SDR = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DynamicRangeType-SDR = 0--><!--Device-DynamicRangeType-SDR = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -39,10 +31,6 @@ HDR = 1
 高动态范围类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DynamicRangeType-HDR = 1--><!--Device-DynamicRangeType-HDR = 1-End-->
 

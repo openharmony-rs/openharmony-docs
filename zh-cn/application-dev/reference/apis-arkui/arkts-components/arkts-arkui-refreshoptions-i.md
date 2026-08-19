@@ -4,13 +4,14 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface RefreshOptions--><!--Device-unnamed-interface RefreshOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## builder
 
@@ -23,10 +24,6 @@ builder?: CustomBuilder
 **类型：** CustomBuilder
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,8 +45,6 @@ friction?: number | string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 **替代接口：** pullDownRatio
@@ -70,8 +65,6 @@ offset?: number | string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 <!--Device-RefreshOptions-offset?: number | string--><!--Device-RefreshOptions-offset?: number | string-End-->
@@ -89,10 +82,6 @@ promptText?: ResourceStr
 **类型：** ResourceStr
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,10 +103,6 @@ refreshing: boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RefreshOptions-refreshing: boolean--><!--Device-RefreshOptions-refreshing: boolean-End-->
@@ -135,10 +120,6 @@ refreshingContent?: ComponentContent
 **类型：** ComponentContent
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

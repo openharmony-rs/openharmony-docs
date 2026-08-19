@@ -1,12 +1,8 @@
 # Vec3
 
-定义Vec3（三维向量）.
+三维向量，通常用于表示3D空间中的点、方向或向量变换，由x、y和z三个分量组成。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Vec3--><!--Device-unnamed-export interface Vec3-End-->
 
@@ -18,15 +14,11 @@
 x: double
 ```
 
-vec3的X分量.
+x轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec3-x: double--><!--Device-Vec3-x: double-End-->
 
@@ -38,15 +30,11 @@ vec3的X分量.
 y: double
 ```
 
-vec3的Y分量.
+y轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec3-y: double--><!--Device-Vec3-y: double-End-->
 
@@ -58,15 +46,11 @@ vec3的Y分量.
 z: double
 ```
 
-vec3的Z分量.
+z轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec3-z: double--><!--Device-Vec3-z: double-End-->
 

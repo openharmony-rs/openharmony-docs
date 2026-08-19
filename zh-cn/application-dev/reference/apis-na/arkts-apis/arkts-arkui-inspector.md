@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -14,15 +12,20 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [getInspectorByKey](arkts-na-inspector-getinspectorbykey-f.md#getinspectorbykey) | 获取指定id组件的所有属性，不包括子组件信息。 此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用。由于耗时长，不建议测试之外的场景使用。 |
-| [getInspectorTree](arkts-na-inspector-getinspectortree-f.md#getinspectortree) | 获取组件树及组件属性。 此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。 |
-| [sendEventByKey](arkts-na-inspector-sendeventbykey-f.md#sendeventbykey) | 给指定id的组件发送事件。 此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。 |
+| [getInspectorByKey](arkts-na-inspector-getinspectorbykey-f.md) | 获取指定id组件的所有属性，不包括子组件信息。 此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用。由于耗时长，不建议测试之外的场景使用。 |
+| [getInspectorTree](arkts-na-inspector-getinspectortree-f.md) | 获取组件树及组件属性。 此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。 |
+| [sendEventByKey](arkts-na-inspector-sendeventbykey-f.md) | 给指定id的组件发送事件。 此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。 |
 
 ### 接口
 

@@ -1,16 +1,18 @@
-# NumberFormat
+# NumberFormat(国际化-Intl)
 
 提供标准的数字格式化的能力。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
-
 <!--Device-intl-export class NumberFormat--><!--Device-intl-export class NumberFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+```
 
 ## constructor
 
@@ -22,17 +24,13 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NumberFormat-constructor()--><!--Device-NumberFormat-constructor()-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -51,10 +49,6 @@ constructor(locale: string | Array<string>, options?: NumberOptions)
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)--><!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)-End-->
@@ -68,7 +62,7 @@ constructor(locale: string | Array<string>, options?: NumberOptions)
 | locale | string \| Array&lt;string&gt; | 是 | 区域ID或区域ID数组。输入是区域ID数组时，使用第一个有效的区域ID。 |
 | options | [NumberOptions](arkts-localization-intl-numberoptions-i.md) | 否 | 创建数字格式化对象时可设置的配置项。 <br>默认值：所有属性都取默认值时的配置项。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -86,10 +80,6 @@ format(num: double): string
 对数字进行格式化，返回格式化后的数字字符串。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -109,7 +99,7 @@ format(num: double): string
 | --- | --- |
 | string | 格式化后的数字字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -136,10 +126,6 @@ formatRange(startRange: double, endRange: double): string
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string--><!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string-End-->
@@ -159,7 +145,7 @@ formatRange(startRange: double, endRange: double): string
 | --- | --- |
 | string | 格式化后的数字范围字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -178,10 +164,6 @@ resolvedOptions(): NumberOptions
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-NumberFormat-resolvedOptions(): NumberOptions--><!--Device-NumberFormat-resolvedOptions(): NumberOptions-End-->
@@ -194,7 +176,7 @@ resolvedOptions(): NumberOptions
 | --- | --- |
 | [NumberOptions](arkts-localization-intl-numberoptions-i.md) | 创建数字格式化对象时设置的配置项。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

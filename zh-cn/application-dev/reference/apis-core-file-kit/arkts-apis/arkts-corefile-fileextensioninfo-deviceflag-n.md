@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -16,6 +14,12 @@
 
 **系统接口：** 此接口为系统接口。
 
+## 导入模块
+
+```TypeScript
+import { fileExtensionInfo } from '@kit.CoreFileKit';
+```
+
 ## 汇总
 
 <!--Del-->
@@ -23,7 +27,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [SUPPORTS_READ](arkts-corefile-deviceflag-con-sys.md#supportsread) | 此设备支持读。 |
-| [SUPPORTS_WRITE](arkts-corefile-deviceflag-con-sys.md#supportswrite) | 此设备支持写。 |
+| [SUPPORTS_READ](arkts-corefile-deviceflag-con-sys.md#supports_read) | 此设备支持读。 |
+| [SUPPORTS_WRITE](arkts-corefile-deviceflag-con-sys.md#supports_write) | 此设备支持写。 |
 <!--DelEnd-->
 

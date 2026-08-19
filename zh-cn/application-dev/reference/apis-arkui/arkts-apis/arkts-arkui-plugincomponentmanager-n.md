@@ -4,13 +4,15 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace pluginComponentManager--><!--Device-unnamed-declare namespace pluginComponentManager-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
+```
 
 ## 汇总
 
@@ -18,17 +20,17 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [push](arkts-arkui-plugincomponentmanager-push-f.md#push) | 组件提供方向组件使用方主动发送组件和数据。适用于提供方数据更新后需主动通知使用方刷新显示的场景。 |
-| [request](arkts-arkui-plugincomponentmanager-request-f.md#request) | 组件使用方向组件提供方主动请求组件。适用于使用方需按需获取提供方组件及数据的场景。 |
-| [on_string](arkts-arkui-plugincomponentmanager-onstring-f.md#onstring) | 提供方监听"request"类型的事件，给使用方返回通过request接口主动请求的数据；使用方监听"push"类型的事件，接收提供方通过push接口主动推送的数据。 |
+| [push](arkts-arkui-plugincomponentmanager-push-f.md) | 组件提供方向组件使用方主动发送组件和数据。适用于提供方数据更新后需主动通知使用方刷新显示的场景。 |
+| [request](arkts-arkui-plugincomponentmanager-request-f.md) | 组件使用方向组件提供方主动请求组件。适用于使用方需按需获取提供方组件及数据的场景。 |
+| [on_string](arkts-arkui-plugincomponentmanager-onstring-f.md#on_string) | 提供方监听"request"类型的事件，给使用方返回通过request接口主动请求的数据；使用方监听"push"类型的事件，接收提供方通过push接口主动推送的数据。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md#push系统接口) | 组件提供方向组件使用方主动发送组件与数据。组件使用方需通过onPush事件监听接收数据。 |
-| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md#request系统接口) | 组件使用方向组件提供方主动请求组件。组件提供方需通过onRequest事件监听响应请求，并通过回调返回组件模板信息。 |
+| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md) | 组件提供方向组件使用方主动发送组件与数据。组件使用方需通过onPush事件监听接收数据。 |
+| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md) | 组件使用方向组件提供方主动请求组件。组件提供方需通过onRequest事件监听响应请求，并通过回调返回组件模板信息。 |
 <!--DelEnd-->
 
 ### 接口

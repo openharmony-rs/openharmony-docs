@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-enum SubscribeType--><!--Device-relationalStore-enum SubscribeType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -22,10 +18,6 @@ SUBSCRIBE_TYPE_REMOTE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -39,10 +31,6 @@ SUBSCRIBE_TYPE_CLOUD = 1
 订阅云端数据更改。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本10 - 11：ohos.permission.DISTRIBUTED_DATASYNC
@@ -61,10 +49,6 @@ SUBSCRIBE_TYPE_CLOUD_DETAILS = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本10 - 11：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -81,10 +65,6 @@ SUBSCRIBE_TYPE_LOCAL_DETAILS
 订阅本地数据更改详情。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL_DETAILS--><!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL_DETAILS-End-->
 

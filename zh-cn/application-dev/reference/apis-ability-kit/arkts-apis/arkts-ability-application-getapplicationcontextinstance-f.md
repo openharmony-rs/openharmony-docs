@@ -1,5 +1,11 @@
 # getApplicationContextInstance
 
+## 导入模块
+
+```TypeScript
+import { application } from '@kit.AbilityKit';
+```
+
 ## getApplicationContextInstance
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function getApplicationContextInstance(): ApplicationContext
 获取应用上下文实例。开发者使用该接口时，无需依赖Context基类。 重复调用该接口，将获取同一个ApplicationContext实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +36,7 @@ export function getApplicationContextInstance(): ApplicationContext
 | --- | --- |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: Memory operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, application, Want, common } from '@kit.AbilityKit';

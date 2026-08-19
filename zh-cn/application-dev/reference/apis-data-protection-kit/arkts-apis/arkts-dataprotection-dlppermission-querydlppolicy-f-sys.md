@@ -1,18 +1,20 @@
 # queryDlpPolicy（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## queryDlpPolicy
 
 ```TypeScript
 function queryDlpPolicy(dlpFd: number): Promise<string>
 ```
 
-在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md#dlpproperty系统接口)和 [CustomProperty](arkts-dataprotection-dlppermission-customproperty-i.md#customproperty系统接口)信息。使用Promise异步回调。 该接口可用于在查看DLP文件权限配置等场景中，获取文件的策略信息以便进行分析。 > **说明：** > > 该接口仅支持企业账号调用。
+在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md)和 [CustomProperty](arkts-dataprotection-dlppermission-customproperty-i.md)信息。使用Promise异步回调。 该接口可用于在查看DLP文件权限配置等场景中，获取文件的策略信息以便进行分析。 > **说明：** > > 该接口仅支持企业账号调用。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -50,7 +52,7 @@ function queryDlpPolicy(dlpFd: number): Promise<string>
 | [19100008](../errorcode-dlp.md#19100008-非dlp文件) | The file is not a DLP file. |
 | [19100013](../errorcode-dlp.md#19100013-用户无权限) | The user does not have the permission. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

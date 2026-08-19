@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unifiedDataChannel-enum Visibility--><!--Device-unifiedDataChannel-enum Visibility-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
@@ -21,10 +17,6 @@ ALL
 可见性等级，所有应用可见。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,10 +33,6 @@ OWN_PROCESS
 可见性等级，仅数据提供者可见。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,12 @@
 # createDataProxyHandle
 
+## 导入模块
+
+```TypeScript
+import { dataShare } from '@kit.ArkData';
+import { dataSharePredicates } from '@kit.ArkData';
+```
+
 ## createDataProxyHandle
 
 ```TypeScript
@@ -9,10 +16,6 @@ function createDataProxyHandle(): Promise<DataProxyHandle>
 创建DataProxyHandle实例。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -32,7 +35,7 @@ function createDataProxyHandle(): Promise<DataProxyHandle>
 | --- | --- |
 | [15700000](../errorcode-datashare.md#15700000-内部错误) | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

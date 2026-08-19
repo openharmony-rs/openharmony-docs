@@ -4,13 +4,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-utils-namespace ASON--><!--Device-utils-namespace ASON-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArkTSUtils } from '@kit.ArkTS';
+```
 
 ## 汇总
 
@@ -18,8 +20,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [parse](arkts-arkts-ason-parse-f.md#parse) | 用于解析JSON字符串生成ISendable数据或null。 |
-| [stringify](arkts-arkts-ason-stringify-f.md#stringify) | 该方法将ArkTS对象数据转换为JSON字符串，额外支持Map和Set相关类型。 从API 18开始参数修改为Object类型，API 18之前参数只支持ISendable类型 （除Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Uint8ClampedArray、Float32Array外）。 |
+| [parse](arkts-arkts-ason-parse-f.md) | 用于解析JSON字符串生成ISendable数据或null。 |
+| [stringify](arkts-arkts-ason-stringify-f.md) | 该方法将ArkTS对象数据转换为JSON字符串，额外支持Map和Set相关类型。 从API 18开始参数修改为Object类型，API 18之前参数只支持ISendable类型 （除Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Uint8ClampedArray、Float32Array外）。 |
 
 ### 接口
 

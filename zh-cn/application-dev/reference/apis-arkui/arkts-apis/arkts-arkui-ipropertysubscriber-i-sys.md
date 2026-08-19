@@ -1,18 +1,19 @@
-# IPropertySubscriber（系统接口）
+# IPropertySubscriber(System API)（系统接口）
 
 属性订阅者接口，定义订阅者需要实现的方法，用于接收属性变化通知和生命周期回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-interface IPropertySubscriber--><!--Device-unnamed-interface IPropertySubscriber-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## aboutToBeDeleted
 
@@ -23,10 +24,6 @@ aboutToBeDeleted(owningView?: IPropertySubscriber): void
 销毁时调用。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-IPropertySubscriber-aboutToBeDeleted(owningView?: IPropertySubscriber): void--><!--Device-IPropertySubscriber-aboutToBeDeleted(owningView?: IPropertySubscriber): void-End-->
 
@@ -49,10 +46,6 @@ id(): number
 获取ID时调用。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-IPropertySubscriber-id(): number--><!--Device-IPropertySubscriber-id(): number-End-->
 

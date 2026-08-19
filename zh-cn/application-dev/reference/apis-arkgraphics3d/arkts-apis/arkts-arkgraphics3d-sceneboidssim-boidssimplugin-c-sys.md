@@ -1,12 +1,8 @@
 # BoidsSimPlugin（系统接口）
 
-群组模拟插件. 提供用于管理群组模拟组件的静态方法.
+群组模拟插件，提供静态方法用于获取群组模拟世界。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare class BoidsSimPlugin--><!--Device-unnamed-export declare class BoidsSimPlugin-End-->
 
@@ -20,13 +16,9 @@
 static getDefaultBoidsSimWorld(scene: Scene): BoidsSimWorld | null
 ```
 
-获取指定场景的默认群组模拟世界.
+获取与指定场景关联的群组模拟世界实例。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +32,7 @@ static getDefaultBoidsSimWorld(scene: Scene): BoidsSimWorld | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scene | [Scene](arkts-arkgraphics3d-scene-c.md) | 是 | 要获取群组模拟世界的场景 |
+| scene | [Scene](arkts-arkgraphics3d-scene-c.md) | 是 | 目标场景的对象。 |
 
 **返回值：**
 
@@ -48,7 +40,7 @@ static getDefaultBoidsSimWorld(scene: Scene): BoidsSimWorld | null
 | --- | --- |
 | [BoidsSimWorld](arkts-arkgraphics3d-sceneboidssim-boidssimworld-c-sys.md) | 返回群组模拟世界实例，若不存在则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimPlugin, BoidsSimWorld, Scene, RenderContext } from '@kit.ArkGraphics3D';

@@ -221,7 +221,7 @@ OH_Drawing_FontStyleSet* OH_Drawing_FontMgrMatchFamily(OH_Drawing_FontMgr* drawi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontStyleSet*](capi-drawing-oh-drawing-fontstyleset.md) | 返回对应的字体样式集对象[OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md)，不再需要时，请使用[OH_Drawing_FontMgrDestroyFontStyleSet](capi-drawing-font-mgr-h.md#oh_drawing_fontmgrdestroyfontstyleset)释放该对象指针。<br>     如果匹配失败会返回NULL。 |
+| [OH_Drawing_FontStyleSet*](capi-drawing-oh-drawing-fontstyleset.md) | 返回对应的字体样式集对象[OH_Drawing_FontStyleSet](capi-drawing-oh-drawing-fontstyleset.md)，不再需要时，请使用[OH_Drawing_FontMgrDestroyFontStyleSet](capi-drawing-font-mgr-h.md#oh_drawing_fontmgrdestroyfontstyleset)释放该对象指针。      如果匹配失败会返回NULL。 |
 
 ### OH_Drawing_FontMgrMatchFamilyStyle()
 

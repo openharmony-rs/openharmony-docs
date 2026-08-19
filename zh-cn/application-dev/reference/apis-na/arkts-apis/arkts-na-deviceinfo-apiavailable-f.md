@@ -1,5 +1,10 @@
 # apiAvailable
 
+## 导入模块
+
+```TypeScript
+```
+
 ## apiAvailable
 
 ```TypeScript
@@ -10,9 +15,7 @@ function apiAvailable(version: string | int): boolean
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.1.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

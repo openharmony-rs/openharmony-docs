@@ -4,13 +4,15 @@ GesturePath表示手势路径信息。 本模块用于创建手势路径信息�
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare class GesturePath--><!--Device-unnamed-export declare class GesturePath-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+## 导入模块
+
+```TypeScript
+import { GesturePath } from '@kit.AccessibilityKit';
+```
 
 ## constructor
 
@@ -21,8 +23,6 @@ constructor(durationTime: long)
 通过传入手势总耗时创建手势路径对象。创建GesturePath实例后，还需设置必填属性points。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -36,7 +36,7 @@ constructor(durationTime: long)
 | --- | --- | --- | --- |
 | durationTime | long | 是 | 手势总耗时，单位：ms。取值需大于0。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { GesturePath, GesturePoint } from '@kit.AccessibilityKit';
@@ -59,10 +59,6 @@ durationTime: long
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-GesturePath-durationTime: long--><!--Device-GesturePath-durationTime: long-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -78,10 +74,6 @@ points: Array<GesturePoint>
 **类型：** Array&lt;[GesturePoint](arkts-accessibility-accessibility-gesturepoint-gesturepoint-c.md)&gt;
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-GesturePath-points: Array<GesturePoint>--><!--Device-GesturePath-points: Array<GesturePoint>-End-->
 

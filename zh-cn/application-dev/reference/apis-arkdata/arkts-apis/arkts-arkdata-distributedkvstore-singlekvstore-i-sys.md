@@ -4,13 +4,15 @@ SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedKVStore-interface SingleKVStore--><!--Device-distributedKVStore-interface SingleKVStore-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## 导入模块
+
+```TypeScript
+import { distributedKVStore } from '@kit.ArkData';
+```
 
 ## delete
 
@@ -21,10 +23,6 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 从数据库中删除符合predicates条件的键值对，使用callback异步回调。
 
 **起始版本：** -1
-
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -39,7 +37,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件，不允许为null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功时err为undefined，失败时err为错误对象。 [ |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功时err为undefined，失败时err为错误对象。 [ |
 
 **错误码：**
 
@@ -58,10 +56,6 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise<void>
 从数据库中删除符合predicates条件的键值对，使用Promise异步回调。
 
 **起始版本：** -1
-
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -101,10 +95,6 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SingleKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void-End-->
@@ -118,7 +108,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件，不允许为null。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 [ |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 [ |
 
 **错误码：**
 
@@ -137,10 +127,6 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVSto
 获取与指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
 
 **起始版本：** -1
-
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -180,10 +166,6 @@ putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SingleKVStore-putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void-End-->
@@ -197,7 +179,7 @@ putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | 是 | 表示要插入的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功时err为undefined，失败时err为错误对象。 [ |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功时err为undefined，失败时err为错误对象。 [ |
 
 **错误码：**
 
@@ -216,10 +198,6 @@ putBatch(value: Array<ValuesBucket>): Promise<void>
 批量写入键值对数据，每个ValuesBucket对象包含key和value字段，使用Promise异步回调。
 
 **起始版本：** -1
-
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -259,10 +237,6 @@ putValuesBuckets(value: Array<ValuesBucket>, callback: AsyncCallback<void>): voi
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SingleKVStore-putValuesBuckets(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-putValuesBuckets(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void-End-->
@@ -276,7 +250,7 @@ putValuesBuckets(value: Array<ValuesBucket>, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | 是 | 表示要插入的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 [ |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 [ |
 
 **错误码：**
 
@@ -294,10 +268,6 @@ putValuesBuckets(value: Array<ValuesBucket>): Promise<void>
 将valuesbucket类型的值写入SingleKVStore数据库，使用Promise异步回调。
 
 **起始版本：** -1
-
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

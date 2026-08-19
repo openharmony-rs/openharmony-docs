@@ -1,10 +1,8 @@
 # HapModuleInfo
 
-Hap模块信息，未做特殊说明的属性，均通过 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) 获取。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](#hapmoduleinfo)替代。
+Hap模块信息，未做特殊说明的属性，均通过 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md) 获取。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](#hapmoduleinfo)替代。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -28,8 +26,6 @@ Ability信息。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** abilitiesInfo
@@ -52,8 +48,6 @@ readonly backgroundImg: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-HapModuleInfo-readonly backgroundImg: string--><!--Device-HapModuleInfo-readonly backgroundImg: string-End-->
@@ -73,8 +67,6 @@ readonly description: string
 **默认值：** Describes the hapmodule
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -98,8 +90,6 @@ readonly descriptionId: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** descriptionId
@@ -121,8 +111,6 @@ readonly deviceTypes: Array<string>
 **默认值：** The device types that this hapmodule can run on
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -146,8 +134,6 @@ readonly icon: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** icon
@@ -169,8 +155,6 @@ readonly iconId: number
 **默认值：** Indicates the icon id of this hapmodule
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -194,8 +178,6 @@ readonly installationFree: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** installationFree
@@ -217,8 +199,6 @@ readonly label: string
 **默认值：** Indicates the label of this hapmodule
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -242,8 +222,6 @@ readonly labelId: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** labelId
@@ -266,8 +244,6 @@ readonly mainAbilityName: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-HapModuleInfo-readonly mainAbilityName: string--><!--Device-HapModuleInfo-readonly mainAbilityName: string-End-->
@@ -287,8 +263,6 @@ readonly moduleName: string
 **默认值：** Indicates the name of the .hap package to which the capability belongs
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -312,8 +286,6 @@ readonly name: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** name
@@ -336,8 +308,6 @@ readonly reqCapabilities: Array<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-HapModuleInfo-readonly reqCapabilities: Array<string>--><!--Device-HapModuleInfo-readonly reqCapabilities: Array<string>-End-->
@@ -357,8 +327,6 @@ readonly supportedModes: number
 **默认值：** Indicates the supported modes of this hapmodule
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

@@ -1,5 +1,14 @@
 # scan
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## scan
 
 ```TypeScript
@@ -10,11 +19,9 @@ function scan(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [scan](arkts-connectivity-wifimanager-scan-f.md#scan)
+**替代接口：** [scan](arkts-connectivity-wifimanager-scan-f.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -28,7 +35,7 @@ function scan(): boolean
 | --- | --- |
 | boolean | 扫描操作执行成功时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

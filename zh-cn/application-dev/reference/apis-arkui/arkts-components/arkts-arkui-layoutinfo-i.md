@@ -4,15 +4,18 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#layoutable)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md)
 
 <!--Device-unnamed-declare interface LayoutInfo--><!--Device-unnamed-declare interface LayoutInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constraint
 
@@ -26,11 +29,9 @@ constraint: ConstraintSizeOptions
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#layoutable)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -50,11 +51,9 @@ position: Position
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 10
 
-**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md#layoutable)
+**替代接口：** [Layoutable](arkts-arkui-layoutable-i.md)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

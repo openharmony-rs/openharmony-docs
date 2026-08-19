@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum PathDashStyle--><!--Device-drawing-enum PathDashStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ TRANSLATE = 0
 Translates only, not rotating with the path.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathDashStyle-TRANSLATE = 0--><!--Device-PathDashStyle-TRANSLATE = 0-End-->
 
@@ -40,10 +32,6 @@ Rotates with the path.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathDashStyle-ROTATE = 1--><!--Device-PathDashStyle-ROTATE = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -57,10 +45,6 @@ MORPH = 2
 Rotates with the path and stretches or compresses at turns to enhance smoothness.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathDashStyle-MORPH = 2--><!--Device-PathDashStyle-MORPH = 2-End-->
 

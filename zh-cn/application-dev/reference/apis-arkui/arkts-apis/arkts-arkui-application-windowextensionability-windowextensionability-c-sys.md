@@ -4,8 +4,6 @@ WindowExtensionAbility类。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 21
 
 <!--Device-unnamed-declare class WindowExtensionAbility--><!--Device-unnamed-declare class WindowExtensionAbility-End-->
@@ -13,6 +11,12 @@ WindowExtensionAbility类。
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { WindowExtensionAbility, WindowExtensionContext } from '@kit.ArkUI';
+```
 
 ## onConnect
 
@@ -23,8 +27,6 @@ onConnect(want: Want): void
 当窗口扩展组件第一次连接ability时回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 21
 
@@ -42,7 +44,7 @@ onConnect(want: Want): void
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前ability的Want类型信息，包括ability名称、bundle名称等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { WindowExtensionAbility } from '@kit.ArkUI';
@@ -65,8 +67,6 @@ onDisconnect(want: Want): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -83,7 +83,7 @@ onDisconnect(want: Want): void
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 当前Ability的Want类型信息，包括ability名称、bundle名称等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { WindowExtensionAbility } from '@kit.ArkUI';
@@ -106,8 +106,6 @@ onWindowReady(window: window.Window): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -124,7 +122,7 @@ onWindowReady(window: window.Window): void
 | --- | --- | --- | --- |
 | window | window.Window | 是 | 当前窗口实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { WindowExtensionAbility, window } from '@kit.ArkUI';
@@ -152,8 +150,6 @@ Indicates window extension ability context.
 **类型：** [WindowExtensionContext](arkts-arkui-windowextensioncontext-t-sys.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 21
 

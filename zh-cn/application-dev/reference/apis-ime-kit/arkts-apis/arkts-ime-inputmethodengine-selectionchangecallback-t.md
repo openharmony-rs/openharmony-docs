@@ -8,10 +8,6 @@ export type SelectionChangeCallback = (oldBegin: int, oldEnd: int, newBegin: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export type SelectionChangeCallback = (oldBegin: int, oldEnd: int, newBegin: int, newEnd: int) => void--><!--Device-inputMethodEngine-export type SelectionChangeCallback = (oldBegin: int, oldEnd: int, newBegin: int, newEnd: int) => void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

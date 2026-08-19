@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export enum CapitalizeMode--><!--Device-inputMethodEngine-export enum CapitalizeMode-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -21,10 +17,6 @@ NONE = 0
 不进行任何首字母大写处理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CapitalizeMode-NONE = 0--><!--Device-CapitalizeMode-NONE = 0-End-->
 
@@ -40,10 +32,6 @@ SENTENCES
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CapitalizeMode-SENTENCES--><!--Device-CapitalizeMode-SENTENCES-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -58,10 +46,6 @@ WORDS
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CapitalizeMode-WORDS--><!--Device-CapitalizeMode-WORDS-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -75,10 +59,6 @@ CHARACTERS
 每个字母都大写。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CapitalizeMode-CHARACTERS--><!--Device-CapitalizeMode-CHARACTERS-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-enum NoticeType--><!--Device-userAuth-enum NoticeType-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -23,10 +19,6 @@ WIDGET_NOTICE = 1
 表示该通知由系统统一身份认证控件发出，用于通知用户认证框架相关事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NoticeType-WIDGET_NOTICE = 1--><!--Device-NoticeType-WIDGET_NOTICE = 1-End-->
 

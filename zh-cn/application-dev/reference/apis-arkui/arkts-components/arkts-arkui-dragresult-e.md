@@ -4,10 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum DragResult--><!--Device-unnamed-declare enum DragResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ UNKNOWN = -1
 拖拽结果尚未设置，在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)， [onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)， onDrop中使用。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ DRAG_SUCCESSFUL = 0
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -65,10 +53,6 @@ DRAG_FAILED = 1
 拖拽失败，在onDrop中使用。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,10 +72,6 @@ DRAG_CANCELED = 2
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -110,10 +90,6 @@ DROP_ENABLED = 3
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -131,10 +107,6 @@ DROP_DISABLED = 4
 组件不允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)， [onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)中使用。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

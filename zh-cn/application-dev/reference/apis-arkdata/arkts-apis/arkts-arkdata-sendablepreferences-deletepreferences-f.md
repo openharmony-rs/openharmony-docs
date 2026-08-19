@@ -1,5 +1,11 @@
 # deletePreferences
 
+## 导入模块
+
+```TypeScript
+import { sendablePreferences } from '@kit.ArkData';
+```
+
 ## deletePreferences
 
 ```TypeScript
@@ -9,10 +15,6 @@ function deletePreferences(context: Context, options: Options): Promise<void>
 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用Promise异步回调。 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -44,7 +46,7 @@ function deletePreferences(context: Context, options: Options): Promise<void>
 | [15501002](../errorcode-preferences.md#15501002-options中传入的datagroupid参数非法) | Invalid dataGroupId. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';

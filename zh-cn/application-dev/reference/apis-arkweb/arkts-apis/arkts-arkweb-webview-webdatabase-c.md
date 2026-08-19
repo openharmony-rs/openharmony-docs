@@ -4,13 +4,15 @@ Web组件数据库管理对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-webview-class WebDataBase--><!--Device-webview-class WebDataBase-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## deleteHttpAuthCredentials
 
@@ -21,10 +23,6 @@ static deleteHttpAuthCredentials(): void
 清除所有已保存的HTTP身份验证凭据，该方法为同步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +39,6 @@ static existHttpAuthCredentials(): boolean
 判断是否存在任何已保存的HTTP身份验证凭据，该方法为同步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -67,10 +61,6 @@ static getHttpAuthCredentials(host: string, realm: string): Array<string>
 检索给定主机和域的HTTP身份验证凭据，该方法为同步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -106,10 +96,6 @@ static saveHttpAuthCredentials(host: string, realm: string, username: string, pa
 保存给定主机和域的HTTP身份验证凭据，该方法为同步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

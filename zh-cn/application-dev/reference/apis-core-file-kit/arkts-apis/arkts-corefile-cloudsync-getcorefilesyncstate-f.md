@@ -1,5 +1,12 @@
 # getCoreFileSyncState
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## getCoreFileSyncState
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getCoreFileSyncState(uri: string): FileState
 同步方法获取云盘文件同步上行状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-cloudSync-function getCoreFileSyncState(uri: string): FileState--><!--Device-cloudSync-function getCoreFileSyncState(uri: string): FileState-End-->
 
@@ -44,7 +47,7 @@ function getCoreFileSyncState(uri: string): FileState
 | 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900010 | Try again |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

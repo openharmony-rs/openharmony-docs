@@ -1,10 +1,8 @@
-# DisableAlertBeforeBackPageOptions
+# DisableAlertBeforeBackPageOptions(页面路由)
 
 定义DisableAlertBeforeBackPage参数选项。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -13,6 +11,12 @@
 <!--Device-unnamed-export interface DisableAlertBeforeBackPageOptions--><!--Device-unnamed-export interface DisableAlertBeforeBackPageOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, EnableAlertBeforeBackPageOptions, RouterOptions, RouterState } from '@kit.ArkUI';
+```
 
 ## cancel
 
@@ -25,8 +29,6 @@ cancel?: (errMsg: string) => void
 **类型：** (errMsg: string) =&gt; void
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -48,8 +50,6 @@ complete?: () => void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
 **替代接口：** RouterOptions
@@ -69,8 +69,6 @@ success?: (errMsg: string) => void
 **类型：** (errMsg: string) =&gt; void
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 

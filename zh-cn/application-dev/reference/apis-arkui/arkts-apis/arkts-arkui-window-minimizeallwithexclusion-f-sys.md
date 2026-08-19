@@ -1,5 +1,13 @@
 # minimizeAllWithExclusion（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## minimizeAllWithExclusion
 
 ```TypeScript
@@ -9,10 +17,6 @@ function minimizeAllWithExclusion(displayId: long, excludeWindowId: int): Promis
 最小化指定ID的屏幕中除指定窗口之外的所有主窗口，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,7 +47,7 @@ function minimizeAllWithExclusion(displayId: long, excludeWindowId: int): Promis
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. Window is nullptr; 2. Failed to find specified window by id. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A nonsystem application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { display, window } from '@kit.ArkUI';

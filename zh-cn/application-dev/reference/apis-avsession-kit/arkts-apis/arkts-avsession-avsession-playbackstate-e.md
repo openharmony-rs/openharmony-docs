@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum PlaybackState--><!--Device-avSession-enum PlaybackState-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -21,10 +17,6 @@ PLAYBACK_STATE_INITIAL = 0
 初始状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ PLAYBACK_STATE_PREPARE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_PREPARE = 1--><!--Device-PlaybackState-PLAYBACK_STATE_PREPARE = 1-End-->
@@ -61,10 +49,6 @@ PLAYBACK_STATE_PLAY = 2
 正在播放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ PLAYBACK_STATE_PAUSE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_PAUSE = 3--><!--Device-PlaybackState-PLAYBACK_STATE_PAUSE = 3-End-->
@@ -101,10 +81,6 @@ PLAYBACK_STATE_FAST_FORWARD = 4
 快进。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ PLAYBACK_STATE_REWIND = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_REWIND = 5--><!--Device-PlaybackState-PLAYBACK_STATE_REWIND = 5-End-->
@@ -141,10 +113,6 @@ PLAYBACK_STATE_STOP = 6
 停止。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ PLAYBACK_STATE_COMPLETED = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_COMPLETED = 7--><!--Device-PlaybackState-PLAYBACK_STATE_COMPLETED = 7-End-->
@@ -181,10 +145,6 @@ PLAYBACK_STATE_RELEASED = 8
 释放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -202,10 +162,6 @@ PLAYBACK_STATE_ERROR = 9
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 9--><!--Device-PlaybackState-PLAYBACK_STATE_ERROR = 9-End-->
@@ -222,10 +178,6 @@ PLAYBACK_STATE_IDLE = 10
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PlaybackState-PLAYBACK_STATE_IDLE = 10--><!--Device-PlaybackState-PLAYBACK_STATE_IDLE = 10-End-->
@@ -241,10 +193,6 @@ PLAYBACK_STATE_BUFFERING = 11
 缓冲。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

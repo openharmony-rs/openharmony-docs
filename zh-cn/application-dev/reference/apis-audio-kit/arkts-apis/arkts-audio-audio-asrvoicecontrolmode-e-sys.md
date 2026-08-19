@@ -4,10 +4,6 @@ ASR voice control mode.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AsrVoiceControlMode--><!--Device-audio-enum AsrVoiceControlMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -23,10 +19,6 @@ AUDIO_2_VOICE_TX = 0
 Send output stream to TX.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX = 0--><!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX = 0-End-->
 
@@ -44,10 +36,6 @@ Send both output stream and MIC input to TX.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1--><!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -64,10 +52,6 @@ Based on the AUDIO_2_VOICE_TX, Send output stream to voice call record.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX_EX = 2--><!--Device-AsrVoiceControlMode-AUDIO_2_VOICE_TX_EX = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -83,10 +67,6 @@ AUDIO_MIX_2_VOICE_TX_EX = 3
 Based on the AUDIO_MIX_2_VOICE_TX, Send output stream to voice call record.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX_EX = 3--><!--Device-AsrVoiceControlMode-AUDIO_MIX_2_VOICE_TX_EX = 3-End-->
 

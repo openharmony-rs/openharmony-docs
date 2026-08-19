@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-businessAbilityRouter-export interface BusinessAbilityFilter--><!--Device-businessAbilityRouter-export interface BusinessAbilityFilter-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { businessAbilityRouter } from '@kit.AbilityKit';
+```
 
 ## businessType
 
@@ -25,10 +27,6 @@ businessType: BusinessType
 **类型：** BusinessType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BusinessAbilityFilter-businessType: BusinessType--><!--Device-BusinessAbilityFilter-businessType: BusinessType-End-->
 
@@ -48,10 +46,6 @@ mimeType?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BusinessAbilityFilter-mimeType?: string--><!--Device-BusinessAbilityFilter-mimeType?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -69,10 +63,6 @@ uri?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BusinessAbilityFilter-uri?: string--><!--Device-BusinessAbilityFilter-uri?: string-End-->
 

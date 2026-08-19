@@ -1,5 +1,10 @@
 # getMissionSnapShot（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getMissionSnapShot
 
 ```TypeScript
@@ -10,11 +15,9 @@ function getMissionSnapShot(deviceId: string, missionId: number, callback: Async
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md#getmissionsnapshot系统接口)
+**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -30,9 +33,9 @@ function getMissionSnapShot(deviceId: string, missionId: number, callback: Async
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | missionId | number | 是 | 任务ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[MissionSnapshot](arkts-ability-missionsnapshot-i-sys.md)&gt; | 是 | 回调函数，返回任务快照信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[MissionSnapshot](arkts-ability-missionsnapshot-i-sys.md)&gt; | 是 | 回调函数，返回任务快照信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';
@@ -65,11 +68,9 @@ function getMissionSnapShot(deviceId: string, missionId: number): Promise<Missio
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md#getmissionsnapshot系统接口)
+**替代接口：** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -92,7 +93,7 @@ function getMissionSnapShot(deviceId: string, missionId: number): Promise<Missio
 | --- | --- |
 | Promise&lt;[MissionSnapshot](arkts-ability-missionsnapshot-i-sys.md)&gt; | Promise对象，返回任务快照信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';

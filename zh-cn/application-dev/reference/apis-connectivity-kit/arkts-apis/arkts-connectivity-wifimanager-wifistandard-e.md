@@ -4,10 +4,6 @@ WLAN标准。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-enum WifiStandard--><!--Device-wifiManager-enum WifiStandard-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -21,10 +17,6 @@ WIFI_STANDARD_UNDEFINED
 未定义
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiStandard-WIFI_STANDARD_UNDEFINED--><!--Device-WifiStandard-WIFI_STANDARD_UNDEFINED-End-->
 
@@ -40,10 +32,6 @@ WLAN 802.11a
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiStandard-WIFI_STANDARD_11A--><!--Device-WifiStandard-WIFI_STANDARD_11A-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -57,10 +45,6 @@ WIFI_STANDARD_11B
 WLAN 802.11b
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiStandard-WIFI_STANDARD_11B--><!--Device-WifiStandard-WIFI_STANDARD_11B-End-->
 
@@ -76,10 +60,6 @@ WLAN 802.11g
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiStandard-WIFI_STANDARD_11G--><!--Device-WifiStandard-WIFI_STANDARD_11G-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -93,10 +73,6 @@ WIFI_STANDARD_11N
 WLAN 802.11n
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiStandard-WIFI_STANDARD_11N--><!--Device-WifiStandard-WIFI_STANDARD_11N-End-->
 
@@ -112,10 +88,6 @@ WLAN 802.11ac
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiStandard-WIFI_STANDARD_11AC--><!--Device-WifiStandard-WIFI_STANDARD_11AC-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -130,10 +102,6 @@ WLAN 802.11ax
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiStandard-WIFI_STANDARD_11AX--><!--Device-WifiStandard-WIFI_STANDARD_11AX-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -147,10 +115,6 @@ WIFI_STANDARD_11AD
 WLAN 802.11ad
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiStandard-WIFI_STANDARD_11AD--><!--Device-WifiStandard-WIFI_STANDARD_11AD-End-->
 

@@ -1,12 +1,8 @@
 # SamplerAddressMode
 
-采样器的寻址模式
+采样器寻址模式枚举，用于控制纹理坐标超出[0, 1]范围时的处理方式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum SamplerAddressMode--><!--Device-unnamed-export enum SamplerAddressMode-End-->
 
@@ -18,13 +14,9 @@
 REPEAT = 0
 ```
 
-重复
+纹理坐标超出范围时，纹理会重复平铺。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SamplerAddressMode-REPEAT = 0--><!--Device-SamplerAddressMode-REPEAT = 0-End-->
 
@@ -36,13 +28,9 @@ REPEAT = 0
 MIRRORED_REPEAT = 1
 ```
 
-镜像重复
+纹理坐标超出范围时，纹理以镜像方式重复。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SamplerAddressMode-MIRRORED_REPEAT = 1--><!--Device-SamplerAddressMode-MIRRORED_REPEAT = 1-End-->
 
@@ -54,13 +42,9 @@ MIRRORED_REPEAT = 1
 CLAMP_TO_EDGE = 2
 ```
 
-钳制到边缘
+纹理坐标超出范围时，贴图边缘像素会被拉伸延伸。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SamplerAddressMode-CLAMP_TO_EDGE = 2--><!--Device-SamplerAddressMode-CLAMP_TO_EDGE = 2-End-->
 

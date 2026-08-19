@@ -2,157 +2,137 @@
 
 旋转信息。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
-**废弃版本：** -1
-
-<!--Device-componentUtils-interface RotateResult--><!--Device-componentUtils-interface RotateResult-End-->
+<!--Device-componentUtils-export interface RotateResult--><!--Device-componentUtils-export interface RotateResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentUtils } from '@kit.ArkUI';
+```
 
 ## angle
 
 ```TypeScript
-angle: number
+angle: double
 ```
 
 旋转角度。 单位: deg
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RotateResult-angle: number--><!--Device-RotateResult-angle: number-End-->
+<!--Device-RotateResult-angle: double--><!--Device-RotateResult-angle: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerX
 
 ```TypeScript
-centerX: number
+centerX: double
 ```
 
 变换中心点x轴坐标。 单位: vp
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RotateResult-centerX: number--><!--Device-RotateResult-centerX: number-End-->
+<!--Device-RotateResult-centerX: double--><!--Device-RotateResult-centerX: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
 
 ```TypeScript
-centerY: number
+centerY: double
 ```
 
 变换中心点y轴坐标。 单位: vp
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RotateResult-centerY: number--><!--Device-RotateResult-centerY: number-End-->
+<!--Device-RotateResult-centerY: double--><!--Device-RotateResult-centerY: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
 
 ```TypeScript
-x: number
+x: double
 ```
 
 旋转轴向量x坐标。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RotateResult-x: number--><!--Device-RotateResult-x: number-End-->
+<!--Device-RotateResult-x: double--><!--Device-RotateResult-x: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
 
 ```TypeScript
-y: number
+y: double
 ```
 
 旋转轴向量y坐标。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RotateResult-y: number--><!--Device-RotateResult-y: number-End-->
+<!--Device-RotateResult-y: double--><!--Device-RotateResult-y: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
 
 ```TypeScript
-z: number
+z: double
 ```
 
 旋转轴向量z坐标。
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-RotateResult-z: number--><!--Device-RotateResult-z: number-End-->
+<!--Device-RotateResult-z: double--><!--Device-RotateResult-z: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

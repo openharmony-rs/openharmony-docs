@@ -4,13 +4,14 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface AccessibilityActionOptions--><!--Device-unnamed-declare interface AccessibilityActionOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## scrollStep
 
@@ -23,10 +24,6 @@ scrollStep - 无障碍手势触发的无障碍滚动操作中的组件操作步�
 **类型：** number
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

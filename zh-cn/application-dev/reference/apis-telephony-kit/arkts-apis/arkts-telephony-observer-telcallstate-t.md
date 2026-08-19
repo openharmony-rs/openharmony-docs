@@ -8,10 +8,6 @@ type TelCallState = call.TelCallState
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-type TelCallState = call.TelCallState--><!--Device-observer-type TelCallState = call.TelCallState-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry

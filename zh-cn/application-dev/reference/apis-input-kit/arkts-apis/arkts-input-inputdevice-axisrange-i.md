@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputDevice-interface AxisRange--><!--Device-inputDevice-interface AxisRange-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
 
 ## axis
 
@@ -23,10 +26,6 @@ axis: AxisType
 **类型：** AxisType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AxisRange-axis: AxisType--><!--Device-AxisRange-axis: AxisType-End-->
 
@@ -44,10 +43,6 @@ flat: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AxisRange-flat: int--><!--Device-AxisRange-flat: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -63,10 +58,6 @@ fuzz: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AxisRange-fuzz: int--><!--Device-AxisRange-fuzz: int-End-->
 
@@ -84,10 +75,6 @@ max: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AxisRange-max: int--><!--Device-AxisRange-max: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -103,10 +90,6 @@ min: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AxisRange-min: int--><!--Device-AxisRange-min: int-End-->
 
@@ -124,10 +107,6 @@ resolution: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AxisRange-resolution: int--><!--Device-AxisRange-resolution: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -143,10 +122,6 @@ source: SourceType
 **类型：** SourceType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AxisRange-source: SourceType--><!--Device-AxisRange-source: SourceType-End-->
 

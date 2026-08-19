@@ -1,18 +1,22 @@
 # open
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## open
 
 ```TypeScript
 declare function open(path: string, mode?: number): Promise<File>
 ```
 
-打开文件或目录，使用promise异步回调。支持使用URI打开文件。
+打开文件或目录，支持使用URI打开文件。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -72,13 +76,9 @@ declare function open(path: string, mode?: number): Promise<File>
 declare function open(path: string, callback: AsyncCallback<File>): void
 ```
 
-打开文件或目录，使用callback异步回调。支持使用URI打开文件。
+打开文件或目录，支持使用URI打开文件。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -91,7 +91,7 @@ declare function open(path: string, callback: AsyncCallback<File>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录的应用沙箱路径或URI。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[File](arkts-corefile-file-fs-file-i.md)&gt; | 是 | 异步打开文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[File](arkts-corefile-file-fs-file-i.md)&gt; | 是 | 回调函数，返回File对象。 |
 
 **错误码：**
 
@@ -135,10 +135,6 @@ declare function open(path: string, mode: number, callback: AsyncCallback<File>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-declare function open(path: string, mode: number, callback: AsyncCallback<File>): void--><!--Device-unnamed-declare function open(path: string, mode: number, callback: AsyncCallback<File>): void-End-->
@@ -151,7 +147,7 @@ declare function open(path: string, mode: number, callback: AsyncCallback<File>)
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录的应用沙箱路径或URI。 |
 | mode | number | 是 | 打开文件或目录的选项，必须指定如下选项中 的一个，默认以只读方式打开：<br/>- OpenMode.READ_ONLY(0o0)：只读打开。<br/>- OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>- OpenMode.READ_WRITE (0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>- OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>- OpenMode.TRUNC(0 o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>- OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>- OpenMode.NONBLOCK(0o400 0)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续IO进行非阻塞操作。<br/>- OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>- OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>- OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。<br/>- OpenMode.UNCACHE(0o10000000000)： 读写文件不进行页缓存，从API版本26.0.0开始支持此选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[File](arkts-corefile-file-fs-file-i.md)&gt; | 是 | 异步打开文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[File](arkts-corefile-file-fs-file-i.md)&gt; | 是 | 回调函数，返回File对象。 |
 
 **错误码：**
 

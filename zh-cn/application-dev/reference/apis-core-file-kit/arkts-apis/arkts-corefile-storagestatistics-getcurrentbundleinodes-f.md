@@ -1,5 +1,11 @@
 # getCurrentBundleInodes
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getCurrentBundleInodes
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getCurrentBundleInodes(): Promise<long>
 获取当前应用的inode占用量，使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +36,7 @@ function getCurrentBundleInodes(): Promise<long>
 | 13600001 | IPC error. |
 | 13600017 | Failed to query the inode information of the application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

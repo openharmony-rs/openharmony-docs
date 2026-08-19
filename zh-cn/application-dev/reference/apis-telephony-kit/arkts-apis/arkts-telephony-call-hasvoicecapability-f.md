@@ -1,5 +1,11 @@
 # hasVoiceCapability
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## hasVoiceCapability
 
 ```TypeScript
@@ -9,10 +15,6 @@ function hasVoiceCapability(): boolean
 检查当前设备是否具备语音通话能力。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function hasVoiceCapability(): boolean--><!--Device-call-function hasVoiceCapability(): boolean-End-->
 
@@ -24,7 +26,7 @@ function hasVoiceCapability(): boolean
 | --- | --- |
 | boolean | 返回true表示设备具备语音通话能力，返回false表示设备不具备语音通话能力。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let result: boolean = call.hasVoiceCapability();

@@ -1,5 +1,11 @@
 # sendMessage
 
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
+
 ## sendMessage
 
 ```TypeScript
@@ -10,11 +16,9 @@ function sendMessage(options: SendMessageOptions): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 10
 
-**替代接口：** [sendShortMessage](arkts-telephony-sms-sendshortmessage-f.md#sendshortmessage)
+**替代接口：** [sendShortMessage](arkts-telephony-sms-sendshortmessage-f.md)
 
 **需要权限：** ohos.permission.SEND_MESSAGES
 
@@ -26,7 +30,7 @@ function sendMessage(options: SendMessageOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md) | 是 | 发送短信的参数和回调，参考[SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md#sendmessageoptions)。 |
+| options | [SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md) | 是 | 发送短信的参数和回调，参考[SendMessageOptions](arkts-telephony-sms-sendmessageoptions-i.md)。 |
 
 **错误码：**
 
@@ -39,7 +43,7 @@ function sendMessage(options: SendMessageOptions): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';

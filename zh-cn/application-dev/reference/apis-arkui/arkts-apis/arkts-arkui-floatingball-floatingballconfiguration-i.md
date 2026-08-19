@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-floatingBall-interface FloatingBallConfiguration--><!--Device-floatingBall-interface FloatingBallConfiguration-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+```
 
 ## context
 
@@ -23,10 +25,6 @@ context: BaseContext
 **类型：** [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallConfiguration-context: BaseContext--><!--Device-FloatingBallConfiguration-context: BaseContext-End-->
 

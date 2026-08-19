@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum DefaultChangeUri--><!--Device-photoAccessHelper-enum DefaultChangeUri-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -22,10 +18,6 @@ DEFAULT_PHOTO_URI = 'file://media/Photo'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DefaultChangeUri-DEFAULT_PHOTO_URI = 'file://media/Photo'--><!--Device-DefaultChangeUri-DEFAULT_PHOTO_URI = 'file://media/Photo'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -39,10 +31,6 @@ DEFAULT_ALBUM_URI = 'file://media/PhotoAlbum'
 默认相册的uri，与forSubUri{true}一起使用，将接收所有相册的更改通知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DefaultChangeUri-DEFAULT_ALBUM_URI = 'file://media/PhotoAlbum'--><!--Device-DefaultChangeUri-DEFAULT_ALBUM_URI = 'file://media/PhotoAlbum'-End-->
 

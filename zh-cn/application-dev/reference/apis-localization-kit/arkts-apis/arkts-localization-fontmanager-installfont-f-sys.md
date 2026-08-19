@@ -1,5 +1,11 @@
 # installFont（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { fontManager } from '@kit.LocalizationKit';
+```
+
 ## installFont
 
 ```TypeScript
@@ -9,10 +15,6 @@ function installFont(path: string): Promise<int>
 将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。 安装成功后，应用可以通过字体名称使用该字体。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.UPDATE_FONT
 

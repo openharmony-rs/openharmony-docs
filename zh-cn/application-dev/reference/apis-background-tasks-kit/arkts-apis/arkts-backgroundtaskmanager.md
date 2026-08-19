@@ -4,15 +4,18 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [backgroundTaskManager](arkts-resourceschedule-backgroundtaskmanager.md#ohosresourceschedulebackgroundtaskmanager)
+**替代接口：** [backgroundTaskManager](arkts-resourceschedule-backgroundtaskmanager.md)
 
 <!--Device-unnamed-declare namespace backgroundTaskManager--><!--Device-unnamed-declare namespace backgroundTaskManager-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
+## 导入模块
+
+```TypeScript
+```
 
 ## 汇总
 

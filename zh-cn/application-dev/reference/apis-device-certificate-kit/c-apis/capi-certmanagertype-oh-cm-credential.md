@@ -21,8 +21,8 @@ Defines a struct for the certificate credential details.
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t isExist | Whether a certificate data exists. |
-| char type[OH_CM_MAX_LEN_TYPE_NAME] | Indicates the type of Credential. The value include the terminator('\0')  char. |
-| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | Indicates the alias of Credential. The value include the terminator('\0')  char. |
+| char type[OH_CM_MAX_LEN_TYPE_NAME] | Indicates the type of Credential. The value include the terminator('\0') char. |
+| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | Indicates the alias of Credential. The value include the terminator('\0') char. |
 | char keyUri[OH_CM_MAX_LEN_URI] | Indicates the uri of Credential. |
 | uint32_t certNum | Number of certificates contained in the credential. |
 | uint32_t keyNum | Number of keys contained in the credential. |

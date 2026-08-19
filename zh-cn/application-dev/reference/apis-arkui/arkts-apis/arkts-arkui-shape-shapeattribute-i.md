@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface ShapeAttribute--><!--Device-unnamed-export declare interface ShapeAttribute-End-->
 
@@ -22,9 +20,7 @@ antiAlias(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-antiAlias(value: boolean | undefined): this--><!--Device-ShapeAttribute-antiAlias(value: boolean | undefined): this-End-->
 
@@ -48,9 +44,7 @@ attributeModifier(modifier: AttributeModifier<ShapeAttribute> | AttributeModifie
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-attributeModifier(modifier: AttributeModifier<ShapeAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-ShapeAttribute-attributeModifier(modifier: AttributeModifier<ShapeAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -74,9 +68,7 @@ fill(value: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-fill(value: ResourceColor | undefined): this--><!--Device-ShapeAttribute-fill(value: ResourceColor | undefined): this-End-->
 
@@ -100,9 +92,7 @@ fillOpacity(value: double | string | Resource | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-fillOpacity(value: double | string | Resource | undefined): this--><!--Device-ShapeAttribute-fillOpacity(value: double | string | Resource | undefined): this-End-->
 
@@ -126,9 +116,7 @@ mesh(value: Array<double> | undefined, column: int | undefined, row: int | undef
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-mesh(value: Array<double> | undefined, column: int | undefined, row: int | undefined): this--><!--Device-ShapeAttribute-mesh(value: Array<double> | undefined, column: int | undefined, row: int | undefined): this-End-->
 
@@ -154,9 +142,7 @@ setShapeOptions(value?: PixelMap): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-setShapeOptions(value?: PixelMap): this--><!--Device-ShapeAttribute-setShapeOptions(value?: PixelMap): this-End-->
 
@@ -180,9 +166,7 @@ stroke(value: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-stroke(value: ResourceColor | undefined): this--><!--Device-ShapeAttribute-stroke(value: ResourceColor | undefined): this-End-->
 
@@ -206,9 +190,7 @@ strokeDashArray(value: Array<Length> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-strokeDashArray(value: Array<Length> | undefined): this--><!--Device-ShapeAttribute-strokeDashArray(value: Array<Length> | undefined): this-End-->
 
@@ -232,9 +214,7 @@ strokeDashOffset(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-strokeDashOffset(value: Length | undefined): this--><!--Device-ShapeAttribute-strokeDashOffset(value: Length | undefined): this-End-->
 
@@ -258,9 +238,7 @@ strokeLineCap(value: LineCapStyle | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-strokeLineCap(value: LineCapStyle | undefined): this--><!--Device-ShapeAttribute-strokeLineCap(value: LineCapStyle | undefined): this-End-->
 
@@ -284,9 +262,7 @@ strokeLineJoin(value: LineJoinStyle | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-strokeLineJoin(value: LineJoinStyle | undefined): this--><!--Device-ShapeAttribute-strokeLineJoin(value: LineJoinStyle | undefined): this-End-->
 
@@ -310,9 +286,7 @@ strokeMiterLimit(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-strokeMiterLimit(value: Length | undefined): this--><!--Device-ShapeAttribute-strokeMiterLimit(value: Length | undefined): this-End-->
 
@@ -336,9 +310,7 @@ strokeOpacity(value: double | string | Resource | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-strokeOpacity(value: double | string | Resource | undefined): this--><!--Device-ShapeAttribute-strokeOpacity(value: double | string | Resource | undefined): this-End-->
 
@@ -362,9 +334,7 @@ strokeWidth(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-strokeWidth(value: Length | undefined): this--><!--Device-ShapeAttribute-strokeWidth(value: Length | undefined): this-End-->
 
@@ -388,9 +358,7 @@ viewPort(value: ViewportRect | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ShapeAttribute-viewPort(value: ViewportRect | undefined): this--><!--Device-ShapeAttribute-viewPort(value: ViewportRect | undefined): this-End-->
 
@@ -416,9 +384,7 @@ Call attributeModifier.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

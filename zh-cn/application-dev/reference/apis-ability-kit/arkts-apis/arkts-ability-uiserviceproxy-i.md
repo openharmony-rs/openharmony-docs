@@ -4,10 +4,6 @@ UIServiceProxy提供代理能力，可以从UIServiceExtension客户端发送数
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default interface UIServiceProxy--><!--Device-unnamed-export default interface UIServiceProxy-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ sendData(data: Record<string, Object>): void
 给UIServiceExtension服务端发送数据。 > **说明：** > > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,7 +39,7 @@ sendData(data: Record<string, Object>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -144,10 +136,6 @@ sendData(data: Record<string, RecordData>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceProxy-sendData(data: Record<string, RecordData>): void--><!--Device-UIServiceProxy-sendData(data: Record<string, RecordData>): void-End-->
@@ -158,7 +146,7 @@ sendData(data: Record<string, RecordData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 待发送给UIServiceExtension服务端的数据。 |
+| data | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 待发送给UIServiceExtension服务端的数据。 |
 
 **错误码：**
 
@@ -166,7 +154,7 @@ sendData(data: Record<string, RecordData>): void
 | --- | --- |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible cause: Connect to stub failed. |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 

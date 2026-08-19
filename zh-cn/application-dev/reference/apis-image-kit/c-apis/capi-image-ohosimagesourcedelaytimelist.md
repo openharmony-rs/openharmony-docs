@@ -21,10 +21,8 @@ struct OhosImageSourceDelayTimeList {...}
 | 名称 | 描述 |
 | -- | -- |
 | int32_t* delayTimeList |  |
-| size_t size = 0;
-#else |  |
+| size_t size = 0; #else |  |
 | int32_t* delayTimeList |  |
-| size_t size;
-#endif |  |
+| size_t size; #endif |  |
 
 

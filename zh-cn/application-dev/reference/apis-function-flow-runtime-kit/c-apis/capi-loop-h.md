@@ -14,6 +14,12 @@
 
 ## 汇总
 
+### 结构体
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | ffrt_loop_t | loop句柄，用于标识不同的loop。 |
+
 ### 函数
 
 | 名称 | 描述 |
@@ -44,13 +50,13 @@ FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 
 | 参数项 | 描述 |
 | -- | -- |
-| ffrt_queue_t queue | 队列。 |
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | 队列。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_loop_t | loop创建成功时返回非空的loop句柄；<br>         否则返回空指针。 |
+| FFRT_C_API ffrt_loop_t | loop创建成功时返回非空的loop句柄；          否则返回空指针。 |
 
 ### ffrt_loop_destroy()
 
@@ -74,7 +80,7 @@ FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | loop销毁成功时返回`0`；<br>         否则返回`-1`。 |
+| FFRT_C_API int | loop销毁成功时返回`0`；          否则返回`-1`。 |
 
 ### ffrt_loop_run()
 
@@ -98,7 +104,7 @@ FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | loop运行成功时返回`0`；<br>         否则返回`-1`。 |
+| FFRT_C_API int | loop运行成功时返回`0`；          否则返回`-1`。 |
 
 **参考：**
 
@@ -155,7 +161,7 @@ FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t ev
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 操作成功时返回`0`；<br>         否则返回`-1`。 |
+| FFRT_C_API int | 操作成功时返回`0`；          否则返回`-1`。 |
 
 ### ffrt_loop_timer_start()
 
@@ -213,7 +219,7 @@ FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 操作成功时返回`0`；<br>         否则返回`-1`。 |
+| FFRT_C_API int | 操作成功时返回`0`；          否则返回`-1`。 |
 
 **参考：**
 

@@ -8,10 +8,6 @@ export type ApplicationStateObserver = _ApplicationStateObserver
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appManager-export type ApplicationStateObserver = _ApplicationStateObserver--><!--Device-appManager-export type ApplicationStateObserver = _ApplicationStateObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

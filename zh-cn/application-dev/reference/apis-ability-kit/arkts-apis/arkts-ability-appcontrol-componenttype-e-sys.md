@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appControl-export enum ComponentType--><!--Device-appControl-export enum ComponentType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -24,10 +20,6 @@ UI基础功能类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ComponentType-UI_ABILITY = 1--><!--Device-ComponentType-UI_ABILITY = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -43,10 +35,6 @@ UI_EXTENSION = 2
 UI扩展能力类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ComponentType-UI_EXTENSION = 2--><!--Device-ComponentType-UI_EXTENSION = 2-End-->
 

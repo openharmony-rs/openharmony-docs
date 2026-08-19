@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export interface SubscribeId--><!--Device-cloudExtension-export interface SubscribeId-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudExtension } from '@kit.ArkData';
+```
 
 ## databaseAlias
 
@@ -25,10 +27,6 @@ databaseAlias: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SubscribeId-databaseAlias: string--><!--Device-SubscribeId-databaseAlias: string-End-->
 
@@ -47,10 +45,6 @@ id: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SubscribeId-id: string--><!--Device-SubscribeId-id: string-End-->
 

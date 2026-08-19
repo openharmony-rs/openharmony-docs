@@ -14,10 +14,6 @@ List(options?: ListOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -34,19 +30,34 @@ List(options?: ListOptions)
 
 ## 汇总
 
-- [ChainAnimationOptions](arkts-arkui-chainanimationoptions-i-sys.md)
-- [CloseSwipeActionOptions](arkts-arkui-closeswipeactionoptions-i.md)
-- [ListBackPressBehavior](arkts-arkui-listbackpressbehavior-i.md)
-- [ListDividerOptions](arkts-arkui-listdivideroptions-i.md)
-- [ListOptions](arkts-arkui-listoptions-i.md)
-- [UIListEvent](arkts-arkui-uilistevent-i.md)
-- [VisibleListContentInfo](arkts-arkui-visiblelistcontentinfo-i.md)
-- [OnListScrollIndexCallback](arkts-arkui-onlistscrollindexcallback-t.md)
-- [OnScrollVisibleContentChangeCallback](arkts-arkui-onscrollvisiblecontentchangecallback-t.md)
-- [ChainEdgeEffect](arkts-arkui-chainedgeeffect-e-sys.md)
-- [ListItemAlign](arkts-arkui-listitemalign-e.md)
-- [ListItemGroupArea](arkts-arkui-listitemgrouparea-e.md)
-- [ScrollSnapAlign](arkts-arkui-scrollsnapalign-e.md)
-- [ScrollSnapAnimationSpeed](arkts-arkui-scrollsnapanimationspeed-e.md)
-- [ScrollState](arkts-arkui-scrollstate-e.md)
-- [StickyStyle](arkts-arkui-stickystyle-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ChainAnimationOptions](arkts-arkui-chainanimationoptions-i-sys.md) | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
+| [CloseSwipeActionOptions](arkts-arkui-closeswipeactionoptions-i.md) | 收起EXPANDED状态ListItem回调事件集合，用于设置收起动画完成后回调事件。 |
+| [ListBackPressBehavior](arkts-arkui-listbackpressbehavior-i.md) | 定义List组件的系统返回键行为。 |
+| [ListDividerOptions](arkts-arkui-listdivideroptions-i.md) | 用于设置List或ListItemGroup组件的分割线样式。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [ListOptions](arkts-arkui-listoptions-i.md) | 用于设置List组件参数。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [UIListEvent](arkts-arkui-uilistevent-i.md) | frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md)方法的返 回值，可用于给List节点设置滚动事件。 UIListEvent继承于UIScrollableCommonEvent。 |
+| [VisibleListContentInfo](arkts-arkui-visiblelistcontentinfo-i.md) | 用于表示List可见内容区子组件的详细信息。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [OnListScrollIndexCallback](arkts-arkui-onlistscrollindexcallback-t.md) | List组件可见区域item变化事件的回调类型。 |
+| [OnScrollVisibleContentChangeCallback](arkts-arkui-onscrollvisiblecontentchangecallback-t.md) | 有子组件划入或划出List显示区域时触发。 API版本26.0.0开始，List从有子组件变成空的List时，上报的start和end参数的index成员为-1，itemGroupArea和itemIndexInGroup成员为undefined。API版本26.0.0以前， List从有子组件变成空的List时，上报的start和end参数会保留上次有子组件时的值。 start和end的index同时返回0，代表List内只有一个子组件。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ChainEdgeEffect](arkts-arkui-chainedgeeffect-e-sys.md) | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
+| [ListItemAlign](arkts-arkui-listitemalign-e.md) | 设置子组件在List交叉轴方向的对齐方式。 |
+| [ListItemGroupArea](arkts-arkui-listitemgrouparea-e.md) | 枚举了ListItemGroup各个区域。 |
+| [ScrollSnapAlign](arkts-arkui-scrollsnapalign-e.md) | 设置列表项滚动结束对齐效果。 |
+| [ScrollSnapAnimationSpeed](arkts-arkui-scrollsnapanimationspeed-e.md) | 设置列表项滚动限位动画速度。 |
+| [ScrollState](arkts-arkui-scrollstate-e.md) | 滑动状态枚举。 |
+| [StickyStyle](arkts-arkui-stickystyle-e.md) | ListItemGroup吸顶或吸底效果枚举。 |
+

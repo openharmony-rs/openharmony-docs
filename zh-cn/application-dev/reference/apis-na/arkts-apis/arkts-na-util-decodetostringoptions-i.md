@@ -4,13 +4,16 @@ Defines the decode with stream related options parameters.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-util-interface DecodeToStringOptions--><!--Device-util-interface DecodeToStringOptions-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+```
 
 ## stream
 
@@ -24,9 +27,7 @@ Stream option controls stream processing in decoding. The default value is false
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-DecodeToStringOptions-stream?: boolean--><!--Device-DecodeToStringOptions-stream?: boolean-End-->
 

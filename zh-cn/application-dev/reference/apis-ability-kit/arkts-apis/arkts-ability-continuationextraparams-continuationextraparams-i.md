@@ -1,10 +1,8 @@
 # ContinuationExtraParams
 
-流转管理入口中设备选择模块所需的过滤参数，可以作为 [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md#startcontinuationdevicemanager) 的入参。
+流转管理入口中设备选择模块所需的过滤参数，可以作为 [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md) 的入参。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 22
 
@@ -23,8 +21,6 @@ authInfo?: Record<string, Object>
 **类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 22
 
@@ -48,8 +44,6 @@ continuationMode?: continuationManager.ContinuationMode
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -71,8 +65,6 @@ description?: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 22
 
@@ -96,8 +88,6 @@ deviceType?: Array<string>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -120,8 +110,6 @@ filter?: any
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -143,8 +131,6 @@ targetBundle?: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 22
 

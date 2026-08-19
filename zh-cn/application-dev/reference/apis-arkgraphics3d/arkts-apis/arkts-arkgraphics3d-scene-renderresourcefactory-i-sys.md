@@ -1,12 +1,8 @@
 # RenderResourceFactory
 
-渲染资源工厂，用于创建可在共享RenderContext的场景间共享的资源。
+用于创建可在共享RenderContext的多个场景（[Scene](arkts-arkgraphics3d-scene-c.md)）中共享的渲染资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RenderResourceFactory--><!--Device-unnamed-export interface RenderResourceFactory-End-->
 
@@ -18,13 +14,9 @@
 createScene(uri: ResourceStr, param: SceneLoadParams): Promise<Scene>
 ```
 
-从SceneLoadParams创建新场景.
+根据指定的资源路径和场景加载参数创建场景，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,16 +30,16 @@ createScene(uri: ResourceStr, param: SceneLoadParams): Promise<Scene>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | ResourceStr | 是 | 创建场景的资源 |
-| param | [SceneLoadParams](arkts-arkgraphics3d-scene-sceneloadparams-i-sys.md) | 是 | 场景加载参数 |
+| uri | ResourceStr | 是 | 创建场景使用的资源路径。 |
+| param | [SceneLoadParams](arkts-arkgraphics3d-scene-sceneloadparams-i-sys.md) | 是 | 场景加载参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | 返回场景的Promise |
+| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise对象，返回创建的场景对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, SceneLoadParams, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';

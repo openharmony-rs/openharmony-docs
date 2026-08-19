@@ -67,7 +67,7 @@
 | -- | -- | -- |
 | [OH_Drawing_ColorFormat](#oh_drawing_colorformat) | OH_Drawing_ColorFormat | 用于描述位图像素的存储格式。 |
 | [OH_Drawing_AlphaFormat](#oh_drawing_alphaformat) | OH_Drawing_AlphaFormat | 用于描述位图像素的透明度分量。 |
-| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | 混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s  : source，源的缩写。<br>d  : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r  : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。 |
+| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | 混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s : source，源的缩写。<br>d : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。 |
 | [OH_Drawing_TextEncoding](#oh_drawing_textencoding) | OH_Drawing_TextEncoding | 文本编码类型枚举。 |
 
 ## 枚举类型说明
@@ -120,7 +120,7 @@ enum OH_Drawing_BlendMode
 
 **描述**
 
-混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s  : source，源的缩写。<br>d  : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r  : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。
+混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s : source，源的缩写。<br>d : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。
 
 **起始版本：** 11
 

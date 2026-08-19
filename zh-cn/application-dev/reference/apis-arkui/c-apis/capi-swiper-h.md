@@ -731,7 +731,7 @@ int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>          {@link ARKUI_ERROR_CODE_PARAM_INVALID} 如果maxDisplayCount设置范围错误, 返回错误码。 |
+| int32_t | 错误码。           {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。           {@link ARKUI_ERROR_CODE_PARAM_INVALID} 如果maxDisplayCount设置范围错误, 返回错误码。 |
 
 ### OH_ArkUI_SwiperIndicator_GetMaxDisplayCount()
 

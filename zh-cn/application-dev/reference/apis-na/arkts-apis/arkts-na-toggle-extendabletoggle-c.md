@@ -2,13 +2,11 @@
 
 Defines the Extendable Toggle.
 
-**继承/实现关系：** ExtendableToggle implements [ToggleAttribute](arkts-na-toggle-toggleattribute-i.md#toggleattribute)
+**继承/实现关系：** ExtendableToggle implements [ToggleAttribute](arkts-na-toggle-toggleattribute-i.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare abstract class ExtendableToggle--><!--Device-unnamed-export declare abstract class ExtendableToggle-End-->
 
@@ -29,9 +27,7 @@ Constructor of Extendable Toggle.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,9 +64,7 @@ Entry of Extendable Toggle.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,9 +90,7 @@ Set the Toggle Options.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

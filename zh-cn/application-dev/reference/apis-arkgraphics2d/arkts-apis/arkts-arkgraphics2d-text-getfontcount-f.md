@@ -1,5 +1,11 @@
 # getFontCount
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## getFontCount
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getFontCount(path: string | Resource) : int
 根据字体文件路径获取包含的字体文件数。 如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回0。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +36,7 @@ function getFontCount(path: string | Resource) : int
 | --- | --- |
 | int | 包含字体数量。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

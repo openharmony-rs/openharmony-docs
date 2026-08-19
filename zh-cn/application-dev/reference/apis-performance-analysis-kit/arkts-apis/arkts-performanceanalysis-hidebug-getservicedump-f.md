@@ -1,5 +1,11 @@
 # getServiceDump
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getServiceDump
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void
 获取系统服务信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.DUMP
 
@@ -35,7 +37,7 @@ function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void
 | [401](../../errorcode-universal.md#401-参数检查失败) | the parameter check failed, Possible causes: 1.the parameter type error 2.the args parameter is not string array |
 | [11400101](../errorcode-hiviewdfx-hidebug.md#11400101-系统服务获取失败) | ServiceId invalid. The system ability does not exist. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

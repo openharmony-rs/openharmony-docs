@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class BackupExtensionAbility--><!--Device-unnamed-declare class BackupExtensionAbility-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
+
+## 导入模块
+
+```TypeScript
+import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
+import { BundleVersion } from '@kit.CoreFileKit';
+```
 
 ## onBackup
 
@@ -22,17 +26,13 @@ Extension生命周期回调，在执行备份数据时回调，由开发者实�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BackupExtensionAbility-onBackup(): void--><!--Device-BackupExtensionAbility-onBackup(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
-## 示例
+**示例**
 
 ```TypeScript
 class BackupExt extends BackupExtensionAbility {
@@ -52,10 +52,6 @@ onBackupEx(backupInfo: string): string | Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BackupExtensionAbility-onBackupEx(backupInfo: string): string | Promise<string>--><!--Device-BackupExtensionAbility-onBackupEx(backupInfo: string): string | Promise<string>-End-->
@@ -74,7 +70,7 @@ onBackupEx(backupInfo: string): string | Promise<string>
 | --- | --- |
 | string | 应用执行自定义备份操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -161,10 +157,6 @@ onProcess(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BackupExtensionAbility-onProcess(): string--><!--Device-BackupExtensionAbility-onProcess(): string-End-->
@@ -177,7 +169,7 @@ onProcess(): string
 | --- | --- |
 | string | 应用处理数据的进度信息，返回值为JSON格式字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -266,10 +258,6 @@ onRelease(scenario: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BackupExtensionAbility-onRelease(scenario: int): Promise<void>--><!--Device-BackupExtensionAbility-onRelease(scenario: int): Promise<void>-End-->
@@ -288,7 +276,7 @@ onRelease(scenario: int): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 以清理文件为例
@@ -333,10 +321,6 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者提�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BackupExtensionAbility-onRestore(bundleVersion: BundleVersion): void--><!--Device-BackupExtensionAbility-onRestore(bundleVersion: BundleVersion): void-End-->
@@ -349,7 +333,7 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者提�
 | --- | --- | --- | --- |
 | bundleVersion | [BundleVersion](arkts-corefile-application-backupextensionability-bundleversion-i.md) | 是 | 恢复时应用数据所在的版本信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
@@ -371,10 +355,6 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者实�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BackupExtensionAbility-onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise<string>--><!--Device-BackupExtensionAbility-onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise<string>-End-->
@@ -394,7 +374,7 @@ Extension生命周期回调，在执行恢复数据时回调，由开发者实�
 | --- | --- |
 | string | 应用执行自定义恢复操作的信息，返回值为JSON格式字符串， 包含type、errorCode和errorInfo字段，支持同步返回或使用Promise异步返回。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
@@ -482,10 +462,6 @@ BackupExtensionAbility的上下文环境，继承自ExtensionContext。
 **类型：** [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

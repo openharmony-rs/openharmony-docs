@@ -1,5 +1,11 @@
 # dialCall（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## dialCall
 
 ```TypeScript
@@ -9,10 +15,6 @@ function dialCall(phoneNumber: string, options: DialCallOptions, callback: Async
 拨打电话，可设置通话参数。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -28,7 +30,7 @@ function dialCall(phoneNumber: string, options: DialCallOptions, callback: Async
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
 | options | [DialCallOptions](arkts-telephony-call-dialcalloptions-i-sys.md) | 是 | 通话参数，携带呼叫的其他配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以callback形式异步返回拨打电话的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以callback形式异步返回拨打电话的结果。 |
 
 **错误码：**
 
@@ -44,7 +46,7 @@ function dialCall(phoneNumber: string, options: DialCallOptions, callback: Async
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -75,10 +77,6 @@ function dialCall(phoneNumber: string, options?: DialCallOptions): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.PLACE_CALL
 
 <!--Device-call-function dialCall(phoneNumber: string, options?: DialCallOptions): Promise<void>--><!--Device-call-function dialCall(phoneNumber: string, options?: DialCallOptions): Promise<void>-End-->
@@ -92,7 +90,7 @@ function dialCall(phoneNumber: string, options?: DialCallOptions): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
-| options | [DialCallOptions](arkts-telephony-call-dialcalloptions-i-sys.md) | 否 | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考 [DialCallOptions](arkts-telephony-call-dialcalloptions-i-sys.md#dialcalloptions系统接口)。<br/>- 帐户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类 型：运营商通话。 |
+| options | [DialCallOptions](arkts-telephony-call-dialcalloptions-i-sys.md) | 否 | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考 [DialCallOptions](arkts-telephony-call-dialcalloptions-i-sys.md)。<br/>- 帐户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类 型：运营商通话。 |
 
 **返回值：**
 
@@ -114,7 +112,7 @@ function dialCall(phoneNumber: string, options?: DialCallOptions): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -143,10 +141,6 @@ function dialCall(phoneNumber: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.PLACE_CALL
 
 <!--Device-call-function dialCall(phoneNumber: string, callback: AsyncCallback<void>): void--><!--Device-call-function dialCall(phoneNumber: string, callback: AsyncCallback<void>): void-End-->
@@ -160,7 +154,7 @@ function dialCall(phoneNumber: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以callback形式异步返回拨打电话的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 以callback形式异步返回拨打电话的结果。 |
 
 **错误码：**
 
@@ -176,7 +170,7 @@ function dialCall(phoneNumber: string, callback: AsyncCallback<void>): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

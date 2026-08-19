@@ -1,5 +1,11 @@
 # offAdvertisingStateChange
 
+## 导入模块
+
+```TypeScript
+import { advertising } from '@kit.ConnectivityKit';
+```
+
 ## offAdvertisingStateChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offAdvertisingStateChange(callback?: Callback<AdvertisingStateChangeInf
 取消订阅广播状态变更事件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ function offAdvertisingStateChange(callback?: Callback<AdvertisingStateChangeInf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AdvertisingStateChangeInfo](arkts-connectivity-advertising-advertisingstatechangeinfo-i.md)&gt; | 否 | 用于监听广播状态的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AdvertisingStateChangeInfo](arkts-connectivity-advertising-advertisingstatechangeinfo-i.md)&gt; | 否 | 用于监听广播状态的回调。 |
 
 **错误码：**
 

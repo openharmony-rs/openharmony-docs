@@ -4,10 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface AppVersionInfo--><!--Device-unnamed-export interface AppVersionInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -25,10 +21,6 @@ readonly appName: string
 **默认值：** appName
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 
 - API版本12+：此接口仅可在FA模型下使用。
@@ -53,10 +45,6 @@ readonly versionCode: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 
 - API版本12+：此接口仅可在FA模型下使用。
 
@@ -79,10 +67,6 @@ readonly versionName: string
 **默认值：** versionName
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 
 - API版本12+：此接口仅可在FA模型下使用。

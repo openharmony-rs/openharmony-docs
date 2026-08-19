@@ -1,12 +1,8 @@
 # PrimitiveTopology
 
-顶点序列如何构成三角形.
+图元拓扑枚举，在顶点处理过程中，指定顶点的不同处理方式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum PrimitiveTopology--><!--Device-unnamed-export enum PrimitiveTopology-End-->
 
@@ -18,13 +14,9 @@
 TRIANGLE_LIST = 0
 ```
 
-顶点形成一组独立的三角形. 顶点(0, 1, 2)、(3, 4, 5)、...定义独立的三角形.
+由不相交的顶点集合构成不同的三角形。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PrimitiveTopology-TRIANGLE_LIST = 0--><!--Device-PrimitiveTopology-TRIANGLE_LIST = 0-End-->
 
@@ -36,13 +28,9 @@ TRIANGLE_LIST = 0
 TRIANGLE_STRIP = 1
 ```
 
-顶点形成三角形条带. 从第三个顶点开始，每个顶点与前两个顶点构成三角形.
+每个顶点和前一个三角形的一条边构成新的三角形。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PrimitiveTopology-TRIANGLE_STRIP = 1--><!--Device-PrimitiveTopology-TRIANGLE_STRIP = 1-End-->
 

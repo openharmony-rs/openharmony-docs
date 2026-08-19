@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum AppLinkState--><!--Device-photoAccessHelper-enum AppLinkState-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ DEFAULT = 0
 无法确定文件是否具有记忆链接标记。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ HAS_NO_LINK = 1
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AppLinkState-HAS_NO_LINK = 1--><!--Device-AppLinkState-HAS_NO_LINK = 1-End-->
@@ -67,10 +55,6 @@ HAS_LINK = 2
 文件具有记忆链接标记。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

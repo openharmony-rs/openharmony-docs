@@ -4,9 +4,7 @@ Register callbacks to observe ArkUI behavior.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -14,36 +12,41 @@ Register callbacks to observe ArkUI behavior.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [offDensityUpdate](arkts-na-uiobserver-offdensityupdate-f.md#offdensityupdate) | Removes a callback function that was previously registered with `on()`. |
-| [offDidLayout](arkts-na-uiobserver-offdidlayout-f.md#offdidlayout) | Removes a callback function that was previously registered with `on()`. |
-| [offNavDestinationSwitch](arkts-na-uiobserver-offnavdestinationswitch-f.md#offnavdestinationswitch) | 取消监听Navigation的页面切换事件。 |
-| [offNavDestinationSwitch](arkts-na-uiobserver-offnavdestinationswitch-f.md#offnavdestinationswitch) | 取消监听Navigation的页面切换事件。 |
-| [offNavDestinationUpdate](arkts-na-uiobserver-offnavdestinationupdate-f.md#offnavdestinationupdate) | 取消监听NavDestination组件的状态变化。 |
-| [offNavDestinationUpdate](arkts-na-uiobserver-offnavdestinationupdate-f.md#offnavdestinationupdate) | 取消监听NavDestination组件的状态变化。 |
-| [offRouterPageUpdate](arkts-na-uiobserver-offrouterpageupdate-f.md#offrouterpageupdate) | 取消监听router中page页面的状态变化。 |
-| [offScrollEvent](arkts-na-uiobserver-offscrollevent-f.md#offscrollevent) | Removes a callback function that was previously registered with `onScrollEvent()`. |
-| [offScrollEvent](arkts-na-uiobserver-offscrollevent-f.md#offscrollevent) | Removes a callback function that was previously registered with `onScrollEvent()`. |
-| [offTabContentUpdate](arkts-na-uiobserver-offtabcontentupdate-f.md#offtabcontentupdate) | 取消监听TabContent页面的切换事件。 |
-| [offTabContentUpdate](arkts-na-uiobserver-offtabcontentupdate-f.md#offtabcontentupdate) | 取消监听TabContent页面的切换事件。 |
-| [offWillDraw](arkts-na-uiobserver-offwilldraw-f.md#offwilldraw) | Removes a callback function that was previously registered with `on()`. |
-| [onDensityUpdate](arkts-na-uiobserver-ondensityupdate-f.md#ondensityupdate) | Registers a callback function to be called when the screen density is updated. |
-| [onDidLayout](arkts-na-uiobserver-ondidlayout-f.md#ondidlayout) | Registers a callback function to be called when the layout is done. |
-| [onNavDestinationSwitch](arkts-na-uiobserver-onnavdestinationswitch-f.md#onnavdestinationswitch) | 监听Navigation的页面切换事件。 |
-| [onNavDestinationSwitch](arkts-na-uiobserver-onnavdestinationswitch-f.md#onnavdestinationswitch) | 监听Navigation的页面切换事件。 |
-| [onNavDestinationUpdate](arkts-na-uiobserver-onnavdestinationupdate-f.md#onnavdestinationupdate) | 监听NavDestination组件的状态变化。 |
-| [onNavDestinationUpdate](arkts-na-uiobserver-onnavdestinationupdate-f.md#onnavdestinationupdate) | 监听NavDestination组件的状态变化。 |
-| [onRouterPageUpdate](arkts-na-uiobserver-onrouterpageupdate-f.md#onrouterpageupdate) | 监听router中page页面的状态变化。 |
-| [onScrollEvent](arkts-na-uiobserver-onscrollevent-f.md#onscrollevent) | Registers a callback function to be called when the scroll event starts or stops. |
-| [onScrollEvent](arkts-na-uiobserver-onscrollevent-f.md#onscrollevent) | Registers a callback function to be called when the scroll event starts or stops. |
-| [onTabContentUpdate](arkts-na-uiobserver-ontabcontentupdate-f.md#ontabcontentupdate) | 监听TabContent页面的切换事件。 |
-| [onTabContentUpdate](arkts-na-uiobserver-ontabcontentupdate-f.md#ontabcontentupdate) | 监听TabContent页面的切换事件。 |
-| [onWillDraw](arkts-na-uiobserver-onwilldraw-f.md#onwilldraw) | Registers a callback function to be called when the draw command will be drawn. |
+| [offDensityUpdate](arkts-na-uiobserver-offdensityupdate-f.md) | Removes a callback function that was previously registered with `on()`. |
+| [offDidLayout](arkts-na-uiobserver-offdidlayout-f.md) | Removes a callback function that was previously registered with `on()`. |
+| [offNavDestinationSwitch](arkts-na-uiobserver-offnavdestinationswitch-f.md) | 取消监听Navigation的页面切换事件。 |
+| [offNavDestinationSwitch](arkts-na-uiobserver-offnavdestinationswitch-f.md) | 取消监听Navigation的页面切换事件。 |
+| [offNavDestinationUpdate](arkts-na-uiobserver-offnavdestinationupdate-f.md) | 取消监听NavDestination组件的状态变化。 |
+| [offNavDestinationUpdate](arkts-na-uiobserver-offnavdestinationupdate-f.md) | 取消监听NavDestination组件的状态变化。 |
+| [offRouterPageUpdate](arkts-na-uiobserver-offrouterpageupdate-f.md) | 取消监听router中page页面的状态变化。 |
+| [offScrollEvent](arkts-na-uiobserver-offscrollevent-f.md) | Removes a callback function that was previously registered with `onScrollEvent()`. |
+| [offScrollEvent](arkts-na-uiobserver-offscrollevent-f.md) | Removes a callback function that was previously registered with `onScrollEvent()`. |
+| [offTabContentUpdate](arkts-na-uiobserver-offtabcontentupdate-f.md) | 取消监听TabContent页面的切换事件。 |
+| [offTabContentUpdate](arkts-na-uiobserver-offtabcontentupdate-f.md) | 取消监听TabContent页面的切换事件。 |
+| [offWillDraw](arkts-na-uiobserver-offwilldraw-f.md) | Removes a callback function that was previously registered with `on()`. |
+| [onDensityUpdate](arkts-na-uiobserver-ondensityupdate-f.md) | Registers a callback function to be called when the screen density is updated. |
+| [onDidLayout](arkts-na-uiobserver-ondidlayout-f.md) | Registers a callback function to be called when the layout is done. |
+| [onNavDestinationSwitch](arkts-na-uiobserver-onnavdestinationswitch-f.md) | 监听Navigation的页面切换事件。 |
+| [onNavDestinationSwitch](arkts-na-uiobserver-onnavdestinationswitch-f.md) | 监听Navigation的页面切换事件。 |
+| [onNavDestinationUpdate](arkts-na-uiobserver-onnavdestinationupdate-f.md) | 监听NavDestination组件的状态变化。 |
+| [onNavDestinationUpdate](arkts-na-uiobserver-onnavdestinationupdate-f.md) | 监听NavDestination组件的状态变化。 |
+| [onRouterPageUpdate](arkts-na-uiobserver-onrouterpageupdate-f.md) | 监听router中page页面的状态变化。 |
+| [onScrollEvent](arkts-na-uiobserver-onscrollevent-f.md) | Registers a callback function to be called when the scroll event starts or stops. |
+| [onScrollEvent](arkts-na-uiobserver-onscrollevent-f.md) | Registers a callback function to be called when the scroll event starts or stops. |
+| [onTabContentUpdate](arkts-na-uiobserver-ontabcontentupdate-f.md) | 监听TabContent页面的切换事件。 |
+| [onTabContentUpdate](arkts-na-uiobserver-ontabcontentupdate-f.md) | 监听TabContent页面的切换事件。 |
+| [onWillDraw](arkts-na-uiobserver-onwilldraw-f.md) | Registers a callback function to be called when the draw command will be drawn. |
 
 ### 类
 

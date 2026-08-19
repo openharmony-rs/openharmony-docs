@@ -4,15 +4,19 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#kvstoreresultset)
+**替代接口：** [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)
 
 <!--Device-distributedData-interface KvStoreResultSet--><!--Device-distributedData-interface KvStoreResultSet-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## getCount
 
@@ -23,8 +27,6 @@ getCount(): number
 获取结果集中的总行数。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -40,7 +42,7 @@ getCount(): number
 | --- | --- |
 | number | 返回数据的总行数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -69,8 +71,6 @@ getEntry(): Entry
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getEntry
@@ -85,7 +85,7 @@ getEntry(): Entry
 | --- | --- |
 | Entry | 返回键值对。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -114,8 +114,6 @@ getPosition(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getPosition
@@ -130,7 +128,7 @@ getPosition(): number
 | --- | --- |
 | number | 返回当前读取位置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -159,8 +157,6 @@ isAfterLast(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** isAfterLast
@@ -175,7 +171,7 @@ isAfterLast(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置在最后一行之后；返回false表示读取位置不在最后一行之后。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -204,8 +200,6 @@ isBeforeFirst(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** isBeforeFirst
@@ -220,7 +214,7 @@ isBeforeFirst(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置在第一行之前；返回false表示读取位置不在第一行之前。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -249,8 +243,6 @@ isFirst(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** isFirst
@@ -265,7 +257,7 @@ isFirst(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置为第一行；返回false表示读取位置不是第一行。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -294,8 +286,6 @@ isLast(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** isLast
@@ -310,7 +300,7 @@ isLast(): boolean
 | --- | --- |
 | boolean | 返回true表示读取位置为最后一行；返回false表示读取位置不是最后一行。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -339,8 +329,6 @@ move(offset: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** move
@@ -361,7 +349,7 @@ move(offset: number): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -390,8 +378,6 @@ moveToFirst(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** moveToFirst
@@ -406,7 +392,7 @@ moveToFirst(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -435,8 +421,6 @@ moveToLast(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** moveToLast
@@ -451,7 +435,7 @@ moveToLast(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -480,8 +464,6 @@ moveToNext(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** moveToNext
@@ -496,7 +478,7 @@ moveToNext(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -525,8 +507,6 @@ moveToPosition(position: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** moveToPosition
@@ -547,7 +527,7 @@ moveToPosition(position: number): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -576,8 +556,6 @@ moveToPrevious(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** moveToPrevious
@@ -592,7 +570,7 @@ moveToPrevious(): boolean
 | --- | --- |
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;

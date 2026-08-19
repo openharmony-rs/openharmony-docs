@@ -20,6 +20,6 @@ OH_NativeBuffer的属性配置，用于申请新的OH_NativeBuffer实例或查�
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t stride;          ///< stride stride in bytes |  |
+| int32_t stride; ///< stride stride in bytes |  |
 
 

@@ -14,10 +14,6 @@ TextInput(value?: TextInputOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextInputInterface-(value?: TextInputOptions): TextInputAttribute--><!--Device-TextInputInterface-(value?: TextInputOptions): TextInputAttribute-End-->
@@ -32,15 +28,30 @@ TextInput(value?: TextInputOptions)
 
 ## 汇总
 
-- [PasswordIcon](arkts-arkui-passwordicon-i.md)
-- [SubmitEvent](arkts-arkui-submitevent-i.md)
-- [TextInputOptions](arkts-arkui-textinputoptions-i.md)
-- [UnderlineColor](arkts-arkui-underlinecolor-i.md)
-- [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-t.md)
-- [OnPasteCallback](arkts-arkui-onpastecallback-t.md)
-- [OnSubmitCallback](arkts-arkui-onsubmitcallback-t.md)
-- [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-t.md)
-- [ContentType](arkts-arkui-contenttype-e.md)
-- [EnterKeyType](arkts-arkui-enterkeytype-e.md)
-- [InputType](arkts-arkui-inputtype-e.md)
-- [TextInputStyle](arkts-arkui-textinputstyle-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [PasswordIcon](arkts-arkui-passwordicon-i.md) | PasswordIcon对象。 |
+| [SubmitEvent](arkts-arkui-submitevent-i.md) | 定义用户提交事件。 |
+| [TextInputOptions](arkts-arkui-textinputoptions-i.md) | TextInput初始化参数。 |
+| [UnderlineColor](arkts-arkui-underlinecolor-i.md) | 定义下划线颜色宽度属性。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-t.md) | 文本内容滚动回调。 |
+| [OnPasteCallback](arkts-arkui-onpastecallback-t.md) | 粘贴回调。 |
+| [OnSubmitCallback](arkts-arkui-onsubmitcallback-t.md) | 提交回调。 |
+| [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-t.md) | 文本选择变化回调或光标位置变化回调。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ContentType](arkts-arkui-contenttype-e.md) | 自动填充类型。 |
+| [EnterKeyType](arkts-arkui-enterkeytype-e.md) | 输入法回车键类型。 |
+| [InputType](arkts-arkui-inputtype-e.md) | 单行文本输入框类型。 |
+| [TextInputStyle](arkts-arkui-textinputstyle-e.md) | 文本输入样式。 |
+

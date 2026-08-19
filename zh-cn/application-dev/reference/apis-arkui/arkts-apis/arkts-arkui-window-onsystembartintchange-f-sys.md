@@ -1,5 +1,13 @@
 # onSystemBarTintChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## onSystemBarTintChange
 
 ```TypeScript
@@ -9,10 +17,6 @@ function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void
 开启状态栏、导航栏属性变化的监听。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-window-function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void--><!--Device-window-function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void-End-->
 
@@ -32,7 +36,7 @@ function onSystemBarTintChange(callback: Callback<SystemBarTintState>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

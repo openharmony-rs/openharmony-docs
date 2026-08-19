@@ -8,8 +8,6 @@ export type ResultSet = _ResultSet
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-rdb-export type ResultSet = _ResultSet--><!--Device-rdb-export type ResultSet = _ResultSet-End-->

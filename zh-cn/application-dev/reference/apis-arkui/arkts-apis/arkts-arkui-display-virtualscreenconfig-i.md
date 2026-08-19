@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-interface VirtualScreenConfig--><!--Device-display-interface VirtualScreenConfig-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
 
 ## density
 
@@ -23,10 +25,6 @@ density: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VirtualScreenConfig-density: double--><!--Device-VirtualScreenConfig-density: double-End-->
 
@@ -44,10 +42,6 @@ height: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VirtualScreenConfig-height: long--><!--Device-VirtualScreenConfig-height: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -63,10 +57,6 @@ name: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VirtualScreenConfig-name: string--><!--Device-VirtualScreenConfig-name: string-End-->
 
@@ -84,10 +74,6 @@ supportsFocus?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VirtualScreenConfig-supportsFocus?: boolean--><!--Device-VirtualScreenConfig-supportsFocus?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -104,10 +90,6 @@ surfaceId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VirtualScreenConfig-surfaceId: string--><!--Device-VirtualScreenConfig-surfaceId: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -123,10 +105,6 @@ width: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VirtualScreenConfig-width: long--><!--Device-VirtualScreenConfig-width: long-End-->
 

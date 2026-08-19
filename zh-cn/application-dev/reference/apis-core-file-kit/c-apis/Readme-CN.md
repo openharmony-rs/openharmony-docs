@@ -1,4 +1,4 @@
-# CAPI<!--c-core-file-kit-->
+# C API<!--c-core-file-kit-->
 
 - 头文件
     - [oh_file_share.h](capi-oh-file-share-h.md)

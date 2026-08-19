@@ -1,4 +1,4 @@
-# CAPI<!--c-game-controller-kit-->
+# C API<!--c-game-controller-kit-->
 
 - 头文件
     - [game_pad_event.h](capi-game-pad-event-h.md)

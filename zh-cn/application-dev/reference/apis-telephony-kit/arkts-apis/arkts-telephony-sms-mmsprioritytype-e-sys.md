@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export enum MmsPriorityType--><!--Device-sms-export enum MmsPriorityType-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -23,10 +19,6 @@ MMS_LOW = 128
 彩信优先级低
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmsPriorityType-MMS_LOW = 128--><!--Device-MmsPriorityType-MMS_LOW = 128-End-->
 
@@ -44,10 +36,6 @@ MMS_NORMAL = 129
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MmsPriorityType-MMS_NORMAL = 129--><!--Device-MmsPriorityType-MMS_NORMAL = 129-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -63,10 +51,6 @@ MMS_HIGH = 130
 彩信优先级高
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmsPriorityType-MMS_HIGH = 130--><!--Device-MmsPriorityType-MMS_HIGH = 130-End-->
 

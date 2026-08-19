@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-deviceManager-enum ExchangeMedium--><!--Device-deviceManager-enum ExchangeMedium-End-->
@@ -23,8 +21,6 @@ AUTO = 0
 自动发现类型。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -44,8 +40,6 @@ BLE = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-ExchangeMedium-BLE = 1--><!--Device-ExchangeMedium-BLE = 1-End-->
@@ -64,8 +58,6 @@ WiFi发现类型。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-ExchangeMedium-COAP = 2--><!--Device-ExchangeMedium-COAP = 2-End-->
@@ -83,8 +75,6 @@ USB = 3
 USB发现类型。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 

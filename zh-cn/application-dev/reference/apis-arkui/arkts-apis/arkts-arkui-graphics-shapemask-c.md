@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare class ShapeMask--><!--Device-unnamed-export declare class ShapeMask-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ constructor()
 ShapeMask的构造函数。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ setCircleShape(circle: Circle): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,7 +50,7 @@ setCircleShape(circle: Circle): void
 | --- | --- | --- | --- |
 | circle | [Circle](arkts-arkui-graphics-circle-i.md) | 是 | 圆形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
@@ -119,10 +107,6 @@ setCommandPath(path: CommandPath): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -137,7 +121,7 @@ setCommandPath(path: CommandPath): void
 | --- | --- | --- | --- |
 | path | [CommandPath](arkts-arkui-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
@@ -195,10 +179,6 @@ setOvalShape(oval: Rect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -213,7 +193,7 @@ setOvalShape(oval: Rect): void
 | --- | --- | --- | --- |
 | oval | [Rect](arkts-arkui-rect-t.md) | 是 | 椭圆形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
@@ -265,10 +245,6 @@ setRectShape(rect: Rect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -283,7 +259,7 @@ setRectShape(rect: Rect): void
 | --- | --- | --- | --- |
 | rect | [Rect](arkts-arkui-rect-t.md) | 是 | 矩形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
@@ -345,10 +321,6 @@ setRoundRectShape(roundRect: RoundRect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -363,7 +335,7 @@ setRoundRectShape(roundRect: RoundRect): void
 | --- | --- | --- | --- |
 | roundRect | [RoundRect](arkts-arkui-graphics-roundrect-i.md) | 是 | 圆角矩形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeMask, RoundRect } from '@kit.ArkUI';
@@ -420,17 +392,13 @@ struct Index {
 fillColor: number
 ```
 
-遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。 取值范围：[0, 0xffffffff] 超出范围时按默认值处理。 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md#blendmode)方式 与RenderNode本身的颜色混合，生成最终颜色。
+遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。 取值范围：[0, 0xffffffff] 超出范围时按默认值处理。 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md)方式 与RenderNode本身的颜色混合，生成最终颜色。
 
 **类型：** number
 
 **默认值：** 0XFF000000
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -446,17 +414,13 @@ fillColor: number
 strokeColor: number
 ```
 
-遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 取值范围：[0, 0xffffffff] 超出范围时按默认值处理。 通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md#blendmode) 方式与RenderNode本身的颜色混合，生成最终颜色。
+遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 取值范围：[0, 0xffffffff] 超出范围时按默认值处理。 通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md) 方式与RenderNode本身的颜色混合，生成最终颜色。
 
 **类型：** number
 
 **默认值：** 0XFF000000
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -479,10 +443,6 @@ strokeWidth: number
 **默认值：** 0
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

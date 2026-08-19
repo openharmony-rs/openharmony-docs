@@ -4,9 +4,7 @@ Defines the contents of the JavaScript to be injected.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface ScriptItem--><!--Device-unnamed-export declare interface ScriptItem-End-->
 
@@ -24,9 +22,7 @@ Sets the JavaScript to be injected.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ScriptItem-script: string--><!--Device-ScriptItem-script: string-End-->
 
@@ -44,9 +40,7 @@ Sets the rules of the JavaScript.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ScriptItem-scriptRules: Array<string>--><!--Device-ScriptItem-scriptRules: Array<string>-End-->
 
@@ -64,9 +58,7 @@ Set the regular expression rule that allows execution of this JavaScript.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

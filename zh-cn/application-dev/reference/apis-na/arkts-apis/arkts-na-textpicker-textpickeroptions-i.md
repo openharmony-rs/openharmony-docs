@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface TextPickerOptions--><!--Device-unnamed-export declare interface TextPickerOptions-End-->
 
@@ -24,9 +22,7 @@ columnWidths?: LengthMetrics[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,15 +36,13 @@ columnWidths?: LengthMetrics[]
 range: string[] | string[][] | Resource | TextPickerRangeContent[] | TextCascadePickerRangeContent[]
 ```
 
-选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。 **说明：** 1. 单列数据选择器使用string[]，Resource， [TextPickerRangeContent](arkts-na-textpicker-textpickerrangecontent-i.md#textpickerrangecontent)[]类型。 2. 多列非联动数据选择器使用string[][]类型。 3. 多列联动数据选择器使用[TextCascadePickerRangeContent](arkts-na-textpicker-textcascadepickerrangecontent-i.md#textcascadepickerrangecontent)[]类型。 4. Resource类型只支持[strarray.json](../../../quick-start/resource-categories-and-access.md#资源组目录)。 5. range的类型及列数不可以动态修改。
+选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。 **说明：** 1. 单列数据选择器使用string[]，Resource， [TextPickerRangeContent](arkts-na-textpicker-textpickerrangecontent-i.md)[]类型。 2. 多列非联动数据选择器使用string[][]类型。 3. 多列联动数据选择器使用[TextCascadePickerRangeContent](arkts-na-textpicker-textcascadepickerrangecontent-i.md)[]类型。 4. Resource类型只支持[strarray.json](../../../quick-start/resource-categories-and-access.md#资源组目录)。 5. range的类型及列数不可以动态修改。
 
 **类型：** string[] \| string[][] \| [Resource](../../apis-arkui/arkts-apis/arkts-arkui-resource-t.md) \| [TextPickerRangeContent](arkts-na-textpicker-textpickerrangecontent-i.md)[] \| [TextCascadePickerRangeContent](arkts-na-textpicker-textcascadepickerrangecontent-i.md)[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,9 +62,7 @@ selected?: int | int[] | Bindable<int> | Bindable<int[]>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,9 +82,7 @@ value?: BindableResourceStr | BindableResourceStrArray
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

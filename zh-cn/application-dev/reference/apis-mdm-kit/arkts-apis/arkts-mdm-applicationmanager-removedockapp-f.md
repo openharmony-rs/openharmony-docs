@@ -1,5 +1,11 @@
 # removeDockApp
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## removeDockApp
 
 ```TypeScript
@@ -9,10 +15,6 @@ function removeDockApp(admin: Want, bundleName: string, abilityName: string): vo
 从快捷栏中移除应用。 > **说明：** > > 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -41,7 +43,7 @@ function removeDockApp(admin: Want, bundleName: string, abilityName: string): vo
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { applicationManager } from '@kit.MDMKit';

@@ -1,5 +1,11 @@
 # setNetworkInterfaceDisabledSync
 
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
+
 ## setNetworkInterfaceDisabledSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, 
 禁止设备使用指定网络接口。适用于企业网络安全管控场景，例如禁用高风险网络接口、限制设备使用特定网络连接、防止通过网络接口进行数据泄露，帮助企业降低网络安全风险，防止通过特定网络接口进行的攻击或数据外泄。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -39,7 +41,7 @@ function setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, 
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { networkManager } from '@kit.MDMKit';

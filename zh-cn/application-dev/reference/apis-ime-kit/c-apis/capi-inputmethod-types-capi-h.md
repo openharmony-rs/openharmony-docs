@@ -2,7 +2,9 @@
 
 ## 概述
 
-提供了输入法相关的类型定义，包含键盘状态、回车键功能类型，光标移动方向等。这些类型定义用于描述输入法应用与编辑框客户端之间的交互行为。键盘状态定义了软键盘的显示和隐藏状态；回车键功能类型定义了在不同输入场景下回车键的触发行为；光标移动方向定义了光标在编辑框中的移动操作。
+输入法公共类型定义的头文件，提供模块内所有枚举和错误码的定义，包括键盘状态（KeyboardStatus）、回车键类型（EnterKeyType）、方向（Direction）、扩展动作（ExtendAction）、文本输入类型（TextInputType）、命令值类型（CommandValueType）、请求键盘原因（RequestKeyboardReason）和错误码（ErrorCode）。本头文件不包含可调用函数，仅作为类型定义被其他头文件引用。
+
+**引用文件：** <inputmethod/inputmethod_types_capi.h>
 
 **库：** libohinputmethod.so
 
@@ -18,14 +20,14 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [InputMethod_KeyboardStatus](#inputmethod_keyboardstatus) | InputMethod_KeyboardStatus | 键盘状态枚举，定义软键盘的显示和隐藏状态。该枚举用于在OH_TextEditorProxy_SendKeyboardStatusFunc回调中标识当前键盘的状态变化，编辑框客户端可根据键盘状态调整界面布局（如键盘弹起时避让编辑框区域）。 |
-| [InputMethod_EnterKeyType](#inputmethod_enterkeytype) | InputMethod_EnterKeyType | 回车键功能类型枚举，定义在不同输入场景下回车键的触发行为。该枚举用于配置编辑框的回车键功能语义，输入法框架根据EnterKeyType在键盘上显示对应的功能标签（如"搜索"、"发送"、"下一步"等），并触发相应的交互行为。 |
-| [InputMethod_Direction](#inputmethod_direction) | InputMethod_Direction | 移动方向枚举，定义了在编辑框中光标或选择区域的移动方向，用于支持输入法应用实现光标移动、文本选择等编辑操作。该枚举作为OH_TextEditorProxy_MoveCursorFunc回调的参数传入，指示输入法请求光标移动的方向。 |
-| [InputMethod_ExtendAction](#inputmethod_extendaction) | InputMethod_ExtendAction | 编辑框中文本的扩展编辑操作类型枚举，定义了可以对编辑框文本执行的常用编辑操作，包括全选、剪切、复制和粘贴。这些操作与系统剪贴板协同工作，用于实现输入法应用的文本编辑功能。该枚举作为OH_TextEditorProxy_HandleExtendActionFunc回调的参数传入，指示输入法请求执行的编辑操作。 |
-| [InputMethod_TextInputType](#inputmethod_textinputtype) | InputMethod_TextInputType | 文本输入类型枚举，用于指定文本编辑框支持的输入类型，以便系统适配相应的输入法键盘。不同的TextInputType将触发输入法框架展示不同的键盘布局（如数字键盘、邮箱键盘、URL键盘等），并设置相应的输入过滤规则。该枚举作为InputMethod_TextConfig的inputType属性，通过OH_TextConfig_SetInputType设置，通过OH_TextConfig_GetInputType获取。 |
-| [InputMethod_CommandValueType](#inputmethod_commandvaluetype) | InputMethod_CommandValueType | 私有数据类型枚举，定义了InputMethod_PrivateCommand中value的数据类型，用于支持输入法应用与客户端之间的私有参数传递。每个PrivateCommand实例只能持有一种类型的value，通过OH_PrivateCommand_GetValueType获取当前value的类型后，再调用对应的GetValue函数获取实际值。 |
-| [InputMethod_ErrorCode](#inputmethod_errorcode) | InputMethod_ErrorCode | 私有数据类型枚举，定义了InputMethod_PrivateCommand中value的数据类型，用于支持输入法应用与客户端之间的私有参数传递。每个PrivateCommand实例只能持有一种类型的value，通过OH_PrivateCommand_GetValueType获取当前value的类型后，再调用对应的GetValue函数获取实际值。 |
-| [InputMethod_RequestKeyboardReason](#inputmethod_requestkeyboardreason) | InputMethod_RequestKeyboardReason | 请求键盘输入原因枚举，定义了触发键盘请求的不同触发源，用于区分不同的键盘触发场景，以便输入法进行针对性适配。该枚举作为InputMethod_AttachOptions的requestKeyboardReason属性，通过OH_InputMethodProxy_ShowTextInput传递给输入法框架。区分触发原因可以帮助输入法应用针对不同的交互场景优化键盘行为和输入体验。 |
+| [InputMethod_KeyboardStatus](#inputmethod_keyboardstatus) | InputMethod_KeyboardStatus | 键盘状态枚举，定义软键盘的显示和隐藏状态。该枚举用于在OH_TextEditorProxy_SendKeyboardStatusFunc回调中标识当前键盘的状态变化，编辑框客户端可根据键盘状态调整界面布局（如键盘弹起时避让编辑框区域）。<br><br>用途：标识软键盘的当前状态，用于编辑框客户端响应键盘显示/隐藏事件。<br><br>取值建议：在处理SendKeyboardStatusFunc回调时，根据IME_KEYBOARD_STATUS_SHOW调整界面避让键盘区域，根据IME_KEYBOARD_STATUS_HIDE恢复原始布局。IME_KEYBOARD_STATUS_NONE通常作为初始状态或过渡状态出现，一般不需要特殊处理。<br><br>枚举值间关系：枚举值从0开始连续递增（NONE→HIDE→SHOW），表示键盘状态从无状态→隐藏→显示的递进变化。 |
+| [InputMethod_EnterKeyType](#inputmethod_enterkeytype) | InputMethod_EnterKeyType | 回车键功能类型枚举，定义在不同输入场景下回车键的触发行为。该枚举用于配置编辑框的回车键功能语义，输入法框架根据EnterKeyType在键盘上显示对应的功能标签（如"搜索"、"发送"、"下一步"等），并触发相应的交互行为。<br><br>用途：指定编辑框回车键的功能语义，影响输入法键盘上回车键的标签和行为。<br><br>取值建议：根据编辑框的实际交互场景选择对应的EnterKeyType。搜索场景使用IME_ENTER_KEY_SEARCH，发送消息场景使用IME_ENTER_KEY_SEND，表单填写场景使用IME_ENTER_KEY_NEXT或IME_ENTER_KEY_DONE，多行文本输入场景使用IME_ENTER_KEY_NEWLINE。不确定场景使用IME_ENTER_KEY_UNSPECIFIED，系统将使用默认行为。<br><br>枚举值间关系：枚举值从0开始连续递增（0-8），共9个枚举项。各值之间无互斥关系，每个编辑框可独立配置一种EnterKeyType。IME_ENTER_KEY_UNSPECIFIED（0）和IME_ENTER_KEY_NONE（1）的区别在于：UNSPECIFIED表示未指定（系统使用默认行为），NONE表示明确指定回车键无特殊功能。 |
+| [InputMethod_Direction](#inputmethod_direction) | InputMethod_Direction | 移动方向枚举，定义了在编辑框中光标或选择区域的移动方向，用于支持输入法应用实现光标移动、文本选择等编辑操作。该枚举作为OH_TextEditorProxy_MoveCursorFunc回调的参数传入，指示输入法请求光标移动的方向。<br><br>用途：指定光标在编辑框中的移动方向，用于输入法应用控制光标位置。<br><br>取值建议：在实现MoveCursorFunc回调时，根据direction值移动光标。IME_DIRECTION_NONE通常表示无需移动，IME_DIRECTION_UP/DOWN用于垂直方向移动（多行文本场景），IME_DIRECTION_LEFT/RIGHT用于水平方向移动（单行或多行文本场景）。<br><br>枚举值间关系：枚举值从0开始连续递增（0-4），共5个枚举项。四个方向值（UP/DOWN/LEFT/RIGHT）覆盖了二维平面上的基本移动方向，NONE作为无移动的标识。UP和DOWN互为反向，LEFT和RIGHT互为反向。 |
+| [InputMethod_ExtendAction](#inputmethod_extendaction) | InputMethod_ExtendAction | 编辑框中文本的扩展编辑操作类型枚举，定义了可以对编辑框文本执行的常用编辑操作，包括全选、剪切、复制和粘贴。这些操作与系统剪贴板协同工作，用于实现输入法应用的文本编辑功能。该枚举作为OH_TextEditorProxy_HandleExtendActionFunc回调的参数传入，指示输入法请求执行的编辑操作。<br><br>用途：指定输入法请求编辑框执行的文本编辑操作类型。<br><br>取值建议：在实现HandleExtendActionFunc回调时，根据action值执行对应的编辑操作。IME_EXTEND_ACTION_SELECT_ALL选中全部文本，IME_EXTEND_ACTION_CUT将选中文本剪切到剪贴板并删除原文本，IME_EXTEND_ACTION_COPY将选中文本复制到剪贴板（不删除原文本），IME_EXTEND_ACTION_PASTE将剪贴板内容插入到光标位置。<br><br>枚举值间关系：枚举值不连续（0, 3, 4, 5），SELECT_ALL值为0，CUT/COPY/PASTE值为3-5。这种不连续设计是因为CUT/COPY/PASTE属于剪贴板操作组（值连续），而SELECT_ALL属于独立操作。SELECT_ALL通常作为CUT/COPY的前置操作——先全选再剪切/复制。CUT和COPY互斥：CUT删除原文本，COPY保留原文本。 |
+| [InputMethod_TextInputType](#inputmethod_textinputtype) | InputMethod_TextInputType | 文本输入类型枚举，用于指定文本编辑框支持的输入类型，以便系统适配相应的输入法键盘。不同的TextInputType将触发输入法框架展示不同的键盘布局（如数字键盘、邮箱键盘、URL键盘等），并设置相应的输入过滤规则。该枚举作为InputMethod_TextConfig的inputType属性，通过OH_TextConfig_SetInputType设置，通过OH_TextConfig_GetInputType获取。<br><br>用途：指定编辑框的文本输入类型，影响输入法键盘布局和输入过滤规则。<br><br>取值建议：根据编辑框的实际输入内容选择最匹配的TextInputType。普通文本使用IME_TEXT_INPUT_TYPE_TEXT，多行文本使用IME_TEXT_INPUT_TYPE_MULTILINE，纯数字使用IME_TEXT_INPUT_TYPE_NUMBER，密码使用IME_TEXT_INPUT_TYPE_VISIBLE_PASSWORD或IME_TEXT_INPUT_TYPE_NEW_PASSWORD，邮箱使用IME_TEXT_INPUT_TYPE_EMAIL_ADDRESS，验证码使用IME_TEXT_INPUT_TYPE_ONE_TIME_CODE。不确定类型时使用IME_TEXT_INPUT_TYPE_NONE（-1），系统将使用默认键盘布局。<br><br>枚举值间关系：枚举值从-1开始，NONE为-1，其余值从0开始连续递增（0-13），共14个枚举项。NONE（-1）为特殊值，表示未指定输入类型，与TEXT（0）的区别在于：NONE不触发特定键盘适配，TEXT触发普通文本键盘。密码相关类型（VISIBLE_PASSWORD=7、NUMBER_PASSWORD=8、SCREEN_LOCK_PASSWORD=9、NEW_PASSWORD=11）自成一组，系统对密码类型输入框可能启用安全输入模式。数字相关类型（NUMBER=2、NUMBER_PASSWORD=8、NUMBER_DECIMAL=12）将触发数字键盘布局。 |
+| [InputMethod_CommandValueType](#inputmethod_commandvaluetype) | InputMethod_CommandValueType | 私有数据类型枚举，定义了InputMethod_PrivateCommand中value的数据类型，用于支持输入法应用与客户端之间的私有参数传递。每个PrivateCommand实例只能持有一种类型的value，通过OH_PrivateCommand_GetValueType获取当前value的类型后，再调用对应的GetValue函数获取实际值。<br><br>用途：标识PrivateCommand实例中value的数据类型，指导接收方选择正确的GetValue函数。<br><br>取值建议：在获取PrivateCommand的value值之前，必须先通过OH_PrivateCommand_GetValueType获取类型，再根据类型选择对应的GetValue函数：IME_COMMAND_VALUE_TYPE_BOOL调用OH_PrivateCommand_GetBoolValue，IME_COMMAND_VALUE_TYPE_INT32调用OH_PrivateCommand_GetIntValue，IME_COMMAND_VALUE_TYPE_STRING调用OH_PrivateCommand_GetStrValue。IME_COMMAND_VALUE_TYPE_NONE表示未设置value，此时不应调用任何GetValue函数。<br><br>枚举值间关系：枚举值从0开始连续递增（0-3），共4个枚举项。NONE（0）为初始状态，表示PrivateCommand创建后尚未设置value。STRING/BOOL/INT32三个值类型互斥，同一个PrivateCommand实例在任意时刻只能持有其中一种类型的value。设置一种类型的value后，之前设置的value及其类型将被覆盖。 |
+| [InputMethod_ErrorCode](#inputmethod_errorcode) | InputMethod_ErrorCode | 输入法错误码枚举，定义了输入法框架中可能出现的错误码，涵盖了参数检查失败、包管理异常、输入法应用异常、输入框客户端异常等各种错误场景。开发者应根据具体的错误码判断错误类型并采取相应的错误处理措施。详细错误处理说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。<br><br>用途：标识输入法框架中各类操作的执行结果和错误类型，用于接口返回值判断和错误处理。<br><br>取值建议：在调用输入法C API接口后，应检查返回值是否为IME_ERR_OK（0）。若返回非IME_ERR_OK值，根据具体错误码采取相应处理：IME_ERR_NULL_POINTER检查参数是否为NULL；IME_ERR_PARAMCHECK检查参数类型和范围；IME_ERR_IMCLIENT/IME_ERR_DETACHED检查输入框与输入法服务的连接状态；IME_ERR_IMENGINE检查输入法应用运行状态；IME_ERR_QUERY_FAILED检查查询条件和数据状态。<br><br>枚举值间关系：枚举值分为三组：通用错误码（0, 1, 401）、框架服务错误码（12800001-12800009）、C API专用错误码（12802000-12802001）。通用错误码适用于所有接口；框架服务错误码与系统服务状态相关；C API专用错误码针对C语言接口特有的空指针和查询失败场景。IME_ERR_OK（0）为成功标识，其余值为错误标识。 |
+| [InputMethod_RequestKeyboardReason](#inputmethod_requestkeyboardreason) | InputMethod_RequestKeyboardReason | 请求键盘输入原因枚举，定义了触发键盘请求的不同触发源，用于区分不同的键盘触发场景，以便输入法进行针对性适配。该枚举作为InputMethod_AttachOptions的requestKeyboardReason属性，通过OH_InputMethodProxy_ShowTextInput传递给输入法框架。区分触发原因可以帮助输入法应用针对不同的交互场景优化键盘行为和输入体验。<br><br>用途：标识触发键盘弹出的原因（鼠标点击、触摸操作或其他），用于输入法应用针对性优化。<br><br>取值建议：根据实际触发场景选择对应的RequestKeyboardReason。鼠标点击输入框触发使用IME_REQUEST_REASON_MOUSE，触摸输入框触发使用IME_REQUEST_REASON_TOUCH，其他触发方式（如API调用、焦点切换等）使用IME_REQUEST_REASON_OTHER。不确定触发原因时使用IME_REQUEST_REASON_NONE，输入法将使用默认行为。<br><br>枚举值间关系：枚举值不连续（0, 1, 2, 20），NONE/MOUSE/TOUCH为常规触发源（值0-2连续），OTHER为特殊触发源（值20）。MOUSE和TOUCH分别代表两种最常见的用户直接交互触发方式，OTHER涵盖了所有非直接交互的触发场景。NONE不表示任何触发原因，通常作为默认值使用。 |
 
 ## 枚举类型说明
 
@@ -37,7 +39,7 @@ enum InputMethod_KeyboardStatus
 
 **描述**
 
-键盘状态枚举，定义软键盘的显示和隐藏状态。该枚举用于在OH_TextEditorProxy_SendKeyboardStatusFunc回调中标识当前键盘的状态变化，编辑框客户端可根据键盘状态调整界面布局（如键盘弹起时避让编辑框区域）。
+键盘状态枚举，定义软键盘的显示和隐藏状态。该枚举用于在OH_TextEditorProxy_SendKeyboardStatusFunc回调中标识当前键盘的状态变化，编辑框客户端可根据键盘状态调整界面布局（如键盘弹起时避让编辑框区域）。<br><br>用途：标识软键盘的当前状态，用于编辑框客户端响应键盘显示/隐藏事件。<br><br>取值建议：在处理SendKeyboardStatusFunc回调时，根据IME_KEYBOARD_STATUS_SHOW调整界面避让键盘区域，根据IME_KEYBOARD_STATUS_HIDE恢复原始布局。IME_KEYBOARD_STATUS_NONE通常作为初始状态或过渡状态出现，一般不需要特殊处理。<br><br>枚举值间关系：枚举值从0开始连续递增（NONE→HIDE→SHOW），表示键盘状态从无状态→隐藏→显示的递进变化。
 
 **起始版本：** 12
 
@@ -55,7 +57,7 @@ enum InputMethod_EnterKeyType
 
 **描述**
 
-回车键功能类型枚举，定义在不同输入场景下回车键的触发行为。该枚举用于配置编辑框的回车键功能语义，输入法框架根据EnterKeyType在键盘上显示对应的功能标签（如"搜索"、"发送"、"下一步"等），并触发相应的交互行为。
+回车键功能类型枚举，定义在不同输入场景下回车键的触发行为。该枚举用于配置编辑框的回车键功能语义，输入法框架根据EnterKeyType在键盘上显示对应的功能标签（如"搜索"、"发送"、"下一步"等），并触发相应的交互行为。<br><br>用途：指定编辑框回车键的功能语义，影响输入法键盘上回车键的标签和行为。<br><br>取值建议：根据编辑框的实际交互场景选择对应的EnterKeyType。搜索场景使用IME_ENTER_KEY_SEARCH，发送消息场景使用IME_ENTER_KEY_SEND，表单填写场景使用IME_ENTER_KEY_NEXT或IME_ENTER_KEY_DONE，多行文本输入场景使用IME_ENTER_KEY_NEWLINE。不确定场景使用IME_ENTER_KEY_UNSPECIFIED，系统将使用默认行为。<br><br>枚举值间关系：枚举值从0开始连续递增（0-8），共9个枚举项。各值之间无互斥关系，每个编辑框可独立配置一种EnterKeyType。IME_ENTER_KEY_UNSPECIFIED（0）和IME_ENTER_KEY_NONE（1）的区别在于：UNSPECIFIED表示未指定（系统使用默认行为），NONE表示明确指定回车键无特殊功能。
 
 **起始版本：** 12
 
@@ -79,7 +81,7 @@ enum InputMethod_Direction
 
 **描述**
 
-移动方向枚举，定义了在编辑框中光标或选择区域的移动方向，用于支持输入法应用实现光标移动、文本选择等编辑操作。该枚举作为OH_TextEditorProxy_MoveCursorFunc回调的参数传入，指示输入法请求光标移动的方向。
+移动方向枚举，定义了在编辑框中光标或选择区域的移动方向，用于支持输入法应用实现光标移动、文本选择等编辑操作。该枚举作为OH_TextEditorProxy_MoveCursorFunc回调的参数传入，指示输入法请求光标移动的方向。<br><br>用途：指定光标在编辑框中的移动方向，用于输入法应用控制光标位置。<br><br>取值建议：在实现MoveCursorFunc回调时，根据direction值移动光标。IME_DIRECTION_NONE通常表示无需移动，IME_DIRECTION_UP/DOWN用于垂直方向移动（多行文本场景），IME_DIRECTION_LEFT/RIGHT用于水平方向移动（单行或多行文本场景）。<br><br>枚举值间关系：枚举值从0开始连续递增（0-4），共5个枚举项。四个方向值（UP/DOWN/LEFT/RIGHT）覆盖了二维平面上的基本移动方向，NONE作为无移动的标识。UP和DOWN互为反向，LEFT和RIGHT互为反向。
 
 **起始版本：** 12
 
@@ -99,7 +101,7 @@ enum InputMethod_ExtendAction
 
 **描述**
 
-编辑框中文本的扩展编辑操作类型枚举，定义了可以对编辑框文本执行的常用编辑操作，包括全选、剪切、复制和粘贴。这些操作与系统剪贴板协同工作，用于实现输入法应用的文本编辑功能。该枚举作为OH_TextEditorProxy_HandleExtendActionFunc回调的参数传入，指示输入法请求执行的编辑操作。
+编辑框中文本的扩展编辑操作类型枚举，定义了可以对编辑框文本执行的常用编辑操作，包括全选、剪切、复制和粘贴。这些操作与系统剪贴板协同工作，用于实现输入法应用的文本编辑功能。该枚举作为OH_TextEditorProxy_HandleExtendActionFunc回调的参数传入，指示输入法请求执行的编辑操作。<br><br>用途：指定输入法请求编辑框执行的文本编辑操作类型。<br><br>取值建议：在实现HandleExtendActionFunc回调时，根据action值执行对应的编辑操作。IME_EXTEND_ACTION_SELECT_ALL选中全部文本，IME_EXTEND_ACTION_CUT将选中文本剪切到剪贴板并删除原文本，IME_EXTEND_ACTION_COPY将选中文本复制到剪贴板（不删除原文本），IME_EXTEND_ACTION_PASTE将剪贴板内容插入到光标位置。<br><br>枚举值间关系：枚举值不连续（0, 3, 4, 5），SELECT_ALL值为0，CUT/COPY/PASTE值为3-5。这种不连续设计是因为CUT/COPY/PASTE属于剪贴板操作组（值连续），而SELECT_ALL属于独立操作。SELECT_ALL通常作为CUT/COPY的前置操作——先全选再剪切/复制。CUT和COPY互斥：CUT删除原文本，COPY保留原文本。
 
 **起始版本：** 12
 
@@ -118,7 +120,7 @@ enum InputMethod_TextInputType
 
 **描述**
 
-文本输入类型枚举，用于指定文本编辑框支持的输入类型，以便系统适配相应的输入法键盘。不同的TextInputType将触发输入法框架展示不同的键盘布局（如数字键盘、邮箱键盘、URL键盘等），并设置相应的输入过滤规则。该枚举作为InputMethod_TextConfig的inputType属性，通过OH_TextConfig_SetInputType设置，通过OH_TextConfig_GetInputType获取。
+文本输入类型枚举，用于指定文本编辑框支持的输入类型，以便系统适配相应的输入法键盘。不同的TextInputType将触发输入法框架展示不同的键盘布局（如数字键盘、邮箱键盘、URL键盘等），并设置相应的输入过滤规则。该枚举作为InputMethod_TextConfig的inputType属性，通过OH_TextConfig_SetInputType设置，通过OH_TextConfig_GetInputType获取。<br><br>用途：指定编辑框的文本输入类型，影响输入法键盘布局和输入过滤规则。<br><br>取值建议：根据编辑框的实际输入内容选择最匹配的TextInputType。普通文本使用IME_TEXT_INPUT_TYPE_TEXT，多行文本使用IME_TEXT_INPUT_TYPE_MULTILINE，纯数字使用IME_TEXT_INPUT_TYPE_NUMBER，密码使用IME_TEXT_INPUT_TYPE_VISIBLE_PASSWORD或IME_TEXT_INPUT_TYPE_NEW_PASSWORD，邮箱使用IME_TEXT_INPUT_TYPE_EMAIL_ADDRESS，验证码使用IME_TEXT_INPUT_TYPE_ONE_TIME_CODE。不确定类型时使用IME_TEXT_INPUT_TYPE_NONE（-1），系统将使用默认键盘布局。<br><br>枚举值间关系：枚举值从-1开始，NONE为-1，其余值从0开始连续递增（0-13），共14个枚举项。NONE（-1）为特殊值，表示未指定输入类型，与TEXT（0）的区别在于：NONE不触发特定键盘适配，TEXT触发普通文本键盘。密码相关类型（VISIBLE_PASSWORD=7、NUMBER_PASSWORD=8、SCREEN_LOCK_PASSWORD=9、NEW_PASSWORD=11）自成一组，系统对密码类型输入框可能启用安全输入模式。数字相关类型（NUMBER=2、NUMBER_PASSWORD=8、NUMBER_DECIMAL=12）将触发数字键盘布局。
 
 **起始版本：** 12
 
@@ -138,7 +140,7 @@ enum InputMethod_TextInputType
 | IME_TEXT_INPUT_TYPE_USER_NAME = 10 | 用户名类型，表示编辑框接受用户名输入。系统将展示文本键盘布局，可能提供用户名输入的优化（如自动补全建议）。适用于登录注册场景中的用户名输入框。 |
 | IME_TEXT_INPUT_TYPE_NEW_PASSWORD = 11 | 新密码类型，表示编辑框接受新密码输入（如注册或修改密码场景）。系统将展示密码键盘布局，并可能启用安全输入模式和密码强度提示。适用于创建新密码或修改密码的输入场景。 |
 | IME_TEXT_INPUT_TYPE_NUMBER_DECIMAL = 12 | 数字小数类型，表示编辑框接受带小数点的数字输入。系统将展示数字键盘布局，并额外提供小数点按键。适用于需要输入小数的场景（如金额输入、数值参数输入等）。 |
-| IME_TEXT_INPUT_TYPE_ONE_TIME_CODE = 13 |  |
+| IME_TEXT_INPUT_TYPE_ONE_TIME_CODE = 13 | 验证码类型，表示编辑框接受一次性验证码输入。系统将展示数字键盘布局，并可能从短信中自动提取验证码填充。适用于短信验证码、OTP验证码等自动填充场景。<br>**起始版本：** 20 |
 
 ### InputMethod_CommandValueType
 
@@ -148,7 +150,7 @@ enum InputMethod_CommandValueType
 
 **描述**
 
-私有数据类型枚举，定义了InputMethod_PrivateCommand中value的数据类型，用于支持输入法应用与客户端之间的私有参数传递。每个PrivateCommand实例只能持有一种类型的value，通过OH_PrivateCommand_GetValueType获取当前value的类型后，再调用对应的GetValue函数获取实际值。
+私有数据类型枚举，定义了InputMethod_PrivateCommand中value的数据类型，用于支持输入法应用与客户端之间的私有参数传递。每个PrivateCommand实例只能持有一种类型的value，通过OH_PrivateCommand_GetValueType获取当前value的类型后，再调用对应的GetValue函数获取实际值。<br><br>用途：标识PrivateCommand实例中value的数据类型，指导接收方选择正确的GetValue函数。<br><br>取值建议：在获取PrivateCommand的value值之前，必须先通过OH_PrivateCommand_GetValueType获取类型，再根据类型选择对应的GetValue函数：IME_COMMAND_VALUE_TYPE_BOOL调用OH_PrivateCommand_GetBoolValue，IME_COMMAND_VALUE_TYPE_INT32调用OH_PrivateCommand_GetIntValue，IME_COMMAND_VALUE_TYPE_STRING调用OH_PrivateCommand_GetStrValue。IME_COMMAND_VALUE_TYPE_NONE表示未设置value，此时不应调用任何GetValue函数。<br><br>枚举值间关系：枚举值从0开始连续递增（0-3），共4个枚举项。NONE（0）为初始状态，表示PrivateCommand创建后尚未设置value。STRING/BOOL/INT32三个值类型互斥，同一个PrivateCommand实例在任意时刻只能持有其中一种类型的value。设置一种类型的value后，之前设置的value及其类型将被覆盖。
 
 **起始版本：** 12
 
@@ -167,7 +169,7 @@ enum InputMethod_ErrorCode
 
 **描述**
 
-私有数据类型枚举，定义了InputMethod_PrivateCommand中value的数据类型，用于支持输入法应用与客户端之间的私有参数传递。每个PrivateCommand实例只能持有一种类型的value，通过OH_PrivateCommand_GetValueType获取当前value的类型后，再调用对应的GetValue函数获取实际值。
+输入法错误码枚举，定义了输入法框架中可能出现的错误码，涵盖了参数检查失败、包管理异常、输入法应用异常、输入框客户端异常等各种错误场景。开发者应根据具体的错误码判断错误类型并采取相应的错误处理措施。详细错误处理说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。<br><br>用途：标识输入法框架中各类操作的执行结果和错误类型，用于接口返回值判断和错误处理。<br><br>取值建议：在调用输入法C API接口后，应检查返回值是否为IME_ERR_OK（0）。若返回非IME_ERR_OK值，根据具体错误码采取相应处理：IME_ERR_NULL_POINTER检查参数是否为NULL；IME_ERR_PARAMCHECK检查参数类型和范围；IME_ERR_IMCLIENT/IME_ERR_DETACHED检查输入框与输入法服务的连接状态；IME_ERR_IMENGINE检查输入法应用运行状态；IME_ERR_QUERY_FAILED检查查询条件和数据状态。<br><br>枚举值间关系：枚举值分为三组：通用错误码（0, 1, 401）、框架服务错误码（12800001-12800009）、C API专用错误码（12802000-12802001）。通用错误码适用于所有接口；框架服务错误码与系统服务状态相关；C API专用错误码针对C语言接口特有的空指针和查询失败场景。IME_ERR_OK（0）为成功标识，其余值为错误标识。
 
 **起始版本：** 12
 
@@ -195,7 +197,7 @@ enum InputMethod_RequestKeyboardReason
 
 **描述**
 
-请求键盘输入原因枚举，定义了触发键盘请求的不同触发源，用于区分不同的键盘触发场景，以便输入法进行针对性适配。该枚举作为InputMethod_AttachOptions的requestKeyboardReason属性，通过OH_InputMethodProxy_ShowTextInput传递给输入法框架。区分触发原因可以帮助输入法应用针对不同的交互场景优化键盘行为和输入体验。
+请求键盘输入原因枚举，定义了触发键盘请求的不同触发源，用于区分不同的键盘触发场景，以便输入法进行针对性适配。该枚举作为InputMethod_AttachOptions的requestKeyboardReason属性，通过OH_InputMethodProxy_ShowTextInput传递给输入法框架。区分触发原因可以帮助输入法应用针对不同的交互场景优化键盘行为和输入体验。<br><br>用途：标识触发键盘弹出的原因（鼠标点击、触摸操作或其他），用于输入法应用针对性优化。<br><br>取值建议：根据实际触发场景选择对应的RequestKeyboardReason。鼠标点击输入框触发使用IME_REQUEST_REASON_MOUSE，触摸输入框触发使用IME_REQUEST_REASON_TOUCH，其他触发方式（如API调用、焦点切换等）使用IME_REQUEST_REASON_OTHER。不确定触发原因时使用IME_REQUEST_REASON_NONE，输入法将使用默认行为。<br><br>枚举值间关系：枚举值不连续（0, 1, 2, 20），NONE/MOUSE/TOUCH为常规触发源（值0-2连续），OTHER为特殊触发源（值20）。MOUSE和TOUCH分别代表两种最常见的用户直接交互触发方式，OTHER涵盖了所有非直接交互的触发场景。NONE不表示任何触发原因，通常作为默认值使用。
 
 **起始版本：** 15
 

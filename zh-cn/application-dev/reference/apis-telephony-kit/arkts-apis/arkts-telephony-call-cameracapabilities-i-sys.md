@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export interface CameraCapabilities--><!--Device-call-export interface CameraCapabilities-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
 
 ## callId
 
@@ -25,10 +27,6 @@ callId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CameraCapabilities-callId: int--><!--Device-CameraCapabilities-callId: int-End-->
 
@@ -48,10 +46,6 @@ height: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraCapabilities-height: int--><!--Device-CameraCapabilities-height: int-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -69,10 +63,6 @@ width: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CameraCapabilities-width: int--><!--Device-CameraCapabilities-width: int-End-->
 

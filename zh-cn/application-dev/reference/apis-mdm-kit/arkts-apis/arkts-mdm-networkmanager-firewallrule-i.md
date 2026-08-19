@@ -1,16 +1,18 @@
 # FirewallRule
 
-防火墙过滤规则。 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。 从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md#logtype)。
+防火墙过滤规则。 API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。 从API version 23开始，支持[LogType](arkts-mdm-networkmanager-logtype-e.md)。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-networkManager-interface FirewallRule--><!--Device-networkManager-interface FirewallRule-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
 
 ## action
 
@@ -18,15 +20,11 @@
 action?: Action
 ```
 
-接收或者丢弃数据包。 添加防火墙过滤规则时必填； 移除防火墙时非必填，当值为空时，表示清空所有的匹配[Action](arkts-mdm-networkmanager-action-e.md#action)规则的链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入 空值。
+接收或者丢弃数据包。 添加防火墙过滤规则时必填； 移除防火墙时非必填，当值为空时，表示清空所有的匹配[Action](arkts-mdm-networkmanager-action-e.md)规则的链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入 空值。
 
 **类型：** Action
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ appUid?: string
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FirewallRule-appUid?: string--><!--Device-FirewallRule-appUid?: string-End-->
@@ -67,10 +61,6 @@ ip目标地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.16
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +80,6 @@ destPort?: string
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FirewallRule-destPort?: string--><!--Device-FirewallRule-destPort?: string-End-->
@@ -106,15 +92,11 @@ destPort?: string
 direction?: Direction
 ```
 
-规则链。 添加防火墙过滤规则时必填； 移除防火墙时非必填，当值为空时，表示清空所有的[Direction](arkts-mdm-networkmanager-direction-e.md#direction)链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传 入空值。
+规则链。 添加防火墙过滤规则时必填； 移除防火墙时非必填，当值为空时，表示清空所有的[Direction](arkts-mdm-networkmanager-direction-e.md)链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传 入空值。
 
 **类型：** Direction
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +116,6 @@ IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示I
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FirewallRule-family?: number--><!--Device-FirewallRule-family?: number-End-->
@@ -155,10 +133,6 @@ logType?: LogType
 **类型：** [LogType](arkts-mdm-networkmanager-logtype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,10 +152,6 @@ protocol?: Protocol
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FirewallRule-protocol?: Protocol--><!--Device-FirewallRule-protocol?: Protocol-End-->
@@ -200,10 +170,6 @@ ip源地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FirewallRule-srcAddr?: string--><!--Device-FirewallRule-srcAddr?: string-End-->
@@ -221,10 +187,6 @@ srcPort?: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

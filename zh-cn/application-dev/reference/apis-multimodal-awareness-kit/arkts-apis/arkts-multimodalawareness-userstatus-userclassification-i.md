@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
 **废弃版本：** 24
 
 <!--Device-userStatus-export interface UserClassification--><!--Device-userStatus-export interface UserClassification-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.UserStatus
+
+## 导入模块
+
+```TypeScript
+import { userStatus } from '@kit.MultimodalAwarenessKit';
+```
 
 ## ageGroup
 
@@ -23,8 +27,6 @@ ageGroup?: UserAgeGroup
 **类型：** [UserAgeGroup](arkts-multimodalawareness-userstatus-useragegroup-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 24
 
@@ -43,8 +45,6 @@ confidence?: float
 **类型：** float
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 24
 

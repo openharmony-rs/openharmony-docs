@@ -4,13 +4,19 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface WindowFeatures--><!--Device-unnamed-declare interface WindowFeatures-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## height
 
@@ -23,10 +29,6 @@ height: number
 **类型：** number
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WindowFeatures-height: number--><!--Device-WindowFeatures-height: number-End-->
 
@@ -44,10 +46,6 @@ width: number
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowFeatures-width: number--><!--Device-WindowFeatures-width: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -64,10 +62,6 @@ x: number
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowFeatures-x: number--><!--Device-WindowFeatures-x: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -83,10 +77,6 @@ y: number
 **类型：** number
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WindowFeatures-y: number--><!--Device-WindowFeatures-y: number-End-->
 

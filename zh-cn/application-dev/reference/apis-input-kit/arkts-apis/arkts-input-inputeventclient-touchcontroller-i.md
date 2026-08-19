@@ -1,16 +1,18 @@
 # TouchController
 
-提供模拟触控操作的功能。模拟触控操作序列必须满足以下要求： 1. 所有触点的displayId必须相同。 2. 每个触点都必须以`touchDown()`开始，以`touchUp()`结束，中间可包含多个`touchMove()`。
+提供模拟触控操作的功能。模拟触控操作序列必须满足以下要求：<br>1. 所有触点的displayId必须相同。<br>2. 每个触点都必须以`touchDown()`开始，以`touchUp()`结束，中间可包含多个`touchMove()`。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-inputEventClient-interface TouchController--><!--Device-inputEventClient-interface TouchController-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+## 导入模块
+
+```TypeScript
+import { inputEventClient } from '@kit.InputKit';
+```
 
 ## touchDown
 
@@ -21,10 +23,6 @@ touchDown(touch: TouchPoint): Promise<void>
 触点按下。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -55,7 +53,7 @@ touchDown(touch: TouchPoint): Promise<void>
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { inputEventClient } from '@kit.InputKit';
@@ -118,10 +116,6 @@ touchMove(touch: TouchPoint): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -150,7 +144,7 @@ touchMove(touch: TouchPoint): Promise<void>
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 参见[touchDown](#touchdown)示例。
 
@@ -163,10 +157,6 @@ touchUp(touch: TouchPoint): Promise<void>
 触点抬起。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -196,7 +186,7 @@ touchUp(touch: TouchPoint): Promise<void>
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 参见[touchDown](#touchdown)示例。
 

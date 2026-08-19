@@ -4,10 +4,6 @@ NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class NotificationSubscriberExtensionAbility--><!--Device-unnamed-declare class NotificationSubscriberExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -15,7 +11,7 @@ NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，
 ## 导入模块
 
 ```TypeScript
-import { NotificationSubscriberExtensionAbility } from 'NotificationSubscriberExtensionAbility';
+import { NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
 ## onCancelMessages
@@ -27,10 +23,6 @@ onCancelMessages(hashCodes: Array<string>): void
 取消通知时的回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +36,7 @@ onCancelMessages(hashCodes: Array<string>): void
 | --- | --- | --- | --- |
 | hashCodes | Array&lt;string&gt; | 是 | 要取消的通知的哈希码列表。通过onReceiveMessage获取。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -80,17 +72,13 @@ onDestroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-NotificationSubscriberExtensionAbility-onDestroy(): void--><!--Device-NotificationSubscriberExtensionAbility-onDestroy(): void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -126,10 +114,6 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-NotificationSubscriberExtensionAbility-onReceiveMessage(notificationInfo: NotificationInfo): void--><!--Device-NotificationSubscriberExtensionAbility-onReceiveMessage(notificationInfo: NotificationInfo): void-End-->
@@ -142,7 +126,7 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 | --- | --- | --- | --- |
 | notificationInfo | [NotificationInfo](arkts-notification-notificationinfo-i.md) | 是 | 通知订阅扩展能力中收到通知的回调信息。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -179,10 +163,6 @@ NotificationSubscriberExtensionAbility的上下文环境。
 **类型：** [NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext-notificationsubscriberextensioncontext-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

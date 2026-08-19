@@ -4,13 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export interface FileFilter--><!--Device-unnamed-export interface FileFilter-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## filter
 
@@ -18,13 +21,11 @@
 filter(name: string): boolean
 ```
 
-用于[listFileExt](arkts-na-fileio-listfileext-f.md#listfileext)或[listFileExtSync](arkts-na-fileio-listfileextsync-f.md#listfileextsync)接口的文件过滤， 判断指定文件名是否应包含在返回的文件列表中。 > **说明：** > > 该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
+用于[listFileExt](arkts-na-fileio-listfileext-f.md)或[listFileExtSync](arkts-na-fileio-listfileextsync-f.md)接口的文件过滤， 判断指定文件名是否应包含在返回的文件列表中。 > **说明：** > > 该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

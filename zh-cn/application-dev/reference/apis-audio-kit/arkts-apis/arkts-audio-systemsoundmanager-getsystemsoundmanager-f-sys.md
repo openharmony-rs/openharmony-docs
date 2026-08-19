@@ -1,5 +1,11 @@
 # getSystemSoundManager（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { systemSoundManager } from '@kit.AudioKit';
+```
+
 ## getSystemSoundManager
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSystemSoundManager(): SystemSoundManager
 获取系统声音管理器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-systemSoundManager-function getSystemSoundManager(): SystemSoundManager--><!--Device-systemSoundManager-function getSystemSoundManager(): SystemSoundManager-End-->
 
@@ -26,7 +28,7 @@ function getSystemSoundManager(): SystemSoundManager
 | --- | --- |
 | [SystemSoundManager](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md) | 系统声音管理类。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();

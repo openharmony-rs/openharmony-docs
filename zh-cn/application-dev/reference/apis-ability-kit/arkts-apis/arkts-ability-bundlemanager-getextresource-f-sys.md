@@ -1,5 +1,11 @@
 # getExtResource（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getExtResource
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getExtResource(bundleName: string): Promise<Array<string>>
 根据给定的bundleName获得扩展资源对应的moduleNames。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -44,7 +46,7 @@ function getExtResource(bundleName: string): Promise<Array<string>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

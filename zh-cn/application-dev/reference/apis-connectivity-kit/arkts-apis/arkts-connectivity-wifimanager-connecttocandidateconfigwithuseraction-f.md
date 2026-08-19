@@ -1,5 +1,12 @@
 # connectToCandidateConfigWithUserAction
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## connectToCandidateConfigWithUserAction
 
 ```TypeScript
@@ -9,10 +16,6 @@ function connectToCandidateConfigWithUserAction(networkId: int): Promise<void>
 通过networkId连接到指定的候选热点，并等待用户响应结果。 只允许连接自己添加的配置。此方法一次连接一个配置。 应用必须在前台运行。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -46,7 +49,7 @@ function connectToCandidateConfigWithUserAction(networkId: int): Promise<void>
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

@@ -4,15 +4,18 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-screen-interface ExpandOption--><!--Device-screen-interface ExpandOption-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
 
 ## screenId
 
@@ -25,10 +28,6 @@ screenId: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExpandOption-screenId: long--><!--Device-ExpandOption-screenId: long-End-->
 
@@ -48,10 +47,6 @@ startX: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ExpandOption-startX: long--><!--Device-ExpandOption-startX: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -69,10 +64,6 @@ startY: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExpandOption-startY: long--><!--Device-ExpandOption-startY: long-End-->
 

@@ -1,5 +1,11 @@
 # registerTypeDescriptors（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { uniformTypeDescriptor } from '@kit.ArkData';
+```
+
 ## registerTypeDescriptors
 
 ```TypeScript
@@ -9,10 +15,6 @@ function registerTypeDescriptors(typeDescriptors: Array<TypeDescriptor>): Promis
 注册一组标准化数据类型到系统中。使用Promise异步回调。注册成功后，标准化数据类型将被系统管理，可通过UDMF框架在其他应用或设备间共享和识别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
 

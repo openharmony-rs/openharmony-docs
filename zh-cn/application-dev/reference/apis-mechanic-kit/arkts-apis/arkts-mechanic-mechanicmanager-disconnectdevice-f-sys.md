@@ -1,5 +1,11 @@
 # disconnectDevice（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## disconnectDevice
 
 ```TypeScript
@@ -9,10 +15,6 @@ function disconnectDevice(mechId: int): Promise<Result>
 基于具身设备ID断开设备
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_MECHANIC_HARDWARE
 

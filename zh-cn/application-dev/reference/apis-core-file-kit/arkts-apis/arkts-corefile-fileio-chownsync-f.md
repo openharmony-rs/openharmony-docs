@@ -1,5 +1,10 @@
 # chownSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## chownSync
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function chownSync(path: string, uid: number, gid: number): void
 以同步的方法基于文件路径改变文件所有者。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

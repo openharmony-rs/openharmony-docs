@@ -1,5 +1,11 @@
 # setDisposedStatusSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+```
+
 ## setDisposedStatusSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setDisposedStatusSync(appId: string, disposedWant: Want): void
 以同步方法设置应用的处置状态。成功返回null，失败抛出对应异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
@@ -39,7 +41,7 @@ function setDisposedStatusSync(appId: string, disposedWant: Want): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appControl } from '@kit.AbilityKit';

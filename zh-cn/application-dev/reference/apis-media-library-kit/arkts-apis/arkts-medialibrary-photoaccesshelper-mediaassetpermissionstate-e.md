@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum MediaAssetPermissionState--><!--Device-photoAccessHelper-enum MediaAssetPermissionState-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ URI_FORMAT_ERROR = 0
 URI格式错误或非媒体库URI。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ FILE_NOT_EXIST = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaAssetPermissionState-FILE_NOT_EXIST = 1--><!--Device-MediaAssetPermissionState-FILE_NOT_EXIST = 1-End-->
@@ -62,10 +50,6 @@ READ_PERMISSION = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaAssetPermissionState-READ_PERMISSION = 2--><!--Device-MediaAssetPermissionState-READ_PERMISSION = 2-End-->
@@ -81,10 +65,6 @@ NO_READ_PERMISSION = 3
 应用在获取资产时没有读权限。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

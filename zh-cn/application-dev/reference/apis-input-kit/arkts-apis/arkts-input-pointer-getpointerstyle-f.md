@@ -1,5 +1,11 @@
 # getPointerStyle
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## getPointerStyle
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getPointerStyle(windowId: int, callback: AsyncCallback<PointerStyle>): 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function getPointerStyle(windowId: int, callback: AsyncCallback<PointerStyle>): void--><!--Device-pointer-function getPointerStyle(windowId: int, callback: AsyncCallback<PointerStyle>): void-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -22,8 +24,8 @@ function getPointerStyle(windowId: int, callback: AsyncCallback<PointerStyle>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | int | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局 鼠标光标样式。<br>如果通过 [setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle) 接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;PointerStyle&gt; | 是 | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。在特定场景（在设置自定义光 标样式的窗口上获取样式）下返回DEVELOPER_DEFINED_ICON。 |
+| windowId | int | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局 鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md) 接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;PointerStyle&gt; | 是 | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。在特定场景（在设置自定义光 标样式的窗口上获取样式）下返回DEVELOPER_DEFINED_ICON。 |
 
 **错误码：**
 
@@ -31,7 +33,7 @@ function getPointerStyle(windowId: int, callback: AsyncCallback<PointerStyle>): 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -118,10 +120,6 @@ function getPointerStyle(windowId: int): Promise<PointerStyle>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function getPointerStyle(windowId: int): Promise<PointerStyle>--><!--Device-pointer-function getPointerStyle(windowId: int): Promise<PointerStyle>-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -130,7 +128,7 @@ function getPointerStyle(windowId: int): Promise<PointerStyle>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | int | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局 鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle)接口为不存 在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+| windowId | int | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局 鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md)接口为不存 在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值：**
 
@@ -144,7 +142,7 @@ function getPointerStyle(windowId: int): Promise<PointerStyle>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

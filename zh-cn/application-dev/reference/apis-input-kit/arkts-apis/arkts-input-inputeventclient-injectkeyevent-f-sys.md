@@ -1,5 +1,11 @@
 # injectKeyEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputEventClient } from '@kit.InputKit';
+```
+
 ## injectKeyEvent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function injectKeyEvent(keyEvent: KeyEventData): void
 按键(包括单个按键和组合键)事件注入。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本12+：ohos.permission.INJECT_INPUT_EVENT
@@ -37,7 +39,7 @@ function injectKeyEvent(keyEvent: KeyEventData): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

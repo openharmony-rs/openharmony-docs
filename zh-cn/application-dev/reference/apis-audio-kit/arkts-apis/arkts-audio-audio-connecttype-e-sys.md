@@ -4,10 +4,6 @@ Connect type for device.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum ConnectType--><!--Device-audio-enum ConnectType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -24,10 +20,6 @@ Connect type for local device.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ConnectType-CONNECT_TYPE_LOCAL = 1--><!--Device-ConnectType-CONNECT_TYPE_LOCAL = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -43,10 +35,6 @@ CONNECT_TYPE_DISTRIBUTED = 2
 Connect type for distributed device.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConnectType-CONNECT_TYPE_DISTRIBUTED = 2--><!--Device-ConnectType-CONNECT_TYPE_DISTRIBUTED = 2-End-->
 

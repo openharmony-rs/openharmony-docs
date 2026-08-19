@@ -4,10 +4,6 @@ Enumerates the focus range types.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum FocusRangeType--><!--Device-camera-enum FocusRangeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -24,10 +20,6 @@ Auto focus.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FocusRangeType-AUTO = 0--><!--Device-FocusRangeType-AUTO = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -43,10 +35,6 @@ NEAR = 1
 Focus on near objects.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FocusRangeType-NEAR = 1--><!--Device-FocusRangeType-NEAR = 1-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export enum FluidLightMode--><!--Device-inputMethodEngine-export enum FluidLightMode-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -24,10 +20,6 @@ NONE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FluidLightMode-NONE = 0--><!--Device-FluidLightMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -43,10 +35,6 @@ BACKGROUND_FLUID_LIGHT = 1
 开启背景流光模式。此时系统面板会变为透明，流光效果需要由编辑框宿主应用实现。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FluidLightMode-BACKGROUND_FLUID_LIGHT = 1--><!--Device-FluidLightMode-BACKGROUND_FLUID_LIGHT = 1-End-->
 

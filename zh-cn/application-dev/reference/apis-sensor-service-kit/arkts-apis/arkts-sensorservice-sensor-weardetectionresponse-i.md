@@ -1,18 +1,20 @@
 # WearDetectionResponse
 
-佩戴检测传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。
+佩戴检测传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
-**继承/实现关系：** WearDetectionResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
+**继承/实现关系：** WearDetectionResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-interface WearDetectionResponse--><!--Device-sensor-interface WearDetectionResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
+
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
 
 ## value
 
@@ -25,10 +27,6 @@ value: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WearDetectionResponse-value: double--><!--Device-WearDetectionResponse-value: double-End-->
 

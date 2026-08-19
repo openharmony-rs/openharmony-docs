@@ -1,5 +1,11 @@
 # matchFontDescriptors
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## matchFontDescriptors
 
 ```TypeScript
@@ -9,10 +15,6 @@ function matchFontDescriptors(desc: FontDescriptor): Promise<Array<FontDescripto
 根据指定的字体描述符返回所有符合要求的系统字体描述符，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +40,7 @@ function matchFontDescriptors(desc: FontDescriptor): Promise<Array<FontDescripto
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

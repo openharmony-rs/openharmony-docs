@@ -1,5 +1,11 @@
 # getDisallowedPolicy
 
+## 导入模块
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+```
+
 ## getDisallowedPolicy
 
 ```TypeScript
@@ -9,8 +15,6 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 查询某特性是否被禁用。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 26.0.0
 
@@ -32,7 +36,7 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) \| null | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>**起始版本：** 12 - 19 |
-| feature | string | 是 | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过 [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision)激活为 [BDA](../../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、 usb、wifi、tethering、camera，从API版本26.0.0开始，新增支持使用此接口获取mtpServer特性状态。 |
+| feature | string | 是 | 支持查询的特性清单参考下表2。 <br/> **说明：** 从API version 15开始，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过 [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md)激活为 [BDA](../../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取以下特性状态：bluetooth、hdc、microphone、 usb、wifi、tethering、camera，从API版本26.0.0开始，新增支持使用此接口获取mtpServer特性状态。 |
 
 **返回值：**
 
@@ -48,7 +52,7 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { restrictions } from '@kit.MDMKit';
@@ -80,10 +84,6 @@ function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boo
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -114,7 +114,7 @@ function getDisallowedPolicy(admin: Want | null, feature: FeatureForDevice): boo
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { restrictions } from '@kit.MDMKit';

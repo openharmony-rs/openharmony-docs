@@ -6,10 +6,6 @@ NodeContent是ArkUI提供的ContentSlot的管理器，用于管理挂载到Conte
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export class NodeContent--><!--Device-unnamed-export class NodeContent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -24,10 +20,6 @@ addFrameNode(node: FrameNode): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -40,7 +32,7 @@ addFrameNode(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 需要添加的FrameNode，该节点需为可被添加的有效FrameNode。 |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode，该节点需为可被添加的有效FrameNode。 |
 
 **错误码：**
 
@@ -58,10 +50,6 @@ constructor()
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -70,7 +58,7 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 示例
+**示例**
 
 ```TypeScript
 import { nativeNode } from 'libNativeNode.so'; // 开发者自己实现的so
@@ -104,10 +92,6 @@ removeFrameNode(node: FrameNode): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -120,9 +104,9 @@ removeFrameNode(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](../../apis-na/arkts-apis/arkts-na-framenode-c.md) | 是 | 需要删除的FrameNode，该节点需已添加到当前NodeContent中，若未添加则删除无效。 |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要删除的FrameNode，该节点需已添加到当前NodeContent中，若未添加则删除无效。 |
 
-## 示例
+**示例**
 
 添加和删除NodeContent中的FrameNode节点。
 

@@ -1,14 +1,17 @@
-# Storage
+# Storage(数据存储)
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
 <!--Device-unnamed-export default class Storage--><!--Device-unnamed-export default class Storage-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core.Lite
+
+## 导入模块
+
+```TypeScript
+```
 
 ## clear
 
@@ -19,8 +22,6 @@ static clear(options?: ClearStorageOptions): void
 清空缓存中存储的键值对。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -48,8 +49,6 @@ static delete(options: DeleteStorageOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 6
 
 **替代接口：** delete
@@ -76,8 +75,6 @@ static get(options: GetStorageOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 6
 
 **替代接口：** get
@@ -103,8 +100,6 @@ static set(options: SetStorageOptions): void
 修改缓存中索引对应的值。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 

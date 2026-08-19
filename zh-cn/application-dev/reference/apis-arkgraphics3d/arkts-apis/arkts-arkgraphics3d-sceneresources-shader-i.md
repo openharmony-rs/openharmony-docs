@@ -1,14 +1,10 @@
 # Shader
 
-着色器资源.
+着色器，继承自SceneResource。
 
-**继承/实现关系：** Shader extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)
+**继承/实现关系：** Shader extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Shader--><!--Device-unnamed-export interface Shader-End-->
 
@@ -20,13 +16,9 @@
 setShaderInputs(inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>): void
 ```
 
-设置着色器输入。与属性版本功能相同，但性能更优。
+设置Shader的输入，该接口性能优于直接设置inputs属性。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,9 +30,9 @@ setShaderInputs(inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| inputs | Record&lt;string, double \| [Vec2](arkts-arkgraphics3d-scenetypes-vec2-i.md) \| [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md) \| [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md) \| [Image](arkts-arkgraphics3d-sceneresources-image-i.md)&gt; | 是 | 着色器的输入 |
+| inputs | Record&lt;string, double \| [Vec2](arkts-arkgraphics3d-scenetypes-vec2-i.md) \| [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md) \| [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md) \| [Image](arkts-arkgraphics3d-sceneresources-image-i.md)&gt; | 是 | 一个字符串到值的映射，用于设置着色器输入。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -121,15 +113,11 @@ function setinputs(): void {
 readonly inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>
 ```
 
-着色器输入.
+着色器输入。
 
 **类型：** Record&lt;string, double \| [Vec2](arkts-arkgraphics3d-scenetypes-vec2-i.md) \| [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md) \| [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md) \| [Image](arkts-arkgraphics3d-sceneresources-image-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Shader-readonly inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>--><!--Device-Shader-readonly inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>-End-->
 

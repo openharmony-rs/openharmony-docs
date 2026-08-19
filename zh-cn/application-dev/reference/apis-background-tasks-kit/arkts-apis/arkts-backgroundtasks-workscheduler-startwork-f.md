@@ -1,5 +1,11 @@
 # startWork
 
+## 导入模块
+
+```TypeScript
+import { workScheduler } from '@kit.BackgroundTasksKit';
+```
+
 ## startWork
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startWork(work: WorkInfo): void
 申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -37,7 +39,7 @@ function startWork(work: WorkInfo): void
 | [9700002](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

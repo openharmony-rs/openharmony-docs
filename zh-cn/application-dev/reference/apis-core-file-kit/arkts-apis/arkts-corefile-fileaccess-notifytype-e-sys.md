@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
 <!--Device-fileAccess-enum NotifyType--><!--Device-fileAccess-enum NotifyType-End-->
@@ -23,8 +21,6 @@ NOTIFY_ADD = 0
 表示新增文件（详见registerObserver接口的示例2、示例3）。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -46,8 +42,6 @@ NOTIFY_DELETE = 1
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -67,8 +61,6 @@ NOTIFY_MOVED_TO = 2
 表示移动至该文件（对目录下子文件或目录执行rename操作，或外部文件或目录执行move操作到本文件。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例 1）。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -90,8 +82,6 @@ NOTIFY_MOVED_FROM = 3
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -111,8 +101,6 @@ NOTIFY_MOVE_SELF = 4
 表示本文件被移动（如对文件或文件夹执行rename或move操作时，监听该文件（夹）的callback收到该事件，详见registerObserver接口的示例1）。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -134,8 +122,6 @@ NOTIFY_DEVICE_ONLINE = 5
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -155,8 +141,6 @@ NOTIFY_DEVICE_OFFLINE = 6
 表示设备下线。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 23
 

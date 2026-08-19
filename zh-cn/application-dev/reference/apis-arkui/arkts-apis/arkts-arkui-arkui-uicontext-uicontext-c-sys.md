@@ -4,13 +4,18 @@ UIContext实例对象。 > **说明：** > - 示例效果请以真机运行为�
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export class UIContext--><!--Device-unnamed-export class UIContext-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
+import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
+import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+```
 
 ## animateToImmediately
 
@@ -21,10 +26,6 @@ animateToImmediately(param: AnimateParam, processor: Callback<void>): void
 通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,7 +42,7 @@ animateToImmediately(param: AnimateParam, processor: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [AnimateParam](../../apis-na/arkts-apis/arkts-na-common-animateparam-i.md) | 是 | 设置动画效果相关参数。 |
-| processor | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| processor | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 ## clearResourceCache
 
@@ -52,10 +53,6 @@ clearResourceCache(): void
 清除跨模块（[HSP](../../../quick-start/in-app-hsp.md)包）访问资源时生成的资源对象缓存。清除缓存后，下次访问该模块资源的加载时间会增加。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -73,7 +70,7 @@ clearResourceCache(): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application.<br>**适用版本：** 12 - 22 |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Entry
@@ -100,10 +97,6 @@ freezeUINode(id: string, isFrozen: boolean): void
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -136,10 +129,6 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIContext-freezeUINode(uniqueId: number, isFrozen: boolean): void--><!--Device-UIContext-freezeUINode(uniqueId: number, isFrozen: boolean): void-End-->
@@ -167,13 +156,9 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 ```
 
-获取[LuminanceSampler](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
+获取[LuminanceSampler](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -195,7 +180,7 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 | --- | --- |
 | [LuminanceSampler](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md) | the luminance sampler or undefined. |
 
-## 示例
+**示例**
 
 参考[offBackgroundLuminanceChange](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md#offbackgroundluminancechange)接口的示例。
 
@@ -208,10 +193,6 @@ recycleInvisibleImageMemory(enabled: boolean): void
 设置不可见Image节点内存回收配置开关，由系统应用配置，默认不开启；开启后，在应用退后台不可见页面下挂载的Image节点会进行内存回收。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -227,7 +208,7 @@ recycleInvisibleImageMemory(enabled: boolean): void
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 使能开关项：true开启，false关闭； 默认不开启，由系统应用按需开启。 <br>默认值：false <br>默认值：false <br>默认值：false <br>默认值：false <br>配置为异常undefined时，恢复为默认值false |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Entry
@@ -261,10 +242,6 @@ setDynamicDimming(id: string, value: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIContext-setDynamicDimming(id: string, value: number): void--><!--Device-UIContext-setDynamicDimming(id: string, value: number): void-End-->
@@ -280,7 +257,7 @@ setDynamicDimming(id: string, value: number): void
 | id | string | 是 | 组件id。 |
 | value | number | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Entry
@@ -311,10 +288,6 @@ setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig):
 在输入框绑定输入法前设置键盘样式配置
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

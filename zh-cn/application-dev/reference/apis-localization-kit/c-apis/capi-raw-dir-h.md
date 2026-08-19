@@ -53,7 +53,7 @@ const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 返回文件名称字符串指针，可作为{@link OH_ResourceManager_OpenRawFile}的输入参数。<br>     <br>失败时返回NULL，可能原因是rawDir为NULL、index超出有效范围或目录为空。<br>     <br>调用[OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)后，该指针同时会被释放，若需保存文件名，开发者需及时复制字符串内容。 |
+| const char * | 返回文件名称字符串指针，可作为{@link OH_ResourceManager_OpenRawFile}的输入参数。      <br>失败时返回NULL，可能原因是rawDir为NULL、index超出有效范围或目录为空。      <br>调用[OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)后，该指针同时会被释放，若需保存文件名，开发者需及时复制字符串内容。 |
 
 **参考：**
 

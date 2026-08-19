@@ -1,5 +1,10 @@
 # access
 
+## 导入模块
+
+```TypeScript
+```
+
 ## access
 
 ```TypeScript
@@ -10,9 +15,7 @@ function access(path: string, mode?: AccessModeType): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function access(path: string, mode?: AccessModeType): Promise<boolean>--><!--Device-fileIo-function access(path: string, mode?: AccessModeType): Promise<boolean>-End-->
 
@@ -59,9 +62,7 @@ function access(path: string, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function access(path: string, callback: AsyncCallback<boolean>): void--><!--Device-fileIo-function access(path: string, callback: AsyncCallback<boolean>): void-End-->
 
@@ -72,7 +73,7 @@ function access(path: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 文件或目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 异步检查文件或目录是否存在的回调。如果存在，回调返回true；否则返回false。 |
 
 **错误码：**
 
@@ -102,9 +103,7 @@ function access(path: string, mode: AccessModeType, flag: AccessFlagType): Promi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise<boolean>--><!--Device-fileIo-function access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise<boolean>-End-->
 

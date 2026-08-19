@@ -98,7 +98,7 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回定位结果。<br>     <br>返回0，表示成功，文件的偏移位置移动到指定位置。<br>     <br>返回-1，表示失败，文件的偏移位置不变。可能原因是rawFile为NULL、offset超出文件范围或whence值无效。 |
+| int | 返回定位结果。      <br>返回0，表示成功，文件的偏移位置移动到指定位置。      <br>返回-1，表示失败，文件的偏移位置不变。可能原因是rawFile为NULL、offset超出文件范围或whence值无效。 |
 
 ### OH_ResourceManager_GetRawFileSize()
 
@@ -351,7 +351,7 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回定位结果。<br>     <br>返回0，表示成功，文件的偏移位置移动到指定位置。<br>     <br>返回-1，表示失败，文件的偏移位置不变。可能原因是rawFile为NULL、offset超出文件范围或whence值无效。 |
+| int | 返回定位结果。      <br>返回0，表示成功，文件的偏移位置移动到指定位置。      <br>返回-1，表示失败，文件的偏移位置不变。可能原因是rawFile为NULL、offset超出文件范围或whence值无效。 |
 
 ### OH_ResourceManager_GetRawFileSize64()
 

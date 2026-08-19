@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface RadioAttribute--><!--Device-unnamed-export declare interface RadioAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<RadioAttribute> | AttributeModifie
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RadioAttribute-attributeModifier(modifier: AttributeModifier<RadioAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-RadioAttribute-attributeModifier(modifier: AttributeModifier<RadioAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ checked(isChecked: boolean | undefined | Bindable<boolean>): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RadioAttribute-checked(isChecked: boolean | undefined | Bindable<boolean>): this--><!--Device-RadioAttribute-checked(isChecked: boolean | undefined | Bindable<boolean>): this-End-->
 
@@ -74,9 +68,7 @@ contentModifier(modifier: ContentModifier<RadioConfiguration> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RadioAttribute-contentModifier(modifier: ContentModifier<RadioConfiguration> | undefined): this--><!--Device-RadioAttribute-contentModifier(modifier: ContentModifier<RadioConfiguration> | undefined): this-End-->
 
@@ -100,9 +92,7 @@ onChange(callback: OnRadioChangeCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RadioAttribute-onChange(callback: OnRadioChangeCallback | undefined): this--><!--Device-RadioAttribute-onChange(callback: OnRadioChangeCallback | undefined): this-End-->
 
@@ -126,9 +116,7 @@ radioStyle(value?: RadioStyle | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RadioAttribute-radioStyle(value?: RadioStyle | undefined): this--><!--Device-RadioAttribute-radioStyle(value?: RadioStyle | undefined): this-End-->
 
@@ -154,9 +142,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

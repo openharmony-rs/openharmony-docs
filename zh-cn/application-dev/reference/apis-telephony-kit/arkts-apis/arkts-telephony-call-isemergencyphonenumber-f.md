@@ -1,5 +1,11 @@
 # isEmergencyPhoneNumber
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## isEmergencyPhoneNumber
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOpt
 根据电话号码参数，判断是否是紧急电话号码。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOptions, callback: AsyncCallback<boolean>): void--><!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOptions, callback: AsyncCallback<boolean>): void-End-->
 
@@ -24,7 +26,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOpt
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
 | options | [EmergencyNumberOptions](arkts-telephony-call-emergencynumberoptions-i.md) | 是 | 电话号码参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOpt
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -61,10 +63,6 @@ function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOp
 根据电话号码参数，判断是否是紧急电话号码。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOptions): Promise<boolean>--><!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOptions): Promise<boolean>-End-->
 
@@ -93,7 +91,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOp
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -117,10 +115,6 @@ function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boolean>): void--><!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -130,7 +124,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | phoneNumber | string | 是 | 电话号码。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示是紧急电话号码，返回false表示不是紧急电话号码。 |
 
 **错误码：**
 
@@ -142,7 +136,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boo
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

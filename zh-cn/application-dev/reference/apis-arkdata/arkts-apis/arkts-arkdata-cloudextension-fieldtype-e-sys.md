@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export enum FieldType--><!--Device-cloudExtension-export enum FieldType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -23,10 +19,6 @@ NULL = 0
 类型为空。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FieldType-NULL = 0--><!--Device-FieldType-NULL = 0-End-->
 
@@ -44,10 +36,6 @@ NUMBER = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FieldType-NUMBER = 1--><!--Device-FieldType-NUMBER = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -63,10 +51,6 @@ REAL = 2
 双精度浮点类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FieldType-REAL = 2--><!--Device-FieldType-REAL = 2-End-->
 
@@ -84,10 +68,6 @@ TEXT = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FieldType-TEXT = 3--><!--Device-FieldType-TEXT = 3-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -103,10 +83,6 @@ BOOL = 4
 布尔类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FieldType-BOOL = 4--><!--Device-FieldType-BOOL = 4-End-->
 
@@ -124,10 +100,6 @@ BLOB = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FieldType-BLOB = 5--><!--Device-FieldType-BLOB = 5-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -144,10 +116,6 @@ ASSET = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FieldType-ASSET = 6--><!--Device-FieldType-ASSET = 6-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -163,10 +131,6 @@ ASSETS = 7
 资产列表类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FieldType-ASSETS = 7--><!--Device-FieldType-ASSETS = 7-End-->
 

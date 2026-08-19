@@ -1,5 +1,12 @@
 # resizeVirtualScreen（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## resizeVirtualScreen
 
 ```TypeScript
@@ -9,10 +16,6 @@ function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<
 修改指定虚拟屏的尺寸，使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-screen-function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<void>--><!--Device-screen-function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<void>-End-->
 
@@ -44,7 +47,7 @@ function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

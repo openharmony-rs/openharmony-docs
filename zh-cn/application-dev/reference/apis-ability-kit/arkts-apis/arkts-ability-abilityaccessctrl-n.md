@@ -2,13 +2,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace abilityAccessCtrl--><!--Device-unnamed-declare namespace abilityAccessCtrl-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+## 导入模块
+
+```TypeScript
+import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
+```
 
 ## 汇总
 
@@ -16,13 +18,13 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager) | 创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。调用成功后返回AtManager实例，可用于后续的权限管理操作。 |
+| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md) | 创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。调用成功后返回AtManager实例，可用于后续的权限管理操作。 |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [AtManager](arkts-ability-abilityaccessctrl-atmanager-i.md) | 程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager) 获取实例。 |
+| [AtManager](arkts-ability-abilityaccessctrl-atmanager-i.md) | 程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md) 获取实例。 |
 | [PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md) | 表示某次权限授权状态变化的详情。 |
 
 <!--Del-->
@@ -30,7 +32,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [AtManager](arkts-ability-abilityaccessctrl-atmanager-i-sys.md) | 程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager) 获取实例。 |
+| [AtManager](arkts-ability-abilityaccessctrl-atmanager-i-sys.md) | 程序访问控制管理类，提供权限校验、运行时权限弹窗申请、设置页授权引导、全局开关请求和权限状态监听等能力。通过[createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md) 获取实例。 |
 | [PermissionStatusInfo](arkts-ability-abilityaccessctrl-permissionstatusinfo-i-sys.md) | 表示权限状态信息。 |
 <!--DelEnd-->
 

@@ -61,7 +61,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetMetadataObjectType(const OH_Camera_Meta
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataObjectExt_GetTimestamp()
 
@@ -86,7 +86,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetTimestamp(const OH_Camera_MetadataObjec
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataObjectExt_GetBoundingBox()
 
@@ -111,7 +111,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetBoundingBox(const OH_Camera_MetadataObj
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataObjectExt_GetPitchAngle()
 
@@ -136,7 +136,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetPitchAngle(const OH_Camera_MetadataObje
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetYawAngle()
 
@@ -161,7 +161,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetYawAngle(const OH_Camera_MetadataObject
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetRollAngle()
 
@@ -186,7 +186,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRollAngle(const OH_Camera_MetadataObjec
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetLeftEyeBoundingBox()
 
@@ -211,7 +211,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetLeftEyeBoundingBox(const OH_Camera_Meta
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetRightEyeBoundingBox()
 
@@ -236,7 +236,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetRightEyeBoundingBox(const OH_Camera_Met
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_GetEmotion()
 
@@ -261,7 +261,7 @@ Camera_ErrorCode OH_MetadataObjectExt_GetEmotion(const OH_Camera_MetadataObjectE
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST：可选属性不存在。 |
 
 ### OH_MetadataObjectExt_Destroy()
 

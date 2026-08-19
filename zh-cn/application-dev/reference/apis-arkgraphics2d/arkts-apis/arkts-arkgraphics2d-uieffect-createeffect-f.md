@@ -1,5 +1,11 @@
 # createEffect
 
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
+
 ## createEffect
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createEffect(): VisualEffect
 创建VisualEffect实例用于给组件添加多种VisualEffect效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
@@ -26,7 +28,7 @@ function createEffect(): VisualEffect
 | --- | --- |
 | VisualEffect | 返回VisualEffect实例，支持添加多种VisualEffect效果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let visualEffect : uiEffect.VisualEffect = uiEffect.createEffect()

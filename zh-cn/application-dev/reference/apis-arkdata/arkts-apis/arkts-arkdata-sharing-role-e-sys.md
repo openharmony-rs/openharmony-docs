@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sharing-enum Role--><!--Device-sharing-enum Role-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -24,10 +20,6 @@ ROLE_INVITER = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Role-ROLE_INVITER = 0--><!--Device-Role-ROLE_INVITER = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -43,10 +35,6 @@ ROLE_INVITEE = 1
 端云共享被邀请者。请使用枚举名称而非枚举值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Role-ROLE_INVITEE = 1--><!--Device-Role-ROLE_INVITEE = 1-End-->
 

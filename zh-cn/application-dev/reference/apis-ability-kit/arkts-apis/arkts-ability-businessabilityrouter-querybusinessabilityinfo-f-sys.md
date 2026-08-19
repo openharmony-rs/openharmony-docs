@@ -1,5 +1,11 @@
 # queryBusinessAbilityInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { businessAbilityRouter } from '@kit.AbilityKit';
+```
+
 ## queryBusinessAbilityInfo
 
 ```TypeScript
@@ -12,10 +18,6 @@ function queryBusinessAbilityInfo(
 通过给定的过滤条件查询Ability信息。使用callback异步回调，成功时返回查询到的路由Ability信息，失败时返回错误信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -30,7 +32,7 @@ function queryBusinessAbilityInfo(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | [BusinessAbilityFilter](arkts-ability-businessabilityrouter-businessabilityfilter-i-sys.md) | 是 | 用于按业务类型过滤的对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;BusinessAbilityInfo&gt;&gt; | 是 | 回调函数。返回查询到的Ability信息，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;BusinessAbilityInfo&gt;&gt; | 是 | 回调函数。返回查询到的Ability信息，否则为错误对象。 |
 
 **错误码：**
 
@@ -40,7 +42,7 @@ function queryBusinessAbilityInfo(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { businessAbilityRouter } from '@kit.AbilityKit';
@@ -73,10 +75,6 @@ function queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise<Array<
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 <!--Device-businessAbilityRouter-function queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise<Array<BusinessAbilityInfo>>--><!--Device-businessAbilityRouter-function queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise<Array<BusinessAbilityInfo>>-End-->
@@ -105,7 +103,7 @@ function queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise<Array<
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { businessAbilityRouter } from '@kit.AbilityKit';

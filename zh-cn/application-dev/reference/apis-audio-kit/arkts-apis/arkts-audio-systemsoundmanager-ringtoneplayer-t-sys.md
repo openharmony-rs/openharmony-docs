@@ -8,10 +8,6 @@ type RingtonePlayer = _RingtonePlayer
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-systemSoundManager-type RingtonePlayer = _RingtonePlayer--><!--Device-systemSoundManager-type RingtonePlayer = _RingtonePlayer-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core

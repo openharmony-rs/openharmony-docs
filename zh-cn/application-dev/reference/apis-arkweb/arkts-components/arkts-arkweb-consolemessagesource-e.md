@@ -4,10 +4,6 @@ ConsoleMessage的日志来源。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum ConsoleMessageSource--><!--Device-unnamed-declare enum ConsoleMessageSource-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ XML = 0
 由Web的 XML/HTML 解析器生成的日志（如 HTML 语法错误、XML 格式异常），比如HTML 标签未闭合导致的解析警告。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConsoleMessageSource-XML = 0--><!--Device-ConsoleMessageSource-XML = 0-End-->
 
@@ -40,10 +32,6 @@ JAVASCRIPT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ConsoleMessageSource-JAVASCRIPT = 1--><!--Device-ConsoleMessageSource-JAVASCRIPT = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -57,10 +45,6 @@ NETWORK = 2
 加载网页资源失败，比如资源（JS/CSS/ 图片）404 加载失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConsoleMessageSource-NETWORK = 2--><!--Device-ConsoleMessageSource-NETWORK = 2-End-->
 
@@ -76,10 +60,6 @@ CONSOLE_API = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ConsoleMessageSource-CONSOLE_API = 3--><!--Device-ConsoleMessageSource-CONSOLE_API = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -93,10 +73,6 @@ STORAGE = 4
 存储相关模块（LocalStorage、SessionStorage、IndexedDB、Cookie）生成的日志（如存储配额超限、操作异常）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConsoleMessageSource-STORAGE = 4--><!--Device-ConsoleMessageSource-STORAGE = 4-End-->
 
@@ -112,10 +88,6 @@ RENDERING = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ConsoleMessageSource-RENDERING = 5--><!--Device-ConsoleMessageSource-RENDERING = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -129,10 +101,6 @@ SECURITY = 6
 违反网页安全策略，HTTPS 证书错误、混合内容（HTTP 资源在 HTTPS 页面加载）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConsoleMessageSource-SECURITY = 6--><!--Device-ConsoleMessageSource-SECURITY = 6-End-->
 
@@ -148,10 +116,6 @@ OTHER = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ConsoleMessageSource-OTHER = 7--><!--Device-ConsoleMessageSource-OTHER = 7-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -165,10 +129,6 @@ DEPRECATION = 8
 使用了过期语法，比如slider-vertical。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConsoleMessageSource-DEPRECATION = 8--><!--Device-ConsoleMessageSource-DEPRECATION = 8-End-->
 
@@ -184,10 +144,6 @@ service worker，shared worker里面的错误，比如service worker navigation 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ConsoleMessageSource-WORKER = 9--><!--Device-ConsoleMessageSource-WORKER = 9-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -201,10 +157,6 @@ VIOLATION = 10
 违反规则，比如一段js执行超过50ms。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConsoleMessageSource-VIOLATION = 10--><!--Device-ConsoleMessageSource-VIOLATION = 10-End-->
 
@@ -220,10 +172,6 @@ INTERVENTION = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ConsoleMessageSource-INTERVENTION = 11--><!--Device-ConsoleMessageSource-INTERVENTION = 11-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -237,10 +185,6 @@ RECOMMENDATION = 12
 检测到不符合Web安全最佳实践的代码行为，提供改进建议。比如当页面中使用了可能存在 XSS 风险的 API（如 innerHTML、eval() 等），但未遵循 Trusted Types 安全规范时。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ConsoleMessageSource-RECOMMENDATION = 12--><!--Device-ConsoleMessageSource-RECOMMENDATION = 12-End-->
 

@@ -1,5 +1,13 @@
 # @ohos.window
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 命名空间

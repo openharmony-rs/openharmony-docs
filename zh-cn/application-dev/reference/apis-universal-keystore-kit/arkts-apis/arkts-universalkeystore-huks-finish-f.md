@@ -1,20 +1,25 @@
 # finish
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## finish
 
 ```TypeScript
 function finish(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void
 ```
 
-finish操作密钥接口。使用callback异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.finishSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-finishsession-f.md#finishsession) > 替代。
+finish操作密钥接口。使用callback异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.finishSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-finishsession-f.md) > 替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
+**替代接口：** [finishSession](arkts-universalkeystore-huks-finishsession-f.md)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
 
 <!--Device-huks-function finish(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function finish(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -26,7 +31,7 @@ finish操作密钥接口。使用callback异步回调。 huks.init、huks.update
 | --- | --- | --- | --- |
 | handle | number | 是 | Finish操作的uint64类型的handle值。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Finish的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当密钥操作finish成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当密钥操作finish成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 
 ## finish
@@ -35,15 +40,13 @@ finish操作密钥接口。使用callback异步回调。 huks.init、huks.update
 function finish(handle: number, options: HuksOptions): Promise<HuksResult>
 ```
 
-finish操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.finishSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-finishsession-f.md#finishsession) > 替代。
+finish操作密钥接口。使用Promise异步回调。 huks.init、huks.update、huks.finish为三段式接口，需要一起使用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.finishSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-finishsession-f.md) > 替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession)( handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback&lt;HuksReturnResult&gt; )
+**替代接口：** [finishSession](arkts-universalkeystore-huks-finishsession-f.md)( handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback&lt;HuksReturnResult&gt; )
 
 <!--Device-huks-function finish(handle: number, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function finish(handle: number, options: HuksOptions): Promise<HuksResult>-End-->
 

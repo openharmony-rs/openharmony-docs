@@ -4,10 +4,6 @@ Kiosk模式的特征。
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-applicationManager-enum KioskFeature--><!--Device-applicationManager-enum KioskFeature-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -21,10 +17,6 @@ ALLOW_NOTIFICATION_CENTER = 1
 允许进入通知中心（通过单指左上方下滑进入）。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ ALLOW_CONTROL_CENTER = 2
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KioskFeature-ALLOW_CONTROL_CENTER = 2--><!--Device-KioskFeature-ALLOW_CONTROL_CENTER = 2-End-->
@@ -62,10 +50,6 @@ ALLOW_GESTURE_CONTROL = 3
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KioskFeature-ALLOW_GESTURE_CONTROL = 3--><!--Device-KioskFeature-ALLOW_GESTURE_CONTROL = 3-End-->
@@ -81,10 +65,6 @@ ALLOW_SIDE_DOCK = 4
 允许进入侧边DOCK栏（通过单指边缘内滑停留进入）。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

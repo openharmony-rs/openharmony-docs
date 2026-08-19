@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-i18n-export class BreakIterator--><!--Device-i18n-export class BreakIterator-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
 
 ## current
 
@@ -21,10 +23,6 @@ current(): int
 获取换行迭代器在当前处理文本中的位置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +36,7 @@ current(): int
 | --- | --- |
 | int | 获取换行迭代器在当前处理的文本中的位置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -58,10 +56,6 @@ first(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-first(): int--><!--Device-BreakIterator-first(): int-End-->
@@ -74,7 +68,7 @@ first(): int
 | --- | --- |
 | int | 被处理文本的第一个可换行点的偏移量。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -94,10 +88,6 @@ following(offset: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-following(offset: int): int--><!--Device-BreakIterator-following(offset: int): int-End-->
@@ -116,7 +106,7 @@ following(offset: int): int
 | --- | --- |
 | int | 换行迭代器移动后的位置。若offset所指定位置的下一个可换行点超出了文本的范围，则返回-1。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -138,10 +128,6 @@ getLineBreakText(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-getLineBreakText(): string--><!--Device-BreakIterator-getLineBreakText(): string-End-->
@@ -154,7 +140,7 @@ getLineBreakText(): string
 | --- | --- |
 | string | BreakIterator对象正在处理的文本。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -174,10 +160,6 @@ isBoundary(offset: int): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-isBoundary(offset: int): boolean--><!--Device-BreakIterator-isBoundary(offset: int): boolean-End-->
@@ -196,7 +178,7 @@ isBoundary(offset: int): boolean
 | --- | --- |
 | boolean | true表示offset指定的文本位置是一个可换行点，false表示offset指定的文本位置不是一个可换行点。 <br>返回true时，会将换行迭代器移动到offset指定的位置，否则相当于调用following。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -217,10 +199,6 @@ last(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-last(): int--><!--Device-BreakIterator-last(): int-End-->
@@ -233,7 +211,7 @@ last(): int
 | --- | --- |
 | int | 被处理文本的最后一个可换行点的偏移量。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -253,10 +231,6 @@ next(index?: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-next(index?: int): int--><!--Device-BreakIterator-next(index?: int): int-End-->
@@ -275,7 +249,7 @@ next(index?: int): int
 | --- | --- |
 | int | 移动index个可换行点后，当前换行迭代器在文本中的位置。 <br>若移动index个可换行点后超出了所处理的文本的长度范围，返回-1。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -297,10 +271,6 @@ previous(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-previous(): int--><!--Device-BreakIterator-previous(): int-End-->
@@ -313,7 +283,7 @@ previous(): int
 | --- | --- |
 | int | 移动到前一个可换行点后，当前换行迭代器在文本中的位置。 <br>若移动后超出了所处理的文本的长度范围，返回-1。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -335,10 +305,6 @@ setLineBreakText(text: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakIterator-setLineBreakText(text: string): void--><!--Device-BreakIterator-setLineBreakText(text: string): void-End-->
@@ -351,7 +317,7 @@ setLineBreakText(text: string): void
 | --- | --- | --- | --- |
 | text | string | 是 | 输入文本。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

@@ -41,12 +41,12 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t displayId | 需要截屏的屏幕id号，该值为非负整数。 |
-| OH_PixelmapNative **pixelMap | 创建指定屏幕id的OH_PixelmapNative对象，此处作为出参返回。 |
+| [OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md) **pixelMap | 创建指定屏幕id的OH_PixelmapNative对象，此处作为出参返回。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。<br> 返回DISPLAY_MANAGER_ERROR_NO_PERMISSION，表示权限校验失败，应用无权限使用该API，需要申请权限。<br> 返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。<br> 返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。<br> 返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| NativeDisplayManager_ErrorCode | 返回DISPLAY_MANAGER_OK，表示操作成功。  返回DISPLAY_MANAGER_ERROR_NO_PERMISSION，表示权限校验失败，应用无权限使用该API，需要申请权限。  返回DISPLAY_MANAGER_ERROR_INVALID_PARAM，表示参数检查失败。  返回DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED，表示该设备不支持此API。  返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 

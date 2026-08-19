@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-interface LocationOptions--><!--Device-sensor-interface LocationOptions-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
+
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
 
 ## altitude
 
@@ -23,10 +25,6 @@ altitude: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LocationOptions-altitude: double--><!--Device-LocationOptions-altitude: double-End-->
 
@@ -44,10 +42,6 @@ latitude: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-LocationOptions-latitude: double--><!--Device-LocationOptions-latitude: double-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -63,10 +57,6 @@ longitude: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LocationOptions-longitude: double--><!--Device-LocationOptions-longitude: double-End-->
 

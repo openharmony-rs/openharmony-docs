@@ -1,16 +1,17 @@
-# TextStyle
+# TextStyle(AlertDialog)
 
 弹窗中message的文本样式，包含文本截断方式等。
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface TextStyle--><!--Device-unnamed-declare interface TextStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## wordBreak
 
@@ -23,10 +24,6 @@ wordBreak?: WordBreak
 **类型：** WordBreak
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

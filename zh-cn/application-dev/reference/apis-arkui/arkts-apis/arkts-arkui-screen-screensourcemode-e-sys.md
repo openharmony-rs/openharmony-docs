@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-screen-enum ScreenSourceMode--><!--Device-screen-enum ScreenSourceMode-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -23,10 +19,6 @@ SCREEN_MAIN = 0
 表示屏幕为默认主屏。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ScreenSourceMode-SCREEN_MAIN = 0--><!--Device-ScreenSourceMode-SCREEN_MAIN = 0-End-->
 
@@ -44,10 +36,6 @@ SCREEN_MIRROR = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ScreenSourceMode-SCREEN_MIRROR = 1--><!--Device-ScreenSourceMode-SCREEN_MIRROR = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -64,10 +52,6 @@ SCREEN_EXTEND = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ScreenSourceMode-SCREEN_EXTEND = 2--><!--Device-ScreenSourceMode-SCREEN_EXTEND = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -83,10 +67,6 @@ SCREEN_ALONE = 3
 表示屏幕为未指定来源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ScreenSourceMode-SCREEN_ALONE = 3--><!--Device-ScreenSourceMode-SCREEN_ALONE = 3-End-->
 

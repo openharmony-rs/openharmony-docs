@@ -1,5 +1,11 @@
 # onSystemAutoStartup（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { autoStartupManager } from '@kit.AbilityKit';
+```
+
 ## onSystemAutoStartup
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onSystemAutoStartup(callback: AutoStartupCallback): void
 注册监听应用组件开机自启动状态变化的回调函数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_APP_BOOT
 

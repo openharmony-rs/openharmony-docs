@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-fileShare-export interface PolicyErrorResult--><!--Device-fileShare-export interface PolicyErrorResult-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+## 导入模块
+
+```TypeScript
+import { fileShare } from '@kit.CoreFileKit';
+```
 
 ## code
 
@@ -23,10 +25,6 @@ code: PolicyErrorCode
 **类型：** [PolicyErrorCode](arkts-corefile-fileshare-policyerrorcode-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolicyErrorResult-code: PolicyErrorCode--><!--Device-PolicyErrorResult-code: PolicyErrorCode-End-->
 
@@ -44,10 +42,6 @@ message: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PolicyErrorResult-message: string--><!--Device-PolicyErrorResult-message: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
@@ -63,10 +57,6 @@ uri: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolicyErrorResult-uri: string--><!--Device-PolicyErrorResult-uri: string-End-->
 

@@ -2,13 +2,11 @@
 
 手势组处理器对象类型。
 
-**继承/实现关系：** GestureGroupHandler extends [GestureHandler](arkts-arkui-gesture-gesturehandler-c.md#gesturehandler)
+**继承/实现关系：** GestureGroupHandler extends [GestureHandler](arkts-arkui-gesture-gesturehandler-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class GestureGroupHandler--><!--Device-unnamed-export declare class GestureGroupHandler-End-->
 
@@ -24,9 +22,7 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,13 +42,11 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 onCancel(event: VoidCallback): this
 ```
 
-设置手势组处理器取消回调。顺序组合手势（[GestureMode](arkts-arkui-gesture-gesturemode-e.md#gesturemode).Sequence）取消后触发回调。
+设置手势组处理器取消回调。顺序组合手势（[GestureMode](arkts-arkui-gesture-gesturemode-e.md).Sequence）取消后触发回调。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

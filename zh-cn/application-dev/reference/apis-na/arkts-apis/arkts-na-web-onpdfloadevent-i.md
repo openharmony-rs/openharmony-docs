@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnPdfLoadEvent--><!--Device-unnamed-export declare interface OnPdfLoadEvent-End-->
 
@@ -24,9 +22,7 @@ PDF页面加载结果。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnPdfLoadEvent-result: PdfLoadResult--><!--Device-OnPdfLoadEvent-result: PdfLoadResult-End-->
 
@@ -44,9 +40,7 @@ url: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnPdfLoadEvent-url: string--><!--Device-OnPdfLoadEvent-url: string-End-->
 

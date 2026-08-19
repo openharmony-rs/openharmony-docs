@@ -1,5 +1,11 @@
 # installUserCertificate（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+```
+
 ## installUserCertificate
 
 ```TypeScript
@@ -10,11 +16,9 @@ function installUserCertificate(admin: Want, certificate: CertBlob, callback: As
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installusercertificate)
+**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -32,7 +36,7 @@ function installUserCertificate(admin: Want, certificate: CertBlob, callback: As
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | certificate | CertBlob | 是 | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见： [应用沙箱路径和真实物理路径的对应关系](../../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -45,7 +49,7 @@ function installUserCertificate(admin: Want, certificate: CertBlob, callback: As
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { deviceSettings } from '@kit.MDMKit';
@@ -88,11 +92,9 @@ function installUserCertificate(admin: Want, certificate: CertBlob): Promise<str
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md#installusercertificate)
+**替代接口：** [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -128,7 +130,7 @@ function installUserCertificate(admin: Want, certificate: CertBlob): Promise<str
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { deviceSettings } from '@kit.MDMKit';

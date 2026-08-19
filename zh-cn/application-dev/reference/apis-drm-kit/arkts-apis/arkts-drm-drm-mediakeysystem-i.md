@@ -1,16 +1,18 @@
-# MediaKeySystem
+# MediaKeySystem(Defines the DRM capability.)
 
-支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)创建一个MediaKeySystem实例。
+支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md)创建一个MediaKeySystem实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-drm-interface MediaKeySystem--><!--Device-drm-interface MediaKeySystem-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+## 导入模块
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+```
 
 ## clearOfflineMediaKeys
 
@@ -21,10 +23,6 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 删除指定媒体密钥标识的离线媒体密钥。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -55,10 +53,6 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 创建指定内容保护级别的MediaKeySession实例。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -97,10 +91,6 @@ Create a MediaKeySession instance with level.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaKeySystem-createMediaKeySession(level: ContentProtectionLevel): MediaKeySession | undefined--><!--Device-MediaKeySystem-createMediaKeySession(level: ContentProtectionLevel): MediaKeySession | undefined-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
@@ -136,10 +126,6 @@ createMediaKeySession(): MediaKeySession
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-createMediaKeySession(): MediaKeySession--><!--Device-MediaKeySystem-createMediaKeySession(): MediaKeySession-End-->
@@ -170,10 +156,6 @@ Create a MediaKeySession instance.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaKeySystem-createMediaKeySession(): MediaKeySession | undefined--><!--Device-MediaKeySystem-createMediaKeySession(): MediaKeySession | undefined-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
@@ -202,10 +184,6 @@ destroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-destroy(): void--><!--Device-MediaKeySystem-destroy(): void-End-->
@@ -228,10 +206,6 @@ generateKeySystemRequest(): Promise<ProvisionRequest>
 生成获取mediaKeySystem设备证书的请求。使用Promise异步回调。 如果设备上已存在设备证书，调用此接口会返回失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -262,10 +236,6 @@ getCertificateStatus(): CertificateStatus
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-getCertificateStatus(): CertificateStatus--><!--Device-MediaKeySystem-getCertificateStatus(): CertificateStatus-End-->
@@ -295,10 +265,6 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-getConfigurationByteArray(configName: string): Uint8Array--><!--Device-MediaKeySystem-getConfigurationByteArray(configName: string): Uint8Array-End-->
@@ -309,7 +275,7 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md)，具体支持的属性名由设备上DRM解决方案决定。 |
 
 **返回值：**
 
@@ -335,10 +301,6 @@ getConfigurationString(configName: string): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-getConfigurationString(configName: string): string--><!--Device-MediaKeySystem-getConfigurationString(configName: string): string-End-->
@@ -349,7 +311,7 @@ getConfigurationString(configName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，长度不能超过4096字节。<br>如果参数长度超过4096字节，会抛出错误码401。<br>属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，长度不能超过4096字节。<br>如果参数长度超过4096字节，会抛出错误码401。<br>属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md)，具体支持的属性名由设备上DRM解决方案决定。 |
 
 **返回值：**
 
@@ -374,10 +336,6 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 获取当前DRM解决方案支持的最大内容保护级别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -408,10 +366,6 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-getOfflineMediaKeyIds(): Uint8Array[]--><!--Device-MediaKeySystem-getOfflineMediaKeyIds(): Uint8Array[]-End-->
@@ -440,10 +394,6 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 获取指定离线媒体密钥标识的媒体密钥的状态值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -481,10 +431,6 @@ getStatistics(): StatisticKeyValue[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-getStatistics(): StatisticKeyValue[]--><!--Device-MediaKeySystem-getStatistics(): StatisticKeyValue[]-End-->
@@ -514,10 +460,6 @@ Unregister keySystemRequired events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaKeySystem-offKeySystemRequired(callback?: (eventInfo: EventInfo) => void): void--><!--Device-MediaKeySystem-offKeySystemRequired(callback?: (eventInfo: EventInfo) => void): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
@@ -534,7 +476,7 @@ Unregister keySystemRequired events.
 | --- | --- |
 | [24700101](../errorcode-drm.md#24700101-未知错误) | All unknown errors. |
 
-## off_keySystemRequired
+## off('keySystemRequired')
 
 ```TypeScript
 off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
@@ -543,10 +485,6 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 注销设备证书请求事件的监听。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -558,7 +496,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keySystemRequired' | 是 | 监听事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)成功创建MediaKeySystem实例 后可监听。 |
+| type | 'keySystemRequired' | 是 | 监听事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md)成功创建MediaKeySystem实例 后可监听。 |
 | callback | (eventInfo: EventInfo) =&gt; void | 否 | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。 |
 
 **错误码：**
@@ -578,10 +516,6 @@ Register keySystemRequired events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaKeySystem-onKeySystemRequired(callback: (eventInfo: EventInfo) => void): void--><!--Device-MediaKeySystem-onKeySystemRequired(callback: (eventInfo: EventInfo) => void): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
@@ -598,7 +532,7 @@ Register keySystemRequired events.
 | --- | --- |
 | [24700101](../errorcode-drm.md#24700101-未知错误) | All unknown errors. |
 
-## on_keySystemRequired
+## on('keySystemRequired')
 
 ```TypeScript
 on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
@@ -607,10 +541,6 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 监听设备证书请求事件，获取事件信息。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -622,7 +552,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'keySystemRequired' | 是 | 事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem)成功创建MediaKeySystem实例 后可监听，需要设备证书时触发该事件。 |
+| type | 'keySystemRequired' | 是 | 事件类型，通过 [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md)成功创建MediaKeySystem实例 后可监听，需要设备证书时触发该事件。 |
 | callback | (eventInfo: EventInfo) =&gt; void | 是 | 回调函数，返回事件信息。只要有该事件返回就证明需请求设备证书。 |
 
 **错误码：**
@@ -641,10 +571,6 @@ processKeySystemResponse(response: Uint8Array): Promise<void>
 处理获得的设备证书请求的响应。使用Promise异步回调。 如果设备上已存在设备证书，调用此接口会返回失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -682,10 +608,6 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-setConfigurationByteArray(configName: string, value: Uint8Array): void--><!--Device-MediaKeySystem-setConfigurationByteArray(configName: string, value: Uint8Array): void-End-->
@@ -696,7 +618,7 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md)，具体支持的属性名由设备上DRM解决方案决定。 |
 | value | Uint8Array | 是 | 数组类型的配置属性值，具体属性值由设备上DRM解决方案决定。 |
 
 **错误码：**
@@ -717,10 +639,6 @@ setConfigurationString(configName: string, value: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaKeySystem-setConfigurationString(configName: string, value: string): void--><!--Device-MediaKeySystem-setConfigurationString(configName: string, value: string): void-End-->
@@ -731,7 +649,7 @@ setConfigurationString(configName: string, value: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md#predefinedconfigname)，具体支持的属性名由设备上DRM解决方案决定。 |
+| configName | string | 是 | 配置属性名，不能为空，属性名参考 [PreDefinedConfigName](arkts-drm-drm-predefinedconfigname-e.md)，具体支持的属性名由设备上DRM解决方案决定。 |
 | value | string | 是 | 配置属性值。 |
 
 **错误码：**

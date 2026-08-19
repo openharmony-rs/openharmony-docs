@@ -194,7 +194,7 @@ typedef void (*OH_QoS_GewuOnResponse)(void* context, const char* response)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* context | 提交请求时指定的用户上下文指针。该指针会在收到回复时原样传递给OH_QoS_GewuOnResponse回调函数，用于关联请求和响应数据。 |
+| void\* context | 提交请求时指定的用户上下文指针。该指针会在收到回复时原样传递给OH_QoS_GewuOnResponse回调函数，用于关联请求和响应数据。 |
 | const char\* response | 回复的JSON字符串，包含以下字段：<br>- message: 对象，包含role和content两个字段。其中role为string类型，表示消息的角色类型，应为"assistant"；content为string类型，表示模型生成返回给用户的消息。<br>- finish_reason: string or null，停止原因，可能的值如下：<br>&nbsp;&nbsp;&nbsp;&nbsp;- null: 表示没有停止。流式推理中会有多次回复，只有最后一次回复有非空的"finish_reason"。而非流式推理只有一次回复，且"finish_reason"非空。<br>&nbsp;&nbsp;&nbsp;&nbsp;- "stop": 正常停止。<br>&nbsp;&nbsp;&nbsp;&nbsp;- "abort": 用户主动提前中止。<br>&nbsp;&nbsp;&nbsp;&nbsp;- "length": token数超过限制。 |
 
 ### OH_QoS_GewuCreateSession()
@@ -219,7 +219,7 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)
 
 | 类型 | 说明 |
 | -- | -- |
-| Result | 格物创建会话结果。<br>     <br>- 表示创建会话成功，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为`OH_QOS_GEWU_OK`，`session`为会话句柄。<br>     <br>- 表示创建会话失败，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`表示没有足够的内存创建会话，`<br>     OH_QOS_GEWU_INVAL`表示参数错误，`OH_QOS_GEWU_NOPERM`表示权限不足，`OH_QOS_GEWU_EXIST`表示会话已存在，`OH_QOS_GEWU_NOSYS`表示找不到子系统。 |
+| Result | 格物创建会话结果。      <br>- 表示创建会话成功，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为`OH_QOS_GEWU_OK`，`session`为会话句柄。      <br>- 表示创建会话失败，返回值`OH_QoS_GewuCreateSessionResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`表示没有足够的内存创建会话，`      OH_QOS_GEWU_INVAL`表示参数错误，`OH_QOS_GEWU_NOPERM`表示权限不足，`OH_QOS_GEWU_EXIST`表示会话已存在，`OH_QOS_GEWU_NOSYS`表示找不到子系统。 |
 
 ### OH_QoS_GewuDestroySession()
 
@@ -243,7 +243,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode) | 错误码。<br>     <br>- 表示会话销毁成功，返回值为`OH_QOS_GEWU_OK`。<br>     <br>- 表示找不到会话，返回`OH_QOS_GEWU_NOENT`。<br>     <br>- 表示参数无效，返回`OH_QOS_GEWU_INVAL`。<br>     <br>- 表示找不到子系统，返回`OH_QOS_GEWU_NOSYS`。<br>     <br>- 表示其他内部错误，返回`OH_QOS_GEWU_FAULT`。 |
+| [OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode) | 错误码。      <br>- 表示会话销毁成功，返回值为`OH_QOS_GEWU_OK`。      <br>- 表示找不到会话，返回`OH_QOS_GEWU_NOENT`。      <br>- 表示参数无效，返回`OH_QOS_GEWU_INVAL`。      <br>- 表示找不到子系统，返回`OH_QOS_GEWU_NOSYS`。      <br>- 表示其他内部错误，返回`OH_QOS_GEWU_FAULT`。 |
 
 ### OH_QoS_GewuAbortRequest()
 
@@ -268,7 +268,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode) | 错误码。<br>     <br>- 表示成功停止请求，返回`OH_QOS_GEWU_OK`。<br>     <br>- 表示找不到请求，返回`OH_QOS_GEWU_NOENT`。<br>     <br>- 表示参数无效，返回`OH_QOS_GEWU_INVAL`。<br>     <br>- 表示找不到子系统，返回`OH_QOS_GEWU_NOSYS`。 |
+| [OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode) | 错误码。      <br>- 表示成功停止请求，返回`OH_QOS_GEWU_OK`。      <br>- 表示找不到请求，返回`OH_QOS_GEWU_NOENT`。      <br>- 表示参数无效，返回`OH_QOS_GEWU_INVAL`。      <br>- 表示找不到子系统，返回`OH_QOS_GEWU_NOSYS`。 |
 
 ### OH_QoS_GewuSubmitRequest()
 
@@ -295,6 +295,6 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
 
 | 类型 | 说明 |
 | -- | -- |
-| Result | 格物提交请求结果。`error`字段为枚举[OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode)，枚举值与数字对应关系详见[OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode)枚举说明。<br>     <br>- 表示提交请求成功，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为`OH_QOS_GEWU_OK`（数值0），`request`为请求句柄。<br>     <br>- 表示提交请求失败，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`（数值203）表示没有足够的内存处理该请求，`<br>     OH_QOS_GEWU_INVAL`（数值401）表示参数错误，`OH_QOS_GEWU_NOENT`（数值502）表示找不到会话，`OH_QOS_GEWU_NOPERM`（数值201）表示权限不足，`<br>     OH_QOS_GEWU_NOSYS`（数值801）表示找不到子系统。 |
+| Result | 格物提交请求结果。`error`字段为枚举[OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode)，枚举值与数字对应关系详见[OH_QoS_GewuErrorCode](capi-qos-h.md#oh_qos_gewuerrorcode)枚举说明。      <br>- 表示提交请求成功，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为`OH_QOS_GEWU_OK`（数值0），`request`为请求句柄。      <br>- 表示提交请求失败，返回值`OH_QoS_GewuSubmitRequestResult`里的`error`为错误原因，其中`OH_QOS_GEWU_NOMEM`（数值203）表示没有足够的内存处理该请求，`      OH_QOS_GEWU_INVAL`（数值401）表示参数错误，`OH_QOS_GEWU_NOENT`（数值502）表示找不到会话，`OH_QOS_GEWU_NOPERM`（数值201）表示权限不足，`      OH_QOS_GEWU_NOSYS`（数值801）表示找不到子系统。 |
 
 

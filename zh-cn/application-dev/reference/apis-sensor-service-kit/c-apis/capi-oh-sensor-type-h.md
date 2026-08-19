@@ -47,24 +47,7 @@
 | [int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorType)](#oh_sensorevent_gettype) | - | 获取传感器类型。 |
 | [int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestamp)](#oh_sensorevent_gettimestamp) | - | 获取传感器数据的时间戳。 |
 | [int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *accuracy)](#oh_sensorevent_getaccuracy) | - | 获取传感器数据的精度。 |
-| [int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t *length)](#oh_sensorevent_getdata) | - | 数据的长度和内容依赖于监听的传感器类型，传感器上报的数据格式如下表所示：
-\| 传感器类型 \| 数据元素及描述 \|
-\| --- \| --- \|
-\| SENSOR_TYPE_ACCELEROMETER \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的加速度分量，单位：m/s² \|
-\| SENSOR_TYPE_GYROSCOPE \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角速度，单位：rad/s（弧度/秒） \|
-\| SENSOR_TYPE_AMBIENT_LIGHT \| data[0]表示环境光强度，单位：lux（勒克斯）；从API version 12开始，data[1]表示色温，单位：K（开尔文）；data[2]表示红外亮度，单位：cd/m²（坎德拉每平方米） \|
-\| SENSOR_TYPE_MAGNETIC_FIELD \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的地磁分量，单位：μT（微特斯拉） \|
-\| SENSOR_TYPE_BAROMETER \| data[0]表示气压值，单位：hPa（百帕） \|
-\| SENSOR_TYPE_HALL \| data[0]表示皮套吸合状态，0表示打开，大于0表示吸附 \|
-\| SENSOR_TYPE_PROXIMITY \| data[0]表示接近状态，0表示接近，大于0表示远离 \|
-\| SENSOR_TYPE_ORIENTATION \| data[0]、data[1]、data[2]分别表示设备绕z、x、y轴的角度，单位：°（度） \|
-\| SENSOR_TYPE_GRAVITY \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的重力加速度分量，单位：m/s² \|
-\| SENSOR_TYPE_ROTATION_VECTOR \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量元素 \|
-\| SENSOR_TYPE_PEDOMETER_DETECTION \| data[0]表示步数检测状态，1表示检测到了步数变化 \|
-\| SENSOR_TYPE_PEDOMETER \| data[0]表示步数 \|
-\| SENSOR_TYPE_HEART_RATE \| data[0]表示心率数值 \|
-\| SENSOR_TYPE_LINEAR_ACCELERATION \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的线性加速度，单位：m/s² \|
-\| SENSOR_TYPE_GAME_ROTATION_VECTOR \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量 \| |
+| [int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t *length)](#oh_sensorevent_getdata) | - | 数据的长度和内容依赖于监听的传感器类型，传感器上报的数据格式如下表所示： \| 传感器类型 \| 数据元素及描述 \| \| --- \| --- \| \| SENSOR_TYPE_ACCELEROMETER \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的加速度分量，单位：m/s² \| \| SENSOR_TYPE_GYROSCOPE \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角速度，单位：rad/s（弧度/秒） \| \| SENSOR_TYPE_AMBIENT_LIGHT \| data[0]表示环境光强度，单位：lux（勒克斯）；从API version 12开始，data[1]表示色温，单位：K（开尔文）；data[2]表示红外亮度，单位：cd/m²（坎德拉每平方米） \| \| SENSOR_TYPE_MAGNETIC_FIELD \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的地磁分量，单位：μT（微特斯拉） \| \| SENSOR_TYPE_BAROMETER \| data[0]表示气压值，单位：hPa（百帕） \| \| SENSOR_TYPE_HALL \| data[0]表示皮套吸合状态，0表示打开，大于0表示吸附 \| \| SENSOR_TYPE_PROXIMITY \| data[0]表示接近状态，0表示接近，大于0表示远离 \| \| SENSOR_TYPE_ORIENTATION \| data[0]、data[1]、data[2]分别表示设备绕z、x、y轴的角度，单位：°（度） \| \| SENSOR_TYPE_GRAVITY \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的重力加速度分量，单位：m/s² \| \| SENSOR_TYPE_ROTATION_VECTOR \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量元素 \| \| SENSOR_TYPE_PEDOMETER_DETECTION \| data[0]表示步数检测状态，1表示检测到了步数变化 \| \| SENSOR_TYPE_PEDOMETER \| data[0]表示步数 \| \| SENSOR_TYPE_HEART_RATE \| data[0]表示心率数值 \| \| SENSOR_TYPE_LINEAR_ACCELERATION \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的线性加速度，单位：m/s² \| \| SENSOR_TYPE_GAME_ROTATION_VECTOR \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量 \| |
 | [Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)](#oh_sensor_createsubscriptionid) | - | 创建一个[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)实例。<br>调用此函数创建的实例，在使用完毕后必须调用OH_Sensor_DestroySubscriptionId()销毁并回收内存，否则会导致资源泄漏。 |
 | [int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)](#oh_sensor_destroysubscriptionid) | - | 销毁[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)实例并回收内存。 |
 | [int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *sensorType)](#oh_sensorsubscriptionid_gettype) | - | 获取传感器类型。 |
@@ -125,10 +108,10 @@ enum Sensor_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_SUCCESS = 0 | 操作成功。	<br>**起始版本：** 11 |
-| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。可能原因：应用缺少必要的传感器权限、权限申请被拒绝、权限级别不足等。解决措施：请检查应用配置文件中是否已申请所需的传感器权限，确保在运行时正确请求和获取权限。	<br>**起始版本：** 11 |
-| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。可能原因：参数为空、参数超出有效范围、参数类型不匹配、缺少必填参数等。解决措施：请根据具体函数的参数说明，检查传入的参数是否完整、符合类型要求、在有效范围内，并修正参数值。	<br>**起始版本：** 11 |
-| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。可能原因：传感器服务未启动、传感器服务崩溃、设备不支持指定传感器、系统资源不足等。解决措施：请检查设备是否支持所需传感器，确保系统资源充足，必要时重启设备或重新初始化传感器服务。	<br>**起始版本：** 11 |
+| SENSOR_SUCCESS = 0 | 操作成功。 <br>**起始版本：** 11 |
+| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。可能原因：应用缺少必要的传感器权限、权限申请被拒绝、权限级别不足等。解决措施：请检查应用配置文件中是否已申请所需的传感器权限，确保在运行时正确请求和获取权限。 <br>**起始版本：** 11 |
+| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。可能原因：参数为空、参数超出有效范围、参数类型不匹配、缺少必填参数等。解决措施：请根据具体函数的参数说明，检查传入的参数是否完整、符合类型要求、在有效范围内，并修正参数值。 <br>**起始版本：** 11 |
+| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。可能原因：传感器服务未启动、传感器服务崩溃、设备不支持指定传感器、系统资源不足等。解决措施：请检查设备是否支持所需传感器，确保系统资源充足，必要时重启设备或重新初始化传感器服务。 <br>**起始版本：** 11 |
 
 ### Sensor_Accuracy
 
@@ -145,9 +128,9 @@ enum Sensor_Accuracy
 | 枚举项 | 描述 |
 | -- | -- |
 | SENSOR_ACCURACY_UNRELIABLE = 0 | 传感器数据不可靠。有可能传感器不与设备接触而进行测量。<br>**起始版本：** 11 |
-| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。	<br>**起始版本：** 11 |
-| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。	<br>**起始版本：** 11 |
-| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。	<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。 <br>**起始版本：** 11 |
+| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。 <br>**起始版本：** 11 |
+| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。 <br>**起始版本：** 11 |
 
 
 ## 函数说明
@@ -436,24 +419,7 @@ int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t
 
 **描述**
 
-数据的长度和内容依赖于监听的传感器类型，传感器上报的数据格式如下表所示：
-\| 传感器类型 \| 数据元素及描述 \|
-\| --- \| --- \|
-\| SENSOR_TYPE_ACCELEROMETER \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的加速度分量，单位：m/s² \|
-\| SENSOR_TYPE_GYROSCOPE \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角速度，单位：rad/s（弧度/秒） \|
-\| SENSOR_TYPE_AMBIENT_LIGHT \| data[0]表示环境光强度，单位：lux（勒克斯）；从API version 12开始，data[1]表示色温，单位：K（开尔文）；data[2]表示红外亮度，单位：cd/m²（坎德拉每平方米） \|
-\| SENSOR_TYPE_MAGNETIC_FIELD \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的地磁分量，单位：μT（微特斯拉） \|
-\| SENSOR_TYPE_BAROMETER \| data[0]表示气压值，单位：hPa（百帕） \|
-\| SENSOR_TYPE_HALL \| data[0]表示皮套吸合状态，0表示打开，大于0表示吸附 \|
-\| SENSOR_TYPE_PROXIMITY \| data[0]表示接近状态，0表示接近，大于0表示远离 \|
-\| SENSOR_TYPE_ORIENTATION \| data[0]、data[1]、data[2]分别表示设备绕z、x、y轴的角度，单位：°（度） \|
-\| SENSOR_TYPE_GRAVITY \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的重力加速度分量，单位：m/s² \|
-\| SENSOR_TYPE_ROTATION_VECTOR \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量元素 \|
-\| SENSOR_TYPE_PEDOMETER_DETECTION \| data[0]表示步数检测状态，1表示检测到了步数变化 \|
-\| SENSOR_TYPE_PEDOMETER \| data[0]表示步数 \|
-\| SENSOR_TYPE_HEART_RATE \| data[0]表示心率数值 \|
-\| SENSOR_TYPE_LINEAR_ACCELERATION \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的线性加速度，单位：m/s² \|
-\| SENSOR_TYPE_GAME_ROTATION_VECTOR \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量 \|
+数据的长度和内容依赖于监听的传感器类型，传感器上报的数据格式如下表所示： \| 传感器类型 \| 数据元素及描述 \| \| --- \| --- \| \| SENSOR_TYPE_ACCELEROMETER \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的加速度分量，单位：m/s² \| \| SENSOR_TYPE_GYROSCOPE \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角速度，单位：rad/s（弧度/秒） \| \| SENSOR_TYPE_AMBIENT_LIGHT \| data[0]表示环境光强度，单位：lux（勒克斯）；从API version 12开始，data[1]表示色温，单位：K（开尔文）；data[2]表示红外亮度，单位：cd/m²（坎德拉每平方米） \| \| SENSOR_TYPE_MAGNETIC_FIELD \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的地磁分量，单位：μT（微特斯拉） \| \| SENSOR_TYPE_BAROMETER \| data[0]表示气压值，单位：hPa（百帕） \| \| SENSOR_TYPE_HALL \| data[0]表示皮套吸合状态，0表示打开，大于0表示吸附 \| \| SENSOR_TYPE_PROXIMITY \| data[0]表示接近状态，0表示接近，大于0表示远离 \| \| SENSOR_TYPE_ORIENTATION \| data[0]、data[1]、data[2]分别表示设备绕z、x、y轴的角度，单位：°（度） \| \| SENSOR_TYPE_GRAVITY \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的重力加速度分量，单位：m/s² \| \| SENSOR_TYPE_ROTATION_VECTOR \| data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量元素 \| \| SENSOR_TYPE_PEDOMETER_DETECTION \| data[0]表示步数检测状态，1表示检测到了步数变化 \| \| SENSOR_TYPE_PEDOMETER \| data[0]表示步数 \| \| SENSOR_TYPE_HEART_RATE \| data[0]表示心率数值 \| \| SENSOR_TYPE_LINEAR_ACCELERATION \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的线性加速度，单位：m/s² \| \| SENSOR_TYPE_GAME_ROTATION_VECTOR \| 从API version 13开始支持。data[0]、data[1]、data[2]分别表示设备x、y、z轴的旋转角度，单位：°（度）；data[3]表示旋转向量 \|
 
 **起始版本：** 11
 
@@ -671,7 +637,7 @@ typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Sensor_Event \*event | 指向传感器数据信息的指针。 |
+| [Sensor_Event](capi-sensor-sensor-event.md) \*event | 指向传感器数据信息的指针。 |
 
 ### OH_Sensor_CreateSubscriber()
 

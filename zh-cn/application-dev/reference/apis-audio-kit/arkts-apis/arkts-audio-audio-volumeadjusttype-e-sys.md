@@ -4,10 +4,6 @@ Enumerates volume adjustment types.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum VolumeAdjustType--><!--Device-audio-enum VolumeAdjustType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -24,10 +20,6 @@ Adjust volume up.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VolumeAdjustType-VOLUME_UP = 0--><!--Device-VolumeAdjustType-VOLUME_UP = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -43,10 +35,6 @@ VOLUME_DOWN = 1
 Adjust volume down.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VolumeAdjustType-VOLUME_DOWN = 1--><!--Device-VolumeAdjustType-VOLUME_DOWN = 1-End-->
 

@@ -1,5 +1,11 @@
 # registerTask
 
+## 导入模块
+
+```TypeScript
+import { backgroundLoader } from '@kit.BackgroundTasksKit';
+```
+
 ## registerTask
 
 ```TypeScript
@@ -9,10 +15,6 @@ function registerTask(taskInfo: TaskInfo): void
 注册后台加载任务。 使用 callee.on(ON_START)来接受系统测触发的任务
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

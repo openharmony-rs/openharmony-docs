@@ -4,9 +4,7 @@ Defines the triggered function when the web page wants to display a JavaScript a
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnAlertEvent--><!--Device-unnamed-export declare interface OnAlertEvent-End-->
 
@@ -24,9 +22,7 @@ The message of alert dialog.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnAlertEvent-message: string--><!--Device-OnAlertEvent-message: string-End-->
 
@@ -44,9 +40,7 @@ Handle the user's JavaScript result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnAlertEvent-result: JsResult--><!--Device-OnAlertEvent-result: JsResult-End-->
 
@@ -64,9 +58,7 @@ The url of the page.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnAlertEvent-url: string--><!--Device-OnAlertEvent-url: string-End-->
 

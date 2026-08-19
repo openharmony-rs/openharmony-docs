@@ -1,5 +1,11 @@
 # mount（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { volumeManager } from '@kit.CoreFileKit';
+```
+
 ## mount
 
 ```TypeScript
@@ -9,10 +15,6 @@ function mount(volumeId: string, callback: AsyncCallback<void>): void
 挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -27,7 +29,7 @@ function mount(volumeId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeId | string | 是 | 卷设备id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 挂载指定卷设备之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 挂载指定卷设备之后的回调。 |
 
 **错误码：**
 
@@ -53,10 +55,6 @@ function mount(volumeId: string): Promise<void>
 挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MOUNT_UNMOUNT_MANAGER
 

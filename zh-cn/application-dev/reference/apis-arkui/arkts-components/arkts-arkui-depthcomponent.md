@@ -12,10 +12,6 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -35,14 +31,29 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 ## 汇总
 
-- [CameraBufferCrop](arkts-arkui-camerabuffercrop-i-sys.md)
-- [CropOffset](arkts-arkui-cropoffset-i-sys.md)
-- [DepthCameraParams](arkts-arkui-depthcameraparams-i-sys.md)
-- [DepthComponentCompleteEvent](arkts-arkui-depthcomponentcompleteevent-i-sys.md)
-- [DepthComponentErrorEvent](arkts-arkui-depthcomponenterrorevent-i-sys.md)
-- [DepthComponentOptions](arkts-arkui-depthcomponentoptions-i-sys.md)
-- [DepthLightParams](arkts-arkui-depthlightparams-i-sys.md)
-- [DepthComponentCompleteCallback](arkts-arkui-depthcomponentcompletecallback-t-sys.md)
-- [DepthComponentErrorCallback](arkts-arkui-depthcomponenterrorcallback-t-sys.md)
-- [DepthMapCallback](arkts-arkui-depthmapcallback-t-sys.md)
-- [DepthSpaceType](arkts-arkui-depthspacetype-e-sys.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [CameraBufferCrop](arkts-arkui-camerabuffercrop-i-sys.md) | 相机移轴裁剪参数。 |
+| [CropOffset](arkts-arkui-cropoffset-i-sys.md) | 裁剪偏移量。 |
+| [DepthCameraParams](arkts-arkui-depthcameraparams-i-sys.md) | 相机参数。 |
+| [DepthComponentCompleteEvent](arkts-arkui-depthcomponentcompleteevent-i-sys.md) | 背景资源加载成功的事件信息。 |
+| [DepthComponentErrorEvent](arkts-arkui-depthcomponenterrorevent-i-sys.md) | 背景资源加载失败的事件信息。 |
+| [DepthComponentOptions](arkts-arkui-depthcomponentoptions-i-sys.md) | 景深组件配置项。 |
+| [DepthLightParams](arkts-arkui-depthlightparams-i-sys.md) | 光照参数。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [DepthComponentCompleteCallback](arkts-arkui-depthcomponentcompletecallback-t-sys.md) | 背景资源加载成功的回调函数。使用callback异步回调。 |
+| [DepthComponentErrorCallback](arkts-arkui-depthcomponenterrorcallback-t-sys.md) | 背景资源加载失败的回调函数。使用callback异步回调。 |
+| [DepthMapCallback](arkts-arkui-depthmapcallback-t-sys.md) | 深度图资源加载完成时的回调函数。使用callback异步回调。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [DepthSpaceType](arkts-arkui-depthspacetype-e-sys.md) | 景深空间类型枚举。 |
+

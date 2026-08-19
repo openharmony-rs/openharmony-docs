@@ -4,17 +4,21 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
-**替代接口：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#devicebasicinfo)
+**替代接口：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)
 
 <!--Device-deviceManager-interface DeviceInfo--><!--Device-deviceManager-interface DeviceInfo-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## authForm
 
@@ -27,8 +31,6 @@ authForm: AuthForm
 **类型：** [AuthForm](arkts-distributedservice-devicemanager-authform-e-sys.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -49,8 +51,6 @@ deviceId: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -74,8 +74,6 @@ deviceName: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 **替代接口：** [deviceName](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#devicename)
@@ -97,8 +95,6 @@ deviceType: DeviceType
 **类型：** DeviceType
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -122,8 +118,6 @@ networkId: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 **替代接口：** [networkId](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md#networkid)
@@ -145,8 +139,6 @@ range: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 

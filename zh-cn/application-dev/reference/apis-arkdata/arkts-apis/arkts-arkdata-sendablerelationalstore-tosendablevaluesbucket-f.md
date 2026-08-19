@@ -1,5 +1,11 @@
 # toSendableValuesBucket
 
+## 导入模块
+
+```TypeScript
+import { sendableRelationalStore } from '@kit.ArkData';
+```
+
 ## toSendableValuesBucket
 
 ```TypeScript
@@ -9,10 +15,6 @@ function toSendableValuesBucket(valuesBucket: NonSendableBucket): ValuesBucket
 将不能用于跨线程传递的键值对数据，转换为可用于跨线程传递的键值对数据。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-sendableRelationalStore-function toSendableValuesBucket(valuesBucket: NonSendableBucket): ValuesBucket--><!--Device-sendableRelationalStore-function toSendableValuesBucket(valuesBucket: NonSendableBucket): ValuesBucket-End-->
 
@@ -37,7 +39,7 @@ function toSendableValuesBucket(valuesBucket: NonSendableBucket): ValuesBucket
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 const asset1: sendableRelationalStore.NonSendableAsset = {

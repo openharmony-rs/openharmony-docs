@@ -1,5 +1,11 @@
 # onVibratorStateChange
 
+## 导入模块
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+```
+
 ## onVibratorStateChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ Register a callback function to be called when a vibrator plugin or unplug event
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-vibrator-function onVibratorStateChange(callback: Callback<VibratorStatusEvent>): void--><!--Device-vibrator-function onVibratorStateChange(callback: Callback<VibratorStatusEvent>): void-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -22,7 +24,7 @@ Register a callback function to be called when a vibrator plugin or unplug event
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[VibratorStatusEvent](arkts-sensorservice-vibrator-vibratorstatusevent-i.md)&gt; | 是 | The callback function to be executed when <br> the event is triggered. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[VibratorStatusEvent](arkts-sensorservice-vibrator-vibratorstatusevent-i.md)&gt; | 是 | The callback function to be executed when <br> the event is triggered. |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ Register a callback function to be called when a vibrator plugin or unplug event
 | --- | --- |
 | [14600101](../errorcode-vibrator.md#14600101-操作设备失败) | Device operation failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { vibrator } from '@kit.SensorServiceKit';

@@ -4,10 +4,6 @@ Device attach states.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export enum AttachState--><!--Device-mechanicManager-export enum AttachState-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -22,10 +18,6 @@ ATTACHED = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AttachState-ATTACHED = 0--><!--Device-AttachState-ATTACHED = 0-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -39,10 +31,6 @@ DETACHED = 1
 设备卸载
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AttachState-DETACHED = 1--><!--Device-AttachState-DETACHED = 1-End-->
 

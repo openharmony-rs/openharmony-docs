@@ -4,10 +4,6 @@ AgentCard相当于Agent(智能体)的"名片"，用于描述Agent的能力和技
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface AgentCard--><!--Device-unnamed-export interface AgentCard-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -23,10 +19,6 @@ Agent的唯一标识符，在同一个应用中，agentId不可重复。
 **类型：** string
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +40,6 @@ Agent所在的应用信息。包含Agent所属的应用包名、模块名和能�
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -71,10 +59,6 @@ Agent支持的可选能力集合。定义Agent支持的其他可选能力，如�
 **类型：** [AgentCapabilities](arkts-ability-agentcard-agentcapabilities-i.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +80,6 @@ Agent的类别。用于对Agent进行分类管理，常见的类别包括："pro
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -114,15 +94,11 @@ Agent的类别。用于对Agent进行分类管理，常见的类别包括："pro
 defaultInputModes: Array<string>
 ```
 
-Agent在所有[AgentSkill](arkts-ability-agentcard-agentskill-i.md#agentskill)上支持的输入模式集。使用MIME类型格式定义支持的输入媒体类型，例如["text/plain"]表示纯文本输入，["application/json"]表 示JSON结构化数据输入，["image/png"]表示图片输入。[AgentSkill](arkts-ability-agentcard-agentskill-i.md#agentskill)级别的inputModes会覆盖此默认设置。
+Agent在所有[AgentSkill](arkts-ability-agentcard-agentskill-i.md)上支持的输入模式集。使用MIME类型格式定义支持的输入媒体类型，例如["text/plain"]表示纯文本输入，["application/json"]表 示JSON结构化数据输入，["image/png"]表示图片输入。[AgentSkill](arkts-ability-agentcard-agentskill-i.md)级别的inputModes会覆盖此默认设置。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,15 +114,11 @@ Agent在所有[AgentSkill](arkts-ability-agentcard-agentskill-i.md#agentskill)�
 defaultOutputModes: Array<string>
 ```
 
-Agent在所有[AgentSkill](arkts-ability-agentcard-agentskill-i.md#agentskill)上支持的输出模式集。使用MIME类型格式定义支持的输出媒体类型，例如["text/plain"]表示纯文本输出，["application/html"]表 示HTML格式输出，["application/json"]表示JSON数据输出。[AgentSkill](arkts-ability-agentcard-agentskill-i.md#agentskill)级别的outputModes会覆盖此默认设置。
+Agent在所有[AgentSkill](arkts-ability-agentcard-agentskill-i.md)上支持的输出模式集。使用MIME类型格式定义支持的输出媒体类型，例如["text/plain"]表示纯文本输出，["application/html"]表 示HTML格式输出，["application/json"]表示JSON数据输出。[AgentSkill](arkts-ability-agentcard-agentskill-i.md)级别的outputModes会覆盖此默认设置。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,10 +140,6 @@ description: string
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -191,10 +159,6 @@ Agent文档的URL。提供详细的Agent使用文档、API说明、示例和最�
 **类型：** string
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,10 +180,6 @@ Agent的扩展配置项。用于存储自定义的扩展配置信息，如Agent�
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -239,10 +199,6 @@ Agent图标的URL。提供Agent的可视化标识图标，用于在UI界面中�
 **类型：** string
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,10 +220,6 @@ Agent的名称。一般用于在UI界面中展示给用户，例如"Recipe Assis
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -287,10 +239,6 @@ Agent的服务提供商信息，包含提供商的组织名称和官方网站URL
 **类型：** [AgentProvider](arkts-ability-agentcard-agentprovider-i.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -312,10 +260,6 @@ Agent提供的功能集合。描述Agent可以执行的特定功能或技能，�
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -330,17 +274,13 @@ Agent提供的功能集合。描述Agent可以执行的特定功能或技能，�
 type?: agentConstant.AgentCardType
 ```
 
-AgentCard的类型。&lt;!--Del--&gt;当 [agentConstant.AgentCardType](arkts-ability-agentconstant-agentcardtype-e.md#agentcardtype) 的枚举值为LOW_CODE时，对应的应用必须是系统应用，否则Agent卡片无法注册、安装或更新。&lt;!--DelEnd--&gt;如果未指定，默认为APP类型。
+AgentCard的类型。<!--Del-->当 [agentConstant.AgentCardType](arkts-ability-agentconstant-agentcardtype-e.md) 的枚举值为LOW_CODE时，对应的应用必须是系统应用，否则Agent卡片无法注册、安装或更新。<!--DelEnd-->如果未指定，默认为APP类型。
 
 **类型：** agentConstant.AgentCardType
 
 **默认值：** AgentCardType.APP
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -361,10 +301,6 @@ Agent的版本号。遵循语义化版本规范（如"1.0.0"），格式由提�
 **类型：** string
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

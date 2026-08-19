@@ -1,5 +1,12 @@
 # decapsulate
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## decapsulate
 
 ```TypeScript
@@ -10,10 +17,6 @@ function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Arra
 Post-Quantum Cryptography密钥解封装操作，支持HUKS密钥管理 或由应用程序本身决定。如果应用程序选择管理密钥， 对称密钥包含在HuksReturnResult的outData字段中。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,      sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,      sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>-End-->
 
@@ -55,7 +58,7 @@ Post-Quantum Cryptography密钥解封装操作，支持HUKS密钥管理 或由�
 | [12000012](../errorcode-huks.md#12000012-外部错误) | The device environment or input parameter is abnormal. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The queried key does not exist. Check the key-related parameters. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

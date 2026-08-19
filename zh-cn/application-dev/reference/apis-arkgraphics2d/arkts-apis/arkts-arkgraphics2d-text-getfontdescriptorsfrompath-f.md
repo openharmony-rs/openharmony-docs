@@ -1,18 +1,20 @@
 # getFontDescriptorsFromPath
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## getFontDescriptorsFromPath
 
 ```TypeScript
 function getFontDescriptorsFromPath(path: string | Resource): Promise<Array<FontDescriptor>>
 ```
 
-根据字体文件路径获取字体描述符数组。使用Promise异步回调。 > **说明：** > > - 如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。 > > - [FontDescriptor](arkts-arkgraphics2d-text-fontdescriptor-i.md#fontdescriptor)中的weight字段并不精准对应字体文件内部的字重数值，而是将字体文件中的实际字重四舍五入映射到 > [FontWeight](arkts-arkgraphics2d-text-fontweight-e.md#fontweight)枚举值后的结果。例如，字体文件字重350会映射为400，对应枚举为W400。
+根据字体文件路径获取字体描述符数组。使用Promise异步回调。 > **说明：** > > - 如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。 > > - [FontDescriptor](arkts-arkgraphics2d-text-fontdescriptor-i.md)中的weight字段并不精准对应字体文件内部的字重数值，而是将字体文件中的实际字重四舍五入映射到 > [FontWeight](arkts-arkgraphics2d-text-fontweight-e.md)枚举值后的结果。例如，字体文件字重350会映射为400，对应枚举为W400。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -32,7 +34,7 @@ function getFontDescriptorsFromPath(path: string | Resource): Promise<Array<Font
 | --- | --- |
 | Promise&lt;Array&lt;[FontDescriptor](arkts-arkgraphics2d-text-fontdescriptor-i.md)&gt;&gt; | Promise对象，返回所有的字体描述符。如果找不到字体文件、路径无效、无权限或非字体文件，则返回空数组。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

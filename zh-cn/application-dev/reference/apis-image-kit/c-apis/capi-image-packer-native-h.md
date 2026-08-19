@@ -18,11 +18,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) | - | OH_ImagePackerNative用于将ImageSource、PixelMap、Picture或PixelMap序列编码为图片数据或文件。<br>使用{@link OH_ImagePackerNative_Create}函数创建OH_ImagePackerNative对象。<br>使用{@link OH_ImagePackerNative_Release}函数释放OH_ImagePackerNative对象。<br>资源管理：OH_ImagePackerNative使用完成后，应调用{@link OH_ImagePackerNative_Release}释放。释放OH_ImagePackerNative对象不会释放OH_PackingOptions、OH_PackingOptionsForSequence、OH_ImageSourceNative、OH_PixelmapNative或OH_PictureNative对象。<br>OH_ImagePackerNative支持的编码方式如下：<br>\| 输入对象 \| 输出位置 \| 编码函数 \| 描述 \|\| -- \| -- \| --
-\| -- \|\| {@link OH_ImageSourceNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromImageSource} \|将ImageSource编码为指定格式的数据。 \|\| {@link OH_PixelmapNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromPixelmap} \|将PixelMap编码为指定格式的数据。 \|\| {@link OH_PictureNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromPicture} \|将Picture编码为指定格式的数据，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 数据缓冲区 \|{@link OH_ImagePackerNative_PackToDataFromPixelmapSequence} \| 将PixelMap序列编码为GIF格式数据。 \|\| {@link OH_ImageSourceNative}
-\| 文件描述符 \| {@link OH_ImagePackerNative_PackToFileFromImageSource} \| 将ImageSource编码到文件中。 \|\| {@link OH_PixelmapNative} \|文件描述符 \| {@link OH_ImagePackerNative_PackToFileFromPixelmap} \| 将PixelMap编码到文件中。 \|\| {@link OH_PictureNative} \| 文件描述符 \|{@link OH_ImagePackerNative_PackToFileFromPicture} \| 将Picture编码到文件中，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 文件描述符 \|{@link OH_ImagePackerNative_PackToFileFromPixelmapSequence} \| 将PixelMap序列编码为GIF格式并写入文件。 \|<br>获取支持编码的图片格式使用{@link OH_ImagePackerNative_GetSupportedFormats}函数。 |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | - | OH_PackingOptions是native层封装的图像编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br>使用{@link OH_PackingOptions_Create}函数创建OH_PackingOptions对象。<br>使用{@link OH_PackingOptions_Release}函数释放OH_PackingOptions对象。<br>使用约束：OH_PackingOptions用于配置ImageSource、PixelMap或Picture编码参数。<br>资源管理：释放OH_ImagePackerNative对象不会自动释放OH_PackingOptions对象。OH_PackingOptions使用完成后，应调用{@link OH_PackingOptions_Release}释放，释放后不应继续传入图像编码接口或调用其字段获取和设置接口。<br>OH_PackingOptions结构体内容和操作方式如下：<br>\| 字段类型 \| 字段名称 \| 字段描述 \| 字段获取函数 \| 字段设置函数 \|\| -- \| --
-\| -- \| -- \| -- \|\| {@link Image_MimeType} \| mimeType \| 目标编码格式的MIME类型。ImageSource或PixelMap编码支持`image/jpeg`、`image/webp`、`image/png`、`image/heic`或`image/heif`、`image/sdr_astc_4x4`、`image/sdr_sut_superfast_4x4`、`image/hdr_astc_4x4`；Picture编码支持`image/jpeg`、`image/heic`或`image/heif`。实际支持范围以{@link OH_ImagePackerNative_GetSupportedFormats}返回结果为准。 \|{@link OH_PackingOptions_GetMimeType}、{@link OH_PackingOptions_GetMimeTypeWithNull} \|{@link OH_PackingOptions_SetMimeType} \|\| uint32_t \| quality \| 编码质量，实际编码效果取决于目标编码格式。 \|{@link OH_PackingOptions_GetQuality} \| {@link OH_PackingOptions_SetQuality} \|\| bool \| needsPackProperties \|是否需要编码图像属性，例如Exif。 \| {@link OH_PackingOptions_GetNeedsPackProperties} \|{@link OH_PackingOptions_SetNeedsPackProperties} \|\| int32_t \| desiredDynamicRange \| 编码时期望的图片动态范围，取值见{@link IMAGE_PACKER_DYNAMIC_RANGE}。 \| {@link OH_PackingOptions_GetDesiredDynamicRange} \|{@link OH_PackingOptions_SetDesiredDynamicRange} \| |
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) | - | OH_ImagePackerNative用于将ImageSource、PixelMap、Picture或PixelMap序列编码为图片数据或文件。<br>使用{@link OH_ImagePackerNative_Create}函数创建OH_ImagePackerNative对象。<br>使用{@link OH_ImagePackerNative_Release}函数释放OH_ImagePackerNative对象。<br>资源管理：OH_ImagePackerNative使用完成后，应调用{@link OH_ImagePackerNative_Release}释放。释放OH_ImagePackerNative对象不会释放OH_PackingOptions、OH_PackingOptionsForSequence、OH_ImageSourceNative、OH_PixelmapNative或OH_PictureNative对象。<br>OH_ImagePackerNative支持的编码方式如下：<br>\| 输入对象 \| 输出位置 \| 编码函数 \| 描述 \|\| -- \| -- \| -- \| -- \|\| {@link OH_ImageSourceNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromImageSource} \|将ImageSource编码为指定格式的数据。 \|\| {@link OH_PixelmapNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromPixelmap} \|将PixelMap编码为指定格式的数据。 \|\| {@link OH_PictureNative} \| 数据缓冲区 \| {@link OH_ImagePackerNative_PackToDataFromPicture} \|将Picture编码为指定格式的数据，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 数据缓冲区 \|{@link OH_ImagePackerNative_PackToDataFromPixelmapSequence} \| 将PixelMap序列编码为GIF格式数据。 \|\| {@link OH_ImageSourceNative} \| 文件描述符 \| {@link OH_ImagePackerNative_PackToFileFromImageSource} \| 将ImageSource编码到文件中。 \|\| {@link OH_PixelmapNative} \|文件描述符 \| {@link OH_ImagePackerNative_PackToFileFromPixelmap} \| 将PixelMap编码到文件中。 \|\| {@link OH_PictureNative} \| 文件描述符 \|{@link OH_ImagePackerNative_PackToFileFromPicture} \| 将Picture编码到文件中，仅支持JPEG和HEIF。 \|\| OH_PixelmapNative数组 \| 文件描述符 \|{@link OH_ImagePackerNative_PackToFileFromPixelmapSequence} \| 将PixelMap序列编码为GIF格式并写入文件。 \|<br>获取支持编码的图片格式使用{@link OH_ImagePackerNative_GetSupportedFormats}函数。 |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | - | OH_PackingOptions是native层封装的图像编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br>使用{@link OH_PackingOptions_Create}函数创建OH_PackingOptions对象。<br>使用{@link OH_PackingOptions_Release}函数释放OH_PackingOptions对象。<br>使用约束：OH_PackingOptions用于配置ImageSource、PixelMap或Picture编码参数。<br>资源管理：释放OH_ImagePackerNative对象不会自动释放OH_PackingOptions对象。OH_PackingOptions使用完成后，应调用{@link OH_PackingOptions_Release}释放，释放后不应继续传入图像编码接口或调用其字段获取和设置接口。<br>OH_PackingOptions结构体内容和操作方式如下：<br>\| 字段类型 \| 字段名称 \| 字段描述 \| 字段获取函数 \| 字段设置函数 \|\| -- \| -- \| -- \| -- \| -- \|\| {@link Image_MimeType} \| mimeType \| 目标编码格式的MIME类型。ImageSource或PixelMap编码支持`image/jpeg`、`image/webp`、`image/png`、`image/heic`或`image/heif`、`image/sdr_astc_4x4`、`image/sdr_sut_superfast_4x4`、`image/hdr_astc_4x4`；Picture编码支持`image/jpeg`、`image/heic`或`image/heif`。实际支持范围以{@link OH_ImagePackerNative_GetSupportedFormats}返回结果为准。 \|{@link OH_PackingOptions_GetMimeType}、{@link OH_PackingOptions_GetMimeTypeWithNull} \|{@link OH_PackingOptions_SetMimeType} \|\| uint32_t \| quality \| 编码质量，实际编码效果取决于目标编码格式。 \|{@link OH_PackingOptions_GetQuality} \| {@link OH_PackingOptions_SetQuality} \|\| bool \| needsPackProperties \|是否需要编码图像属性，例如Exif。 \| {@link OH_PackingOptions_GetNeedsPackProperties} \|{@link OH_PackingOptions_SetNeedsPackProperties} \|\| int32_t \| desiredDynamicRange \| 编码时期望的图片动态范围，取值见{@link IMAGE_PACKER_DYNAMIC_RANGE}。 \| {@link OH_PackingOptions_GetDesiredDynamicRange} \|{@link OH_PackingOptions_SetDesiredDynamicRange} \| |
 | [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | - | OH_PackingOptionsForSequence是native层封装的GIF序列编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。<br>使用{@link OH_PackingOptionsForSequence_Create}函数创建OH_PackingOptionsForSequence对象。<br>使用{@link OH_PackingOptionsForSequence_Release}函数释放OH_PackingOptionsForSequence对象。<br>使用约束：OH_PackingOptionsForSequence用于配置PixelMap序列编码为GIF格式时的编码参数，需传入{@link OH_ImagePackerNative_PackToDataFromPixelmapSequence}或{@link OH_ImagePackerNative_PackToFileFromPixelmapSequence}使用。<br>资源管理：OH_PackingOptionsForSequence使用完成后，应调用{@link OH_PackingOptionsForSequence_Release}释放。释放后不应继续传入图像序列编码接口或调用其字段获取和设置接口。通过{@link OH_PackingOptionsForSequence_SetDelayTimeList}和{@link OH_PackingOptionsForSequence_SetDisposalTypes}传入的数组不会被拷贝，调用方需保证OH_PackingOptionsForSequence对象使用期间数组数据有效。释放OH_PackingOptionsForSequence对象不会释放这些数组。<br>OH_PackingOptionsForSequence结构体内容和操作方式如下：<br>\| 字段类型 \| 字段名称 \| 字段描述 \| 字段获取函数 \| 字段设置函数 \|\| -- \| -- \| -- \| -- \| -- \|\|uint32_t \| frameCount \| 编码时指定的帧数，编码时必须大于0。 \| {@link OH_PackingOptionsForSequence_GetFrameCount} \|{@link OH_PackingOptionsForSequence_SetFrameCount} \|\| int32_t\| delayTimeList \| 编码时图片的延迟时间数组，数组中的每个延迟时间必须大于0且不超过65535，单位为10毫秒（ms）。 \| {@link OH_PackingOptionsForSequence_GetDelayTimeList} \|{@link OH_PackingOptionsForSequence_SetDelayTimeList} \|\| uint32_t\| disposalTypes \| 编码时图片的过渡帧模式数组，数组中的每个取值必须小于等于3，取值含义见{@link OH_PackingOptionsForSequence_SetDisposalTypes}。 \| {@link OH_PackingOptionsForSequence_GetDisposalTypes} \|{@link OH_PackingOptionsForSequence_SetDisposalTypes} \|\| uint32_t \| loopCount \| 编码时图片循环播放次数，取值范围为[0, 65535]。 \|{@link OH_PackingOptionsForSequence_GetLoopCount} \| {@link OH_PackingOptionsForSequence_SetLoopCount} \| |
 
 ### 枚举
@@ -114,7 +111,7 @@ Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_GetMimeType()
 
@@ -139,7 +136,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_GetMimeTypeWithNull()
 
@@ -164,7 +161,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_PACKER_INVALID_PARAMETER：options或format为空。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_PACKER_INVALID_PARAMETER：options或format为空。 |
 
 ### OH_PackingOptions_SetMimeType()
 
@@ -189,7 +186,7 @@ Sets the MIME type.
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.<br>     <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or format is nullptr.<br>     <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) allocate memory failed.<br>     <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) copy memory failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or format is nullptr.      <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) allocate memory failed.      <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) copy memory failed. |
 
 ### OH_PackingOptions_GetQuality()
 
@@ -214,7 +211,7 @@ Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_SetQuality()
 
@@ -239,7 +236,7 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_GetNeedsPackProperties()
 
@@ -264,7 +261,7 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *opti
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_SetNeedsPackProperties()
 
@@ -289,7 +286,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_GetNeedsPackDfxData()
 
@@ -314,7 +311,7 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>     <br><li>IMAGE_SUCCESS：执行成功。</li><br>     <br><li>202：非系统应用程序调用该接口则返回此错误码。</li><br>     <br><li>IMAGE_PACKER_INVALID_PARAMETER：options或needsPackDfxData为空指针。</li><br>     <br></ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul>      <br><li>IMAGE_SUCCESS：执行成功。</li>      <br><li>202：非系统应用程序调用该接口则返回此错误码。</li>      <br><li>IMAGE_PACKER_INVALID_PARAMETER：options或needsPackDfxData为空指针。</li>      <br></ul> |
 
 ### OH_PackingOptions_SetNeedsPackDfxData()
 
@@ -339,7 +336,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>     <br><li>IMAGE_SUCCESS：执行成功。</li><br>     <br><li>202：非系统应用程序调用该接口则返回此错误码。</li><br>     <br><li>IMAGE_PACKER_INVALID_PARAMETER：options为空指针。</li><br>     <br></ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul>      <br><li>IMAGE_SUCCESS：执行成功。</li>      <br><li>202：非系统应用程序调用该接口则返回此错误码。</li>      <br><li>IMAGE_PACKER_INVALID_PARAMETER：options为空指针。</li>      <br></ul> |
 
 ### OH_PackingOptions_GetDesiredDynamicRange()
 
@@ -364,7 +361,7 @@ Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *opti
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_SetDesiredDynamicRange()
 
@@ -389,7 +386,7 @@ Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *opti
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptions_Release()
 
@@ -413,7 +410,7 @@ Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_Create()
 
@@ -437,7 +434,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_SetFrameCount()
 
@@ -462,7 +459,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetFrameCount(OH_PackingOptionsForS
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_GetFrameCount()
 
@@ -487,7 +484,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetFrameCount(OH_PackingOptionsForS
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_SetDelayTimeList()
 
@@ -513,7 +510,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDelayTimeList(OH_PackingOptionsF
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_GetDelayTimeList()
 
@@ -539,7 +536,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDelayTimeList(OH_PackingOptionsF
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_SetDisposalTypes()
 
@@ -565,7 +562,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDisposalTypes(OH_PackingOptionsF
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_GetDisposalTypes()
 
@@ -591,7 +588,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDisposalTypes(OH_PackingOptionsF
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_SetLoopCount()
 
@@ -616,7 +613,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSe
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_GetLoopCount()
 
@@ -641,7 +638,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetLoopCount(OH_PackingOptionsForSe
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_PackingOptionsForSequence_Release()
 
@@ -665,7 +662,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_Release(OH_PackingOptionsForSequenc
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImagePackerNative_Create()
 
@@ -689,7 +686,7 @@ Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImagePackerNative_PackToDataFromImageSource()
 
@@ -709,7 +706,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | 用于编码的image source指针。 |
+| OH_ImageSourceNative *imageSource | 用于编码的image source指针。 |
 | uint8_t *outData | 用于存储打包图像输出数据的缓冲区。 |
 | size_t *size | 用于存储打包图像输出数据的缓冲区大小。 |
 
@@ -717,7 +714,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。<br>     <br>IMAGE_ALLOC_FAILED：申请内存失败。<br>     <br>IMAGE_TOO_LARGE：数据或图片过大。<br>     <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。      <br>IMAGE_ALLOC_FAILED：申请内存失败。      <br>IMAGE_TOO_LARGE：数据或图片过大。      <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmap()
 
@@ -737,7 +734,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| OH_PixelmapNative *pixelmap | 用于编码的Pixelmap指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 用于编码的Pixelmap指针。 |
 | uint8_t *outData | 用于存储打包图像输出数据的缓冲区。 |
 | size_t *size | 用于存储打包图像输出数据的缓冲区大小。 |
 
@@ -745,7 +742,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。<br>     <br>IMAGE_ALLOC_FAILED：申请内存失败。<br>     <br>IMAGE_TOO_LARGE：数据或图片过大。<br>     <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。      <br>IMAGE_ALLOC_FAILED：申请内存失败。      <br>IMAGE_TOO_LARGE：数据或图片过大。      <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
 
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
@@ -765,7 +762,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | 用于编码的Picture指针。 |
+| OH_PictureNative *picture | 用于编码的Picture指针。 |
 | uint8_t *outData | 用于存储打包图像输出数据的缓冲区。 |
 | size_t *size | 用于存储打包图像输出数据的缓冲区大小。 |
 
@@ -773,7 +770,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。 |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmapSequence()
 
@@ -793,7 +790,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针，不允许为NULL。 |
 | [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | 编码选项参数，不允许为NULL。frameCount必须大于0，需设置有效的delayTimeList，loopCount取值范围为[0, 65535]。delayTimeList中的每个延迟时间必须大于0且不超过65535，单位为10毫秒（ms）。disposalTypes中的每个取值必须小于等于3。 |
-| OH_PixelmapNative **pixelmapSequence | 用于编码的Pixelmap序列指针，不允许为NULL。数组中用于编码的Pixelmap指针不允许为NULL。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmapSequence | 用于编码的Pixelmap序列指针，不允许为NULL。数组中用于编码的Pixelmap指针不允许为NULL。 |
 | size_t sequenceLength | 用于编码的Pixelmap序列长度，必须大于0。 |
 | uint8_t *outData | 用于存储编码后图像输出数据的缓冲区，不允许为NULL。 |
 | size_t *outDataSize | 用于存储编码后图像输出数据缓冲区大小的指针，不允许为NULL。调用前，*outDataSize应设置为outData可写缓冲区大小；调用成功后，outDataSize会更新为实际写入的编码数据长度。 |
@@ -802,7 +799,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromImageSource()
 
@@ -822,14 +819,14 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | 用于编码的image source指针。 |
+| OH_ImageSourceNative *imageSource | 用于编码的image source指针。 |
 | int32_t fd | 可写的文件描述符。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。<br>     <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。      <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmap()
 
@@ -849,14 +846,14 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| OH_PixelmapNative *pixelmap | 用于编码的pixelmap指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 用于编码的pixelmap指针。 |
 | int32_t fd | 可写的文件描述符。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。<br>     <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。      <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
 
 ### OH_ImagePackerNative_PackToFileFromPicture()
 
@@ -876,14 +873,14 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative 
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针。 |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 编码选项参数。 |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | 用于编码的picture指针。 |
+| OH_PictureNative *picture | 用于编码的picture指针。 |
 | int32_t fd | 可写的文件描述符。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。<br>     <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。      <br>IMAGE_UNKNOWN_ERROR：未知错误。 |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmapSequence()
 
@@ -903,7 +900,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePack
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | 被操作的OH_ImagePackerNative指针，不允许为NULL。 |
 | [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | 编码选项参数，不允许为NULL。frameCount必须大于0，需设置有效的delayTimeList，loopCount取值范围为[0, 65535]。delayTimeList中的每个延迟时间必须大于0且不超过65535。disposalTypes中的每个取值必须小于等于3。 |
-| OH_PixelmapNative **pixelmapSequence | 用于编码的Pixelmap序列指针，不允许为NULL。数组中用于编码的Pixelmap指针不允许为NULL。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmapSequence | 用于编码的Pixelmap序列指针，不允许为NULL。数组中用于编码的Pixelmap指针不允许为NULL。 |
 | size_t sequenceLength | 用于编码的Pixelmap序列长度，必须大于0。 |
 | int32_t fd | 文件描述符，必须为可写文件描述符。 |
 
@@ -911,7 +908,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePack
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_DECODE_FAILED：解码失败。 |
 
 ### OH_ImagePackerNative_Release()
 
@@ -935,7 +932,7 @@ Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImagePackerNative_GetSupportedFormats()
 
@@ -960,6 +957,6 @@ Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType** suppor
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>     <br>IMAGE_PACKER_INVALID_PARAMETER：参数异常，supportedFormats或length为空。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。      <br>IMAGE_PACKER_INVALID_PARAMETER：参数异常，supportedFormats或length为空。 |
 
 

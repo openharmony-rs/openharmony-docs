@@ -2,17 +2,19 @@
 
 自定义样式对话框的选项。 对话内容作为present()方法的第一个参数提供。 不在此选项对象中。
 
-**继承/实现关系：** DialogCustomOptions extends [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md#dialogbaseoptions)
+**继承/实现关系：** DialogCustomOptions extends [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md)
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-dialog-declare interface DialogCustomOptions--><!--Device-dialog-declare interface DialogCustomOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+```
 
 ## customStyle
 
@@ -27,10 +29,6 @@ customStyle?: boolean
 **默认值：** false
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

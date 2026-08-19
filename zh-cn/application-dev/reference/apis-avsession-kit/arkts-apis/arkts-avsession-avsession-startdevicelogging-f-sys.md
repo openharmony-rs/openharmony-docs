@@ -1,5 +1,11 @@
 # startDeviceLogging（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## startDeviceLogging
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startDeviceLogging(url: string, maxSize?: int): Promise<void>
 开始将设备日志写入文件。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function startDeviceLogging(url: string, maxSize?: int): Promise<void>--><!--Device-avSession-function startDeviceLogging(url: string, maxSize?: int): Promise<void>-End-->
 
@@ -42,7 +44,7 @@ function startDeviceLogging(url: string, maxSize?: int): Promise<void>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo } from '@kit.CoreFileKit';

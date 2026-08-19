@@ -4,10 +4,6 @@ Photo asset position
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-sendablePhotoAccessHelper-enum PositionType--><!--Device-sendablePhotoAccessHelper-enum PositionType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -24,10 +20,6 @@ Asset exists only in local device
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-PositionType-LOCAL = 1 << 0--><!--Device-PositionType-LOCAL = 1 << 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -43,10 +35,6 @@ CLOUD = 1 << 1
 Asset exists only in cloud
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-PositionType-CLOUD = 1 << 1--><!--Device-PositionType-CLOUD = 1 << 1-End-->
 

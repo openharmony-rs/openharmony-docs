@@ -1,5 +1,11 @@
 # onRotationAxesStatusChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## onRotationAxesStatusChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onRotationAxesStatusChange(callback: Callback<RotationAxesStateChangeIn
 Register a listener for axis state changes. The status of the rotation axis changes dynamically, which needs to be monitored.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function onRotationAxesStatusChange(callback: Callback<RotationAxesStateChangeInfo>): void--><!--Device-mechanicManager-function onRotationAxesStatusChange(callback: Callback<RotationAxesStateChangeInfo>): void-End-->
 
@@ -24,7 +26,7 @@ Register a listener for axis state changes. The status of the rotation axis chan
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[RotationAxesStateChangeInfo](arkts-mechanic-mechanicmanager-rotationaxesstatechangeinfo-i-sys.md)&gt; | 是 | Rotate axis state changes callback. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[RotationAxesStateChangeInfo](arkts-mechanic-mechanicmanager-rotationaxesstatechangeinfo-i-sys.md)&gt; | 是 | Rotate axis state changes callback. |
 
 **错误码：**
 

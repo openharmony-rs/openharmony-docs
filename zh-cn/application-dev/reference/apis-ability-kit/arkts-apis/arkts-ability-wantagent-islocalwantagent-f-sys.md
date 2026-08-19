@@ -1,5 +1,11 @@
 # isLocalWantAgent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+```
+
 ## isLocalWantAgent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isLocalWantAgent(agent: WantAgent): boolean
 判断WantAgent实例是否为本地实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +42,7 @@ function isLocalWantAgent(agent: WantAgent): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System app. Interface caller is not a system app. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';

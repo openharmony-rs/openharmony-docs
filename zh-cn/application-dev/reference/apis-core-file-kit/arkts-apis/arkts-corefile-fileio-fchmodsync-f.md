@@ -1,5 +1,10 @@
 # fchmodSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## fchmodSync
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function fchmodSync(fd: number, mode: number): void
 以同步方法基于文件描述符改变文件权限。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

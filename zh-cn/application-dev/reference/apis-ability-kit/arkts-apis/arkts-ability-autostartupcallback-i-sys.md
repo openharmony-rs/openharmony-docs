@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface AutoStartupCallback--><!--Device-unnamed-export interface AutoStartupCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -24,10 +20,6 @@ onAutoStartupOff(info: AutoStartupInfo): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoStartupCallback-onAutoStartupOff(info: AutoStartupInfo): void--><!--Device-AutoStartupCallback-onAutoStartupOff(info: AutoStartupInfo): void-End-->
@@ -42,7 +34,7 @@ onAutoStartupOff(info: AutoStartupInfo): void
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | 是 | 取消开机自启动的应用组件信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { autoStartupManager, common } from '@kit.AbilityKit';
@@ -78,10 +70,6 @@ onAutoStartupOn(info: AutoStartupInfo): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoStartupCallback-onAutoStartupOn(info: AutoStartupInfo): void--><!--Device-AutoStartupCallback-onAutoStartupOn(info: AutoStartupInfo): void-End-->
@@ -96,7 +84,7 @@ onAutoStartupOn(info: AutoStartupInfo): void
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | 是 | 设置为开机自启动的应用组件信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { autoStartupManager, common } from '@kit.AbilityKit';

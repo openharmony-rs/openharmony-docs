@@ -8,10 +8,6 @@ export type AppVersionInfo = _AppVersionInfo
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-featureAbility-export type AppVersionInfo = _AppVersionInfo--><!--Device-featureAbility-export type AppVersionInfo = _AppVersionInfo-End-->

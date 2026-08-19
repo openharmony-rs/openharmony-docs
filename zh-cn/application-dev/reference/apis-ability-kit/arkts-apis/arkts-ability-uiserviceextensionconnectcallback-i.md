@@ -4,10 +4,6 @@ UIServiceExtensionConnectCallback是UIServiceExtension连接回调接口类，�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default interface UIServiceExtensionConnectCallback--><!--Device-unnamed-export default interface UIServiceExtensionConnectCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ onData(data: Record<string, Object>): void
 接收UIServiceExtension连接的回调数据。 > **说明：** > > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +32,7 @@ onData(data: Record<string, Object>): void
 | --- | --- | --- | --- |
 | data | Record&lt;string, Object&gt; | 是 | 接收UIServiceExtension连接回调数据。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -136,10 +128,6 @@ Called back when data is sent.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionConnectCallback-onData(data: Record<string, RecordData>): void--><!--Device-UIServiceExtensionConnectCallback-onData(data: Record<string, RecordData>): void-End-->
@@ -150,9 +138,9 @@ Called back when data is sent.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | Indicates the received data. |
+| data | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | Indicates the received data. |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 
@@ -250,10 +238,6 @@ onDisconnect(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -262,7 +246,7 @@ onDisconnect(): void
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

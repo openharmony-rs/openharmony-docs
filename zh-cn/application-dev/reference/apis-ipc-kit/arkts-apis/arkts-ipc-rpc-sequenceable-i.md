@@ -4,15 +4,19 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [Parcelable](arkts-ipc-rpc-parcelable-i.md#parcelable)
+**替代接口：** [Parcelable](arkts-ipc-rpc-parcelable-i.md)
 
 <!--Device-rpc-interface Sequenceable--><!--Device-rpc-interface Sequenceable-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+## 导入模块
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+```
 
 ## marshalling
 
@@ -23,8 +27,6 @@ marshalling(dataOut: MessageParcel): boolean
 将此可序列对象封送到MessageParcel中。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -46,7 +48,7 @@ marshalling(dataOut: MessageParcel): boolean
 | --- | --- |
 | boolean | true：封送成功，false：封送失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -94,8 +96,6 @@ unmarshalling(dataIn: MessageParcel): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [unmarshalling](arkts-ipc-rpc-parcelable-i.md#unmarshalling)(dataIn: MessageSequence)
@@ -116,7 +116,7 @@ unmarshalling(dataIn: MessageParcel): boolean
 | --- | --- |
 | boolean | true：反序列化成功，false：反序列化失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';

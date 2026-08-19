@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-text-enum TextAlign--><!--Device-text-enum TextAlign-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ LEFT = 0
 文本靠左对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ RIGHT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextAlign-RIGHT = 1--><!--Device-TextAlign-RIGHT = 1-End-->
@@ -61,10 +49,6 @@ CENTER = 2
 文本居中对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ JUSTIFY = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextAlign-JUSTIFY = 3--><!--Device-TextAlign-JUSTIFY = 3-End-->
@@ -98,13 +78,9 @@ JUSTIFY = 3
 START = 4
 ```
 
-基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#textdirection)，文本靠开头方向对齐。
+基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md)，文本靠开头方向对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -118,13 +94,9 @@ START = 4
 END = 5
 ```
 
-基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md#textdirection)，文本以结束方向对齐。
+基于文本的方向[TextDirection](arkts-arkgraphics2d-text-textdirection-e.md)，文本以结束方向对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

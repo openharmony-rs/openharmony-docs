@@ -4,10 +4,6 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum SwipeDirection--><!--Device-unnamed-declare enum SwipeDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,10 +18,6 @@ None
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SwipeDirection-None--><!--Device-SwipeDirection-None-End-->
@@ -38,13 +30,9 @@ None
 Horizontal
 ```
 
-水平方向，手指滑动方向与x轴夹角小于45度时触发。
+Sliding horizontally.
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -58,13 +46,9 @@ Horizontal
 Vertical
 ```
 
-竖直方向，手指滑动方向与y轴夹角小于45度时触发。
+垂直滑动
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -78,13 +62,9 @@ Vertical
 All
 ```
 
-所有方向。
+Sliding in all directions.
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

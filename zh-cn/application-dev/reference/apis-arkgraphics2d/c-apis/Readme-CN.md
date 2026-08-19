@@ -1,4 +1,4 @@
-# CAPI<!--c-arkgraphics2d-->
+# C API<!--c-arkgraphics2d-->
 
 - 头文件
     - [graphic_error_code.h](capi-graphic-error-code-h.md)

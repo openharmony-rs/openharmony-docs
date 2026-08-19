@@ -1,5 +1,11 @@
 # getAppVMMemoryInfo
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getAppVMMemoryInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAppVMMemoryInfo(): VMMemoryInfo
 获取VM内存相关信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getAppVMMemoryInfo(): VMMemoryInfo--><!--Device-hidebug-function getAppVMMemoryInfo(): VMMemoryInfo-End-->
 
@@ -24,7 +26,7 @@ function getAppVMMemoryInfo(): VMMemoryInfo
 | --- | --- |
 | [VMMemoryInfo](arkts-performanceanalysis-hidebug-vmmemoryinfo-i.md) | 返回VM内存信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

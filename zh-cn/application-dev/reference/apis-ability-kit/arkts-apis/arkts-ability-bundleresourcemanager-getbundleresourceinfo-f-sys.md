@@ -1,5 +1,11 @@
 # getBundleResourceInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleResourceManager } from '@kit.AbilityKit';
+```
+
 ## getBundleResourceInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: int): BundleR
 以同步方法根据给定的bundleName和resourceFlags获取当前应用的BundleResourceInfo。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
@@ -44,7 +46,7 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: int): BundleR
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleResourceManager } from '@kit.AbilityKit';
@@ -73,10 +75,6 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: int, appIndex
 以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的BundleResourceInfo。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
@@ -110,7 +108,7 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: int, appIndex
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleResourceManager } from '@kit.AbilityKit';

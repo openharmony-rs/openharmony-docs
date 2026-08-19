@@ -10,10 +10,6 @@ function createNode(context: UIContext, nodeType: 'Text'): Text
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -45,10 +41,6 @@ function createNode(context: UIContext, nodeType: 'Column'): Column
 创建Column类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +74,6 @@ function createNode(context: UIContext, nodeType: 'Row'): Row
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -117,10 +105,6 @@ function createNode(context: UIContext, nodeType: 'Stack'): Stack
 创建Stack类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -154,10 +138,6 @@ function createNode(context: UIContext, nodeType: 'GridRow'): GridRow
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -189,10 +169,6 @@ function createNode(context: UIContext, nodeType: 'GridCol'): GridCol
 创建GridCol类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -226,10 +202,6 @@ function createNode(context: UIContext, nodeType: 'Flex'): Flex
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -261,10 +233,6 @@ function createNode(context: UIContext, nodeType: 'Swiper'): Swiper
 创建Swiper类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -298,10 +266,6 @@ function createNode(context: UIContext, nodeType: 'Progress'): Progress
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -333,10 +297,6 @@ function createNode(context: UIContext, nodeType: 'Scroll'): Scroll
 创建Scroll类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -370,10 +330,6 @@ function createNode(context: UIContext, nodeType: 'RelativeContainer'): Relative
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -405,10 +361,6 @@ function createNode(context: UIContext, nodeType: 'Divider'): Divider
 创建Divider类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -442,10 +394,6 @@ function createNode(context: UIContext, nodeType: 'LoadingProgress'): LoadingPro
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -477,10 +425,6 @@ function createNode(context: UIContext, nodeType: 'Search'): Search
 创建Search类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -514,10 +458,6 @@ function createNode(context: UIContext, nodeType: 'Blank'): Blank
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -549,10 +489,6 @@ function createNode(context: UIContext, nodeType: 'Image'): Image
 创建Image类型的FrameNode节点。使用typeNode创建Image节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -586,10 +522,6 @@ function createNode(context: UIContext, nodeType: 'List'): List
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -621,10 +553,6 @@ function createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 创建ListItem类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -658,10 +586,6 @@ function createNode(context: UIContext, nodeType: 'TextInput'): TextInput
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -693,10 +617,6 @@ function createNode(context: UIContext, nodeType: 'Button'): Button
 创建Button类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -730,10 +650,6 @@ function createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGrou
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -765,10 +681,6 @@ function createNode(context: UIContext, nodeType: 'WaterFlow'): WaterFlow
 创建WaterFlow类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -802,10 +714,6 @@ function createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -838,10 +746,6 @@ function createNode(context: UIContext, nodeType: 'XComponent'): XComponent
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -873,10 +777,6 @@ function createNode(context: UIContext, nodeType: 'XComponent', options: XCompon
 按照options中的配置参数创建XComponent类型的FrameNode节点。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -911,10 +811,6 @@ function createNode(context: UIContext, nodeType: 'XComponent', parameters: Nati
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -948,10 +844,6 @@ function createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -983,10 +875,6 @@ function createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGrou
 创建CheckboxGroup类型的FrameNode节点。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1020,10 +908,6 @@ function createNode(context: UIContext, nodeType: 'Radio'): Radio
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1055,10 +939,6 @@ function createNode(context: UIContext, nodeType: 'Rating'): Rating
 创建Rating类型的FrameNode节点。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1092,10 +972,6 @@ function createNode(context: UIContext, nodeType: 'Select'): Select
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1128,10 +1004,6 @@ function createNode(context: UIContext, nodeType: 'Slider'): Slider
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1163,10 +1035,6 @@ function createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOpti
 创建Toggle类型的FrameNode节点。使用typeNode创建Toggle节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1201,10 +1069,6 @@ function createNode(context: UIContext, nodeType: 'Marquee'): Marquee
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1236,10 +1100,6 @@ function createNode(context: UIContext, nodeType: 'TextArea'): TextArea
 创建TextArea类型的FrameNode节点。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1273,10 +1133,6 @@ function createNode(context: UIContext, nodeType: 'SymbolGlyph'): SymbolGlyph
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1308,10 +1164,6 @@ function createNode(context: UIContext, nodeType: 'QRCode'): QRCode
 创建QRCode类型的FrameNode节点。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1345,10 +1197,6 @@ function createNode(context: UIContext, nodeType: 'Badge'): Badge
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1380,10 +1228,6 @@ function createNode(context: UIContext, nodeType: 'TextClock'): TextClock
 创建TextClock类型的FrameNode节点。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1417,10 +1261,6 @@ function createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1453,10 +1293,6 @@ function createNode(context: UIContext, nodeType: 'Grid'): Grid
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -1488,10 +1324,6 @@ function createNode(context: UIContext, nodeType: 'GridItem'): GridItem
 创建GridItem类型的FrameNode节点。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

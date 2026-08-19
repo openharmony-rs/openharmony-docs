@@ -4,15 +4,22 @@ WLAN连接信息。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [WifiLinkedInfo](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#wifilinkedinfo)
+**替代接口：** [WifiLinkedInfo](arkts-connectivity-wifimanager-wifilinkedinfo-i.md)
 
 <!--Device-wifi-interface WifiLinkedInfo--><!--Device-wifi-interface WifiLinkedInfo-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## band
 
@@ -25,8 +32,6 @@ WLAN AP的频段。
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -48,8 +53,6 @@ WLAN热点的BSSID
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [bssid](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#bssid)
@@ -69,8 +72,6 @@ connState: ConnState
 **类型：** ConnState
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -92,8 +93,6 @@ WLAN AP的频率。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [frequency](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#frequency)
@@ -113,8 +112,6 @@ ipAddress: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -136,8 +133,6 @@ isHidden: boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [isHidden](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#ishidden)
@@ -157,8 +152,6 @@ isRestricted: boolean
 **类型：** boolean
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -180,8 +173,6 @@ WLAN AP的速度。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [linkSpeed](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#linkspeed)
@@ -201,8 +192,6 @@ macAddress: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -224,8 +213,6 @@ WLAN AP的RSSI(dBm)。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [rssi](arkts-connectivity-wifimanager-wifilinkedinfo-i.md#rssi)
@@ -245,8 +232,6 @@ WLAN热点的SSID
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

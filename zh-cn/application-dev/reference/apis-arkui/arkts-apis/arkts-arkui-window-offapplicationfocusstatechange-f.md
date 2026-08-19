@@ -1,5 +1,13 @@
 # offApplicationFocusStateChange
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## offApplicationFocusStateChange
 
 ```TypeScript
@@ -9,10 +17,6 @@ function offApplicationFocusStateChange(callback?: Callback<boolean>): void
 关闭应用进程获焦状态变化的监听。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +30,7 @@ function offApplicationFocusStateChange(callback?: Callback<boolean>): void
 | --- | --- | --- | --- |
 | callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 否 | Callback used to return the result whether application process focused or not. If not provided, all callbacks for the given event type will be removed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { window } from '@kit.ArkUI';

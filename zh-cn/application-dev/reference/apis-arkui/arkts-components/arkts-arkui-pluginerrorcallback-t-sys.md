@@ -1,4 +1,4 @@
-# PluginErrorCallback（系统接口）
+# PluginErrorCallback(System API)（系统接口）
 
 ```TypeScript
 declare type PluginErrorCallback = (info: PluginErrorData) => void
@@ -7,10 +7,6 @@ declare type PluginErrorCallback = (info: PluginErrorData) => void
 发生错误时触发的回调。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,11 @@
 # onColorChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## onColorChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onColorChange(callback: Callback<ColorResponse>, options?: Options): vo
 Subscribe to color sensor data, {@code SensorId.COLOR}.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-function onColorChange(callback: Callback<ColorResponse>, options?: Options): void--><!--Device-sensor-function onColorChange(callback: Callback<ColorResponse>, options?: Options): void-End-->
 
@@ -24,7 +26,7 @@ Subscribe to color sensor data, {@code SensorId.COLOR}.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ColorResponse](arkts-sensorservice-sensor-colorresponse-i-sys.md)&gt; | 是 | callback color data. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ColorResponse](arkts-sensorservice-sensor-colorresponse-i-sys.md)&gt; | 是 | callback color data. |
 | options | Options | 否 | Optional parameters specifying the interval at which sensor data is reported, <br> {@code Options}. |
 
 **错误码：**
@@ -35,7 +37,7 @@ Subscribe to color sensor data, {@code SensorId.COLOR}.
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

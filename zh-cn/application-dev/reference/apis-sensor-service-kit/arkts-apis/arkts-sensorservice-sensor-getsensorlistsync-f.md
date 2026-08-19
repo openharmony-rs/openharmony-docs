@@ -1,5 +1,11 @@
 # getSensorListSync
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## getSensorListSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSensorListSync(): Array<Sensor>
 获取设备上的所有传感器信息，使用同步方式返回结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-function getSensorListSync(): Array<Sensor>--><!--Device-sensor-function getSensorListSync(): Array<Sensor>-End-->
 
@@ -30,7 +32,7 @@ function getSensorListSync(): Array<Sensor>
 | --- | --- |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sensor } from '@kit.SensorServiceKit';

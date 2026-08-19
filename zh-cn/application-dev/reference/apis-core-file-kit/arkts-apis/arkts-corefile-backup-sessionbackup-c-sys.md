@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backup-class SessionBackup--><!--Device-backup-class SessionBackup-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { backup } from '@kit.CoreFileKit';
+```
 
 ## appendBundles
 
@@ -23,10 +25,6 @@ appendBundles(bundlesToBackup: string[], infos?: string[]): Promise<void>
 添加需要备份的应用及其扩展信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKUP
 
@@ -61,7 +59,7 @@ appendBundles(bundlesToBackup: string[], infos?: string[]): Promise<void>
 | 13900042 | Unknown error |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -176,10 +174,6 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void--><!--Device-SessionBackup-appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void-End-->
@@ -193,7 +187,7 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundlesToBackup | string[] | 是 | 需要备份的应用名称数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 添加备份应用完成后的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 添加备份应用完成后的异步回调。 |
 
 **错误码：**
 
@@ -207,7 +201,7 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void
 | 13900042 | Unknown error |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -281,10 +275,6 @@ cancel(bundleName: string): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-cancel(bundleName: string): int--><!--Device-SessionBackup-cancel(bundleName: string): int-End-->
@@ -313,7 +303,7 @@ cancel(bundleName: string): int
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -384,10 +374,6 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-cleanBundleTempDir(bundleName: string): Promise<boolean>--><!--Device-SessionBackup-cleanBundleTempDir(bundleName: string): Promise<boolean>-End-->
@@ -415,7 +401,7 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -491,10 +477,6 @@ constructor(callbacks: GeneralCallbacks)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-constructor(callbacks: GeneralCallbacks)--><!--Device-SessionBackup-constructor(callbacks: GeneralCallbacks)-End-->
@@ -509,7 +491,7 @@ constructor(callbacks: GeneralCallbacks)
 | --- | --- | --- | --- |
 | callbacks | [GeneralCallbacks](arkts-corefile-backup-generalcallbacks-i-sys.md) | 是 | 备份流程所需的回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -568,10 +550,6 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>--><!--Device-SessionBackup-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>-End-->
@@ -605,7 +583,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>
 | 13600001 | IPC error |
 | 13900042 | Internal error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -722,10 +700,6 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>--><!--Device-SessionBackup-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>-End-->
@@ -754,7 +728,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup } from '@kit.CoreFileKit';
@@ -829,10 +803,6 @@ getLocalCapabilities(): Promise<FileData>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-getLocalCapabilities(): Promise<FileData>--><!--Device-SessionBackup-getLocalCapabilities(): Promise<FileData>-End-->
@@ -858,7 +828,7 @@ getLocalCapabilities(): Promise<FileData>
 | 13600001 | IPC error |
 | 13900042 | Internal error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -996,10 +966,6 @@ release(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionBackup-release(): Promise<void>--><!--Device-SessionBackup-release(): Promise<void>-End-->
@@ -1026,7 +992,7 @@ release(): Promise<void>
 | 13600001 | IPC error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

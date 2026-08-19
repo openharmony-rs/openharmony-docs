@@ -1,18 +1,19 @@
 # AxisEvent
 
-轴事件的对象说明，继承于[BaseEvent](arkts-arkui-baseevent-i.md#baseevent)。
+轴事件的对象说明，继承于[BaseEvent](arkts-arkui-baseevent-i.md)。
 
-**继承/实现关系：** AxisEvent extends [BaseEvent](arkts-arkui-baseevent-i.md#baseevent)
+**继承/实现关系：** AxisEvent extends [BaseEvent](arkts-arkui-baseevent-i.md)
 
 **起始版本：** 17
-
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface AxisEvent--><!--Device-unnamed-declare interface AxisEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## getCurrentLocalPosition
 
@@ -20,13 +21,9 @@
 getCurrentLocalPosition?(): Coordinate2D
 ```
 
-获取点击位置相对于当前组件实时位置的左上角坐标。
+获取鼠标光标位置相对于当前组件实时位置的左上角坐标。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +37,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 | 类型 | 说明 |
 | --- | --- |
-| Coordinate2D | 点击位置相对于当前组件实时位置的左上角坐标。 |
+| Coordinate2D | 鼠标光标位置相对于当前组件实时位置的左上角坐标。 |
 
 ## getHorizontalAxisValue
 
@@ -51,10 +48,6 @@ getHorizontalAxisValue(): number
 获取此次轴事件的水平轴值。
 
 **起始版本：** 17
-
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,10 +73,6 @@ getPinchAxisScaleValue(): number
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
@@ -108,10 +97,6 @@ getVerticalAxisValue(): number
 
 **起始版本：** 17
 
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -135,10 +120,6 @@ hasAxis(axisType: AxisType): boolean
 检测此轴事件是否包含指定的轴类型。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -172,10 +153,6 @@ action: AxisAction
 
 **起始版本：** 17
 
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -195,10 +172,6 @@ displayX: number
 **类型：** number
 
 **起始版本：** 17
-
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,10 +193,6 @@ displayY: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -238,15 +207,11 @@ displayY: number
 eventHandleId?: number
 ```
 
-用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy](../../apis-na/arkts-apis/arkts-na-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
+用于事件处理的唯一标识。 取值范围：[0, +∞) **说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
 **类型：** number
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -268,10 +233,6 @@ globalDisplayX?: number
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -286,15 +247,11 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。 单位：vp 取值范围：[0, +∞)
+鼠标光标在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。 单位：vp 取值范围：[0, +∞)
 
 **类型：** number
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -316,10 +273,6 @@ propagation: Callback<void>
 
 **起始版本：** 17
 
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -339,10 +292,6 @@ scrollStep?: number
 **类型：** number
 
 **起始版本：** 17
-
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -364,10 +313,6 @@ windowX: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -387,10 +332,6 @@ windowY: number
 **类型：** number
 
 **起始版本：** 17
-
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -412,10 +353,6 @@ x: number
 
 **起始版本：** 17
 
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
@@ -435,10 +372,6 @@ y: number
 **类型：** number
 
 **起始版本：** 17
-
-**ArkTS模式：** 起始版本为17。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

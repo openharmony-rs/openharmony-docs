@@ -1,5 +1,11 @@
 # setOverlayEnabledByBundleName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+```
+
 ## setOverlayEnabledByBundleName
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 设置指定应用的overlay module的禁用使能状态。使用callback异步回调。 指定应用是调用方自身时不需要权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
@@ -29,7 +31,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 | bundleName | string | 是 | 指定应用的bundle名称。 |
 | moduleName | string | 是 | 指定应用的overlay特征module的名称。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)。当设置指定应用的overlay module的禁用使能状态成功时， err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)。当设置指定应用的overlay module的禁用使能状态成功时， err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -43,7 +45,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';
@@ -80,10 +82,6 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
 <!--Device-overlay-function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isEnabled: boolean): Promise<void>--><!--Device-overlay-function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isEnabled: boolean): Promise<void>-End-->
@@ -118,7 +116,7 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

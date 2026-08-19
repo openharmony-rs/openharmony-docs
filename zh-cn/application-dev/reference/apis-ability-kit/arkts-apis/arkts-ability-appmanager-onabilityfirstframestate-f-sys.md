@@ -1,6 +1,12 @@
 # on_abilityFirstFrameState（系统接口）
 
-## on_abilityFirstFrameState
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
+## on('abilityFirstFrameState')
 
 ```TypeScript
 function on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bundleName?: string): void
@@ -9,10 +15,6 @@ function on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObse
 注册监听Ability首帧绘制完成事件观察者对象，可用于系统应用监听Ability首帧绘制事件。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -39,7 +41,7 @@ function on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObse
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

@@ -1,5 +1,11 @@
 # onActiveSessionChanged（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## onActiveSessionChanged
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onActiveSessionChanged(callback: Callback<Array<AVSessionDescriptor>>):
 允许在系统控制入口显示的会话变更的监听事件。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -26,7 +28,7 @@ function onActiveSessionChanged(callback: Callback<Array<AVSessionDescriptor>>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i-sys.md)&gt;&gt; | 是 | 回调函数。参数为允许在系统控制入口显示的会话信息列表。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i-sys.md)&gt;&gt; | 是 | 回调函数。参数为允许在系统控制入口显示的会话信息列表。 |
 
 **错误码：**
 

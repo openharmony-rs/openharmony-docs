@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-motion-export enum HoverHandAction--><!--Device-motion-export enum HoverHandAction-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
@@ -23,10 +19,6 @@ DOWN = 0
 表示悬浮手进入检测区域。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +37,6 @@ UP = 1
 表示悬浮手离开检测区域。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

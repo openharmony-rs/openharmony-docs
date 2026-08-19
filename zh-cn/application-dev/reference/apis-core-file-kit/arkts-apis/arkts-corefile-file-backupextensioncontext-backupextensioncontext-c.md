@@ -6,13 +6,15 @@ BackupExtensionAbility的上下文环境，继承自ExtensionContext。 用于�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class BackupExtensionContext--><!--Device-unnamed-declare class BackupExtensionContext-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
+
+## 导入模块
+
+```TypeScript
+import { BackupExtensionContext } from '@kit.CoreFileKit';
+```
 
 ## backupDir
 
@@ -25,10 +27,6 @@ readonly backupDir: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

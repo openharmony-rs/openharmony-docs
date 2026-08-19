@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum FontMetricsFlags--><!--Device-drawing-enum FontMetricsFlags-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -18,13 +14,9 @@
 UNDERLINE_THICKNESS_VALID = 1 << 0
 ```
 
-表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md#fontmetrics)结构中的underlineThickness（下划线厚度）字段有效。
+表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md)结构中的underlineThickness（下划线厚度）字段有效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -38,13 +30,9 @@ UNDERLINE_THICKNESS_VALID = 1 << 0
 UNDERLINE_POSITION_VALID = 1 << 1
 ```
 
-表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md#fontmetrics)结构中的underlinePosition（下划线位置）字段有效。
+表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md)结构中的underlinePosition（下划线位置）字段有效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -58,13 +46,9 @@ UNDERLINE_POSITION_VALID = 1 << 1
 STRIKETHROUGH_THICKNESS_VALID = 1 << 2
 ```
 
-表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md#fontmetrics)结构中的strikethroughThickness（删除线厚度）字段有效。
+表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md)结构中的strikethroughThickness（删除线厚度）字段有效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -78,13 +62,9 @@ STRIKETHROUGH_THICKNESS_VALID = 1 << 2
 STRIKETHROUGH_POSITION_VALID = 1 << 3
 ```
 
-表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md#fontmetrics)结构中的strikethroughPosition（删除线位置）字段有效。
+表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md)结构中的strikethroughPosition（删除线位置）字段有效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -98,13 +78,9 @@ STRIKETHROUGH_POSITION_VALID = 1 << 3
 BOUNDS_INVALID = 1 << 4
 ```
 
-表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md#fontmetrics)结构中的边界度量值（如top、bottom、xMin、xMax）无效。
+表示[FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md)结构中的边界度量值（如top、bottom、xMin、xMax）无效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-abilityConnectionManager-enum DisconnectReason--><!--Device-abilityConnectionManager-enum DisconnectReason-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
@@ -21,10 +17,6 @@ PEER_APP_CLOSE_COLLABORATION = 0
 表示对端应用主动关闭了协作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ PEER_APP_EXIT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DisconnectReason-PEER_APP_EXIT = 1--><!--Device-DisconnectReason-PEER_APP_EXIT = 1-End-->
@@ -61,10 +49,6 @@ NETWORK_DISCONNECTED = 2
 表示网络断开。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

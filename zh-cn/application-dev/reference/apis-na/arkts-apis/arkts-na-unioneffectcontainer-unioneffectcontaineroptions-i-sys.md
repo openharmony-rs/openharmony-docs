@@ -4,9 +4,7 @@ UnionEffectContainer构造参数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface UnionEffectContainerOptions--><!--Device-unnamed-export declare interface UnionEffectContainerOptions-End-->
 
@@ -28,9 +26,7 @@ spacing表示后代组件发生融合形变的程度。它不代表实际的间�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

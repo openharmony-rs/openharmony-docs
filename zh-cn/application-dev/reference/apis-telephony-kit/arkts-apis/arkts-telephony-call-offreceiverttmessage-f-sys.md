@@ -1,5 +1,11 @@
 # offReceiveRttMessage（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## offReceiveRttMessage
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offReceiveRttMessage(callback?: Callback<RttMessageInfo>): void
 去订阅rtt消息事件
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -26,7 +28,7 @@ function offReceiveRttMessage(callback?: Callback<RttMessageInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[RttMessageInfo](arkts-telephony-call-rttmessageinfo-i-sys.md)&gt; | 否 | Indicates the callback for getting the rtt message. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[RttMessageInfo](arkts-telephony-call-rttmessageinfo-i-sys.md)&gt; | 否 | Indicates the callback for getting the rtt message. |
 
 **错误码：**
 

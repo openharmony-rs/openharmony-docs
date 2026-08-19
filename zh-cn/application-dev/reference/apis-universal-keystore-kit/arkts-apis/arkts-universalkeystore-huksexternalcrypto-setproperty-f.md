@@ -1,5 +1,11 @@
 # setProperty
 
+## 导入模块
+
+```TypeScript
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## setProperty
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setProperty(resourceId: string, propertyId: string, params?: HuksExtern
 The set-type operations of the external crypto extension support calling custom interfaces. However, the custom interface must be registered with the provider.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,9 +26,9 @@ The set-type operations of the external crypto extension support calling custom 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | 资源ID，可通过 [导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog) 获取，该接口的返回结果中附带resourceId。 |
+| resourceId | string | 是 | 资源ID，可通过 [导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md) 获取，该接口的返回结果中附带resourceId。 |
 | propertyId | string | 是 | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，应用开发者需要针对接口名进行适配。 |
-| params | [HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)[] | 否 | 需要传递给 [Extension Ability](arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md#cryptoextensionability)的输入参数。非系统应用传入 [HUKS_EXT_CRYPTO_TAG_UID](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#huksexternalcryptotagtype)是非法参数。 |
+| params | [HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)[] | 否 | 需要传递给 [Extension Ability](arkts-universalkeystore-security-cryptoextensionability-cryptoextensionability-c.md)的输入参数。非系统应用传入 [HUKS_EXT_CRYPTO_TAG_UID](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)是非法参数。 |
 
 **返回值：**
 
@@ -50,7 +52,7 @@ The set-type operations of the external crypto extension support calling custom 
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The cached resource ID not found. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | The provider or UKey is busy. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

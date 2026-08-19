@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum HighlightAlbumChangeAttribute--><!--Device-photoAccessHelper-enum HighlightAlbumChangeAttribute-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ IS_VIEWED = 0
 该时刻相册是否被查看过。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-HighlightAlbumChangeAttribute-IS_VIEWED = 0--><!--Device-HighlightAlbumChangeAttribute-IS_VIEWED = 0-End-->
 
@@ -44,10 +36,6 @@ NOTIFICATION_TIME = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-HighlightAlbumChangeAttribute-NOTIFICATION_TIME = 1--><!--Device-HighlightAlbumChangeAttribute-NOTIFICATION_TIME = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ IS_FAVORITE = 2
 该时刻相册是否被收藏。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-HighlightAlbumChangeAttribute-IS_FAVORITE = 2--><!--Device-HighlightAlbumChangeAttribute-IS_FAVORITE = 2-End-->
 

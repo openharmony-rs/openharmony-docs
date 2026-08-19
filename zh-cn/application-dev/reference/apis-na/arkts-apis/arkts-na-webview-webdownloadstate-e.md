@@ -4,9 +4,7 @@ Defines the state for download.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-enum WebDownloadState--><!--Device-webview-enum WebDownloadState-End-->
 
@@ -22,9 +20,7 @@ The web download is in progress.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebDownloadState-IN_PROGRESS = 0--><!--Device-WebDownloadState-IN_PROGRESS = 0-End-->
 
@@ -40,9 +36,7 @@ The web download has been completed.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebDownloadState-COMPLETED--><!--Device-WebDownloadState-COMPLETED-End-->
 
@@ -58,9 +52,7 @@ The web download was canceled.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebDownloadState-CANCELED--><!--Device-WebDownloadState-CANCELED-End-->
 
@@ -76,9 +68,7 @@ The web download was interrupted.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebDownloadState-INTERRUPTED--><!--Device-WebDownloadState-INTERRUPTED-End-->
 
@@ -94,9 +84,7 @@ The web download is pending.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebDownloadState-PENDING--><!--Device-WebDownloadState-PENDING-End-->
 
@@ -112,9 +100,7 @@ The web download has been paused.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebDownloadState-PAUSED--><!--Device-WebDownloadState-PAUSED-End-->
 
@@ -130,9 +116,7 @@ Unknown state.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebDownloadState-UNKNOWN--><!--Device-WebDownloadState-UNKNOWN-End-->
 

@@ -1,5 +1,11 @@
 # offCellularDataFlowChange
 
+## 导入模块
+
+```TypeScript
+import { observer } from '@kit.TelephonyKit';
+```
+
 ## offCellularDataFlowChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ Cancel callback when the uplink and downlink data flow state of cellular data se
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-function offCellularDataFlowChange(callback?: Callback<DataFlowType>): void--><!--Device-observer-function offCellularDataFlowChange(callback?: Callback<DataFlowType>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
@@ -22,7 +24,7 @@ Cancel callback when the uplink and downlink data flow state of cellular data se
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DataFlowType](arkts-telephony-observer-dataflowtype-t.md)&gt; | 否 | Indicates the callback to unsubscribe from the cellularDataFlowChange event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;DataFlowType&gt; | 否 | Indicates the callback to unsubscribe from the cellularDataFlowChange event. |
 
 **错误码：**
 

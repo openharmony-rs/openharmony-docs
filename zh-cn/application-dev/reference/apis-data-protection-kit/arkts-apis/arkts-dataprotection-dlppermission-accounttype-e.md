@@ -4,10 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-dlpPermission-export enum AccountType--><!--Device-dlpPermission-export enum AccountType-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -23,10 +19,6 @@ ENTERPRISE_ACCOUNT = 4
 表示企业账号。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 <!--Device-AccountType-ENTERPRISE_ACCOUNT = 4--><!--Device-AccountType-ENTERPRISE_ACCOUNT = 4-End-->
 

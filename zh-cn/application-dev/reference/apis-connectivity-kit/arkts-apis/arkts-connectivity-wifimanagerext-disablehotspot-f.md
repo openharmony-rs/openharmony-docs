@@ -1,5 +1,11 @@
 # disableHotspot
 
+## 导入模块
+
+```TypeScript
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## disableHotspot
 
 ```TypeScript
@@ -9,8 +15,6 @@ function disableHotspot(): void
 去使能WLAN热点。 如果禁用WLAN热点后Wi-Fi处于启用状态，则Wi-Fi可能会被重新启用。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 10
 
@@ -28,7 +32,7 @@ function disableHotspot(): void
 | [2701000](../errorcode-wifi.md#2701000-ap扩展模块异常) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManagerExt } from '@kit.ConnectivityKit';

@@ -1,5 +1,11 @@
 # getTotalSizeSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getTotalSizeSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getTotalSizeSync(): long
 同步获取内置存储的总空间大小（单位为Byte）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本10 - 14：ohos.permission.STORAGE_MANAGER
@@ -38,7 +40,7 @@ function getTotalSizeSync(): long
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

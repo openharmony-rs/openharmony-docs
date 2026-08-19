@@ -1,16 +1,18 @@
-# ProvisionRequest
+# ProvisionRequest(Defines the DRM capability.)
 
 设备证书请求。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drm-interface ProvisionRequest--><!--Device-drm-interface ProvisionRequest-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+## 导入模块
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+```
 
 ## data
 
@@ -23,10 +25,6 @@ data: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ Provision服务（设备证书请求服务）URL。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 

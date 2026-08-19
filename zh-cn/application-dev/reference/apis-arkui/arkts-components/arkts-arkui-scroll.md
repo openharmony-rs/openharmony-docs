@@ -14,10 +14,6 @@ Scroll(scroller?: Scroller)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ScrollInterface-(scroller?: Scroller): ScrollAttribute--><!--Device-ScrollInterface-(scroller?: Scroller): ScrollAttribute-End-->
@@ -32,20 +28,35 @@ Scroll(scroller?: Scroller)
 
 ## 汇总
 
-- [OffsetOptions](arkts-arkui-offsetoptions-i.md)
-- [OffsetResult](arkts-arkui-offsetresult-i.md)
-- [OnScrollFrameBeginHandlerResult](arkts-arkui-onscrollframebeginhandlerresult-i.md)
-- [ScrollAnimationOptions](arkts-arkui-scrollanimationoptions-i.md)
-- [ScrollEdgeOptions](arkts-arkui-scrolledgeoptions-i.md)
-- [ScrollOptions](arkts-arkui-scrolloptions-i.md)
-- [ScrollPageOptions](arkts-arkui-scrollpageoptions-i.md)
-- [ScrollSnapOptions](arkts-arkui-scrollsnapoptions-i.md)
-- [ScrollToIndexOptions](arkts-arkui-scrolltoindexoptions-i.md)
-- [UIScrollEvent](arkts-arkui-uiscrollevent-i.md)
-- [OnScrollEdgeCallback](arkts-arkui-onscrolledgecallback-t.md)
-- [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md)
-- [ScrollOnDidZoomCallback](arkts-arkui-scrollondidzoomcallback-t.md)
-- [ScrollOnScrollCallback](arkts-arkui-scrollonscrollcallback-t.md)
-- [ScrollOnWillScrollCallback](arkts-arkui-scrollonwillscrollcallback-t.md)
-- [ScrollAlign](arkts-arkui-scrollalign-e.md)
-- [ScrollDirection](arkts-arkui-scrolldirection-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [OffsetOptions](arkts-arkui-offsetoptions-i.md) | 初始滚动偏移量的参数选项。 |
+| [OffsetResult](arkts-arkui-offsetresult-i.md) | 滑动偏移量对象。 |
+| [OnScrollFrameBeginHandlerResult](arkts-arkui-onscrollframebeginhandlerresult-i.md) | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md)返回的实际相对上一帧滚动偏移量。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [ScrollAnimationOptions](arkts-arkui-scrollanimationoptions-i.md) | 自定义滚动动效的参数选项。 |
+| [ScrollEdgeOptions](arkts-arkui-scrolledgeoptions-i.md) | 滚动到边缘位置的参数选项。 |
+| [ScrollOptions](arkts-arkui-scrolloptions-i.md) | 滚动到指定位置的参数选项。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [ScrollPageOptions](arkts-arkui-scrollpageoptions-i.md) | 翻页模式的参数选项。 |
+| [ScrollSnapOptions](arkts-arkui-scrollsnapoptions-i.md) | 限位滚动模式对象。 |
+| [ScrollToIndexOptions](arkts-arkui-scrolltoindexoptions-i.md) | 滑动到指定Index的参数选项。 |
+| [UIScrollEvent](arkts-arkui-uiscrollevent-i.md) | frameNode中[getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md) 方法的返回值，可用于给Scroll节点设置滚动事件。 UIScrollEvent继承于UIScrollableCommonEvent。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [OnScrollEdgeCallback](arkts-arkui-onscrolledgecallback-t.md) | 滚动到边缘时触发的回调。 |
+| [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | Scroll每帧滚动前触发的回调。 |
+| [ScrollOnDidZoomCallback](arkts-arkui-scrollondidzoomcallback-t.md) | Scroll每帧缩放完成时触发的回调。 |
+| [ScrollOnScrollCallback](arkts-arkui-scrollonscrollcallback-t.md) | Scroll滚动时触发的回调。 |
+| [ScrollOnWillScrollCallback](arkts-arkui-scrollonwillscrollcallback-t.md) | Scroll滚动前触发的回调。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ScrollAlign](arkts-arkui-scrollalign-e.md) | 对齐方式枚举。 |
+| [ScrollDirection](arkts-arkui-scrolldirection-e.md) | 滚动方向枚举。 FREE（自由滚动）模式下支持的能力： |
+

@@ -1,12 +1,8 @@
 # BoidsSimGravityParameters（系统接口）
 
-Boids模拟引力场参数。
+引力场参数，用于配置场景中的引力场。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface BoidsSimGravityParameters--><!--Device-unnamed-export interface BoidsSimGravityParameters-End-->
 
@@ -20,15 +16,11 @@ Boids模拟引力场参数。
 accelerationMag?: double
 ```
 
-施加于boid、方向指向实体的吸引加速度大小。取值范围：[0, +∞)。默认值：0.0
+施加于个体的吸引加速度大小，其方向指向引力场实体。取值 >= 0。默认值为0.0。
 
 **类型：** double
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,15 +36,11 @@ accelerationMag?: double
 radius?: double
 ```
 
-作用半径。实体在此距离范围内的boid会受到吸引（边界处力为零）。取值范围：[0, +∞)。默认值：0.0
+引力场的作用半径。仅严格在该距离内的个体受到吸引（边界处力为0）。取值 >= 0。默认值为0.0。
 
 **类型：** double
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

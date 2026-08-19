@@ -4,13 +4,14 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class TouchRecognizer--><!--Device-unnamed-declare class TouchRecognizer-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## cancelTouch
 
@@ -21,10 +22,6 @@ cancelTouch(): void
 向当前触摸识别器发送触摸取消事件的信息。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +40,6 @@ getEventTargetInfo(): EventTargetInfo
 返回当前触摸识别器对应组件的信息。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -71,10 +64,6 @@ isHostBelongsTo(uniqueId: number): boolean
 Check whether the current gesture binding node is a descendant of the passed-in component.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -105,10 +94,6 @@ isHostBelongsTo(uniqueId: int): boolean
 返回当前触摸识别器绑定节点是否为传入组件的后代节点。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

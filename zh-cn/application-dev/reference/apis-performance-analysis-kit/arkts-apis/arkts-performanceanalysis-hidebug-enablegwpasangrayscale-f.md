@@ -1,5 +1,11 @@
 # enableGwpAsanGrayscale
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## enableGwpAsanGrayscale
 
 ```TypeScript
@@ -9,10 +15,6 @@ function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): void
 使能GWP-ASan，用于检测堆内存使用中的非法行为。 该接口主要用于动态配置并启用GWP-ASan，以适配应用自定义的GWP-ASan检测策略。配置在应用重新启动后生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): void--><!--Device-hidebug-function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): void-End-->
 
@@ -29,9 +31,9 @@ function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [11400114](../errorcode-hiviewdfx-hidebug.md#11400114-使能gwpasan失败) | The number of GWP-ASAN applications of this device overflowed after last boot. |
+| [11400114](../errorcode-hiviewdfx-hidebug.md#11400114-使能gwp-asan失败) | The number of GWP-ASAN applications of this device overflowed after last boot. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -68,10 +70,6 @@ function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): vo
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-hidebug-function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void--><!--Device-hidebug-function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
@@ -87,9 +85,9 @@ function enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [11400114](../errorcode-hiviewdfx-hidebug.md#11400114-使能gwpasan失败) | The number of GWP-ASAN applications of this device overflowed after last boot. |
+| [11400114](../errorcode-hiviewdfx-hidebug.md#11400114-使能gwp-asan失败) | The number of GWP-ASAN applications of this device overflowed after last boot. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

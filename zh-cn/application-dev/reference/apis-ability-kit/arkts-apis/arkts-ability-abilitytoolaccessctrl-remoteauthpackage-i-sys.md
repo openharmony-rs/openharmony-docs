@@ -4,15 +4,16 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-abilityToolAccessCtrl-interface RemoteAuthPackage--><!--Device-abilityToolAccessCtrl-interface RemoteAuthPackage-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## challenge
 
@@ -25,10 +26,6 @@ challenge: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-RemoteAuthPackage-challenge: string--><!--Device-RemoteAuthPackage-challenge: string-End-->
 
@@ -48,10 +45,6 @@ remoteMessage: string
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-RemoteAuthPackage-remoteMessage: string--><!--Device-RemoteAuthPackage-remoteMessage: string-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -69,10 +62,6 @@ ticket: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-RemoteAuthPackage-ticket: string--><!--Device-RemoteAuthPackage-ticket: string-End-->
 

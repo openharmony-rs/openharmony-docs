@@ -1,5 +1,11 @@
 # replaceSuperAdmin（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## replaceSuperAdmin
 
 ```TypeScript
@@ -9,10 +15,6 @@ function replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean
 将指定应用替换成超级设备管理应用。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -42,7 +44,7 @@ function replaceSuperAdmin(oldAdmin: Want, newAdmin: Want, isKeepPolicy: boolean
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200003](../errorcode-enterpriseDeviceManager.md#9200003-指定的设备管理器元能力组件无效) | The administrator ability component is invalid. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';

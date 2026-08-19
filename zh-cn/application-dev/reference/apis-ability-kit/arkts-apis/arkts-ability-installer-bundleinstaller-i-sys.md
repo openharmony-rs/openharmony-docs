@@ -4,15 +4,17 @@ Bundle installer interface, include install uninstall recover.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-installer-interface BundleInstaller--><!--Device-installer-interface BundleInstaller-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+```
 
 ## addExtResource
 
@@ -23,10 +25,6 @@ addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 根据给定的bundleName和hsp文件路径添加扩展资源。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -59,7 +57,7 @@ addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -121,10 +119,6 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_CLONE_BUNDLE
 
 <!--Device-BundleInstaller-createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise<int>--><!--Device-BundleInstaller-createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): Promise<int>-End-->
@@ -138,7 +132,7 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待创建应用分身的包名。 |
-| createAppCloneParam | [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md) | 否 | 指定创建应用分身所需的其他参数，默认值：参照 [createAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md#createappcloneparam系统接口)的默认值。 |
+| createAppCloneParam | [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md) | 否 | 指定创建应用分身所需的其他参数，默认值：参照 [createAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
@@ -158,7 +152,7 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 | [17700069](../errorcode-bundle.md#17700069-应用不支持创建分身) | The app does not support the creation of an appClone instance. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -231,10 +225,6 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
 
 <!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<void>--><!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<void>-End-->
@@ -249,7 +239,7 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待删除应用分身的包名。 |
 | appIndex | number | 是 | 待删除应用分身的索引。 |
-| userId | number | 否 | 待删除应用分身所属用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户。 |
+| userId | number | 否 | 待删除应用分身所属用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户。 |
 
 **返回值：**
 
@@ -268,7 +258,7 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { installer } from '@kit.AbilityKit';
@@ -305,10 +295,6 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
 
 <!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>--><!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>-End-->
@@ -323,7 +309,7 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待删除应用分身的包名。 |
 | appIndex | number | 是 | 待删除应用分身的索引。 |
-| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | 否 | 指定删除应用分身所需的其他参数，默认值：参照 [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md#destroyappcloneparam系统接口)的默认值。 |
+| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | 否 | 指定删除应用分身所需的其他参数，默认值：参照 [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
@@ -343,7 +329,7 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { installer } from '@kit.AbilityKit';
@@ -388,10 +374,6 @@ Destroy clone instance for an application.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
 
 <!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: int, options?: int | DestroyAppCloneParam): Promise<void>--><!--Device-BundleInstaller-destroyAppClone(bundleName: string, appIndex: int, options?: int | DestroyAppCloneParam): Promise<void>-End-->
@@ -425,7 +407,7 @@ Destroy clone instance for an application.
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 
-## 示例
+**示例**
 
 ```TypeScript
 'use static'
@@ -485,13 +467,9 @@ try {
 install(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void
 ```
 
-安装指定应用。使用callback异步回调。 > **说明：** > > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md#applicationinfo)中的 > appDistributionType字段说明。
+安装指定应用。使用callback异步回调。 > **说明：** > > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的 > appDistributionType字段说明。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
@@ -511,7 +489,7 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
 | installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，安装应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -546,7 +524,7 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 | [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -618,13 +596,9 @@ try {
 install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-安装指定应用。使用callback异步回调。 > **说明：** > > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md#applicationinfo)中的 > appDistributionType字段说明。
+安装指定应用。使用callback异步回调。 > **说明：** > > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的 > appDistributionType字段说明。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
@@ -643,7 +617,7 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，安装应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -677,7 +651,7 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 | [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -739,13 +713,9 @@ try {
 install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 ```
 
-安装指定应用。使用Promise异步回调。 > **说明：** > > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md#applicationinfo)中的 > appDistributionType字段说明。
+安装指定应用。使用Promise异步回调。 > **说明：** > > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的 > appDistributionType字段说明。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
@@ -764,7 +734,7 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md#installparam系统接口)的默认值 。<br>**起始版本：** 12 |
+| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值 。<br>**起始版本：** 12 |
 
 **返回值：**
 
@@ -805,7 +775,7 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 | [17700016](../errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败) | Failed to install the HAP because of insufficient system disk space. |
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -878,10 +848,6 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_PLUGIN_BUNDLE
 
 <!--Device-BundleInstaller-installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginParam?: PluginParam): Promise<void>--><!--Device-BundleInstaller-installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginParam?: PluginParam): Promise<void>-End-->
@@ -896,7 +862,7 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 | --- | --- | --- | --- |
 | hostBundleName | string | 是 | 待安装插件的应用包名。 |
 | pluginFilePaths | Array&lt;string&gt; | 是 | 存储插件程序包的路径。当传入多个文件路径或者一个目录时，需确保这些文件是同一插件程序的HSP，且这些HSP的签名需要保持一致。 |
-| pluginParam | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 否 | 指定安装插件所需的参数，默认值：参照 [PluginParam](arkts-ability-installer-pluginparam-i-sys.md#pluginparam系统接口) 的默认值。 |
+| pluginParam | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 否 | 指定安装插件所需的参数，默认值：参照 [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) 的默认值。 |
 
 **返回值：**
 
@@ -927,7 +893,7 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 | [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the plugin because the code signature verification is failed. |
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the plugin since the version of the plugin to install is too early. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -994,13 +960,9 @@ try {
 installPreexistingApp(bundleName: string, userId?: int): Promise<void>
 ```
 
-在指定用户下安装指定bundleName的应用。使用Promise异步回调。 > **说明：** > > 该接口不支持安装[签名证书的分发类型](arkts-ability-applicationinfo-i.md#applicationinfo)为enterprise，enterprise_mdm和 > enterprise_normal的应用。
+在指定用户下安装指定bundleName的应用。使用Promise异步回调。 > **说明：** > > 该接口不支持安装[签名证书的分发类型](arkts-ability-applicationinfo-i.md)为enterprise，enterprise_mdm和 > enterprise_normal的应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -1015,7 +977,7 @@ installPreexistingApp(bundleName: string, userId?: int): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 需要安装应用的包名。 |
-| userId | int | 否 | 需要安装应用的用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，userId需要大于0。默认值：调用方所在用户。 |
+| userId | int | 否 | 需要安装应用的用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，userId需要大于0。默认值：调用方所在用户。 |
 
 **返回值：**
 
@@ -1035,7 +997,7 @@ installPreexistingApp(bundleName: string, userId?: int): Promise<void>
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1102,10 +1064,6 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.RECOVER_BUNDLE
 
 <!--Device-BundleInstaller-recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
@@ -1120,7 +1078,7 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待恢复应用的包名。 |
 | installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，回滚应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，回滚应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1134,7 +1092,7 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1210,10 +1168,6 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.RECOVER_BUNDLE
 
 <!--Device-BundleInstaller-recover(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-recover(bundleName: string, callback: AsyncCallback<void>): void-End-->
@@ -1227,7 +1181,7 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待恢复应用的包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，回滚应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，回滚应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1240,7 +1194,7 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1306,10 +1260,6 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.RECOVER_BUNDLE
 
 <!--Device-BundleInstaller-recover(bundleName: string, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-recover(bundleName: string, installParam?: InstallParam): Promise<void>-End-->
@@ -1323,7 +1273,7 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md#installparam系统接口)的默认值。 |
+| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
@@ -1343,7 +1293,7 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1416,10 +1366,6 @@ removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 <!--Device-BundleInstaller-removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>--><!--Device-BundleInstaller-removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>-End-->
@@ -1451,7 +1397,7 @@ removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1513,10 +1459,6 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 <!--Device-BundleInstaller-uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
@@ -1531,7 +1473,7 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
 | installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，卸载应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1549,7 +1491,7 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 | [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 12+ |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1625,10 +1567,6 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 <!--Device-BundleInstaller-uninstall(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-uninstall(bundleName: string, callback: AsyncCallback<void>): void-End-->
@@ -1642,7 +1580,7 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，卸载应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1658,7 +1596,7 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 | [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 12+ |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1724,10 +1662,6 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 <!--Device-BundleInstaller-uninstall(bundleName: string, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-uninstall(bundleName: string, installParam?: InstallParam): Promise<void>-End-->
@@ -1741,7 +1675,7 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md#installparam系统接口)的默认值 。<br>**起始版本：** 15 |
+| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值 。<br>**起始版本：** 15 |
 
 **返回值：**
 
@@ -1765,7 +1699,7 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 | [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 12+ |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1838,10 +1772,6 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 <!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void-End-->
@@ -1855,7 +1785,7 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uninstallParam | [UninstallParam](arkts-ability-installer-uninstallparam-i-sys.md) | 是 | 共享包卸载需指定的参数信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，卸载应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1868,7 +1798,7 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 | [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -1938,10 +1868,6 @@ uninstall(uninstallParam: UninstallParam): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 <!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam): Promise<void>--><!--Device-BundleInstaller-uninstall(uninstallParam: UninstallParam): Promise<void>-End-->
@@ -1973,7 +1899,7 @@ uninstall(uninstallParam: UninstallParam): Promise<void>
 | [17700020](../errorcode-bundle.md#17700020-预置应用无法卸载) | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -2043,10 +1969,6 @@ uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.UNINSTALL_BUNDLE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -2076,7 +1998,7 @@ uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { installer } from '@kit.AbilityKit';
@@ -2111,10 +2033,6 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.UNINSTALL_PLUGIN_BUNDLE
 
 <!--Device-BundleInstaller-uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise<void>--><!--Device-BundleInstaller-uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: PluginParam): Promise<void>-End-->
@@ -2129,7 +2047,7 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 | --- | --- | --- | --- |
 | hostBundleName | string | 是 | 待卸载插件的应用包名。 |
 | pluginBundleName | string | 是 | 插件的包名。 |
-| pluginParam | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 否 | 指定卸载插件所需的参数，默认值：参照 [PluginParam](arkts-ability-installer-pluginparam-i-sys.md#pluginparam系统接口) 的默认值。 |
+| pluginParam | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 否 | 指定卸载插件所需的参数，默认值：参照 [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) 的默认值。 |
 
 **返回值：**
 
@@ -2147,7 +2065,7 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The user id is invalid. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -2218,10 +2136,6 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.UNINSTALL_BUNDLE
 
 <!--Device-BundleInstaller-uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>-End-->
@@ -2235,7 +2149,7 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载更新应用的包名。 |
-| installParam | InstallParam | 否 | 指定卸载更新所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md#installparam系统接口)的默认值。其中 userId无法指定，调用本接口将对所有已安装相应应用的用户进行卸载更新操作。 |
+| installParam | InstallParam | 否 | 指定卸载更新所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。其中 userId无法指定，调用本接口将对所有已安装相应应用的用户进行卸载更新操作。 |
 
 **返回值：**
 
@@ -2257,7 +2171,7 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 | [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 13+ |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -2328,10 +2242,6 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_SELF_BUNDLE
 
 <!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
@@ -2346,7 +2256,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
 | installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，安装应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2374,7 +2284,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
 | [17700049](../errorcode-bundle.md#17700049-应用自升级时安装的应用与调用方包名不同) | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -2450,10 +2360,6 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_SELF_BUNDLE
 
 <!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void--><!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void-End-->
@@ -2467,7 +2373,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，安装应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2494,7 +2400,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
 | [17700049](../errorcode-bundle.md#17700049-应用自升级时安装的应用与调用方包名不同) | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -2560,10 +2466,6 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.INSTALL_SELF_BUNDLE
 
 <!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>--><!--Device-BundleInstaller-updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>-End-->
@@ -2577,7 +2479,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md#installparam系统接口)的默认值。 |
+| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
@@ -2611,7 +2513,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the HAP since the version of the HAP to install is too early. |
 | [17700049](../errorcode-bundle.md#17700049-应用自升级时安装的应用与调用方包名不同) | Failed to install the HAP because the bundleName is different from the bundleName of the caller application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

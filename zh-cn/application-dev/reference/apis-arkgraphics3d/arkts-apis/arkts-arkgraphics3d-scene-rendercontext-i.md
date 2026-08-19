@@ -1,12 +1,8 @@
 # RenderContext
 
-渲染上下文，定义所有渲染资源的上下文。同一渲染上下文中的资源可在该上下文内创建的场景间共享。
+定义了所有渲染资源的上下文。在同一渲染上下文中创建的多个场景之间，可以共享渲染资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RenderContext--><!--Device-unnamed-export interface RenderContext-End-->
 
@@ -18,13 +14,9 @@
 getRenderResourceFactory() : RenderResourceFactory
 ```
 
-获取资源工厂.
+获取渲染资源工厂，提供创建不同渲染资源的功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderContext-getRenderResourceFactory() : RenderResourceFactory--><!--Device-RenderContext-getRenderResourceFactory() : RenderResourceFactory-End-->
 
@@ -34,9 +26,9 @@ getRenderResourceFactory() : RenderResourceFactory
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md) | RenderResourceFactory实例 |
+| [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md) | 返回一个RenderResourceFactory实例，用于创建渲染资源。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
@@ -58,13 +50,9 @@ function getRenderResourceFactory(): void {
 loadPlugin(name: string): Promise<boolean>
 ```
 
-加载外部插件
+用于加载指定名称的插件，通过插件名称查找并加载对应的插件资源，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderContext-loadPlugin(name: string): Promise<boolean>--><!--Device-RenderContext-loadPlugin(name: string): Promise<boolean>-End-->
 
@@ -74,15 +62,15 @@ loadPlugin(name: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | 插件名称 |
+| name | string | 是 | 要加载的插件名称，必须是系统预定义或已注册且可用的插件名称，且符合命名规范。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 返回表示插件加载是否成功的Promise |
+| Promise&lt;boolean&gt; | 返回一个Promise对象，解析结果为boolean类型，表示插件加载是否成功。true表示加载成功，false表示加载失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, RenderContext } from '@kit.ArkGraphics3D';
@@ -107,10 +95,6 @@ registerResourcePath(protocol: string, uri: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RenderContext-registerResourcePath(protocol: string, uri: string): boolean--><!--Device-RenderContext-registerResourcePath(protocol: string, uri: string): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -126,9 +110,9 @@ registerResourcePath(protocol: string, uri: string): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资产文件路径是否注册成功。true表示注册成功； false表示注册失败，可能原因为检索名已被注册或输入参数不可用。 |
+| boolean | 返回资产文件路径是否注册成功。 true表示注册成功；false表示注册失败，可能原因为检索名已被注册或输入参数不可用。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, RenderContext } from '@kit.ArkGraphics3D';

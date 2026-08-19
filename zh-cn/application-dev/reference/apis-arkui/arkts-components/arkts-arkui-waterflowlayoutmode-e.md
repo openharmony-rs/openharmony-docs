@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum WaterFlowLayoutMode--><!--Device-unnamed-declare enum WaterFlowLayoutMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ ALWAYS_TOP_DOWN = 0
 默认的从上到下的布局模式。视窗内的FlowItem依赖视窗上方所有FlowItem的布局信息。因此跳转或切换列数时，需要计算出上方所有的FlowItem的布局信息。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +32,9 @@ ALWAYS_TOP_DOWN = 0
 SLIDING_WINDOW = 1
 ```
 
-移动窗口式的布局模式。只考虑视窗内的布局信息，对视窗上方的FlowItem没有依赖关系，因此向后跳转或切换列数时只需要布局视窗内的FlowItem。建议优先采用该模式，尤其在应用需要支持屏幕旋转或动态切换列数的场景下。 **说明：** 1. 无动画跳转到较远的位置时，会以目标位置为基准，向前或向后布局FlowItem。这之后如果滑回跳转前的位置，内容的布局效果可能和之前不一致。这个效果会导致跳转后回滑到顶部时，顶部节点可能不对齐。 2. 使用SLIDING_WINDOW布局模式并设置[WaterFlowSections](arkts-arkui-waterflowsections-c.md#waterflowsections)分组时，滚动动画结束后，若视窗内包含分组起始位置，且检测到该分组在视窗内的列或行起始位置未对齐，或分组起始FlowItem与分组起始索引不一致，WaterFlow会重新计算布局以校正分组内容位置。 3. 使用SLIDING_WINDOW布局模式调用[backToTop](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#backtotop15)回到顶部操作时，若回顶动画结束后仍未到达顶部，WaterFlow会执行一次无动画的顶部校正，使内容重新对齐到起始位置。 4. [scroller](arkts-arkui-waterflowoptions-i.md#waterflowoptions)的currentOffset或offset接口返回的总偏移量在触发跳转或数据更新后不准确，在回滑到顶部时会重新校准，从API version 23开始，新增offset接口。 5. 如果在同一帧内调用跳转（如无动画的scrollToIndex、scrollEdge）和输入偏移量（如滑动手势或滚动动画），两者都会生效。 6. 调用无动画的scrollToIndex进行跳转，如果跳转到较远位置（超过视窗内的FlowItem数量的位置）时，移动窗口模式对总偏移量进行估算。 7. 仅在API version 18及以上版本中支持滚动条[scrollBar](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#scrollbar11)显示。低于此版本时，设置滚动条将不显示。
+移动窗口式的布局模式。只考虑视窗内的布局信息，对视窗上方的FlowItem没有依赖关系，因此向后跳转或切换列数时只需要布局视窗内的FlowItem。建议优先采用该模式，尤其在应用需要支持屏幕旋转或动态切换列数的场景下。 **说明：** 1. 无动画跳转到较远的位置时，会以目标位置为基准，向前或向后布局FlowItem。这之后如果滑回跳转前的位置，内容的布局效果可能和之前不一致。这个效果会导致跳转后回滑到顶部时，顶部节点可能不对齐。 2. 使用SLIDING_WINDOW布局模式并设置[WaterFlowSections](arkts-arkui-waterflowsections-c.md)分组时，滚动动画结束后，若视窗内包含分组起始位置，且检测到该分组在视窗内的列或行起始位置未对齐，或分组起始FlowItem与分组起始索引不一致，WaterFlow会重新计算布局以校正分组内容位置。 3. 使用SLIDING_WINDOW布局模式调用[backToTop](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#backtotop15)回到顶部操作时，若回顶动画结束后仍未到达顶部，WaterFlow会执行一次无动画的顶部校正，使内容重新对齐到起始位置。 4. [scroller](arkts-arkui-waterflowoptions-i.md)的currentOffset或offset接口返回的总偏移量在触发跳转或数据更新后不准确，在回滑到顶部时会重新校准，从API version 23开始，新增offset接口。 5. 如果在同一帧内调用跳转（如无动画的scrollToIndex、scrollEdge）和输入偏移量（如滑动手势或滚动动画），两者都会生效。 6. 调用无动画的scrollToIndex进行跳转，如果跳转到较远位置（超过视窗内的FlowItem数量的位置）时，移动窗口模式对总偏移量进行估算。 7. 仅在API version 18及以上版本中支持滚动条[scrollBar](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#scrollbar11)显示。低于此版本时，设置滚动条将不显示。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

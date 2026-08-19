@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-abilityAccessCtrl-export enum GrantStatus--><!--Device-abilityAccessCtrl-export enum GrantStatus-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -21,10 +17,6 @@ PERMISSION_DENIED = -1
 表示未授权。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ PERMISSION_GRANTED = 0
 表示已授权。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum EdgeLightMode--><!--Device-unnamed-declare enum EdgeLightMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,10 +19,6 @@ EDGELIGHT_AUTO = 0
 自适应边缘光效动画。 根据设备运算能力，在低算力设备上关闭，在中高算力设备上开启。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ EDGELIGHT_ENABLED = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1--><!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1-End-->
@@ -67,10 +55,6 @@ EDGELIGHT_DISABLED = 2
 关闭边缘光效动画。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

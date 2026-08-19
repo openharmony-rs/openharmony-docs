@@ -97,7 +97,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Create(OH_AudioVividMetaBuilder **builder,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder或format为空指针或无效。<br>     <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode)：当前设备不支持此功能。<br>     <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode)：创建构建器失败，属于未知错误，请查看日志获取详细信息。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder或format为空指针或无效。      <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode)：当前设备不支持此功能。      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode)：创建构建器失败，属于未知错误，请查看日志获取详细信息。 |
 
 ### OH_AudioVividMetaBuilder_UpdateObjectPos()
 
@@ -123,7 +123,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectPos(OH_AudioVividMetaBuilder *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，objectIndex或pos无效。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，objectIndex或pos无效。 |
 
 ### OH_AudioVividMetaBuilder_UpdateObjectGain()
 
@@ -149,7 +149,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，objectIndex或gain无效。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，objectIndex或gain无效。 |
 
 ### OH_AudioVividMetaBuilder_GetMetaLen()
 
@@ -175,7 +175,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，len为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，len为空指针。 |
 
 ### OH_AudioVividMetaBuilder_GetMeta()
 
@@ -202,7 +202,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *bu
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：builder为空指针或无效，buffer为空指针或len不足。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：builder为空指针或无效，buffer为空指针或len不足。 |
 
 ### OH_AudioVividMetaBuilder_Destroy()
 
@@ -226,7 +226,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针。 |
 
 ### OH_AudioVividMetaBuilder_CreateEmptyBuilder()
 
@@ -254,7 +254,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效。<br>     <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode)：当前设备不支持此功能。<br>     <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode)：创建构建器失败，属于未知错误，请查看日志获取详细信息。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效。      <br>[AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode)：当前设备不支持此功能。      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode)：创建构建器失败，属于未知错误，请查看日志获取详细信息。 |
 
 ### OH_AudioVividMetaBuilder_UpdateBaseMeta()
 
@@ -284,7 +284,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder、format为空指针或无效。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder、format为空指针或无效。 |
 
 ### OH_AudioVividMetaBuilder_AddObject()
 
@@ -313,7 +313,7 @@ Audio Vivid元数据构造器内添加一个音频对象。添加音频对象后
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder、objectIndex为空指针或无效。<br>     <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode)：添加对象失败，属于未知错误，请查看日志获取详细信息。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder、objectIndex为空指针或无效。      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode)：添加对象失败，属于未知错误，请查看日志获取详细信息。 |
 
 ### OH_AudioVividMetaBuilder_RemoveObject()
 
@@ -338,6 +338,6 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>     <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效,参数objectIndex无效。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效,参数objectIndex无效。 |
 
 

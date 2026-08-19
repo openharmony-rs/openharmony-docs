@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum AlbumAttribute--><!--Device-photoAccessHelper-enum AlbumAttribute-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ NICK_NAME_ATTR = 'nickname'
 相册昵称。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ EXTRA_INFO_ATTR = 'extra_info'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AlbumAttribute-EXTRA_INFO_ATTR = 'extra_info'--><!--Device-AlbumAttribute-EXTRA_INFO_ATTR = 'extra_info'-End-->
@@ -68,10 +56,6 @@ IS_REMOVED_ATTR = 'is_removed'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'--><!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'-End-->
@@ -89,10 +73,6 @@ FRIEND_ID_ATTR = 'friend_id'
 相册friend_id操作属性。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

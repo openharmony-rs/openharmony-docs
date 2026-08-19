@@ -1,5 +1,10 @@
 # getHash
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getHash
 
 ```TypeScript
@@ -10,9 +15,7 @@ Get the hash code of an object.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-util-function getHash(obj: RecordData): long--><!--Device-util-function getHash(obj: RecordData): long-End-->
 
@@ -22,7 +25,7 @@ Get the hash code of an object.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| obj | [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md) | 是 | The object that need to get hash code. |
+| obj | [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md) | 是 | The object that need to get hash code. |
 
 **返回值：**
 

@@ -1,12 +1,8 @@
 # RenderParameters
 
-定义手动渲染的参数.
+渲染参数接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RenderParameters--><!--Device-unnamed-export interface RenderParameters-End-->
 
@@ -18,15 +14,11 @@
 alwaysRender?: boolean
 ```
 
-如果为true，即使场景没有变化也始终渲染 自上一帧以来. 如果为false，则场景没有变化时可以省略渲染.
+表示是否每一帧都渲染。true表示每一帧都渲染，false表示按需渲染。默认值为true。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderParameters-alwaysRender?: boolean--><!--Device-RenderParameters-alwaysRender?: boolean-End-->
 

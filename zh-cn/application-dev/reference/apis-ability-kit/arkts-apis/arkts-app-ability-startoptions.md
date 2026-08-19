@@ -1,5 +1,11 @@
 # @ohos.app.ability.StartOptions
 
+## 导入模块
+
+```TypeScript
+import { StartOptions } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

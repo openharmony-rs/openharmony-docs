@@ -4,9 +4,7 @@ The methods can be chosen to detect if current page is blank or nearly blank.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum BlankScreenDetectionMethod--><!--Device-unnamed-export declare enum BlankScreenDetectionMethod-End-->
 
@@ -22,9 +20,7 @@ This detection method is used to probe whether there are rendered contentful nod
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0--><!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0-End-->
 

@@ -245,9 +245,15 @@
   - [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md)
   - [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md)
   - [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md)
+  <!--Del-->
+  - [resetExecFrequency(系统接口)](arkts-backgroundtasks-workscheduler-resetexecfrequency-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setExecFrequency(系统接口)](arkts-backgroundtasks-workscheduler-setexecfrequency-f-sys.md)<!--DelEnd-->
   - [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md)
   - [stopAndClearWorks](arkts-backgroundtasks-workscheduler-stopandclearworks-f.md)
   - [stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md)
+  <!--Del-->
+  - [FrequencyInfo(系统接口)](arkts-backgroundtasks-workscheduler-frequencyinfo-i-sys.md)<!--DelEnd-->
   - [WorkInfo](arkts-backgroundtasks-workscheduler-workinfo-i.md)
   - [BatteryStatus](arkts-backgroundtasks-workscheduler-batterystatus-e.md)
   - [ChargingType](arkts-backgroundtasks-workscheduler-chargingtype-e.md)

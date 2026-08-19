@@ -8,10 +8,6 @@ The video size event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-type VideoSizeEvent = (width: int, height: int) => void--><!--Device-avSession-type VideoSizeEvent = (width: int, height: int) => void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core

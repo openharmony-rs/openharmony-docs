@@ -1,5 +1,11 @@
 # permitInjection（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputEventClient } from '@kit.InputKit';
+```
+
 ## permitInjection
 
 ```TypeScript
@@ -9,10 +15,6 @@ function permitInjection(result: boolean): void
 允许事件注入权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
 
@@ -36,7 +38,7 @@ function permitInjection(result: boolean): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

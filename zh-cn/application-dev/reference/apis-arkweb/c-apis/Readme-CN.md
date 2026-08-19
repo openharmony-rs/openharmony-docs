@@ -1,4 +1,4 @@
-# CAPI<!--c-arkweb-->
+# C API<!--c-arkweb-->
 
 - 头文件
     - [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)

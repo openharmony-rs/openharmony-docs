@@ -134,7 +134,7 @@ typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const CommonEvent_RcvData \*data | 公共事件回调数据。 |
+| [const CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md) \*data | 公共事件回调数据。 |
 
 ### OH_CommonEvent_CreateSubscribeInfo()
 
@@ -159,7 +159,7 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_SubscribeInfo*](capi-oh-commonevent-commonevent-subscribeinfo.md) | 成功则返回订阅者信息，失败则返回NULL。该指针由内部管理，在<br>     [OH_CommonEvent_DestroySubscribeInfo()](#oh_commonevent_destroysubscribeinfo)时释放。 |
+| [CommonEvent_SubscribeInfo*](capi-oh-commonevent-commonevent-subscribeinfo.md) | 成功则返回订阅者信息，失败则返回NULL。该指针由内部管理，在      [OH_CommonEvent_DestroySubscribeInfo()](#oh_commonevent_destroysubscribeinfo)时释放。 |
 
 ### OH_CommonEvent_SetPublisherPermission()
 
@@ -184,7 +184,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeI
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_SetPublisherBundleName()
 
@@ -209,7 +209,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeI
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_DestroySubscribeInfo()
 
@@ -252,7 +252,7 @@ CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_Subscr
 
 | 类型 | 说明 |
 | -- | -- |
-| CommonEvent_Subscriber* | 成功则返回订阅者，失败则返回NULL。该指针由内部管理，在<br>     [OH_CommonEvent_DestroySubscriber()](#oh_commonevent_destroysubscriber)时释放。 |
+| CommonEvent_Subscriber* | 成功则返回订阅者，失败则返回NULL。该指针由内部管理，在      [OH_CommonEvent_DestroySubscriber()](#oh_commonevent_destroysubscriber)时释放。 |
 
 ### OH_CommonEvent_DestroySubscriber()
 
@@ -294,7 +294,7 @@ CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subsc
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数subscriber无效。<br>     <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>     <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。<br>     <br>返回[COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示进程内订阅者数量超过系统限制（200个）。<br>     <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示系统分配内存失败。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数subscriber无效。      <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。      <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。      <br>返回[COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示进程内订阅者数量超过系统限制（200个）。      <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示系统分配内存失败。 |
 
 ### OH_CommonEvent_UnSubscribe()
 
@@ -318,7 +318,7 @@ CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* sub
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数subscriber无效。<br>     <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>     <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数subscriber无效。      <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。      <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。 |
 
 ### OH_CommonEvent_GetEventFromRcvData()
 
@@ -342,7 +342,7 @@ const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvDat
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回公共事件名称。该指针由系统产生，回调函数<br>     [CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数<br>     外部使用。 |
+| const char* | 返回公共事件名称。该指针由系统产生，回调函数      [CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数      外部使用。 |
 
 ### OH_CommonEvent_GetCodeFromRcvData()
 
@@ -390,7 +390,7 @@ const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvD
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回接收到的公共事件数据，字符串类型。该指针由系统产生，回调函数<br>     [CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数<br>     外部使用。 |
+| const char* | 返回接收到的公共事件数据，字符串类型。该指针由系统产生，回调函数      [CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数      外部使用。 |
 
 ### OH_CommonEvent_GetBundleNameFromRcvData()
 
@@ -414,7 +414,7 @@ const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* r
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 返回公共事件的包名称。该指针由系统产生，回调函数<br>     [CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数<br>     外部使用。 |
+| const char* | 返回公共事件的包名称。该指针由系统产生，回调函数      [CommonEvent_ReceiveCallback](#commonevent_receivecallback)结束后即刻释放，不可在回调函数      外部使用。 |
 
 ### OH_CommonEvent_GetParametersFromRcvData()
 
@@ -462,7 +462,7 @@ CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_PublishInfo*](capi-oh-commonevent-commonevent-publishinfo.md) | 创建的公共事件属性对象，创建失败时，返回NULL。该指针由内部管理，在<br>     [OH_CommonEvent_DestroyPublishInfo()](#oh_commonevent_destroypublishinfo)时释放。 |
+| [CommonEvent_PublishInfo*](capi-oh-commonevent-commonevent-publishinfo.md) | 创建的公共事件属性对象，创建失败时，返回NULL。该指针由内部管理，在      [OH_CommonEvent_DestroyPublishInfo()](#oh_commonevent_destroypublishinfo)时释放。 |
 
 ### OH_CommonEvent_DestroyPublishInfo()
 
@@ -505,7 +505,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishI
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_SetPublishInfoPermissions()
 
@@ -531,7 +531,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_Publish
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_SetPublishInfoCode()
 
@@ -556,7 +556,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* i
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_SetPublishInfoData()
 
@@ -582,7 +582,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* i
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_SetPublishInfoParameters()
 
@@ -607,7 +607,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishI
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_CreateParameters()
 
@@ -625,7 +625,7 @@ CommonEvent_Parameters* OH_CommonEvent_CreateParameters()
 
 | 类型 | 说明 |
 | -- | -- |
-| CommonEvent_Parameters* | 返回公共事件附加信息，创建失败时，返回NULL。该指针由内部管理，在<br>     [OH_CommonEvent_DestroyParameters()](#oh_commonevent_destroyparameters)时释放。 |
+| CommonEvent_Parameters* | 返回公共事件附加信息，创建失败时，返回NULL。该指针由内部管理，在      [OH_CommonEvent_DestroyParameters()](#oh_commonevent_destroyparameters)时释放。 |
 
 ### OH_CommonEvent_DestroyParameters()
 
@@ -668,7 +668,7 @@ bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回数据键是否存在。<br>     <br>- true：存在。<br>     <br>- false：不存在。 |
+| bool | 返回数据键是否存在。      <br>- true：存在。      <br>- false：不存在。 |
 
 ### OH_CommonEvent_GetIntFromParameters()
 
@@ -720,7 +720,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* pa
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_GetIntArrayFromParameters()
 
@@ -773,7 +773,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameter
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>     <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。      <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
 
 ### OH_CommonEvent_GetLongFromParameters()
 
@@ -825,7 +825,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* p
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_GetLongArrayFromParameters()
 
@@ -878,7 +878,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Paramete
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>     <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。      <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
 
 ### OH_CommonEvent_GetBoolFromParameters()
 
@@ -930,7 +930,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* p
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_GetBoolArrayFromParameters()
 
@@ -983,7 +983,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Paramete
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>     <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。      <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
 
 ### OH_CommonEvent_GetCharFromParameters()
 
@@ -1035,7 +1035,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* p
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_GetCharArrayFromParameters()
 
@@ -1088,7 +1088,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Paramete
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_GetDoubleFromParameters()
 
@@ -1140,7 +1140,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters*
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。 |
 
 ### OH_CommonEvent_GetDoubleArrayFromParameters()
 
@@ -1193,7 +1193,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parame
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>     <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。      <br>返回[COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示内存分配失败。 |
 
 ### OH_CommonEvent_Publish()
 
@@ -1217,7 +1217,7 @@ CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>     <br>返回[COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示事件发送频率过高。<br>     <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>     <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。      <br>返回[COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示事件发送频率过高。      <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。      <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。 |
 
 ### OH_CommonEvent_PublishWithInfo()
 
@@ -1242,7 +1242,7 @@ CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const Comm
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。<br>     <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。<br>     <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。<br>     <br>返回[COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示事件发送频率过高。<br>     <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。<br>     <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。 |
+| [CommonEvent_ErrCode](capi-oh-commonevent-h.md#commonevent_errcode) | 返回错误码。      <br>返回[COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode)表示成功。      <br>返回[COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode)表示参数错误。      <br>返回[COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode)表示事件发送频率过高。      <br>返回[COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode)表示IPC请求发送失败。      <br>返回[COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode)表示公共事件服务未初始化。 |
 
 ### OH_CommonEvent_IsOrderedCommonEvent()
 

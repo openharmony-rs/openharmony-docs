@@ -1,14 +1,10 @@
 # WritableSystemEnvKey
 
-定义可写的系统环境变量Key，继承自[SystemEnvKey\&lt;T\&gt;](arkts-arkui-systemenvkey-c.md#systemenvkey)。
+定义可写的系统环境变量Key，继承自[SystemEnvKey\&lt;T\&gt;](arkts-arkui-systemenvkey-c.md)。
 
 **继承/实现关系：** WritableSystemEnvKey extends SystemEnvKey<T>
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -17,4 +13,9 @@
 <!--Device-unnamed-declare class WritableSystemEnvKey--><!--Device-unnamed-declare class WritableSystemEnvKey-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 

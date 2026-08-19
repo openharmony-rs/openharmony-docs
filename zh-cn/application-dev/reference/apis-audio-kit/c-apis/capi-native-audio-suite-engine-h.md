@@ -97,7 +97,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_Create(OH_AudioSuiteEngine** audioSuite
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：引擎已经被初始化。<br>     <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针。      <br>AUDIOSUITE_ERROR_INVALID_STATE：引擎已经被初始化。      <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_Destroy()
 
@@ -121,7 +121,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuite
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：引擎已被去初始化、引擎未创建或未初始化引擎。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针。      <br>AUDIOSUITE_ERROR_INVALID_STATE：引擎已被去初始化、引擎未创建或未初始化引擎。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_CreatePipeline()
 
@@ -147,7 +147,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* aud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针或参数audioSuitePipeline为空指针。<br>     <br>AUDIOSUITE_ERROR_ENGINE_NOT_EXIST：未初始化引擎。<br>     <br>AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS：创建管线数量超过系统最大数量限制（引擎最多创建10条管线）。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuiteEngine为空指针或参数audioSuitePipeline为空指针。      <br>AUDIOSUITE_ERROR_ENGINE_NOT_EXIST：未初始化引擎。      <br>AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS：创建管线数量超过系统最大数量限制（引擎最多创建10条管线）。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_DestroyPipeline()
 
@@ -171,7 +171,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyPipeline(OH_AudioSuitePipeline* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>     <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。      <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_StartPipeline()
 
@@ -195,7 +195,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* au
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>     <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。<br>     <br>可能的原因如下：<br>     <br>1. 管线已经在运行状态；<br>     <br>2. 当前管线中不存在输出类型节点；<br>     <br>3. 起始节点不是输入类型节点。<br>     <br>4. HOA输入节点未连接HOA空间渲染节点，或HOA空间渲染节点的前置节点不是HOA输入节点。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。      <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。      <br>可能的原因如下：      <br>1. 管线已经在运行状态；      <br>2. 当前管线中不存在输出类型节点；      <br>3. 起始节点不是输入类型节点。      <br>4. HOA输入节点未连接HOA空间渲染节点，或HOA空间渲染节点的前置节点不是HOA输入节点。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_StopPipeline()
 
@@ -219,7 +219,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StopPipeline(OH_AudioSuitePipeline* aud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>     <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线已在停止状态。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。      <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线已在停止状态。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetPipelineState()
 
@@ -244,7 +244,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetPipelineState(OH_AudioSuitePipeline*
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioSuitePipeline为空指针等。<br>     <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioSuitePipeline为空指针等。      <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_RenderFrame()
 
@@ -272,7 +272,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>     <br>可能的原因如下：<br>     <br>1. 参数audioSuitePipeline为空指针；<br>     <br>2. 参数audioData为空指针；<br>     <br>3. 参数requestFrameSize小于等于0；<br>     <br>4. 参数responseSize为空指针；<br>     <br>5. 参数finishedFlag为空指针。<br>     <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在运行状态。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：管线渲染已完成（之前调用该接口时finishedFlag已写入为true）。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。      <br>可能的原因如下：      <br>1. 参数audioSuitePipeline为空指针；      <br>2. 参数audioData为空指针；      <br>3. 参数requestFrameSize小于等于0；      <br>4. 参数responseSize为空指针；      <br>5. 参数finishedFlag为空指针。      <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在运行状态。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：管线渲染已完成（之前调用该接口时finishedFlag已写入为true）。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_MultiRenderFrame()
 
@@ -299,7 +299,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline*
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>     <br>可能的原因如下：<br>     <br>1. 参数audioSuitePipeline为空指针；<br>     <br>2. 参数audioDataArray为空指针；<br>     <br>3. 参数audioDataArray中的某个成员为空指针；<br>     <br>4. 参数audioDataArray中的requestFrameSize小于等于0；<br>     <br>5. 参数responseSize为空指针；<br>     <br>6. 参数finishedFlag为空指针。<br>     <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在运行状态。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：管线渲染已完成（之前调用该接口时finishedFlag已写入为true）。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。      <br>可能的原因如下：      <br>1. 参数audioSuitePipeline为空指针；      <br>2. 参数audioDataArray为空指针；      <br>3. 参数audioDataArray中的某个成员为空指针；      <br>4. 参数audioDataArray中的requestFrameSize小于等于0；      <br>5. 参数responseSize为空指针；      <br>6. 参数finishedFlag为空指针。      <br>AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在运行状态。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：管线渲染已完成（之前调用该接口时finishedFlag已写入为true）。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_MetaRenderFrame()
 
@@ -327,7 +327,7 @@ int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePip
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li><br> <li>[AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线不存在或已被销毁。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_STATE](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线不在运行状态。</li><br> <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线渲染已完成（之前调用该接口时 finishedFlag 已写入为 true）。</li><br> <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li><br> <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li>  <li>[AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线不存在或已被销毁。</li>  <li>[AUDIOSUITE_ERROR_INVALID_STATE](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线不在运行状态。</li>  <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线渲染已完成（之前调用该接口时 finishedFlag 已写入为 true）。</li>  <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li>  <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li>  </ul> |
 
 ### OH_AudioSuiteNodeBuilder_Create()
 
@@ -351,7 +351,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Create(OH_AudioNodeBuilder** build
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针。<br>     <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针。      <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteNodeBuilder_Destroy()
 
@@ -375,7 +375,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Destroy(OH_AudioNodeBuilder* build
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteNodeBuilder_Reset()
 
@@ -399,7 +399,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_Reset(OH_AudioNodeBuilder* builder
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteNodeBuilder_SetNodeType()
 
@@ -424,7 +424,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetNodeType(OH_AudioNodeBuilder* b
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：配置节点类型成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效，例如，builder为空指针。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：配置节点类型成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效，例如，builder为空指针。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteNodeBuilderSystem_SetNodeType()
 
@@ -449,7 +449,7 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 配置节点类型成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数无效（如builder为空指针）。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 配置节点类型成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数无效（如builder为空指针）。</li>  </ul> |
 
 ### OH_AudioSuiteNodeBuilder_SetFormat()
 
@@ -474,7 +474,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetFormat(OH_AudioNodeBuilder* bui
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效，例如，builder为空指针。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：audioFormat中的channelCount不支持。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效，例如，builder为空指针。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：audioFormat中的channelCount不支持。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteNodeBuilderSystem_SetFormat()
 
@@ -499,7 +499,7 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, O
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数无效（如builder为空指针）。</li><br> <li>[AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) audioFormat中的某个格式不支持。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数无效（如builder为空指针）。</li>  <li>[AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) audioFormat中的某个格式不支持。</li>  </ul> |
 
 ### OH_InputNode_RequestDataCallback()
 
@@ -517,7 +517,7 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioNode\* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)\* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | void\* userData | 用户使用的数据指针。系统调用此回调函数时，将使用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口传入的userData。 |
 | void\* audioData | 系统提供的内存地址，用于将需要处理的音频数据流写入（需由用户填充）。 |
 | int32_t audioDataSize | audioData内存地址的字节大小。 |
@@ -527,7 +527,7 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 写入audioData缓冲区的有效数据长度（单位为字节）。<br>     <br>返回值范围必须在[0, audioDataSize]范围内，如果返回值小于0，系统会将其修改为0，<br>     <br>如果返回值大于audioDataSize，系统会将其修改为audioDataSize。 |
+| int32_t | 写入audioData缓冲区的有效数据长度（单位为字节）。      <br>返回值范围必须在[0, audioDataSize]范围内，如果返回值小于0，系统会将其修改为0，      <br>如果返回值大于audioDataSize，系统会将其修改为audioDataSize。 |
 
 ### OH_AudioSuiteNodeBuilder_SetRequestDataCallback()
 
@@ -553,7 +553,7 @@ OH_AudioSuite_Result OH_AudioSuiteNodeBuilder_SetRequestDataCallback(OH_AudioNod
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：<br>     <br>可能的原因如下：<br>     <br>1. 参数builder为空指针；<br>     <br>2. 参数callback为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：      <br>可能的原因如下：      <br>1. 参数builder为空指针；      <br>2. 参数callback为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_InputNode_RequestMetaDataCallback()
 
@@ -571,7 +571,7 @@ typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode,
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioNode\* audioNode | 此回调发生的AudioNode。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)\* audioNode | 此回调发生的AudioNode。 |
 | void\* userData | 由用户传递的用户数据。 |
 | [OH_AudioSuite_MetaFrame](capi-ohaudiosuite-oh-audiosuite-metaframe.md)\* metaFrame | 音频元数据帧结构体指针。 |
 | int32_t\* responseMetaDataSize | 应用程序实际写入的元数据的大小，单位是字节。 |
@@ -581,7 +581,7 @@ typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>写入audio data缓冲区的有效音频数据长度。<br> 返回值必须在【0,metaFrame->AudioDataSize】的范围内。</li><br> </ul> |
+| int32_t | <ul>  <li>写入audio data缓冲区的有效音频数据长度。  返回值必须在【0,metaFrame->AudioDataSize】的范围内。</li>  </ul> |
 
 ### OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback()
 
@@ -607,7 +607,7 @@ int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数非法，例如 参数builder为空指针。</li><br> <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li><br> <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数非法，例如 参数builder为空指针。</li>  <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li>  <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li>  </ul> |
 
 ### OH_AudioSuiteEngine_CreateNode()
 
@@ -633,7 +633,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audio
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>     <br>可能的原因如下：<br>     <br>1. 参数audioSuitePipeline为空指针；<br>     <br>2. 参数builder为空指针；<br>     <br>3. 参数audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS：当构建当前类型的节点数量超过管线限制。<br>     <br>例如，在API version 24之前，创建效果类节点的数量超过5个；在API version 24及以后，创建效果类节点的数量超过15个。<br>     <br>AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING：构建builder中type类型的节点时缺少必要参数。<br>     <br>例如，builder未设置节点类型。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：当前构造器节点类型为输出节点但设置了回调函数，<br>     <br>或构造器节点类型为效果节点但设置了音频格式或回调函数。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。      <br>可能的原因如下：      <br>1. 参数audioSuitePipeline为空指针；      <br>2. 参数builder为空指针；      <br>3. 参数audioNode为空指针。      <br>AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS：当构建当前类型的节点数量超过管线限制。      <br>例如，在API version 24之前，创建效果类节点的数量超过5个；在API version 24及以后，创建效果类节点的数量超过15个。      <br>AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING：构建builder中type类型的节点时缺少必要参数。      <br>例如，builder未设置节点类型。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：当前构造器节点类型为输出节点但设置了回调函数，      <br>或构造器节点类型为效果节点但设置了音频格式或回调函数。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_DestroyNode()
 
@@ -657,7 +657,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyNode(OH_AudioNode* audioNode)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode为空指针。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetNodeBypassStatus()
 
@@ -682,7 +682,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetNodeBypassStatus(OH_AudioNode* audio
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：<br>     <br>参数audioNode或bypassStatus为空指针。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非效果类节点。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：      <br>参数audioNode或bypassStatus为空指针。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非效果类节点。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_BypassEffectNode()
 
@@ -707,7 +707,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_BypassEffectNode(OH_AudioNode* audioNod
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode为非效果节点。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode为空指针。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode为非效果节点。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetAudioFormat()
 
@@ -732,7 +732,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode或audioFormat为空指针。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode是效果节点。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：（API版本26.0.0新增）参数audioFormat为不支持的格式。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode或audioFormat为空指针。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode是效果节点。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：（API版本26.0.0新增）参数audioFormat为不支持的格式。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngineSystem_SetAudioFormat()
 
@@ -757,7 +757,7 @@ int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_Aud
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针获取其他非法值。</li><br> <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点不存在或已被销毁。</li><br> <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点是效果节点。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_STATE](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线不在停止状态。</li><br> <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li><br> <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针获取其他非法值。</li>  <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点不存在或已被销毁。</li>  <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点是效果节点。</li>  <li>[AUDIOSUITE_ERROR_INVALID_STATE](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 管线不在停止状态。</li>  <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li>  <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li>  </ul> |
 
 ### OH_AudioSuiteEngine_ConnectNodes()
 
@@ -782,7 +782,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioN
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数sourceAudioNode或destAudioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT：节点之间不支持连接。<br>     <br>可能的原因如下：<br>     <br>1. 参数sourceAudioNode类型为输出类型节点；<br>     <br>2. 参数destAudioNode类型为输入类型节点；<br>     <br>3. 参数sourceAudioNode和destAudioNode为同一个节点；<br>     <br>4. 参数sourceAudioNode为音源分离类型，但是destAudioNode类型不为输出类型节点；<br>     <br>5. 参数sourceAudioNode和destAudioNode不为同一个管线中的节点；<br>     <br>6. 管线状态为运行状态，但是destAudioNode不为mix类型节点；<br>     <br>7. 管线状态为运行状态，destAudioNode为mix类型节点，但是sourceAudioNode节点未连接输入类型节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线为无效状态。例如，无法找到输出节点。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数sourceAudioNode或destAudioNode为空指针。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT：节点之间不支持连接。      <br>可能的原因如下：      <br>1. 参数sourceAudioNode类型为输出类型节点；      <br>2. 参数destAudioNode类型为输入类型节点；      <br>3. 参数sourceAudioNode和destAudioNode为同一个节点；      <br>4. 参数sourceAudioNode为音源分离类型，但是destAudioNode类型不为输出类型节点；      <br>5. 参数sourceAudioNode和destAudioNode不为同一个管线中的节点；      <br>6. 管线状态为运行状态，但是destAudioNode不为mix类型节点；      <br>7. 管线状态为运行状态，destAudioNode为mix类型节点，但是sourceAudioNode节点未连接输入类型节点。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线为无效状态。例如，无法找到输出节点。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_DisconnectNodes()
 
@@ -807,7 +807,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_DisconnectNodes(OH_AudioNode* sourceAud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数sourceAudioNode或destAudioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：不支持操作。<br>     <br>可能的原因如下：<br>     <br>1. 参数sourceAudioNode类型为输出类型节点；<br>     <br>2. 参数destAudioNode为类型为输入类型节点；<br>     <br>3. 参数sourceAudioNode和destAudioNode为同一个节点；<br>     <br>4. 参数sourceAudioNode和destAudioNode不为同一个管线中的节点；<br>     <br>5. 管线状态为运行状态，但是destAudioNode不为mix类型节点；<br>     <br>6. 管线状态为运行状态，destAudioNode为mix类型节点，但是mix节点当前只连接了sourceAudioNode一个输入。<br>     <br>AUDIOSUITE_ERROR_INVALID_STATE：管线为无效状态。例如，无法找到输出节点。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数sourceAudioNode或destAudioNode为空指针。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：不支持操作。      <br>可能的原因如下：      <br>1. 参数sourceAudioNode类型为输出类型节点；      <br>2. 参数destAudioNode为类型为输入类型节点；      <br>3. 参数sourceAudioNode和destAudioNode为同一个节点；      <br>4. 参数sourceAudioNode和destAudioNode不为同一个管线中的节点；      <br>5. 管线状态为运行状态，但是destAudioNode不为mix类型节点；      <br>6. 管线状态为运行状态，destAudioNode为mix类型节点，但是mix节点当前只连接了sourceAudioNode一个输入。      <br>AUDIOSUITE_ERROR_INVALID_STATE：管线为无效状态。例如，无法找到输出节点。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_IsNodeTypeSupported()
 
@@ -832,7 +832,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_IsNodeTypeSupported(OH_AudioNode_Type n
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：查询函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：传入非法参数。<br>     <br>例如，入参nodeType不在OH_AudioNode_Type枚举类型范围内、isSupported为空指针等。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：查询函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：传入非法参数。      <br>例如，入参nodeType不在OH_AudioNode_Type枚举类型范围内、isSupported为空指针等。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains()
 
@@ -857,7 +857,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(OH_Audio
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非均衡器节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：<br>     <br>可能的原因如下：<br>     <br>1. 参数audioNode为空指针；<br>     <br>2. 参数frequencyBandGains每个成员的值范围不在[-10, 10]。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非均衡器节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：      <br>可能的原因如下：      <br>1. 参数audioNode为空指针；      <br>2. 参数frequencyBandGains每个成员的值范围不在[-10, 10]。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains()
 
@@ -882,7 +882,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetEqualizerFrequencyBandGains(OH_Audio
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非均衡器节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode或frequencyBandGains为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非均衡器节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode或frequencyBandGains为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetSoundFieldType()
 
@@ -907,7 +907,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSoundFieldType(OH_AudioNode* audioNo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非声场节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非声场节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetSoundFieldType()
 
@@ -932,7 +932,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSoundFieldType(OH_AudioNode* audioNo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非soundFieldType节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode或soundFieldType为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非soundFieldType节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode或soundFieldType为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetEnvironmentType()
 
@@ -957,7 +957,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetEnvironmentType(OH_AudioNode* audioN
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非环境节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非环境节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetEnvironmentType()
 
@@ -982,7 +982,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetEnvironmentType(OH_AudioNode* audioN
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非环境效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode或environmentType为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非环境效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode或environmentType为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetVoiceBeautifierType()
 
@@ -1007,7 +1007,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetVoiceBeautifierType(OH_AudioNode* au
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非声音美化效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非声音美化效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetVoiceBeautifierType()
 
@@ -1032,7 +1032,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetVoiceBeautifierType(OH_AudioNode* au
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非声音美化效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。<br>     <br>例如，audioNode或voiceBeautifierType为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非声音美化效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。      <br>例如，audioNode或voiceBeautifierType为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetSpaceRenderPositionParams()
 
@@ -1057,7 +1057,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderPositionParams(OH_AudioNo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetSpaceRenderPositionParams()
 
@@ -1082,7 +1082,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderPositionParams(OH_AudioNo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetSpaceRenderRotationParams()
 
@@ -1107,7 +1107,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderRotationParams(OH_AudioNo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetSpaceRenderRotationParams()
 
@@ -1132,7 +1132,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderRotationParams(OH_AudioNo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetSpaceRenderExtensionParams()
 
@@ -1157,7 +1157,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetSpaceRenderExtensionParams(OH_AudioN
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetSpaceRenderExtensionParams()
 
@@ -1182,7 +1182,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetSpaceRenderExtensionParams(OH_AudioN
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非空间渲染效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetTempoAndPitch()
 
@@ -1208,7 +1208,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetTempoAndPitch(OH_AudioNode* audioNod
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非变速变调效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非变速变调效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetTempoAndPitch()
 
@@ -1234,7 +1234,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetTempoAndPitch(OH_AudioNode* audioNod
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非变速变调效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非变速变调效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetPureVoiceChangeOption()
 
@@ -1259,7 +1259,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetPureVoiceChangeOption(OH_AudioNode* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非传统变声效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非传统变声效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetPureVoiceChangeOption()
 
@@ -1284,7 +1284,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetPureVoiceChangeOption(OH_AudioNode* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非传统变声效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非传统变声效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_SetGeneralVoiceChangeType()
 
@@ -1309,7 +1309,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode*
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非通用变声效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非通用变声效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_GetGeneralVoiceChangeType()
 
@@ -1334,7 +1334,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode*
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>     <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非通用变声效果节点。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>     <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。      <br>AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非通用变声效果节点。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。      <br>AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。      <br>AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuite_PrintInfo()
 
@@ -1360,7 +1360,7 @@ OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>     <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为nullptr或无效值。<br>     <br>AUDIOSUITE_ERROR_SYSTEM：系统存在其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。      <br>AUDIOSUITE_ERROR_INVALID_PARAM：参数为nullptr或无效值。      <br>AUDIOSUITE_ERROR_SYSTEM：系统存在其他异常。 |
 
 ### OH_AudioSuiteEngineSystem_SetNodeParam()
 
@@ -1386,7 +1386,7 @@ int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点不存在或已被销毁。</li><br> <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点非系统节点。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li><br> <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li><br> <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点不存在或已被销毁。</li>  <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点非系统节点。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li>  <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li>  <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li>  </ul> |
 
 ### OH_AudioSuiteEngineSystem_GetNodeParam()
 
@@ -1412,7 +1412,7 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t*
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 音频节点不存在或已被销毁。</li><br> <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点非系统节点。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li><br> <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li><br> <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 音频节点不存在或已被销毁。</li>  <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点非系统节点。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li>  <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li>  <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li>  </ul> |
 
 ### OH_AudioSuiteEngineSystem_GetNodeInOutSize()
 
@@ -1438,6 +1438,6 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li><br> <li>202 非系统应用调用了此系统 API。</li><br> <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 音频节点不存在或已被销毁。</li><br> <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点非系统节点。</li><br> <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li><br> <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li><br> <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li><br> </ul> |
+| int32_t | <ul>  <li>[AUDIOSUITE_SUCCESS](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 函数执行成功。</li>  <li>202 非系统应用调用了此系统 API。</li>  <li>[AUDIOSUITE_ERROR_NODE_NOT_EXIST](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 音频节点不存在或已被销毁。</li>  <li>[AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 节点非系统节点。</li>  <li>[AUDIOSUITE_ERROR_INVALID_PARAM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 参数为空指针或其他非法值。</li>  <li>[AUDIOSUITE_ERROR_TIMEOUT](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 操作处理超时。</li>  <li>[AUDIOSUITE_ERROR_SYSTEM](capi-native-audio-suite-base-h.md#oh_audiosuite_result) 系统发生其他异常。</li>  </ul> |
 
 

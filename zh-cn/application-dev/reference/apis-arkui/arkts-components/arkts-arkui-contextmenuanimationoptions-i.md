@@ -4,13 +4,14 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface ContextMenuAnimationOptions--><!--Device-unnamed-interface ContextMenuAnimationOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## hoverScale
 
@@ -23,10 +24,6 @@ hoverScale?: AnimationRange<number>
 **类型：** [AnimationRange](arkts-arkui-animationrange-t.md)&lt;number&gt;
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +47,6 @@ hoverScaleInterruption?: boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -76,10 +69,6 @@ scale?: AnimationRange<number>
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -94,15 +83,11 @@ scale?: AnimationRange<number>
 transition?: TransitionEffect
 ```
 
-设置菜单显示和退出的过渡效果。 **说明：** 在菜单退出动效过程中，横竖屏切换时，菜单会避让。二级菜单不继承自定义动效。弹出过程中可以点击二级菜单，但在退出动效执行过程中不允许点击二级菜单。 详细描述见[TransitionEffect](arkts-arkui-transitioneffect-c.md#transitioneffect)对象说明。
+设置菜单显示和退出的过渡效果。 **说明：** 在菜单退出动效过程中，横竖屏切换时，菜单会避让。二级菜单不继承自定义动效。弹出过程中可以点击二级菜单，但在退出动效执行过程中不允许点击二级菜单。 详细描述见[TransitionEffect](arkts-arkui-transitioneffect-c.md)对象说明。
 
 **类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-onScreen-export enum EventType--><!--Device-onScreen-export enum EventType-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -21,10 +17,6 @@ SCROLL_TO_HOOK = 1
 表示滚动到hook点事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EventType-SCROLL_TO_HOOK = 1--><!--Device-EventType-SCROLL_TO_HOOK = 1-End-->
 

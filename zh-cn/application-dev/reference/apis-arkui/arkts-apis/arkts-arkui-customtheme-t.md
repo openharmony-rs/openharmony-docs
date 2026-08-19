@@ -1,4 +1,4 @@
-# CustomTheme
+# CustomTheme(Defines WithTheme component.)
 
 ```TypeScript
 declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
@@ -7,10 +7,6 @@ declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 用于自定义WithTheme作用域内组件的配色方案，具体配色项通过CustomColors接口配置。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

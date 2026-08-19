@@ -4,13 +4,9 @@
 export type ElementAttributeValues = _ElementAttributeValues
 ```
 
-表示节点元素具备的属性名称及属性值类型信息，请参考 [ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md#elementattributevalues)。
+表示节点元素具备的属性名称及属性值类型信息，请参考 [ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md)。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export type ElementAttributeValues = _ElementAttributeValues--><!--Device-unnamed-export type ElementAttributeValues = _ElementAttributeValues-End-->
 

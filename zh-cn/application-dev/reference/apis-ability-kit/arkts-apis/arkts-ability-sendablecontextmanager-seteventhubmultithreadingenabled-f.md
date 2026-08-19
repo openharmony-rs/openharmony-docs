@@ -1,18 +1,20 @@
 # setEventHubMultithreadingEnabled
 
+## 导入模块
+
+```TypeScript
+import { sendableContextManager } from '@kit.AbilityKit';
+```
+
 ## setEventHubMultithreadingEnabled
 
 ```TypeScript
 function setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 ```
 
-设置Context中的[EventHub](arkts-ability-eventhub-c.md#eventhub)是否启用跨线程通信能力。 > **说明：** > > - 当多个Context进行通信时，需要调用该接口设置每个Context都支持EventHub跨线程数据传递功能。
+设置Context中的[EventHub](arkts-ability-eventhub-c.md)是否启用跨线程通信能力。 > **说明：** > > - 当多个Context进行通信时，需要调用该接口设置每个Context都支持EventHub跨线程数据传递功能。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -29,9 +31,9 @@ function setEventHubMultithreadingEnabled(context: common.Context, enabled: bool
 | context | common.Context | 是 | Context对象。其中，Eventhub支持传递的序列化数据类型参见 序列化支持的类型，数据大小不超过16MB。 |
 | enabled | boolean | 是 | 表示是否启用Context的EventHub跨线程通信能力。true表示启用，false表示禁用。 |
 
-## 示例
+**示例**
 
-主线程启用[Context](arkts-ability-context-c.md#context)中[EventHub](arkts-ability-eventhub-c.md#eventhub)的跨线程通信能力，并将Context转换为[SendableContext](arkts-ability-sendablecontext-i.md#sendablecontext)后发送到[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程。
+主线程启用[Context](arkts-ability-context-c.md)中[EventHub](arkts-ability-eventhub-c.md)的跨线程通信能力，并将Context转换为[SendableContext](arkts-ability-sendablecontext-i.md)后发送到[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md)线程。
 
 ```TypeScript
 import { common, sendableContextManager } from '@kit.AbilityKit';
@@ -88,7 +90,7 @@ struct Index {
 }
 ```
 
-[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md#worker)线程接收到[SendableContext](arkts-ability-sendablecontext-i.md#sendablecontext)后，将其转换为[Context](arkts-ability-context-c.md#context)。然后，在Worker线程内，启用Context中[EventHub](arkts-ability-eventhub-c.md#eventhub)的跨线程通信能力，并通过该功能向主线程发送消息。
+[Worker](../../apis-arkts/arkts-apis/arkts-arkts-worker-n.md)线程接收到[SendableContext](arkts-ability-sendablecontext-i.md)后，将其转换为[Context](arkts-ability-context-c.md)。然后，在Worker线程内，启用Context中[EventHub](arkts-ability-eventhub-c.md)的跨线程通信能力，并通过该功能向主线程发送消息。
 
 ```TypeScript
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';

@@ -1,12 +1,8 @@
-# PowerSaveMode
+# PowerSaveMode(后台子进程管控)
 
 能效模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-backgroundProcessManager-export enum PowerSaveMode--><!--Device-backgroundProcessManager-export enum PowerSaveMode-End-->
 
@@ -22,10 +18,6 @@ EFFICIENCY_MODE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PowerSaveMode-EFFICIENCY_MODE = 1--><!--Device-PowerSaveMode-EFFICIENCY_MODE = 1-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
@@ -39,10 +31,6 @@ DEFAULT_MODE = 2
 跟随系统，可能会进入能效模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PowerSaveMode-DEFAULT_MODE = 2--><!--Device-PowerSaveMode-DEFAULT_MODE = 2-End-->
 

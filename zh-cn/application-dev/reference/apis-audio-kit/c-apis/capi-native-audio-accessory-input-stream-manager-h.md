@@ -50,7 +50,7 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioAccessory \*accessory | [in] 打开流的音频配件。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) \*accessory | [in] 打开流的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) \*stream | [in] 新创建的输入流引用。使用此句柄通过Register...Callback注册回调。 |
 | [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) \*streamInfo | [in] 正在打开的流的音频流信息指针。此参数描述请求的流格式，配件可使用此信息配置数据通路。 |
 
@@ -58,7 +58,7 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | <ul><br>         <li>true：流打开成功。</li><br>         <li>false：流打开失败。</li><br>         </ul> |
+| bool | <ul>          <li>true：流打开成功。</li>          <li>false：流打开失败。</li>          </ul> |
 
 **参考：**
 
@@ -81,14 +81,14 @@ typedef bool (*OH_AudioAccessoryInputStream_StartCallback)(OH_AudioAccessory *ac
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioAccessory \*accessory | [in] 拥有该流的音频配件。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) \*accessory | [in] 拥有该流的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) \*stream | [in] 已启动的输入流引用。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | <ul><br>         <li>true：启动事件处理成功。</li><br>         <li>false：启动事件处理失败。</li><br>         </ul> |
+| bool | <ul>          <li>true：启动事件处理成功。</li>          <li>false：启动事件处理失败。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStream_StopCallback()
 
@@ -106,14 +106,14 @@ typedef bool (*OH_AudioAccessoryInputStream_StopCallback)(OH_AudioAccessory *acc
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioAccessory \*accessory | [in] 拥有该流的音频配件。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) \*accessory | [in] 拥有该流的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) \*stream | [in] 已停止的输入流引用。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | <ul><br>         <li>true：停止事件处理成功。</li><br>         <li>false：停止事件处理失败。</li><br>         </ul> |
+| bool | <ul>          <li>true：停止事件处理成功。</li>          <li>false：停止事件处理失败。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStream_ReleaseCallback()
 
@@ -131,14 +131,14 @@ typedef bool (*OH_AudioAccessoryInputStream_ReleaseCallback)(OH_AudioAccessory *
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioAccessory \*accessory | [in] 拥有该流的音频配件。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) \*accessory | [in] 拥有该流的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) \*stream | [in] 已释放的输入流（录音/采集流）引用。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | <ul><br>         <li>true：释放事件处理成功。</li><br>         <li>false：释放事件处理失败。</li><br>         </ul> |
+| bool | <ul>          <li>true：释放事件处理成功。</li>          <li>false：释放事件处理失败。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStream_GetLatencyCallback()
 
@@ -156,7 +156,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioAccessory \*accessory | [in] 拥有该流的音频配件。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) \*accessory | [in] 拥有该流的音频配件。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) \*stream | [in] 输入流引用。 |
 | int32_t \*latency | [out] 输出参数，返回时延值，单位为毫秒。 |
 
@@ -164,7 +164,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetLatencyCallback)(OH_AudioAccessor
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | <ul><br>         <li>true：获取时延成功。</li><br>         <li>false：获取时延失败。</li><br>         </ul> |
+| bool | <ul>          <li>true：获取时延成功。</li>          <li>false：获取时延失败。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStream_GetFramePositionCallback()
 
@@ -182,7 +182,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioAccessory \*accessory | [in] 拥有该流的音频配件（外部音频设备，如大疆 Mic 2）。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) \*accessory | [in] 拥有该流的音频配件（外部音频设备，如大疆 Mic 2）。 |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) \*stream | [in] 输入流引用。 |
 | int64_t \*framePosition | [out] 输出参数，返回自该输入流最近一次成功启动以来累计采集的音频帧数。 |
 | int64_t \*timestamp | [out] 输出参数，返回与framePosition对应的采集时间戳。时间戳必须使用{@link CLOCK_MONOTONIC}时间基准，以纳秒为单位，表示framePosition所标识帧被采集时的单调时钟时间。 |
@@ -191,7 +191,7 @@ typedef bool (*OH_AudioAccessoryInputStream_GetFramePositionCallback)(OH_AudioAc
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | <ul><br>         <li>true：获取帧位置成功。</li><br>         <li>false：获取帧位置失败。</li><br>         </ul> |
+| bool | <ul>          <li>true：获取帧位置成功。</li>          <li>false：获取帧位置失败。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterStartCallback()
 
@@ -216,7 +216,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStartCallback(
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul><br>         <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在<br>             [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li><br>         </ul> |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul>          <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在              [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterStopCallback()
 
@@ -241,7 +241,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterStopCallback(O
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul><br>         <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在<br>             [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li><br>         </ul> |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul>          <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在              [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterReleaseCallback()
 
@@ -266,7 +266,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterReleaseCallbac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul><br>         <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在<br>             [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li><br>         </ul> |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul>          <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在              [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterLatencyCallback()
 
@@ -291,7 +291,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterLatencyCallbac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul><br>         <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在<br>             [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li><br>         </ul> |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul>          <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在              [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStreamManager_RegisterFramePositionCallback()
 
@@ -316,7 +316,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_RegisterFramePositionC
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul><br>         <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在<br>             [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li><br>         </ul> |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul>          <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：在              [OH_AudioAccessory_OpenInputStreamCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessory_openinputstreamcallback)外部调用或流已释放。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStreamManager_Write()
 
@@ -342,7 +342,7 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_Write(OH_AudioAccessor
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul><br>         <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH](capi-native-audio-common-h.md#oh_audiocommon_result)：<br>             dataSize与当前流配置下20ms音频数据不对应。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：流未启动或必须注册的流回调未全部注册。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result)：音频服务进程死亡。</li><br>         </ul> |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul>          <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_FRAME_LENGTH_MISMATCH](capi-native-audio-common-h.md#oh_audiocommon_result)：              dataSize与当前流配置下20ms音频数据不对应。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：流未启动或必须注册的流回调未全部注册。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result)：音频服务进程死亡。</li>          </ul> |
 
 ### OH_AudioAccessoryInputStreamManager_GetWritableSize()
 
@@ -367,6 +367,6 @@ OH_AudioCommon_Result OH_AudioAccessoryInputStreamManager_GetWritableSize(OH_Aud
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul><br>         <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li><br>         <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：流已释放。</li><br>         </ul> |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul>          <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result)：函数执行成功。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result)：参数为空。</li>          <li>[AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE](capi-native-audio-common-h.md#oh_audiocommon_result)：流已释放。</li>          </ul> |
 
 

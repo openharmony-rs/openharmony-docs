@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum VideoSourceType--><!--Device-unnamed-enum VideoSourceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
@@ -22,10 +18,6 @@ VIDEO_SOURCE_TYPE_SURFACE_YUV = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VideoSourceType-VIDEO_SOURCE_TYPE_SURFACE_YUV = 0--><!--Device-VideoSourceType-VIDEO_SOURCE_TYPE_SURFACE_YUV = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
@@ -39,10 +31,6 @@ VIDEO_SOURCE_TYPE_SURFACE_ES = 1
 输入surface中携带的是ES data。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VideoSourceType-VIDEO_SOURCE_TYPE_SURFACE_ES = 1--><!--Device-VideoSourceType-VIDEO_SOURCE_TYPE_SURFACE_ES = 1-End-->
 

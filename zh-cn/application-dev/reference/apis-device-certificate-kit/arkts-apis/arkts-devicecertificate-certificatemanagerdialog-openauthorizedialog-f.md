@@ -1,5 +1,11 @@
 # openAuthorizeDialog
 
+## 导入模块
+
+```TypeScript
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## openAuthorizeDialog
 
 ```TypeScript
@@ -9,10 +15,6 @@ function openAuthorizeDialog(context: common.Context): Promise<string>
 打开证书管理对话框的证书凭据授权页面。在弹出的页面中，用户可以为应用授权使用证书凭据。调用成功后，应用可通过接口返回的授权证书凭据uri进行签名、验签和查询详情操作。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -44,7 +46,7 @@ function openAuthorizeDialog(context: common.Context): Promise<string>
 | [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the authorization. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
@@ -79,10 +81,6 @@ function openAuthorizeDialog(context: common.Context, authorizeRequest: Authoriz
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -115,7 +113,7 @@ function openAuthorizeDialog(context: common.Context, authorizeRequest: Authoriz
 | [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the authorization. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';

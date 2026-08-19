@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSyncManager-enum Action--><!--Device-cloudSyncManager-enum Action-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -24,10 +20,6 @@ RETAIN_DATA = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Action-RETAIN_DATA = 0--><!--Device-Action-RETAIN_DATA = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -43,10 +35,6 @@ CLEAR_DATA = 1
 清除云端标识信息，若存在本地缓存文件，一并删除。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Action-CLEAR_DATA = 1--><!--Device-Action-CLEAR_DATA = 1-End-->
 

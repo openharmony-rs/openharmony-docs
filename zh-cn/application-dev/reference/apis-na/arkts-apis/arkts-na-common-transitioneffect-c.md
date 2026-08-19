@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class TransitionEffect--><!--Device-unnamed-export declare class TransitionEffect-End-->
 
@@ -22,9 +20,7 @@ animation(value: AnimateParam): TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,9 +50,7 @@ static asymmetric(appear: TransitionEffect, disappear: TransitionEffect): Transi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -87,9 +81,7 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -109,7 +101,7 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 | --- | --- |
 | [TransitionEffect](arkts-na-common-transitioneffect-c.md) | 组合过渡效应。 |
 
-## constructor
+## constructor('identity' | 'slideSwitch')
 
 ```TypeScript
 constructor(type: 'identity' | 'slideSwitch', effect: undefined)
@@ -119,9 +111,7 @@ constructor(type: 'identity' | 'slideSwitch', effect: undefined)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -136,7 +126,7 @@ constructor(type: 'identity' | 'slideSwitch', effect: undefined)
 | type | 'identity' \| 'slideSwitch' | 是 | 转场类型。 |
 | effect | undefined | 是 | 转场参数。 |
 
-## constructor
+## constructor('opacity')
 
 ```TypeScript
 constructor(type: 'opacity', effect: double)
@@ -146,9 +136,7 @@ constructor(type: 'opacity', effect: double)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -163,7 +151,7 @@ constructor(type: 'opacity', effect: double)
 | type | 'opacity' | 是 | 转场类型。 |
 | effect | double | 是 | 转场参数。 |
 
-## constructor
+## constructor('move')
 
 ```TypeScript
 constructor(type: 'move', effect: TransitionEdge)
@@ -173,9 +161,7 @@ constructor(type: 'move', effect: TransitionEdge)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -190,7 +176,7 @@ constructor(type: 'move', effect: TransitionEdge)
 | type | 'move' | 是 | 转场类型。 |
 | effect | [TransitionEdge](arkts-na-common-transitionedge-e.md) | 是 | 转场参数。 |
 
-## constructor
+## constructor('translate')
 
 ```TypeScript
 constructor(type: 'translate', effect: TranslateOptions)
@@ -200,9 +186,7 @@ constructor(type: 'translate', effect: TranslateOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -217,7 +201,7 @@ constructor(type: 'translate', effect: TranslateOptions)
 | type | 'translate' | 是 | 转场类型。 |
 | effect | [TranslateOptions](arkts-na-common-translateoptions-i.md) | 是 | 转场参数。 |
 
-## constructor
+## constructor('rotate')
 
 ```TypeScript
 constructor(type: 'rotate', effect: RotateOptions)
@@ -227,9 +211,7 @@ constructor(type: 'rotate', effect: RotateOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,7 +226,7 @@ constructor(type: 'rotate', effect: RotateOptions)
 | type | 'rotate' | 是 | 转场类型。 |
 | effect | [RotateOptions](arkts-na-common-rotateoptions-i.md) | 是 | 转场参数。 |
 
-## constructor
+## constructor('scale')
 
 ```TypeScript
 constructor(type: 'scale', effect: ScaleOptions)
@@ -254,9 +236,7 @@ constructor(type: 'scale', effect: ScaleOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -271,7 +251,7 @@ constructor(type: 'scale', effect: ScaleOptions)
 | type | 'scale' | 是 | 转场类型。 |
 | effect | [ScaleOptions](arkts-na-common-scaleoptions-i.md) | 是 | 转场参数。 |
 
-## constructor
+## constructor('asymmetric')
 
 ```TypeScript
 constructor(type: 'asymmetric', effect: AsymmetricTransitionOption)
@@ -281,9 +261,7 @@ constructor(type: 'asymmetric', effect: AsymmetricTransitionOption)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -308,9 +286,7 @@ static move(edge: TransitionEdge): TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -340,9 +316,7 @@ static opacity(alpha: double): TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -372,9 +346,7 @@ static rotate(options: RotateOptions): TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -404,9 +376,7 @@ static scale(options: ScaleOptions): TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -436,9 +406,7 @@ static translate(options: TranslateOptions): TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

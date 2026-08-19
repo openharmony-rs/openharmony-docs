@@ -1,5 +1,13 @@
 # createCertCRLCollection
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## createCertCRLCollection
 
 ```TypeScript
@@ -9,10 +17,6 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 表示创建证书和证书吊销列表集合对象，并返回相应的结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +28,7 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| certs | Array&lt;[X509Cert](arkts-devicecertificate-cert-x509cert-i.md)&gt; | 是 | X509Cert数组。 |
+| certs | Array&lt;X509Cert&gt; | 是 | X509Cert数组。 |
 | crls | Array&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | 否 | X509CRL数组。 |
 
 **返回值：**
@@ -37,10 +41,10 @@ function createCertCRLCollection(certs: Array<X509Cert>, crls?: Array<X509CRL>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

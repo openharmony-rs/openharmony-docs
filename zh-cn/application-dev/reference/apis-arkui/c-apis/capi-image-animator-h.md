@@ -120,7 +120,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo*](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | 帧图片对象指针。使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏； <br> drawable为NULL时返回NULL。 |
+| [ArkUI_ImageAnimatorFrameInfo*](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | 帧图片对象指针。使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏； \n  drawable为NULL时返回NULL。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_Dispose()
 

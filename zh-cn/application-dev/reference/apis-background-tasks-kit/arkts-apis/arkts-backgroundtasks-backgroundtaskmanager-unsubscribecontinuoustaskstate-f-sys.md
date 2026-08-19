@@ -1,5 +1,11 @@
 # unsubscribeContinuousTaskState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+```
+
 ## unsubscribeContinuousTaskState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): v
 解注册长时任务变化回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -39,7 +41,7 @@ function unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): v
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';

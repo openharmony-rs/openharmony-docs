@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum PreconfigType--><!--Device-camera-enum PreconfigType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -21,10 +17,6 @@ PRECONFIG_720P = 0
 720P预配置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ PRECONFIG_1080P = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PreconfigType-PRECONFIG_1080P = 1--><!--Device-PreconfigType-PRECONFIG_1080P = 1-End-->
@@ -61,10 +49,6 @@ PRECONFIG_4K = 2
 4K预配置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ PRECONFIG_HIGH_QUALITY = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PreconfigType-PRECONFIG_HIGH_QUALITY = 3--><!--Device-PreconfigType-PRECONFIG_HIGH_QUALITY = 3-End-->
@@ -101,10 +81,6 @@ PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4
 预配置支持预览高动态范围显示和HDR动图拍摄。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@ MMI码结果。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export enum MmiCodeResult--><!--Device-call-export enum MmiCodeResult-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -24,10 +20,6 @@ MMI_CODE_SUCCESS = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MmiCodeResult-MMI_CODE_SUCCESS = 0--><!--Device-MmiCodeResult-MMI_CODE_SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -43,10 +35,6 @@ MMI_CODE_FAILED = 1
 表示MMI码失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmiCodeResult-MMI_CODE_FAILED = 1--><!--Device-MmiCodeResult-MMI_CODE_FAILED = 1-End-->
 

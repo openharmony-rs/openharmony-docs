@@ -1,5 +1,11 @@
 # downloadMms（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
+
 ## downloadMms
 
 ```TypeScript
@@ -9,10 +15,6 @@ function downloadMms(context: Context, mmsParams: MmsParams, callback: AsyncCall
 下载彩信。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RECEIVE_MMS
 
@@ -26,9 +28,9 @@ function downloadMms(context: Context, mmsParams: MmsParams, callback: AsyncCall
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#uiabilitycontext)。 |
-| mmsParams | [MmsParams](arkts-telephony-sms-mmsparams-i-sys.md) | 是 | 下载彩信的参数和回调，参考[MmsParams](arkts-telephony-sms-mmsparams-i-sys.md#mmsparams系统接口)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 下载彩信的回调函数。 |
+| context | Context | 是 | 应用上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md)。 |
+| mmsParams | [MmsParams](arkts-telephony-sms-mmsparams-i-sys.md) | 是 | 下载彩信的参数和回调，参考[MmsParams](arkts-telephony-sms-mmsparams-i-sys.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 下载彩信的回调函数。 |
 
 **错误码：**
 
@@ -42,7 +44,7 @@ function downloadMms(context: Context, mmsParams: MmsParams, callback: AsyncCall
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 FA模型示例：
 
@@ -135,10 +137,6 @@ function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.RECEIVE_MMS
 
 <!--Device-sms-function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>--><!--Device-sms-function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>-End-->
@@ -151,8 +149,8 @@ function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#uiabilitycontext)。 |
-| mmsParams | [MmsParams](arkts-telephony-sms-mmsparams-i-sys.md) | 是 | 发送彩信的参数和回调，参考[MmsParams](arkts-telephony-sms-mmsparams-i-sys.md#mmsparams系统接口)。 |
+| context | Context | 是 | 应用上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md)。 |
+| mmsParams | [MmsParams](arkts-telephony-sms-mmsparams-i-sys.md) | 是 | 发送彩信的参数和回调，参考[MmsParams](arkts-telephony-sms-mmsparams-i-sys.md)。 |
 
 **返回值：**
 
@@ -172,7 +170,7 @@ function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 FA模型示例：
 

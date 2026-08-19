@@ -1,5 +1,14 @@
 # enableWifi（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## enableWifi
 
 ```TypeScript
@@ -10,11 +19,9 @@ function enableWifi(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [enableWifi](arkts-connectivity-wifimanager-enablewifi-f.md#enablewifi)
+**替代接口：** [enableWifi](arkts-connectivity-wifimanager-enablewifi-f.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -30,7 +37,7 @@ function enableWifi(): boolean
 | --- | --- |
 | boolean | 操作成功时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

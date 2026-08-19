@@ -86,7 +86,7 @@ typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progress
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Pasteboard_ProgressInfo\* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项{@link Pasteboard_ProgressIndicator}设置为PASTEBOARD_NONE时才会上报此信息。 |
+| [Pasteboard_ProgressInfo](capi-pasteboard-pasteboard-progressinfo.md)\* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项{@link Pasteboard_ProgressIndicator}设置为PASTEBOARD_NONE时才会上报此信息。 |
 
 ### Pasteboard_Notify()
 
@@ -105,7 +105,7 @@ typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)
 | 参数项 | 描述 |
 | -- | -- |
 | context | 上下文信息，由函数[OH_PasteboardObserver_SetData](capi-oh-pasteboard-h.md#oh_pasteboardobserver_setdata)传入。 |
-| ype type | 数据变更的类型。详见：{@link Pasteboard_NotifyType}。 |
+| pe type | 数据变更的类型。详见：{@link Pasteboard_NotifyType}。 |
 
 ### Pasteboard_Finalize()
 
@@ -123,7 +123,7 @@ typedef void (*Pasteboard_Finalize)(void* context)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* context | 要释放的上下文指针。当context指向需要手动释放的动态内存或资源时，应在回调函数中释放；当context指向静态内存或无需管理的资源时，回调函数可以不做处理。 |
+| void\* context | 要释放的上下文指针。当context指向需要手动释放的动态内存或资源时，应在回调函数中释放；当context指向静态内存或无需管理的资源时，回调函数可以不做处理。 |
 
 ### OH_PasteboardObserver_Create()
 
@@ -141,7 +141,7 @@ OH_PasteboardObserver* OH_PasteboardObserver_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PasteboardObserver*](capi-pasteboard-oh-pasteboardobserver.md) | 执行成功时返回一个指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](capi-oh-pasteboard-h.md#oh_pasteboardobserver_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_PasteboardObserver*](capi-pasteboard-oh-pasteboardobserver.md) | 执行成功时返回一个指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例对象的指针，否则返回空指针。  当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](capi-oh-pasteboard-h.md#oh_pasteboardobserver_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 **参考：**
 
@@ -202,7 +202,7 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。  若返回ERR_OK，表示执行成功。  若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 **参考：**
 
@@ -225,7 +225,7 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Pasteboard*](capi-pasteboard-oh-pasteboard.md) | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_Pasteboard*](capi-pasteboard-oh-pasteboard.md) | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。  当不再需要使用指针时，请使用[OH_Pasteboard_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 **参考：**
 
@@ -279,7 +279,7 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。  若返回ERR_OK，表示执行成功。  若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 **参考：**
 
@@ -310,7 +310,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。  若返回ERR_OK，表示执行成功。  若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 **参考：**
 
@@ -370,7 +370,7 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。  若返回ERR_OK，表示执行成功。  若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 **参考：**
 
@@ -520,7 +520,7 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。  若返回ERR_OK，表示执行成功。  若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 **参考：**
 
@@ -549,7 +549,7 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见{@link PASTEBOARD_ErrCode}。  若返回ERR_OK，表示执行成功。  若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 **参考：**
 
@@ -626,7 +626,7 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Pasteboard_GetDataParams *](capi-pasteboard-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [Pasteboard_GetDataParams *](capi-pasteboard-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。  当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 **参考：**
 
@@ -854,7 +854,7 @@ void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callba
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)\* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
+| H_Pasteboard\* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
 | void (\*callback)(int errorCode) | 数据同步完成后调用的回调函数指针，errorCode表示同步任务的结果，错误码定义详见{@link PASTEBOARD_ErrCode}。 |
 
 

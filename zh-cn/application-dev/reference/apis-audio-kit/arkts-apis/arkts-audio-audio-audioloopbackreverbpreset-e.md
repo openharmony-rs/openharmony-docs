@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioLoopbackReverbPreset--><!--Device-audio-enum AudioLoopbackReverbPreset-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -21,10 +17,6 @@ ORIGINAL = 1
 保持原始混响，不进行任何增强。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1--><!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1-End-->
 
@@ -40,10 +32,6 @@ KTV = 2
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-AudioLoopbackReverbPreset-KTV = 2--><!--Device-AudioLoopbackReverbPreset-KTV = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -58,10 +46,6 @@ THEATER = 3
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-AudioLoopbackReverbPreset-THEATER = 3--><!--Device-AudioLoopbackReverbPreset-THEATER = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -75,10 +59,6 @@ CONCERT = 4
 提供类似演唱会的混响效果。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-AudioLoopbackReverbPreset-CONCERT = 4--><!--Device-AudioLoopbackReverbPreset-CONCERT = 4-End-->
 

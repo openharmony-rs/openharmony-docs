@@ -4,15 +4,17 @@ PGO（Profile-guided Optimization）配置文件参数信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-installer-export interface PGOParam--><!--Device-installer-export interface PGOParam-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+```
 
 ## moduleName
 
@@ -25,10 +27,6 @@ moduleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PGOParam-moduleName: string--><!--Device-PGOParam-moduleName: string-End-->
 
@@ -47,10 +45,6 @@ PGO配置文件路径。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PGOParam-pgoFilePath: string--><!--Device-PGOParam-pgoFilePath: string-End-->
 

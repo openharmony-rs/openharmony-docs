@@ -1,5 +1,12 @@
 # getScanResultsSync
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## getScanResultsSync
 
 ```TypeScript
@@ -10,11 +17,9 @@ function getScanResultsSync(): Array<WifiScanInfo>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 10
 
-**替代接口：** [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md#getscaninfolist)
+**替代接口：** [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or (ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION))
 

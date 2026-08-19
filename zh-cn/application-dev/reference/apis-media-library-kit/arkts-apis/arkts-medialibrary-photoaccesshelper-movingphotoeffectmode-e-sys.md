@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum MovingPhotoEffectMode--><!--Device-photoAccessHelper-enum MovingPhotoEffectMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ DEFAULT = 0
 默认模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MovingPhotoEffectMode-DEFAULT = 0--><!--Device-MovingPhotoEffectMode-DEFAULT = 0-End-->
 
@@ -44,10 +36,6 @@ BOUNCE_PLAY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MovingPhotoEffectMode-BOUNCE_PLAY = 1--><!--Device-MovingPhotoEffectMode-BOUNCE_PLAY = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ LOOP_PLAY = 2
 循环播放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MovingPhotoEffectMode-LOOP_PLAY = 2--><!--Device-MovingPhotoEffectMode-LOOP_PLAY = 2-End-->
 
@@ -84,10 +68,6 @@ LONG_EXPOSURE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MovingPhotoEffectMode-LONG_EXPOSURE = 3--><!--Device-MovingPhotoEffectMode-LONG_EXPOSURE = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -103,10 +83,6 @@ MULTI_EXPOSURE = 4
 多曝光。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MovingPhotoEffectMode-MULTI_EXPOSURE = 4--><!--Device-MovingPhotoEffectMode-MULTI_EXPOSURE = 4-End-->
 
@@ -124,10 +100,6 @@ CINEMA_GRAPH = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MovingPhotoEffectMode-CINEMA_GRAPH = 5--><!--Device-MovingPhotoEffectMode-CINEMA_GRAPH = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -143,10 +115,6 @@ IMAGE_ONLY = 10
 关闭模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MovingPhotoEffectMode-IMAGE_ONLY = 10--><!--Device-MovingPhotoEffectMode-IMAGE_ONLY = 10-End-->
 

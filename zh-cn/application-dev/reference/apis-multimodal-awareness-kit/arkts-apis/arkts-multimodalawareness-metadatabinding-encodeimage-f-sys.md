@@ -1,5 +1,11 @@
 # encodeImage（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';
+```
+
 ## encodeImage
 
 ```TypeScript
@@ -9,10 +15,6 @@ function encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.
 在图片中加入信息。通过特定的编码算法将metadata信息嵌入到图片中，编码过程对图片的视觉呈现影响极小，嵌入的信息可通过decodeImage接口解析。可用于防伪、版权保护等场景。 <br>使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-metadataBinding-function encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>--><!--Device-metadataBinding-function encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>-End-->
 

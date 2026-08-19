@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-enum PixelMapFormat--><!--Device-image-enum PixelMapFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ UNKNOWN = 0
 未知格式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,10 +36,6 @@ ARGB_8888 = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PixelMapFormat-ARGB_8888 = 1--><!--Device-PixelMapFormat-ARGB_8888 = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -61,10 +49,6 @@ RGB_565 = 2
 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，R占5位，G占6位，B占5位，总共占16位，按照从高位到低位的顺序储存。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -80,13 +64,9 @@ RGB_565 = 2
 RGBA_8888 = 3
 ```
 
-颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
+颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -106,10 +86,6 @@ BGRA_8888 = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -127,10 +103,6 @@ RGB_888 = 5
 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，每个部分占8位，总共占24位，按照从高位到低位的顺序储存。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -150,10 +122,6 @@ ALPHA_8 = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -172,10 +140,6 @@ RGBA_F16 = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -190,13 +154,9 @@ RGBA_F16 = 7
 NV21 = 8
 ```
 
-YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
+YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应 [相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -216,10 +176,6 @@ YUV像素排列，U分量在V分量之前。颜色信息由亮度分量Y和交�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -238,10 +194,6 @@ RGBA_1010102 = 10
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PixelMapFormat-RGBA_1010102 = 10--><!--Device-PixelMapFormat-RGBA_1010102 = 10-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -252,13 +204,9 @@ RGBA_1010102 = 10
 YCBCR_P010 = 11
 ```
 
-颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
+颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PixelMapFormat-YCBCR_P010 = 11--><!--Device-PixelMapFormat-YCBCR_P010 = 11-End-->
 
@@ -270,13 +218,9 @@ YCBCR_P010 = 11
 YCRCB_P010 = 12
 ```
 
-颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md#cameraformat)。
+颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序 储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PixelMapFormat-YCRCB_P010 = 12--><!--Device-PixelMapFormat-YCRCB_P010 = 12-End-->
 
@@ -291,10 +235,6 @@ Y8 = 14
 仅包含Y平面（亮度）的单通道灰度格式，每个像素占8位，按照从高位到低位的顺序储存。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -311,10 +251,6 @@ ALPHA_U8 = 15
 Indicates that each pixel is stored on 8 bits, without 4-byte stride alignment. Each pixel contains 1 component: ALPHA(8bits) and is stored from the higher-order to the lower-order bits.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -334,10 +270,6 @@ Indicates that each pixel is stored on 16 bits. Each pixel contains 1 component:
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
@@ -355,10 +287,6 @@ ASTC_4x4 = 102
 The storage format is ASTC 4x4 format, and the memory usage is only 1/4 of RGBA_8888. This format is only used for direct display scenes and does not support pixel access or post- processing editing.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PixelMapFormat-ASTC_4x4 = 102--><!--Device-PixelMapFormat-ASTC_4x4 = 102-End-->
 

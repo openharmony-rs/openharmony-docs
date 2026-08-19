@@ -1,14 +1,10 @@
 # Image
 
-图像资源.
+图片类型，继承自SceneResource。
 
-**继承/实现关系：** Image extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)
+**继承/实现关系：** Image extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Image--><!--Device-unnamed-export interface Image-End-->
 
@@ -20,15 +16,11 @@
 readonly height: int
 ```
 
-图像高度, 单位为像素.
+图片高度，单位为像素（px），取值范围大于0。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Image-readonly height: int--><!--Device-Image-readonly height: int-End-->
 
@@ -40,15 +32,11 @@ readonly height: int
 readonly width: int
 ```
 
-图像宽度, 单位为像素.
+图片宽度，单位为像素（px），取值范围大于0。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Image-readonly width: int--><!--Device-Image-readonly width: int-End-->
 

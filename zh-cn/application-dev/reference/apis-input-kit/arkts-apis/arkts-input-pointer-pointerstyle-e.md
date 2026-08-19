@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-enum PointerStyle--><!--Device-pointer-enum PointerStyle-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -18,13 +14,9 @@
 DEFAULT = 0
 ```
 
-Default
+默认
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-DEFAULT = 0--><!--Device-PointerStyle-DEFAULT = 0-End-->
 
@@ -36,13 +28,9 @@ Default
 EAST = 1
 ```
 
-East arrow
+向东箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-EAST = 1--><!--Device-PointerStyle-EAST = 1-End-->
 
@@ -54,13 +42,9 @@ East arrow
 WEST = 2
 ```
 
-West arrow
+向西箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-WEST = 2--><!--Device-PointerStyle-WEST = 2-End-->
 
@@ -72,13 +56,9 @@ West arrow
 SOUTH = 3
 ```
 
-South arrow
+向南箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-SOUTH = 3--><!--Device-PointerStyle-SOUTH = 3-End-->
 
@@ -90,13 +70,9 @@ South arrow
 NORTH = 4
 ```
 
-North arrow
+向北箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-NORTH = 4--><!--Device-PointerStyle-NORTH = 4-End-->
 
@@ -108,13 +84,9 @@ North arrow
 WEST_EAST = 5
 ```
 
-West-east arrow
+向西东箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-WEST_EAST = 5--><!--Device-PointerStyle-WEST_EAST = 5-End-->
 
@@ -126,13 +98,9 @@ West-east arrow
 NORTH_SOUTH = 6
 ```
 
-North-south arrow
+向北南箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-NORTH_SOUTH = 6--><!--Device-PointerStyle-NORTH_SOUTH = 6-End-->
 
@@ -144,13 +112,9 @@ North-south arrow
 NORTH_EAST = 7
 ```
 
-North-east arrow
+向东北箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-NORTH_EAST = 7--><!--Device-PointerStyle-NORTH_EAST = 7-End-->
 
@@ -162,13 +126,9 @@ North-east arrow
 NORTH_WEST = 8
 ```
 
-North-west arrow
+向西北箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-NORTH_WEST = 8--><!--Device-PointerStyle-NORTH_WEST = 8-End-->
 
@@ -180,13 +140,9 @@ North-west arrow
 SOUTH_EAST = 9
 ```
 
-South-east arrow
+向东南箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-SOUTH_EAST = 9--><!--Device-PointerStyle-SOUTH_EAST = 9-End-->
 
@@ -198,13 +154,9 @@ South-east arrow
 SOUTH_WEST = 10
 ```
 
-South-west arrow
+向西南箭头
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-SOUTH_WEST = 10--><!--Device-PointerStyle-SOUTH_WEST = 10-End-->
 
@@ -216,13 +168,9 @@ South-west arrow
 NORTH_EAST_SOUTH_WEST = 11
 ```
 
-North-east and south-west adjustment
+东北西南调整
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-NORTH_EAST_SOUTH_WEST = 11--><!--Device-PointerStyle-NORTH_EAST_SOUTH_WEST = 11-End-->
 
@@ -234,13 +182,9 @@ North-east and south-west adjustment
 NORTH_WEST_SOUTH_EAST = 12
 ```
 
-North-west and south-east adjustment
+西北东南调整
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-NORTH_WEST_SOUTH_EAST = 12--><!--Device-PointerStyle-NORTH_WEST_SOUTH_EAST = 12-End-->
 
@@ -252,13 +196,9 @@ North-west and south-east adjustment
 CROSS = 13
 ```
 
-Cross (accurate selection)
+准确选择
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-CROSS = 13--><!--Device-PointerStyle-CROSS = 13-End-->
 
@@ -270,13 +210,9 @@ Cross (accurate selection)
 CURSOR_COPY = 14
 ```
 
-Copy
+复制
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-CURSOR_COPY = 14--><!--Device-PointerStyle-CURSOR_COPY = 14-End-->
 
@@ -288,13 +224,9 @@ Copy
 CURSOR_FORBID = 15
 ```
 
-Forbid
+不可用
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-CURSOR_FORBID = 15--><!--Device-PointerStyle-CURSOR_FORBID = 15-End-->
 
@@ -306,13 +238,9 @@ Forbid
 COLOR_SUCKER = 16
 ```
 
-Color picker
+取色器
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-COLOR_SUCKER = 16--><!--Device-PointerStyle-COLOR_SUCKER = 16-End-->
 
@@ -324,13 +252,9 @@ Color picker
 HAND_GRABBING = 17
 ```
 
-Grabbing hand
+并拢的手
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-HAND_GRABBING = 17--><!--Device-PointerStyle-HAND_GRABBING = 17-End-->
 
@@ -342,13 +266,9 @@ Grabbing hand
 HAND_OPEN = 18
 ```
 
-Opening hand
+张开的手
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-HAND_OPEN = 18--><!--Device-PointerStyle-HAND_OPEN = 18-End-->
 
@@ -360,13 +280,9 @@ Opening hand
 HAND_POINTING = 19
 ```
 
-Hand-shaped pointer
+手形指针
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-HAND_POINTING = 19--><!--Device-PointerStyle-HAND_POINTING = 19-End-->
 
@@ -378,13 +294,9 @@ Hand-shaped pointer
 HELP = 20
 ```
 
-Help
+帮助选择
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-HELP = 20--><!--Device-PointerStyle-HELP = 20-End-->
 
@@ -396,13 +308,9 @@ Help
 MOVE = 21
 ```
 
-Move
+移动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MOVE = 21--><!--Device-PointerStyle-MOVE = 21-End-->
 
@@ -414,13 +322,9 @@ Move
 RESIZE_LEFT_RIGHT = 22
 ```
 
-Left and right resizing
+内部左右调整
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-RESIZE_LEFT_RIGHT = 22--><!--Device-PointerStyle-RESIZE_LEFT_RIGHT = 22-End-->
 
@@ -432,13 +336,9 @@ Left and right resizing
 RESIZE_UP_DOWN = 23
 ```
 
-Up and down resizing
+内部上下调整
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-RESIZE_UP_DOWN = 23--><!--Device-PointerStyle-RESIZE_UP_DOWN = 23-End-->
 
@@ -450,13 +350,9 @@ Up and down resizing
 SCREENSHOT_CHOOSE = 24
 ```
 
-Screenshot crosshair
+截图十字准星
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-SCREENSHOT_CHOOSE = 24--><!--Device-PointerStyle-SCREENSHOT_CHOOSE = 24-End-->
 
@@ -468,13 +364,9 @@ Screenshot crosshair
 SCREENSHOT_CURSOR = 25
 ```
 
-Screenshot
+截图
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-SCREENSHOT_CURSOR = 25--><!--Device-PointerStyle-SCREENSHOT_CURSOR = 25-End-->
 
@@ -486,13 +378,9 @@ Screenshot
 TEXT_CURSOR = 26
 ```
 
-Text selection
+文本选择
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-TEXT_CURSOR = 26--><!--Device-PointerStyle-TEXT_CURSOR = 26-End-->
 
@@ -504,13 +392,9 @@ Text selection
 ZOOM_IN = 27
 ```
 
-Zoom in
+放大
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-ZOOM_IN = 27--><!--Device-PointerStyle-ZOOM_IN = 27-End-->
 
@@ -522,13 +406,9 @@ Zoom in
 ZOOM_OUT = 28
 ```
 
-Zoom out
+缩小
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-ZOOM_OUT = 28--><!--Device-PointerStyle-ZOOM_OUT = 28-End-->
 
@@ -540,13 +420,9 @@ Zoom out
 MIDDLE_BTN_EAST = 29
 ```
 
-Scrolling east
+向东滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_EAST = 29--><!--Device-PointerStyle-MIDDLE_BTN_EAST = 29-End-->
 
@@ -558,13 +434,9 @@ Scrolling east
 MIDDLE_BTN_WEST = 30
 ```
 
-Scrolling west
+向西滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_WEST = 30--><!--Device-PointerStyle-MIDDLE_BTN_WEST = 30-End-->
 
@@ -576,13 +448,9 @@ Scrolling west
 MIDDLE_BTN_SOUTH = 31
 ```
 
-Scrolling south
+向南滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_SOUTH = 31--><!--Device-PointerStyle-MIDDLE_BTN_SOUTH = 31-End-->
 
@@ -594,13 +462,9 @@ Scrolling south
 MIDDLE_BTN_NORTH = 32
 ```
 
-Scrolling north
+向北滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_NORTH = 32--><!--Device-PointerStyle-MIDDLE_BTN_NORTH = 32-End-->
 
@@ -612,13 +476,9 @@ Scrolling north
 MIDDLE_BTN_NORTH_SOUTH = 33
 ```
 
-Scrolling north-south
+向南北滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH = 33--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH = 33-End-->
 
@@ -630,13 +490,9 @@ Scrolling north-south
 MIDDLE_BTN_NORTH_EAST = 34
 ```
 
-Scrolling north-east
+向东北滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_NORTH_EAST = 34--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_EAST = 34-End-->
 
@@ -648,13 +504,9 @@ Scrolling north-east
 MIDDLE_BTN_NORTH_WEST = 35
 ```
 
-Scrolling north-west
+向西北滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_NORTH_WEST = 35--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_WEST = 35-End-->
 
@@ -666,13 +518,9 @@ Scrolling north-west
 MIDDLE_BTN_SOUTH_EAST = 36
 ```
 
-Scrolling south-east
+向东南滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_SOUTH_EAST = 36--><!--Device-PointerStyle-MIDDLE_BTN_SOUTH_EAST = 36-End-->
 
@@ -684,13 +532,9 @@ Scrolling south-east
 MIDDLE_BTN_SOUTH_WEST = 37
 ```
 
-Scrolling south-west
+向西南滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_SOUTH_WEST = 37--><!--Device-PointerStyle-MIDDLE_BTN_SOUTH_WEST = 37-End-->
 
@@ -702,13 +546,9 @@ Scrolling south-west
 MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38
 ```
 
-Moving as a cone in four directions
+四向锥形移动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38--><!--Device-PointerStyle-MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38-End-->
 
@@ -720,13 +560,9 @@ Moving as a cone in four directions
 HORIZONTAL_TEXT_CURSOR = 39
 ```
 
-Horizontal text selection
+水平文本选择
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-HORIZONTAL_TEXT_CURSOR = 39--><!--Device-PointerStyle-HORIZONTAL_TEXT_CURSOR = 39-End-->
 
@@ -738,13 +574,9 @@ Horizontal text selection
 CURSOR_CROSS = 40
 ```
 
-Cross
+十字光标
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-CURSOR_CROSS = 40--><!--Device-PointerStyle-CURSOR_CROSS = 40-End-->
 
@@ -756,13 +588,9 @@ Cross
 CURSOR_CIRCLE = 41
 ```
 
-Circle
+圆形光标
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-CURSOR_CIRCLE = 41--><!--Device-PointerStyle-CURSOR_CIRCLE = 41-End-->
 
@@ -774,13 +602,9 @@ Circle
 LOADING = 42
 ```
 
-Animation loading
+正在载入动画光标
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -794,13 +618,9 @@ Animation loading
 RUNNING = 43
 ```
 
-Animation running in the background
+后台运行中动画光标
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -814,13 +634,9 @@ Animation running in the background
 MIDDLE_BTN_EAST_WEST = 44
 ```
 
-Scrolling east-west
+向东西滚动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-MIDDLE_BTN_EAST_WEST = 44--><!--Device-PointerStyle-MIDDLE_BTN_EAST_WEST = 44-End-->
 
@@ -836,10 +652,6 @@ RUNNING_LEFT = 45
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PointerStyle-RUNNING_LEFT = 45--><!--Device-PointerStyle-RUNNING_LEFT = 45-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -853,10 +665,6 @@ RUNNING_RIGHT = 46
 后台运行中动画光标(拓展2)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-RUNNING_RIGHT = 46--><!--Device-PointerStyle-RUNNING_RIGHT = 46-End-->
 
@@ -872,10 +680,6 @@ AECH_DEVELOPER_DEFINED_ICON = 47
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PointerStyle-AECH_DEVELOPER_DEFINED_ICON = 47--><!--Device-PointerStyle-AECH_DEVELOPER_DEFINED_ICON = 47-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -890,10 +694,6 @@ SCREENRECORDER_CURSOR = 48
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PointerStyle-SCREENRECORDER_CURSOR = 48--><!--Device-PointerStyle-SCREENRECORDER_CURSOR = 48-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -904,13 +704,9 @@ SCREENRECORDER_CURSOR = 48
 LASER_CURSOR = 49
 ```
 
-悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。 空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。
+悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-LASER_CURSOR = 49--><!--Device-PointerStyle-LASER_CURSOR = 49-End-->
 
@@ -922,13 +718,9 @@ LASER_CURSOR = 49
 LASER_CURSOR_DOT = 50
 ```
 
-点击光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。 空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。
+点击光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-LASER_CURSOR_DOT = 50--><!--Device-PointerStyle-LASER_CURSOR_DOT = 50-End-->
 
@@ -940,13 +732,9 @@ LASER_CURSOR_DOT = 50
 LASER_CURSOR_DOT_RED = 51
 ```
 
-激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。 空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。
+激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-LASER_CURSOR_DOT_RED = 51--><!--Device-PointerStyle-LASER_CURSOR_DOT_RED = 51-End-->
 
@@ -958,13 +746,9 @@ LASER_CURSOR_DOT_RED = 51
 DEVELOPER_DEFINED_ICON = -100
 ```
 
-自定义光标，开发者可使用 [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md#setcustomcursor)设置自定义光 标，不支持使用[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md#setpointerstyle)直接设置。
+自定义光标，开发者可使用 [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md)设置自定义光 标，不支持使用[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md)直接设置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PointerStyle-DEVELOPER_DEFINED_ICON = -100--><!--Device-PointerStyle-DEVELOPER_DEFINED_ICON = -100-End-->
 

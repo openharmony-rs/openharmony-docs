@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum LivePhoto4dStatus--><!--Device-photoAccessHelper-enum LivePhoto4dStatus-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ UNIDENTIFIED = 0
 未被检测的资产
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ UNSUPPORTED = 1
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-LivePhoto4dStatus-UNSUPPORTED = 1--><!--Device-LivePhoto4dStatus-UNSUPPORTED = 1-End-->
@@ -67,10 +55,6 @@ SUPPORTED = 2
 该动图支持生成子弹时刻
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ USED = 3
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-LivePhoto4dStatus-USED = 3--><!--Device-LivePhoto4dStatus-USED = 3-End-->
@@ -111,10 +91,6 @@ LIVEPHOTO_4D = 4
 该动图本身是子弹时间
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

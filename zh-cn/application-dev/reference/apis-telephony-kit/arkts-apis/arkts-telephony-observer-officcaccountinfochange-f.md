@@ -1,5 +1,11 @@
 # offIccAccountInfoChange
 
+## 导入模块
+
+```TypeScript
+import { observer } from '@kit.TelephonyKit';
+```
+
 ## offIccAccountInfoChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ Cancel to receive an ICC account change.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-function offIccAccountInfoChange(callback?: Callback<void>): void--><!--Device-observer-function offIccAccountInfoChange(callback?: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
@@ -22,7 +24,7 @@ Cancel to receive an ICC account change.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | including state Indicates the ICC account information, and reason Indicates the cause of the change. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | including state Indicates the ICC account information, and reason Indicates the cause of the change. |
 
 **错误码：**
 

@@ -1,14 +1,10 @@
 # Node
 
-定义Node接口.
+3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自SceneResource。
 
-**继承/实现关系：** Node extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)
+**继承/实现关系：** Node extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Node--><!--Device-unnamed-export interface Node-End-->
 
@@ -20,13 +16,9 @@
 getNodeByPath(path: string): Node | null
 ```
 
-通过路径获取节点.
+根据路径获取节点，如果获取不到则返回空。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-getNodeByPath(path: string): Node | null--><!--Device-Node-getNodeByPath(path: string): Node | null-End-->
 
@@ -42,9 +34,9 @@ getNodeByPath(path: string): Node | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) |  |
+| [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 返回节点对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, Node } from '@kit.ArkGraphics3D';
@@ -93,15 +85,11 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 readonly children: Container<Node>
 ```
 
-节点的子节点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子节点 （如[append](arkts-arkgraphics3d-scenenodes-container-i.md#append)、[insertAfter](arkts-arkgraphics3d-scenenodes-container-i.md#insertafter)、 [remove](arkts-arkgraphics3d-scenenodes-container-i.md#remove)或[clear](arkts-arkgraphics3d-scenenodes-container-i.md#clear)）。 如果append或insertAfter的节点已存在于容器中，容器会先移除该节点再插入，因此数量不会增加，看似“无效”； 添加新节点才会真正增加子节点数量。
+节点的子节点，不存在则为空值。 为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子节点（如append、insertAfter、remove或clear）。 如果append或insertAfter的节点已存在于容器中，容器会先移除该节点再插入，因此数量不会增加，看似“无效”；添加新节点才会真正增加子节点数量。
 
 **类型：** [Container](arkts-arkgraphics3d-scenenodes-container-i.md)&lt;[Node](arkts-arkgraphics3d-scenenodes-node-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-readonly children: Container<Node>--><!--Device-Node-readonly children: Container<Node>-End-->
 
@@ -113,15 +101,11 @@ readonly children: Container<Node>
 readonly layerMask: LayerMask
 ```
 
-节点图层掩码.
+节点的图层掩码。
 
 **类型：** [LayerMask](arkts-arkgraphics3d-scenenodes-layermask-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-readonly layerMask: LayerMask--><!--Device-Node-readonly layerMask: LayerMask-End-->
 
@@ -133,15 +117,11 @@ readonly layerMask: LayerMask
 readonly nodeType: NodeType
 ```
 
-节点类型.
+节点类型。
 
 **类型：** [NodeType](arkts-arkgraphics3d-scenenodes-nodetype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-readonly nodeType: NodeType--><!--Device-Node-readonly nodeType: NodeType-End-->
 
@@ -153,15 +133,11 @@ readonly nodeType: NodeType
 readonly parent: Node | null
 ```
 
-节点的父节点.
+节点的父节点，不存在则为空值。
 
 **类型：** [Node](arkts-arkgraphics3d-scenenodes-node-i.md) \| null
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-readonly parent: Node | null--><!--Device-Node-readonly parent: Node | null-End-->
 
@@ -173,15 +149,11 @@ readonly parent: Node | null
 readonly path: string
 ```
 
-节点路径.
+节点路径。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-readonly path: string--><!--Device-Node-readonly path: string-End-->
 
@@ -193,15 +165,11 @@ readonly path: string
 position: Position3
 ```
 
-节点位置, 单位为世界坐标系下的场景单位（例如cm、m、km等）.
+节点位置，单位为世界坐标系下的场景单位（比如cm、m、km等）。
 
 **类型：** [Position3](arkts-arkgraphics3d-position3-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-position: Position3--><!--Device-Node-position: Position3-End-->
 
@@ -213,15 +181,11 @@ position: Position3
 rotation: Quaternion
 ```
 
-节点旋转.
+节点旋转角度。
 
 **类型：** [Quaternion](arkts-arkgraphics3d-scenetypes-quaternion-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-rotation: Quaternion--><!--Device-Node-rotation: Quaternion-End-->
 
@@ -233,15 +197,11 @@ rotation: Quaternion
 scale: Scale3
 ```
 
-节点缩放.
+节点缩放。
 
 **类型：** [Scale3](arkts-arkgraphics3d-scale3-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-scale: Scale3--><!--Device-Node-scale: Scale3-End-->
 
@@ -253,15 +213,11 @@ scale: Scale3
 visible: boolean
 ```
 
-节点可见性标志.
+节点是否可见。true表示该节点可见，false表示不可见。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Node-visible: boolean--><!--Device-Node-visible: boolean-End-->
 

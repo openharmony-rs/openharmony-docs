@@ -1,20 +1,23 @@
 # getForegroundApplications（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getForegroundApplications
 
 ```TypeScript
 function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>): void
 ```
 
-获取所有当前处于前台的应用信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md#appstatedata)定义。使用callback异步回调。
+获取所有当前处于前台的应用信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md)定义。使用callback异步回调。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getForegroundApplications](arkts-ability-appmanager-getforegroundapplications-f-sys.md#getforegroundapplications系统接口)
+**替代接口：** [getForegroundApplications](arkts-ability-appmanager-getforegroundapplications-f-sys.md)
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
 
@@ -28,9 +31,9 @@ function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AppStateData](arkts-ability-appstatedata-c.md)&gt;&gt; | 是 | 回调函数，返回所有当前处于前台的应用信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AppStateData](arkts-ability-appstatedata-c.md)&gt;&gt; | 是 | 回调函数，返回所有当前处于前台的应用信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';
@@ -51,15 +54,13 @@ appManager.getForegroundApplications((err, data) => {
 function getForegroundApplications(): Promise<Array<AppStateData>>
 ```
 
-获取所有当前处于前台的应用信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md#appstatedata)定义。使用Promise异步回调。
+获取所有当前处于前台的应用信息。该应用信息由[AppStateData](arkts-ability-appstatedata-c.md)定义。使用Promise异步回调。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getForegroundApplications](arkts-ability-appmanager-getforegroundapplications-f-sys.md#getforegroundapplications系统接口)
+**替代接口：** [getForegroundApplications](arkts-ability-appmanager-getforegroundapplications-f-sys.md)
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
 
@@ -75,7 +76,7 @@ function getForegroundApplications(): Promise<Array<AppStateData>>
 | --- | --- |
 | Promise&lt;Array&lt;[AppStateData](arkts-ability-appstatedata-c.md)&gt;&gt; | Promise对象，返回所有当前处于前台的应用信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';

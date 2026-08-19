@@ -4,13 +4,15 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-calendarManager-class EventFilter--><!--Device-calendarManager-class EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
+
+## 导入模块
+
+```TypeScript
+import { calendarManager } from '@kit.CalendarKit';
+```
 
 ## filterById
 
@@ -21,10 +23,6 @@ static filterById(ids: number[]): EventFilter
 根据日程id过滤日程。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-EventFilter-static filterById(ids: number[]): EventFilter--><!--Device-EventFilter-static filterById(ids: number[]): EventFilter-End-->
 
@@ -42,7 +40,7 @@ static filterById(ids: number[]): EventFilter
 | --- | --- |
 | [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 返回日程过滤器对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -106,10 +104,6 @@ static filterByTime(start: number, end: number): EventFilter
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter--><!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -127,7 +121,7 @@ static filterByTime(start: number, end: number): EventFilter
 | --- | --- |
 | [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 返回日程过滤器对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -186,10 +180,6 @@ static filterByTitle(title: string): EventFilter
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-EventFilter-static filterByTitle(title: string): EventFilter--><!--Device-EventFilter-static filterByTitle(title: string): EventFilter-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -206,7 +196,7 @@ static filterByTitle(title: string): EventFilter
 | --- | --- |
 | [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 返回日程过滤器对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

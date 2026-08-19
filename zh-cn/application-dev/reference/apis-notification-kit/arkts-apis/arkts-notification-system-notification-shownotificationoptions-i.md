@@ -2,8 +2,6 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 7
 
 <!--Device-unnamed-export interface ShowNotificationOptions--><!--Device-unnamed-export interface ShowNotificationOptions-End-->
@@ -13,8 +11,7 @@
 ## 导入模块
 
 ```TypeScript
-import { ActionResult } from 'ActionResult';
-import { ShowNotificationOptions } from 'ShowNotificationOptions';
+import { Notification, ActionResult, ShowNotificationOptions } from '@kit.NotificationKit';
 ```
 
 ## clickAction
@@ -28,8 +25,6 @@ clickAction?: ActionResult
 **类型：** [ActionResult](arkts-notification-system-notification-actionresult-i.md)
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 
@@ -49,8 +44,6 @@ contentText?: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 7
 
 <!--Device-ShowNotificationOptions-contentText?: string--><!--Device-ShowNotificationOptions-contentText?: string-End-->
@@ -68,8 +61,6 @@ contentTitle?: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 7
 

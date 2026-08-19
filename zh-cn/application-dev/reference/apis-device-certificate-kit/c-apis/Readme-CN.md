@@ -1,4 +1,4 @@
-# CAPI<!--c-device-certificate-kit-->
+# C API<!--c-device-certificate-kit-->
 
 - 头文件
     - [cm_native_type.h](capi-cm-native-type-h.md)

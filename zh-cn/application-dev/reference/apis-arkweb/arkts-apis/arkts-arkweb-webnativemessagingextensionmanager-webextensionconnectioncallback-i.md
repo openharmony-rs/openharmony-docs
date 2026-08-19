@@ -4,13 +4,15 @@
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-webNativeMessagingExtensionManager-interface WebExtensionConnectionCallback--><!--Device-webNativeMessagingExtensionManager-interface WebExtensionConnectionCallback-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+```
 
 ## onConnect
 
@@ -21,10 +23,6 @@ onConnect(connection: ConnectionNativeInfo): void
 建立连接时的回调函数。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +36,7 @@ onConnect(connection: ConnectionNativeInfo): void
 | --- | --- | --- | --- |
 | connection | [ConnectionNativeInfo](arkts-arkweb-webnativemessagingextensionmanager-connectionnativeinfo-i.md) | 是 | 连接信息，包含连接ID、扩展应用包名、浏览器扩展源URL和扩展进程ID等信息。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -147,10 +145,6 @@ onDisconnect(connection: ConnectionNativeInfo): void
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebExtensionConnectionCallback-onDisconnect(connection: ConnectionNativeInfo): void--><!--Device-WebExtensionConnectionCallback-onDisconnect(connection: ConnectionNativeInfo): void-End-->
@@ -163,7 +157,7 @@ onDisconnect(connection: ConnectionNativeInfo): void
 | --- | --- | --- | --- |
 | connection | [ConnectionNativeInfo](arkts-arkweb-webnativemessagingextensionmanager-connectionnativeinfo-i.md) | 是 | 连接信息，包含连接ID、扩展应用包名、浏览器扩展源URL和扩展进程ID等信息。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -272,10 +266,6 @@ onFailed(code: NmErrorCode, errMsg: string): void
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebExtensionConnectionCallback-onFailed(code: NmErrorCode, errMsg: string): void--><!--Device-WebExtensionConnectionCallback-onFailed(code: NmErrorCode, errMsg: string): void-End-->
@@ -289,7 +279,7 @@ onFailed(code: NmErrorCode, errMsg: string): void
 | code | [NmErrorCode](arkts-arkweb-webnativemessagingextensionmanager-nmerrorcode-e.md) | 是 | 错误码。 |
 | errMsg | string | 是 | 错误码对应信息。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

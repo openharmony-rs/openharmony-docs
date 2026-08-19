@@ -4,13 +4,14 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface GestureGroupGestureHandlerOptions--><!--Device-unnamed-interface GestureGroupGestureHandlerOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## gestures
 
@@ -23,10 +24,6 @@ gestures: GestureHandler<TapGestureHandler | LongPressGestureHandler | PanGestur
 **类型：** [GestureHandler](arkts-arkui-gesturehandler-c.md)&lt;[TapGestureHandler](arkts-arkui-tapgesturehandler-c.md) \| [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) \| [PanGestureHandler](arkts-arkui-pangesturehandler-c.md) \| [SwipeGestureHandler](arkts-arkui-swipegesturehandler-c.md) \| [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) \| [RotationGestureHandler](arkts-arkui-rotationgesturehandler-c.md) \| [GestureGroupHandler](arkts-arkui-gesturegrouphandler-c.md)&gt;[]
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +44,6 @@ mode: GestureMode
 **类型：** [GestureMode](arkts-arkui-gesturemode-e.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@ Enumerates the states available for the system screen recorder.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum ScreenCaptureEvent--><!--Device-unnamed-enum ScreenCaptureEvent-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -23,10 +19,6 @@ SCREENCAPTURE_STARTED = 0
 The system screen recorder starts screen capture.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ScreenCaptureEvent-SCREENCAPTURE_STARTED = 0--><!--Device-ScreenCaptureEvent-SCREENCAPTURE_STARTED = 0-End-->
 
@@ -44,10 +36,6 @@ The system screen recorder stops screen capture.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ScreenCaptureEvent-SCREENCAPTURE_STOPPED = 1--><!--Device-ScreenCaptureEvent-SCREENCAPTURE_STOPPED = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -63,10 +51,6 @@ SCREENCAPTURE_DIED = 2
 The system screen recorder died.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ScreenCaptureEvent-SCREENCAPTURE_DIED = 2--><!--Device-ScreenCaptureEvent-SCREENCAPTURE_DIED = 2-End-->
 

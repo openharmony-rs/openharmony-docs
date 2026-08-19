@@ -1,5 +1,10 @@
 # readLinesSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## readLinesSync
 
 ```TypeScript
@@ -10,9 +15,7 @@ function readLinesSync(filePath: string, options?: Options): ReaderIterator
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function readLinesSync(filePath: string, options?: Options): ReaderIterator--><!--Device-fileIo-function readLinesSync(filePath: string, options?: Options): ReaderIterator-End-->
 

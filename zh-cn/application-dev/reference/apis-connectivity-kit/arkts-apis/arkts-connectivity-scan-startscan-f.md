@@ -1,5 +1,11 @@
 # startScan
 
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.ConnectivityKit';
+```
+
 ## startScan
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promis
 开始使用过滤器扫描指定的NearLink设备。 如果不想使用过滤器，可以将过滤器参数设置为{@code null}。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 

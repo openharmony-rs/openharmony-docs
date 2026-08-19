@@ -8,10 +8,6 @@ type ActivityType = 'still' | 'relativeStill'
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-stationary-type ActivityType = 'still' | 'relativeStill'--><!--Device-stationary-type ActivityType = 'still' | 'relativeStill'-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary

@@ -1,18 +1,19 @@
 # DotIndicator
 
-构造圆点指示器的样式，继承自[Indicator](arkts-arkui-indicator-c.md#indicator)。
+构造圆点指示器的样式，继承自[Indicator](arkts-arkui-indicator-c.md)。
 
 **继承/实现关系：** DotIndicator extends Indicator<DotIndicator>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class DotIndicator--><!--Device-unnamed-declare class DotIndicator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## color
 
@@ -23,10 +24,6 @@ color(value: ResourceColor): DotIndicator
 Swiper组件圆点导航指示器的颜色。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,10 +57,6 @@ DotIndicator的构造函数。 > **说明：** > - 按压导航点时，导航�
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -83,10 +76,6 @@ indicatorIcon(iconList: Array<IndicatorIconInfo>): DotIndicator
 设置导航点图标。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -120,10 +109,6 @@ Swiper组件圆点导航指示器的高。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -155,10 +140,6 @@ itemWidth(value: Length): DotIndicator
 Swiper组件圆点导航指示器的宽。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -192,10 +173,6 @@ mask(value: boolean): DotIndicator
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -228,10 +205,6 @@ maxDisplayCount(maxDisplayCount: number): DotIndicator
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -261,10 +234,6 @@ selectedColor(value: ResourceColor): DotIndicator
 选中Swiper组件圆点导航指示器的颜色。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -298,10 +267,6 @@ selectedItemHeight(value: Length): DotIndicator
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -334,10 +299,6 @@ selectedItemWidth(value: Length): DotIndicator
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -369,10 +330,6 @@ space(space: LengthMetrics): DotIndicator
 设置Swiper圆点导航点间距。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

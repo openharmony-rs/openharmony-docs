@@ -1,5 +1,11 @@
 # unSubscribe（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## unSubscribe
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unSubscribe(events: MechEventType[]): void
 取消事件注册
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void--><!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void-End-->
 

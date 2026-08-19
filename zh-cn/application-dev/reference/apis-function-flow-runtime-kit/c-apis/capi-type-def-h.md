@@ -30,6 +30,7 @@
 | [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md) | ffrt_rwlock_t | 读写锁结构体，用于存储读写锁的内部数据。 |
 | [ffrt_cond_t](capi-ffrt-ffrt-cond-t.md) | ffrt_cond_t | 条件变量结构体，用于存储条件变量的内部数据。 |
 | [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md) | ffrt_fiber_t | 纤程结构体，用于存储纤程执行上下文。 |
+| [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | ffrt_task_handle_t | 任务句柄，用于标识不同的任务。 |
 
 ### 枚举
 
@@ -252,7 +253,7 @@ poller回调函数类型。当poller检测到已注册事件时调用该回调�
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* data | 指向poller注册时传入的用户数据指针。 |
+| void\* data | 指向poller注册时传入的用户数据指针。 |
 | uint32_t event | 触发回调的事件类型。 |
 
 ### ffrt_timer_cb()
@@ -271,6 +272,6 @@ typedef void (*ffrt_timer_cb)(void* data)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* data | 指向定时器注册时传入的用户数据指针。 |
+| void\* data | 指向定时器注册时传入的用户数据指针。 |
 
 

@@ -1,5 +1,11 @@
 # isStorageTypeSupported
 
+## 导入模块
+
+```TypeScript
+import { preferences } from '@kit.ArkData';
+```
+
 ## isStorageTypeSupported
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isStorageTypeSupported(type: StorageType): boolean
 判断当前平台是否支持传入的存储模式，此为同步接口。如果当前平台支持传入的存储模式时，该接口返回true；反之，返回false。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +40,7 @@ function isStorageTypeSupported(type: StorageType): boolean
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Incorrect parameter types |
 
-## 示例
+**示例**
 
 ```TypeScript
 let xmlType = preferences.StorageType.XML;

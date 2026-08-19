@@ -1,5 +1,11 @@
 # killProcessesByBundleName
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -9,10 +15,6 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 终止指定应用包名的应用进程。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -42,7 +44,7 @@ function killProcessesByBundleName(bundleName: string, clearPageStack: boolean, 
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

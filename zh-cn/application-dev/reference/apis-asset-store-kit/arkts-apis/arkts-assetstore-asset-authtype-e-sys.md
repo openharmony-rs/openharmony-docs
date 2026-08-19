@@ -4,10 +4,6 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-asset-enum AuthType--><!--Device-asset-enum AuthType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -21,10 +17,6 @@ PRIVATE_PIN = 0x100
 隐私PIN码仅支持系统应用
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-AuthType-PRIVATE_PIN = 0x100--><!--Device-AuthType-PRIVATE_PIN = 0x100-End-->
 

@@ -1,5 +1,10 @@
 # getUid
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getUid
 
 ```TypeScript
@@ -10,11 +15,9 @@ function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md#getuid)
+**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -27,9 +30,9 @@ function getUid(agent: WantAgent, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 获取WantAgent实例的用户ID的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 获取WantAgent实例的用户ID的回调方法。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
@@ -94,11 +97,9 @@ function getUid(agent: WantAgent): Promise<number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md#getuid)
+**替代接口：** [getUid](arkts-ability-wantagent-getuid-f.md)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -118,7 +119,7 @@ function getUid(agent: WantAgent): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | 以Promise形式返回获取WantAgent实例的用户ID。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';

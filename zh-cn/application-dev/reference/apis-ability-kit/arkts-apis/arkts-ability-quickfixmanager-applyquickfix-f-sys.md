@@ -1,5 +1,11 @@
 # applyQuickFix（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { quickFixManager } from '@kit.AbilityKit';
+```
+
 ## applyQuickFix
 
 ```TypeScript
@@ -9,10 +15,6 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCal
 快速修复的补丁安装接口。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -27,7 +29,7 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapModuleQuickFixFiles | Array&lt;string&gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当快速修复的补丁安装成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当快速修复的补丁安装成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCal
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { quickFixManager } from '@kit.AbilityKit';
@@ -68,10 +70,6 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>
 快速修复的补丁安装接口。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
@@ -103,7 +101,7 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { quickFixManager } from '@kit.AbilityKit';

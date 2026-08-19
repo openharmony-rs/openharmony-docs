@@ -4,13 +4,14 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class LineHeightStyle--><!--Device-unnamed-declare class LineHeightStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -21,10 +22,6 @@ constructor(lineHeight: LengthMetrics)
 文本行高的构造函数。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,13 +43,9 @@ constructor(lineHeight: LengthMetrics)
 constructor(lineHeight: LengthMetrics, lineHeightMultiple?: number)
 ```
 
-文本行高及倍数的构造函数。 > **说明：** > > - lineHeightMultiple与lineHeight或[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md#linespacingstyle)同时设置时，仅lineHeightMultiple生效，行高为该行最高字体高度 > 与倍数的乘积。 > > - lineHeightMultiple小于0或undefined时不生效，使用lineHeight和[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md#linespacingstyle)设置行高和行间距。 > > - lineHeightMultiple等于0时等效于设置为1。
+文本行高及倍数的构造函数。 > **说明：** > > - lineHeightMultiple与lineHeight或[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md)同时设置时，仅lineHeightMultiple生效，行高为该行最高字体高度 > 与倍数的乘积。 > > - lineHeightMultiple小于0或undefined时不生效，使用lineHeight和[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md)设置行高和行间距。 > > - lineHeightMultiple等于0时等效于设置为1。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -67,7 +60,7 @@ constructor(lineHeight: LengthMetrics, lineHeightMultiple?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | lineHeight | LengthMetrics | 是 | 文本行高设置项。LengthMetrics的value值大于0时，文本行高设置生效，否则文本行高自适应字体大小。 |
-| lineHeightMultiple | number | 否 | 文本行高的倍数值。 <br>取值范围：[0, +∞)，支持小数。 <br>**说明：** <br>与lineHeight或[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md#linespacingstyle)同时设置时，仅lineHeightMultiple生效，行高为该行最高字体高度与倍数的乘积； <br>小于0或undefined时不生效； <br>等于0时等效于设置为1。 |
+| lineHeightMultiple | number | 否 | 文本行高的倍数值。 <br>取值范围：[0, +∞)，支持小数。 <br>**说明：** <br>与lineHeight或[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md)同时设置时，仅lineHeightMultiple生效，行高为该行最高字体高度与倍数的乘积； <br>小于0或undefined时不生效； <br>等于0时等效于设置为1。 |
 
 ## lineHeight
 
@@ -80,10 +73,6 @@ readonly lineHeight: number
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -99,15 +88,11 @@ readonly lineHeight: number
 readonly lineHeightMultiple?: number
 ```
 
-文本行高的倍数值。实际生效的行高为该行最高的字体高度与倍数的乘积。 **说明：** lineHeightMultiple与lineHeight或[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md#linespacingstyle)同时设置时，仅lineHeightMultiple生效。 lineHeightMultiple小于0或undefined时不生效。lineHeightMultiple等于0时等效于设置为1。
+文本行高的倍数值。实际生效的行高为该行最高的字体高度与倍数的乘积。 **说明：** lineHeightMultiple与lineHeight或[LineSpacingStyle](arkts-arkui-linespacingstyle-c.md)同时设置时，仅lineHeightMultiple生效。 lineHeightMultiple小于0或undefined时不生效。lineHeightMultiple等于0时等效于设置为1。
 
 **类型：** number
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

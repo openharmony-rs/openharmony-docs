@@ -1,18 +1,20 @@
 # createHash
 
+## 导入模块
+
+```TypeScript
+import { hash } from '@kit.CoreFileKit';
+```
+
 ## createHash
 
 ```TypeScript
 function createHash(algorithm: string): HashStream
 ```
 
-创建并返回 HashStream 对象，该对象可用于使用给定的 algorithm 生成哈希摘要。
+创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。 > **说明：** > > HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hash-function createHash(algorithm: string): HashStream--><!--Device-hash-function createHash(algorithm: string): HashStream-End-->
 
@@ -28,7 +30,7 @@ function createHash(algorithm: string): HashStream
 
 | 类型 | 说明 |
 | --- | --- |
-| [HashStream](arkts-corefile-hash-hashstream-c.md) | HashStream 类的实例。 |
+| [HashStream](arkts-corefile-hash-hashstream-c.md) | HashStream类的实例，用于生成哈希摘要。 |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function createHash(algorithm: string): HashStream
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 // pages/xxx.ets

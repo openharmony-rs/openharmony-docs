@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export enum VoNRState--><!--Device-call-export enum VoNRState-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -24,10 +20,6 @@ VONR_STATE_OFF = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VoNRState-VONR_STATE_OFF = 0--><!--Device-VoNRState-VONR_STATE_OFF = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -43,10 +35,6 @@ VONR_STATE_ON = 1
 打开状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VoNRState-VONR_STATE_ON = 1--><!--Device-VoNRState-VONR_STATE_ON = 1-End-->
 

@@ -1,5 +1,10 @@
 # getMissionInfos（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getMissionInfos
 
 ```TypeScript
@@ -10,11 +15,9 @@ function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallba
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getmissioninfos系统接口)
+**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -30,9 +33,9 @@ function getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallba
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | numMax | number | 是 | 任务信息数量上限。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt;&gt; | 是 | 回调函数，返回任务信息数组。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt;&gt; | 是 | 回调函数，返回任务信息数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';
@@ -59,11 +62,9 @@ function getMissionInfos(deviceId: string, numMax: number): Promise<Array<Missio
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md#getmissioninfos系统接口)
+**替代接口：** [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md)
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -86,7 +87,7 @@ function getMissionInfos(deviceId: string, numMax: number): Promise<Array<Missio
 | --- | --- |
 | Promise&lt;Array&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt;&gt; | Promise对象，返回任务信息数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';

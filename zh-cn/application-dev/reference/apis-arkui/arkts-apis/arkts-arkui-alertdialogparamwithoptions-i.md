@@ -1,18 +1,19 @@
-# AlertDialogParamWithOptions
+# AlertDialogParamWithOptions(AlertDialog)
 
-继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)。
+继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。
 
-**继承/实现关系：** AlertDialogParamWithOptions extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md#alertdialogparam)
+**继承/实现关系：** AlertDialogParamWithOptions extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface AlertDialogParamWithOptions--><!--Device-unnamed-declare interface AlertDialogParamWithOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## buttonDirection
 
@@ -27,10 +28,6 @@ buttonDirection?: DialogButtonDirection
 **默认值：** DialogButtonDirection.AUTO
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,10 +48,6 @@ buttons: Array<AlertDialogButtonOptions>
 **类型：** Array&lt;[AlertDialogButtonOptions](arkts-arkui-alertdialogbuttonoptions-i.md)&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

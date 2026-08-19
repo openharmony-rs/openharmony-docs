@@ -6,13 +6,13 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [compatibleComponent](arkts-na-interop-compatiblecomponent-f.md#compatiblecomponent) | 在ArkTS-Sta中引用ArkTS-Dyn自定义组件的占位组件。 |
-| [compatibleWrappedBuilder](arkts-na-interop-compatiblewrappedbuilder-f.md#compatiblewrappedbuilder) | 为ArkTS-Sta提供使用ArkTS-Dyn WrappedBuilder对象的互操作方法。 |
-| [enableCompatibleObservedV2ForDynamic](arkts-na-interop-enablecompatibleobservedv2fordynamic-f.md#enablecompatibleobservedv2fordynamic) | 在ArkTS-Dyn中引用ArkTS-Sta中使用@ObservedV2和@Trace修饰的类。 |
-| [enableCompatibleObservedV2ForStatic](arkts-na-interop-enablecompatibleobservedv2forstatic-f.md#enablecompatibleobservedv2forstatic) | 在ArkTS-Sta中引用ArkTS-Dyn中使用@ObservedV2和@Trace修饰的类。 |
-| [getCompatibleState](arkts-na-interop-getcompatiblestate-f.md#getcompatiblestate) | 为ArkTS-Sta的状态变量获取一个ArkTS-Dyn的@State代理对象，用于与ArkTS-Dyn的状态变量进行互操作。 |
-| [transferCompatibleBuilder](arkts-na-interop-transfercompatiblebuilder-f.md#transfercompatiblebuilder) | 在ArkTS-Sta中给ArkTS-Dyn的@BuilderParam传递@Builder函数（适用于非字面量更新场景）。 |
-| [transferCompatibleUpdatableBuilder](arkts-na-interop-transfercompatibleupdatablebuilder-f.md#transfercompatibleupdatablebuilder) | 在ArkTS-Sta中给ArkTS-Dyn的@BuilderParam传递@Builder函数（适用于字面量更新场景）。 |
+| [compatibleComponent](arkts-na-interop-compatiblecomponent-f.md) | 在ArkTS-Sta中引用ArkTS-Dyn自定义组件的占位组件。 |
+| [compatibleWrappedBuilder](arkts-na-interop-compatiblewrappedbuilder-f.md) | 为ArkTS-Sta提供使用ArkTS-Dyn WrappedBuilder对象的互操作方法。 |
+| [enableCompatibleObservedV2ForDynamic](arkts-na-interop-enablecompatibleobservedv2fordynamic-f.md) | 在ArkTS-Dyn中引用ArkTS-Sta中使用@ObservedV2和@Trace修饰的类。 |
+| [enableCompatibleObservedV2ForStatic](arkts-na-interop-enablecompatibleobservedv2forstatic-f.md) | 在ArkTS-Sta中引用ArkTS-Dyn中使用@ObservedV2和@Trace修饰的类。 |
+| [getCompatibleState](arkts-na-interop-getcompatiblestate-f.md) | 为ArkTS-Sta的状态变量获取一个ArkTS-Dyn的@State代理对象，用于与ArkTS-Dyn的状态变量进行互操作。 |
+| [transferCompatibleBuilder](arkts-na-interop-transfercompatiblebuilder-f.md) | 在ArkTS-Sta中给ArkTS-Dyn的@BuilderParam传递@Builder函数（适用于非字面量更新场景）。 |
+| [transferCompatibleUpdatableBuilder](arkts-na-interop-transfercompatibleupdatablebuilder-f.md) | 在ArkTS-Sta中给ArkTS-Dyn的@BuilderParam传递@Builder函数（适用于字面量更新场景）。 |
 
 ### 接口
 

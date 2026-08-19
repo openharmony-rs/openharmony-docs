@@ -6,7 +6,7 @@ typedef struct Input_DeviceListener {...} Input_DeviceListener
 
 ## 概述
 
-Defines the struct for listening for device hot swapping. It is applicable to applications that need torespond to input device connection and disconnection in real time, such as games and music players. By listening fordevice hot swapping events, applications can update the input status in a timely manner, improving user experienceand avoiding exceptions caused by device disconnection.
+定义一个结构体用于监听设备热插拔，该功能适用于需要实时响应输入设备连接和断开场景的应用程序，如游戏、音乐播放器等。通过监听设备热插拔事件，应用程序可以及时更新输入状态，提升用户体验，避免因设备断开导致的异常情况。
 
 **起始版本：** 13
 
@@ -20,7 +20,7 @@ Defines the struct for listening for device hot swapping. It is applicable to ap
 
 | 名称 | 描述 |
 | -- | -- |
-| [Input_DeviceAddedCallback](capi-oh-input-manager-h.md#input_deviceaddedcallback) deviceAddedCallback | Callback for device addition events |
-| [Input_DeviceRemovedCallback](capi-oh-input-manager-h.md#input_deviceremovedcallback) deviceRemovedCallback | Callback for device removal events |
+| [Input_DeviceAddedCallback](capi-oh-input-manager-h.md#input_deviceaddedcallback) deviceAddedCallback | 定义一个回调函数，用于接收设备热插事件。 |
+| [Input_DeviceRemovedCallback](capi-oh-input-manager-h.md#input_deviceremovedcallback) deviceRemovedCallback | 定义一个回调函数，用于接收设备热拔事件。 |
 
 

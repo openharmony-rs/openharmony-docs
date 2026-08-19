@@ -1,5 +1,11 @@
 # combine
 
+## 导入模块
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+```
+
 ## combine
 
 ```TypeScript
@@ -9,8 +15,6 @@ function combine(options: Matrix4Transit): Matrix4Transit
 Matrix的叠加函数，可以将两个矩阵的效果叠加起来生成一个新的矩阵对象。 > **说明：**
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 

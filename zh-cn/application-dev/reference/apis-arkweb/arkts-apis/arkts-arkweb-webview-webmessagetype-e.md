@@ -1,12 +1,8 @@
 # WebMessageType
 
-[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md#webmessageport)接口所支持的数据类型。
+[WebMessagePort](arkts-arkweb-webview-webmessageport-i.md)接口所支持的数据类型。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-webview-enum WebMessageType--><!--Device-webview-enum WebMessageType-End-->
 
@@ -21,10 +17,6 @@ NOT_SUPPORT = 0
 不支持的数据类型。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ STRING = 1
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebMessageType-STRING = 1--><!--Device-WebMessageType-STRING = 1-End-->
@@ -61,10 +49,6 @@ NUMBER = 2
 数值类型。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ BOOLEAN = 3
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebMessageType-BOOLEAN = 3--><!--Device-WebMessageType-BOOLEAN = 3-End-->
@@ -101,10 +81,6 @@ ARRAY_BUFFER = 4
 原始二进制数据缓冲区。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ ARRAY = 5
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebMessageType-ARRAY = 5--><!--Device-WebMessageType-ARRAY = 5-End-->
@@ -141,10 +113,6 @@ ERROR = 6
 错误类型。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

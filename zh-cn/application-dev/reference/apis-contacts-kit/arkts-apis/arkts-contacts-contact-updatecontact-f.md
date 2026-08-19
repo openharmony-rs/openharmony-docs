@@ -1,5 +1,11 @@
 # updateContact
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## updateContact
 
 ```TypeScript
@@ -9,8 +15,6 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 更新联系人。使用callback异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -26,10 +30,10 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md)接口获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,10 +70,6 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
 <!--Device-contact-function updateContact(context: Context, contact: Contact, callback: AsyncCallback<void>): void--><!--Device-contact-function updateContact(context: Context, contact: Contact, callback: AsyncCallback<void>): void-End-->
@@ -81,8 +81,8 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md)接口获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -91,7 +91,7 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -134,8 +134,6 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [updateContact](#updatecontact)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
@@ -150,11 +148,11 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -194,10 +192,6 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
 <!--Device-contact-function updateContact(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void--><!--Device-contact-function updateContact(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback<void>): void-End-->
@@ -209,9 +203,9 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -220,7 +214,7 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | 1.Parameter error. Possible causes:Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -264,8 +258,6 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [updateContact](#updatecontact)(context: Context, contact: Contact, attrs?: ContactAttributes)
@@ -280,7 +272,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
@@ -289,7 +281,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
@@ -324,10 +316,6 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
 <!--Device-contact-function updateContact(context: Context, contact: Contact, attrs?: ContactAttributes): Promise<void>--><!--Device-contact-function updateContact(context: Context, contact: Contact, attrs?: ContactAttributes): Promise<void>-End-->
@@ -339,7 +327,7 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)接口获取。 |
+| contact | [Contact](arkts-contacts-contact-contact-c.md) | 是 | 联系人信息。id必填，可通过[selectContacts](arkts-contacts-contact-selectcontacts-f.md)接口获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 否 | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
@@ -355,7 +343,7 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 

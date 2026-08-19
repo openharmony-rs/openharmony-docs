@@ -1,5 +1,11 @@
 # destroyAbilityConnectionSession
 
+## 导入模块
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+```
+
 ## destroyAbilityConnectionSession
 
 ```TypeScript
@@ -9,10 +15,6 @@ function destroyAbilityConnectionSession(sessionId: int): void
 销毁应用间的协同会话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function destroyAbilityConnectionSession(sessionId: int): void
 | --- | --- | --- | --- |
 | sessionId | int | 是 | 待销毁的协同会话ID。&lt;br /&gt;取值范围是大于100的整数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

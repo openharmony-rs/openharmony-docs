@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-bundle-export enum AbilitySubType--><!--Device-bundle-export enum AbilitySubType-End-->
@@ -22,8 +20,6 @@ UNSPECIFIED = 0
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-AbilitySubType-UNSPECIFIED = 0--><!--Device-AbilitySubType-UNSPECIFIED = 0-End-->
@@ -39,8 +35,6 @@ CA = 1
 安装冲突 （常见于升级和已有应用基本信息不一致）。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

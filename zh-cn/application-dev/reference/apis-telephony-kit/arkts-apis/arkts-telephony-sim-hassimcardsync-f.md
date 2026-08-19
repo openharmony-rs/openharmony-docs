@@ -1,5 +1,11 @@
 # hasSimCardSync
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## hasSimCardSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function hasSimCardSync(slotId: int): boolean
 Checks whether a SIM card is inserted in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sim-function hasSimCardSync(slotId: int): boolean--><!--Device-sim-function hasSimCardSync(slotId: int): boolean-End-->
 
@@ -30,7 +32,7 @@ Checks whether a SIM card is inserted in a specified slot.
 | --- | --- |
 | boolean | Returns { |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sim } from '@kit.TelephonyKit';

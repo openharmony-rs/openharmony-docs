@@ -1,5 +1,12 @@
 # @ohos.multimedia.avCastPicker
 
+## 导入模块
+
+```TypeScript
+import { AVCastPicker } from '@kit.AVSessionKit';
+import { AVCastPickerState, AVCastPickerStyle, AVCastPickerColorMode } from '@kit.AVSessionKit';
+```
+
 ## 汇总
 
 ### 结构体

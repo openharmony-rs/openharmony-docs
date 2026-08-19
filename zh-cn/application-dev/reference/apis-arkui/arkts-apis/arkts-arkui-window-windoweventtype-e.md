@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum WindowEventType--><!--Device-window-enum WindowEventType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -21,10 +17,6 @@ WINDOW_SHOWN = 1
 切到前台。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ WINDOW_ACTIVE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WindowEventType-WINDOW_ACTIVE = 2--><!--Device-WindowEventType-WINDOW_ACTIVE = 2-End-->
@@ -61,10 +49,6 @@ WINDOW_INACTIVE = 3
 失焦状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ WINDOW_HIDDEN = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WindowEventType-WINDOW_HIDDEN = 4--><!--Device-WindowEventType-WINDOW_HIDDEN = 4-End-->
@@ -101,10 +81,6 @@ WINDOW_DESTROYED = 7
 窗口销毁。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

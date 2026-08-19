@@ -8,10 +8,6 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void--><!--Device-unnamed-type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
