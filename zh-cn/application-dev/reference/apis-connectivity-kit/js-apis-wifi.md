@@ -6,7 +6,7 @@
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块主要提供WLAN基础功能（如WLAN扫描、连接管理、连接信息查询、信号强度获取等）、P2P（peer-to-peer）功能（如设备发现、群组创建与管理、P2P连接等）和WLAN消息通知的相应服务，适用于应用需要通过WLAN接入网络或与其他设备进行点对点数据传输和互联互通的场景。
+该模块主要提供WLAN基础功能（如WLAN扫描、连接管理、连接信息查询、信号强度获取等）、P2P（peer-to-peer）功能（如设备发现、群组创建与管理、P2P连接等）和WLAN消息通知服务，适用于应用通过WLAN接入网络或与其他设备进行点对点数据传输和互联互通的场景。
 
 > **说明：**
 >
@@ -49,7 +49,7 @@ import wifi from '@ohos.wifi';
 try {
   let isWifiActive = wifi.isWifiActive();
   console.info("isWifiActive:" + isWifiActive);
-}catch(error){
+} catch (error) {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
@@ -58,11 +58,11 @@ try {
 
 scan(): boolean
 
-启动WLAN扫描。调用此方法启动扫描后，需等待扫描完成（可通过监听wifiScanStateChange事件获知），再通过[getScanInfos](#wifigetscaninfosdeprecated)获取扫描结果。
+启动WLAN扫描。
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.startScan](js-apis-wifiManager.md#wifimanagerstartscan21)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.scan](js-apis-wifiManager.md#wifimanagerscandeprecated)替代。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.LOCATION
 
@@ -125,7 +125,7 @@ getScanInfos(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfodeprecated)&gt;&gt; | 是 | 回调函数。当成功时，err为0，data为扫描到的热点；否则error为非0值，data为空。 |
+  | callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfodeprecated)&gt;&gt; | 是 | 回调函数。当成功时，err为0，data为扫描到的热点；否则err为非0值，data为空。 |
 
 **示例：**
 
@@ -165,13 +165,13 @@ WLAN热点信息。
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
 | bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
-| capabilities | string | 否 | 否 | 热点能力，包括支持的安全协议、加密方式等信息。 |
+| capabilities | string | 否 | 否 | 热点能力。 |
 | securityType | [WifiSecurityType](#wifisecuritytypedeprecated) | 否 | 否 | WLAN加密类型。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
 | band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHz；2表示5GHz。|
-| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。|
-| channelWidth | number | 否 | 否 | WLAN接入点的带宽，单位为MHz。 |
-| timestamp | number | 否 | 否 | 时间戳，单位为毫秒。 |
+| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。 |
+| channelWidth | number | 否 | 否 | WLAN接入点的带宽。 |
+| timestamp | number | 否 | 否 | 时间戳。 |
 
 
 ## WifiSecurityType<sup>(deprecated)</sup>
@@ -217,7 +217,7 @@ WLAN配置信息。
 
 addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
-添加不可信网络配置（即候选网络配置，该类配置不会被系统自动连接），使用Promise异步回调。
+添加不可信网络配置，使用Promise异步回调。
 
 > **说明：**
 >
@@ -316,7 +316,7 @@ try {
       domains: []
     }
   }
-  wifi.addUntrustedConfig(config,(error,result) => {
+  wifi.addUntrustedConfig(config, (error, result) => {
     console.info("result:" + JSON.stringify(result));
   });  
 }catch(error){
@@ -429,7 +429,7 @@ try {
       domains: []
     }
   }
-  wifi.removeUntrustedConfig(config,(error,result) => {
+  wifi.removeUntrustedConfig(config, (error, result) => {
   console.info("result:" + JSON.stringify(result));
   });  
 }catch(error){
@@ -456,7 +456,7 @@ getSignalLevel(rssi: number, band: number): number
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | rssi | number | 是 | 热点的信号强度(dBm)。 |
-  | band | number | 是 | WLAN接入点的频段。1表示2.4GHz；2表示5GHz。 |
+  | band | number | 是 | WLAN接入点的频段。 |
 
 **返回值：**
 
@@ -471,7 +471,7 @@ import wifi from '@ohos.wifi';
 try {
   let rssi = 0;
   let band = 0;
-  let level = wifi.getSignalLevel(rssi,band);
+  let level = wifi.getSignalLevel(rssi, band);
   console.info("level:" + JSON.stringify(level));
 }catch(error){
   console.error("failed:" + JSON.stringify(error));
@@ -658,7 +658,7 @@ getIpInfo(): IpInfo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[IpInfo](js-apis-wifiManager.md#ipinfo)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -688,9 +688,9 @@ IP信息。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[IpInfo](js-apis-wifiManager.md#ipinfo)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo)替代。
 
-**系统能力：** SystemCapability.Communication.WiFi.AP.Core
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -700,7 +700,7 @@ IP信息。
 | primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 |
 | secondDns | number | 否 | 否 | 备DNS服务器IP地址。 |
 | serverIp | number | 否 | 否 | DHCP服务端IP地址。 |
-| leaseDuration | number | 否 | 否 | IP地址租用时长。 |
+| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒。 |
 
 
 ## wifi.getCountryCode<sup>(deprecated)</sup>
@@ -986,7 +986,7 @@ wifi.getP2pPeerDevices().then(data => {
 
 createGroup(config: WifiP2PConfig): boolean
 
-创建群组。创建群组后，可调用[removegroup](#wifiremovegroupdeprecated)移除已创建的群组。
+创建群组。
 
 > **说明：**
 >
@@ -1039,7 +1039,7 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceAddress | string | 否 | 否 | 设备地址，格式为MAC地址，例如：00:11:22:33:44:55。 |
+| deviceAddress | string | 否 | 否 | 设备地址。 |
 | netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 |
 | passphrase | string | 否 | 否 | 群组密钥。 |
 | groupName | string | 否 | 否 | 群组名称。 |
@@ -1098,7 +1098,7 @@ try {
 
 p2pConnect(config: WifiP2PConfig): boolean
 
-执行P2P连接。调用前需先调用[startDiscoverDevices](#wifistartdiscoverdevicesdeprecated)发现对端设备，并建议注册p2pConnectionChange、p2pPeerDeviceChange等事件以获取连接状态变化。
+执行P2P连接。
 
 > **说明：**
 >
@@ -1113,7 +1113,7 @@ p2pConnect(config: WifiP2PConfig): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | 是 | 连接配置信息。需先调用[startDiscoverDevices](#wifistartdiscoverdevicesdeprecated)发现设备并通过[getP2pPeerDevices](#wifigetp2ppeerdevicesdeprecated)获取对端设备地址后设置deviceAddress。 |
+  | config | [WifiP2PConfig](#wifip2pconfigdeprecated) | 是 | 连接配置信息。 |
 
 **返回值：**
 
@@ -1130,7 +1130,7 @@ let recvP2pConnectionChangeFunc = (result:wifi.WifiP2pLinkedInfo) => {
     console.info("p2p connection change receive event: " + JSON.stringify(result));
     wifi.getP2pLinkedInfo((err, data:wifi.WifiP2pLinkedInfo) => {
         if (err) {
-            console.error('failed to get getP2pLinkedInfo: ' + JSON.stringify(err));
+            console.error("failed to get getP2pLinkedInfo: " + JSON.stringify(err));
             return;
         }
         console.info("get getP2pLinkedInfo: " + JSON.stringify(data));
@@ -1224,7 +1224,7 @@ try {
 
 startDiscoverDevices(): boolean
 
-开始发现设备。调用此方法后，可调用[stopDiscoverDevices](#wifistopdiscoverdevicesdeprecated)停止发现设备以释放资源。
+开始发现设备。
 
 > **说明：**
 >
@@ -1269,7 +1269,7 @@ stopDiscoverDevices(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:操作执行成功 false:操作执行失败。 |
+  | boolean | true:操作执行成功，false:操作执行失败。 |
 
 **示例：**
 ```ts

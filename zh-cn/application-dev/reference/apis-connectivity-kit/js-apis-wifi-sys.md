@@ -1,18 +1,17 @@
 # @ohos.wifi (WLAN)（系统接口）
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @qq_43802146-->
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN基础功能（如使能/去使能WLAN、网络配置管理、热点管理）、P2P（peer-to-peer）功能（如设备发现、连接管理、永久组管理）和WLAN消息通知（如连接状态变更、热点设备接入/离开等事件通知）等相应服务，适用于设备通过WLAN进行网络连接、热点共享、点对点数据传输及互联互通等场景，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供WLAN基础功能（如启用或禁用WLAN、网络配置管理、热点管理）、P2P（peer-to-peer）功能（如设备发现、连接管理、永久组管理）和WLAN消息通知（如连接状态变更、热点设备接入或离开等事件通知）等服务，适用于设备通过WLAN进行网络连接、热点共享、点对点数据传输及互联互通等场景。
 
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wifi (WLAN)](js-apis-wifi.md)。
-> 从API version 9开始废弃，建议使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager-sys.md)替代。
 
 
 ## 导入模块
@@ -46,7 +45,7 @@ import wifi from '@ohos.wifi';
 
 try {
     wifi.enableWifi();
-}catch(error){
+} catch (error) {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
@@ -55,7 +54,7 @@ try {
 
 disableWifi(): boolean
 
-去使能WLAN。
+禁用WLAN。
 
 **系统接口：** 此接口为系统接口。
 
@@ -149,15 +148,15 @@ WLAN配置信息。
 
 | **名称** | **类型** | **可读** | **可写** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| creatorUid | number | 是 | 否 | 创建用户的ID。 <br> **系统接口：** 此接口为系统接口。 |
-| disableReason | number | 是 | 否 | 禁用原因。 <br> **系统接口：** 此接口为系统接口。 |
-| netId | number | 是 | 否 | 分配的网络ID。 <br> **系统接口：** 此接口为系统接口。 |
-| randomMacType | number | 是 | 否 | 随机MAC类型。 <br> **系统接口：** 此接口为系统接口。 |
-| randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br> **系统接口：** 此接口为系统接口。 |
-| ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br> **系统接口：** 此接口为系统接口。 |
-| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br> **系统接口：** 此接口为系统接口。 |
-| staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br> **系统接口：** 此接口为系统接口。 |
-| staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br> **系统接口：** 此接口为系统接口。 |
+| creatorUid | number | 是 | 否 | 创建用户的ID。 <br /> **系统接口：** 此接口为系统接口。 |
+| disableReason | number | 是 | 否 | 禁用原因。 <br /> **系统接口：** 此接口为系统接口。 |
+| netId | number | 是 | 否 | 分配的网络ID。 <br /> **系统接口：** 此接口为系统接口。 |
+| randomMacType | number | 是 | 否 | 随机MAC类型。 <br /> **系统接口：** 此接口为系统接口。 |
+| randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br /> **系统接口：** 此接口为系统接口。 |
+| ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
+| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br /> **系统接口：** 此接口为系统接口。 |
+| staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
+| staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
 
 
 ## IpType<sup>7+</sup>
@@ -392,16 +391,14 @@ try {
 
 提供WLAN连接的相关信息。
 
-**系统接口：** 此接口为系统接口。
-
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 可读 | 可写 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| networkId | number | 是 | 否 | 网络配置ID。 |
-| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 |
-| snr | number | 是 | 否 | 信噪比。 |
-| suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 |
+| networkId | number | 是 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 |
+| chload | number | 是 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 |
+| snr | number | 是 | 否 | 信噪比，单位：dB。 <br /> **系统接口：** 此接口为系统接口。 |
+| suppState | [SuppState](#suppstate) | 是 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
 
 
 ## SuppState
@@ -445,7 +442,7 @@ getSupportedFeatures(): number
 
   | **类型** | **说明** |
   | -------- | -------- |
-  | number | 支持的特性值，以位掩码形式返回，可通过位与操作判断是否支持特定特性（例如：(features & 0x0001) != 0 表示支持基础结构模式特性）。 |
+  | number | 支持的特性值。 |
 
 **特性ID值枚举：**
 
@@ -530,7 +527,7 @@ try {
 
 reconnect(): boolean
 
-重新连接网络。与[reassociate](#wifireassociate7)的区别：[reassociate](#wifireassociate7)用于重新执行关联流程，reconnect()用于重新建立网络连接，请根据实际场景选择使用。
+重新连接网络。
 
 **系统接口：** 此接口为系统接口。
 
@@ -914,7 +911,7 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 是 | 否 | 热点的SSID，编码格式为UTF-8。 |
 | securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | 是 | 否 | 加密类型。 |
-| band | number | 是 | 否 | 热点的频段。1: 2.4G, 2: 5G, 3: 双模频段 |
+| band | number | 是 | 否 | 热点的带宽。1: 2.4G, 2: 5G, 3: 双模频段 |
 | preSharedKey | string | 是 | 否 | 热点的密钥。 |
 | maxConn | number | 是 | 否 | 最大设备连接数。 |
 
@@ -943,7 +940,7 @@ import wifi from '@ohos.wifi';
 
 try {
     let config = wifi.getHotspotConfig();
-    console.info("result:" + JSON.stringify(config));
+    console.info("result:" + JSON.stringify(config));        
 }catch(error){
     console.error("failed:" + JSON.stringify(error));
 }
@@ -998,7 +995,7 @@ try {
 
 deletePersistentGroup(netId: number): boolean
 
-删除P2P永久组。永久组是设备间保存的P2P组配置，可在后续连接中复用而无需重新协商。
+删除永久组。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1017,7 +1014,7 @@ deletePersistentGroup(netId: number): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 操作是否执行成功。 true:操作执行成功，false:操作执行失败。 |
+  | boolean | true:操作执行成功，false:操作执行失败。 |
 
 **示例：**
 ```ts
@@ -1048,7 +1045,7 @@ setDeviceName(devName: string): boolean
 
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
-  | devName | string | 是 | 设备名称。|
+  | devName | string | 是 | 设备名称。 |
 
 **返回值：**
 
@@ -1072,7 +1069,7 @@ try {
 
 on(type: "streamChange", callback: Callback&lt;number&gt;): void
 
-注册WLAN流更改事件，使用callback异步回调。
+注册WIFI流更改事件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1091,7 +1088,7 @@ on(type: "streamChange", callback: Callback&lt;number&gt;): void
 
 off(type: "streamChange", callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN流更改事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
+取消注册WIFI流更改事件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1104,15 +1101,15 @@ off(type: "streamChange", callback?: Callback&lt;number&gt;): void
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
-| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0：无，1：下行，2：上行，3：双向。不填写时取消该事件所有已注册的回调。 |
+| callback | Callback&lt;number&gt; | 否 | 状态改变回调函数，返回0：无，1：下行，2：上行，3：双向。 |
 
 **示例：**
 ```ts
 import wifi from '@ohos.wifi';
 
-let recvStreamChangeFunc = (result:number) => {
+let recvStreamChangeFunc = (result: number) => {
     console.info("Receive stream change event: " + result);
-}
+};
 
 // Register event
 wifi.on("streamChange", recvStreamChangeFunc);
@@ -1127,7 +1124,7 @@ wifi.off("streamChange", recvStreamChangeFunc);
 
 on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点sta加入事件，使用callback异步回调。
+注册wifi热点sta加入事件。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1146,7 +1143,7 @@ on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
 
 off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点sta加入事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
+取消注册wifi热点sta加入事件。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1159,15 +1156,15 @@ off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 当有设备接入热点时触发的回调函数，返回接入设备的信息。不填写时取消该事件所有已注册的回调。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 状态改变回调函数。 |
 
   **示例：**
 ```ts
 import wifi from '@ohos.wifi';
 
-let recvHotspotStaJoinFunc = (result:wifi.StationInfo) => {
+let recvHotspotStaJoinFunc = (result: wifi.StationInfo) => {
     console.info("Receive hotspot sta join event: " + result);
-}
+};
 
 // Register event
 wifi.on("hotspotStaJoin", recvHotspotStaJoinFunc);
@@ -1181,7 +1178,7 @@ wifi.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点sta离开事件。
+注册wifi热点sta离开事件。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1194,13 +1191,13 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 当有设备离开热点时触发的回调函数，返回离开设备的信息。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 状态改变回调函数。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
 off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点sta离开事件。当不传入callback时，取消所有注册；当传入callback时，仅取消与该callback匹配的注册。
+取消注册wifi热点sta离开事件。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1213,15 +1210,15 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 当有设备离开热点时触发的回调函数，返回离开设备的信息。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 状态改变回调函数。 |
 
   **示例：**
 ```ts
 import wifi from '@ohos.wifi';
 
-let recvHotspotStaLeaveFunc = (result:wifi.StationInfo) => {
+let recvHotspotStaLeaveFunc = (result: wifi.StationInfo) => {
     console.info("Receive hotspot sta leave event: " + result);
-}
+};
 
 // Register event
 wifi.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
@@ -1230,4 +1227,3 @@ wifi.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
 wifi.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ```
-

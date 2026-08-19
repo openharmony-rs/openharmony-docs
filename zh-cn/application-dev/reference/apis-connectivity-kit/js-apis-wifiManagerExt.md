@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN扩展接口，包括WLAN热点的使能与去使能、获取支持的功率模式、查询与设置当前功率模式等能力，适用于路由器等非通用类型产品进行WLAN扩展功能的定制化管理，帮助开发者实现更灵活的WLAN热点与功率控制策略。
+该模块主要提供WLAN扩展接口，供非通用类型产品使用。
 
 > **说明：**
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -23,7 +23,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 enableHotspot(): void
 
-使能WLAN热点。
+启用WLAN热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -49,7 +49,7 @@ enableHotspot(): void
 
   try {
       wifiManagerExt.enableHotspot();
-  }catch(error){
+  } catch (error) {
       console.error("failed: " + JSON.stringify(error));
   }
 ```
@@ -58,7 +58,7 @@ enableHotspot(): void
 
 disableHotspot(): void
 
-去使能WLAN热点。
+禁用WLAN热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -103,7 +103,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Promise对象。表示设备支持的功率模式列表。 |
+  | Promise&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
@@ -116,7 +116,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 | 2701000 | Operation failed. |
 ## PowerMode
 
-表示功率模式的枚举。功率模式用于控制WLAN热点的发射功率，不同模式在功耗与信号覆盖范围上有所不同，开发者可根据实际部署场景选择合适的模式。
+表示功率模式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
@@ -141,7 +141,7 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果error为非0，表示获取支持的功率模式操作出现错误。 |
+  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果err为非0，表示获取支持的功率模式操作出现错误。 |
 
 **错误码：**
 
@@ -171,7 +171,7 @@ wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => 
 
 getPowerMode(): Promise&lt;PowerMode&gt;
 
-获取功率模式。使用Promise异步回调。
+获取功率模式，使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -181,7 +181,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[PowerMode](#powermode)&gt; | Promise对象。表示设备支持的功率模式。|
+  | Promise&lt;[PowerMode](#powermode)&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
@@ -225,7 +225,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果error为非0，表示获取支持的功率模式操作出现错误。 |
+  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示获取功率模式操作出现错误。 |
 
 **错误码：**
 
@@ -261,7 +261,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
 setPowerMode(mode: PowerMode) : void
 
-设置功率模式。可在夜间低流量时段使用SLEEPING（睡眠模式）以降低功耗，日常使用选择GENERAL（常规模式），在需要远距离覆盖或多隔墙场景下选择THROUGH_WALL（穿墙模式）以增强信号穿透能力。
+设置功率模式。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。

@@ -6,10 +6,7 @@
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块主要提供WLAN基础功能（无线接入、无线加密、无线漫游等）、P2P（peer-to-peer）服务的基础功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。适用于以下场景：
-- 设备间无线网络连接和数据共享场景，如智能家居设备配网、文件互传。
-- 点对点通信场景，如设备间直接数据传输、投屏。
-- 设备发现场景，如发现周边可连接的WLAN设备或热点。
+该模块主要提供WLAN基础功能（无线接入、无线加密、无线漫游等）、P2P（peer-to-peer）服务的基础功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -36,11 +33,11 @@ isWifiActive(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 是否已使能。true：已使能，&nbsp;false：未使能。 |
+  | boolean | true:已使能，&nbsp;false:未使能。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -66,13 +63,13 @@ enableWifi(): void
 
 启动WLAN。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和（ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用）
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -99,13 +96,13 @@ disableWifi(): void
 
 关闭WLAN。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和（ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用）
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -141,7 +138,7 @@ scan(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -177,7 +174,7 @@ startScan(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -208,7 +205,7 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)替代。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 和（ohos.permission.GET_WIFI_PEERS_MAC 或（ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION））
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或(ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -220,7 +217,7 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -250,7 +247,7 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -323,7 +320,7 @@ getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -380,7 +377,7 @@ getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -435,12 +432,12 @@ WLAN热点信息。
 | securityType | [WifiSecurityType](#wifisecuritytype) | 否 | 否 | WLAN加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | band | number | 否 | 否 | WLAN接入点的频段，1表示2.4GHz；2表示5GHz。 |
-| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| frequency | number | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | channelWidth | number | 否 | 否 | WLAN接入点的带宽，具体定义参见[WifiChannelWidth](#wifichannelwidth)。 |
-| centerFrequency0 | number | 否 | 否 | 热点的中心频率，单位：MHz。 |
-| centerFrequency1 | number | 否 | 否 | 热点的中心频率，单位：MHz。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 |
+| centerFrequency0 | number | 否 | 否 | 热点的中心频率。 |
+| centerFrequency1 | number | 否 | 否 | 热点的中心频率。如果热点使用两个不重叠的WLAN信道，则返回两个中心频率，分别用centerFrequency0和centerFrequency1表示。 |
 | infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem)&gt; | 否 | 否 | 信息元素。 |
-| timestamp | number | 否 | 否 | 时间戳，单位：微秒（μs）。 |
+| timestamp | number | 否 | 否 | 时间戳。 |
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
 | isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
 
@@ -469,10 +466,10 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 | -------- | -------- | -------- |
 | WIFI_SEC_TYPE_INVALID | 0 | 无效加密类型。 |
 | WIFI_SEC_TYPE_OPEN | 1 | 开放加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| WIFI_SEC_TYPE_WEP | 2 | Wired&nbsp;Equivalent&nbsp;Privacy&nbsp;(WEP)加密类型。候选网络（添加网络配置信息）配置不支持该加密类型。 |
+| WIFI_SEC_TYPE_WEP | 2 | Wired&nbsp;Equivalent&nbsp;Privacy&nbsp;(WEP)加密类型。候选网络(添加网络配置信息)配置不支持该加密类型。 |
 | WIFI_SEC_TYPE_PSK | 3 | Pre-shared&nbsp;key&nbsp;(PSK)加密类型。 |
 | WIFI_SEC_TYPE_SAE | 4 | Simultaneous&nbsp;Authentication&nbsp;of&nbsp;Equals&nbsp;(SAE)加密类型。 |
-| WIFI_SEC_TYPE_EAP | 5 | Extensible Authentication Protocol (EAP)加密类型。 |
+| WIFI_SEC_TYPE_EAP | 5 | EAP authentication (EAP)加密类型。 |
 | WIFI_SEC_TYPE_EAP_SUITE_B | 6 | Suite-B 192位加密类型。 |
 | WIFI_SEC_TYPE_OWE | 7 | Opportunistic&nbsp; Wireless&nbsp; Encryption&nbsp;(OWE)机会性无线加密类型。 |
 | WIFI_SEC_TYPE_WAPI_CERT | 8 | WAPI-Cert加密类型。 |
@@ -550,12 +547,12 @@ WLAN配置信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| bssid | string | 否 | 是 | 热点的BSSID，例如：00:11:22:33:44:55。当需要连接指定BSSID的热点时填写；不填写时，系统将根据SSID匹配热点进行连接。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| bssidType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 热点的BSSID类型。不指定时默认为随机设备地址类型（RANDOM_DEVICE_ADDRESS）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| preSharedKey | string | 否 | 否 | 热点的密钥，最大长度为64字节。<br>当securityType为WIFI_SEC_TYPE_OPEN时该字段需为空串，当securityType为WIFI_SEC_TYPE_WAPI_CERT时该字段无需传参，其他加密类型不能为空串。<br>当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只允许为5、10、13、26、16和32字节其中之一，并且当字段长度为偶数时，该字段必须为纯十六进制数字构成。<br>当securityType为WIFI_SEC_TYPE_SAE时，该字段最小长度为1字节。<br>当securityType为WIFI_SEC_TYPE_PSK时，该字段最小长度为8字节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| isHiddenSsid | boolean | 否 | 是 | 是否是隐藏网络。true表示是隐藏网络，false表示不是隐藏网络。不填写时默认为false。 |
+| bssid | string | 否 | 是 | 热点的BSSID，例如：00:11:22:33:44:55。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bssidType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 热点的BSSID类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| preSharedKey | string | 否 | 否 | 热点的密钥，最大长度为64字节。<br>当securityType为WIFI_SEC_TYPE_OPEN时该字段需为空串，其他加密类型不能为空串。<br>当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只允许为5、10、13、26、16和32字节其中之一，并且当字段长度为偶数时，该字段必须为纯十六进制数字构成。<br>当securityType为WIFI_SEC_TYPE_SAE时，该字段最小长度为1字节。<br>当securityType为WIFI_SEC_TYPE_PSK时，该字段最小长度为8字节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| isHiddenSsid | boolean | 否 | 是 | 是否是隐藏网络。true表示是隐藏网络，false表示不是隐藏网络。 |
 | securityType | [WifiSecurityType](#wifisecuritytype)| 否 | 否 | 加密类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| netId<sup>22+</sup> | number | 否 | 是 | 分配的网络ID。当需要更新已有网络配置时填写对应的网络ID；不填写时表示新建网络配置，由系统自动分配ID。 |
+| netId<sup>22+</sup> | number | 否 | 是 | 分配的网络ID。 |
 | eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | 否 | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时需要填写。 |
 | wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | 否 | 是 | WAPI身份验证协议配置。只有securityType为WIFI_SEC_TYPE_WAPI_CERT或WIFI_SEC_TYPE_WAPI_PSK时需要填写。 |
 | showNoInternetDialog | boolean | 否 | 是 | 当首次网络探测检测到无互联网连接时，是否显示提示框。若为false，默认网络绑定到蜂窝网络，不显示提示框；若为true，显示无互联网连接提示框，提示用户选择默认网络绑定。默认值为true。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
@@ -608,8 +605,8 @@ WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议�
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 |
-| wapiAsCert | string | 否 | 否 | AS证书（Authentication Server Certificate，认证服务器证书）。 |
-| wapiUserCert | string | 否 | 否 | 用户证书。仅在securityType为WIFI_SEC_TYPE_WAPI_CERT时需要填写。 |
+| wapiAsCert | string | 否 | 否 | AS证书(Authentication Server Certificate，认证服务器证书)。 |
+| wapiUserCert | string | 否 | 否 | 用户证书。 |
 
 ## WifiCapability
 
@@ -679,11 +676,11 @@ WAPI认证方式的枚举。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT | 1 | Default。Wi-Fi6以下的WLAN类别。 |
-| WIFI6 | 2 | Wi-Fi6。 |
-| WIFI6_PLUS | 3 | Wi-Fi6+。 |
-| WIFI7<sup>15+</sup> | 4 | Wi-Fi7。 |
-| WIFI7_PLUS<sup>15+</sup> | 5 | Wi-Fi7+。 |
+| DEFAULT | 1 | Default。Wifi6以下的wifi类别。 |
+| WIFI6 | 2 | Wifi6。 |
+| WIFI6_PLUS | 3 | Wifi6+。 |
+| WIFI7<sup>15+</sup> | 4 | Wifi7。 |
+| WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 |
 
 ## ConnectSettings
 
@@ -702,7 +699,7 @@ WAPI认证方式的枚举。
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | 否 | 否 | 候选网络配置的ID。 |
 | withUserAction | boolean | 否 | 是 | 连接时是否提示用户进行信任确认，true表示与connectToCandidateConfigWithUserAction接口功能一致，false表示不提示用户进行信任确认，默认false 。|
-| userActionTimeout | number | 否 | 是 | 提示用户进行信任确认弹框显示时间（单位秒），仅在withUserAction为true时生效，有效值范围1-30秒，默认10秒 。|
+| userActionTimeout | number | 否 | 是 | 提示用户进行信任确认弹框显示时间（单位秒）有效值范围1-30秒，默认10秒 。|
 | addNetworkToSystem | boolean | 否 | 是 | 是否添加网络到系统，true表示将建议网络添加到系统网络中，false表示保持建议网络，默认false 。|
 
 
@@ -713,7 +710,7 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 添加候选网络配置，使用Promise异步回调，使用前先使能WLAN。
 
 - 通过传入[WifiDeviceConfig](#wifideviceconfig)对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
-- 返回一个Promise对象，解析后得到一个数字，表示配置的ID（用于区分、管理不同WLAN配置，其他相关API操作，错误处理调试等）。
+- 返回一个Promise对象，解析后得到一个数字，表示配置的ID，用于区分和管理不同WLAN配置。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -735,7 +732,7 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -768,10 +765,9 @@ addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-添加候选网络配置，使用callback异步回调，使用前先使能WLAN。
+添加候选网络配置，使用callback异步回调。
 
-- 将指定的WLAN设备配置添加为候选网络。
-- 添加后的网络在没有连接记录的情况下无法触发自动回连。如需连接，可通过connectToCandidateConfig或connectToCandidateConfigWithUserAction方法发起连接，页面确认连接成功后即可实现自动回连。
+- 将指定的WLAN设备配置添加为候选网络，添加后的网络在没有连接记录的情况下无法触发自动回连，可以通过 connectToCandidateConfig或connectToCandidateConfigWithUserAction 方法实现候选网络连接，页面确认连接成功后，可实现自动回连。
 - 候选网络属于应用维度添加的网络配置，和系统网络配置是相互隔离的，在系统WLAN页面不可见。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -789,7 +785,7 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -845,7 +841,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -896,7 +892,7 @@ removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -929,7 +925,7 @@ removeDevice(id: number): void
 - 通过网络配置ID删除已保存的WLAN网络配置信息。
 - 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和（ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用）
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -941,7 +937,7 @@ removeDevice(id: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -969,7 +965,7 @@ getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取候选网络配置。
 
-- 候选网络是指通过addCandidateConfig添加的应用维度网络配置。
+- 候选网络是指曾经连接过或者手动添加的网络配置。
 - 该接口返回当前应用添加的所有已保存但当前未连接的WLAN候选网络配置。
 - 用于展示可连接的网络列表。
 
@@ -989,7 +985,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1023,7 +1019,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 connectToCandidateConfig(networkId: number): void
 
-应用使用该接口连接到自己添加的候选网络。建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)方法监听到扫描结果刷新后再连接，以提高连接成功率。
+应用使用该接口连接到自己添加的候选网络。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -1039,7 +1035,7 @@ connectToCandidateConfig(networkId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1092,7 +1088,7 @@ connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1150,7 +1146,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Wi-Fi错误码](errorcode-wifi.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1202,7 +1198,7 @@ addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1251,7 +1247,7 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1298,7 +1294,7 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1338,7 +1334,7 @@ connectToNetwork(networkId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -1386,12 +1382,12 @@ getSignalLevel(rssi: number, band: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1416,9 +1412,11 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 获取WLAN连接信息。使用Promise异步回调。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 。 
+**需要权限：** ohos.permission.GET_WIFI_INFO
 
-当macType是1（设备MAC地址）时，获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API version 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
+> **说明：**
+> - 当macType是1（设备MAC地址）时，获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API 8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
+> - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1432,7 +1430,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1453,6 +1451,8 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 > - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **参数：**
@@ -1463,7 +1463,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1489,7 +1489,7 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 
 getLinkedInfoSync(): WifiLinkedInfo
 
-获取WLAN连接信息，使用同步方式返回结果。与getLinkedInfo（异步回调）相比，本接口直接同步返回结果，适用于需要立即获取连接信息且不介意阻塞的场景；如需避免阻塞当前线程，建议使用getLinkedInfo异步接口。
+获取WLAN连接信息，使用同步方式返回结果。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1507,7 +1507,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1544,7 +1544,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 | rxLinkSpeed<sup>10+</sup> | number | 否 | 否 | WLAN接入点的下行速度，单位Mbps。 |
 | maxSupportedTxLinkSpeed<sup>10+</sup> | number | 否 | 否 | 当前支持的最大上行速率，单位Mbps。 |
 | maxSupportedRxLinkSpeed<sup>10+</sup> | number | 否 | 否 | 当前支持的最大下行速率，单位Mbps。 |
-| frequency | number | 否 | 否 | WLAN接入点的频率，单位：MHz。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| frequency | number | 否 | 否 | WLAN接入点的频率。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | isHidden | boolean | 否 | 否 | WLAN接入点是否是隐藏网络，true表示是隐藏网络，false表示不是隐藏网络。 |
 | isRestricted | boolean | 否 | 否 | WLAN接入点是否限制数据量，true表示限制，false表示不限制。 |
 | macType | number | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 |
@@ -1554,7 +1554,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。 |
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前路由器支持的最高Wi-Fi标准。 |
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 当前设备连接Wi-Fi后支持的最高协议版本。 |
-| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
+| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hilink，true表示支持，&nbsp;false表示不支持。 |
 | wifiLinkType<sup>18+</sup> | [WifiLinkType](#wifilinktype18) | 否 | 是 |  Wi-Fi7连接类型。  |
 
 
@@ -1568,8 +1568,8 @@ getLinkedInfoSync(): WifiLinkedInfo
 | -------- | -------- | -------- |
 | DEFAULT_LINK | 0 | 默认连接类型。 |
 | WIFI7_SINGLE_LINK | 1 | Wi-Fi7单链连接。 |
-| WIFI7_MLSR | 2 | Wi-Fi7 MLSR（multi-link single-radio，多链路单天线）连接。 |
-| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单射频）连接。 |
+| WIFI7_MLSR | 2 | Wi-Fi 7 MLSR（multi-link single-radio，多链路单射频）连接。 |
+| WIFI7_EMLSR | 3 | Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。 |
 | WIFI7_STR | 4 | Wi-Fi7 STR（Simultaneous Tx and Rx，同时发送和接收）连接。 |
 
 ## ConnState
@@ -1606,11 +1606,11 @@ isConnected(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 是否已连接。true：已连接，&nbsp;false：未连接。 |
+  | boolean | true:已连接，&nbsp;false:未连接。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1645,7 +1645,7 @@ disconnect(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1692,7 +1692,7 @@ isFeatureSupported(featureId: number): boolean
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | Wifi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B。 |
@@ -1702,11 +1702,11 @@ isFeatureSupported(featureId: number): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 是否支持指定的WLAN特性。true：支持，&nbsp;false：不支持。 |
+  | boolean | true:支持，&nbsp;false:不支持。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1750,7 +1750,7 @@ API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1787,11 +1787,11 @@ getIpInfo(): IpInfo
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | [IpInfo](#ipinfo) | IP信息，包括IP地址、网关、子网掩码、DNS服务器地址等。 |
+  | [IpInfo](#ipinfo) | IP信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1819,8 +1819,8 @@ IPV4信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 否 | 否 | IP地址。（ipAddress值为number类型，需要转换为点分十进制格式的IP地址（如192.168.1.1），具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)）。|
-| gateway | number | 否 | 否 | 网关。（值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)）。 |
+| ipAddress | number | 否 | 否 | IP地址。（ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)）。|
+| gateway | number | 否 | 否 | 网关。 |
 | netmask | number | 否 | 否 | 掩码。 |
 | primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 |
 | secondDns | number | 否 | 否 | 备DNS服务器IP地址。 |
@@ -1832,7 +1832,7 @@ IPV4信息。
 
 getIpv6Info(): Ipv6Info
 
-获取IPv6信息。
+获取IPV6信息。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1842,11 +1842,11 @@ getIpv6Info(): Ipv6Info
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [Ipv6Info](#ipv6info10) |IPv6信息，包括链路IPv6地址、全局IPv6地址、网关、网络掩码、DNS服务器地址等。 |
+| [Ipv6Info](#ipv6info10) | Ipv6信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1867,21 +1867,21 @@ getIpv6Info(): Ipv6Info
 ```
 ## Ipv6Info<sup>10+</sup>
 
-IPv6信息。
+Ipv6信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| linkIpv6Address | string | 否 | 否 | 链路IPv6地址。 |
-| globalIpv6Address | string | 否 | 否 | 全局IPv6地址。 |
-| randomGlobalIpv6Address | string | 否 | 否 | 随机全局IPv6地址。 预留字段，暂不支持。|
-| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地IPv6地址。 |
-| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地IPv6地址。 |
+| linkIpv6Address | string | 否 | 否 | 链路Ipv6地址。 |
+| globalIpv6Address | string | 否 | 否 | 全局Ipv6地址。 |
+| randomGlobalIpv6Address | string | 否 | 否 | 随机全局Ipv6地址。 预留字段，暂不支持。|
+| uniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 唯一本地Ipv6地址。 |
+| randomUniqueIpv6Address<sup>12+</sup> | string | 否 | 是 | 随机唯一本地Ipv6地址。 |
 | gateway | string | 否 | 否 | 网关。 |
 | netmask | string | 否 | 否 | 网络掩码。 |
-| primaryDNS | string | 否 | 否 | 主DNS服务器IPv6地址。 |
-| secondDNS | string | 否 | 否 | 备DNS服务器IPv6地址。 |
+| primaryDNS | string | 否 | 否 | 主DNS服务器Ipv6地址。 |
+| secondDNS | string | 否 | 否 | 备DNS服务器Ipv6地址。 |
 
 ## wifiManager.getCountryCode
 
@@ -1901,7 +1901,7 @@ getCountryCode(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1944,11 +1944,11 @@ isBandTypeSupported(bandType: WifiBandType): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 是否支持当前频段。true：支持，&nbsp;false：不支持。 |
+  | boolean | true:支持，&nbsp;false:不支持。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1984,11 +1984,11 @@ isMeteredHotspot(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 是否是手机热点。true：是手机热点，&nbsp;false：不是手机热点。 |
+  | boolean | true:是手机热点，&nbsp;false:不是手机热点。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2029,7 +2029,7 @@ isHotspotActive(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2070,7 +2070,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2099,7 +2099,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2128,7 +2128,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 ## WifiP2pLinkedInfo
 
-提供P2P连接的相关信息。
+提供WLAN连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -2156,8 +2156,6 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 获取P2P当前组信息。使用Promise异步回调。
 
-使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法获取到当前组信息。
-
 **需要权限：**
 
 API 10起：ohos.permission.GET_WIFI_INFO
@@ -2172,7 +2170,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2200,7 +2198,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2229,7 +2227,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
-获取P2P对端设备列表信息。使用Promise异步回调。使用前需确保已通过[startDiscoverDevices](#wifimanagerstartdiscoverdevices)完成设备发现阶段，否则无法正常获取到对端设备列表信息。
+获取P2P对端设备列表信息。使用Promise异步回调。
 
 **需要权限：**
 
@@ -2245,7 +2243,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2273,7 +2271,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2312,7 +2310,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 | deviceAddressType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备MAC地址类型。 |
 | primaryDeviceType | string | 否 | 否 | 主设备类型。 |
 | deviceStatus | [P2pDeviceStatus](#p2pdevicestatus) | 否 | 否 | 设备状态。 |
-| groupCapabilities | number | 否 | 否 | 群组能力，表示群组支持的能力特性。 |
+| groupCapabilities | number | 否 | 否 | 群组能力。 |
 
 
 ## P2pDeviceStatus
@@ -2334,7 +2332,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
-获取P2P本端设备信息，使用Promise异步回调。使用前需确保已通过createGroup创建群组或通过p2pConnect连接成功，否则无法正常获取到本端设备信息。
+获取P2P本端设备信息，使用Promise异步回调。
 
 **需要权限：** 
 
@@ -2350,7 +2348,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2406,7 +2404,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 createGroup(config: WifiP2PConfig): void
 
-创建P2P群组。创建群组后本端设备成为群主（Group Owner），其他设备可通过[p2pConnect](#wifimanagerp2pconnect)接口加入群组。通过netId参数可指定创建临时组（-1）或永久组（-2）。
+创建群组。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2420,7 +2418,7 @@ createGroup(config: WifiP2PConfig): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2457,7 +2455,7 @@ createGroup(config: WifiP2PConfig): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceAddress | string | 否 | 否 | 设备地址，格式为MAC地址，例如：00:11:22:33:44:55。 |
+| deviceAddress | string | 否 | 否 | 设备地址。 |
 | deviceAddressType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | 否 | 是 | 设备地址类型。 |
 | netId | number | 否 | 否 | 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。 |
 | passphrase | string | 否 | 否 | 群组密钥。 |
@@ -2483,7 +2481,7 @@ createGroup(config: WifiP2PConfig): void
 
 removeGroup(): void
 
-移除已创建的P2P群组。在P2P通信结束、需要断开群组内所有设备连接或切换通信对象时调用此接口，移除后群组资源将被释放，群内设备连接将断开。
+移除群组。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2491,7 +2489,7 @@ removeGroup(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2515,7 +2513,7 @@ removeGroup(): void
 
 p2pConnect(config: WifiP2PConfig): void
 
-执行P2P连接。使用前需先通过[startDiscoverDevices](#wifimanagerstartdiscoverdevices)发现对端设备并获取设备地址，连接过程中通过[p2pConnectionChange](#wifimanageronp2pconnectionchange)事件通知连接状态变化。
+执行P2P连接。
 
 **需要权限：**
 
@@ -2531,7 +2529,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2620,7 +2618,7 @@ p2pCancelConnect(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2644,7 +2642,7 @@ p2pCancelConnect(): void
 
 startDiscoverDevices(): void
 
-开始发现周围的P2P（Wi-Fi Direct）设备。在需要进行设备间点对点通信（如文件分享、屏幕投屏、无线打印等）前，调用此接口搜索附近可用的P2P设备，发现结果可通过[wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2ppeerdevicechange)事件获取。
+开始发现设备。
 
 **需要权限：**
 
@@ -2654,7 +2652,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2678,7 +2676,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 stopDiscoverDevices(): void
 
-停止发现P2P设备。在已找到目标设备准备连接、或不再需要P2P通信时调用此接口停止设备搜索，以减少不必要的功耗和资源占用。
+停止发现设备。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2686,7 +2684,7 @@ stopDiscoverDevices(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2728,7 +2726,7 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2763,7 +2761,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | interface | string | 否 | 否 | 接口名称。 |
 | groupName | string | 否 | 否 | 群组名称。 |
 | networkId | number | 否 | 否 | 网络ID。 |
-| frequency | number | 否 | 否 | 群组的频率，单位：MHz。 |
+| frequency | number | 否 | 否 | 群组的频率。 |
 | clientDevices | [WifiP2pDevice[]](#wifip2pdevice) | 否 | 否 | 接入的设备列表信息。 |
 | goIpAddress | string | 否 | 否 | 群组IP地址。 |
 
@@ -2789,7 +2787,7 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -2829,7 +2827,7 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -2882,7 +2880,7 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -2912,7 +2910,7 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -2964,7 +2962,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -2994,7 +2992,7 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3037,7 +3035,7 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3065,7 +3063,7 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3117,7 +3115,7 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3145,7 +3143,7 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3199,7 +3197,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3227,7 +3225,7 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3270,7 +3268,7 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3298,7 +3296,7 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3343,7 +3341,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3358,6 +3356,8 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 取消注册P2P设备状态改变事件。使用callback异步回调。
 
+**需要权限：** ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **参数：**
@@ -3369,7 +3369,7 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3414,7 +3414,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3440,7 +3440,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3483,7 +3483,7 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3511,7 +3511,7 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3550,7 +3550,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDiscoveryChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：初始状态，1：发现成功。|
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：状态无变化，1：状态有变化。|
 
 **发现设备状态改变事件的枚举：**
 
@@ -3561,7 +3561,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3589,7 +3589,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
@@ -3633,7 +3633,7 @@ isWlanSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
