@@ -512,7 +512,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## PickerColorMode
  
-枚举，Picker的颜色模式。
+表示Picker的颜色模式的枚举。
  
 **起始版本：** 26.1.0
  
@@ -524,6 +524,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 | 名称                | 值   | 说明    |
 |-------------------|-----|-------|
-| AUTO | 0   | 跟随系统。 |
+| AUTO | 0   | 颜色跟随系统。 |
 | LIGHT | 1   | 浅色模式。 |
 | DARK | 2   | 深色模式。 |
