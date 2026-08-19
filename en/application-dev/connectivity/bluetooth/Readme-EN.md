@@ -10,7 +10,7 @@
 
 - [Bluetooth Overview](bluetooth-overview.md)
 
-- [Bluetooth Setting](br-development-guide.md)
+- [Bluetooth Settings](br-development-guide.md)
 
 - Classic Bluetooth
 
@@ -26,7 +26,7 @@
 
   - [BLE Scanning and Advertising](ble-development-guide.md)
 
-  - [GATT-based BLE Connection and Data Transmission Development](gatt-development-guide.md)
+  - [GATT-based Connection and Data Transmission](gatt-development-guide.md)
 
 - Bluetooth FAQs<!--bluetooth-faq-->
 

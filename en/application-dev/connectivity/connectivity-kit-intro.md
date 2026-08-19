@@ -121,3 +121,5 @@ Device capabilities can be used only after the related switch is enabled after u
 For Bluetooth-related services, the following sample is available for reference:
 
 - [Bluetooth](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Bluetooth)
+
+<!--no_check-->
