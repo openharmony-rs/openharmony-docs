@@ -1618,7 +1618,8 @@ ArkTS-Sta: getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySu
 | ------- | ----------------------------------------------------------------- |
 | 11400104 | Failed to get the application memory due to a remote exception. |
 
-**ArkTS-Dyn示例**：
+**示例**：
+ArkTS-Dyn示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1631,7 +1632,7 @@ hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => 
 })
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1691,7 +1692,8 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 | 11400112 | Repeated data dump. |
 | 11400113 | Failed to create dump file. |
 
-**ArkTS-Dyn**：
+**示例**：
+ArkTS-Dyn示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1703,7 +1705,7 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 })
 ```
 
-**ArkTS-Sta**：
+ArkTS-Sta示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1765,7 +1767,8 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 | 11400112 | Repeated data dump. |
 | 11400113 | Failed to create dump file. |
 
-**ArkTS-Dyn示例**：
+**示例**：
+ArkTS-Dyn示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1778,7 +1781,7 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 })
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1841,7 +1844,8 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 | 11400112 | Repeated data dump. |
 | 11400113 | Failed to create dump file. |
 
-**ArkTS-Dyn示例**：
+**示例**：
+ArkTS-Dyn示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
@@ -1854,7 +1858,7 @@ hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) 
 })
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';

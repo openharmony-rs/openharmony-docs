@@ -242,7 +242,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | 是| 是否使能ArkTS对象内存泄漏检测功能。<br>true：开启ArkTS内存泄漏检测功能。<br>false：关闭ArkTS内存泄漏检测功能。|
-| configs | [LeakWatcherConfig](#leakwatcherconfig24) | 是| LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。ArkTS-Sta版本中使用configs时，其中的monitorObjectTypes受语法限制只能赋值单个组件类型，不能使用类似ArkTS-Dyn版本的'|'操作符赋值多个组件类型|
+| configs | [LeakWatcherConfig](#leakwatcherconfig24) | 是| LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。ArkTS-Sta版本中使用configs时，其中的monitorObjectTypes受语法限制只能赋值单个组件类型，不能使用类似ArkTS-Dyn版本的'\|'操作符赋值多个组件类型|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收泄漏检测的导出文件路径。回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
 
@@ -256,7 +256,8 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 | 10801002 | The parameter config is invalid.                                 |
 | 10801003 | The parameter callback is invalid. Input parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
-**ArkTS-Dyn示例：**
+**示例：**
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 ```ts
@@ -278,7 +279,7 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filePath : Array<string>) => {
 });
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
 
 <!--code_no_check-->
 ```ts
