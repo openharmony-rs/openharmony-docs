@@ -2070,6 +2070,10 @@ dlpPermission.getControlledAppLists().then((res) => {
 
 可以执行的插件命令枚举。例如：企业安全应用可以调用卸载插件命令，卸载透明加解密能力。
 
+**起始版本：**  26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 | 名称 | 值 | 说明 |
