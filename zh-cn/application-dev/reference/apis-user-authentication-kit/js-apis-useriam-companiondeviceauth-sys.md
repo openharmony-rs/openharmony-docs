@@ -328,8 +328,8 @@ statusMonitor.getTemplateStatus()
     console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
   })
   .catch((error: BusinessError) => {
-    console.error(`error has been captured. Code: ${error.code}, message: ${error.message}`);
-  })
+    console.error(`Failed to get template status. Code: ${error.code}, message: ${error.message}`);
+  });
 ```
 
 ### onTemplateChange
@@ -376,7 +376,7 @@ try {
   statusMonitor.onTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe template change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -423,7 +423,7 @@ try {
   statusMonitor.offTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe template change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -471,7 +471,7 @@ try {
   statusMonitor.onAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe available device change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -518,7 +518,7 @@ try {
   statusMonitor.offAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe available device change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -577,7 +577,7 @@ try {
   statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe continuous auth change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -633,7 +633,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe continuous auth change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -700,7 +700,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to get status monitor. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -802,10 +802,10 @@ try {
         deviceUserId: otherDeviceUserId
       }]
     };
-  })
+  });
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register device select callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -843,7 +843,7 @@ try {
   companionDeviceAuth.unregisterDeviceSelectCallback();
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister device select callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -899,8 +899,8 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
     console.info('business scope updated');
   })
   .catch((err: BusinessError) => {
-    console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to update enabled business ids. Code: ${err.code}, message: ${err.message}`);
+  });
 ```
 
 ## PasscodeSubmitCallback
