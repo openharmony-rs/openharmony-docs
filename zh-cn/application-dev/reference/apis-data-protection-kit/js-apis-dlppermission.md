@@ -2076,6 +2076,10 @@ dlpPermission.getControlledAppLists().then((res) => {
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CMD_BASE_INSTALL_PLUGIN | 0x1001 | 表示安装插件的命令。 |
