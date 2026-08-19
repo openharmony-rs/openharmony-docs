@@ -1343,7 +1343,7 @@ try {
 
 ### on<sup>(deprecated)</sup>
 
-on(name: AuthEventKey, callback: AuthEvent): void
+on: (name: AuthEventKey, callback: AuthEvent) => void
 
 订阅指定类型的用户认证事件。
 
@@ -1412,7 +1412,7 @@ try {
 
 ### off<sup>(deprecated)</sup>
 
-off(name: AuthEventKey): void
+off: (name: AuthEventKey) => void
 
 取消订阅特定类型的认证事件。
 
@@ -1464,7 +1464,7 @@ try {
 
 ### start<sup>(deprecated)</sup>
 
-start(): void
+start: () => void
 
 开始认证。
 
@@ -1516,7 +1516,7 @@ try {
 
 ### cancel<sup>(deprecated)</sup>
 
-cancel(): void
+cancel: () => void
 
 取消认证。
 
@@ -1896,7 +1896,7 @@ if (cancelCode == userAuth.ResultCode.SUCCESS) {
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult: (result: number, extraInfo: AuthResult): void
+onResult: (result: number, extraInfo: AuthResult) => void
 
 回调函数，返回认证结果。
 
@@ -1938,7 +1938,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 ### onAcquireInfo<sup>(deprecated)</sup>
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: any): void
+onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void
 
 回调函数，返回认证过程中的提示信息，非必须实现。
 
