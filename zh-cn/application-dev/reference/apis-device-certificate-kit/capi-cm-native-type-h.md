@@ -67,7 +67,7 @@ enum OH_CM_ErrorCode
 | OH_CM_SUCCESS = 0 | 成功。 |
 | OH_CM_HAS_NO_PERMISSION = 201 | 权限校验失败。 |
 | OH_CM_CAPABILITY_NOT_SUPPORTED = 801 | 设备不支持。 |
-| OH_CM_INNER_FAILURE = 17500001 | 内部错误。可能原因：1.IPC通讯失败；2.内存操作错误；3.文件操作错误。 |
+| OH_CM_INNER_FAILURE = 17500001 | 内部错误。可能原因：1.IPC通信失败；2.内存操作错误；3.文件操作错误。 |
 | OH_CM_NOT_FOUND = 17500002 | 证书不存在。 |
 | OH_CM_INVALID_CERT_FORMAT = 17500003 | 密钥库格式无效或密钥库密码不正确。 |
 | OH_CM_MAX_CERT_COUNT_REACHED = 17500004 | 证书或凭据数量达到上限。 |
