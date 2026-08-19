@@ -91,7 +91,7 @@ enum OH_CM_CertificatePurpose
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CM_CERT_PURPOSE_DEFAULT = 0 | 默认用途，用于凭据签名用途。 |
+| OH_CM_CERT_PURPOSE_DEFAULT = 0 | 默认用途，用于凭据签名。 |
 | OH_CM_CERT_PURPOSE_ALL = 1 | 所有用途，用于查询凭据功能。 |
 | OH_CM_CERT_PURPOSE_SIGN = 2 | 签名用途。 |
 | OH_CM_CERT_PURPOSE_ENCRYPT = 3 | 加密用途。 |
