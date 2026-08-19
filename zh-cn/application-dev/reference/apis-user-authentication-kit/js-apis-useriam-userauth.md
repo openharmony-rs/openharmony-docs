@@ -1957,7 +1957,7 @@ type AuthEventKey = 'result' | 'tip'
 
 ### callback<sup>(deprecated)</sup>
 
-callback(result: EventInfo) : void
+callback(result: EventInfo): void
 
 通过该回调获取认证结果信息或认证过程中的提示信息。
 
@@ -2084,7 +2084,7 @@ try {
   });
   // 订阅认证过程中的提示信息。
   auth.on('tip', {
-    callback : (result : userAuth.TipInfo) => {
+    callback: (result: userAuth.TipInfo) => {
       switch (result.tip) {
         case userAuth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT:
           // do something;
@@ -2576,7 +2576,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 ### cancelAuth<sup>(deprecated)</sup>
 
-cancelAuth(contextID : Uint8Array) : number
+cancelAuth(contextID: Uint8Array): number
 
 表示通过contextID取消本次认证。
 
