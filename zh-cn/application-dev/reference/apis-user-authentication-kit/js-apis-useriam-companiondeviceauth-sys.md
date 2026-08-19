@@ -1142,7 +1142,7 @@ try {
   });
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register passcode prompt callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1184,6 +1184,6 @@ try {
   companionDeviceAuth.unregisterPasscodePromptCallback();
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister passcode prompt callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
