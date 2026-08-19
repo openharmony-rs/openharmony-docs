@@ -4541,7 +4541,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 注销对应的事件监听，支持关闭事件'seek'。                   |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'seek'。                   |
 | callback | (time: number) => void | 否   | 回调函数，参数time是时间节点，单位为毫秒（ms）。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
@@ -4615,7 +4615,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 | 参数名   | 类型                      | 必填 | 说明     |
 | -------- | ------------------------- | ---- | -------------------------|
-| type     | string                    | 是   | 注销对应的事件监听，支持关闭事件'setSpeed'。            |
+| type     | string                    | 是   | 需要取消的监听事件类型，当前支持的事件类型为'setSpeed'。            |
 | callback | (speed: number) => void | 否   | 回调函数，参数speed是播放倍速。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
@@ -4689,7 +4689,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
 | 参数名   | 类型                                  | 必填 | 说明     |
 | -------- | ------------------------------------- | ---- | ----- |
-| type     | string | 是   | 注销对应的事件监听，支持注销事件'setLoopMode'。|
+| type     | string | 是   | 需要取消的监听事件类型，当前支持的事件类型为'setLoopMode'。|
 | callback | (mode: [LoopMode](arkts-apis-avsession-e.md#loopmode10)) => void | 否   | 回调函数，参数mode是循环模式。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
@@ -4763,7 +4763,7 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 | 参数名   | 类型                                  | 必填 | 说明     |
 | -------- | ------------------------------------- | ---- | ----- |
-| type     | string | 是   | 注销对应的事件监听，支持关闭事件'setTargetLoopMode'。|
+| type     | string | 是   | 需要取消的监听事件类型，当前支持的事件类型为'setTargetLoopMode'。|
 | callback | Callback<[LoopMode](arkts-apis-avsession-e.md#loopmode10)> | 否   | 回调函数，参数表示目标循环模式。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
@@ -4836,7 +4836,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
 | 参数名   | 类型                      | 必填 | 说明     |
 | -------- | ------------------------- | ---- | -------------------------|
-| type     | string                    | 是   | 注销对应的事件监听，支持关闭事件'toggleFavorite'。            |
+| type     | string                    | 是   | 需要取消的监听事件类型，当前支持的事件类型为'toggleFavorite'。            |
 | callback | (assetId: string) => void | 否   | 回调函数，参数assetId是媒体ID。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
@@ -4912,7 +4912,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 | 参数名   | 类型                      | 必填 | 说明    |
 | -------- | ------------------------ | ---- | ----------------------|
-| type     | string                   | 是   | 注销对应的事件监听，支持注销事件'skipToQueueItem'。    |
+| type     | string                   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'skipToQueueItem'。    |
 | callback | (itemId: number) => void<br> | 否   | 回调函数，参数itemId是播放列表单项ID。该参数为可选参数，若不填写该参数，则认为注销所有相关会话的事件监听。 |
 
 **错误码：**
