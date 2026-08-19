@@ -125,7 +125,7 @@ getPowerModel(): Promise&lt;PowerModel&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getSupportedPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -146,7 +146,7 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getSupportedPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getPowerMode](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode-1)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
