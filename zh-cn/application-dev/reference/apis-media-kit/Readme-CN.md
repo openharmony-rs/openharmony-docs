@@ -29,6 +29,8 @@
   <!--Del-->
   - [@ohos.multimedia.media (媒体服务)(系统接口)](js-apis-media-sys.md)
   <!--DelEnd-->
+    - @ohos.multimedia.videoProcessing (视频处理)<!--js-apis-videoProcessing-->
+    - [模块描述](arkts-apis-media-videoProcessing.md)
   - multimedia<!--media-multimedia-arkts-->
     - [SoundPool (音频池)](js-apis-inner-multimedia-soundPool.md)
     <!--Del-->
