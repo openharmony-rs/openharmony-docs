@@ -66120,5 +66120,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-build-on-multi-thread.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkBuildOnMultiThread/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"cmake_start",
+						"start_line":1
+					}
+				]
+			}
+		]
 	}
 ]
