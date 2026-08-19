@@ -336,7 +336,7 @@ ArkTS-Sta: apiAvailable(version: string | int): boolean
 
 <!--RP13-->
 检查指定的API版本在当前设备上是否可用。<br/>
-此方法提供跨不同OpenHarmony/分布式操作系统版本的兼容性检查。它会根据输入格式和API版本范围自动选择合适的版本检查方法。
+此方法提供跨不同OpenHarmony/发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -350,7 +350,7 @@ ArkTS-Sta: apiAvailable(version: string | int): boolean
 
 | 参数名    | 类型      | 必填 | 说明                               |
 | --------- | ---------| ---- | ---------------------------------- |
-| version | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 需要校验的API版本号，支持整数格式版本号和字符串格式版本号。<br>- 字符串采用M.S.F格式（如 "26.0.0","5.0.1"）：<br>    - 对于API 26.0.0及以上版本（version >= 26.0.0）：代表OpenHarmony和发行版系统API版本。<br>    - 对于API 26.0.0以下版本（version < 26.0.0）:代表发行版系统API版本。<br>- 整数格式（如13）：代表OpenHarmony SDK API版本。（仅支持API 26以下）<br>M>=26, 0<=S<=90, 0<=F<=99。传入无效字面量时编译报错。|
+| version | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 需要校验的API版本号，支持整数格式版本号和字符串格式版本号。<br>- 字符串采用M.S.F格式（如 "26.0.0","5.0.1"）：<br>    - 对于API 26.0.0及以上版本（version >= 26.0.0）：代表OpenHarmony和发行版系统API版本。<br>    - 对于API 26.0.0以下版本（version < 26.0.0）:代表发行版系统API版本。<br>- 整数格式（如13）：代表OpenHarmony SDK API版本。（仅支持API 26以下）<br>M>=26, 0<=S<=99, 0<=F<=99。传入无效字面量时编译报错。|
 
 **返回值**：
 
