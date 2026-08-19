@@ -594,7 +594,7 @@
     - [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md)
     - [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)
     - [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md)
-    - [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md)
+    - [ArkUI_Curve\*](capi-arkui-nativemodule-arkui-curve8h.md)
     - [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)
     - [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)
     - [ArkUI_Animator*](capi-arkui-nativemodule-arkui-animator8h.md)
