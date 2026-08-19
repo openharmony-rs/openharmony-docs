@@ -336,7 +336,7 @@ ArkTS-Sta: apiAvailable(version: string | int): boolean
 
 <!--RP13-->
 检查指定的API版本在当前设备上是否可用。<br/>
-此方法提供跨不同OpenHarmony/发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。
+此方法提供OpenHarmony及其各发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
