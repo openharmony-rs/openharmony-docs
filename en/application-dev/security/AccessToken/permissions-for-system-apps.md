@@ -9047,6 +9047,20 @@ Allows an application on the rear armrest screen to connect to the head unit for
 
 **Since**: 26.1.0
 
+## ohos.permission.vehicle.AutoWiredProjection
+
+Allows the use of wired screen casting services to query DisplayPort device information, screen casting status, and more.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 Allows a system application to send the authorization results for model download requests to the model management service.
