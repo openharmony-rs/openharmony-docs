@@ -1069,7 +1069,7 @@ try {
 
 on(type: "streamChange", callback: Callback&lt;number&gt;): void
 
-注册WIFI流更改事件。
+注册Wi-Fi流更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1088,7 +1088,7 @@ on(type: "streamChange", callback: Callback&lt;number&gt;): void
 
 off(type: "streamChange", callback?: Callback&lt;number&gt;): void
 
-取消注册WIFI流更改事件。
+取消注册Wi-Fi流更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1124,7 +1124,7 @@ wifi.off("streamChange", recvStreamChangeFunc);
 
 on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta加入事件。
+注册Wi-Fi热点sta加入事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1137,13 +1137,13 @@ on(type: "hotspotStaJoin", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 回调函数，返回StationInfo对象。 |
 
 ## wifi.off('hotspotStaJoin')<sup>7+</sup>
 
 off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta加入事件。
+取消注册Wi-Fi热点sta加入事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1156,7 +1156,7 @@ off(type: "hotspotStaJoin", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 回调函数，返回StationInfo对象。 |
 
   **示例：**
 ```ts
@@ -1178,7 +1178,7 @@ wifi.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
 
-注册wifi热点sta离开事件。
+注册Wi-Fi热点sta离开事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1191,13 +1191,13 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 是 | 回调函数，返回StationInfo对象。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
 off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册wifi热点sta离开事件。
+取消注册Wi-Fi热点sta离开事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -1210,7 +1210,7 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;[StationInfo](#stationinfo7)&gt; | 否 | 回调函数，返回StationInfo对象。 |
 
   **示例：**
 ```ts
