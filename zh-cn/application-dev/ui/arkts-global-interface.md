@@ -82,7 +82,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识�
 
 ## 常见UIContext接口替换全局接口的场景
 
-以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API version 20开始生效，UIContext.resolveUIContext()、UIContext.getCallingScopeUIContext()、UIContext.getLastFocusedUIContext()、UIContext.getLastForegroundUIContext()、UIContext.getAllUIContexts()以及UIContext()构造函数从API版本22开始生效，其余接口从API version 15开始生效。
+以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API版本20开始生效，UIContext.resolveUIContext()、UIContext.getCallingScopeUIContext()、UIContext.getLastFocusedUIContext()、UIContext.getLastForegroundUIContext()、UIContext.getAllUIContexts()以及UIContext()构造函数从API版本22开始生效，其余接口从API版本15开始生效。
 
 ### 通过自定义组件获取UIContext
 
