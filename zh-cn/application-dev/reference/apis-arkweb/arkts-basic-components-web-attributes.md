@@ -3375,6 +3375,10 @@ enableWebAVSession(enabled: boolean)
 | ------- | -------- | ---- | ------------------ |
 | enabled | boolean  | 是   | 设置是否支持应用对接到播控中心。<br>true表示支持应用对接到播控中心，false表示不支持应用对接到播控中心。<br>传入undefined或null时为true。 |
 
+> **说明：**
+>
+> - 当enabled为false时，Web音视频不接入播控中心。若应用退至后台后，网页音频继续播放，Web组件代理申请AUDIO_PLAYBACK类型长时任务。API version 26及以上，系统会在通知栏显示对应的[长时任务](../task-management/continuous-task.md)通知；删除该通知会停止对应的长时任务。
+
 **示例：**
 
   ```ts
