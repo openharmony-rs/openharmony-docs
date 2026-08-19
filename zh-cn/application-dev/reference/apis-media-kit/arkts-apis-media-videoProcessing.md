@@ -2,9 +2,9 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
-<!--Tester: @xchaosioda-->
+<!--Owner: @zhuyicheng666-->
+<!--Designer: @gongzheng92-->
+<!--Tester: @gongzheng92-->
 <!--Adviser: @w_Machine_cc-->
 
 本模块提供视频质量处理能力，目前支持视频AI-HDR增强相关功能。
