@@ -38,6 +38,7 @@
 - **[TemplateStatus](#templatestatus)**：模板状态接口，包含模板ID、实时数据标识、有效性标识、本地用户ID、添加时间、支持的服务ID列表和设备状态。
 - **[ContinuousAuthParam](#continuousauthparam)**：持续认证参数接口。
 - **[DeviceSelectResult](#deviceselectresult)**：设备选择结果接口。
+- **[PasscodePromptParams](#passcodepromptparams)**：通行码输入请求的参数接口。
 
 ### 核心回调类型
 
@@ -45,6 +46,8 @@
 - **[ContinuousAuthStatusCallback](#continuousauthstatuscallback)**：持续认证状态回调。
 - **[AvailableDeviceStatusCallback](#availabledevicestatuscallback)**：可用设备状态回调。
 - **[DeviceSelectCallback](#deviceselectcallback)**：设备选择回调。
+- **[PasscodeSubmitCallback](#passcodesubmitcallback)**：通行码提交回调。
+- **[PasscodePromptCallback](#passcodepromptcallback)**：通行码请求回调。
 
 ### 核心类
 
@@ -372,8 +375,8 @@ statusMonitor.getTemplateStatus()
     console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
   })
   .catch((error: BusinessError) => {
-    console.error(`error has been captured. Code: ${error.code}, message: ${error.message}`);
-  })
+    console.error(`Failed to get template status. Code: ${error.code}, message: ${error.message}`);
+  });
 ```
 
 ArkTS-Sta示例：
@@ -386,8 +389,8 @@ statusMonitor.getTemplateStatus()
     console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
   })
   .catch((error) => {
-    console.error(`error has been captured: message:${error.message}`);
-  })
+    console.error(`Failed to get template status. Code: ${error.code}, message: ${error.message}`);
+  });
 ```
 
 ### onTemplateChange
@@ -438,7 +441,7 @@ try {
   statusMonitor.onTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe template change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -489,7 +492,7 @@ try {
   statusMonitor.offTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe template change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -541,7 +544,7 @@ try {
   statusMonitor.onAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe available device change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -592,7 +595,7 @@ try {
   statusMonitor.offAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe available device change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -655,7 +658,7 @@ try {
   statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe continuous auth change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -715,7 +718,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe continuous auth change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -788,7 +791,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to get status monitor. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -904,10 +907,10 @@ try {
         deviceUserId: otherDeviceUserId
       }]
     };
-  })
+  });
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register device select callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -948,7 +951,7 @@ try {
   companionDeviceAuth.unregisterDeviceSelectCallback();
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister device select callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1012,8 +1015,8 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
     console.info('business scope updated');
   })
   .catch((err: BusinessError) => {
-    console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to update enabled business ids. Code: ${err.code}, message: ${err.message}`);
+  });
 ```
 
 ArkTS-Sta示例：
@@ -1025,6 +1028,162 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
     console.info('business scope updated');
   })
   .catch((err) => {
-    console.error(`error has been captured: code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to update enabled business ids. Code: ${err.code}, message: ${err.message}`);
+  });
+```
+
+## PasscodeSubmitCallback
+
+type PasscodeSubmitCallback = (passcode: Uint8Array) => void
+
+通行码提交回调函数类型。应用通过此回调将用户输入的通行码提交给系统。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ---------- | ---- | ------------------------------------------------------------ |
+| passcode | Uint8Array | 是 | 用户输入的通行码。 |
+
+## PasscodePromptParams
+
+通行码输入请求的参数，用于传递挑战值等上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ---------- | ---- | ---- | ------------------------------------------------------------ |
+| challenge | Uint8Array | 否 | 否 | 请求通行码时由系统下发的挑战值。 |
+
+## PasscodePromptCallback
+
+type PasscodePromptCallback = (submit: PasscodeSubmitCallback, params: PasscodePromptParams) => void
+
+通行码请求回调函数类型。当系统需要用户输入通行码时，会调用此回调，应用需通过submit回调提交用户输入的通行码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| submit | [PasscodeSubmitCallback](#passcodesubmitcallback) | 是 | 通行码提交回调。应用接收用户输入的通行码后，通过此回调将通行码提交给系统。 |
+| params | [PasscodePromptParams](#passcodepromptparams) | 是 | 通行码输入请求的参数，包含挑战值等信息。 |
+
+## companionDeviceAuth.registerPasscodePromptCallback
+
+registerPasscodePromptCallback(callback: PasscodePromptCallback): void
+
+注册通行码请求回调。系统请求通行码时会调用此回调。若已注册过回调，新的回调将替换原有回调。
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [PasscodePromptCallback](#passcodepromptcallback) | 是 | 通行码请求回调函数。系统请求通行码时调用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 32600001 | The system service is not working properly. Please try again later. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  companionDeviceAuth.registerPasscodePromptCallback((submit, params) => {
+    // 弹出输入界面接收用户通行码并通过submit提交。
+    const passcode = new Uint8Array([0, 1, 2, 3]);
+    submit(passcode);
+  });
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to register passcode prompt callback. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## companionDeviceAuth.unregisterPasscodePromptCallback
+
+unregisterPasscodePromptCallback(): void
+
+取消注册通行码请求回调。取消后，系统将不再调用应用注册的通行码请求回调。
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 32600001 | The system service is not working properly. Please try again later. |
+
+**示例：**
+<!--code_no_check-->
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  companionDeviceAuth.unregisterPasscodePromptCallback();
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to unregister passcode prompt callback. Code: ${err.code}, message: ${err.message}`);
+}
 ```

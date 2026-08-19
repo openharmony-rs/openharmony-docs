@@ -758,7 +758,7 @@ ArkTS-Dyn: onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
 ArkTS-Sta: onDownloadStart(callback: Callback\<OnDownloadStartEvent\> | undefined)
 
-通知主应用开始下载一个文件。
+通知主应用开始下载文件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -771,7 +771,7 @@ ArkTS-Sta: onDownloadStart(callback: Callback\<OnDownloadStartEvent\> | undefine
 
 | 参数名                | 类型   | 必填   | 说明                                |
 | ------------------ | ------ | ---- | ----------------------------------- |
-| callback           | ArkTS-Dyn: Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\><br/>ArkTS-Sta: Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> \|  undefined | 是    | 开始下载时触发。  |
+| callback           | ArkTS-Dyn: Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\><br/>ArkTS-Sta: Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> \|  undefined | 是    | 开始下载时触发此回调。  |
 
 **示例：**
 
@@ -2105,7 +2105,7 @@ ArkTS-Sta: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebRes
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> <br/>ArkTS-Sta: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md) \| null> \|  undefined| 是 | 当Web组件加载url之前触发。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
+| callback | ArkTS-Dyn: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> <br/>ArkTS-Sta: Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md) \| null> \|  undefined| 是 | 当Web组件加载url之前触发此回调。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
 
 **示例：**
 
@@ -2118,7 +2118,7 @@ ArkTS-Dyn示例：
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
+    responseWeb: webview.WebResourceResponse = new webview.WebResourceResponse();
     heads: Header[] = new Array();
     webData: string = "<!DOCTYPE html>\n" +
       "<html>\n" +
@@ -2247,7 +2247,7 @@ ArkTS-Dyn: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean
 
 ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\> | undefined)
 
-通知收到http auth认证请求。
+通知收到HTTP认证请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2259,7 +2259,7 @@ ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> \|  undefined| 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示http auth认证成功，返回false表示http auth认证失败。   |
+| callback | ArkTS-Dyn: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> \|  undefined| 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示HTTP认证成功，返回false表示HTTP认证失败。   |
 
 **示例：**
 
@@ -2378,7 +2378,7 @@ ArkTS-Sta: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEven
 
 通知用户加载资源时发生SSL错误，只支持主资源。
 
-如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
+如果需要支持子资源，请使用[OnSslErrorEvent](#onsslerrorevent12)接口。
 
 > **说明：**
 >
@@ -2818,7 +2818,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  controller: WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
   uiContext : UIContext = this.getUIContext();
   context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
   uri: string = ''
@@ -3037,7 +3037,7 @@ struct Index {
     @Entry
     @Component
     struct Index {
-      controller: WebviewController = new webview.WebviewController();
+      controller: webview.WebviewController = new webview.WebviewController();
       certManager = CertManagerService.getInstance();
 
       aboutToAppear(): void {
@@ -3122,7 +3122,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  controller: WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
   uiContext : UIContext = this.getUIContext();
   context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
 
@@ -4357,9 +4357,9 @@ ArkTS-Dyn: onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined)
 
-使能multiWindowAccess情况下，通知用户新建窗口请求。
+在开启multiWindowAccess（多窗口访问）属性的情况下，通知应用有新建窗口请求。如需获取更丰富的窗口信息建议使用onWindowNewExt。
 
-若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成渲染进程阻塞。
 
 如果没有创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口时设置成null，通知Web没有创建新窗口。
 
@@ -4425,14 +4425,14 @@ ArkTS-Dyn示例：
               this.dialogController.close();
             }
             let popController: webview.WebviewController = new webview.WebviewController();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController })
             })
             this.dialogController.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -4485,14 +4485,14 @@ ArkTS-Sta示例：
               this.dialogController?.close();
             }
             let popController: webview.WebviewController = new webview.WebviewController(undefined);
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController })
             })
             this.dialogController?.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -4525,11 +4525,11 @@ ArkTS-Dyn: onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
 
 ArkTS-Sta: onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\> | undefined)
 
-在启用[multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9)的情况下，通知用户新建窗口请求。
+在启用[multiWindowAccess](./arkts-basic-components-web-attributes.md#multiwindowaccess9)的情况下，通知应用有新建窗口请求。
 
 > **说明：**
 >
-> - 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+> - 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成渲染进程阻塞。
 >
 > - 若未创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口并设置成null，通知Web未创建新窗口。
 >
@@ -4599,14 +4599,14 @@ ArkTS-Dyn示例：
             this.dialogController.close();
           }
           let popController: webview.WebviewController = new webview.WebviewController();
+          // 将新窗口对应WebviewController返回给Web内核。
+          // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+          // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
+          event.handler.setWebController(popController);
           this.dialogController = new CustomDialogController({
             builder: NewWebViewComp({ webviewController1: popController })
           })
           this.dialogController.open();
-          // 将新窗口对应WebviewController返回给Web内核。
-          // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-          // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
-          event.handler.setWebController(popController);
         })
       }
     }
@@ -4666,14 +4666,14 @@ ArkTS-Sta示例：
             }
 
             let popController: webview.WebviewController = new webview.WebviewController(undefined);
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController })
             })
             this.dialogController?.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -4706,7 +4706,7 @@ ArkTS-Dyn: onActivateContent(callback: Callback\<void>)
 
 ArkTS-Sta: onActivateContent(callback: VoidCallback | undefined)
 
-当Web页面触发window.open(url, name)时，会根据name查找是否存在已绑定的Web实例。若存在，该实例将收到此回调以通知应用需将其展示至前端；若不存在，则通过[onWindowNew](#onwindownew9)通知应用创建新Web实例。
+Web页面触发window.open(url, name)时，会根据name查找是否存在已绑定的Web实例。若存在，该实例将收到此回调以通知应用需将其展示至前端；若不存在，则通过[onWindowNew](#onwindownew9)通知应用创建新Web实例。
 
 > **说明：**
 >
@@ -4774,14 +4774,14 @@ ArkTS-Dyn示例：
               this.dialogController.close()
             }
             let popController: webview.WebviewController = new webview.WebviewController();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController }),
               isModal: false
             })
             this.dialogController.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -4836,14 +4836,14 @@ ArkTS-Dyn示例：
               this.dialogController?.close()
             }
             let popController: webview.WebviewController = new webview.WebviewController(undefined);
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController }),
               isModal: false
             })
             this.dialogController?.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成render进程阻塞。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -4877,7 +4877,7 @@ ArkTS-Dyn: onWindowExit(callback: () => void)
 
 ArkTS-Sta: onWindowExit(callback: (() => void) | undefined)
 
-通知用户窗口关闭请求。和[onWindowNew](#onwindownew9)一样，从安全角度讲，应用应该确保用户可以知道他们交互的页面已关闭。
+通知应用有窗口关闭请求。和[onWindowNew](#onwindownew9)一样，从安全角度考虑，应用应确保用户可以知道他们交互的页面已关闭。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5015,7 +5015,7 @@ ArkTS-Dyn: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
 ArkTS-Sta: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\> | undefined)
 
-设置网页表单可以重新提交时触发的回调函数。
+当网页表单可以重新提交时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5259,7 +5259,7 @@ ArkTS-Dyn: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEven
 
 ArkTS-Sta: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\> | undefined)
 
-设置接收到apple-touch-icon url地址时的回调函数。
+接收到apple-touch-icon URL地址时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5271,7 +5271,7 @@ ArkTS-Sta: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEven
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | ArkTS-Dyn: Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\> <br/>ArkTS-Sta: Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\> \|  undefined| 是 | 接收到的apple-touch-icon url地址时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\> <br/>ArkTS-Sta: Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\> \|  undefined| 是 | 接收到的apple-touch-icon URL地址时触发。 |
 
 **示例：**
 
@@ -5470,7 +5470,7 @@ ArkTS-Sta示例：
 
  ArkTS-Sta: onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\> | undefined)
 
-设置网页首次内容绘制回调函数。
+设置网页首次内容绘制时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5482,7 +5482,7 @@ ArkTS-Sta示例：
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback    | ArkTS-Dyn: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\><br/>ArkTS-Sta: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> \|  undefined | 是 | 网页首次内容绘制回调函数。          |
+| callback    | ArkTS-Dyn: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\><br/>ArkTS-Sta: Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> \|  undefined | 是 | 回调函数，返回导航开始时间戳、首次内容绘制耗时等性能指标。|
 
 **示例：**
 
@@ -6388,6 +6388,10 @@ ArkTS-Dyn: onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) =
 ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) => void) | undefined)
 
 当同层标签生命周期变化时触发该回调。
+
+> **说明：**
+>
+> - 本接口与onNativeEmbedVisibilityChange都监控同层标签状态，但监控维度不同。<br>onNativeEmbedLifecycleChange监控生命周期状态（如CREATE/UPDATE/DESTROY/ENTER_BFCACHE/LEAVE_BFCACHE），适用于处理标签的创建、销毁、缓存等生命周期事件。<br>onNativeEmbedVisibilityChange监控视口内的可见性变化（Visible/Hidden），适用于处理标签滚动进出视口的场景。两者可根据实际需求配合使用或单独使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7593,7 +7597,7 @@ ArkTS-Dyn: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChange
 
 ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined)
 
-当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
+当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8387,13 +8391,13 @@ ArkTS-Dyn: onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 ArkTS-Sta: onOverrideErrorPage(callback: OnOverrideErrorPageCallback | undefined)
 
-网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
+网页加载遇到错误时触发该回调，可用于设置自定义错误页替换ArkWeb提供的默认错误页。默认仅mainframe加载出错时触发；启用subframe错误页功能后，subframe加载出错时也会触发。
 
 > **说明：**
 >
-> 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
->
-> 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
+> - 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)<sup>20+</sup>启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)接口并将includeSubframe设置为true。
+> - 通过[errorPageEvent.request.isMainFrame()](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)判断请求来源是mainframe还是subframe，以便在回调中分别设置对应的自定义错误页。
+> - 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8419,52 +8423,57 @@ ArkTS-Dyn示例：
     controller: webview.WebviewController = new webview.WebviewController();
     build() {
       Column() {
-        Web({ src: "www.error-test.com", controller: this.controller })
-         .onControllerAttached(() => {
-              this.controller.setErrorPageEnabled(true);
-              if (!this.controller.getErrorPageEnabled()) {
-                  this.controller.setErrorPageEnabled(true);
-              }
+        Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+          .onControllerAttached(() => {
+            // 启用mainframe错误页功能，并同时启用subframe错误页功能
+            this.controller.setErrorPageEnabled(true, true);
           })
-          .onOverrideErrorPage(event => {
-                let htmlStr = "<html><h1>error occur : ";
-                htmlStr += event.error.getErrorCode();
-                htmlStr += "</h1></html>";
-                return htmlStr;
+          .onOverrideErrorPage((event) => {
+            let errorCode: number = event.error.getErrorCode();
+            if (event.request.isMainFrame()) {
+              // mainframe加载失败，返回mainframe自定义错误页
+              return "<html><body><h1>主页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
+            }
+            // subframe加载失败，返回subframe自定义错误页
+            return "<html><body><h1>子页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
           })
       }
     }
   }
   ```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
   ```ts
   'use static'
   import { webview } from '@kit.ArkWeb';
-  import { Entry, Column, Component, Web } from '@kit.ArkUI';
+  import { Entry, Column, Component, Web, $rawfile } from '@kit.ArkUI';
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
     build() {
       Column() {
-        Web({ src: "www.error-test.com", controller: this.controller })
+        Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
           .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
-            if (!this.controller.getErrorPageEnabled()) {
-              this.controller.setErrorPageEnabled(true);
-            }
+            // 启用mainframe错误页功能，并同时启用subframe错误页功能
+            this.controller.setErrorPageEnabled(true, true);
           })
-          .onOverrideErrorPage(event => {
-            let htmlStr = "<html><h1>error occur : ";
-            htmlStr += event.error.getErrorCode();
-            htmlStr += "</h1></html>";
-            return htmlStr;
+          .onOverrideErrorPage((event) => {
+            let errorCode: number = event.error.getErrorCode();
+            if (event.request.isMainFrame()) {
+              // mainframe加载失败，返回mainframe自定义错误页
+              return "<html><body><h1>主页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
+            }
+            // subframe加载失败，返回subframe自定义错误页
+            return "<html><body><h1>子页面加载失败</h1><p>错误码：" + errorCode + "</p></body></html>";
           })
       }
     }
   }
   ```
+
+> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+
 ## onSslErrorReceive<sup>(deprecated)</sup>
 
 onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void)
@@ -8518,7 +8527,7 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
 
 > **说明：**
 >
-> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -8723,7 +8732,7 @@ Web组件检测到白屏时触发此回调。
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | Web组件检测到白屏时的回调函数。 |
+| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | 检测到白屏时触发。事件对象包含页面URL、白屏原因、检测到的内容节点数等诊断信息。 |
 
 **示例：**
 
@@ -9404,7 +9413,7 @@ ArkTS-Sta: onFirstScreenPaint(callback: OnFirstScreenPaintCallback | undefined)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | ArkTS-Dyn: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) <br/>ArkTS-Sta: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) \|  undefined | 是    | 回调函数，设置Web组件的检测到首屏渲染。|
+| callback | ArkTS-Dyn: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) <br/>ArkTS-Sta: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) \|  undefined | 是    | 首屏渲染完成时触发。事件对象包含页面URL、导航开始时间、首屏渲染时间等性能指标。|
 
 **示例：**
 

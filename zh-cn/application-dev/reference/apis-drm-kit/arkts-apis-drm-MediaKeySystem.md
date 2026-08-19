@@ -1,10 +1,12 @@
 # Interface (MediaKeySystem)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用[createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem)创建一个MediaKeySystem实例。
 
 > **说明：**
@@ -23,7 +25,7 @@ setConfigurationString(configName: string, value: string): void
 
 设置字符串类型的配置信息。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -40,7 +42,7 @@ setConfigurationString(configName: string, value: string): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 24700101                |  All unknown errors                  |
 | 24700201                |  Fatal service error, for example, service died                  |
 
@@ -59,7 +61,7 @@ getConfigurationString(configName: string): string
 
 获取字符串类型的配置属性值。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -81,7 +83,7 @@ getConfigurationString(configName: string): string
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param's length is zero or too big(exceeds 4096 Bytes).                              |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Parameter verification failed, the param's length is zero or too big (exceeds 4096 Bytes). |
 | 24700101                |  All unknown errors                  |
 | 24700201                |  Fatal service error, for example, service died                  |
 
@@ -100,7 +102,7 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 设置数组类型的配置信息。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -139,7 +141,7 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 获取数组类型的配置信息。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -180,7 +182,7 @@ getStatistics(): StatisticKeyValue[]
 
 获取性能度量记录。其中包括当前会话数、插件版本信息、每个会话最大三次解密耗时、解密次数和解密失败次数。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -214,7 +216,7 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 
 获取当前DRM解决方案支持的最大内容保护级别。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -250,7 +252,7 @@ generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 如果设备上已存在设备证书，调用此接口会返回失败。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -290,7 +292,7 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 
 如果设备上已存在设备证书，调用此接口会返回失败。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -335,7 +337,7 @@ getCertificateStatus(): CertificateStatus
 
 获取设备证书状态值。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -369,7 +371,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 监听设备证书请求事件，获取事件信息。使用callback异步回调。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -406,7 +408,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 注销设备证书请求事件的监听。使用callback异步回调。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -430,6 +432,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
+
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.off('keySystemRequired');
 ```
@@ -440,7 +443,7 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 创建指定内容保护级别的MediaKeySession实例。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -462,7 +465,7 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.The param level exceeds reasonable range, please use value in ContentProtectionLevel.          |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. The param level exceeds reasonable range, please use value in ContentProtectionLevel. |
 | 24700101                 |  All unknown errors                  |
 | 24700104                 |  Meet max MediaKeySession num limit                  |
 | 24700201                |  Fatal service error, for example, service died                  |
@@ -482,7 +485,7 @@ createMediaKeySession(): MediaKeySession
 
 创建DRM解决方案默认内容保护级别的MediaKeySession实例。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -517,7 +520,7 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 获取离线媒体密钥标识列表。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -551,7 +554,7 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 
 获取指定离线媒体密钥标识的媒体密钥的状态值。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -594,7 +597,7 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 删除指定媒体密钥标识的离线媒体密钥。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -631,7 +634,7 @@ destroy(): void
 
 销毁MediaKeySystem实例。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 

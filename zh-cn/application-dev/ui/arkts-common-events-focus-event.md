@@ -561,7 +561,7 @@ Flex多行组件布局，组件大小一致，走焦正常。
 
 ArkTS-Dyn示例：
 
-<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets) -->
+<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectAreaFocusFlex.ets) -->
 
 ``` TypeScript
 @Entry
@@ -592,7 +592,7 @@ export struct ProjectAreaFocusFlexExample {
 
 ArkTS-Sta示例：
 
-<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets) -->
+<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/focus/ProjectAreaFocusFlex.ets) -->
 
 ``` TypeScript
 import { $r, Column, ColumnOptions, Component, Entry, FlexWrap, NavDestination, Text, Button, Flex, FlexAlign, FlexOptions, Margin, ForEach } from '@kit.ArkUI';
@@ -1622,7 +1622,7 @@ export struct FocusScopePriorityPrevious {
 
 2.[层级页面](#基础概念)非首次获焦：由上次获焦的节点获焦。
 
-3.获焦链上存在配置了获焦优先级的组件和容器：
+3.焦点链上存在配置了获焦优先级的组件和容器：
 
 - 容器内存在优先级大于PREVIOUS的组件，由优先级最高的组件获焦。
 

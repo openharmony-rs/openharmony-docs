@@ -134,9 +134,11 @@ try {
 
 ## bundleManager.getAllowedInstallBundlesSync
 
-getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
+getAllowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
 
 获取当前/指定用户下的应用程序包安装允许名单。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[bundleManager.getAllowedInstallBundlesSync](#bundlemanagergetallowedinstallbundlessync-1)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -148,7 +150,7 @@ getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;s
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
@@ -188,6 +190,58 @@ try {
 }
 ```
 
+
+## bundleManager.getAllowedInstallBundlesSync
+
+getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
+
+获取当前/指定用户下的应用程序包安装允许名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+| accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
+
+**返回值：**
+
+| 类型                | 说明                           |
+| ------------------- | ------------------------------ |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装允许名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = bundleManager.getAllowedInstallBundlesSync(null, 100);
+  console.info(`Succeeded in getting allowed install bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed install bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## bundleManager.addDisallowedInstallBundlesSync
 
 addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
@@ -291,7 +345,7 @@ let wantTemp: Want = {
 let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
 
 try {
-  bundleManager.removeDisallowedInstallBundlesSync(wantTemp, appIds, 100)
+  bundleManager.removeDisallowedInstallBundlesSync(wantTemp, appIds, 100);
   console.info('Succeeded in removing disallowed install bundles.');
 } catch (err) {
   console.error(`Failed to remove disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
@@ -300,9 +354,11 @@ try {
 
 ## bundleManager.getDisallowedInstallBundlesSync
 
-getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
+getDisallowedInstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
 
 获取当前/指定用户下的应用程序包安装禁止名单。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[bundleManager.getDisallowedInstallBundlesSync](#bundlemanagergetdisallowedinstallbundlessync-1)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -314,7 +370,7 @@ getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&l
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
@@ -355,6 +411,59 @@ try {
 }
 ```
 
+
+## bundleManager.getDisallowedInstallBundlesSync
+
+getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
+
+获取当前/指定用户下的应用程序包安装禁止名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+| accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
+
+**返回值：**
+
+| 类型                | 说明                           |
+| ------------------- | ------------------------------ |
+| Array&lt;string&gt; | 返回当前/指定用户下的应用程序包安装禁止名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = bundleManager.getDisallowedInstallBundlesSync(null, 100);
+  console.info(`Succeeded in getting disallowed install bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## bundleManager.addDisallowedUninstallBundlesSync
 
 addDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
@@ -469,9 +578,11 @@ try {
 
 ## bundleManager.getDisallowedUninstallBundlesSync
 
-getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
+getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Array&lt;string&gt;
 
 获取当前/指定用户下包卸载禁止名单。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[bundleManager.getDisallowedUninstallBundlesSync](#bundlemanagergetdisalloweduninstallbundlessync-1)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -483,7 +594,7 @@ getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **返回值：**
@@ -524,6 +635,59 @@ try {
 }
 ```
 
+
+## bundleManager.getDisallowedUninstallBundlesSync
+
+getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array&lt;string&gt;
+
+获取当前/指定用户下包卸载禁止名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+| accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
+
+**返回值：**
+
+| 类型                | 说明                           |
+| ------------------- | ------------------------------ |
+| Array&lt;string&gt; | 返回当前/指定用户下的包卸载禁止名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = bundleManager.getDisallowedUninstallBundlesSync(null, 100);
+  console.info(`Succeeded in getting disallowed uninstall bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed uninstall bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```
 ## bundleManager.uninstall
 
 uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean): Promise&lt;void&gt;
@@ -607,7 +771,7 @@ install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam):
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。应用包路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。 |
+| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。应用包路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径，所有路径必须属于同一应用。 |
 | installParam | [InstallParam](#installparam)                           | 否   | 应用包安装参数。       |
 
 **返回值：**
@@ -1021,9 +1185,11 @@ try {
 
 ## bundleManager.getInstallationAllowedAppDistributionTypes<sup>20+</sup>
 
-getInstallationAllowedAppDistributionTypes(admin: Want | null): Array&lt;AppDistributionType&gt;
+getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributionType&gt;
 
 获取可安装的应用程序签名证书的分发类型。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[bundleManager.getInstallationAllowedAppDistributionTypes](#bundlemanagergetinstallationallowedappdistributiontypes)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -1035,7 +1201,7 @@ getInstallationAllowedAppDistributionTypes(admin: Want | null): Array&lt;AppDist
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 
 **返回值：**
 
@@ -1065,13 +1231,64 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  let result: Array<bundleManager.AppDistributionType> = bundleManager.getInstallationAllowedAppDistributionTypes(wantTemp);
+  let result: Array<bundleManager.AppDistributionType> =
+    bundleManager.getInstallationAllowedAppDistributionTypes(wantTemp);
   console.info(`Succeeded in getting allowed appDistributionTypes. Result: ${JSON.stringify(result)}`);
 } catch (err) {
   console.error(`Failed to get allowed appDistributionTypes. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
+
+## bundleManager.getInstallationAllowedAppDistributionTypes
+
+getInstallationAllowedAppDistributionTypes(admin: Want | null): Array&lt;AppDistributionType&gt;
+
+获取可安装的应用程序签名证书的分发类型。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                       | 必填 | 说明                                                         |
+| ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+
+**返回值：**
+
+| 类型                               | 说明                      |
+| ---------------------------------- | ------------------------- |
+| Array&lt;[AppDistributionType](#appdistributiontype20)&gt; | 应用程序签名证书的分发类型数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<bundleManager.AppDistributionType> = bundleManager.getInstallationAllowedAppDistributionTypes(null);
+  console.info(`Succeeded in getting allowed appDistributionTypes. Result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get allowed appDistributionTypes. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## bundleManager.installMarketApps<sup>22+</sup>
 
 installMarketApps(admin: Want, bundleNames: Array\<string>): void
@@ -1118,11 +1335,11 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
-let bundleNames: Array<string> = [ 'com.huaweicloud.m' ];
+let bundleNames: Array<string> = ['com.huaweicloud.m'];
 try {
   bundleManager.installMarketApps(wantTemp, bundleNames);
   console.info(`Succeeded in installing market apps.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to install market apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1207,7 +1424,7 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
     "dataSize": 1216566
   },
   // ...
-]
+];
 ```
 
 
@@ -1216,6 +1433,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 应用包安装需指定的参数信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                     | 类型                   | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1228,6 +1447,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 应用程序签名证书的分发类型。详细介绍请参见[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的appDistributionType属性。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |
@@ -1243,6 +1464,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 描述应用包信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -1266,6 +1489,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | appId     | string         | 是   | 否   | 应用的appId，表示应用的唯一标识，详情信息可参考[什么是appId](../../quick-start/common-problem-of-application.md#什么是appid)。                 |
@@ -1279,6 +1504,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 应用程序信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                       | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -1316,6 +1543,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称         | 类型     | 只读   | 可选  |说明          |
 | ---------- | ------ | ----- | ----  | ---------------|
 | bundleName | string | 否    | 否 | 应用的bundle名称。 |
@@ -1327,6 +1556,8 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 包信息获取标志，指示需要获取的包信息的内容。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                           | 值        | 说明                                                         |
 | --------------------------    | ---------- | ------------------------------------------------------------ |

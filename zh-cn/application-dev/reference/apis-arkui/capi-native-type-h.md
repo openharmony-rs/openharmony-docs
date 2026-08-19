@@ -60,7 +60,7 @@
 | [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md) | ArkUI_GuidelineOption | Guideline参数，用于定义Guideline（RelativeContainer容器内的辅助线）的id、方向和位置。|
 | [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md) | ArkUI_BarrierOption | barrier选项，用于定义barrier的id、方向和生成时所依赖的组件。 |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | 定义图片帧信息。 |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | 定义List的ChildrenMainSize类信息。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | 定义List组件子组件的主轴尺寸信息。 |
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | 定义自定义属性的CustomProperty类信息。 |
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | 定义窗口属性的HostWindowInfo类信息。 |
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | 定义ActiveChildrenInfo结构体信息。 |
@@ -81,7 +81,7 @@
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|相对容器内容区边界的位置参数。|
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|定义组件的像素取整策略结构体。|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|内容过渡效果。|
-| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式。 |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式，适用于需要在文本拖拽过程中展示选中状态预览效果的场景，可提升用户的拖拽交互体验。 |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | 定义路径动画的运动路径配置项。 |
 | [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)|ArkUI_PickerIndicatorBackground|背景样式指示器的样式参数。|
 | [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)|ArkUI_PickerIndicatorDivider|分割线样式指示器的样式参数。|
@@ -107,7 +107,7 @@
 | [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | 定义无障碍复选框状态类型枚举值。                  |
 | [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype)     | ArkUI_AccessibilityActionType   | 定义无障碍操作类型。                        |
 | [ArkUI_EdgeEffect](#arkui_edgeeffect)                               | ArkUI_EdgeEffect                | 定义边缘滑动效果枚举值。                      |
-| [ArkUI_BarState](#arkui_barstate)                               | ArkUI_BarState                | 定义文本控制滚动条状态枚举值。                      |
+| [ArkUI_BarState](#arkui_barstate)                               | ArkUI_BarState                | 定义TextArea和TextEditor组件的滚动条状态枚举值。        |
 | [ArkUI_EffectEdge](#arkui_effectedge)                               | ArkUI_EffectEdge                | 定义边缘效果生效边缘的方向枚举值。                 |
 | [ArkUI_ScrollDirection](#arkui_scrolldirection)                     | ArkUI_ScrollDirection           | 定义[Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md)组件排列方向枚举值。                |
 | [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign)                     | ArkUI_ScrollSnapAlign           | 定义列表项滚动结束对齐效果枚举值。                 |
@@ -171,8 +171,8 @@
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | 定义动画终态内容大小与位置的枚举值。 |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | 定义Swiper组件的导航指示器类型。             |
 | [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放方向。                           |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式。 |
+| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[ListItem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
+| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[ListItem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | 定义帧动画的播放状态。                       |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | 定义帧动画组件在动画开始前和结束后的状态。             |
@@ -229,9 +229,9 @@
 | [void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferenceheight) | - | 设置高度百分比基准。 |
 | [void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getcanvas) | - | 获取绘制canvas指针，可以转换为图形库的OH_Drawing_Canvas指针进行绘制。 |
 | [ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getsize) | - | 获取可绘制区域大小。 |
-| [ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()](#oh_arkui_waterflowsectionoption_create) | - | 创建FlowItem分组配置信息。 |
-| [void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_dispose) | - | 销毁FlowItem分组配置信息指针。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option, int32_t size)](#oh_arkui_waterflowsectionoption_setsize) | - | 设置FlowItem分组配置信息数组长度。 |
+| [ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()](#oh_arkui_waterflowsectionoption_create) | - | 创建FlowItem分组配置信息，初始数组长度为1。使用结束后需调用OH_ArkUI_WaterFlowSectionOption_Dispose释放资源。 |
+| [void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_dispose) | - | 销毁由OH_ArkUI_WaterFlowSectionOption_Create创建的FlowItem分组配置信息。销毁后不得继续访问该指针。 |
+| [void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option, int32_t size)](#oh_arkui_waterflowsectionoption_setsize) | - | 设置FlowItem分组配置信息数组长度。扩容时保留原有配置，并在数组末尾新增分组配置；缩容时保留新长度范围内的配置，删除其余配置。 |
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | - | 获取FlowItem分组配置信息数组长度。 |
 | [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | 设置分组中FlowItem数量。 |
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | 通过FlowItem分组配置信息获取对应索引下的FlowItem数量。 |
@@ -239,12 +239,12 @@
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | 通过FlowItem分组配置信息获取对应索引下的布局栅格数。 |
 | [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | 设置分组的列间距。 |
 | [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | 通过FlowItem分组配置信息获取对应索引下的分组的列间距。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)](#oh_arkui_waterflowsectionoption_setrowgap) | - | 设置分组的行间距。 |
+| [void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)](#oh_arkui_waterflowsectionoption_setrowgap) | - | 设置指定分组的行间距。 |
 | [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | 通过FlowItem分组配置信息获取对应索引下的分组的行间距。 |
 | [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | 设置分组的外边距。 |
 | [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | 通过FlowItem分组配置信息获取对应索引下的分组的外边距。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | 通过FlowItem分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | 通过FlowItem分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。 |
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | 为分组配置信息数组中索引为index的分组注册用于提供FlowItem主轴尺寸的回调。WaterFlow布局该分组内的FlowItem时，将当前FlowItem在WaterFlow中的索引作为itemIndex传入回调，并将回调返回值作为该FlowItem的主轴尺寸。主轴尺寸在纵向布局时为高度，在横向布局时为宽度。如需在回调中使用自定义数据，可使用OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData。 |
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | 为分组配置信息数组中索引为index的分组注册用于提供FlowItem主轴尺寸的回调，同时保存传入的userData。WaterFlow布局该分组内的FlowItem时，将当前FlowItem在WaterFlow中的索引和userData分别作为回调的第一个、第二个参数传入。userData仅用于向回调传递附加数据，FlowItem的主轴尺寸由回调返回值提供。主轴尺寸在纵向布局时为高度，在横向布局时为宽度。 |
 | [ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)](#oh_arkui_guidelineoption_create) | - | 创建RelativeContainer容器内的辅助线信息。 |
 | [void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)](#oh_arkui_guidelineoption_dispose) | - | 销毁辅助线信息。 |
 | [void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)](#oh_arkui_guidelineoption_setid) | - | 设置辅助线的Id。 |
@@ -416,12 +416,12 @@
 | [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getleft) | - | 获取图片相对于组件左上角的横向坐标。 |
 | [void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)](#oh_arkui_imageanimatorframeinfo_setduration) | - | 设置图片的播放时长。 |
 | [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getduration) | - | 获取图片的播放时长。 |
-| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | - | 创建ListChildrenMainSize接口设置的配置项。 |
-| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | - | 销毁ListChildrenMainSize实例。 |
+| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | - | 创建ListChildrenMainSize接口设置的配置项。使用结束后需调用OH_ArkUI_ListChildrenMainSizeOption_Dispose释放资源。 |
+| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | - | 销毁由OH_ArkUI_ListChildrenMainSizeOption_Create创建的ListChildrenMainSize实例。销毁后不得继续访问该实例。 |
 | [int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)](#oh_arkui_listchildrenmainsizeoption_setdefaultmainsize) | - | 设置List组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
 | [float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_getdefaultmainsize) | - | 获取List组件的列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
-| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | - | 调整List组件子项主轴尺寸数组的容量大小。 |
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | - | 对List组件子项主轴尺寸数组进行大小调整。 |
+| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | - | 调整List组件子项主轴尺寸数组的长度。扩大数组时，新增元素的初始值为-1。 |
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | - | 从指定索引位置开始删除deleteCount个List组件子项主轴尺寸数组元素，并在该位置插入addCount个初始值为-1的元素。deleteCount超出剩余元素个数时，删除至数组末尾。 |
 | [int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)](#oh_arkui_listchildrenmainsizeoption_updatesize) | - | 更新List组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
 | [float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)](#oh_arkui_listchildrenmainsizeoption_getmainsize) | - | 获取List组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
 | [void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_destroy) | - | 销毁CustomProperty实例。 |
@@ -484,8 +484,8 @@
 | [void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setend) | - | 设置PixelRoundPolicy属性对象的尾部方向值。|
 | [int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend) | - | 获取PixelRoundPolicy属性对象的尾部方向值。|
 | [ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create) | - | 创建ContentTransitionEffect属性对象。|
-| [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | - | 创建Grid布局选项。 |
-| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | - | 销毁Grid布局选项。 |
+| [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | - | 创建Grid布局选项。使用完毕后调用OH_ArkUI_GridLayoutOptions_Dispose销毁。 |
+| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | - | 销毁Grid布局选项并释放资源。 |
 | [int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)](#oh_arkui_gridlayoutoptions_setirregularindexes) | - | 设置Grid中不规则GridItem的索引数组。 |
 | [int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)](#oh_arkui_gridlayoutoptions_getirregularindexes) | - | 获取Grid中不规则GridItem的索引数组。当不设置OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback时，irregularIndexes中GridItem的默认大小为垂直滚动Grid的一整行或水平滚动Grid的一整列。 |
 | [void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize(\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | - | Grid布局选项通过GridItem索引获取指定Item占用的行列数。 |
@@ -901,7 +901,7 @@ enum ArkUI_BarState
 **描述：**
 
 
-定义文本控制滚动条状态枚举值。
+定义TextArea和TextEditor组件的滚动条状态枚举值。
 
 **起始版本：** 22
 
@@ -2219,7 +2219,7 @@ enum ArkUI_ListItemSwipeActionState
 **描述：**
 
 
-定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式，默认值为ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED。
+定义[ListItem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式，默认值为ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED。
 
 **起始版本：** 12
 
@@ -2238,7 +2238,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 **描述：**
 
 
-定义Listitem组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
+定义ListItem组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
 
 **起始版本：** 12
 
@@ -3413,7 +3413,7 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 **描述：**
 
 
-创建[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。
+创建[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息，初始数组长度为1。使用结束后需调用[OH_ArkUI_WaterFlowSectionOption_Dispose](#oh_arkui_waterflowsectionoption_dispose)释放资源。
 
 **起始版本：** 12
 
@@ -3432,7 +3432,7 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 **描述：**
 
 
-销毁[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息指针。
+销毁由[OH_ArkUI_WaterFlowSectionOption_Create](#oh_arkui_waterflowsectionoption_create)创建的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。销毁后不得继续访问该指针。
 
 **起始版本：** 12
 
@@ -3441,7 +3441,7 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | 要销毁的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_SetSize()
 
@@ -3452,7 +3452,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* optio
 **描述：**
 
 
-设置FlowItem分组配置信息数组长度。
+设置FlowItem分组配置信息数组长度。扩容时保留原有配置，并在数组末尾新增分组配置；缩容时保留新长度范围内的配置，删除其余配置。
 
 **起始版本：** 12
 
@@ -3462,7 +3462,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* optio
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t size | 数组长度。 |
+| int32_t size | 数组长度，取值范围为大于等于0。传入负数时不执行操作。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetSize()
 
@@ -3488,7 +3488,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* op
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 数组长度。如果返回-1，则返回失败。失败的原因可能是option参数异常，如空指针。 |
+| int32_t | 数组长度。option为空指针时返回-1。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_SetItemCount()
 
@@ -3509,8 +3509,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| int32_t itemCount | 分组中[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为大于等于0。超出当前数组长度时，数组自动扩展至index + 1。 |
+| int32_t itemCount | 分组中[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量，取值范围为大于等于0。传入负数时不执行操作。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetItemCount()
 
@@ -3531,13 +3531,13 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为0至数组长度减1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 分组中FlowItem数量。 |
+| int32_t | 分组中FlowItem数量。index大于等于数组长度时返回0，option为空指针时返回-1。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_SetCrossCount()
 
@@ -3558,8 +3558,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| int32_t crossCount | 布局栅格数量。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为大于等于0。超出当前数组长度时，数组自动扩展至index + 1。 |
+| int32_t crossCount | 布局栅格数量，纵向布局时为列数，横向布局时为行数。传入小于等于0的值时按1处理。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetCrossCount()
 
@@ -3580,13 +3580,13 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOpti
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为0至数组长度减1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 布局栅格数量。 |
+| int32_t | 布局栅格数量。index大于等于数组长度时返回0，option为空指针时返回-1。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_SetColumnGap()
 
@@ -3607,8 +3607,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| float columnGap | 列间距。单位：vp。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为大于等于0。超出当前数组长度时，数组自动扩展至index + 1。 |
+| float columnGap | 列间距。单位：vp。传入负数时按0处理。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetColumnGap()
 
@@ -3629,7 +3629,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为0至数组长度减1。 |
 
 **返回：**
 
@@ -3646,7 +3646,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 **描述：**
 
 
-设置FlowItem分组的行间距。
+设置指定分组的行间距。
 
 **起始版本：** 12
 
@@ -3656,8 +3656,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | FlowItem分组配置信息数组索引值。 |
-| float rowGap | 行间距。单位：vp。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为大于等于0。超出当前数组长度时，数组自动扩展至index + 1。 |
+| float rowGap | 行间距。单位：vp。传入负数时按0处理。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetRowGap()
 
@@ -3678,7 +3678,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为0至数组长度减1。 |
 
 **返回：**
 
@@ -3705,11 +3705,11 @@ void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| float marginTop | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)上外边距。 |
-| float marginRight | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)右外边距。 |
-| float marginBottom | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)下外边距。 |
-| float marginLeft | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)左外边距。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为大于等于0。超出当前数组长度时，数组自动扩展至index + 1。 |
+| float marginTop | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)上外边距。单位：vp。 |
+| float marginRight | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)右外边距。单位：vp。 |
+| float marginBottom | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)下外边距。单位：vp。 |
+| float marginLeft | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)左外边距。单位：vp。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_GetMargin()
 
@@ -3730,7 +3730,7 @@ ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOpt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| int32_t index | 分组配置信息数组索引值，取值范围为0至数组长度减1。 |
 
 **返回：**
 
@@ -3747,7 +3747,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 **描述：**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。
+为分组配置信息数组中索引为index的分组注册用于提供[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)主轴尺寸的回调。WaterFlow布局该分组内的FlowItem时，将当前FlowItem在WaterFlow中的索引作为itemIndex传入回调，并将回调返回值作为该FlowItem的主轴尺寸。主轴尺寸在纵向布局时为高度，在横向布局时为宽度。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。
 
 **起始版本：** 12
 
@@ -3757,8 +3757,8 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 | 参数项                                            | 描述 |
 |------------------------------------------------| -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index                                  | 分组配置信息数组索引值。 |
-| callback                                       | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值。 |
+| int32_t index                                  | 要注册回调的分组配置信息数组索引值，取值范围为0至数组长度减1。 |
+| float (*callback)(int32_t itemIndex)            | 主轴尺寸回调。itemIndex为当前[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)在WaterFlow中的索引；开发者通过返回值提供该FlowItem的主轴尺寸，单位：vp，返回负数时按0处理。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData()
 
@@ -3769,7 +3769,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 **描述：**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。
+为分组配置信息数组中索引为index的分组注册用于提供[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)主轴尺寸的回调，同时保存传入的userData。WaterFlow布局该分组内的FlowItem时，将当前FlowItem在WaterFlow中的索引和userData分别作为回调的第一个、第二个参数传入。userData仅用于向回调传递附加数据，FlowItem的主轴尺寸由回调返回值提供。主轴尺寸在纵向布局时为高度，在横向布局时为宽度。
 
 **起始版本：** 12
 
@@ -3779,9 +3779,9 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-|  void* userData |用户自定义数据指针，将在回调函数中回传给用户。 |
-| callback | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值；userData：用户自定义数据。 |
+| int32_t index | 要注册回调的分组配置信息数组索引值，取值范围为0至数组长度减1。 |
+| void* userData | 传递给回调的附加数据指针，不直接表示FlowItem的主轴尺寸。WaterFlow布局时，将该参数作为回调的第二个参数传入。该指针由调用方管理，需在回调可能触发期间保持有效。 |
+| float (*callback)(int32_t itemIndex, void* userData) | 主轴尺寸回调。itemIndex为当前[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)在WaterFlow中的索引；userData为传入接口的用户自定义数据；开发者通过返回值提供该FlowItem的主轴尺寸，单位：vp，返回负数时按0处理。 |
 
 ### OH_ArkUI_GuidelineOption_Create()
 
@@ -6746,7 +6746,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionOption实例。 |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | 布局信息。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEnd()
@@ -6767,7 +6767,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionOption实例。 |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | 布局信息。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect()
@@ -6788,7 +6788,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionOption实例。 |
 | [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | 边缘滑动效果。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
@@ -6809,7 +6809,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionOption实例。 |
 
 **返回：**
 
@@ -6835,7 +6835,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeAct
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionOption实例。 |
 | callback | 回调事件。offset 滑动偏移量，单位vp。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
@@ -6856,7 +6856,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_List
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionOption实例。 |
 |  void* userData | 用户自定义数据。 |
 | callback | 回调事件。offset 滑动偏移量，单位vp。 |
 
@@ -7777,7 +7777,7 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 **描述：**
 
 
-创建ListChildrenMainSize接口设置的配置项。
+创建ListChildrenMainSize接口设置的配置项。使用结束后需调用[OH_ArkUI_ListChildrenMainSizeOption_Dispose](#oh_arkui_listchildrenmainsizeoption_dispose)释放资源。
 
 **起始版本：** 12
 
@@ -7796,7 +7796,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 **描述：**
 
 
-销毁ListChildrenMainSize实例。
+销毁由[OH_ArkUI_ListChildrenMainSizeOption_Create](#oh_arkui_listchildrenmainsizeoption_create)创建的ListChildrenMainSize实例。销毁后不得继续访问该实例。
 
 **起始版本：** 12
 
@@ -7825,8 +7825,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| float defaultMainSize | 列表项在主轴方向的默认尺寸值，单位为vp。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。为空指针时返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| float defaultMainSize | 列表项在主轴方向的默认尺寸值，单位为vp，取值范围为大于等于0。 |
 
 **返回：**
 
@@ -7869,7 +7869,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 **描述：**
 
 
-调整[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组的容量大小。
+调整[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组的长度。扩大数组时，新增元素的初始值为-1。
 
 **起始版本：** 12
 
@@ -7878,8 +7878,8 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t totalSize | 目标数组容量大小。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。为空指针时不执行操作。 |
+| int32_t totalSize | 目标数组长度，取值范围为大于0。传入小于等于0的值时不执行操作。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
 
@@ -7890,7 +7890,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 **描述：**
 
 
-对[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组进行大小调整。
+从指定索引位置开始删除deleteCount个[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组元素，并在该位置插入addCount个初始值为-1的元素。deleteCount超出剩余元素个数时，删除至数组末尾。
 
 **起始版本：** 12
 
@@ -7899,10 +7899,10 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 操作起始索引位置。 |
-| int32_t deleteCount | 从起始位置开始删除的元素数量。 |
-| int32_t addCount | 从起始位置开始新增的元素数量。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。为空指针时返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 操作起始索引位置，取值范围为0至数组当前长度减1。 |
+| int32_t deleteCount | 从起始位置开始删除的元素数量，取值范围为大于等于0。数量超出剩余元素个数时删除至数组末尾。 |
+| int32_t addCount | 从起始位置开始新增的元素数量，取值范围为大于等于0。新增元素的初始值为-1。 |
 
 **返回：**
 
@@ -7928,9 +7928,9 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 目标元素的数组索引位置。 |
-| float mainSize | 要设置的主轴尺寸值，单位为vp。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。为空指针时返回ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 目标元素的数组索引位置，取值范围为0至数组当前长度减1。 |
+| float mainSize | 要设置的主轴尺寸值，单位为vp，取值范围为大于等于0。 |
 
 **返回：**
 
@@ -7957,13 +7957,13 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 目标元素的数组索引位置。 |
+| int32_t index | 目标元素的数组索引位置，取值范围为0至数组当前长度减1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 数组具体位置的值。若函数参数异常，返回-1。 |
+| float | 数组指定位置的主轴尺寸值，单位为vp。option为空指针或index超出数组范围时返回-1。 |
 
 ### OH_ArkUI_CustomProperty_Destroy()
 
@@ -9321,7 +9321,7 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 **描述：**
 
-创建Grid布局选项。
+创建Grid布局选项。使用完毕后调用OH_ArkUI_GridLayoutOptions_Dispose销毁。
 
 **起始版本：** 22
 
@@ -9329,7 +9329,7 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 | 类型                                | 说明 |
 |-----------------------------------| -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Grid布局选项。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | 创建的Grid布局选项。 |
 
 ### OH_ArkUI_GridLayoutOptions_Dispose()
 
@@ -9339,7 +9339,7 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 **描述：**
 
-销毁Grid布局选项。
+销毁Grid布局选项并释放资源。
 
 **起始版本：** 22
 
@@ -9348,7 +9348,7 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | 待销毁的Grid布局选项。 |
 
 
 ### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
@@ -9368,9 +9368,9 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
-| uint32_t* irregularIndexes |  GridItem索引数组。 |
-| int32_t size | GridItem索引数组大小。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | 待设置的Grid布局选项。 |
+| uint32_t* irregularIndexes | 用于设置Grid布局选项的不规则GridItem索引数组。 |
+| int32_t size | irregularIndexes数组元素个数。 |
 
 **返回：**
 
@@ -9395,9 +9395,9 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
-| uint32_t* irregularIndexes |  GridItem索引数组。 |
-| int32_t size | GridItem索引数组大小。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | 待获取的Grid布局选项。 |
+| uint32_t* irregularIndexes | 用于接收不规则GridItem索引数组的缓冲区。 |
+| int32_t* size | irregularIndexes缓冲区可容纳的元素个数。调用前传入缓冲区容量，调用成功后更新为实际写入的索引数量。 |
 
 **返回：**
 
@@ -9424,7 +9424,7 @@ Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 | -- | -- |
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
 | void* userData | 用户自定义数据。 |
-| ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | 根据index获取指定Item占用的行列数。<br> itemIndex：GridItem索引值，取值范围来自[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes)。 |
+| [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) (\*callback)(int32_t itemIndex, void* userData) | 根据index获取指定Item占用的行列数。<br> itemIndex：GridItem索引值，取值范围来自[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes)。 |
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback()
 
@@ -9445,7 +9445,7 @@ Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的�
 | -- | -- |
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
 | void* userData | 用户自定义数据。 |
-| ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | 根据index获取指定Item的起始行列和占用的行列数。<br>   itemIndex：GridItem索引值。 |
+| [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) (\*callback)(int32_t itemIndex, void* userData) | 根据index获取指定Item的起始行列和占用的行列数。<br>   itemIndex：GridItem索引值。 |
 ### OH_ArkUI_SelectionOptions_Create()
 
 ```c
@@ -10220,7 +10220,7 @@ uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewSty
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t color | 选中态拖拽文本预览样式的的背景，格式为RGBA。 |
+| uint32_t | 选中态拖拽文本预览样式的背景，格式为RGBA。 |
 
 ### OH_ArkUI_DecorationStyleOptions_SetTextDecorationType()
 
@@ -10493,7 +10493,7 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCall
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)\* config | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
 | void\* userData | 用户数据。 |
-| void (\*callback)(const char\* result | 识别结果更新回调。result 识别到的文本实体内容。length 选中文本的结束位置。userData 用户自定义数据，对应OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback接口的入参userData。 |
+| void (\*callback)(const char* result, int32_t length, void* userData) | 识别结果更新回调。result 识别到的文本实体内容。length 选中文本的结束位置。userData 用户自定义数据，对应OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback接口的入参userData。 |
 
 **返回：**
 
@@ -12902,7 +12902,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallba
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
 | void\* userData | 用户数据。 |
-| void (\*callback)(int32_t start | 菜单显示的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
+| void (\*callback)(int32_t start, int32_t end, void* callbackUserData) | 菜单显示的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
 
 **返回：**
 
@@ -12928,7 +12928,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallba
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
 | void\* userData | 用户数据。 |
-| void (\*callback)(int32_t start | 菜单隐藏的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
+| void (\*callback)(int32_t start, int32_t end, void* callbackUserData) | 菜单隐藏的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
 
 **返回：**
 
@@ -12954,7 +12954,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCall
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | 指向[OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)对象的指针。 |
 | void\* userData | 用户数据。 |
-| void (\*callback)(int32_t start | 菜单出现的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
+| void (\*callback)(int32_t start, int32_t end, void* callbackUserData) | 菜单出现的回调函数。start 选中内容的起始偏移量。end 选中内容的结束偏移量。callbackUserData 用户数据。 |
 
 **返回：**
 

@@ -181,7 +181,7 @@ ArkTS-Sta: has(element: int, fromIndex: int, toIndex: int): boolean
 | --------- | ------ | ---- | ------------------------------------ |
 | element   | number | 是   | 待判断的bit值，0表示0，其余值表示1。 |
 | fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。  |
-| toIndex   | number | 是   | 范围终止索引，包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。       |
+| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex >= length时，则会抛出错误。       |
 
 **返回值：**
 
@@ -232,9 +232,9 @@ ArkTS-Sta: setBitsByRange(element: int, fromIndex: int, toIndex: int): void
 
 | 参数名    | 类型   | 必填 | 说明                               |
 | --------- | ------ | ---- | ---------------------------------- |
-| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待设置的bit值，0表示0，其余值表示1。 |
-| fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。  |
-| toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。     |
+| element   | number | 是   | 待设置的bit值，0表示0，其余值表示1。 |
+| fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。  |
+| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex >= length时，则会抛出错误。     |
 
 **错误码：**
 
@@ -322,7 +322,7 @@ ArkTS-Sta: getBitsByRange(fromIndex: int, toIndex: int): BitVector
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------ |
 | fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。   |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。      |
+| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex >= length时，则会抛出错误。      |
 
 **返回值：**
 
@@ -425,7 +425,7 @@ ArkTS-Sta: getBitCountByRange(element: int, fromIndex: int, toIndex: int): int
 | --------- | ------ | ---- | ------------------------------------ |
 | element   | number | 是   | 待统计的bit值，0表示0，其余值表示1。 |
 | fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。    |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。       |
+| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex >= length时，则会抛出错误。       |
 
 **返回值：**
 
@@ -490,7 +490,7 @@ ArkTS-Sta: getIndexOf(element: int, fromIndex: int, toIndex: int): int
 | --------- | ------ | ---- | ------------------------------------ |
 | element   | number | 是   | 待查找的bit值，0表示0，其余值表示1。 |
 | fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。    |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。       |
+| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex >= length时，则会抛出错误。       |
 
 **返回值：**
 
@@ -555,7 +555,7 @@ ArkTS-Sta: getLastIndexOf(element: int, fromIndex: int, toIndex: int): int
 | --------- | ------ | ---- | ------------------------------------ |
 | element   | number | 是   | 待查找的bit值，0表示0，其余值表示1。 |
 | fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。    |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。       |
+| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex >= length时，则会抛出错误。       |
 
 **返回值：**
 
@@ -663,7 +663,7 @@ ArkTS-Sta: flipBitsByRange(fromIndex: int, toIndex: int): void
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------ |
 | fromIndex | number | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。  |
-| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。     |
+| toIndex   | number | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex >= length时，则会抛出错误。     |
 
 **错误码：**
 

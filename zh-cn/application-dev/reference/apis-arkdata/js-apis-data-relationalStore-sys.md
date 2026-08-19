@@ -51,6 +51,8 @@ import { relationalStore } from '@kit.ArkData';
 
 **ArkTS-Sta起始版本：** 23
 
+**系统接口：** 此接口为系统接口。
+
 | 名称                              | 值   | 说明             |
 | ------------------------------- | --- | -------------- |
 | SINGLE      | 0 | 表示将数据写入单个关系型数据库存储。      |
@@ -336,7 +338,7 @@ const valueBucket3: ValuesBucket = {
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: number) => {
+  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then((rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
@@ -949,7 +951,7 @@ if (store != undefined) {
 
 querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
 
-根据谓词条件匹配的数据记录查找对应记录的共享资源标识，返回查找的结果集。如果指定了列字段，则返回结果集中同时包含对应列的字段值，使用Promise异步回调。
+根据谓词条件匹配的数据记录查找对应记录的共享资源，返回查找的结果集。如果指定了列字段，则返回结果集中同时包含对应列的字段值，使用Promise异步回调。使用该接口需要实现云同步功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1028,7 +1030,7 @@ if (store != undefined) {
 
 querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;): void
 
-根据谓词条件匹配的数据记录查找对应记录的共享资源，返回查找的结果集，使用callback异步回调。
+根据谓词条件匹配的数据记录查找对应记录的共享资源，返回查找的结果集，使用callback异步回调。使用该接口需要实现云同步功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1101,7 +1103,7 @@ if (store != undefined) {
 
 querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;): void
 
-根据谓词条件匹配的数据记录查找对应记录的共享资源，返回查找到的共享资源的结果集，同时在结果集中返回谓词条件匹配的指定列名的字段值，使用callback异步回调。
+根据谓词条件匹配的数据记录查找对应记录的共享资源，返回查找到的共享资源的结果集，同时在结果集中返回谓词条件匹配的指定列名的字段值，使用callback异步回调。使用该接口需要实现云同步功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1440,7 +1442,7 @@ ArkTS-Sta: updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicate
 
 | 参数名       | 类型                                                               | 必填 | 说明                                       |
 | ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
-| info  | [DistributedInfo](#distributedinfo24) |  是  | 指定要更新的分布式表的日志信息。|
+| info  | [DistributedInfo](#distributedinfo24) |  是  | 指定要更新的分布式信息。|
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
 
 **返回值：**
@@ -1562,12 +1564,11 @@ ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&g
 **示例：**
 
 ```ts
-try {
-  await store!.cleanDeviceDirtyData('test_table', 100);
-  console.info('Succeeded in cleaning device dirty data.');
-} catch (err) {
-  console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
-};
+  (store as relationalStore.RdbStore).cleanDeviceDirtyData('test_table', 100).then(() => {
+    console.info('Succeeded in cleaning device dirty data.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+  });
 
 // 全量清理
 try {
@@ -1588,7 +1589,9 @@ ArkTS-Dyn: getFloat32Array(columnIndex: number): Float32Array
 
 ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 
-以浮点数组的形式获取当前行中指定列的值，仅可在向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）下可用。
+以浮点数组的形式获取当前行中指定列的值，仅在向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）下可用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1655,6 +1658,8 @@ ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 以浮点数组的形式获取当前行中指定列的值。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

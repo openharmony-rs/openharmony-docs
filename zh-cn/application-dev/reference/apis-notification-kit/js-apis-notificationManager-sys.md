@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布代理通知、取消代理通知，创建、获取、移除通知渠道，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理分布式通知协同，管理通知发布权限管控，获取活动通知信息，设置通知提醒方式，订阅系统实况窗，注册通知校验回调，管理通知优先级策略，以及设置地理围栏、铃声信息、静默提醒等高级功能。
+本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)、取消代理通知，创建、获取、移除[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)协同，管理通知发布权限管控，获取活动通知信息，设置[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)，订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)，注册[通知校验](../../notification/notification-glossary.md#notification-check通知校验)回调，管理通知优先级策略，以及设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)、铃声信息、[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)等高级功能。
 
 > **说明：**
 >
@@ -87,7 +87,7 @@ let publishCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publish success");
+        console.info('publish success');
     }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -98,9 +98,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -116,7 +116,7 @@ let publishCallback = (err: BusinessError | null) => {
     if (err) {
         console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publish success");
+        console.info('publish success');
     }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -127,9 +127,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -207,9 +207,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -218,7 +218,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 let userId: number = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
-    console.info("publish success");
+    console.info('publish success');
 }).catch((err: BusinessError) => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -233,9 +233,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -244,7 +244,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 let userId: int = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
-    console.info("publish success");
+    console.info('publish success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`publish failed, code is ${error.code}, message is ${error.message}`);
@@ -255,7 +255,7 @@ notificationManager.publish(notificationRequest, userId).then(() => {
 
 addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
-创建通知渠道。使用callback异步回调。
+创建[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -299,7 +299,7 @@ let addSlotCallBack = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlot success");
+        console.info('addSlot success');
     }
 }
 // 通知slot对象
@@ -318,7 +318,7 @@ let addSlotCallBack = (err: BusinessError | null): void => {
     if (err) {
         console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlot success");
+        console.info('addSlot success');
     }
 }
 // 通知slot对象
@@ -332,7 +332,7 @@ notificationManager.addSlot(notificationSlot, addSlotCallBack);
 
 addSlot(slot: NotificationSlot): Promise\<void\>
 
-创建通知渠道。使用Promise异步回调。
+创建[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -381,7 +381,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
 };
 notificationManager.addSlot(notificationSlot).then(() => {
-    console.info("addSlot success");
+    console.info('addSlot success');
 }).catch((err: BusinessError) => {
     console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -396,7 +396,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
 };
 notificationManager.addSlot(notificationSlot).then(() => {
-    console.info("addSlot success");
+    console.info('addSlot success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`addSlot failed, code is ${error.code}, message is ${error.message}`);
@@ -407,7 +407,7 @@ notificationManager.addSlot(notificationSlot).then(() => {
 
 addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): void
 
-创建多个通知渠道。使用callback异步回调。
+创建多个[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -451,7 +451,7 @@ let addSlotsCallBack = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlots success");
+        console.info('addSlots success');
     }
 }
 // 通知slot对象
@@ -474,7 +474,7 @@ let addSlotsCallBack = (err: BusinessError | null): void => {
     if (err) {
         console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlots success");
+        console.info('addSlots success');
     }
 }
 // 通知slot对象
@@ -493,7 +493,7 @@ notificationManager.addSlots(notificationSlotArray, addSlotsCallBack);
 
 addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
-创建多个通知渠道。使用Promise异步回调。
+创建多个[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -546,7 +546,7 @@ let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
 notificationSlotArray[0] = notificationSlot;
 
 notificationManager.addSlots(notificationSlotArray).then(() => {
-    console.info("addSlots success");
+    console.info('addSlots success');
 }).catch((err: BusinessError) => {
     console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -566,7 +566,7 @@ let notificationSlotArray: notificationManager.NotificationSlot[] = [
 ]
 
 notificationManager.addSlots(notificationSlotArray).then(() => {
-    console.info("addSlots success");
+    console.info('addSlots success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`addSlots failed, code is ${error.code}, message is ${error.message}`);
@@ -621,11 +621,11 @@ let setNotificationEnableCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnable success");
+        console.info('setNotificationEnable success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
 ```
@@ -638,12 +638,12 @@ let setNotificationEnableCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnable success");
+        console.info('setNotificationEnable success');
     }
 }
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
 ```
@@ -698,10 +698,10 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
-    console.info("setNotificationEnable success");
+    console.info('setNotificationEnable success');
 }).catch((err: BusinessError) => {
     console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -713,10 +713,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
-  console.info("setNotificationEnable success");
+  console.info('setNotificationEnable success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setNotificationEnable failed, code is ${error.code}, message is ${error.message}`);
@@ -916,7 +916,7 @@ let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void =>
 }
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
@@ -936,7 +936,7 @@ let isNotificationEnabledCallback = (err: BusinessError | null, data: boolean | 
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
@@ -991,7 +991,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -1006,7 +1006,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -1219,11 +1219,11 @@ let displayBadgeCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("displayBadge success");
+        console.info('displayBadge success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false, displayBadgeCallback);
 ```
@@ -1236,12 +1236,12 @@ let displayBadgeCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("displayBadge success");
+        console.info('displayBadge success');
     }
 }
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false, displayBadgeCallback);
 ```
@@ -1299,10 +1299,10 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false).then(() => {
-    console.info("displayBadge success");
+    console.info('displayBadge success');
 }).catch((err: BusinessError) => {
     console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1314,10 +1314,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false).then(() => {
-    console.info("displayBadge success");
+    console.info('displayBadge success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`displayBadge failed, code is ${error.code}, message is ${error.message}`);
@@ -1378,7 +1378,7 @@ let isBadgeDisplayedCallback = (err: BusinessError, data: boolean): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
 ```
@@ -1396,7 +1396,7 @@ let isBadgeDisplayedCallback = (err: BusinessError | null, data: boolean | undef
 }
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
 ```
@@ -1453,7 +1453,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
@@ -1469,7 +1469,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
@@ -1486,7 +1486,7 @@ ArkTS-Dyn: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promis
 
 ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\<void\>
 
-设定指定应用的通知提醒方式开关。使用Promise异步回调。
+设定指定应用的[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1535,13 +1535,13 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotFlags: number = 1;
 
 notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
-    console.info("setSlotFlagsByBundle success");
+    console.info('setSlotFlagsByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1553,13 +1553,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotFlags: long = 1;
 
 notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
-    console.info("setSlotFlagsByBundle success");
+    console.info('setSlotFlagsByBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -1570,7 +1570,7 @@ notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
 
 setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
-设置指定应用的通知渠道。使用callback异步回调。
+设置指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -1619,11 +1619,11 @@ let setSlotByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSlotByBundle success");
+        console.info('setSlotByBundle success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
@@ -1639,12 +1639,12 @@ let setSlotByBundleCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSlotByBundle success");
+        console.info('setSlotByBundle success');
     }
 }
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
@@ -1656,7 +1656,7 @@ notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCal
 
 setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
-设置指定应用的通知渠道。使用Promise异步回调。
+设置指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -1707,7 +1707,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -1715,7 +1715,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 };
 
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
-    console.info("setSlotByBundle success");
+    console.info('setSlotByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1727,7 +1727,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -1735,7 +1735,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 };
 
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
-    console.info("setSlotByBundle success");
+    console.info('setSlotByBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setSlotByBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -1748,7 +1748,7 @@ ArkTS-Dyn: getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 
-获取指定应用的通知渠道标识位。使用Promise异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)标识位。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1796,7 +1796,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
     console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
@@ -1811,7 +1811,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotFlagsByBundle(bundle).then((data: long) => {
     console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
@@ -1825,7 +1825,7 @@ notificationManager.getSlotFlagsByBundle(bundle).then((data: long) => {
 
 getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
-获取指定应用的所有通知渠道。使用callback异步回调。
+获取指定应用的所有[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1875,7 +1875,7 @@ let getSlotsByBundleCallback = (err: BusinessError, data: Array<notificationMana
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
 ```
@@ -1893,7 +1893,7 @@ let getSlotsByBundleCallback = (err: BusinessError | null, data: Array<notificat
 }
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
 ```
@@ -1902,7 +1902,7 @@ notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
 
 getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
-获取指定应用的所有通知渠道。使用Promise异步回调。
+获取指定应用的所有[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1950,7 +1950,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
@@ -1966,7 +1966,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
@@ -1983,7 +1983,7 @@ ArkTS-Dyn: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<num
 
 ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<long\>): void
 
-获取指定应用的通知渠道数量。使用callback异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2034,7 +2034,7 @@ let getSlotNumByBundleCallback = (err: BusinessError, data: number): void => {
 }
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
@@ -2054,7 +2054,7 @@ let getSlotNumByBundleCallback = (err: BusinessError | null, data: long | undefi
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
@@ -2066,7 +2066,7 @@ ArkTS-Dyn: getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
-获取指定应用的通知渠道数量。使用Promise异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2114,7 +2114,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
@@ -2130,7 +2130,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle).then((data: long) => {
@@ -2267,81 +2267,13 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 });
 ```
 
-
-## notificationManager.getActiveNotification
-
-getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
-
-根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
-
-**起始版本**：26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
-
-**系统接口**：此接口为系统接口。
-
-**参数：**
-
-| 参数名     | 类型    | 必填 | 说明                           |
-| --------- | ------- | ---- | ----------------------------- |
-| hashCode  | string  | 是   | 通知的唯一标识。                |
-
-**返回值：**
-
-| 类型                                                        | 说明                                                         |
-| ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | 以Promise形式返回获取通知信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | ----------------------------------- |
-| 201      | Permission denied.                  |
-| 202      | Not system application to call the interface. |
-| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.|
-| 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.   |
-| 1600007  | The notification does not exist.    |
-
-**示例：**
-
-ArkTS-Dyn示例：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
-  console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
-  console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
-}).catch((err: Error): void => {
-  let error: BusinessError = err as BusinessError;
-  console.error(`getAllActiveNotifications failed, code is ${error.code}, message is ${error.message}`);
-});
-```
-
-
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
 ArkTS-Dyn: getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest\>): void
 
 ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest|null\>): void
 
-获取满足条件的普通实况通知信息。使用callback异步回调。
+获取满足条件的[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2379,11 +2311,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -2394,7 +2326,7 @@ let getActiveNotificationByFilterCallback = (err: BusinessError, data: notificat
     if (err) {
         console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("getActiveNotificationByFilter success");
+        console.info('getActiveNotificationByFilter success');
     }
 }
 notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
@@ -2407,12 +2339,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     // 需根据实际情况进行替换
     id: 0,
-    label: "text"
+    label: 'text'
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -2424,7 +2356,7 @@ let getActiveNotificationByFilterCallback = (err: BusinessError | null, data: no
     if (err) {
         console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("getActiveNotificationByFilter success");
+        console.info('getActiveNotificationByFilter success');
     }
 }
 notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
@@ -2436,7 +2368,7 @@ ArkTS-Dyn: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<NotificationRequest|null\>
 
-获取满足条件的普通实况通知信息。使用Promise异步回调。
+获取满足条件的[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2479,11 +2411,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -2504,12 +2436,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     // 需根据实际情况进行替换
     id: 0,
-    label: "text"
+    label: 'text'
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -2573,12 +2505,12 @@ let removeGroupByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeGroupByBundle success");
+        console.info('removeGroupByBundle success');
     }
 }
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
-let groupName: string = "GroupName";
+let bundleOption: notificationManager.BundleOption = { bundle: 'Bundle' };
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
 ```
@@ -2591,12 +2523,12 @@ let removeGroupByBundleCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeGroupByBundle success");
+        console.info('removeGroupByBundle success');
     }
 }
 
-let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
-let groupName: string = "GroupName";
+let bundleOption: notificationManager.BundleOption = { bundle: 'bundleName1' };
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
 ```
@@ -2650,11 +2582,11 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
-let groupName: string = "GroupName";
+let bundleOption: notificationManager.BundleOption = { bundle: 'Bundle' };
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
-    console.info("removeGroupByBundle success");
+    console.info('removeGroupByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2665,12 +2597,12 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 需根据实际情况进行替换
-let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
+let bundleOption: notificationManager.BundleOption = { bundle: 'bundleName1' };
 // 需根据实际情况进行替换
-let groupName: string = "GroupName";
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
-    console.info("removeGroupByBundle success");
+    console.info('removeGroupByBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`removeGroupByBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -2727,7 +2659,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -2748,7 +2680,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -2819,7 +2751,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     end: new Date(2021, 11, 15, 18, 0)
 };
 notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2835,7 +2767,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     end: new Date(2021, 11, 15, 18, 0)
 };
 notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
@@ -2896,7 +2828,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -2920,7 +2852,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -3001,7 +2933,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 let userId: number = 1;
 
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3021,7 +2953,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 let userId: int = 1;
 
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
@@ -3458,7 +3390,7 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
-设置设备是否支持分布式通知。使用callback异步回调。
+设置设备是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3506,7 +3438,7 @@ let setDistributedEnableCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnable success");
+        console.info('setDistributedEnable success');
     }
 };
 let enable: boolean = true;
@@ -3521,7 +3453,7 @@ let setDistributedEnableCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnable success");
+        console.info('setDistributedEnable success');
     }
 };
 let enable: boolean = true;
@@ -3532,7 +3464,7 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
-设置设备是否支持分布式通知。使用Promise异步回调。
+设置设备是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3583,7 +3515,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
-    console.info("setDistributedEnable success");
+    console.info('setDistributedEnable success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3595,7 +3527,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
-    console.info("setDistributedEnable success");
+    console.info('setDistributedEnable success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setDistributedEnable failed, code is ${error.code}, message is ${error.message}`);
@@ -3606,7 +3538,7 @@ notificationManager.setDistributedEnable(enable).then(() => {
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
-设置指定应用是否支持分布式通知。使用callback异步回调。
+设置指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3656,11 +3588,11 @@ let setDistributedEnableByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnableByBundle success");
+        console.info('setDistributedEnableByBundle success');
     }
 };
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
@@ -3674,12 +3606,12 @@ let setDistributedEnableByBundleCallback = (err: BusinessError | null): void => 
     if (err) {
         console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnableByBundle success");
+        console.info('setDistributedEnableByBundle success');
     }
 };
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
@@ -3689,7 +3621,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
-设置指定应用是否支持分布式通知。使用Promise异步回调。
+设置指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3741,11 +3673,11 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
-    console.info("setDistributedEnableByBundle success");
+    console.info('setDistributedEnableByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3757,11 +3689,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
-    console.info("setDistributedEnableByBundle success");
+    console.info('setDistributedEnableByBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setDistributedEnableByBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -3772,7 +3704,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-根据应用的包获取应用是否支持分布式通知。使用callback异步回调。
+根据应用的包获取应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3825,7 +3757,7 @@ let isDistributedEnabledByBundleCallback = (err: BusinessError, data: boolean): 
     }
 };
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
@@ -3843,7 +3775,7 @@ let isDistributedEnabledByBundleCallback = (err: BusinessError | null, data: boo
 };
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
@@ -3852,7 +3784,7 @@ notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByB
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
-查询指定应用是否支持分布式通知。使用Promise异步回调。
+查询指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3903,7 +3835,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
@@ -3918,7 +3850,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
@@ -3950,7 +3882,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                       |
 | -------- | --------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype)\> | 是   | 获取通知提醒方式的回调函数。 |
+| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype)\> | 是   | 获取[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的回调函数。 |
 
 **错误码：**
 
@@ -4018,7 +3950,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 | 类型               | 说明            |
 | ------------------ | --------------- |
-| Promise\<[DeviceRemindType](#deviceremindtype)\> | Promise方式返回获取通知提醒方式的结果。 |
+| Promise\<[DeviceRemindType](#deviceremindtype)\> | Promise方式返回获取[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的结果。 |
 
 **错误码：**
 
@@ -4064,7 +3996,7 @@ ArkTS-Dyn: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int, callback: AsyncCallback\<void\>): void
 
-发布代理通知。使用callback异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4125,11 +4057,11 @@ let callback = (err: BusinessError): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publishAsBundle success");
+        console.info('publishAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -4138,9 +4070,9 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -4156,11 +4088,11 @@ let callback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publishAsBundle success");
+        console.info('publishAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "bundleName1";
+let representativeBundle: string = 'bundleName1';
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 // NotificationRequest对象
@@ -4169,9 +4101,9 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -4184,7 +4116,7 @@ ArkTS-Dyn: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int): Promise\<void\>
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4247,7 +4179,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -4256,14 +4188,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4274,7 +4206,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "bundleName1";
+let representativeBundle: string = 'bundleName1';
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 // NotificationRequest对象
@@ -4283,14 +4215,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -4301,7 +4233,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 
 publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise\<void\>
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4364,7 +4296,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
@@ -4372,14 +4304,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4391,7 +4323,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
@@ -4399,14 +4331,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -4419,7 +4351,7 @@ ArkTS-Dyn: cancelAsBundle(id: number, representativeBundle: string, userId: numb
 
 ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, callback: AsyncCallback\<void\>): void
 
-取消代理通知。使用callback异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4467,11 +4399,11 @@ let cancelAsBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("cancelAsBundle success");
+        console.info('cancelAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
@@ -4485,11 +4417,11 @@ let cancelAsBundleCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("cancelAsBundle success");
+        console.info('cancelAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "bundleName1";
+let representativeBundle: string = 'bundleName1';
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
@@ -4501,7 +4433,7 @@ ArkTS-Dyn: cancelAsBundle(id: number, representativeBundle: string, userId: numb
 
 ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): Promise\<void\>
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4550,11 +4482,11 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4565,11 +4497,11 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "bundleName1";
+let representativeBundle: string = 'bundleName1';
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`cancelAsBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -4582,7 +4514,7 @@ ArkTS-Dyn: cancelAsBundle(representativeBundle: BundleOption, id: number): Promi
 
 ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\<void\>
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4632,10 +4564,10 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4647,10 +4579,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`cancelAsBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -4710,11 +4642,11 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName"
+  bundle: 'bundleName'
 };
 let id: number = 1;
 notificationManager.cancel(bundle, id).then(() => {
-  console.info("cancel success");
+  console.info('cancel success');
 }).catch((err: BusinessError) => {
   console.error(`cancel failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4726,11 +4658,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1"
+    bundle: 'bundleName1'
 };
 let id: int = 1;
 notificationManager.cancel(bundle, id).then(() => {
-  console.info("cancel success");
+  console.info('cancel success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`cancel failed, code is ${error.code}, message is ${error.message}`);
@@ -4791,11 +4723,11 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     setNotificationEnableSlotCallback);
@@ -4810,12 +4742,12 @@ let setNotificationEnableSlotCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 notificationManager.setNotificationEnableSlot(
     // 需根据实际情况进行替换
-    { bundle: "bundleName1", },
+    { bundle: 'bundleName1', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     setNotificationEnableSlotCallback);
@@ -4846,7 +4778,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。|
 | type     | [SlotType](./js-apis-notificationManager.md#slottype)         | 是   | 指定渠道类型。           |
 | enable   | boolean                       | 是   | 使能状态（true：使能，false：禁止）。               |
-| isForceControl<sup>11+</sup> | boolean                 | 是   | 渠道开关是否受通知授权开关影响（false：受影响，true：不受影响）。 |
+| isForceControl<sup>11+</sup> | boolean                 | 是   | 渠道开关是否受[通知授权](../../notification/notification-glossary.md#notification-authorization通知授权)开关影响（false：受影响，true：不受影响）。 |
 | callback | AsyncCallback\<void\>         | 是   | 设置渠道使能回调函数。    |
 
 **错误码：**
@@ -4875,12 +4807,12 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     false,
@@ -4895,13 +4827,13 @@ let setNotificationEnableSlotCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 
 notificationManager.setNotificationEnableSlot(
     // 需根据实际情况进行替换
-    { bundle: "bundleName1", },
+    { bundle: 'bundleName1', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     false,
@@ -4964,9 +4896,9 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // setNotificationEnableSlot
-notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notification"},
+notificationManager.setNotificationEnableSlot({ bundle: 'ohos.samples.notification'},
     notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
-    console.info("setNotificationEnableSlot success");
+    console.info('setNotificationEnableSlot success');
 }).catch((err: BusinessError) => {
     console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4976,9 +4908,9 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notification"},
+notificationManager.setNotificationEnableSlot({ bundle: 'ohos.samples.notification'},
     notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
-    console.info("setNotificationEnableSlot success");
+    console.info('setNotificationEnableSlot success');
 }).catch((err: Error) => {
     let error: BusinessError = err as BusinessError;
     console.error(`setNotificationEnableSlot failed, code is ${error.code}, message is ${error.message}`);
@@ -5042,7 +4974,7 @@ let isNotificationSlotEnabledCallback = (err: BusinessError, data: boolean): voi
 };
 
 notificationManager.isNotificationSlotEnabled(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     isNotificationSlotEnabledCallback);
 ```
@@ -5061,7 +4993,7 @@ let isNotificationSlotEnabledCallback = (err: BusinessError | null, data: boolea
 
 notificationManager.isNotificationSlotEnabled(
     // 需根据实际情况进行替换
-    { bundle: "bundleName1", },
+    { bundle: 'bundleName1', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     isNotificationSlotEnabledCallback);
 ```
@@ -5119,7 +5051,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // isNotificationSlotEnabled
-notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notification", },
+notificationManager.isNotificationSlotEnabled({ bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -5131,7 +5063,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
+notificationManager.isNotificationSlotEnabled({ bundle: 'bundleName1', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
@@ -5282,7 +5214,7 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void =>
     if (err) {
         console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSyncNotificationEnabledWithoutApp success");
+        console.info('setSyncNotificationEnabledWithoutApp success');
     }
 }
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
@@ -5299,7 +5231,7 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null): 
     if (err) {
         console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSyncNotificationEnabledWithoutApp success");
+        console.info('setSyncNotificationEnabledWithoutApp success');
     }
 }
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
@@ -5583,15 +5515,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onCheckNotification = (info : notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
     console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
     if(info.notificationId == 1){
-        let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
+        let result: notificationManager.NotificationCheckResult =  { code: 1, message: 'testMsg1'};
         return result;
     } else {
-        let result: notificationManager.NotificationCheckResult =   { code: 0, message: "testMsg0"};
+        let result: notificationManager.NotificationCheckResult =   { code: 0, message: 'testMsg0'};
         return result;
     }
 }
 try{
-    notificationManager.on("checkNotification", onCheckNotification);
+    notificationManager.on('checkNotification', onCheckNotification);
 } catch (err){
     console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
 }
@@ -5624,7 +5556,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 | 参数名 | 类型                                                                                                             | 必填 | 说明           |
 | ------ |-----------------------------------------------------------------------------------------------------------------| ---- | -------------- |
 | type | string                                                                                                            | 是   | 回调函数类型名，固定为'checkNotification'。 |
-| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | 通知请求验证内容。 |
+| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | [通知请求](../../notification/notification-glossary.md#notification-request通知请求)验证内容。 |
 | callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
 
 **错误码：**
@@ -5649,10 +5581,10 @@ try{
   notificationManager.on('checkNotification',{
     contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
     slotType: notificationManager.SlotType.LIVE_VIEW ,
-    extraInfoKeys: ["event"],
+    extraInfoKeys: ['event'],
   },
     async (checkInfo)=>{
-      return { code: 1, message: "INVALID_PARAMETERS"};
+      return { code: 1, message: 'INVALID_PARAMETERS'};
   },);
 } catch (err) {
   console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
@@ -5705,10 +5637,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onCheckNotification = (info: notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
     console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
     if(info.notificationId == 1){
-        let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
+        let result: notificationManager.NotificationCheckResult =  { code: 1, message: 'testMsg1'};
         return result;
     } else {
-        let result: notificationManager.NotificationCheckResult =   { code: 0, message: "testMsg0"};
+        let result: notificationManager.NotificationCheckResult =   { code: 0, message: 'testMsg0'};
         return result;
     }
 }
@@ -5746,7 +5678,7 @@ onCheckNotification(checkRequest: NotificationCheckRequest, callback: (checkInfo
 
 | 参数名 | 类型                                                                                                             | 必填 | 说明           |
 | ------ |-----------------------------------------------------------------------------------------------------------------| ---- | -------------- |
-| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | 通知请求验证内容。 |
+| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | [通知请求](../../notification/notification-glossary.md#notification-request通知请求)验证内容。 |
 | callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) => Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
 
 **错误码：**
@@ -5771,10 +5703,10 @@ try {
     notificationManager.onCheckNotification({
     contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
     slotType: notificationManager.SlotType.LIVE_VIEW,
-    extraInfoKeys: ["event"],
+    extraInfoKeys: ['event'],
     },
     async (checkInfo) => {
-        let result: notificationManager.NotificationCheckResult = { code: 1, message: "INVALID_PARAMETERS" };
+        let result: notificationManager.NotificationCheckResult = { code: 1, message: 'INVALID_PARAMETERS' };
         return result;
     });
 } catch (err) {
@@ -5826,7 +5758,7 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try{
-    notificationManager.off("checkNotification");
+    notificationManager.off('checkNotification');
 } catch (err){
     console.error(`notificationManager.off failed, code is ${err.code}, message is ${err.message}`);
 }
@@ -5887,7 +5819,7 @@ ArkTS-Dyn: triggerSystemLiveView(bundle: BundleOption, notificationId: number, b
 
 ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, buttonOptions: ButtonOptions): Promise\<void>
 
-触发系统实况窗。使用Promise异步回调。
+触发[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5939,16 +5871,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 包信息
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 // 通知ID
 let notificationId = 1;
 // 按钮信息
 let buttonOptions: notificationManager.ButtonOptions = {
-    buttonName: "buttonName1",
+    buttonName: 'buttonName1',
 }
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
-  console.info("triggerSystemLiveView success");
+  console.info('triggerSystemLiveView success');
 }).catch((err: BusinessError) => {
   console.error(`triggerSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -5961,17 +5893,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 包信息
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 // 通知ID
 let notificationId: int = 1;
 // 按钮信息
 let buttonOptions: notificationManager.ButtonOptions = {
     // 需根据实际情况进行替换
-    buttonName: "buttonName1",
+    buttonName: 'buttonName1',
 }
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
-  console.info("triggerSystemLiveView success");
+  console.info('triggerSystemLiveView success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`triggerSystemLiveView failed, code is ${error.code}, message is ${error.message}`);
@@ -5982,7 +5914,7 @@ notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions)
 
 subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
-订阅系统实况窗。使用Promise异步回调。
+订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6033,7 +5965,7 @@ let subscriber: notificationManager.SystemLiveViewSubscriber  = {
     onResponse: onResponseCallback,
 };
 notificationManager.subscribeSystemLiveView(subscriber).then(() => {
-    console.info("subscribeSystemLiveView success");
+    console.info('subscribeSystemLiveView success');
 }).catch((err: BusinessError) => {
     console.error(`subscribeSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6050,7 +5982,7 @@ let subscriber: notificationManager.SystemLiveViewSubscriber  = {
     onResponse: onResponseCallback,
 };
 notificationManager.subscribeSystemLiveView(subscriber).then(() => {
-    console.info("subscribeSystemLiveView success");
+    console.info('subscribeSystemLiveView success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`subscribeSystemLiveView failed, code is ${error.code}, message is ${error.message}`);
@@ -6061,7 +5993,7 @@ notificationManager.subscribeSystemLiveView(subscriber).then(() => {
 
 setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: boolean): Promise<void\>
 
-设置指定应用是否支持跨设备协同。使用Promise异步回调。
+设置指定应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6113,13 +6045,13 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
 let enable: boolean = true;
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
-    console.info("setDistributedEnabledByBundle success");
+    console.info('setDistributedEnabledByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6131,13 +6063,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
 let enable: boolean = true;
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
-    console.info("setDistributedEnabledByBundle success");
+    console.info('setDistributedEnabledByBundle success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setDistributedEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
@@ -6148,7 +6080,7 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 
 setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
 
-批量设置应用是否支持跨设备协同。使用Promise异步回调。
+批量设置应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6198,12 +6130,12 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle1: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName1",
+    bundleName: 'bundleName1',
     uid: 1,
     enable: true
 };
 let bundle2: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName2",
+    bundleName: 'bundleName2',
     uid: 2,
     enable: true
 };
@@ -6211,9 +6143,9 @@ let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
     bundle1,bundle2
 ]
 
-let deviceType: string = "liteWearable";
+let deviceType: string = 'liteWearable';
 notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
-    console.info("setDistributedEnableByBundles success");
+    console.info('setDistributedEnableByBundles success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6224,12 +6156,12 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle1: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName1",
+    bundleName: 'bundleName1',
     uid: 1,
     enable: true
 };
 let bundle2: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName2",
+    bundleName: 'bundleName2',
     uid: 2,
     enable: true
 };
@@ -6237,9 +6169,9 @@ let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
     bundle1,bundle2
 ]
 
-let deviceType: string = "liteWearable";
+let deviceType: string = 'liteWearable';
 notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
-    console.info("setDistributedEnableByBundles success");
+    console.info('setDistributedEnableByBundles success');
 }).catch((err: Error) => {
     let error: BusinessError = err as BusinessError;
     console.error(`setDistributedEnableByBundles failed, code is ${error.code}, message is ${error.message}`);
@@ -6250,7 +6182,7 @@ notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() =
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
 
-获取指定应用是否支持跨设备协同。使用Promise异步回调。
+获取指定应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6301,10 +6233,10 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -6318,10 +6250,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
@@ -6384,10 +6316,10 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 let enable: boolean = true;
 notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
-    console.info("setSmartReminderEnabled success");
+    console.info('setSmartReminderEnabled success');
 }).catch((err: BusinessError) => {
     console.error(`setSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6397,10 +6329,10 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 let enable: boolean = true;
 notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
-    console.info("setSmartReminderEnabled success");
+    console.info('setSmartReminderEnabled success');
 }).catch((err: Error): void => {
     let error: BusinessError = err as BusinessError;
     console.error(`setSmartReminderEnabled failed, code is ${error.code}, message is ${error.message}`);
@@ -6460,7 +6392,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
     console.info(`isSmartReminderEnabled success， data:${data}`);
 }).catch((err: BusinessError) => {
@@ -6472,7 +6404,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'phone';
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
     console.info(`isSmartReminderEnabled success， data:${data}`);
 }).catch((err: Error): void => {
@@ -6572,7 +6504,7 @@ ArkTS-Dyn：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 
 ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<NotificationSlot|null>
 
-获取指定应用指定类型的通知渠道。使用Promise异步回调。
+获取指定应用指定类型的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 获取前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -6624,7 +6556,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotType = notificationManager.SlotType.LIVE_VIEW;
@@ -6642,7 +6574,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotType = notificationManager.SlotType.LIVE_VIEW;
@@ -6725,7 +6657,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 
 notificationManager.addDoNotDisturbProfile(templates).then(() => {
-  console.info("addDoNotDisturbProfile success.");
+  console.info('addDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6756,7 +6688,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 
 notificationManager.addDoNotDisturbProfile(templates).then(() => {
-  console.info("addDoNotDisturbProfile success.");
+  console.info('addDoNotDisturbProfile success.');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`addDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
@@ -6841,7 +6773,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 
 notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
-  console.info("addDoNotDisturbProfile success.");
+  console.info('addDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6936,7 +6868,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
   }
 ]
 notificationManager.removeDoNotDisturbProfile(templates).then(() => {
-  console.info("removeDoNotDisturbProfile success.");
+  console.info('removeDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6953,7 +6885,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
   }
 ]
 notificationManager.removeDoNotDisturbProfile(templates).then(() => {
-  console.info("removeDoNotDisturbProfile success.");
+  console.info('removeDoNotDisturbProfile success.');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`removeDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
@@ -7024,7 +6956,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
   }
 ]
 notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
-  console.info("removeDoNotDisturbProfile success.");
+  console.info('removeDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -7071,7 +7003,7 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声。 |
+| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)。 |
 | value   | string | 是  | 附加配置值。参数示例：[bundleName1,bundleName2]。 |
 
 **返回值：**
@@ -7323,7 +7255,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
     hilog.info(0x0000, 'testTag', '%{public}s', `disableNotificationFeature success.`);
@@ -7340,7 +7272,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
   console.info('disableNotificationFeature success.');
 }).catch((err: Error): void => {
@@ -7402,7 +7334,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 let userId: number = 1;
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
@@ -7420,7 +7352,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 let userId: int = 1;
 notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
   console.info(`DisableNotificationFeature success.`);
@@ -7436,7 +7368,7 @@ ArkTS-Dyn: setTargetDeviceStatus(deviceType: string, status: number): Promise\<v
 
 ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<void\>
 
-设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的通知提醒方式。
+设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7477,7 +7409,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.setTargetDeviceStatus("current", 1).then(() => {
+notificationManager.setTargetDeviceStatus('current', 1).then(() => {
   console.info(`Succeeded in setting target device status.`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to set target device status. Code is ${err.code}, message is ${err.message}`);
@@ -7488,7 +7420,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.setTargetDeviceStatus("current", 1).then(() => {
+notificationManager.setTargetDeviceStatus('current', 1).then(() => {
   console.info('Succeeded in setting target device status.');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
@@ -7500,7 +7432,7 @@ notificationManager.setTargetDeviceStatus("current", 1).then(() => {
 
 setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean): Promise\<void\>
 
-设置指定渠道的通知是否支持通知跨设备协同至指定类型设备。使用Promise异步回调。
+设置指定渠道的通知是否支持通知[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)至指定类型设备。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7516,7 +7448,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | 通知渠道类型。 |
+| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
 | deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enabled | boolean | 是   | 是否开启通知跨设备协同开关。取值为true表示打开，取值为false表示关闭。 |
 
@@ -7574,7 +7506,7 @@ notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(
 
 isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean\>
 
-查询指定渠道的通知是否支持通知跨设备协同至指定类型设备。使用Promise异步回调。
+查询指定渠道的通知是否支持通知[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)至指定类型设备。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7590,7 +7522,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | 通知渠道类型。 |
+| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
 | deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
@@ -7645,7 +7577,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\>
 
-设置静默提醒的开关状态。使用Promise进行异步回调。
+设置[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7692,7 +7624,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
     hilog.info(0x0000, 'testTag', '%{public}s', `setSilentReminderEnabled success.`);
@@ -7704,7 +7636,7 @@ notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
 ArkTS-Sta示例：
 ```ts
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 try {
     notificationManager.setSilentReminderEnabled(bundle, true);
@@ -7717,7 +7649,7 @@ try {
 
 isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
-查询静默提醒的开关状态。使用Promise进行异步回调。
+查询[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7763,7 +7695,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
     hilog.info(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled success, switchState:  ${JSON.stringify(data)}.`);
@@ -7776,7 +7708,7 @@ ArkTS-Sta示例：
 ```ts
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 try {
     notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
@@ -7950,7 +7882,7 @@ notificationManager.getNotificationSwitch(switchName, userId).then((data: notifi
 
 isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
-查询设备是否支持跨设备协同通知。使用Promise异步回调。
+查询设备是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7996,7 +7928,7 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
         console.info('isDistributedEnabled succeeded, result = ' + data);
       }).catch((err: BusinessError) => {
@@ -8020,7 +7952,7 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
         console.info('isDistributedEnabled succeeded, result = ' + data);
       }).catch((err: Error) => {
@@ -8038,7 +7970,7 @@ export default class EntryAbility extends UIAbility {
 
 setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 
-设置设备是否支持跨设备协同通知。使用Promise异步回调。
+设置设备是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8086,7 +8018,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let isEnable: boolean = true;
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.setDistributedEnabled(isEnable, deviceType).then(() => {
         console.info('setDistributedEnabled succeeded.');
       }).catch((err: BusinessError) => {
@@ -8111,7 +8043,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let isEnable: boolean = true;
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.setDistributedEnabled(isEnable, deviceType).then(() => {
         console.info('setDistributedEnabled succeeded.');
       }).catch((err: Error) => {
@@ -8129,7 +8061,7 @@ export default class EntryAbility extends UIAbility {
 
 getDistributedDeviceList(): Promise\<Array\<string\>\>
 
-查询支持跨设备协同通知的设备类型。使用Promise异步回调。
+查询支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知的设备类型。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8209,7 +8141,7 @@ export default class EntryAbility extends UIAbility {
 
 setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
 
-设置应用自定义铃声信息。使用Promise异步回调。
+设置应用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8260,13 +8192,13 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let bundle: notificationManager.BundleOption = {
-        bundle: "bundleName",
+        bundle: 'bundleName',
       };
       let ringtoneInfo: notificationManager.RingtoneInfo = {
         ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
-        ringtoneTitle: "ringtoneName",
-        ringtoneFileName: "ringtonePath",
-        ringtoneUri: "ringtoneUri",
+        ringtoneTitle: 'ringtoneName',
+        ringtoneFileName: 'ringtonePath',
+        ringtoneUri: 'ringtoneUri',
       }
       notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
         console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
@@ -8285,13 +8217,13 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName",
+  bundle: 'bundleName',
 };
 let ringtoneInfo: notificationManager.RingtoneInfo = {
   ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
-  ringtoneTitle: "ringtoneName",
-  ringtoneFileName: "ringtonePath",
-  ringtoneUri: "ringtoneUri",
+  ringtoneTitle: 'ringtoneName',
+  ringtoneFileName: 'ringtonePath',
+  ringtoneUri: 'ringtoneUri',
 }
 notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
   console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
@@ -8306,7 +8238,7 @@ notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
 
 getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
-获取应用自定义铃声信息。使用Promise异步回调。
+获取应用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8357,7 +8289,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let bundle: notificationManager.BundleOption = {
-        bundle: "bundleName",
+        bundle: 'bundleName',
       };
       notificationManager.getRingtoneInfoByBundle(bundle)
         .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
@@ -8377,7 +8309,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 notificationManager.getRingtoneInfoByBundle(bundle).then((ringtoneInfo: notificationManager.RingtoneInfo) => {
     console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
@@ -8598,7 +8530,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
     {
@@ -8619,7 +8551,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
     {
@@ -8739,7 +8671,7 @@ isPriorityEnabled(): Promise\<boolean\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
 
 **错误码**：
 
@@ -8798,7 +8730,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
 
 **返回值：**
 
@@ -8934,7 +8866,7 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
-| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
 
 **返回值：**
 
@@ -9126,7 +9058,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
-获取优先通知智能服务使能状态。使用Promise异步回调。
+获取[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9188,7 +9120,7 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
-设置优先通知智能服务使能状态。使用Promise异步回调。
+设置[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9675,7 +9607,7 @@ try{
 
 setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
-设置地理围栏的启用状态。使用Promise异步回调。
+设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的启用状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9720,7 +9652,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setGeofenceEnabled(true).then(() => {
-  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+  hilog.info(0x0000, 'testTag', '%{public}s', 'setGeofenceEnabled success');
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -9731,7 +9663,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setGeofenceEnabled(true).then(() => {
-    console.info("setGeofenceEnabled success");
+    console.info('setGeofenceEnabled success');
 }).catch((err: Error) => {
     let error: BusinessError = err as BusinessError;
     console.error(`setGeofenceEnabled failed, code is ${error.code}, message is ${error.message}`);
@@ -9787,8 +9719,8 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundles: notificationManager.BundleOption[] = [
-  { bundle:"com.example.test01" },
-  { bundle:"com.example.test02" }
+  { bundle:'com.example.test01' },
+  { bundle:'com.example.test02' }
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
   (data: notificationManager.BundleNotificationStatistics[]) => {
@@ -9801,8 +9733,8 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
 ArkTS-Sta示例：
 ```ts
 let bundles: notificationManager.BundleOption[] = [
-  { bundle:"com.example.test01" },
-  { bundle:"com.example.test02" }
+  { bundle:'com.example.test01' },
+  { bundle:'com.example.test02' }
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
   (data: notificationManager.BundleNotificationStatistics[]) => {
@@ -9818,7 +9750,7 @@ ArkTS-Dyn: snoozeNotification(hashCode: string, delayTime: number): Promise\<voi
 
 ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\>
 
-设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
+设置通知[稍后提醒](../../notification/notification-glossary.md#notification-snooze稍后提醒)。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -9865,10 +9797,10 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 此处应改为开发者需要设定稍后提醒通知的唯一标识
-let hashCode: string = "hashCode";
+let hashCode: string = 'hashCode';
 let delayTime: number = 60;
 notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
-  console.info("snoozeNotification success.")
+  console.info('snoozeNotification success.')
 }).catch((err: BusinessError):void => {
   console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -9879,10 +9811,10 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 此处应改为开发者需要设定稍后提醒通知的唯一标识
-let hashCode: string = "hashCode";
+let hashCode: string = 'hashCode';
 let delayTime: long = 60;
 notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
-  console.info("snoozeNotification success.")
+  console.info('snoozeNotification success.')
 }).catch((err: Error):void => {
   let error: BusinessError = err as BusinessError;
   console.error(`snoozeNotification failed, code is ${error.code}, message is ${error.message}`);
@@ -9929,7 +9861,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DeviceRemindType
 
-通知提醒方式。
+[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9967,7 +9899,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationCheckInfo<sup>10+</sup>
 
-通知校验参数。
+[通知校验](../../notification/notification-glossary.md#notification-check通知校验)参数。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9983,11 +9915,11 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  |  否  | 否   | 通知类型。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23      |
 | creatorUserId<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                       |  否  | 否   | 通知的user ID。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        |  否  | 否   | 渠道类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23      |
-| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>       |  否  | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>       |  否  | 是   | [实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 
 ## NotificationCheckResult<sup>10+</sup>
 
-通知校验结果。
+[通知校验](../../notification/notification-glossary.md#notification-check通知校验)结果。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -10026,7 +9958,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SystemLiveViewSubscriber<sup>11+</sup>
 
-系统实况窗订阅者。
+[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)订阅者。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -10043,7 +9975,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SlotType
 
-通知渠道类型。
+[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。
 
 不同类型对应不同的[SlotLevel](js-apis-notificationManager.md#slotlevel)，决定通知的提醒行为。
 
@@ -10097,7 +10029,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 type NotificationLiveViewContent = _NotificationLiveViewContent 
 
-描述普通实况通知。
+描述[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10146,11 +10078,11 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | 否 | 否 | 包名。          |
 | uid          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 应用的UID。          |
-| enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
+| enable       | boolean| 否 | 是 | 是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>21+</sup>
 
-描述自定义铃声类型。
+描述[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -10169,7 +10101,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 ## RingtoneInfo<sup>21+</sup>
 
-描述自定义铃声信息。
+描述[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -10201,8 +10133,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
-| silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
+| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| silentReminderEnabled | boolean | 否 | 否 | 表示[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)开关使能状态（true：使能，false：禁止）。 |
 
 ## BundleNotificationStatistics
 
@@ -10236,18 +10168,18 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
-| PAYMENT_DUE   | "PAYMENT_DUE"   | 表示通知优先级类型为缴费还款。                 |
-| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | 表示通知优先级类型为动账提醒。                 |
-| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | 表示通知优先级类型为物流进展。                 |
-| MISS_CALL   | "MISS_CALL"   | 表示通知优先级类型为未接来电。                 |
-| TRAVEL_ALERT   | "TRAVEL_ALERT"   | 表示通知优先级类型为出行异常。                 |
-| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | 表示通知优先级类型为账号安全。                 |
-| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | 表示通知优先级类型为预约提醒。                 |
-| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | 表示通知优先级类型为交通违规。                 |
-| KEY_PROGRESS   | "KEY_PROGRESS"   | 表示通知优先级类型为关键进展通知。                 |
-| PUBLIC_EVENT   | "PUBLIC_EVENT"   | 表示通知优先级类型为重要公共事件。                 |
-| IOT_WARNING   | "IOT_WARNING"   | 表示通知优先级类型为预警通知。                 |
-| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | 表示通知优先级类型为用户自定义关键词。                 |
+| PAYMENT_DUE   | 'PAYMENT_DUE'   | 表示通知优先级类型为缴费还款。                 |
+| TRANSACTION_ALERT   | 'TRANSACTION_ALERT'   | 表示通知优先级类型为动账提醒。                 |
+| EXPRESS_PROGRESS   | 'EXPRESS_PROGRESS'   | 表示通知优先级类型为物流进展。                 |
+| MISS_CALL   | 'MISS_CALL'   | 表示通知优先级类型为未接来电。                 |
+| TRAVEL_ALERT   | 'TRAVEL_ALERT'   | 表示通知优先级类型为出行异常。                 |
+| ACCOUNT_ALERT   | 'ACCOUNT_ALERT'   | 表示通知优先级类型为账号安全。                 |
+| APPOINTMENT_REMINDER   | 'APPOINTMENT_REMINDER'   | 表示通知优先级类型为预约提醒。                 |
+| TRAFFIC_NOTICE   | 'TRAFFIC_NOTICE'   | 表示通知优先级类型为交通违规。                 |
+| KEY_PROGRESS   | 'KEY_PROGRESS'   | 表示通知优先级类型为关键进展通知。                 |
+| PUBLIC_EVENT   | 'PUBLIC_EVENT'   | 表示通知优先级类型为重要公共事件。                 |
+| IOT_WARNING   | 'IOT_WARNING'   | 表示通知优先级类型为预警通知。                 |
+| CUSTOM_KEYWORD   | 'CUSTOM_KEYWORD'   | 表示通知优先级类型为用户自定义关键词。                 |
 
 ## PriorityEnableStatus<sup>23+</sup>
 
@@ -10264,14 +10196,14 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
-| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。 |
 | ENABLE   | 2   | 应用通知均设置为优先通知。 |
 
 ## NotificationIconButton<sup>23+</sup>
 
 type NotificationIconButton = _NotificationIconButton
 
-系统通知按钮。
+系统[通知按钮](../../notification/notification-glossary.md#notification-button通知按钮)。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10329,7 +10261,7 @@ type Trigger = _Trigger
 
 type Geofence = _Geofence
 
-地理围栏的配置信息。
+[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的配置信息。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10349,7 +10281,7 @@ type Geofence = _Geofence
 
 type CoordinateSystemType = _CoordinateSystemType
 
-表示地理围栏坐标系类型的枚举。
+表示[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)坐标系类型的枚举。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10369,7 +10301,7 @@ type CoordinateSystemType = _CoordinateSystemType
 
 type MonitorEvent = _MonitorEvent
 
-表示地理围栏的监控事件类型的枚举。
+表示[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的监控事件类型的枚举。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10412,7 +10344,7 @@ type MonitorEvent = _MonitorEvent
 
 type GroupInfo = _GroupInfo
 
-组通知定制信息。
+[组通知](../../notification/notification-glossary.md#group-notification组通知)定制信息。
 
 **系统能力：** SystemCapability.Notification.Notification
 

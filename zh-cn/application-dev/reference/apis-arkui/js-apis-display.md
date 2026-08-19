@@ -171,7 +171,7 @@ import { display } from '@kit.ArkUI';
 | ------ | -------- | ---- | ---- | ------------------ |
 | type  | [CornerType](#cornertype23)   | 是   | 否   |圆角类型。 |
 | position  | [Position](#position20)   | 是   | 否   | 圆角圆心的坐标点。 |
-| radius    | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是   | 否   | 圆角半径，单位为px。 |
+| radius    | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是   | 否   | 圆角半径，单位为px，该参数为整数。 |
 
 ## FoldCreaseRegion<sup>10+</sup>
 
@@ -277,7 +277,7 @@ import { display } from '@kit.ArkUI';
 | --------------------------- | -------- | ---- | ---- | ------------------ |
 | currentHeadroom             | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 当前亮度动态余量，该参数为大于0的浮点数。默认值为1.0。|
 | maxHeadroom                 | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 当前最大亮度余量，该参数为大于0的浮点数。默认值为1.0。|
-| sdrNits                     | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
+| sdrNits                     | ArkTS-Dyn: number <br> ArkTS-Sta: double    | 是  | 否   | 屏幕的亮度，单位为nit，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
 
@@ -324,7 +324,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 | name      | string   | 否   | 否   | 指定虚拟屏幕的名称，用户可自行定义。<br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23 |
 | width     | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为正整数。<br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23 |
 | height    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为正整数。<br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23 |
-| density   | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。<br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23 |
+| density   | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 指定虚拟屏幕的逻辑像素密度，该参数为浮点数。<br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。  <br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23      |
 | supportsFocus<sup>22+</sup> | boolean   | 否   | 是   | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。   <br>**ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23     |
 
@@ -475,7 +475,7 @@ try {
   let brightnessInfo = display.getBrightnessInfo(0);
   console.info(`brightness info: ${JSON.stringify(brightnessInfo)}`);
 } catch (error) {
-  console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to get display brightnessInfo. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -511,7 +511,7 @@ getAllDisplayPhysicalResolution(): Promise&lt;Array&lt;DisplayPhysicalResolution
 
 | 类型 | 说明 |
 | ----------------------------------------------- | ------------------------------------------------------- |
-| Promise&lt;Array&lt;[DisplayPhysicalResolution](#displayphysicalresolution12)&gt;&gt; | Promise对象。返回当前所有的DisplayPhysicalResolution对象。 |
+| Promise&lt;Array&lt;[DisplayPhysicalResolution](#displayphysicalresolution12)&gt;&gt; | Promise对象。返回当前所有的DisplayPhysicalResolution对象，对象数组内按物理屏幕分辨率信息从低到高的顺序排列。 |
 
 **错误码：**
 
@@ -689,12 +689,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let displayClass: Array<display.Display> = [];
 display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
-  displayClass = data;
   const errCode: number = err.code;
   if (errCode) {
     console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
     return;
   }
+  displayClass = data;
   console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
 });
 ```
@@ -749,7 +749,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let displayClass: Array<display.Display> =[];
+let displayClass: Array<display.Display> = [];
 let promise: Promise<Array<display.Display>> = display.getAllDisplays();
 promise.then((data: Array<display.Display>) => {
   displayClass = data;
@@ -775,9 +775,9 @@ promise.then((data: Array<display.Display>) => {
 });
 ```
 
-## display.on('add'|'remove'|'change')
+## display.on('add' | 'remove' | 'change')
 
-on(type: 'add'|'remove'|'change', callback: Callback&lt;number&gt;): void
+on(type: 'add' | 'remove' | 'change', callback: Callback&lt;number&gt;): void
 
 开启显示设备变化的监听。
 
@@ -826,7 +826,7 @@ onAdd(callback: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add'|'remove'|'change')](#displayonaddremovechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add' | 'remove' | 'change')](#displayonadd--remove--change)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -858,7 +858,7 @@ onRemove(callback: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add'|'remove'|'change')](#displayonaddremovechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add' | 'remove' | 'change')](#displayonadd--remove--change)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -890,7 +890,7 @@ onChange(callback: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add'|'remove'|'change')](#displayonaddremovechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.on('add' | 'remove' | 'change')](#displayonadd--remove--change)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -914,9 +914,9 @@ let callback: Callback<long> = (data: long) => {
 display.onChange(callback);
 ```
 
-## display.off('add'|'remove'|'change')
+## display.off('add' | 'remove' | 'change')
 
-off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
+off(type: 'add' | 'remove' | 'change', callback?: Callback&lt;number&gt;): void
 
 关闭显示设备变化的监听。
 
@@ -948,12 +948,13 @@ off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('remove');
 
 let callback: Callback<number> = (data: number) => {
-  console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`)
+  console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`);
 };
 // 关闭传入的callback监听
 display.off('remove', callback);
@@ -988,7 +989,7 @@ ArkTS-Sta: onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, ca
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. Function onChangeWithAttribute can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. Possible causes: Internal IPC error. |   
 
 **示例：**
@@ -999,7 +1000,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let attributesChangeCallback: Callback<number> = (data: number) => {
   console.info(`Listening enabled. Data: ${data}`);
 };
-let attributes: Array<string> = ["rotation", "width"];
+let attributes: Array<string> = ['rotation', 'width'];
 display.onChangeWithAttribute(attributes, attributesChangeCallback);
 ```
 
@@ -1011,7 +1012,7 @@ offAdd(callback?: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add'|'remove'|'change')](#displayoffaddremovechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add' | 'remove' | 'change')](#displayoffadd--remove--change)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1045,7 +1046,7 @@ offRemove(callback?: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add'|'remove'|'change')](#displayoffaddremovechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add' | 'remove' | 'change')](#displayoffadd--remove--change)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1079,7 +1080,7 @@ offChange(callback?: Callback&lt;long&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add'|'remove'|'change')](#displayoffaddremovechange)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[display.off('add' | 'remove' | 'change')](#displayoffadd--remove--change)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1186,7 +1187,7 @@ getFoldDisplayMode(): FoldDisplayMode
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在PC/2in1设备、非折叠设备中返回0，在其他设备中可正常调用。
+**设备行为差异：** 该接口在支持多种显示模式的设备中可正常调用，在其他设备中返回FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN。
 
 **返回值：**
 
@@ -1382,6 +1383,7 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 **示例：**
 
 ```ts
+import { Callback } from '@kit.BasicServicesKit';
 
 // 如果通过on注册多个callback，同时关闭所有callback监听
 display.off('foldStatusChange');
@@ -1456,7 +1458,7 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态变化事件。 |
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId（参数1）及对应的屏幕亮度信息（参数2）。 |
 
 **错误码：**
 
@@ -1477,7 +1479,7 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
 try {
   display.on('brightnessInfoChange', callback);
 } catch (error) {
-  console.error(`Failed to register brightnessInfoChange listener. Code ${error.code}, message: ${error.message}`);
+  console.error(`Failed to register brightnessInfoChange listener. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1501,7 +1503,7 @@ onBrightnessInfoChange(callback: BrightnessCallback&lt;long, BrightnessInfo>): v
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;long, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;long, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId（参数1）及对应的屏幕亮度信息（参数2）。 |
 
 **错误码：**
 
@@ -1509,7 +1511,7 @@ onBrightnessInfoChange(callback: BrightnessCallback&lt;long, BrightnessInfo>): v
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. |
+| 801     | Capability not supported. Function onBrightnessInfoChange can not work correctly due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -1523,7 +1525,7 @@ try {
   display.onBrightnessInfoChange(callback);
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+  console.error(`brightnessInfoChange error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1548,7 +1550,7 @@ off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, Brigh
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态变化事件。 |
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。表示brightnessInfo状态发生改变。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。参数1为displayId，参数2为屏幕亮度信息。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。返回屏幕亮度信息改变的displayId（参数1）及对应的屏幕亮度信息（参数2）。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。 |
 
 **错误码：**
 
@@ -1569,7 +1571,7 @@ let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: 
 try {
   display.off('brightnessInfoChange', callback);
 } catch (error) {
-  console.error(`Failed to unregister brightnessInfoChange listener. Code ${error.code}, message: ${error.message}`);
+  console.error(`Failed to unregister brightnessInfoChange listener. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1593,7 +1595,7 @@ offBrightnessInfoChange(callback?: BrightnessCallback&lt;long, BrightnessInfo>):
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;long, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。表示brightnessInfo状态发生改变。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。参数1为dispalyId，参数2为屏幕亮度信息。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;long, [BrightnessInfo](#brightnessinfo22)&gt; | 否   | 需要取消注册的回调函数。返回屏幕亮度信息改变的displayId（参数1）及对应的屏幕亮度信息（参数2）。若无此参数，则取消所有注册brightnessInfo状态发生改变的回调函数。 |
 
 **错误码：**
 
@@ -1601,7 +1603,7 @@ offBrightnessInfoChange(callback?: BrightnessCallback&lt;long, BrightnessInfo>):
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported. |
+| 801     | Capability not supported. Function offBrightnessInfoChange can not work correctly due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 | 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
@@ -1615,7 +1617,7 @@ try {
   display.offBrightnessInfoChange(callback);
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+  console.error(`brightnessInfoChange error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1656,6 +1658,10 @@ on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
+/**
+ * 注册监听的callback参数要采用对象传递。
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+ */
 let callback: Callback<Array<number>> = (angles: Array<number>) => {
   console.info(`Listening fold angles length: ${angles.length}`);
 };
@@ -1695,6 +1701,10 @@ onFoldAngleChange(callback: Callback&lt;Array&lt;double&gt;&gt;): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
+/**
+ * 注册监听的callback参数要采用对象传递。
+ * 若使用匿名函数注册，每次调用会创建一个新的底层对象，引起内存泄漏问题。
+ */
 let callback: Callback<Array<double>> = (angles: Array<double>) => {
   console.info(`Listening fold angles length: ${angles.length}`);
 };
@@ -1794,7 +1804,7 @@ display.offFoldAngleChange(callback);
 
 on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
-开启设备的屏幕显示信息是否被获取的监听。
+开启设备的屏幕显示信息被获取状态的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -1811,7 +1821,7 @@ on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态变化事件。|
-| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。|
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。返回设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅触发一次true回调；false表示获取结束。|
 
 **错误码：**
 
@@ -1837,7 +1847,7 @@ display.on('captureStatusChange', callback);
 
 onCaptureStatusChange(callback: Callback&lt;boolean&gt;): void
 
-开启设备的屏幕显示信息是否被获取的监听。
+开启设备的屏幕显示信息被获取状态的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
@@ -1851,7 +1861,7 @@ onCaptureStatusChange(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| callback | Callback&lt;boolean&gt; | 是 | 回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。|
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。返回设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅触发一次true回调；false表示获取结束。|
 
 **错误码：**
 
@@ -1876,7 +1886,7 @@ display.onCaptureStatusChange(callback);
 
 off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
-关闭设备的屏幕显示信息是否被获取的监听。
+关闭设备的屏幕显示信息被获取状态的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -1893,7 +1903,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是 | 监听事件，固定为'captureStatusChange'表示设备的屏幕显示信息被获取的状态变化事件。|
-| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。|
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。返回设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅触发一次true回调；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息被获取状态变化监听的所有回调函数。|
 
 **错误码：**
 
@@ -1923,7 +1933,7 @@ display.off('captureStatusChange', callback);
 
 offCaptureStatusChange(callback?: Callback&lt;boolean&gt;): void
 
-关闭设备的屏幕显示信息是否被获取的监听。
+关闭设备的屏幕显示信息被获取状态的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
@@ -1937,7 +1947,7 @@ offCaptureStatusChange(callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。表示设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅返回一次true；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息是否存在被获取监听的所有回调函数。|
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消注册的回调函数。返回设备的屏幕显示信息是否被获取。true表示设备的屏幕显示信息开始被获取，包括处于截屏、投屏、录屏状态，或创建了虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)，截屏仅触发一次true回调；false表示获取结束。若无此参数，则取消注册设备的屏幕显示信息被获取状态变化监听的所有回调函数。|
 
 **错误码：**
 
@@ -2271,7 +2281,7 @@ ArkTS-Sta: createVirtualScreen(config:VirtualScreenConfig): Promise&lt;long&gt;
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801     | Capability not supported. Function createVirtualScreen can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -2344,7 +2354,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2354,7 +2364,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801     | Capability not supported. Function destroyVirtualScreen can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -2413,7 +2423,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2423,7 +2433,6 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801     | Capability not supported. Function setVirtualScreenSurface can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -2510,7 +2519,7 @@ ArkTS-Sta: makeUnique(screenId:long): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2520,7 +2529,7 @@ ArkTS-Sta: makeUnique(screenId:long): Promise&lt;void&gt;
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801     | Capability not supported. Function makeUnique can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -2637,7 +2646,7 @@ ArkTS-Dyn: convertGlobalToRelativeCoordinate(position: Position, displayId?: num
 
 ArkTS-Sta: convertGlobalToRelativeCoordinate(position: Position, displayId?: long): RelativePosition
 
-将主屏左上角为原点的全局坐标转换成displayId指定屏幕左上角为原点的相对坐标。若未传入displayId，默认转换为全局坐标所在屏幕的相对坐标系。若全局坐标不在任何屏幕上，默认转换成主屏的相对坐标。
+将主屏左上角为原点的全局坐标转换成displayId指定屏幕左上角为原点的相对坐标，仅支持主屏和扩展屏的坐标转换。若未传入displayId，默认转换为全局坐标所在屏幕的相对坐标系。若全局坐标不在任何屏幕上，默认转换成主屏的相对坐标。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2816,7 +2825,7 @@ display.getAllDisplay((err: BusinessError, data: Array<display.Display>) => {
     console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in obtaining the default display objects. Data: ${JSON.stringify(data)}`);
+  console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -2849,7 +2858,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise: Promise<Array<display.Display>> = display.getAllDisplay();
 promise.then((data: Array<display.Display>) => {
-  console.info(`Succeeded in obtaining the default display objects. Data: ${JSON.stringify(data)}`);
+  console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
 });
@@ -2883,11 +2892,11 @@ promise.then((data: Array<display.Display>) => {
 | hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat)> | 是 | 否 | 显示设备支持的所有HDR格式。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br> **ArkTS-Dyn起始版本：** 11   <br>  **ArkTS-Sta起始版本：** 23                          |
 | availableWidth<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** <br>在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。<br>针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度。  <br> **ArkTS-Dyn起始版本：** 12   <br>  **ArkTS-Sta起始版本：** 23              |
 | availableHeight<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**  <br>在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。<br>针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度。  <br> **ArkTS-Dyn起始版本：** 12   <br>  **ArkTS-Sta起始版本：** 23          |
-| screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | 是 | 是 | 显示设备的屏幕形状，默认值为RECTANGLE。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18   <br>  **ArkTS-Sta起始版本：** 23 |
+| screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | 是 | 是 | 显示设备的屏幕形状，默认值为ScreenShape.RECTANGLE。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18   <br>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>19+</sup> | [DisplaySourceMode](#displaysourcemode19) | 是 | 是 | 显示设备的显示模式枚举，默认值为DisplaySourceMode.NONE。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。      <br> **ArkTS-Dyn起始版本：** 19   <br>  **ArkTS-Sta起始版本：** 23                 |
 | x<sup>19+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 是 | 显示设备左上角相对于原点的x轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  <br> **ArkTS-Dyn起始版本：** 19   <br>  **ArkTS-Sta起始版本：** 23           |
 | y<sup>19+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 是 | 显示设备左上角相对于原点的y轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 19   <br>  **ArkTS-Sta起始版本：** 23           |
-| supportedRefreshRates<sup>20+</sup> | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 是 | 是 | 显示设备支持的所有刷新率，从小到大排序。刷新率值为正整数，单位为Hz。默认为空。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。    <br> **ArkTS-Dyn起始版本：** 20   <br>  **ArkTS-Sta起始版本：** 23       |
+| supportedRefreshRates<sup>20+</sup> | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt; | 是 | 是 | 显示设备支持的所有刷新率，从小到大排序。刷新率值为正整数，单位为Hz。默认为空数组。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。    <br> **ArkTS-Dyn起始版本：** 20   <br>  **ArkTS-Sta起始版本：** 23       |
 
 ### getRoundedCorner<sup>23+</sup>
 getRoundedCorner(): Array&lt;RoundedCorner&gt;
@@ -2914,7 +2923,7 @@ getRoundedCorner(): Array&lt;RoundedCorner&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801  | Capability not supported. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -3085,7 +3094,7 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
 
 **示例：**
@@ -3103,7 +3112,7 @@ try {
     console.info(`Succeeded in getting the available area in this display. data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to get the available area in this display. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (exception) {
   console.error(`Failed to obtain the default display object. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -3133,7 +3142,7 @@ try {
 ### on('availableAreaChange')<sup>12+</sup>
 on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
-开启当前设备屏幕可用区域的监听。当屏幕旋转、进入/退出自由多窗模式、设置Dock栏/状态栏等系统控件可见性变化时，触发回调函数，返回可用区域信息。
+开启当前设备屏幕可用区域变化的监听。当屏幕旋转、进入/退出自由多窗模式、设置Dock栏/状态栏等系统控件可见性变化时，触发回调函数，返回可用区域信息。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -3367,7 +3376,7 @@ getLiveCreaseRegion(): FoldCreaseRegion
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**

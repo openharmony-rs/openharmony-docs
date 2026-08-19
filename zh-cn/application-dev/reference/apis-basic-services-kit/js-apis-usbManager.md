@@ -37,15 +37,7 @@ import usbManager from '@ohos.usbManager';
 
 调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。
 
-```mermaid
-graph LR
-    A[开始] --> B[调用getDevices获取设备列表]
-    B --> C[调用requestRight获取权限]
-    C --> D[调用connectDevice获取USBDevicePipe]
-    D --> E[调用相关接口进行操作]
-    E --> F[调用closePipe关闭通道]
-    F --> G[结束]
-```
+![usbManager](../figures/usbManager.png)
 
 ## usbManager.getDevices
 
@@ -75,7 +67,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
@@ -171,8 +163,8 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]                                     |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 801      | Capability not supported.  <br>适用版本：18+  |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 | 14400012 | Transmission I/O error.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
@@ -235,12 +227,12 @@ hasRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]  |
+| 801      | Capability not supported.   <br>适用版本：18+  |
 
 **示例：**
 
 ```ts
-async function hasRight(): boolean {
+async function hasRight(): Promise<boolean> {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -263,7 +255,7 @@ async function hasRight(): boolean {
 
 requestRight(deviceName: string): Promise&lt;boolean&gt;
 
-请求应用的临时权限以访问设备。使用Promise异步回调。系统应用默认拥有访问设备权限，无需调用此接口申请。
+请求应用访问设备的临时权限。使用Promise异步回调返回结果。系统应用默认拥有访问设备权限，无需调用此接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -290,7 +282,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      |  Capability not supported. [since 18]  | 
+| 801      |  Capability not supported.   <br>适用版本：18+  | 
 
 **示例：**
 
@@ -342,7 +334,7 @@ removeRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]                                   |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -405,7 +397,7 @@ ArkTS-Sta: claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
@@ -478,7 +470,7 @@ ArkTS-Sta: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]                              |
+| 801      | Capability not supported.   <br>适用版本：18+                              |
 
 **示例：**
 
@@ -521,6 +513,10 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 
 设置设备配置。适用于多功能USB设备需要切换工作模式的场景，如打印机+扫描仪组合设备切换为打印模式或扫描模式、设备从低功耗配置切换到高功耗配置以启用全部功能等。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。
 
+> **说明：**
+>
+> 在调用该接口前需要调用[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+
 **系统能力：**  SystemCapability.USB.USBManager
 
 **ArkTS-Dyn起始版本：** 9
@@ -547,7 +543,7 @@ ArkTS-Sta: setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]  |
+| 801      | Capability not supported.   <br>适用版本：18+  |
 
 **示例：**
 
@@ -617,7 +613,7 @@ ArkTS-Sta: setInterface(pipe: USBDevicePipe, iface: USBInterface): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]  |
+| 801      | Capability not supported.   <br>适用版本：18+  |
 
 **示例：**
 
@@ -685,8 +681,8 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18] |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
+| 801      | Capability not supported.   <br>适用版本：18+ |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.<br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Sta。|
 
 **示例：**
@@ -747,7 +743,7 @@ ArkTS-Sta: getFileDescriptor(pipe: USBDevicePipe): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该返回值仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -796,7 +792,7 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，包含bmRequestType、bRequest、wValue、wIndex、wLength、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -811,7 +807,7 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -886,7 +882,7 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端点，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其它属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区，数组长度即为缓冲区大小。用于批量传输时写入或读取数据。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -901,13 +897,13 @@ ArkTS-Sta: bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
 > **说明：** 
 >
-> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 ```ts
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
@@ -987,7 +983,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
@@ -997,7 +993,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1023,7 +1019,7 @@ async function usbSubmitTransfer() {
   }
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
-    return value.direction === 0 && value.type === 2
+    return value.direction === 0 && value.type === 2;
   });
   // 声明接口控制权，force参数为true表示强制获取。
   let ret: int = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
@@ -1046,7 +1042,7 @@ async function usbSubmitTransfer() {
   };
   try {
     transferParams.endpoint = endpoint?.address as int;
-    transferParams.callback = (err, callbackData: usbManager.SubmitTransferCallback)=>{
+    transferParams.callback = (err, callbackData: usbManager.SubmitTransferCallback) => {
       ret = usbManager.releaseInterface(devicePipe, interfaces);
       console.info(`releaseInterface = ${ret}`);
       usbManager.closePipe(devicePipe);
@@ -1094,7 +1090,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1. Unrecognized discard error code. |
 | 14400011 | The transfer is not in progress, or is already complete or cancelled.|
@@ -1103,7 +1099,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1130,7 +1126,7 @@ async function usbCancelTransfer() {
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
-  })
+  });
   if (endpoint === undefined) {
     console.info(`invalid endpoint`);
     return;
@@ -1192,7 +1188,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备连接通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
@@ -1207,7 +1203,7 @@ ArkTS-Sta: closePipe(pipe: USBDevicePipe): int
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 
 **示例：**
 
@@ -1267,10 +1263,10 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1317,10 +1313,10 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.   <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in.  |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1363,10 +1359,10 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1411,7 +1407,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
@@ -1458,11 +1454,11 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
-| 801      | Capability not supported. [since 18]                                    |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
-| 14401002 | Failed to open the native accessory node. Possible causes: 1. The device node does not exist. 2. The device node is already opened by another process. |
+| 14401001 | The target USBAccessory not matched. |
+| 14401002 | Failed to open the native accessory node. |
 | 14401003 | Cannot reopen the accessory.                                 |
 
 **示例：**
@@ -1515,7 +1511,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+  |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
@@ -1542,7 +1538,7 @@ async function closeAccessory() {
 
 resetUsbDevice(pipe: USBDevicePipe): boolean
 
-重置USB设备。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
+重置USB设备。适用于USB设备出现通信异常需要恢复的场景，如设备固件升级后需要重新初始化、设备状态异常需要恢复、调试过程中需要重置设备状态等。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
 
 > **说明：**
 >
@@ -1577,8 +1573,8 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
-| 14400004 | Service exception. Possible causes: 1. No device is plugged in. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
 | 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |
@@ -1631,7 +1627,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备连接通道对象，用于确定设备，需要调用connectDevice获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -1696,18 +1692,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
-```mermaid
-graph LR
-    A[端点类型] --> B[批量端点 bulk]
-    A --> C[中断端点 interrupt]
-    A --> D[实时端点 isochronous]
-    B --> B1[带宽共享调度]
-    B1 --> B2[适合大量数据非实时传输]
-    C --> C1[固定轮询调度]
-    C1 --> C2[适合小数据量实时传输]
-    D --> D1[带宽预留调度]
-    D1 --> D2[适合音视频等实时数据流]
-```
+![USBEndpoint](../figures/USBEndpoint.png)
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1718,7 +1703,7 @@ graph LR
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点地址。         |
-| attributes    | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点属性，表示端点的传输特性，包括传输类型（批量、中断、实时、控制）和同步类型等。取值遵循USB端点描述符规范。|
+| attributes    | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点属性，表示端点的传输特性，包括传输类型（批量、中断、实时）和同步类型等。取值遵循USB端点描述符规范。|
 | interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔，（单位：毫秒）。中断端点和实时端点为时间间隔（单位：毫秒）；批量端点不使用此字段。|
 | maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小，（单位：字节）。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
@@ -1924,7 +1909,7 @@ USB数据传输参数对象，包含USB数据传输所需的所有参数，用�
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输增加一个额外的数据包）。 |
 | endpoint | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。  |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
-| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。取值范围为[0, +∞)，设置为0时无限等待直到传输完成。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。设置为0时无限等待直到传输完成。传入负数时抛出参数错误异常。 |
 | length | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 |否 | 数据缓冲区的长度，取值范围为[0, INT_MAX]的非负数（期望长度），（单位：字节）。 |
 | callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调函数，签名：(err: Error, data: SubmitTransferCallback) => void。err为错误对象（成功时为null），data包含传输状态、实际长度等信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据，用于在回调函数中传递自定义的上下文信息。大小和格式由用户定义，在传输请求中指定，回调中原样返回。 |

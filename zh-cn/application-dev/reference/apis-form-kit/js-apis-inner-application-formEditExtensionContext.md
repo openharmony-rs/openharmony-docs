@@ -27,7 +27,7 @@ FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资�
 
 ### startSecondPage
 
-startSecondPage(want: Want): Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;
+startSecondPage(want: Want): Promise&lt;AbilityResult&gt;
 
 拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
 
