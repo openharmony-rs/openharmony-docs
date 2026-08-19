@@ -700,7 +700,7 @@ IP信息。
 | primaryDns | number | 否 | 否 | 主DNS服务器IP地址。 |
 | secondDns | number | 否 | 否 | 备DNS服务器IP地址。 |
 | serverIp | number | 否 | 否 | DHCP服务端IP地址。 |
-| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒。 |
+| leaseDuration | number | 否 | 否 | IP地址租用时长，单位：秒(s)。 |
 
 
 ## wifi.getCountryCode<sup>(deprecated)</sup>
@@ -1269,7 +1269,7 @@ stopDiscoverDevices(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:操作执行成功，false:操作执行失败。 |
+  | boolean | 停止发现设备是否成功。true:操作执行成功，false:操作执行失败。 |
 
 **示例：**
 ```ts
