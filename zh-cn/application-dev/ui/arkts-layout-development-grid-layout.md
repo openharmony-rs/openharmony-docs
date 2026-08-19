@@ -1089,11 +1089,11 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct OffsetColumnOptionExample {
-      @State currentBp: string = 'unknown'
+      @State currentBp: string = 'unknown';
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+        
       build() {
         Column({ space: 6 }) {
           GridRow({ columns: 12 }) {
@@ -1119,7 +1119,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           .onBreakpointChange((breakPoint) => {
             this.currentBp = breakPoint
           })
-
+    
           Text(this.currentBp)
         }
       }
