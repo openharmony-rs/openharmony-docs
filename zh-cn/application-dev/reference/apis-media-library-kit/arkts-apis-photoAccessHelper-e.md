@@ -235,12 +235,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let recommendOptions: photoAccessHelper.RecommendationOptions = {
       recommendationType: photoAccessHelper.RecommendationType.ID_CARD
-    }
+    };
     let options: photoAccessHelper.PhotoSelectOptions = {
       MIMEType: photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE,
       maxSelectNumber: 1,
       recommendationOptions: recommendOptions
-    }
+    };
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
     photoPicker.select(options).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
       console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));

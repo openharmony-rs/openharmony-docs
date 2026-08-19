@@ -1731,6 +1731,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     });
   } catch (err) {
     console.error(`fetch failed, error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源
+    fetchResult.close();
   }
 }
 ```
@@ -1799,6 +1802,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createDeleteRequest successfully');
   } catch (err) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源
+    fetchResult.close();
   }
 }
 ```
