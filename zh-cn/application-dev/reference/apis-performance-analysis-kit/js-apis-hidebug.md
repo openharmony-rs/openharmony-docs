@@ -1619,8 +1619,8 @@ ArkTS-Sta: getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySu
 | 11400104 | Failed to get the application memory due to a remote exception. |
 
 **示例**：
-ArkTS-Dyn示例：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1633,7 +1633,6 @@ hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => 
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1693,8 +1692,8 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 | 11400113 | Failed to create dump file. |
 
 **示例**：
-ArkTS-Dyn示例：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1706,7 +1705,6 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1768,8 +1766,8 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 | 11400113 | Failed to create dump file. |
 
 **示例**：
-ArkTS-Dyn示例：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1782,7 +1780,6 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1845,8 +1842,8 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 | 11400113 | Failed to create dump file. |
 
 **示例**：
-ArkTS-Dyn示例：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1859,7 +1856,6 @@ hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) 
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';

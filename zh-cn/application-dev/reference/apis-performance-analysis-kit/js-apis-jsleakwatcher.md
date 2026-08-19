@@ -139,25 +139,26 @@ dump(filePath: string): Array&lt;string&gt;
 | ------- | ---------------------------------------------------------- |
 | Array&lt;string&gt; | 导出结果。分别为文件名后缀为.jsleaklist的泄漏列表和文件名后缀为.heapsnapshot虚拟机内存快照文件。<br>**说明**：dump成功，返回泄漏列表文件路径和虚拟机内存快照路径；dump失败，返回空数组。 |
 
-**ArkTS-Dyn示例：**
+**示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```js
 let context = this.getUIContext().getHostContext();
 let files: Array<string> = jsLeakWatcher.dump(context?.filesDir);
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
 <!--code_no_check-->
 ```js
 let context = this.getUIContext().getHostContext();
-let filesDir = context?.filesDir
+let filesDir = context?.filesDir;
 if (filesDir !== undefined) {
     let files: Array<string> = jsLeakWatcher.dump(filesDir);
 } else {
     console.info('filesDir is undefined');
 }
 ```
-
 
 ## jsLeakWatcher.enableLeakWatcher<sup>20+</sup>
 
@@ -242,7 +243,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | 是| 是否使能ArkTS对象内存泄漏检测功能。<br>true：开启ArkTS内存泄漏检测功能。<br>false：关闭ArkTS内存泄漏检测功能。|
-| configs | [LeakWatcherConfig](#leakwatcherconfig24) | 是| LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。ArkTS-Sta版本中使用configs时，其中的monitorObjectTypes受语法限制只能赋值单个组件类型，不能使用类似ArkTS-Dyn版本的'\|'操作符赋值多个组件类型|
+| configs | [LeakWatcherConfig](#leakwatcherconfig24) | 是|  LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：<br>对象中参数类型传入空值或假值代表该属性设置为默认值。<br>ArkTS-Dyn：可通过'\|'操作符赋值多个组件类型。<br>ArkTS-Sta：只能赋值单个组件类型。|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收泄漏检测的导出文件路径。回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
 
