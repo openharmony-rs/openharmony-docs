@@ -132,7 +132,7 @@ off\(type: \'cellInfoChange\', callback?: Callback\<Array\<CellInformation\>\>\)
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                    | 是   | 小区信息变化事件，固定为'cellInfoChange'。                                            |
-| callback | Callback\<Array\<[CellInformation](js-apis-radio.md#cellinformation8)\>\> | 否   | 以callback形式异步返回结果。|
+| callback | Callback\<Array\<[CellInformation](js-apis-radio.md#cellinformation8)\>\> | 否   | 需取消的回调函数，与on中注册的callback一致。不传该参数时清空所有订阅。|
 
 **错误码：**
 
