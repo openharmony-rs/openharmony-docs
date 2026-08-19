@@ -67,7 +67,7 @@ UserAuthIcon({
   onIconClick: () => {
     // 可选：处理图标点击事件。
   }
-});
+})
 ```
 
 ## 导入模块
@@ -155,7 +155,7 @@ struct Index {
           onAuthResult: (result: userAuth.UserAuthResult) => {
             console.info(`Get user auth result, result = ${result.result}`);
           }
-        });
+        })
       }
     }
   }
