@@ -217,7 +217,7 @@ ArkTS-Dyn: javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined)
 
-将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。当属性没有显式调用时，默认不将javaScriptProxy中的ArkTS对象注册到Web组件中。
+将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。
 
 > **说明：**
 >
@@ -357,7 +357,7 @@ ArkTS-Dyn: javaScriptAccess(javaScriptAccess: boolean)
 
 ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined)
 
-设置是否允许执行JavaScript脚本。当属性没有显式调用时，默认允许执行JavaScript脚本。
+设置是否允许执行JavaScript脚本。当属性没有显式调用时，默认允许。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -369,7 +369,7 @@ ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined)
 
 | 参数名              | 类型    | 必填   | 说明                |
 | ---------------- | ------- | ---- | ------------------- |
-| javaScriptAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 是否允许执行JavaScript脚本。<br>true表示允许执行JavaScript脚本，false表示不允许执行JavaScript脚本。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
+| javaScriptAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 是否允许执行JavaScript脚本。<br>true表示允许，false表示不允许。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -947,7 +947,7 @@ ArkTS-Dyn: multiWindowAccess(multiWindow: boolean)
 
 ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
-设置是否开启多窗口权限。若未显式调用该属性或入参值为undefined时，默认不开启多窗口权限。
+设置是否开启多窗口权限。当属性没有显式调用时，默认不开启。
 
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew](./arkts-basic-components-web-events.md#onwindownew9)。
 
@@ -961,7 +961,7 @@ ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 | 参数名         | 类型    | 必填   | 说明         |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。|
+| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示开启，false表示不开启。 |
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 

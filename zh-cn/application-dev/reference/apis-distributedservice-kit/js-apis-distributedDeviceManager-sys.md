@@ -1390,3 +1390,84 @@ restoreLocalDeivceName(): void
   }
   ```
 
+### getOsTypeByNetworkId
+
+ArkTS-Dyn: getOsTypeByNetworkId(networkId: string): number
+
+ArkTS-Sta: getOsTypeByNetworkId(networkId: string): int
+
+根据设备网络ID查询设备操作系统类型。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC和ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**参数：**
+
+  | 参数名       | 类型            | 必填  | 说明                |
+  | ------------- | --------------- | ---- | ------------------- |
+  |  networkId       | string         | 是    | 设备网络ID。     |
+
+**返回值：**
+
+  | 类型                                                       | 说明                               |
+  | ---------------------------------------------------------- | ---------------------------------- |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 设备操作系统类型。<br>- 10：基于OpenHarmony的操作系统。<br>- 11：非基于OpenHarmony的操作系统。<br>- -1：未知。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain service.                                 |
+| 11600110 | Invalid network ID.                                 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let networkId: string = 'test_network_id';
+    let osType: number = dmInstance.getOsTypeByNetworkId(networkId);
+    console.info(`getOsTypeByNetworkId result: ${osType}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getOsTypeByNetworkId errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let networkId: string = 'test_network_id';
+    let osType: int = dmInstance.getOsTypeByNetworkId(networkId);
+    console.info(`getOsTypeByNetworkId result: ${osType}`);
+  } catch (err) {
+    let e = err as Error;
+    console.error(`getOsTypeByNetworkId errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+

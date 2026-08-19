@@ -54,11 +54,11 @@ getString(): string
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| string | 返回字符串类型的数据。 |
+| string | 返回runJavaScriptExt接口脚本执行后得到的字符串类型的数据。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](./errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -82,7 +82,7 @@ ArkTS-Sta: getNumber(): double | long
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double \| long | 返回数值类型的数据。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double \| long | 返回runJavaScriptExt接口脚本执行后得到的数值类型的数据。 |
 
 **错误码：**
 
@@ -108,7 +108,7 @@ getBoolean(): boolean
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| boolean | 返回布尔类型的数据。 |
+| boolean | 返回runJavaScriptExt接口脚本执行后得到的布尔类型的数据。 |
 
 **错误码：**
 
@@ -134,7 +134,7 @@ getArrayBuffer(): ArrayBuffer
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| ArrayBuffer | 返回原始二进制数据。 |
+| ArrayBuffer | 返回runJavaScriptExt接口脚本执行后得到的原始二进制数据。 |
 
 **错误码：**
 
@@ -162,7 +162,7 @@ ArkTS-Sta: getArray(): Array\<string | double | long | boolean\>
 
 | 类型           | 说明          |
 | --------------| ------------- |
-| ArkTS-Dyn: Array\<string \| number \| boolean\><br>ArkTS-Sta: Array\<string \| double \| long \| boolean\> | 返回数组类型的数据。 |
+| ArkTS-Dyn: Array\<string \| number \| boolean\><br>ArkTS-Sta: Array\<string \| double \| long \| boolean\> | 返回runJavaScriptExt接口脚本执行后得到的数组类型的数据。 |
 
 **错误码：**
 
@@ -175,7 +175,7 @@ ArkTS-Sta: getArray(): Array\<string | double | long | boolean\>
 
 getErrorDescription(): string \| null
 
-获取JS执行的异常信息。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
+获取JavaScript执行的异常信息。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -187,4 +187,4 @@ getErrorDescription(): string \| null
 
 | 类型           | 说明                                                      |
 | --------------| --------------------------------------------------------- |
-| string \| null | 若JavaScript脚本执行过程中发生异常，或返回值为object类型，系统会将其格式化为"Not support type: <{exception\|object}>"字符串返回，该字符串长度不超过2048个字符，超长部分将被截断；若object对象中包含callback类型的成员，则序列化时将自动忽略该成员；其余情况，接口均返回null。 |
+| string \| null | 若JavaScript脚本执行过程中发生异常，或返回值为object类型，系统会将异常信息或object对象格式化为"Not support type: <{exception \| object}>"字符串返回，该字符串长度不超过2048个字符，超长部分将被截断；若object对象中包含callback类型的成员，则序列化时将自动忽略该成员；其余情况，接口均返回null。 |

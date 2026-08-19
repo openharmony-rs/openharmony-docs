@@ -364,7 +364,7 @@ struct ScrollBarExample {
 ArkTS-Dyn示例：
 
 ```ts
-import { ColorMetrics, EdgeEffect, NestedScrollMode } from '@kit.ArkUI'
+import { ColorMetrics } from '@kit.ArkUI'
 
 @Entry
 @Component

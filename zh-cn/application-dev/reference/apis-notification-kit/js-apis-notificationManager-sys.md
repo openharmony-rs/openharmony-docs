@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布代理通知、取消代理通知，创建、获取、移除通知渠道，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理分布式通知协同，管理通知发布权限管控，获取活动通知信息，设置通知提醒方式，订阅系统实况窗，注册通知校验回调，管理通知优先级策略，以及设置地理围栏、铃声信息、静默提醒等高级功能。
+本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)、取消代理通知，创建、获取、移除[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)协同，管理通知发布权限管控，获取活动通知信息，设置[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)，订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)，注册[通知校验](../../notification/notification-glossary.md#notification-check通知校验)回调，管理通知优先级策略，以及设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)、铃声信息、[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)等高级功能。
 
 > **说明：**
 >
@@ -255,7 +255,7 @@ notificationManager.publish(notificationRequest, userId).then(() => {
 
 addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
-创建通知渠道。使用callback异步回调。
+创建[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -332,7 +332,7 @@ notificationManager.addSlot(notificationSlot, addSlotCallBack);
 
 addSlot(slot: NotificationSlot): Promise\<void\>
 
-创建通知渠道。使用Promise异步回调。
+创建[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -407,7 +407,7 @@ notificationManager.addSlot(notificationSlot).then(() => {
 
 addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): void
 
-创建多个通知渠道。使用callback异步回调。
+创建多个[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -493,7 +493,7 @@ notificationManager.addSlots(notificationSlotArray, addSlotsCallBack);
 
 addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
-创建多个通知渠道。使用Promise异步回调。
+创建多个[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1486,7 +1486,7 @@ ArkTS-Dyn: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promis
 
 ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\<void\>
 
-设定指定应用的通知提醒方式开关。使用Promise异步回调。
+设定指定应用的[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1570,7 +1570,7 @@ notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
 
 setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
-设置指定应用的通知渠道。使用callback异步回调。
+设置指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -1656,7 +1656,7 @@ notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCal
 
 setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
-设置指定应用的通知渠道。使用Promise异步回调。
+设置指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -1748,7 +1748,7 @@ ArkTS-Dyn: getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 
-获取指定应用的通知渠道标识位。使用Promise异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)标识位。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1825,7 +1825,7 @@ notificationManager.getSlotFlagsByBundle(bundle).then((data: long) => {
 
 getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
-获取指定应用的所有通知渠道。使用callback异步回调。
+获取指定应用的所有[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1902,7 +1902,7 @@ notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
 
 getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
-获取指定应用的所有通知渠道。使用Promise异步回调。
+获取指定应用的所有[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1983,7 +1983,7 @@ ArkTS-Dyn: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<num
 
 ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<long\>): void
 
-获取指定应用的通知渠道数量。使用callback异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2066,7 +2066,7 @@ ArkTS-Dyn: getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
-获取指定应用的通知渠道数量。使用Promise异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2273,7 +2273,7 @@ ArkTS-Dyn: getActiveNotificationByFilter(filter: NotificationFilter, callback: A
 
 ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest|null\>): void
 
-获取满足条件的普通实况通知信息。使用callback异步回调。
+获取满足条件的[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2368,7 +2368,7 @@ ArkTS-Dyn: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<NotificationRequest|null\>
 
-获取满足条件的普通实况通知信息。使用Promise异步回调。
+获取满足条件的[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3390,7 +3390,7 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
-设置设备是否支持分布式通知。使用callback异步回调。
+设置设备是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3464,7 +3464,7 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
-设置设备是否支持分布式通知。使用Promise异步回调。
+设置设备是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3538,7 +3538,7 @@ notificationManager.setDistributedEnable(enable).then(() => {
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
-设置指定应用是否支持分布式通知。使用callback异步回调。
+设置指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3621,7 +3621,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
-设置指定应用是否支持分布式通知。使用Promise异步回调。
+设置指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3704,7 +3704,7 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-根据应用的包获取应用是否支持分布式通知。使用callback异步回调。
+根据应用的包获取应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3784,7 +3784,7 @@ notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByB
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
-查询指定应用是否支持分布式通知。使用Promise异步回调。
+查询指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3882,7 +3882,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                       |
 | -------- | --------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype)\> | 是   | 获取通知提醒方式的回调函数。 |
+| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype)\> | 是   | 获取[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的回调函数。 |
 
 **错误码：**
 
@@ -3950,7 +3950,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 | 类型               | 说明            |
 | ------------------ | --------------- |
-| Promise\<[DeviceRemindType](#deviceremindtype)\> | Promise方式返回获取通知提醒方式的结果。 |
+| Promise\<[DeviceRemindType](#deviceremindtype)\> | Promise方式返回获取[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的结果。 |
 
 **错误码：**
 
@@ -3996,7 +3996,7 @@ ArkTS-Dyn: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int, callback: AsyncCallback\<void\>): void
 
-发布代理通知。使用callback异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4116,7 +4116,7 @@ ArkTS-Dyn: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int): Promise\<void\>
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4233,7 +4233,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 
 publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise\<void\>
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4351,7 +4351,7 @@ ArkTS-Dyn: cancelAsBundle(id: number, representativeBundle: string, userId: numb
 
 ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, callback: AsyncCallback\<void\>): void
 
-取消代理通知。使用callback异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4433,7 +4433,7 @@ ArkTS-Dyn: cancelAsBundle(id: number, representativeBundle: string, userId: numb
 
 ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): Promise\<void\>
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4514,7 +4514,7 @@ ArkTS-Dyn: cancelAsBundle(representativeBundle: BundleOption, id: number): Promi
 
 ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\<void\>
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4778,7 +4778,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。|
 | type     | [SlotType](./js-apis-notificationManager.md#slottype)         | 是   | 指定渠道类型。           |
 | enable   | boolean                       | 是   | 使能状态（true：使能，false：禁止）。               |
-| isForceControl<sup>11+</sup> | boolean                 | 是   | 渠道开关是否受通知授权开关影响（false：受影响，true：不受影响）。 |
+| isForceControl<sup>11+</sup> | boolean                 | 是   | 渠道开关是否受[通知授权](../../notification/notification-glossary.md#notification-authorization通知授权)开关影响（false：受影响，true：不受影响）。 |
 | callback | AsyncCallback\<void\>         | 是   | 设置渠道使能回调函数。    |
 
 **错误码：**
@@ -5556,7 +5556,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 | 参数名 | 类型                                                                                                             | 必填 | 说明           |
 | ------ |-----------------------------------------------------------------------------------------------------------------| ---- | -------------- |
 | type | string                                                                                                            | 是   | 回调函数类型名，固定为'checkNotification'。 |
-| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | 通知请求验证内容。 |
+| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | [通知请求](../../notification/notification-glossary.md#notification-request通知请求)验证内容。 |
 | callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
 
 **错误码：**
@@ -5678,7 +5678,7 @@ onCheckNotification(checkRequest: NotificationCheckRequest, callback: (checkInfo
 
 | 参数名 | 类型                                                                                                             | 必填 | 说明           |
 | ------ |-----------------------------------------------------------------------------------------------------------------| ---- | -------------- |
-| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | 通知请求验证内容。 |
+| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | [通知请求](../../notification/notification-glossary.md#notification-request通知请求)验证内容。 |
 | callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) => Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
 
 **错误码：**
@@ -5819,7 +5819,7 @@ ArkTS-Dyn: triggerSystemLiveView(bundle: BundleOption, notificationId: number, b
 
 ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, buttonOptions: ButtonOptions): Promise\<void>
 
-触发系统实况窗。使用Promise异步回调。
+触发[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5914,7 +5914,7 @@ notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions)
 
 subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
-订阅系统实况窗。使用Promise异步回调。
+订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5993,7 +5993,7 @@ notificationManager.subscribeSystemLiveView(subscriber).then(() => {
 
 setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: boolean): Promise<void\>
 
-设置指定应用是否支持跨设备协同。使用Promise异步回调。
+设置指定应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6080,7 +6080,7 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 
 setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
 
-批量设置应用是否支持跨设备协同。使用Promise异步回调。
+批量设置应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6182,7 +6182,7 @@ notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() =
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
 
-获取指定应用是否支持跨设备协同。使用Promise异步回调。
+获取指定应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6504,7 +6504,7 @@ ArkTS-Dyn：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 
 ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<NotificationSlot|null>
 
-获取指定应用指定类型的通知渠道。使用Promise异步回调。
+获取指定应用指定类型的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 获取前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -7003,7 +7003,7 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声。 |
+| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)。 |
 | value   | string | 是  | 附加配置值。参数示例：[bundleName1,bundleName2]。 |
 
 **返回值：**
@@ -7368,7 +7368,7 @@ ArkTS-Dyn: setTargetDeviceStatus(deviceType: string, status: number): Promise\<v
 
 ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<void\>
 
-设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的通知提醒方式。
+设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7432,7 +7432,7 @@ notificationManager.setTargetDeviceStatus('current', 1).then(() => {
 
 setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean): Promise\<void\>
 
-设置指定渠道的通知是否支持通知跨设备协同至指定类型设备。使用Promise异步回调。
+设置指定渠道的通知是否支持通知[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)至指定类型设备。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7448,7 +7448,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | 通知渠道类型。 |
+| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
 | deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enabled | boolean | 是   | 是否开启通知跨设备协同开关。取值为true表示打开，取值为false表示关闭。 |
 
@@ -7506,7 +7506,7 @@ notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(
 
 isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean\>
 
-查询指定渠道的通知是否支持通知跨设备协同至指定类型设备。使用Promise异步回调。
+查询指定渠道的通知是否支持通知[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)至指定类型设备。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7522,7 +7522,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | 通知渠道类型。 |
+| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
 | deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
@@ -7577,7 +7577,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\>
 
-设置静默提醒的开关状态。使用Promise进行异步回调。
+设置[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7649,7 +7649,7 @@ try {
 
 isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
-查询静默提醒的开关状态。使用Promise进行异步回调。
+查询[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7882,7 +7882,7 @@ notificationManager.getNotificationSwitch(switchName, userId).then((data: notifi
 
 isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
-查询设备是否支持跨设备协同通知。使用Promise异步回调。
+查询设备是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7970,7 +7970,7 @@ export default class EntryAbility extends UIAbility {
 
 setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 
-设置设备是否支持跨设备协同通知。使用Promise异步回调。
+设置设备是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8061,7 +8061,7 @@ export default class EntryAbility extends UIAbility {
 
 getDistributedDeviceList(): Promise\<Array\<string\>\>
 
-查询支持跨设备协同通知的设备类型。使用Promise异步回调。
+查询支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知的设备类型。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8141,7 +8141,7 @@ export default class EntryAbility extends UIAbility {
 
 setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
 
-设置应用自定义铃声信息。使用Promise异步回调。
+设置应用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8238,7 +8238,7 @@ notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
 
 getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
-获取应用自定义铃声信息。使用Promise异步回调。
+获取应用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -8671,7 +8671,7 @@ isPriorityEnabled(): Promise\<boolean\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
 
 **错误码**：
 
@@ -8730,7 +8730,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
 
 **返回值：**
 
@@ -8866,7 +8866,7 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
-| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
 
 **返回值：**
 
@@ -9058,7 +9058,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
-获取优先通知智能服务使能状态。使用Promise异步回调。
+获取[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9120,7 +9120,7 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
-设置优先通知智能服务使能状态。使用Promise异步回调。
+设置[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9607,7 +9607,7 @@ try{
 
 setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
-设置地理围栏的启用状态。使用Promise异步回调。
+设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的启用状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9750,7 +9750,7 @@ ArkTS-Dyn: snoozeNotification(hashCode: string, delayTime: number): Promise\<voi
 
 ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\>
 
-设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
+设置通知[稍后提醒](../../notification/notification-glossary.md#notification-snooze稍后提醒)。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -9861,7 +9861,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DeviceRemindType
 
-通知提醒方式。
+[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9899,7 +9899,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationCheckInfo<sup>10+</sup>
 
-通知校验参数。
+[通知校验](../../notification/notification-glossary.md#notification-check通知校验)参数。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9915,11 +9915,11 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  |  否  | 否   | 通知类型。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23      |
 | creatorUserId<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                       |  否  | 否   | 通知的user ID。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        |  否  | 否   | 渠道类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23      |
-| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>       |  否  | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>       |  否  | 是   | [实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 
 ## NotificationCheckResult<sup>10+</sup>
 
-通知校验结果。
+[通知校验](../../notification/notification-glossary.md#notification-check通知校验)结果。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9958,7 +9958,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SystemLiveViewSubscriber<sup>11+</sup>
 
-系统实况窗订阅者。
+[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)订阅者。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -9975,7 +9975,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SlotType
 
-通知渠道类型。
+[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。
 
 不同类型对应不同的[SlotLevel](js-apis-notificationManager.md#slotlevel)，决定通知的提醒行为。
 
@@ -10029,7 +10029,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 type NotificationLiveViewContent = _NotificationLiveViewContent 
 
-描述普通实况通知。
+描述[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10078,11 +10078,11 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | 否 | 否 | 包名。          |
 | uid          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 应用的UID。          |
-| enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
+| enable       | boolean| 否 | 是 | 是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>21+</sup>
 
-描述自定义铃声类型。
+描述[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -10101,7 +10101,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 ## RingtoneInfo<sup>21+</sup>
 
-描述自定义铃声信息。
+描述[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -10133,8 +10133,8 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
-| silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
+| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| silentReminderEnabled | boolean | 否 | 否 | 表示[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)开关使能状态（true：使能，false：禁止）。 |
 
 ## BundleNotificationStatistics
 
@@ -10196,14 +10196,14 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
-| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。 |
 | ENABLE   | 2   | 应用通知均设置为优先通知。 |
 
 ## NotificationIconButton<sup>23+</sup>
 
 type NotificationIconButton = _NotificationIconButton
 
-系统通知按钮。
+系统[通知按钮](../../notification/notification-glossary.md#notification-button通知按钮)。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10261,7 +10261,7 @@ type Trigger = _Trigger
 
 type Geofence = _Geofence
 
-地理围栏的配置信息。
+[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的配置信息。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10281,7 +10281,7 @@ type Geofence = _Geofence
 
 type CoordinateSystemType = _CoordinateSystemType
 
-表示地理围栏坐标系类型的枚举。
+表示[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)坐标系类型的枚举。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10301,7 +10301,7 @@ type CoordinateSystemType = _CoordinateSystemType
 
 type MonitorEvent = _MonitorEvent
 
-表示地理围栏的监控事件类型的枚举。
+表示[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的监控事件类型的枚举。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -10344,7 +10344,7 @@ type MonitorEvent = _MonitorEvent
 
 type GroupInfo = _GroupInfo
 
-组通知定制信息。
+[组通知](../../notification/notification-glossary.md#group-notification组通知)定制信息。
 
 **系统能力：** SystemCapability.Notification.Notification
 
