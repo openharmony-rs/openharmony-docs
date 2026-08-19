@@ -1960,7 +1960,7 @@ sim.setVoiceMailInfo(0, 'mail', 'xxx@xxx.com', (err: BusinessError) => {
 
 setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string\): Promise\<void\>
 
-设置语音信箱信息。使用Promise异步回调
+设置语音信箱信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3710,8 +3710,11 @@ Icc账户信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**起始版本:** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称       | 类型    | 只读|可选| 说明             |
 | -------------| ------ | ---- | ---------- |---------- |
-| simLabelIndex  | number  |  否 | 是| SIM卡的标签索引。  <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| operatorName | string  |  否 | 是| SIM卡运营商名称。    <br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| simLabelIndex  | number  |  否 | 是| SIM卡的标签索引。 |
+| operatorName | string  |  否 | 是| SIM卡运营商名称。    |
