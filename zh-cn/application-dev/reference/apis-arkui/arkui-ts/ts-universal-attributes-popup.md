@@ -276,7 +276,7 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 
 ## PopupStateChangeCallback<sup>18+</sup>
 
-type PopupStateChangeCallback = (event: PopupStateChangeParam) => void;
+type PopupStateChangeCallback = (event: PopupStateChangeParam) => void
 
 气泡状态变化事件回调。
 
