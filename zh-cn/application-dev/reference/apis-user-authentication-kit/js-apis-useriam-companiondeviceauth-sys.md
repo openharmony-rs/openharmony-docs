@@ -1187,4 +1187,3 @@ try {
   console.error(`Failed to unregister passcode prompt callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
->>>>>>> OpenHarmony_feature_sta_20260331
