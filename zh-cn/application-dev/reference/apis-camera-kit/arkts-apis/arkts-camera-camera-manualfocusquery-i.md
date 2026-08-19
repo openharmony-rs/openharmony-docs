@@ -4,13 +4,16 @@ Manual Focus Query object.
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-camera-interface ManualFocusQuery--><!--Device-camera-interface ManualFocusQuery-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## isFocusDistanceSupported
 
@@ -21,10 +24,6 @@ isFocusDistanceSupported(): boolean
 Checks whether a focus distance is supported.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 

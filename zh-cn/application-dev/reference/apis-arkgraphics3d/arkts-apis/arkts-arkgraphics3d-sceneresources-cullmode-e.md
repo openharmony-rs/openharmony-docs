@@ -1,12 +1,8 @@
 # CullMode
 
-PBR材质剔除模式枚举.
+用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum CullMode--><!--Device-unnamed-export enum CullMode-End-->
 
@@ -18,13 +14,9 @@ PBR材质剔除模式枚举.
 NONE = 0
 ```
 
-禁用剔除.
+禁用剔除。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CullMode-NONE = 0--><!--Device-CullMode-NONE = 0-End-->
 
@@ -36,13 +28,9 @@ NONE = 0
 FRONT = 1
 ```
 
-剔除正面.
+剔除正面几何面片。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CullMode-FRONT = 1--><!--Device-CullMode-FRONT = 1-End-->
 
@@ -54,13 +42,9 @@ FRONT = 1
 BACK = 2
 ```
 
-剔除背面.
+剔除背面几何面片。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CullMode-BACK = 2--><!--Device-CullMode-BACK = 2-End-->
 

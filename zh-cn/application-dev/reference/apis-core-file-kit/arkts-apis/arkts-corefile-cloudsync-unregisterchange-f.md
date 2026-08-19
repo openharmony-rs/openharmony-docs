@@ -1,5 +1,12 @@
 # unregisterChange
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## unregisterChange
 
 ```TypeScript
@@ -9,10 +16,6 @@ function unregisterChange(uri: string): void
 取消订阅监听指定文件的变化通知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-cloudSync-function unregisterChange(uri: string): void--><!--Device-cloudSync-function unregisterChange(uri: string): void-End-->
 
@@ -34,7 +37,7 @@ function unregisterChange(uri: string): void
 | 14000002 | Invalid uri. |
 | 13900012 | Permission denied |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

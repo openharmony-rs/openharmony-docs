@@ -4,10 +4,6 @@ DisplayMode枚举用于定义选择器的显示模式。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum DisplayMode--><!--Device-unnamed-export declare enum DisplayMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ DATE = 0
 仅显示日期。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ TIME = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -65,10 +53,6 @@ DATE_TIME = 2
 同时显示日期和时间。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

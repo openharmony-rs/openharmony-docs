@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface RotateOptions--><!--Device-unnamed-export declare interface RotateOptions-End-->
 
@@ -24,9 +22,7 @@ angle: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,9 +42,7 @@ centerX?: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,9 +62,7 @@ centerY?: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,9 +84,7 @@ z轴锚点，即3D旋转中心点的z轴分量。 默认值：0 单位：px
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -116,9 +106,7 @@ perspective?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,9 +126,7 @@ x?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -160,9 +146,7 @@ y?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -182,9 +166,7 @@ z?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

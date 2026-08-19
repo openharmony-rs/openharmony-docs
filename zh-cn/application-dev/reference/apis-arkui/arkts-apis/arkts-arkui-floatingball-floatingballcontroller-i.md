@@ -1,16 +1,18 @@
 # FloatingBallController
 
-闪控球控制器实例，用于启动、更新、停止闪控球以及注册回调等操作。 下列API示例中都需先使用[floatingBall.create()](arkts-arkui-floatingball-create-f.md#create)方法获取到闪控球控制器实例（即floatingBallController），再通过此实例调用对应方法。
+闪控球控制器实例，用于启动、更新、停止闪控球以及注册回调等操作。 下列API示例中都需先使用[floatingBall.create()](arkts-arkui-floatingball-create-f.md)方法获取到闪控球控制器实例（即floatingBallController），再通过此实例调用对应方法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-floatingBall-interface FloatingBallController--><!--Device-floatingBall-interface FloatingBallController-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+```
 
 ## getFloatingBallWindowInfo
 
@@ -21,10 +23,6 @@ getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>
 获得闪控球窗口信息，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallController-getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>--><!--Device-FloatingBallController-getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>-End-->
 
@@ -47,7 +45,7 @@ getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>
 | [1300025](../errorcode-window.md#1300025-闪控球状态不支持该操作) | The floating ball state does not support this operation. Possible cause: The floating ball is not started. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible causes: <br>1. The floating ball controller has been destroyed. <br>2. The floating ball window is not created or has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -70,10 +68,6 @@ Unregister floating ball click event listener.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallController-offClick(callback?: Callback<void>): void--><!--Device-FloatingBallController-offClick(callback?: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -82,7 +76,7 @@ Unregister floating ball click event listener.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | Indicates the callback function. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | Indicates the callback function. If not provided, all callbacks for the given event type will be removed. |
 
 **错误码：**
 
@@ -92,7 +86,7 @@ Unregister floating ball click event listener.
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -117,10 +111,6 @@ offDestroy(callback?: Callback<string>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FloatingBallController-offDestroy(callback?: Callback<string>): void--><!--Device-FloatingBallController-offDestroy(callback?: Callback<string>): void-End-->
@@ -131,7 +121,7 @@ offDestroy(callback?: Callback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;string&gt; | 否 | 回调函数。若传入参数，则取消该监听；若未传入参数，则取消所有闪控球销毁事件的监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;string&gt; | 否 | 回调函数。若传入参数，则取消该监听；若未传入参数，则取消所有闪控球销毁事件的监听。 |
 
 **错误码：**
 
@@ -141,7 +131,7 @@ offDestroy(callback?: Callback<string>): void
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let onDestroy = (reason: string) => {
@@ -170,10 +160,6 @@ Unregister floating ball stateChange event listener.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallController-offStateChange(callback?: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-offStateChange(callback?: Callback<FloatingBallState>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -182,7 +168,7 @@ Unregister floating ball stateChange event listener.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 否 | Indicates the callback function. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 否 | Indicates the callback function. If not provided, all callbacks for the given event type will be removed. |
 
 **错误码：**
 
@@ -192,7 +178,7 @@ Unregister floating ball stateChange event listener.
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -207,7 +193,7 @@ try {
 }
 ```
 
-## off_click
+## off('click')
 
 ```TypeScript
 off(type: 'click', callback?: Callback<void>): void
@@ -216,10 +202,6 @@ off(type: 'click', callback?: Callback<void>): void
 取消闪控球点击的监听事件。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallController-off(type: 'click', callback?: Callback<void>): void--><!--Device-FloatingBallController-off(type: 'click', callback?: Callback<void>): void-End-->
 
@@ -230,7 +212,7 @@ off(type: 'click', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'click' | 是 | 监听事件，固定为'click'，即闪控球点击事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。若传入参数，则关闭特定的监听。若未传入参数，则关闭所有闪控球点击的监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。若传入参数，则关闭特定的监听。若未传入参数，则关闭所有闪控球点击的监听。 |
 
 **错误码：**
 
@@ -240,7 +222,7 @@ off(type: 'click', callback?: Callback<void>): void
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -255,7 +237,7 @@ try {
 }
 ```
 
-## off_stateChange
+## off('stateChange')
 
 ```TypeScript
 off(type: 'stateChange', callback?: Callback<FloatingBallState>): void
@@ -264,10 +246,6 @@ off(type: 'stateChange', callback?: Callback<FloatingBallState>): void
 取消闪控球生命周期状态变化的监听事件。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallController-off(type: 'stateChange', callback?: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-off(type: 'stateChange', callback?: Callback<FloatingBallState>): void-End-->
 
@@ -278,7 +256,7 @@ off(type: 'stateChange', callback?: Callback<FloatingBallState>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 监听事件，固定为'stateChange'，即闪控球生命周期状态变化事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 否 | 回调函数。返回当前的闪控球生命周期状态。若传入参数，则停止该监听。若未传入参数，则停止所有闪控球生命周期状态变化的监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 否 | 回调函数。返回当前的闪控球生命周期状态。若传入参数，则停止该监听。若未传入参数，则停止所有闪控球生命周期状态变化的监听。 |
 
 **错误码：**
 
@@ -288,7 +266,7 @@ off(type: 'stateChange', callback?: Callback<FloatingBallState>): void
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -313,10 +291,6 @@ Register floating ball click event listener.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallController-onClick(callback: Callback<void>): void--><!--Device-FloatingBallController-onClick(callback: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -325,7 +299,7 @@ Register floating ball click event listener.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Used to handle {'click'} command. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Used to handle {'click'} command. |
 
 **错误码：**
 
@@ -336,7 +310,7 @@ Register floating ball click event listener.
 | [1300022](../errorcode-window.md#1300022-重复操作闪控球) | Repeated floating ball operation. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -361,10 +335,6 @@ onDestroy(callback: Callback<string>): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FloatingBallController-onDestroy(callback: Callback<string>): void--><!--Device-FloatingBallController-onDestroy(callback: Callback<string>): void-End-->
@@ -375,7 +345,7 @@ onDestroy(callback: Callback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;string&gt; | 是 | 回调函数。返回闪控球停止的原因。停止原因包括： <br>- "APP_STOP"：应用主动停止。 <br>- "DUMPSTER_STOP"：拖动到垃圾桶触发停止。 <br>- "LONG_PRESS_SINGLE_STOP"：长按单个闪控球触发停止。 <br>- "LONG_PRESS_ALL_STOP"：长按全部闪控球触发停止。 <br>- "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗口被销毁后触发停止。 <br>- "SQUEEZE"：超出设备闪控球数量上限，被其他闪控球挤占停止。 <br>- "FLOAT_VIEW_STOP"：与标准悬浮窗绑定后，绑定状态下跟随标准悬浮窗停止。 <br>- "STOP_IN_SIDEBAR"：在侧边栏中被停止。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;string&gt; | 是 | 回调函数。返回闪控球停止的原因。停止原因包括： <br>- "APP_STOP"：应用主动停止。 <br>- "DUMPSTER_STOP"：拖动到垃圾桶触发停止。 <br>- "LONG_PRESS_SINGLE_STOP"：长按单个闪控球触发停止。 <br>- "LONG_PRESS_ALL_STOP"：长按全部闪控球触发停止。 <br>- "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗口被销毁后触发停止。 <br>- "SQUEEZE"：超出设备闪控球数量上限，被其他闪控球挤占停止。 <br>- "FLOAT_VIEW_STOP"：与标准悬浮窗绑定后，绑定状态下跟随标准悬浮窗停止。 <br>- "STOP_IN_SIDEBAR"：在侧边栏中被停止。 |
 
 **错误码：**
 
@@ -386,7 +356,7 @@ onDestroy(callback: Callback<string>): void
 | [1300022](../errorcode-window.md#1300022-重复操作闪控球) | Repeated floating ball operation. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let onDestroy = (reason: string) => {
@@ -409,10 +379,6 @@ Register floating ball stateChange event listener.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallController-onStateChange(callback: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-onStateChange(callback: Callback<FloatingBallState>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -421,7 +387,7 @@ Register floating ball stateChange event listener.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 是 | Used to handle {'stateChange'} command. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 是 | Used to handle {'stateChange'} command. |
 
 **错误码：**
 
@@ -432,7 +398,7 @@ Register floating ball stateChange event listener.
 | [1300022](../errorcode-window.md#1300022-重复操作闪控球) | Repeated floating ball operation. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -447,7 +413,7 @@ try {
 }
 ```
 
-## on_click
+## on('click')
 
 ```TypeScript
 on(type: 'click', callback: Callback<void>): void
@@ -456,10 +422,6 @@ on(type: 'click', callback: Callback<void>): void
 注册闪控球的点击监听事件，不使用时，取消监听以避免内存泄漏。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallController-on(type: 'click', callback: Callback<void>): void--><!--Device-FloatingBallController-on(type: 'click', callback: Callback<void>): void-End-->
 
@@ -470,7 +432,7 @@ on(type: 'click', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'click' | 是 | 监听事件，固定为'click'，即闪控球点击事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。 |
 
 **错误码：**
 
@@ -481,7 +443,7 @@ on(type: 'click', callback: Callback<void>): void
 | [1300022](../errorcode-window.md#1300022-重复操作闪控球) | Repeated floating ball operation. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -496,7 +458,7 @@ try {
 }
 ```
 
-## on_stateChange
+## on('stateChange')
 
 ```TypeScript
 on(type: 'stateChange', callback: Callback<FloatingBallState>): void
@@ -505,10 +467,6 @@ on(type: 'stateChange', callback: Callback<FloatingBallState>): void
 注册闪控球生命周期状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallController-on(type: 'stateChange', callback: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-on(type: 'stateChange', callback: Callback<FloatingBallState>): void-End-->
 
@@ -519,7 +477,7 @@ on(type: 'stateChange', callback: Callback<FloatingBallState>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 监听事件，固定为'stateChange'，即闪控球生命周期状态变化事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 是 | 回调函数。返回当前的闪控球生命周期状态。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[FloatingBallState](arkts-arkui-floatingball-floatingballstate-e.md)&gt; | 是 | 回调函数。返回当前的闪控球生命周期状态。 |
 
 **错误码：**
 
@@ -530,7 +488,7 @@ on(type: 'stateChange', callback: Callback<FloatingBallState>): void
 | [1300022](../errorcode-window.md#1300022-重复操作闪控球) | Repeated floating ball operation. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -554,10 +512,6 @@ restoreMainWindow(want: Want): Promise<void>
 恢复应用主窗口并加载指定页面。使用Promise异步回调。仅支持在点击闪控球后调用；若应用拥有`ohos.permission.AUTO_RESTORE_MAIN_WINDOW`权限，可以无需点击直接调用该接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.USE_FLOAT_BALL
 
@@ -591,7 +545,7 @@ restoreMainWindow(want: Want): Promise<void>
 | [1300025](../errorcode-window.md#1300025-闪控球状态不支持该操作) | The floating ball state does not support this operation. Possible cause: The floating ball is not started. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible causes: <br>1.The floating ball controller has been destroyed. <br>2.The floating ball window is not created or has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -623,10 +577,6 @@ setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FloatingBallController-setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>--><!--Device-FloatingBallController-setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>-End-->
@@ -653,7 +603,7 @@ setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>
 | [1300023](../errorcode-window.md#1300023-闪控球内部错误) | Floating ball internal error. Possible cause: The floating ball controller is null. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible causes: The floating ball window has not been created or has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -674,10 +624,6 @@ startFloatingBall(params: FloatingBallParams): Promise<void>
 启动闪控球，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.USE_FLOAT_BALL
 
@@ -711,7 +657,7 @@ startFloatingBall(params: FloatingBallParams): Promise<void>
 | [1300025](../errorcode-window.md#1300025-闪控球状态不支持该操作) | The floating ball state does not support this operation. Possible cause: The floating ball state is stopping. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball window is not created or has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -743,10 +689,6 @@ stopFloatingBall(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallController-stopFloatingBall(): Promise<void>--><!--Device-FloatingBallController-stopFloatingBall(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -765,7 +707,7 @@ stopFloatingBall(): Promise<void>
 | [1300022](../errorcode-window.md#1300022-重复操作闪控球) | Repeated floating ball operation. |
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball window is not created or has been destroyed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -787,10 +729,6 @@ updateFloatingBall(params: FloatingBallParams): Promise<void>
 更新闪控球，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallController-updateFloatingBall(params: FloatingBallParams): Promise<void>--><!--Device-FloatingBallController-updateFloatingBall(params: FloatingBallParams): Promise<void>-End-->
 
@@ -822,7 +760,7 @@ updateFloatingBall(params: FloatingBallParams): Promise<void>
 | [1300024](../errorcode-window.md#1300024-闪控球窗口状态异常) | The floating ball window state is abnormal. Possible cause: The floating ball window is not created or has been destroyed. |
 | [1300028](../errorcode-window.md#1300028-不支持更新静态模板类型闪控球) | Updating static template-based floating balls is not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets

@@ -4,13 +4,15 @@ This parameter is used to define the input of each filtering dimension.
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare class FilterParams--><!--Device-unnamed-export declare class FilterParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { Filter, FilterParams, FilterResult, FilterType } from '@kit.ArkUI';
+```
 
 ## name
 
@@ -23,10 +25,6 @@ name: ResourceStr
 **类型：** ResourceStr
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +45,6 @@ options: Array<ResourceStr>
 **类型：** Array&lt;ResourceStr&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

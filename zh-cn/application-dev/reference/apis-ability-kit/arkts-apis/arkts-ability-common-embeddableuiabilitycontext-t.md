@@ -4,13 +4,9 @@
 export type EmbeddableUIAbilityContext = _EmbeddableUIAbilityContext.default
 ```
 
-[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md#embeddableuiability)组件上下文，继承自Context。
+[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)组件上下文，继承自Context。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

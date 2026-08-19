@@ -4,13 +4,15 @@ XmlSAXHandler定义了SAX解析xml文本时的回调方法。开发者需要实�
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-xml-interface XmlSAXHandler--><!--Device-xml-interface XmlSAXHandler-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { xml } from '@kit.ArkTS';
+```
 
 ## characters
 
@@ -21,10 +23,6 @@ characters(content: string): void
 当解析器在XML元素内部遇到文本内容时调用的回调函数。该回调函数需要开发者自行实现。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +38,7 @@ characters(content: string): void
 | --- | --- | --- | --- |
 | content | string | 是 | 解析器回传元素中的文本内容。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -192,10 +190,6 @@ endDocument(): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -213,10 +207,6 @@ endElement(elementName: string, namespaceURI: string | undefined, qName: string 
 当解析器遇到XML元素的结束标签时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters&lt;sup&gt;24+&lt;/sup&gt;](#characters)。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,10 +234,6 @@ startDocument(): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -265,10 +251,6 @@ startElement(elementName: string, namespaceURI: string | undefined, qName: strin
 当解析器遇到XML元素的开始标签时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters&lt;sup&gt;24+&lt;/sup&gt;](#characters)。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

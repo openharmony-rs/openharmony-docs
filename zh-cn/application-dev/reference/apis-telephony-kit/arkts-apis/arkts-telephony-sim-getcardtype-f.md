@@ -1,5 +1,11 @@
 # getCardType
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## getCardType
 
 ```TypeScript
@@ -10,10 +16,6 @@ Obtains the type of the SIM card installed in a specified slot.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sim-function getCardType(slotId: int, callback: AsyncCallback<CardType>): void--><!--Device-sim-function getCardType(slotId: int, callback: AsyncCallback<CardType>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
@@ -23,7 +25,7 @@ Obtains the type of the SIM card installed in a specified slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | int | 是 | Indicates the card slot index number, ranging from {@code 0} to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;CardType&gt; | 是 | Indicates the callback for getting the SIM card type. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;CardType&gt; | 是 | Indicates the callback for getting the SIM card type. |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ Obtains the type of the SIM card installed in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -57,10 +59,6 @@ function getCardType(slotId: int): Promise<CardType>
 Obtains the type of the SIM card installed in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sim-function getCardType(slotId: int): Promise<CardType>--><!--Device-sim-function getCardType(slotId: int): Promise<CardType>-End-->
 
@@ -89,7 +87,7 @@ Obtains the type of the SIM card installed in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,10 +1,8 @@
 # FileInfo（系统接口）
 
-Represents information about a file or directory in the **Recently deleted** list.
+最近删除（回收站）内文件的FileInfo对象。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -14,19 +12,23 @@ Represents information about a file or directory in the **Recently deleted** lis
 
 **系统接口：** 此接口为系统接口。
 
+## 导入模块
+
+```TypeScript
+import { trash } from '@kit.CoreFileKit';
+```
+
 ## ctime
 
 ```TypeScript
 readonly ctime: number
 ```
 
-Time when the file or directory was created. It is the number of seconds elapsed since the Unix epoch (00:00:00 UTC on January 1, 1970).
+文件/目录的创建时间。自1970年1月1日起至目标时间的秒数。
 
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -44,13 +46,11 @@ Time when the file or directory was created. It is the number of seconds elapsed
 readonly fileName: string
 ```
 
-Name of the file or directory.
+文件/目录文件名。
 
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -68,13 +68,11 @@ Name of the file or directory.
 readonly mode: number
 ```
 
-Permission on the file or directory.
+文件/目录权限信息。
 
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -92,13 +90,11 @@ Permission on the file or directory.
 readonly mtime: number
 ```
 
-Time when the file or directory was last modified. It is the number of milliseconds elapsed since the Unix epoch (00:00:00 UTC on January 1, 1970).
+文件/目录的修改时间。自1970年1月1日起至目标时间的毫秒数。
 
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -116,13 +112,11 @@ Time when the file or directory was last modified. It is the number of milliseco
 readonly size: number
 ```
 
-Size of a file or directory, in bytes.
+文件/目录的大小，单位为Byte。
 
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -140,13 +134,11 @@ Size of a file or directory, in bytes.
 readonly srcPath: string
 ```
 
-Path of the file or directory before being deleted.
+文件/目录删除前原路径。
 
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -164,13 +156,11 @@ Path of the file or directory before being deleted.
 readonly uri: string
 ```
 
-URI of the file or directory.
+回收站文件/文件夹URI。
 
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 

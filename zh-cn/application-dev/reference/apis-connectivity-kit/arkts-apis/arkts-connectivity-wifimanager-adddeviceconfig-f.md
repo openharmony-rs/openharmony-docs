@@ -1,5 +1,12 @@
 # addDeviceConfig
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## addDeviceConfig
 
 ```TypeScript
@@ -9,10 +16,6 @@ function addDeviceConfig(config: WifiDeviceConfig): Promise<int>
 添加WLAN连接配置到设备。添加配置时将更新配置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
@@ -42,7 +45,7 @@ function addDeviceConfig(config: WifiDeviceConfig): Promise<int>
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
@@ -74,10 +77,6 @@ function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
 <!--Device-wifiManager-function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>): void--><!--Device-wifiManager-function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>): void-End-->
@@ -89,7 +88,7 @@ function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | WifiDeviceConfig | 是 | 表示连接到WLAN网络的设备配置。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 表示addDeviceConfig的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 表示addDeviceConfig的回调函数。 |
 
 **错误码：**
 
@@ -101,7 +100,7 @@ function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>)
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

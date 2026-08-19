@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-enum UserAuthResultCode--><!--Device-userAuth-enum UserAuthResultCode-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -21,10 +17,6 @@ SUCCESS = 12500000
 执行成功。表示用户身份认证通过，认证令牌有效。应用可使用返回的token进行后续的安全操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ FAIL = 12500001
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthResultCode-FAIL = 12500001--><!--Device-UserAuthResultCode-FAIL = 12500001-End-->
@@ -61,10 +49,6 @@ GENERAL_ERROR = 12500002
 操作通用错误。表示认证过程中发生未知错误，建议稍后重试或联系系统管理员。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ CANCELED = 12500003
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthResultCode-CANCELED = 12500003--><!--Device-UserAuthResultCode-CANCELED = 12500003-End-->
@@ -101,10 +81,6 @@ TIMEOUT = 12500004
 认证超时。表示用户在规定时间内未完成认证交互（如未及时输入密码、未正视摄像头等）。建议提示用户重新尝试并注意操作时限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ TYPE_NOT_SUPPORT = 12500005
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005--><!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005-End-->
@@ -141,10 +113,6 @@ TRUST_LEVEL_NOT_SUPPORT = 12500006
 认证等级不支持。表示指定的认证可信等级高于当前认证类型所能达到的最高等级。建议降低认证等级或使用更安全的认证类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ BUSY = 12500007
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthResultCode-BUSY = 12500007--><!--Device-UserAuthResultCode-BUSY = 12500007-End-->
@@ -182,10 +146,6 @@ INVALID_PARAMETERS = 12500008
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthResultCode-INVALID_PARAMETERS = 12500008--><!--Device-UserAuthResultCode-INVALID_PARAMETERS = 12500008-End-->
@@ -198,13 +158,9 @@ INVALID_PARAMETERS = 12500008
 LOCKED = 12500009
 ```
 
-认证器已锁定。表示认证器因连续多次认证不通过而进入冻结状态，用户需等待冻结解除或使用PIN解锁后才能继续认证。可通过[getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md#getauthlockstate)查询具体 冻结状态。
+认证器已锁定。表示认证器因连续多次认证不通过而进入冻结状态，用户需等待冻结解除或使用PIN解锁后才能继续认证。可通过[getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md)查询具体 冻结状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -222,10 +178,6 @@ NOT_ENROLLED = 12500010
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthResultCode-NOT_ENROLLED = 12500010--><!--Device-UserAuthResultCode-NOT_ENROLLED = 12500010-End-->
@@ -242,10 +194,6 @@ CANCELED_FROM_WIDGET = 12500011
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011--><!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011-End-->
@@ -261,10 +209,6 @@ PIN_EXPIRED = 12500013
 锁屏密码过期。表示系统锁屏口令已过期（如企业策略要求定期更换密码），用户需更新锁屏密码后才能继续使用认证功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

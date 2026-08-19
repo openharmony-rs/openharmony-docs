@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum DeviceType--><!--Device-audio-enum DeviceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -21,10 +17,6 @@ ACCESSORY = 26
 Accessory devices, such as the mic on remote control.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceType-ACCESSORY = 26--><!--Device-DeviceType-ACCESSORY = 26-End-->
 
@@ -42,10 +34,6 @@ Bluetooth device using the spp profile.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceType-BLUETOOTH_SPP = 33--><!--Device-DeviceType-BLUETOOTH_SPP = 33-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -61,10 +49,6 @@ NEARLINK_PORT = 34
 Nearlink port.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceType-NEARLINK_PORT = 34--><!--Device-DeviceType-NEARLINK_PORT = 34-End-->
 

@@ -1,14 +1,12 @@
 # DriverExtensionContext
 
-DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承自ExtensionContext。 DriverExtensionContext模块提供DriverExtensionAbility实现中需要主动发起的操作。 > **说明：** > - 本模块接口仅可在Stage模型下使用。
+DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承自ExtensionContext。 DriverExtensionContext模块提供DriverExtensionAbility实现中需要主动发起的操作。
+
+## 使用说明 在使用DriverExtensionContext的功能前，需要通过DriverExtensionAbility子类实例获取。 ```ts let context: DriverExtensionContext | undefined; class EntryAbility extends DriverExtensionAbility { onInit() { context = this.context; // 获取DriverExtensionContext } } ```
 
 **继承/实现关系：** DriverExtensionContext extends ExtensionContext
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class DriverExtensionContext--><!--Device-unnamed-declare class DriverExtensionContext-End-->
 
@@ -23,10 +21,6 @@ updateDriverState(): void
 驱动状态上报。预留接口，暂不提供具体功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-enum StateChangeReason--><!--Device-media-enum StateChangeReason-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -21,10 +17,6 @@ USER = 1
 表示用户行为造成的状态切换，由用户或客户端主动调用接口产生。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ BACKGROUND = 2
 表示后台系统行为造成的状态切换，比如应用未注册播控中心权限，退到后台时被系统强制暂停或停止。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

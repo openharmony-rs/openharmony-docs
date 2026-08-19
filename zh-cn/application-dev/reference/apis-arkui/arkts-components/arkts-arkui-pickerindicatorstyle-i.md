@@ -4,13 +4,14 @@
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface PickerIndicatorStyle--><!--Device-unnamed-declare interface PickerIndicatorStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## backgroundColor
 
@@ -26,10 +27,6 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -44,17 +41,13 @@ backgroundColor?: ResourceColor
 borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses
 ```
 
-选中项背景的边框圆角半径。 > 默认值：{ value:12, unit:LengthUnit.vp }，即四个圆角半径均为12vp。 > 取值范围：取选中项的宽和高之中较小的边长为x，最大不超过x的一半。当取值小于0时，使用默认值；当取值大于最大值时，使用最大值。 > **说明：** > > 1. 当type为PickerIndicatorType.BACKGROUND时生效。 > 2. [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#lengthmetrics)：统一设置四个圆角半径的大小和单位。 > 3. BorderRadiuses：单独设置四个圆角半径的大小（单位为vp）。 > 4. LocalizedBorderRadiuses：单独设置四个圆角半径的大小和单位。
+选中项背景的边框圆角半径。 > 默认值：{ value:12, unit:LengthUnit.vp }，即四个圆角半径均为12vp。 > 取值范围：取选中项的宽和高之中较小的边长为x，最大不超过x的一半。当取值小于0时，使用默认值；当取值大于最大值时，使用最大值。 > **说明：** > > 1. 当type为PickerIndicatorType.BACKGROUND时生效。 > 2. [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)：统一设置四个圆角半径的大小和单位。 > 3. BorderRadiuses：单独设置四个圆角半径的大小（单位为vp）。 > 4. LocalizedBorderRadiuses：单独设置四个圆角半径的大小和单位。
 
 **类型：** LengthMetrics \| BorderRadiuses \| LocalizedBorderRadiuses
 
 **默认值：** { value:12, unit:LengthUnit.vp }
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,10 +71,6 @@ dividerColor?: ResourceColor
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -103,10 +92,6 @@ endMargin?: LengthMetrics
 **默认值：** 0
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -130,10 +115,6 @@ startMargin?: LengthMetrics
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -156,10 +137,6 @@ strokeWidth?: LengthMetrics
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -181,10 +158,6 @@ type: PickerIndicatorType
 **默认值：** PickerIndicatorType.BACKGROUND
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

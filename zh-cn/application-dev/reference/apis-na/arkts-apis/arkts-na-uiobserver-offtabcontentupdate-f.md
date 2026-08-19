@@ -1,5 +1,10 @@
 # offTabContentUpdate
 
+## 导入模块
+
+```TypeScript
+```
+
 ## offTabContentUpdate
 
 ```TypeScript
@@ -10,9 +15,7 @@ export function offTabContentUpdate(options: ObserverOptions, callback?: Callbac
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -25,7 +28,7 @@ export function offTabContentUpdate(options: ObserverOptions, callback?: Callbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | ObserverOptions | 是 | 指定监听的Tabs组件的id。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[TabContentInfo](arkts-na-uiobserver-tabcontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[TabContentInfo](../../apis-arkui/arkts-apis/arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。 |
 
 
 ## offTabContentUpdate
@@ -38,9 +41,7 @@ export function offTabContentUpdate(callback?: Callback<TabContentInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,5 +53,5 @@ export function offTabContentUpdate(callback?: Callback<TabContentInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[TabContentInfo](arkts-na-uiobserver-tabcontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[TabContentInfo](../../apis-arkui/arkts-apis/arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。 |
 

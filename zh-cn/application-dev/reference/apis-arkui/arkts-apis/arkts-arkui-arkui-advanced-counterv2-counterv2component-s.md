@@ -4,13 +4,15 @@ CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare struct CounterV2Component--><!--Device-unnamed-declare struct CounterV2Component-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type } from '@kit.ArkUI';
+```
 
 ## options
 
@@ -24,10 +26,6 @@ CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值�
 **类型：** [CounterV2Options](arkts-arkui-arkui-advanced-counterv2-counterv2options-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

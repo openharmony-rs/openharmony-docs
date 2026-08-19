@@ -1,5 +1,13 @@
 # onWaterMarkFlagChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## onWaterMarkFlagChange
 
 ```TypeScript
@@ -9,10 +17,6 @@ function onWaterMarkFlagChange(callback: Callback<boolean>): void
 添加水印启用状态变化的监听。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-window-function onWaterMarkFlagChange(callback: Callback<boolean>): void--><!--Device-window-function onWaterMarkFlagChange(callback: Callback<boolean>): void-End-->
 
@@ -34,7 +38,7 @@ function onWaterMarkFlagChange(callback: Callback<boolean>): void
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

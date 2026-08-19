@@ -1,5 +1,11 @@
 # updateData
 
+## 导入模块
+
+```TypeScript
+import { unifiedDataChannel } from '@kit.ArkData';
+```
+
 ## updateData
 
 ```TypeScript
@@ -9,10 +15,6 @@ function updateData(options: Options, data: UnifiedData, callback: AsyncCallback
 更新已写入UDMF的公共数据通路的数据，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,7 +30,7 @@ function updateData(options: Options, data: UnifiedData, callback: AsyncCallback
 | --- | --- | --- | --- |
 | options | Options | 是 | 配置项参数，参数中key字段必填，不填时会返回401错误码；intention参数仅支持DATA_HUB；其他字段是否填写均不影响接口的使用。 |
 | data | UnifiedData | 是 | 目标数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当更新数据成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当更新数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function updateData(options: Options, data: UnifiedData, callback: AsyncCallback
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -154,10 +156,6 @@ function updateData(options: Options, data: UnifiedData): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -185,7 +183,7 @@ function updateData(options: Options, data: UnifiedData): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,16 +1,18 @@
 # ArrayBuffer
 
-ArkTS TypedArray（[Int8Array](arkts-collections.md#arktscollections)、 [Uint8Array](arkts-collections.md#arktscollections)、 [Int16Array](arkts-collections.md#arktscollections)、 [Uint16Array](arkts-collections.md#arktscollections)、 [Int32Array](arkts-collections.md#arktscollections)、 [Uint32Array](arkts-collections.md#arktscollections)、 [Uint8ClampedArray](arkts-collections.md#arktscollections)、 [Float32Array](arkts-collections.md#arktscollections)）的底层数据结构。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型**：\@Sendable
+ArkTS TypedArray（[Int8Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint8Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Int16Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint16Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Int32Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint32Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint8ClampedArray](../../apis-na/arkts-apis/arkts-collections.md)、 [Float32Array](../../apis-na/arkts-apis/arkts-collections.md)）的底层数据结构。 > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。 > **装饰器类型**：\@Sendable
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-collections-class ArrayBuffer--><!--Device-collections-class ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { collections } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -21,10 +23,6 @@ constructor(byteLength: number)
 构造函数，用于创建一个指定长度的ArkTS ArrayBuffer对象。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,10 +52,6 @@ slice(begin: number, end?: number): ArrayBuffer
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArrayBuffer-slice(begin: number, end?: number): ArrayBuffer--><!--Device-ArrayBuffer-slice(begin: number, end?: number): ArrayBuffer-End-->
@@ -68,7 +62,7 @@ slice(begin: number, end?: number): ArrayBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | 开始索引。如果`begin &lt; 0`，则会从`begin + arrayBuffer.byteLength`位置开始。 如果`begin &lt; -arrayBuffer.byteLength`，则从0开始。默认值为0。 |
+| begin | number | 是 | 开始索引。如果`begin &lt; 0`，则会从`begin + arrayBuffer.byteLength`位置开始。 如果`begin &lt; -arrayBuffer.byteLength`，则从0开始。 |
 | end | number | 否 | 结束索引（不包括该元素）。如果`end &lt; 0`，则会到`end + arrayBuffer.byteLength`位置结束。 如果`end &gt; arrayBuffer.byteLength`，则截取到arrayBuffer.byteLength位置。默认为原ArkTS ArrayBuffer的长度。 |
 
 **返回值：**
@@ -95,10 +89,6 @@ buffer所占的字节数。
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

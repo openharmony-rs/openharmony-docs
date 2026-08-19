@@ -1,16 +1,20 @@
 # File
 
-由open接口打开的File对象。
+由open接口打开的File对象，持有文件描述符fd，提供文件锁和获取父目录等能力。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface File--><!--Device-unnamed-declare interface File-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
 
 ## getParent
 
@@ -18,13 +22,9 @@
 getParent(): string
 ```
 
-获取File对象对应文件父目录。
+获取File对象对应文件的父目录路径。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-File-getParent(): string--><!--Device-File-getParent(): string-End-->
 
@@ -44,7 +44,7 @@ getParent(): string
 | 14300002 | Invalid URI |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -59,13 +59,9 @@ fileIo.closeSync(file);
 lock(exclusive?: boolean): Promise<void>
 ```
 
-对文件阻塞式施加共享锁或独占锁，使用promise异步回调。
+对文件阻塞式施加共享锁或独占锁。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-File-lock(exclusive?: boolean): Promise<void>--><!--Device-File-lock(exclusive?: boolean): Promise<void>-End-->
 
@@ -94,7 +90,7 @@ lock(exclusive?: boolean): Promise<void>
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -135,13 +131,9 @@ file.lock(true).then(() => {
 lock(callback: AsyncCallback<void>): void
 ```
 
-对文件阻塞式施加共享锁或独占锁，使Callback异步回调。
+对文件阻塞式施加共享锁。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-File-lock(callback: AsyncCallback<void>): void--><!--Device-File-lock(callback: AsyncCallback<void>): void-End-->
 
@@ -151,7 +143,7 @@ lock(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当文件上锁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -164,7 +156,7 @@ lock(callback: AsyncCallback<void>): void
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -206,13 +198,9 @@ file.lock((err: BusinessError | null) => {
 lock(exclusive: boolean, callback: AsyncCallback<void>): void
 ```
 
-对文件阻塞式施加共享锁或独占锁，使Callback异步回调。
+对文件阻塞式施加共享锁或独占锁。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-File-lock(exclusive: boolean, callback: AsyncCallback<void>): void--><!--Device-File-lock(exclusive: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -222,8 +210,8 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| exclusive | boolean | 是 | 是否施加独占锁，默认false。true：施加独占锁；false：不施加独占锁。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步文件上锁之后的回调。 |
+| exclusive | boolean | 是 | 是否施加独占锁。true：施加独占锁；false：不施加独占锁。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当文件上锁成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -236,7 +224,7 @@ lock(exclusive: boolean, callback: AsyncCallback<void>): void
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -282,10 +270,6 @@ tryLock(exclusive?: boolean): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-File-tryLock(exclusive?: boolean): void--><!--Device-File-tryLock(exclusive?: boolean): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -307,7 +291,7 @@ tryLock(exclusive?: boolean): void
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -327,10 +311,6 @@ unlock(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-File-unlock(): void--><!--Device-File-unlock(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -346,7 +326,7 @@ unlock(): void
 | 13900042 | Unknown error |
 | 13900043 | No record locks available |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -363,15 +343,11 @@ fileIo.closeSync(file);
 readonly fd: number
 ```
 
-打开的文件描述符。
+已打开的文件描述符fd。
 
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -391,10 +367,6 @@ readonly name: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-File-readonly name: string--><!--Device-File-readonly name: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -410,10 +382,6 @@ readonly path: string
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-File-readonly path: string--><!--Device-File-readonly path: string-End-->
 

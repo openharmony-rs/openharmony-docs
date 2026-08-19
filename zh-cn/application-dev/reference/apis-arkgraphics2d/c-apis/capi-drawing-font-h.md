@@ -454,7 +454,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacter(const OH_Drawing_Font
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、str、textWidth任意一个为NULL或者str的长度为0。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、str、textWidth任意一个为NULL或者str的长度为0。 |
 
 ### OH_Drawing_FontMeasureSingleCharacterWithFeatures()
 
@@ -481,7 +481,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacterWithFeatures(const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、str、<br> fontFeatures或者textWidth任意一个为空指针或者str的长度为0。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、str、  fontFeatures或者textWidth任意一个为空指针或者str的长度为0。 |
 
 ### OH_Drawing_FontMeasureText()
 
@@ -510,7 +510,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font，text，textWidth至少有一个为空，或者byteLength为0。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font，text，textWidth至少有一个为空，或者byteLength为0。 |
 
 ### OH_Drawing_FontMeasureTextWithBrushOrPen()
 
@@ -541,7 +541,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_F
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、text、textWidth至少有一个为空，或者byteLength为0，<br> 或者brush和pen同时不为空。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、text、textWidth至少有一个为空，或者byteLength为0，  或者brush和pen同时不为空。 |
 
 ### OH_Drawing_FontGetWidthsBounds()
 
@@ -571,7 +571,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetWidthsBounds(const OH_Drawing_Font* font,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、glyphs至少有一个为空，或者count不大于0，<br> 或者brush和pen同时不为空，或者widths和bounds同时为空。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、glyphs至少有一个为空，或者count不大于0，  或者brush和pen同时不为空，或者widths和bounds同时为空。 |
 
 ### OH_Drawing_FontGetPos()
 
@@ -599,7 +599,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetPos(const OH_Drawing_Font* font, const ui
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、glyphs、points至少有一个为空，或者count不大于0。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、glyphs、points至少有一个为空，或者count不大于0。 |
 
 ### OH_Drawing_FontGetSpacing()
 
@@ -624,7 +624,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetSpacing(const OH_Drawing_Font* font, floa
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、spacing至少有一个为空。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、spacing至少有一个为空。 |
 
 ### OH_Drawing_FontSetLinearText()
 
@@ -995,7 +995,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetBounds(const OH_Drawing_Font* font, const
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、glyphs或bounds为空，或者count为零。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、glyphs或bounds为空，或者count为零。 |
 
 ### OH_Drawing_FontGetPathForGlyph()
 
@@ -1021,7 +1021,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetPathForGlyph(const OH_Drawing_Font* font,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font或者path为空， 或者指定glyph不存在。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font或者path为空， 或者指定glyph不存在。 |
 
 ### OH_Drawing_FontGetTextPath()
 
@@ -1051,7 +1051,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetTextPath(const OH_Drawing_Font* font, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、text或path任意一个为空指针。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、text或path任意一个为空指针。 |
 
 ### OH_Drawing_FontGetTextPathWithFallback()
 
@@ -1081,7 +1081,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetTextPathWithFallback(const OH_Drawing_Fon
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>     <br>如果font、text或path中的任何一个为空指针，或者byteLength为0，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>如果操作成功，则返回OH_DRAWING_SUCCESS。      <br>如果font、text或path中的任何一个为空指针，或者byteLength为0，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
 
 ### OH_Drawing_FontFeaturesCreate()
 
@@ -1099,7 +1099,7 @@ OH_Drawing_FontFeatures* OH_Drawing_FontFeaturesCreate(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontFeatures*](capi-drawing-oh-drawing-fontfeatures.md) | 函数会返回一个指针，指向创建的字体特征容器对象OH_Drawing_FontFeatures。<br>     <br>如果返回的对象指针为空，则表示字体特征容器对象创建失败。失败的原因可能为：没有可用的内存。 |
+| [OH_Drawing_FontFeatures*](capi-drawing-oh-drawing-fontfeatures.md) | 函数会返回一个指针，指向创建的字体特征容器对象OH_Drawing_FontFeatures。      <br>如果返回的对象指针为空，则表示字体特征容器对象创建失败。失败的原因可能为：没有可用的内存。 |
 
 ### OH_Drawing_FontFeaturesAddFeature()
 
@@ -1125,7 +1125,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontFeaturesAddFeature(OH_Drawing_FontFeatures* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontFeatures或name为空指针。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontFeatures或name为空指针。 |
 
 ### OH_Drawing_FontFeaturesDestroy()
 
@@ -1149,7 +1149,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontFeaturesDestroy(OH_Drawing_FontFeatures* fon
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontFeatures为空指针。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontFeatures为空指针。 |
 
 ### OH_Drawing_FontSetThemeFontFollowed()
 
@@ -1174,7 +1174,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontSetThemeFontFollowed(OH_Drawing_Font* font, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font为空。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font为空。 |
 
 ### OH_Drawing_FontIsThemeFontFollowed()
 
@@ -1199,6 +1199,6 @@ OH_Drawing_ErrorCode OH_Drawing_FontIsThemeFontFollowed(const OH_Drawing_Font* f
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font或者followed其中一个为空。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font或者followed其中一个为空。 |
 
 

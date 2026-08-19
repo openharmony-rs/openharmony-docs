@@ -1,18 +1,22 @@
 # moveFileSync
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## moveFileSync
 
 ```TypeScript
 declare function moveFileSync(src: string, dest: string, mode?: number): void
 ```
 
-以同步方式移动文件。 > **说明：** > > 该接口不支持在分布式文件路径下操作。
+以同步方式移动文件至目标路径。 > **说明：** > > 该接口不支持在分布式文件路径下操作。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare function moveFileSync(src: string, dest: string, mode?: number): void--><!--Device-unnamed-declare function moveFileSync(src: string, dest: string, mode?: number): void-End-->
 

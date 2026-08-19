@@ -4,13 +4,14 @@ NavDestination自定义动画接口。
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface NavDestinationTransition--><!--Device-unnamed-declare interface NavDestinationTransition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## curve
 
@@ -23,10 +24,6 @@ curve?: Curve
 **类型：** Curve
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +45,6 @@ delay?: number
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -71,10 +64,6 @@ duration?: number
 **类型：** number
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +85,6 @@ event: Callback<void>
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -119,10 +104,6 @@ onTransitionEnd?: Callback<void>
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

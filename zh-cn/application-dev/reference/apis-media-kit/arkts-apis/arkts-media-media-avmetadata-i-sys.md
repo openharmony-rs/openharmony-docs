@@ -1,16 +1,18 @@
 # AVMetadata
 
-Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](arkts-media-multimedia-media-avrecorderconfig-i.md#avrecorderconfig) can be used as input parameters for recording of [AVRecorder](arkts-media-multimedia-media-avrecorder-i.md#avrecorder).
+Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](arkts-media-multimedia-media-avrecorderconfig-i.md) can be used as input parameters for recording of [AVRecorder](arkts-media-multimedia-media-avrecorder-i.md).
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-media-interface AVMetadata--><!--Device-media-interface AVMetadata-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## gltf_offset
 
@@ -23,10 +25,6 @@ The offset value of GLTF 3D model in media file. This parameter is not supported
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVMetadata-gltf_offset?: string--><!--Device-AVMetadata-gltf_offset?: string-End-->
 

@@ -8,10 +8,6 @@ type OnWindowStageWillCreateFn = (ability: UIAbility, windowStage: window.Window
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-type OnWindowStageWillCreateFn = (ability: UIAbility, windowStage: window.WindowStage) => void--><!--Device-unnamed-type OnWindowStageWillCreateFn = (ability: UIAbility, windowStage: window.WindowStage) => void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore

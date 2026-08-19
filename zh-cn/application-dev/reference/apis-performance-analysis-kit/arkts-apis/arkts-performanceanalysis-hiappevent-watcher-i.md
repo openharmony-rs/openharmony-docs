@@ -1,16 +1,18 @@
 # Watcher
 
-提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。 > **说明：** > > 不建议在回调函数中执行[removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md#removewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
+提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。 > **说明：** > > 不建议在回调函数中执行[removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hiAppEvent-interface Watcher--><!--Device-hiAppEvent-interface Watcher-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
 
 ## appEventFilters
 
@@ -23,10 +25,6 @@ appEventFilters?: AppEventFilter[]
 **类型：** [AppEventFilter](arkts-performanceanalysis-hiappevent-appeventfilter-i.md)[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ name: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Watcher-name: string--><!--Device-Watcher-name: string-End-->
@@ -67,10 +61,6 @@ onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void
 **类型：** (domain: string, appEventGroups: Array&lt;[AppEventGroup](arkts-performanceanalysis-hiappevent-appeventgroup-i.md)&gt;) =&gt; void
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +80,6 @@ onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void--><!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void-End-->
@@ -111,10 +97,6 @@ triggerCondition?: TriggerCondition
 **类型：** [TriggerCondition](arkts-performanceanalysis-hiappevent-triggercondition-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,11 @@
 # queryEntityInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { insightIntentDriver } from '@kit.AbilityKit';
+```
+
 ## queryEntityInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Object
 查询意图实体信息。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.EXECUTE_INSIGHT_INTENT
 
@@ -56,10 +58,6 @@ function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Record
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.EXECUTE_INSIGHT_INTENT
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -80,7 +78,7 @@ function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Record
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;&gt;&gt; | Returns the insight intent entity information. |
+| Promise&lt;Array&lt;Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;&gt;&gt; | Returns the insight intent entity information. |
 
 **错误码：**
 

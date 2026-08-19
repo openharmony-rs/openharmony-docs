@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationExtensionContent--><!--Device-unnamed-export interface NotificationExtensionContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -24,10 +20,6 @@ text: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationExtensionContent-text: string--><!--Device-NotificationExtensionContent-text: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -43,10 +35,6 @@ title: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationExtensionContent-title: string--><!--Device-NotificationExtensionContent-title: string-End-->
 

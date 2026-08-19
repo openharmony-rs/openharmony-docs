@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-enum ResolutionQuality--><!--Device-image-enum ResolutionQuality-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -23,10 +19,6 @@ LOW = 1
 低画质效果，解码耗时短。&lt;br/
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResolutionQuality-LOW = 1--><!--Device-ResolutionQuality-LOW = 1-End-->
 
@@ -44,10 +36,6 @@ MEDIUM = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ResolutionQuality-MEDIUM = 2--><!--Device-ResolutionQuality-MEDIUM = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -63,10 +51,6 @@ HIGH = 3
 最高等级画质效果，解码耗时长。&lt;br/
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResolutionQuality-HIGH = 3--><!--Device-ResolutionQuality-HIGH = 3-End-->
 

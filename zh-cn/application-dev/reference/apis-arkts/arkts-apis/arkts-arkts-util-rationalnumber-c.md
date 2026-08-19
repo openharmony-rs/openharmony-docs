@@ -4,13 +4,50 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-util-class RationalNumber--><!--Device-util-class RationalNumber-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## compare
 
@@ -21,10 +58,6 @@ compare(another: RationalNumber): number
 将当前的 RationalNumber 对象与给定对象进行比较。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -53,8 +86,6 @@ compareTo(another: RationalNumber): number
 将当前的 RationalNumber 对象与给定对象进行比较。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -86,8 +117,6 @@ constructor(numerator: number, denominator: number)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [parseRationalNumber](#parserationalnumber)
@@ -103,7 +132,7 @@ constructor(numerator: number, denominator: number)
 | numerator | number | 是 | 分子，为整数。 |
 | denominator | number | 是 | 分母，为整数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -119,17 +148,13 @@ constructor()
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-constructor()--><!--Device-RationalNumber-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber();
@@ -144,10 +169,6 @@ static createRationalFromString(rationalString: string): RationalNumber
 根据给定的字符串创建一个 **RationalNumber** 对象。 > **NOTE：**> > **rationalString** 参数必须为字符串。如果传入小数字符串，该函数不会被拦截，但会显示错误信息 > "createRationalFromString: The type of Parameter must be integer string"。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -177,10 +198,6 @@ equals(obj: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-equals(obj: Object): boolean--><!--Device-RationalNumber-equals(obj: Object): boolean-End-->
@@ -199,7 +216,7 @@ equals(obj: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果两个对象相等，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -228,8 +245,6 @@ static getCommonDivisor(number1: number, number2: number): number
 获取两个指定整数的最大公约数。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -262,10 +277,6 @@ static getCommonFactor(number1: number, number2: number): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-static getCommonFactor(number1: number, number2: number): number--><!--Device-RationalNumber-static getCommonFactor(number1: number, number2: number): number-End-->
@@ -285,7 +296,7 @@ static getCommonFactor(number1: number, number2: number): number
 | --- | --- |
 | number | 获取到的最大公约数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let result = util.RationalNumber.getCommonFactor(4,6);
@@ -303,10 +314,6 @@ getDenominator(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-getDenominator(): number--><!--Device-RationalNumber-getDenominator(): number-End-->
@@ -319,7 +326,7 @@ getDenominator(): number
 | --- | --- |
 | number | 此 **RationalNumber** 对象的分母。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -347,10 +354,6 @@ getNumerator(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-getNumerator(): number--><!--Device-RationalNumber-getNumerator(): number-End-->
@@ -363,7 +366,7 @@ getNumerator(): number
 | --- | --- |
 | number | 此 **RationalNumber** 对象的分子。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -391,10 +394,6 @@ isFinite(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-isFinite(): boolean--><!--Device-RationalNumber-isFinite(): boolean-End-->
@@ -407,7 +406,7 @@ isFinite(): boolean
 | --- | --- |
 | boolean | 检查结果。如果此 **RationalNumber** 对象表示有限值（分母不为 **0**），则返回 **true**； 否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -435,10 +434,6 @@ isNaN(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-isNaN(): boolean--><!--Device-RationalNumber-isNaN(): boolean-End-->
@@ -451,7 +446,7 @@ isNaN(): boolean
 | --- | --- |
 | boolean | 检查结果。如果此 **RationalNumber** 对象为 NaN（分母和分子都为 **0**），则返回 **true**； 否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -479,10 +474,6 @@ isZero(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-isZero(): boolean--><!--Device-RationalNumber-isZero(): boolean-End-->
@@ -495,7 +486,7 @@ isZero(): boolean
 | --- | --- |
 | boolean | 检查结果。如果此 **RationalNumber** 对象的值为 **0**，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -523,10 +514,6 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-static parseRationalNumber(numerator: number, denominator: number): RationalNumber--><!--Device-RationalNumber-static parseRationalNumber(numerator: number, denominator: number): RationalNumber-End-->
@@ -546,7 +533,7 @@ static parseRationalNumber(numerator: number, denominator: number): RationalNumb
 | --- | --- |
 | [RationalNumber](arkts-arkts-util-rationalnumber-c.md) | 获取到的 **RationalNumber** 对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
@@ -562,10 +549,6 @@ toString(): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-toString(): string--><!--Device-RationalNumber-toString(): string-End-->
@@ -578,7 +561,7 @@ toString(): string
 | --- | --- |
 | string | 正常情况下返回以分子/分母格式的字符串，例如 3/5；如果此对象的分子为 **0**，则返回 **0/1**；如果分母为 **0**，则返回 **Infinity**；如果分子和分母都为 **0**，则返回 **NaN**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);
@@ -606,10 +589,6 @@ valueOf(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RationalNumber-valueOf(): number--><!--Device-RationalNumber-valueOf(): number-End-->
@@ -622,7 +601,7 @@ valueOf(): number
 | --- | --- |
 | number | 整数或浮点数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let rationalNumber = new util.RationalNumber(1,2);

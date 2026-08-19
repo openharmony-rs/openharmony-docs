@@ -1,16 +1,17 @@
 # GridColOptions
 
-设置栅格列布局组件布局选项。 `span`、`offset`、`order`属性按照`xs`、`sm`、`md`、`lg`、`xl`、`xxl`的顺序具有“继承性”，未设置值的断点将会从前一个断点取值。 API version 20之后，`span`的继承规则见[GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md#gridcolcolumnoption)，`offset`和`order`的继承规则保持不变。
+设置栅格列布局组件布局选项。 `span`、`offset`、`order`属性按照`xs`、`sm`、`md`、`lg`、`xl`、`xxl`的顺序具有“继承性”，未设置值的断点将会从前一个断点取值。 API version 20之后，`span`的继承规则见[GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md)，`offset`和`order`的继承规则保持不变。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface GridColOptions--><!--Device-unnamed-declare interface GridColOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## offset
 
@@ -23,10 +24,6 @@ offset?: number | GridColColumnOption
 **类型：** number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -48,10 +45,6 @@ order?: number | GridColColumnOption
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -71,10 +64,6 @@ span?: number | GridColColumnOption
 **类型：** number \| [GridColColumnOption](arkts-arkui-gridcolcolumnoption-i.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

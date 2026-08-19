@@ -1,5 +1,10 @@
 # @ohos.app.ability.ApplicationStateChangeCallback
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 接口

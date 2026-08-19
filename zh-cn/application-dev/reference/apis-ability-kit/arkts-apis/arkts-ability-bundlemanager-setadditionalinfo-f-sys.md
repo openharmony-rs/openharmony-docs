@@ -1,5 +1,11 @@
 # setAdditionalInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## setAdditionalInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setAdditionalInfo(bundleName: string, additionalInfo: string): void
 设置指定应用的额外信息。此接口仅供应用市场调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -39,7 +41,7 @@ function setAdditionalInfo(bundleName: string, additionalInfo: string): void
 | [17700053](../errorcode-bundle.md#17700053-非应用市场调用) | The caller is not AppGallery. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

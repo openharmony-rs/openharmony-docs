@@ -1,18 +1,20 @@
 # saveHdrPicture（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## saveHdrPicture
 
 ```TypeScript
 function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.PixelMap>>
 ```
 
-获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。 - 当物理屏不存在HDR资源时，与[save](arkts-arkui-screenshot-save-f-sys.md#save系统接口) 接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备 [save](arkts-arkui-screenshot-save-f-sys.md#save系统接口)接口的裁剪、拉伸、旋转功能。
+获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。 - 当物理屏不存在HDR资源时，与[save](arkts-arkui-screenshot-save-f-sys.md) 接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备 [save](arkts-arkui-screenshot-save-f-sys.md)接口的裁剪、拉伸、旋转功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本22+：ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
@@ -47,7 +49,7 @@ function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.Pix
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

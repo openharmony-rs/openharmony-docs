@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace businessAbilityRouter--><!--Device-unnamed-declare namespace businessAbilityRouter-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { businessAbilityRouter } from '@kit.AbilityKit';
+```
 
 ## 汇总
 
@@ -21,8 +23,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md#querybusinessabilityinfo) | 通过给定的过滤条件查询Ability信息。使用callback异步回调，成功时返回查询到的路由Ability信息，失败时返回错误信息。 |
-| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md#querybusinessabilityinfo系统接口) | 通过给定的过滤条件查询Ability信息。使用Promise异步回调，成功时返回查询到的路由Ability信息，失败时返回错误信息。 |
+| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md) | 通过给定的过滤条件查询Ability信息。使用callback异步回调，成功时返回查询到的路由Ability信息，失败时返回错误信息。 |
+| [queryBusinessAbilityInfo](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md) | 通过给定的过滤条件查询Ability信息。使用Promise异步回调，成功时返回查询到的路由Ability信息，失败时返回错误信息。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-interface Photo--><!--Device-camera-interface Photo-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## depthData
 
@@ -23,10 +26,6 @@ Depth data.
 **类型：** [DepthData](arkts-camera-camera-depthdata-i-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Photo-depthData?: DepthData--><!--Device-Photo-depthData?: DepthData-End-->
 
@@ -45,10 +44,6 @@ Raw image.
 **类型：** image.Image
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Photo-raw?: image.Image--><!--Device-Photo-raw?: image.Image-End-->
 

@@ -1,5 +1,11 @@
 # getDelegatedBundleNames
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## getDelegatedBundleNames
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDelegatedBundleNames(admin: Want, policy: string): Array<string>
 查询可以访问某个委托策略的被委托应用，输出被委托应用列表。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY
 
@@ -44,7 +46,7 @@ function getDelegatedBundleNames(admin: Want, policy: string): Array<string>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';

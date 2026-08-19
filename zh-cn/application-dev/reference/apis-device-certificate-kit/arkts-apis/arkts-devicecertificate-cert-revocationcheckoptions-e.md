@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cert-enum RevocationCheckOptions--><!--Device-cert-enum RevocationCheckOptions-End-->
 
 **系统能力：** SystemCapability.Security.Cert
@@ -21,10 +17,6 @@ REVOCATION_CHECK_OPTION_PREFER_OCSP = 0
 优先采用OCSP进行校验，默认采用CRL校验。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1-End-->
@@ -61,10 +49,6 @@ REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2
 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3-End-->
@@ -101,10 +81,6 @@ REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE = 4
 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验成功，则会继续校验中间证书的吊销情况。默认 关闭。 > **说明：** > > 当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5-End-->
@@ -141,10 +113,6 @@ REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6
 如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达 可能导致证书链校验失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,11 @@
 # dumpHeapData
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## dumpHeapData
 
 ```TypeScript
@@ -10,11 +16,9 @@ function dumpHeapData(filename: string): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md#dumpjsheapdata)(filename : string)
+**替代接口：** [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md)(filename : string)
 
 <!--Device-hidebug-function dumpHeapData(filename: string): void--><!--Device-hidebug-function dumpHeapData(filename: string): void-End-->
 
@@ -26,7 +30,7 @@ function dumpHeapData(filename: string): void
 | --- | --- | --- | --- |
 | filename | string | 是 | 用户自定义的虚拟机堆转储文件名，将在应用的`files`目录下生成以该参数命名的heapsnapshot文件。string长度的最大值为128。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

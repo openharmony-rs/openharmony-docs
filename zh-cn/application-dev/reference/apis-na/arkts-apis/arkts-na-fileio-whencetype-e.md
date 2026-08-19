@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-enum WhenceType--><!--Device-fileIo-enum WhenceType-End-->
 
@@ -22,9 +20,7 @@ SEEK_SET = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WhenceType-SEEK_SET = 0--><!--Device-WhenceType-SEEK_SET = 0-End-->
 
@@ -40,9 +36,7 @@ SEEK_CUR = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WhenceType-SEEK_CUR = 1--><!--Device-WhenceType-SEEK_CUR = 1-End-->
 
@@ -58,9 +52,7 @@ SEEK_END = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WhenceType-SEEK_END = 2--><!--Device-WhenceType-SEEK_END = 2-End-->
 

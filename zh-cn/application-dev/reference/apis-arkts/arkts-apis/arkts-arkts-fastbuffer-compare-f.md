@@ -1,5 +1,11 @@
 # compare
 
+## 导入模块
+
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+```
+
 ## compare
 
 ```TypeScript
@@ -9,10 +15,6 @@ function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): 
 返回两个FastBuffer对象的比较结果，通常用于对FastBuffer对象数组进行排序。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -39,7 +41,7 @@ function compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): 
 | --- | --- |
 | [10200068](../errorcode-utils.md#10200068-引用已释放或分离的arraybuffer) | The underlying ArrayBuffer is null or detach. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fastbuffer } from '@kit.ArkTS';

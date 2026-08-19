@@ -1,5 +1,14 @@
 # getIpInfo
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## getIpInfo
 
 ```TypeScript
@@ -10,11 +19,9 @@ function getIpInfo(): IpInfo
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [getIpInfo](arkts-connectivity-wifimanager-getipinfo-f.md#getipinfo)
+**替代接口：** [getIpInfo](arkts-connectivity-wifimanager-getipinfo-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -28,7 +35,7 @@ function getIpInfo(): IpInfo
 | --- | --- |
 | IpInfo | IP信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

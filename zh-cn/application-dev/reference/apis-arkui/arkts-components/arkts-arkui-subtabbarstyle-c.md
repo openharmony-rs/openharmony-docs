@@ -4,13 +4,14 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class SubTabBarStyle--><!--Device-unnamed-declare class SubTabBarStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## board
 
@@ -21,10 +22,6 @@ board(value: BoardStyle): SubTabBarStyle
 设置选中子页签的背板风格。子页签的背板风格仅在水平模式下有效。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,10 +53,6 @@ SubTabBarStyle的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SubTabBarStyle-constructor(content: ResourceStr)--><!--Device-SubTabBarStyle-constructor(content: ResourceStr)-End-->
@@ -81,10 +74,6 @@ constructor(content: ResourceStr | ComponentContent)
 SubTabBarStyle的构造函数。支持ComponentContent设置自定义内容。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -109,10 +98,6 @@ id(value: string): SubTabBarStyle
 设置子页签的id。可用于通过TabsController查找或控制指定页签，以及在状态管理和事件处理中标识不同的页签。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -144,10 +129,6 @@ indicator(value: IndicatorStyle): SubTabBarStyle
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -177,10 +158,6 @@ indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 设置选中子页签的下划线风格。与[indicator](#indicator)相比，新增了图片格式的下划线风格，图片的显示效果参照 ImageFit.Cover。子页签的下划线风格仅在水平模式下有效。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -212,10 +189,6 @@ labelStyle(value: LabelStyle): SubTabBarStyle
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -245,10 +218,6 @@ static of(content: ResourceStr): SubTabBarStyle
 SubTabBarStyle的静态构造函数。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -280,10 +249,6 @@ SubTabBarStyle的静态构造函数。支持ComponentContent设置自定义内�
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -313,10 +278,6 @@ padding(value: Padding | Dimension): SubTabBarStyle
 设置子页签的内边距属性（不支持百分比设置）。使用Dimension时，四个方向内边距同时生效。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -348,10 +309,6 @@ padding(padding: LocalizedPadding): SubTabBarStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -381,10 +338,6 @@ selectedMode(value: SelectedMode): SubTabBarStyle
 设置选中子页签的显示方式。子页签的显示方式仅在水平模式下有效。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

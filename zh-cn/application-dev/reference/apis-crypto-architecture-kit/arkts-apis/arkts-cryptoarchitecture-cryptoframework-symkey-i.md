@@ -1,20 +1,22 @@
 # SymKey
 
-对称密钥，是[Key](arkts-cryptoarchitecture-cryptoframework-key-i.md#key)的子类，在对称加解密时需要将其对象传入 [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#cipher)实例的 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法使用。 <br>对称密钥通过对称密钥生成器[SymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md#symkeygenerator)来生成。
+对称密钥，是[Key](arkts-cryptoarchitecture-cryptoframework-key-i.md)的子类，在对称加解密时需要将其对象传入 [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)实例的 [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法使用。 <br>对称密钥通过对称密钥生成器[SymKeyGenerator](arkts-cryptoarchitecture-cryptoframework-symkeygenerator-i.md)来生成。
 
-**继承/实现关系：** SymKey extends [Key](arkts-cryptoarchitecture-cryptoframework-key-i.md#key)
+**继承/实现关系：** SymKey extends [Key](arkts-cryptoarchitecture-cryptoframework-key-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-cryptoFramework-interface SymKey--><!--Device-cryptoFramework-interface SymKey-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
 - API版本9-11：SystemCapability.Security.CryptoFramework
+
+## 导入模块
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+```
 
 ## clearMem
 
@@ -26,10 +28,6 @@ clearMem(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SymKey-clearMem(): void--><!--Device-SymKey-clearMem(): void-End-->
@@ -38,7 +36,7 @@ clearMem(): void
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
 - API版本9-11：SystemCapability.Security.CryptoFramework
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

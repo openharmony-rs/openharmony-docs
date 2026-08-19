@@ -4,10 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum RouteType--><!--Device-unnamed-declare enum RouteType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ None = 0
 页面未重定向。如Push和Pop描述中RouteType为None的情形，即页面进场时PageTransitionEnter的转场效果生效；退场时PageTransitionExit的转场效果生效。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ Push = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RouteType-Push = 1--><!--Device-RouteType-Push = 1-End-->
@@ -61,10 +49,6 @@ Pop = 2
 重定向指定页面。从PageB回退到之前的页面PageA。对于PageB，指定RouteType为None或者Pop的PageTransitionExit组件样式生效，对于PageA，指定RouteType为None或者Pop的 PageTransitionEnter组件样式生效。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

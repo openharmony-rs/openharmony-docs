@@ -1,16 +1,17 @@
 # FocusMovement
 
-设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。 > **说明：** > > 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)实例，并使用 > [getFocusController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getfocuscontroller)获取绑定实例的focusControl。
+设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。 > **说明：** > > 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)实例，并使用 > [getFocusController](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getfocuscontroller)获取绑定实例的focusControl。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface FocusMovement--><!--Device-unnamed-declare interface FocusMovement-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## backward
 
@@ -23,10 +24,6 @@ backward?: string
 **类型：** string
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +45,6 @@ down?: string
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -71,10 +64,6 @@ forward?: string
 **类型：** string
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +85,6 @@ left?: string
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -120,10 +105,6 @@ right?: string
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -143,10 +124,6 @@ up?: string
 **类型：** string
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

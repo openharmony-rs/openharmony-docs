@@ -14,10 +14,6 @@ GridItem(value?: GridItemOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GridItemInterface-(value?: GridItemOptions): GridItemAttribute--><!--Device-GridItemInterface-(value?: GridItemOptions): GridItemAttribute-End-->
@@ -28,9 +24,19 @@ GridItem(value?: GridItemOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [GridItemOptions](arkts-arkui-griditemoptions-i.md) | 否 | 为GridItem提供可选参数，该对象内包含[GridItemStyle](arkts-arkui-griditemstyle-e.md#griditemstyle)枚举类型的style参数。不传入时使用默认样 式，即GridItemStyle.NONE。<br/> |
+| value | [GridItemOptions](arkts-arkui-griditemoptions-i.md) | 否 | 为GridItem提供可选参数，该对象内包含[GridItemStyle](arkts-arkui-griditemstyle-e.md)枚举类型的style参数。不传入时使用默认样 式，即GridItemStyle.NONE。<br/> |
 
 ## 汇总
 
-- [GridItemOptions](arkts-arkui-griditemoptions-i.md)
-- [GridItemStyle](arkts-arkui-griditemstyle-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [GridItemOptions](arkts-arkui-griditemoptions-i.md) | GridItem样式对象，用于配置GridItem的样式选项。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [GridItemStyle](arkts-arkui-griditemstyle-e.md) | GridItem样式枚举，用于定义GridItem的交互态样式。 |
+

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationTime--><!--Device-unnamed-export interface NotificationTime-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ initialTime?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationTime-initialTime?: int--><!--Device-NotificationTime-initialTime?: int-End-->
 
@@ -44,10 +36,6 @@ isCountDown?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationTime-isCountDown?: boolean--><!--Device-NotificationTime-isCountDown?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -64,10 +52,6 @@ isInTitle?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationTime-isInTitle?: boolean--><!--Device-NotificationTime-isInTitle?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -83,10 +67,6 @@ isPaused?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationTime-isPaused?: boolean--><!--Device-NotificationTime-isPaused?: boolean-End-->
 

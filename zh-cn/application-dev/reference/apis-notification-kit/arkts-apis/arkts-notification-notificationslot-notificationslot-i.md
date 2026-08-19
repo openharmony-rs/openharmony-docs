@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationSlot--><!--Device-unnamed-export interface NotificationSlot-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ badgeFlag?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSlot-badgeFlag?: boolean--><!--Device-NotificationSlot-badgeFlag?: boolean-End-->
 
@@ -44,10 +36,6 @@ bypassDnd?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSlot-bypassDnd?: boolean--><!--Device-NotificationSlot-bypassDnd?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -63,10 +51,6 @@ desc?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSlot-desc?: string--><!--Device-NotificationSlot-desc?: string-End-->
 
@@ -84,10 +68,6 @@ readonly enabled?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSlot-readonly enabled?: boolean--><!--Device-NotificationSlot-readonly enabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -103,8 +83,6 @@ level?: notification.SlotLevel
 **类型：** notification.SlotLevel
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -126,10 +104,6 @@ lightColor?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSlot-lightColor?: int--><!--Device-NotificationSlot-lightColor?: int-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -145,10 +119,6 @@ lightEnabled?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSlot-lightEnabled?: boolean--><!--Device-NotificationSlot-lightEnabled?: boolean-End-->
 
@@ -166,10 +136,6 @@ lockscreenVisibility?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSlot-lockscreenVisibility?: int--><!--Device-NotificationSlot-lockscreenVisibility?: int-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -185,10 +151,6 @@ notificationLevel?: notificationManager.SlotLevel
 **类型：** notificationManager.SlotLevel
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSlot-notificationLevel?: notificationManager.SlotLevel--><!--Device-NotificationSlot-notificationLevel?: notificationManager.SlotLevel-End-->
 
@@ -206,10 +168,6 @@ notificationType?: notificationManager.SlotType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSlot-notificationType?: notificationManager.SlotType--><!--Device-NotificationSlot-notificationType?: notificationManager.SlotType-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -226,10 +184,6 @@ sound?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSlot-sound?: string--><!--Device-NotificationSlot-sound?: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -245,8 +199,6 @@ type?: notification.SlotType
 **类型：** notification.SlotType
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -268,10 +220,6 @@ vibrationEnabled?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSlot-vibrationEnabled?: boolean--><!--Device-NotificationSlot-vibrationEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -287,10 +235,6 @@ vibrationValues?: Array<long>
 **类型：** Array&lt;long&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSlot-vibrationValues?: Array<long>--><!--Device-NotificationSlot-vibrationValues?: Array<long>-End-->
 

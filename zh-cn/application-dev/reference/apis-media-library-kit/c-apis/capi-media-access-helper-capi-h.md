@@ -46,6 +46,6 @@ MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequ
 
 | 类型 | 说明 |
 | -- | -- |
-| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK：方法调用成功。<br>     <br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：<br>     <br>1. 未指定强制参数。<br>     <br>2. 参数类型不正确。<br>     <br>3. 参数验证失败。<br>     <br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。<br>     <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | MEDIA_LIBRARY_OK：方法调用成功。      <br>MEDIA_LIBRARY_PARAMETER_ERROR：参数错误。可能的原因：      <br>1. 未指定强制参数。      <br>2. 参数类型不正确。      <br>3. 参数验证失败。      <br>MEDIA_LIBRARY_PERMISSION_DENIED：没有权限。      <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR：内部系统错误。 |
 
 

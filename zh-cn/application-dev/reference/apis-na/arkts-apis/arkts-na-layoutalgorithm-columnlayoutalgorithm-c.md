@@ -2,13 +2,11 @@
 
 垂直方向线性布局算法类。 > **说明：** > > ColumnLayoutAlgorithm类对象可以作为 > [DynamicLayout](../../../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**继承/实现关系：** ColumnLayoutAlgorithm implements [LayoutAlgorithm](../../apis-arkui/arkts-apis/arkts-arkui-layoutalgorithm-i.md#layoutalgorithm)
+**继承/实现关系：** ColumnLayoutAlgorithm implements [LayoutAlgorithm](../../apis-arkui/arkts-apis/arkts-arkui-layoutalgorithm-i.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-unnamed-export declare class ColumnLayoutAlgorithm--><!--Device-unnamed-export declare class ColumnLayoutAlgorithm-End-->
 
@@ -24,9 +22,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-ColumnLayoutAlgorithm-constructor(option?: ColumnLayoutAlgorithmOptions)--><!--Device-ColumnLayoutAlgorithm-constructor(option?: ColumnLayoutAlgorithmOptions)-End-->
 
@@ -50,9 +46,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-ColumnLayoutAlgorithm-@Trace public alignItems?: HorizontalAlign--><!--Device-ColumnLayoutAlgorithm-@Trace public alignItems?: HorizontalAlign-End-->
 
@@ -70,9 +64,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-ColumnLayoutAlgorithm-@Trace public isReverse?: boolean--><!--Device-ColumnLayoutAlgorithm-@Trace public isReverse?: boolean-End-->
 
@@ -90,9 +82,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-ColumnLayoutAlgorithm-@Trace public justifyContent?: FlexAlign--><!--Device-ColumnLayoutAlgorithm-@Trace public justifyContent?: FlexAlign-End-->
 
@@ -110,9 +100,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-ColumnLayoutAlgorithm-@Trace public space?: LengthMetrics--><!--Device-ColumnLayoutAlgorithm-@Trace public space?: LengthMetrics-End-->
 

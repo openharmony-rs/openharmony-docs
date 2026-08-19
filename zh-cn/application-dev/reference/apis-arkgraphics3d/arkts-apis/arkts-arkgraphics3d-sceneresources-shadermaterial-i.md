@@ -1,14 +1,10 @@
 # ShaderMaterial
 
-着色器材质资源.
+着色器材质，继承自Material。
 
-**继承/实现关系：** ShaderMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md#material)
+**继承/实现关系：** ShaderMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface ShaderMaterial--><!--Device-unnamed-export interface ShaderMaterial-End-->
 
@@ -20,15 +16,11 @@
 colorShader?: Shader
 ```
 
-材质的颜色着色器.
+着色器，默认值为undefined。
 
 **类型：** [Shader](arkts-arkgraphics3d-sceneresources-shader-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShaderMaterial-colorShader?: Shader--><!--Device-ShaderMaterial-colorShader?: Shader-End-->
 

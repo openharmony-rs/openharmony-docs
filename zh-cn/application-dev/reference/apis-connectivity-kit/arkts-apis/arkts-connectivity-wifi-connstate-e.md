@@ -4,11 +4,9 @@ WLAN连接状态枚举。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [ConnState](arkts-connectivity-wifimanager-connstate-e.md#connstate)
+**替代接口：** [ConnState](arkts-connectivity-wifimanager-connstate-e.md)
 
 <!--Device-wifi-export enum ConnState--><!--Device-wifi-export enum ConnState-End-->
 
@@ -23,8 +21,6 @@ SCANNING
 设备正在搜索可用的AP。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -44,8 +40,6 @@ WLAN连接正在建立。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [CONNECTING](arkts-connectivity-wifimanager-connstate-e.md#connecting)
@@ -63,8 +57,6 @@ AUTHENTICATING
 WLAN连接正在认证。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -84,11 +76,9 @@ OBTAINING_IPADDR
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [OBTAINING_IPADDR](arkts-connectivity-wifimanager-connstate-e.md#obtainingipaddr)
+**替代接口：** [OBTAINING_IPADDR](arkts-connectivity-wifimanager-connstate-e.md#obtaining_ipaddr)
 
 <!--Device-ConnState-OBTAINING_IPADDR--><!--Device-ConnState-OBTAINING_IPADDR-End-->
 
@@ -103,8 +93,6 @@ CONNECTED
 WLAN连接已建立。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -124,8 +112,6 @@ WLAN连接正在断开。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [DISCONNECTING](arkts-connectivity-wifimanager-connstate-e.md#disconnecting)
@@ -144,8 +130,6 @@ WLAN连接已断开。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [DISCONNECTED](arkts-connectivity-wifimanager-connstate-e.md#disconnected)
@@ -163,8 +147,6 @@ UNKNOWN
 WLAN连接建立失败。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

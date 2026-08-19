@@ -1,5 +1,11 @@
 # update
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## update
 
 ```TypeScript
@@ -9,10 +15,6 @@ function update(query: AssetMap, attributesToUpdate: AssetMap): Promise<void>
 更新符合条件的一条关键资产。使用Promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -51,7 +53,7 @@ function update(query: AssetMap, attributesToUpdate: AssetMap): Promise<void>
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

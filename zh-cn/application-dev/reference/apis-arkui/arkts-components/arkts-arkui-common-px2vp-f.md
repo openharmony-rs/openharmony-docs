@@ -1,5 +1,10 @@
 # px2vp
 
+## 导入模块
+
+```TypeScript
+```
+
 ## px2vp
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function px2vp(value: number): number
 Converts a number in units of px to a number in units of vp. By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion. If no UI instance is available, the virtual pixel ratio of the default screen is used instead.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 18
 

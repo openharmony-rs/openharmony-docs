@@ -225,7 +225,7 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 请求发起成功返回0，非0表示请求发起失败，错误码的具体描述，可以参考Http_ErrCode。<br>     <br>在Http_ResponseCallback中也会携带errCode信息，表示请求发起成功，但是因为一些原因，和服务器的交互异常，具体异常原因，同步参考Http_ErrCode。 |
+| int | 请求发起成功返回0，非0表示请求发起失败，错误码的具体描述，可以参考Http_ErrCode。      <br>在Http_ResponseCallback中也会携带errCode信息，表示请求发起成功，但是因为一些原因，和服务器的交互异常，具体异常原因，同步参考Http_ErrCode。 |
 
 ### OH_Http_Destroy()
 

@@ -1,5 +1,11 @@
 # scanFile
 
+## 导入模块
+
+```TypeScript
+import { identifySensitiveContent } from '@kit.DataProtectionKit';
+```
+
 ## scanFile
 
 ```TypeScript
@@ -9,10 +15,6 @@ function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Ar
 根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。使用Promise异步回调。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
@@ -44,7 +46,7 @@ function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Ar
 | [19110004](../errorcode-dlp.md#19110004-系统功能运行异常) | A system error has occurred. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { identifySensitiveContent } from '@kit.DataProtectionKit';

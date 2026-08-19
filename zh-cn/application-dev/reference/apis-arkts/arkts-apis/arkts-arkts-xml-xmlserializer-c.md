@@ -4,13 +4,15 @@ XmlSerializer接口用于生成XML文件。该接口基于预分配的ArrayBuffe
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-xml-class XmlSerializer--><!--Device-xml-class XmlSerializer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { xml } from '@kit.ArkTS';
+```
 
 ## addEmptyElement
 
@@ -21,10 +23,6 @@ addEmptyElement(name: string): void
 添加一个空元素。 > **说明：** > > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的元素名称。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +36,7 @@ addEmptyElement(name: string): void
 | --- | --- | --- | --- |
 | name | string | 是 | 元素的名称，取值原则：不允许以数字开头。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -61,10 +59,6 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-constructor(buffer: ArrayBuffer | DataView, encoding?: string)--><!--Device-XmlSerializer-constructor(buffer: ArrayBuffer | DataView, encoding?: string)-End-->
@@ -78,7 +72,7 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 | buffer | ArrayBuffer \| DataView | 是 | 用于接收写入XML信息的ArrayBuffer或DataView内存，需确保缓存区域足以容纳生成的文本内容。 |
 | encoding | string | 否 | 编码格式，默认'utf-8'（目前仅支持'utf-8'）。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let arrayBuffer = new ArrayBuffer(2048);
@@ -95,17 +89,13 @@ endElement(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-endElement(): void--><!--Device-XmlSerializer-endElement(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -131,10 +121,6 @@ setAttributes(name: string, value: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-setAttributes(name: string, value: string): void--><!--Device-XmlSerializer-setAttributes(name: string, value: string): void-End-->
@@ -148,7 +134,7 @@ setAttributes(name: string, value: string): void
 | name | string | 是 | XML元素的属性名称。 |
 | value | string | 是 | XML元素的属性值，与name参数指定的属性名对应。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -173,10 +159,6 @@ setCDATA(text: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-setCDATA(text: string): void--><!--Device-XmlSerializer-setCDATA(text: string): void-End-->
@@ -189,7 +171,7 @@ setCDATA(text: string): void
 | --- | --- | --- | --- |
 | text | string | 是 | CDATA标签中的数据内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -208,13 +190,9 @@ console.info(result); // <![CDATA[root SYSTEM]]>
 setComment(text: string): void
 ```
 
-添加注释内容，所生成的注释结构为：`&lt;!--` + 注释内容 + `--&gt;`。
+添加注释内容，所生成的注释结构为：`<!--` + 注释内容 + `-->`。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -228,7 +206,7 @@ setComment(text: string): void
 | --- | --- | --- | --- |
 | text | string | 是 | 当前元素的注释内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -251,17 +229,13 @@ setDeclaration(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-setDeclaration(): void--><!--Device-XmlSerializer-setDeclaration(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -285,10 +259,6 @@ setDocType(text: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-setDocType(text: string): void--><!--Device-XmlSerializer-setDocType(text: string): void-End-->
@@ -301,7 +271,7 @@ setDocType(text: string): void
 | --- | --- | --- | --- |
 | text | string | 是 | 文档类型声明的内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -324,10 +294,6 @@ setNamespace(prefix: string, namespace: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-setNamespace(prefix: string, namespace: string): void--><!--Device-XmlSerializer-setNamespace(prefix: string, namespace: string): void-End-->
@@ -341,7 +307,7 @@ setNamespace(prefix: string, namespace: string): void
 | prefix | string | 是 | 当前元素及其子元素的前缀。 |
 | namespace | string | 是 | 当前元素及其子元素的命名空间。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -367,10 +333,6 @@ setText(text: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-setText(text: string): void--><!--Device-XmlSerializer-setText(text: string): void-End-->
@@ -383,7 +345,7 @@ setText(text: string): void
 | --- | --- | --- | --- |
 | text | string | 是 | XML元素的标签文本内容。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -409,10 +371,6 @@ startElement(name: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlSerializer-startElement(name: string): void--><!--Device-XmlSerializer-startElement(name: string): void-End-->
@@ -425,7 +383,7 @@ startElement(name: string): void
 | --- | --- | --- | --- |
 | name | string | 是 | 当前元素的元素名。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';

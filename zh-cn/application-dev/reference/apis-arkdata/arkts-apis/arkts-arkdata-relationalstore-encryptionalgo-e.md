@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-enum EncryptionAlgo--><!--Device-relationalStore-enum EncryptionAlgo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -21,10 +17,6 @@ AES_256_GCM = 0
 数据库使用AES_256_GCM加密。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EncryptionAlgo-AES_256_GCM = 0--><!--Device-EncryptionAlgo-AES_256_GCM = 0-End-->
 
@@ -40,10 +32,6 @@ AES_256_CBC = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EncryptionAlgo-AES_256_CBC = 1--><!--Device-EncryptionAlgo-AES_256_CBC = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -57,10 +45,6 @@ PLAIN_TEXT = 2
 数据库不进行加密。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EncryptionAlgo-PLAIN_TEXT = 2--><!--Device-EncryptionAlgo-PLAIN_TEXT = 2-End-->
 

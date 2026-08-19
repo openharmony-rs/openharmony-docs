@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface Version--><!--Device-unnamed-export interface Version-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -25,10 +21,6 @@ readonly code: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Version-readonly code: int--><!--Device-Version-readonly code: int-End-->
 
@@ -48,10 +40,6 @@ readonly minCompatibleVersionCode: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Version-readonly minCompatibleVersionCode: int--><!--Device-Version-readonly minCompatibleVersionCode: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -69,10 +57,6 @@ readonly name: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Version-readonly name: string--><!--Device-Version-readonly name: string-End-->
 

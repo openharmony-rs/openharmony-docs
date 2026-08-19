@@ -4,13 +4,14 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface ParagraphStyleInterface--><!--Device-unnamed-declare interface ParagraphStyleInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## leadingMargin
 
@@ -23,10 +24,6 @@ leadingMargin?: LengthMetrics | LeadingMarginPlaceholder
 **类型：** LengthMetrics \| LeadingMarginPlaceholder
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +45,6 @@ leadingMarginSpan?: LeadingMarginSpan
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -71,10 +64,6 @@ maxLines?: number
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +85,6 @@ overflow?: TextOverflow
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -120,10 +105,6 @@ paragraphSpacing?: LengthMetrics
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -138,15 +119,11 @@ paragraphSpacing?: LengthMetrics
 shaderStyle?: ShaderStyle
 ```
 
-设置文本着色器效果。 **默认效果：** 不传入时不应用着色器效果，使用fontColor设置的颜色。 该接口与[TextStyleInterface](arkts-arkui-textstyleinterface-i.md#textstyleinterface)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于 [TextStyleInterface](arkts-arkui-textstyleinterface-i.md#textstyleinterface)中的fontColor。
+设置文本着色器效果。 **默认效果：** 不传入时不应用着色器效果，使用fontColor设置的颜色。 该接口与[TextStyleInterface](arkts-arkui-textstyleinterface-i.md)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于 [TextStyleInterface](arkts-arkui-textstyleinterface-i.md)中的fontColor。
 
 **类型：** ShaderStyle
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,10 +145,6 @@ tailIndents?: LengthMetrics | Array<LengthMetrics>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -191,10 +164,6 @@ textAlign?: TextAlign
 **类型：** TextAlign
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,10 +185,6 @@ textDirection?: TextDirection
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -239,10 +204,6 @@ textIndent?: LengthMetrics
 **类型：** LengthMetrics
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,10 +225,6 @@ textVerticalAlign?: TextVerticalAlign
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -287,10 +244,6 @@ wordBreak?: WordBreak
 **类型：** WordBreak
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

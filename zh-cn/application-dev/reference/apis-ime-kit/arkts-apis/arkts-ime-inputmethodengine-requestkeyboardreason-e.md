@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export enum RequestKeyboardReason--><!--Device-inputMethodEngine-export enum RequestKeyboardReason-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -21,10 +17,6 @@ NONE = 0
 表示没有特定的原因触发键盘请求。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-NONE = 0--><!--Device-RequestKeyboardReason-NONE = 0-End-->
 
@@ -40,10 +32,6 @@ MOUSE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RequestKeyboardReason-MOUSE = 1--><!--Device-RequestKeyboardReason-MOUSE = 1-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -58,10 +46,6 @@ TOUCH = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RequestKeyboardReason-TOUCH = 2--><!--Device-RequestKeyboardReason-TOUCH = 2-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -75,10 +59,6 @@ OTHER = 20
 表示键盘请求是由其他原因触发的。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RequestKeyboardReason-OTHER = 20--><!--Device-RequestKeyboardReason-OTHER = 20-End-->
 

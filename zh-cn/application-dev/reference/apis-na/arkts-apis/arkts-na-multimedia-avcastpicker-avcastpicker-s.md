@@ -1,16 +1,19 @@
 # AVCastPicker
 
-本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。 > **说明：** > > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。&lt;!--Del--&gt; > > - 当前组件的使用，依赖于设备支持“设备选择界面”。当前暂无OpenHarmony设备支持，需要OEM厂商实现具体的“设备选择界面”。&lt;!--DelEnd--&gt;
+本模块提供创建投播组件AVCastPicker的功能，提供设备发现连接的统一入口。 > **说明：** > > - 示例效果请以真机为准，当前DevEco Studio预览器无实际投播功能。<!--Del--> > > - 当前组件的使用，依赖于设备支持“设备选择界面”。当前暂无OpenHarmony设备支持，需要OEM厂商实现具体的“设备选择界面”。<!--DelEnd-->
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-declare struct AVCastPicker--><!--Device-unnamed-declare struct AVCastPicker-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+## 导入模块
+
+```TypeScript
+```
 
 ## build
 
@@ -23,9 +26,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-@Builder  build(): void--><!--Device-AVCastPicker-@Builder  build(): void-End-->
 
@@ -44,9 +45,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-@PropRef  activeColor?: Color | int | string--><!--Device-AVCastPicker-@PropRef  activeColor?: Color | int | string-End-->
 
@@ -65,9 +64,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-@PropRef  colorMode?: AVCastPickerColorMode--><!--Device-AVCastPicker-@PropRef  colorMode?: AVCastPickerColorMode-End-->
 
@@ -86,9 +83,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-@BuilderParam  customPicker?: CustomBuilder--><!--Device-AVCastPicker-@BuilderParam  customPicker?: CustomBuilder-End-->
 
@@ -107,9 +102,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-@PropRef  normalColor?: Color | int | string--><!--Device-AVCastPicker-@PropRef  normalColor?: Color | int | string-End-->
 
@@ -127,9 +120,7 @@ onStateChange?: OnPickerStateCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-onStateChange?: OnPickerStateCallback--><!--Device-AVCastPicker-onStateChange?: OnPickerStateCallback-End-->
 
@@ -148,9 +139,7 @@ onStateChange?: OnPickerStateCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-@PropRef  pickerStyle?: AVCastPickerStyle--><!--Device-AVCastPicker-@PropRef  pickerStyle?: AVCastPickerStyle-End-->
 
@@ -163,15 +152,13 @@ onStateChange?: OnPickerStateCallback
   sessionType?: string
 ```
 
-会话类型，可参考[AVSessionType](../../apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avsessiontype-t.md#avsessiontype)。默认值为当前应用创建的AVSessionType。
+会话类型，可参考[AVSessionType](../../apis-avsession-kit/arkts-apis/arkts-avsession-avsession-avsessiontype-t.md)。默认值为当前应用创建的AVSessionType。
 
 **类型：** string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-AVCastPicker-@PropRef  sessionType?: string--><!--Device-AVCastPicker-@PropRef  sessionType?: string-End-->
 

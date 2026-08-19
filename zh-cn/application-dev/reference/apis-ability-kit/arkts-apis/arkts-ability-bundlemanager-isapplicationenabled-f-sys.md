@@ -1,5 +1,11 @@
 # isApplicationEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## isApplicationEnabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isApplicationEnabled(bundleName: string, appIndex: int): Promise<boolea
 获取指定应用或分身应用的禁用或使能状态。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-bundleManager-function isApplicationEnabled(bundleName: string, appIndex: int): Promise<boolean>--><!--Device-bundleManager-function isApplicationEnabled(bundleName: string, appIndex: int): Promise<boolean>-End-->
 
@@ -42,7 +44,7 @@ function isApplicationEnabled(bundleName: string, appIndex: int): Promise<boolea
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -98,10 +100,6 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-bundleManager-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -113,7 +111,7 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，返回true表示当前应用为使能状态，返回 false表示应用为禁用状态。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，返回true表示当前应用为使能状态，返回 false表示应用为禁用状态。 |
 
 **错误码：**
 
@@ -123,7 +121,7 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -157,10 +155,6 @@ function isApplicationEnabled(bundleName: string): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-function isApplicationEnabled(bundleName: string): Promise<boolean>--><!--Device-bundleManager-function isApplicationEnabled(bundleName: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -187,7 +181,7 @@ function isApplicationEnabled(bundleName: string): Promise<boolean>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

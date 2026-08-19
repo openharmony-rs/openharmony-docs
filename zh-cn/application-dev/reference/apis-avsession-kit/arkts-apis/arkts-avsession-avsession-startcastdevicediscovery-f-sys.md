@@ -1,5 +1,11 @@
 # startCastDeviceDiscovery（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startCastDeviceDiscovery(callback: AsyncCallback<void>): void
 开始设备搜索发现。结果通过callback异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function startCastDeviceDiscovery(callback: AsyncCallback<void>): void--><!--Device-avSession-function startCastDeviceDiscovery(callback: AsyncCallback<void>): void-End-->
 
@@ -24,7 +26,7 @@ function startCastDeviceDiscovery(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -32,7 +34,7 @@ function startCastDeviceDiscovery(callback: AsyncCallback<void>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.startCastDeviceDiscovery(() => {
@@ -51,10 +53,6 @@ function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): v
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): void--><!--Device-avSession-function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -66,7 +64,7 @@ function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | int | 是 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -75,7 +73,7 @@ function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): v
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filter = 2;
@@ -94,10 +92,6 @@ function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Pro
 开始设备搜索发现。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Promise<void>--><!--Device-avSession-function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Promise<void>-End-->
 
@@ -125,7 +119,7 @@ function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Pro
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filter = 2;

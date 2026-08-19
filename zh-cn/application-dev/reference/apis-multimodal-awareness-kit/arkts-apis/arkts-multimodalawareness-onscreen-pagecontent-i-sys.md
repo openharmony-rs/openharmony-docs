@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-onScreen-export interface PageContent--><!--Device-onScreen-export interface PageContent-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { onScreen } from '@kit.MultimodalAwarenessKit';
+```
 
 ## bundleName
 
@@ -25,10 +27,6 @@ bundleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PageContent-bundleName: string--><!--Device-PageContent-bundleName: string-End-->
 
@@ -48,10 +46,6 @@ content?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PageContent-content?: string--><!--Device-PageContent-content?: string-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -69,10 +63,6 @@ pageLink?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PageContent-pageLink?: string--><!--Device-PageContent-pageLink?: string-End-->
 
@@ -92,10 +82,6 @@ paragraphs?: Paragraph[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PageContent-paragraphs?: Paragraph[]--><!--Device-PageContent-paragraphs?: Paragraph[]-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -113,10 +99,6 @@ scenario?: Scenario
 **类型：** [Scenario](arkts-multimodalawareness-onscreen-scenario-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PageContent-scenario?: Scenario--><!--Device-PageContent-scenario?: Scenario-End-->
 
@@ -136,10 +118,6 @@ sessionId: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PageContent-sessionId: long--><!--Device-PageContent-sessionId: long-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -158,10 +136,6 @@ title?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PageContent-title?: string--><!--Device-PageContent-title?: string-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -179,10 +153,6 @@ windowId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PageContent-windowId: int--><!--Device-PageContent-windowId: int-End-->
 

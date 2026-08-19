@@ -1,4 +1,4 @@
-# RepeatArray
+# RepeatArray(Defines Repeat component.)
 
 ```TypeScript
 declare type RepeatArray<T> = Array<T> | ReadonlyArray<T> | Readonly<Array<T>>
@@ -7,10 +7,6 @@ declare type RepeatArray<T> = Array<T> | ReadonlyArray<T> | Readonly<Array<T>>
 Repeat数据源参数联合类型。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

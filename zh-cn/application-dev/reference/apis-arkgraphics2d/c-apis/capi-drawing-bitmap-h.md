@@ -313,6 +313,6 @@ OH_Drawing_ErrorCode OH_Drawing_BitmapGetRowBytes(OH_Drawing_Bitmap* bitmap, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数bitmap或bytes为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数bitmap或bytes为NULL。 |
 
 

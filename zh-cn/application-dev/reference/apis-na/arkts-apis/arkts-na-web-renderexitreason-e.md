@@ -4,9 +4,7 @@ Enum type supplied to [renderExitReason](arkts-na-web-onrenderexitedevent-i.md#r
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum RenderExitReason--><!--Device-unnamed-export declare enum RenderExitReason-End-->
 
@@ -22,9 +20,7 @@ Render process non-zero exit status.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-RenderExitReason-PROCESS_ABNORMAL_TERMINATION = 0--><!--Device-RenderExitReason-PROCESS_ABNORMAL_TERMINATION = 0-End-->
 
@@ -40,9 +36,7 @@ SIGKILL or task manager kill.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-RenderExitReason-PROCESS_WAS_KILLED = 1--><!--Device-RenderExitReason-PROCESS_WAS_KILLED = 1-End-->
 
@@ -58,9 +52,7 @@ The rendering process crashes and exits, such as a segment error.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-RenderExitReason-PROCESS_CRASHED = 2--><!--Device-RenderExitReason-PROCESS_CRASHED = 2-End-->
 
@@ -76,9 +68,7 @@ Out of memory.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-RenderExitReason-PROCESS_OOM = 3--><!--Device-RenderExitReason-PROCESS_OOM = 3-End-->
 
@@ -94,9 +84,7 @@ Unknown reason.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-RenderExitReason-PROCESS_EXIT_UNKNOWN = 4--><!--Device-RenderExitReason-PROCESS_EXIT_UNKNOWN = 4-End-->
 

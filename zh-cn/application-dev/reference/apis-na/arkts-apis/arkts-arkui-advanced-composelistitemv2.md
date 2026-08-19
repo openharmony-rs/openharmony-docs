@@ -1,5 +1,10 @@
 # @ohos.arkui.advanced.ComposeListItemV2
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 类

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum NotifyChangeType--><!--Device-photoAccessHelper-enum NotifyChangeType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ NOTIFY_CHANGE_YUV_READY = 3
 分段式拍照场景下高质量图已准备完成。 图像的清晰度、色彩准确度等质量指标可在请求图像的回调中判断： [OnDataPrepared](arkts-medialibrary-photoaccesshelper-quickimagedatahandler-i.md#ondataprepared)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotifyChangeType-NOTIFY_CHANGE_YUV_READY = 3--><!--Device-NotifyChangeType-NOTIFY_CHANGE_YUV_READY = 3-End-->
 
@@ -41,10 +33,6 @@ NOTIFY_CHANGE_ADD_ANALYSIS = 4
 智慧分析相册内媒体资产（图片/视频）已经创建。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -63,10 +51,6 @@ NOTIFY_CHANGE_REMOVE_ANALYSIS = 5
 智慧分析相册内媒体资产（图片/视频）已经删除。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

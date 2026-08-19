@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-text-enum TextDecorationStyle--><!--Device-text-enum TextDecorationStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ SOLID = 0
 实线。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ DOUBLE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
@@ -61,10 +49,6 @@ DOTTED = 2
 点状线。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ DASHED = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
@@ -101,10 +81,6 @@ WAVY = 4
 波浪线。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

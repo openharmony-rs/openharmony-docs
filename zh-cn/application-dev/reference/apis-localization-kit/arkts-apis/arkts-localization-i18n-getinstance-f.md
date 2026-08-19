@@ -1,5 +1,11 @@
 # getInstance
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## getInstance
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function getInstance(locale?:string): IndexUtil
 创建并返回IndexUtil对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -32,7 +34,7 @@ export function getInstance(locale?:string): IndexUtil
 | --- | --- |
 | [IndexUtil](../../apis-na/arkts-apis/arkts-na-i18n-indexutil-c.md) | 根据区域ID创建的IndexUtil对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

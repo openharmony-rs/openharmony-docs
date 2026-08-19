@@ -1,5 +1,11 @@
 # isFloatViewEnabled
 
+## 导入模块
+
+```TypeScript
+import { floatView } from '@kit.ArkUI';
+```
+
 ## isFloatViewEnabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isFloatViewEnabled(): boolean
 判断当前设备是否支持标准悬浮窗功能。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function isFloatViewEnabled(): boolean
 | --- | --- |
 | boolean | 当前设备是否支持标准悬浮窗功能。true表示支持，false则表示不支持。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let enable: boolean = floatView.isFloatViewEnabled();

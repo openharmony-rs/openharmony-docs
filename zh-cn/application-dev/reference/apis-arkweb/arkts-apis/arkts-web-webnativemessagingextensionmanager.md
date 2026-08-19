@@ -1,12 +1,8 @@
 # @ohos.web.webNativeMessagingExtensionManager
 
-webNativeMessagingExtensionManager模块是ArkWeb提供的Web原生消息扩展管理模块，用于在应用侧（调用方）发起并管理到 [WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md#webnativemessagingextensionability)的连接。开发者可通过 [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative)方法指定目标扩展Ability并建立连接，通过返回的连接ID与 [WebExtensionConnectionCallback](arkts-arkweb-webnativemessagingextensionmanager-webextensionconnectioncallback-i.md#webextensionconnectioncallback)监听连接建立、断开及失败 事件，也可通过[disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative)主动释放连接。该模块适用于浏览器扩展与应用通信的场景；使用前需申请 ohos.permission.WEB_NATIVE_MESSAGING 权限，且仅在Stage模型下可用。 > **说明：**> > 本模块接口仅可在Stage模型下使用。
+webNativeMessagingExtensionManager模块是ArkWeb提供的Web原生消息扩展管理模块，用于在应用侧（调用方）发起并管理到 [WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)的连接。开发者可通过 [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md)方法指定目标扩展Ability并建立连接，通过返回的连接ID与 [WebExtensionConnectionCallback](arkts-arkweb-webnativemessagingextensionmanager-webextensionconnectioncallback-i.md)监听连接建立、断开及失败 事件，也可通过[disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md)主动释放连接。该模块适用于浏览器扩展与应用通信的场景；使用前需申请 ohos.permission.WEB_NATIVE_MESSAGING 权限，且仅在Stage模型下可用。 > **说明：**> > 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -14,14 +10,20 @@ webNativeMessagingExtensionManager模块是ArkWeb提供的Web原生消息扩展�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## 导入模块
+
+```TypeScript
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+```
+
 ## 汇总
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative) | 将当前Ability连接到指定的Web原生消息扩展Ability。 |
-| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative) | 断开指定Web原生消息扩展连接。 |
+| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md) | 将当前Ability连接到指定的Web原生消息扩展Ability。 |
+| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md) | 断开指定Web原生消息扩展连接。 |
 
 ### 接口
 

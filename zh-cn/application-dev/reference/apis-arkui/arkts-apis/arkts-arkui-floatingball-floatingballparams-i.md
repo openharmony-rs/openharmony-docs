@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-floatingBall-interface FloatingBallParams--><!--Device-floatingBall-interface FloatingBallParams-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+```
 
 ## backgroundColor
 
@@ -23,10 +25,6 @@ backgroundColor?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallParams-backgroundColor?: string--><!--Device-FloatingBallParams-backgroundColor?: string-End-->
 
@@ -43,10 +41,6 @@ content?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallParams-content?: string--><!--Device-FloatingBallParams-content?: string-End-->
 
@@ -66,10 +60,6 @@ contentColor?: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FloatingBallParams-contentColor?: string--><!--Device-FloatingBallParams-contentColor?: string-End-->
@@ -88,10 +78,6 @@ icon?: image.PixelMap
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallParams-icon?: image.PixelMap--><!--Device-FloatingBallParams-icon?: image.PixelMap-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -107,10 +93,6 @@ template: FloatingBallTemplate
 **类型：** [FloatingBallTemplate](arkts-arkui-floatingball-floatingballtemplate-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallParams-template: FloatingBallTemplate--><!--Device-FloatingBallParams-template: FloatingBallTemplate-End-->
 
@@ -130,10 +112,6 @@ textUpdateAnimationType?: FloatingBallTextUpdateAnimationType
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType--><!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType-End-->
@@ -152,10 +130,6 @@ title: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FloatingBallParams-title: string--><!--Device-FloatingBallParams-title: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -173,10 +147,6 @@ titleColor?: string
 **默认值：** Set different default values according to the 'backgroundColor'. - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF', otherwise is '#E5000000'. - If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

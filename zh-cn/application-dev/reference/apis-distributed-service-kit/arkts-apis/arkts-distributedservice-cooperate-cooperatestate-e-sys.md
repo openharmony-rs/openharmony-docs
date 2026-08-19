@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cooperate-enum CooperateState--><!--Device-cooperate-enum CooperateState-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -23,10 +19,6 @@ COOPERATE_PREPARE = 0
 表示准备键鼠穿越。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CooperateState-COOPERATE_PREPARE = 0--><!--Device-CooperateState-COOPERATE_PREPARE = 0-End-->
 
@@ -44,10 +36,6 @@ COOPERATE_UNPREPARE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CooperateState-COOPERATE_UNPREPARE = 1--><!--Device-CooperateState-COOPERATE_UNPREPARE = 1-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -63,10 +51,6 @@ COOPERATE_ACTIVATE = 2
 表示启动键鼠穿越。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CooperateState-COOPERATE_ACTIVATE = 2--><!--Device-CooperateState-COOPERATE_ACTIVATE = 2-End-->
 
@@ -84,10 +68,6 @@ COOPERATE_ACTIVATE_SUCCESS = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CooperateState-COOPERATE_ACTIVATE_SUCCESS = 3--><!--Device-CooperateState-COOPERATE_ACTIVATE_SUCCESS = 3-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -103,10 +83,6 @@ COOPERATE_ACTIVATE_FAILURE = 4
 表示键鼠穿越无法启动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CooperateState-COOPERATE_ACTIVATE_FAILURE = 4--><!--Device-CooperateState-COOPERATE_ACTIVATE_FAILURE = 4-End-->
 
@@ -124,10 +100,6 @@ COOPERATE_DEACTIVATE_SUCCESS = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CooperateState-COOPERATE_DEACTIVATE_SUCCESS = 5--><!--Device-CooperateState-COOPERATE_DEACTIVATE_SUCCESS = 5-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -144,10 +116,6 @@ COOPERATE_DEACTIVATE_FAILURE = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CooperateState-COOPERATE_DEACTIVATE_FAILURE = 6--><!--Device-CooperateState-COOPERATE_DEACTIVATE_FAILURE = 6-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -163,10 +131,6 @@ COOPERATE_SESSION_DISCONNECTED = 7
 表示键鼠穿越会话断开。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CooperateState-COOPERATE_SESSION_DISCONNECTED = 7--><!--Device-CooperateState-COOPERATE_SESSION_DISCONNECTED = 7-End-->
 

@@ -1,12 +1,8 @@
 # BoidsSimWorld（系统接口）
 
-群组模拟世界接口. 提供群组模拟的播放控制和组件管理. > **说明：** > 使用以下接口前，需先通过[BoidsSimPlugin.getDefaultBoidsSimWorld](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md#getdefaultboidssimworld)获取群组模拟世界实例。
+群组模拟世界对象，用于管理群组模拟的生命周期及组件。 > **说明：** > 使用以下接口前，需先通过[BoidsSimPlugin.getDefaultBoidsSimWorld](arkts-arkgraphics3d-sceneboidssim-boidssimplugin-c-sys.md#getdefaultboidssimworld)获取群组模拟世界实例。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare class BoidsSimWorld--><!--Device-unnamed-export declare class BoidsSimWorld-End-->
 
@@ -20,13 +16,9 @@
 addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 ```
 
-在指定节点上添加群组模拟组件.
+在指定节点上添加群组行为组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,10 +32,10 @@ addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要添加组件的节点 |
-| param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组模拟参数 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
+| param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组行为参数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -75,13 +67,9 @@ function manageBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 ```
 
-在指定节点上添加引力场组件.
+在指定节点上添加引力场组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -95,10 +83,10 @@ addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要添加组件的节点 |
-| param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
+| param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -125,13 +113,9 @@ function manageBoidsSimGravityComponent(world: BoidsSimWorld, fieldNode: Node): 
 addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void
 ```
 
-在指定节点上添加斥力场组件.
+在指定节点上添加斥力场组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -145,10 +129,10 @@ addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要添加组件的节点 |
-| param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
+| param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -175,13 +159,9 @@ function manageBoidsSimRepulsionComponent(world: BoidsSimWorld, fieldNode: Node)
 getBoidsSimComponent(node: Node): BoidsSimParameters | null
 ```
 
-获取指定节点上的群组模拟组件参数.
+获取指定节点上的群组行为参数。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -195,15 +175,15 @@ getBoidsSimComponent(node: Node): BoidsSimParameters | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要查询的节点 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 群组模拟参数，如果未找到则返回null |
+| [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 返回群组行为参数，若节点未挂载该组件则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -222,13 +202,9 @@ function queryBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null
 ```
 
-获取指定节点上的引力场组件参数.
+获取指定节点上的引力场参数。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,15 +218,15 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要查询的节点 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 引力场参数，如果未找到则返回null |
+| [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 返回引力场参数，若节点未挂载该组件则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -269,13 +245,9 @@ function queryBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
 getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null
 ```
 
-获取指定节点上的斥力场组件参数.
+获取指定节点上的斥力场参数。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -289,15 +261,15 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要查询的节点 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 斥力场参数，如果未找到则返回null |
+| [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 返回斥力场参数，若节点未挂载该组件则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -316,13 +288,9 @@ function queryBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void
 pause(): void
 ```
 
-暂停模拟.
+暂停群组模拟。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -332,7 +300,7 @@ pause(): void
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimWorld } from '@kit.ArkGraphics3D';
@@ -348,13 +316,9 @@ function pauseBoidsSim(world: BoidsSimWorld): void {
 play(): void
 ```
 
-开始或恢复模拟.
+开始或恢复群组模拟。当群组模拟处于停止状态时，调用此方法可以开始群组模拟；当群组模拟处于暂停状态时，调用此方法可以恢复群组模拟。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -364,7 +328,7 @@ play(): void
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimWorld } from '@kit.ArkGraphics3D';
@@ -380,13 +344,9 @@ function controlBoidsSimLifecycle(world: BoidsSimWorld): void {
 removeBoidsSimComponent(node: Node): void
 ```
 
-从指定节点移除群组模拟组件.
+移除指定节点上的群组行为组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -400,9 +360,9 @@ removeBoidsSimComponent(node: Node): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要移除组件的节点 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -418,13 +378,9 @@ function removeBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 removeBoidsSimGravityComponent(node: Node): void
 ```
 
-从指定节点移除引力场组件.
+移除指定节点上的引力场组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -438,9 +394,9 @@ removeBoidsSimGravityComponent(node: Node): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要移除组件的节点 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -456,13 +412,9 @@ function removeBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
 removeBoidsSimRepulsionComponent(node: Node): void
 ```
 
-从指定节点移除斥力场组件.
+移除指定节点上的斥力场组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -476,9 +428,9 @@ removeBoidsSimRepulsionComponent(node: Node): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要移除组件的节点 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -494,13 +446,9 @@ function removeBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
 setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 ```
 
-更新指定节点上的群组模拟组件参数.
+更新指定节点上的群组行为组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -514,10 +462,10 @@ setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要更新的节点 |
-| param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组模拟参数 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
+| param | [BoidsSimParameters](arkts-arkgraphics3d-sceneboidssim-boidssimparameters-i-sys.md) | 是 | 群组行为参数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -539,13 +487,9 @@ function updateBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 ```
 
-更新指定节点上的引力场组件参数.
+更新指定节点上的引力场组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -559,10 +503,10 @@ setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要更新的节点 |
-| param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
+| param | [BoidsSimGravityParameters](arkts-arkgraphics3d-sceneboidssim-boidssimgravityparameters-i-sys.md) | 是 | 引力场参数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimGravityParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -579,13 +523,9 @@ function updateBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
 setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void
 ```
 
-更新指定节点上的斥力场组件参数.
+更新指定节点上的斥力场组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -599,10 +539,10 @@ setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 要更新的节点 |
-| param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数 |
+| node | [Node](arkts-arkgraphics3d-scenenodes-node-i.md) | 是 | 目标场景的节点。 |
+| param | [BoidsSimRepulsionParameters](arkts-arkgraphics3d-sceneboidssim-boidssimrepulsionparameters-i-sys.md) | 是 | 斥力场参数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimRepulsionParameters, BoidsSimWorld, Node } from '@kit.ArkGraphics3D';
@@ -619,13 +559,9 @@ function updateBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
 stop(): void
 ```
 
-停止模拟并重置所有boid到初始状态.
+停止群组模拟并重置状态。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -635,7 +571,7 @@ stop(): void
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BoidsSimWorld } from '@kit.ArkGraphics3D';

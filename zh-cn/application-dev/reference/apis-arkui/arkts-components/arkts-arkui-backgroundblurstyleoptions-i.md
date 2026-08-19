@@ -1,18 +1,19 @@
 # BackgroundBlurStyleOptions
 
-继承自[BlurStyleOptions](arkts-arkui-blurstyleoptions-i.md#blurstyleoptions)。
+继承自[BlurStyleOptions](arkts-arkui-blurstyleoptions-i.md)。
 
-**继承/实现关系：** BackgroundBlurStyleOptions extends [BlurStyleOptions](arkts-arkui-blurstyleoptions-i.md#blurstyleoptions)
+**继承/实现关系：** BackgroundBlurStyleOptions extends [BlurStyleOptions](arkts-arkui-blurstyleoptions-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface BackgroundBlurStyleOptions--><!--Device-unnamed-declare interface BackgroundBlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## inactiveColor
 
@@ -27,10 +28,6 @@ inactiveColor?: ResourceColor
 **默认值：** Color.Transparent
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,10 +50,6 @@ policy?: BlurStyleActivePolicy
 **默认值：** BlurStyleActivePolicy.ALWAYS_ACTIVE
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

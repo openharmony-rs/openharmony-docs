@@ -1,18 +1,21 @@
 # onChange
 
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
 ## onChange
 
 ```TypeScript
 function onChange(listener: Callback<DeviceListener>): void
 ```
 
-Starts listening for an input device event.
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputDevice-function onChange(listener: Callback<DeviceListener>): void--><!--Device-inputDevice-function onChange(listener: Callback<DeviceListener>): void-End-->
 
@@ -22,7 +25,7 @@ Starts listening for an input device event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| listener | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeviceListener](arkts-input-inputdevice-devicelistener-i.md)&gt; | 是 | Callback for the input device event. |
+| listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeviceListener](arkts-input-inputdevice-devicelistener-i.md)&gt; | 是 | 回调函数，返回输入设备热插拔事件。 |
 
 **错误码：**
 
@@ -30,7 +33,7 @@ Starts listening for an input device event.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';

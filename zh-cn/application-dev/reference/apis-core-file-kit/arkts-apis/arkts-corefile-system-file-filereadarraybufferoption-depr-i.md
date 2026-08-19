@@ -4,13 +4,16 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-unnamed-export interface FileReadArrayBufferOption--><!--Device-unnamed-export interface FileReadArrayBufferOption-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
+
+## 导入模块
+
+```TypeScript
+```
 
 ## complete
 
@@ -23,8 +26,6 @@ complete?: () => void
 **类型：** () =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -44,8 +45,6 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileReadArrayBufferOption-fail?: (data: string, code: number) => void--><!--Device-FileReadArrayBufferOption-fail?: (data: string, code: number) => void-End-->
@@ -63,8 +62,6 @@ length?: number
 **类型：** number
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 
@@ -84,8 +81,6 @@ position?: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileReadArrayBufferOption-position?: number--><!--Device-FileReadArrayBufferOption-position?: number-End-->
@@ -104,8 +99,6 @@ success?: (data: FileReadArrayBufferResponse) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-FileReadArrayBufferOption-success?: (data: FileReadArrayBufferResponse) => void--><!--Device-FileReadArrayBufferOption-success?: (data: FileReadArrayBufferResponse) => void-End-->
@@ -123,8 +116,6 @@ uri: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 

@@ -4,8 +4,6 @@ Week Style.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 <!--Device-unnamed-interface WeekStyle--><!--Device-unnamed-interface WeekStyle-End-->
@@ -13,6 +11,11 @@ Week Style.
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## weekAndDayRowSpace
 
@@ -25,8 +28,6 @@ Style of week space.
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -50,8 +51,6 @@ Style of week color.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -73,8 +72,6 @@ Style of week font size.
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -98,8 +95,6 @@ Style of week height.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -121,8 +116,6 @@ Style of week width.
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -146,8 +139,6 @@ Style of week day color.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -169,8 +160,6 @@ Style of lunar color.
 **类型：** ResourceColor
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 

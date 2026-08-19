@@ -1,22 +1,8 @@
 # @ohos.file.recent
 
-/*
- Copyright (c) 2026 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License"),
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
-
+该模块提供最近访问列表插入、移除、查询等常用能力。 > **说明：** > > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > - 本模块为系统接口。 > - 当前只支持文件管理器调用。 > - 本模块接口从API version 23开始废弃。不建议使用以下接口。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -28,6 +14,12 @@
 
 **系统接口：** 此接口为系统接口。
 
+## 导入模块
+
+```TypeScript
+import { recent } from '@kit.CoreFileKit';
+```
+
 ## 汇总
 
 <!--Del-->
@@ -35,9 +27,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [add](arkts-corefile-recent-add-f-sys.md#add) | 将uri对应的文件加入最近访问列表。 |
-| [listFile](arkts-corefile-recent-listfile-f-sys.md#listfile) | 查询最近访问列表中文件信息。 |
-| [remove](arkts-corefile-recent-remove-f-sys.md#remove) | 将uri对应的文件从最近访问列表中移除。 |
+| [add](arkts-corefile-recent-add-f-sys.md) | 将uri对应的文件加入最近访问列表。 |
+| [listFile](arkts-corefile-recent-listfile-f-sys.md) | 查询最近访问列表中文件信息。 |
+| [remove](arkts-corefile-recent-remove-f-sys.md) | 将uri对应的文件从最近访问列表中移除。 |
 <!--DelEnd-->
 
 <!--Del-->

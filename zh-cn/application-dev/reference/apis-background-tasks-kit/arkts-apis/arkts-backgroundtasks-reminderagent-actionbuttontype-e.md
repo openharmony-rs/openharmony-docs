@@ -4,11 +4,9 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [ActionButtonType](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md#actionbuttontype)
+**替代接口：** [ActionButtonType](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md)
 
 <!--Device-reminderAgent-export enum ActionButtonType--><!--Device-reminderAgent-export enum ActionButtonType-End-->
 
@@ -23,8 +21,6 @@ ACTION_BUTTON_TYPE_CLOSE = 0
 表示关闭提醒的按钮。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -43,8 +39,6 @@ ACTION_BUTTON_TYPE_SNOOZE = 1
 表示延迟提醒的按钮。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

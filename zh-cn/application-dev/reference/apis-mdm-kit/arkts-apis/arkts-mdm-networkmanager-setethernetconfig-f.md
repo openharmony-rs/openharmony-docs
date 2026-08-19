@@ -1,5 +1,11 @@
 # setEthernetConfig
 
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
+
 ## setEthernetConfig
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setEthernetConfig(admin: Want, networkInterface: string, config: Interf
 设置特定以太网网络接口的IP地址。适用于企业网络管理场景，例如配置设备静态IP地址、统一管理企业网络设备IP分配、设置网络参数，帮助企业集中管理网络配置，确保设备网络参数符合企业网络管理策略。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -40,7 +42,7 @@ function setEthernetConfig(admin: Want, networkInterface: string, config: Interf
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9201010](../errorcode-enterpriseDeviceManager.md#9201010-以太网网络接口配置失败) | Ethernet configuration failed. Ethernet device not connected. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

@@ -72,7 +72,7 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示对应的fenceFd有信号触发；<br>         在以下情况会返回false：<br>         1.传入的fenceFd为负整数。<br>         2.在指定的超时时间内无信号触发。<br>         3.调用底层poll接口失败。<br>         4.超时时间设置为0。<br>         5.接口中复制文件描述符执行失败。 |
+| bool | 返回true表示对应的fenceFd有信号触发；\n          在以下情况会返回false：\n          1.传入的fenceFd为负整数。\n          2.在指定的超时时间内无信号触发。\n          3.调用底层poll接口失败。\n          4.超时时间设置为0。\n          5.接口中复制文件描述符执行失败。 |
 
 ### OH_NativeFence_WaitForever()
 
@@ -96,7 +96,7 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示对应的fenceFd有信号触发；<br>         在以下情况会返回false：<br>         1.传入的fenceFd为负整数。<br>         2.在指定的超时时间内无信号触发，永久等待。<br>         3.接口中复制文件描述符执行失败。 |
+| bool | 返回true表示对应的fenceFd有信号触发；\n          在以下情况会返回false：\n          1.传入的fenceFd为负整数。\n          2.在指定的超时时间内无信号触发，永久等待。\n          3.接口中复制文件描述符执行失败。 |
 
 ### OH_NativeFence_Close()
 

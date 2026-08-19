@@ -6,13 +6,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-sendablePhotoAccessHelper-interface FetchResult--><!--Device-sendablePhotoAccessHelper-interface FetchResult-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## close
 
@@ -24,10 +26,6 @@ close(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-close(): void--><!--Device-FetchResult-close(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -38,7 +36,7 @@ close(): void
 | --- | --- |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -73,10 +71,6 @@ getAllObjects(): Promise<Array<T>>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-getAllObjects(): Promise<Array<T>>--><!--Device-FetchResult-getAllObjects(): Promise<Array<T>>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -93,7 +87,7 @@ getAllObjects(): Promise<Array<T>>
 | --- | --- |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -124,10 +118,6 @@ getCount(): number
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-getCount(): number--><!--Device-FetchResult-getCount(): number-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -144,7 +134,7 @@ getCount(): number
 | --- | --- |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -175,10 +165,6 @@ getFirstObject(): Promise<T>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-getFirstObject(): Promise<T>--><!--Device-FetchResult-getFirstObject(): Promise<T>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -195,7 +181,7 @@ getFirstObject(): Promise<T>
 | --- | --- |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -226,10 +212,6 @@ getLastObject(): Promise<T>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-getLastObject(): Promise<T>--><!--Device-FetchResult-getLastObject(): Promise<T>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -246,7 +228,7 @@ getLastObject(): Promise<T>
 | --- | --- |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -277,10 +259,6 @@ getNextObject(): Promise<T>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-getNextObject(): Promise<T>--><!--Device-FetchResult-getNextObject(): Promise<T>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -297,7 +275,7 @@ getNextObject(): Promise<T>
 | --- | --- |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -329,10 +307,6 @@ getObjectByPosition(index: number): Promise<T>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-getObjectByPosition(index: number): Promise<T>--><!--Device-FetchResult-getObjectByPosition(index: number): Promise<T>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -356,7 +330,7 @@ getObjectByPosition(index: number): Promise<T>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 
@@ -387,10 +361,6 @@ isAfterLast(): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-FetchResult-isAfterLast(): boolean--><!--Device-FetchResult-isAfterLast(): boolean-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -407,7 +377,7 @@ isAfterLast(): boolean
 | --- | --- |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考sendablePhotoAccessHelper.getPhotoAccessHelper的示例使用。
 

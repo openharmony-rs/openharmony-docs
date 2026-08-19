@@ -4,9 +4,7 @@ Defines the triggered when the render process exits.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnRenderExitedEvent--><!--Device-unnamed-export declare interface OnRenderExitedEvent-End-->
 
@@ -24,9 +22,7 @@ The specific reason why the rendering process exits abnormally.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnRenderExitedEvent-renderExitReason: RenderExitReason--><!--Device-OnRenderExitedEvent-renderExitReason: RenderExitReason-End-->
 

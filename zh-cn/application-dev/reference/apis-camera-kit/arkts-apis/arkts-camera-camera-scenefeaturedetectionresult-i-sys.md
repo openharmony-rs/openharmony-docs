@@ -4,15 +4,18 @@ Describes the scene feature detection result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-interface SceneFeatureDetectionResult--><!--Device-camera-interface SceneFeatureDetectionResult-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## detected
 
@@ -25,10 +28,6 @@ Whether the specified scene feature is detected. **true** if detected, **false**
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneFeatureDetectionResult-readonly detected: boolean--><!--Device-SceneFeatureDetectionResult-readonly detected: boolean-End-->
 
@@ -47,10 +46,6 @@ Scene feature type.
 **类型：** [SceneFeatureType](arkts-camera-camera-scenefeaturetype-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneFeatureDetectionResult-readonly featureType: SceneFeatureType--><!--Device-SceneFeatureDetectionResult-readonly featureType: SceneFeatureType-End-->
 

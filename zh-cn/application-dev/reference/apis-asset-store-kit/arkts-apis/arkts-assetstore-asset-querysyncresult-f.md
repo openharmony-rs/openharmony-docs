@@ -1,5 +1,11 @@
 # querySyncResult
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## querySyncResult
 
 ```TypeScript
@@ -9,10 +15,6 @@ function querySyncResult(query: AssetMap): Promise<SyncResult>
 执行同步操作后，查询同步执行结果。使用Promise异步回调。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-asset-function querySyncResult(query: AssetMap): Promise<SyncResult>--><!--Device-asset-function querySyncResult(query: AssetMap): Promise<SyncResult>-End-->
 
@@ -43,7 +45,7 @@ function querySyncResult(query: AssetMap): Promise<SyncResult>
 | [24000018](../errorcode-asset.md#24000018-参数校验失败) | Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

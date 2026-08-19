@@ -1,5 +1,11 @@
 # startContinuationDeviceManager
 
+## 导入模块
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+```
+
 ## startContinuationDeviceManager
 
 ```TypeScript
@@ -9,8 +15,6 @@ function startContinuationDeviceManager(token: number, callback: AsyncCallback<v
 拉起设备选择模块，可显示组网内可选择设备列表信息，无过滤条件，使用AsyncCallback方式作为异步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 22
 
@@ -29,7 +33,7 @@ function startContinuationDeviceManager(token: number, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -40,7 +44,7 @@ function startContinuationDeviceManager(token: number, callback: AsyncCallback<v
 | [16600001](../errorcode-DistributedSchedule.md#16600001-系统服务工作异常) | The system ability works abnormally. |
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -74,8 +78,6 @@ function startContinuationDeviceManager(
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 22
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
@@ -94,7 +96,7 @@ function startContinuationDeviceManager(
 | --- | --- | --- | --- |
 | token | number | 是 | 注册后的token。 |
 | options | ContinuationExtraParams | 是 | 过滤可选择设备列表的额外参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当模块选择完成，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -105,7 +107,7 @@ function startContinuationDeviceManager(
 | [16600001](../errorcode-DistributedSchedule.md#16600001-系统服务工作异常) | The system ability works abnormally. |
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -139,8 +141,6 @@ function startContinuationDeviceManager(token: number, options?: ContinuationExt
 拉起设备选择模块，可显示组网内可选择设备列表信息，使用Promise方式作为异步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 22
 
@@ -176,7 +176,7 @@ function startContinuationDeviceManager(token: number, options?: ContinuationExt
 | [16600001](../errorcode-DistributedSchedule.md#16600001-系统服务工作异常) | The system ability works abnormally. |
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';

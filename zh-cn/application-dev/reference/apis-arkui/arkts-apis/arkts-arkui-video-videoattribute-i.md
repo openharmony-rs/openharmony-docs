@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface VideoAttribute--><!--Device-unnamed-export declare interface VideoAttribute-End-->
 
@@ -22,9 +20,7 @@ analyzerConfig(config: ImageAnalyzerConfig | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-analyzerConfig(config: ImageAnalyzerConfig | undefined): this--><!--Device-VideoAttribute-analyzerConfig(config: ImageAnalyzerConfig | undefined): this-End-->
 
@@ -48,9 +44,7 @@ attributeModifier(modifier: AttributeModifier<VideoAttribute> | AttributeModifie
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-attributeModifier(modifier: AttributeModifier<VideoAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-VideoAttribute-attributeModifier(modifier: AttributeModifier<VideoAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -74,9 +68,7 @@ autoPlay(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-autoPlay(value: boolean | undefined): this--><!--Device-VideoAttribute-autoPlay(value: boolean | undefined): this-End-->
 
@@ -100,9 +92,7 @@ controls(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-controls(value: boolean | undefined): this--><!--Device-VideoAttribute-controls(value: boolean | undefined): this-End-->
 
@@ -126,9 +116,7 @@ enableAnalyzer(enable: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-enableAnalyzer(enable: boolean | undefined): this--><!--Device-VideoAttribute-enableAnalyzer(enable: boolean | undefined): this-End-->
 
@@ -152,9 +140,7 @@ enableShortcutKey(enabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-enableShortcutKey(enabled: boolean | undefined): this--><!--Device-VideoAttribute-enableShortcutKey(enabled: boolean | undefined): this-End-->
 
@@ -178,9 +164,7 @@ loop(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-loop(value: boolean | undefined): this--><!--Device-VideoAttribute-loop(value: boolean | undefined): this-End-->
 
@@ -204,9 +188,7 @@ muted(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-muted(value: boolean | undefined): this--><!--Device-VideoAttribute-muted(value: boolean | undefined): this-End-->
 
@@ -230,9 +212,7 @@ objectFit(value: ImageFit | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-objectFit(value: ImageFit | undefined): this--><!--Device-VideoAttribute-objectFit(value: ImageFit | undefined): this-End-->
 
@@ -256,9 +236,7 @@ onError(event: VoidCallback | ErrorCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onError(event: VoidCallback | ErrorCallback | undefined): this--><!--Device-VideoAttribute-onError(event: VoidCallback | ErrorCallback | undefined): this-End-->
 
@@ -266,7 +244,7 @@ onError(event: VoidCallback | ErrorCallback | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [VoidCallback](arkts-arkui-voidcallback-t.md) \| [ErrorCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-errorcallback-t.md) \| undefined | 是 |  |
+| event | [VoidCallback](arkts-arkui-voidcallback-t.md) \| [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-errorcallback-t.md) \| undefined | 是 |  |
 
 **返回值：**
 
@@ -282,9 +260,7 @@ onFinish(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onFinish(event: VoidCallback | undefined): this--><!--Device-VideoAttribute-onFinish(event: VoidCallback | undefined): this-End-->
 
@@ -308,9 +284,7 @@ onFullscreenChange(callback: Callback<FullscreenInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onFullscreenChange(callback: Callback<FullscreenInfo> | undefined): this--><!--Device-VideoAttribute-onFullscreenChange(callback: Callback<FullscreenInfo> | undefined): this-End-->
 
@@ -334,9 +308,7 @@ onPause(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onPause(event: VoidCallback | undefined): this--><!--Device-VideoAttribute-onPause(event: VoidCallback | undefined): this-End-->
 
@@ -360,9 +332,7 @@ onPrepared(callback: Callback<PreparedInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onPrepared(callback: Callback<PreparedInfo> | undefined): this--><!--Device-VideoAttribute-onPrepared(callback: Callback<PreparedInfo> | undefined): this-End-->
 
@@ -386,9 +356,7 @@ onSeeked(callback: Callback<PlaybackInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onSeeked(callback: Callback<PlaybackInfo> | undefined): this--><!--Device-VideoAttribute-onSeeked(callback: Callback<PlaybackInfo> | undefined): this-End-->
 
@@ -412,9 +380,7 @@ onSeeking(callback: Callback<PlaybackInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onSeeking(callback: Callback<PlaybackInfo> | undefined): this--><!--Device-VideoAttribute-onSeeking(callback: Callback<PlaybackInfo> | undefined): this-End-->
 
@@ -438,9 +404,7 @@ onStart(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onStart(event: VoidCallback | undefined): this--><!--Device-VideoAttribute-onStart(event: VoidCallback | undefined): this-End-->
 
@@ -464,9 +428,7 @@ onStop(event: VoidCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onStop(event: VoidCallback | undefined): this--><!--Device-VideoAttribute-onStop(event: VoidCallback | undefined): this-End-->
 
@@ -490,9 +452,7 @@ onUpdate(callback: Callback<PlaybackInfo> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-onUpdate(callback: Callback<PlaybackInfo> | undefined): this--><!--Device-VideoAttribute-onUpdate(callback: Callback<PlaybackInfo> | undefined): this-End-->
 
@@ -516,9 +476,7 @@ setVideoOptions(value: VideoOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-setVideoOptions(value: VideoOptions): this--><!--Device-VideoAttribute-setVideoOptions(value: VideoOptions): this-End-->
 
@@ -542,9 +500,7 @@ surfaceBackgroundColor(color: ColorMetrics | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-VideoAttribute-surfaceBackgroundColor(color: ColorMetrics | undefined): this--><!--Device-VideoAttribute-surfaceBackgroundColor(color: ColorMetrics | undefined): this-End-->
 
@@ -570,9 +526,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,11 @@
 # getDLPGatheringPolicy（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## getDLPGatheringPolicy
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDLPGatheringPolicy(): Promise<GatheringPolicyType>
 查询DLP沙箱聚合策略。使用Promise异步回调。 应用需要获取当前系统的DLP沙箱聚合策略配置时使用此接口。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_DLP_FILE
 
@@ -37,7 +39,7 @@ function getDLPGatheringPolicy(): Promise<GatheringPolicyType>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';
@@ -60,10 +62,6 @@ function getDLPGatheringPolicy(callback: AsyncCallback<GatheringPolicyType>): vo
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_DLP_FILE
 
 <!--Device-dlpPermission-function getDLPGatheringPolicy(callback: AsyncCallback<GatheringPolicyType>): void--><!--Device-dlpPermission-function getDLPGatheringPolicy(callback: AsyncCallback<GatheringPolicyType>): void-End-->
@@ -76,7 +74,7 @@ function getDLPGatheringPolicy(callback: AsyncCallback<GatheringPolicyType>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[GatheringPolicyType](arkts-dataprotection-dlppermission-gatheringpolicytype-e-sys.md)&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[GatheringPolicyType](arkts-dataprotection-dlppermission-gatheringpolicytype-e-sys.md)&gt; | 是 | 回调函数。err为undefined时表示查询成功；否则为错误对象。 |
 
 **错误码：**
 
@@ -88,7 +86,7 @@ function getDLPGatheringPolicy(callback: AsyncCallback<GatheringPolicyType>): vo
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

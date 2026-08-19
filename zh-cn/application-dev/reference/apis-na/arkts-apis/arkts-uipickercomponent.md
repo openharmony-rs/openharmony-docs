@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [UIPickerComponent](arkts-na-uipickercomponent-uipickercomponent-f.md#uipickercomponent) | 定义UIPickerComponent组件。 |
+| [UIPickerComponent](arkts-na-uipickercomponent-uipickercomponent-f.md) | 定义UIPickerComponent组件。 |
 
 ### 接口
 

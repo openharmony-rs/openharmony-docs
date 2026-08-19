@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uiMaterial-enum MaterialType--><!--Device-uiMaterial-enum MaterialType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -20,13 +16,9 @@
 IMMERSIVE = 2
 ```
 
-沉浸式材质类型。仅用于[MaterialInfo](../../apis-na/arkts-apis/arkts-na-uimaterial-materialinfo-i.md#materialinfo)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过 [ImmersiveMaterial](../../apis-na/arkts-apis/arkts-na-uimaterial-immersivematerial-c.md#immersivematerial)类实现。
+沉浸式材质类型。仅用于[MaterialInfo](arkts-arkui-uimaterial-materialinfo-i.md)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过 [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)类实现。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

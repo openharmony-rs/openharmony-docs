@@ -12,8 +12,6 @@ AbilityComponent(value: { want: import('../api/@ohos.app.ability.Want').default 
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 10
 
 **替代接口：** UIExtensionComponentInterface

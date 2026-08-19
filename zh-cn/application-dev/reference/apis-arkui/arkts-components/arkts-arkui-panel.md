@@ -12,8 +12,6 @@ Panel(show: boolean)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -30,6 +28,11 @@ Panel(show: boolean)
 
 ## 汇总
 
-- [PanelHeight](arkts-arkui-panelheight-e.md)
-- [PanelMode](arkts-arkui-panelmode-e.md)
-- [PanelType](arkts-arkui-paneltype-e.md)
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [PanelHeight](arkts-arkui-panelheight-e.md) | 自定义内容显示区域的枚举。 |
+| [PanelMode](arkts-arkui-panelmode-e.md) | 设置滑动面板的初始状态 |
+| [PanelType](arkts-arkui-paneltype-e.md) | 设置滑动面板的类型 |
+

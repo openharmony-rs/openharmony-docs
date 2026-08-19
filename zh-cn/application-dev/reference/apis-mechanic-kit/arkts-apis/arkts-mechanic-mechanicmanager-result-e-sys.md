@@ -4,10 +4,6 @@ Rotation execution results.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export enum Result--><!--Device-mechanicManager-export enum Result-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -23,10 +19,6 @@ COMPLETED = 0
 Rotation completed.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Result-COMPLETED = 0--><!--Device-Result-COMPLETED = 0-End-->
 
@@ -44,10 +36,6 @@ Rotation was interrupted.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Result-INTERRUPTED = 1--><!--Device-Result-INTERRUPTED = 1-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -63,10 +51,6 @@ LIMITED = 2
 Device reached limitation.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Result-LIMITED = 2--><!--Device-Result-LIMITED = 2-End-->
 
@@ -84,10 +68,6 @@ Rotation time out.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Result-TIMEOUT = 3--><!--Device-Result-TIMEOUT = 3-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -103,10 +83,6 @@ TERMINATE_OBSTACLE  = 4
 障碍物导致终止
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-Result-TERMINATE_OBSTACLE  = 4--><!--Device-Result-TERMINATE_OBSTACLE  = 4-End-->
 
@@ -124,10 +100,6 @@ TERMINATE_CLIFF = 5
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-Result-TERMINATE_CLIFF = 5--><!--Device-Result-TERMINATE_CLIFF = 5-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -143,10 +115,6 @@ SYSTEM_ERROR = 100
 Rotation failed due to system error.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Result-SYSTEM_ERROR = 100--><!--Device-Result-SYSTEM_ERROR = 100-End-->
 

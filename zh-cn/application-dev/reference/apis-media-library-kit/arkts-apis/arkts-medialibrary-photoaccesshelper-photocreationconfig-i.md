@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface PhotoCreationConfig--><!--Device-photoAccessHelper-interface PhotoCreationConfig-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## fileNameExtension
 
@@ -24,10 +26,6 @@ fileNameExtension: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhotoCreationConfig-fileNameExtension: string--><!--Device-PhotoCreationConfig-fileNameExtension: string-End-->
@@ -40,15 +38,11 @@ fileNameExtension: string
 photoType: PhotoType
 ```
 
-创建的文件类型[PhotoType](arkts-medialibrary-photoaccesshelper-phototype-e.md#phototype)，IMAGE或者VIDEO。
+创建的文件类型[PhotoType](arkts-medialibrary-photoaccesshelper-phototype-e.md)，IMAGE或者VIDEO。
 
 **类型：** PhotoType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -62,15 +56,11 @@ photoType: PhotoType
 subtype?: PhotoSubtype
 ```
 
-图片或者视频的文件子类型[PhotoSubtype](arkts-medialibrary-photoaccesshelper-photosubtype-e.md#photosubtype系统接口)，不传入时默认为DEFAULT。
+图片或者视频的文件子类型[PhotoSubtype](arkts-medialibrary-photoaccesshelper-photosubtype-e.md)，不传入时默认为DEFAULT。
 
 **类型：** PhotoSubtype
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -89,10 +79,6 @@ title?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

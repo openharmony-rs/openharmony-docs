@@ -4,10 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-particleAbility-export enum ErrorCode--><!--Device-particleAbility-export enum ErrorCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
@@ -21,10 +17,6 @@ INVALID_PARAMETER = -1
 无效的参数。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

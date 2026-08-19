@@ -4,13 +4,18 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export class ComponentSnapshot--><!--Device-unnamed-export class ComponentSnapshot-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
+import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
+import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+```
 
 ## getWithRange
 
@@ -22,10 +27,6 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 传入两个组件的ID，获取范围内的组件的截图，并通过Promise返回结果。 > **说明：** > > start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,7 +59,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 | [160003](../errorcode-snapshot.md#160003-截图选项中设置的色彩空间或动态范围模式不受支持) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';

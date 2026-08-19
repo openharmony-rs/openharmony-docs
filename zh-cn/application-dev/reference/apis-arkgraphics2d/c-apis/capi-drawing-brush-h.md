@@ -87,7 +87,7 @@ OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Brush*](capi-drawing-oh-drawing-brush.md) | 函数会返回一个指针，指针指向创建的画刷对象副本[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)。如果返回NULL，表示创建失败；<br> 可能的原因是可用内存不足，或者是brush为NULL。 |
+| [OH_Drawing_Brush*](capi-drawing-oh-drawing-brush.md) | 函数会返回一个指针，指针指向创建的画刷对象副本[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足，或者是brush为NULL。 |
 
 ### OH_Drawing_BrushDestroy()
 
@@ -263,7 +263,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushSetColor4f(OH_Drawing_Brush* brush, float a
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush为NULL。 |
 
 ### OH_Drawing_BrushGetAlphaFloat()
 
@@ -288,7 +288,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetAlphaFloat(const OH_Drawing_Brush* brush
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或a为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或a为NULL。 |
 
 ### OH_Drawing_BrushGetRedFloat()
 
@@ -313,7 +313,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetRedFloat(const OH_Drawing_Brush* brush, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或r为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或r为NULL。 |
 
 ### OH_Drawing_BrushGetGreenFloat()
 
@@ -338,7 +338,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetGreenFloat(const OH_Drawing_Brush* brush
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或g为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或g为NULL。 |
 
 ### OH_Drawing_BrushGetBlueFloat()
 
@@ -363,7 +363,7 @@ OH_Drawing_ErrorCode OH_Drawing_BrushGetBlueFloat(const OH_Drawing_Brush* brush,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或b为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数brush或b为NULL。 |
 
 ### OH_Drawing_BrushSetShaderEffect()
 

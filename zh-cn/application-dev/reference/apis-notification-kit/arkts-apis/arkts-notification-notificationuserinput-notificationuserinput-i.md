@@ -1,12 +1,8 @@
-# NotificationUserInput
+# NotificationUserInput(Describes a NotificationUserInput instance)
 
 保存用户输入的通知消息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface NotificationUserInput--><!--Device-unnamed-export interface NotificationUserInput-End-->
 
@@ -23,10 +19,6 @@ inputKey: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationUserInput-inputKey: string--><!--Device-NotificationUserInput-inputKey: string-End-->
 

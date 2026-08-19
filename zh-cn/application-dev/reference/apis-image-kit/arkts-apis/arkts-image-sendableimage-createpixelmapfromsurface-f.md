@@ -1,5 +1,11 @@
 # createPixelMapFromSurface
 
+## 导入模块
+
+```TypeScript
+import { sendableImage } from '@kit.ImageKit';
+```
+
 ## createPixelMapFromSurface
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createPixelMapFromSurface(surfaceId: string, region: image.Region): Pro
 Creates a PixelMap object from surface id.
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-sendableImage-function createPixelMapFromSurface(surfaceId: string, region: image.Region): Promise<PixelMap>--><!--Device-sendableImage-function createPixelMapFromSurface(surfaceId: string, region: image.Region): Promise<PixelMap>-End-->
 
@@ -39,7 +41,7 @@ Creates a PixelMap object from surface id.
 | [62980178](../errorcode-image.md#62980178-pixelmap创建失败) | Failed to create the PixelMap. |
 | [62980105](../errorcode-image.md#62980105-图片获取数据错误) | Failed to get the data. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { image } from '@kit.ImageKit';

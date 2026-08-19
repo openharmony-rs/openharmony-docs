@@ -1,5 +1,11 @@
 # request（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
+```
+
 ## request
 
 ```TypeScript
@@ -9,10 +15,6 @@ function request(param: RequestParameterForStage, callback: AsyncCallback<Reques
 组件使用方向组件提供方主动请求组件。组件提供方需通过onRequest事件监听响应请求，并通过回调返回组件模板信息。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,6 +28,6 @@ function request(param: RequestParameterForStage, callback: AsyncCallback<Reques
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | [RequestParameterForStage](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-requestparameterforstage-i-sys.md) | 是 | 组件模板的详细请求信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RequestCallbackParameters](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-requestcallbackparameters-i.md)&gt; | 是 | 此次请求的异步回调，通过回调接口的参数返回请求响应的数据。 |
+| param | [RequestParameterForStage](arkts-arkui-plugincomponentmanager-requestparameterforstage-i-sys.md) | 是 | 组件模板的详细请求信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RequestCallbackParameters](arkts-arkui-plugincomponentmanager-requestcallbackparameters-i.md)&gt; | 是 | 此次请求的异步回调，通过回调接口的参数返回请求响应的数据。 |
 

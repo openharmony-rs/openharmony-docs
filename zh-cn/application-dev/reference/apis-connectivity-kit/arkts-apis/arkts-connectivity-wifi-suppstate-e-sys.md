@@ -4,11 +4,9 @@ supplicant状态枚举。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [SuppState](arkts-connectivity-wifimanager-suppstate-e-sys.md#suppstate系统接口)
+**替代接口：** [SuppState](arkts-connectivity-wifimanager-suppstate-e-sys.md)
 
 <!--Device-wifi-export enum SuppState--><!--Device-wifi-export enum SuppState-End-->
 
@@ -25,8 +23,6 @@ DISCONNECTED
 supplicant未与AP关联或已与AP断开连接。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -48,11 +44,9 @@ INTERFACE_DISABLED
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [INTERFACE_DISABLED](arkts-connectivity-wifimanager-suppstate-e-sys.md#interfacedisabled)
+**替代接口：** [INTERFACE_DISABLED](arkts-connectivity-wifimanager-suppstate-e-sys.md#interface_disabled)
 
 <!--Device-SuppState-INTERFACE_DISABLED--><!--Device-SuppState-INTERFACE_DISABLED-End-->
 
@@ -69,8 +63,6 @@ INACTIVE
 supplicant已禁用。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -92,8 +84,6 @@ supplicant正在扫描WLAN连接。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [SCANNING](arkts-connectivity-wifimanager-suppstate-e-sys.md#scanning)
@@ -113,8 +103,6 @@ AUTHENTICATING
 supplicant正在与指定AP进行认证。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -136,8 +124,6 @@ supplicant正在与指定AP关联。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [ASSOCIATING](arkts-connectivity-wifimanager-suppstate-e-sys.md#associating)
@@ -157,8 +143,6 @@ ASSOCIATED
 supplicant已与指定AP关联。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -180,11 +164,9 @@ FOUR_WAY_HANDSHAKE
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [FOUR_WAY_HANDSHAKE](arkts-connectivity-wifimanager-suppstate-e-sys.md#fourwayhandshake)
+**替代接口：** [FOUR_WAY_HANDSHAKE](arkts-connectivity-wifimanager-suppstate-e-sys.md#four_way_handshake)
 
 <!--Device-SuppState-FOUR_WAY_HANDSHAKE--><!--Device-SuppState-FOUR_WAY_HANDSHAKE-End-->
 
@@ -202,11 +184,9 @@ GROUP_HANDSHAKE
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [GROUP_HANDSHAKE](arkts-connectivity-wifimanager-suppstate-e-sys.md#grouphandshake)
+**替代接口：** [GROUP_HANDSHAKE](arkts-connectivity-wifimanager-suppstate-e-sys.md#group_handshake)
 
 <!--Device-SuppState-GROUP_HANDSHAKE--><!--Device-SuppState-GROUP_HANDSHAKE-End-->
 
@@ -223,8 +203,6 @@ COMPLETED
 所有认证已完成。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -246,8 +224,6 @@ UNINITIALIZED
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [UNINITIALIZED](arkts-connectivity-wifimanager-suppstate-e-sys.md#uninitialized)
@@ -267,8 +243,6 @@ INVALID
 supplicant处于未知或无效状态。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

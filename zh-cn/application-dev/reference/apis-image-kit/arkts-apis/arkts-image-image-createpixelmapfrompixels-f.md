@@ -1,5 +1,11 @@
 # createPixelMapFromPixels
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## createPixelMapFromPixels
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOpti
 Creates a PixelMap from existing pixel data. The pixel data will be copied and converted to the specified pixel format to initialize the PixelMap. The following pixel formats are not supported for PixelMap creation: RGBA_1010102, YCBCR_P010, YCRCB_P010, ASTC_4x4.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +48,7 @@ Creates a PixelMap from existing pixel data. The pixel data will be copied and c
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

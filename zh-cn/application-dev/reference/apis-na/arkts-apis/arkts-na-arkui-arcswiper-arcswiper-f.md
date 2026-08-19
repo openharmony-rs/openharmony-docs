@@ -1,5 +1,10 @@
 # ArcSwiper
 
+## 导入模块
+
+```TypeScript
+```
+
 ## ArcSwiper
 
 ```TypeScript
@@ -14,9 +19,7 @@ export declare function ArcSwiper(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,9 +55,7 @@ export declare function ArcSwiper(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,15 +4,18 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [Configuration/Configuration](arkts-ability-app-ability-configuration-configuration-i.md#configuration)
+**替代接口：** [Configuration/Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 
 <!--Device-unnamed-export interface Configuration--><!--Device-unnamed-export interface Configuration-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
+
+## 导入模块
+
+```TypeScript
+```
 
 ## colorMode
 
@@ -25,8 +28,6 @@ colorMode?: ConfigurationConstant.ColorMode
 **类型：** ConfigurationConstant.ColorMode
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -47,8 +48,6 @@ language?: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

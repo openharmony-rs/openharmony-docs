@@ -1,4 +1,4 @@
-# CAPI<!--c-basic-services-kit-->
+# C API<!--c-basic-services-kit-->
 
 - 头文件
     - [oh_pasteboard_err_code.h](capi-oh-pasteboard-err-code-h.md)

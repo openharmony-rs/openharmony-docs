@@ -1,5 +1,12 @@
 # allowAutoConnect（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## allowAutoConnect
 
 ```TypeScript
@@ -9,10 +16,6 @@ function allowAutoConnect(netId: int, isAllowed: boolean): void
 设置是否允许通过networkId自动连接。 如果isAllowed为true，则可以再次关联该网络，否则不可。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 

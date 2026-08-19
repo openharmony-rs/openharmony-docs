@@ -4,10 +4,6 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-webview-enum ProxySchemeFilter--><!--Device-webview-enum ProxySchemeFilter-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ MATCH_ALL_SCHEMES = 0
 所有的scheme都会使用代理。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ HTTP请求会使用代理。
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ProxySchemeFilter-MATCH_HTTP = 1--><!--Device-ProxySchemeFilter-MATCH_HTTP = 1-End-->
@@ -61,10 +49,6 @@ MATCH_HTTPS = 2
 HTTPS请求会使用代理。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

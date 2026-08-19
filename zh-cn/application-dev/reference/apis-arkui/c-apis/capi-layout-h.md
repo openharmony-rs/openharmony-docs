@@ -1463,7 +1463,7 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
@@ -1507,7 +1507,7 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
@@ -1551,7 +1551,7 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
@@ -1595,7 +1595,7 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
@@ -1675,7 +1675,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -1719,7 +1719,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -1763,7 +1763,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -1807,6 +1807,6 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。<br>      返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>      返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 

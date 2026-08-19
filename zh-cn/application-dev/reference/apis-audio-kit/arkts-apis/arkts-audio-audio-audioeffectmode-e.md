@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioEffectMode--><!--Device-audio-enum AudioEffectMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
@@ -21,10 +17,6 @@ EFFECT_NONE = 0
 关闭音效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ EFFECT_DEFAULT = 1
 默认音效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

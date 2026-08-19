@@ -6,13 +6,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface GestureEvent--><!--Device-unnamed-interface GestureEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## angle
 
@@ -25,10 +26,6 @@ angle: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -47,10 +44,6 @@ fingerInfos?: FingerInfo[]
 **类型：** [FingerInfo](arkts-arkui-fingerinfo-i.md)[]
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -72,10 +65,6 @@ fingerList: FingerInfo[]
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureEvent-fingerList: FingerInfo[]--><!--Device-GestureEvent-fingerList: FingerInfo[]-End-->
@@ -93,10 +82,6 @@ offsetX: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -116,10 +101,6 @@ offsetY: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureEvent-offsetY: number--><!--Device-GestureEvent-offsetY: number-End-->
@@ -137,10 +118,6 @@ pinchCenterX: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -160,10 +137,6 @@ pinchCenterY: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureEvent-pinchCenterY: number--><!--Device-GestureEvent-pinchCenterY: number-End-->
@@ -181,10 +154,6 @@ repeat: boolean
 **类型：** boolean
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -204,10 +173,6 @@ scale: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureEvent-scale: number--><!--Device-GestureEvent-scale: number-End-->
@@ -226,10 +191,6 @@ speed: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureEvent-speed: number--><!--Device-GestureEvent-speed: number-End-->
@@ -247,10 +208,6 @@ tapLocation?: EventLocationInfo
 **类型：** [EventLocationInfo](arkts-arkui-eventlocationinfo-i.md)
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -272,10 +229,6 @@ velocity: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -296,10 +249,6 @@ velocityX: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -319,10 +268,6 @@ velocityY: number
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

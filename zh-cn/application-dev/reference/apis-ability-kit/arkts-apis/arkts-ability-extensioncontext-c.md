@@ -1,14 +1,10 @@
 # ExtensionContext
 
-ExtensionContext是[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的上下文环境，继承自 [Context](arkts-ability-context-c.md#context)。 ExtensionContext模块提供访问特定[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的资源的能力。
+ExtensionContext是[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)的上下文环境，继承自 [Context](arkts-ability-context-c.md)。 ExtensionContext模块提供访问特定[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)的资源的能力。
 
 **继承/实现关系：** ExtensionContext extends Context
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class ExtensionContext--><!--Device-unnamed-declare class ExtensionContext-End-->
 
@@ -25,10 +21,6 @@ config: Configuration
 **类型：** [Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +42,6 @@ currentHapModuleInfo: HapModuleInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -68,15 +56,11 @@ currentHapModuleInfo: HapModuleInfo
 extensionAbilityInfo: ExtensionAbilityInfo
 ```
 
-当前[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的信息，包含名称、类型、标签ID等。
+当前[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)的信息，包含名称、类型、标签ID等。
 
 **类型：** [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioDataCallbackResult--><!--Device-audio-enum AudioDataCallbackResult-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -22,10 +18,6 @@ INVALID = -1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioDataCallbackResult-INVALID = -1--><!--Device-AudioDataCallbackResult-INVALID = -1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -39,10 +31,6 @@ VALID = 0
 表示该回调数据有效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioDataCallbackResult-VALID = 0--><!--Device-AudioDataCallbackResult-VALID = 0-End-->
 

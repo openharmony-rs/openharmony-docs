@@ -47,7 +47,7 @@ OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_MemoryStream*](capi-drawing-oh-drawing-memorystream.md) | 指向创建的内存流对象[OH_Drawing_MemoryStream](capi-drawing-oh-drawing-memorystream.md)的指针，<br> 可作为数据源传递给后续图形处理接口（如图像解码）使用。 |
+| [OH_Drawing_MemoryStream*](capi-drawing-oh-drawing-memorystream.md) | 指向创建的内存流对象[OH_Drawing_MemoryStream](capi-drawing-oh-drawing-memorystream.md)的指针，  可作为数据源传递给后续图形处理接口（如图像解码）使用。 |
 
 ### OH_Drawing_MemoryStreamDestroy()
 

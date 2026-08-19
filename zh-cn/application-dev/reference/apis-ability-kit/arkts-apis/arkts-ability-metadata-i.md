@@ -1,12 +1,8 @@
 # Metadata
 
-元数据对象，可以通过 [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself) 获取，其中参数bundleFlags至少包含GET_BUNDLE_INFO_WITH_METADATA。此对象在ApplicationInfo、 HapModuleInfo、AbilityInfo、 [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md#extensionabilityinfo)中均包含。
+元数据对象，可以通过 [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md) 获取，其中参数bundleFlags至少包含GET_BUNDLE_INFO_WITH_METADATA。此对象在ApplicationInfo、 HapModuleInfo、AbilityInfo、 [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)中均包含。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Metadata--><!--Device-unnamed-export interface Metadata-End-->
 
@@ -23,10 +19,6 @@ Indicates the metadata name
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +38,6 @@ Indicates the metadata resource
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Metadata-resource: string--><!--Device-Metadata-resource: string-End-->
@@ -68,10 +56,6 @@ Indicates the metadata value
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Metadata-value: string--><!--Device-Metadata-value: string-End-->
@@ -89,10 +73,6 @@ Indicates the value id of the metadata
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

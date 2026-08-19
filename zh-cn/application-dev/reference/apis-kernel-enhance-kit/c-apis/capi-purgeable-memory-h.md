@@ -53,9 +53,9 @@ typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \* | *: data ptr, points to start address of a PurgMem obj's content. |
+| void \* | *: data ptr, points to start address of a PurgMem obj's content. |
 | size_t | 内容的数据大小。 |
-| (void \* |  *: 其他私有参数。 |
+| void \* |  *: 其他私有参数。 |
 
 **返回：**
 
@@ -135,7 +135,7 @@ bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果 purgObj 的内容存在，则返回 true；<br>    如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容恢复成功，则返回 true；<br>    当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndRead()。 |
+| bool | 如果 purgObj 的内容存在，则返回 true；     如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容恢复成功，则返回 true；     当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndRead()。 |
 
 ### OH_PurgeableMemory_EndRead()
 
@@ -177,7 +177,7 @@ bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果 purgObj 的内容存在，则返回 true；<br>     如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容成功恢复，则返回 true；<br>     当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndWrite()。 |
+| bool | 如果 purgObj 的内容存在，则返回 true；      如果内容已被清除（不存在），系统将尝试恢复其数据，如果内容已被清除且恢复失败，则返回 false，如果内容成功恢复，则返回 true；      当此函数返回 true 时，操作系统无法回收 purgObj 内容的内存，直到调用 PurgMemEndWrite()。 |
 
 ### OH_PurgeableMemory_EndWrite()
 
@@ -219,7 +219,7 @@ void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| void * | 返回可丢弃内存对象内容的起始地址。<br>     如果 purgObj 为 NULL，则返回 NULL。<br>     此函数应受 PurgMemBeginRead()/PurgMemEndRead() 或 PurgMemBeginWrite()/PurgMemEndWrite() 保护。 |
+| void * | 返回可丢弃内存对象内容的起始地址。      如果 purgObj 为 NULL，则返回 NULL。      此函数应受 PurgMemBeginRead()/PurgMemEndRead() 或 PurgMemBeginWrite()/PurgMemEndWrite() 保护。 |
 
 ### OH_PurgeableMemory_ContentSize()
 
@@ -243,7 +243,7 @@ size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)
 
 | 类型 | 说明 |
 | -- | -- |
-| size_t | 返回 purgObj 的内容大小。<br>     如果 purgObj 为 NULL，则返回 0。 |
+| size_t | 返回 purgObj 的内容大小。      如果 purgObj 为 NULL，则返回 0。 |
 
 ### OH_PurgeableMemory_AppendModify()
 

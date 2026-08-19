@@ -1,5 +1,11 @@
 # getInsightIntentInfoByIntentName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { insightIntentDriver } from '@kit.AbilityKit';
+```
+
 ## getInsightIntentInfoByIntentName
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getInsightIntentInfoByIntentName(bundleName: string, moduleName: string
 根据包名、模块名和意图名查询当前设备上的意图信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -31,7 +33,7 @@ function getInsightIntentInfoByIntentName(bundleName: string, moduleName: string
 | bundleName | string | 是 | 应用包名称。<br/>**说明：**<br/> 若包名不存在，则返回空对象。 |
 | moduleName | string | 是 | 模块名称。<br/>**说明：**<br/> 若模块名不存在，则返回空对象。 |
 | intentName | string | 是 | 意图名称。<br/>**说明：**<br/> 若意图名不存在，则返回空对象。 |
-| intentFlags | int | 是 | 意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md#insightintentinfo系统接口)）的标识，用于表示查询全量意图信息或者简要意 图信息，参考[GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md#getinsightintentflag系统接口)。 |
+| intentFlags | int | 是 | 意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于表示查询全量意图信息或者简要意 图信息，参考[GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md)。 |
 
 **返回值：**
 

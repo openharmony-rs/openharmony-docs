@@ -4,15 +4,17 @@ FormIntentInfo用于描述 @InsightIntentForm 装饰器支持的参数，例如�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-insightIntentDriver-interface EntryIntentInfo--><!--Device-insightIntentDriver-interface EntryIntentInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { insightIntentDriver } from '@kit.AbilityKit';
+```
 
 ## abilityName
 
@@ -25,10 +27,6 @@ Ability名称。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,10 +47,6 @@ readonly executeMode: insightIntent.ExecuteMode[]
 **类型：** insightIntent.ExecuteMode[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

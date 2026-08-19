@@ -4,13 +4,16 @@ ArcButton({ options: ArcButtonOptions }) 创建ArcButton实例，入参是弧形
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare struct ArcButton--><!--Device-unnamed-export declare struct ArcButton-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+## 导入模块
+
+```TypeScript
+```
 
 ## build
 
@@ -23,9 +26,7 @@ The method to build component.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButton-@Builder  build(): void--><!--Device-ArcButton-@Builder  build(): void-End-->
 
@@ -45,9 +46,7 @@ The method to build component.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButton-@Require  @Param  readonly options: ArcButtonOptions--><!--Device-ArcButton-@Require  @Param  readonly options: ArcButtonOptions-End-->
 

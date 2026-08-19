@@ -4,13 +4,15 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-interface PixelMapParams--><!--Device-media-interface PixelMapParams-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## autoFlip
 
@@ -23,10 +25,6 @@ Auto flip the thumbnail when video has mirror attribute (Vertical Flip or Horizo
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PixelMapParams-autoFlip?: boolean--><!--Device-PixelMapParams-autoFlip?: boolean-End-->
 
@@ -45,10 +43,6 @@ Color format of the thumbnail. **System API**: This is a system API.
 **类型：** [PixelFormat](arkts-media-media-pixelformat-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PixelMapParams-colorFormat?: PixelFormat--><!--Device-PixelMapParams-colorFormat?: PixelFormat-End-->
 

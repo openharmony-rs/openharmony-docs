@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum ConnectionState--><!--Device-avSession-enum ConnectionState-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -21,10 +17,6 @@ STATE_CONNECTING = 0
 设备连接中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ STATE_CONNECTED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ConnectionState-STATE_CONNECTED = 1--><!--Device-ConnectionState-STATE_CONNECTED = 1-End-->
@@ -61,10 +49,6 @@ STATE_DISCONNECTED = 6
 设备断开连接。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

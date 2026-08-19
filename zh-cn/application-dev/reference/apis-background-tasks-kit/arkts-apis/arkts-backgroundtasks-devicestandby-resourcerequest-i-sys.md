@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-deviceStandby-export interface ResourceRequest--><!--Device-deviceStandby-export interface ResourceRequest-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.DeviceStandby
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+```
 
 ## duration
 
@@ -25,10 +27,6 @@ duration: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResourceRequest-duration: int--><!--Device-ResourceRequest-duration: int-End-->
 
@@ -48,10 +46,6 @@ name: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ResourceRequest-name: string--><!--Device-ResourceRequest-name: string-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.DeviceStandby
@@ -70,10 +64,6 @@ reason: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ResourceRequest-reason: string--><!--Device-ResourceRequest-reason: string-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.DeviceStandby
@@ -86,15 +76,11 @@ reason: string
 resourceTypes: int
 ```
 
-资源类型，类型具体说明请参考[ResourceType](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md#resourcetype系统接口)。
+资源类型，类型具体说明请参考[ResourceType](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md)。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResourceRequest-resourceTypes: int--><!--Device-ResourceRequest-resourceTypes: int-End-->
 
@@ -113,10 +99,6 @@ uid: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResourceRequest-uid: int--><!--Device-ResourceRequest-uid: int-End-->
 

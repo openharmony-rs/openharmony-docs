@@ -1,5 +1,12 @@
 # startOptimizeSpace（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## startOptimizeSpace
 
 ```TypeScript
@@ -9,10 +16,6 @@ function startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callbac
 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。 startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
@@ -27,7 +30,7 @@ function startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | optimizePara | [OptimizeSpaceParam](arkts-corefile-cloudsync-optimizespaceparam-i-sys.md) | 是 | 优化参数。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[OptimizeSpaceProgress](arkts-corefile-cloudsync-optimizespaceprogress-i-sys.md)&gt; | 否 | 回调函数。返回优化进度，缺省情况下返回401错误，不执行清理任务 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[OptimizeSpaceProgress](arkts-corefile-cloudsync-optimizespaceprogress-i-sys.md)&gt; | 否 | 回调函数。返回优化进度，缺省情况下返回401错误，不执行清理任务 |
 
 **返回值：**
 
@@ -46,7 +49,7 @@ function startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callbac
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

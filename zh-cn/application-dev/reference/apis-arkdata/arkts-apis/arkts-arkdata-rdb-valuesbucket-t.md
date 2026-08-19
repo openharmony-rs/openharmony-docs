@@ -8,11 +8,9 @@ type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md#valuesbucket)
+**替代接口：** [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md)
 
 <!--Device-rdb-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }--><!--Device-rdb-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }-End-->
 

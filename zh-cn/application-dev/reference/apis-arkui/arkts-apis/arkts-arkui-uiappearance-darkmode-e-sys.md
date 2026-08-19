@@ -4,10 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-uiAppearance-enum DarkMode--><!--Device-uiAppearance-enum DarkMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
@@ -24,10 +20,6 @@ Always display with dark mode.
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-DarkMode-ALWAYS_DARK = 0--><!--Device-DarkMode-ALWAYS_DARK = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
@@ -43,10 +35,6 @@ ALWAYS_LIGHT = 1
 Always display with light mode.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-DarkMode-ALWAYS_LIGHT = 1--><!--Device-DarkMode-ALWAYS_LIGHT = 1-End-->
 

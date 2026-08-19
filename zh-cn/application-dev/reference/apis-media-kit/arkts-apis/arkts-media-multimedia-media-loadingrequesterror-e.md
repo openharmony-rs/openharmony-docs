@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum LoadingRequestError--><!--Device-unnamed-enum LoadingRequestError-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -21,10 +17,6 @@ LOADING_ERROR_SUCCESS = 0
 由客户端返回，表示已经推送到资源末尾。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ LOADING_ERROR_NOT_READY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LoadingRequestError-LOADING_ERROR_NOT_READY = 1--><!--Device-LoadingRequestError-LOADING_ERROR_NOT_READY = 1-End-->
@@ -61,10 +49,6 @@ LOADING_ERROR_NO_RESOURCE = 2
 由客户端返回，表示请求的资源URL不存在。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ LOADING_ERROR_INVAID_HANDLE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LoadingRequestError-LOADING_ERROR_INVAID_HANDLE = 3--><!--Device-LoadingRequestError-LOADING_ERROR_INVAID_HANDLE = 3-End-->
@@ -101,10 +81,6 @@ LOADING_ERROR_ACCESS_DENIED = 4
 由客户端返回，表示客户端没有权限请求该资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ LOADING_ERROR_ACCESS_TIMEOUT = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LoadingRequestError-LOADING_ERROR_ACCESS_TIMEOUT = 5--><!--Device-LoadingRequestError-LOADING_ERROR_ACCESS_TIMEOUT = 5-End-->
@@ -141,10 +113,6 @@ LOADING_ERROR_AUTHORIZE_FAILED = 6
 由客户端返回，表示授权失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## setTargetDeviceStatus
@@ -15,10 +15,6 @@ function setTargetDeviceStatus(deviceType: string, status: long): Promise<void>
 设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的通知提醒方式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -49,7 +45,7 @@ function setTargetDeviceStatus(deviceType: string, status: long): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,5 +1,11 @@
 # getCallIdListForConference（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## getCallIdListForConference
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getCallIdListForConference(callId: int, callback: AsyncCallback<Array<s
 获取会议的呼叫Id列表。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function getCallIdListForConference(callId: int, callback: AsyncCallback<Array<string>>): void--><!--Device-call-function getCallIdListForConference(callId: int, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -25,7 +27,7 @@ function getCallIdListForConference(callId: int, callback: AsyncCallback<Array<s
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callId | int | 是 | 呼叫Id。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。返回会议的呼叫Id列表。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。返回会议的呼叫Id列表。 |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function getCallIdListForConference(callId: int, callback: AsyncCallback<Array<s
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,10 +64,6 @@ function getCallIdListForConference(callId: int): Promise<Array<string>>
 获取会议的呼叫Id列表。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-call-function getCallIdListForConference(callId: int): Promise<Array<string>>--><!--Device-call-function getCallIdListForConference(callId: int): Promise<Array<string>>-End-->
 
@@ -96,7 +94,7 @@ function getCallIdListForConference(callId: int): Promise<Array<string>>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

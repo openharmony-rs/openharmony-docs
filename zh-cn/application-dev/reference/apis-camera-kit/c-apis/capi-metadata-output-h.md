@@ -62,7 +62,7 @@ typedef void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutpu
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_MetadataOutput\* metadataOutput | 传递回调的元数据输出实例。 |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)\* metadataOutput | 传递回调的元数据输出实例。 |
 | [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md)\* metadataObject | 回调传递的元数据实例信息。 |
 | uint32_t size | 元数据对象的大小。 |
 
@@ -82,7 +82,7 @@ typedef void (*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* context | 用户提供的上下文指针。 |
+| void\* context | 用户提供的上下文指针。 |
 | [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)\*\* metadataObjectExt | 指向元数据对象的二级指针。 |
 | uint32_t size | 元数据对象的数量。 |
 
@@ -102,7 +102,7 @@ typedef void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput,
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_MetadataOutput\* metadataOutput | 传递回调的元数据输出实例。 |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)\* metadataOutput | 传递回调的元数据输出实例。 |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 元数据输出的错误码。 |
 
 **参考：**
@@ -126,7 +126,7 @@ typedef void (*OH_MetadataOutput_OnErrorExt)(void* context, Camera_ErrorCode err
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* context | 用户提供的上下文指针。 |
+| void\* context | 用户提供的上下文指针。 |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 元数据输出期间报告的错误码。 |
 
 **参考：**
@@ -157,7 +157,7 @@ Camera_ErrorCode OH_MetadataOutput_RegisterCallback(Camera_MetadataOutput* metad
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_MetadataOutput_UnregisterCallback()
 
@@ -182,7 +182,7 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterCallback(Camera_MetadataOutput* met
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback()
 
@@ -208,7 +208,7 @@ Camera_ErrorCode OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback(Ca
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback()
 
@@ -234,7 +234,7 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback(
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataOutput_RegisterErrorExtCallback()
 
@@ -260,7 +260,7 @@ Camera_ErrorCode OH_MetadataOutput_RegisterErrorExtCallback(Camera_MetadataOutpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataOutput_UnregisterErrorExtCallback()
 
@@ -286,7 +286,7 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterErrorExtCallback(Camera_MetadataOut
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。 |
 
 ### OH_MetadataOutput_Start()
 
@@ -310,7 +310,7 @@ Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_MetadataOutput_Stop()
 
@@ -334,7 +334,7 @@ Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_MetadataOutput_Release()
 
@@ -358,7 +358,7 @@ Camera_ErrorCode OH_MetadataOutput_Release(Camera_MetadataOutput* metadataOutput
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### ()
 
@@ -384,7 +384,7 @@ Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes (Camera_MetadataOutput
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### ()
 
@@ -410,7 +410,7 @@ Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes (Camera_MetadataOut
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_MetadataOutput_IsLockMetadataObjectTrackingSupported()
 
@@ -434,7 +434,7 @@ bool OH_MetadataOutput_IsLockMetadataObjectTrackingSupported(const Camera_Metada
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | true表示支持该功能。<br>     <br>false表示不支持该功能。 |
+| bool | true表示支持该功能。      <br>false表示不支持该功能。 |
 
 ### OH_MetadataOutput_LockMetadataObjectTracking()
 
@@ -459,7 +459,7 @@ Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOut
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_MetadataOutput_UnlockMetadataObjectTracking()
 
@@ -483,6 +483,6 @@ Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataO
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。<br>     <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：操作成功。      <br>CAMERA_INVALID_ARGUMENT：参数缺失或参数类型错误。      <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum PreferredCompatibleMode--><!--Device-photoAccessHelper-enum PreferredCompatibleMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ DEFAULT = 0
 根据配置的资产兼容性功能执行转码。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ CURRENT = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -65,10 +53,6 @@ COMPATIBLE = 2
 所有资产都被转码为最广泛兼容的格式(如JPEG)。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

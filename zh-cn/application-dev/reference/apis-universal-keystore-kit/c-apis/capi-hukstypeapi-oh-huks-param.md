@@ -20,8 +20,11 @@ typedef struct OH_Huks_Param {...} OH_Huks_Param
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t tag;
-
-    union | 标签值。 |
+| uint32_t tag; union | 标签值。 |
+| bool boolParam | bool型参数。 |
+| int32_t int32Param | int32_t型参数。 |
+| uint32_t uint32Param | uint32_t型参数。 |
+| uint64_t uint64Param | uint64_t型参数。 |
+| struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) blob; } | OH_Huks_Blob型参数。 |
 
 

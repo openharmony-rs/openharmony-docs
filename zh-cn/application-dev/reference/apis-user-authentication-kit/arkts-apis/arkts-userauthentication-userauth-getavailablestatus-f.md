@@ -1,5 +1,12 @@
 # getAvailableStatus
 
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
+
 ## getAvailableStatus
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLev
 查询指定类型和等级的认证能力是否支持。该接口用于检查当前设备是否支持指定的认证类型和认证可信等级，帮助应用在发起认证前判断认证能力是否可用，从而避免不必要的认证不通过。若查询通过（无错误抛出），表示认证能力可用；若抛出错误，应用应 根据错误码判断具体原因并采取相应处理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -41,7 +44,7 @@ function getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLev
 | [12500005](../errorcode-useriam.md#12500005-认证类型不支持) | The authentication type is not supported. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum SrcRectConstraint--><!--Device-drawing-enum SrcRectConstraint-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -22,10 +18,6 @@ STRICT = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SrcRectConstraint-STRICT = 0--><!--Device-SrcRectConstraint-STRICT = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -39,10 +31,6 @@ FAST = 1
 允许采样范围超出源矩形范围，速度较快。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SrcRectConstraint-FAST = 1--><!--Device-SrcRectConstraint-FAST = 1-End-->
 

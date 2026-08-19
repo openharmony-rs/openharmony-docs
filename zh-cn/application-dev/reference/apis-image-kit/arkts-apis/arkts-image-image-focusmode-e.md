@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-enum FocusMode--><!--Device-image-enum FocusMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ AF_A = 0
 自动对焦。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ AF_S = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FocusMode-AF_S = 1--><!--Device-FocusMode-AF_S = 1-End-->
@@ -62,10 +50,6 @@ AF_C = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FocusMode-AF_C = 2--><!--Device-FocusMode-AF_C = 2-End-->
@@ -81,10 +65,6 @@ MF = 3
 手动对焦。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

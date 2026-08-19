@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export enum DeviceDirection--><!--Device-call-export enum DeviceDirection-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -23,10 +19,6 @@ DEVICE_DIRECTION_0 = 0
 视频画面0度方向。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceDirection-DEVICE_DIRECTION_0 = 0--><!--Device-DeviceDirection-DEVICE_DIRECTION_0 = 0-End-->
 
@@ -44,10 +36,6 @@ DEVICE_DIRECTION_90 = 90
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90--><!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -64,10 +52,6 @@ DEVICE_DIRECTION_180 = 180
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceDirection-DEVICE_DIRECTION_180 = 180--><!--Device-DeviceDirection-DEVICE_DIRECTION_180 = 180-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
@@ -83,10 +67,6 @@ DEVICE_DIRECTION_270 = 270
 视频画面270度方向。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceDirection-DEVICE_DIRECTION_270 = 270--><!--Device-DeviceDirection-DEVICE_DIRECTION_270 = 270-End-->
 

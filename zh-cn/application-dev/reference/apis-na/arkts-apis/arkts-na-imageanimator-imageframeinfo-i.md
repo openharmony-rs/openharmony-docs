@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export interface ImageFrameInfo--><!--Device-unnamed-export interface ImageFrameInfo-End-->
 
@@ -24,9 +22,7 @@ duration?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,9 +42,7 @@ height?: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,9 +62,7 @@ left?: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,15 +76,13 @@ left?: double | string
 src: string | Resource | PixelMap
 ```
 
-图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持 Resource类型的路径，从API version 12开始支持 [PixelMap](../../../reference/apis-arkui/arkui-ts/ts-image-common.md#pixelmap)类型。 **string格式说明：** - 支持加载本地图片路径和网络图片地址。使用相对路径引用本地图片时，不支持跨包或跨模块调用。 resources目录下的文件不支持通过相对路径访问，需使用Resource类型（如\$r或\$ rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。 - 支持`http`和`https`网络图片地址，使用网络图片时需要申请权限`ohos.permission.INTERNET`。 - 支持`file://`路径前缀的字符串，应用沙箱URI为`file://&lt;bundleName&gt;/&lt;sandboxPath&gt;`。沙箱路径需要使用 [fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath) 方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径 下的文件有可读权限。 - 支持`Base64`字符串。
+图片路径，图片格式为jpg、jpeg、svg、png、bmp、webp、ico和heif，从API version9开始支持 Resource类型的路径，从API version 12开始支持 [PixelMap](../../../reference/apis-arkui/arkui-ts/ts-image-common.md#pixelmap)类型。 **string格式说明：** - 支持加载本地图片路径和网络图片地址。使用相对路径引用本地图片时，不支持跨包或跨模块调用。 resources目录下的文件不支持通过相对路径访问，需使用Resource类型（如\$r或\$ rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。 - 支持`http`和`https`网络图片地址，使用网络图片时需要申请权限`ohos.permission.INTERNET`。 - 支持`file://`路径前缀的字符串，应用沙箱URI为`file://&lt;bundleName&gt;/&lt;sandboxPath&gt;`。沙箱路径需要使用 [fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md) 方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径 下的文件有可读权限。 - 支持`Base64`字符串。
 
 **类型：** string \| [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) \| [PixelMap](../../apis-arkui/arkts-components/arkts-arkui-pixelmap-t.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,9 +102,7 @@ top?: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,9 +122,7 @@ width?: double | string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

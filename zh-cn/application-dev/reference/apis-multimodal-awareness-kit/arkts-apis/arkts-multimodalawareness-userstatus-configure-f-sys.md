@@ -1,5 +1,11 @@
 # configure（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { userStatus } from '@kit.MultimodalAwarenessKit';
+```
+
 ## configure
 
 ```TypeScript
@@ -9,10 +15,6 @@ function configure(featureId: UserStatusFeature, detail: string): number
 配置功能参数。调用成功后，将更新指定功能的配置参数，影响后续该功能的检测行为，如检测灵敏度、采样频率、启用的检测项等。建议在subscribe()之前调用configure()配置功能参数， <br>确保配置在订阅时生效。对于需要特定配置的功能（如USER_MOOD的实时/非实时模式），建议先configure()再subscribe()。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

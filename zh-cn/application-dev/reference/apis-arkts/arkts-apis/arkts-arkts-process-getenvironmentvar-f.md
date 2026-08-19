@@ -1,5 +1,11 @@
 # getEnvironmentVar
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## getEnvironmentVar
 
 ```TypeScript
@@ -9,8 +15,6 @@ function getEnvironmentVar(name: string): string
 获取环境变量名对应的值。如果环境变量不存在，返回undefined。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -32,7 +36,7 @@ function getEnvironmentVar(name: string): string
 | --- | --- |
 | string | 返回环境变量名对应的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let pres = process.getEnvironmentVar("PATH");

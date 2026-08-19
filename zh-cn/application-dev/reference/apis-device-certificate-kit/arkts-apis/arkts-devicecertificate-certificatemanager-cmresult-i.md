@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-certificateManager-export interface CMResult--><!--Device-certificateManager-export interface CMResult-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## appUidList
 
@@ -23,10 +26,6 @@ appUidList?: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CMResult-appUidList?: Array<string>--><!--Device-CMResult-appUidList?: Array<string>-End-->
 
@@ -44,10 +43,6 @@ certInfo?: CertInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CMResult-certInfo?: CertInfo--><!--Device-CMResult-certInfo?: CertInfo-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -64,10 +59,6 @@ certList?: Array<CertAbstract>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CMResult-certList?: Array<CertAbstract>--><!--Device-CMResult-certList?: Array<CertAbstract>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -80,13 +71,9 @@ credential?: Credential
 
 表示凭据详情。
 
-**类型：** [Credential](arkts-devicecertificate-certificatemanager-credential-i.md)
+**类型：** Credential
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CMResult-credential?: Credential--><!--Device-CMResult-credential?: Credential-End-->
 
@@ -100,13 +87,9 @@ credentialDetailList?: Array<Credential>
 
 表示凭据详细信息。
 
-**类型：** Array&lt;[Credential](arkts-devicecertificate-certificatemanager-credential-i.md)&gt;
+**类型：** Array&lt;Credential&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CMResult-credentialDetailList?: Array<Credential>--><!--Device-CMResult-credentialDetailList?: Array<Credential>-End-->
 
@@ -124,10 +107,6 @@ credentialList?: Array<CredentialAbstract>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CMResult-credentialList?: Array<CredentialAbstract>--><!--Device-CMResult-credentialList?: Array<CredentialAbstract>-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -143,10 +122,6 @@ outData?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CMResult-outData?: Uint8Array--><!--Device-CMResult-outData?: Uint8Array-End-->
 
@@ -164,10 +139,6 @@ uri?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CMResult-uri?: string--><!--Device-CMResult-uri?: string-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -183,10 +154,6 @@ uriList?: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

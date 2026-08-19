@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-export enum SceneType--><!--Device-photoAccessHelper-export enum SceneType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ GRID_TO_PHOTO_BROWSER = 0
 从宫格点击进入大图。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ PHOTO_BROWSER_SWIPE = 1
 在大图场景左右滑动。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

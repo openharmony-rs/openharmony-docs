@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface SceneOptions--><!--Device-unnamed-export declare interface SceneOptions-End-->
 
@@ -26,9 +24,7 @@ modelType?: ModelType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-SceneOptions-modelType?: ModelType--><!--Device-SceneOptions-modelType?: ModelType-End-->
 
@@ -46,9 +42,7 @@ scene?: ResourceStr | Scene
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-SceneOptions-scene?: ResourceStr | Scene--><!--Device-SceneOptions-scene?: ResourceStr | Scene-End-->
 

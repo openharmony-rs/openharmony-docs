@@ -4,13 +4,15 @@
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-webview-interface PdfConfiguration--><!--Device-webview-interface PdfConfiguration-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## height
 
@@ -23,10 +25,6 @@ height: number
 **类型：** number
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ marginBottom: number
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PdfConfiguration-marginBottom: number--><!--Device-PdfConfiguration-marginBottom: number-End-->
@@ -67,10 +61,6 @@ marginLeft: number
 **类型：** number
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +80,6 @@ marginRight: number
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PdfConfiguration-marginRight: number--><!--Device-PdfConfiguration-marginRight: number-End-->
@@ -111,10 +97,6 @@ marginTop: number
 **类型：** number
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -134,10 +116,6 @@ scale?: number
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PdfConfiguration-scale?: number--><!--Device-PdfConfiguration-scale?: number-End-->
@@ -156,10 +134,6 @@ true表示打印背景颜色，false表示不打印背景颜色。 默认值：f
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PdfConfiguration-shouldPrintBackground?: boolean--><!--Device-PdfConfiguration-shouldPrintBackground?: boolean-End-->
@@ -177,10 +151,6 @@ width: number
 **类型：** number
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 

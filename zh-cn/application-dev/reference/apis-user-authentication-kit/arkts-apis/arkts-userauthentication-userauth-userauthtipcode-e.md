@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-enum UserAuthTipCode--><!--Device-userAuth-enum UserAuthTipCode-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -21,10 +17,6 @@ COMPARE_FAILURE = 1
 认证不通过。表示当前认证尝试失败，用户特征与已注册凭据比对不匹配。此状态会在每次认证不通过时触发，应用可根据此状态提示用户重新尝试。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ TIMEOUT = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthTipCode-TIMEOUT = 2--><!--Device-UserAuthTipCode-TIMEOUT = 2-End-->
@@ -61,10 +49,6 @@ TEMPORARILY_LOCKED = 3
 临时冻结。表示认证器进入临时冻结状态，用户需等待冻结时长结束后才能继续尝试认证。临时冻结通常由连续多次认证失败触发。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ PERMANENTLY_LOCKED = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthTipCode-PERMANENTLY_LOCKED = 4--><!--Device-UserAuthTipCode-PERMANENTLY_LOCKED = 4-End-->
@@ -101,10 +81,6 @@ WIDGET_LOADED = 5
 身份认证界面加载完毕。表示认证控件已成功加载并显示，用户可以开始进行认证交互。应用可在此状态触发后进行界面相关的初始化操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ WIDGET_RELEASED = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthTipCode-WIDGET_RELEASED = 6--><!--Device-UserAuthTipCode-WIDGET_RELEASED = 6-End-->
@@ -141,10 +113,6 @@ COMPARE_FAILURE_WITH_FROZEN = 7
 认证不通过并触发了认证冻结。表示当前认证不通过，并且失败次数已达到阈值，认证器进入冻结状态。此状态同时包含认证不通过和冻结两个信息，应用可根据冻结类型（临时或永久）提示用户相应的解锁方式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export enum GradientMode--><!--Device-inputMethodEngine-export enum GradientMode-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -22,10 +18,6 @@ NONE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-GradientMode-NONE = 0--><!--Device-GradientMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -39,10 +31,6 @@ LINEAR_GRADIENT = 1
 线性渐变。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-GradientMode-LINEAR_GRADIENT = 1--><!--Device-GradientMode-LINEAR_GRADIENT = 1-End-->
 

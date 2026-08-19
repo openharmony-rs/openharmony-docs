@@ -8,10 +8,6 @@ type ValueType = null | long | double | string | boolean | Uint8Array | Asset | 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-commonType-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets--><!--Device-commonType-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType

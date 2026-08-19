@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-class PathEffect--><!--Device-drawing-class PathEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## createComposePathEffect
 
@@ -21,10 +23,6 @@ static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect
 创建组合路径效果对象，首先应用内部路径效果，然后应用外部路径效果。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-PathEffect-static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect--><!--Device-PathEffect-static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect-End-->
 
@@ -53,10 +51,6 @@ static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathEffect-static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect | undefined--><!--Device-PathEffect-static createComposePathEffect(outer: PathEffect, inner: PathEffect): PathEffect | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -83,10 +77,6 @@ static createCornerPathEffect(radius: number): PathEffect
 创建将路径的夹角变成指定半径的圆角的路径效果对象。该效果会在路径的每个夹角处插入指定半径的弧线段，将原有的尖锐转角替换为平滑的圆角过渡。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-PathEffect-static createCornerPathEffect(radius: number): PathEffect--><!--Device-PathEffect-static createCornerPathEffect(radius: number): PathEffect-End-->
 
@@ -120,10 +110,6 @@ static createCornerPathEffect(radius: double): PathEffect | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathEffect-static createCornerPathEffect(radius: double): PathEffect | undefined--><!--Device-PathEffect-static createCornerPathEffect(radius: double): PathEffect | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -155,10 +141,6 @@ static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect
 创建将路径变为虚线的路径效果对象，通过指定ON/OFF长度数组生成规则间距的虚线。当需要自定义形状作为虚线段填充时，可使用 [createPathDashEffect](#createpathdasheffect)。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-PathEffect-static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect--><!--Device-PathEffect-static createDashPathEffect(intervals: Array<number>, phase: number): PathEffect-End-->
 
@@ -193,10 +175,6 @@ static createDashPathEffect(intervals: Array<double>, phase: double): PathEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathEffect-static createDashPathEffect(intervals: Array<double>, phase: double): PathEffect | undefined--><!--Device-PathEffect-static createDashPathEffect(intervals: Array<double>, phase: double): PathEffect | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -230,10 +208,6 @@ static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: num
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-PathEffect-static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: number): PathEffect--><!--Device-PathEffect-static createDiscretePathEffect(segLength: number, dev: number, seedAssist?: number): PathEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -262,10 +236,6 @@ static createDiscretePathEffect(segLength: double, dev: double, seedAssist?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathEffect-static createDiscretePathEffect(segLength: double, dev: double, seedAssist?: int): PathEffect | undefined--><!--Device-PathEffect-static createDiscretePathEffect(segLength: double, dev: double, seedAssist?: int): PathEffect | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -293,10 +263,6 @@ static createPathDashEffect(path: Path, advance: number, phase: number, style: P
 创建一个虚线路径效果对象，通过路径描述的形状生成。与 [createDashPathEffect](#createdashpatheffect)使用 intervals数组指定ON/OFF长度创建规则间距虚线不同，本接口通过Path指定虚线段的图形形状。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-PathEffect-static createPathDashEffect(path: Path, advance: number, phase: number, style: PathDashStyle): PathEffect--><!--Device-PathEffect-static createPathDashEffect(path: Path, advance: number, phase: number, style: PathDashStyle): PathEffect-End-->
 
@@ -334,10 +300,6 @@ static createPathDashEffect(path: Path, advance: double, phase: double,
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PathEffect-static createPathDashEffect(path: Path, advance: double, phase: double,        style: PathDashStyle): PathEffect | undefined--><!--Device-PathEffect-static createPathDashEffect(path: Path, advance: double, phase: double,        style: PathDashStyle): PathEffect | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -373,10 +335,6 @@ static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEf
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-PathEffect-static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEffect): PathEffect--><!--Device-PathEffect-static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEffect): PathEffect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -403,10 +361,6 @@ static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEf
 创建一个叠加的路径效果。与 [createComposePathEffect](#createcomposepatheffect) 不同，此接口会分别对两个参数的效果各自独立进行表现，然后将两个效果简单重叠显示。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathEffect-static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEffect): PathEffect | undefined--><!--Device-PathEffect-static createSumPathEffect(firstPathEffect: PathEffect, secondPathEffect: PathEffect): PathEffect | undefined-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum ResizeDirection--><!--Device-unnamed-declare enum ResizeDirection-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
@@ -21,10 +17,6 @@ LEFT = 0
 左方。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ RIGHT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResizeDirection-RIGHT = 1--><!--Device-ResizeDirection-RIGHT = 1-End-->
@@ -61,10 +49,6 @@ UP = 2
 上方。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ DOWN = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResizeDirection-DOWN = 3--><!--Device-ResizeDirection-DOWN = 3-End-->
@@ -101,10 +81,6 @@ LEFT_UP = 4
 左上方。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ LEFT_DOWN = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResizeDirection-LEFT_DOWN = 5--><!--Device-ResizeDirection-LEFT_DOWN = 5-End-->
@@ -142,10 +114,6 @@ RIGHT_UP = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ResizeDirection-RIGHT_UP = 6--><!--Device-ResizeDirection-RIGHT_UP = 6-End-->
@@ -161,10 +129,6 @@ RIGHT_DOWN = 7
 右下方。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

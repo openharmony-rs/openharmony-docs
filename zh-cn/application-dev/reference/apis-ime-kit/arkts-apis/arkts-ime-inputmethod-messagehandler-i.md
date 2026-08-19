@@ -4,13 +4,20 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethod-interface MessageHandler--><!--Device-inputMethod-interface MessageHandler-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
 
 ## onMessage
 
@@ -21,10 +28,6 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 接收输入法应用发送的自定义数据回调函数。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 <!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void--><!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void-End-->
 
@@ -37,7 +40,7 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 | msgId | string | 是 | 接收到的自定义通信数据的标识符。 |
 | msgParam | ArrayBuffer | 否 | 接收到的自定义通信数据的消息体。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
@@ -63,15 +66,11 @@ onTerminated(): void
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-MessageHandler-onTerminated(): void--><!--Device-MessageHandler-onTerminated(): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## 示例
+**示例**
 
 ```TypeScript
 let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
@@ -99,10 +98,6 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MessageHandler-onMessage: OnMessageCallback--><!--Device-MessageHandler-onMessage: OnMessageCallback-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -115,13 +110,9 @@ onTerminated: Callback<void>
 
 onTerminated(): void 监听对象终止回调函数。
 
-**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
+**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MessageHandler-onTerminated: Callback<void>--><!--Device-MessageHandler-onTerminated: Callback<void>-End-->
 

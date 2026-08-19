@@ -4,13 +4,16 @@ Stack基于数组的数据结构实现，特点是先进后出，只能在一端
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class Stack--><!--Device-unnamed-declare class Stack-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+```
 
 ## $_iterator
 
@@ -21,10 +24,6 @@ $_iterator(): IterableIterator<T>
 返回一个迭代器，每一项都是一个ArkTS对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +37,7 @@ $_iterator(): IterableIterator<T>
 | --- | --- |
 | IterableIterator&lt;T&gt; |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 let stack : Stack<int> = new Stack<int>();
@@ -65,10 +64,6 @@ while(temp != undefined) {
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-[Symbol.iterator](): IterableIterator<T>--><!--Device-Stack-[Symbol.iterator](): IterableIterator<T>-End-->
@@ -87,7 +82,7 @@ while(temp != undefined) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let stack = new Stack<number>();
@@ -131,10 +126,6 @@ Stack的构造函数。调用后创建一个空的Stack实例对象，初始leng
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-constructor()--><!--Device-Stack-constructor()-End-->
@@ -147,7 +138,7 @@ Stack的构造函数。调用后创建一个空的Stack实例对象，初始leng
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Stack's constructor cannot be directly invoked. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -173,10 +164,6 @@ forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisAr
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisArg?: Object): void--><!--Device-Stack-forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisArg?: Object): void-End-->
@@ -196,7 +183,7 @@ forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisAr
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let stack = new Stack<number>();
@@ -224,10 +211,6 @@ forEach(callbackfn: StackForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-forEach(callbackfn: StackForEachCb<T>): void--><!--Device-Stack-forEach(callbackfn: StackForEachCb<T>): void-End-->
@@ -240,7 +223,7 @@ forEach(callbackfn: StackForEachCb<T>): void
 | --- | --- | --- | --- |
 | callbackfn | [StackForEachCb](arkts-arkts-stackforeachcb-t.md)&lt;T&gt; | 是 |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { StackForEachCb } from '@kit.ArkTS';
@@ -271,10 +254,6 @@ isEmpty(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-isEmpty(): boolean--><!--Device-Stack-isEmpty(): boolean-End-->
@@ -293,7 +272,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -330,10 +309,6 @@ locate(element: T): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-locate(element: T): int--><!--Device-Stack-locate(element: T): int-End-->
@@ -358,7 +333,7 @@ locate(element: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The locate method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -395,10 +370,6 @@ peek(): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-peek(): T--><!--Device-Stack-peek(): T-End-->
@@ -418,7 +389,7 @@ peek(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The peek method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -455,10 +426,6 @@ pop(): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-pop(): T--><!--Device-Stack-pop(): T-End-->
@@ -478,7 +445,7 @@ pop(): T
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The pop method cannot be bound. |
 | [10200010](../errorcode-utils.md#10200010-容器为空) | Container is empty.<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -517,10 +484,6 @@ push(item: T): T
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Stack-push(item: T): T--><!--Device-Stack-push(item: T): T-End-->
@@ -545,7 +508,7 @@ push(item: T): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The push method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -597,10 +560,6 @@ Stack的元素个数。
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

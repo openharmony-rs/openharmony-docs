@@ -139,7 +139,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeColorSpaceManager*](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | 返回一个指向[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)实例的指针。<br>     <br>内存不足时，会导致创建OH_NativeColorSpaceManager实例失败。 |
+| [OH_NativeColorSpaceManager*](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | 返回一个指向[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)实例的指针。      <br>内存不足时，会导致创建OH_NativeColorSpaceManager实例失败。 |
 
 ### OH_NativeColorSpaceManager_Destroy()
 
@@ -181,7 +181,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：<br>     检查参数是否为有效指针。 |
+| int | 返回色彩空间枚举[ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)对应的值。其中，当返回值为0时，表示接口操作失败。可能的失败原因：nativeColorSpaceManager参数为空指针。处理建议：      检查参数是否为有效指针。 |
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 

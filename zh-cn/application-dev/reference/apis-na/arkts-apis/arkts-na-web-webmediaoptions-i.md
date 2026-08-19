@@ -4,9 +4,7 @@ Web媒体策略的配置。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface WebMediaOptions--><!--Device-unnamed-export declare interface WebMediaOptions-End-->
 
@@ -24,9 +22,7 @@ audioExclusive?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebMediaOptions-audioExclusive?: boolean--><!--Device-WebMediaOptions-audioExclusive?: boolean-End-->
 
@@ -44,9 +40,7 @@ audioSessionType?: AudioSessionType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebMediaOptions-audioSessionType?: AudioSessionType--><!--Device-WebMediaOptions-audioSessionType?: AudioSessionType-End-->
 
@@ -64,9 +58,7 @@ resumeInterval?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebMediaOptions-resumeInterval?: int--><!--Device-WebMediaOptions-resumeInterval?: int-End-->
 

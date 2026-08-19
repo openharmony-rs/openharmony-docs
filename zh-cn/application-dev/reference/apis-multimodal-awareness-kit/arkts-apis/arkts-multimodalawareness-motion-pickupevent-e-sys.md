@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-motion-export enum PickupEvent--><!--Device-motion-export enum PickupEvent-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
@@ -23,10 +19,6 @@ PICKED_UP = 0
 表示检测到拾取动作（设备被抬起）。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

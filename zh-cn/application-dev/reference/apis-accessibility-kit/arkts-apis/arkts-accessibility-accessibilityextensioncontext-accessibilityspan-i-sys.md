@@ -1,12 +1,8 @@
 # AccessibilitySpan（系统接口）
 
-辅助功能超链接文本信息。详见[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md#accessibilityelement)中的属性spans。
+辅助功能超链接文本信息。详见[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)中的属性spans。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-interface AccessibilitySpan--><!--Device-unnamed-interface AccessibilitySpan-End-->
 
@@ -26,10 +22,6 @@ accessibilityDescription: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AccessibilitySpan-accessibilityDescription: string--><!--Device-AccessibilitySpan-accessibilityDescription: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -47,10 +39,6 @@ accessibilityLevel: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AccessibilitySpan-accessibilityLevel: string--><!--Device-AccessibilitySpan-accessibilityLevel: string-End-->
 
@@ -70,10 +58,6 @@ accessibilityText: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AccessibilitySpan-accessibilityText: string--><!--Device-AccessibilitySpan-accessibilityText: string-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -92,10 +76,6 @@ spanId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AccessibilitySpan-spanId: int--><!--Device-AccessibilitySpan-spanId: int-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -113,10 +93,6 @@ spanText: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AccessibilitySpan-spanText: string--><!--Device-AccessibilitySpan-spanText: string-End-->
 

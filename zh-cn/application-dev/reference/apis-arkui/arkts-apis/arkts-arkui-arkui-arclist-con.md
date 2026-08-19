@@ -12,10 +12,6 @@ export declare const ArcList: ArcListInterface
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-export declare const ArcList: ArcListInterface--><!--Device-unnamed-export declare const ArcList: ArcListInterface-End-->
@@ -31,10 +27,6 @@ export declare const ArcListInstance: ArcListAttribute
 定义ArcList组件实例。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -54,10 +46,6 @@ export declare const ArcListItem: ArcListItemInterface
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-export declare const ArcListItem: ArcListItemInterface--><!--Device-unnamed-export declare const ArcListItem: ArcListItemInterface-End-->
@@ -73,10 +61,6 @@ export declare const ArcListItemInstance: ArcListItemAttribute
 定义ArcListItem组件实例。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

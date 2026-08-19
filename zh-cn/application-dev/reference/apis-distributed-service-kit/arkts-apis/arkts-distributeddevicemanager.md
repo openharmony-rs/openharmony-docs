@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace distributedDeviceManager--><!--Device-unnamed-declare namespace distributedDeviceManager-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## 导入模块
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## 汇总
 
@@ -18,8 +20,8 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md#createdevicemanager) | 创建一个设备管理实例。设备管理实例是分布式设备管理方法的调用入口。用于获取可信设备和本地设备的相关信息。 |
-| [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md#releasedevicemanager) | 设备管理实例不再使用后，通过该方法释放DeviceManager实例。 |
+| [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md) | 创建一个设备管理实例。设备管理实例是分布式设备管理方法的调用入口。用于获取可信设备和本地设备的相关信息。 |
+| [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md) | 设备管理实例不再使用后，通过该方法释放DeviceManager实例。 |
 
 ### 接口
 

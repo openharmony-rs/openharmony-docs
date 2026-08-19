@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-continueManager-interface ContinueResultInfo--><!--Device-continueManager-interface ContinueResultInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
+
+## 导入模块
+
+```TypeScript
+import { continueManager } from '@kit.AbilityKit';
+```
 
 ## resultInfo
 
@@ -23,10 +25,6 @@ resultInfo?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +43,6 @@ resultState: ContinueStateCode
 **类型：** [ContinueStateCode](arkts-ability-continuemanager-continuestatecode-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

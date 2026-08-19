@@ -1,5 +1,13 @@
 # parsePkcs12
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## parsePkcs12
 
 ```TypeScript
@@ -9,10 +17,6 @@ function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 解析P12。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -37,13 +41,13 @@ function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
-| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
+| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | Maybe wrong password. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -411,10 +415,6 @@ function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-cert-function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>--><!--Device-cert-function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>-End-->
@@ -438,13 +438,13 @@ function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. 数据长度为零或过大； <br>2. 密码长度过大。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
-| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large; <br>2. The length of the password is too large. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
+| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | Maybe wrong password. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum SceneMode--><!--Device-camera-enum SceneMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -18,13 +14,9 @@
 NORMAL_PHOTO = 1
 ```
 
-普通拍照模式。详情见[PhotoSession](arkts-camera-camera-photosession-i.md#photosession)。
+普通拍照模式。详情见[PhotoSession](arkts-camera-camera-photosession-i.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -38,13 +30,9 @@ NORMAL_PHOTO = 1
 NORMAL_VIDEO = 2
 ```
 
-普通录像模式。详情见[VideoSession](arkts-camera-camera-videosession-i.md#videosession)。
+普通录像模式。详情见[VideoSession](arkts-camera-camera-videosession-i.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -58,13 +46,9 @@ NORMAL_VIDEO = 2
 SECURE_PHOTO = 12
 ```
 
-安全相机模式。详情见[SecureSession](arkts-camera-camera-securesession-i.md#securesession)。
+安全相机模式。详情见[SecureSession](arkts-camera-camera-securesession-i.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

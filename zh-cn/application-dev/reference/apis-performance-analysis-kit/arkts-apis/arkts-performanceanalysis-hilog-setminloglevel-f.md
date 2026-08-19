@@ -1,5 +1,11 @@
 # setMinLogLevel
 
+## 导入模块
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
 ## setMinLogLevel
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setMinLogLevel(level: LogLevel): void
 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。 > **注意：** > > 如果设置的日志级别低于[全局日志级别](../../../dfx/hilog.md#查看和设置日志级别)，设置不生效。 > > debug版本应用下，此函数不生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -26,7 +28,7 @@ function setMinLogLevel(level: LogLevel): void
 | --- | --- | --- | --- |
 | level | [LogLevel](arkts-performanceanalysis-hilog-loglevel-e.md) | 是 | 日志级别。 |
 
-## 示例
+**示例**
 
 以全局日志级别为INFO下，打印5条不同级别的hilog日志，在打印过程中调用两次setMinLogLevel接口为例：
 

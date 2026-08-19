@@ -1,18 +1,22 @@
 # WriteStream
 
-文件可写流，需要先通过 fileIo.createWriteStream方法来构建一 个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md#writable)。
+文件可写流，需要先通过 fileIo.createWriteStream方法来构建一 个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。
 
-**继承/实现关系：** WriteStream extends [stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md#writable)
+**继承/实现关系：** WriteStream extends [stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class WriteStream--><!--Device-unnamed-declare class WriteStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
 
 ## close
 
@@ -23,10 +27,6 @@ close(): void
 关闭可写流。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WriteStream-close(): void--><!--Device-WriteStream-close(): void-End-->
 
@@ -43,7 +43,7 @@ close(): void
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -57,13 +57,9 @@ ws.close();
 constructor()
 ```
 
-The WriteStream constructor.
+构建一个WriteStream实例。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WriteStream-constructor()--><!--Device-WriteStream-constructor()-End-->
 
@@ -78,10 +74,6 @@ seek(offset: number, whence?: WhenceType): number
 调整可写流的偏移指针位置。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number--><!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number-End-->
 
@@ -109,7 +101,7 @@ seek(offset: number, whence?: WhenceType): number
 | 13900026 | Illegal seek |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 const filePath = pathDir + "/test.txt";
@@ -131,10 +123,6 @@ readonly bytesWritten: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WriteStream-readonly bytesWritten: number--><!--Device-WriteStream-readonly bytesWritten: number-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -150,10 +138,6 @@ readonly path: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WriteStream-readonly path: string--><!--Device-WriteStream-readonly path: string-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum MultiAppMode--><!--Device-unnamed-export enum MultiAppMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -23,10 +19,6 @@ NOT_SUPPORTED = 0
 应用不支持多开模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ MULTI_INSTANCE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MultiAppMode-MULTI_INSTANCE = 1--><!--Device-MultiAppMode-MULTI_INSTANCE = 1-End-->
@@ -67,10 +55,6 @@ APP_CLONE = 2
 应用支持分身模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

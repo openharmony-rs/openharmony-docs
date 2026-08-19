@@ -1,5 +1,11 @@
 # installMarketApps
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+```
+
 ## installMarketApps
 
 ```TypeScript
@@ -9,10 +15,6 @@ function installMarketApps(admin: Want, bundleNames: Array<string>): void
 下载并安装应用市场应用。 > **说明：** > > 本接口调用成功后会在桌面上生成应用下载任务，此任务与从应用市场下载所创建任务一致。下载安装结束后，安装结果会通过回调 > [EnterpriseAdminExtensionAbility.onMarketAppInstallResult](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onmarketappinstallresult) > 返回。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -39,7 +41,7 @@ function installMarketApps(admin: Want, bundleNames: Array<string>): void
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

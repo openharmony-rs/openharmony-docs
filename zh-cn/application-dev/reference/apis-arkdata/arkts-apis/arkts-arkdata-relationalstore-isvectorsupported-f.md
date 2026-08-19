@@ -1,5 +1,11 @@
 # isVectorSupported
 
+## 导入模块
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData';
+```
+
 ## isVectorSupported
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isVectorSupported(): boolean
 判断系统是否提供向量数据库能力。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-relationalStore-function isVectorSupported(): boolean--><!--Device-relationalStore-function isVectorSupported(): boolean-End-->
 
@@ -24,7 +26,7 @@ function isVectorSupported(): boolean
 | --- | --- |
 | boolean | 系统具备向量数据库能力时返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { contextConstant, UIAbility } from '@kit.AbilityKit';

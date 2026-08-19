@@ -1,5 +1,10 @@
 # setWallpaper
 
+## 导入模块
+
+```TypeScript
+```
+
 ## setWallpaper
 
 ```TypeScript
@@ -13,8 +18,6 @@ function setWallpaper(
 将指定资源设置为指定类型的壁纸。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -30,9 +33,9 @@ function setWallpaper(
 | --- | --- | --- | --- |
 | source | string \| image.PixelMap | 是 |  |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -80,8 +83,6 @@ function setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperT
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.SET_WALLPAPER
@@ -103,7 +104,7 @@ function setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperT
 | --- | --- |
 | Promise&lt;void&gt; | the promise returned by the function. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

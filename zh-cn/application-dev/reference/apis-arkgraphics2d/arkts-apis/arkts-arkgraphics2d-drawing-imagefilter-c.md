@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-class ImageFilter--><!--Device-drawing-class ImageFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## createBlendImageFilter
 
@@ -21,10 +23,6 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 按照指定的混合模式对两个滤波器进行叠加，生成一个新的滤波器。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-ImageFilter-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter--><!--Device-ImageFilter-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter-End-->
 
@@ -60,10 +58,6 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter | undefined--><!--Device-ImageFilter-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -98,10 +92,6 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number,
 创建具有模糊效果的图像滤波器。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter-End-->
 
@@ -139,10 +129,6 @@ static createBlurImageFilter(sigmaX: double, sigmaY: double,
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createBlurImageFilter(sigmaX: double, sigmaY: double,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter | undefined--><!--Device-ImageFilter-static createBlurImageFilter(sigmaX: double, sigmaY: double,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -178,10 +164,6 @@ static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): Image
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter--><!--Device-ImageFilter-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -209,10 +191,6 @@ static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): Image
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter | undefined--><!--Device-ImageFilter-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -239,10 +217,6 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 创建一个图像滤波器，将指定的颜色滤波器应用于输入的图像滤波器。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-ImageFilter-static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter-End-->
 
@@ -277,10 +251,6 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter | undefined--><!--Device-ImageFilter-static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -314,10 +284,6 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter--><!--Device-ImageFilter-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -345,10 +311,6 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 基于给定的图像创建一个图像滤波器。此接口不建议用于录制类型的画布（即用于记录绘制指令而非直接渲染的Canvas对象），会影响性能。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-ImageFilter-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter | undefined--><!--Device-ImageFilter-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter | undefined-End-->
 
@@ -378,10 +340,6 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createFromShaderEffect(shader: ShaderEffect): ImageFilter--><!--Device-ImageFilter-static createFromShaderEffect(shader: ShaderEffect): ImageFilter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -408,10 +366,6 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter | undefined
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-ImageFilter-static createFromShaderEffect(shader: ShaderEffect): ImageFilter | undefined--><!--Device-ImageFilter-static createFromShaderEffect(shader: ShaderEffect): ImageFilter | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -437,10 +391,6 @@ static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | nul
 创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-ImageFilter-static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter-End-->
 
@@ -469,10 +419,6 @@ static createOffsetImageFilter(dx: double, dy: double, input?: ImageFilter | nul
 创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-ImageFilter-static createOffsetImageFilter(dx: double, dy: double, input?: ImageFilter | null): ImageFilter | undefined--><!--Device-ImageFilter-static createOffsetImageFilter(dx: double, dy: double, input?: ImageFilter | null): ImageFilter | undefined-End-->
 

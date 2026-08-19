@@ -4,13 +4,14 @@ Defines the Localized align rule options of relative container.
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface LocalizedAlignRuleOptions--><!--Device-unnamed-declare interface LocalizedAlignRuleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## bias
 
@@ -25,10 +26,6 @@ bias?: Bias
 **默认值：** {horizontal:0.5,vertical:0.5}
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +47,6 @@ bottom?: LocalizedVerticalAlignParam
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -73,10 +66,6 @@ center?: LocalizedVerticalAlignParam
 **类型：** [LocalizedVerticalAlignParam](arkts-arkui-localizedverticalalignparam-i.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,10 +87,6 @@ end?: LocalizedHorizontalAlignParam
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -121,10 +106,6 @@ middle?: LocalizedHorizontalAlignParam
 **类型：** [LocalizedHorizontalAlignParam](arkts-arkui-localizedhorizontalalignparam-i.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -146,10 +127,6 @@ start?: LocalizedHorizontalAlignParam
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -169,10 +146,6 @@ top?: LocalizedVerticalAlignParam
 **类型：** [LocalizedVerticalAlignParam](arkts-arkui-localizedverticalalignparam-i.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

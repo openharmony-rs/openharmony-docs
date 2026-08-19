@@ -1,5 +1,11 @@
 # getCallWaitingStatus（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## getCallWaitingStatus
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getCallWaitingStatus(slotId: int, callback: AsyncCallback<CallWaitingSt
 获取呼叫等待状态。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -27,7 +29,7 @@ function getCallWaitingStatus(slotId: int, callback: AsyncCallback<CallWaitingSt
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | int | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[CallWaitingStatus](arkts-telephony-call-callwaitingstatus-e-sys.md)&gt; | 是 | 回调函数。<br/>返回呼叫等待状态。<br/>- 0：禁用呼叫等待。 <br/>- 1：启用呼叫等待。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[CallWaitingStatus](arkts-telephony-call-callwaitingstatus-e-sys.md)&gt; | 是 | 回调函数。<br/>返回呼叫等待状态。<br/>- 0：禁用呼叫等待。 <br/>- 1：启用呼叫等待。 |
 
 **错误码：**
 
@@ -41,7 +43,7 @@ function getCallWaitingStatus(slotId: int, callback: AsyncCallback<CallWaitingSt
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -65,10 +67,6 @@ function getCallWaitingStatus(slotId: int): Promise<CallWaitingStatus>
 获取呼叫等待状态。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -102,7 +100,7 @@ function getCallWaitingStatus(slotId: int): Promise<CallWaitingStatus>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -4,13 +4,14 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class WrappedBuilder--><!--Device-unnamed-declare class WrappedBuilder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -21,10 +22,6 @@ constructor(builder: (...args: Args) => void)
 `WrappedBuilder`的构造函数。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +37,7 @@ constructor(builder: (...args: Args) => void)
 | --- | --- | --- | --- |
 | builder | (...args: Args) =&gt; void | 是 | `@Builder`装饰的全局函数，作为构造参数用于初始化`WrappedBuilder`实例。函数参数`args`为该`@Builder`函数所需的参数列表。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Builder
@@ -64,10 +61,6 @@ builder: (...args: Args) => void
 **类型：** (...args: Args) =&gt; void
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

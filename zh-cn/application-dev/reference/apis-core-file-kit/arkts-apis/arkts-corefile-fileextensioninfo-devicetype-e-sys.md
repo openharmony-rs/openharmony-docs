@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 <!--Device-fileExtensionInfo-enum DeviceType--><!--Device-fileExtensionInfo-enum DeviceType-End-->
@@ -23,8 +21,6 @@ DEVICE_LOCAL_DISK = 1
 本地c,d...盘。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -46,8 +42,6 @@ DEVICE_SHARED_DISK = 2
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -67,8 +61,6 @@ DEVICE_SHARED_TERMINAL = 3
 分布式网络终端设备。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -90,8 +82,6 @@ DEVICE_NETWORK_NEIGHBORHOODS = 4
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -111,8 +101,6 @@ DEVICE_EXTERNAL_MTP = 5
 MTP设备。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -134,8 +122,6 @@ USB设备。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -155,8 +141,6 @@ DEVICE_EXTERNAL_CLOUD = 7
 云盘设备。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 

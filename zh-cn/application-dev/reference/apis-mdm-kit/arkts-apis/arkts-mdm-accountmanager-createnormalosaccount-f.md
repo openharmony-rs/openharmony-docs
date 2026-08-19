@@ -1,18 +1,20 @@
 # createNormalOsAccount
 
+## 导入模块
+
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+```
+
 ## createNormalOsAccount
 
 ```TypeScript
 function createNormalOsAccount(admin: Want, name: string): Promise<osAccount.OsAccountInfo>
 ```
 
-创建普通系统账号。最多可以创建2个normal类型的系统账号 ([osAccount.OsAccountType](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-osaccounttype-e.md#osaccounttype)) 。 > **说明：** > > 创建账号的流程比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。 > > 创建系统账号对设备的性能影响较大，此接口仅支持12GB及以上运行内存的手机、平板设备使用。
+创建普通系统账号。最多可以创建2个normal类型的系统账号 ([osAccount.OsAccountType](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccounttype-e.md)) 。 > **说明：** > > 创建账号的流程比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。 > > 创建系统账号对设备的性能影响较大，此接口仅支持12GB及以上运行内存的手机、平板设备使用。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -48,7 +50,7 @@ function createNormalOsAccount(admin: Want, name: string): Promise<osAccount.OsA
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { accountManager } from '@kit.MDMKit';

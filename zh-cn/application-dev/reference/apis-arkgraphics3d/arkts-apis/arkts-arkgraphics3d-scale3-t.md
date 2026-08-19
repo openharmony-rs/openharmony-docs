@@ -4,13 +4,9 @@
 export type Scale3 = Vec3
 ```
 
-3D缩放信息.
+用于表示3维空间中物体的缩放。 类型为三维向量，可取任意值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export type Scale3 = Vec3--><!--Device-unnamed-export type Scale3 = Vec3-End-->
 

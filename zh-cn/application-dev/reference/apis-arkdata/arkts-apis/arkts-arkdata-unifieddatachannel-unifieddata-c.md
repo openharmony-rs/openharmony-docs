@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unifiedDataChannel-class UnifiedData--><!--Device-unifiedDataChannel-class UnifiedData-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## 导入模块
+
+```TypeScript
+import { unifiedDataChannel } from '@kit.ArkData';
+```
 
 ## addRecord
 
@@ -21,10 +23,6 @@ addRecord(record: UnifiedRecord): void
 在当前统一数据对象中添加一条数据记录。调用成功后，指定的数据记录被添加到当前统一数据对象中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +44,7 @@ addRecord(record: UnifiedRecord): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -102,10 +100,6 @@ constructor(record: UnifiedRecord)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -126,7 +120,7 @@ constructor(record: UnifiedRecord)
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -165,10 +159,6 @@ constructor()
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -177,7 +167,7 @@ constructor()
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 let unifiedData = new unifiedDataChannel.UnifiedData();
@@ -193,10 +183,6 @@ getRecords(): Array<UnifiedRecord>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -211,7 +197,7 @@ getRecords(): Array<UnifiedRecord>
 | --- | --- |
 | Array&lt;[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)&gt; | 当前统一数据对象中包含的所有数据记录数组，每条记录可通过getType获取类型后转换为具体子类使用，用于读取和处理统一数据中的各种类型数据。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -293,10 +279,6 @@ getTypes(): Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -311,7 +293,7 @@ getTypes(): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | [UniformDataType]{ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -371,10 +353,6 @@ hasType(type: string): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -387,7 +365,7 @@ hasType(type: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 要查询的数据类型，见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#uniformdatatype)。 |
+| type | string | 是 | 要查询的数据类型，见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)。 |
 
 **返回值：**
 
@@ -401,7 +379,7 @@ hasType(type: string): boolean
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

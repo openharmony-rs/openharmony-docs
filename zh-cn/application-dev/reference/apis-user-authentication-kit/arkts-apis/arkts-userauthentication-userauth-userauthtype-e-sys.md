@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-enum UserAuthType--><!--Device-userAuth-enum UserAuthType-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
@@ -21,10 +17,6 @@ PRIVATE_PIN = 16
 隐私密码。一种特殊的PIN认证类型，一般用于解锁后的用户二次访问控制（即在设备解锁后，用户访问特定应用或内容前需再次进行身份验证）。例如用户可以选择使用隐私密码保护应用锁（应用锁是一种对应用启动进行二次验证的功能，可防止他人打 开用户的应用），从而阻止知道锁屏密码的家人访问自己的某些应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-UserAuthType-PRIVATE_PIN = 16--><!--Device-UserAuthType-PRIVATE_PIN = 16-End-->
 

@@ -1,5 +1,11 @@
 # obtainAllContinuousTasks（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+```
+
 ## obtainAllContinuousTasks
 
 ```TypeScript
@@ -9,10 +15,6 @@ function obtainAllContinuousTasks(): Promise<ContinuousTaskInfo[]>
 获取所有长时任务信息，如长时任务ID、长时任务类型等。使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -38,7 +40,7 @@ function obtainAllContinuousTasks(): Promise<ContinuousTaskInfo[]>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

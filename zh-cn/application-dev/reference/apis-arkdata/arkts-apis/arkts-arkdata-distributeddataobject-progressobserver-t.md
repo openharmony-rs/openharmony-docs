@@ -8,10 +8,6 @@ type ProgressObserver = (sessionId: string, progress: int) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedDataObject-type ProgressObserver = (sessionId: string, progress: int) => void--><!--Device-distributedDataObject-type ProgressObserver = (sessionId: string, progress: int) => void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject

@@ -4,13 +4,15 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-calendarManager-interface Event--><!--Device-calendarManager-interface Event-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
+
+## 导入模块
+
+```TypeScript
+import { calendarManager } from '@kit.CalendarKit';
+```
 
 ## attendee
 
@@ -23,10 +25,6 @@ attendee?: Attendee[]
 **类型：** [Attendee](arkts-calendar-calendarmanager-attendee-i.md)[]
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ description?: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-description?: string--><!--Device-Event-description?: string-End-->
@@ -67,10 +61,6 @@ endTime: number
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +80,6 @@ id?: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-id?: number--><!--Device-Event-id?: number-End-->
@@ -111,10 +97,6 @@ identifier?: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -134,10 +116,6 @@ instanceEndTime?: number
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-instanceEndTime?: number--><!--Device-Event-instanceEndTime?: number-End-->
@@ -155,10 +133,6 @@ instanceStartTime?: number
 **类型：** number
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -178,10 +152,6 @@ isAllDay?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-isAllDay?: boolean--><!--Device-Event-isAllDay?: boolean-End-->
@@ -199,10 +169,6 @@ isLunar?: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -222,10 +188,6 @@ location?: Location
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-location?: Location--><!--Device-Event-location?: Location-End-->
@@ -243,10 +205,6 @@ recurrenceRule?: RecurrenceRule
 **类型：** [RecurrenceRule](arkts-calendar-calendarmanager-recurrencerule-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -266,10 +224,6 @@ reminderTime?: number[]
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-reminderTime?: number[]--><!--Device-Event-reminderTime?: number[]-End-->
@@ -282,15 +236,11 @@ reminderTime?: number[]
 service?: EventService
 ```
 
-&lt;!--RP1--&gt;日程服务。不填时，默认没有一键服务。暂不支持此功能。&lt;!--RP1End--&gt;
+<!--RP1-->日程服务。不填时，默认没有一键服务。暂不支持此功能。<!--RP1End-->
 
 **类型：** [EventService](arkts-calendar-calendarmanager-eventservice-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -310,10 +260,6 @@ startTime: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-startTime: number--><!--Device-Event-startTime: number-End-->
@@ -326,15 +272,11 @@ startTime: number
 timeZone?: string
 ```
 
-日程时区。日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过 [systemDateTime.getTimezone()](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone) 获取当前系统时区。
+日程时区。日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过 [systemDateTime.getTimezone()](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-systemdatetime-gettimezone-f.md) 获取当前系统时区。
 
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -354,10 +296,6 @@ title?: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-title?: string--><!--Device-Event-title?: string-End-->
@@ -375,10 +313,6 @@ type: EventType
 **类型：** EventType
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

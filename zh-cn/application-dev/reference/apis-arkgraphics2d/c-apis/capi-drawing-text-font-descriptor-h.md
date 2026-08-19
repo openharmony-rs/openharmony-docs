@@ -238,7 +238,7 @@ OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontDescriptor*](capi-drawing-oh-drawing-fontdescriptor.md) | 指向字体描述符对象[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)的指针，不再需要[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)时，请使用<br>     [OH_Drawing_DestroyFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_destroyfontdescriptor)接口释放该对象的指针。 |
+| [OH_Drawing_FontDescriptor*](capi-drawing-oh-drawing-fontdescriptor.md) | 指向字体描述符对象[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)的指针，不再需要[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)时，请使用      [OH_Drawing_DestroyFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_destroyfontdescriptor)接口释放该对象的指针。 |
 
 ### OH_Drawing_GetSystemFontFullNamesByType()
 
@@ -264,7 +264,7 @@ OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontT
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回对应字体类型的字体名称数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用<br>     [OH_Drawing_DestroySystemFontFullNames](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroysystemfontfullnames)接口释放该对象的指针。 |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回对应字体类型的字体名称数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用      [OH_Drawing_DestroySystemFontFullNames](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroysystemfontfullnames)接口释放该对象的指针。 |
 
 ### OH_Drawing_GetSystemFontFullNameByIndex()
 
@@ -336,7 +336,7 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回指向对应字体文件的字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要OH_Drawing_Array时，请使用<br>     [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。<br>     <br>如果因数据格式无效或解析错误导致操作失败，返回NULL。 |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回指向对应字体文件的字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要OH_Drawing_Array时，请使用      [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。      <br>如果因数据格式无效或解析错误导致操作失败，返回NULL。 |
 
 ### OH_Drawing_GetFontFullDescriptorsFromPath()
 
@@ -360,7 +360,7 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回指向对应字体文件的字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要OH_Drawing_Array时，请使用<br>     [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。<br>     <br>如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回NULL。 |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回指向对应字体文件的字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要OH_Drawing_Array时，请使用      [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。      <br>如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回NULL。 |
 
 ### OH_Drawing_GetFontFullDescriptorByIndex()
 
@@ -385,7 +385,7 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [const OH_Drawing_FontFullDescriptor*](capi-drawing-oh-drawing-fontfulldescriptor.md) | 返回指向指定索引处字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。<br>     <br>如果索引超出范围或数组无效，则返回NULL。 |
+| [const OH_Drawing_FontFullDescriptor*](capi-drawing-oh-drawing-fontfulldescriptor.md) | 返回指向指定索引处字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
 
 ### OH_Drawing_DestroyFontFullDescriptors()
 
@@ -448,7 +448,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromFile(const char* fontSrc,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示传入字体路径非法、传入非字体文件或参数unicodeArray、arrayLength为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示传入字体路径非法、传入非字体文件或参数unicodeArray、arrayLength为NULL。 |
 
 ### OH_Drawing_GetFontUnicodeArrayFromBuffer()
 
@@ -476,7 +476,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromBuffer(uint8_t* fontBuffe
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示缓存数据非法或缓存数据不是字体文件数据或参数unicodeArray、arrayLength为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示缓存数据非法或缓存数据不是字体文件数据或参数unicodeArray、arrayLength为NULL。 |
 
 ### OH_Drawing_GetFontFullDescriptorAttributeInt()
 
@@ -502,7 +502,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数descriptor或者value为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数descriptor或者value为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetFontFullDescriptorAttributeBool()
 
@@ -528,7 +528,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Draw
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数descriptor或者value为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数descriptor或者value为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetFontFullDescriptorAttributeString()
 
@@ -557,7 +557,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Dr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数descriptor或者str为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数descriptor或者str为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetFontFullDescriptorAttributeArray()
 
@@ -582,7 +582,7 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorAttributeArray(const OH_Drawin
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回对象数组，获取失败时返回NULL。当id为FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS时，不再需要时请使用<br>     [OH_Drawing_DestroyFontVariationAxis](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontvariationaxis)接口释放；当id为FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE时，不再需要时请使用<br>     [OH_Drawing_DestroyFontVariationInstance](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontvariationinstance)接口释放。 |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 返回对象数组，获取失败时返回NULL。当id为FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS时，不再需要时请使用      [OH_Drawing_DestroyFontVariationAxis](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontvariationaxis)接口释放；当id为FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE时，不再需要时请使用      [OH_Drawing_DestroyFontVariationInstance](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontvariationinstance)接口释放。 |
 
 ### OH_Drawing_GetFontVariationAxisByIndex()
 
@@ -607,7 +607,7 @@ OH_Drawing_FontVariationAxis* OH_Drawing_GetFontVariationAxisByIndex(OH_Drawing_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontVariationAxis*](capi-drawing-oh-drawing-fontvariationaxis.md) | 返回指向指定索引处字体可变轴对象[OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)的指针。<br>     <br>如果索引超出范围或数组无效，则返回NULL。 |
+| [OH_Drawing_FontVariationAxis*](capi-drawing-oh-drawing-fontvariationaxis.md) | 返回指向指定索引处字体可变轴对象[OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
 
 ### OH_Drawing_DestroyFontVariationAxis()
 
@@ -651,7 +651,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeDouble(OH_Drawing_F
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationAxis或者value为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationAxis或者value为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetFontVariationAxisAttributeInt()
 
@@ -677,7 +677,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeInt(OH_Drawing_Font
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationAxis或者value为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationAxis或者value为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetFontVariationAxisAttributeStr()
 
@@ -706,7 +706,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_Font
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationAxis或者str为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationAxis或者str为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetFontVariationInstanceByIndex()
 
@@ -731,7 +731,7 @@ OH_Drawing_FontVariationInstance* OH_Drawing_GetFontVariationInstanceByIndex(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontVariationInstance*](capi-drawing-oh-drawing-fontvariationinstance.md) | 返回指向指定索引处字体可变实例对象[OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)的指针。<br>     <br>如果索引超出范围或数组无效，则返回NULL。 |
+| [OH_Drawing_FontVariationInstance*](capi-drawing-oh-drawing-fontvariationinstance.md) | 返回指向指定索引处字体可变实例对象[OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
 
 ### OH_Drawing_DestroyFontVariationInstance()
 
@@ -778,7 +778,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationInstance或者str为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数variationInstance或者str为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetFontVariationInstanceCoordinate()
 
@@ -828,7 +828,7 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByFullName(
 
 | 类型 | 说明 |
 | -- | -- |
-| [const OH_Drawing_FontFullDescriptor*](capi-drawing-oh-drawing-fontfulldescriptor.md) | 返回指向字体完整描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。不再需要OH_Drawing_FontFullDescriptor时，请使用<br>     [OH_Drawing_DestroyFontFullDescriptor](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptor)接口释放该对象的指针。 |
+| [const OH_Drawing_FontFullDescriptor*](capi-drawing-oh-drawing-fontfulldescriptor.md) | 返回指向字体完整描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。不再需要OH_Drawing_FontFullDescriptor时，请使用      [OH_Drawing_DestroyFontFullDescriptor](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptor)接口释放该对象的指针。 |
 
 ### OH_Drawing_GetFontCountFromFile()
 

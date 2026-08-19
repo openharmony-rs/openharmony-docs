@@ -1,5 +1,11 @@
 # getUniformDataTypesByMIMEType
 
+## 导入模块
+
+```TypeScript
+import { uniformTypeDescriptor } from '@kit.ArkData';
+```
+
 ## getUniformDataTypesByMIMEType
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Ar
 根据给定的MIME类型和所归属的标准化数据类型查询标准化数据类型ID列表。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -39,7 +41,7 @@ function getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Ar
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uniformTypeDescriptor } from '@kit.ArkData';

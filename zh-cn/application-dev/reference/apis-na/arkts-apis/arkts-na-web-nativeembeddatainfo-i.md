@@ -4,9 +4,7 @@ Provides detailed information about the changes of the same-layer tag lifecycle.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface NativeEmbedDataInfo--><!--Device-unnamed-export declare interface NativeEmbedDataInfo-End-->
 
@@ -24,9 +22,7 @@ Unique id of the same-layer tag.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedDataInfo-embedId?: string--><!--Device-NativeEmbedDataInfo-embedId?: string-End-->
 
@@ -44,9 +40,7 @@ Detailed information about the same-layer tag.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedDataInfo-info?: NativeEmbedInfo--><!--Device-NativeEmbedDataInfo-info?: NativeEmbedInfo-End-->
 
@@ -64,9 +58,7 @@ Lifecycle status of the same-layer tag.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedDataInfo-status?: NativeEmbedStatus--><!--Device-NativeEmbedDataInfo-status?: NativeEmbedStatus-End-->
 
@@ -84,9 +76,7 @@ Psurfaceid of the NativeImage.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedDataInfo-surfaceId?: string--><!--Device-NativeEmbedDataInfo-surfaceId?: string-End-->
 

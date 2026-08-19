@@ -1,5 +1,11 @@
 # removeVirtualScreenSurface（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## removeVirtualScreenSurface
 
 ```TypeScript
@@ -9,10 +15,6 @@ function removeVirtualScreenSurface(screenId: long, surfaceId: string): Promise<
 删除虚拟屏的surface。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,7 +47,7 @@ function removeVirtualScreenSurface(screenId: long, surfaceId: string): Promise<
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

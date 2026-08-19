@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum HostDeviceType--><!--Device-camera-enum HostDeviceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ UNKNOWN_TYPE = 0
 未知设备类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +38,6 @@ PHONE = 0x0E
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HostDeviceType-PHONE = 0x0E--><!--Device-HostDeviceType-PHONE = 0x0E-End-->
@@ -67,10 +55,6 @@ TABLET = 0x11
 平板设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

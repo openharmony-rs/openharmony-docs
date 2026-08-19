@@ -93,7 +93,7 @@ Creates an OH_ImageReceiverOptions object at the application layer.
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.<br>     <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if bad parameter.<br>     <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_ALLOC_FAILED - if alloc failed. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_SUCCESS - if the operation is successful.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_BAD_PARAMETER - if bad parameter.      <br>[Image_ErrorCode](capi-image-common-h.md#image_errorcode) IMAGE_ALLOC_FAILED - if alloc failed. |
 
 ### OH_ImageReceiverOptions_GetSize()
 
@@ -118,7 +118,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_SetSize()
 
@@ -143,7 +143,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_GetCapacity()
 
@@ -168,7 +168,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_SetCapacity()
 
@@ -193,7 +193,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverOptions_Release()
 
@@ -217,7 +217,7 @@ Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -247,7 +247,7 @@ Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
 
 ### OH_ImageReceiverNative_GetReceivingSurfaceId()
 
@@ -272,7 +272,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNat
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_UNKNOWN_ERROR：未知原因错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_UNKNOWN_ERROR：未知原因错误。 |
 
 **参考：**
 
@@ -302,7 +302,7 @@ Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* r
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_UNKNOWN_ERROR：未知原因错误。<br>     <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_UNKNOWN_ERROR：未知原因错误。      <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
 
 **参考：**
 
@@ -332,7 +332,7 @@ Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* rec
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。<br>     <br>IMAGE_UNKNOWN_ERROR：未知原因错误。<br>     <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。      <br>IMAGE_UNKNOWN_ERROR：未知原因错误。      <br>IMAGE_ALLOC_FAILED：申请内存失败。 |
 
 **参考：**
 
@@ -362,7 +362,7 @@ Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_I
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -391,7 +391,7 @@ Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -421,7 +421,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -451,7 +451,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* recei
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -480,7 +480,7 @@ Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>     <br>IMAGE_BAD_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。      <br>IMAGE_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -509,7 +509,7 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative* rec
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>     <br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。      <br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误。 |
 
 ### OH_ImageReceiverNative_OffImageArrive()
 
@@ -532,6 +532,6 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative* re
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>     <br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误，receiver或callback未注册。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。      <br>IMAGE_RECEIVER_INVALID_PARAMETER：参数错误，receiver或callback未注册。 |
 
 

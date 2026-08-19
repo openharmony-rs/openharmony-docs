@@ -1,5 +1,11 @@
 # enableAppRecovery
 
+## 导入模块
+
+```TypeScript
+import { appRecovery } from '@kit.AbilityKit';
+```
+
 ## enableAppRecovery
 
 ```TypeScript
@@ -9,10 +15,6 @@ function enableAppRecovery(restart?: RestartFlag, saveOccasion?: SaveOccasionFla
 使能应用恢复功能，参数按顺序填入。该接口调用后，应用从启动器启动时第一个Ability支持恢复。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

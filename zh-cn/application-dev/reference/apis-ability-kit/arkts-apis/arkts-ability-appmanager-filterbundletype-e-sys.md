@@ -1,12 +1,8 @@
 # FilterBundleType（系统接口）
 
-表示要监听的的应用类型，该类型为枚举。可配合[AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md#appstatefilter系统接口)过滤想要监听的应用类型。
+表示要监听的的应用类型，该类型为枚举。可配合[AppStateFilter](arkts-ability-appmanager-appstatefilter-i-sys.md)过滤想要监听的应用类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-appManager-export enum FilterBundleType--><!--Device-appManager-export enum FilterBundleType-End-->
 
@@ -24,10 +20,6 @@ APP = 1 << 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FilterBundleType-APP = 1 << 0--><!--Device-FilterBundleType-APP = 1 << 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -43,10 +35,6 @@ ATOMIC_SERVICE = 1 << 1
 原子化服务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FilterBundleType-ATOMIC_SERVICE = 1 << 1--><!--Device-FilterBundleType-ATOMIC_SERVICE = 1 << 1-End-->
 

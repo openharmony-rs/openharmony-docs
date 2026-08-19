@@ -1,4 +1,4 @@
-# ParamsInterface
+# ParamsInterface(页面路由)
 
 ```TypeScript
 type ParamsInterface = {
@@ -9,8 +9,6 @@ type ParamsInterface = {
 路由参数列表。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 

@@ -1,14 +1,10 @@
 # Geometry
 
-定义Geometry接口.
+几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自Node。
 
-**继承/实现关系：** Geometry extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md#node)
+**继承/实现关系：** Geometry extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Geometry--><!--Device-unnamed-export interface Geometry-End-->
 
@@ -20,15 +16,11 @@
 readonly mesh: Mesh
 ```
 
-节点的网格.
+网格属性。
 
 **类型：** [Mesh](arkts-arkgraphics3d-sceneresources-mesh-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Geometry-readonly mesh: Mesh--><!--Device-Geometry-readonly mesh: Mesh-End-->
 
@@ -40,15 +32,11 @@ readonly mesh: Mesh
 readonly morpher?: Morpher
 ```
 
-Morpher目标定义.
+可选的形变器，用于为几何体添加基于顶点的形变或动画效果。若未设置，则该几何体不支持形变功能。
 
 **类型：** [Morpher](arkts-arkgraphics3d-sceneresources-morpher-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Geometry-readonly morpher?: Morpher--><!--Device-Geometry-readonly morpher?: Morpher-End-->
 

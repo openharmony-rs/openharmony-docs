@@ -8,10 +8,6 @@ type ValuesBucket = Record<string, ValueType>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-type ValuesBucket = Record<string, ValueType>--><!--Device-relationalStore-type ValuesBucket = Record<string, ValueType>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

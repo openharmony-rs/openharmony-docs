@@ -1,5 +1,11 @@
 # getImageEmbeddingModel
 
+## 导入模块
+
+```TypeScript
+import { intelligence } from '@kit.ArkData';
+```
+
 ## getImageEmbeddingModel
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getImageEmbeddingModel(config: ModelConfig): Promise<ImageEmbedding>
 获取图像嵌入模型。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-intelligence-function getImageEmbeddingModel(config: ModelConfig): Promise<ImageEmbedding>--><!--Device-intelligence-function getImageEmbeddingModel(config: ModelConfig): Promise<ImageEmbedding>-End-->
 
@@ -38,7 +40,7 @@ function getImageEmbeddingModel(config: ModelConfig): Promise<ImageEmbedding>
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

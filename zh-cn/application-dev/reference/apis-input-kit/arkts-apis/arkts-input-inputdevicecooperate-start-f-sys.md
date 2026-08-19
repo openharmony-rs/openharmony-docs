@@ -1,20 +1,24 @@
 # start（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
 ## start
 
 ```TypeScript
 function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback<void>): void
 ```
 
-启动键鼠穿越，使用callback异步回调。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用 > [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate系统接口) > 替代。
+启动键鼠穿越，使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate系统接口)
+**替代接口：** [activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md)
 
 <!--Device-inputDeviceCooperate-function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback<void>): void--><!--Device-inputDeviceCooperate-function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback<void>): void-End-->
 
@@ -28,7 +32,7 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback:
 | --- | --- | --- | --- |
 | sinkDeviceDescriptor | string | 是 | 键鼠穿越目标设备描述符。 |
 | srcInputDeviceId | number | 是 | 键鼠穿越待穿越外设标识符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当启动键鼠穿越成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当启动键鼠穿越成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -39,7 +43,7 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback:
 | [4400001](../errorcode-cooperator.md#4400001-目标设备描述符错误) | Incorrect descriptor for the target device. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { inputDeviceCooperate } from '@kit.InputKit';
@@ -78,15 +82,13 @@ struct Index {
 function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<void>
 ```
 
-启动键鼠穿越，使用Promise异步回调。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用 > [cooperate.activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate系统接口) > 替代。
+启动键鼠穿越，使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md#activatecooperate系统接口)
+**替代接口：** [activateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-activatecooperate-f-sys.md)
 
 <!--Device-inputDeviceCooperate-function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<void>--><!--Device-inputDeviceCooperate-function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<void>-End-->
 
@@ -116,7 +118,7 @@ function start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise<
 | [4400001](../errorcode-cooperator.md#4400001-目标设备描述符错误) | Incorrect descriptor for the target device. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { inputDeviceCooperate } from '@kit.InputKit';

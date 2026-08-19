@@ -4,13 +4,15 @@ ARGB格式的颜色描述，颜色分量值为0.0~1.0的浮点数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-common2D-interface Color4f--><!--Device-common2D-interface Color4f-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { common2D } from '@kit.ArkGraphics2D';
+```
 
 ## alpha
 
@@ -23,10 +25,6 @@ alpha: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Color4f-alpha: double--><!--Device-Color4f-alpha: double-End-->
 
@@ -44,10 +42,6 @@ blue: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Color4f-blue: double--><!--Device-Color4f-blue: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -64,10 +58,6 @@ green: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Color4f-green: double--><!--Device-Color4f-green: double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -83,10 +73,6 @@ red: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Color4f-red: double--><!--Device-Color4f-red: double-End-->
 

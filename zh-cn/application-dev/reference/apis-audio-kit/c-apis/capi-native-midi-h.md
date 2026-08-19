@@ -71,7 +71,7 @@ OH_MIDIStatusCode OH_MIDIClient_Create(OH_MIDIClient **client, OH_MIDICallbacks 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数client为nullptr。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。<br>     <br>OH_MIDI_STATUS_TOO_MANY_CLIENTS：因资源限制MIDI客户端创建失败。当调用应用超出其每UID配额或系统全局客户端数量已达上限时发生。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数client为nullptr。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。      <br>OH_MIDI_STATUS_TOO_MANY_CLIENTS：因资源限制MIDI客户端创建失败。当调用应用超出其每UID配额或系统全局客户端数量已达上限时发生。 |
 
 ### OH_MIDIClient_Destroy()
 
@@ -100,7 +100,7 @@ OH_MIDIStatusCode OH_MIDIClient_Destroy(OH_MIDIClient *client)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄为NULL或无效。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄为NULL或无效。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIClient_GetDeviceCount()
 
@@ -125,7 +125,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数count为nullptr。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数count为nullptr。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIClient_GetDeviceInfos()
 
@@ -159,7 +159,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_M
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数infos或actualDeviceCount为nullptr。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数infos或actualDeviceCount为nullptr。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIClient_OpenDevice()
 
@@ -188,7 +188,7 @@ OH_MIDIStatusCode OH_MIDIClient_OpenDevice(OH_MIDIClient *client, int64_t device
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>     <br>OH_MIDI_STATUS_DEVICE_ALREADY_OPEN：设备已被当前客户端打开。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数device为nullptr，或deviceId不存在。<br>     <br>OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES：客户端已达到最大打开设备数量限制。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。      <br>OH_MIDI_STATUS_DEVICE_ALREADY_OPEN：设备已被当前客户端打开。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数device为nullptr，或deviceId不存在。      <br>OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES：客户端已达到最大打开设备数量限制。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIClient_OpenBLEDevice()
 
@@ -221,7 +221,7 @@ OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice(OH_MIDIClient *client, const char 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：连接请求已成功分发。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>     <br>OH_MIDI_STATUS_DEVICE_ALREADY_OPEN：设备已被当前客户端打开。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数deviceAddr或callback为nullptr。<br>     <br>OH_MIDI_STATUS_PERMISSION_DENIED：权限被拒绝。应用未声明或未获得所需权限。<br>     <br>OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES：客户端已达到最大打开设备数量限制。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：服务无法访问。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：连接请求已成功分发。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。      <br>OH_MIDI_STATUS_DEVICE_ALREADY_OPEN：设备已被当前客户端打开。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数deviceAddr或callback为nullptr。      <br>OH_MIDI_STATUS_PERMISSION_DENIED：权限被拒绝。应用未声明或未获得所需权限。      <br>OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES：客户端已达到最大打开设备数量限制。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：服务无法访问。 |
 
 ### OH_MIDIClient_CloseDevice()
 
@@ -250,7 +250,7 @@ OH_MIDIStatusCode OH_MIDIClient_CloseDevice(OH_MIDIClient *client, OH_MIDIDevice
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。 |
 
 ### OH_MIDIClient_GetPortCount()
 
@@ -276,7 +276,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数count为nullptr，或deviceId无效。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数count为nullptr，或deviceId无效。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIClient_GetPortInfos()
 
@@ -311,7 +311,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数infos或actualPortCount为nullptr，或deviceId无效。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_CLIENT：客户端句柄无效。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数infos或actualPortCount为nullptr，或deviceId无效。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIDevice_OpenInputPort()
 
@@ -341,7 +341,7 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenInputPort(OH_MIDIDevice *device, OH_MIDIPort
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效或不是输入端口。<br>     <br>OH_MIDI_STATUS_PORT_ALREADY_OPEN：端口已被此客户端打开。<br>     <br>OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS：已达到最大打开端口数量限制。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数callback为nullptr。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。      <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效或不是输入端口。      <br>OH_MIDI_STATUS_PORT_ALREADY_OPEN：端口已被此客户端打开。      <br>OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS：已达到最大打开端口数量限制。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数callback为nullptr。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIDevice_OpenOutputPort()
 
@@ -369,7 +369,7 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenOutputPort(OH_MIDIDevice *device, OH_MIDIPor
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效或不是输出端口。<br>     <br>OH_MIDI_STATUS_PORT_ALREADY_OPEN：端口已被此客户端打开。<br>     <br>OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS：已达到最大打开端口数量限制。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。      <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效或不是输出端口。      <br>OH_MIDI_STATUS_PORT_ALREADY_OPEN：端口已被此客户端打开。      <br>OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS：已达到最大打开端口数量限制。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIDevice_CloseInputPort()
 
@@ -397,7 +397,7 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseInputPort(OH_MIDIDevice *device, uint32_t p
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。      <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIDevice_CloseOutputPort()
 
@@ -425,7 +425,7 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseOutputPort(OH_MIDIDevice *device, uint32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或不是打开的输出端口。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。      <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或不是打开的输出端口。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIDevice_Send()
 
@@ -453,7 +453,7 @@ OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：所有数据均已成功处理并写入。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。<br>     <br>OH_MIDI_STATUS_WOULD_BLOCK：缓冲区已满（检查eventsWritten）。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数无效。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：所有数据均已成功处理并写入。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。      <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。      <br>OH_MIDI_STATUS_WOULD_BLOCK：缓冲区已满（检查eventsWritten）。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数无效。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 ### OH_MIDIDevice_SendSysEx()
 
@@ -483,7 +483,7 @@ OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIn
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：所有数据均已成功处理并写入。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。<br>     <br>OH_MIDI_STATUS_TIMEOUT：无法在合理时间内完成，可使用[OH_MIDIDevice_FlushOutputPort](capi-native-midi-h.md#oh_mididevice_flushoutputport)重置。<br>     <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数无效。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：所有数据均已成功处理并写入。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。      <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效，或未打开。      <br>OH_MIDI_STATUS_TIMEOUT：无法在合理时间内完成，可使用[OH_MIDIDevice_FlushOutputPort](capi-native-midi-h.md#oh_mididevice_flushoutputport)重置。      <br>OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT：参数无效。 |
 
 ### OH_MIDIDevice_FlushOutputPort()
 
@@ -511,6 +511,6 @@ OH_MIDIStatusCode OH_MIDIDevice_FlushOutputPort(OH_MIDIDevice *device, uint32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。<br>     <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。<br>     <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效或不是输出端口。<br>     <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
+| [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) | OH_MIDI_STATUS_OK：操作成功。      <br>OH_MIDI_STATUS_INVALID_DEVICE_HANDLE：设备句柄无效。      <br>OH_MIDI_STATUS_INVALID_PORT：端口索引无效或不是输出端口。      <br>OH_MIDI_STATUS_GENERIC_IPC_FAILURE：连接系统服务失败。 |
 
 

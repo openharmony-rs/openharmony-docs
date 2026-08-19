@@ -4,13 +4,16 @@ LightWeightSet可用于存储一系列值，存储元素中value唯一。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class LightWeightSet--><!--Device-unnamed-declare class LightWeightSet-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+```
 
 ## $_iterator
 
@@ -21,10 +24,6 @@ $_iterator(): IterableIterator<T>
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +37,7 @@ $_iterator(): IterableIterator<T>
 | --- | --- |
 | IterableIterator&lt;T&gt; | 返回遍历LightWeightSet中所有元素的迭代器对象，每一项为容器中的元素值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet: LightWeightSet<string> = new LightWeightSet<string>();
@@ -59,10 +58,6 @@ for (let item of lightWeightSet) {
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-[Symbol.iterator](): IterableIterator<T>--><!--Device-LightWeightSet-[Symbol.iterator](): IterableIterator<T>-End-->
@@ -81,7 +76,7 @@ for (let item of lightWeightSet) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -127,10 +122,6 @@ add(obj: T): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-add(obj: T): boolean--><!--Device-LightWeightSet-add(obj: T): boolean-End-->
@@ -155,7 +146,7 @@ add(obj: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The add method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 向容器中添加元素
@@ -173,10 +164,6 @@ addAll(set: LightWeightSet<T>): boolean
 将另一个容器的所有元素添加到当前容器。若源容器中的元素已存在于当前容器中，则跳过该元素不重复添加。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -202,7 +189,7 @@ addAll(set: LightWeightSet<T>): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The addAll method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -226,10 +213,6 @@ clear(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-clear(): void--><!--Device-LightWeightSet-clear(): void-End-->
@@ -242,7 +225,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -264,10 +247,6 @@ LightWeightSet的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-constructor()--><!--Device-LightWeightSet-constructor()-End-->
@@ -280,7 +259,7 @@ LightWeightSet的构造函数。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The LightWeightSet's constructor cannot be directly invoked. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 创建LightWeightSet实例
@@ -296,10 +275,6 @@ entries(): IterableIterator<[T, T]>
 返回包含此容器中所有元素对的新迭代器对象，每个元素对由相同值组成[value, value]。 不建议在entries中使用add、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -319,7 +294,7 @@ entries(): IterableIterator<[T, T]>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -354,8 +329,6 @@ equal(obj: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 12
 
 <!--Device-LightWeightSet-equal(obj: Object): boolean--><!--Device-LightWeightSet-equal(obj: Object): boolean-End-->
@@ -380,7 +353,7 @@ equal(obj: Object): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The equal method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -402,10 +375,6 @@ forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet<T>) => void, thisA
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet<T>) => void, thisArg?: Object): void--><!--Device-LightWeightSet-forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet<T>) => void, thisArg?: Object): void-End-->
@@ -425,7 +394,7 @@ forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet<T>) => void, thisA
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -460,10 +429,6 @@ forEach(callbackFn: LightWeightSetForEachCb<T>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-forEach(callbackFn: LightWeightSetForEachCb<T>): void--><!--Device-LightWeightSet-forEach(callbackFn: LightWeightSetForEachCb<T>): void-End-->
@@ -476,7 +441,7 @@ forEach(callbackFn: LightWeightSetForEachCb<T>): void
 | --- | --- | --- | --- |
 | callbackFn | [LightWeightSetForEachCb](arkts-arkts-lightweightsetforeachcb-t.md)&lt;T&gt; | 是 | 对每个元素执行的回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { LightWeightSetForEachCb } from '@kit.ArkTS';
@@ -499,10 +464,6 @@ getIndexOf(key: T): int
 获取指定元素所对应的下标。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -528,7 +489,7 @@ getIndexOf(key: T): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOf method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -548,10 +509,6 @@ getValueAt(index: number): T
 获取容器中指定下标对应的元素。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -577,7 +534,7 @@ getValueAt(index: number): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getValueAt method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -597,10 +554,6 @@ getValueAt(index: int): T | undefined
 获取LightWeightSet容器中指定下标位置的对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -630,10 +583,6 @@ has(key: T): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-has(key: T): boolean--><!--Device-LightWeightSet-has(key: T): boolean-End-->
@@ -658,7 +607,7 @@ has(key: T): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The has method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<number>();
@@ -677,10 +626,6 @@ hasAll(set: LightWeightSet<T>): boolean
 判断容器中是否包含指定set中的所有元素。当容器中存储的value为number类型且值大于INT32_MAX(2147483647)或小于INT32_MIN(-2147483648)时，判断结果可能与预期不一致，详见规格限制。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -706,7 +651,7 @@ hasAll(set: LightWeightSet<T>): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasAll method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -729,10 +674,6 @@ increaseCapacityTo(minimumCapacity: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-increaseCapacityTo(minimumCapacity: int): void--><!--Device-LightWeightSet-increaseCapacityTo(minimumCapacity: int): void-End-->
@@ -752,7 +693,7 @@ increaseCapacityTo(minimumCapacity: int): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The increaseCapacityTo method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of minimumCapacity is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -769,10 +710,6 @@ isEmpty(): boolean
 判断容器是否为空。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -792,7 +729,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 判断容器是否为空
@@ -810,10 +747,6 @@ remove(key: T): T
 删除并返回指定元素。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -839,7 +772,7 @@ remove(key: T): T
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -860,10 +793,6 @@ remove(key: T): T | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-remove(key: T): T | undefined--><!--Device-LightWeightSet-remove(key: T): T | undefined-End-->
@@ -882,7 +811,7 @@ remove(key: T): T | undefined
 | --- | --- |
 | T | 如果存在则返回被删除的值，否则返回undefined。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet: LightWeightSet<string> = new LightWeightSet<string>();
@@ -900,10 +829,6 @@ removeAt(index: int): boolean
 删除指定下标所对应的元素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -929,7 +854,7 @@ removeAt(index: int): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeAt method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -950,10 +875,6 @@ toArray(): Array<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-toArray(): Array<T>--><!--Device-LightWeightSet-toArray(): Array<T>-End-->
@@ -972,7 +893,7 @@ toArray(): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toArray method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -994,10 +915,6 @@ toString(): String
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-toString(): String--><!--Device-LightWeightSet-toString(): String-End-->
@@ -1010,7 +927,7 @@ toString(): String
 | --- | --- |
 | String | 返回包含容器中所有元素的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -1031,10 +948,6 @@ values(): IterableIterator<T>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightSet-values(): IterableIterator<T>--><!--Device-LightWeightSet-values(): IterableIterator<T>-End-->
@@ -1053,7 +966,7 @@ values(): IterableIterator<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightSet = new LightWeightSet<string>();
@@ -1079,10 +992,6 @@ LightWeightSet的元素个数。
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

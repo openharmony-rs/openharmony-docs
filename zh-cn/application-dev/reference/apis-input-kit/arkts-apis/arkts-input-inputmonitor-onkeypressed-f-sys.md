@@ -1,5 +1,11 @@
 # onKeyPressed（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputMonitor } from '@kit.InputKit';
+```
+
 ## onKeyPressed
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onKeyPressed(keys: Array<KeyCode>, receiver: Callback<KeyEvent>): void
 监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -26,8 +28,8 @@ function onKeyPressed(keys: Array<KeyCode>, receiver: Callback<KeyEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keys | Array&lt;[KeyCode](arkts-input-multimodalinput-keycode-keycode-e.md)&gt; | 是 | 按键码列表，支持如下取值：KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_POWER、 KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_UP。 |
-| receiver | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[KeyEvent](arkts-input-multimodalinput-keyevent-keyevent-i.md)&gt; | 是 | 用于接收上报数据的回调函数。 |
+| keys | Array&lt;[KeyCode](arkts-input-multimodalinput-keycode-keycode-e.md)&gt; | 是 | 键值，支持如下键值：KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_POWER、 KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_UP。 |
+| receiver | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[KeyEvent](arkts-input-multimodalinput-keyevent-keyevent-i.md)&gt; | 是 | 回调函数，返回按键输入事件。 |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function onKeyPressed(keys: Array<KeyCode>, receiver: Callback<KeyEvent>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [4100001](../errorcode-inputmonitor.md#4100001-按键不支持前置监听) | Event listening not supported for the key. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';

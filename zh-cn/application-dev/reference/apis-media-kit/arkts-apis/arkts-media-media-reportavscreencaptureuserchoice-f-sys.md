@@ -1,5 +1,11 @@
 # reportAVScreenCaptureUserChoice（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## reportAVScreenCaptureUserChoice
 
 ```TypeScript
@@ -9,10 +15,6 @@ function reportAVScreenCaptureUserChoice(sessionId: int, choice: string): Promis
 Reports the user selection result in the screen capture privacy dialog box to the AVScreenCapture server to determine whether to start screen capture. Screen capture starts only when the user touches a button to continue the operation. This API is called by the system application that creates the dialog box.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-media-function reportAVScreenCaptureUserChoice(sessionId: int, choice: string): Promise<void>--><!--Device-media-function reportAVScreenCaptureUserChoice(sessionId: int, choice: string): Promise<void>-End-->
 
@@ -40,7 +42,7 @@ Reports the user selection result in the screen capture privacy dialog box to th
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-export enum BundleType--><!--Device-bundleManager-export enum BundleType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -21,10 +17,6 @@ APP = 0
 该Bundle是应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ ATOMIC_SERVICE = 1
 该Bundle是原子化服务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

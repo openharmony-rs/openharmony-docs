@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-defaultAppManager-export enum ApplicationType--><!--Device-defaultAppManager-export enum ApplicationType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -21,10 +17,6 @@ BROWSER = "Web Browser"
 默认浏览器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationType-BROWSER = "Web Browser"--><!--Device-ApplicationType-BROWSER = "Web Browser"-End-->
 
@@ -40,10 +32,6 @@ IMAGE = "Image Gallery"
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationType-IMAGE = "Image Gallery"--><!--Device-ApplicationType-IMAGE = "Image Gallery"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -57,10 +45,6 @@ AUDIO = "Audio Player"
 默认音频播放器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationType-AUDIO = "Audio Player"--><!--Device-ApplicationType-AUDIO = "Audio Player"-End-->
 
@@ -76,10 +60,6 @@ VIDEO = "Video Player"
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationType-VIDEO = "Video Player"--><!--Device-ApplicationType-VIDEO = "Video Player"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -93,10 +73,6 @@ PDF = "PDF Viewer"
 默认PDF文档查看器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationType-PDF = "PDF Viewer"--><!--Device-ApplicationType-PDF = "PDF Viewer"-End-->
 
@@ -112,10 +88,6 @@ WORD = "Word Viewer"
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationType-WORD = "Word Viewer"--><!--Device-ApplicationType-WORD = "Word Viewer"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -129,10 +101,6 @@ EXCEL = "Excel Viewer"
 默认EXCEL文档查看器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationType-EXCEL = "Excel Viewer"--><!--Device-ApplicationType-EXCEL = "Excel Viewer"-End-->
 
@@ -148,10 +116,6 @@ PPT = "PPT Viewer"
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApplicationType-PPT = "PPT Viewer"--><!--Device-ApplicationType-PPT = "PPT Viewer"-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -165,10 +129,6 @@ EMAIL = 'Email'
 默认邮件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApplicationType-EMAIL = 'Email'--><!--Device-ApplicationType-EMAIL = 'Email'-End-->
 

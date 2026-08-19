@@ -1,5 +1,11 @@
 # queryBundleStatsInfos（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
+
 ## queryBundleStatsInfos
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback<B
 通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -28,7 +30,7 @@ function queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback<B
 | --- | --- | --- | --- |
 | begin | long | 是 | 起始时间，单位：ms。 |
 | end | long | 是 | 结束时间，单位：ms。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleStatsMap](arkts-backgroundtasks-usagestatistics-bundlestatsmap-t-sys.md)&gt; | 是 | 回调函数。 当查询成功，err为undefined，data为指定时间段内应用使用时长的具体信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[BundleStatsMap](arkts-backgroundtasks-usagestatistics-bundlestatsmap-t-sys.md)&gt; | 是 | 回调函数。 当查询成功，err为undefined，data为指定时间段内应用使用时长的具体信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -45,7 +47,7 @@ function queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback<B
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 | [10000007](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -71,10 +73,6 @@ function queryBundleStatsInfos(begin: long, end: long): Promise<BundleStatsMap>
 通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -112,7 +110,7 @@ function queryBundleStatsInfos(begin: long, end: long): Promise<BundleStatsMap>
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 | [10000007](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,5 +1,11 @@
 # createIncrementalSource
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## createIncrementalSource
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 Creates an ImageSource instance based on the buffer in incremental.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-function createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined--><!--Device-image-function createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined-End-->
 
@@ -41,10 +43,6 @@ function createIncrementalSource(buf: ArrayBuffer,
 Creates an ImageSource instance based on the buffer in incremental.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-function createIncrementalSource(buf: ArrayBuffer,       options?: SourceOptions): ImageSource | undefined--><!--Device-image-function createIncrementalSource(buf: ArrayBuffer,       options?: SourceOptions): ImageSource | undefined-End-->
 

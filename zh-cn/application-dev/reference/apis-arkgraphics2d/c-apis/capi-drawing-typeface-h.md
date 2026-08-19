@@ -98,7 +98,7 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFileWithArguments(const char* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Typeface*](capi-drawing-oh-drawing-typeface.md) | 函数返回一个指针，指针指向创建的字体对象OH_Drawing_Typeface。<br>     <br>如果返回的对象指针为空，则表示字体对象创建失败。失败的原因可能为：没有可用的内存、<br> 传入的文件路径对象指针或字型参数为空、传入的路径无效。 |
+| [OH_Drawing_Typeface*](capi-drawing-oh-drawing-typeface.md) | 函数返回一个指针，指针指向创建的字体对象OH_Drawing_Typeface。      <br>如果返回的对象指针为空，则表示字体对象创建失败。失败的原因可能为：没有可用的内存、  传入的文件路径对象指针或字型参数为空、传入的路径无效。 |
 
 ### OH_Drawing_TypefaceCreateFromCurrent()
 
@@ -123,7 +123,7 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromCurrent(const OH_Drawing_Typef
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Typeface*](capi-drawing-oh-drawing-typeface.md) | 函数返回一个指针，指针指向创建的字体对象OH_Drawing_Typeface。<br>     <br>如果返回的对象指针为空，则表示字体对象创建失败。失败的原因可能为：没有可用的内存、<br> 传入的字体对象指针或字型参数为空、传入的字体对象不支持字型参数对象中描述的可变维度。 |
+| [OH_Drawing_Typeface*](capi-drawing-oh-drawing-typeface.md) | 函数返回一个指针，指针指向创建的字体对象OH_Drawing_Typeface。      <br>如果返回的对象指针为空，则表示字体对象创建失败。失败的原因可能为：没有可用的内存、  传入的字体对象指针或字型参数为空、传入的字体对象不支持字型参数对象中描述的可变维度。 |
 
 ### OH_Drawing_TypefaceCreateFromStream()
 
@@ -210,7 +210,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArgumen
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontArguments或axis任意一个为NULL或者axis的长度不为4。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontArguments或axis任意一个为NULL或者axis的长度不为4。 |
 
 ### OH_Drawing_FontArgumentsDestroy()
 
@@ -234,7 +234,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* f
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontArguments为NULL。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontArguments为NULL。 |
 
 ### OH_Drawing_TypefaceIsBold()
 
@@ -259,7 +259,7 @@ OH_Drawing_ErrorCode OH_Drawing_TypefaceIsBold(const OH_Drawing_Typeface* typefa
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示typeface或isBold是空指针。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示typeface或isBold是空指针。 |
 
 ### OH_Drawing_TypefaceIsItalic()
 
@@ -284,6 +284,6 @@ OH_Drawing_ErrorCode OH_Drawing_TypefaceIsItalic(const OH_Drawing_Typeface* type
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示typeface或isItalic是空指针。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示typeface或isItalic是空指针。 |
 
 

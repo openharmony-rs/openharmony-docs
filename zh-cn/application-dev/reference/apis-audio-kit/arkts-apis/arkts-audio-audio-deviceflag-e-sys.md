@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum DeviceFlag--><!--Device-audio-enum DeviceFlag-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -21,10 +17,6 @@ NONE_DEVICES_FLAG = 0
 None devices.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceFlag-NONE_DEVICES_FLAG = 0--><!--Device-DeviceFlag-NONE_DEVICES_FLAG = 0-End-->
 
@@ -42,10 +34,6 @@ Distributed output devices.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceFlag-DISTRIBUTED_OUTPUT_DEVICES_FLAG = 4--><!--Device-DeviceFlag-DISTRIBUTED_OUTPUT_DEVICES_FLAG = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -62,10 +50,6 @@ Distributed input devices.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceFlag-DISTRIBUTED_INPUT_DEVICES_FLAG = 8--><!--Device-DeviceFlag-DISTRIBUTED_INPUT_DEVICES_FLAG = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -81,10 +65,6 @@ ALL_DISTRIBUTED_DEVICES_FLAG = 12
 All Distributed devices.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceFlag-ALL_DISTRIBUTED_DEVICES_FLAG = 12--><!--Device-DeviceFlag-ALL_DISTRIBUTED_DEVICES_FLAG = 12-End-->
 

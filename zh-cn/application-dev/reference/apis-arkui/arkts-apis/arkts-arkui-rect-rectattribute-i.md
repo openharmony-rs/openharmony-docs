@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface RectAttribute--><!--Device-unnamed-export declare interface RectAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<RectAttribute> | AttributeModifier
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RectAttribute-attributeModifier(modifier: AttributeModifier<RectAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-RectAttribute-attributeModifier(modifier: AttributeModifier<RectAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ radius(value: Length | Array<RadiusItem> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RectAttribute-radius(value: Length | Array<RadiusItem> | undefined): this--><!--Device-RectAttribute-radius(value: Length | Array<RadiusItem> | undefined): this-End-->
 
@@ -74,9 +68,7 @@ radiusHeight(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RectAttribute-radiusHeight(value: Length | undefined): this--><!--Device-RectAttribute-radiusHeight(value: Length | undefined): this-End-->
 
@@ -100,9 +92,7 @@ radiusWidth(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RectAttribute-radiusWidth(value: Length | undefined): this--><!--Device-RectAttribute-radiusWidth(value: Length | undefined): this-End-->
 
@@ -126,9 +116,7 @@ setRectOptions(options?: RectOptions | RoundedRectOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RectAttribute-setRectOptions(options?: RectOptions | RoundedRectOptions): this--><!--Device-RectAttribute-setRectOptions(options?: RectOptions | RoundedRectOptions): this-End-->
 
@@ -154,9 +142,7 @@ Call attributeModifier.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,10 +6,6 @@ Context是Stage模型的上下文基类，主要用于访问特定应用程序�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class Context--><!--Device-unnamed-declare class Context-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -23,10 +19,6 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 创建特定数据加密级别的应用上下文。开发者可以调用该接口创建不同加密级别的上下文，从而获取对应的沙箱路径。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,7 +40,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 | --- | --- |
 | [Context](arkts-ability-context-c.md) | 指定数据加密等级的上下文。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, UIAbility, contextConstant } from '@kit.AbilityKit';
@@ -77,13 +69,9 @@ export default class EntryAbility extends UIAbility {
 createDisplayContext(displayId: long): Context
 ```
 
-根据指定的物理屏幕ID创建带有屏幕信息（包括屏幕密度[ScreenDensity](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-screendensity-e.md#screendensity)和屏幕方向 [Direction](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-direction-e.md#direction)）的应用上下文。
+根据指定的物理屏幕ID创建带有屏幕信息（包括屏幕密度[ScreenDensity](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-screendensity-e.md)和屏幕方向 [Direction](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-direction-e.md)）的应用上下文。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -111,7 +99,7 @@ createDisplayContext(displayId: long): Context
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, UIAbility } from '@kit.AbilityKit';
@@ -143,11 +131,9 @@ createModuleContext(moduleName: string): Context
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
-**替代接口：** [createModuleContext](arkts-ability-application-createmodulecontext-f.md#createmodulecontext)
+**替代接口：** [createModuleContext](arkts-ability-application-createmodulecontext-f.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -175,7 +161,7 @@ createModuleContext(moduleName: string): Context
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, UIAbility } from '@kit.AbilityKit';
@@ -205,10 +191,6 @@ getApplicationContext(): ApplicationContext
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -229,7 +211,7 @@ getApplicationContext(): ApplicationContext
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2 .Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, UIAbility } from '@kit.AbilityKit';
@@ -259,10 +241,6 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -276,7 +254,7 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | dataGroupID | string | 是 | 原子化服务类型的应用创建时，系统会指定分配唯一Group ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当获取共享目录成功，err为undefined，data为对应的共享目录，如果不存在则返回为空；否则为错误对象。<br>**说明：**仅支持应用el2加密级别。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当获取共享目录成功，err为undefined，data为对应的共享目录，如果不存在则返回为空；否则为错误对象。<br>**说明：**仅支持应用el2加密级别。 |
 
 **错误码：**
 
@@ -285,7 +263,7 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, UIAbility } from '@kit.AbilityKit';
@@ -318,10 +296,6 @@ getGroupDir(dataGroupID: string): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -349,7 +323,7 @@ getGroupDir(dataGroupID: string): Promise<string>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2 .Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common, UIAbility } from '@kit.AbilityKit';
@@ -382,10 +356,6 @@ isContextOf(contextType: contextConstant.ContextType): boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -406,7 +376,7 @@ isContextOf(contextType: contextConstant.ContextType): boolean
 | --- | --- |
 | boolean | 是否为指定类型的上下文。返回true表示Context类型为指定类型，返回false表示Context类型匹配失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, contextConstant } from '@kit.AbilityKit';
@@ -434,10 +404,6 @@ applicationInfo: ApplicationInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -458,10 +424,6 @@ area: contextConstant.AreaMode
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -476,15 +438,11 @@ area: contextConstant.AreaMode
 bundleCodeDir: string
 ```
 
-安装包目录。不能拼接路径访问资源文件，请使用[资源管理接口](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md#ohosresourcemanager)访问资源，详情参考 [应用沙箱目录](../../../file-management/app-sandbox-directory.md)。
+安装包目录。不能拼接路径访问资源文件，请使用[资源管理接口](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)访问资源，详情参考 [应用沙箱目录](../../../file-management/app-sandbox-directory.md)。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -506,10 +464,6 @@ cacheDir: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -529,10 +483,6 @@ cloudFileDir: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -554,10 +504,6 @@ databaseDir: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -577,10 +523,6 @@ distributedFilesDir: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -602,10 +544,6 @@ eventHub: EventHub
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -625,10 +563,6 @@ filesDir: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -650,10 +584,6 @@ preferences目录，详情参考[应用沙箱目录](../../../file-management/ap
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -673,10 +603,6 @@ processName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -698,10 +624,6 @@ resourceDir: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -722,10 +644,6 @@ resourceManager: resmgr.ResourceManager
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -745,10 +663,6 @@ tempDir: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

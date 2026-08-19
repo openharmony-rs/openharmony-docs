@@ -4,15 +4,19 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md#workereventtarget)
+**替代接口：** [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md)
 
 <!--Device-unnamed-export interface EventTarget--><!--Device-unnamed-export interface EventTarget-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
+```
 
 ## addEventListener
 
@@ -23,8 +27,6 @@ addEventListener(type: string, listener: EventListener): void
 向Worker添加一个事件监听。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -41,7 +43,7 @@ addEventListener(type: string, listener: EventListener): void
 | type | string | 是 | 监听的事件类型。 |
 | listener | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets
@@ -64,8 +66,6 @@ dispatchEvent(event: Event): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** dispatchEvent
@@ -86,7 +86,7 @@ dispatchEvent(event: Event): boolean
 | --- | --- |
 | boolean |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets
@@ -139,8 +139,6 @@ removeAllListener(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** removeAllListener
@@ -149,7 +147,7 @@ removeAllListener(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets
@@ -174,8 +172,6 @@ removeEventListener(type: string, callback?: EventListener): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** removeEventListener
@@ -191,7 +187,7 @@ removeEventListener(type: string, callback?: EventListener): void
 | type | string | 是 | 需要移除的事件类型。 |
 | callback | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 否 | 要移除的事件监听的回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets

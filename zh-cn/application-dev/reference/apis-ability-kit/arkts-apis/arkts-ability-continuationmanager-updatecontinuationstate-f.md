@@ -1,5 +1,11 @@
 # updateContinuationState
 
+## 导入模块
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+```
+
 ## updateContinuationState
 
 ```TypeScript
@@ -14,8 +20,6 @@ function updateContinuationState(
 通知设备选择模块，更新当前的连接状态，使用AsyncCallback方式作为异步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 22
 
@@ -36,7 +40,7 @@ function updateContinuationState(
 | token | number | 是 | 注册后的token。 |
 | deviceId | string | 是 | 设备ID。 |
 | status | [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | 是 | 设备连接状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当通知设备成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -47,7 +51,7 @@ function updateContinuationState(
 | [16600001](../errorcode-DistributedSchedule.md#16600001-系统服务工作异常) | The system ability works abnormally. |
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';
@@ -77,8 +81,6 @@ function updateContinuationState(token: number, deviceId: string, status: Device
 通知设备选择模块，更新当前的连接状态，使用Promise方式作为异步方法。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 22
 
@@ -115,7 +117,7 @@ function updateContinuationState(token: number, deviceId: string, status: Device
 | [16600001](../errorcode-DistributedSchedule.md#16600001-系统服务工作异常) | The system ability works abnormally. |
 | [16600002](../errorcode-DistributedSchedule.md#16600002-指定的token或callback未注册) | The specified token or callback is not registered. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { continuationManager } from '@kit.AbilityKit';

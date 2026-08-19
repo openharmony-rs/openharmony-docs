@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-windowAnimationManager-export interface WindowAnimationController--><!--Device-windowAnimationManager-export interface WindowAnimationController-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { windowAnimationManager } from '@kit.ArkUI';
+```
 
 ## onAppTransition
 
@@ -24,10 +26,6 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 应用转场时的回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,7 +43,7 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 | toWindowTarget | WindowAnimationTarget | 是 | 转场后的动画窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 
@@ -58,10 +56,6 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget, finishCallback: Window
 关闭窗口时的回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +72,7 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget, finishCallback: Window
 | closingWindowTarget | WindowAnimationTarget | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 
@@ -92,10 +86,6 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
 最小化窗口时的回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,7 +102,7 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
 | minimizingWindowTarget | WindowAnimationTarget | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 
@@ -125,10 +115,6 @@ onScreenUnlock(finishCallback: WindowAnimationFinishedCallback): void
 屏幕解锁时的回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -155,10 +141,6 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowAnimationController-onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void--><!--Device-WindowAnimationController-onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,      finishCallback: WindowAnimationFinishedCallback): void-End-->
@@ -174,7 +156,7 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
 | startingWindowTarget | WindowAnimationTarget | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 
@@ -188,10 +170,6 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
 从除了桌面和最近任务列表以外其他地方启动应用时的回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -208,7 +186,7 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
 | startingWindowTarget | WindowAnimationTarget | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调 |
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 
@@ -222,10 +200,6 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
 从最近任务列表启动应用时的回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -242,7 +216,7 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
 | startingWindowTarget | WindowAnimationTarget | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 
@@ -256,10 +230,6 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,
 动画目标窗口更新时的回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,7 +246,7 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,
 | fullScreenWindowTarget | WindowAnimationTarget | 是 | 全屏状态的动画目标窗口。 |
 | floatingWindowTargets | Array&lt;WindowAnimationTarget&gt; | 是 | 悬浮状态的动画目标窗口。 |
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 
@@ -291,10 +261,6 @@ onAppTransition?: AppTransitionCallback
 **类型：** [AppTransitionCallback](arkts-arkui-windowanimationmanager-apptransitioncallback-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WindowAnimationController-onAppTransition?: AppTransitionCallback--><!--Device-WindowAnimationController-onAppTransition?: AppTransitionCallback-End-->
 
@@ -314,10 +280,6 @@ onCloseWindow?: WindowCloseCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowAnimationController-onCloseWindow?: WindowCloseCallback--><!--Device-WindowAnimationController-onCloseWindow?: WindowCloseCallback-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -335,10 +297,6 @@ onMinimizeWindow?: WindowMinimizationCallback
 **类型：** [WindowMinimizationCallback](arkts-arkui-windowanimationmanager-windowminimizationcallback-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WindowAnimationController-onMinimizeWindow?: WindowMinimizationCallback--><!--Device-WindowAnimationController-onMinimizeWindow?: WindowMinimizationCallback-End-->
 
@@ -358,10 +316,6 @@ onScreenUnlock?: ScreenUnlockCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowAnimationController-onScreenUnlock?: ScreenUnlockCallback--><!--Device-WindowAnimationController-onScreenUnlock?: ScreenUnlockCallback-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -379,10 +333,6 @@ onStartAppFromLauncher?: AppStartCallback
 **类型：** [AppStartCallback](arkts-arkui-windowanimationmanager-appstartcallback-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WindowAnimationController-onStartAppFromLauncher?: AppStartCallback--><!--Device-WindowAnimationController-onStartAppFromLauncher?: AppStartCallback-End-->
 
@@ -402,10 +352,6 @@ onStartAppFromOther?: AppStartCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowAnimationController-onStartAppFromOther?: AppStartCallback--><!--Device-WindowAnimationController-onStartAppFromOther?: AppStartCallback-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -424,10 +370,6 @@ onStartAppFromRecent?: AppStartCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowAnimationController-onStartAppFromRecent?: AppStartCallback--><!--Device-WindowAnimationController-onStartAppFromRecent?: AppStartCallback-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -445,10 +387,6 @@ onWindowAnimationTargetsUpdate?: WindowAnimationTargetsUpdationCallback
 **类型：** [WindowAnimationTargetsUpdationCallback](arkts-arkui-windowanimationmanager-windowanimationtargetsupdationcallback-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WindowAnimationController-onWindowAnimationTargetsUpdate?: WindowAnimationTargetsUpdationCallback--><!--Device-WindowAnimationController-onWindowAnimationTargetsUpdate?: WindowAnimationTargetsUpdationCallback-End-->
 

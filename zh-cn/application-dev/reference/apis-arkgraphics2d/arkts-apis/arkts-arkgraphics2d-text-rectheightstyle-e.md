@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-text-enum RectHeightStyle--><!--Device-text-enum RectHeightStyle-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ TIGHT = 0
 与字形紧贴。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ MAX = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RectHeightStyle-MAX = 1--><!--Device-RectHeightStyle-MAX = 1-End-->
@@ -61,10 +49,6 @@ INCLUDE_LINE_SPACE_MIDDLE = 2
 每个矩形的顶部和底部将覆盖行上方和行下方的一半空间。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ INCLUDE_LINE_SPACE_TOP = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_TOP = 3--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_TOP = 3-End-->
@@ -102,10 +82,6 @@ INCLUDE_LINE_SPACE_BOTTOM = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4-End-->
@@ -121,10 +97,6 @@ STRUT = 5
 高度按照文本的样式设置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

@@ -4,9 +4,7 @@ Enum type supplied to [insertProxyRule](../../apis-arkweb/arkts-apis/arkts-arkwe
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-enum ProxySchemeFilter--><!--Device-webview-enum ProxySchemeFilter-End-->
 
@@ -22,9 +20,7 @@ This indicates all the schemes will use the proxy.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ProxySchemeFilter-MATCH_ALL_SCHEMES = 0--><!--Device-ProxySchemeFilter-MATCH_ALL_SCHEMES = 0-End-->
 
@@ -40,9 +36,7 @@ This indicates only the HTTP requests will use the proxy.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ProxySchemeFilter-MATCH_HTTP = 1--><!--Device-ProxySchemeFilter-MATCH_HTTP = 1-End-->
 
@@ -58,9 +52,7 @@ This indicates only the HTTPS requests will use the proxy.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ProxySchemeFilter-MATCH_HTTPS = 2--><!--Device-ProxySchemeFilter-MATCH_HTTPS = 2-End-->
 

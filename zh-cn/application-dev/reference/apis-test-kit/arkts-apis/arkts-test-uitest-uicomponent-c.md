@@ -1,18 +1,23 @@
 # UiComponent
 
-UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[Component&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#component)替代。
+UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[Component&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [Component](arkts-test-uitest-component-c.md#component)
+**替代接口：** [Component](arkts-test-uitest-component-c.md)
 
 <!--Device-unnamed-declare class UiComponent--><!--Device-unnamed-declare class UiComponent-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
+
+## 导入模块
+
+```TypeScript
+import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
+import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
+```
 
 ## click
 
@@ -23,8 +28,6 @@ click(): Promise<void>
 控件对象进行点击操作。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用[click&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#click)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -40,7 +43,7 @@ click(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -63,8 +66,6 @@ doubleClick(): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [doubleClick](arkts-test-uitest-component-c.md#doubleclick)
@@ -79,7 +80,7 @@ doubleClick(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -102,8 +103,6 @@ getId(): Promise<number>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getId](arkts-test-uitest-component-c.md#getid)
@@ -118,7 +117,7 @@ getId(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回控件的id值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -141,8 +140,6 @@ getKey(): Promise<string>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getId](arkts-test-uitest-component-c.md#getid)
@@ -157,7 +154,7 @@ getKey(): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回控件的key值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -180,8 +177,6 @@ getText(): Promise<string>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getText](arkts-test-uitest-component-c.md#gettext)
@@ -196,7 +191,7 @@ getText(): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回控件的文本信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -219,8 +214,6 @@ getType(): Promise<string>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getType](arkts-test-uitest-component-c.md#gettype)
@@ -235,7 +228,7 @@ getType(): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回控件的类型。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -258,8 +251,6 @@ inputText(text: string): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [inputText](arkts-test-uitest-component-c.md#inputtext)(text: string)
@@ -280,7 +271,7 @@ inputText(text: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -303,8 +294,6 @@ isClickable(): Promise<boolean>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isClickable](arkts-test-uitest-component-c.md#isclickable)
@@ -319,7 +308,7 @@ isClickable(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回控件对象可点击状态。true：可点击。false：不可点击。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -348,8 +337,6 @@ isEnabled(): Promise<boolean>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isEnabled](arkts-test-uitest-component-c.md#isenabled)
@@ -364,7 +351,7 @@ isEnabled(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回控件使能状态。true：使能。false：未使能。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -391,8 +378,6 @@ isFocused(): Promise<boolean>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isFocused](arkts-test-uitest-component-c.md#isfocused)
@@ -407,7 +392,7 @@ isFocused(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回控件对象是否获焦。true：获焦。false：未获焦。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -441,8 +426,6 @@ isScrollable(): Promise<boolean>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isScrollable](arkts-test-uitest-component-c.md#isscrollable)
@@ -457,7 +440,7 @@ isScrollable(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回控件对象可滑动状态。true：可滑动。false：不可滑动。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -486,8 +469,6 @@ isSelected(): Promise<boolean>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isSelected](arkts-test-uitest-component-c.md#isselected)
@@ -502,7 +483,7 @@ isSelected(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise对象，返回控件对象被选中的状态。true：被选中。false：未被选中。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -529,8 +510,6 @@ longClick(): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [longClick](arkts-test-uitest-component-c.md#longclick)
@@ -545,7 +524,7 @@ longClick(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets
@@ -568,8 +547,6 @@ scrollSearch(by: By): Promise<UiComponent>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch)(on: On)
@@ -590,7 +567,7 @@ scrollSearch(by: By): Promise<UiComponent>
 | --- | --- |
 | Promise&lt;[UiComponent](arkts-test-uitest-uicomponent-c.md)&gt; | Promise对象，返回目标控件对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.test.ets

@@ -1,20 +1,25 @@
 # exportKey
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## exportKey
 
 ```TypeScript
 function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void
 ```
 
-导出密钥，使用Callback方式回调异步返回的结果。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.exportKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem) > 替代。
+导出密钥，使用Callback方式回调异步返回的结果。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.exportKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-exportkeyitem-f.md) > 替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
+**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
 
 <!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -26,9 +31,9 @@ function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 密钥别名，应与所用密钥生成时使用的别名相同。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 空对象（此处传空即可）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当导出密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。HuksResult的 outData返回从密钥中导出的公钥。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当导出密钥成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。HuksResult的 outData返回从密钥中导出的公钥。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
@@ -49,15 +54,13 @@ huks.exportKey(keyAlias, emptyOptions, (err, data) => {
 function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 ```
 
-导出密钥。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.exportKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem)替代。
+导出密钥。使用Promise异步回调。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [huks.exportKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-exportkeyitem-f.md)替代。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem)(keyAlias: string, options: HuksOptions)
+**替代接口：** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 
@@ -76,7 +79,7 @@ function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 | --- | --- |
 | Promise&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Promise对象，返回HuksResult。HuksResult的outData返回从HUKS中导出的公钥。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

@@ -1,5 +1,11 @@
 # createTouchController
 
+## 导入模块
+
+```TypeScript
+import { inputEventClient } from '@kit.InputKit';
+```
+
 ## createTouchController
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createTouchController(): Promise<TouchController>
 创建触控控制器，用于模拟触控操作。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -36,7 +38,7 @@ function createTouchController(): Promise<TouchController>
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { inputEventClient } from '@kit.InputKit';

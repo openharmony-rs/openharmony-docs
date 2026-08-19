@@ -1,12 +1,8 @@
 # Quaternion
 
-表示旋转的四元数.
+用于表示3D空间中旋转的数学结构。与传统的欧拉角相比，四元数在数值稳定性和避免万向节锁方面具有优势。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Quaternion--><!--Device-unnamed-export interface Quaternion-End-->
 
@@ -18,15 +14,11 @@
 w: double
 ```
 
-四元数的W分量.
+w轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Quaternion-w: double--><!--Device-Quaternion-w: double-End-->
 
@@ -38,15 +30,11 @@ w: double
 x: double
 ```
 
-四元数的X分量.
+x轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Quaternion-x: double--><!--Device-Quaternion-x: double-End-->
 
@@ -58,15 +46,11 @@ x: double
 y: double
 ```
 
-四元数的Y分量.
+y轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Quaternion-y: double--><!--Device-Quaternion-y: double-End-->
 
@@ -78,15 +62,11 @@ y: double
 z: double
 ```
 
-四元数的Z分量.
+z轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Quaternion-z: double--><!--Device-Quaternion-z: double-End-->
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface PhotoAccessHelper--><!--Device-photoAccessHelper-interface PhotoAccessHelper-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## acquireDebugDatabase
 
@@ -21,10 +23,6 @@ acquireDebugDatabase(betaIssueId: string, betaScenario: string): Promise<Map<str
 Start medialibrary database backup and wait for returning with backup infomation which only works on beta device.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAccessHelper-acquireDebugDatabase(betaIssueId: string, betaScenario: string): Promise<Map<string, string>>--><!--Device-PhotoAccessHelper-acquireDebugDatabase(betaIssueId: string, betaScenario: string): Promise<Map<string, string>>-End-->
 
@@ -64,10 +62,6 @@ batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetPar
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoAccessHelper-batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetParams--><!--Device-PhotoAccessHelper-batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetParams-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -95,7 +89,7 @@ batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetPar
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: The attribute to be queried does not exist in assets. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -163,10 +157,6 @@ canPerformDeepOptimizeSpace(): Promise<boolean>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -191,7 +181,7 @@ canPerformDeepOptimizeSpace(): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -215,10 +205,6 @@ cancelAnalysisTool(config: ToolCancelConfig): Promise<void>
 取消执行智能分析工具。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
 
@@ -251,7 +237,7 @@ cancelAnalysisTool(config: ToolCancelConfig): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Invalid task id. <br>2. The length of **param** in **ToolCancelConfig** exceeds 16KB. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -281,10 +267,6 @@ cancelPhotoUriPermission(tokenId: long, uri: string, photoPermissionType: PhotoP
 取消应用对uri的访问权限。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -317,7 +299,7 @@ cancelPhotoUriPermission(tokenId: long, uri: string, photoPermissionType: PhotoP
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -347,10 +329,6 @@ cloneAssetsByPath(assets: string[], target: Album, option?: BatchOperationOption
 将文件管理中的资产复制到目标相册中。使用Promise异步回调。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -385,7 +363,7 @@ cloneAssetsByPath(assets: string[], target: Album, option?: BatchOperationOption
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Asset to be cloned has been delete or hidden; <br>2. Asset to be cloned is cloud pictures, which can not be cloned; <br>3. The Target Album does not exist. <br>4. Insufficient system space. <br>5. Automatic renaming is not supported. <br>6. The clone task is interrupted. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -412,10 +390,6 @@ cloneToAlbum(assets: PhotoAsset[], target: Album, option?: BatchOperationOptions
 复制资产到目标相册。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -450,7 +424,7 @@ cloneToAlbum(assets: PhotoAsset[], target: Album, option?: BatchOperationOptions
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Asset to be cloned has been deleted or hidden; <br>2. Asset to be cloned is cloud pictures, which can not be cloned; <br>3. The Target Album does not exist. <br>4. Insufficient system space. <br>5. Automatic renaming is not supported. <br>6. The clone task is interrupted. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -489,10 +463,6 @@ cloneToDir(assets: string[], target: string, option?: BatchOperationOptions): Pr
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -526,7 +496,7 @@ cloneToDir(assets: string[], target: string, option?: BatchOperationOptions): Pr
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Asset to be cloned has been deleted or hidden; <br>2. Asset to be cloned is cloud pictures, which can not be cloned; <br>3. The Target Album does not exist. <br>4. Insufficient system space. <br>5. Automatic renaming is not supported. <br>6. The clone task is interrupted. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -562,10 +532,6 @@ convertAssetToCompatibleAsset(assets: Array<PhotoAsset>): Promise<Array<PhotoAss
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoAccessHelper-convertAssetToCompatibleAsset(assets: Array<PhotoAsset>): Promise<Array<PhotoAsset>>--><!--Device-PhotoAccessHelper-convertAssetToCompatibleAsset(assets: Array<PhotoAsset>): Promise<Array<PhotoAsset>>-End-->
@@ -593,7 +559,7 @@ convertAssetToCompatibleAsset(assets: Array<PhotoAsset>): Promise<Array<PhotoAss
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Invalid Array&lt;PhotoAsset&gt;. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -627,10 +593,6 @@ convertToAsset(path: string): Promise<PhotoAsset>
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -662,7 +624,7 @@ convertToAsset(path: string): Promise<PhotoAsset>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Converted an image after filtering into an asset object; <br>2. File to be converted is not exist; <br>3. Only images in the public directory of filemanager can be converted. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -688,8 +650,6 @@ createAlbum(name: string, callback: AsyncCallback<Album>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [createAlbumRequest](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#createalbumrequest)
@@ -707,7 +667,7 @@ createAlbum(name: string, callback: AsyncCallback<Album>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 待创建相册的相册名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Album&gt; | 是 | callback返回创建的相册实例。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Album&gt; | 是 | callback返回创建的相册实例。 |
 
 **错误码：**
 
@@ -720,7 +680,7 @@ createAlbum(name: string, callback: AsyncCallback<Album>): void
 | 13900015 | The file name already exists. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -747,8 +707,6 @@ createAlbum(name: string): Promise<Album>
 创建相册。使用Promise异步回调。 待创建的相册名参数规格为： - 相册名字符串长度为1~255。 - 不允许出现的非法英文字符，包括： . .. \ / : * ? " ' ` &lt; &gt; | { } [ ] - 相册名不允许重名。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -785,7 +743,7 @@ createAlbum(name: string): Promise<Album>
 | 13900015 | The file name already exists. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -813,10 +771,6 @@ createAsset(displayName: string, callback: AsyncCallback<PhotoAsset>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-createAsset(displayName: string, callback: AsyncCallback<PhotoAsset>): void--><!--Device-PhotoAccessHelper-createAsset(displayName: string, callback: AsyncCallback<PhotoAsset>): void-End-->
@@ -830,7 +784,7 @@ createAsset(displayName: string, callback: AsyncCallback<PhotoAsset>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | displayName | string | 是 | 创建的图片或者视频文件名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;PhotoAsset&gt; | 是 | callback返回创建的图片和视频结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;PhotoAsset&gt; | 是 | callback返回创建的图片和视频结果。 |
 
 **错误码：**
 
@@ -843,7 +797,7 @@ createAsset(displayName: string, callback: AsyncCallback<PhotoAsset>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -871,10 +825,6 @@ createAsset(displayName: string): Promise<PhotoAsset>
 指定待创建的图片或者视频的文件名，创建图片或视频资源。使用Promise异步回调。 待创建的文件名参数规格为： - 应包含有效文件主名和图片或视频扩展名。 - 文件名字符串长度为1~255。 - 文件主名中不允许出现的非法英文字符。 API18开始，非法字符包括： \ / : * ? " &lt; &gt; | API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -907,7 +857,7 @@ createAsset(displayName: string): Promise<PhotoAsset>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -934,10 +884,6 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise<PhotoAsse
 指定待创建的图片或者视频的文件名和创建选项，创建图片或视频资源。使用Promise异步回调。 待创建的文件名参数规格为： - 应包含有效文件主名和图片或视频扩展名。 - 文件名字符串长度为1~255。 - 文件主名中不允许出现的非法英文字符。 API18开始，非法字符包括： \ / : * ? " &lt; &gt; | API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -971,7 +917,7 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise<PhotoAsse
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1002,10 +948,6 @@ createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCal
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCallback<PhotoAsset>): void--><!--Device-PhotoAccessHelper-createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCallback<PhotoAsset>): void-End-->
@@ -1020,7 +962,7 @@ createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCal
 | --- | --- | --- | --- |
 | displayName | string | 是 | 创建的图片或者视频文件名。 |
 | options | [PhotoCreateOptions](arkts-medialibrary-photoaccesshelper-photocreateoptions-i-sys.md) | 是 | 图片或视频的创建选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;PhotoAsset&gt; | 是 | callback返回创建的图片和视频结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;PhotoAsset&gt; | 是 | callback返回创建的图片和视频结果。 |
 
 **错误码：**
 
@@ -1033,7 +975,7 @@ createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCal
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1064,10 +1006,6 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: long, photoCrea
 调用接口代替应用创建媒体库uri列表。Uri已对tokenId对应的应用授权，支持应用使用uri写入图片/视频。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1101,7 +1039,7 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: long, photoCrea
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1139,10 +1077,6 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAuthorized: boolean, photoCreationConfigs: Array<PhotoCreationConfig>): Promise<Array<string>>--><!--Device-PhotoAccessHelper-createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAuthorized: boolean, photoCreationConfigs: Array<PhotoCreationConfig>): Promise<Array<string>>-End-->
@@ -1175,7 +1109,7 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1225,10 +1159,6 @@ createAssetsForAppWithMode(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-createAssetsForAppWithMode(      bundleName: string,      appName: string,      appId: string,      tokenId: long,      authorizationMode: AuthorizationMode,      photoCreationConfigs: Array<PhotoCreationConfig>    ): Promise<Array<string>>--><!--Device-PhotoAccessHelper-createAssetsForAppWithMode(      bundleName: string,      appName: string,      appId: string,      tokenId: long,      authorizationMode: AuthorizationMode,      photoCreationConfigs: Array<PhotoCreationConfig>    ): Promise<Array<string>>-End-->
@@ -1263,7 +1193,7 @@ createAssetsForAppWithMode(
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1307,10 +1237,6 @@ createAssetsWithAlbum(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1344,7 +1270,7 @@ createAssetsWithAlbum(
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario-specific parameters are incorrect. Possible causes are as follows: <br>1. The input parameter creationSettings is null or undefined. <br>2. The array length of creationSettings is bigger than 500. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1386,8 +1312,6 @@ deleteAlbums(albums: Array<Album>, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [deleteAlbums](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#deletealbums)
@@ -1405,7 +1329,7 @@ deleteAlbums(albums: Array<Album>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | albums | Array&lt;Album&gt; | 是 | 待删除相册的数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -1417,7 +1341,7 @@ deleteAlbums(albums: Array<Album>, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1456,8 +1380,6 @@ deleteAlbums(albums: Array<Album>): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [deleteAlbums](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#deletealbums)
@@ -1492,7 +1414,7 @@ deleteAlbums(albums: Array<Album>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1530,8 +1452,6 @@ deleteAssets(uriList: Array<string>, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [deleteAssets](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md#deleteassets)
@@ -1549,7 +1469,7 @@ deleteAssets(uriList: Array<string>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uriList | Array&lt;string&gt; | 是 | 待删除的媒体文件uri数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -1562,7 +1482,7 @@ deleteAssets(uriList: Array<string>, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1606,8 +1526,6 @@ deleteAssets(uriList: Array<string>): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [deleteAssets](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md#deleteassets)
@@ -1643,7 +1561,7 @@ deleteAssets(uriList: Array<string>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1682,10 +1600,6 @@ getAlbumIdByBundleName(bundleName: string): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1717,7 +1631,7 @@ getAlbumIdByBundleName(bundleName: string): Promise<int>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The bundleName is invalid, such as null, undefined and empty. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1746,10 +1660,6 @@ getAlbumsByIds(albumIds: Array<int>): Promise<Map<int, Album>>
 通过相册id查询相册信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -1780,7 +1690,7 @@ getAlbumsByIds(albumIds: Array<int>): Promise<Map<int, Album>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1811,10 +1721,6 @@ getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapabil
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoAccessHelper-getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapability>--><!--Device-PhotoAccessHelper-getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapability>-End-->
@@ -1843,7 +1749,7 @@ getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapabil
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The bundleName is invalid, such as null, undefined and empty. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1867,10 +1773,6 @@ getAssetCompatibleUris(bundleName: string, assets: Array<PhotoAsset>, compatible
 根据bundleName、photoAsset列表和compatibleFlag获取需要转码的URI列表。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1902,7 +1804,7 @@ getAssetCompatibleUris(bundleName: string, assets: Array<PhotoAsset>, compatible
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The bundleName is invalid; <br>2. The compatibleFlag is invalid; |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1939,10 +1841,6 @@ getClonedAlbumUris(oldUris: Array<string>): Promise<Map<string, string>>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getClonedAlbumUris(oldUris: Array<string>): Promise<Map<string, string>>--><!--Device-PhotoAccessHelper-getClonedAlbumUris(oldUris: Array<string>): Promise<Map<string, string>>-End-->
@@ -1972,7 +1870,7 @@ getClonedAlbumUris(oldUris: Array<string>): Promise<Map<string, string>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2004,10 +1902,6 @@ getClonedAssetUris(oldUris: Array<string>): Promise<Map<string, string>>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getClonedAssetUris(oldUris: Array<string>): Promise<Map<string, string>>--><!--Device-PhotoAccessHelper-getClonedAssetUris(oldUris: Array<string>): Promise<Map<string, string>>-End-->
@@ -2037,7 +1931,7 @@ getClonedAssetUris(oldUris: Array<string>): Promise<Map<string, string>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考 [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2069,10 +1963,6 @@ getDataAnalysisProgress(analysisType?: AnalysisType): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getDataAnalysisProgress(analysisType?: AnalysisType): Promise<string>--><!--Device-PhotoAccessHelper-getDataAnalysisProgress(analysisType?: AnalysisType): Promise<string>-End-->
@@ -2102,7 +1992,7 @@ getDataAnalysisProgress(analysisType?: AnalysisType): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2130,10 +2020,6 @@ getDeepOptimizeSpace(): Promise<long>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -2158,7 +2044,7 @@ getDeepOptimizeSpace(): Promise<long>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2186,10 +2072,6 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options: FetchOptions, callback: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 <!--Device-PhotoAccessHelper-getHiddenAlbums(mode: HiddenPhotosDisplayMode, options: FetchOptions, callback: AsyncCallback<FetchResult<Album>>): void--><!--Device-PhotoAccessHelper-getHiddenAlbums(mode: HiddenPhotosDisplayMode, options: FetchOptions, callback: AsyncCallback<FetchResult<Album>>): void-End-->
@@ -2204,7 +2086,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options: FetchOptions, callback: 
 | --- | --- | --- | --- |
 | mode | [HiddenPhotosDisplayMode](arkts-medialibrary-photoaccesshelper-hiddenphotosdisplaymode-e-sys.md) | 是 | 隐藏文件显示模式。 |
 | options | [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md) | 是 | 检索选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FetchResult&lt;Album&gt;&gt; | 是 | callback返回获取相册的结果集。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FetchResult&lt;Album&gt;&gt; | 是 | callback返回获取相册的结果集。 |
 
 **错误码：**
 
@@ -2215,7 +2097,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options: FetchOptions, callback: 
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2263,10 +2145,6 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback<FetchResu
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 <!--Device-PhotoAccessHelper-getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback<FetchResult<Album>>): void--><!--Device-PhotoAccessHelper-getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback<FetchResult<Album>>): void-End-->
@@ -2280,7 +2158,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback<FetchResu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [HiddenPhotosDisplayMode](arkts-medialibrary-photoaccesshelper-hiddenphotosdisplaymode-e-sys.md) | 是 | Display mode of hidden albums. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FetchResult&lt;Album&gt;&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FetchResult&lt;Album&gt;&gt; | 是 | Callback used to return the result. |
 
 **错误码：**
 
@@ -2291,7 +2169,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback<FetchResu
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2363,10 +2241,6 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise<
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 <!--Device-PhotoAccessHelper-getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise<FetchResult<Album>>--><!--Device-PhotoAccessHelper-getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise<FetchResult<Album>>-End-->
@@ -2397,7 +2271,7 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise<
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2463,10 +2337,6 @@ getIndexConstructProgress(): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getIndexConstructProgress(): Promise<string>--><!--Device-PhotoAccessHelper-getIndexConstructProgress(): Promise<string>-End-->
@@ -2489,7 +2359,7 @@ getIndexConstructProgress(): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2526,10 +2396,6 @@ getPhotoAlbumOrder(orderStyle: int, options?: FetchOptions): Promise<FetchResult
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getPhotoAlbumOrder(orderStyle: int, options?: FetchOptions): Promise<FetchResult<AlbumOrder>>--><!--Device-PhotoAccessHelper-getPhotoAlbumOrder(orderStyle: int, options?: FetchOptions): Promise<FetchResult<AlbumOrder>>-End-->
@@ -2560,7 +2426,7 @@ getPhotoAlbumOrder(orderStyle: int, options?: FetchOptions): Promise<FetchResult
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2600,10 +2466,6 @@ getPhotoAlbums(options?: FetchOptions):Promise<FetchResult<Album>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getPhotoAlbums(options?: FetchOptions):Promise<FetchResult<Album>>--><!--Device-PhotoAccessHelper-getPhotoAlbums(options?: FetchOptions):Promise<FetchResult<Album>>-End-->
@@ -2632,7 +2494,7 @@ getPhotoAlbums(options?: FetchOptions):Promise<FetchResult<Album>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2671,10 +2533,6 @@ getPhotoAssets(assetsData: ValuesBucket[]): Promise<PhotoAsset[]>
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoAccessHelper-getPhotoAssets(assetsData: ValuesBucket[]): Promise<PhotoAsset[]>--><!--Device-PhotoAccessHelper-getPhotoAssets(assetsData: ValuesBucket[]): Promise<PhotoAsset[]>-End-->
@@ -2703,7 +2561,7 @@ getPhotoAssets(assetsData: ValuesBucket[]): Promise<PhotoAsset[]>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Invalid value type in ValuesBucket; <br>2. Missing required column in ValuesBucket; <br>3. Array size exceeds 500. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2740,10 +2598,6 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callbac
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callback: AsyncCallback<int>): void--><!--Device-PhotoAccessHelper-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callback: AsyncCallback<int>): void-End-->
@@ -2759,7 +2613,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callbac
 | photoUri | string | 是 | 所查询的图库资源的uri。 |
 | albumUri | string | 是 | 相册uri，可以为空字符串，为空字符串时默认查询全部图库资源。 |
 | options | [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md) | 是 | 检索选项，predicates中必须设置一种检索排序方式，不设置或多设置均会导致接口调用异常。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | callback返回相册中资源的索引。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | callback返回相册中资源的索引。 |
 
 **错误码：**
 
@@ -2771,7 +2625,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callbac
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2823,10 +2677,6 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promis
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promise<int>--><!--Device-PhotoAccessHelper-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promise<int>-End-->
@@ -2859,7 +2709,7 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promis
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2909,10 +2759,6 @@ getPreferredCompatibleMode(bundleName: string): Promise<PreferredCompatibleMode>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoAccessHelper-getPreferredCompatibleMode(bundleName: string): Promise<PreferredCompatibleMode>--><!--Device-PhotoAccessHelper-getPreferredCompatibleMode(bundleName: string): Promise<PreferredCompatibleMode>-End-->
@@ -2941,7 +2787,7 @@ getPreferredCompatibleMode(bundleName: string): Promise<PreferredCompatibleMode>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The bundleName is invalid, such as null, undefined and empty. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2976,10 +2822,6 @@ getSharedPhotoAssets(options: FetchOptions): Array<SharedPhotoAsset>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
 <!--Device-PhotoAccessHelper-getSharedPhotoAssets(options: FetchOptions): Array<SharedPhotoAsset>--><!--Device-PhotoAccessHelper-getSharedPhotoAssets(options: FetchOptions): Array<SharedPhotoAsset>-End-->
@@ -3009,7 +2851,7 @@ getSharedPhotoAssets(options: FetchOptions): Array<SharedPhotoAsset>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3048,10 +2890,6 @@ grantPhotoUriPermission(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-grantPhotoUriPermission(      tokenId: long,       uri: string,       photoPermissionType: PhotoPermissionType,       hideSensitiveType: HideSensitiveType    ): Promise<int>--><!--Device-PhotoAccessHelper-grantPhotoUriPermission(      tokenId: long,       uri: string,       photoPermissionType: PhotoPermissionType,       hideSensitiveType: HideSensitiveType    ): Promise<int>-End-->
@@ -3084,7 +2922,7 @@ grantPhotoUriPermission(
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3121,10 +2959,6 @@ grantPhotoUrisPermission(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-grantPhotoUrisPermission(      tokenId: long,       uriList: Array<string>,       photoPermissionType: PhotoPermissionType,       hideSensitiveType: HideSensitiveType    ): Promise<int>--><!--Device-PhotoAccessHelper-grantPhotoUrisPermission(      tokenId: long,       uriList: Array<string>,       photoPermissionType: PhotoPermissionType,       hideSensitiveType: HideSensitiveType    ): Promise<int>-End-->
@@ -3157,7 +2991,7 @@ grantPhotoUrisPermission(
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3192,10 +3026,6 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback<AnalysisToolResu
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -3211,7 +3041,7 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback<AnalysisToolResu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [ToolInvokeConfig](arkts-medialibrary-photoaccesshelper-toolinvokeconfig-i-sys.md) | 是 | 工具调用配置。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AnalysisToolResult](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md)&gt; | 是 | 工具执行完成时调用的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AnalysisToolResult](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md)&gt; | 是 | 工具执行完成时调用的回调。 |
 
 **返回值：**
 
@@ -3228,7 +3058,7 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback<AnalysisToolResu
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Unsupported tool type; <br>2. The length of **param** in **ToolInvokeConfig** exceeds 16KB. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3263,10 +3093,6 @@ isCompatibleDuplicateSupported(bundleName: string): Promise<boolean>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-isCompatibleDuplicateSupported(bundleName: string): Promise<boolean>--><!--Device-PhotoAccessHelper-isCompatibleDuplicateSupported(bundleName: string): Promise<boolean>-End-->
@@ -3295,7 +3121,7 @@ isCompatibleDuplicateSupported(bundleName: string): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -3320,10 +3146,6 @@ isMediaDataReady(mediaDataKey: string): Promise<boolean>
 判断指定的媒体数据是否已经准备完成。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -3356,7 +3178,7 @@ isMediaDataReady(mediaDataKey: string): Promise<boolean>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails, unsupported media data type. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3388,10 +3210,6 @@ modifyAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[],
 修改相册的默认封面选择顺序
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3426,7 +3244,7 @@ modifyAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[],
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported; <br>2. The orderKey and orderSubKey are not in the specified range; <br>3. The order type must be either descending or ascending. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3465,10 +3283,6 @@ modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[],
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -3502,7 +3316,7 @@ modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[],
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported; <br>2. The orderKey and orderSubKey are not in the specified range; <br>3. The order type must be either descending or ascending. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3538,10 +3352,6 @@ moveAssetsByPath(assets: string[], target: Album, option?: BatchOperationOptions
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -3575,7 +3385,7 @@ moveAssetsByPath(assets: string[], target: Album, option?: BatchOperationOptions
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Moving to the target Album is not supported; <br>2. Assets to be Moved does not exist; <br>3. Automatic renaming is not supported. <br>4. The task is interrupted. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3602,10 +3412,6 @@ moveAssetsToDir(assets: string[], target: string, option?: BatchOperationOptions
 移动资产到文件管理目录中。使用Promise异步回调。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -3640,7 +3446,7 @@ moveAssetsToDir(assets: string[], target: string, option?: BatchOperationOptions
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Moving to the target directory is not supported; <br>2. Assets to be Moved does not exist; <br>3. Automatic renaming is not supported. <br>4. The task is interrupted. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3676,10 +3482,6 @@ offAnalysisAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -3694,7 +3496,7 @@ offAnalysisAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 回调函数，返回变更的智慧分析相册信息，填入时取消 [onAnalysisAlbumChange](#onanalysisalbumchange) 注册时指定的callback监听；不填时，则取消 [onAnalysisAlbumChange](#onanalysisalbumchange) 注册的所有监听。 <br>**注意：** <br>取消注册的callback后，有智慧相册发生变化时，不会进入此回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 回调函数，返回变更的智慧分析相册信息，填入时取消 [onAnalysisAlbumChange](#onanalysisalbumchange) 注册时指定的callback监听；不填时，则取消 [onAnalysisAlbumChange](#onanalysisalbumchange) 注册的所有监听。 <br>**注意：** <br>取消注册的callback后，有智慧相册发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -3703,9 +3505,9 @@ offAnalysisAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3748,10 +3550,6 @@ offAnalysisPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -3766,7 +3564,7 @@ offAnalysisPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 回调函数，返回含对应智慧分析相册变更的媒体资产信息，填入时取消 [onAnalysisPhotoChange](#onanalysisphotochange) 注册时指定的callback监听；不填时，则取消对 [onAnalysisPhotoChange](#onanalysisphotochange) 的所有监听。 <br>**注意：** <br>取消注册的callback后，智慧分析相册的资产变更时，不再进入此回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 回调函数，返回含对应智慧分析相册变更的媒体资产信息，填入时取消 [onAnalysisPhotoChange](#onanalysisphotochange) 注册时指定的callback监听；不填时，则取消对 [onAnalysisPhotoChange](#onanalysisphotochange) 的所有监听。 <br>**注意：** <br>取消注册的callback后，智慧分析相册的资产变更时，不再进入此回调。 |
 
 **错误码：**
 
@@ -3775,9 +3573,9 @@ offAnalysisPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -3820,10 +3618,6 @@ offHiddenPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 <!--Device-PhotoAccessHelper-offHiddenPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void--><!--Device-PhotoAccessHelper-offHiddenPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void-End-->
@@ -3836,7 +3630,7 @@ offHiddenPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | Callback used for unsubscription. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | Callback used for unsubscription. |
 
 **错误码：**
 
@@ -3845,7 +3639,7 @@ offHiddenPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## offShareAlbumChange
 
@@ -3856,10 +3650,6 @@ offShareAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 注销共享相册的监听
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -3873,7 +3663,7 @@ offShareAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 共享相册的监听回调 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 共享相册的监听回调 |
 
 **错误码：**
 
@@ -3882,7 +3672,7 @@ offShareAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## offSharePhotoChange
 
@@ -3893,10 +3683,6 @@ offSharePhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 注销共享相册图片和视频的监听
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -3910,7 +3696,7 @@ offSharePhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 监听图片和视频的回调 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 监听图片和视频的回调 |
 
 **错误码：**
 
@@ -3919,7 +3705,7 @@ offSharePhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## offTrashedAlbumChange
 
@@ -3930,10 +3716,6 @@ offTrashedAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 Unsubscribes from changes in the trashed album.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -3947,7 +3729,7 @@ Unsubscribes from changes in the trashed album.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | Callback used for unsubscription. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | Callback used for unsubscription. |
 
 **错误码：**
 
@@ -3956,7 +3738,7 @@ Unsubscribes from changes in the trashed album.
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## offTrashedPhotoChange
 
@@ -3967,10 +3749,6 @@ offTrashedPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 注销回收站媒体资产监听。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -3984,7 +3762,7 @@ offTrashedPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 监听图片和视频的回调 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 监听图片和视频的回调 |
 
 **错误码：**
 
@@ -3993,9 +3771,9 @@ offTrashedPhotoChange(callback?: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## off_hiddenAlbumChange
+## off('hiddenAlbumChange')
 
 ```TypeScript
 off(type: 'hiddenAlbumChange', callback?: Callback<AlbumChangeInfos>): void
@@ -4004,10 +3782,6 @@ off(type: 'hiddenAlbumChange', callback?: Callback<AlbumChangeInfos>): void
 取消对'hiddenAlbumChange'隐藏相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
@@ -4022,7 +3796,7 @@ off(type: 'hiddenAlbumChange', callback?: Callback<AlbumChangeInfos>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hiddenAlbumChange' | 是 | 取消监听隐藏相册，取值为'hiddenAlbumChange'。取消监听后，有隐藏相册发生变化时，不再通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 取消 [on('hiddenAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'hiddenAlbumChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有隐藏相册发生变化时，不会进入此回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 取消 [on('hiddenAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'hiddenAlbumChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有隐藏相册发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -4031,9 +3805,9 @@ off(type: 'hiddenAlbumChange', callback?: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The type is not fixed at 'hiddenAlbumChange'; <br>2. The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4066,7 +3840,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-## off_hiddenPhotoChange
+## off('hiddenPhotoChange')
 
 ```TypeScript
 off(type: 'hiddenPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): void
@@ -4075,10 +3849,6 @@ off(type: 'hiddenPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): void
 取消对'hiddenPhotoChange'隐藏资产的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
@@ -4093,7 +3863,7 @@ off(type: 'hiddenPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hiddenPhotoChange' | 是 | 取消监听隐藏资产，取值为'hiddenPhotoChange'。取消监听后，有隐藏资产发生变化时，不再通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 取消 [on('hiddenPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'hiddenPhotoChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有隐藏资产发生变化时，不会进入此回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 取消 [on('hiddenPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'hiddenPhotoChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有隐藏资产发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -4102,9 +3872,9 @@ off(type: 'hiddenPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The type is not fixed at 'hiddenPhotoChange'; <br>2. The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4137,7 +3907,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-## off_trashedAlbumChange
+## off('trashedAlbumChange')
 
 ```TypeScript
 off(type: 'trashedAlbumChange', callback?: Callback<AlbumChangeInfos>): void
@@ -4146,10 +3916,6 @@ off(type: 'trashedAlbumChange', callback?: Callback<AlbumChangeInfos>): void
 取消对'trashedAlbumChange'回收站相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -4164,7 +3930,7 @@ off(type: 'trashedAlbumChange', callback?: Callback<AlbumChangeInfos>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'trashedAlbumChange' | 是 | 取消监听回收站相册，取值为'trashedAlbumChange'。取消监听后，有回收站相册发生变化时，不再通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 取消 [on('trashedAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'trashedAlbumChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有回收站相册发生变化时，不会进入此回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | 取消 [on('trashedAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'trashedAlbumChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有回收站相册发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -4173,9 +3939,9 @@ off(type: 'trashedAlbumChange', callback?: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The type is not fixed at 'trashedAlbumChange'; <br>2. The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4208,7 +3974,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## off_trashedPhotoChange
+## off('trashedPhotoChange')
 
 ```TypeScript
 off(type: 'trashedPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): void
@@ -4217,10 +3983,6 @@ off(type: 'trashedPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): voi
 取消对'trashedPhotoChange'回收站资产的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -4235,7 +3997,7 @@ off(type: 'trashedPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'trashedPhotoChange' | 是 | 取消监听回收站资产，取值为'trashedPhotoChange'。取消监听后，有回收站资产发生变化时，不再通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 取消 [on('trashedPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'trashedPhotoChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有回收站资产发生变化时，不会进入此回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 否 | 取消 [on('trashedPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onphotochange) 注册时指定的callback监听；不填时，则取消对'trashedPhotoChange'的所有监听。 <br>**注意：** <br>取消注册的callback后，有回收站资产发生变化时，不会进入此回调。 |
 
 **错误码：**
 
@@ -4244,9 +4006,9 @@ off(type: 'trashedPhotoChange', callback?: Callback<PhotoAssetChangeInfos>): voi
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The type is not fixed at 'trashedPhotoChange'; <br>2. The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4289,10 +4051,6 @@ offhiddenAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 <!--Device-PhotoAccessHelper-offhiddenAlbumChange(callback?: Callback<AlbumChangeInfos>): void--><!--Device-PhotoAccessHelper-offhiddenAlbumChange(callback?: Callback<AlbumChangeInfos>): void-End-->
@@ -4305,7 +4063,7 @@ offhiddenAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | Callback used for unsubscription. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 否 | Callback used for unsubscription. |
 
 **错误码：**
 
@@ -4314,7 +4072,7 @@ offhiddenAlbumChange(callback?: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is unregistered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## onAnalysisAlbumChange
 
@@ -4325,10 +4083,6 @@ onAnalysisAlbumChange(callback: Callback<AlbumChangeInfos>): void
 监听智慧分析相册，并通过callback方式返回相册变化结果，可以注册多个callback。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -4344,7 +4098,7 @@ onAnalysisAlbumChange(callback: Callback<AlbumChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | 回调函数，返回变更的智慧分析相册信息 [AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md#albumchangeinfos)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [offAnalysisAlbumChange](#offanalysisalbumchange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | 回调函数，返回变更的智慧分析相册信息 [AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [offAnalysisAlbumChange](#offanalysisalbumchange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -4353,9 +4107,9 @@ onAnalysisAlbumChange(callback: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4395,10 +4149,6 @@ onAnalysisPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -4413,7 +4163,7 @@ onAnalysisPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | 回调函数，返回含对应智慧分析相册变更的媒体资产信息 [PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md#photoassetchangeinfos)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [offAnalysisPhotoChange](#offanalysisphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | 回调函数，返回含对应智慧分析相册变更的媒体资产信息 [PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [offAnalysisPhotoChange](#offanalysisphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -4422,9 +4172,9 @@ onAnalysisPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4464,10 +4214,6 @@ onHiddenAlbumChange(callback: Callback<AlbumChangeInfos>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
 <!--Device-PhotoAccessHelper-onHiddenAlbumChange(callback: Callback<AlbumChangeInfos>): void--><!--Device-PhotoAccessHelper-onHiddenAlbumChange(callback: Callback<AlbumChangeInfos>): void-End-->
@@ -4480,7 +4226,7 @@ onHiddenAlbumChange(callback: Callback<AlbumChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
 
 **错误码：**
 
@@ -4489,7 +4235,7 @@ onHiddenAlbumChange(callback: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## onHiddenPhotoChange
 
@@ -4500,10 +4246,6 @@ onHiddenPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 注册监听隐藏的媒体资产。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
@@ -4517,7 +4259,7 @@ onHiddenPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
 
 **错误码：**
 
@@ -4526,7 +4268,7 @@ onHiddenPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## onShareAlbumChange
 
@@ -4537,10 +4279,6 @@ onShareAlbumChange(callback: Callback<AlbumChangeInfos>): void
 监听共享相册的变化
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -4554,7 +4292,7 @@ onShareAlbumChange(callback: Callback<AlbumChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
 
 **错误码：**
 
@@ -4563,7 +4301,7 @@ onShareAlbumChange(callback: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## onSharePhotoChange
 
@@ -4574,10 +4312,6 @@ onSharePhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 共享相册资产的监听
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -4591,7 +4325,7 @@ onSharePhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
 
 **错误码：**
 
@@ -4600,7 +4334,7 @@ onSharePhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## onTrashedAlbumChange
 
@@ -4611,10 +4345,6 @@ onTrashedAlbumChange(callback: Callback<AlbumChangeInfos>): void
 Subscribes to changes of the trashed album.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -4628,7 +4358,7 @@ Subscribes to changes of the trashed album.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
 
 **错误码：**
 
@@ -4637,7 +4367,7 @@ Subscribes to changes of the trashed album.
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## onTrashedPhotoChange
 
@@ -4648,10 +4378,6 @@ onTrashedPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 注册回收站媒体资产监听。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -4665,7 +4391,7 @@ onTrashedPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | Callback used to notify the application of the changes. |
 
 **错误码：**
 
@@ -4674,9 +4400,9 @@ onTrashedPhotoChange(callback: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## on_hiddenAlbumChange
+## on('hiddenAlbumChange')
 
 ```TypeScript
 on(type: 'hiddenAlbumChange', callback: Callback<AlbumChangeInfos>): void
@@ -4685,10 +4411,6 @@ on(type: 'hiddenAlbumChange', callback: Callback<AlbumChangeInfos>): void
 注册'hiddenAlbumChange'监听隐藏相册，并通过callback方式返回相册变化结果，可以注册多个callback。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
@@ -4703,7 +4425,7 @@ on(type: 'hiddenAlbumChange', callback: Callback<AlbumChangeInfos>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hiddenAlbumChange' | 是 | 注册监听隐藏相册，取值为'hiddenAlbumChange'。注册完成后，有隐藏相册发生变化时，通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | 返回变更的隐藏相册信息 [AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md#albumchangeinfos)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('hiddenAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | 返回变更的隐藏相册信息 [AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('hiddenAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -4712,9 +4434,9 @@ on(type: 'hiddenAlbumChange', callback: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The type is not fixed at 'hiddenAlbumChange'; <br>2. The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4744,7 +4466,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-## on_hiddenPhotoChange
+## on('hiddenPhotoChange')
 
 ```TypeScript
 on(type: 'hiddenPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
@@ -4753,10 +4475,6 @@ on(type: 'hiddenPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
 注册'hiddenPhotoChange'监听隐藏的媒体资产，并通过callback方式返回隐藏资产变化结果，可以注册多个callback。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO and ohos.permission.MANAGE_PRIVATE_PHOTOS
 
@@ -4771,7 +4489,7 @@ on(type: 'hiddenPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'hiddenPhotoChange' | 是 | 注册监听隐藏资产，取值为'hiddenPhotoChange'。注册完成后，有隐藏资产发生变化时，通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | 返回变更的隐藏媒体资产信息 [PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md#photoassetchangeinfos). <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('hiddenPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | 返回变更的隐藏媒体资产信息 [PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md). <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('hiddenPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -4780,9 +4498,9 @@ on(type: 'hiddenPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: 1. The type is not fixed at 'hiddenPhotoChange'; 2. The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4812,7 +4530,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-## on_trashedAlbumChange
+## on('trashedAlbumChange')
 
 ```TypeScript
 on(type: 'trashedAlbumChange', callback: Callback<AlbumChangeInfos>): void
@@ -4821,10 +4539,6 @@ on(type: 'trashedAlbumChange', callback: Callback<AlbumChangeInfos>): void
 注册'trashedAlbumChange'监听回收站相册，并通过callback方式返回相册变化结果，可以注册多个callback。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -4839,7 +4553,7 @@ on(type: 'trashedAlbumChange', callback: Callback<AlbumChangeInfos>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'trashedAlbumChange' | 是 | 注册监听回收站相册，取值为'trashedAlbumChange'。注册完成后，有回收站相册发生变化时，通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | 返回变更的相册信息 [AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md#albumchangeinfos)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('trashedAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)&gt; | 是 | 返回变更的相册信息 [AlbumChangeInfos](arkts-medialibrary-photoaccesshelper-albumchangeinfos-i.md)。 <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('trashedAlbumChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -4848,9 +4562,9 @@ on(type: 'trashedAlbumChange', callback: Callback<AlbumChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The type is not fixed at 'trashedAlbumChange'; <br>2. The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4880,7 +4594,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## on_trashedPhotoChange
+## on('trashedPhotoChange')
 
 ```TypeScript
 on(type: 'trashedPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
@@ -4889,10 +4603,6 @@ on(type: 'trashedPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
 注册'trashedPhotoChange'监听回收站的媒体资产，并通过callback方式返回回收站资产变化结果，可以注册多个callback。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -4907,7 +4617,7 @@ on(type: 'trashedPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'trashedPhotoChange' | 是 | 注册监听回收站资产，取值为'trashedPhotoChange'。注册完成后，有回收站资产发生变化时，通过callback返回变更信息。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | 返回变更的回收站媒体资产信息 [PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md#photoassetchangeinfos). <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('trashedPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md)&gt; | 是 | 返回变更的回收站媒体资产信息 [PhotoAssetChangeInfos](arkts-medialibrary-photoaccesshelper-photoassetchangeinfos-i.md). <br>**注意：** <br>该接口可以注册多个不同的callback监听， [off('trashedPhotoChange')](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offphotochange) 既可以关闭所有监听，也可以关闭指定callback监听。 |
 
 **错误码：**
 
@@ -4916,9 +4626,9 @@ on(type: 'trashedPhotoChange', callback: Callback<PhotoAssetChangeInfos>): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The type is not fixed at 'trashedPhotoChange'; <br>2. The same callback is registered repeatedly. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -4958,10 +4668,6 @@ query(sql: string): Promise<ResultSet>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
 <!--Device-PhotoAccessHelper-query(sql: string): Promise<ResultSet>--><!--Device-PhotoAccessHelper-query(sql: string): Promise<ResultSet>-End-->
@@ -4991,7 +4697,7 @@ query(sql: string): Promise<ResultSet>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: The SQL statement is abnormal. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5023,10 +4729,6 @@ releaseDebugDatabase(betaIssueId: string, dbFd: int): Promise<void>
 Release medialibrary database backup resources incluses closing backup database fd and deleting temporary backup database file which only works on beta device.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAccessHelper-releaseDebugDatabase(betaIssueId: string, dbFd: int): Promise<void>--><!--Device-PhotoAccessHelper-releaseDebugDatabase(betaIssueId: string, dbFd: int): Promise<void>-End-->
 
@@ -5066,10 +4768,6 @@ removeFormInfo(info: FormInfo, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-removeFormInfo(info: FormInfo, callback: AsyncCallback<void>): void--><!--Device-PhotoAccessHelper-removeFormInfo(info: FormInfo, callback: AsyncCallback<void>): void-End-->
@@ -5082,8 +4780,8 @@ removeFormInfo(info: FormInfo, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [FormInfo](arkts-medialibrary-photoaccesshelper-forminfo-i-sys.md) | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| info | FormInfo | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -5094,7 +4792,7 @@ removeFormInfo(info: FormInfo, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5129,10 +4827,6 @@ removeFormInfo(info: FormInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-removeFormInfo(info: FormInfo): Promise<void>--><!--Device-PhotoAccessHelper-removeFormInfo(info: FormInfo): Promise<void>-End-->
@@ -5145,7 +4839,7 @@ removeFormInfo(info: FormInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [FormInfo](arkts-medialibrary-photoaccesshelper-forminfo-i-sys.md) | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
+| info | FormInfo | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
 
 **返回值：**
 
@@ -5162,7 +4856,7 @@ removeFormInfo(info: FormInfo): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5195,10 +4889,6 @@ removeGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-removeGalleryFormInfo(info: GalleryFormInfo): Promise<void>--><!--Device-PhotoAccessHelper-removeGalleryFormInfo(info: GalleryFormInfo): Promise<void>-End-->
@@ -5228,7 +4918,7 @@ removeGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5258,10 +4948,6 @@ saveFormInfo(info: FormInfo, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-saveFormInfo(info: FormInfo, callback: AsyncCallback<void>): void--><!--Device-PhotoAccessHelper-saveFormInfo(info: FormInfo, callback: AsyncCallback<void>): void-End-->
@@ -5274,8 +4960,8 @@ saveFormInfo(info: FormInfo, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [FormInfo](arkts-medialibrary-photoaccesshelper-forminfo-i-sys.md) | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| info | FormInfo | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -5286,7 +4972,7 @@ saveFormInfo(info: FormInfo, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5330,10 +5016,6 @@ saveFormInfo(info: FormInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-saveFormInfo(info: FormInfo): Promise<void>--><!--Device-PhotoAccessHelper-saveFormInfo(info: FormInfo): Promise<void>-End-->
@@ -5346,7 +5028,7 @@ saveFormInfo(info: FormInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [FormInfo](arkts-medialibrary-photoaccesshelper-forminfo-i-sys.md) | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
+| info | FormInfo | 是 | 图库卡片信息，包括图库卡片的id和卡片绑定的图片的uri。 |
 
 **返回值：**
 
@@ -5363,7 +5045,7 @@ saveFormInfo(info: FormInfo): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5405,10 +5087,6 @@ saveGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-saveGalleryFormInfo(info: GalleryFormInfo): Promise<void>--><!--Device-PhotoAccessHelper-saveGalleryFormInfo(info: GalleryFormInfo): Promise<void>-End-->
@@ -5438,7 +5116,7 @@ saveGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5488,10 +5166,6 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoAccessHelper-setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise<void>--><!--Device-PhotoAccessHelper-setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise<void>-End-->
@@ -5521,7 +5195,7 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The bundleName or capability is invalid. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5548,10 +5222,6 @@ setPhotoAlbumOrder(orderStyle: int, albumOrders: Array<AlbumOrder>): Promise<voi
 设置系统、用户和来源相册的排序。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -5583,7 +5253,7 @@ setPhotoAlbumOrder(orderStyle: int, albumOrders: Array<AlbumOrder>): Promise<voi
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: 1.The input parameter is not within the valid range. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5628,10 +5298,6 @@ setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatib
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoAccessHelper-setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatibleMode): Promise<void>--><!--Device-PhotoAccessHelper-setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatibleMode): Promise<void>-End-->
@@ -5661,7 +5327,7 @@ setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatib
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The bundleName is invalid, such as null, undefined and empty. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建方法请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例用法。
 
@@ -5694,10 +5360,6 @@ startAssetAnalysis(type: AnalysisType, assetUris?: Array<string>): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-startAssetAnalysis(type: AnalysisType, assetUris?: Array<string>): Promise<int>--><!--Device-PhotoAccessHelper-startAssetAnalysis(type: AnalysisType, assetUris?: Array<string>): Promise<int>-End-->
@@ -5727,7 +5389,7 @@ startAssetAnalysis(type: AnalysisType, assetUris?: Array<string>): Promise<int>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5757,10 +5419,6 @@ startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback<AnalysisResul
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -5775,8 +5433,8 @@ startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback<AnalysisResul
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [AnalysisConfig](arkts-medialibrary-photoaccesshelper-analysisconfig-i-sys.md) | 是 | 资产分析配置，config中的uris从 [PhotoAsset](arkts-file-photoaccesshelper.md#ohosfilephotoaccesshelper)对象中获取。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AnalysisResult](arkts-medialibrary-photoaccesshelper-analysisresult-i-sys.md)&gt; | 是 | 回调函数，用于返回资产分析结果信息。 |
+| config | [AnalysisConfig](arkts-medialibrary-photoaccesshelper-analysisconfig-i-sys.md) | 是 | 资产分析配置，config中的uris从 [PhotoAsset](arkts-file-photoaccesshelper.md)对象中获取。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AnalysisResult](arkts-medialibrary-photoaccesshelper-analysisresult-i-sys.md)&gt; | 是 | 回调函数，用于返回资产分析结果信息。 |
 
 **返回值：**
 
@@ -5793,7 +5451,7 @@ startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback<AnalysisResul
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Unsupported or invalid types of config; <br>2. The types or uris array size of config exceed max value. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5829,10 +5487,6 @@ startDeepOptimizeSpace(callback?: Callback<DeepOptimizeSpaceProgress>): Promise<
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -5847,7 +5501,7 @@ startDeepOptimizeSpace(callback?: Callback<DeepOptimizeSpaceProgress>): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeepOptimizeSpaceProgress](arkts-medialibrary-photoaccesshelper-deepoptimizespaceprogress-i-sys.md)&gt; | 否 | 深度优化存储空间进度回调函数 默认值： null。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[DeepOptimizeSpaceProgress](arkts-medialibrary-photoaccesshelper-deepoptimizespaceprogress-i-sys.md)&gt; | 否 | 深度优化存储空间进度回调函数 默认值： null。 |
 
 **返回值：**
 
@@ -5864,7 +5518,7 @@ startDeepOptimizeSpace(callback?: Callback<DeepOptimizeSpaceProgress>): Promise<
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5891,10 +5545,6 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<void>): int--><!--Device-PhotoAccessHelper-startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<void>): int-End-->
@@ -5908,7 +5558,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicate | dataSharePredicates.DataSharePredicates | 是 | 生成缩略图选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当成功时标识通知任务结束，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当成功时标识通知任务结束，err为undefined，否则为错误对象。 |
 
 **返回值：**
 
@@ -5925,7 +5575,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -5958,10 +5608,6 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -5977,8 +5623,8 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicate | dataSharePredicates.DataSharePredicates | 是 | 用于生成缩略图的查询条件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当操作成功完成时通知任务结束。 |
-| response | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。返回是否有未生成的缩略图，返回1表示所有缩略图已生成完成，返回0表示未生成完成。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当操作成功完成时通知任务结束。 |
+| response | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 回调函数。返回是否有未生成的缩略图，返回1表示所有缩略图已生成完成，返回0表示未生成完成。 |
 
 **返回值：**
 
@@ -5995,7 +5641,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The predicates invalid. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -6035,10 +5681,6 @@ stopAssetAnalysis(config: AnalysisConfig): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -6064,7 +5706,7 @@ stopAssetAnalysis(config: AnalysisConfig): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Unsupported or invalid AnalysisType of config; <br>2. The types or uris array size of config exceed max value. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -6095,10 +5737,6 @@ stopDeepOptimizeSpace(): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -6123,7 +5761,7 @@ stopDeepOptimizeSpace(): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -6148,10 +5786,6 @@ stopThumbnailCreationTask(taskId: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAccessHelper-stopThumbnailCreationTask(taskId: int): void--><!--Device-PhotoAccessHelper-stopThumbnailCreationTask(taskId: int): void-End-->
@@ -6175,7 +5809,7 @@ stopThumbnailCreationTask(taskId: int): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -6200,10 +5834,6 @@ updateGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 更新既存的图库卡片的相关信息，并保存到数据库中。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -6234,7 +5864,7 @@ updateGalleryFormInfo(info: GalleryFormInfo): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

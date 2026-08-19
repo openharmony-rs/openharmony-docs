@@ -1,4 +1,4 @@
-# 事件错误码
+# 公共事件错误码
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
@@ -40,7 +40,7 @@ A sandbox application cannot send common events.
 
 **可能原因**
 
-事件发送方应用为沙箱应用，发送公共事件会被拦截。
+公共事件发送方应用为沙箱应用，发送公共事件会被拦截。
 
 **处理步骤**
 
@@ -58,11 +58,11 @@ The common event sending frequency too high.
 
 **可能原因**
 
-短时间内应用发送事件数量超过系统频率限制，触发频率控制。
+发送公共事件频率超过每5毫秒20个，触发系统频率限制。
 
 **处理步骤**
 
-检查应用是否过于频繁地发送公共事件，如过于频繁，请降低事件发送频率或增加发送间隔后重新尝试。
+检查应用是否过于频繁地发送公共事件，如发送频率超过每5毫秒20个，请降低公共事件发送频率或增加发送间隔后重新尝试。
 
 ## 1500004 无法发送系统公共事件
 
@@ -72,7 +72,7 @@ A third-party application cannot send system common events.
 
 **错误描述**
 
-第三方应用无法发送系统公共事件。
+第三方应用无法发送[系统公共事件](../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **可能原因**
 
@@ -145,7 +145,7 @@ Failed to initialize the common event service.
 
 **错误描述**
 
-公共事件服务端在初始化过程中发生错误。
+[公共事件服务](../../basic-services/common-event/common-event-glossary.md#common-event-service-ces公共事件服务)端在初始化过程中发生错误。
 
 **可能原因**
 

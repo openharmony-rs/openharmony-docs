@@ -49,7 +49,7 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码：PERMISSION_DENIED（201，权限校验失败）、<br>     PARAMETER_ERROR（401，参数检查失败）、UNSUPPORTED（801，设备不支持）。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码：PERMISSION_DENIED（201，权限校验失败）、      PARAMETER_ERROR（401，参数检查失败）、UNSUPPORTED（801，设备不支持）。 |
 
 **参考：**
 
@@ -82,7 +82,7 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码包括：参数错误时请检查fileDescription和vibrateAttribute参数是否合法；<br>     设备不支持振动功能时请检查设备能力。详细错误码说明请参考 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码包括：参数错误时请检查fileDescription和vibrateAttribute参数是否合法；      设备不支持振动功能时请检查设备能力。详细错误码说明请参考 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
 
 **参考：**
 

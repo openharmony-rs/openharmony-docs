@@ -1,5 +1,10 @@
 # mkdtemp
 
+## 导入模块
+
+```TypeScript
+```
+
 ## mkdtemp
 
 ```TypeScript
@@ -10,9 +15,7 @@ function mkdtemp(prefix: string): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function mkdtemp(prefix: string): Promise<string>--><!--Device-fileIo-function mkdtemp(prefix: string): Promise<string>-End-->
 
@@ -61,9 +64,7 @@ function mkdtemp(prefix: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function mkdtemp(prefix: string, callback: AsyncCallback<string>): void--><!--Device-fileIo-function mkdtemp(prefix: string, callback: AsyncCallback<string>): void-End-->
 
@@ -74,7 +75,7 @@ function mkdtemp(prefix: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | prefix | string | 是 | 指定目录路径，命名时需要以"XXXXXX"作为结尾。路径末尾的"XXXXXX"字符串将被替换为随机字符，以创建唯一的目录名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回临时目录路径。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回临时目录路径。 |
 
 **错误码：**
 

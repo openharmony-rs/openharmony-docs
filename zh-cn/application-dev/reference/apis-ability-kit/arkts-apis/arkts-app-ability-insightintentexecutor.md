@@ -1,5 +1,11 @@
 # @ohos.app.ability.InsightIntentExecutor
 
+## 导入模块
+
+```TypeScript
+import { InsightIntentExecutor } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

@@ -4,13 +4,14 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface RichEditorImageSpanResult--><!--Device-unnamed-declare interface RichEditorImageSpanResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## imageStyle
 
@@ -23,10 +24,6 @@ imageStyle: RichEditorImageSpanStyleResult
 **类型：** [RichEditorImageSpanStyleResult](arkts-arkui-richeditorimagespanstyleresult-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +45,6 @@ Span里图片的起始和结束位置。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -71,10 +64,6 @@ Span位置。
 **类型：** [RichEditorSpanPosition](arkts-arkui-richeditorspanposition-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +85,6 @@ valuePixelMap?: PixelMap
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -119,10 +104,6 @@ valueResourceStr?: ResourceStr
 **类型：** ResourceStr
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,10 +8,6 @@ export type SubscribeCallbackData = _SubscribeCallbackData
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationSubscribe-export type SubscribeCallbackData = _SubscribeCallbackData--><!--Device-notificationSubscribe-export type SubscribeCallbackData = _SubscribeCallbackData-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

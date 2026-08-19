@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## setPriorityEnabledByBundle
@@ -15,10 +15,6 @@ function setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: Priority
 设置应用通知优先级开关。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -52,7 +48,7 @@ function setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: Priority
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

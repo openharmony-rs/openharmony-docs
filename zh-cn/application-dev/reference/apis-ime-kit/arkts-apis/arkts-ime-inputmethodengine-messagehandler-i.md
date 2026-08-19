@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-interface MessageHandler--><!--Device-inputMethodEngine-interface MessageHandler-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethodEngine } from '@kit.IMEKit';
+```
 
 ## onMessage
 
@@ -21,10 +23,6 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 接收已绑定当前输入法应用的编辑框应用发送的自定义数据回调函数。 &lt;p&gt;当已注册的MessageHandler接收到来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据时，会触发该回调函数。&lt;/p&gt; &lt;p&gt;msgId为必选参数，msgParam为可选参数。存在收到仅有msgId自定义数据的可能，需与数据发送方确认自定义数据。&lt;/p&gt;
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 <!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void--><!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void-End-->
 
@@ -37,7 +35,7 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 | msgId | string | 是 | 接收到的自定义通信数据的标识符。 |
 | msgParam | ArrayBuffer | 否 | 接收到的自定义通信数据的消息体。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethodEngine.getInputMethodAbility()
@@ -65,15 +63,11 @@ onTerminated(): void
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-MessageHandler-onTerminated(): void--><!--Device-MessageHandler-onTerminated(): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethodEngine.getInputMethodAbility()
@@ -103,10 +97,6 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void 接收已绑定当前输�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MessageHandler-onMessage: OnMessageCallback--><!--Device-MessageHandler-onMessage: OnMessageCallback-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -119,13 +109,9 @@ onTerminated: Callback<void>
 
 onTerminated(): void 监听对象终止回调函数。
 
-**类型：** [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
+**类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MessageHandler-onTerminated: Callback<void>--><!--Device-MessageHandler-onTerminated: Callback<void>-End-->
 

@@ -4,15 +4,18 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare interface FingerprintEvent--><!--Device-unnamed-export declare interface FingerprintEvent-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { shortKey } from '@kit.InputKit';
+import { FingerprintEvent } from '@kit.InputKit';
+```
 
 ## action
 
@@ -25,10 +28,6 @@ action: FingerprintAction
 **类型：** [FingerprintAction](arkts-input-multimodalinput-shortkey-fingerprintaction-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FingerprintEvent-action: FingerprintAction--><!--Device-FingerprintEvent-action: FingerprintAction-End-->
 
@@ -48,10 +47,6 @@ distanceX: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FingerprintEvent-distanceX: double--><!--Device-FingerprintEvent-distanceX: double-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -69,10 +64,6 @@ distanceY: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FingerprintEvent-distanceY: double--><!--Device-FingerprintEvent-distanceY: double-End-->
 

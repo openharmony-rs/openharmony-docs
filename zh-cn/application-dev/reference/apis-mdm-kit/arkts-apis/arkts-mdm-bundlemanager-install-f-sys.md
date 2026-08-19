@@ -1,5 +1,11 @@
 # install（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+```
+
 ## install
 
 ```TypeScript
@@ -10,11 +16,9 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -32,7 +36,7 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | hapFilePaths | Array&lt;string&gt; | 是 | 待安装应用包路径数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -45,7 +49,7 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.MDMKit';
@@ -79,11 +83,9 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -102,7 +104,7 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | hapFilePaths | Array&lt;string&gt; | 是 | 待安装应用包路径数组。 |
 | installParam | InstallParam | 是 | 应用包安装参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -115,7 +117,7 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.MDMKit';

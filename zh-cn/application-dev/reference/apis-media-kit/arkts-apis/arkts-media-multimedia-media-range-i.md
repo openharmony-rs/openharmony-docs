@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface Range--><!--Device-unnamed-interface Range-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## max
 
@@ -23,10 +25,6 @@ max: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Range-max: int--><!--Device-Range-max: int-End-->
 
@@ -43,10 +41,6 @@ min: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Range-min: int--><!--Device-Range-min: int-End-->
 

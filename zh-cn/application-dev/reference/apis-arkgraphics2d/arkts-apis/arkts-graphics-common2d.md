@@ -1,28 +1,18 @@
 # @ohos.graphics.common2D
 
-/*
- Copyright (c) 2023 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
-
+本模块定义了一些2D图形领域的通用数据类型，包括颜色、矩形区域、坐标点等，适用于2D图形绘制等场景，为开发者提供了通用的图形数据结构，便于进行图形计算和渲染操作。 > **说明：** > > - 本模块使用屏幕物理像素单位px。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace common2D--><!--Device-unnamed-declare namespace common2D-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { common2D } from '@kit.ArkGraphics2D';
+```
 
 ## 汇总
 
@@ -33,6 +23,6 @@
 | [Color](arkts-arkgraphics2d-common2d-color-i.md) | ARGB格式的颜色描述。 |
 | [Color4f](arkts-arkgraphics2d-common2d-color4f-i.md) | ARGB格式的颜色描述，颜色分量值为0.0~1.0的浮点数。 |
 | [Point](arkts-arkgraphics2d-common2d-point-i.md) | 坐标点。 |
-| [Point3d](arkts-arkgraphics2d-common2d-point3d-i.md) | 三维的坐标点。继承自[Point](arkts-arkgraphics2d-common2d-point-i.md#point)。 |
+| [Point3d](arkts-arkgraphics2d-common2d-point3d-i.md) | 三维的坐标点。继承自[Point](arkts-arkgraphics2d-common2d-point-i.md)。 |
 | [Rect](arkts-arkgraphics2d-common2d-rect-i.md) | 矩形区域，通过左上角点和右下角点两个坐标点定义。 |
 

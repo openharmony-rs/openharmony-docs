@@ -1,5 +1,11 @@
 # offSessionServiceDie（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## offSessionServiceDie
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offSessionServiceDie(callback?: NoParamCallback): void
 Unregister Session service death callback, notifying the application to clean up resources.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function offSessionServiceDie(callback?: NoParamCallback): void--><!--Device-avSession-function offSessionServiceDie(callback?: NoParamCallback): void-End-->
 
@@ -33,7 +35,7 @@ Unregister Session service death callback, notifying the application to clean up
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.offSessionServiceDie();

@@ -1,5 +1,11 @@
 # getSimpleNumberFormatBySkeleton
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## getSimpleNumberFormatBySkeleton
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 通过框架字符串获取SimpleNumberFormat对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -39,7 +41,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.
 | --- | --- |
 | [8900001](../errorcode-i18n.md#8900001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -65,11 +67,9 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
 **废弃版本：** 20
 
-**替代接口：** [getSimpleNumberFormatBySkeleton](../../apis-na/arkts-apis/arkts-na-i18n-getsimplenumberformatbyskeleton-f.md#getsimplenumberformatbyskeleton)(skeleton: string, locale?: Intl.Locale)
+**替代接口：** [getSimpleNumberFormatBySkeleton](../../apis-na/arkts-apis/arkts-na-i18n-getsimplenumberformatbyskeleton-f.md)(skeleton: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -96,7 +96,7 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 | --- | --- |
 | [890001](../errorcode-i18n.md#890001-参数校验错误) | Invalid parameter. Possible causes: Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,5 +1,11 @@
 # setDragSwitchState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dragInteraction } from '@kit.ArkUI';
+```
+
 ## setDragSwitchState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setDragSwitchState(enabled: boolean): void
 控制统一拖拽功能总开关。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-dragInteraction-function setDragSwitchState(enabled: boolean): void--><!--Device-dragInteraction-function setDragSwitchState(enabled: boolean): void-End-->
 

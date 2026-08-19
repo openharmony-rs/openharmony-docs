@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum MaximizePresentation--><!--Device-window-enum MaximizePresentation-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ FOLLOW_APP_IMMERSIVE_SETTING = 0
 最大化时，跟随应用app当前设置的全屏模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ EXIT_IMMERSIVE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MaximizePresentation-EXIT_IMMERSIVE = 1--><!--Device-MaximizePresentation-EXIT_IMMERSIVE = 1-End-->
@@ -62,10 +50,6 @@ ENTER_IMMERSIVE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MaximizePresentation-ENTER_IMMERSIVE = 2--><!--Device-MaximizePresentation-ENTER_IMMERSIVE = 2-End-->
@@ -81,10 +65,6 @@ ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER = 3
 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

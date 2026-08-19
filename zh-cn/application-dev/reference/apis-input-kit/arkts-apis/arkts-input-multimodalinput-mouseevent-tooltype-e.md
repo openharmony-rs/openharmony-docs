@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum ToolType--><!--Device-unnamed-export declare enum ToolType-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -21,10 +17,6 @@ UNKNOWN = 0
 未知类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToolType-UNKNOWN = 0--><!--Device-ToolType-UNKNOWN = 0-End-->
 
@@ -40,10 +32,6 @@ MOUSE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToolType-MOUSE = 1--><!--Device-ToolType-MOUSE = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -58,10 +46,6 @@ JOYSTICK = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToolType-JOYSTICK = 2--><!--Device-ToolType-JOYSTICK = 2-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -75,10 +59,6 @@ TOUCHPAD = 3
 触控板。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToolType-TOUCHPAD = 3--><!--Device-ToolType-TOUCHPAD = 3-End-->
 

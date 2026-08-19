@@ -1,4 +1,4 @@
-# CAPI<!--c-asset-store-kit-->
+# C API<!--c-asset-store-kit-->
 
 - 头文件
     - [asset_api.h](capi-asset-api-h.md)

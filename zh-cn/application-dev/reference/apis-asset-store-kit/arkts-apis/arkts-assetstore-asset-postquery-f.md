@@ -1,18 +1,20 @@
 # postQuery
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## postQuery
 
 ```TypeScript
 function postQuery(handle: AssetMap): Promise<void>
 ```
 
-查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery)函数成对出现）。使用Promise异步回调。
+查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md)函数成对出现）。使用Promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function postQuery(handle: AssetMap): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 是 | 待处理的查询句柄，包含[asset.preQuery](arkts-assetstore-asset-prequery-f.md#prequery)执行成功返回的挑战值。 |
+| handle | [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 是 | 待处理的查询句柄，包含[asset.preQuery](arkts-assetstore-asset-prequery-f.md)执行成功返回的挑战值。 |
 
 **返回值：**
 
@@ -44,7 +46,7 @@ function postQuery(handle: AssetMap): Promise<void>
 | [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

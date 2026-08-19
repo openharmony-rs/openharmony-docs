@@ -1,20 +1,24 @@
 # steps
 
+## 导入模块
+
+```TypeScript
+import { curves } from '@kit.ArkUI';
+```
+
 ## steps
 
 ```TypeScript
 function steps(count: number, end: boolean): string
 ```
 
-构造阶梯曲线对象。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves. stepsCurve](arkts-arkui-curves-stepscurve-f.md#stepscurve)替代。
+构造阶梯曲线对象。 > **说明：** > > 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves. stepsCurve](arkts-arkui-curves-stepscurve-f.md)替代。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [stepsCurve](arkts-arkui-curves-stepscurve-f.md#stepscurve)
+**替代接口：** [stepsCurve](arkts-arkui-curves-stepscurve-f.md)
 
 <!--Device-curves-function steps(count: number, end: boolean): string--><!--Device-curves-function steps(count: number, end: boolean): string-End-->
 

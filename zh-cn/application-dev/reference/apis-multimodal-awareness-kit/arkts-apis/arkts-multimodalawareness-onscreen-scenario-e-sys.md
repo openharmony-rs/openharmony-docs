@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-onScreen-export enum Scenario--><!--Device-onScreen-export enum Scenario-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -21,10 +17,6 @@ UNKNOWN = 0
 表示屏上内容所处场景未知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scenario-UNKNOWN = 0--><!--Device-Scenario-UNKNOWN = 0-End-->
 
@@ -41,10 +33,6 @@ ARTICLE = 1
 表示屏上内容处于文章场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Scenario-ARTICLE = 1--><!--Device-Scenario-ARTICLE = 1-End-->
 

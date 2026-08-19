@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface RequestOptions--><!--Device-photoAccessHelper-interface RequestOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## compatibleMode
 
@@ -23,10 +25,6 @@ compatibleMode?: CompatibleMode
 **类型：** [CompatibleMode](arkts-medialibrary-photoaccesshelper-compatiblemode-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RequestOptions-compatibleMode?: CompatibleMode--><!--Device-RequestOptions-compatibleMode?: CompatibleMode-End-->
 
@@ -44,10 +42,6 @@ deliveryMode: DeliveryMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RequestOptions-deliveryMode: DeliveryMode--><!--Device-RequestOptions-deliveryMode: DeliveryMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +57,6 @@ mediaAssetProgressHandler?: MediaAssetProgressHandler
 **类型：** [MediaAssetProgressHandler](arkts-medialibrary-photoaccesshelper-mediaassetprogresshandler-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RequestOptions-mediaAssetProgressHandler?: MediaAssetProgressHandler--><!--Device-RequestOptions-mediaAssetProgressHandler?: MediaAssetProgressHandler-End-->
 

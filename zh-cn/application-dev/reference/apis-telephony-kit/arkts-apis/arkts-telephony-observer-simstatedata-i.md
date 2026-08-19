@@ -4,13 +4,15 @@ SIM卡类型和状态。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-export interface SimStateData--><!--Device-observer-export interface SimStateData-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
+
+## 导入模块
+
+```TypeScript
+import { observer } from '@kit.TelephonyKit';
+```
 
 ## reason
 
@@ -23,10 +25,6 @@ SIM卡锁类型。
 **类型：** [LockReason](arkts-telephony-observer-lockreason-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SimStateData-reason: LockReason--><!--Device-SimStateData-reason: LockReason-End-->
 
@@ -44,10 +42,6 @@ SIM卡状态。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SimStateData-state: SimState--><!--Device-SimStateData-state: SimState-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
@@ -63,10 +57,6 @@ SIM卡类型。
 **类型：** CardType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SimStateData-type: CardType--><!--Device-SimStateData-type: CardType-End-->
 

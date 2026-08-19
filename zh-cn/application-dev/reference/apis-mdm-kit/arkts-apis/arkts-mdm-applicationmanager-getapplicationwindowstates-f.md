@@ -1,5 +1,11 @@
 # getApplicationWindowStates
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## getApplicationWindowStates
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: n
 查询指定应用的窗口状态信息列表。可以查询到应用是否在底部Dock栏，以及当前应用窗口是否在前台显示等信息。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -28,7 +30,7 @@ function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: n
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 应用的包名。 |
-| appIndex | number | 是 | 应用分身索引，取值范围：大于等于0的整数。 <br> appIndex可以通过@ohos.bundle.bundleManager中的 [getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md#getappcloneidentity)等接口来获取。 |
+| appIndex | number | 是 | 应用分身索引，取值范围：大于等于0的整数。 <br> appIndex可以通过@ohos.bundle.bundleManager中的 [getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md)等接口来获取。 |
 
 **返回值：**
 
@@ -45,7 +47,7 @@ function getApplicationWindowStates(admin: Want, bundleName: string, appIndex: n
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { applicationManager } from '@kit.MDMKit';

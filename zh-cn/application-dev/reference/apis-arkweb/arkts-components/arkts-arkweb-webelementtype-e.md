@@ -4,10 +4,6 @@
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum WebElementType--><!--Device-unnamed-declare enum WebElementType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ IMAGE = 1
 网页元素为图像类型。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 <!--Device-WebElementType-IMAGE = 1--><!--Device-WebElementType-IMAGE = 1-End-->
 
@@ -40,10 +32,6 @@ LINK = 2
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebElementType-LINK = 2--><!--Device-WebElementType-LINK = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -57,10 +45,6 @@ TEXT = 3
 网页元素为文本或可编辑区域类型。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 <!--Device-WebElementType-TEXT = 3--><!--Device-WebElementType-TEXT = 3-End-->
 

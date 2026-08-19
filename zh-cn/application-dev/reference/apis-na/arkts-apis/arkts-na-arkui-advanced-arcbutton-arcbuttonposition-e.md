@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum ArcButtonPosition--><!--Device-unnamed-export declare enum ArcButtonPosition-End-->
 
@@ -22,9 +20,7 @@ TOP_EDGE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonPosition-TOP_EDGE = 0--><!--Device-ArcButtonPosition-TOP_EDGE = 0-End-->
 
@@ -40,9 +36,7 @@ BOTTOM_EDGE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonPosition-BOTTOM_EDGE = 1--><!--Device-ArcButtonPosition-BOTTOM_EDGE = 1-End-->
 

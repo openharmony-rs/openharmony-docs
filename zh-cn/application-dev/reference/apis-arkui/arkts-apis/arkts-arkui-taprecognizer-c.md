@@ -1,18 +1,19 @@
 # TapRecognizer
 
-点击手势识别器对象，继承自[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)。
+点击手势识别器对象，继承自[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)。
 
-**继承/实现关系：** TapRecognizer extends [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md#gesturerecognizer)
+**继承/实现关系：** TapRecognizer extends [GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class TapRecognizer--><!--Device-unnamed-declare class TapRecognizer-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## getTapCount
 
@@ -23,10 +24,6 @@ getTapCount(): number
 返回预设点击手势识别器连续点击次数阈值。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

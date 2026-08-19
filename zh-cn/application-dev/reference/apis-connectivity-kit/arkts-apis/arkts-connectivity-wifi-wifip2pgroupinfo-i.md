@@ -4,15 +4,22 @@ P2P群组信息。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md#wifip2pgroupinfo)
+**替代接口：** [WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md)
 
 <!--Device-wifi-interface WifiP2pGroupInfo--><!--Device-wifi-interface WifiP2pGroupInfo-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## clientDevices
 
@@ -25,8 +32,6 @@ clientDevices: WifiP2pDevice[]
 **类型：** WifiP2pDevice[]
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -48,8 +53,6 @@ frequency: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [frequency](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md#frequency)
@@ -69,8 +72,6 @@ goIpAddress: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -92,8 +93,6 @@ groupName: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [groupName](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md#groupname)
@@ -113,8 +112,6 @@ interface: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -136,8 +133,6 @@ isP2pGo: boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [isP2pGo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md#isp2pgo)
@@ -157,8 +152,6 @@ networkId: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -180,8 +173,6 @@ ownerInfo: WifiP2pDevice
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [ownerInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md#ownerinfo)
@@ -201,8 +192,6 @@ passphrase: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

@@ -1,4 +1,4 @@
-# CAPI<!--c-drm-kit-->
+# C API<!--c-drm-kit-->
 
 - 头文件
     - [native_mediakeysession.h](capi-native-mediakeysession-h.md)

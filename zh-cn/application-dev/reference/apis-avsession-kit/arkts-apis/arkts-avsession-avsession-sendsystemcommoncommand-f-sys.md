@@ -1,5 +1,11 @@
 # sendSystemCommonCommand（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## sendSystemCommonCommand
 
 ```TypeScript
@@ -9,10 +15,6 @@ function sendSystemCommonCommand(command: string, args: ExtraInfo): Promise<stri
 发送通用事件命令
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 

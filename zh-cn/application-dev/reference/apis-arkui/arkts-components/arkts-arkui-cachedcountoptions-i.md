@@ -4,13 +4,14 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface CachedCountOptions--><!--Device-unnamed-declare interface CachedCountOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## independent
 
@@ -25,10 +26,6 @@ cachedCount是否按实际子组件个数计算。 设置为true时，cachedCoun
 **默认值：** false
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,10 +50,6 @@ isShown?: boolean
 **默认值：** false
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

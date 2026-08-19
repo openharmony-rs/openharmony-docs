@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-reminderAgentManager-interface WantAgent--><!--Device-reminderAgentManager-interface WantAgent-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## abilityName
 
@@ -24,10 +26,6 @@ abilityName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WantAgent-abilityName: string--><!--Device-WantAgent-abilityName: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -40,13 +38,9 @@ parameters?: RecordData
 
 The description of the WantParams object in an Want
 
-**类型：** [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)
+**类型：** [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WantAgent-parameters?: RecordData--><!--Device-WantAgent-parameters?: RecordData-End-->
 
@@ -64,10 +58,6 @@ pkgName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WantAgent-pkgName: string--><!--Device-WantAgent-pkgName: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -83,10 +73,6 @@ uri?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WantAgent-uri?: string--><!--Device-WantAgent-uri?: string-End-->
 

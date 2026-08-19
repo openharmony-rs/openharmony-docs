@@ -1,18 +1,20 @@
 # hash
 
+## 导入模块
+
+```TypeScript
+import { hash } from '@kit.CoreFileKit';
+```
+
 ## hash
 
 ```TypeScript
 function hash(path: string, algorithm: string): Promise<string>
 ```
 
-计算文件的哈希值，使用Promise异步回调。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用Promise异步回调。 > **说明：** > > 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用HashStream流式计算。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -24,14 +26,14 @@ function hash(path: string, algorithm: string): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 待计算哈希值文件的应用沙箱路径。 |
-| algorithm | string | 是 | 哈希计算采用的算法。可选?"md5"、"sha1"?或?"sha256"。建议采用安全强度更高的?"sha256"。 |
+| path | string | 是 | 待计算哈希值文件的应用沙箱路径。文件必须存在且可读。 |
+| algorithm | string | 是 | 哈希计算采用的算法。可选 "md5"、"sha1" 或 "sha256"。建议采用安全强度更高的 "sha256"。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象。返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
+| Promise&lt;string&gt; | Promise对象，返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
 
 **错误码：**
 
@@ -40,7 +42,7 @@ function hash(path: string, algorithm: string): Promise<string>
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -60,13 +62,9 @@ hash.hash(filePath, "sha256").then((str: string) => {
 function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void
 ```
 
-计算文件的哈希值，使用callback异步回调。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用callback异步回调。 > **说明：** > > 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用HashStream流式计算。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -78,9 +76,9 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 待计算哈希值文件的应用沙箱路径。 |
-| algorithm | string | 是 | 哈希计算采用的算法。可选?"md5"、"sha1"?或?"sha256"。建议采用安全强度更高的?"sha256"。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 异步计算文件哈希操作之后的回调函数（其中给定文件哈希值表示为十六进制数字串，所有字母均大写）。 |
+| path | string | 是 | 待计算哈希值文件的应用沙箱路径。文件必须存在且可读。 |
+| algorithm | string | 是 | 哈希计算采用的算法。可选 "md5"、"sha1" 或 "sha256"。建议采用安全强度更高的 "sha256"。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回哈希值（哈希值表示为十六进制数字串，所有字母均大写）。 |
 
 **错误码：**
 
@@ -89,7 +87,7 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,5 +1,11 @@
 # getBundleInstallStatus（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getBundleInstallStatus
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundleInstallStatus(bundleName: string): BundleInstallStatus
 查询当前用户下指定应用的安装状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -41,7 +43,7 @@ function getBundleInstallStatus(bundleName: string): BundleInstallStatus
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

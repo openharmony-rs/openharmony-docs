@@ -4,10 +4,6 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum LinkParamCategory--><!--Device-unnamed-declare enum LinkParamCategory-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ LINK = 'link'
 表示意图参数类别为'link'。意图参数将被拼接到uri链接的末尾，以uri链接的形式传给应用。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,13 +32,9 @@ LINK = 'link'
 WANT = 'want'
 ```
 
-表示意图参数类别为'want'。意图参数将通过[Want](arkts-ability-app-ability-want-want-c.md#want)的parameters字段传给应用。
+表示意图参数类别为'want'。意图参数将通过[Want](arkts-ability-app-ability-want-want-c.md)的parameters字段传给应用。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

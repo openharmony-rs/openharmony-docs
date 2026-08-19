@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-proxyChannelManager-interface DataInfo--><!--Device-proxyChannelManager-interface DataInfo-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## 导入模块
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+```
 
 ## channelId
 
@@ -23,10 +25,6 @@ channelId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +43,6 @@ data: ArrayBuffer
 **类型：** ArrayBuffer
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

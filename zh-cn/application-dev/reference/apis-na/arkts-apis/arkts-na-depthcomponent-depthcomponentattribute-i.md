@@ -6,9 +6,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare interface DepthComponentAttribute--><!--Device-unnamed-export declare interface DepthComponentAttribute-End-->
 
@@ -24,9 +22,7 @@ camera(camera: DepthCameraParams): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DepthComponentAttribute-camera(camera: DepthCameraParams): this--><!--Device-DepthComponentAttribute-camera(camera: DepthCameraParams): this-End-->
 
@@ -50,9 +46,7 @@ depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DepthComponentAttribute-depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback): this--><!--Device-DepthComponentAttribute-depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback): this-End-->
 
@@ -77,9 +71,7 @@ light(light: DepthLightParams): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DepthComponentAttribute-light(light: DepthLightParams): this--><!--Device-DepthComponentAttribute-light(light: DepthLightParams): this-End-->
 
@@ -103,9 +95,7 @@ onComplete(callback: DepthComponentCompleteCallback): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DepthComponentAttribute-onComplete(callback: DepthComponentCompleteCallback): this--><!--Device-DepthComponentAttribute-onComplete(callback: DepthComponentCompleteCallback): this-End-->
 
@@ -129,9 +119,7 @@ onError(callback: DepthComponentErrorCallback): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DepthComponentAttribute-onError(callback: DepthComponentErrorCallback): this--><!--Device-DepthComponentAttribute-onError(callback: DepthComponentErrorCallback): this-End-->
 
@@ -155,9 +143,7 @@ setDepthComponentOptions(background: ResourceStr | PixelMap, options?: DepthComp
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DepthComponentAttribute-setDepthComponentOptions(background: ResourceStr | PixelMap, options?: DepthComponentOptions): this--><!--Device-DepthComponentAttribute-setDepthComponentOptions(background: ResourceStr | PixelMap, options?: DepthComponentOptions): this-End-->
 

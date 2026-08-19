@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface EllipseAttribute--><!--Device-unnamed-export declare interface EllipseAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<EllipseAttribute> | AttributeModif
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-EllipseAttribute-attributeModifier(modifier: AttributeModifier<EllipseAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-EllipseAttribute-attributeModifier(modifier: AttributeModifier<EllipseAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ setEllipseOptions(options?: EllipseOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-EllipseAttribute-setEllipseOptions(options?: EllipseOptions): this--><!--Device-EllipseAttribute-setEllipseOptions(options?: EllipseOptions): this-End-->
 
@@ -76,9 +70,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

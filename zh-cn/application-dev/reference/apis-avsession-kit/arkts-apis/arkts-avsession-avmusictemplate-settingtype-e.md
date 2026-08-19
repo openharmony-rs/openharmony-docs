@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avMusicTemplate-enum SettingType--><!--Device-avMusicTemplate-enum SettingType-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -21,10 +17,6 @@ SWITCH = 0
 开关设置，用于控制功能的开启或关闭。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ LIST = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SettingType-LIST = 1--><!--Device-SettingType-LIST = 1-End-->
@@ -61,10 +49,6 @@ JUMP = 2
 跳转设置，用于跳转到另一个界面。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

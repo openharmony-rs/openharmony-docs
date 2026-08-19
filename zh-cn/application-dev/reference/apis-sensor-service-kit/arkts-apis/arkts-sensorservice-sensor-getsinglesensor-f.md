@@ -1,5 +1,11 @@
 # getSingleSensor
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## getSingleSensor
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getSingleSensor(type: SensorId, callback: AsyncCallback<Sensor>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function getSingleSensor(type: SensorId, callback: AsyncCallback<Sensor>): void--><!--Device-sensor-function getSingleSensor(type: SensorId, callback: AsyncCallback<Sensor>): void-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -23,7 +25,7 @@ function getSingleSensor(type: SensorId, callback: AsyncCallback<Sensor>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [SensorId](arkts-sensorservice-sensor-sensorid-e.md) | 是 | 指定传感器类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Sensor&gt; | 是 | 回调函数，异步返回指定传感器的属性信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Sensor&gt; | 是 | 回调函数，异步返回指定传感器的属性信息。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function getSingleSensor(type: SensorId, callback: AsyncCallback<Sensor>): void
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [14500102](../errorcode-sensor.md#14500102-设备不支持该传感器) | The sensor is not supported by the device.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sensor } from '@kit.SensorServiceKit';
@@ -73,10 +75,6 @@ function getSingleSensor(type: SensorId): Promise<Sensor>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function getSingleSensor(type: SensorId): Promise<Sensor>--><!--Device-sensor-function getSingleSensor(type: SensorId): Promise<Sensor>-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -101,7 +99,7 @@ function getSingleSensor(type: SensorId): Promise<Sensor>
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [14500102](../errorcode-sensor.md#14500102-设备不支持该传感器) | The sensor is not supported by the device.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sensor } from '@kit.SensorServiceKit';

@@ -1,5 +1,11 @@
 # onAttachStateChange
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## onAttachStateChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ Subscribes to device attachment state change events.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-function onAttachStateChange(callback: Callback<AttachStateChangeInfo>): void--><!--Device-mechanicManager-function onAttachStateChange(callback: Callback<AttachStateChangeInfo>): void-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -22,7 +24,7 @@ Subscribes to device attachment state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AttachStateChangeInfo](arkts-mechanic-mechanicmanager-attachstatechangeinfo-i.md)&gt; | 是 | Callback used to return the state change. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AttachStateChangeInfo](arkts-mechanic-mechanicmanager-attachstatechangeinfo-i.md)&gt; | 是 | Callback used to return the state change. |
 
 **错误码：**
 

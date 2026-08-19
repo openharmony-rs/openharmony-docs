@@ -1,18 +1,11 @@
-# @ohos.multimodalInput.inputEvent(Input Event)
+# @ohos.multimodalInput.inputEvent(输入事件)
 
-/*
- Copyright (c) 2022 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
+## 导入模块
 
+```TypeScript
+import { InputEvent } from '@kit.InputKit';
+import { inputEventClient } from '@kit.InputKit';
+```
 
 ## 汇总
 
@@ -20,5 +13,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md) | 设备上报的基本事件。 |
+| [InputEvent(输入事件)](arkts-input-multimodalinput-inputevent-inputevent-i.md) | 输入事件。 |
 

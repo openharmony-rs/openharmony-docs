@@ -4,13 +4,16 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 10
 
 <!--Device-unnamed-export interface FileReadTextResponse--><!--Device-unnamed-export interface FileReadTextResponse-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
+
+## 导入模块
+
+```TypeScript
+```
 
 ## text
 
@@ -23,8 +26,6 @@ text: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 10
 

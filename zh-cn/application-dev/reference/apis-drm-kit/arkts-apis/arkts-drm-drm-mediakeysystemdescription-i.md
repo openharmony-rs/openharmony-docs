@@ -1,16 +1,18 @@
-# MediaKeySystemDescription
+# MediaKeySystemDescription(Defines the DRM capability.)
 
 插件信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drm-interface MediaKeySystemDescription--><!--Device-drm-interface MediaKeySystemDescription-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
+
+## 导入模块
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+```
 
 ## name
 
@@ -23,10 +25,6 @@ Name of DRM plugin.
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ UUID supported by DRM plugin.
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 

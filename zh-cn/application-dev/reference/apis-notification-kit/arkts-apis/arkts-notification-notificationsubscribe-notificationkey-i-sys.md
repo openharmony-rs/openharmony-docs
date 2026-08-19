@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationSubscribe-export interface NotificationKey--><!--Device-notificationSubscribe-export interface NotificationKey-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -17,7 +13,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from 'notificationSubscribe';
+import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
 ## id
@@ -31,10 +27,6 @@ id: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationKey-id: int--><!--Device-NotificationKey-id: int-End-->
 
@@ -53,10 +45,6 @@ label?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationKey-label?: string--><!--Device-NotificationKey-label?: string-End-->
 

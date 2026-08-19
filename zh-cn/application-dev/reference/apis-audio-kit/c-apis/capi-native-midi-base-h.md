@@ -170,7 +170,7 @@ typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChan
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*userData | The user context pointer passed to {@link #OH_MIDIClient_Create}. |
+| void \*userData | The user context pointer passed to {@link #OH_MIDIClient_Create}. |
 | [OH_MIDIDeviceChangeAction](capi-native-midi-base-h.md#oh_mididevicechangeaction) action | 设备变化操作（已连接/已断开）。 |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) deviceInfo | 变化设备的信息。 |
 
@@ -194,7 +194,7 @@ typedef void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *eve
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*userData | The user context pointer passed to {@link #OH_MIDIDevice_OpenInputPort}. |
+| void \*userData | The user context pointer passed to {@link #OH_MIDIDevice_OpenInputPort}. |
 | [const OH_MIDIEvent](capi-ohmidi-oh-midievent.md) \*events | Pointer to the array of MIDI events received. |
 | size_t eventCount | 数组中的事件数。 |
 
@@ -214,7 +214,7 @@ typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*userData | The user context pointer passed to {@link #OH_MIDIClient_Create}. |
+| void \*userData | The user context pointer passed to {@link #OH_MIDIClient_Create}. |
 | [OH_MIDIStatusCode](capi-native-midi-base-h.md#oh_midistatuscode) code | 错误状态码，指示错误原因。 |
 
 ### OH_MIDIClient_OnDeviceOpened()
@@ -233,7 +233,7 @@ typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MID
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*userData | The user context pointer passed to {@link #OH_MIDIClient_OpenBLEDevice}. |
+| void \*userData | The user context pointer passed to {@link #OH_MIDIClient_OpenBLEDevice}. |
 | bool opened | 设备是否成功打开。<br>true表示设备成功打开，设备句柄有效；false表示设备打开失败，设备句柄为NULL。 |
 | [OH_MIDIDevice](capi-ohmidi-oh-mididevicestruct.md) \*device | The handle of the opened device.If opened is true, the application MUST close this handle using{@link #OH_MIDIClient_CloseDevice} when it is no longer needed.If opened is false, this parameter is NULL. |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) info | 已打开设备的信息。<br>*注意：** 此对象仅在此回调范围内有效。如需持久化特定属性（如ID或名称），请对该设备信息进行复制。 |

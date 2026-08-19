@@ -1,16 +1,18 @@
 # VibratorInfo
 
-表示查询的马达信息。通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md#getvibratorinfosync)返回此对象，用于获取设备马达能力和选择合适的马达触发振动。
+表示查询的马达信息。通过[vibrator.getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)返回此对象，用于获取设备马达能力和选择合适的马达触发振动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-vibrator-interface VibratorInfo--><!--Device-vibrator-interface VibratorInfo-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
+
+## 导入模块
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+```
 
 ## deviceId
 
@@ -18,15 +20,11 @@
 deviceId: int
 ```
 
-设备ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标设备。
+设备ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)等接口指定目标设备。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorInfo-deviceId: int--><!--Device-VibratorInfo-deviceId: int-End-->
 
@@ -44,10 +42,6 @@ deviceName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VibratorInfo-deviceName: string--><!--Device-VibratorInfo-deviceName: string-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -63,10 +57,6 @@ isHdHapticSupported: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorInfo-isHdHapticSupported: boolean--><!--Device-VibratorInfo-isHdHapticSupported: boolean-End-->
 
@@ -84,10 +74,6 @@ isLocalVibrator: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VibratorInfo-isLocalVibrator: boolean--><!--Device-VibratorInfo-isLocalVibrator: boolean-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -98,15 +84,11 @@ isLocalVibrator: boolean
 vibratorId: int
 ```
 
-马达ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标马达。
+马达ID。可用于 [startVibration](arkts-sensorservice-vibrator-startvibration-f.md) 和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)等接口指定目标马达。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorInfo-vibratorId: int--><!--Device-VibratorInfo-vibratorId: int-End-->
 

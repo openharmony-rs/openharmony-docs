@@ -1,16 +1,19 @@
 # Stream
 
-文件流，提供流式读写文件数据的能力，使用完毕后需调用close关闭。在调用Stream的方法前，需要先通过[fileIo.createStream](arkts-na-fileio-createstream-f.md#createstream)方法或者 [fileIo.fdopenStream](arkts-na-fileio-fdopenstream-f.md#fdopenstream)（同步或异步）来构建一个Stream实例。
+文件流，提供流式读写文件数据的能力，使用完毕后需调用close关闭。在调用Stream的方法前，需要先通过[fileIo.createStream](arkts-na-fileio-createstream-f.md)方法或者 [fileIo.fdopenStream](arkts-na-fileio-fdopenstream-f.md)（同步或异步）来构建一个Stream实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-interface Stream--><!--Device-fileIo-interface Stream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## close
 
@@ -22,9 +25,7 @@ close(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-close(): Promise<void>--><!--Device-Stream-close(): Promise<void>-End-->
 
@@ -57,9 +58,7 @@ close(callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-close(callback: AsyncCallback<void>): void--><!--Device-Stream-close(callback: AsyncCallback<void>): void-End-->
 
@@ -69,7 +68,7 @@ close(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当关闭文件流成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当关闭文件流成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -92,9 +91,7 @@ closeSync(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-closeSync(): void--><!--Device-Stream-closeSync(): void-End-->
 
@@ -121,9 +118,7 @@ flush(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-flush(): Promise<void>--><!--Device-Stream-flush(): Promise<void>-End-->
 
@@ -162,9 +157,7 @@ flush(callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-flush(callback: AsyncCallback<void>): void--><!--Device-Stream-flush(callback: AsyncCallback<void>): void-End-->
 
@@ -174,7 +167,7 @@ flush(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当刷新文件流成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当刷新文件流成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -203,9 +196,7 @@ flushSync(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-flushSync(): void--><!--Device-Stream-flushSync(): void-End-->
 
@@ -241,9 +232,7 @@ read(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<long>--><!--Device-Stream-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<long>-End-->
 
@@ -287,9 +276,7 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<long>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-read(buffer: ArrayBuffer, callback: AsyncCallback<long>): void--><!--Device-Stream-read(buffer: ArrayBuffer, callback: AsyncCallback<long>): void-End-->
 
@@ -300,7 +287,7 @@ read(buffer: ArrayBuffer, callback: AsyncCallback<long>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回读取的结果，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -330,9 +317,7 @@ read(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<long>  ): void--><!--Device-Stream-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<long>  ): void-End-->
 
@@ -344,7 +329,7 @@ read(
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于读取文件的缓冲区。 |
 | options | [ReadOptions](arkts-na-file-fs-readoptions-i.md) | 是 | 支持如下选项：<br/>- length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset， number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回读取的结果，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -373,9 +358,7 @@ readSync(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): long--><!--Device-Stream-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): long-End-->
 
@@ -422,9 +405,7 @@ write(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<long>--><!--Device-Stream-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<long>-End-->
 
@@ -470,9 +451,7 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<long>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-write(buffer: ArrayBuffer | string, callback: AsyncCallback<long>): void--><!--Device-Stream-write(buffer: ArrayBuffer | string, callback: AsyncCallback<long>): void-End-->
 
@@ -483,7 +462,7 @@ write(buffer: ArrayBuffer | string, callback: AsyncCallback<long>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -516,9 +495,7 @@ write(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<long>  ): void--><!--Device-Stream-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<long>  ): void-End-->
 
@@ -530,7 +507,7 @@ write(
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
 | options | [WriteOptions](arkts-na-file-fs-writeoptions-i.md) | 是 | 支持如下选项：<br/>- length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- offset， number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式， 默认 'utf-8'。仅支持 'utf-8'。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -562,9 +539,7 @@ writeSync(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-Stream-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): long--><!--Device-Stream-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): long-End-->
 

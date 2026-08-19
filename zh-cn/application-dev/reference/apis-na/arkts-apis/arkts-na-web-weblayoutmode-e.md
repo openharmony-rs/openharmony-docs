@@ -4,9 +4,7 @@ Enum type supplied to layoutMode for setting the web layout mode.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum WebLayoutMode--><!--Device-unnamed-export declare enum WebLayoutMode-End-->
 
@@ -22,9 +20,7 @@ Web layout follows the system.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebLayoutMode-NONE = 0--><!--Device-WebLayoutMode-NONE = 0-End-->
 
@@ -40,9 +36,7 @@ Adaptive web layout based on page size.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebLayoutMode-FIT_CONTENT = 1--><!--Device-WebLayoutMode-FIT_CONTENT = 1-End-->
 

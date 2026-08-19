@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-windowAnimationManager-export interface WindowAnimationFinishedCallback--><!--Device-windowAnimationManager-export interface WindowAnimationFinishedCallback-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { windowAnimationManager } from '@kit.ArkUI';
+```
 
 ## onAnimationFinish
 
@@ -24,17 +26,13 @@ onAnimationFinish(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WindowAnimationFinishedCallback-onAnimationFinish(): void--><!--Device-WindowAnimationFinishedCallback-onAnimationFinish(): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 请参考windowAnimationManager.setController的示例代码。
 

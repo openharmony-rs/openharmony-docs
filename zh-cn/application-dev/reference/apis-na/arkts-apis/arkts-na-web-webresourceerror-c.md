@@ -4,9 +4,7 @@ Defines the Web resource error.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class WebResourceError--><!--Device-unnamed-export declare class WebResourceError-End-->
 
@@ -22,9 +20,7 @@ Constructor.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebResourceError-constructor()--><!--Device-WebResourceError-constructor()-End-->
 
@@ -40,9 +36,7 @@ Gets the code of the Web resource error.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebResourceError-getErrorCode(): int--><!--Device-WebResourceError-getErrorCode(): int-End-->
 
@@ -64,9 +58,7 @@ Gets the info of the Web resource error.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebResourceError-getErrorInfo(): string--><!--Device-WebResourceError-getErrorInfo(): string-End-->
 

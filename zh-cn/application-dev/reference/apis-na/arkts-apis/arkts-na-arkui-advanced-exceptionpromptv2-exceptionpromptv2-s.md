@@ -4,13 +4,16 @@ Declare struct ExceptionPromptV2 higher-order component. The exception prompt co
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare struct ExceptionPromptV2--><!--Device-unnamed-export declare struct ExceptionPromptV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## build
 
@@ -23,9 +26,7 @@ The method to build component.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,13 +43,11 @@ The method to build component.
 
 Callback invoked when the icon on the right is clicked.
 
-**类型：** [OnActionTextClickCallback](arkts-na-onactiontextclickcallback-t.md)
+**类型：** [OnActionTextClickCallback](../../apis-arkui/arkts-apis/arkts-arkui-onactiontextclickcallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -65,13 +64,11 @@ Callback invoked when the icon on the right is clicked.
 
 Callback invoked when the prompt text on the left is clicked.
 
-**类型：** [OnTipClickCallback](arkts-na-ontipclickcallback-t.md)
+**类型：** [OnTipClickCallback](../../apis-arkui/arkts-apis/arkts-arkui-ontipclickcallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,13 +85,11 @@ Callback invoked when the prompt text on the left is clicked.
 
 ExceptionPromptV2 configuration.
 
-**类型：** [PromptOptionsV2](arkts-na-arkui-advanced-exceptionpromptv2-promptoptionsv2-c.md)
+**类型：** [PromptOptionsV2](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-exceptionpromptv2-promptoptionsv2-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

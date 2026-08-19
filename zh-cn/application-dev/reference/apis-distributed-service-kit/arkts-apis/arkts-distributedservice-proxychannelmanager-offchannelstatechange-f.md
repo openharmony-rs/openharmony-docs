@@ -1,18 +1,20 @@
 # offChannelStateChange
 
+## 导入模块
+
+```TypeScript
+import { proxyChannelManager } from '@kit.DistributedServiceKit';
+```
+
 ## offChannelStateChange
 
 ```TypeScript
 function offChannelStateChange(channelId: int, callback?: Callback<ChannelStateInfo>): void
 ```
 
-取消订阅通道状态事件。适用于手机侧应用不再需要监听代理通道连接状态变化的场景，例如用户退出相关业务页面、完成数据传输流程后等。必须在 [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md#openproxychannel)成功打开代理通道后才能取消订阅。此方法必须与 [on('channelStateChange')](arkts-distributedservice-proxychannelmanager-onreceivedata-f.md#onreceivedata) 配对使用，用于取消之前通过on('channelStateChange')注册的通道状态回调。
+取消订阅通道状态事件。适用于手机侧应用不再需要监听代理通道连接状态变化的场景，例如用户退出相关业务页面、完成数据传输流程后等。必须在 [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md)成功打开代理通道后才能取消订阅。此方法必须与 [on('channelStateChange')](arkts-distributedservice-proxychannelmanager-onreceivedata-f.md) 配对使用，用于取消之前通过on('channelStateChange')注册的通道状态回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -27,7 +29,7 @@ function offChannelStateChange(channelId: int, callback?: Callback<ChannelStateI
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | channelId | int | 是 | 打开代理通道时获取的channelId，取值范围为1~2147483647。使用无效或已关闭的channelId将返回错误码32390004，超出取值范围时返回错误码32 390006。channelId仅在代理通道可用时生效，通道关闭或断连后将不可用。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)&gt; | 否 | 注册的回调函数。默认效果：不传入此参数时取消订阅所有的通道状态事件。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅； 传入其他回调函数不会生效。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)&gt; | 否 | 注册的回调函数。默认效果：不传入此参数时取消订阅所有的通道状态事件。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅； 传入其他回调函数不会生效。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function offChannelStateChange(channelId: int, callback?: Callback<ChannelStateI
 | [32390100](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390100-内部异常) | Internal error. |
 | [32390101](../../apis-distributedservice-kit/errorcode-proxyChannelManager.md#32390101-调用受限) | Call is restricted. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import proxyChannelManager from '@ohos.distributedsched.proxyChannelManager';

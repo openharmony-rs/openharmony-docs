@@ -1,5 +1,10 @@
 # startBackgroundRunning
 
+## 导入模块
+
+```TypeScript
+```
+
 ## startBackgroundRunning
 
 ```TypeScript
@@ -10,11 +15,9 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -26,12 +29,12 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#context)。 |
+| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | bgMode | BackgroundMode | 是 | 向系统申请的后台模式。 |
 | wantAgent | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md) | 是 | 通知参数，用于指定长时任务通知点击后跳转的界面。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，申请长时任务成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，申请长时任务成功时，err为undefined，否则为错误对象。 |
 
-## 示例
+**示例**
 
 FA模型示例：
 
@@ -118,11 +121,9 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent)
+**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -134,7 +135,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#context)。 |
+| context | Context | 是 | 应用运行的上下文。<br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | bgMode | BackgroundMode | 是 | 向系统申请的后台模式。 |
 | wantAgent | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md) | 是 | 通知参数，用于指定长时任务通知点击跳转的界面。 |
 
@@ -144,7 +145,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-## 示例
+**示例**
 
 FA模型示例（需使用js代码开发）：
 

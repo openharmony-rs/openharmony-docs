@@ -1,5 +1,11 @@
 # capture（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { onScreen } from '@kit.MultimodalAwarenessKit';
+```
+
 ## capture
 
 ```TypeScript
@@ -10,10 +16,6 @@ function capture(capability: OnscreenAwarenessCap,
 主动触发屏幕内容感知，获取页面信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本26.0.0+：ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS
@@ -45,8 +47,8 @@ function capture(capability: OnscreenAwarenessCap,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Function can not work correctly due to limited <br> device capabilities. |
-| [34000002](../../apis-multimodalawareness-kit/errorcode-onScreen.md#34000002-应用或页面不支持) | The application or page is not supported. |
-| [34000001](../../apis-multimodalawareness-kit/errorcode-onScreen.md#34000001-服务异常) | Service exception. |
+| [34000002](../../apis-multimodalawareness-kit/errorcode-carAwareness.md#34000002-指定能力不支持) | The application or page is not supported. |
+| [34000001](../../apis-multimodalawareness-kit/errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. An attempt was made to get page content forbidden by <br> permission: ohos.permission.GET_SCREEN_CONTENT or ohos.permission.ONSCREEN_AWARENESS. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API. |
 

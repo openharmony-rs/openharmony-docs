@@ -81,7 +81,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Create(OH_AVSession_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：参数builder为nullptr。<br>         AVQUEUEITEM_ERROR_NO_MEMORY：内存不足。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：参数builder为nullptr。\n          AVQUEUEITEM_ERROR_NO_MEMORY：内存不足。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_Destroy()
 
@@ -105,7 +105,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Destroy(OH_AVSession_A
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：参数builder为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetAssetId()
 
@@ -130,7 +130,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAssetId(OH_AVSessio
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数assetId为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数assetId为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetTitle()
 
@@ -155,7 +155,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetTitle(OH_AVSession_
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数title为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数title为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetSubTitle()
 
@@ -180,7 +180,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetSubTitle(OH_AVSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数subtitle为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数subtitle为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetArtist()
 
@@ -205,7 +205,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetArtist(OH_AVSession
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数artist为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数artist为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetAlbumCoverUri()
 
@@ -230,7 +230,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAlbumCoverUri(OH_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数albumCoverUri为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数albumCoverUri为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetMediaType()
 
@@ -255,7 +255,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetMediaType(OH_AVSess
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数mediaType为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数mediaType为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetLyricContent()
 
@@ -280,7 +280,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetLyricContent(OH_AVS
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数lyricContent为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数lyricContent为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetDuration()
 
@@ -305,7 +305,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetDuration(OH_AVSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数duration为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数duration为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetMediaUri()
 
@@ -330,7 +330,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetMediaUri(OH_AVSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数mediaUri为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数mediaUri为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetStartPosition()
 
@@ -355,7 +355,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetStartPosition(OH_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数startPosition是无效的。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数startPosition是无效的。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetMediaSize()
 
@@ -380,7 +380,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetMediaSize(OH_AVSess
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数mediaSize是无效的。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数mediaSize是无效的。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetAlbumTitle()
 
@@ -405,7 +405,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAlbumTitle(OH_AVSes
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数albumTitle为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数albumTitle为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetAppName()
 
@@ -430,7 +430,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAppName(OH_AVSessio
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数appName为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数appName为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetAssetId()
 
@@ -455,7 +455,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAssetId(OH_AVSession_AVMed
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数assetId为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数assetId为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetTitle()
 
@@ -480,7 +480,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetTitle(OH_AVSession_AVMedia
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数title为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数title为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetSubtitle()
 
@@ -505,7 +505,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetSubtitle(OH_AVSession_AVMe
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数subtitle为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数subtitle为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetArtist()
 
@@ -530,7 +530,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetArtist(OH_AVSession_AVMedi
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数artist为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数artist为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetAlbumCoverUri()
 
@@ -555,7 +555,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAlbumCoverUri(OH_AVSession
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数albumCoverUri为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数albumCoverUri为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetMediaType()
 
@@ -580,7 +580,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetMediaType(OH_AVSession_AVM
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数mediaType为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数mediaType为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetLyricContent()
 
@@ -605,7 +605,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetLyricContent(OH_AVSession_
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数lyricContent为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数lyricContent为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetDuration()
 
@@ -630,7 +630,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetDuration(OH_AVSession_AVMe
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数duration为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数duration为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetMediaUri()
 
@@ -655,7 +655,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetMediaUri(OH_AVSession_AVMe
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数mediaUri为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数mediaUri为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetStartPosition()
 
@@ -680,7 +680,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetStartPosition(OH_AVSession
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数startPosition为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数startPosition为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetMediaSize()
 
@@ -705,7 +705,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetMediaSize(OH_AVSession_AVM
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数mediaSize为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数mediaSize为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetAlbumTitle()
 
@@ -730,7 +730,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAlbumTitle(OH_AVSession_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数albumTitle为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数albumTitle为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_GetAppName()
 
@@ -755,7 +755,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAppName(OH_AVSession_AVMed
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数description为nullptr。<br>                                        2. 参数appName为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数description为nullptr。\n                                         2. 参数appName为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_GenerateAVMediaDescription()
 
@@ -780,7 +780,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_GenerateAVMediaDescrip
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_NO_MEMORY：内存不足。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数avMediaDescription为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_NO_MEMORY：内存不足。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：\n                                         1. 参数builder为nullptr。\n                                         2. 参数avMediaDescription为nullptr。 |
 
 ### OH_AVSession_AVMediaDescription_Destroy()
 
@@ -804,6 +804,6 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_Destroy(OH_AVSession_AVMediaD
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：参数avMediaDescription为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。\n          AVQUEUEITEM_ERROR_INVALID_PARAM：参数avMediaDescription为nullptr。 |
 
 

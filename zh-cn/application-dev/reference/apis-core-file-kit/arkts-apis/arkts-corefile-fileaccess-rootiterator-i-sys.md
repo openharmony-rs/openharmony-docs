@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 <!--Device-fileAccess-interface RootIterator--><!--Device-fileAccess-interface RootIterator-End-->
@@ -13,6 +11,12 @@
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { fileAccess } from '@kit.CoreFileKit';
+```
 
 ## next
 
@@ -23,8 +27,6 @@ next(): { value: RootInfo, done: boolean }
 通过next同步方法获取下一级设备根目录。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 

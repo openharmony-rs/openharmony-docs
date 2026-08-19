@@ -1,5 +1,11 @@
 # cleanBundleCacheFiles（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -9,10 +15,6 @@ function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>
 根据给定的bundleName清理BundleCache。使用callback异步回调。 调用方清理自身缓存数据时不需要权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.REMOVE_CACHE_FILES
 
@@ -27,7 +29,7 @@ function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要清理其缓存数据的应用程序的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，当清理应用缓存目录数据成功，err为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当清理应用缓存目录数据成功，err为 undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -73,10 +75,6 @@ function cleanBundleCacheFiles(bundleName: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.REMOVE_CACHE_FILES
 
 <!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string): Promise<void>--><!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string): Promise<void>-End-->
@@ -107,7 +105,7 @@ function cleanBundleCacheFiles(bundleName: string): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -164,10 +162,6 @@ function cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.REMOVE_CACHE_FILES
 
 <!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise<void>--><!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise<void>-End-->
@@ -200,7 +194,7 @@ function cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

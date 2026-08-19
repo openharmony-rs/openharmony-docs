@@ -1,5 +1,11 @@
 # getVMRuntimeStat
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getVMRuntimeStat
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getVMRuntimeStat(item: string): long
 根据参数获取指定的系统GC统计信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getVMRuntimeStat(item: string): long--><!--Device-hidebug-function getVMRuntimeStat(item: string): long-End-->
 
@@ -36,7 +38,7 @@ function getVMRuntimeStat(item: string): long
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Possible causes: 1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

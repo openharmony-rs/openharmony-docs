@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioRingMode--><!--Device-audio-enum AudioRingMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
@@ -21,10 +17,6 @@ RINGER_MODE_SILENT = 0
 静音模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioRingMode-RINGER_MODE_SILENT = 0--><!--Device-AudioRingMode-RINGER_MODE_SILENT = 0-End-->
 
@@ -40,10 +32,6 @@ RINGER_MODE_VIBRATE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioRingMode-RINGER_MODE_VIBRATE = 1--><!--Device-AudioRingMode-RINGER_MODE_VIBRATE = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
@@ -57,10 +45,6 @@ RINGER_MODE_NORMAL = 2
 响铃模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2--><!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2-End-->
 

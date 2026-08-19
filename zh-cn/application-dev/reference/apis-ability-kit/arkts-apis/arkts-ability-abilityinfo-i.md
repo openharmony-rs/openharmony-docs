@@ -4,10 +4,6 @@ Ability信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface AbilityInfo--><!--Device-unnamed-export interface AbilityInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -24,10 +20,6 @@ readonly appIndex: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityInfo-readonly appIndex: int--><!--Device-AbilityInfo-readonly appIndex: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -38,15 +30,11 @@ readonly appIndex: int
 readonly applicationInfo: ApplicationInfo | null
 ```
 
-应用程序的配置信息&lt;!--Del--&gt;，可以通过调用 [queryAbilityInfo](arkts-ability-bundlemanager-queryabilityinfo-f-sys.md#queryabilityinfo系统接口) 接口，abilityFlags参数传入GET_ABILITY_INFO_WITH_APPLICATION获取&lt;!--DelEnd--&gt;。 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)或 者 [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md#getbundleinfo) 接口获取AbilityInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md#bundleinfo).appInfo对象来获取相关信息。
+应用程序的配置信息<!--Del-->，可以通过调用 [queryAbilityInfo](arkts-ability-bundlemanager-queryabilityinfo-f-sys.md) 接口，abilityFlags参数传入GET_ABILITY_INFO_WITH_APPLICATION获取<!--DelEnd-->。 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)或 者 [getBundleInfo](arkts-ability-bundlemanager-getbundleinfo-f.md) 接口获取AbilityInfo信息时不会返回该字段内容，可以通过获取[bundleInfo](arkts-ability-bundleinfo-i.md).appInfo对象来获取相关信息。
 
 **类型：** [ApplicationInfo](arkts-ability-applicationinfo-i.md) \| null
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityInfo-readonly applicationInfo: ApplicationInfo | null--><!--Device-AbilityInfo-readonly applicationInfo: ApplicationInfo | null-End-->
 
@@ -63,10 +51,6 @@ readonly bundleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -86,10 +70,6 @@ Ability的描述，对应[module.json5](../../../quick-start/module-configuratio
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly description: string--><!--Device-AbilityInfo-readonly description: string-End-->
@@ -107,10 +87,6 @@ Ability的描述资源id，是编译构建时根据应用配置abilities下的de
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -130,10 +106,6 @@ Ability支持的设备类型，来源于module.json5配置的[deviceTypes](../..
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly deviceTypes: Array<string>--><!--Device-AbilityInfo-readonly deviceTypes: Array<string>-End-->
@@ -146,15 +118,11 @@ Ability支持的设备类型，来源于module.json5配置的[deviceTypes](../..
 readonly enabled: boolean
 ```
 
-Ability是否可用，可用表示可以拉起或者查询，不可用时调用[getAbilityInfo](arkts-ability-bundlemanager-getabilityinfo-f.md#getabilityinfo) 查询ability需要携带GET_ABILITY_INFO_WITH_DISABLE的AbilityFlag，取值为true表示Ability可用，取值为false表示Ability不可用。
+Ability是否可用，可用表示可以拉起或者查询，不可用时调用[getAbilityInfo](arkts-ability-bundlemanager-getabilityinfo-f.md) 查询ability需要携带GET_ABILITY_INFO_WITH_DISABLE的AbilityFlag，取值为true表示Ability可用，取值为false表示Ability不可用。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -174,10 +142,6 @@ readonly excludeFromDock: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly excludeFromDock: boolean--><!--Device-AbilityInfo-readonly excludeFromDock: boolean-End-->
@@ -195,10 +159,6 @@ readonly exported: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -218,10 +178,6 @@ Ability的图标资源描述符，对应[module.json5](../../../quick-start/modu
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly icon: string--><!--Device-AbilityInfo-readonly icon: string-End-->
@@ -240,10 +196,6 @@ Ability的图标资源id，是编译构建时根据应用配置abilities下的ic
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly iconId: long--><!--Device-AbilityInfo-readonly iconId: long-End-->
@@ -256,15 +208,11 @@ Ability的图标资源id，是编译构建时根据应用配置abilities下的ic
 readonly label: string
 ```
 
-Ability对用户显示的名称的资源描述符，对应[module.json5](../../../quick-start/module-configuration-file.md)中abilities下配置的label字段。 **说明：** 从API version 20开始，如果是通过 [bundleManager.getAbilityInfo](arkts-ability-bundlemanager-getabilityinfo-f.md#getabilityinfo)获取Ability信息，该字段为 Ability对用户显示的名称。
+Ability对用户显示的名称的资源描述符，对应[module.json5](../../../quick-start/module-configuration-file.md)中abilities下配置的label字段。 **说明：** 从API version 20开始，如果是通过 [bundleManager.getAbilityInfo](arkts-ability-bundlemanager-getabilityinfo-f.md)获取Ability信息，该字段为 Ability对用户显示的名称。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -284,10 +232,6 @@ Ability的标签资源id，是编译构建时根据应用配置abilities下的la
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly labelId: long--><!--Device-AbilityInfo-readonly labelId: long-End-->
@@ -300,15 +244,11 @@ Ability的标签资源id，是编译构建时根据应用配置abilities下的la
 readonly launchType: bundleManager.LaunchType
 ```
 
-Ability的启动模式，在启动的时候是否以多实例启动，详情参考[启动模式枚举](arkts-ability-bundlemanager-launchtype-e.md#launchtype) 。
+Ability的启动模式，在启动的时候是否以多实例启动，详情参考[启动模式枚举](arkts-ability-bundlemanager-launchtype-e.md) 。
 
 **类型：** bundleManager.LaunchType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -322,15 +262,11 @@ Ability的启动模式，在启动的时候是否以多实例启动，详情参�
 readonly metadata: Array<Metadata>
 ```
 
-Ability的元信息。可以配置成系统定义的参数，使用系统提供的能力，例如[快捷方式](../../../quick-start/module-configuration-file.md#shortcuts标签)、 [窗口元数据配置](../../../windowmanager/window-config-m.md)等。也可以自定义配置参数，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_METADATA获取。
+Ability的元信息。可以配置成系统定义的参数，使用系统提供的能力，例如[快捷方式](../../../quick-start/module-configuration-file.md#shortcuts标签)、 [窗口元数据配置](../../../windowmanager/window-config-m.md)等。也可以自定义配置参数，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_METADATA获取。
 
 **类型：** Array&lt;[Metadata](arkts-ability-metadata-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -350,10 +286,6 @@ Ability所属的模块名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly moduleName: string--><!--Device-AbilityInfo-readonly moduleName: string-End-->
@@ -372,10 +304,6 @@ Ability名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly name: string--><!--Device-AbilityInfo-readonly name: string-End-->
@@ -388,15 +316,11 @@ Ability名称。
 readonly orientation: bundleManager.DisplayOrientation
 ```
 
-Ability的显示模式。来源于[module.json5](../../../quick-start/module-configuration-file.md)中abilities标签下配置的orientation字段，如果 module.json5配置文件中orientation配置枚举，orientation属性有值且非0，取值详情参考 [显示模式枚举](arkts-ability-bundlemanager-displayorientation-e.md#displayorientation)；如果配置文件中配置的是资源索引，orientation属性值为0。
+Ability的显示模式。来源于[module.json5](../../../quick-start/module-configuration-file.md)中abilities标签下配置的orientation字段，如果 module.json5配置文件中orientation配置枚举，orientation属性有值且非0，取值详情参考 [显示模式枚举](arkts-ability-bundlemanager-displayorientation-e.md)；如果配置文件中配置的是资源索引，orientation属性值为0。
 
 **类型：** bundleManager.DisplayOrientation
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -416,10 +340,6 @@ Ability的显示模式资源id。来源于[module.json5](../../../quick-start/mo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly orientationId: long--><!--Device-AbilityInfo-readonly orientationId: long-End-->
@@ -437,10 +357,6 @@ readonly permissions: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -460,10 +376,6 @@ Ability的进程名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly process: string--><!--Device-AbilityInfo-readonly process: string-End-->
@@ -481,10 +393,6 @@ readonly readPermission: string
 **类型：** string
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -504,10 +412,6 @@ Ability的Skills信息，标识UIAbility组件或者ExtensionAbility组件能够
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly skills: Array<Skill>--><!--Device-AbilityInfo-readonly skills: Array<Skill>-End-->
@@ -525,10 +429,6 @@ Ability支持的窗口模式。
 **类型：** Array&lt;bundleManager.SupportWindowMode&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -548,10 +448,6 @@ Ability类型。 **模型约束：** 此接口仅可在FA模型下使用。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-AbilityInfo-readonly type: bundleManager.AbilityType--><!--Device-AbilityInfo-readonly type: bundleManager.AbilityType-End-->
@@ -569,10 +465,6 @@ readonly uri: string
 **类型：** string
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -592,10 +484,6 @@ Ability窗口尺寸。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AbilityInfo-readonly windowSize: WindowSize--><!--Device-AbilityInfo-readonly windowSize: WindowSize-End-->
@@ -613,10 +501,6 @@ readonly writePermission: string
 **类型：** string
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

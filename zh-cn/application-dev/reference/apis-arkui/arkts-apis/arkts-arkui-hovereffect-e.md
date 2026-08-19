@@ -4,10 +4,6 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum HoverEffect--><!--Device-unnamed-declare enum HoverEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ Auto
 使用组件的系统默认悬浮效果。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ Scale
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HoverEffect-Scale--><!--Device-HoverEffect-Scale-End-->
@@ -62,10 +50,6 @@ Highlight
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HoverEffect-Highlight--><!--Device-HoverEffect-Highlight-End-->
@@ -81,10 +65,6 @@ None
 不设置效果。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

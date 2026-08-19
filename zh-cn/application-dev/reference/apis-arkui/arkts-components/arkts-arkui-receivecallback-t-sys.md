@@ -1,4 +1,4 @@
-# ReceiveCallback（系统接口）
+# ReceiveCallback(System API)（系统接口）
 
 ```TypeScript
 declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<string, Object>>
@@ -7,10 +7,6 @@ declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<strin
 回调函数，用于封装被拉起的Ability发送的数据。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

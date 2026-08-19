@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dialogRequest-export enum ResultCode--><!--Device-dialogRequest-export enum ResultCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -22,10 +18,6 @@ RESULT_OK = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ResultCode-RESULT_OK = 0--><!--Device-ResultCode-RESULT_OK = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -39,10 +31,6 @@ RESULT_CANCEL = 1
 表示失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResultCode-RESULT_CANCEL = 1--><!--Device-ResultCode-RESULT_CANCEL = 1-End-->
 

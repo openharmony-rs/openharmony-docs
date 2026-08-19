@@ -14,10 +14,6 @@ ImageAnimator()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -28,4 +24,9 @@ ImageAnimator()
 
 ## 汇总
 
-- [ImageFrameInfo](arkts-arkui-imageframeinfo-i.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ImageFrameInfo](arkts-arkui-imageframeinfo-i.md) | 图片帧信息集合。 |
+

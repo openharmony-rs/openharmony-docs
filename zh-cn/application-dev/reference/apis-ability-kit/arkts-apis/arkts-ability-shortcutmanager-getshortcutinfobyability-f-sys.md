@@ -1,5 +1,11 @@
 # getShortcutInfoByAbility（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { shortcutManager } from '@kit.AbilityKit';
+```
+
 ## getShortcutInfoByAbility
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilit
 查询指定用户下指定UIAbility的快捷方式信息。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
@@ -31,7 +33,7 @@ function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilit
 | bundleName | string | 是 | 表示应用程序的包名。 |
 | moduleName | string | 是 | 表示模块的名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
+| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
 | appIndex | int | 否 | 表示应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。<br/>默认值：0 |
 
 **返回值：**
@@ -54,7 +56,7 @@ function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilit
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { shortcutManager } from '@kit.AbilityKit';

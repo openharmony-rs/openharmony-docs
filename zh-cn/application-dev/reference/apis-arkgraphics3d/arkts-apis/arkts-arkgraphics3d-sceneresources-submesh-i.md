@@ -1,12 +1,8 @@
 # SubMesh
 
-子网格资源.
+子网格类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface SubMesh--><!--Device-unnamed-export interface SubMesh-End-->
 
@@ -18,15 +14,11 @@
 readonly aabb: Aabb
 ```
 
-子网格的轴对齐包围盒.
+轴对齐包围盒。
 
 **类型：** [Aabb](arkts-arkgraphics3d-scenetypes-aabb-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SubMesh-readonly aabb: Aabb--><!--Device-SubMesh-readonly aabb: Aabb-End-->
 
@@ -38,15 +30,11 @@ readonly aabb: Aabb
 material: Material
 ```
 
-子网格的材质.
+材质。
 
 **类型：** [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SubMesh-material: Material--><!--Device-SubMesh-material: Material-End-->
 
@@ -58,15 +46,11 @@ material: Material
 name: string
 ```
 
-子网格的名称.
+名称，没有特殊格式要求。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SubMesh-name: string--><!--Device-SubMesh-name: string-End-->
 

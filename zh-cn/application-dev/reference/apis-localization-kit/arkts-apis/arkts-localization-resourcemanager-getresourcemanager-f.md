@@ -1,5 +1,11 @@
 # getResourceManager
 
+## 导入模块
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+```
+
 ## getResourceManager
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function getResourceManager(callback: AsyncCallback<ResourceManager>): vo
 获取当前应用的资源管理对象。使用callback异步回调。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -26,7 +28,7 @@ export function getResourceManager(callback: AsyncCallback<ResourceManager>): vo
 | --- | --- | --- | --- |
 | callback | AsyncCallback&lt;[ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md)&gt; | 是 | 回调函数，返回资源管理对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { resourceManager } from '@kit.LocalizationKit';
@@ -64,10 +66,6 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void--><!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void-End-->
@@ -81,7 +79,7 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 | bundleName | string | 是 | 应用包名。 |
 | callback | AsyncCallback&lt;[ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md)&gt; | 是 | 回调函数，返回应用包名对应的资源管理对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import resourceManager from '@ohos.resourceManager';
@@ -121,10 +119,6 @@ export function getResourceManager(): Promise<ResourceManager>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>-End-->
@@ -137,7 +131,7 @@ export function getResourceManager(): Promise<ResourceManager>
 | --- | --- |
 | Promise&lt;[ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md)&gt; | Promise对象，返回资源管理对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import resourceManager from '@ohos.resourceManager';
@@ -171,10 +165,6 @@ export function getResourceManager(bundleName: string): Promise<ResourceManager>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>-End-->
@@ -193,7 +183,7 @@ export function getResourceManager(bundleName: string): Promise<ResourceManager>
 | --- | --- |
 | Promise&lt;[ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md)&gt; | Promise对象，返回应用包名对应的资源管理对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import resourceManager from '@ohos.resourceManager';

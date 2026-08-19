@@ -4,13 +4,15 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-interface ApplicationInfo--><!--Device-bundleManager-interface ApplicationInfo-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+```
 
 ## accessTokenId
 
@@ -24,10 +26,6 @@ readonly accessTokenId: number
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly accessTokenId: number--><!--Device-ApplicationInfo-readonly accessTokenId: number-End-->
@@ -40,15 +38,11 @@ readonly accessTokenId: number
 readonly appDistributionType: string
 ```
 
-应用程序签名证书的分发类型，详细信息请参考[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md#applicationinfo)的appProvisionType字段。
+应用程序签名证书的分发类型，详细信息请参考[ApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)的appProvisionType字段。
 
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,10 +62,6 @@ readonly appIndex: number
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly appIndex: number--><!--Device-ApplicationInfo-readonly appIndex: number-End-->
@@ -89,10 +79,6 @@ readonly appProvisionType: string
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,10 +98,6 @@ readonly codePath: string
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly codePath: string--><!--Device-ApplicationInfo-readonly codePath: string-End-->
@@ -133,10 +115,6 @@ readonly dataUnclearable: boolean
 **类型：** boolean
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -156,10 +134,6 @@ readonly debug: boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly debug: boolean--><!--Device-ApplicationInfo-readonly debug: boolean-End-->
@@ -177,10 +151,6 @@ readonly description: string
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -200,10 +170,6 @@ readonly descriptionId: number
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly descriptionId: number--><!--Device-ApplicationInfo-readonly descriptionId: number-End-->
@@ -221,10 +187,6 @@ readonly descriptionResource: Resource
 **类型：** Resource
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,10 +206,6 @@ readonly enabled: boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly enabled: boolean--><!--Device-ApplicationInfo-readonly enabled: boolean-End-->
@@ -265,10 +223,6 @@ readonly icon: string
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -288,10 +242,6 @@ readonly iconData: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly iconData: string--><!--Device-ApplicationInfo-readonly iconData: string-End-->
@@ -309,10 +259,6 @@ readonly iconId: number
 **类型：** number
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -332,10 +278,6 @@ readonly iconResource: Resource
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly iconResource: Resource--><!--Device-ApplicationInfo-readonly iconResource: Resource-End-->
@@ -353,10 +295,6 @@ readonly installSource: string
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -376,10 +314,6 @@ readonly label: string
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly label: string--><!--Device-ApplicationInfo-readonly label: string-End-->
@@ -397,10 +331,6 @@ readonly labelId: number
 **类型：** number
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -420,10 +350,6 @@ readonly labelResource: Resource
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly labelResource: Resource--><!--Device-ApplicationInfo-readonly labelResource: Resource-End-->
@@ -441,10 +367,6 @@ readonly name: string
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -464,10 +386,6 @@ readonly nativeLibraryPath: string
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly nativeLibraryPath: string--><!--Device-ApplicationInfo-readonly nativeLibraryPath: string-End-->
@@ -486,10 +404,6 @@ readonly process: string
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly process: string--><!--Device-ApplicationInfo-readonly process: string-End-->
@@ -502,15 +416,11 @@ readonly process: string
 readonly releaseType: string
 ```
 
-标识应用打包时使用的SDK的发布类型。当前SDK的发布类型可能为Canary、Beta、Release，其中Canary和Beta可能通过序号进一步细分，例如Canary1、Canary2、Beta1、Beta2等。开发者可通 过对比应用打包依赖的SDK发布类型和OS的发布类型（[deviceInfo.distributionOSReleaseType](../../apis-na/arkts-apis/arkts-deviceinfo.md#ohosdeviceinfo)）来判断兼容性。
+标识应用打包时使用的SDK的发布类型。当前SDK的发布类型可能为Canary、Beta、Release，其中Canary和Beta可能通过序号进一步细分，例如Canary1、Canary2、Beta1、Beta2等。开发者可通 过对比应用打包依赖的SDK发布类型和OS的发布类型（[deviceInfo.distributionOSReleaseType](../../apis-basic-services-kit/arkts-apis/arkts-deviceinfo.md)）来判断兼容性。
 
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -530,10 +440,6 @@ readonly removable: boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly removable: boolean--><!--Device-ApplicationInfo-readonly removable: boolean-End-->
@@ -552,10 +458,6 @@ readonly systemApp: boolean
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ApplicationInfo-readonly systemApp: boolean--><!--Device-ApplicationInfo-readonly systemApp: boolean-End-->
@@ -573,10 +475,6 @@ readonly uid: number
 **类型：** number
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

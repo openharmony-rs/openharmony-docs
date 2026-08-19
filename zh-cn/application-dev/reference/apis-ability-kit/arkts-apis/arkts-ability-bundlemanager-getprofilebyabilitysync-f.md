@@ -1,5 +1,11 @@
 # getProfileByAbilitySync
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getProfileByAbilitySync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getProfileByAbilitySync(moduleName: string, abilityName: string, metada
 以同步方法根据给定的moduleName、abilityName和metadataName（module.json5中 [metadata标签](../../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数 组。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,7 +46,7 @@ function getProfileByAbilitySync(moduleName: string, abilityName: string, metada
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not existed. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityName is not existed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

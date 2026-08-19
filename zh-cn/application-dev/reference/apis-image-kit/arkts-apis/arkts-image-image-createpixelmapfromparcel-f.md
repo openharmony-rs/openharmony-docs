@@ -1,5 +1,11 @@
 # createPixelMapFromParcel
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## createPixelMapFromParcel
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 Creates a PixelMap object based on MessageSequence parameter.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-function createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap--><!--Device-image-function createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap-End-->
 
@@ -44,7 +46,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 | [62980246](../errorcode-image.md#62980246-读取pixelmap失败) | Failed to read the PixelMap. |
 | [62980105](../errorcode-image.md#62980105-图片获取数据错误) | Failed to get the data. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';

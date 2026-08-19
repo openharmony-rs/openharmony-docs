@@ -8,10 +8,6 @@ type BatchInsertFn = (uri: string, valueBuckets: Array<ValuesBucket>, callback: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-type BatchInsertFn = (uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCallback<int>) => void--><!--Device-unnamed-type BatchInsertFn = (uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCallback<int>) => void-End-->
@@ -26,5 +22,5 @@ type BatchInsertFn = (uri: string, valueBuckets: Array<ValuesBucket>, callback: 
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the position where the data is to insert. |
 | valueBuckets | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | 是 | Indicates the data to insert. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | Returns the number of data records inserted. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | Returns the number of data records inserted. |
 

@@ -6,13 +6,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-sendableImage-interface Image--><!--Device-sendableImage-interface Image-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { sendableImage } from '@kit.ImageKit';
+```
 
 ## getComponent
 
@@ -23,10 +25,6 @@ getComponent(componentType: image.ComponentType): Promise<image.Component>
 根据图像的组件类型从图像中获取组件缓存。使用Promise异步回调。getComponent是线程不安全的。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-Image-getComponent(componentType: image.ComponentType): Promise<image.Component>--><!--Device-Image-getComponent(componentType: image.ComponentType): Promise<image.Component>-End-->
 
@@ -44,7 +42,7 @@ getComponent(componentType: image.ComponentType): Promise<image.Component>
 | --- | --- |
 | Promise&lt;image.Component&gt; | Promise实例，用于异步返回组件缓冲区。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -76,10 +74,6 @@ release(): Promise<void>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-Image-release(): Promise<void>--><!--Device-Image-release(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -90,7 +84,7 @@ release(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | promise返回操作结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sendableImage } from '@kit.ImageKit';
@@ -124,10 +118,6 @@ clipRect: Region
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-Image-clipRect: Region--><!--Device-Image-clipRect: Region-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -143,10 +133,6 @@ readonly format: number
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-Image-readonly format: number--><!--Device-Image-readonly format: number-End-->
 
@@ -164,10 +150,6 @@ readonly size: Size
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-Image-readonly size: Size--><!--Device-Image-readonly size: Size-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -183,10 +165,6 @@ readonly timestamp: number
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-Image-readonly timestamp: number--><!--Device-Image-readonly timestamp: number-End-->
 

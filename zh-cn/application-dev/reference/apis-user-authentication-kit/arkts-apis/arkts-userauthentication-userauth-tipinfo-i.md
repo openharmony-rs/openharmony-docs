@@ -4,15 +4,20 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 11
 
-**替代接口：** [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md#authtipinfo)
+**替代接口：** [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md)
 
 <!--Device-userAuth-interface TipInfo--><!--Device-userAuth-interface TipInfo-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## module
 
@@ -25,8 +30,6 @@ module: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -47,8 +50,6 @@ tip: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 

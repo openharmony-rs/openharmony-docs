@@ -1,16 +1,18 @@
 # AuxiliaryPicture
 
-AuxiliaryPicture类，用于读取或写入图像的辅助图数据以及获取图像的辅助图信息。目前支持的辅助图类型可参考[AuxiliaryPictureType](arkts-image-image-auxiliarypicturetype-e.md#auxiliarypicturetype) 。 在调用AuxiliaryPicture的方法前，需要通过[image.createAuxiliaryPicture](arkts-image-image-createauxiliarypicture-f.md#createauxiliarypicture)或Picture的 [getAuxiliaryPicture](arkts-image-image-picture-i.md#getauxiliarypicture)创建一个AuxiliaryPicture实例。 由于图片占用内存较大，所以当AuxiliaryPicture对象使用完成后，应主动调用[release](#release)方法及时释放对象。释放时应确保该实例的所有异步方法 均执行完成，且后续不再使用该对象。 > **说明：** > > - 本Interface首批接口从API version 13开始支持。
+AuxiliaryPicture类，用于读取或写入图像的辅助图数据以及获取图像的辅助图信息。目前支持的辅助图类型可参考[AuxiliaryPictureType](arkts-image-image-auxiliarypicturetype-e.md) 。 在调用AuxiliaryPicture的方法前，需要通过[image.createAuxiliaryPicture](arkts-image-image-createauxiliarypicture-f.md)或Picture的 [getAuxiliaryPicture](arkts-image-image-picture-i.md#getauxiliarypicture)创建一个AuxiliaryPicture实例。 由于图片占用内存较大，所以当AuxiliaryPicture对象使用完成后，应主动调用[release](#release)方法及时释放对象。释放时应确保该实例的所有异步方法 均执行完成，且后续不再使用该对象。 > **说明：** > > - 本Interface首批接口从API version 13开始支持。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-interface AuxiliaryPicture--><!--Device-image-interface AuxiliaryPicture-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## getAuxiliaryPictureInfo
 
@@ -21,10 +23,6 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 获取有关此辅助图的图像信息。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPicture-getAuxiliaryPictureInfo(): AuxiliaryPictureInfo--><!--Device-AuxiliaryPicture-getAuxiliaryPictureInfo(): AuxiliaryPictureInfo-End-->
 
@@ -46,10 +44,6 @@ Obtains the information about this auxiliary picture.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPicture-getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined--><!--Device-AuxiliaryPicture-getAuxiliaryPictureInfo(): AuxiliaryPictureInfo | undefined-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -69,10 +63,6 @@ getMetadata(metadataType: MetadataType): Promise<Metadata>
 从辅助图中获取元数据。使用Promise异步回调。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPicture-getMetadata(metadataType: MetadataType): Promise<Metadata>--><!--Device-AuxiliaryPicture-getMetadata(metadataType: MetadataType): Promise<Metadata>-End-->
 
@@ -107,10 +97,6 @@ Obtains the metadata of auxiliary picture.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPicture-getMetadata(metadataType: MetadataType): Promise<Metadata | undefined>--><!--Device-AuxiliaryPicture-getMetadata(metadataType: MetadataType): Promise<Metadata | undefined>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -143,10 +129,6 @@ getType(): AuxiliaryPictureType
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPicture-getType(): AuxiliaryPictureType--><!--Device-AuxiliaryPicture-getType(): AuxiliaryPictureType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -166,10 +148,6 @@ getType(): AuxiliaryPictureType | undefined
 Obtains the type of auxiliary picture.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPicture-getType(): AuxiliaryPictureType | undefined--><!--Device-AuxiliaryPicture-getType(): AuxiliaryPictureType | undefined-End-->
 
@@ -191,10 +169,6 @@ readPixelsToBuffer(): Promise<ArrayBuffer>
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPicture-readPixelsToBuffer(): Promise<ArrayBuffer>--><!--Device-AuxiliaryPicture-readPixelsToBuffer(): Promise<ArrayBuffer>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -214,10 +188,6 @@ readPixelsToBuffer(): Promise<ArrayBuffer | undefined>
 Reads image pixel map data and writes the data to an ArrayBuffer. This method uses a promise to return the result.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPicture-readPixelsToBuffer(): Promise<ArrayBuffer | undefined>--><!--Device-AuxiliaryPicture-readPixelsToBuffer(): Promise<ArrayBuffer | undefined>-End-->
 
@@ -239,10 +209,6 @@ release():void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPicture-release():void--><!--Device-AuxiliaryPicture-release():void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -256,10 +222,6 @@ setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 设置辅助图的图像信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPicture-setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void--><!--Device-AuxiliaryPicture-setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void-End-->
 
@@ -286,10 +248,6 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>
 设置辅助图元数据。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPicture-setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>--><!--Device-AuxiliaryPicture-setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>-End-->
 
@@ -324,10 +282,6 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise<void>
 读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPicture-writePixelsFromBuffer(data: ArrayBuffer): Promise<void>--><!--Device-AuxiliaryPicture-writePixelsFromBuffer(data: ArrayBuffer): Promise<void>-End-->
 

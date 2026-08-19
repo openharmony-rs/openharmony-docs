@@ -1,5 +1,11 @@
 # isActivationLockDisabled
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## isActivationLockDisabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isActivationLockDisabled(admin: Want): Promise<boolean>
 获取设备激活锁禁用状态。适用于需要验证设备激活锁功能状态的场景，帮助企业管理员确认设备的安全配置，特别是在设备转让或回收时需要了解激活锁状态。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -44,7 +46,7 @@ function isActivationLockDisabled(admin: Want): Promise<boolean>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

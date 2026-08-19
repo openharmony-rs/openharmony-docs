@@ -1,5 +1,10 @@
 # writeSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## writeSync
 
 ```TypeScript
@@ -14,9 +19,7 @@ function writeSync(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function writeSync(  fd: int,  buffer: ArrayBuffer | string,  options?: WriteOptions): long--><!--Device-fileIo-function writeSync(  fd: int,  buffer: ArrayBuffer | string,  options?: WriteOptions): long-End-->
 

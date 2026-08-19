@@ -1,5 +1,11 @@
 # begin
 
+## 导入模块
+
+```TypeScript
+import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
+```
+
 ## begin
 
 ```TypeScript
@@ -10,10 +16,6 @@ function begin(name: string, flags?: int): HiTraceId
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hiTraceChain-function begin(name: string, flags?: int): HiTraceId--><!--Device-hiTraceChain-function begin(name: string, flags?: int): HiTraceId-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
@@ -23,7 +25,7 @@ function begin(name: string, flags?: int): HiTraceId
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 跟踪业务名。该参数的长度不超过63Byte，超出部分将被截断。 |
-| flags | int | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](arkts-performanceanalysis-hitracechain-hitraceflag-e.md#hitraceflag)。当需要跟踪异步调用时设置 INCLUDE_ASYNC，不创建分支信息时设置DONOT_CREATE_SPAN，调试场景下设置TP_INFO可打印埋点信息。默认值为0，表示只跟踪同步调用、创建分支信 息、不打印日志。 |
+| flags | int | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](arkts-performanceanalysis-hitracechain-hitraceflag-e.md)。当需要跟踪异步调用时设置 INCLUDE_ASYNC，不创建分支信息时设置DONOT_CREATE_SPAN，调试场景下设置TP_INFO可打印埋点信息。默认值为0，表示只跟踪同步调用、创建分支信 息、不打印日志。 |
 
 **返回值：**
 
@@ -31,7 +33,7 @@ function begin(name: string, flags?: int): HiTraceId
 | --- | --- |
 | [HiTraceId](arkts-performanceanalysis-hitracechain-hitraceid-i.md) | 当前线程TLS中的HiTraceId实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 开始跟踪，跟踪标志是INCLUDE_ASYNC与DONOT_CREATE_SPAN的并集。

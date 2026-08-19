@@ -4,9 +4,7 @@ NodeAdapter提供FrameNode的数据懒加载能力，通过LazyForEach实现接�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class NodeAdapter--><!--Device-unnamed-export declare class NodeAdapter-End-->
 
@@ -22,9 +20,7 @@ static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,8 +32,8 @@ static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| adapter | [NodeAdapter](arkts-na-framenode-nodeadapter-c.md) | 是 | 定义懒加载的NodeAdapter类。 |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | 绑定的FrameNode节点。 |
+| adapter | [NodeAdapter](../../apis-arkui/arkts-apis/arkts-arkui-framenode-nodeadapter-c.md) | 是 | 定义懒加载的NodeAdapter类。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 绑定的FrameNode节点。 |
 
 **返回值：**
 
@@ -55,9 +51,7 @@ NodeAdapter的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -75,9 +69,7 @@ static detachNodeAdapter(node: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -89,7 +81,7 @@ static detachNodeAdapter(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | 要解除绑定的FrameNode节点。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 要解除绑定的FrameNode节点。 |
 
 ## dispose
 
@@ -101,9 +93,7 @@ dispose(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -121,9 +111,7 @@ getAllAvailableItems(): Array<FrameNode>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -135,7 +123,7 @@ getAllAvailableItems(): Array<FrameNode>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[FrameNode](arkts-na-framenode-c.md)&gt; | FrameNode数据节点集合。 |
+| Array&lt;[FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md)&gt; | FrameNode数据节点集合。 |
 
 ## insertItem
 
@@ -145,9 +133,7 @@ insertItem(start: int, count: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -172,9 +158,7 @@ isDisposed(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -196,9 +180,7 @@ moveItem(from: int, to: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -221,9 +203,7 @@ onAttachToNode(target: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -235,7 +215,7 @@ onAttachToNode(target: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | [FrameNode](arkts-na-framenode-c.md) | 是 | 绑定NodeAdapter的FrameNode节点。 |
+| target | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 绑定NodeAdapter的FrameNode节点。 |
 
 ## onCreateChild
 
@@ -245,9 +225,7 @@ onCreateChild(index: int): FrameNode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -265,7 +243,7 @@ onCreateChild(index: int): FrameNode
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | 返回开发者创建的FrameNode节点。 |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 返回开发者创建的FrameNode节点。 |
 
 ## onDetachFromNode
 
@@ -277,9 +255,7 @@ This callback will be triggered when the binding is released.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -295,9 +271,7 @@ onDisposeChild(id: int, node: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,7 +284,7 @@ onDisposeChild(id: int, node: FrameNode): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | int | 是 | 即将销毁的子节点id。 |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | 即将销毁的FrameNode节点。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 即将销毁的FrameNode节点。 |
 
 ## onGetChildId
 
@@ -320,9 +294,7 @@ onGetChildId(index: int): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -350,9 +322,7 @@ onUpdateChild(id: int, node: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -365,7 +335,7 @@ onUpdateChild(id: int, node: FrameNode): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | int | 是 | 复用节点的id。 |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | 被复用的FrameNode节点。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 被复用的FrameNode节点。 |
 
 ## reloadAllItems
 
@@ -377,9 +347,7 @@ reloadAllItems(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -395,9 +363,7 @@ reloadItem(start: int, count: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -420,9 +386,7 @@ removeItem(start: int, count: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

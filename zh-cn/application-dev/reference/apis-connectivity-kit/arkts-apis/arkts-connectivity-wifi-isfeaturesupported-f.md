@@ -1,5 +1,14 @@
 # isFeatureSupported
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## isFeatureSupported
 
 ```TypeScript
@@ -10,11 +19,9 @@ function isFeatureSupported(featureId: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [isFeatureSupported](arkts-connectivity-wifimanager-isfeaturesupported-f.md#isfeaturesupported)
+**替代接口：** [isFeatureSupported](arkts-connectivity-wifimanager-isfeaturesupported-f.md)
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -34,7 +41,7 @@ function isFeatureSupported(featureId: number): boolean
 | --- | --- |
 | boolean | true:支持，false:不支持。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

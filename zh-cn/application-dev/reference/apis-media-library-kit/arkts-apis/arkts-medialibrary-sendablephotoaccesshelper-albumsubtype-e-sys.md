@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-sendablePhotoAccessHelper-const enum AlbumSubtype--><!--Device-sendablePhotoAccessHelper-const enum AlbumSubtype-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ HIDDEN = 1027
 隐藏相册。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-HIDDEN = 1027--><!--Device-AlbumSubtype-HIDDEN = 1027-End-->
 
@@ -42,10 +34,6 @@ TRASH = 1028
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-TRASH = 1028--><!--Device-AlbumSubtype-TRASH = 1028-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -61,10 +49,6 @@ SCREENSHOT = 1029
 截屏和录屏相册。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-SCREENSHOT = 1029--><!--Device-AlbumSubtype-SCREENSHOT = 1029-End-->
 
@@ -82,10 +66,6 @@ CAMERA = 1030
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-CAMERA = 1030--><!--Device-AlbumSubtype-CAMERA = 1030-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -101,10 +81,6 @@ SOURCE_GENERIC = 2049
 来源相册。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-SOURCE_GENERIC = 2049--><!--Device-AlbumSubtype-SOURCE_GENERIC = 2049-End-->
 
@@ -122,10 +98,6 @@ CLASSIFY = 4097
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-CLASSIFY = 4097--><!--Device-AlbumSubtype-CLASSIFY = 4097-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -141,10 +113,6 @@ GEOGRAPHY_LOCATION = 4099
 地图相册。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099--><!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099-End-->
 
@@ -162,10 +130,6 @@ GEOGRAPHY_CITY = 4100
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-GEOGRAPHY_CITY = 4100--><!--Device-AlbumSubtype-GEOGRAPHY_CITY = 4100-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -181,10 +145,6 @@ SHOOTING_MODE = 4101
 拍摄模式相册。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-SHOOTING_MODE = 4101--><!--Device-AlbumSubtype-SHOOTING_MODE = 4101-End-->
 
@@ -202,10 +162,6 @@ PORTRAIT = 4102
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-PORTRAIT = 4102--><!--Device-AlbumSubtype-PORTRAIT = 4102-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -221,10 +177,6 @@ GROUP_PHOTO = 4103
 合影相册。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-GROUP_PHOTO = 4103--><!--Device-AlbumSubtype-GROUP_PHOTO = 4103-End-->
 
@@ -242,10 +194,6 @@ HIGHLIGHT = 4104
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-HIGHLIGHT = 4104--><!--Device-AlbumSubtype-HIGHLIGHT = 4104-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -261,10 +209,6 @@ HIGHLIGHT_SUGGESTIONS = 4105
 时刻建议相册。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-HIGHLIGHT_SUGGESTIONS = 4105--><!--Device-AlbumSubtype-HIGHLIGHT_SUGGESTIONS = 4105-End-->
 

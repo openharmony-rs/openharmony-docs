@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface PhotoAssetChangeData--><!--Device-photoAccessHelper-interface PhotoAssetChangeData-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## thumbnailChangeStatus
 
@@ -23,10 +25,6 @@ thumbnailChangeStatus: ThumbnailChangeStatus
 **类型：** [ThumbnailChangeStatus](arkts-medialibrary-photoaccesshelper-thumbnailchangestatus-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAssetChangeData-thumbnailChangeStatus: ThumbnailChangeStatus--><!--Device-PhotoAssetChangeData-thumbnailChangeStatus: ThumbnailChangeStatus-End-->
 
@@ -45,10 +43,6 @@ version: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAssetChangeData-version: long--><!--Device-PhotoAssetChangeData-version: long-End-->
 

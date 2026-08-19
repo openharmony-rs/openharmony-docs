@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-systemSoundManager-enum ToneHapticsFeature--><!--Device-systemSoundManager-enum ToneHapticsFeature-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -24,10 +20,6 @@ Standard haptics feature.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneHapticsFeature-STANDARD = 0--><!--Device-ToneHapticsFeature-STANDARD = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -43,10 +35,6 @@ GENTLE = 1
 Gentle haptics feature.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneHapticsFeature-GENTLE = 1--><!--Device-ToneHapticsFeature-GENTLE = 1-End-->
 

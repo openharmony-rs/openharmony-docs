@@ -1,20 +1,24 @@
 # VibrateOptions
 
-定义触发设备振动的配置参数，包括振动模式及接口调用的回调函数。开发者调用 Vibrator.vibrate()时，通过 VibrateOptions指定振动模式（短振动或长振动）以及监听振动触发成功、失败和完成的回调函数。传入VibrateOptions后，设备将按指定的mode执行相应振动模式，并在振动触发成功时回调success函数，失败时回调 fail函数，接口调用结束时回调complete函数。 > **说明：** > > 从API version 3开始支持，从API version 8开始废弃。建议使用替代类型[VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md#vibratetime)。
+定义触发设备振动的配置参数，包括振动模式及接口调用的回调函数。开发者调用 Vibrator.vibrate()时，通过 VibrateOptions指定振动模式（短振动或长振动）以及监听振动触发成功、失败和完成的回调函数。传入VibrateOptions后，设备将按指定的mode执行相应振动模式，并在振动触发成功时回调success函数，失败时回调 fail函数，接口调用结束时回调complete函数。 > **说明：** > > 从API version 3开始支持，从API version 8开始废弃。建议使用替代类型[VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md)。
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md#vibratetime)
+**替代接口：** [VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md)
 
 **需要权限：** ohos.permission.VIBRATE
 
 <!--Device-unnamed-export interface VibrateOptions--><!--Device-unnamed-export interface VibrateOptions-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice.Lite
+
+## 导入模块
+
+```TypeScript
+import { Vibrator, VibrateOptions } from '@kit.SensorServiceKit';
+```
 
 ## complete
 
@@ -28,11 +32,9 @@ complete?: () => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)
+**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md)
 
 **需要权限：** ohos.permission.VIBRATE
 
@@ -54,11 +56,9 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)
+**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md)
 
 **需要权限：** ohos.permission.VIBRATE
 
@@ -80,11 +80,9 @@ mode?: 'long' | 'short'
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md#vibratetime)
+**替代接口：** [VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md)
 
 **需要权限：** ohos.permission.VIBRATE
 
@@ -106,11 +104,9 @@ success: () => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)
+**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md)
 
 **需要权限：** ohos.permission.VIBRATE
 

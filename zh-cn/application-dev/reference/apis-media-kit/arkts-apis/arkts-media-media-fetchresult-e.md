@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-enum FetchResult--><!--Device-media-enum FetchResult-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
@@ -21,10 +17,6 @@ FETCH_FAILED = 0
 从视频中获取该缩略图失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ FETCH_SUCCEEDED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FetchResult-FETCH_SUCCEEDED = 1--><!--Device-FetchResult-FETCH_SUCCEEDED = 1-End-->
@@ -61,10 +49,6 @@ FETCH_CANCELED = 2
 从视频中获取该缩略图操作被取消。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

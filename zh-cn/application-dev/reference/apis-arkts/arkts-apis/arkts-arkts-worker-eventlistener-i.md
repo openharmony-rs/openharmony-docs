@@ -4,15 +4,19 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md#workereventlistener)
+**替代接口：** [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md)
 
 <!--Device-unnamed-export interface EventListener--><!--Device-unnamed-export interface EventListener-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -23,8 +27,6 @@
 指定要调用的回调函数。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -40,7 +42,7 @@
 | --- | --- | --- | --- |
 | evt | [Event](arkts-arkts-worker-event-i.md) | 是 | evt evt 回调的事件类。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets

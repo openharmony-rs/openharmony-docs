@@ -1,5 +1,11 @@
 # onSarChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## onSarChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onSarChange(callback: Callback<SarResponse>, options?: Options): void
 Subscribe to SAR sensor data, {@code SensorId.SAR}.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-function onSarChange(callback: Callback<SarResponse>, options?: Options): void--><!--Device-sensor-function onSarChange(callback: Callback<SarResponse>, options?: Options): void-End-->
 
@@ -24,7 +26,7 @@ Subscribe to SAR sensor data, {@code SensorId.SAR}.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SarResponse](arkts-sensorservice-sensor-sarresponse-i-sys.md)&gt; | 是 | callback sar data. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SarResponse](arkts-sensorservice-sensor-sarresponse-i-sys.md)&gt; | 是 | callback sar data. |
 | options | Options | 否 | Optional parameters specifying the interval at which sensor data is reported, <br> {@code Options}. |
 
 **错误码：**
@@ -35,7 +37,7 @@ Subscribe to SAR sensor data, {@code SensorId.SAR}.
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

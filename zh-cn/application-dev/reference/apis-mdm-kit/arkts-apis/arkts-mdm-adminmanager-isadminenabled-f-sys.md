@@ -1,5 +1,11 @@
 # isAdminEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## isAdminEnabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isAdminEnabled(admin: Want, callback: AsyncCallback<boolean>): void
 查询当前用户下指定的设备管理应用是否被激活。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -27,7 +29,7 @@ function isAdminEnabled(admin: Want, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用 户下指定的设备管理应用未激活，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用 户下指定的设备管理应用未激活，否则err为错误对象。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function isAdminEnabled(admin: Want, callback: AsyncCallback<boolean>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';
@@ -68,10 +70,6 @@ function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boo
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-adminManager-function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boolean>): void--><!--Device-adminManager-function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boolean>): void-End-->
@@ -86,7 +84,7 @@ function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boo
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | userId | number | 是 | 用户ID，指定具体用户，取值范围：大于等于0。 <br> 默认值：当前用户。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用 户下指定的设备管理应用未激活，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数，当接口调用成功，err为null，data为boolean值，true表示当前用户下指定的设备管理应用被激活，false表示当前用 户下指定的设备管理应用未激活，否则err为错误对象。 |
 
 **错误码：**
 
@@ -95,7 +93,7 @@ function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boo
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';
@@ -128,10 +126,6 @@ function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-adminManager-function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>--><!--Device-adminManager-function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>-End-->
@@ -160,7 +154,7 @@ function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';

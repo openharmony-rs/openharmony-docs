@@ -1,5 +1,11 @@
 # pick
 
+## 导入模块
+
+```TypeScript
+import { cameraPicker } from '@kit.CameraKit';
+```
+
 ## pick
 
 ```TypeScript
@@ -9,10 +15,6 @@ function pick(context: Context, mediaTypes: Array<PickerMediaType>, pickerProfil
 拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。 > **说明：** > > 当应用在阔折叠设备上运行时，如果已在设备展开态下启动相机picker，将设备由展开态切换到折叠态，相机picker被自动推至后台。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -34,7 +36,7 @@ function pick(context: Context, mediaTypes: Array<PickerMediaType>, pickerProfil
 | --- | --- |
 | Promise&lt;[PickerResult](arkts-camera-camerapicker-pickerresult-c.md)&gt; | Promise对象，返回相机选择器的处理结果[PickerResult]{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cameraPicker } from '@kit.CameraKit';

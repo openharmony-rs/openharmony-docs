@@ -1,12 +1,8 @@
 # SceneResource
 
-定义被其他3D资源扩展的场景资源.
+用于表示场景中的资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface SceneResource--><!--Device-unnamed-export interface SceneResource-End-->
 
@@ -22,15 +18,11 @@ destroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneResource-destroy(): void--><!--Device-SceneResource-destroy(): void-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Shader, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
@@ -60,15 +52,11 @@ function destroy(): void {
 name: string
 ```
 
-场景资源名称，没有特殊格式要求。
+名称，没有特殊格式要求。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResource-name: string--><!--Device-SceneResource-name: string-End-->
 
@@ -86,10 +74,6 @@ readonly resourceType: SceneResourceType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneResource-readonly resourceType: SceneResourceType--><!--Device-SceneResource-readonly resourceType: SceneResourceType-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -100,15 +84,11 @@ readonly resourceType: SceneResourceType
 readonly uri?: ResourceStr
 ```
 
-需要加载的场景资源URI，默认值为undefined。
+需要加载的资源，默认值为undefined。
 
 **类型：** ResourceStr
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResource-readonly uri?: ResourceStr--><!--Device-SceneResource-readonly uri?: ResourceStr-End-->
 

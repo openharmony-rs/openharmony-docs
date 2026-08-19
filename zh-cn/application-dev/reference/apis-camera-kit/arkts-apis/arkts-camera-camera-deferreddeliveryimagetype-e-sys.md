@@ -4,10 +4,6 @@ Enumerates the deferred delivery image types. In deferred delivery, photo and vi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum DeferredDeliveryImageType--><!--Device-camera-enum DeferredDeliveryImageType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ NONE = 0
 Deferred delivery is not supported.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeferredDeliveryImageType-NONE = 0--><!--Device-DeferredDeliveryImageType-NONE = 0-End-->
 
@@ -44,10 +36,6 @@ Deferred delivery for photo capture.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeferredDeliveryImageType-PHOTO = 1--><!--Device-DeferredDeliveryImageType-PHOTO = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -63,10 +51,6 @@ VIDEO = 2
 Deferred delivery for video capture.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeferredDeliveryImageType-VIDEO = 2--><!--Device-DeferredDeliveryImageType-VIDEO = 2-End-->
 

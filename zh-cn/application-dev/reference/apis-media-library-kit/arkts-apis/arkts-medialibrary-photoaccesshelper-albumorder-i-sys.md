@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface AlbumOrder--><!--Device-photoAccessHelper-interface AlbumOrder-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## albumId
 
@@ -25,10 +27,6 @@ albumId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumOrder-albumId: int--><!--Device-AlbumOrder-albumId: int-End-->
 
@@ -48,10 +46,6 @@ albumOrder: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AlbumOrder-albumOrder: int--><!--Device-AlbumOrder-albumOrder: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -69,10 +63,6 @@ orderSection: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumOrder-orderSection: int--><!--Device-AlbumOrder-orderSection: int-End-->
 
@@ -92,10 +82,6 @@ orderStatus: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AlbumOrder-orderStatus: int--><!--Device-AlbumOrder-orderStatus: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -113,10 +99,6 @@ orderType: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumOrder-orderType: int--><!--Device-AlbumOrder-orderType: int-End-->
 

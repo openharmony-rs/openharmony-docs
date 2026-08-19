@@ -1,5 +1,11 @@
 # scale
 
+## 导入模块
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+```
+
 ## scale
 
 ```TypeScript
@@ -9,8 +15,6 @@ function scale(options: ScaleOption): Matrix4Transit
 Matrix的缩放函数，可以为当前矩阵增加x轴/y轴/z轴缩放效果。 > **说明：**
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 

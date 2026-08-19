@@ -1,5 +1,11 @@
 # unsubscribe（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## unsubscribe
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unsubscribe(): void
 取消订阅系统事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
@@ -31,7 +33,7 @@ function unsubscribe(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
 | [11200305](../errorcode-hisysevent-sys.md#11200305-取消订阅失败) | Unsubscription failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';

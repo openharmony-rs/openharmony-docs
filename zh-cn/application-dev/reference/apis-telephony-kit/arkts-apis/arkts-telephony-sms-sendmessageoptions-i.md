@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export interface SendMessageOptions--><!--Device-sms-export interface SendMessageOptions-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
+
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
 
 ## content
 
@@ -24,10 +26,6 @@ content: string | Array<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SendMessageOptions-content: string | Array<int>--><!--Device-SendMessageOptions-content: string | Array<int>-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -38,15 +36,11 @@ content: string | Array<int>
 deliveryCallback?: AsyncCallback<IDeliveryShortMessageCallback>
 ```
 
-短信送达结果回调，返回短信递送报告，参考[IDeliveryShortMessageCallback](arkts-telephony-sms-ideliveryshortmessagecallback-i.md#ideliveryshortmessagecallback)。发送数据短信时，此项必填。
+短信送达结果回调，返回短信递送报告，参考[IDeliveryShortMessageCallback](arkts-telephony-sms-ideliveryshortmessagecallback-i.md)。发送数据短信时，此项必填。
 
-**类型：** [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[IDeliveryShortMessageCallback](arkts-telephony-sms-ideliveryshortmessagecallback-i.md)&gt;
+**类型：** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[IDeliveryShortMessageCallback](arkts-telephony-sms-ideliveryshortmessagecallback-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SendMessageOptions-deliveryCallback?: AsyncCallback<IDeliveryShortMessageCallback>--><!--Device-SendMessageOptions-deliveryCallback?: AsyncCallback<IDeliveryShortMessageCallback>-End-->
 
@@ -64,10 +58,6 @@ destinationHost: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SendMessageOptions-destinationHost: string--><!--Device-SendMessageOptions-destinationHost: string-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -84,10 +74,6 @@ destinationPort?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SendMessageOptions-destinationPort?: int--><!--Device-SendMessageOptions-destinationPort?: int-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -98,15 +84,11 @@ destinationPort?: int
 sendCallback?: AsyncCallback<ISendShortMessageCallback>
 ```
 
-短信发送结果回调，返回短信发送的结果，参考[ISendShortMessageCallback](arkts-telephony-sms-isendshortmessagecallback-i.md#isendshortmessagecallback)。发送数据短信时，此项必填。
+短信发送结果回调，返回短信发送的结果，参考[ISendShortMessageCallback](arkts-telephony-sms-isendshortmessagecallback-i.md)。发送数据短信时，此项必填。
 
-**类型：** [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ISendShortMessageCallback](arkts-telephony-sms-isendshortmessagecallback-i.md)&gt;
+**类型：** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ISendShortMessageCallback](arkts-telephony-sms-isendshortmessagecallback-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SendMessageOptions-sendCallback?: AsyncCallback<ISendShortMessageCallback>--><!--Device-SendMessageOptions-sendCallback?: AsyncCallback<ISendShortMessageCallback>-End-->
 
@@ -124,10 +106,6 @@ serviceCenter?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SendMessageOptions-serviceCenter?: string--><!--Device-SendMessageOptions-serviceCenter?: string-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -143,10 +121,6 @@ slotId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SendMessageOptions-slotId: int--><!--Device-SendMessageOptions-slotId: int-End-->
 

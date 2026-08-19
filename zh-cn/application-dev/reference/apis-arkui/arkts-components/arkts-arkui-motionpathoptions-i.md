@@ -4,13 +4,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface MotionPathOptions--><!--Device-unnamed-declare interface MotionPathOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## from
 
@@ -25,10 +26,6 @@ from?: number
 **默认值：** 0.0
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -47,10 +44,6 @@ path: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -72,10 +65,6 @@ rotatable?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MotionPathOptions-rotatable?: boolean--><!--Device-MotionPathOptions-rotatable?: boolean-End-->
@@ -95,10 +84,6 @@ to?: number
 **默认值：** 1.0
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,12 @@
 # getKeyItemPropertiesAsUser（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## getKeyItemPropertiesAsUser
 
 ```TypeScript
@@ -13,10 +20,6 @@ function getKeyItemPropertiesAsUser(
 Get properties of the key as user.
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -58,7 +61,7 @@ Get properties of the key as user.
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-## 示例
+**示例**
 
 以下代码示例接口调用的前置条件同上文generateKeyItemAsUser的前置条件
 

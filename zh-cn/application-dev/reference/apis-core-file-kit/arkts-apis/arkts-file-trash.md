@@ -1,22 +1,8 @@
 # @ohos.file.trash
 
-/*
- Copyright (c) 2023 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License"),
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
-
+该模块提供可以查询、还原或彻底删除最近删除（回收站）里的文件/文件夹的能力。当前仅支持本地文件目录。 应用可通过FileAccess的删除操作将文件/文件夹移动到回收站， 具体可参考[@ohos.file.fileAccess](arkts-file-fileaccess.md)。 > **说明：** > > - 当前只支持FilePicker、文件管理器调用。 > - 本模块为系统接口。 > - 当前只支持文件管理器调用。 > - 本模块接口从API version 23开始废弃。不建议使用以下接口。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -28,6 +14,12 @@
 
 **系统接口：** 此接口为系统接口。
 
+## 导入模块
+
+```TypeScript
+import { trash } from '@kit.CoreFileKit';
+```
+
 ## 汇总
 
 <!--Del-->
@@ -35,9 +27,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md#completelydelete) | Permanently deletes a file or directory from the **Recently deleted** list. |
-| [listFile](arkts-corefile-trash-listfile-f-sys.md#listfile) | Lists the files and directories in the **Recently deleted** list. |
-| [recover](arkts-corefile-trash-recover-f-sys.md#recover) | Recovers a file or directory from the trash. |
+| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md) | 将uri对应文件/目录从最近删除（回收站）列表中彻底删除。 |
+| [listFile](arkts-corefile-trash-listfile-f-sys.md) | 查询最近删除（回收站）列表中文件/目录信息。 |
+| [recover](arkts-corefile-trash-recover-f-sys.md) | 将uri对应文件/目录恢复到原路径。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -45,6 +37,6 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [FileInfo](arkts-corefile-trash-fileinfo-i-sys.md) | Represents information about a file or directory in the **Recently deleted** list. |
+| [FileInfo](arkts-corefile-trash-fileinfo-i-sys.md) | 最近删除（回收站）内文件的FileInfo对象。 |
 <!--DelEnd-->
 

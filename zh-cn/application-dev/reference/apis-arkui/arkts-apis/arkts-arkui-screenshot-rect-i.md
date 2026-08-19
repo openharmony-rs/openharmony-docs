@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-screenshot-interface Rect--><!--Device-screenshot-interface Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { screenshot } from '@kit.ArkUI';
+```
 
 ## height
 
@@ -23,10 +25,6 @@ height: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ left: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Rect-left: long--><!--Device-Rect-left: long-End-->
@@ -68,10 +62,6 @@ top: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Rect-top: long--><!--Device-Rect-top: long-End-->
@@ -89,10 +79,6 @@ width: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

@@ -8,10 +8,6 @@ export type RecoverableApplicationInfo = _RecoverableApplicationInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-export type RecoverableApplicationInfo = _RecoverableApplicationInfo--><!--Device-bundleManager-export type RecoverableApplicationInfo = _RecoverableApplicationInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core

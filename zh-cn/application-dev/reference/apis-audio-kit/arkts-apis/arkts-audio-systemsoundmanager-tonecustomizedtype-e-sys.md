@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-systemSoundManager-enum ToneCustomizedType--><!--Device-systemSoundManager-enum ToneCustomizedType-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -24,10 +20,6 @@ PRE_INSTALLED = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneCustomizedType-PRE_INSTALLED = 0--><!--Device-ToneCustomizedType-PRE_INSTALLED = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -43,10 +35,6 @@ CUSTOMIZED = 1
 自定义铃声类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneCustomizedType-CUSTOMIZED = 1--><!--Device-ToneCustomizedType-CUSTOMIZED = 1-End-->
 

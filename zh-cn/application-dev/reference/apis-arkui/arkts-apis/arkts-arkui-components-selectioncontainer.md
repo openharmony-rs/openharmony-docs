@@ -1,5 +1,11 @@
 # @ohos.arkui.components.SelectionContainer
 
+## 导入模块
+
+```TypeScript
+import { OnMenuItemClickWithTextCallback, SelectionContainer, SelectionContainerAttribute, SelectionContainerEditMenuOptions, SelectionContainerInstance, SelectionContainerMenuOptions, SelectionContainerTextJoinStyle, SelectionContainerOptions, SelectionContainerController } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 类

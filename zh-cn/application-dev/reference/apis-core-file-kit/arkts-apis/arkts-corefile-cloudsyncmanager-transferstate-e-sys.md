@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-cloudSyncManager-enum TransferState--><!--Device-cloudSyncManager-enum TransferState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
@@ -23,10 +19,6 @@ RUNNING = 0
 搬迁中。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ COMPLETED = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TransferState-COMPLETED = 1--><!--Device-TransferState-COMPLETED = 1-End-->
@@ -67,10 +55,6 @@ STOPPED = 2
 搬迁停止。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

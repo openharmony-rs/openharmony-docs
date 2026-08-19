@@ -221,7 +221,7 @@ typedef void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_Requ
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t result | 请求资源处理的结果。 |
+| int32_t result | 请求资源处理的结果。 |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求Id。 |
 
 ### OH_MediaLibrary_OnImageDataPrepared()
@@ -240,7 +240,7 @@ typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode resul
 
 | 参数项 | 描述 |
 | -- | -- |
-| (MediaLibrary_ErrorCode result | 处理所请求资源的结果[MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode)。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) result | 处理所请求资源的结果[MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode)。 |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)。 |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求源的[MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality)。 |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求源的[MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype)。 |
@@ -262,7 +262,7 @@ typedef void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode
 
 | 参数项 | 描述 |
 | -- | -- |
-| (MediaLibrary_ErrorCode result | 处理所请求资源的结果[MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode)。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) result | 处理所请求资源的结果[MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode)。 |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)。 |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求资源的[MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality)。 |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求资源的[MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype)。 |
@@ -284,7 +284,7 @@ typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (MediaLibrary_ErrorCode result | 处理所请求资源的结果。 |
+| [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) result | 处理所请求资源的结果。 |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求资源的MediaLibrary_RequestId。 |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求资源的MediaLibrary_MediaQuality。 |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求来源的MediaLibrary_MediaContentType。 |

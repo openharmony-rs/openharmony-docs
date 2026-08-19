@@ -1,5 +1,10 @@
 # enums
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 枚举
@@ -27,7 +32,7 @@
 | [CopyOptions](arkts-arkui-copyoptions-e.md) | Indicates the share option. |
 | [CrownAction](arkts-arkui-crownaction-e.md) | 旋转表冠动作。 |
 | [CrownSensitivity](arkts-arkui-crownsensitivity-e.md) | 旋转表冠灵敏度。 |
-| [Curve](arkts-arkui-curve-e.md) | 插值曲线，动效请参考&lt;!--RP1--&gt;[贝塞尔曲线](../../../../design/ux-design/animation-attributes.md)&lt;!--RP1End--&gt;。 |
+| [Curve](arkts-arkui-curve-e.md) | 插值曲线，动效请参考<!--RP1-->[贝塞尔曲线](../../../../design/ux-design/animation-attributes.md)<!--RP1End-->。 |
 | [DialogButtonStyle](arkts-arkui-dialogbuttonstyle-e.md) | The Button Style of dialog, |
 | [DialogDisplayMode](arkts-arkui-dialogdisplaymode-e.md) | Dialog display mode. |
 | [Direction](arkts-arkui-direction-e.md) | Sets the horizontal layout of elements. |

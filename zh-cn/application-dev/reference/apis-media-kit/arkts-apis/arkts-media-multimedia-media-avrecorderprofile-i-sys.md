@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface AVRecorderProfile--><!--Device-unnamed-interface AVRecorderProfile-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## enableStableQualityMode
 
@@ -23,10 +25,6 @@ enableStableQualityMode?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVRecorderProfile-enableStableQualityMode?: boolean--><!--Device-AVRecorderProfile-enableStableQualityMode?: boolean-End-->
 

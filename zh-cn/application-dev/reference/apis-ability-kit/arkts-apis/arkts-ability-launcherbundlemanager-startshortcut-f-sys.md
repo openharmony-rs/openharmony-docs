@@ -1,5 +1,11 @@
 # startShortcut（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { launcherBundleManager } from '@kit.AbilityKit';
+```
+
 ## startShortcut
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Prom
 拉起指定ShortcutInfo中的ability。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.START_SHORTCUT
 
@@ -45,7 +47,7 @@ function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Prom
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700065](../errorcode-bundle.md#17700065-shortcutinfo结构体中指定的want不支持被拉起) | The specified shortcut want in shortcut info is not supported to be started. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { launcherBundleManager } from '@kit.AbilityKit';

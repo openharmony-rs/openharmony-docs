@@ -1,5 +1,11 @@
 # onApplicationStateChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## onApplicationStateChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onApplicationStateChange(observer: ApplicationStateObserver, filter: Ap
 注册应用程序的状态监听器，并通过设置过滤条件来筛选所需监听的应用生命周期变化事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 

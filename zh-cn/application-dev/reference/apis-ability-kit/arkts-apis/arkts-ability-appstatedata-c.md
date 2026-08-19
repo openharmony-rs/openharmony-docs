@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class AppStateData--><!--Device-unnamed-declare class AppStateData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -23,10 +19,6 @@ Bundle名称。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AppStateData-bundleName: string--><!--Device-AppStateData-bundleName: string-End-->
 
@@ -44,10 +36,6 @@ isFloatingWindowMode: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AppStateData-isFloatingWindowMode: boolean--><!--Device-AppStateData-isFloatingWindowMode: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -63,10 +51,6 @@ isSplitScreenMode: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AppStateData-isSplitScreenMode: boolean--><!--Device-AppStateData-isSplitScreenMode: boolean-End-->
 
@@ -84,10 +68,6 @@ state: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AppStateData-state: int--><!--Device-AppStateData-state: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -103,10 +83,6 @@ uid: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AppStateData-uid: int--><!--Device-AppStateData-uid: int-End-->
 

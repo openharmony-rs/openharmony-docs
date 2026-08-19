@@ -1,4 +1,4 @@
-# CAPI<!--c-media-kit-->
+# C API<!--c-media-kit-->
 
 - 头文件
     - [avmedia_source.h](capi-avmedia-source-h.md)
@@ -23,7 +23,7 @@
     - [avmetadata_extractor.h](capi-avmetadata-extractor-h.md)
     - [avtranscoder.h](capi-avtranscoder-h.md)
 - 模块
-    - [avmedia_source](capi-avmedia-source.md)
+    - [AVMediaSource](capi-avmediasource.md)
     - [AVScreenCapture](capi-avscreencapture.md)
     - [AVImageGenerator](capi-avimagegenerator.md)
     - [AVPlayer](capi-avplayer.md)
@@ -36,10 +36,10 @@
     - [AVMediaBase](capi-avmediabase.md)
     - [AVSinkBase](capi-avsinkbase.md)
 - 结构体
-    - [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md)
-    - [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md)
-    - [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md)
-    - [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md)
+    - [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md)
+    - [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md)
+    - [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md)
+    - [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md)
     - [AVPlayerCallback](capi-avplayer-avplayercallback.md)
     - [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md)
     - [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)

@@ -1,5 +1,11 @@
 # getAgentCardsByBundleName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { agentManager } from '@kit.AbilityKit';
+```
+
 ## getAgentCardsByBundleName
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAgentCardsByBundleName(bundleName: string): Promise<Array<AgentCard>
 获取指定应用的所有AgentCard。使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_AGENT_CARD
 

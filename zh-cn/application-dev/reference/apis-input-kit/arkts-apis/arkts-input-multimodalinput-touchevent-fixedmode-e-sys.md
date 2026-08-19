@@ -1,12 +1,8 @@
 # FixedMode（系统接口）
 
-修正坐标的模式。 **系统API**: 此接口为系统接口。
+修正坐标的模式。默认值为NONE。 **系统API**: 此接口为系统接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum FixedMode--><!--Device-unnamed-export declare enum FixedMode-End-->
 
@@ -24,10 +20,6 @@ NONE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FixedMode-NONE = 0--><!--Device-FixedMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -43,10 +35,6 @@ AUTO = 1
 单手模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FixedMode-AUTO = 1--><!--Device-FixedMode-AUTO = 1-End-->
 

@@ -14,10 +14,6 @@ ListItemGroup(options?: ListItemGroupOptions)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ListItemGroupInterface-(options?: ListItemGroupOptions): ListItemGroupAttribute--><!--Device-ListItemGroupInterface-(options?: ListItemGroupOptions): ListItemGroupAttribute-End-->
@@ -32,6 +28,16 @@ ListItemGroup(options?: ListItemGroupOptions)
 
 ## 汇总
 
-- [ListItemGroupOptions](arkts-arkui-listitemgroupoptions-i.md)
-- [ListItemGroupHeaderFooterStyle](arkts-arkui-listitemgroupheaderfooterstyle-e.md)
-- [ListItemGroupStyle](arkts-arkui-listitemgroupstyle-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ListItemGroupOptions](arkts-arkui-listitemgroupoptions-i.md) | ListItemGroup组件参数。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ListItemGroupHeaderFooterStyle](arkts-arkui-listitemgroupheaderfooterstyle-e.md) | ListItemGroup头部和尾部样式枚举。 |
+| [ListItemGroupStyle](arkts-arkui-listitemgroupstyle-e.md) | ListItemGroup组件卡片样式枚举。 |
+

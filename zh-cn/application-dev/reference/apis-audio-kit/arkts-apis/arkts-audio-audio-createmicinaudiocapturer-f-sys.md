@@ -1,18 +1,21 @@
 # createMicInAudioCapturer（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
+
 ## createMicInAudioCapturer
 
 ```TypeScript
 function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<AudioCapturer | null>
 ```
 
-获取一个特殊的[AudioCapturer](arkts-audio-audio-audiocapturer-i.md#audiocapturer)实例。该方法使用promise返回录音实例。 此捕获可用于记录Mic-In音频数据和回声参考信号，以便应用处理算法。 Mic-In音频数据和回声参考信号将根据应用程序设置的配置被放入一个或多个缓冲。 当应用程序处于后台时，不允许创建录音实例。
+获取一个特殊的[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)实例。该方法使用promise返回录音实例。 此捕获可用于记录Mic-In音频数据和回声参考信号，以便应用处理算法。 Mic-In音频数据和回声参考信号将根据应用程序设置的配置被放入一个或多个缓冲。 当应用程序处于后台时，不允许创建录音实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -28,7 +31,7 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<Aud
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [AudioCapturerMicInConfig](arkts-audio-audio-audiocapturermicinconfig-i-sys.md) | 是 | Capturer configuration, see [AudioCapturerMicInConfig](arkts-audio-audio-audiocapturermicinconfig-i-sys.md#audiocapturermicinconfig系统接口) for details. |
+| config | [AudioCapturerMicInConfig](arkts-audio-audio-audiocapturermicinconfig-i-sys.md) | 是 | Capturer configuration, see [AudioCapturerMicInConfig](arkts-audio-audio-audiocapturermicinconfig-i-sys.md) for details. |
 
 **返回值：**
 
@@ -44,9 +47,9 @@ function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<Aud
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied, including background recording. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio system internal error, such as system process crash. |
-| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Capturer creation is not supported, may caused by following problems: <br> 1. Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](arkts-audio-audio-sourcetype-e-sys.md#sourcetypeunprocessedvoiceassistant) and [SOURCE_TYPE_VOICE_RECOGNITION](arkts-audio-audio-sourcetype-e.md#sourcetypevoicerecognition) are supported currently. <br> 2. Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently. |
+| [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Capturer creation is not supported, may caused by following problems: <br> 1. Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](arkts-audio-audio-sourcetype-e-sys.md#source_type_unprocessed_voice_assistant) and [SOURCE_TYPE_VOICE_RECOGNITION](arkts-audio-audio-sourcetype-e.md#source_type_voice_recognition) are supported currently. <br> 2. Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';

@@ -1,5 +1,11 @@
 # create
 
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
+
 ## create
 
 ```TypeScript
@@ -10,10 +16,6 @@ function create(context: Context, source: object): DataObject
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedDataObject-function create(context: Context, source: object): DataObject--><!--Device-distributedDataObject-function create(context: Context, source: object): DataObject-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -22,7 +24,7 @@ function create(context: Context, source: object): DataObject
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用的上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#uiabilitycontext)。 |
+| context | Context | 是 | 应用的上下文。 <br>FA模型的应用Context定义见Context。 <br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md)。 |
 | source | object | 是 | 设置分布式数据对象的属性。 |
 
 **返回值：**
@@ -37,7 +39,7 @@ function create(context: Context, source: object): DataObject
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 FA模型示例：
 

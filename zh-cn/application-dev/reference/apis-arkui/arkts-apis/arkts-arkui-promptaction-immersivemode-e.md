@@ -4,10 +4,6 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum ImmersiveMode--><!--Device-unnamed-export enum ImmersiveMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ DEFAULT = 0
 弹窗蒙层遵循父节点布局约束进行显示。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ EXTEND = 1
 弹窗蒙层可扩展至覆盖状态栏和导航条。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

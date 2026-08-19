@@ -1,5 +1,11 @@
 # disableGwpAsanGrayscale
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## disableGwpAsanGrayscale
 
 ```TypeScript
@@ -10,15 +16,11 @@ function disableGwpAsanGrayscale(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hidebug-function disableGwpAsanGrayscale(): void--><!--Device-hidebug-function disableGwpAsanGrayscale(): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

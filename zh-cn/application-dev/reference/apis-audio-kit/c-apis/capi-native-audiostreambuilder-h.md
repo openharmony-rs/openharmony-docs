@@ -79,7 +79,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Create(OH_AudioStreamBuilder** build
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_Destroy()
 
@@ -103,7 +103,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Destroy(OH_AudioStreamBuilder* build
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li><br>         <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          <li>[AUDIOSTREAM_ERROR_ILLEGAL_STATE](capi-native-audiostream-base-h.md#oh_audiostream_result) Execution status exception.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetSamplingRate()
 
@@ -128,7 +128,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSamplingRate(OH_AudioStreamBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.The param of rate invalid.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of rate invalid.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetChannelCount()
 
@@ -153,7 +153,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelCount(OH_AudioStreamBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.The param of channelCount invalid.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of channelCount invalid.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetSampleFormat()
 
@@ -178,7 +178,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSampleFormat(OH_AudioStreamBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetEncodingType()
 
@@ -203,7 +203,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetEncodingType(OH_AudioStreamBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetLatencyMode()
 
@@ -228,7 +228,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetLatencyMode(OH_AudioStreamBuilder
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetChannelLayout()
 
@@ -253,7 +253,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetChannelLayout(OH_AudioStreamBuild
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererInfo()
 
@@ -278,7 +278,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInfo(OH_AudioStreamBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.The param of usage invalid.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of usage invalid.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetCapturerInfo()
 
@@ -303,7 +303,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInfo(OH_AudioStreamBuilde
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.The param of sourceType invalid.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of sourceType invalid.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererCallback()
 
@@ -333,7 +333,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBu
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>     <br>1. 参数builder为nullptr；<br>     <br>2. StreamType无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. StreamType无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback()
 
@@ -359,7 +359,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallbac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>     <br>1. 参数builder为nullptr；<br>     <br>2. StreamType无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. StreamType无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererPrivacy()
 
@@ -384,7 +384,7 @@ Set the privacy of audio render.
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.StreamType invalid.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetCapturerCallback()
 
@@ -440,7 +440,7 @@ Create the audio renderer client.The AudioRenderer instance is used to play stre
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.StreamType invalid;<br>                                                 3.Create OHAudioRenderer failed.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid;                                                  3.Create OHAudioRenderer failed.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_GenerateCapturer()
 
@@ -465,7 +465,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateCapturer(OH_AudioStreamBuild
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.StreamType invalid;<br>                                                 3.Create OHAudioCapturer failed.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid;                                                  3.Create OHAudioCapturer failed.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetFrameSizeInCallback()
 
@@ -490,7 +490,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStrea
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result) The param of builder is nullptr.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback()
 
@@ -516,7 +516,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.StreamType invalid.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.StreamType invalid.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererInterruptMode()
 
@@ -541,7 +541,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptMode(OH_AudioStr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li><br>         <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):<br>                                                 1.The param of builder is nullptr;<br>                                                 2.The param of mode invalid;<br>                                                 3.StreamType invalid.</li><br>         </ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>          <li>[AUDIOSTREAM_SUCCESS](capi-native-audiostream-base-h.md#oh_audiostream_result) If the execution is successful.</li>          <li>[AUDIOSTREAM_ERROR_INVALID_PARAM](capi-native-audiostream-base-h.md#oh_audiostream_result):                                                  1.The param of builder is nullptr;                                                  2.The param of mode invalid;                                                  3.StreamType invalid.</li>          </ul> |
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallback()
 
@@ -567,7 +567,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallback(OH_Audi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>     <br>1. 参数builder为nullptr；<br>     <br>2. StreamType无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. StreamType无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced()
 
@@ -593,7 +593,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数非法，比如builder为空指针，等等。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数非法，比如builder为空指针，等等。 |
 
 ### OH_AudioStreamBuilder_SetVolumeMode()
 
@@ -618,7 +618,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetVolumeMode(OH_AudioStreamBuilder*
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：<br>     <br>1. 参数builder为nullptr；<br>     <br>2. 参数volumeMode无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：      <br>1. 参数builder为nullptr；      <br>2. 参数volumeMode无效。 |
 
 ### OH_AudioStreamBuilder_SetRendererInterruptCallback()
 
@@ -644,7 +644,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptCallback(OH_Audi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetRendererErrorCallback()
 
@@ -670,7 +670,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererErrorCallback(OH_AudioStr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerReadDataCallback()
 
@@ -696,7 +696,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerReadDataCallback(OH_Audio
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback()
 
@@ -722,7 +722,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(OH_A
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerInterruptCallback()
 
@@ -748,7 +748,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInterruptCallback(OH_Audi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerErrorCallback()
 
@@ -774,7 +774,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerErrorCallback(OH_AudioStr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted()
 
@@ -799,7 +799,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(O
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback()
 
@@ -825,7 +825,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback()
 
@@ -851,7 +851,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效，比如，builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled()
 
@@ -876,7 +876,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。如builder为空指针。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。如builder为空指针。 |
 
 ### OH_AudioStreamBuilder_SetPlaybackCaptureMode()
 
@@ -899,7 +899,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStrea
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>     <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针或mode值无效。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。      <br>AUDIOSTREAM_ERROR_INVALID_PARAM：参数无效。例如，builder为空指针或mode值无效。 |
 
 ### OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback()
 
@@ -925,7 +925,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>     <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li><br>     <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder或callback为空指针。</li><br>     <br></ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>      <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li>      <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder或callback为空指针。</li>      <br></ul> |
 
 ### OH_AudioStreamBuilder_SetCellularRecordSecurityParams()
 
@@ -951,6 +951,6 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCellularRecordSecurityParams(OH_A
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>     <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li><br>     <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder、cellularRecordPhoneNum或cellularRecordToken为空指针。</li><br>     <br></ul> |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul>      <br><li>AUDIOSTREAM_SUCCESS：函数执行成功。</li>      <br><li>AUDIOSTREAM_ERROR_INVALID_PARAM：参数builder、cellularRecordPhoneNum或cellularRecordToken为空指针。</li>      <br></ul> |
 
 

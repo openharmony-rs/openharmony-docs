@@ -4,11 +4,9 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md#userauthresultcode)
+**替代接口：** [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md)
 
 <!--Device-userAuth-enum ResultCode--><!--Device-userAuth-enum ResultCode-End-->
 
@@ -23,8 +21,6 @@ SUCCESS = 0
 执行成功。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -44,8 +40,6 @@ FAIL = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [FAIL](arkts-userauthentication-userauth-userauthresultcode-e.md#fail)
@@ -64,11 +58,9 @@ GENERAL_ERROR = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-userauthresultcode-e.md#generalerror)
+**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-userauthresultcode-e.md#general_error)
 
 <!--Device-ResultCode-GENERAL_ERROR = 2--><!--Device-ResultCode-GENERAL_ERROR = 2-End-->
 
@@ -83,8 +75,6 @@ CANCELED = 3
 操作取消。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -104,8 +94,6 @@ TIMEOUT = 4
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [TIMEOUT](arkts-userauthentication-userauth-userauthresultcode-e.md#timeout)
@@ -124,11 +112,9 @@ TYPE_NOT_SUPPORT = 5
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#typenotsupport)
+**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#type_not_support)
 
 <!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
 
@@ -144,11 +130,9 @@ TRUST_LEVEL_NOT_SUPPORT = 6
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#trustlevelnotsupport)
+**替代接口：** [TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#trust_level_not_support)
 
 <!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
 
@@ -163,8 +147,6 @@ BUSY = 7
 忙碌状态。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -184,11 +166,9 @@ INVALID_PARAMETERS = 8
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [INVALID_PARAMETERS](arkts-userauthentication-userauth-userauthresultcode-e.md#invalidparameters)
+**替代接口：** [INVALID_PARAMETERS](arkts-userauthentication-userauth-userauthresultcode-e.md#invalid_parameters)
 
 <!--Device-ResultCode-INVALID_PARAMETERS = 8--><!--Device-ResultCode-INVALID_PARAMETERS = 8-End-->
 
@@ -203,8 +183,6 @@ LOCKED = 9
 认证器已锁定。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -224,11 +202,9 @@ NOT_ENROLLED = 10
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-userauthresultcode-e.md#notenrolled)
+**替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-userauthresultcode-e.md#not_enrolled)
 
 <!--Device-ResultCode-NOT_ENROLLED = 10--><!--Device-ResultCode-NOT_ENROLLED = 10-End-->
 

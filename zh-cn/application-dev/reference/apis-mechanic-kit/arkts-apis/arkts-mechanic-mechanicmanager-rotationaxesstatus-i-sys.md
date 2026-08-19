@@ -4,15 +4,17 @@ Rotation axes status
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export interface RotationAxesStatus--><!--Device-mechanicManager-export interface RotationAxesStatus-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
 
 ## pitchEnabled
 
@@ -25,10 +27,6 @@ pitchEnabled: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationAxesStatus-pitchEnabled: boolean--><!--Device-RotationAxesStatus-pitchEnabled: boolean-End-->
 
@@ -48,10 +46,6 @@ Whether the pitch axis is limited.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationAxesStatus-pitchLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-pitchLimited?: RotationAxisLimited-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -69,10 +63,6 @@ rollEnabled: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationAxesStatus-rollEnabled: boolean--><!--Device-RotationAxesStatus-rollEnabled: boolean-End-->
 
@@ -92,10 +82,6 @@ Whether the roll axis is limited.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationAxesStatus-rollLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-rollLimited?: RotationAxisLimited-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -114,10 +100,6 @@ yawEnabled: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationAxesStatus-yawEnabled: boolean--><!--Device-RotationAxesStatus-yawEnabled: boolean-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -135,10 +117,6 @@ yawLimited?: RotationAxisLimited
 **类型：** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationAxesStatus-yawLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-yawLimited?: RotationAxisLimited-End-->
 

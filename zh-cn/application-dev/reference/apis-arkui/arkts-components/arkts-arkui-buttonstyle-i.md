@@ -4,13 +4,14 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface ButtonStyle--><!--Device-unnamed-declare interface ButtonStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## height
 
@@ -23,10 +24,6 @@ height?: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +43,6 @@ icons?: ButtonIconOptions
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ButtonStyle-icons?: ButtonIconOptions--><!--Device-ButtonStyle-icons?: ButtonIconOptions-End-->
@@ -67,10 +60,6 @@ left?: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +79,6 @@ top?: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ButtonStyle-top?: number--><!--Device-ButtonStyle-top?: number-End-->
@@ -111,10 +96,6 @@ width?: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

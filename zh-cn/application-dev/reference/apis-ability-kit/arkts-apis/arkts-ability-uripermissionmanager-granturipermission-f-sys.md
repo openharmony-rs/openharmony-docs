@@ -1,5 +1,11 @@
 # grantUriPermission（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { uriPermissionManager } from '@kit.AbilityKit';
+```
+
 ## grantUriPermission
 
 ```TypeScript
@@ -11,13 +17,9 @@ function grantUriPermission(
   ): void
 ```
 
-授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
+授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -34,7 +36,7 @@ function grantUriPermission(
 | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。 |
 | flag | wantConstant.Flags | 是 | URI的读权限或写权限。 |
 | targetBundleName | string | 是 | 被授权URI的应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 |
 
 **错误码：**
 
@@ -49,7 +51,7 @@ function grantUriPermission(
 | [16000058](../errorcode-ability.md#16000058-指定的uri-flag无效) | Invalid URI flag. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
@@ -90,13 +92,9 @@ function grantUriPermission(
   ): void
 ```
 
-授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
+授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -115,7 +113,7 @@ function grantUriPermission(
 | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。 |
 | flag | wantConstant.Flags | 是 | URI的读权限或写权限。 |
 | targetBundleName | string | 是 | 被授权URI的应用包名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 |
 
 **错误码：**
 
@@ -129,7 +127,7 @@ function grantUriPermission(
 | [16000058](../errorcode-ability.md#16000058-指定的uri-flag无效) | Invalid URI flag. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 
@@ -165,13 +163,9 @@ uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_U
 function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string): Promise<number>
 ```
 
-授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
+授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -208,7 +202,7 @@ function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleN
 | [16000058](../errorcode-ability.md#16000058-指定的uri-flag无效) | Invalid URI flag. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
@@ -247,10 +241,6 @@ Grant URI to another application
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.PROXY_AUTHORIZATION_URI
 
 <!--Device-uriPermissionManager-function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string): Promise<void>--><!--Device-uriPermissionManager-function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string): Promise<void>-End-->
@@ -285,7 +275,7 @@ Grant URI to another application
 | [16000058](../errorcode-ability.md#16000058-指定的uri-flag无效) | Invalid URI flag. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 
@@ -321,13 +311,9 @@ uriPermissionManager.grantUriPermission(uri, wantConstant.Flags.FLAG_AUTH_READ_U
 function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string, appCloneIndex: int): Promise<void>
 ```
 
-授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 该接口支持给分身应用授权，需要指定目标应用的应用包名和分身索引。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
+授权URI给指定应用，授权成功后目标应用将获得该URI的文件访问权限，目标应用退出后权限将被回收。目标应用使用该URI的方法可以参考 [应用文件分享](../../../file-management/share-app-file.md)。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。 > **说明：** > > - 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。 > > - 该接口支持给分身应用授权，需要指定目标应用的应用包名和分身索引。 > > - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证 > 其功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -366,7 +352,7 @@ function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleN
 | [16000058](../errorcode-ability.md#16000058-指定的uri-flag无效) | Invalid URI flag. |
 | [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

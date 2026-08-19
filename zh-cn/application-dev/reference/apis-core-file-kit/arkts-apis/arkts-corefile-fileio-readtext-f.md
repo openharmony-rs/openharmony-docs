@@ -1,5 +1,10 @@
 # readText
 
+## 导入模块
+
+```TypeScript
+```
+
 ## readText
 
 ```TypeScript
@@ -17,11 +22,9 @@ declare function readText(
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [readText](arkts-corefile-file-fs-readtext-f.md#readtext)
+**替代接口：** [readText](arkts-corefile-file-fs-readtext-f.md)
 
 <!--Device-unnamed-declare function readText(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): Promise<string>--><!--Device-unnamed-declare function readText(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): Promise<string>-End-->
 
@@ -59,11 +62,9 @@ declare function readText(
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [readText](arkts-corefile-file-fs-readtext-f.md#readtext)
+**替代接口：** [readText](arkts-corefile-file-fs-readtext-f.md)
 
 <!--Device-unnamed-declare function readText(  filePath: string,  options: {    position?: number;    length?: number;    encoding?: string;  },  callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function readText(  filePath: string,  options: {    position?: number;    length?: number;    encoding?: string;  },  callback: AsyncCallback<string>): void-End-->
 
@@ -75,5 +76,5 @@ declare function readText(
 | --- | --- | --- | --- |
 | filePath | string | 是 | 待读取文件的应用沙箱路径。 |
 | options | {     position?: number;     length?: number;     encoding?: string;   } | 是 | 支持如下选项：<br/>-?position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-?length，number 类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-?encoding，string类型，表示数据的编码方式，默认?'utf-8'，仅支持?'utf-8'。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，返回读取文件的内容。 |
 

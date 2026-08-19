@@ -1,5 +1,11 @@
 # createPluginModuleContext
 
+## 导入模块
+
+```TypeScript
+import { application } from '@kit.AbilityKit';
+```
+
 ## createPluginModuleContext
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function createPluginModuleContext(context: Context, pluginBundleName: st
 根据入参Context、指定的插件包名和插件模块名，创建本应用下插件的Context，用于获取插件的基本信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +36,7 @@ export function createPluginModuleContext(context: Context, pluginBundleName: st
 | --- | --- |
 | Promise&lt;[Context](arkts-ability-context-c.md)&gt; | Promise对象。返回创建的Context。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, application, common, Want, Context } from '@kit.AbilityKit';

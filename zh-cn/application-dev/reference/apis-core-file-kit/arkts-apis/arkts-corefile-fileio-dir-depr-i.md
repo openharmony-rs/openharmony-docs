@@ -4,15 +4,18 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-unnamed-declare interface Dir--><!--Device-unnamed-declare interface Dir-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## close
 
@@ -24,11 +27,9 @@ close(): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dir-close(): Promise<void>--><!--Device-Dir-close(): Promise<void>-End-->
 
@@ -40,7 +41,7 @@ close(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | return Promise |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -59,11 +60,9 @@ close(callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dir-close(callback: AsyncCallback<void>): void--><!--Device-Dir-close(callback: AsyncCallback<void>): void-End-->
 
@@ -73,9 +72,9 @@ close(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -94,17 +93,15 @@ closeSync(): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dir-closeSync(): void--><!--Device-Dir-closeSync(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-## 示例
+**示例**
 
 ```TypeScript
 dir.closeSync();
@@ -120,11 +117,9 @@ read(): Promise<Dirent>
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dir-read(): Promise<Dirent>--><!--Device-Dir-read(): Promise<Dirent>-End-->
 
@@ -136,7 +131,7 @@ read(): Promise<Dirent>
 | --- | --- |
 | Promise&lt;[Dirent](arkts-corefile-fileio-dirent-depr-i.md)&gt; | Promise对象。返回表示异步读取目录项的结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -157,11 +152,9 @@ read(callback: AsyncCallback<Dirent>): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dir-read(callback: AsyncCallback<Dirent>): void--><!--Device-Dir-read(callback: AsyncCallback<Dirent>): void-End-->
 
@@ -171,9 +164,9 @@ read(callback: AsyncCallback<Dirent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Dirent](arkts-corefile-fileio-dirent-depr-i.md)&gt; | 是 | 异步读取下一个目录项之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Dirent](arkts-corefile-fileio-dirent-depr-i.md)&gt; | 是 | 异步读取下一个目录项之后的回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -195,11 +188,9 @@ readSync(): Dirent
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dir-readSync(): Dirent--><!--Device-Dir-readSync(): Dirent-End-->
 
@@ -211,7 +202,7 @@ readSync(): Dirent
 | --- | --- |
 | [Dirent](arkts-corefile-fileio-dirent-depr-i.md) | 表示一个目录项。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dirent = dir.readSync();

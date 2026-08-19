@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface PlayParameters--><!--Device-unnamed-export interface PlayParameters-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -23,10 +19,6 @@ leftVolume?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PlayParameters-leftVolume?: double--><!--Device-PlayParameters-leftVolume?: double-End-->
 
@@ -44,10 +36,6 @@ loop?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PlayParameters-loop?: int--><!--Device-PlayParameters-loop?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -63,10 +51,6 @@ Pitch of the sound. The value ranges from 0.25 to 4.0 with a step size of 0.001.
 **类型：** double
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,10 +70,6 @@ priority?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PlayParameters-priority?: int--><!--Device-PlayParameters-priority?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -106,10 +86,6 @@ rate?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PlayParameters-rate?: int--><!--Device-PlayParameters-rate?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -125,10 +101,6 @@ rightVolume?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PlayParameters-rightVolume?: double--><!--Device-PlayParameters-rightVolume?: double-End-->
 

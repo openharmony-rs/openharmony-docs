@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-class PhotoAssetCustomRecordManager--><!--Device-photoAccessHelper-class PhotoAssetCustomRecordManager-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## addLcdJumpCount
 
@@ -20,13 +22,9 @@
 addLcdJumpCount(ids: Array<int>): Promise<Array<int>>
 ```
 
-根据[PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md#photoassetcustomrecord系统接口)中的fileId给数据库中对应数据的LcdJumpCount加1。使用Promise异步回调。
+根据[PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId给数据库中对应数据的LcdJumpCount加1。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAssetCustomRecordManager-addLcdJumpCount(ids: Array<int>): Promise<Array<int>>--><!--Device-PhotoAssetCustomRecordManager-addLcdJumpCount(ids: Array<int>): Promise<Array<int>>-End-->
 
@@ -38,7 +36,7 @@ addLcdJumpCount(ids: Array<int>): Promise<Array<int>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ids | Array&lt;int&gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md#photoassetcustomrecord系统接口)中的fileId集合。 |
+| ids | Array&lt;int&gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId集合。 |
 
 **返回值：**
 
@@ -60,13 +58,9 @@ addLcdJumpCount(ids: Array<int>): Promise<Array<int>>
 addShareCount(ids: Array<int>): Promise<Array<int>>
 ```
 
-根据[PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md#photoassetcustomrecord系统接口)中的fileId给数据库中对应数据的shareCount加1。使用Promise异步回调。
+根据[PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId给数据库中对应数据的shareCount加1。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAssetCustomRecordManager-addShareCount(ids: Array<int>): Promise<Array<int>>--><!--Device-PhotoAssetCustomRecordManager-addShareCount(ids: Array<int>): Promise<Array<int>>-End-->
 
@@ -78,7 +72,7 @@ addShareCount(ids: Array<int>): Promise<Array<int>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ids | Array&lt;int&gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md#photoassetcustomrecord系统接口)中的fileId集合。 |
+| ids | Array&lt;int&gt; | 是 | [PhotoAssetCustomRecord](arkts-medialibrary-photoaccesshelper-photoassetcustomrecord-i-sys.md)中的fileId集合。 |
 
 **返回值：**
 
@@ -103,10 +97,6 @@ createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>
 新增自定义用户统计行为数据。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAssetCustomRecordManager-createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>--><!--Device-PhotoAssetCustomRecordManager-createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>-End-->
 
@@ -134,7 +124,7 @@ createCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. <br>2. The transferred record already exists. 3. The number of transferred records exceeds 200. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -163,10 +153,6 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager--><!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -192,7 +178,7 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 | [23800107](../errorcode-medialibrary.md#23800107-context为空或者无效) | Context is invalid |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -217,10 +203,6 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 获取图库自定义用户统计行为实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager | null--><!--Device-PhotoAssetCustomRecordManager-static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager | null-End-->
 
@@ -257,10 +239,6 @@ getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCusto
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoAssetCustomRecordManager-getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCustomRecord>>--><!--Device-PhotoAssetCustomRecordManager-getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCustomRecord>>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -287,7 +265,7 @@ getCustomRecords(optionCheck: FetchOptions): Promise<FetchResult<PhotoAssetCusto
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -321,10 +299,6 @@ removeCustomRecords(optionCheck: FetchOptions): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoAssetCustomRecordManager-removeCustomRecords(optionCheck: FetchOptions): Promise<void>--><!--Device-PhotoAssetCustomRecordManager-removeCustomRecords(optionCheck: FetchOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -351,7 +325,7 @@ removeCustomRecords(optionCheck: FetchOptions): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The filter criteria or fetchColumns that are not supported by options are transferred. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -384,10 +358,6 @@ setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<in
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoAssetCustomRecordManager-setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<int>>--><!--Device-PhotoAssetCustomRecordManager-setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<int>>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -414,7 +384,7 @@ setCustomRecords(customRecords: Array<PhotoAssetCustomRecord>): Promise<Array<in
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scenario parameters fail to pass the verification.Possible causes: <br>1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. <br>2. The number of transferred records exceeds 200. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

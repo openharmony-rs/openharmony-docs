@@ -2,109 +2,97 @@
 
 定义组件截图的矩形区域。
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为15。
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
-**废弃版本：** -1
-
-<!--Device-componentSnapshot-interface SnapshotRegion--><!--Device-componentSnapshot-interface SnapshotRegion-End-->
+<!--Device-componentSnapshot-export interface SnapshotRegion--><!--Device-componentSnapshot-export interface SnapshotRegion-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { componentSnapshot } from '@kit.ArkUI';
+```
 
 ## bottom
 
 ```TypeScript
-bottom: number
+bottom: double
 ```
 
 截图区域矩形右下角的y轴坐标。 单位：px 取值范围：[0, 组件高度]
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SnapshotRegion-bottom: number--><!--Device-SnapshotRegion-bottom: number-End-->
+<!--Device-SnapshotRegion-bottom: double--><!--Device-SnapshotRegion-bottom: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## left
 
 ```TypeScript
-left: number
+left: double
 ```
 
 截图区域矩形左上角的x轴坐标。 单位：px 取值范围：[0, 组件宽度]
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SnapshotRegion-left: number--><!--Device-SnapshotRegion-left: number-End-->
+<!--Device-SnapshotRegion-left: double--><!--Device-SnapshotRegion-left: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
 
 ```TypeScript
-right: number
+right: double
 ```
 
 截图区域矩形右下角的x轴坐标。 单位：px 取值范围：[0, 组件宽度]
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SnapshotRegion-right: number--><!--Device-SnapshotRegion-right: number-End-->
+<!--Device-SnapshotRegion-right: double--><!--Device-SnapshotRegion-right: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
 
 ```TypeScript
-top: number
+top: double
 ```
 
 截图区域矩形左上角的y轴坐标。 单位：px 取值范围：[0, 组件高度]
 
-**类型：** number
+**类型：** double
 
-**起始版本：** 15
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
-
-<!--Device-SnapshotRegion-top: number--><!--Device-SnapshotRegion-top: number-End-->
+<!--Device-SnapshotRegion-top: double--><!--Device-SnapshotRegion-top: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

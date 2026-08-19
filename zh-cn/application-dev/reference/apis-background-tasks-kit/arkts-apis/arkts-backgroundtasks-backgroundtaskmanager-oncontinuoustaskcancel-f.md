@@ -1,5 +1,11 @@
 # onContinuousTaskCancel
 
+## 导入模块
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+```
+
 ## onContinuousTaskCancel
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onContinuousTaskCancel(callback: Callback<ContinuousTaskCancelInfo>): v
 注册长时任务取消的监听，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -24,7 +26,7 @@ function onContinuousTaskCancel(callback: Callback<ContinuousTaskCancelInfo>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ContinuousTaskCancelInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskcancelinfo-i.md)&gt; | 是 | the callback of continuous task cancel. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ContinuousTaskCancelInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskcancelinfo-i.md)&gt; | 是 | the callback of continuous task cancel. |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function onContinuousTaskCancel(callback: Callback<ContinuousTaskCancelInfo>): v
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';

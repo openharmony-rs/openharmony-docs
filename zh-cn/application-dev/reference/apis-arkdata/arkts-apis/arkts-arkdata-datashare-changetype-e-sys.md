@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dataShare-enum ChangeType--><!--Device-dataShare-enum ChangeType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -23,10 +19,6 @@ INSERT = 0
 表示数据添加。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ DELETE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ChangeType-DELETE = 1--><!--Device-ChangeType-DELETE = 1-End-->
@@ -67,10 +55,6 @@ UPDATE = 2
 表示数据更新。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

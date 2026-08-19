@@ -4,10 +4,6 @@ Ability迁移结果，该类型为枚举，可配合UIAbility的[onContinue()](a
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityConstant-export enum OnContinueResult--><!--Device-AbilityConstant-export enum OnContinueResult-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ AGREE = 0
 表示同意。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ REJECT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -65,10 +53,6 @@ MISMATCH = 2
 表示版本不匹配：迁移发起端应用可以在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)中获取到迁移目标端应用的版本号，进行协商后，如果版本不 匹配导致无法迁移，可以返回该结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

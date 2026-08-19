@@ -1,18 +1,20 @@
 # RotationVectorResponse
 
-旋转矢量传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。
+旋转矢量传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
-**继承/实现关系：** RotationVectorResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
+**继承/实现关系：** RotationVectorResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-interface RotationVectorResponse--><!--Device-sensor-interface RotationVectorResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
+
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
 
 ## w
 
@@ -25,10 +27,6 @@ w: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationVectorResponse-w: double--><!--Device-RotationVectorResponse-w: double-End-->
 
@@ -46,10 +44,6 @@ x: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationVectorResponse-x: double--><!--Device-RotationVectorResponse-x: double-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -66,10 +60,6 @@ y: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationVectorResponse-y: double--><!--Device-RotationVectorResponse-y: double-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -85,10 +75,6 @@ z: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationVectorResponse-z: double--><!--Device-RotationVectorResponse-z: double-End-->
 

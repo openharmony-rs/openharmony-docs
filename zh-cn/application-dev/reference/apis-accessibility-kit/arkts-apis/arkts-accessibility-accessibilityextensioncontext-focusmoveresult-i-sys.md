@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare interface FocusMoveResult--><!--Device-unnamed-export declare interface FocusMoveResult-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -26,10 +22,6 @@ result: FocusMoveResultCode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FocusMoveResult-result: FocusMoveResultCode--><!--Device-FocusMoveResult-result: FocusMoveResultCode-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -47,10 +39,6 @@ target: Array<AccessibilityElement>
 **类型：** Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FocusMoveResult-target: Array<AccessibilityElement>--><!--Device-FocusMoveResult-target: Array<AccessibilityElement>-End-->
 

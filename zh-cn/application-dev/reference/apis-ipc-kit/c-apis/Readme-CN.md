@@ -1,4 +1,4 @@
-# CAPI<!--c-ipc-kit-->
+# C API<!--c-ipc-kit-->
 
 - 头文件
     - [ipc_kit.h](capi-ipc-kit-h.md)

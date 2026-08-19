@@ -14,10 +14,6 @@ TextPicker(options?: TextPickerOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TextPickerInterface-(options?: TextPickerOptions): TextPickerAttribute--><!--Device-TextPickerInterface-(options?: TextPickerOptions): TextPickerAttribute-End-->
@@ -32,15 +28,25 @@ TextPicker(options?: TextPickerOptions)
 
 ## 汇总
 
-- [DividerOptions](arkts-arkui-divideroptions-i.md)
-- [PickerBackgroundStyle](arkts-arkui-pickerbackgroundstyle-i.md)
-- [TextCascadePickerRangeContent](arkts-arkui-textcascadepickerrangecontent-i.md)
-- [TextPickerDialogOptions](arkts-arkui-textpickerdialogoptions-i.md)
-- [TextPickerDialogOptionsExt](arkts-arkui-textpickerdialogoptionsext-i.md)
-- [TextPickerOptions](arkts-arkui-textpickeroptions-i.md)
-- [TextPickerRangeContent](arkts-arkui-textpickerrangecontent-i.md)
-- [TextPickerResult](arkts-arkui-textpickerresult-i.md)
-- [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md)
-- [OnTextPickerChangeCallback](arkts-arkui-ontextpickerchangecallback-t.md)
-- [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpickerenterselectedareacallback-t.md)
-- [TextPickerScrollStopCallback](arkts-arkui-textpickerscrollstopcallback-t.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [DividerOptions](arkts-arkui-divideroptions-i.md) | 分割线的信息。 |
+| [PickerBackgroundStyle](arkts-arkui-pickerbackgroundstyle-i.md) | 选择器选中项的背景样式，包括选中项的背景颜色和边框圆角半径。 |
+| [TextCascadePickerRangeContent](arkts-arkui-textcascadepickerrangecontent-i.md) | 多列联动数据选择器的数据选项内容。 |
+| [TextPickerDialogOptions](arkts-arkui-textpickerdialogoptions-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpickeroptions-i.md)。 |
+| [TextPickerDialogOptionsExt](arkts-arkui-textpickerdialogoptionsext-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpickeroptions-i.md)。 |
+| [TextPickerOptions](arkts-arkui-textpickeroptions-i.md) | 文本选择器的参数说明。 |
+| [TextPickerRangeContent](arkts-arkui-textpickerrangecontent-i.md) | 单列数据选择器的数据选项内容。 |
+| [TextPickerResult](arkts-arkui-textpickerresult-i.md) | 文本选择器结果。 |
+| [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md) | 文本样式选项，继承自PickerTextStyle。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [OnTextPickerChangeCallback](arkts-arkui-ontextpickerchangecallback-t.md) | 定义触发onChange事件的回调类型。 |
+| [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpickerenterselectedareacallback-t.md) | 定义触发onEnterSelectedArea事件的回调类型。 |
+| [TextPickerScrollStopCallback](arkts-arkui-textpickerscrollstopcallback-t.md) | 定义触发onScrollStop事件的回调类型。 |
+

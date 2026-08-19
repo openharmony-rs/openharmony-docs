@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appControl-export enum DisposedType--><!--Device-appControl-export enum DisposedType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -23,10 +19,6 @@ BLOCK_APPLICATION = 1
 应用所有能力都将被禁用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DisposedType-BLOCK_APPLICATION = 1--><!--Device-DisposedType-BLOCK_APPLICATION = 1-End-->
 
@@ -44,10 +36,6 @@ BLOCK_ABILITY = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DisposedType-BLOCK_ABILITY = 2--><!--Device-DisposedType-BLOCK_ABILITY = 2-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -63,10 +51,6 @@ NON_BLOCK = 3
 应用所有能力不会被禁用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DisposedType-NON_BLOCK = 3--><!--Device-DisposedType-NON_BLOCK = 3-End-->
 

@@ -4,15 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-uiEffect-interface BlurBubblesRiseEffectParam--><!--Device-uiEffect-interface BlurBubblesRiseEffectParam-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
 
 ## blurIntensity
 
@@ -25,10 +27,6 @@ blurIntensity: double
 **类型：** double
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +48,6 @@ maskImage: image.PixelMap
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BlurBubblesRiseEffectParam-maskImage: image.PixelMap--><!--Device-BlurBubblesRiseEffectParam-maskImage: image.PixelMap-End-->
@@ -74,10 +68,6 @@ mixStrength: double
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BlurBubblesRiseEffectParam-mixStrength: double--><!--Device-BlurBubblesRiseEffectParam-mixStrength: double-End-->
@@ -97,10 +87,6 @@ progress: double
 **类型：** double
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

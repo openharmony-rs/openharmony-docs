@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSync-enum FileSyncState--><!--Device-cloudSync-enum FileSyncState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -23,10 +19,6 @@ UPLOADING = 0
 上行同步中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileSyncState-UPLOADING = 0--><!--Device-FileSyncState-UPLOADING = 0-End-->
 
@@ -44,10 +36,6 @@ DOWNLOADING = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileSyncState-DOWNLOADING = 1--><!--Device-FileSyncState-DOWNLOADING = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -63,10 +51,6 @@ COMPLETED = 2
 同步成功。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileSyncState-COMPLETED = 2--><!--Device-FileSyncState-COMPLETED = 2-End-->
 
@@ -84,10 +68,6 @@ STOPPED = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileSyncState-STOPPED = 3--><!--Device-FileSyncState-STOPPED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -103,10 +83,6 @@ TO_BE_UPLOADED = 4
 正在等待上行。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileSyncState-TO_BE_UPLOADED = 4--><!--Device-FileSyncState-TO_BE_UPLOADED = 4-End-->
 
@@ -124,10 +100,6 @@ UPLOAD_SUCCESS = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileSyncState-UPLOAD_SUCCESS = 5--><!--Device-FileSyncState-UPLOAD_SUCCESS = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -143,10 +115,6 @@ UPLOAD_FAILURE = 6
 文件上行失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileSyncState-UPLOAD_FAILURE = 6--><!--Device-FileSyncState-UPLOAD_FAILURE = 6-End-->
 

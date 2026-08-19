@@ -1,5 +1,11 @@
 # offTouch（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputMonitor } from '@kit.InputKit';
+```
+
 ## offTouch
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offTouch(receiver?: TouchEventReceiver): void
 取消监听全局触屏事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -36,7 +38,7 @@ function offTouch(receiver?: TouchEventReceiver): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';

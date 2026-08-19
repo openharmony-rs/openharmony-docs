@@ -4,11 +4,9 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#deviceremindtype系统接口)
+**替代接口：** [DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md)
 
 <!--Device-notification-export enum DeviceRemindType--><!--Device-notification-export enum DeviceRemindType-End-->
 
@@ -26,11 +24,9 @@ IDLE_DONOT_REMIND = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [IDLE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idledonotremind)
+**替代接口：** [IDLE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_donot_remind)
 
 <!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0--><!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0-End-->
 
@@ -48,11 +44,9 @@ IDLE_REMIND = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [IDLE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idleremind)
+**替代接口：** [IDLE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_remind)
 
 <!--Device-DeviceRemindType-IDLE_REMIND = 1--><!--Device-DeviceRemindType-IDLE_REMIND = 1-End-->
 
@@ -70,11 +64,9 @@ ACTIVE_DONOT_REMIND = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [ACTIVE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#activedonotremind)
+**替代接口：** [ACTIVE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#active_donot_remind)
 
 <!--Device-DeviceRemindType-ACTIVE_DONOT_REMIND = 2--><!--Device-DeviceRemindType-ACTIVE_DONOT_REMIND = 2-End-->
 
@@ -92,11 +84,9 @@ ACTIVE_REMIND = 3
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [ACTIVE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#activeremind)
+**替代接口：** [ACTIVE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#active_remind)
 
 <!--Device-DeviceRemindType-ACTIVE_REMIND = 3--><!--Device-DeviceRemindType-ACTIVE_REMIND = 3-End-->
 

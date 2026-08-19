@@ -14,10 +14,6 @@ TimePicker(options?: TimePickerOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TimePickerInterface-(options?: TimePickerOptions): TimePickerAttribute--><!--Device-TimePickerInterface-(options?: TimePickerOptions): TimePickerAttribute-End-->
@@ -32,9 +28,24 @@ TimePicker(options?: TimePickerOptions)
 
 ## 汇总
 
-- [TimePickerDialogOptions](arkts-arkui-timepickerdialogoptions-i.md)
-- [TimePickerOptions](arkts-arkui-timepickeroptions-i.md)
-- [TimePickerResult](arkts-arkui-timepickerresult-i.md)
-- [DateTimeOptions](arkts-arkui-datetimeoptions-t.md)
-- [OnTimePickerChangeCallback](arkts-arkui-ontimepickerchangecallback-t.md)
-- [TimePickerFormat](arkts-arkui-timepickerformat-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [TimePickerDialogOptions](arkts-arkui-timepickerdialogoptions-i.md) | 时间选择器弹窗选项。 继承自[TimePickerOptions](arkts-arkui-timepickeroptions-i.md)。 |
+| [TimePickerOptions](arkts-arkui-timepickeroptions-i.md) | 时间选择器组件的参数说明。 在TimePicker组件滑动过程中修改TimePickerOptions中的属性，会导致这些属性无法生效。 > Date对象用于处理日期和时间，使用方式如下。 > > - 方式1：new Date() > 获取系统当前日期和时间。 > > - 方式2：new Date(value: number | string) > > - 方式3：new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, > seconds?: number, ms?: number) > **起始时间和结束时间的异常情形说明：** > - 起始时间晚于结束时间：起始时间、结束时间都为默认值。 > - 选中时间早于起始时间：选中时间为起始时间。 > - 选中时间晚于结束时间：选中时间为结束时间。 > - 起始时间晚于当前系统时间，选中时间未设置：选中时间为起始时间。 > - 结束时间早于当前系统时间，选中时间未设置：选中时间为结束时间。 > - 时间格式不符合规范，如'01:61:61'：取默认值。 |
+| [TimePickerResult](arkts-arkui-timepickerresult-i.md) | 返回选中的时间结果，hour取值0-23，与展示制式无关。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [DateTimeOptions](arkts-arkui-datetimeoptions-t.md) | 时间、日期格式化时可设置的配置项。 |
+| [OnTimePickerChangeCallback](arkts-arkui-ontimepickerchangecallback-t.md) | 选择时间时触发该事件。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [TimePickerFormat](arkts-arkui-timepickerformat-e.md) | 时间选择器的数据格式。 |
+

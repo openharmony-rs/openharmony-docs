@@ -14,10 +14,6 @@ ColumnSplit()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ColumnSplitInterface-(): ColumnSplitAttribute--><!--Device-ColumnSplitInterface-(): ColumnSplitAttribute-End-->
@@ -26,4 +22,9 @@ ColumnSplit()
 
 ## 汇总
 
-- [ColumnSplitDividerStyle](arkts-arkui-columnsplitdividerstyle-i.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ColumnSplitDividerStyle](arkts-arkui-columnsplitdividerstyle-i.md) | 设置子组件与上下分割线的距离。 |
+

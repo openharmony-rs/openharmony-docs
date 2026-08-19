@@ -63,7 +63,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource *](capi-avsource-oh-avsource.md) | 如果执行成功，则返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. dataSource为nullptr。<br> 2. dataSource->size == 0。<br> 3. 设置数据源失败。<br> 4. 内存不足。<br> 5. 解码器引擎为nullptr。<br> 6. dataSource-&gt;readAt == nullptr。 |
+| [OH_AVSource *](capi-avsource-oh-avsource.md) | 如果执行成功，则返回一个指向OH_AVSource实例的指针，否则返回NULL。\n  可能的故障原因：\n  1. dataSource为nullptr。\n  2. dataSource->size == 0。\n  3. 设置数据源失败。\n  4. 内存不足。\n  5. 解码器引擎为nullptr。\n  6. dataSource-&gt;readAt == nullptr。 |
 
 ### OH_AVSource_CreateWithDataSourceExt()
 
@@ -90,7 +90,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource *](capi-avsource-oh-avsource.md) | 如果执行成功，则返回一个指向OH_AVSource实例的指针，否则返回NULL。<br> 可能的故障原因：<br> 1. dataSource为nullptr。<br> 2. dataSource->size == 0。<br> 3. 设置数据源失败。<br> 4. 内存不足。<br> 5. 解码器引擎为nullptr。<br> 6. dataSource-&gt;readAt == nullptr。 |
+| [OH_AVSource *](capi-avsource-oh-avsource.md) | 如果执行成功，则返回一个指向OH_AVSource实例的指针，否则返回NULL。\n  可能的故障原因：\n  1. dataSource为nullptr。\n  2. dataSource->size == 0。\n  3. 设置数据源失败。\n  4. 内存不足。\n  5. 解码器引擎为nullptr。\n  6. dataSource-&gt;readAt == nullptr。 |
 
 ### OH_AVSource_CreateWithURI()
 
@@ -116,7 +116,7 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource *](capi-avsource-oh-avsource.md) | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
+| [OH_AVSource *](capi-avsource-oh-avsource.md) | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。\n  可能的故障原因：\n  1. 网络异常。\n  2. 资源无效。\n  3. 文件格式不支持。\n  4. 应用配置明文拦截。 |
 
 ### OH_AVSource_CreateWithFD()
 
@@ -144,7 +144,7 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource *](capi-avsource-oh-avsource.md) | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. fd无效。<br> 2. 传入offset不是文件起始位置。<br> 3. size错误。<br> 4. 资源无效。<br> 5. 文件格式不支持。 |
+| [OH_AVSource *](capi-avsource-oh-avsource.md) | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。\n  可能的故障原因：\n  1. fd无效。\n  2. 传入offset不是文件起始位置。\n  3. size错误。\n  4. 资源无效。\n  5. 文件格式不支持。 |
 
 ### OH_AVSource_Destroy()
 
@@ -170,7 +170,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：操作成功。<br>         AV_ERR_INVALID_VAL：<br>                          1. source指针无效，空指针。<br>                          2. 非OH_AVSource实例。 |
+| OH_AVErrCode | AV_ERR_OK：操作成功。\n          AV_ERR_INVALID_VAL：\n                           1. source指针无效，空指针。\n                           2. 非OH_AVSource实例。 |
 
 ### OH_AVSource_GetSourceFormat()
 
@@ -196,7 +196,7 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回文件的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效。<br> 2. 空指针或非OH_AVSource实例。<br> 3. source没有初始化。 |
+| OH_AVFormat * | 执行成功返回文件的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效。\n  2. 空指针或非OH_AVSource实例。\n  3. source没有初始化。 |
 
 ### OH_AVSource_GetTrackFormat()
 
@@ -223,7 +223,7 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回轨道的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效，空指针或非OH_AVSource实例。<br> 2. 轨道的索引超出范围。<br> 3. source没有初始化。 |
+| OH_AVFormat * | 执行成功返回轨道的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效，空指针或非OH_AVSource实例。\n  2. 轨道的索引超出范围。\n  3. source没有初始化。 |
 
 ### OH_AVSource_GetCustomMetadataFormat()
 
@@ -249,6 +249,6 @@ OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](capi-core-oh-avformat.md) | 执行成功返回元数据的基础信息，否则返回NULL。<br> 可能的故障原因：<br> 1. source指针无效。<br> 2. 空指针或非OH_AVSource实例。<br> 3. source没有初始化。 |
+| OH_AVFormat * | 执行成功返回元数据的基础信息，否则返回NULL。\n  可能的故障原因：\n  1. source指针无效。\n  2. 空指针或非OH_AVSource实例。\n  3. source没有初始化。 |
 
 

@@ -4,13 +4,14 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class ReadonlyEnvKey--><!--Device-unnamed-declare class ReadonlyEnvKey-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## WINDOW_AVOID_AREA
 
@@ -23,10 +24,6 @@ static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidA
 **类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.UIEnvWindowAvoidAreaInfoVP&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +45,6 @@ static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -71,10 +64,6 @@ static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<long>
 **类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;long&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +85,6 @@ static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>-End-->
@@ -118,10 +103,6 @@ static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>-End-->
@@ -139,10 +120,6 @@ static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>
 **类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.SizeInVP&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -164,10 +141,6 @@ static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -187,10 +160,6 @@ static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<double>
 **类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;double&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

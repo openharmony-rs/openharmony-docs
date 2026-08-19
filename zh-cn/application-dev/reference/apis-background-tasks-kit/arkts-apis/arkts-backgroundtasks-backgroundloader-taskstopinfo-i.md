@@ -4,13 +4,15 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-backgroundLoader-export interface TaskStopInfo--><!--Device-backgroundLoader-export interface TaskStopInfo-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+## 导入模块
+
+```TypeScript
+import { backgroundLoader } from '@kit.BackgroundTasksKit';
+```
 
 ## abilityName
 
@@ -23,10 +25,6 @@ abilityName: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ stopCode: StopCode
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TaskStopInfo-stopCode: StopCode--><!--Device-TaskStopInfo-stopCode: StopCode-End-->
@@ -68,10 +62,6 @@ stopMessage: string
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TaskStopInfo-stopMessage: string--><!--Device-TaskStopInfo-stopMessage: string-End-->
@@ -89,10 +79,6 @@ taskId: int
 **类型：** int
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

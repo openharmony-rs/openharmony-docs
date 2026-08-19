@@ -6,10 +6,6 @@ AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class AccessibilityExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -23,10 +19,6 @@ addAccessibilityVirtualNodes(elementId: long, windowId: int, nodes: Array<Access
 新增无障碍虚拟节点树。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -60,7 +52,7 @@ addAccessibilityVirtualNodes(elementId: long, windowId: int, nodes: Array<Access
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -121,10 +113,6 @@ getAccessibilityFocusedElement(): Promise<AccessibilityElement>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-getAccessibilityFocusedElement(): Promise<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getAccessibilityFocusedElement(): Promise<AccessibilityElement>-End-->
@@ -148,7 +136,7 @@ getAccessibilityFocusedElement(): Promise<AccessibilityElement>
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -202,10 +190,6 @@ getAccessibilityWindowsSync(displayId?: long): Array<AccessibilityElement>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-getAccessibilityWindowsSync(displayId?: long): Array<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getAccessibilityWindowsSync(displayId?: long): Array<AccessibilityElement>-End-->
@@ -234,7 +218,7 @@ getAccessibilityWindowsSync(displayId?: long): Array<AccessibilityElement>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -292,10 +276,6 @@ getDefaultFocusedElementIds(windowId: int): Promise<Array<long>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AccessibilityExtensionContext-getDefaultFocusedElementIds(windowId: int): Promise<Array<long>>--><!--Device-AccessibilityExtensionContext-getDefaultFocusedElementIds(windowId: int): Promise<Array<long>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -322,7 +302,7 @@ getDefaultFocusedElementIds(windowId: int): Promise<Array<long>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -424,10 +404,6 @@ getElements(windowId: int, elementId?: long): Promise<Array<AccessibilityElement
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AccessibilityExtensionContext-getElements(windowId: int, elementId?: long): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityExtensionContext-getElements(windowId: int, elementId?: long): Promise<Array<AccessibilityElement>>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -455,7 +431,7 @@ getElements(windowId: int, elementId?: long): Promise<Array<AccessibilityElement
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -561,10 +537,6 @@ getRootInActiveWindow(windowId?: int): Promise<AccessibilityElement>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-getRootInActiveWindow(windowId?: int): Promise<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getRootInActiveWindow(windowId?: int): Promise<AccessibilityElement>-End-->
@@ -594,7 +566,7 @@ getRootInActiveWindow(windowId?: int): Promise<AccessibilityElement>
 | [9300006](../errorcode-accessibility.md#9300006-目标应用和无障碍服务建立连接失败) | The target application failed to connect to accessibility service. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -698,10 +670,6 @@ holdRunningLockSync(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-holdRunningLockSync(): void--><!--Device-AccessibilityExtensionContext-holdRunningLockSync(): void-End-->
@@ -717,7 +685,7 @@ holdRunningLockSync(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -769,10 +737,6 @@ notifyDisconnect(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-notifyDisconnect(): void--><!--Device-AccessibilityExtensionContext-notifyDisconnect(): void-End-->
@@ -788,7 +752,7 @@ notifyDisconnect(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -840,10 +804,6 @@ Unregister accessibilityExtensionAbility disconnect callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-offPreDisconnect(callback?: Callback<void>): void--><!--Device-AccessibilityExtensionContext-offPreDisconnect(callback?: Callback<void>): void-End-->
@@ -856,7 +816,7 @@ Unregister accessibilityExtensionAbility disconnect callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | Indicates the callback function. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | Indicates the callback function. |
 
 **错误码：**
 
@@ -865,7 +825,7 @@ Unregister accessibilityExtensionAbility disconnect callback.
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -910,7 +870,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## off_preDisconnect
+## off('preDisconnect')
 
 ```TypeScript
 off(type: 'preDisconnect', callback?: Callback<void>): void
@@ -919,10 +879,6 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 取消已经向无障碍服务注册的预关闭回调函数，需先通过on('preDisconnect')注册后才能取消。取消后，无障碍服务关闭该扩展服务前不再执行该回调。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -937,7 +893,7 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preDisconnect' | 是 | 监听事件名，固定为‘preDisconnect’，即辅助功能扩展服务即将关闭的事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数，取消指定辅助功能扩展服务即将关闭时的回调。需与 [on('preDisconnect')](#onpredisconnect)的 callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数，取消指定辅助功能扩展服务即将关闭时的回调。需与 [on('preDisconnect')](#onpredisconnect)的 callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -946,7 +902,7 @@ off(type: 'preDisconnect', callback?: Callback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -998,10 +954,6 @@ Register accessibilityExtensionAbility disconnect callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-onPreDisconnect(callback: Callback<void>): void--><!--Device-AccessibilityExtensionContext-onPreDisconnect(callback: Callback<void>): void-End-->
@@ -1014,7 +966,7 @@ Register accessibilityExtensionAbility disconnect callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Indicates the callback function. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Indicates the callback function. |
 
 **错误码：**
 
@@ -1023,7 +975,7 @@ Register accessibilityExtensionAbility disconnect callback.
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -1068,7 +1020,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## on_preDisconnect
+## on('preDisconnect')
 
 ```TypeScript
 on(type: 'preDisconnect', callback: Callback<void>): void
@@ -1077,10 +1029,6 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 向无障碍服务注册回调函数，在无障碍服务关闭该辅助功能扩展服务前会执行该回调函数。使用callback异步回调。 此注册函数需要与[notifyDisconnect](#notifydisconnect)配合使用，如果不调用 [notifyDisconnect](#notifydisconnect)，则默认等待30秒后，辅助功能扩展服务会自动关闭。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1095,7 +1043,7 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'preDisconnect' | 是 | 监听事件名，固定为‘preDisconnect’，即辅助功能扩展服务即将关闭的事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，在辅助功能扩展服务即将关闭时回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，在辅助功能扩展服务即将关闭时回调。 |
 
 **错误码：**
 
@@ -1104,7 +1052,7 @@ on(type: 'preDisconnect', callback: Callback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -1158,10 +1106,6 @@ removeAccessibilityVirtualNodes(elementId: long, windowId: int): Promise<Operate
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1193,7 +1137,7 @@ removeAccessibilityVirtualNodes(elementId: long, windowId: int): Promise<Operate
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -1249,10 +1193,6 @@ startAbility(want: Want): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AccessibilityExtensionContext-startAbility(want: Want): Promise<void>--><!--Device-AccessibilityExtensionContext-startAbility(want: Want): Promise<void>-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -1278,7 +1218,7 @@ startAbility(want: Want): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -1337,10 +1277,6 @@ unholdRunningLockSync(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 <!--Device-AccessibilityExtensionContext-unholdRunningLockSync(): void--><!--Device-AccessibilityExtensionContext-unholdRunningLockSync(): void-End-->
@@ -1356,7 +1292,7 @@ unholdRunningLockSync(): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {
@@ -1408,10 +1344,6 @@ updateAccessibilityElementProperty(elementId: long, windowId: int, node: Accessi
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1444,7 +1376,7 @@ updateAccessibilityElementProperty(elementId: long, windowId: int, node: Accessi
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import {

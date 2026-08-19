@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-interface FoldCreaseRegion--><!--Device-display-interface FoldCreaseRegion-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
 
 ## creaseRects
 
@@ -23,10 +25,6 @@ readonly creaseRects: Array<Rect>
 **类型：** Array&lt;Rect&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ readonly displayId: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

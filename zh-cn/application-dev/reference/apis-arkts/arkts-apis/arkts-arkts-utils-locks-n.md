@@ -4,13 +4,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-utils-namespace locks--><!--Device-utils-namespace locks-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArkTSUtils } from '@kit.ArkTS';
+```
 
 ## 汇总
 

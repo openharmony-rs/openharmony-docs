@@ -4,13 +4,19 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface RenderProcessNotRespondingData--><!--Device-unnamed-declare interface RenderProcessNotRespondingData-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## jsStack
 
@@ -23,10 +29,6 @@ jsStack: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-RenderProcessNotRespondingData-jsStack: string--><!--Device-RenderProcessNotRespondingData-jsStack: string-End-->
 
@@ -44,10 +46,6 @@ pid: number
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-RenderProcessNotRespondingData-pid: number--><!--Device-RenderProcessNotRespondingData-pid: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -63,10 +61,6 @@ reason: RenderProcessNotRespondingReason
 **类型：** [RenderProcessNotRespondingReason](arkts-arkweb-renderprocessnotrespondingreason-e.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-RenderProcessNotRespondingData-reason: RenderProcessNotRespondingReason--><!--Device-RenderProcessNotRespondingData-reason: RenderProcessNotRespondingReason-End-->
 

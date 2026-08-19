@@ -1,18 +1,20 @@
 # addIncomingCallPolicyNumbers
 
+## 导入模块
+
+```TypeScript
+import { telephonyManager } from '@kit.MDMKit';
+```
+
 ## addIncomingCallPolicyNumbers
 
 ```TypeScript
 function addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void
 ```
 
-添加通话呼入的允许或禁用名单，如果不添加名单，则任意号码都可以呼入，添加后仅名单内的号码允许或禁止呼入。例如，企业可限制员工只能接听客户来电，或禁止接听骚扰电话。 以下情况下，通过本接口添加通话呼入的允许或禁用名单，会报策略冲突： 1. 已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口禁用了设备通话能力，再通过本接口添加通话呼入的禁用或允许名单，返回203错误码。 通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)接口解除禁用设备通话能力后，可解除冲突。 2. 已经通过本接口设置了通话呼入的禁用名单，再通过本接口添加通话呼入允许名单，返回9200010错误码。通过[removeIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-removeincomingcallpolicynumbers-f.md#removeincomingcallpolicynumbers)接口将之前设置的通话呼入禁用名单移除后，可解除冲突。 3. 已经通过本接口设置了通话呼入的允许名单，再通过本接口添加通话呼入禁用名单，返回9200010错误码。通过[removeIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-removeincomingcallpolicynumbers-f.md#removeincomingcallpolicynumbers)接口将之前设置的通话呼入允许名单移除后，可解除冲突。
+添加通话呼入的允许或禁用名单，如果不添加名单，则任意号码都可以呼入，添加后仅名单内的号码允许或禁止呼入。例如，企业可限制员工只能接听客户来电，或禁止接听骚扰电话。 以下情况下，通过本接口添加通话呼入的允许或禁用名单，会报策略冲突： 1. 已经通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)接口禁用了设备通话能力，再通过本接口添加通话呼入的禁用或允许名单，返回203错误码。 通过[setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)接口解除禁用设备通话能力后，可解除冲突。 2. 已经通过本接口设置了通话呼入的禁用名单，再通过本接口添加通话呼入允许名单，返回9200010错误码。通过[removeIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-removeincomingcallpolicynumbers-f.md)接口将之前设置的通话呼入禁用名单移除后，可解除冲突。 3. 已经通过本接口设置了通话呼入的允许名单，再通过本接口添加通话呼入禁用名单，返回9200010错误码。通过[removeIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-removeincomingcallpolicynumbers-f.md)接口将之前设置的通话呼入允许名单移除后，可解除冲突。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
@@ -42,7 +44,7 @@ function addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, 
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

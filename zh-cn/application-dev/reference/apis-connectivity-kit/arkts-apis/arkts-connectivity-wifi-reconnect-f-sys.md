@@ -1,5 +1,14 @@
 # reconnect（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## reconnect
 
 ```TypeScript
@@ -10,11 +19,9 @@ function reconnect(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [reconnect](arkts-connectivity-wifimanager-reconnect-f-sys.md#reconnect系统接口)
+**替代接口：** [reconnect](arkts-connectivity-wifimanager-reconnect-f-sys.md)
 
 **需要权限：** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -30,7 +37,7 @@ function reconnect(): boolean
 | --- | --- |
 | boolean | true:操作成功，false:操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

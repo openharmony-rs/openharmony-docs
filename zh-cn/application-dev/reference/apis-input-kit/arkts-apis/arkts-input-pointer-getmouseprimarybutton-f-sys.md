@@ -1,5 +1,11 @@
 # getMousePrimaryButton（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## getMousePrimaryButton
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void
 获取当前鼠标主键，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-pointer-function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void--><!--Device-pointer-function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void-End-->
 
@@ -24,7 +26,7 @@ function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[PrimaryButton](arkts-input-pointer-primarybutton-e.md)&gt; | 是 | 回调函数。当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[PrimaryButton](arkts-input-pointer-primarybutton-e.md)&gt; | 是 | 回调函数。当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -109,10 +111,6 @@ function getMousePrimaryButton(): Promise<PrimaryButton>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function getMousePrimaryButton(): Promise<PrimaryButton>--><!--Device-pointer-function getMousePrimaryButton(): Promise<PrimaryButton>-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -132,7 +130,7 @@ function getMousePrimaryButton(): Promise<PrimaryButton>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

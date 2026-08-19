@@ -66,7 +66,7 @@ typedef void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPa
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void \*context | 应用上下文的指针。 |
+| void \*context | 应用上下文的指针。 |
 | [const OH_PreferencesPair](capi-preferences-oh-preferencespair.md) \*pairs | 发生变更的键值对（KV）数据的指针。 |
 | uint32_t count | 发生变更的键值对（KV）数据的数量。 |
 
@@ -127,7 +127,7 @@ int OH_Preferences_Close(OH_Preferences *preference)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码，详见{@link OH_Preferences_ErrCode}。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码，详见{@link OH_Preferences_ErrCode}。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 
@@ -156,7 +156,7 @@ int OH_Preferences_DeletePreferences(OH_PreferencesOption *option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_NOT_SUPPORTED，表示系统能力不支持。<br>     <br>若错误码为PREFERENCES_ERROR_DELETE_FILE，表示删除文件失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_NOT_SUPPORTED，表示系统能力不支持。      <br>若错误码为PREFERENCES_ERROR_DELETE_FILE，表示删除文件失败。 |
 
 **参考：**
 
@@ -187,7 +187,7 @@ int OH_Preferences_GetInt(OH_Preferences *preference, const char *key, int *valu
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>     <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。      <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
 
 **参考：**
 
@@ -218,7 +218,7 @@ int OH_Preferences_GetBool(OH_Preferences *preference, const char *key, bool *va
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>     <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。      <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
 
 **参考：**
 
@@ -250,7 +250,7 @@ int OH_Preferences_GetString(OH_Preferences *preference, const char *key, char *
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>     <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。      <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
 
 **参考：**
 
@@ -304,7 +304,7 @@ int OH_Preferences_SetInt(OH_Preferences *preference, const char *key, int value
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 
@@ -335,7 +335,7 @@ int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool val
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 
@@ -366,7 +366,7 @@ int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 
@@ -396,7 +396,7 @@ int OH_Preferences_Delete(OH_Preferences *preference, const char *key)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 
@@ -429,7 +429,7 @@ int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *contex
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>     <br>若错误码为PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT，表示获取数据变更订阅服务失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。      <br>若错误码为PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT，表示获取数据变更订阅服务失败。 |
 
 **参考：**
 
@@ -462,7 +462,7 @@ int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *cont
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 
@@ -492,7 +492,7 @@ int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *is
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回接口操作执行的状态码。<br>     <br>返回结果为PREFERENCES_OK，表示操作成功。<br>     <br>返回结果为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int | 返回接口操作执行的状态码。      <br>返回结果为PREFERENCES_OK，表示操作成功。      <br>返回结果为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 ### OH_Preferences_SetValue()
 
@@ -518,7 +518,7 @@ int OH_Preferences_SetValue(OH_Preferences *preference, const char *key, OH_Pref
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 
@@ -549,7 +549,7 @@ int OH_Preferences_GetValue(OH_Preferences *preference, const char *key, OH_Pref
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>     <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。      <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
 
 **参考：**
 
@@ -580,7 +580,7 @@ int OH_Preferences_GetAll(OH_Preferences *preference, OH_PreferencesPair **pairs
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>     <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。      <br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
 
 **参考：**
 
@@ -639,7 +639,7 @@ int OH_Preferences_Flush(OH_Preferences *preference)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_NOT_SUPPORTED，表示系统能力不支持。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_NOT_SUPPORTED，表示系统能力不支持。 |
 
 **参考：**
 
@@ -668,7 +668,7 @@ int OH_Preferences_ClearCache(OH_Preferences *preference)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_NOT_SUPPORTED，表示系统能力不支持。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_NOT_SUPPORTED，表示系统能力不支持。 |
 
 **参考：**
 
@@ -699,7 +699,7 @@ int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences *preference, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>     <br>若错误码为PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT，表示获取数据变更订阅服务失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。      <br>若错误码为PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT，表示获取数据变更订阅服务失败。 |
 
 **参考：**
 
@@ -730,7 +730,7 @@ int OH_Preferences_UnregisterMultiProcessDataObserver(OH_Preferences *preference
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。<br>     <br>若错误码为PREFERENCES_OK，表示操作成功。<br>     <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>     <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>     <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
+| int | 返回执行的错误码。      <br>若错误码为PREFERENCES_OK，表示操作成功。      <br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。      <br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。      <br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。 |
 
 **参考：**
 

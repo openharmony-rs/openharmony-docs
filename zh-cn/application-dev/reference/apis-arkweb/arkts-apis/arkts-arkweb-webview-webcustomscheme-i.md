@@ -4,13 +4,15 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-webview-interface WebCustomScheme--><!--Device-webview-interface WebCustomScheme-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## isCodeCacheSupported
 
@@ -23,10 +25,6 @@ isCodeCacheSupported?: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebCustomScheme-isCodeCacheSupported?: boolean--><!--Device-WebCustomScheme-isCodeCacheSupported?: boolean-End-->
 
@@ -43,10 +41,6 @@ isCspBypassing?: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -66,10 +60,6 @@ isDisplayIsolated?: boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCustomScheme-isDisplayIsolated?: boolean--><!--Device-WebCustomScheme-isDisplayIsolated?: boolean-End-->
@@ -87,10 +77,6 @@ isLocal?: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -110,10 +96,6 @@ isSecure?: boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCustomScheme-isSecure?: boolean--><!--Device-WebCustomScheme-isSecure?: boolean-End-->
@@ -131,10 +113,6 @@ isStandard?: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -154,10 +132,6 @@ isSupportCORS: boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCustomScheme-isSupportCORS: boolean--><!--Device-WebCustomScheme-isSupportCORS: boolean-End-->
@@ -176,10 +150,6 @@ isSupportFetch: boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebCustomScheme-isSupportFetch: boolean--><!--Device-WebCustomScheme-isSupportFetch: boolean-End-->
@@ -197,10 +167,6 @@ schemeName: string
 **类型：** string
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

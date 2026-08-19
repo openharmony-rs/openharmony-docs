@@ -1,14 +1,17 @@
-# GetStorageOptions
+# GetStorageOptions(数据存储)
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
 <!--Device-unnamed-export interface GetStorageOptions--><!--Device-unnamed-export interface GetStorageOptions-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core.Lite
+
+## 导入模块
+
+```TypeScript
+```
 
 ## complete
 
@@ -21,8 +24,6 @@ complete?: () => void
 **类型：** () =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -44,8 +45,6 @@ key不存在则返回的默认值。
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 6
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -65,8 +64,6 @@ fail?: (data: string, code: number) => void
 **类型：** (data: string, code: number) =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 
@@ -88,8 +85,6 @@ key: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 6
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -109,8 +104,6 @@ success?: (data: any) => void
 **类型：** (data: any) =&gt; void
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 6
 

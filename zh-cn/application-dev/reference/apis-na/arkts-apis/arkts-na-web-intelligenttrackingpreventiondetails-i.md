@@ -4,9 +4,7 @@ Defines the Intelligent Tracking Prevention details.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface IntelligentTrackingPreventionDetails--><!--Device-unnamed-export declare interface IntelligentTrackingPreventionDetails-End-->
 
@@ -24,9 +22,7 @@ The host of website url.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-IntelligentTrackingPreventionDetails-host: string--><!--Device-IntelligentTrackingPreventionDetails-host: string-End-->
 
@@ -44,9 +40,7 @@ The host of tracker url.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-IntelligentTrackingPreventionDetails-trackerHost: string--><!--Device-IntelligentTrackingPreventionDetails-trackerHost: string-End-->
 

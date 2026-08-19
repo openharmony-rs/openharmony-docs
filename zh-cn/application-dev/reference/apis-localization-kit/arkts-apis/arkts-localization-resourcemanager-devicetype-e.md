@@ -1,12 +1,8 @@
 # DeviceType
 
-用于表示当前设备类型。 &lt;!--RP1--&gt; &lt;!--RP1End--&gt;
+用于表示当前设备类型。 <!--RP1--> <!--RP1End-->
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-resourceManager-export enum DeviceType--><!--Device-resourceManager-export enum DeviceType-End-->
 
@@ -21,10 +17,6 @@ DEVICE_TYPE_PHONE = 0x00
 手机。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ DEVICE_TYPE_TABLET = 0x01
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_TABLET = 0x01--><!--Device-DeviceType-DEVICE_TYPE_TABLET = 0x01-End-->
@@ -62,10 +50,6 @@ DEVICE_TYPE_CAR = 0x02
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_CAR = 0x02--><!--Device-DeviceType-DEVICE_TYPE_CAR = 0x02-End-->
@@ -79,10 +63,6 @@ DEVICE_TYPE_PC = 0x03
 ```
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -100,10 +80,6 @@ DEVICE_TYPE_TV = 0x04
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_TV = 0x04--><!--Device-DeviceType-DEVICE_TYPE_TV = 0x04-End-->
@@ -120,10 +96,6 @@ DEVICE_TYPE_WEARABLE = 0x06
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-DEVICE_TYPE_WEARABLE = 0x06--><!--Device-DeviceType-DEVICE_TYPE_WEARABLE = 0x06-End-->
@@ -137,10 +109,6 @@ DEVICE_TYPE_2IN1 = 0x07
 ```
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

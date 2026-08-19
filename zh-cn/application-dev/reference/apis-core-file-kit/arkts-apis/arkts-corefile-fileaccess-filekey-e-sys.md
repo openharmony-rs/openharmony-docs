@@ -4,8 +4,6 @@ Property elements that support the file queries.
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
 <!--Device-fileAccess-enum FileKey--><!--Device-fileAccess-enum FileKey-End-->
@@ -23,8 +21,6 @@ DISPLAY_NAME = 'display_name'
 The key represents the file name.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -46,8 +42,6 @@ The key represents the date of the file creation.
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -67,8 +61,6 @@ DATE_MODIFIED = 'date_modified'
 The key represents the modify date of the file.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -90,8 +82,6 @@ The key represents the relative path.
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -111,8 +101,6 @@ FILE_SIZE = 'size'
 The key represents the file size.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 

@@ -1,5 +1,11 @@
 # requestAutoSave
 
+## 导入模块
+
+```TypeScript
+import { autoFillManager } from '@kit.AbilityKit';
+```
+
 ## requestAutoSave
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function requestAutoSave(context: UIContext, callback?: AutoSaveCallback)
 请求保存表单数据。使用callback异步回调。 如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +38,7 @@ export function requestAutoSave(context: UIContext, callback?: AutoSaveCallback)
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes: 1. Get instance id failed; <br>2. Parse instance id failed; 3. The second parameter is not of type callback. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

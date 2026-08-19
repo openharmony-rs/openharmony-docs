@@ -1,5 +1,10 @@
 # registerApplicationStateObserver（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## registerApplicationStateObserver
 
 ```TypeScript
@@ -9,8 +14,6 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 注册全部应用程序状态观测器。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -28,7 +31,7 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| observer | [ApplicationStateObserver](../../apis-na/arkts-apis/arkts-na-applicationstateobserver-i.md) | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
+| observer | [ApplicationStateObserver](arkts-ability-applicationstateobserver-c.md) | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
 
 **返回值：**
 
@@ -36,7 +39,7 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 | --- | --- |
 | number | 已注册观测器的数字代码。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';

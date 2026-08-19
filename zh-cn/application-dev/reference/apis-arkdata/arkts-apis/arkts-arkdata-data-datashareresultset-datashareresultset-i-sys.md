@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default interface DataShareResultSet--><!--Device-unnamed-export default interface DataShareResultSet-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { DataShareResultSet, DataType } from '@kit.ArkData';
+```
 
 ## close
 
@@ -24,10 +26,6 @@ close(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-close(): void--><!--Device-DataShareResultSet-close(): void-End-->
@@ -36,7 +34,7 @@ close(): void
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 if (resultSet != undefined) {
@@ -53,10 +51,6 @@ getBlob(columnIndex: int): Uint8Array
 以字节数组的形式获取当前行中指定列的值。 如果当前行中指定的列或键的值为空，或者指定的列或键不是Blob类型，则使用方需要确定是否抛出此异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +72,7 @@ getBlob(columnIndex: int): Uint8Array
 | --- | --- |
 | Uint8Array | 以字节数组的形式返回指定列的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let columnIndex = 1;
@@ -103,10 +97,6 @@ getColumnIndex(columnName: string): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-getColumnIndex(columnName: string): int--><!--Device-DataShareResultSet-getColumnIndex(columnName: string): int-End-->
@@ -127,7 +117,7 @@ getColumnIndex(columnName: string): int
 | --- | --- |
 | int | 返回指定列的索引。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let ColumnName = "name";
@@ -146,10 +136,6 @@ getColumnName(columnIndex: int): string
 根据指定的列索引获取列名。 列索引作为输入参数传递。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -171,7 +157,7 @@ getColumnName(columnIndex: int): string
 | --- | --- |
 | string | 返回指定列的名称。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let columnIndex = 1;
@@ -190,10 +176,6 @@ getDataType(columnIndex: int): DataType
 指定列索引获取该列的数据类型。 如果当前行中指定的列或键的值为空，或者指定的列或键不是DataType类型，则使用方需要确定是否抛出此异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -215,7 +197,7 @@ getDataType(columnIndex: int): DataType
 | --- | --- |
 | [DataType](arkts-arkdata-data-datashareresultset-datatype-e-sys.md) | 返回指定列的类型。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let columnIndex = 1;
@@ -234,10 +216,6 @@ getDouble(columnIndex: int): double
 以值类型为双浮点数形式获取当前行中指定列的值。 如果当前行中指定的列或键的值为空，或者指定的列或键不是double类型，则使用方需要确定是否抛出此异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -259,7 +237,7 @@ getDouble(columnIndex: int): double
 | --- | --- |
 | double | Value obtained. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let columnIndex = 1;
@@ -279,10 +257,6 @@ getLong(columnIndex: int): long
 以长整数值形式获取当前行中指定列的值。 如果当前行中指定的列或键的值为空，或者指定的列或键不是long类型，则使用方需要确定是否抛出此异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -304,7 +278,7 @@ getLong(columnIndex: int): long
 | --- | --- |
 | long | 以长整数值形式返回指定列的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let columnIndex = 1;
@@ -324,10 +298,6 @@ getString(columnIndex: int): string
 以字符串形式获取当前行中指定列的值。 如果当前行中指定的列或键的值为空，或者指定的列或键不是string类型，则使用方需要确定是否抛出此异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -349,7 +319,7 @@ getString(columnIndex: int): string
 | --- | --- |
 | string | 以字符串形式返回指定列的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let columnIndex = 1;
@@ -369,10 +339,6 @@ goTo(offset: int): boolean
 相对于当前位置向前或向后移动指定行数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -394,7 +360,7 @@ goTo(offset: int): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let goToNum = 1;
@@ -414,10 +380,6 @@ goToFirstRow(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-goToFirstRow(): boolean--><!--Device-DataShareResultSet-goToFirstRow(): boolean-End-->
@@ -432,7 +394,7 @@ goToFirstRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // resultSet需依照本页的使用说明进行创建。
@@ -452,10 +414,6 @@ goToLastRow(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-goToLastRow(): boolean--><!--Device-DataShareResultSet-goToLastRow(): boolean-End-->
@@ -470,7 +428,7 @@ goToLastRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 if (resultSet != undefined) {
@@ -489,10 +447,6 @@ goToNextRow(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-goToNextRow(): boolean--><!--Device-DataShareResultSet-goToNextRow(): boolean-End-->
@@ -507,7 +461,7 @@ goToNextRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 if (resultSet != undefined) {
@@ -526,10 +480,6 @@ goToPreviousRow(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-goToPreviousRow(): boolean--><!--Device-DataShareResultSet-goToPreviousRow(): boolean-End-->
@@ -544,7 +494,7 @@ goToPreviousRow(): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 if (resultSet != undefined) {
@@ -562,10 +512,6 @@ goToRow(position: int): boolean
 转到结果集的指定行。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -587,7 +533,7 @@ goToRow(position: int): boolean
 | --- | --- |
 | boolean | 如果成功移动结果集，则为true；否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let goToRowNum = 2;
@@ -609,10 +555,6 @@ columnCount: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-columnCount: int--><!--Device-DataShareResultSet-columnCount: int-End-->
@@ -632,10 +574,6 @@ columnNames: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -657,10 +595,6 @@ isClosed: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareResultSet-isClosed: boolean--><!--Device-DataShareResultSet-isClosed: boolean-End-->
@@ -680,10 +614,6 @@ rowCount: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

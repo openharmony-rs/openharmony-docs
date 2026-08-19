@@ -1,28 +1,53 @@
 # @ohos.util
 
-/*
- Copyright (c) 2021-2022 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
-
+该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](arkts-arkts-util-textencoder-c.md)，[TextDecoder](arkts-arkts-util-textdecoder-c.md)）、 有理数运算（[RationalNumber&lt;sup&gt;8+&lt;/sup&gt;](arkts-arkts-util-rationalnumber-c.md)）、缓冲区管理（[LRUCache&lt;sup&gt;9+&lt;/sup&gt;](arkts-arkts-util-lrucache-c.md)）、 范围判断（[ScopeHelper&lt;sup&gt;9+&lt;/sup&gt;](arkts-arkts-util-scopehelper-c.md)）、 Base64编解码（[Base64Helper&lt;sup&gt;9+&lt;/sup&gt;](arkts-arkts-util-base64helper-c.md)）、 内置对象类型检查（[types&lt;sup&gt;8+&lt;/sup&gt;](arkts-arkts-util-types-c.md)）、对方法进行插桩和替换（[Aspect&lt;sup&gt;11+&lt;/sup&gt;](arkts-arkts-util-aspect-c.md)）、 虚拟机维测能力（[ArkTSVM&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkts-util-arktsvm-c.md)）、二进制流解码（[StringDecoder&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkts-util-stringdecoder-c.md)）、 堆内存阈值配置（[HeapMemoryThreshold&lt;sup&gt;24+&lt;/sup&gt;](arkts-arkts-util-heapmemorythreshold-i.md)）等功能。 此外还提供获取对象Hash值（[util.getHash&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkts-util-gethash-f.md)）、 获取主线程栈追踪信息（[util.getMainThreadStackTrace&lt;sup&gt;20+&lt;/sup&gt;](arkts-arkts-util-getmainthreadstacktrace-f.md)）等工具函数。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace util--><!--Device-unnamed-declare namespace util-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## 汇总
 
@@ -30,18 +55,18 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [callbackWrapper](arkts-arkts-util-callbackwrapper-f.md#callbackwrapper) | 对异步函数进行回调化处理，回调中第一个参数是拒绝原因（如果Promise已解决，则为null），第二个参数是已解决的值。 |
-| [errnoToString](arkts-arkts-util-errnotostring-f.md#errnotostring) | 获取系统错误码对应的详细信息。适用于系统调用出错时将数字错误码转换为可读的描述信息，便于开发者快速定位和排查系统级错误，常用于错误日志记录和错误提示显示。 |
-| [format](arkts-arkts-util-format-f.md#format) | 使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。 |
-| [generateRandomBinaryUUID](arkts-arkts-util-generaterandombinaryuuid-f.md#generaterandombinaryuuid) | 使用加密安全随机数生成器生成随机的RFC 4122版本4的Uint8Array类型UUID。为了提升性能，此接口会默认使用缓存，即入参为true， 最多可缓存128个随机的UUID。当缓存中128个UUID用尽后，会重新生成，以保证UUID的随机性。如需禁用缓存，请将入参设置为false。 |
-| [generateRandomUUID](arkts-arkts-util-generaterandomuuid-f.md#generaterandomuuid) | 使用加密安全随机数生成器生成随机的RFC 4122版本4的string类型UUID。为了提升性能，此接口会默认使用缓存，即入参为true， 最多可缓存128个随机的UUID。当缓存中128个UUID用尽后，会重新生成，以保证UUID的随机性。如需禁用缓存，请将入参设置为false。 |
-| [getErrorString](arkts-arkts-util-geterrorstring-f.md#geterrorstring) | 获取系统错误码的详细信息。 |
-| [getHash](arkts-arkts-util-gethash-f.md#gethash) | 获取对象的哈希值。 如果尚未获取过哈希值，则生成一个随机哈希值，保存到对象的 **hash** 字段中并返回。如果已经获取过哈希值，则返回保存在 **hash** 字段中的哈希值（同一对象返回相同的值）。 |
-| [getMainThreadStackTrace](arkts-arkts-util-getmainthreadstacktrace-f.md#getmainthreadstacktrace) | 获取主线程的栈追踪信息，最多返回 64 层调用帧。 该接口可能对主线程性能产生影响，建议仅在必要时使用，如日志记录、错误分析或调试场景。 |
-| [parseUUID](arkts-arkts-util-parseuuid-f.md#parseuuid) | 将generateRandomUUID生成的string类型UUID转换为[generateRandomBinaryUUID](arkts-arkts-util-generaterandombinaryuuid-f.md#generaterandombinaryuuid)生成的UUID， 符合RFC 4122版本规范。 |
-| [printf](arkts-arkts-util-printf-f.md#printf) | 通过式样化字符串对输入的内容按特定格式输出。 |
-| [promiseWrapper](arkts-arkts-util-promisewrapper-f.md#promisewrapper) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) => callback`），并通过 promise 返回结果。 |
-| [promisify](arkts-arkts-util-promisify-f.md#promisify) | 接收一个采用"错误优先"回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。 适用于将旧版回调式异步API转换为Promise风格，以便使用async/await语法进行调用，从而简化异步代码编写。 |
+| [callbackWrapper](arkts-arkts-util-callbackwrapper-f.md) | 对异步函数进行回调化处理，回调中第一个参数是拒绝原因（如果Promise已解决，则为null），第二个参数是已解决的值。 |
+| [errnoToString](arkts-arkts-util-errnotostring-f.md) | 获取系统错误码对应的详细信息。适用于系统调用出错时将数字错误码转换为可读的描述信息，便于开发者快速定位和排查系统级错误，常用于错误日志记录和错误提示显示。 |
+| [format](arkts-arkts-util-format-f.md) | 使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。 |
+| [generateRandomBinaryUUID](arkts-arkts-util-generaterandombinaryuuid-f.md) | 使用加密安全随机数生成器生成随机的RFC 4122版本4的Uint8Array类型UUID。为了提升性能，此接口会默认使用缓存，即入参为true， 最多可缓存128个随机的UUID。当缓存中128个UUID用尽后，会重新生成，以保证UUID的随机性。如需禁用缓存，请将入参设置为false。 |
+| [generateRandomUUID](arkts-arkts-util-generaterandomuuid-f.md) | 使用加密安全随机数生成器生成随机的RFC 4122版本4的string类型UUID。为了提升性能，此接口会默认使用缓存，即入参为true， 最多可缓存128个随机的UUID。当缓存中128个UUID用尽后，会重新生成，以保证UUID的随机性。如需禁用缓存，请将入参设置为false。 |
+| [getErrorString](arkts-arkts-util-geterrorstring-f.md) | 获取系统错误码的详细信息。 |
+| [getHash](arkts-arkts-util-gethash-f.md) | 获取对象的哈希值。 如果尚未获取过哈希值，则生成一个随机哈希值，保存到对象的 **hash** 字段中并返回。如果已经获取过哈希值，则返回保存在 **hash** 字段中的哈希值（同一对象返回相同的值）。 |
+| [getMainThreadStackTrace](arkts-arkts-util-getmainthreadstacktrace-f.md) | 获取主线程的栈追踪信息，最多返回 64 层调用帧。 该接口可能对主线程性能产生影响，建议仅在必要时使用，如日志记录、错误分析或调试场景。 |
+| [parseUUID](arkts-arkts-util-parseuuid-f.md) | 将generateRandomUUID生成的string类型UUID转换为[generateRandomBinaryUUID](arkts-arkts-util-generaterandombinaryuuid-f.md)生成的UUID， 符合RFC 4122版本规范。 |
+| [printf](arkts-arkts-util-printf-f.md) | 通过式样化字符串对输入的内容按特定格式输出。 |
+| [promiseWrapper](arkts-arkts-util-promisewrapper-f.md) | 接收一个使用错误优先回调模式的函数（即最后一个参数为 `(err, value) => callback`），并通过 promise 返回结果。 |
+| [promisify](arkts-arkts-util-promisify-f.md) | 接收一个采用"错误优先"回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。 适用于将旧版回调式异步API转换为Promise风格，以便使用async/await语法进行调用，从而简化异步代码编写。 |
 
 ### 类
 

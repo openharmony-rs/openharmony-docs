@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export enum AddressType--><!--Device-mechanicManager-export enum AddressType-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -23,10 +19,6 @@ BLE_ADDR = 0
 具身设备蓝牙地址类型
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

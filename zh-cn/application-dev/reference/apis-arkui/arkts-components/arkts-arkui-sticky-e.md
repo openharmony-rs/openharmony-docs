@@ -4,11 +4,9 @@ ListItem吸顶效果枚举。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [list/StickyStyle](arkts-arkui-stickystyle-e.md#stickystyle)
+**替代接口：** [list/StickyStyle](arkts-arkui-stickystyle-e.md)
 
 <!--Device-unnamed-declare enum Sticky--><!--Device-unnamed-declare enum Sticky-End-->
 
@@ -23,8 +21,6 @@ None
 无吸顶效果。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -42,8 +38,6 @@ Normal mode
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-Sticky-Normal--><!--Device-Sticky-Normal-End-->
@@ -59,8 +53,6 @@ Opacity
 Set opacity.
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

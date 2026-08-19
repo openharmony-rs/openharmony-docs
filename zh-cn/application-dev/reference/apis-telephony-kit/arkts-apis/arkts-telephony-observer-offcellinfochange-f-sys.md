@@ -1,5 +1,11 @@
 # offCellInfoChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { observer } from '@kit.TelephonyKit';
+```
+
 ## offCellInfoChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offCellInfoChange(callback?: Callback<Array<CellInformation>>): void
 Cancel callback when the cell information is updated.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-observer-function offCellInfoChange(callback?: Callback<Array<CellInformation>>): void--><!--Device-observer-function offCellInfoChange(callback?: Callback<Array<CellInformation>>): void-End-->
 
@@ -24,7 +26,7 @@ Cancel callback when the cell information is updated.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[CellInformation](arkts-telephony-observer-cellinformation-t-sys.md)&gt;&gt; | 否 | Indicates the callback to unsubscribe from the cellInfoChange event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[CellInformation](arkts-telephony-observer-cellinformation-t-sys.md)&gt;&gt; | 否 | Indicates the callback to unsubscribe from the cellInfoChange event. |
 
 **错误码：**
 

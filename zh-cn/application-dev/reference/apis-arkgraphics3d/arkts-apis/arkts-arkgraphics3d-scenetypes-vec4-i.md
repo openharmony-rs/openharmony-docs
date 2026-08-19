@@ -1,12 +1,8 @@
 # Vec4
 
-定义Vec4（四维向量）.
+四维向量，通常用于表示4D空间中的点、方向或向量变换，由x、y、z和w四个分量组成。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Vec4--><!--Device-unnamed-export interface Vec4-End-->
 
@@ -18,15 +14,11 @@
 w: double
 ```
 
-vec4的W分量.
+w轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec4-w: double--><!--Device-Vec4-w: double-End-->
 
@@ -38,15 +30,11 @@ vec4的W分量.
 x: double
 ```
 
-vec4的X分量.
+x轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec4-x: double--><!--Device-Vec4-x: double-End-->
 
@@ -58,15 +46,11 @@ vec4的X分量.
 y: double
 ```
 
-vec4的Y分量.
+y轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec4-y: double--><!--Device-Vec4-y: double-End-->
 
@@ -78,15 +62,11 @@ vec4的Y分量.
 z: double
 ```
 
-vec4的Z分量.
+z轴分量，取值范围是实数。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Vec4-z: double--><!--Device-Vec4-z: double-End-->
 

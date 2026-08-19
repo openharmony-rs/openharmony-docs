@@ -4,10 +4,6 @@ Enum for usage type used in capture session.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum UsageType--><!--Device-camera-enum UsageType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ BOKEH = 0
 Bokeh usage type.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-UsageType-BOKEH = 0--><!--Device-UsageType-BOKEH = 0-End-->
 

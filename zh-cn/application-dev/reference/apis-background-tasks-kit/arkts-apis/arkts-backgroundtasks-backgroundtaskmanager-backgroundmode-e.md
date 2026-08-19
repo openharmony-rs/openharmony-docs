@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backgroundTaskManager-export enum BackgroundMode--><!--Device-backgroundTaskManager-export enum BackgroundMode-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -18,13 +14,9 @@
 DATA_TRANSFER = 1
 ```
 
-数据传输。 使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。 **说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。 更新进度的通知类型必须为实况窗，具体实现可参考 [startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning) 中的示例。
+数据传输。 使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。 **说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。 更新进度的通知类型必须为实况窗，具体实现可参考 [startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md) 中的示例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BackgroundMode-DATA_TRANSFER = 1--><!--Device-BackgroundMode-DATA_TRANSFER = 1-End-->
 
@@ -40,10 +32,6 @@ AUDIO_PLAYBACK = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BackgroundMode-AUDIO_PLAYBACK = 2--><!--Device-BackgroundMode-AUDIO_PLAYBACK = 2-End-->
@@ -56,13 +44,9 @@ AUDIO_PLAYBACK = 2
 AUDIO_RECORDING = 3
 ```
 
-录制。 使用场景举例：录音、录屏退后台。&lt;!--Del--&gt; **说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。&lt;!--DelEnd--&gt;
+录制。 使用场景举例：录音、录屏退后台。<!--Del--> **说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BackgroundMode-AUDIO_RECORDING = 3--><!--Device-BackgroundMode-AUDIO_RECORDING = 3-End-->
 
@@ -77,10 +61,6 @@ LOCATION = 4
 定位导航。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -98,10 +78,6 @@ BLUETOOTH_INTERACTION = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BackgroundMode-BLUETOOTH_INTERACTION = 5--><!--Device-BackgroundMode-BLUETOOTH_INTERACTION = 5-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -116,10 +92,6 @@ MULTI_DEVICE_CONNECTION = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BackgroundMode-MULTI_DEVICE_CONNECTION = 6--><!--Device-BackgroundMode-MULTI_DEVICE_CONNECTION = 6-End-->
@@ -132,13 +104,9 @@ MULTI_DEVICE_CONNECTION = 6
 VOIP = 8
 ```
 
-音视频通话。 使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。&lt;!--Del--&gt; **说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。&lt;!--DelEnd--&gt;
+音视频通话。 使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--> **说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BackgroundMode-VOIP = 8--><!--Device-BackgroundMode-VOIP = 8-End-->
 
@@ -153,10 +121,6 @@ TASK_KEEPING = 9
 计算任务。 使用场景举例：杀毒软件 **说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为 [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) 的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BackgroundMode-TASK_KEEPING = 9--><!--Device-BackgroundMode-TASK_KEEPING = 9-End-->
 

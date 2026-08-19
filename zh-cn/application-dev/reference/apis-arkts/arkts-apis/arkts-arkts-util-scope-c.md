@@ -4,15 +4,54 @@ Scope 接口用于描述字段的有效范围。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [ScopeHelper](arkts-arkts-util-scopehelper-c.md#scopehelper)
+**替代接口：** [ScopeHelper](arkts-arkts-util-scopehelper-c.md)
 
 <!--Device-util-class Scope--><!--Device-util-class Scope-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## clamp
 
@@ -23,8 +62,6 @@ clamp(value: ScopeType): ScopeType
 将一个值限制在此 **Scope** 范围内。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -46,7 +83,7 @@ clamp(value: ScopeType): ScopeType
 | --- | --- |
 | [ScopeType](arkts-arkts-util-scopetype-t.md) | 如果指定值小于下限，则返回 **lowerObj**；如果指定值大于上限，则返回 **upperObj**；如果 在此 **Scope** 范围内，则返回指定值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -88,8 +125,6 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** constructor
@@ -105,7 +140,7 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 | lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | Scope** 对象的下限。 |
 | upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | Scope** 对象的上限。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -145,8 +180,6 @@ contains(value: ScopeType): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
@@ -167,7 +200,7 @@ contains(value: ScopeType): boolean
 | --- | --- |
 | boolean | 检查结果。如果值在此 **Scope** 范围内，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -209,8 +242,6 @@ contains(range: Scope): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [contains](arkts-arkts-util-lrucache-c.md#contains)
@@ -231,7 +262,7 @@ contains(range: Scope): boolean
 | --- | --- |
 | boolean | 检查结果。如果范围在此 **Scope** 范围内，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -275,8 +306,6 @@ expand(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** expand
@@ -298,7 +327,7 @@ expand(lowerObj: ScopeType, upperObj: ScopeType): Scope
 | --- | --- |
 | [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定上下限的并集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -341,8 +370,6 @@ expand(range: Scope): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** expand
@@ -363,7 +390,7 @@ expand(range: Scope): Scope
 | --- | --- |
 | [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定 **Scope** 的并集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -407,8 +434,6 @@ expand(value: ScopeType): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** expand
@@ -429,7 +454,7 @@ expand(value: ScopeType): Scope
 | --- | --- |
 | [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定值的并集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -471,8 +496,6 @@ getLower(): ScopeType
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getLower](arkts-arkts-util-scopehelper-c.md#getlower)
@@ -487,7 +510,7 @@ getLower(): ScopeType
 | --- | --- |
 | [ScopeType](arkts-arkts-util-scopetype-t.md) | 此 **Scope** 的下限。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -528,8 +551,6 @@ getUpper(): ScopeType
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getUpper](arkts-arkts-util-scopehelper-c.md#getupper)
@@ -544,7 +565,7 @@ getUpper(): ScopeType
 | --- | --- |
 | [ScopeType](arkts-arkts-util-scopetype-t.md) | 此 **Scope** 的上限。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -585,8 +606,6 @@ intersect(range: Scope): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** intersect
@@ -607,7 +626,7 @@ intersect(range: Scope): Scope
 | --- | --- |
 | [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定 **Scope** 的交集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -651,8 +670,6 @@ intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** intersect
@@ -674,7 +691,7 @@ intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope
 | --- | --- |
 | [Scope](arkts-arkts-util-scope-c.md) | 此 **Scope** 与给定上下限的交集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {
@@ -717,8 +734,6 @@ toString(): string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [toString](arkts-arkts-util-lrucache-c.md#tostring)
@@ -733,7 +748,7 @@ toString(): string
 | --- | --- |
 | string | 包含此 **Scope** 的字符串表示形式。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Temperature implements util.ScopeComparable {

@@ -1,5 +1,11 @@
 # installLocalPlugin
 
+## 导入模块
+
+```TypeScript
+import { pluginBundleManager } from '@kit.AbilityKit';
+```
+
 ## installLocalPlugin
 
 ```TypeScript
@@ -9,10 +15,6 @@ function installLocalPlugin(pluginFilePaths: Array<string>): Promise<void>
 为当前应用安装自分发插件（即应用通过自有渠道分发、自主管理的插件）。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
 

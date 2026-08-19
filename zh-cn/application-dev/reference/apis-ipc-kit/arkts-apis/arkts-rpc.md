@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace rpc--><!--Device-unnamed-declare namespace rpc-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+## 导入模块
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+```
 
 ## 汇总
 

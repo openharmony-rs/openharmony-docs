@@ -1,5 +1,11 @@
 # @ohos.ability.errorCode
 
+## 导入模块
+
+```TypeScript
+import { ErrorCode } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 枚举

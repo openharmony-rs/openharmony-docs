@@ -1,5 +1,11 @@
 # execute
 
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
+
 ## execute
 
 ```TypeScript
@@ -9,10 +15,6 @@ function execute(func: Function, ...args: Object[]): Promise<Object>
 将待执行的函数放入taskpool的内部任务队列，函数不会立即执行，而是等待分发到工作线程执行。在当前执行模式下， 不支持取消任务。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,7 +44,7 @@ function execute(func: Function, ...args: Object[]): Promise<Object>
 | [10200003](../errorcode-utils.md#10200003-worker初始化失败) | Worker initialization failed.<br>**适用版本：** 9 - 11 |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -66,10 +68,6 @@ function execute<A extends Array<Object>, R>(func: (...args: A) => R | Promise<R
 校验并发函数的参数类型和返回类型后，将函数添加到taskpool的任务队列。在当前执行模式下，不支持取消任务。使用Promise异步回调。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
@@ -97,7 +95,7 @@ function execute<A extends Array<Object>, R>(func: (...args: A) => R | Promise<R
 | [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -140,10 +138,6 @@ function execute(task: Task, priority?: Priority): Promise<Object>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function execute(task: Task, priority?: Priority): Promise<Object>--><!--Device-taskpool-function execute(task: Task, priority?: Priority): Promise<Object>-End-->
@@ -174,7 +168,7 @@ function execute(task: Task, priority?: Priority): Promise<Object>
 | [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again.<br>**适用版本：** 12+ |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -208,10 +202,6 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, priority?
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, priority?: Priority): Promise<R>--><!--Device-taskpool-function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, priority?: Priority): Promise<R>-End-->
@@ -240,7 +230,7 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, priority?
 | [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -274,10 +264,6 @@ function execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function execute(group: TaskGroup, priority?: Priority): Promise<Object[]>--><!--Device-taskpool-function execute(group: TaskGroup, priority?: Priority): Promise<Object[]>-End-->
@@ -304,7 +290,7 @@ function execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 | [10200059](../errorcode-utils.md#10200059-任务组不能重复执行) | TaskGroup cannot be re-executed.<br>**适用版本：** 24+ |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -344,10 +330,6 @@ function execute(task: Task, configs: Configs): Promise<Object>
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function execute(task: Task, configs: Configs): Promise<Object>--><!--Device-taskpool-function execute(task: Task, configs: Configs): Promise<Object>-End-->
@@ -377,7 +359,7 @@ function execute(task: Task, configs: Configs): Promise<Object>
 | [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -414,10 +396,6 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, configs: 
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, configs: Configs): Promise<R>--><!--Device-taskpool-function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, configs: Configs): Promise<R>-End-->
@@ -447,7 +425,7 @@ function execute<A extends Array<Object>, R>(task: GenericsTask<A, R>, configs: 
 | [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again. |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent
@@ -484,10 +462,6 @@ function execute(group: TaskGroup, configs: Configs): Promise<Object[]>
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function execute(group: TaskGroup, configs: Configs): Promise<Object[]>--><!--Device-taskpool-function execute(group: TaskGroup, configs: Configs): Promise<Object[]>-End-->
@@ -515,7 +489,7 @@ function execute(group: TaskGroup, configs: Configs): Promise<Object[]>
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200070](../errorcode-utils.md#10200070-任务组执行超时) | TaskGroup timed out. |
 
-## 示例
+**示例**
 
 ```TypeScript
 @Concurrent

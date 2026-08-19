@@ -8,10 +8,6 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-avMusicTemplate-type ReportExecuteActionEvent = (actionType: string, params: string) => void--><!--Device-avMusicTemplate-type ReportExecuteActionEvent = (actionType: string, params: string) => void-End-->

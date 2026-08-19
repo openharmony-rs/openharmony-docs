@@ -4,9 +4,7 @@ Defines the embed info.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface NativeEmbedInfo--><!--Device-unnamed-export declare interface NativeEmbedInfo-End-->
 
@@ -24,9 +22,7 @@ The embed tag height, in px. The value should be an integer. <br>Unit:px.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-height?: int--><!--Device-NativeEmbedInfo-height?: int-End-->
 
@@ -44,9 +40,7 @@ The embed id.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-id?: string--><!--Device-NativeEmbedInfo-id?: string-End-->
 
@@ -64,9 +58,7 @@ List of key-value pairs contained in the object tag that form a map of the Objec
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-params?: Map<string, string>--><!--Device-NativeEmbedInfo-params?: Map<string, string>-End-->
 
@@ -84,9 +76,7 @@ Position of the same-layer tag relative to the Web component in the screen coord
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-position?: Position--><!--Device-NativeEmbedInfo-position?: Position-End-->
 
@@ -104,9 +94,7 @@ The embed tag src.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-src?: string--><!--Device-NativeEmbedInfo-src?: string-End-->
 
@@ -124,9 +112,7 @@ The embed tag name, which is in uppercase.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-tag?: string--><!--Device-NativeEmbedInfo-tag?: string-End-->
 
@@ -144,9 +130,7 @@ Type of the same-layer tag. The value is in lowercase.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-type?: string--><!--Device-NativeEmbedInfo-type?: string-End-->
 
@@ -164,9 +148,7 @@ The embed tag url.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-url?: string--><!--Device-NativeEmbedInfo-url?: string-End-->
 
@@ -184,9 +166,7 @@ The embed tag width. The value should be an integer. <br>Unit:px.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedInfo-width?: int--><!--Device-NativeEmbedInfo-width?: int-End-->
 

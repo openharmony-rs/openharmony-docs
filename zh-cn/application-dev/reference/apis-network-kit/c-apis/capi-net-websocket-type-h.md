@@ -62,7 +62,7 @@ websocket客户端接收open消息的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| (struct WebSocket \*client | websocket客户端。 |
+| struct WebSocket \*client | websocket客户端。 |
 | [WebSocket_OpenResult](capi-netstack-websocket-openresult.md) openResult | websocket客户端接收建立连接消息的内容。 |
 
 ### WebSocket_OnMessageCallback()
@@ -81,7 +81,7 @@ websocket客户端接收数据的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| (struct WebSocket \*client | websocket客户端。 |
+| struct WebSocket \*client | websocket客户端。 |
 | char \*data | Data received by the websocket客户端。 |
 | uint32_t length | Length of the data received by the websocket客户端。 |
 
@@ -101,7 +101,7 @@ websocket客户端接收error错误消息的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| (struct WebSocket \*client | websocket客户端。 |
+| struct WebSocket \*client | websocket客户端。 |
 | [WebSocket_ErrorResult](capi-netstack-websocket-errorresult.md) errorResult | websocket客户端接收连接错误消息的内容。 |
 
 ### WebSocket_OnCloseCallback()
@@ -120,7 +120,7 @@ webSocket客户端接收close消息的回调函数定义。
 
 | 参数项 | 描述 |
 | -- | -- |
-| (struct WebSocket \*client | websocket客户端。 |
+| struct WebSocket \*client | websocket客户端。 |
 | [WebSocket_CloseResult](capi-netstack-websocket-closeresult.md) closeResult | webSocket客户端接收关闭消息的内容。 |
 
 

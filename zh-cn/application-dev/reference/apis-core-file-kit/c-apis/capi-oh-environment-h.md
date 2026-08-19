@@ -2,7 +2,9 @@
 
 ## 概述
 
-Provide environment APIS.
+environment模块接口定义，使用environment提供的native接口，获取公共文件根目录的沙箱路径。
+
+**引用文件：** <filemanagement/environment/oh_environment.h>
 
 **库：** libohenvironment.so
 
@@ -18,9 +20,9 @@ Provide environment APIS.
 
 | 名称 | 描述 |
 | -- | -- |
-| [ FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)](#oh_environment_getuserdownloaddir) | 获取Download根目录沙箱路径。 |
-| [ FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)](#oh_environment_getuserdesktopdir) | 获取Desktop根目录沙箱路径。 |
-| [ FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)](#oh_environment_getuserdocumentdir) | 获取Document根目录沙箱路径。 |
+| [ FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)](#oh_environment_getuserdownloaddir) | 获取当前用户下载目录的沙箱路径，用于访问对应目录中的文件。 |
+| [ FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)](#oh_environment_getuserdesktopdir) | 获取当前用户桌面目录的沙箱路径，用于访问对应目录中的文件。 |
+| [ FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)](#oh_environment_getuserdocumentdir) | 获取当前用户文档目录的沙箱路径，用于访问对应目录中的文件。 |
 
 ## 函数说明
 
@@ -32,7 +34,7 @@ Provide environment APIS.
 
 **描述**
 
-获取Download根目录沙箱路径。
+获取当前用户下载目录的沙箱路径，用于访问对应目录中的文件。
 
 **起始版本：** 12
 
@@ -40,13 +42,13 @@ Provide environment APIS.
 
 | 参数项 | 描述 |
 | -- | -- |
-| char **result | Download根目录路径指针。请引用头文件malloc.h并使用free()进行资源释放。 |
+| char **result | 返回Download根目录的沙箱路径。该字符串由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。<br>          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>          {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDesktopDir()
 
@@ -56,7 +58,7 @@ Provide environment APIS.
 
 **描述**
 
-获取Desktop根目录沙箱路径。
+获取当前用户桌面目录的沙箱路径，用于访问对应目录中的文件。
 
 **起始版本：** 12
 
@@ -64,13 +66,13 @@ Provide environment APIS.
 
 | 参数项 | 描述 |
 | -- | -- |
-| char **result | Desktop根目录路径指针。请引用头文件malloc.h并使用free()进行资源释放。 |
+| char **result | 返回Desktop根目录的沙箱路径。该字符串由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。<br>          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>          {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDocumentDir()
 
@@ -80,7 +82,7 @@ Provide environment APIS.
 
 **描述**
 
-获取Document根目录沙箱路径。
+获取当前用户文档目录的沙箱路径，用于访问对应目录中的文件。
 
 **起始版本：** 12
 
@@ -88,12 +90,12 @@ Provide environment APIS.
 
 | 参数项 | 描述 |
 | -- | -- |
-| char **result | Document根目录路径指针。请引用头文件malloc.h并使用free()进行资源释放。 |
+| char **result | 返回Document根目录的沙箱路径。该字符串由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。<br>          {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>          {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>          {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 

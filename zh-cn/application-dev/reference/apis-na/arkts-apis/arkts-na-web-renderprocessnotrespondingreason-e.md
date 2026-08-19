@@ -1,12 +1,10 @@
 # RenderProcessNotRespondingReason
 
-Enum type supplied to [RenderProcessNotRespondingData](arkts-na-web-renderprocessnotrespondingdata-i.md#renderprocessnotrespondingdata) when onRenderProcessNotResponding is called.
+Enum type supplied to [RenderProcessNotRespondingData](arkts-na-web-renderprocessnotrespondingdata-i.md) when onRenderProcessNotResponding is called.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum RenderProcessNotRespondingReason--><!--Device-unnamed-export declare enum RenderProcessNotRespondingReason-End-->
 
@@ -22,9 +20,7 @@ Timeout for input sent to render process.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-RenderProcessNotRespondingReason-INPUT_TIMEOUT = 0--><!--Device-RenderProcessNotRespondingReason-INPUT_TIMEOUT = 0-End-->
 
@@ -40,9 +36,7 @@ The new webpage loading navigation response timed out.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-RenderProcessNotRespondingReason-NAVIGATION_COMMIT_TIMEOUT = 1--><!--Device-RenderProcessNotRespondingReason-NAVIGATION_COMMIT_TIMEOUT = 1-End-->
 

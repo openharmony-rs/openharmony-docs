@@ -1,12 +1,8 @@
-# KeyCode
+# KeyCode(键值)
 
 按键设备的键值，按键设备包括键盘、光盘、游戏手柄等。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum KeyCode--><!--Device-unnamed-export declare enum KeyCode-End-->
 
@@ -22,10 +18,6 @@ KEYCODE_FN = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_FN = 0--><!--Device-KeyCode-KEYCODE_FN = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -39,10 +31,6 @@ KEYCODE_UNKNOWN = -1
 未知按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_UNKNOWN = -1--><!--Device-KeyCode-KEYCODE_UNKNOWN = -1-End-->
 
@@ -58,10 +46,6 @@ KEYCODE_HOME = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_HOME = 1--><!--Device-KeyCode-KEYCODE_HOME = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -75,10 +59,6 @@ KEYCODE_BACK = 2
 返回键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BACK = 2--><!--Device-KeyCode-KEYCODE_BACK = 2-End-->
 
@@ -94,10 +74,6 @@ KEYCODE_SEARCH = 9
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SEARCH = 9--><!--Device-KeyCode-KEYCODE_SEARCH = 9-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -111,10 +87,6 @@ KEYCODE_MEDIA_PLAY_PAUSE = 10
 多媒体键：播放/暂停。 与KEYCODE_PLAYPAUSE的区别为： KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -132,10 +104,6 @@ KEYCODE_MEDIA_STOP = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyCode-KEYCODE_MEDIA_STOP = 11--><!--Device-KeyCode-KEYCODE_MEDIA_STOP = 11-End-->
@@ -151,10 +119,6 @@ KEYCODE_MEDIA_NEXT = 12
 多媒体键：下一首。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -172,10 +136,6 @@ KEYCODE_MEDIA_PREVIOUS = 13
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyCode-KEYCODE_MEDIA_PREVIOUS = 13--><!--Device-KeyCode-KEYCODE_MEDIA_PREVIOUS = 13-End-->
@@ -191,10 +151,6 @@ KEYCODE_MEDIA_REWIND = 14
 多媒体键：快退。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -212,10 +168,6 @@ KEYCODE_MEDIA_FAST_FORWARD = 15
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyCode-KEYCODE_MEDIA_FAST_FORWARD = 15--><!--Device-KeyCode-KEYCODE_MEDIA_FAST_FORWARD = 15-End-->
@@ -232,10 +184,6 @@ KEYCODE_VOLUME_UP = 16
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_VOLUME_UP = 16--><!--Device-KeyCode-KEYCODE_VOLUME_UP = 16-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -249,10 +197,6 @@ KEYCODE_VOLUME_DOWN = 17
 音量减小键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VOLUME_DOWN = 17--><!--Device-KeyCode-KEYCODE_VOLUME_DOWN = 17-End-->
 
@@ -268,10 +212,6 @@ KEYCODE_POWER = 18
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_POWER = 18--><!--Device-KeyCode-KEYCODE_POWER = 18-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -285,10 +225,6 @@ KEYCODE_CAMERA = 19
 拍照键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CAMERA = 19--><!--Device-KeyCode-KEYCODE_CAMERA = 19-End-->
 
@@ -304,10 +240,6 @@ KEYCODE_VOLUME_MUTE = 22
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_VOLUME_MUTE = 22--><!--Device-KeyCode-KEYCODE_VOLUME_MUTE = 22-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -321,10 +253,6 @@ KEYCODE_MUTE = 23
 话筒静音键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MUTE = 23--><!--Device-KeyCode-KEYCODE_MUTE = 23-End-->
 
@@ -340,10 +268,6 @@ KEYCODE_BRIGHTNESS_UP = 40
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_UP = 40--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_UP = 40-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -357,10 +281,6 @@ KEYCODE_BRIGHTNESS_DOWN = 41
 亮度调节按键：调暗。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_DOWN = 41--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_DOWN = 41-End-->
 
@@ -376,10 +296,6 @@ KEYCODE_0 = 2000
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_0 = 2000--><!--Device-KeyCode-KEYCODE_0 = 2000-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -393,10 +309,6 @@ KEYCODE_1 = 2001
 按键'1'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_1 = 2001--><!--Device-KeyCode-KEYCODE_1 = 2001-End-->
 
@@ -412,10 +324,6 @@ KEYCODE_2 = 2002
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_2 = 2002--><!--Device-KeyCode-KEYCODE_2 = 2002-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -429,10 +337,6 @@ KEYCODE_3 = 2003
 按键'3'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_3 = 2003--><!--Device-KeyCode-KEYCODE_3 = 2003-End-->
 
@@ -448,10 +352,6 @@ KEYCODE_4 = 2004
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_4 = 2004--><!--Device-KeyCode-KEYCODE_4 = 2004-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -465,10 +365,6 @@ KEYCODE_5 = 2005
 按键'5'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_5 = 2005--><!--Device-KeyCode-KEYCODE_5 = 2005-End-->
 
@@ -484,10 +380,6 @@ KEYCODE_6 = 2006
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_6 = 2006--><!--Device-KeyCode-KEYCODE_6 = 2006-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -501,10 +393,6 @@ KEYCODE_7 = 2007
 按键'7'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_7 = 2007--><!--Device-KeyCode-KEYCODE_7 = 2007-End-->
 
@@ -520,10 +408,6 @@ KEYCODE_8 = 2008
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_8 = 2008--><!--Device-KeyCode-KEYCODE_8 = 2008-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -537,10 +421,6 @@ KEYCODE_9 = 2009
 按键'9'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_9 = 2009--><!--Device-KeyCode-KEYCODE_9 = 2009-End-->
 
@@ -556,10 +436,6 @@ KEYCODE_STAR = 2010
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_STAR = 2010--><!--Device-KeyCode-KEYCODE_STAR = 2010-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -573,10 +449,6 @@ KEYCODE_POUND = 2011
 按键'*'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_POUND = 2011--><!--Device-KeyCode-KEYCODE_POUND = 2011-End-->
 
@@ -592,10 +464,6 @@ KEYCODE_DPAD_UP = 2012
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DPAD_UP = 2012--><!--Device-KeyCode-KEYCODE_DPAD_UP = 2012-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -609,10 +477,6 @@ KEYCODE_DPAD_DOWN = 2013
 导航键：向下。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DPAD_DOWN = 2013--><!--Device-KeyCode-KEYCODE_DPAD_DOWN = 2013-End-->
 
@@ -628,10 +492,6 @@ KEYCODE_DPAD_LEFT = 2014
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DPAD_LEFT = 2014--><!--Device-KeyCode-KEYCODE_DPAD_LEFT = 2014-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -645,10 +505,6 @@ KEYCODE_DPAD_RIGHT = 2015
 导航键：向右。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DPAD_RIGHT = 2015--><!--Device-KeyCode-KEYCODE_DPAD_RIGHT = 2015-End-->
 
@@ -664,10 +520,6 @@ KEYCODE_DPAD_CENTER = 2016
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DPAD_CENTER = 2016--><!--Device-KeyCode-KEYCODE_DPAD_CENTER = 2016-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -681,10 +533,6 @@ KEYCODE_A = 2017
 按键'A'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_A = 2017--><!--Device-KeyCode-KEYCODE_A = 2017-End-->
 
@@ -700,10 +548,6 @@ KEYCODE_B = 2018
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_B = 2018--><!--Device-KeyCode-KEYCODE_B = 2018-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -717,10 +561,6 @@ KEYCODE_C = 2019
 按键'C'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_C = 2019--><!--Device-KeyCode-KEYCODE_C = 2019-End-->
 
@@ -736,10 +576,6 @@ KEYCODE_D = 2020
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_D = 2020--><!--Device-KeyCode-KEYCODE_D = 2020-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -753,10 +589,6 @@ KEYCODE_E = 2021
 按键'E'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_E = 2021--><!--Device-KeyCode-KEYCODE_E = 2021-End-->
 
@@ -772,10 +604,6 @@ KEYCODE_F = 2022
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F = 2022--><!--Device-KeyCode-KEYCODE_F = 2022-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -789,10 +617,6 @@ KEYCODE_G = 2023
 按键'G'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_G = 2023--><!--Device-KeyCode-KEYCODE_G = 2023-End-->
 
@@ -808,10 +632,6 @@ KEYCODE_H = 2024
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_H = 2024--><!--Device-KeyCode-KEYCODE_H = 2024-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -825,10 +645,6 @@ KEYCODE_I = 2025
 按键'I'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_I = 2025--><!--Device-KeyCode-KEYCODE_I = 2025-End-->
 
@@ -844,10 +660,6 @@ KEYCODE_J = 2026
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_J = 2026--><!--Device-KeyCode-KEYCODE_J = 2026-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -861,10 +673,6 @@ KEYCODE_K = 2027
 按键'K'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_K = 2027--><!--Device-KeyCode-KEYCODE_K = 2027-End-->
 
@@ -880,10 +688,6 @@ KEYCODE_L = 2028
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_L = 2028--><!--Device-KeyCode-KEYCODE_L = 2028-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -897,10 +701,6 @@ KEYCODE_M = 2029
 按键'M'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_M = 2029--><!--Device-KeyCode-KEYCODE_M = 2029-End-->
 
@@ -916,10 +716,6 @@ KEYCODE_N = 2030
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_N = 2030--><!--Device-KeyCode-KEYCODE_N = 2030-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -933,10 +729,6 @@ KEYCODE_O = 2031
 按键'O'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_O = 2031--><!--Device-KeyCode-KEYCODE_O = 2031-End-->
 
@@ -952,10 +744,6 @@ KEYCODE_P = 2032
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_P = 2032--><!--Device-KeyCode-KEYCODE_P = 2032-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -969,10 +757,6 @@ KEYCODE_Q = 2033
 按键'Q'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_Q = 2033--><!--Device-KeyCode-KEYCODE_Q = 2033-End-->
 
@@ -988,10 +772,6 @@ KEYCODE_R = 2034
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_R = 2034--><!--Device-KeyCode-KEYCODE_R = 2034-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1005,10 +785,6 @@ KEYCODE_S = 2035
 按键'S'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_S = 2035--><!--Device-KeyCode-KEYCODE_S = 2035-End-->
 
@@ -1024,10 +800,6 @@ KEYCODE_T = 2036
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_T = 2036--><!--Device-KeyCode-KEYCODE_T = 2036-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1041,10 +813,6 @@ KEYCODE_U = 2037
 按键'U'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_U = 2037--><!--Device-KeyCode-KEYCODE_U = 2037-End-->
 
@@ -1060,10 +828,6 @@ KEYCODE_V = 2038
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_V = 2038--><!--Device-KeyCode-KEYCODE_V = 2038-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1077,10 +841,6 @@ KEYCODE_W = 2039
 按键'W'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_W = 2039--><!--Device-KeyCode-KEYCODE_W = 2039-End-->
 
@@ -1096,10 +856,6 @@ KEYCODE_X = 2040
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_X = 2040--><!--Device-KeyCode-KEYCODE_X = 2040-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1113,10 +869,6 @@ KEYCODE_Y = 2041
 按键'Y'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_Y = 2041--><!--Device-KeyCode-KEYCODE_Y = 2041-End-->
 
@@ -1132,10 +884,6 @@ KEYCODE_Z = 2042
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_Z = 2042--><!--Device-KeyCode-KEYCODE_Z = 2042-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1149,10 +897,6 @@ KEYCODE_COMMA = 2043
 按键','。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_COMMA = 2043--><!--Device-KeyCode-KEYCODE_COMMA = 2043-End-->
 
@@ -1168,10 +912,6 @@ KEYCODE_PERIOD = 2044
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PERIOD = 2044--><!--Device-KeyCode-KEYCODE_PERIOD = 2044-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1185,10 +925,6 @@ KEYCODE_ALT_LEFT = 2045
 左Alt键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ALT_LEFT = 2045--><!--Device-KeyCode-KEYCODE_ALT_LEFT = 2045-End-->
 
@@ -1204,10 +940,6 @@ KEYCODE_ALT_RIGHT = 2046
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_ALT_RIGHT = 2046--><!--Device-KeyCode-KEYCODE_ALT_RIGHT = 2046-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1221,10 +953,6 @@ KEYCODE_SHIFT_LEFT = 2047
 左Shift键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SHIFT_LEFT = 2047--><!--Device-KeyCode-KEYCODE_SHIFT_LEFT = 2047-End-->
 
@@ -1240,10 +968,6 @@ KEYCODE_SHIFT_RIGHT = 2048
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SHIFT_RIGHT = 2048--><!--Device-KeyCode-KEYCODE_SHIFT_RIGHT = 2048-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1257,10 +981,6 @@ KEYCODE_TAB = 2049
 Tab键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TAB = 2049--><!--Device-KeyCode-KEYCODE_TAB = 2049-End-->
 
@@ -1276,10 +996,6 @@ KEYCODE_SPACE = 2050
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SPACE = 2050--><!--Device-KeyCode-KEYCODE_SPACE = 2050-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1293,10 +1009,6 @@ KEYCODE_SYM = 2051
 符号修改器按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SYM = 2051--><!--Device-KeyCode-KEYCODE_SYM = 2051-End-->
 
@@ -1312,10 +1024,6 @@ KEYCODE_EXPLORER = 2052
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_EXPLORER = 2052--><!--Device-KeyCode-KEYCODE_EXPLORER = 2052-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1329,10 +1037,6 @@ KEYCODE_ENVELOPE = 2053
 电子邮件功能键，此键用于启动电子邮件应用程序。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ENVELOPE = 2053--><!--Device-KeyCode-KEYCODE_ENVELOPE = 2053-End-->
 
@@ -1348,10 +1052,6 @@ KEYCODE_ENTER = 2054
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_ENTER = 2054--><!--Device-KeyCode-KEYCODE_ENTER = 2054-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1365,10 +1065,6 @@ KEYCODE_DEL = 2055
 退格键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DEL = 2055--><!--Device-KeyCode-KEYCODE_DEL = 2055-End-->
 
@@ -1384,10 +1080,6 @@ KEYCODE_GRAVE = 2056
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_GRAVE = 2056--><!--Device-KeyCode-KEYCODE_GRAVE = 2056-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1401,10 +1093,6 @@ KEYCODE_MINUS = 2057
 按键'-'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MINUS = 2057--><!--Device-KeyCode-KEYCODE_MINUS = 2057-End-->
 
@@ -1420,10 +1108,6 @@ KEYCODE_EQUALS = 2058
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_EQUALS = 2058--><!--Device-KeyCode-KEYCODE_EQUALS = 2058-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1437,10 +1121,6 @@ KEYCODE_LEFT_BRACKET = 2059
 按键'['。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_LEFT_BRACKET = 2059--><!--Device-KeyCode-KEYCODE_LEFT_BRACKET = 2059-End-->
 
@@ -1456,10 +1136,6 @@ KEYCODE_RIGHT_BRACKET = 2060
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_RIGHT_BRACKET = 2060--><!--Device-KeyCode-KEYCODE_RIGHT_BRACKET = 2060-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1473,10 +1149,6 @@ KEYCODE_BACKSLASH = 2061
 按键'\'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BACKSLASH = 2061--><!--Device-KeyCode-KEYCODE_BACKSLASH = 2061-End-->
 
@@ -1492,10 +1164,6 @@ KEYCODE_SEMICOLON = 2062
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SEMICOLON = 2062--><!--Device-KeyCode-KEYCODE_SEMICOLON = 2062-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1509,10 +1177,6 @@ KEYCODE_APOSTROPHE = 2063
 按键''' (单引号)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_APOSTROPHE = 2063--><!--Device-KeyCode-KEYCODE_APOSTROPHE = 2063-End-->
 
@@ -1528,10 +1192,6 @@ KEYCODE_SLASH = 2064
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SLASH = 2064--><!--Device-KeyCode-KEYCODE_SLASH = 2064-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1545,10 +1205,6 @@ KEYCODE_AT = 2065
 按键'*'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_AT = 2065--><!--Device-KeyCode-KEYCODE_AT = 2065-End-->
 
@@ -1564,10 +1220,6 @@ KEYCODE_PLUS = 2066
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PLUS = 2066--><!--Device-KeyCode-KEYCODE_PLUS = 2066-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1581,10 +1233,6 @@ KEYCODE_MENU = 2067
 菜单键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MENU = 2067--><!--Device-KeyCode-KEYCODE_MENU = 2067-End-->
 
@@ -1600,10 +1248,6 @@ KEYCODE_PAGE_UP = 2068
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PAGE_UP = 2068--><!--Device-KeyCode-KEYCODE_PAGE_UP = 2068-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1617,10 +1261,6 @@ KEYCODE_PAGE_DOWN = 2069
 向下翻页键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PAGE_DOWN = 2069--><!--Device-KeyCode-KEYCODE_PAGE_DOWN = 2069-End-->
 
@@ -1636,10 +1276,6 @@ Esc键。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_ESCAPE = 2070--><!--Device-KeyCode-KEYCODE_ESCAPE = 2070-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1653,10 +1289,6 @@ KEYCODE_FORWARD_DEL = 2071
 删除键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FORWARD_DEL = 2071--><!--Device-KeyCode-KEYCODE_FORWARD_DEL = 2071-End-->
 
@@ -1672,10 +1304,6 @@ KEYCODE_CTRL_LEFT = 2072
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CTRL_LEFT = 2072--><!--Device-KeyCode-KEYCODE_CTRL_LEFT = 2072-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1689,10 +1317,6 @@ KEYCODE_CTRL_RIGHT = 2073
 右Ctrl键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CTRL_RIGHT = 2073--><!--Device-KeyCode-KEYCODE_CTRL_RIGHT = 2073-End-->
 
@@ -1708,10 +1332,6 @@ KEYCODE_CAPS_LOCK = 2074
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CAPS_LOCK = 2074--><!--Device-KeyCode-KEYCODE_CAPS_LOCK = 2074-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1725,10 +1345,6 @@ KEYCODE_SCROLL_LOCK = 2075
 滚动锁定键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCROLL_LOCK = 2075--><!--Device-KeyCode-KEYCODE_SCROLL_LOCK = 2075-End-->
 
@@ -1744,10 +1360,6 @@ KEYCODE_META_LEFT = 2076
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_META_LEFT = 2076--><!--Device-KeyCode-KEYCODE_META_LEFT = 2076-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1761,10 +1373,6 @@ KEYCODE_META_RIGHT = 2077
 右Meta键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_META_RIGHT = 2077--><!--Device-KeyCode-KEYCODE_META_RIGHT = 2077-End-->
 
@@ -1780,10 +1388,6 @@ KEYCODE_FUNCTION = 2078
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_FUNCTION = 2078--><!--Device-KeyCode-KEYCODE_FUNCTION = 2078-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1797,10 +1401,6 @@ KEYCODE_SYSRQ = 2079
 系统请求/打印屏幕键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SYSRQ = 2079--><!--Device-KeyCode-KEYCODE_SYSRQ = 2079-End-->
 
@@ -1816,10 +1416,6 @@ Break/Pause键。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BREAK = 2080--><!--Device-KeyCode-KEYCODE_BREAK = 2080-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1833,10 +1429,6 @@ KEYCODE_MOVE_HOME = 2081
 光标移动到开始键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MOVE_HOME = 2081--><!--Device-KeyCode-KEYCODE_MOVE_HOME = 2081-End-->
 
@@ -1852,10 +1444,6 @@ KEYCODE_MOVE_END = 2082
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_MOVE_END = 2082--><!--Device-KeyCode-KEYCODE_MOVE_END = 2082-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1869,10 +1457,6 @@ KEYCODE_INSERT = 2083
 插入键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_INSERT = 2083--><!--Device-KeyCode-KEYCODE_INSERT = 2083-End-->
 
@@ -1888,10 +1472,6 @@ KEYCODE_FORWARD = 2084
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_FORWARD = 2084--><!--Device-KeyCode-KEYCODE_FORWARD = 2084-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1905,10 +1485,6 @@ KEYCODE_MEDIA_PLAY = 2085
 多媒体键：播放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1926,10 +1502,6 @@ KEYCODE_MEDIA_PAUSE = 2086
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-KeyCode-KEYCODE_MEDIA_PAUSE = 2086--><!--Device-KeyCode-KEYCODE_MEDIA_PAUSE = 2086-End-->
@@ -1946,10 +1518,6 @@ KEYCODE_MEDIA_CLOSE = 2087
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_MEDIA_CLOSE = 2087--><!--Device-KeyCode-KEYCODE_MEDIA_CLOSE = 2087-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1963,10 +1531,6 @@ KEYCODE_MEDIA_EJECT = 2088
 光盘弹出键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEDIA_EJECT = 2088--><!--Device-KeyCode-KEYCODE_MEDIA_EJECT = 2088-End-->
 
@@ -1982,10 +1546,6 @@ KEYCODE_MEDIA_RECORD = 2089
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_MEDIA_RECORD = 2089--><!--Device-KeyCode-KEYCODE_MEDIA_RECORD = 2089-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -1999,10 +1559,6 @@ KEYCODE_F1 = 2090
 按键'F1'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F1 = 2090--><!--Device-KeyCode-KEYCODE_F1 = 2090-End-->
 
@@ -2018,10 +1574,6 @@ KEYCODE_F2 = 2091
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F2 = 2091--><!--Device-KeyCode-KEYCODE_F2 = 2091-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2035,10 +1587,6 @@ KEYCODE_F3 = 2092
 按键'F3'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F3 = 2092--><!--Device-KeyCode-KEYCODE_F3 = 2092-End-->
 
@@ -2054,10 +1602,6 @@ KEYCODE_F4 = 2093
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F4 = 2093--><!--Device-KeyCode-KEYCODE_F4 = 2093-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2071,10 +1615,6 @@ KEYCODE_F5 = 2094
 按键'F5'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F5 = 2094--><!--Device-KeyCode-KEYCODE_F5 = 2094-End-->
 
@@ -2090,10 +1630,6 @@ KEYCODE_F6 = 2095
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F6 = 2095--><!--Device-KeyCode-KEYCODE_F6 = 2095-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2107,10 +1643,6 @@ KEYCODE_F7 = 2096
 按键'F7'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F7 = 2096--><!--Device-KeyCode-KEYCODE_F7 = 2096-End-->
 
@@ -2126,10 +1658,6 @@ KEYCODE_F8 = 2097
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F8 = 2097--><!--Device-KeyCode-KEYCODE_F8 = 2097-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2143,10 +1671,6 @@ KEYCODE_F9 = 2098
 按键'F9'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F9 = 2098--><!--Device-KeyCode-KEYCODE_F9 = 2098-End-->
 
@@ -2162,10 +1686,6 @@ KEYCODE_F10 = 2099
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F10 = 2099--><!--Device-KeyCode-KEYCODE_F10 = 2099-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2179,10 +1699,6 @@ KEYCODE_F11 = 2100
 按键'F11'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F11 = 2100--><!--Device-KeyCode-KEYCODE_F11 = 2100-End-->
 
@@ -2198,10 +1714,6 @@ KEYCODE_F12 = 2101
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F12 = 2101--><!--Device-KeyCode-KEYCODE_F12 = 2101-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2215,10 +1727,6 @@ KEYCODE_NUM_LOCK = 2102
 小键盘锁。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUM_LOCK = 2102--><!--Device-KeyCode-KEYCODE_NUM_LOCK = 2102-End-->
 
@@ -2234,10 +1742,6 @@ KEYCODE_NUMPAD_0 = 2103
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_0 = 2103--><!--Device-KeyCode-KEYCODE_NUMPAD_0 = 2103-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2251,10 +1755,6 @@ KEYCODE_NUMPAD_1 = 2104
 小键盘按键'1'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_1 = 2104--><!--Device-KeyCode-KEYCODE_NUMPAD_1 = 2104-End-->
 
@@ -2270,10 +1770,6 @@ KEYCODE_NUMPAD_2 = 2105
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_2 = 2105--><!--Device-KeyCode-KEYCODE_NUMPAD_2 = 2105-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2287,10 +1783,6 @@ KEYCODE_NUMPAD_3 = 2106
 小键盘按键'3'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_3 = 2106--><!--Device-KeyCode-KEYCODE_NUMPAD_3 = 2106-End-->
 
@@ -2306,10 +1798,6 @@ KEYCODE_NUMPAD_4 = 2107
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_4 = 2107--><!--Device-KeyCode-KEYCODE_NUMPAD_4 = 2107-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2323,10 +1811,6 @@ KEYCODE_NUMPAD_5 = 2108
 小键盘按键'5'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_5 = 2108--><!--Device-KeyCode-KEYCODE_NUMPAD_5 = 2108-End-->
 
@@ -2342,10 +1826,6 @@ KEYCODE_NUMPAD_6 = 2109
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_6 = 2109--><!--Device-KeyCode-KEYCODE_NUMPAD_6 = 2109-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2359,10 +1839,6 @@ KEYCODE_NUMPAD_7 = 2110
 小键盘按键'7'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_7 = 2110--><!--Device-KeyCode-KEYCODE_NUMPAD_7 = 2110-End-->
 
@@ -2378,10 +1854,6 @@ KEYCODE_NUMPAD_8 = 2111
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_8 = 2111--><!--Device-KeyCode-KEYCODE_NUMPAD_8 = 2111-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2395,10 +1867,6 @@ KEYCODE_NUMPAD_9 = 2112
 小键盘按键'9'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_9 = 2112--><!--Device-KeyCode-KEYCODE_NUMPAD_9 = 2112-End-->
 
@@ -2414,10 +1882,6 @@ KEYCODE_NUMPAD_DIVIDE = 2113
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_DIVIDE = 2113--><!--Device-KeyCode-KEYCODE_NUMPAD_DIVIDE = 2113-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2431,10 +1895,6 @@ KEYCODE_NUMPAD_MULTIPLY = 2114
 小键盘按键'*'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_MULTIPLY = 2114--><!--Device-KeyCode-KEYCODE_NUMPAD_MULTIPLY = 2114-End-->
 
@@ -2450,10 +1910,6 @@ KEYCODE_NUMPAD_SUBTRACT = 2115
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_SUBTRACT = 2115--><!--Device-KeyCode-KEYCODE_NUMPAD_SUBTRACT = 2115-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2467,10 +1923,6 @@ KEYCODE_NUMPAD_ADD = 2116
 小键盘按键'+'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_ADD = 2116--><!--Device-KeyCode-KEYCODE_NUMPAD_ADD = 2116-End-->
 
@@ -2486,10 +1938,6 @@ KEYCODE_NUMPAD_DOT = 2117
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_DOT = 2117--><!--Device-KeyCode-KEYCODE_NUMPAD_DOT = 2117-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2503,10 +1951,6 @@ KEYCODE_NUMPAD_COMMA = 2118
 小键盘按键','。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_COMMA = 2118--><!--Device-KeyCode-KEYCODE_NUMPAD_COMMA = 2118-End-->
 
@@ -2522,10 +1966,6 @@ KEYCODE_NUMPAD_ENTER = 2119
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_ENTER = 2119--><!--Device-KeyCode-KEYCODE_NUMPAD_ENTER = 2119-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2539,10 +1979,6 @@ KEYCODE_NUMPAD_EQUALS = 2120
 小键盘按键'='。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_EQUALS = 2120--><!--Device-KeyCode-KEYCODE_NUMPAD_EQUALS = 2120-End-->
 
@@ -2558,10 +1994,6 @@ KEYCODE_NUMPAD_LEFT_PAREN = 2121
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NUMPAD_LEFT_PAREN = 2121--><!--Device-KeyCode-KEYCODE_NUMPAD_LEFT_PAREN = 2121-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2575,10 +2007,6 @@ KEYCODE_NUMPAD_RIGHT_PAREN = 2122
 小键盘按键')'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_RIGHT_PAREN = 2122--><!--Device-KeyCode-KEYCODE_NUMPAD_RIGHT_PAREN = 2122-End-->
 
@@ -2594,10 +2022,6 @@ KEYCODE_VIRTUAL_MULTITASK = 2210
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_VIRTUAL_MULTITASK = 2210--><!--Device-KeyCode-KEYCODE_VIRTUAL_MULTITASK = 2210-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2611,10 +2035,6 @@ KEYCODE_BUTTON_A = 2301
 游戏手柄按键'A'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_A = 2301--><!--Device-KeyCode-KEYCODE_BUTTON_A = 2301-End-->
 
@@ -2630,10 +2050,6 @@ KEYCODE_BUTTON_B = 2302
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BUTTON_B = 2302--><!--Device-KeyCode-KEYCODE_BUTTON_B = 2302-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2647,10 +2063,6 @@ KEYCODE_BUTTON_X = 2304
 游戏手柄按键'X'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_X = 2304--><!--Device-KeyCode-KEYCODE_BUTTON_X = 2304-End-->
 
@@ -2666,10 +2078,6 @@ KEYCODE_BUTTON_Y = 2305
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BUTTON_Y = 2305--><!--Device-KeyCode-KEYCODE_BUTTON_Y = 2305-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2683,10 +2091,6 @@ KEYCODE_BUTTON_L1 = 2307
 游戏手柄按键'L1'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_L1 = 2307--><!--Device-KeyCode-KEYCODE_BUTTON_L1 = 2307-End-->
 
@@ -2702,10 +2106,6 @@ KEYCODE_BUTTON_R1 = 2308
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BUTTON_R1 = 2308--><!--Device-KeyCode-KEYCODE_BUTTON_R1 = 2308-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2719,10 +2119,6 @@ KEYCODE_BUTTON_L2 = 2309
 游戏手柄按键'L2'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_L2 = 2309--><!--Device-KeyCode-KEYCODE_BUTTON_L2 = 2309-End-->
 
@@ -2738,10 +2134,6 @@ KEYCODE_BUTTON_R2 = 2310
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BUTTON_R2 = 2310--><!--Device-KeyCode-KEYCODE_BUTTON_R2 = 2310-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2755,10 +2147,6 @@ KEYCODE_BUTTON_SELECT = 2311
 游戏手柄按键'Select'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_SELECT = 2311--><!--Device-KeyCode-KEYCODE_BUTTON_SELECT = 2311-End-->
 
@@ -2774,10 +2162,6 @@ KEYCODE_BUTTON_START = 2312
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BUTTON_START = 2312--><!--Device-KeyCode-KEYCODE_BUTTON_START = 2312-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2791,10 +2175,6 @@ KEYCODE_BUTTON_MODE = 2313
 游戏手柄按键'Mode'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_MODE = 2313--><!--Device-KeyCode-KEYCODE_BUTTON_MODE = 2313-End-->
 
@@ -2810,10 +2190,6 @@ KEYCODE_BUTTON_THUMBL = 2314
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BUTTON_THUMBL = 2314--><!--Device-KeyCode-KEYCODE_BUTTON_THUMBL = 2314-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2827,10 +2203,6 @@ KEYCODE_BUTTON_THUMBR = 2315
 游戏手柄按键'THUMBR'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTON_THUMBR = 2315--><!--Device-KeyCode-KEYCODE_BUTTON_THUMBR = 2315-End-->
 
@@ -2846,10 +2218,6 @@ KEYCODE_SLEEP = 2600
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SLEEP = 2600--><!--Device-KeyCode-KEYCODE_SLEEP = 2600-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2863,10 +2231,6 @@ KEYCODE_ZENKAKU_HANKAKU = 2601
 日文全宽/半宽键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ZENKAKU_HANKAKU = 2601--><!--Device-KeyCode-KEYCODE_ZENKAKU_HANKAKU = 2601-End-->
 
@@ -2882,10 +2246,6 @@ KEYCODE_102ND = 2602
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_102ND = 2602--><!--Device-KeyCode-KEYCODE_102ND = 2602-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2899,10 +2259,6 @@ KEYCODE_RO = 2603
 日文Ro键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RO = 2603--><!--Device-KeyCode-KEYCODE_RO = 2603-End-->
 
@@ -2918,10 +2274,6 @@ KEYCODE_KATAKANA = 2604
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KATAKANA = 2604--><!--Device-KeyCode-KEYCODE_KATAKANA = 2604-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2935,10 +2287,6 @@ KEYCODE_HIRAGANA = 2605
 日文平假名键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HIRAGANA = 2605--><!--Device-KeyCode-KEYCODE_HIRAGANA = 2605-End-->
 
@@ -2954,10 +2302,6 @@ KEYCODE_HENKAN = 2606
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_HENKAN = 2606--><!--Device-KeyCode-KEYCODE_HENKAN = 2606-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -2971,10 +2315,6 @@ KEYCODE_KATAKANA_HIRAGANA = 2607
 日语片假名/平假名键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KATAKANA_HIRAGANA = 2607--><!--Device-KeyCode-KEYCODE_KATAKANA_HIRAGANA = 2607-End-->
 
@@ -2990,10 +2330,6 @@ KEYCODE_MUHENKAN = 2608
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_MUHENKAN = 2608--><!--Device-KeyCode-KEYCODE_MUHENKAN = 2608-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3007,10 +2343,6 @@ KEYCODE_LINEFEED = 2609
 换行键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_LINEFEED = 2609--><!--Device-KeyCode-KEYCODE_LINEFEED = 2609-End-->
 
@@ -3026,10 +2358,6 @@ KEYCODE_MACRO = 2610
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_MACRO = 2610--><!--Device-KeyCode-KEYCODE_MACRO = 2610-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3043,10 +2371,6 @@ KEYCODE_NUMPAD_PLUSMINUS = 2611
 数字键盘上的加号/减号键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NUMPAD_PLUSMINUS = 2611--><!--Device-KeyCode-KEYCODE_NUMPAD_PLUSMINUS = 2611-End-->
 
@@ -3062,10 +2386,6 @@ KEYCODE_SCALE = 2612
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SCALE = 2612--><!--Device-KeyCode-KEYCODE_SCALE = 2612-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3079,10 +2399,6 @@ KEYCODE_HANGUEL = 2613
 日文韩语键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HANGUEL = 2613--><!--Device-KeyCode-KEYCODE_HANGUEL = 2613-End-->
 
@@ -3098,10 +2414,6 @@ KEYCODE_HANJA = 2614
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_HANJA = 2614--><!--Device-KeyCode-KEYCODE_HANJA = 2614-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3115,10 +2427,6 @@ KEYCODE_YEN = 2615
 日元键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_YEN = 2615--><!--Device-KeyCode-KEYCODE_YEN = 2615-End-->
 
@@ -3134,10 +2442,6 @@ KEYCODE_STOP = 2616
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_STOP = 2616--><!--Device-KeyCode-KEYCODE_STOP = 2616-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3151,10 +2455,6 @@ KEYCODE_AGAIN = 2617
 重复键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_AGAIN = 2617--><!--Device-KeyCode-KEYCODE_AGAIN = 2617-End-->
 
@@ -3170,10 +2470,6 @@ KEYCODE_PROPS = 2618
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PROPS = 2618--><!--Device-KeyCode-KEYCODE_PROPS = 2618-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3184,13 +2480,9 @@ KEYCODE_PROPS = 2618
 KEYCODE_UNDO = 2619
 ```
 
-撤消键。
+撤销键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_UNDO = 2619--><!--Device-KeyCode-KEYCODE_UNDO = 2619-End-->
 
@@ -3206,10 +2498,6 @@ KEYCODE_COPY = 2620
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_COPY = 2620--><!--Device-KeyCode-KEYCODE_COPY = 2620-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3223,10 +2511,6 @@ KEYCODE_OPEN = 2621
 打开键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_OPEN = 2621--><!--Device-KeyCode-KEYCODE_OPEN = 2621-End-->
 
@@ -3242,10 +2526,6 @@ KEYCODE_PASTE = 2622
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PASTE = 2622--><!--Device-KeyCode-KEYCODE_PASTE = 2622-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3259,10 +2539,6 @@ KEYCODE_FIND = 2623
 查找键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FIND = 2623--><!--Device-KeyCode-KEYCODE_FIND = 2623-End-->
 
@@ -3278,10 +2554,6 @@ KEYCODE_CUT = 2624
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CUT = 2624--><!--Device-KeyCode-KEYCODE_CUT = 2624-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3295,10 +2567,6 @@ KEYCODE_HELP = 2625
 帮助键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_HELP = 2625--><!--Device-KeyCode-KEYCODE_HELP = 2625-End-->
 
@@ -3314,10 +2582,6 @@ KEYCODE_CALC = 2626
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CALC = 2626--><!--Device-KeyCode-KEYCODE_CALC = 2626-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3331,10 +2595,6 @@ KEYCODE_FILE = 2627
 文件按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FILE = 2627--><!--Device-KeyCode-KEYCODE_FILE = 2627-End-->
 
@@ -3350,10 +2610,6 @@ KEYCODE_BOOKMARKS = 2628
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BOOKMARKS = 2628--><!--Device-KeyCode-KEYCODE_BOOKMARKS = 2628-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3367,10 +2623,6 @@ KEYCODE_NEXT = 2629
 向下翻页键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NEXT = 2629--><!--Device-KeyCode-KEYCODE_NEXT = 2629-End-->
 
@@ -3386,10 +2638,6 @@ KEYCODE_PLAYPAUSE = 2630
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PLAYPAUSE = 2630--><!--Device-KeyCode-KEYCODE_PLAYPAUSE = 2630-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3403,10 +2651,6 @@ KEYCODE_PREVIOUS = 2631
 向上翻页键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PREVIOUS = 2631--><!--Device-KeyCode-KEYCODE_PREVIOUS = 2631-End-->
 
@@ -3422,10 +2666,6 @@ CD停止键。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_STOPCD = 2632--><!--Device-KeyCode-KEYCODE_STOPCD = 2632-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3439,10 +2679,6 @@ KEYCODE_CONFIG = 2634
 配置键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CONFIG = 2634--><!--Device-KeyCode-KEYCODE_CONFIG = 2634-End-->
 
@@ -3458,10 +2694,6 @@ KEYCODE_REFRESH = 2635
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_REFRESH = 2635--><!--Device-KeyCode-KEYCODE_REFRESH = 2635-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3475,10 +2707,6 @@ KEYCODE_EXIT = 2636
 退出键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EXIT = 2636--><!--Device-KeyCode-KEYCODE_EXIT = 2636-End-->
 
@@ -3494,10 +2722,6 @@ KEYCODE_EDIT = 2637
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_EDIT = 2637--><!--Device-KeyCode-KEYCODE_EDIT = 2637-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3511,10 +2735,6 @@ KEYCODE_SCROLLUP = 2638
 向上滚动键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCROLLUP = 2638--><!--Device-KeyCode-KEYCODE_SCROLLUP = 2638-End-->
 
@@ -3530,10 +2750,6 @@ KEYCODE_SCROLLDOWN = 2639
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SCROLLDOWN = 2639--><!--Device-KeyCode-KEYCODE_SCROLLDOWN = 2639-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3547,10 +2763,6 @@ KEYCODE_NEW = 2640
 新建键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_NEW = 2640--><!--Device-KeyCode-KEYCODE_NEW = 2640-End-->
 
@@ -3566,10 +2778,6 @@ KEYCODE_REDO = 2641
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_REDO = 2641--><!--Device-KeyCode-KEYCODE_REDO = 2641-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3583,10 +2791,6 @@ KEYCODE_CLOSE = 2642
 关闭键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CLOSE = 2642--><!--Device-KeyCode-KEYCODE_CLOSE = 2642-End-->
 
@@ -3602,10 +2806,6 @@ KEYCODE_PLAY = 2643
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PLAY = 2643--><!--Device-KeyCode-KEYCODE_PLAY = 2643-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3619,10 +2819,6 @@ KEYCODE_BASSBOOST = 2644
 低音增强键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BASSBOOST = 2644--><!--Device-KeyCode-KEYCODE_BASSBOOST = 2644-End-->
 
@@ -3638,10 +2834,6 @@ KEYCODE_PRINT = 2645
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PRINT = 2645--><!--Device-KeyCode-KEYCODE_PRINT = 2645-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3655,10 +2847,6 @@ KEYCODE_CHAT = 2646
 聊天键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CHAT = 2646--><!--Device-KeyCode-KEYCODE_CHAT = 2646-End-->
 
@@ -3674,10 +2862,6 @@ KEYCODE_FINANCE = 2647
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_FINANCE = 2647--><!--Device-KeyCode-KEYCODE_FINANCE = 2647-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3691,10 +2875,6 @@ KEYCODE_CANCEL = 2648
 取消键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CANCEL = 2648--><!--Device-KeyCode-KEYCODE_CANCEL = 2648-End-->
 
@@ -3710,10 +2890,6 @@ KEYCODE_KBDILLUM_TOGGLE = 2649
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KBDILLUM_TOGGLE = 2649--><!--Device-KeyCode-KEYCODE_KBDILLUM_TOGGLE = 2649-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3727,10 +2903,6 @@ KEYCODE_KBDILLUM_DOWN = 2650
 键盘灯光调暗键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDILLUM_DOWN = 2650--><!--Device-KeyCode-KEYCODE_KBDILLUM_DOWN = 2650-End-->
 
@@ -3746,10 +2918,6 @@ KEYCODE_KBDILLUM_UP = 2651
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KBDILLUM_UP = 2651--><!--Device-KeyCode-KEYCODE_KBDILLUM_UP = 2651-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3763,10 +2931,6 @@ KEYCODE_SEND = 2652
 发送键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SEND = 2652--><!--Device-KeyCode-KEYCODE_SEND = 2652-End-->
 
@@ -3782,10 +2946,6 @@ KEYCODE_REPLY = 2653
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_REPLY = 2653--><!--Device-KeyCode-KEYCODE_REPLY = 2653-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3799,10 +2959,6 @@ KEYCODE_FORWARDMAIL = 2654
 邮件转发键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FORWARDMAIL = 2654--><!--Device-KeyCode-KEYCODE_FORWARDMAIL = 2654-End-->
 
@@ -3818,10 +2974,6 @@ KEYCODE_SAVE = 2655
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SAVE = 2655--><!--Device-KeyCode-KEYCODE_SAVE = 2655-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3835,10 +2987,6 @@ KEYCODE_DOCUMENTS = 2656
 文件键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DOCUMENTS = 2656--><!--Device-KeyCode-KEYCODE_DOCUMENTS = 2656-End-->
 
@@ -3854,10 +3002,6 @@ KEYCODE_VIDEO_NEXT = 2657
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_VIDEO_NEXT = 2657--><!--Device-KeyCode-KEYCODE_VIDEO_NEXT = 2657-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3871,10 +3015,6 @@ KEYCODE_VIDEO_PREV = 2658
 上一个视频键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VIDEO_PREV = 2658--><!--Device-KeyCode-KEYCODE_VIDEO_PREV = 2658-End-->
 
@@ -3890,10 +3030,6 @@ KEYCODE_BRIGHTNESS_CYCLE = 2659
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_CYCLE = 2659--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_CYCLE = 2659-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3907,10 +3043,6 @@ KEYCODE_BRIGHTNESS_ZERO = 2660
 亮度调节为0键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_ZERO = 2660--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_ZERO = 2660-End-->
 
@@ -3926,10 +3058,6 @@ KEYCODE_DISPLAY_OFF = 2661
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DISPLAY_OFF = 2661--><!--Device-KeyCode-KEYCODE_DISPLAY_OFF = 2661-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3943,10 +3071,6 @@ KEYCODE_BTN_MISC = 2662
 游戏手柄上的各种按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_MISC = 2662--><!--Device-KeyCode-KEYCODE_BTN_MISC = 2662-End-->
 
@@ -3962,10 +3086,6 @@ KEYCODE_GOTO = 2663
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_GOTO = 2663--><!--Device-KeyCode-KEYCODE_GOTO = 2663-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -3979,10 +3099,6 @@ KEYCODE_INFO = 2664
 信息查看键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_INFO = 2664--><!--Device-KeyCode-KEYCODE_INFO = 2664-End-->
 
@@ -3998,10 +3114,6 @@ KEYCODE_PROGRAM = 2665
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PROGRAM = 2665--><!--Device-KeyCode-KEYCODE_PROGRAM = 2665-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4015,10 +3127,6 @@ KEYCODE_PVR = 2666
 个人录像机（PVR）键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PVR = 2666--><!--Device-KeyCode-KEYCODE_PVR = 2666-End-->
 
@@ -4034,10 +3142,6 @@ KEYCODE_SUBTITLE = 2667
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SUBTITLE = 2667--><!--Device-KeyCode-KEYCODE_SUBTITLE = 2667-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4051,10 +3155,6 @@ KEYCODE_FULL_SCREEN = 2668
 全屏键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_FULL_SCREEN = 2668--><!--Device-KeyCode-KEYCODE_FULL_SCREEN = 2668-End-->
 
@@ -4070,10 +3170,6 @@ KEYCODE_KEYBOARD = 2669
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KEYBOARD = 2669--><!--Device-KeyCode-KEYCODE_KEYBOARD = 2669-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4087,10 +3183,6 @@ KEYCODE_ASPECT_RATIO = 2670
 屏幕纵横比调节键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ASPECT_RATIO = 2670--><!--Device-KeyCode-KEYCODE_ASPECT_RATIO = 2670-End-->
 
@@ -4106,10 +3198,6 @@ KEYCODE_PC = 2671
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PC = 2671--><!--Device-KeyCode-KEYCODE_PC = 2671-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4123,10 +3211,6 @@ KEYCODE_TV = 2672
 TV键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TV = 2672--><!--Device-KeyCode-KEYCODE_TV = 2672-End-->
 
@@ -4142,10 +3226,6 @@ TV键2。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_TV2 = 2673--><!--Device-KeyCode-KEYCODE_TV2 = 2673-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4159,10 +3239,6 @@ KEYCODE_VCR = 2674
 录像机开启键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VCR = 2674--><!--Device-KeyCode-KEYCODE_VCR = 2674-End-->
 
@@ -4178,10 +3254,6 @@ KEYCODE_VCR2 = 2675
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_VCR2 = 2675--><!--Device-KeyCode-KEYCODE_VCR2 = 2675-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4195,10 +3267,6 @@ KEYCODE_SAT = 2676
 SIM卡应用工具包（SAT）键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SAT = 2676--><!--Device-KeyCode-KEYCODE_SAT = 2676-End-->
 
@@ -4214,10 +3282,6 @@ CD键。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CD = 2677--><!--Device-KeyCode-KEYCODE_CD = 2677-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4231,10 +3295,6 @@ KEYCODE_TAPE = 2678
 磁带键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_TAPE = 2678--><!--Device-KeyCode-KEYCODE_TAPE = 2678-End-->
 
@@ -4250,10 +3310,6 @@ KEYCODE_TUNER = 2679
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_TUNER = 2679--><!--Device-KeyCode-KEYCODE_TUNER = 2679-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4267,10 +3323,6 @@ KEYCODE_PLAYER = 2680
 播放器键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PLAYER = 2680--><!--Device-KeyCode-KEYCODE_PLAYER = 2680-End-->
 
@@ -4286,10 +3338,6 @@ DVD键。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DVD = 2681--><!--Device-KeyCode-KEYCODE_DVD = 2681-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4303,10 +3351,6 @@ KEYCODE_AUDIO = 2682
 音频键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_AUDIO = 2682--><!--Device-KeyCode-KEYCODE_AUDIO = 2682-End-->
 
@@ -4322,10 +3366,6 @@ KEYCODE_VIDEO = 2683
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_VIDEO = 2683--><!--Device-KeyCode-KEYCODE_VIDEO = 2683-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4339,10 +3379,6 @@ KEYCODE_MEMO = 2684
 备忘录键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEMO = 2684--><!--Device-KeyCode-KEYCODE_MEMO = 2684-End-->
 
@@ -4358,10 +3394,6 @@ KEYCODE_CALENDAR = 2685
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CALENDAR = 2685--><!--Device-KeyCode-KEYCODE_CALENDAR = 2685-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4375,10 +3407,6 @@ KEYCODE_RED = 2686
 红色指示器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RED = 2686--><!--Device-KeyCode-KEYCODE_RED = 2686-End-->
 
@@ -4394,10 +3422,6 @@ KEYCODE_GREEN = 2687
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_GREEN = 2687--><!--Device-KeyCode-KEYCODE_GREEN = 2687-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4411,10 +3435,6 @@ KEYCODE_YELLOW = 2688
 黄色指示器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_YELLOW = 2688--><!--Device-KeyCode-KEYCODE_YELLOW = 2688-End-->
 
@@ -4430,10 +3450,6 @@ KEYCODE_BLUE = 2689
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BLUE = 2689--><!--Device-KeyCode-KEYCODE_BLUE = 2689-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4447,10 +3463,6 @@ KEYCODE_CHANNELUP = 2690
 频道向上键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CHANNELUP = 2690--><!--Device-KeyCode-KEYCODE_CHANNELUP = 2690-End-->
 
@@ -4466,10 +3478,6 @@ KEYCODE_CHANNELDOWN = 2691
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CHANNELDOWN = 2691--><!--Device-KeyCode-KEYCODE_CHANNELDOWN = 2691-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4483,10 +3491,6 @@ KEYCODE_LAST = 2692
 末尾键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_LAST = 2692--><!--Device-KeyCode-KEYCODE_LAST = 2692-End-->
 
@@ -4502,10 +3506,6 @@ KEYCODE_RESTART = 2693
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_RESTART = 2693--><!--Device-KeyCode-KEYCODE_RESTART = 2693-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4519,10 +3519,6 @@ KEYCODE_SLOW = 2694
 慢速键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SLOW = 2694--><!--Device-KeyCode-KEYCODE_SLOW = 2694-End-->
 
@@ -4538,10 +3534,6 @@ KEYCODE_SHUFFLE = 2695
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SHUFFLE = 2695--><!--Device-KeyCode-KEYCODE_SHUFFLE = 2695-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4555,10 +3547,6 @@ KEYCODE_VIDEOPHONE = 2696
 可视电话键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VIDEOPHONE = 2696--><!--Device-KeyCode-KEYCODE_VIDEOPHONE = 2696-End-->
 
@@ -4574,10 +3562,6 @@ KEYCODE_GAMES = 2697
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_GAMES = 2697--><!--Device-KeyCode-KEYCODE_GAMES = 2697-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4591,10 +3575,6 @@ KEYCODE_ZOOMIN = 2698
 放大键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ZOOMIN = 2698--><!--Device-KeyCode-KEYCODE_ZOOMIN = 2698-End-->
 
@@ -4610,10 +3590,6 @@ KEYCODE_ZOOMOUT = 2699
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_ZOOMOUT = 2699--><!--Device-KeyCode-KEYCODE_ZOOMOUT = 2699-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4627,10 +3603,6 @@ KEYCODE_ZOOMRESET = 2700
 缩放重置键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ZOOMRESET = 2700--><!--Device-KeyCode-KEYCODE_ZOOMRESET = 2700-End-->
 
@@ -4646,10 +3618,6 @@ KEYCODE_WORDPROCESSOR = 2701
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_WORDPROCESSOR = 2701--><!--Device-KeyCode-KEYCODE_WORDPROCESSOR = 2701-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4663,10 +3631,6 @@ KEYCODE_EDITOR = 2702
 编辑器键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EDITOR = 2702--><!--Device-KeyCode-KEYCODE_EDITOR = 2702-End-->
 
@@ -4682,10 +3646,6 @@ KEYCODE_SPREADSHEET = 2703
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SPREADSHEET = 2703--><!--Device-KeyCode-KEYCODE_SPREADSHEET = 2703-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4699,10 +3659,6 @@ KEYCODE_GRAPHICSEDITOR = 2704
 图形编辑器键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_GRAPHICSEDITOR = 2704--><!--Device-KeyCode-KEYCODE_GRAPHICSEDITOR = 2704-End-->
 
@@ -4718,10 +3674,6 @@ KEYCODE_PRESENTATION = 2705
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PRESENTATION = 2705--><!--Device-KeyCode-KEYCODE_PRESENTATION = 2705-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4735,10 +3687,6 @@ KEYCODE_DATABASE = 2706
 数据库键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DATABASE = 2706--><!--Device-KeyCode-KEYCODE_DATABASE = 2706-End-->
 
@@ -4754,10 +3702,6 @@ KEYCODE_NEWS = 2707
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_NEWS = 2707--><!--Device-KeyCode-KEYCODE_NEWS = 2707-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4771,10 +3715,6 @@ KEYCODE_VOICEMAIL = 2708
 语音信箱。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_VOICEMAIL = 2708--><!--Device-KeyCode-KEYCODE_VOICEMAIL = 2708-End-->
 
@@ -4790,10 +3730,6 @@ KEYCODE_ADDRESSBOOK = 2709
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_ADDRESSBOOK = 2709--><!--Device-KeyCode-KEYCODE_ADDRESSBOOK = 2709-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4807,10 +3743,6 @@ KEYCODE_MESSENGER = 2710
 通信键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MESSENGER = 2710--><!--Device-KeyCode-KEYCODE_MESSENGER = 2710-End-->
 
@@ -4826,10 +3758,6 @@ KEYCODE_BRIGHTNESS_TOGGLE = 2711
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_TOGGLE = 2711--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_TOGGLE = 2711-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4843,10 +3771,6 @@ KEYCODE_SPELLCHECK = 2712
 拼写检查键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SPELLCHECK = 2712--><!--Device-KeyCode-KEYCODE_SPELLCHECK = 2712-End-->
 
@@ -4862,10 +3786,6 @@ KEYCODE_COFFEE = 2713
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_COFFEE = 2713--><!--Device-KeyCode-KEYCODE_COFFEE = 2713-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4879,10 +3799,6 @@ KEYCODE_MEDIA_REPEAT = 2714
 媒体循环键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MEDIA_REPEAT = 2714--><!--Device-KeyCode-KEYCODE_MEDIA_REPEAT = 2714-End-->
 
@@ -4898,10 +3814,6 @@ KEYCODE_IMAGES = 2715
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_IMAGES = 2715--><!--Device-KeyCode-KEYCODE_IMAGES = 2715-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4915,10 +3827,6 @@ KEYCODE_BUTTONCONFIG = 2716
 按键配置键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BUTTONCONFIG = 2716--><!--Device-KeyCode-KEYCODE_BUTTONCONFIG = 2716-End-->
 
@@ -4934,10 +3842,6 @@ KEYCODE_TASKMANAGER = 2717
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_TASKMANAGER = 2717--><!--Device-KeyCode-KEYCODE_TASKMANAGER = 2717-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4951,10 +3855,6 @@ KEYCODE_JOURNAL = 2718
 日志按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_JOURNAL = 2718--><!--Device-KeyCode-KEYCODE_JOURNAL = 2718-End-->
 
@@ -4970,10 +3870,6 @@ KEYCODE_CONTROLPANEL = 2719
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CONTROLPANEL = 2719--><!--Device-KeyCode-KEYCODE_CONTROLPANEL = 2719-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -4987,10 +3883,6 @@ KEYCODE_APPSELECT = 2720
 应用程序选择键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_APPSELECT = 2720--><!--Device-KeyCode-KEYCODE_APPSELECT = 2720-End-->
 
@@ -5006,10 +3898,6 @@ KEYCODE_SCREENSAVER = 2721
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SCREENSAVER = 2721--><!--Device-KeyCode-KEYCODE_SCREENSAVER = 2721-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5023,10 +3911,6 @@ KEYCODE_ASSISTANT = 2722
 智慧键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_ASSISTANT = 2722--><!--Device-KeyCode-KEYCODE_ASSISTANT = 2722-End-->
 
@@ -5042,10 +3926,6 @@ KEYCODE_KBD_LAYOUT_NEXT = 2723
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KBD_LAYOUT_NEXT = 2723--><!--Device-KeyCode-KEYCODE_KBD_LAYOUT_NEXT = 2723-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5059,10 +3939,6 @@ KEYCODE_BRIGHTNESS_MIN = 2724
 最小亮度键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_MIN = 2724--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_MIN = 2724-End-->
 
@@ -5078,10 +3954,6 @@ KEYCODE_BRIGHTNESS_MAX = 2725
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BRIGHTNESS_MAX = 2725--><!--Device-KeyCode-KEYCODE_BRIGHTNESS_MAX = 2725-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5095,10 +3967,6 @@ KEYCODE_KBDINPUTASSIST_PREV = 2726
 键盘输入Assist_Previous，查看输入法输入记录。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREV = 2726--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREV = 2726-End-->
 
@@ -5114,10 +3982,6 @@ KEYCODE_KBDINPUTASSIST_NEXT = 2727
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXT = 2727--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXT = 2727-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5131,10 +3995,6 @@ KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728
 键盘输入Assist_Previous，切换输入组中上一个输入法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728-End-->
 
@@ -5150,10 +4010,6 @@ KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5167,10 +4023,6 @@ KEYCODE_KBDINPUTASSIST_ACCEPT = 2730
 键盘输入Assist_Accept。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_ACCEPT = 2730--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_ACCEPT = 2730-End-->
 
@@ -5186,10 +4038,6 @@ KEYCODE_KBDINPUTASSIST_CANCEL = 2731
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_CANCEL = 2731--><!--Device-KeyCode-KEYCODE_KBDINPUTASSIST_CANCEL = 2731-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5203,10 +4051,6 @@ KEYCODE_MOUSE_ASSISTANT = 2732
 鼠标AI助手键。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5224,10 +4068,6 @@ KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyCode-KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733--><!--Device-KeyCode-KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733-End-->
@@ -5243,10 +4083,6 @@ KEYCODE_AOD_SINGLE_CLICK = 2740
 手机触摸屏单击事件，在熄屏显示状态下使用。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5264,10 +4100,6 @@ KEYCODE_FRONT = 2800
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_FRONT = 2800--><!--Device-KeyCode-KEYCODE_FRONT = 2800-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5281,10 +4113,6 @@ KEYCODE_SETUP = 2801
 设置键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SETUP = 2801--><!--Device-KeyCode-KEYCODE_SETUP = 2801-End-->
 
@@ -5300,10 +4128,6 @@ KEYCODE_WAKEUP = 2802
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_WAKEUP = 2802--><!--Device-KeyCode-KEYCODE_WAKEUP = 2802-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5317,10 +4141,6 @@ KEYCODE_SENDFILE = 2803
 发送文件按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SENDFILE = 2803--><!--Device-KeyCode-KEYCODE_SENDFILE = 2803-End-->
 
@@ -5336,10 +4156,6 @@ KEYCODE_DELETEFILE = 2804
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DELETEFILE = 2804--><!--Device-KeyCode-KEYCODE_DELETEFILE = 2804-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5353,10 +4169,6 @@ KEYCODE_XFER = 2805
 文件传输（XFER）按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_XFER = 2805--><!--Device-KeyCode-KEYCODE_XFER = 2805-End-->
 
@@ -5372,10 +4184,6 @@ KEYCODE_PROG1 = 2806
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PROG1 = 2806--><!--Device-KeyCode-KEYCODE_PROG1 = 2806-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5389,10 +4197,6 @@ KEYCODE_PROG2 = 2807
 程序键2。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROG2 = 2807--><!--Device-KeyCode-KEYCODE_PROG2 = 2807-End-->
 
@@ -5408,10 +4212,6 @@ DOS面板键。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_MSDOS = 2808--><!--Device-KeyCode-KEYCODE_MSDOS = 2808-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5425,10 +4225,6 @@ KEYCODE_SCREENLOCK = 2809
 屏幕锁定键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SCREENLOCK = 2809--><!--Device-KeyCode-KEYCODE_SCREENLOCK = 2809-End-->
 
@@ -5444,10 +4240,6 @@ KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810--><!--Device-KeyCode-KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5461,10 +4253,6 @@ KEYCODE_CYCLEWINDOWS = 2811
 窗口切换键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CYCLEWINDOWS = 2811--><!--Device-KeyCode-KEYCODE_CYCLEWINDOWS = 2811-End-->
 
@@ -5480,10 +4268,6 @@ KEYCODE_COMPUTER = 2812
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_COMPUTER = 2812--><!--Device-KeyCode-KEYCODE_COMPUTER = 2812-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5497,10 +4281,6 @@ KEYCODE_EJECTCLOSECD = 2813
 弹出CD键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_EJECTCLOSECD = 2813--><!--Device-KeyCode-KEYCODE_EJECTCLOSECD = 2813-End-->
 
@@ -5516,10 +4296,6 @@ ISO键。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_ISO = 2814--><!--Device-KeyCode-KEYCODE_ISO = 2814-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5533,10 +4309,6 @@ KEYCODE_MOVE = 2815
 移动键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_MOVE = 2815--><!--Device-KeyCode-KEYCODE_MOVE = 2815-End-->
 
@@ -5552,10 +4324,6 @@ KEYCODE_F13 = 2816
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F13 = 2816--><!--Device-KeyCode-KEYCODE_F13 = 2816-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5569,10 +4337,6 @@ KEYCODE_F14 = 2817
 按键'F14'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F14 = 2817--><!--Device-KeyCode-KEYCODE_F14 = 2817-End-->
 
@@ -5588,10 +4352,6 @@ KEYCODE_F15 = 2818
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F15 = 2818--><!--Device-KeyCode-KEYCODE_F15 = 2818-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5605,10 +4365,6 @@ KEYCODE_F16 = 2819
 按键'F16'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F16 = 2819--><!--Device-KeyCode-KEYCODE_F16 = 2819-End-->
 
@@ -5624,10 +4380,6 @@ KEYCODE_F17 = 2820
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F17 = 2820--><!--Device-KeyCode-KEYCODE_F17 = 2820-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5641,10 +4393,6 @@ KEYCODE_F18 = 2821
 按键'F18'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F18 = 2821--><!--Device-KeyCode-KEYCODE_F18 = 2821-End-->
 
@@ -5660,10 +4408,6 @@ KEYCODE_F19 = 2822
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F19 = 2822--><!--Device-KeyCode-KEYCODE_F19 = 2822-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5677,10 +4421,6 @@ KEYCODE_F20 = 2823
 按键'F20'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F20 = 2823--><!--Device-KeyCode-KEYCODE_F20 = 2823-End-->
 
@@ -5696,10 +4436,6 @@ KEYCODE_F21 = 2824
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F21 = 2824--><!--Device-KeyCode-KEYCODE_F21 = 2824-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5713,10 +4449,6 @@ KEYCODE_F22 = 2825
 按键'F22'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F22 = 2825--><!--Device-KeyCode-KEYCODE_F22 = 2825-End-->
 
@@ -5732,10 +4464,6 @@ KEYCODE_F23 = 2826
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_F23 = 2826--><!--Device-KeyCode-KEYCODE_F23 = 2826-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5749,10 +4477,6 @@ KEYCODE_F24 = 2827
 按键'F24'。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_F24 = 2827--><!--Device-KeyCode-KEYCODE_F24 = 2827-End-->
 
@@ -5768,10 +4492,6 @@ KEYCODE_PROG3 = 2828
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_PROG3 = 2828--><!--Device-KeyCode-KEYCODE_PROG3 = 2828-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5785,10 +4505,6 @@ KEYCODE_PROG4 = 2829
 程序键4。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_PROG4 = 2829--><!--Device-KeyCode-KEYCODE_PROG4 = 2829-End-->
 
@@ -5804,10 +4520,6 @@ KEYCODE_DASHBOARD = 2830
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DASHBOARD = 2830--><!--Device-KeyCode-KEYCODE_DASHBOARD = 2830-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5821,10 +4533,6 @@ KEYCODE_SUSPEND = 2831
 挂起键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SUSPEND = 2831--><!--Device-KeyCode-KEYCODE_SUSPEND = 2831-End-->
 
@@ -5840,10 +4548,6 @@ KEYCODE_HP = 2832
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_HP = 2832--><!--Device-KeyCode-KEYCODE_HP = 2832-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5857,10 +4561,6 @@ KEYCODE_SOUND = 2833
 音量键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SOUND = 2833--><!--Device-KeyCode-KEYCODE_SOUND = 2833-End-->
 
@@ -5876,10 +4576,6 @@ KEYCODE_QUESTION = 2834
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_QUESTION = 2834--><!--Device-KeyCode-KEYCODE_QUESTION = 2834-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5893,10 +4589,6 @@ KEYCODE_CONNECT = 2836
 连接键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_CONNECT = 2836--><!--Device-KeyCode-KEYCODE_CONNECT = 2836-End-->
 
@@ -5912,10 +4604,6 @@ KEYCODE_SPORT = 2837
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_SPORT = 2837--><!--Device-KeyCode-KEYCODE_SPORT = 2837-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5929,10 +4617,6 @@ KEYCODE_SHOP = 2838
 商城键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SHOP = 2838--><!--Device-KeyCode-KEYCODE_SHOP = 2838-End-->
 
@@ -5948,10 +4632,6 @@ KEYCODE_ALTERASE = 2839
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_ALTERASE = 2839--><!--Device-KeyCode-KEYCODE_ALTERASE = 2839-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -5965,10 +4645,6 @@ KEYCODE_SWITCHVIDEOMODE = 2841
 在可用视频之间循环输出（监视器/LCD/TV输出/等）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_SWITCHVIDEOMODE = 2841--><!--Device-KeyCode-KEYCODE_SWITCHVIDEOMODE = 2841-End-->
 
@@ -5984,10 +4660,6 @@ KEYCODE_BATTERY = 2842
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BATTERY = 2842--><!--Device-KeyCode-KEYCODE_BATTERY = 2842-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6001,10 +4673,6 @@ KEYCODE_BLUETOOTH = 2843
 蓝牙按键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BLUETOOTH = 2843--><!--Device-KeyCode-KEYCODE_BLUETOOTH = 2843-End-->
 
@@ -6020,10 +4688,6 @@ KEYCODE_WLAN = 2844
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_WLAN = 2844--><!--Device-KeyCode-KEYCODE_WLAN = 2844-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6037,10 +4701,6 @@ KEYCODE_UWB = 2845
 超宽带控制键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_UWB = 2845--><!--Device-KeyCode-KEYCODE_UWB = 2845-End-->
 
@@ -6056,10 +4716,6 @@ KEYCODE_WWAN_WIMAX = 2846
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_WWAN_WIMAX = 2846--><!--Device-KeyCode-KEYCODE_WWAN_WIMAX = 2846-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6073,10 +4729,6 @@ KEYCODE_RFKILL = 2847
 控制所有收音机的键。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_RFKILL = 2847--><!--Device-KeyCode-KEYCODE_RFKILL = 2847-End-->
 
@@ -6092,10 +4744,6 @@ KEYCODE_CHANNEL = 3001
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_CHANNEL = 3001--><!--Device-KeyCode-KEYCODE_CHANNEL = 3001-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6109,10 +4757,6 @@ KEYCODE_BTN_0 = 3100
 按键0。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_0 = 3100--><!--Device-KeyCode-KEYCODE_BTN_0 = 3100-End-->
 
@@ -6128,10 +4772,6 @@ KEYCODE_BTN_1 = 3101
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BTN_1 = 3101--><!--Device-KeyCode-KEYCODE_BTN_1 = 3101-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6145,10 +4785,6 @@ KEYCODE_BTN_2 = 3102
 按键2。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_2 = 3102--><!--Device-KeyCode-KEYCODE_BTN_2 = 3102-End-->
 
@@ -6164,10 +4800,6 @@ KEYCODE_BTN_3 = 3103
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BTN_3 = 3103--><!--Device-KeyCode-KEYCODE_BTN_3 = 3103-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6181,10 +4813,6 @@ KEYCODE_BTN_4 = 3104
 按键4。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_4 = 3104--><!--Device-KeyCode-KEYCODE_BTN_4 = 3104-End-->
 
@@ -6200,10 +4828,6 @@ KEYCODE_BTN_5 = 3105
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BTN_5 = 3105--><!--Device-KeyCode-KEYCODE_BTN_5 = 3105-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6217,10 +4841,6 @@ KEYCODE_BTN_6 = 3106
 按键6。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_6 = 3106--><!--Device-KeyCode-KEYCODE_BTN_6 = 3106-End-->
 
@@ -6236,10 +4856,6 @@ KEYCODE_BTN_7 = 3107
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BTN_7 = 3107--><!--Device-KeyCode-KEYCODE_BTN_7 = 3107-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6253,10 +4869,6 @@ KEYCODE_BTN_8 = 3108
 按键8。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_BTN_8 = 3108--><!--Device-KeyCode-KEYCODE_BTN_8 = 3108-End-->
 
@@ -6272,10 +4884,6 @@ KEYCODE_BTN_9 = 3109
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_BTN_9 = 3109--><!--Device-KeyCode-KEYCODE_BTN_9 = 3109-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6289,10 +4897,6 @@ KEYCODE_DAGGER_CLICK = 3211
 智能手表智感窗按键单击。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DAGGER_CLICK = 3211--><!--Device-KeyCode-KEYCODE_DAGGER_CLICK = 3211-End-->
 
@@ -6308,10 +4912,6 @@ KEYCODE_DAGGER_DOUBLE_CLICK = 3212
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DAGGER_DOUBLE_CLICK = 3212--><!--Device-KeyCode-KEYCODE_DAGGER_DOUBLE_CLICK = 3212-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6325,10 +4925,6 @@ KEYCODE_DAGGER_LONG_PRESS = 3213
 智能手表智感窗按键长按。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyCode-KEYCODE_DAGGER_LONG_PRESS = 3213--><!--Device-KeyCode-KEYCODE_DAGGER_LONG_PRESS = 3213-End-->
 
@@ -6344,10 +4940,6 @@ KEYCODE_DIV = 3220
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeyCode-KEYCODE_DIV = 3220--><!--Device-KeyCode-KEYCODE_DIV = 3220-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -6361,10 +4953,6 @@ KEYCODE_XKEY = 3232
 自定义快捷键。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6382,10 +4970,6 @@ KEYCODE_FINGERPRINT_SLIDE_UP = 3233
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-KeyCode-KEYCODE_FINGERPRINT_SLIDE_UP = 3233--><!--Device-KeyCode-KEYCODE_FINGERPRINT_SLIDE_UP = 3233-End-->
@@ -6401,10 +4985,6 @@ KEYCODE_FINGERPRINT_SLIDE_DOWN = 3234
 智控键下滑。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

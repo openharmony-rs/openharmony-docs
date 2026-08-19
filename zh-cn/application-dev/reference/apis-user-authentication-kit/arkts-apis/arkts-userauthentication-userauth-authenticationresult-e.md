@@ -4,11 +4,9 @@
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
-**替代接口：** [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md#userauthresultcode)
+**替代接口：** [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md)
 
 <!--Device-userAuth-export enum AuthenticationResult--><!--Device-userAuth-export enum AuthenticationResult-End-->
 
@@ -24,11 +22,9 @@ NO_SUPPORT = -1
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
-**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#typenotsupport)
+**替代接口：** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-resultcode-e.md#type_not_support)
 
 <!--Device-AuthenticationResult-NO_SUPPORT = -1--><!--Device-AuthenticationResult-NO_SUPPORT = -1-End-->
 
@@ -43,8 +39,6 @@ SUCCESS = 0
 认证成功。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -64,8 +58,6 @@ COMPARE_FAILURE = 1
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
 **替代接口：** [FAIL](arkts-userauthentication-userauth-resultcode-e.md#fail)
@@ -83,8 +75,6 @@ CANCELED = 2
 用户取消认证。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -104,8 +94,6 @@ TIMEOUT = 3
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
 **替代接口：** [TIMEOUT](arkts-userauthentication-userauth-resultcode-e.md#timeout)
@@ -124,8 +112,6 @@ CAMERA_FAIL = 4
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
 <!--Device-AuthenticationResult-CAMERA_FAIL = 4--><!--Device-AuthenticationResult-CAMERA_FAIL = 4-End-->
@@ -141,8 +127,6 @@ BUSY = 5
 认证服务忙，请稍后重试。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -162,11 +146,9 @@ INVALID_PARAMETERS = 6
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
-**替代接口：** [INVALID_PARAMETERS](arkts-userauthentication-userauth-resultcode-e.md#invalidparameters)
+**替代接口：** [INVALID_PARAMETERS](arkts-userauthentication-userauth-resultcode-e.md#invalid_parameters)
 
 <!--Device-AuthenticationResult-INVALID_PARAMETERS = 6--><!--Device-AuthenticationResult-INVALID_PARAMETERS = 6-End-->
 
@@ -181,8 +163,6 @@ LOCKED = 7
 认证失败次数过多，已锁定。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -202,11 +182,9 @@ NOT_ENROLLED = 8
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
-**替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-resultcode-e.md#notenrolled)
+**替代接口：** [NOT_ENROLLED](arkts-userauthentication-userauth-resultcode-e.md#not_enrolled)
 
 <!--Device-AuthenticationResult-NOT_ENROLLED = 8--><!--Device-AuthenticationResult-NOT_ENROLLED = 8-End-->
 
@@ -222,11 +200,9 @@ GENERAL_ERROR = 100
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
-**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#generalerror)
+**替代接口：** [GENERAL_ERROR](arkts-userauthentication-userauth-resultcode-e.md#general_error)
 
 <!--Device-AuthenticationResult-GENERAL_ERROR = 100--><!--Device-AuthenticationResult-GENERAL_ERROR = 100-End-->
 

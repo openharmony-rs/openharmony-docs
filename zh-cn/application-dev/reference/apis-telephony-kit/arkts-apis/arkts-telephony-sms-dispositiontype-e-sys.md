@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export enum DispositionType--><!--Device-sms-export enum DispositionType-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -23,10 +19,6 @@ FROM_DATA = 0
 数据来源
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DispositionType-FROM_DATA = 0--><!--Device-DispositionType-FROM_DATA = 0-End-->
 
@@ -44,10 +36,6 @@ ATTACHMENT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DispositionType-ATTACHMENT = 1--><!--Device-DispositionType-ATTACHMENT = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -63,10 +51,6 @@ INLINE = 2
 内联
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DispositionType-INLINE = 2--><!--Device-DispositionType-INLINE = 2-End-->
 

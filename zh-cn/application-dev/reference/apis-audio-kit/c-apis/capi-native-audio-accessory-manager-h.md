@@ -46,14 +46,14 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioAccessory \*accessory | [in] 音频配件。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) \*accessory | [in] 音频配件。 |
 | OH_AudioNoiseReductionMode mode | [in] 配件当前的降噪模式。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | <ul><br>         <li>true：请求的降噪模式处理成功。</li><br>         <li>false：请求的降噪模式处理失败。</li><br>         </ul> |
+| bool | <ul>          <li>true：请求的降噪模式处理成功。</li>          <li>false：请求的降噪模式处理失败。</li>          </ul> |
 
 ### OH_AudioManager_GetAccessoryManager()
 
@@ -77,7 +77,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAccessoryManager(OH_AudioAccessoryManag
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数outManager为NULL。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数outManager为NULL。</li>          </ul> |
 
 ### OH_AudioAccessoryManager_CreateInput()
 
@@ -105,7 +105,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括info为NULL、capabilities为NULL、<br>             openInputStream为NULL、outOwnedAccessory为NULL、info信息未全部填写、<br>             capabilities信息未全部填写，或outOwnedAccessory已通过<br>             [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数manager未通过<br>             [OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括info为NULL、capabilities为NULL、              openInputStream为NULL、outOwnedAccessory为NULL、info信息未全部填写、              capabilities信息未全部填写，或outOwnedAccessory已通过              [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数manager未通过              [OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化。</li>          </ul> |
 
 ### OH_AudioAccessoryManager_SetAssociatedMacAddresses()
 
@@ -132,7 +132,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、<br>             manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化、accessory为NULL，<br>             或macAddresses传入的个数与count不一致。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过<br>             [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、              manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化、accessory为NULL，              或macAddresses传入的个数与count不一致。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过              [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建。</li>          </ul> |
 
 ### OH_AudioAccessoryManager_RegisterNoiseReductionCapability()
 
@@ -159,7 +159,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_RegisterNoiseReductionCapability(
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、<br>             manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化、accessory为NULL、<br>             capability为NULL，或capability中的supportedModes为NULL或supportedModeCount为0。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过<br>             [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、              manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化、accessory为NULL、              capability为NULL，或capability中的supportedModes为NULL或supportedModeCount为0。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过              [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建。</li>          </ul> |
 
 ### OH_AudioAccessoryManager_SetNoiseReductionMode()
 
@@ -185,7 +185,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetNoiseReductionMode(OH_AudioAcc
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数accessory为NULL。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过<br>             [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建，或未通过<br>             [OH_AudioAccessoryManager_Connected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_connected)连接。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED}：设置的降噪模式未通过<br>             [OH_AudioAccessoryManager_RegisterNoiseReductionCapability](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_registernoisereductioncapability)注册。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数accessory为NULL。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过              [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建，或未通过              [OH_AudioAccessoryManager_Connected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_connected)连接。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED}：设置的降噪模式未通过              [OH_AudioAccessoryManager_RegisterNoiseReductionCapability](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_registernoisereductioncapability)注册。</li>          </ul> |
 
 ### OH_AudioAccessoryManager_Connected()
 
@@ -212,7 +212,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED}：调用方没有<br>             ohos.permission.MANAGE_AUDIO_ACCESSORY权限。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、<br>             manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化，或accessory为NULL。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过<br>             [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建，或accessory已通过<br>             [OH_AudioAccessoryManager_Connected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_connected)连接。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}：音频服务进程死亡。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED}：调用方没有              ohos.permission.MANAGE_AUDIO_ACCESSORY权限。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、              manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化，或accessory为NULL。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过              [OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建，或accessory已通过              [OH_AudioAccessoryManager_Connected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_connected)连接。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}：音频服务进程死亡。</li>          </ul> |
 
 ### OH_AudioAccessoryManager_Disconnected()
 
@@ -239,7 +239,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryMan
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED}：调用方没有<br>             ohos.permission.MANAGE_AUDIO_ACCESSORY权限。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数accessory为NULL。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过<br>             [OH_AudioAccessoryManager_Connected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_connected)连接。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}：音频服务进程死亡。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_PERMISSION_DENIED}：调用方没有              ohos.permission.MANAGE_AUDIO_ACCESSORY权限。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数accessory为NULL。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过              [OH_AudioAccessoryManager_Connected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_connected)连接。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}：音频服务进程死亡。</li>          </ul> |
 
 ### OH_AudioAccessoryManager_Destroy()
 
@@ -264,6 +264,6 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | <ul><br>         <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、<br>             manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化，或accessory为NULL。</li><br>         <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过<br>             [OH_AudioAccessoryManager_Disconnected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_disconnected)断开连接。</li><br>         </ul> |
+| OH_AudioCommon_Result | <ul>          <li>{@link AUDIOCOMMON_RESULT_SUCCESS}：函数执行成功。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}：参数无效，包括manager为NULL、              manager未通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)进行初始化，或accessory为NULL。</li>          <li>{@link AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE}：参数accessory未通过              [OH_AudioAccessoryManager_Disconnected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_disconnected)断开连接。</li>          </ul> |
 
 

@@ -1,5 +1,11 @@
 # setActivationLockDisabled
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## setActivationLockDisabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?
 禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -49,7 +51,7 @@ function setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9201011](../errorcode-enterpriseDeviceManager.md#9201011-禁用凭据无效) | The credential of the activation lock is invalid. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

@@ -1,5 +1,11 @@
 # getRecentOperatingHandStatus
 
+## 导入模块
+
+```TypeScript
+import { motion } from '@kit.MultimodalAwarenessKit';
+```
+
 ## getRecentOperatingHandStatus
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getRecentOperatingHandStatus(): OperatingHandStatus
 获取最新触控操作手状态。该方法直接返回最新的操作手状态，无需订阅事件即可调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
@@ -36,7 +38,7 @@ function getRecentOperatingHandStatus(): OperatingHandStatus
 | [31500001](../../apis-multimodalawareness-kit/errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; <br> 2. N-API invocation exception, invalid N-API status. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. An attempt was made to get the recent operating hand <br> status forbidden by permission: ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

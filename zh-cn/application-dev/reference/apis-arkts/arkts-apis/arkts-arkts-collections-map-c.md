@@ -4,13 +4,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-collections-class Map--><!--Device-collections-class Map-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { collections } from '@kit.ArkTS';
+```
 
 ## [Symbol.iterator]
 
@@ -21,10 +23,6 @@
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象。 说明： 本接口不支持在.ets文件中使用。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -54,10 +52,6 @@ clear(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-clear(): void--><!--Device-Map-clear(): void-End-->
@@ -80,10 +74,6 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 构造函数，用于创建ArkTS Map对象。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -113,10 +103,6 @@ constructor(iterable: Iterable<readonly [K, V]>)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-constructor(iterable: Iterable<readonly [K, V]>)--><!--Device-Map-constructor(iterable: Iterable<readonly [K, V]>)-End-->
@@ -144,10 +130,6 @@ delete(key: K): boolean
 删除该Map中指定键对应的元素。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -184,10 +166,6 @@ entries(): IterableIterator<[K, V]>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-entries(): IterableIterator<[K, V]>--><!--Device-Map-entries(): IterableIterator<[K, V]>-End-->
@@ -217,10 +195,6 @@ forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void--><!--Device-Map-forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void-End-->
@@ -249,10 +223,6 @@ get(key: K): V | undefined
 返回该Map中指定键对应的元素。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -289,10 +259,6 @@ has(key: K): boolean
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-has(key: K): boolean--><!--Device-Map-has(key: K): boolean-End-->
@@ -328,10 +294,6 @@ keys(): IterableIterator<K>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-keys(): IterableIterator<K>--><!--Device-Map-keys(): IterableIterator<K>-End-->
@@ -360,10 +322,6 @@ set(key: K, value: V): Map<K, V>
 向该Map添加或更新一个指定的键值对。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -401,10 +359,6 @@ values(): IterableIterator<V>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Map-values(): IterableIterator<V>--><!--Device-Map-values(): IterableIterator<V>-End-->
@@ -435,10 +389,6 @@ Map的元素个数。
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

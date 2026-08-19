@@ -1,5 +1,11 @@
 # setResidentProcessEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## setResidentProcessEnabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 常驻进程支持按需启停。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>--><!--Device-abilityManager-function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise<void>-End-->
 
@@ -42,7 +44,7 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityManager } from '@kit.AbilityKit';

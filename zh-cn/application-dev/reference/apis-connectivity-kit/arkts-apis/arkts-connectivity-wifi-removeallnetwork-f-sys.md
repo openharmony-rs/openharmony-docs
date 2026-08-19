@@ -1,5 +1,14 @@
 # removeAllNetwork（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## removeAllNetwork
 
 ```TypeScript
@@ -9,8 +18,6 @@ function removeAllNetwork(): boolean
 移除所有网络配置。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -30,7 +37,7 @@ function removeAllNetwork(): boolean
 | --- | --- |
 | boolean | 操作成功时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

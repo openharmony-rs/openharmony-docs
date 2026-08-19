@@ -4,8 +4,6 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
 **替代接口：** [PROXIMITY](arkts-sensorservice-sensor-sensorid-e.md#proximity)
@@ -13,6 +11,12 @@
 <!--Device-unnamed-export interface SubscribeProximityOptions--><!--Device-unnamed-export interface SubscribeProximityOptions-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
+
+## 导入模块
+
+```TypeScript
+import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, DeviceOrientationResponse, GetOnBodyStateOptions, GyroscopeResponse, HeartRateResponse, LightResponse, OnBodyStateResponse, ProximityResponse, StepCounterResponse, SubscribeBarometerOptions, SubscribeCompassOptions, SubscribeDeviceOrientationOptions, SubscribeGyroscopeOptions, SubscribeHeartRateOptions, SubscribeLightOptions, SubscribeOnBodyStateOptions, SubscribeProximityOptions, SubscribeStepCounterOptions, subscribeAccelerometerOptions } from '@kit.SensorServiceKit';
+```
 
 ## fail
 
@@ -26,11 +30,9 @@ fail?: (data: string, code: number) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#onsensoridcolor)
+**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#on_sensoridcolor)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -50,11 +52,9 @@ success: (data: ProximityResponse) => void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#onsensoridcolor)
+**替代接口：** [on](arkts-sensorservice-sensor-onsensoridcolor-f-sys.md#on_sensoridcolor)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

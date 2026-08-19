@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uiEffect-enum WaterRippleMode--><!--Device-uiEffect-enum WaterRippleMode-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -23,10 +19,6 @@ SMALL2MEDIUM_RECV = 0
 手机碰2in1设备（接收端）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WaterRippleMode-SMALL2MEDIUM_RECV = 0--><!--Device-WaterRippleMode-SMALL2MEDIUM_RECV = 0-End-->
 
@@ -44,10 +36,6 @@ SMALL2MEDIUM_SEND = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WaterRippleMode-SMALL2MEDIUM_SEND = 1--><!--Device-WaterRippleMode-SMALL2MEDIUM_SEND = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -64,10 +52,6 @@ SMALL2SMALL = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WaterRippleMode-SMALL2SMALL = 2--><!--Device-WaterRippleMode-SMALL2SMALL = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -83,10 +67,6 @@ MINI_RECV = 3
 2in1设备与其它设备共享（键鼠共享场景）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WaterRippleMode-MINI_RECV = 3--><!--Device-WaterRippleMode-MINI_RECV = 3-End-->
 

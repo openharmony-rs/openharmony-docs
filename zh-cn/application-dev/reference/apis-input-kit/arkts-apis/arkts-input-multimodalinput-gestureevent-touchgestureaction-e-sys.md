@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum TouchGestureAction--><!--Device-unnamed-export declare enum TouchGestureAction-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -24,10 +20,6 @@ SWIPE_DOWN = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TouchGestureAction-SWIPE_DOWN = 0--><!--Device-TouchGestureAction-SWIPE_DOWN = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -40,13 +32,9 @@ SWIPE_DOWN = 0
 SWIPE_UP = 1
 ```
 
-Multi-finger upward swipe.
+多指向上滑动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchGestureAction-SWIPE_UP = 1--><!--Device-TouchGestureAction-SWIPE_UP = 1-End-->
 
@@ -60,13 +48,9 @@ Multi-finger upward swipe.
 SWIPE_LEFT = 2
 ```
 
-Multi-finger leftward swipe.
+多指向左滑动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchGestureAction-SWIPE_LEFT = 2--><!--Device-TouchGestureAction-SWIPE_LEFT = 2-End-->
 
@@ -80,13 +64,9 @@ Multi-finger leftward swipe.
 SWIPE_RIGHT = 3
 ```
 
-Multi-finger rightward swipe.
+多指向右滑动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchGestureAction-SWIPE_RIGHT = 3--><!--Device-TouchGestureAction-SWIPE_RIGHT = 3-End-->
 
@@ -100,13 +80,9 @@ Multi-finger rightward swipe.
 PINCH_CLOSED = 4
 ```
 
-Multi-finger pinch closed.
+多指捏合。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchGestureAction-PINCH_CLOSED = 4--><!--Device-TouchGestureAction-PINCH_CLOSED = 4-End-->
 
@@ -120,13 +96,9 @@ Multi-finger pinch closed.
 PINCH_OPENED = 5
 ```
 
-Multi-finger pinch opened.
+多指张开。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchGestureAction-PINCH_OPENED = 5--><!--Device-TouchGestureAction-PINCH_OPENED = 5-End-->
 
@@ -140,13 +112,9 @@ Multi-finger pinch opened.
 GESTURE_END = 6
 ```
 
-Gesture ended.
+手势结束。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchGestureAction-GESTURE_END = 6--><!--Device-TouchGestureAction-GESTURE_END = 6-End-->
 

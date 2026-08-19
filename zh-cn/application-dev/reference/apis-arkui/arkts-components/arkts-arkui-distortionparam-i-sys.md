@@ -4,15 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface DistortionParam--><!--Device-unnamed-declare interface DistortionParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## barrelDistortion
 
@@ -27,10 +28,6 @@ barrelDistortion: Vector4
 **默认值：** [0, 0, 0, 0]
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,10 +51,6 @@ bottomLeft: Vector2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DistortionParam-bottomLeft: Vector2--><!--Device-DistortionParam-bottomLeft: Vector2-End-->
@@ -79,10 +72,6 @@ bottomRight: Vector2
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,10 +95,6 @@ topLeft: Vector2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DistortionParam-topLeft: Vector2--><!--Device-DistortionParam-topLeft: Vector2-End-->
@@ -131,10 +116,6 @@ topRight: Vector2
 **默认值：** [0, 0]
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

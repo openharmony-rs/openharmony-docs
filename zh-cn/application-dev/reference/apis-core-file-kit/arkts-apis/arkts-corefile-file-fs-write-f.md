@@ -1,5 +1,13 @@
 # write
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## write
 
 ```TypeScript
@@ -10,13 +18,9 @@ declare function write(
 ): Promise<number>
 ```
 
-将数据写入文件，使用promise异步回调。
+将数据写入文件，返回实际写入的字节数。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -28,9 +32,9 @@ declare function write(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 已打开的文件描述符。 |
+| fd | number | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>- length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持?'utf- 8'。<br>**起始版本：** 11 |
+| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 否 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>- length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持'utf-8'。<br>**起始版本：** 11 |
 
 **返回值：**
 
@@ -62,13 +66,9 @@ declare function write(
 declare function write(fd: number, buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void
 ```
 
-将数据写入文件，使用callback异步回调。
+将数据写入文件，返回实际写入的字节数。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -80,9 +80,9 @@ declare function write(fd: number, buffer: ArrayBuffer | string, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 已打开的文件描述符。 |
+| fd | number | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步将数据写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -113,13 +113,9 @@ declare function write(
 ): void
 ```
 
-将数据写入文件，使用callback异步回调。
+将数据写入文件，支持配置写入选项（如偏移位置和写入长度），返回实际写入的字节数。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -131,10 +127,10 @@ declare function write(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fd | number | 是 | 已打开的文件描述符。 |
+| fd | number | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer \| string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
-| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 是 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'。当前仅支持?'utf- 8'。<br>**起始版本：** 11 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 异步将数据写入完成后执行的回调函数。返回实际写入的数据长度，单位为Byte。 |
+| options | [WriteOptions](../../apis-na/arkts-apis/arkts-na-file-fs-writeoptions-i.md) | 是 | 支持如下选项：<br/>- offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- length， number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式， 默认'utf-8'。当前仅支持'utf-8'。<br>**起始版本：** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 

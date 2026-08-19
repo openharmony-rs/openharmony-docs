@@ -1,16 +1,18 @@
 # Metadata
 
-Metadata类，用于存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-image-image-metadatatype-e.md#metadatatype)。 > **说明：** > > - 本Interface首批接口从API version 13开始支持。
+Metadata类，用于存储图像的元数据。目前支持的元数据类型可参考[MetadataType](arkts-image-image-metadatatype-e.md)。 > **说明：** > > - 本Interface首批接口从API version 13开始支持。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-interface Metadata--><!--Device-image-interface Metadata-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## clone
 
@@ -21,10 +23,6 @@ clone(): Promise<Metadata>
 对元数据进行克隆。使用Promise异步回调。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 <!--Device-Metadata-clone(): Promise<Metadata>--><!--Device-Metadata-clone(): Promise<Metadata>-End-->
 
@@ -46,10 +44,6 @@ Obtains a clone of metadata. This method uses a promise to return the metadata.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Metadata-clone(): Promise<Metadata | undefined>--><!--Device-Metadata-clone(): Promise<Metadata | undefined>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -66,13 +60,9 @@ Obtains a clone of metadata. This method uses a promise to return the metadata.
 getAllProperties(): Promise<Record<string, string | null>>
 ```
 
-获取图片中所有元数据的属性和值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#propertykey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#fragmentmappropertykey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#gifpropertykey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#heifspropertykey)。
+获取图片中所有元数据的属性和值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md)。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 <!--Device-Metadata-getAllProperties(): Promise<Record<string, string | null>>--><!--Device-Metadata-getAllProperties(): Promise<Record<string, string | null>>-End-->
 
@@ -94,10 +84,6 @@ Obtains the value of all properties in an image. This method uses a promise to r
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Metadata-getAllProperties(): Promise<Record<string, string|null> | undefined>--><!--Device-Metadata-getAllProperties(): Promise<Record<string, string|null> | undefined>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -118,10 +104,6 @@ getBlob(): Promise<ArrayBuffer>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Metadata-getBlob(): Promise<ArrayBuffer>--><!--Device-Metadata-getBlob(): Promise<ArrayBuffer>-End-->
@@ -140,13 +122,9 @@ getBlob(): Promise<ArrayBuffer>
 getProperties(key: Array<string>): Promise<Record<string, string | null>>
 ```
 
-获取图像中属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#propertykey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#fragmentmappropertykey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#gifpropertykey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#heifspropertykey)。
+获取图像中属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Metadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>--><!--Device-Metadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>-End-->
 
@@ -181,10 +159,6 @@ setBlob(blob: ArrayBuffer): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Metadata-setBlob(blob: ArrayBuffer): Promise<void>--><!--Device-Metadata-setBlob(blob: ArrayBuffer): Promise<void>-End-->
@@ -215,13 +189,9 @@ setBlob(blob: ArrayBuffer): Promise<void>
 setProperties(records: Record<string, string | null>): Promise<void>
 ```
 
-批量设置图片元数据中的指定属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md#propertykey)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md#fragmentmappropertykey)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md#gifpropertykey)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md#heifspropertykey)。
+批量设置图片元数据中的指定属性的值。使用Promise异步回调。 如要查询属性值信息请参考[PropertyKey](arkts-image-image-propertykey-e.md)、[FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md)、 [GifPropertyKey](arkts-image-image-gifpropertykey-e.md)和[HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Metadata-setProperties(records: Record<string, string | null>): Promise<void>--><!--Device-Metadata-setProperties(records: Record<string, string | null>): Promise<void>-End-->
 

@@ -1,12 +1,8 @@
 # Blend
 
-混合接口.
+用于控制材质的透明效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Blend--><!--Device-unnamed-export interface Blend-End-->
 
@@ -18,15 +14,11 @@
 enabled: boolean
 ```
 
-控制是否启用混合
+是否启用材质的透明效果模式。true表示开启透明，false表示关闭透明。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Blend-enabled: boolean--><!--Device-Blend-enabled: boolean-End-->
 

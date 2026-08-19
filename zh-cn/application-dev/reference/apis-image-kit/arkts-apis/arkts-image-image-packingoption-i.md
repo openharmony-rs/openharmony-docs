@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-interface PackingOption--><!--Device-image-interface PackingOption-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## backgroundColor
 
@@ -23,10 +25,6 @@ backgroundColor?: int
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ bufferSize?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PackingOption-bufferSize?: int--><!--Device-PackingOption-bufferSize?: int-End-->
@@ -68,10 +62,6 @@ desiredDynamicRange?: PackingDynamicRange
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PackingOption-desiredDynamicRange?: PackingDynamicRange--><!--Device-PackingOption-desiredDynamicRange?: PackingDynamicRange-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
@@ -87,10 +77,6 @@ format: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -110,10 +96,6 @@ maxEmbedThumbnailDimension?: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PackingOption-maxEmbedThumbnailDimension?: int--><!--Device-PackingOption-maxEmbedThumbnailDimension?: int-End-->
@@ -131,10 +113,6 @@ needsPackGPS?: boolean
 **类型：** boolean
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -154,10 +132,6 @@ needsPackProperties?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PackingOption-needsPackProperties?: boolean--><!--Device-PackingOption-needsPackProperties?: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
@@ -173,10 +147,6 @@ quality: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -196,10 +166,6 @@ sizeLimit?: PackingSizeLimit
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PackingOption-sizeLimit?: PackingSizeLimit--><!--Device-PackingOption-sizeLimit?: PackingSizeLimit-End-->
@@ -217,10 +183,6 @@ TIFF图像编码选项。
 **类型：** [PackingOptionsForTiff](arkts-image-image-packingoptionsfortiff-i.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

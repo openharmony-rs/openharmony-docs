@@ -1,12 +1,10 @@
 # ParagraphStyle
 
-文本段落样式对象说明。 除首个段落外，后续段落按'\n'划分。 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。 在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](arkts-arkui-styledstring-customspan-c.md#customspan)或[ImageAttachment](arkts-arkui-styledstring-imageattachment-c.md#imageattachment)时，设置在该段落上的段落样式不生 效。从API版本26.0.0开始，设置段落样式生效。
+文本段落样式对象说明。 除首个段落外，后续段落按'\n'划分。 每个段落的段落样式按首个占位设置的段落样式生效，未设置时，段落按被绑定组件的段落样式生效。 在API版本26.0.0之前，如果属性字符串段落内首个占位为[CustomSpan](arkts-arkui-styledstring-customspan-c.md)或[ImageAttachment](arkts-arkui-styledstring-imageattachment-c.md)时，设置在该段落上的段落样式不生 效。从API版本26.0.0开始，设置段落样式生效。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class ParagraphStyle--><!--Device-unnamed-export declare class ParagraphStyle-End-->
 
@@ -22,9 +20,7 @@ constructor(value?: ParagraphStyleInterface)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,9 +46,7 @@ readonly leadingMargin?: double | LeadingMarginPlaceholder
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -72,9 +66,7 @@ readonly leadingMarginSpan?: LeadingMarginSpan
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -94,9 +86,7 @@ readonly maxLines?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -116,9 +106,7 @@ readonly overflow?: TextOverflow
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,9 +126,7 @@ readonly paragraphSpacing?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -160,9 +146,7 @@ readonly shaderStyle?: ShaderStyle
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -182,9 +166,7 @@ readonly tailIndents?: Array<double>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,9 +186,7 @@ readonly textAlign?: TextAlign
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -226,9 +206,7 @@ readonly textDirection?: TextDirection
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -248,9 +226,7 @@ readonly textIndent?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,15 +240,13 @@ readonly textIndent?: double
 readonly textVerticalAlign?: TextVerticalAlign
 ```
 
-获取属性字符串文本段落在垂直方向的对齐方式。 一个段落下使用同一字号必须同时设置行高[lineHeight](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight)或者 同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](arkts-arkui-styledstring-textstyle-c.md#textstyle)中的SuperscriptStyle上下角标样式仅在 [TextVerticalAlign](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#textverticalalign20)属性值为 TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
+获取属性字符串文本段落在垂直方向的对齐方式。 一个段落下使用同一字号必须同时设置行高[lineHeight](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight)或者 同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](arkts-arkui-styledstring-textstyle-c.md)中的SuperscriptStyle上下角标样式仅在 [TextVerticalAlign](../../../reference/apis-arkui/arkui-ts/ts-text-common.md#textverticalalign20)属性值为 TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。
 
 **类型：** [TextVerticalAlign](arkts-arkui-textcommon-textverticalalign-e.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,9 +266,7 @@ readonly wordBreak?: WordBreak
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

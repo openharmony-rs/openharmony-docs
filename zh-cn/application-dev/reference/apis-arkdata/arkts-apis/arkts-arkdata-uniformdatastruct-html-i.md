@@ -4,13 +4,15 @@ HTML类型数据，用于描述超文本标记语言数据。创建HTML对象后
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uniformDataStruct-interface HTML--><!--Device-uniformDataStruct-interface HTML-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## 导入模块
+
+```TypeScript
+import { uniformDataStruct } from '@kit.ArkData';
+```
 
 ## details
 
@@ -23,10 +25,6 @@ details?: Record<string, string>
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ HTML格式的内容文本，支持标准HTML标签。可以是完整的HTML文�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-HTML-htmlContent: string--><!--Device-HTML-htmlContent: string-End-->
@@ -68,10 +62,6 @@ plainContent?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-HTML-plainContent?: string--><!--Device-HTML-plainContent?: string-End-->
@@ -84,15 +74,11 @@ plainContent?: string
 readonly uniformDataType: 'general.html'
 ```
 
-统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#uniformdatatype)。
+统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)。
 
 **类型：** 'general.html'
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,15 +92,11 @@ readonly uniformDataType: 'general.html'
 uriAuthorizationPolicies?: Array<int>
 ```
 
-用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见 [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md#uripermission)。
+用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见 [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md)。
 
 **类型：** Array&lt;int&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

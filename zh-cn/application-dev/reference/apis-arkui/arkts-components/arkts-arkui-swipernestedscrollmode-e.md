@@ -4,10 +4,6 @@ Swiper组件和父组件的嵌套滚动模式枚举。
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum SwiperNestedScrollMode--><!--Device-unnamed-declare enum SwiperNestedScrollMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ SELF_ONLY = 0
 Swiper只自身滚动，不与父组件联动。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ SELF_FIRST = 1
 Swiper自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Swiper触发边缘效果。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -48,7 +48,7 @@ OH_Data_VBuckets *OH_VBuckets_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Data_VBuckets *](capi-rdb-oh-data-vbuckets.md) | 执行成功时返回指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。否则返回nullptr。<br>     <br>使用完成后，必须通过[OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy)接口释放内存。 |
+| [OH_Data_VBuckets *](capi-rdb-oh-data-vbuckets.md) | 执行成功时返回指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。否则返回nullptr。      <br>使用完成后，必须通过[OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy)接口释放内存。 |
 
 **参考：**
 
@@ -77,7 +77,7 @@ int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_VBuckets_PutRow()
 
@@ -102,7 +102,7 @@ int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_VBuckets_PutRows()
 
@@ -127,7 +127,7 @@ int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_VBuckets_RowCount()
 
@@ -152,6 +152,6 @@ int OH_VBuckets_RowCount(OH_Data_VBuckets *buckets, size_t *count)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 

@@ -4,15 +4,18 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-interface IRemoteAuthCallback--><!--Device-userAuth-interface IRemoteAuthCallback-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## onGetRemoteAuthWidgetParam
 
@@ -25,10 +28,6 @@ onGetRemoteAuthWidgetParam: WidgetParamCallback
 **类型：** [WidgetParamCallback](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,10 +48,6 @@ onRemoteAuthResult: ResultCallback
 **类型：** [ResultCallback](arkts-userauthentication-userauth-resultcallback-t-sys.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

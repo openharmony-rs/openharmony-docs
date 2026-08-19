@@ -14,10 +14,6 @@ DynamicComponent(options: DynamicOptions)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DynamicComponentInterface-(options: DynamicOptions): DynamicComponentAttribute--><!--Device-DynamicComponentInterface-(options: DynamicOptions): DynamicComponentAttribute-End-->
@@ -34,6 +30,16 @@ DynamicComponent(options: DynamicOptions)
 
 ## 汇总
 
-- [DynamicOptions](arkts-arkui-dynamicoptions-i-sys.md)
-- [ErrorCallback](arkts-arkui-errorcallback-t-sys.md)
-- [Worker](arkts-arkui-worker-t-sys.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [DynamicOptions](arkts-arkui-dynamicoptions-i-sys.md) | 用于在DynamicComponent构造时传递参数。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ErrorCallback](arkts-arkui-errorcallback-t-sys.md) | 错误回调类型，用于接收异常信息。 |
+| [Worker](arkts-arkui-worker-t-sys.md) | 用于运行Abc的Worker线程对象。 |
+

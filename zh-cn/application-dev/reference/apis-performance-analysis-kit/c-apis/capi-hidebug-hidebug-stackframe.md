@@ -22,5 +22,7 @@ Defines the stack frame content.
 | -- | -- |
 | [HiDebug_StackFrameType](capi-hidebug-type-h.md#hidebug_stackframetype) type | Type of the current stack. |
 | union | frame content. |
+| struct [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) js | Js stack frame defined in [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) |
+| struct [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) native; } frame | Native frame defined in [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) |
 
 

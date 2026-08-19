@@ -8,10 +8,6 @@ type ModifyTime = Map<PRIKeyType, UTCTime>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-type ModifyTime = Map<PRIKeyType, UTCTime>--><!--Device-relationalStore-type ModifyTime = Map<PRIKeyType, UTCTime>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

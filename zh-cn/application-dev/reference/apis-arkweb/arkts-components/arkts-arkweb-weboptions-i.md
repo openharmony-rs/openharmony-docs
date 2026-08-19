@@ -4,13 +4,19 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface WebOptions--><!--Device-unnamed-declare interface WebOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## controller
 
@@ -18,15 +24,11 @@
 controller: WebController | WebviewController
 ```
 
-控制器，通过controller可以控制Web组件各种行为，包括页面导航、生命周期状态、JavaScript交互等。从API version 9开始，WebController不再维护，建议使用 [WebviewController](arkts-arkweb-webviewcontroller-t.md#webviewcontroller)替代。
+控制器，通过controller可以控制Web组件各种行为，包括页面导航、生命周期状态、JavaScript交互等。从API version 9开始，WebController不再维护，建议使用 [WebviewController](arkts-arkweb-webviewcontroller-t.md)替代。
 
 **类型：** [WebController](arkts-arkweb-webcontroller-c.md) \| [WebviewController](arkts-arkweb-webviewcontroller-t.md)
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +48,6 @@ emulateTouchFromMouseEvent? : boolean
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebOptions-emulateTouchFromMouseEvent? : boolean--><!--Device-WebOptions-emulateTouchFromMouseEvent? : boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -60,15 +58,11 @@ emulateTouchFromMouseEvent? : boolean
 incognitoMode? : boolean
 ```
 
-表示当前创建的Webview是否是隐私模式。true表示创建隐私模式，false表示创建正常模式。 默认值：false。 传入undefined或null时为false。&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+表示当前创建的Webview是否是隐私模式。true表示创建隐私模式，false表示创建正常模式。 默认值：false。 传入undefined或null时为false。<!--RP1--><!--RP1End-->
 
 **类型：** boolean
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -88,10 +82,6 @@ renderMode? : RenderMode
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebOptions-renderMode? : RenderMode--><!--Device-WebOptions-renderMode? : RenderMode-End-->
@@ -110,10 +100,6 @@ sharedRenderProcessToken? : string
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebOptions-sharedRenderProcessToken? : string--><!--Device-WebOptions-sharedRenderProcessToken? : string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -129,10 +115,6 @@ src: string | Resource
 **类型：** string \| Resource
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

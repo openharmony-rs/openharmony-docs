@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum VideoScaleType--><!--Device-unnamed-enum VideoScaleType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
@@ -21,10 +17,6 @@ VIDEO_SCALE_TYPE_FIT = 0
 默认比例类型，视频拉伸至与窗口等大。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ VIDEO_SCALE_TYPE_FIT_CROP = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoScaleType-VIDEO_SCALE_TYPE_FIT_CROP = 1--><!--Device-VideoScaleType-VIDEO_SCALE_TYPE_FIT_CROP = 1-End-->
@@ -61,10 +49,6 @@ VIDEO_SCALE_TYPE_SCALED_ASPECT = 2
 保持视频宽高比缩放至长边填满窗口，短边居中对齐，未填满部分留黑。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

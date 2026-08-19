@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export interface Result--><!--Device-cloudExtension-export interface Result-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudExtension } from '@kit.ArkData';
+```
 
 ## code
 
@@ -25,10 +27,6 @@ code: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Result-code: int--><!--Device-Result-code: int-End-->
 
@@ -48,10 +46,6 @@ description?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Result-description?: string--><!--Device-Result-description?: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -69,10 +63,6 @@ value?: T
 **类型：** T
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Result-value?: T--><!--Device-Result-value?: T-End-->
 

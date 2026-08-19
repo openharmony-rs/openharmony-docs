@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backup-class IncrementalBackupSession--><!--Device-backup-class IncrementalBackupSession-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { backup } from '@kit.CoreFileKit';
+```
 
 ## appendBundles
 
@@ -23,10 +25,6 @@ appendBundles(bundlesToBackup: Array<IncrementalBackupData>): Promise<void>
 添加需要增量备份的应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKUP
 
@@ -62,7 +60,7 @@ appendBundles(bundlesToBackup: Array<IncrementalBackupData>): Promise<void>
 | 13900042 | Unknown error |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -132,10 +130,6 @@ appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): P
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): Promise<void>--><!--Device-IncrementalBackupSession-appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): Promise<void>-End-->
@@ -171,7 +165,7 @@ appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): P
 | 13900042 | Unknown error |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -282,10 +276,6 @@ cancel(bundleName: string): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-cancel(bundleName: string): int--><!--Device-IncrementalBackupSession-cancel(bundleName: string): int-End-->
@@ -314,7 +304,7 @@ cancel(bundleName: string): int
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -388,10 +378,6 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-cleanBundleTempDir(bundleName: string): Promise<boolean>--><!--Device-IncrementalBackupSession-cleanBundleTempDir(bundleName: string): Promise<boolean>-End-->
@@ -419,7 +405,7 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -495,10 +481,6 @@ constructor(callbacks: GeneralCallbacks)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-constructor(callbacks: GeneralCallbacks)--><!--Device-IncrementalBackupSession-constructor(callbacks: GeneralCallbacks)-End-->
@@ -521,7 +503,7 @@ constructor(callbacks: GeneralCallbacks)
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -580,10 +562,6 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>--><!--Device-IncrementalBackupSession-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>-End-->
@@ -617,7 +595,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>
 | 13600001 | IPC error |
 | 13900042 | Internal error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -735,10 +713,6 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>--><!--Device-IncrementalBackupSession-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>-End-->
@@ -767,7 +741,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup } from '@kit.CoreFileKit';
@@ -842,10 +816,6 @@ getLocalCapabilities(): Promise<FileData>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-getLocalCapabilities(): Promise<FileData>--><!--Device-IncrementalBackupSession-getLocalCapabilities(): Promise<FileData>-End-->
@@ -871,7 +841,7 @@ getLocalCapabilities(): Promise<FileData>
 | 13600001 | IPC error |
 | 13900042 | Internal error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -1009,10 +979,6 @@ release(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-IncrementalBackupSession-release(): Promise<void>--><!--Device-IncrementalBackupSession-release(): Promise<void>-End-->
@@ -1039,7 +1005,7 @@ release(): Promise<void>
 | 13600001 | IPC error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';

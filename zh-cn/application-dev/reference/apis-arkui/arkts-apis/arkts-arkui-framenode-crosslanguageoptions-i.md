@@ -4,10 +4,6 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface CrossLanguageOptions--><!--Device-unnamed-declare interface CrossLanguageOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -25,10 +21,6 @@ FrameNode是否支持跨ArkTS语言进行属性设置。 true表示支持跨ArkT
 **默认值：** false
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,10 +43,6 @@ FrameNode是否支持跨ArkTS语言进行组件树操作。 true表示支持跨A
 **默认值：** false
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

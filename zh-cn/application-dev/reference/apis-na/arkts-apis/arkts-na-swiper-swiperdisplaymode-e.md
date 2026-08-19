@@ -4,9 +4,7 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum SwiperDisplayMode--><!--Device-unnamed-export declare enum SwiperDisplayMode-End-->
 
@@ -22,9 +20,7 @@ Swiper滑动一页的宽度为Swiper组件自身的宽度。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

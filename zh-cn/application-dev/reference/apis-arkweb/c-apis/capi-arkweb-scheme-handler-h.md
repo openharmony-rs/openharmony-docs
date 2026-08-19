@@ -45,7 +45,7 @@ arkweb_scheme_handler.h是ArkWeb中用于拦截和自定义网络请求的完整
 | [void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderList)](#oh_arkwebrequestheaderlist_destroy) | - | 销毁ArkWeb_RequestHeaderList对象。 |
 | [int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* requestHeaderList)](#oh_arkwebrequestheaderlist_getsize) | - | 获取请求头列表的大小。 |
 | [void OH_ArkWebRequestHeaderList_GetHeader(const ArkWeb_RequestHeaderList* requestHeaderList, int32_t index, char** key, char** value)](#oh_arkwebrequestheaderlist_getheader) | - | 获取指定的请求头。 |
-| [int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceRequest, void* userData)](#oh_arkwebresourcerequest_setuserdata) | - | 将一个用户数据设置到ArkWeb_ResourceRequest对象中。用于在不同请求回调之间传递上下文信息或存储请求关联的状态，后续可通过{@link OH_ArkWebResourceRequest_GetUserData()}获取。 |
+| [int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceRequest, void* userData)](#oh_arkwebresourcerequest_setuserdata) | - | 将一个用户数据设置到ArkWeb_ResourceRequest对象中。用于在不同请求回调之间传递上下文信息或存储请求关联的状态，后续可通过[OH_ArkWebResourceRequest_GetUserData()](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_getuserdata())获取。 |
 | [void* OH_ArkWebResourceRequest_GetUserData(const ArkWeb_ResourceRequest* resourceRequest)](#oh_arkwebresourcerequest_getuserdata) | - | 从ArkWeb_ResourceRequest获取用户数据。 |
 | [void OH_ArkWebResourceRequest_GetMethod(const ArkWeb_ResourceRequest* resourceRequest, char** method)](#oh_arkwebresourcerequest_getmethod) | - | 获取请求的method。 |
 | [void OH_ArkWebResourceRequest_GetUrl(const ArkWeb_ResourceRequest* resourceRequest, char** url)](#oh_arkwebresourcerequest_geturl) | - | 获取请求的url。 |
@@ -203,7 +203,7 @@ typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const ArkWeb_SchemeHandler\* schemeHandler | ArkWeb_SchemeHandler。 |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)\* schemeHandler | ArkWeb_SchemeHandler。 |
 | [ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)\* resourceRequest | 通过该对象获取请求的信息。 |
 | [const ArkWeb_ResourceHandler](capi-web-arkweb-resourcehandler-.md)\* resourceHandler | 请求的ArkWeb_ResourceHandler。如果intercept设置为false，则不应使用它。 |
 | bool\* intercept | 如果为true，则会拦截请求；如果为false，则不会拦截。 |
@@ -224,7 +224,7 @@ typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const ArkWeb_SchemeHandler\* schemeHandler | ArkWeb_SchemeHandler。 |
+| [const ArkWeb_SchemeHandler](capi-web-arkweb-schemehandler-.md)\* schemeHandler | ArkWeb_SchemeHandler。 |
 | [const ArkWeb_ResourceRequest](capi-web-arkweb-resourcerequest-.md)\* resourceRequest | ArkWeb_ResourceRequest。 |
 
 ### ArkWeb_HttpBodyStreamReadCallback()
@@ -245,7 +245,7 @@ typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* h
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const ArkWeb_HttpBodyStream\* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)\* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | uint8_t\* buffer | 接收数据的buffer。 |
 | int bytesRead | 读取的字节数。如果bytesRead大于0，则表示buffer已填充了bytesRead字节的数据。开发者可以从buffer中读取数据，如果OH_ArkWebHttpBodyStream_IsEof的返回值为false，则开发者可以继续读取剩余的数据。 |
 
@@ -265,7 +265,7 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const ArkWeb_HttpBodyStream\* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)\* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | uint8_t\* buffer | 接收数据的缓冲区。 |
 | int bytesRead | 标识异步读取操作执行结果的字节计数值。如果bytesRead大于0，则表示buffer已填充了bytesRead字节的数据。开发者可以从buffer中读取数据，如果OH_ArkWebHttpBodyStream_IsEof的返回值为false，则开发者可以继续读取剩余的数据。 |
 
@@ -287,7 +287,7 @@ ArkWeb_HttpBodyStream初始化操作完成时回调函数。
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const ArkWeb_HttpBodyStream\* httpBodyStream | ArkWeb_HttpBodyStream。 |
+| [const ArkWeb_HttpBodyStream](capi-web-arkweb-httpbodystream-.md)\* httpBodyStream | ArkWeb_HttpBodyStream。 |
 | ArkWeb_NetError result | 成功时返回ARKWEB_NET_OK，否则请参考{@link arkweb_net_error_list.h}。 |
 
 ### OH_ArkWebRequestHeaderList_Destroy()
@@ -367,7 +367,7 @@ int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceReq
 
 **描述**
 
-将一个用户数据设置到ArkWeb_ResourceRequest对象中。用于在不同请求回调之间传递上下文信息或存储请求关联的状态，后续可通过{@link OH_ArkWebResourceRequest_GetUserData()}获取。
+将一个用户数据设置到ArkWeb_ResourceRequest对象中。用于在不同请求回调之间传递上下文信息或存储请求关联的状态，后续可通过[OH_ArkWebResourceRequest_GetUserData()](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_getuserdata())获取。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1867,7 +1867,7 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetCompleteIfNoResponse()
 
@@ -1916,7 +1916,7 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetCustomErrorCode()
 
@@ -1965,7 +1965,7 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetErrorCode()
 
@@ -2014,7 +2014,7 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br> [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效。 |
 
 ### OH_ArkWebResponse_GetErrorInfo()
 

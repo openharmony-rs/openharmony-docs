@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioVolumeType--><!--Device-audio-enum AudioVolumeType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -21,10 +17,6 @@ SYSTEM = 6
 Audio volume for system sound.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioVolumeType-SYSTEM = 6--><!--Device-AudioVolumeType-SYSTEM = 6-End-->
 
@@ -42,10 +34,6 @@ Audio volume for ultrasonic.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioVolumeType-ULTRASONIC = 10--><!--Device-AudioVolumeType-ULTRASONIC = 10-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -61,10 +49,6 @@ NOTIFICATION = 11
 Audio volume type for notification.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioVolumeType-NOTIFICATION = 11--><!--Device-AudioVolumeType-NOTIFICATION = 11-End-->
 
@@ -82,10 +66,6 @@ Audio volume type for navigation.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioVolumeType-NAVIGATION = 12--><!--Device-AudioVolumeType-NAVIGATION = 12-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -101,10 +81,6 @@ ALL = 100
 Audio stream for all common.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioVolumeType-ALL = 100--><!--Device-AudioVolumeType-ALL = 100-End-->
 

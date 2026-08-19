@@ -1,5 +1,12 @@
 # registerChange
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## registerChange
 
 ```TypeScript
@@ -9,10 +16,6 @@ function registerChange(uri: string, recursion: boolean, callback: Callback<Chan
 订阅监听指定文件的变化通知。callback返回更改的数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-cloudSync-function registerChange(uri: string, recursion: boolean, callback: Callback<ChangeData>): void--><!--Device-cloudSync-function registerChange(uri: string, recursion: boolean, callback: Callback<ChangeData>): void-End-->
 
@@ -24,7 +27,7 @@ function registerChange(uri: string, recursion: boolean, callback: Callback<Chan
 | --- | --- | --- | --- |
 | uri | string | 是 | 待下载文件uri。 |
 | recursion | boolean | 是 | true为监听该URI以及子文件和子目录，false为仅监听该URI文件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeData&gt; | 是 | 回调函数，返回更改的数据。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeData&gt; | 是 | 回调函数，返回更改的数据。 |
 
 **错误码：**
 
@@ -36,7 +39,7 @@ function registerChange(uri: string, recursion: boolean, callback: Callback<Chan
 | 14000002 | Invalid uri. |
 | 13900012 | Permission denied |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

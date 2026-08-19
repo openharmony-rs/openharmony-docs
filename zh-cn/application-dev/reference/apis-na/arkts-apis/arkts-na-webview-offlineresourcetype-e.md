@@ -1,12 +1,10 @@
 # OfflineResourceType
 
-Enum type supplied to [OfflineResourceMap](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-offlineresourcemap-i.md#offlineresourcemap) for indicating the type of resource.
+Enum type supplied to [OfflineResourceMap](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-offlineresourcemap-i.md) for indicating the type of resource.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-enum OfflineResourceType--><!--Device-webview-enum OfflineResourceType-End-->
 
@@ -22,9 +20,7 @@ Resource of the image type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OfflineResourceType-IMAGE--><!--Device-OfflineResourceType-IMAGE-End-->
 
@@ -40,9 +36,7 @@ Resource of the CSS type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OfflineResourceType-CSS--><!--Device-OfflineResourceType-CSS-End-->
 
@@ -58,9 +52,7 @@ Javascript resource loaded through the &lt;script src="" /&gt; tag.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OfflineResourceType-CLASSIC_JS--><!--Device-OfflineResourceType-CLASSIC_JS-End-->
 
@@ -76,9 +68,7 @@ Javascript resource loaded through the &lt;script src="" type="module" /&gt; tag
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OfflineResourceType-MODULE_JS--><!--Device-OfflineResourceType-MODULE_JS-End-->
 

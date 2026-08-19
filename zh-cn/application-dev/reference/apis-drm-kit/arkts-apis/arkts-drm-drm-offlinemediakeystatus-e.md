@@ -1,12 +1,8 @@
-# OfflineMediaKeyStatus
+# OfflineMediaKeyStatus(Defines the DRM capability.)
 
 枚举，离线媒体密钥状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-drm-enum OfflineMediaKeyStatus--><!--Device-drm-enum OfflineMediaKeyStatus-End-->
 
@@ -21,10 +17,6 @@ OFFLINE_MEDIA_KEY_STATUS_UNKNOWN = 0
 未知状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ OFFLINE_MEDIA_KEY_STATUS_USABLE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
 <!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_USABLE = 1--><!--Device-OfflineMediaKeyStatus-OFFLINE_MEDIA_KEY_STATUS_USABLE = 1-End-->
@@ -61,10 +49,6 @@ OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2
 失活状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 

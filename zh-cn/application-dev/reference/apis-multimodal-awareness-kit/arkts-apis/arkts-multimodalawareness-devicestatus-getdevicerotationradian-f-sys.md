@@ -1,5 +1,11 @@
 # getDeviceRotationRadian（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { deviceStatus } from '@kit.MultimodalAwarenessKit';
+```
+
 ## getDeviceRotationRadian
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDeviceRotationRadian(): Promise<DeviceRotationRadian>
 获取设备的姿态数据。 姿态数据包含x、y、z三轴的姿态旋转角，即三轴的欧拉角，三轴定义与设备sensor定义相同，为右手系。姿态旋转角在ZXY旋转顺序、内旋下计算， <br>通过传感器融合获取的四元数计算得到结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-deviceStatus-function getDeviceRotationRadian(): Promise<DeviceRotationRadian>--><!--Device-deviceStatus-function getDeviceRotationRadian(): Promise<DeviceRotationRadian>-End-->
 
@@ -34,7 +36,7 @@ function getDeviceRotationRadian(): Promise<DeviceRotationRadian>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission check failed. A non-system application uses the system API. |
 | [32500001](../../apis-multimodalawareness-kit/errorcode-deviceStatus.md#32500001-服务异常) | Service exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

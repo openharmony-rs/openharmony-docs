@@ -2,17 +2,20 @@
 
 OIS (Optical Image Stabilization) interface.
 
-**继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md#oisquery)
+**继承/实现关系：** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface OIS--><!--Device-camera-interface OIS-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## setOISMode
 
@@ -23,10 +26,6 @@ setOISMode(mode: OISMode): void
 Sets the OIS mode.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,10 +57,6 @@ setOISModeCustom(pitch: double, yaw: double): void
 Sets custom OIS bias values for each axis.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

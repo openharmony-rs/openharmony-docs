@@ -4,13 +4,19 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface FirstScreenPaint--><!--Device-unnamed-declare interface FirstScreenPaint-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## firstScreenPaintTime
 
@@ -23,10 +29,6 @@ url所指页面首屏绘制完成的时刻。 单位：毫秒。
 **类型：** number
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FirstScreenPaint-firstScreenPaintTime: number--><!--Device-FirstScreenPaint-firstScreenPaintTime: number-End-->
 
@@ -44,10 +46,6 @@ url所指页面开始导航的时刻。 单位：毫秒。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FirstScreenPaint-navigationStartTime: number--><!--Device-FirstScreenPaint-navigationStartTime: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -63,10 +61,6 @@ url: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FirstScreenPaint-url: string--><!--Device-FirstScreenPaint-url: string-End-->
 

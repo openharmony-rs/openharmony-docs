@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface RichTextAttribute--><!--Device-unnamed-export declare interface RichTextAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<RichTextAttribute> | AttributeModi
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RichTextAttribute-attributeModifier(modifier: AttributeModifier<RichTextAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-RichTextAttribute-attributeModifier(modifier: AttributeModifier<RichTextAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ onComplete(callback: (() => void) | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RichTextAttribute-onComplete(callback: (() => void) | undefined): this--><!--Device-RichTextAttribute-onComplete(callback: (() => void) | undefined): this-End-->
 
@@ -74,9 +68,7 @@ onStart(callback: (() => void) | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-RichTextAttribute-onStart(callback: (() => void) | undefined): this--><!--Device-RichTextAttribute-onStart(callback: (() => void) | undefined): this-End-->
 
@@ -102,9 +94,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

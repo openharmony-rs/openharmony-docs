@@ -1,5 +1,10 @@
 # updateId
 
+## 导入模块
+
+```TypeScript
+```
+
 ## updateId
 
 ```TypeScript
@@ -10,11 +15,9 @@ function updateId(uri: string, id: number): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [updateId](arkts-ability-datauriutils-updateid-f.md#updateid)
+**替代接口：** [updateId](arkts-ability-datauriutils-updateid-f.md)
 
 <!--Device-dataUriUtils-function updateId(uri: string, id: number): string--><!--Device-dataUriUtils-function updateId(uri: string, id: number): string-End-->
 
@@ -33,7 +36,7 @@ function updateId(uri: string, id: number): string
 | --- | --- |
 | string | 返回更新ID之后的uri对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import dataUriUtils from '@ohos.ability.dataUriUtils';

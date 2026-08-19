@@ -1,5 +1,11 @@
 # isOtaUpdateNonceEnable
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## isOtaUpdateNonceEnable
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isOtaUpdateNonceEnable(admin: Want): boolean
 查询OTA更新Nonce是否启用。适用于需要验证设备OTA更新安全配置的场景，帮助企业管理员确认Nonce校验功能状态，保障系统更新安全性。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -43,7 +45,7 @@ function isOtaUpdateNonceEnable(admin: Want): boolean
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { systemManager } from '@kit.MDMKit';

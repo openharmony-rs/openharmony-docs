@@ -1,5 +1,12 @@
 # createAudioRenderer
 
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
+
 ## createAudioRenderer
 
 ```TypeScript
@@ -10,10 +17,6 @@ function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallb
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-audio-function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer>): void--><!--Device-audio-function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
@@ -23,9 +26,9 @@ function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md) | 是 | 配置渲染器。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioRenderer](arkts-audio-audio-audiorenderer-i.md)&gt; | 是 | 回调函数。当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioRenderer](arkts-audio-audio-audiorenderer-i.md)&gt; | 是 | 回调函数。当获取音频渲染器成功，err为undefined，data为获取到的音频渲染器对象；否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -66,13 +69,9 @@ audio.createAudioRenderer(audioRendererOptions,(err, data) => {
 function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer | null>): void
 ```
 
-Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md#audiorenderer) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
+Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-audio-function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer | null>): void--><!--Device-audio-function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer | null>): void-End-->
 
@@ -83,7 +82,7 @@ Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md#audiorenderer) i
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md) | 是 | Renderer configurations. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioRenderer](arkts-audio-audio-audiorenderer-i.md) \| null&gt; | 是 | Callback used to return the audio renderer instance, or null when an error happens. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AudioRenderer](arkts-audio-audio-audiorenderer-i.md) \| null&gt; | 是 | Callback used to return the audio renderer instance, or null when an error happens. |
 
 
 ## createAudioRenderer
@@ -95,10 +94,6 @@ function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRender
 获取音频渲染器。使用Promise异步回调。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 <!--Device-audio-function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer>--><!--Device-audio-function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer>-End-->
 
@@ -116,7 +111,7 @@ function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRender
 | --- | --- |
 | Promise&lt;[AudioRenderer](arkts-audio-audio-audiorenderer-i.md)&gt; | Promise对象，返回音频渲染器对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -156,13 +151,9 @@ audio.createAudioRenderer(audioRendererOptions).then((data) => {
 function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer | null>
 ```
 
-Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md#audiorenderer) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
+Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. The AudioRenderer instance is used to play streaming audio data. When using AudioRenderer apis, there are many instructions for application to achieve better performance and lower power consumption: In music or audiobook background playback situation, you can have low power consumption by following this best practices document Low-Power Rules in Music Playback Scenarios. And for navigation situation, you can follow Low-Power Rules in Navigation and Positioning Scenarios. Application developer should also be careful when app goes to background, please check if your audio playback is still needed, see Audio Resources. And avoiding to send silence audio data continuously to waste system resources, otherwise system will take control measures when this behavior is detected, see Audio Playback. If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see Developing an Audio Application.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-audio-function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer | null>--><!--Device-audio-function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer | null>-End-->
 

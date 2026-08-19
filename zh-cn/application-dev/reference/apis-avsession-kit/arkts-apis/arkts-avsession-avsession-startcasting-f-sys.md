@@ -1,5 +1,11 @@
 # startCasting（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## startCasting
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo, callback:
 启动投播。结果通过callback异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -28,7 +30,7 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo, callback:
 | --- | --- | --- | --- |
 | session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) | 是 | 会话令牌。SessionToken表示单个token。 |
 | device | [OutputDeviceInfo](arkts-avsession-avsession-outputdeviceinfo-i.md) | 是 | 设备相关信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并启动投播，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当命令发送成功并启动投播，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -50,10 +52,6 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo): Promise<
 启动投播。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -86,7 +84,7 @@ function startCasting(session: SessionToken, device: OutputDeviceInfo): Promise<
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let myToken: avSession.SessionToken = {

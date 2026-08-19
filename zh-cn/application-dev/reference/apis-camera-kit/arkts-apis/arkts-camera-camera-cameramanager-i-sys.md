@@ -1,16 +1,19 @@
 # CameraManager
 
-相机管理器类，使用前需要通过[getCameraManager](arkts-camera-camera-getcameramanager-f.md#getcameramanager)接口获取相机管理实例。
+相机管理器类，使用前需要通过[getCameraManager](arkts-camera-camera-getcameramanager-f.md)接口获取相机管理实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface CameraManager--><!--Device-camera-interface CameraManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## createCameraInputWithTokenId
 
@@ -21,10 +24,6 @@ createCameraInputWithTokenId(camera: CameraDevice, tokenId: int): CameraInput
 Creates a CameraInput instance by camera and calling token. Before using this interface, first through the getSupportedCameras interface to query the current list of camera devices supported by the device, the developer needs to be based on specific scenarios to choose the camera device that meets the needs of the developer, and then use this interface to create a CameraInput instance.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CAMERA
 
@@ -68,10 +67,6 @@ Create a ControlCenterSession instance.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CAMERA_CONTROL
 
 <!--Device-CameraManager-createControlCenterSession(): ControlCenterSession--><!--Device-CameraManager-createControlCenterSession(): ControlCenterSession-End-->
@@ -102,10 +97,6 @@ createDeferredPreviewOutput(profile: Profile): PreviewOutput
 创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -145,10 +136,6 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-createDepthDataOutput(profile: DepthProfile): DepthDataOutput--><!--Device-CameraManager-createDepthDataOutput(profile: DepthProfile): DepthDataOutput-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -174,7 +161,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -203,10 +190,6 @@ Checks whether the camera device can be muted.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-isCameraMuteSupported(): boolean--><!--Device-CameraManager-isCameraMuteSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -225,7 +208,7 @@ Checks whether the camera device can be muted.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
@@ -243,10 +226,6 @@ isControlCenterActive(): boolean
 Check if the control center active.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CameraManager-isControlCenterActive(): boolean--><!--Device-CameraManager-isControlCenterActive(): boolean-End-->
 
@@ -276,10 +255,6 @@ Checks whether a camera device supports prelaunch.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-isPrelaunchSupported(camera: CameraDevice): boolean--><!--Device-CameraManager-isPrelaunchSupported(camera: CameraDevice): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -305,7 +280,7 @@ Checks whether a camera device supports prelaunch.
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -332,10 +307,6 @@ isTorchLevelControlSupported(): boolean
 检测设备是否支持手电筒亮度调节功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -369,8 +340,6 @@ Mutes or unmutes the camera device.
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 12
 
 **替代接口：** [muteCameraPersistent](#mutecamerapersistent)
@@ -387,7 +356,7 @@ Mutes or unmutes the camera device.
 | --- | --- | --- | --- |
 | mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function muteCamera(cameraManager: camera.CameraManager): void {
@@ -406,10 +375,6 @@ Mutes the camera device permanently.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CAMERA_CONTROL
 
 <!--Device-CameraManager-muteCameraPersistent(mute: boolean, type: PolicyType): void--><!--Device-CameraManager-muteCameraPersistent(mute: boolean, type: PolicyType): void-End-->
@@ -423,7 +388,7 @@ Mutes the camera device permanently.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
-| type | PolicyType | 是 | Policy type. For details about the available options, see [PolicyType](arkts-camera-camera-policytype-e-sys.md#policytype系统接口). |
+| type | PolicyType | 是 | Policy type. For details about the available options, see [PolicyType](arkts-camera-camera-policytype-e-sys.md). |
 
 **错误码：**
 
@@ -433,7 +398,7 @@ Mutes the camera device permanently.
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function muteCameraPersistent(cameraManager: camera.CameraManager): void {
@@ -452,10 +417,6 @@ Unsubscribes from camera mute change event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-offCameraMute(callback?: AsyncCallback<boolean>): void--><!--Device-CameraManager-offCameraMute(callback?: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -466,7 +427,7 @@ Unsubscribes from camera mute change event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to get the camera mute change. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to get the camera mute change. |
 
 **错误码：**
 
@@ -484,10 +445,6 @@ Unsubscribes control center status change event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-offControlCenterStatusChange(callback?: AsyncCallback<boolean>): void--><!--Device-CameraManager-offControlCenterStatusChange(callback?: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -498,7 +455,7 @@ Unsubscribes control center status change event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to get the control center status change. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to get the control center status change. |
 
 **错误码：**
 
@@ -506,7 +463,7 @@ Unsubscribes control center status change event callback.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## off_cameraMute
+## off('cameraMute')
 
 ```TypeScript
 off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void
@@ -515,10 +472,6 @@ off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void
 Unsubscribes from camera mute status events.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-CameraManager-off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void--><!--Device-CameraManager-off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void-End-->
 
@@ -531,7 +484,7 @@ Unsubscribes from camera mute status events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cameraMute' | 是 | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to return the camera mute status. **true** if muted, **false** otherwise. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraMute')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to return the camera mute status. **true** if muted, **false** otherwise. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraMute')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
 
 **错误码：**
 
@@ -539,7 +492,7 @@ Unsubscribes from camera mute status events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -553,7 +506,7 @@ function unregisterCameraMute(cameraManager: camera.CameraManager): void {
 }
 ```
 
-## off_controlCenterStatusChange
+## off('controlCenterStatusChange')
 
 ```TypeScript
 off(type: 'controlCenterStatusChange', callback?: AsyncCallback<boolean>): void
@@ -562,10 +515,6 @@ off(type: 'controlCenterStatusChange', callback?: AsyncCallback<boolean>): void
 Unsubscribes control center status change event callback.
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-CameraManager-off(type: 'controlCenterStatusChange', callback?: AsyncCallback<boolean>): void--><!--Device-CameraManager-off(type: 'controlCenterStatusChange', callback?: AsyncCallback<boolean>): void-End-->
 
@@ -578,7 +527,7 @@ Unsubscribes control center status change event callback.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'controlCenterStatusChange' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to get the control center status change. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 否 | Callback used to get the control center status change. |
 
 **错误码：**
 
@@ -596,10 +545,6 @@ Subscribes camera mute change event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-onCameraMute(callback: AsyncCallback<boolean>): void--><!--Device-CameraManager-onCameraMute(callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -610,7 +555,7 @@ Subscribes camera mute change event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to get the camera mute change. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to get the camera mute change. |
 
 **错误码：**
 
@@ -628,10 +573,6 @@ Subscribes control center status change event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-onControlCenterStatusChange(callback: AsyncCallback<boolean>): void--><!--Device-CameraManager-onControlCenterStatusChange(callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -642,7 +583,7 @@ Subscribes control center status change event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to get the control center status change. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to get the control center status change. |
 
 **错误码：**
 
@@ -650,7 +591,7 @@ Subscribes control center status change event callback.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## on_cameraMute
+## on('cameraMute')
 
 ```TypeScript
 on(type: 'cameraMute', callback: AsyncCallback<boolean>): void
@@ -659,10 +600,6 @@ on(type: 'cameraMute', callback: AsyncCallback<boolean>): void
 Subscribes to camera mute status events. This API uses an asynchronous callback to return the result.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-CameraManager-on(type: 'cameraMute', callback: AsyncCallback<boolean>): void--><!--Device-CameraManager-on(type: 'cameraMute', callback: AsyncCallback<boolean>): void-End-->
 
@@ -675,7 +612,7 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'cameraMute' | 是 | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained. This event is triggered and the status is returned when the camera device is muted or unmuted. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to return the camera mute status. **true** if muted, **false** otherwise. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to return the camera mute status. **true** if muted, **false** otherwise. |
 
 **错误码：**
 
@@ -683,7 +620,7 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -702,7 +639,7 @@ function registerCameraMute(cameraManager: camera.CameraManager): void {
 }
 ```
 
-## on_controlCenterStatusChange
+## on('controlCenterStatusChange')
 
 ```TypeScript
 on(type: 'controlCenterStatusChange', callback: AsyncCallback<boolean>): void
@@ -711,10 +648,6 @@ on(type: 'controlCenterStatusChange', callback: AsyncCallback<boolean>): void
 Subscribes control center status change event callback.
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-CameraManager-on(type: 'controlCenterStatusChange', callback: AsyncCallback<boolean>): void--><!--Device-CameraManager-on(type: 'controlCenterStatusChange', callback: AsyncCallback<boolean>): void-End-->
 
@@ -727,7 +660,7 @@ Subscribes control center status change event callback.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'controlCenterStatusChange' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to get the control center status change. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback used to get the control center status change. |
 
 **错误码：**
 
@@ -744,10 +677,6 @@ preSwitchCamera(cameraId: string): void
 Pre-switches a camera device to speed up its startup.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CameraManager-preSwitchCamera(cameraId: string): void--><!--Device-CameraManager-preSwitchCamera(cameraId: string): void-End-->
 
@@ -769,7 +698,7 @@ Pre-switches a camera device to speed up its startup.
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -796,10 +725,6 @@ Prelaunches the camera device. This API is called when a user clicks the system 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CameraManager-prelaunch(): void--><!--Device-CameraManager-prelaunch(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -812,7 +737,7 @@ Prelaunches the camera device. This API is called when a user clicks the system 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 13+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -840,10 +765,6 @@ Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#i
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CAMERA
 
 <!--Device-CameraManager-setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void--><!--Device-CameraManager-setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void-End-->
@@ -867,7 +788,7 @@ Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#i
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -899,10 +820,6 @@ setTorchModeOnWithLevel(torchLevel: double): void
 手电筒设置指定亮度级别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

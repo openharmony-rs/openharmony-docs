@@ -1,5 +1,16 @@
 # getCurrentInputMethodSubtype（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
+
 ## getCurrentInputMethodSubtype
 
 ```TypeScript
@@ -9,10 +20,6 @@ function getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
 获取指定用户的当前输入法子类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +51,7 @@ function getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { InputMethodSubtype } from '@kit.IMEKit';

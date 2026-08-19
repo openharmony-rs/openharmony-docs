@@ -4,8 +4,6 @@ want实体的常数。用于表示目标Ability额外的类别信息。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-wantConstant-export enum Entity--><!--Device-wantConstant-export enum Entity-End-->
@@ -21,8 +19,6 @@ ENTITY_DEFAULT = 'entity.system.default'
 指示默认实体，如果未指定实体，则使用该实体。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -40,8 +36,6 @@ ENTITY_HOME = 'entity.system.home'
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Entity-ENTITY_HOME = 'entity.system.home'--><!--Device-Entity-ENTITY_HOME = 'entity.system.home'-End-->
@@ -57,8 +51,6 @@ ENTITY_VOICE = 'entity.system.voice'
 表示语音交互实体。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -76,8 +68,6 @@ ENTITY_BROWSABLE = 'entity.system.browsable'
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'--><!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'-End-->
@@ -93,8 +83,6 @@ ENTITY_VIDEO = 'entity.system.video'
 指示视频类别。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

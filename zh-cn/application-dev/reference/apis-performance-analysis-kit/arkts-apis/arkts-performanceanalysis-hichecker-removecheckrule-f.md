@@ -1,5 +1,11 @@
 # removeCheckRule
 
+## 导入模块
+
+```TypeScript
+import { hichecker } from '@kit.PerformanceAnalysisKit';
+```
+
 ## removeCheckRule
 
 ```TypeScript
@@ -9,10 +15,6 @@ function removeCheckRule(rule: bigint) : void
 删除一条或多条规则，删除的规则后续将不再生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hichecker-function removeCheckRule(rule: bigint) : void--><!--Device-hichecker-function removeCheckRule(rule: bigint) : void-End-->
 
@@ -30,7 +32,7 @@ function removeCheckRule(rule: bigint) : void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | the parameter check failed, only one bigint type parameter is needed |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

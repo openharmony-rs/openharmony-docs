@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum EdgeLightPosition--><!--Device-unnamed-declare enum EdgeLightPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -23,10 +19,6 @@ TOP_LEFT = 0
 边缘流光在左上角。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ TOP_RIGHT = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EdgeLightPosition-TOP_RIGHT = 1--><!--Device-EdgeLightPosition-TOP_RIGHT = 1-End-->
@@ -67,10 +55,6 @@ BOTTOM_LEFT = 2
 边缘流光在左下角。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ BOTTOM_RIGHT = 3
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EdgeLightPosition-BOTTOM_RIGHT = 3--><!--Device-EdgeLightPosition-BOTTOM_RIGHT = 3-End-->
@@ -111,10 +91,6 @@ TOP = 4
 边缘流光在顶部。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +110,6 @@ BOTTOM = 5
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EdgeLightPosition-BOTTOM = 5--><!--Device-EdgeLightPosition-BOTTOM = 5-End-->
@@ -156,10 +128,6 @@ LEFT = 6
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EdgeLightPosition-LEFT = 6--><!--Device-EdgeLightPosition-LEFT = 6-End-->
@@ -177,10 +145,6 @@ RIGHT = 7
 边缘流光在右边。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

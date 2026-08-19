@@ -1,5 +1,46 @@
 # format
 
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
+
 ## format
 
 ```TypeScript
@@ -9,10 +50,6 @@ function format(format: string, ...args: Object[]): string
 使用样式化字符串将输入内容按特定格式输出，适用于日志输出、用户界面文本格式化等场景。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -33,7 +70,7 @@ function format(format: string, ...args: Object[]): string
 | --- | --- |
 | string | 格式化后的字符串。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -8,10 +8,6 @@ type PhotoAssetParams = Record<string, MemberType>[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-type PhotoAssetParams = Record<string, MemberType>[]--><!--Device-photoAccessHelper-type PhotoAssetParams = Record<string, MemberType>[]-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

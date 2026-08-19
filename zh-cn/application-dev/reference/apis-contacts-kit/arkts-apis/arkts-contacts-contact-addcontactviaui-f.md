@@ -1,5 +1,11 @@
 # addContactViaUI
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## addContactViaUI
 
 ```TypeScript
@@ -9,10 +15,6 @@ function addContactViaUI(context: Context, contact: Contact): Promise<number>
 调用新建联系人接口，打开新建联系人UI界面。使用Promise异步回调。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
 
@@ -43,7 +45,7 @@ function addContactViaUI(context: Context, contact: Contact): Promise<number>
 | [16700103](../errorcode-contacts.md#16700103-用户取消) | User cancel. |
 | [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 

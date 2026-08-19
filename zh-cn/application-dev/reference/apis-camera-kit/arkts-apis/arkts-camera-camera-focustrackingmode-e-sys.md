@@ -4,10 +4,6 @@ Enumerates the focus tracking modes.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum FocusTrackingMode--><!--Device-camera-enum FocusTrackingMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ AUTO = 0
 Automatic.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FocusTrackingMode-AUTO = 0--><!--Device-FocusTrackingMode-AUTO = 0-End-->
 

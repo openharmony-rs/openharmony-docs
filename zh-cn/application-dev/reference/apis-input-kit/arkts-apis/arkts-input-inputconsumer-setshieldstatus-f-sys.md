@@ -1,5 +1,11 @@
 # setShieldStatus（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+```
+
 ## setShieldStatus
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 设置系统快捷键屏蔽类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INPUT_CONTROL_DISPATCHING
 
@@ -37,7 +39,7 @@ function setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

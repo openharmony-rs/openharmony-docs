@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-deviceStatus-export enum SteadyStandingStatus--><!--Device-deviceStatus-export enum SteadyStandingStatus-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DeviceStatus
@@ -22,10 +18,6 @@ STATUS_EXIT = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SteadyStandingStatus-STATUS_EXIT = 0--><!--Device-SteadyStandingStatus-STATUS_EXIT = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DeviceStatus
@@ -39,10 +31,6 @@ STATUS_ENTER = 1
 表示设备进入支架态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SteadyStandingStatus-STATUS_ENTER = 1--><!--Device-SteadyStandingStatus-STATUS_ENTER = 1-End-->
 

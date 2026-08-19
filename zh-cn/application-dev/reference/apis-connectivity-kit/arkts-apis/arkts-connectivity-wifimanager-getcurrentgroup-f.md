@@ -1,5 +1,12 @@
 # getCurrentGroup
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## getCurrentGroup
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getCurrentGroup(): Promise<WifiP2pGroupInfo>
 获取当前P2P群组信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -45,10 +48,6 @@ function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 <!--Device-wifiManager-function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void--><!--Device-wifiManager-function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void-End-->
@@ -59,7 +58,7 @@ function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;WifiP2pGroupInfo&gt; | 是 | 表示回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;WifiP2pGroupInfo&gt; | 是 | 表示回调函数。 |
 
 **错误码：**
 
@@ -69,7 +68,7 @@ function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void
 | [2801000](../errorcode-wifi.md#2801000-p2p模块异常) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

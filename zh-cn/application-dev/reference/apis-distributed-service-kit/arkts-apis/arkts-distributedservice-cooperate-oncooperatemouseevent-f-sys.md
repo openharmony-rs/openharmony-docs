@@ -1,5 +1,11 @@
 # onCooperateMouseEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cooperate } from '@kit.DistributedServiceKit';
+```
+
 ## onCooperateMouseEvent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onCooperateMouseEvent(networkId: string, callback: Callback<MouseLocati
 Enables listening for mouse pointer position information on the specified device for cooperation.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.COOPERATE_MANAGER
 
@@ -27,7 +29,7 @@ Enables listening for mouse pointer position information on the specified device
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | networkId | string | 是 | Specified device. |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[MouseLocation](arkts-distributedservice-cooperate-mouselocation-i-sys.md)&gt; | 是 | Callback for receiving reported events. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[MouseLocation](arkts-distributedservice-cooperate-mouselocation-i-sys.md)&gt; | 是 | Callback for receiving reported events. |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ Enables listening for mouse pointer position information on the specified device
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function callback(data: cooperate.MouseLocation): void {

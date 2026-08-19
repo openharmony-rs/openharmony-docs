@@ -1,5 +1,11 @@
 # sendSystemAVKeyEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## sendSystemAVKeyEvent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback<void>): v
 发送按键事件给置顶会话。结果通过callback异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -27,7 +29,7 @@ function sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [KeyEvent](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keyevent-keyevent-i.md) | 是 | 按键事件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当事件发送成功，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当事件发送成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback<void>): v
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { KeyEvent } from '@kit.InputKit';
@@ -62,10 +64,6 @@ function sendSystemAVKeyEvent(event: KeyEvent): Promise<void>
 发送按键事件给置顶会话。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -97,7 +95,7 @@ function sendSystemAVKeyEvent(event: KeyEvent): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [6600105](../errorcode-avsession.md#6600105-无效会话命令) | Invalid session command. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { KeyEvent } from '@kit.InputKit';

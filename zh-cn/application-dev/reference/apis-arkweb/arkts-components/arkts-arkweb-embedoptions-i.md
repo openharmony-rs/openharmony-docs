@@ -4,13 +4,19 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 
 **起始版本：** 16
 
-**ArkTS模式：** 起始版本为16。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface EmbedOptions--><!--Device-unnamed-declare interface EmbedOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## supportCssDisplayChange
 
@@ -25,10 +31,6 @@ supportCssDisplayChange?: boolean
 **默认值：** false
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-EmbedOptions-supportCssDisplayChange?: boolean--><!--Device-EmbedOptions-supportCssDisplayChange?: boolean-End-->
 
@@ -47,10 +49,6 @@ supportDefaultIntrinsicSize?: boolean
 **默认值：** false
 
 **起始版本：** 16
-
-**ArkTS模式：** 起始版本为16。
-
-**废弃版本：** -1
 
 <!--Device-EmbedOptions-supportDefaultIntrinsicSize?: boolean--><!--Device-EmbedOptions-supportDefaultIntrinsicSize?: boolean-End-->
 

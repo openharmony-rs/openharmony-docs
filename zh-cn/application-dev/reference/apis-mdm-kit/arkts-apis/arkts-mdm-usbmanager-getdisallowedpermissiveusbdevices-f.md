@@ -1,18 +1,20 @@
 # getDisallowedPermissiveUsbDevices
 
+## 导入模块
+
+```TypeScript
+import { usbManager } from '@kit.MDMKit';
+```
+
 ## getDisallowedPermissiveUsbDevices
 
 ```TypeScript
 function getDisallowedPermissiveUsbDevices(admin: Want | null): Array<PermissiveUsbDeviceType>
 ```
 
-获取通过[addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md#adddisallowedpermissiveusbdevices)接口禁用的USB设备类型。
+获取通过[addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md)接口禁用的USB设备类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -42,7 +44,7 @@ function getDisallowedPermissiveUsbDevices(admin: Want | null): Array<Permissive
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { usbManager } from '@kit.MDMKit';

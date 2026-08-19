@@ -1,5 +1,11 @@
 # getDefaultSmsSlotId
 
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
+
 ## getDefaultSmsSlotId
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getDefaultSmsSlotId(callback: AsyncCallback<int>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-function getDefaultSmsSlotId(callback: AsyncCallback<int>): void--><!--Device-sms-function getDefaultSmsSlotId(callback: AsyncCallback<int>): void-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -22,9 +24,9 @@ function getDefaultSmsSlotId(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 获取发送短信的默认SIM卡槽ID的回调函数。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | 获取发送短信的默认SIM卡槽ID的回调函数。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';
@@ -50,10 +52,6 @@ function getDefaultSmsSlotId(): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-function getDefaultSmsSlotId(): Promise<int>--><!--Device-sms-function getDefaultSmsSlotId(): Promise<int>-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -64,7 +62,7 @@ function getDefaultSmsSlotId(): Promise<int>
 | --- | --- |
 | Promise&lt;int&gt; | 以Promise形式返回发送短信的默认SIM卡：<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';

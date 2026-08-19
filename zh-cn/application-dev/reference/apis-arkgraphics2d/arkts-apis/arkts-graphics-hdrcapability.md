@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace hdrCapability--><!--Device-unnamed-declare namespace hdrCapability-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
+## 导入模块
+
+```TypeScript
+import { hdrCapability } from '@kit.ArkGraphics2D';
+```
 
 ## 汇总
 

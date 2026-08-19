@@ -1,5 +1,11 @@
 # getAppNativeMemInfo
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getAppNativeMemInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAppNativeMemInfo(): NativeMemInfo
 获取应用进程内存信息。读取/proc/{pid}/smaps_rollup和/proc/{pid}/statm节点的数据。 > **注意** > > 由于读取/proc/{pid}/smaps_rollup耗时较长，推荐使用异步接口hidebug.getAppNativeMemInfoAsync，以避免应用丢帧或卡顿。 > > 推荐使用hidebug.getRssInfo接口获取应用的rss使用信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getAppNativeMemInfo(): NativeMemInfo--><!--Device-hidebug-function getAppNativeMemInfo(): NativeMemInfo-End-->
 
@@ -24,7 +26,7 @@ function getAppNativeMemInfo(): NativeMemInfo
 | --- | --- |
 | [NativeMemInfo](arkts-performanceanalysis-hidebug-nativememinfo-i.md) | 应用进程内存信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

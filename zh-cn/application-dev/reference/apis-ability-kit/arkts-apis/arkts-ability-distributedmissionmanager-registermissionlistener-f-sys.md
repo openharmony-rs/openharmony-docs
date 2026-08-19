@@ -1,5 +1,11 @@
 # registerMissionListener（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+```
+
 ## registerMissionListener
 
 ```TypeScript
@@ -9,10 +15,6 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 注册任务状态监听。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -30,7 +32,7 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 | --- | --- | --- | --- |
 | parameter | MissionDeviceInfo | 是 | 注册监听时的设备信息。 |
 | options | MissionCallback | 是 | 注册的回调方法。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，注册监听成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，注册监听成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -133,10 +135,6 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -167,7 +165,7 @@ function registerMissionListener(parameter: MissionDeviceInfo, options: MissionC
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

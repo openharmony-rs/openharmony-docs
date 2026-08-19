@@ -1,5 +1,11 @@
 # getSensorList
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## getSensorList
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getSensorList(callback: AsyncCallback<Array<Sensor>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function getSensorList(callback: AsyncCallback<Array<Sensor>>): void--><!--Device-sensor-function getSensorList(callback: AsyncCallback<Array<Sensor>>): void-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -22,7 +24,7 @@ function getSensorList(callback: AsyncCallback<Array<Sensor>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;Sensor&gt;&gt; | 是 | 回调函数，异步返回传感器属性列表。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;Sensor&gt;&gt; | 是 | 回调函数，异步返回传感器属性列表。 |
 
 **错误码：**
 
@@ -31,7 +33,7 @@ function getSensorList(callback: AsyncCallback<Array<Sensor>>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sensor } from '@kit.SensorServiceKit';
@@ -65,10 +67,6 @@ function getSensorList(): Promise<Array<Sensor>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function getSensorList(): Promise<Array<Sensor>>--><!--Device-sensor-function getSensorList(): Promise<Array<Sensor>>-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -86,7 +84,7 @@ function getSensorList(): Promise<Array<Sensor>>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sensor } from '@kit.SensorServiceKit';

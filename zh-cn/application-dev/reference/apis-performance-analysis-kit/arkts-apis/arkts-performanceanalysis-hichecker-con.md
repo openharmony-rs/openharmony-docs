@@ -10,10 +10,6 @@ const RULE_CAUTION_PRINT_LOG = 9223372036854775808n
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hichecker-const RULE_CAUTION_PRINT_LOG = 9223372036854775808n--><!--Device-hichecker-const RULE_CAUTION_PRINT_LOG = 9223372036854775808n-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -27,10 +23,6 @@ const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n
 告警规则，当有告警时让应用退出。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hichecker-const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n--><!--Device-hichecker-const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n-End-->
 
@@ -46,10 +38,6 @@ const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hichecker-const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n--><!--Device-hichecker-const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -63,10 +51,6 @@ const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n
 检测规则，检测arkui性能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hichecker-const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n--><!--Device-hichecker-const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n-End-->
 
@@ -82,10 +66,6 @@ const RULE_THREAD_CHECK_NETWORK_USAGE = 2n
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-hichecker-const RULE_THREAD_CHECK_NETWORK_USAGE = 2n--><!--Device-hichecker-const RULE_THREAD_CHECK_NETWORK_USAGE = 2n-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -99,10 +79,6 @@ const RULE_THREAD_CHECK_SLOW_PROCESS = 1n
 检测规则，检测是否有耗时函数被调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hichecker-const RULE_THREAD_CHECK_SLOW_PROCESS = 1n--><!--Device-hichecker-const RULE_THREAD_CHECK_SLOW_PROCESS = 1n-End-->
 

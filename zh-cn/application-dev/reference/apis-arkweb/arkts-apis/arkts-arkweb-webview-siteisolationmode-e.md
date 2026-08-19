@@ -4,10 +4,6 @@
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-webview-enum SiteIsolationMode--><!--Device-webview-enum SiteIsolationMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -22,10 +18,6 @@ PARTIAL = 0
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-SiteIsolationMode-PARTIAL = 0--><!--Device-SiteIsolationMode-PARTIAL = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -39,10 +31,6 @@ STRICT = 1
 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 <!--Device-SiteIsolationMode-STRICT = 1--><!--Device-SiteIsolationMode-STRICT = 1-End-->
 

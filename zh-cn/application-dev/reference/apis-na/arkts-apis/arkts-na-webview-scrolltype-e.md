@@ -4,9 +4,7 @@ Enum type supplied to [setScrollable](../../apis-arkweb/arkts-apis/arkts-arkweb-
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-enum ScrollType--><!--Device-webview-enum ScrollType-End-->
 
@@ -22,9 +20,7 @@ Indicates scrolling the web page through scroll event, include touch screen, tou
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ScrollType-EVENT = 0--><!--Device-ScrollType-EVENT = 0-End-->
 

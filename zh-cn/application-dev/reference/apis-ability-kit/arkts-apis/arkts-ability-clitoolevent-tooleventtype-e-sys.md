@@ -4,10 +4,6 @@ CLI工具会话事件类型。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum ToolEventType--><!--Device-unnamed-export enum ToolEventType-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -23,10 +19,6 @@ STDOUT = 'stdout'
 标准输出事件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ STDERR = 'stderr'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ToolEventType-STDERR = 'stderr'--><!--Device-ToolEventType-STDERR = 'stderr'-End-->
@@ -68,10 +56,6 @@ EXIT = 'exit'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ToolEventType-EXIT = 'exit'--><!--Device-ToolEventType-EXIT = 'exit'-End-->
@@ -89,10 +73,6 @@ ERROR = 'error'
 进程错误事件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

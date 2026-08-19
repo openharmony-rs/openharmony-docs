@@ -4,13 +4,14 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface IMonitor--><!--Device-unnamed-declare interface IMonitor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## value
 
@@ -21,10 +22,6 @@ value<T>(path?: string): IMonitorValue<T> | undefined
 获取指定path的变化信息。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +43,7 @@ value<T>(path?: string): IMonitorValue<T> | undefined
 | --- | --- |
 | [IMonitorValue](arkts-arkui-imonitorvalue-i.md)&lt;T&gt; |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 @ObservedV2
@@ -104,10 +101,6 @@ dirty: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

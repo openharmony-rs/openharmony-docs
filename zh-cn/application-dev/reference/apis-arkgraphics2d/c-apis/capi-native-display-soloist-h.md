@@ -50,7 +50,7 @@ OH_DisplaySoloist回调函数类型。在每次VSync信号到来时被系统调�
 
 | 参数项 | 描述 |
 | -- | -- |
-| (long long timestamp | 当前帧VSync时间戳（单位：纳秒）。 |
+| long long timestamp | 当前帧VSync时间戳（单位：纳秒）。 |
 | long long targetTimestamp | 预期的下一帧VSync时间戳（单位：纳秒）。 |
 | void\* data | 用户自定义数据的指针。 |
 

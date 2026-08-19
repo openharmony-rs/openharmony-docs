@@ -6,13 +6,14 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class RemoteWindowAttribute--><!--Device-unnamed-declare class RemoteWindowAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 

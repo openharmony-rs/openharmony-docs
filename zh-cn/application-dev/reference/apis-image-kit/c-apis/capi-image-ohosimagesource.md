@@ -26,13 +26,11 @@ struct OhosImageSource {...}
 | size_t uriSize = 0 |  |
 | int32_t fd = -1 |  |
 | uint8_t* buffer = nullptr |  |
-| size_t bufferSize = 0;
-#else |  |
+| size_t bufferSize = 0; #else |  |
 | char* uri |  |
 | size_t uriSize |  |
 | int32_t fd |  |
 | uint8_t* buffer |  |
-| size_t bufferSize;
-#endif |  |
+| size_t bufferSize; #endif |  |
 
 

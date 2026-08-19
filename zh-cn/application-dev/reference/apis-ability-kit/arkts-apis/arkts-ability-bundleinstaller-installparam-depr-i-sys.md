@@ -4,11 +4,9 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [InstallParam](arkts-ability-installer-installparam-i-sys.md#installparam系统接口)
+**替代接口：** [InstallParam](arkts-ability-installer-installparam-i-sys.md)
 
 <!--Device-unnamed-export interface InstallParam--><!--Device-unnamed-export interface InstallParam-End-->
 
@@ -29,8 +27,6 @@ installFlag: number
 **默认值：** Indicates the install flag
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -56,8 +52,6 @@ isKeepData: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [isKeepData](arkts-ability-installer-installparam-i-sys.md#iskeepdata)
@@ -81,8 +75,6 @@ userId: number
 **默认值：** Indicates the user id
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

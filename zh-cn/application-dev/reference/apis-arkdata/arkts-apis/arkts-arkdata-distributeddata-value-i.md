@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** Value
@@ -13,6 +11,12 @@
 <!--Device-distributedData-interface Value--><!--Device-distributedData-interface Value-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## type
 
@@ -25,8 +29,6 @@ type: ValueType
 **类型：** ValueType
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -47,8 +49,6 @@ value: Uint8Array | string | number | boolean
 **类型：** Uint8Array \| string \| number \| boolean
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

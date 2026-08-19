@@ -4,13 +4,16 @@ WLAN WAPI配置。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-interface WifiWapiConfig--><!--Device-wifiManager-interface WifiWapiConfig-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## wapiAsCert
 
@@ -23,10 +26,6 @@ WAPI AS证书。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiWapiConfig-wapiAsCert: string--><!--Device-WifiWapiConfig-wapiAsCert: string-End-->
 
@@ -44,10 +43,6 @@ WAPI预共享密钥类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiWapiConfig-wapiPskType: WapiPskType--><!--Device-WifiWapiConfig-wapiPskType: WapiPskType-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -63,10 +58,6 @@ WAPI用户证书。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiWapiConfig-wapiUserCert: string--><!--Device-WifiWapiConfig-wapiUserCert: string-End-->
 

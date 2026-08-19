@@ -1,5 +1,26 @@
 # getNameForUid
 
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+import { bundleManager } from '@kit.AbilityKit';
+import { bundleMonitor } from '@kit.AbilityKit';
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { bundle } from '@kit.AbilityKit';
+import { defaultAppManager } from '@kit.AbilityKit';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { freeInstall } from '@kit.AbilityKit';
+import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
+import { installer } from '@kit.AbilityKit';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { overlay } from '@kit.AbilityKit';
+import { shortcutManager } from '@kit.AbilityKit';
+import { skillManager } from '@kit.AbilityKit';
+import { appDomainVerify } from '@kit.AbilityKit';
+import { pluginBundleManager } from '@kit.AbilityKit';
+```
+
 ## getNameForUid
 
 ```TypeScript
@@ -8,11 +29,9 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getBundleNameByUid](arkts-ability-bundlemanager-getbundlenamebyuid-f.md#getbundlenamebyuid)
+**替代接口：** [getBundleNameByUid](arkts-ability-bundlemanager-getbundlenamebyuid-f.md)
 
 <!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void--><!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void-End-->
 
@@ -22,10 +41,10 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uid | number | 是 | @param { AsyncCallback&lt;string&gt; } callback |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 |  |
+| uid | number | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -52,8 +71,6 @@ function getNameForUid(uid: number): Promise<string>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** null
@@ -74,7 +91,7 @@ function getNameForUid(uid: number): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Returns the bundle name. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import bundle from '@ohos.bundle';

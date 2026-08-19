@@ -4,10 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-taskpool-enum State--><!--Device-taskpool-enum State-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -21,10 +17,6 @@ WAITING = 1
 任务正在等待。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ RUNNING = 2
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-State-RUNNING = 2--><!--Device-State-RUNNING = 2-End-->
@@ -61,10 +49,6 @@ CANCELED = 3
 任务已被取消。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

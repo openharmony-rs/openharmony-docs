@@ -8,10 +8,6 @@ declare type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMod
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -24,6 +20,6 @@ declare type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMod
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置当前进度值。<br/>取值范围：[[min](arkts-arkui-slideroptions-i.md#slideroptions)-[max](arkts-arkui-slideroptions-i.md#slideroptions)] |
+| value | number | 是 | 设置当前进度值。<br/>取值范围：[[min](arkts-arkui-slideroptions-i.md)-[max](arkts-arkui-slideroptions-i.md)] |
 | mode | [SliderChangeMode](arkts-arkui-sliderchangemode-e.md) | 是 | 设置事件触发的相关状态值。 |
 

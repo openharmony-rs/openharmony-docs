@@ -1,6 +1,12 @@
 # off_topSessionChange（系统接口）
 
-## off_topSessionChange
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
+## off('topSessionChange')
 
 ```TypeScript
 function off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void): void
@@ -9,10 +15,6 @@ function off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor)
 注销最新播放会话变更事件监听。注销后，不再进行该事件的监听。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void): void--><!--Device-avSession-function off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void): void-End-->
 
@@ -35,7 +37,7 @@ function off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor)
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.off('topSessionChange');

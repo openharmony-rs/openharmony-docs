@@ -1,18 +1,20 @@
 # AgentExtensionAbility
 
-AgentExtensionAbility继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)，提供智能体扩展能力，包括智能体 服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。 本文将AgentExtensionAbility组件提供方称为服务端，将AgentExtensionAbility组件使用方称为客户端。 > **说明：** > > 本模块接口不支持在[har](../../../quick-start/har-package.md)包中使用。
+AgentExtensionAbility继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)，提供智能体扩展能力，包括智能体 服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。 本文将AgentExtensionAbility组件提供方称为服务端，将AgentExtensionAbility组件使用方称为客户端。 > **说明：** > > 本模块接口不支持在[har](../../../quick-start/har-package.md)包中使用。
 
 **继承/实现关系：** AgentExtensionAbility extends ExtensionAbility
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class AgentExtensionAbility--><!--Device-unnamed-declare class AgentExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { AgentExtensionAbility } from '@kit.AbilityKit';
+```
 
 ## onAuth
 
@@ -23,10 +25,6 @@ onAuth(proxy: AgentHostProxy, handshakeData: string): void
 当AgentExtensionAbility接收到客户端发送的安全认证请求时，系统会触发该回调。服务端可以在此回调中处理接收到的安全认证请求，并通过 [AgentHostProxy.authorize](arkts-ability-agenthostproxy-i.md#authorize)向客户端发送安全认证请求。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +38,7 @@ onAuth(proxy: AgentHostProxy, handshakeData: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md#agenthostproxy)对象，用于向客户端发送安全认 证请求。 |
+| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md)对象，用于向客户端发送安全认 证请求。 |
 | handshakeData | string | 是 | 表示接收到的安全认证数据。 |
 
 ## onConnect
@@ -52,10 +50,6 @@ onConnect(want: Want, proxy: AgentHostProxy): void
 当客户端连接AgentExtensionAbility成功后，系统会触发该回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -69,8 +63,8 @@ onConnect(want: Want, proxy: AgentHostProxy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前AgentExtensionAbility相关的[Want](arkts-ability-app-ability-want-want-c.md#want)类型信息，包括Ability名称、Bundle名称 等。 |
-| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md#agenthostproxy)对象，用于与客户端进行通信。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前AgentExtensionAbility相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称 等。 |
+| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md)对象，用于与客户端进行通信。 |
 
 ## onCreate
 
@@ -81,10 +75,6 @@ onCreate(want: Want): void
 当AgentExtensionAbility实例创建完成时，系统会触发该回调，开发者可在该回调中执行初始化逻辑（如定义变量、加载资源等）。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,7 +88,7 @@ onCreate(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前AgentExtensionAbility相关的[Want](arkts-ability-app-ability-want-want-c.md#want)类型信息，包括Ability名称、Bundle名称 等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前AgentExtensionAbility相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称 等。 |
 
 ## onData
 
@@ -109,10 +99,6 @@ onData(proxy: AgentHostProxy, data: string): void
 当AgentExtensionAbility接收到客户端发送的数据时，系统会触发该回调。服务端可以在此回调中通过 [AgentHostProxy.sendData](arkts-ability-agenthostproxy-i.md#senddata)向客户端发送数据。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,7 +112,7 @@ onData(proxy: AgentHostProxy, data: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md#agenthostproxy)对象，用于与客户端进行通信。 |
+| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md)对象，用于与客户端进行通信。 |
 | data | string | 是 | 表示接收到的数据。 |
 
 ## onDestroy
@@ -138,10 +124,6 @@ onDestroy(): void
 当AgentExtensionAbility被销毁时，系统会触发该回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -161,10 +143,6 @@ onDisconnect(want: Want, proxy: AgentHostProxy): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
@@ -177,8 +155,8 @@ onDisconnect(want: Want, proxy: AgentHostProxy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前AgentExtensionAbility相关的[Want](arkts-ability-app-ability-want-want-c.md#want)类型信息，包括Ability名称、Bundle名称 等。 |
-| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md#agenthostproxy)对象，用于与客户端进行通信。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前AgentExtensionAbility相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称 等。 |
+| proxy | [AgentHostProxy](arkts-ability-agenthostproxy-i.md) | 是 | [AgentHostProxy](arkts-ability-agenthostproxy-i.md)对象，用于与客户端进行通信。 |
 
 ## context
 
@@ -186,15 +164,11 @@ onDisconnect(want: Want, proxy: AgentHostProxy): void
 context: AgentExtensionContext
 ```
 
-AgentExtensionAbility的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md#extensioncontext)。
+AgentExtensionAbility的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md)。
 
 **类型：** [AgentExtensionContext](arkts-ability-agentextensioncontext-c.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

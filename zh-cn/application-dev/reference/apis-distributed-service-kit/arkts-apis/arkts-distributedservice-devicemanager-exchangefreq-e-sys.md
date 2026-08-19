@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-deviceManager-enum ExchangeFreq--><!--Device-deviceManager-enum ExchangeFreq-End-->
@@ -23,8 +21,6 @@ LOW = 0
 低频率。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -44,8 +40,6 @@ MID = 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-ExchangeFreq-MID = 1--><!--Device-ExchangeFreq-MID = 1-End-->
@@ -64,8 +58,6 @@ HIGH = 2
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-ExchangeFreq-HIGH = 2--><!--Device-ExchangeFreq-HIGH = 2-End-->
@@ -83,8 +75,6 @@ SUPER_HIGH = 3
 超高频率。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 

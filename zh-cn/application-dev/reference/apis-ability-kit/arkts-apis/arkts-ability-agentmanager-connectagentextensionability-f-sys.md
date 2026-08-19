@@ -1,5 +1,11 @@
 # connectAgentExtensionAbility（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { agentManager } from '@kit.AbilityKit';
+```
+
 ## connectAgentExtensionAbility
 
 ```TypeScript
@@ -7,13 +13,9 @@ function connectAgentExtensionAbility(want: Want, agentId: string,
     callback: AgentExtensionConnectCallback): Promise<AgentProxy>
 ```
 
-将当前调用方组件连接到 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability)。通过返回的 [AgentProxy](arkts-ability-agentproxy-i-sys.md#agentproxy系统接口)与 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability)进行通信，以使用 AgentExtensionAbility对外提供的能力。 > **说明：** > > - 当目标Agent的AgentCard为 > LOW_CODE > 类型时，AgentExtensionAbility的 > [onConnect](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#onconnect)只在此类Agent连接 > 成功时回调；后续连接的此类Agent，只回调 > [onAgentInvoked](arkts-ability-app-agent-agentextensionability-agentextensionability-c-sys.md#onagentinvoked)。 > > - 同一个AgentExtensionAbility中，最多只能同时运行100个LOW_CODE类型的Agent，否则会报35600003错误码。 > > - 同一个AgentExtensionAbility中，不允许重复连接同一个LOW_CODE类型的Agent。
+将当前调用方组件连接到 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)。通过返回的 [AgentProxy](arkts-ability-agentproxy-i-sys.md)与 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)进行通信，以使用 AgentExtensionAbility对外提供的能力。 > **说明：** > > - 当目标Agent的AgentCard为 > LOW_CODE > 类型时，AgentExtensionAbility的 > [onConnect](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#onconnect)只在此类Agent连接 > 成功时回调；后续连接的此类Agent，只回调 > [onAgentInvoked](arkts-ability-app-agent-agentextensionability-agentextensionability-c-sys.md#onagentinvoked)。 > > - 同一个AgentExtensionAbility中，最多只能同时运行100个LOW_CODE类型的Agent，否则会报35600003错误码。 > > - 同一个AgentExtensionAbility中，不允许重复连接同一个LOW_CODE类型的Agent。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_AGENT
 
@@ -29,9 +31,9 @@ function connectAgentExtensionAbility(want: Want, agentId: string,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability)所属的Want 信息，通常需要包括bundle名称、ability名称。 |
-| agentId | string | 是 | [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability)所属的 agentId。 |
-| callback | [AgentExtensionConnectCallback](arkts-ability-agentextensionconnectcallback-i-sys.md) | 是 | 连接回调函数，包含接收 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability)服务端的数据、 安全认证数据以及断开连接事件的回调接口。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)所属的Want 信息，通常需要包括bundle名称、ability名称。 |
+| agentId | string | 是 | [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)所属的 agentId。 |
+| callback | [AgentExtensionConnectCallback](arkts-ability-agentextensionconnectcallback-i-sys.md) | 是 | 连接回调函数，包含接收 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)服务端的数据、 安全认证数据以及断开连接事件的回调接口。 |
 
 **返回值：**
 
@@ -53,7 +55,7 @@ function connectAgentExtensionAbility(want: Want, agentId: string,
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
-| [35600007](../errorcode-ability.md#35600007-指定的lowcode类型智能体已触发且尚未完成工作流) | The specified LOW_CODE agent is already active and is not yet completed.<br>**适用版本：** 26.0.0+ |
+| [35600007](../errorcode-ability.md#35600007-指定的low_code类型智能体已触发且尚未完成工作流) | The specified LOW_CODE agent is already active and is not yet completed.<br>**适用版本：** 26.0.0+ |
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by enterprise device management (EDM). |
 | [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
 | [35600003](../errorcode-ability.md#35600003-调用方已达到最大连接数) | Maximum connections from the same caller have been reached. Please disconnect at least one agent extension beforehand. |

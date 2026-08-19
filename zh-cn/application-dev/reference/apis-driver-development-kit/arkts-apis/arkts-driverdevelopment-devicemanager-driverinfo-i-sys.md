@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-deviceManager-interface DriverInfo--><!--Device-deviceManager-interface DriverInfo-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
 
 ## busType
 
@@ -26,10 +28,6 @@ busType: BusType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DriverInfo-busType: BusType--><!--Device-DriverInfo-busType: BusType-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
@@ -42,15 +40,11 @@ busType: BusType
 description: string
 ```
 
-驱动描述。
+驱动的描述信息，用于提供驱动的功能说明、使用场景、注意事项等详细信息。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DriverInfo-description: string--><!--Device-DriverInfo-description: string-End-->
 
@@ -70,10 +64,6 @@ driverName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DriverInfo-driverName: string--><!--Device-DriverInfo-driverName: string-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
@@ -86,15 +76,11 @@ driverName: string
 driverSize: string
 ```
 
-驱动大小(单位为Byte)。
+驱动文件的大小，单位：字节，用于标识驱动文件占用的存储空间大小。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DriverInfo-driverSize: string--><!--Device-DriverInfo-driverSize: string-End-->
 
@@ -108,15 +94,11 @@ driverSize: string
 driverUid: string
 ```
 
-驱动Uid。
+驱动UID。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DriverInfo-driverUid: string--><!--Device-DriverInfo-driverUid: string-End-->
 
@@ -135,10 +117,6 @@ driverVersion: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DriverInfo-driverVersion: string--><!--Device-DriverInfo-driverVersion: string-End-->
 

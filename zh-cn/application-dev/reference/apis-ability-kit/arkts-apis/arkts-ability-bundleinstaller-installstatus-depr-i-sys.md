@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-unnamed-export interface InstallStatus--><!--Device-unnamed-export interface InstallStatus-End-->
@@ -20,15 +18,13 @@
 status: bundle.InstallErrorCode
 ```
 
-表示安装或卸载错误状态码。取值范围：枚举值[InstallErrorCode](arkts-ability-bundle-installerrorcode-e.md#installerrorcode)。
+表示安装或卸载错误状态码。取值范围：枚举值[InstallErrorCode](arkts-ability-bundle-installerrorcode-e.md)。
 
 **类型：** bundle.InstallErrorCode
 
 **默认值：** Indicates the install or uninstall error code
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -51,8 +47,6 @@ statusMessage: string
 **默认值：** Indicates the install or uninstall result string message
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

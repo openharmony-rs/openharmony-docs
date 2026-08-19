@@ -4,15 +4,16 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-abilityToolAccessCtrl-interface RemoteControlParams--><!--Device-abilityToolAccessCtrl-interface RemoteControlParams-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## challenge
 
@@ -25,10 +26,6 @@ challenge?: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-RemoteControlParams-challenge?: string--><!--Device-RemoteControlParams-challenge?: string-End-->
 
@@ -48,10 +45,6 @@ controlledDeviceName?: string
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-RemoteControlParams-controlledDeviceName?: string--><!--Device-RemoteControlParams-controlledDeviceName?: string-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -69,10 +62,6 @@ controllerDeviceName?: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-RemoteControlParams-controllerDeviceName?: string--><!--Device-RemoteControlParams-controllerDeviceName?: string-End-->
 
@@ -92,10 +81,6 @@ remoteControlTicket?: string
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-RemoteControlParams-remoteControlTicket?: string--><!--Device-RemoteControlParams-remoteControlTicket?: string-End-->
 
 **系统能力：** SystemCapability.Security.Asset
@@ -113,10 +98,6 @@ signVerifyMsg?: string
 **类型：** string
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-RemoteControlParams-signVerifyMsg?: string--><!--Device-RemoteControlParams-signVerifyMsg?: string-End-->
 

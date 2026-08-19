@@ -205,7 +205,7 @@ int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}（对应值：0）；<br> 参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}（对应值：-1）；可能原因：maxThreadNum不在有效范围[1, 32]内，解决措施：检查并调整参数值；<br> 其它情况返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}（对应值：-2）。可能原因：IPC框架内部异常，解决措施：检查IPC服务状态或重启应用。 |
+| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}（对应值：0）；  参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}（对应值：-1）；可能原因：maxThreadNum不在有效范围[1, 32]内，解决措施：检查并调整参数值；  其它情况返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}（对应值：-2）。可能原因：IPC框架内部异常，解决措施：检查IPC服务状态或重启应用。 |
 
 ### OH_IPCSkeleton_ResetCallingIdentity()
 
@@ -225,7 +225,7 @@ int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_Me
 
 | 参数项 | 描述 |
 | -- | -- |
-| char **identity | identity 用于存储调用凭证的内存地址，凭证中包含调用方的TokenId、UID和PID等身份信息，可用于后续通过{@link OH_IPCSkeleton_SetCallingIdentity()}恢复调用方身份。该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放。必须在IPC请求处理上下文中调用。不能为空。 |
+| char **identity | identity 用于存储调用凭证的内存地址，凭证中包含调用方的TokenId、UID和PID等身份信息，可用于后续通过[OH_IPCSkeleton_SetCallingIdentity()](capi-ipc-cskeleton-h.md#oh_ipcskeleton_setcallingidentity())恢复调用方身份。该内存由用户提供的分配器进行内存分配，用户使用完后需要主动释放。必须在IPC请求处理上下文中调用。不能为空。 |
 | int32_t *len | len 写入identity的数据长度（字节数），用于告知调用者凭证数据的实际大小，便于后续正确使用和释放内存。必须在IPC请求处理上下文中调用。不能为空。 |
 | [OH_IPC_MemAllocator](capi-ipc-cparcel-h.md#oh_ipc_memallocator) allocator | allocator 用户指定的内存分配器，用于为identity分配内存。通过自定义分配器可控制内存分配策略（如使用共享内存或堆内存）。必须在IPC请求处理上下文中调用。不能为空。 |
 
@@ -233,7 +233,7 @@ int OH_IPCSkeleton_ResetCallingIdentity(char **identity, int32_t *len, OH_IPC_Me
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}（对应值：0）；<br> 参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}（对应值：-1）；可能原因：identity、len或allocator参数为空，解决措施：确保参数不为空；<br> 内存分配失败返回{@link OH_IPC_ErrorCode#OH_IPC_MEM_ALLOCATOR_ERROR}（对应值：-3）；可能原因：系统内存不足或内存分配器异常，解决措施：释放内存后重试或检查内存分配器；<br> 其它情况返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}（对应值：-2）；可能原因：IPC框架内部异常，解决措施：检查IPC服务状态或重启应用。 |
+| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}（对应值：0）；  参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}（对应值：-1）；可能原因：identity、len或allocator参数为空，解决措施：确保参数不为空；  内存分配失败返回{@link OH_IPC_ErrorCode#OH_IPC_MEM_ALLOCATOR_ERROR}（对应值：-3）；可能原因：系统内存不足或内存分配器异常，解决措施：释放内存后重试或检查内存分配器；  其它情况返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}（对应值：-2）；可能原因：IPC框架内部异常，解决措施：检查IPC服务状态或重启应用。 |
 
 ### OH_IPCSkeleton_SetCallingIdentity()
 
@@ -259,7 +259,7 @@ int OH_IPCSkeleton_SetCallingIdentity(const char *identity)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；<br> 参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；<br> 其它情况返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
+| int | 成功返回{@link OH_IPC_ErrorCode#OH_IPC_SUCCESS}；  参数错误返回{@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR}；  其它情况返回{@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR}。 |
 
 ### OH_IPCSkeleton_IsHandlingTransaction()
 

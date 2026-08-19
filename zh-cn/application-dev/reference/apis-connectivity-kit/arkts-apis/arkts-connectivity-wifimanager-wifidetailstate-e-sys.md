@@ -4,10 +4,6 @@ WLAN详细状态。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-enum WifiDetailState--><!--Device-wifiManager-enum WifiDetailState-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -23,10 +19,6 @@ UNKNOWN = -1
 状态未知
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiDetailState-UNKNOWN = -1--><!--Device-WifiDetailState-UNKNOWN = -1-End-->
 
@@ -44,10 +36,6 @@ WLAN已关闭
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiDetailState-INACTIVE = 0--><!--Device-WifiDetailState-INACTIVE = 0-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -63,10 +51,6 @@ ACTIVATED = 1
 WLAN已打开
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiDetailState-ACTIVATED = 1--><!--Device-WifiDetailState-ACTIVATED = 1-End-->
 
@@ -84,10 +68,6 @@ WLAN正在打开
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiDetailState-ACTIVATING = 2--><!--Device-WifiDetailState-ACTIVATING = 2-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -103,10 +83,6 @@ DEACTIVATING = 3
 WLAN正在关闭
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiDetailState-DEACTIVATING = 3--><!--Device-WifiDetailState-DEACTIVATING = 3-End-->
 
@@ -124,10 +100,6 @@ WLAN STA正在进入半激活状态
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiDetailState-SEMI_ACTIVATING = 4--><!--Device-WifiDetailState-SEMI_ACTIVATING = 4-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -143,10 +115,6 @@ SEMI_ACTIVE = 5
 WLAN STA处于半激活状态
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiDetailState-SEMI_ACTIVE = 5--><!--Device-WifiDetailState-SEMI_ACTIVE = 5-End-->
 

@@ -1,5 +1,10 @@
 # getColorsSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getColorsSync
 
 ```TypeScript
@@ -9,8 +14,6 @@ function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>
 获取指定类型壁纸的主要颜色信息。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -39,7 +42,7 @@ function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

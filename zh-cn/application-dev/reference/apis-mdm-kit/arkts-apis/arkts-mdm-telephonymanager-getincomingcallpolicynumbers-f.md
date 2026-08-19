@@ -1,5 +1,11 @@
 # getIncomingCallPolicyNumbers
 
+## 导入模块
+
+```TypeScript
+import { telephonyManager } from '@kit.MDMKit';
+```
+
 ## getIncomingCallPolicyNumbers
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy):
 获取通话呼入的允许或禁用名单。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
@@ -44,7 +46,7 @@ function getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy):
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -78,10 +80,6 @@ function getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.P
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -112,7 +110,7 @@ function getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.P
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { telephonyManager } from '@kit.MDMKit';

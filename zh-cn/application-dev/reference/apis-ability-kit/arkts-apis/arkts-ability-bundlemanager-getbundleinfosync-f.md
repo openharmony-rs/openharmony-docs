@@ -1,5 +1,11 @@
 # getBundleInfoSync
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getBundleInfoSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundleInfoSync(bundleName: string, bundleFlags: int, userId: int): B
 以同步方法根据给定的bundleName、bundleFlags和userId获取BundleInfo。 获取调用方自身的信息时不需要权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -26,7 +28,7 @@ function getBundleInfoSync(bundleName: string, bundleFlags: int, userId: int): B
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
 | bundleFlags | int | 是 | 指定返回的BundleInfo所包含的信息。 |
-| userId | int | 是 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
+| userId | int | 是 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
 
 **返回值：**
 
@@ -44,7 +46,7 @@ function getBundleInfoSync(bundleName: string, bundleFlags: int, userId: int): B
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -75,10 +77,6 @@ function getBundleInfoSync(bundleName: string, bundleFlags: int): BundleInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 <!--Device-bundleManager-function getBundleInfoSync(bundleName: string, bundleFlags: int): BundleInfo--><!--Device-bundleManager-function getBundleInfoSync(bundleName: string, bundleFlags: int): BundleInfo-End-->
@@ -107,7 +105,7 @@ function getBundleInfoSync(bundleName: string, bundleFlags: int): BundleInfo
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

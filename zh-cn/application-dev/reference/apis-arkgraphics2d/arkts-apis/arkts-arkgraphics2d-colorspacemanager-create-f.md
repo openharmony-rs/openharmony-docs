@@ -1,5 +1,11 @@
 # create
 
+## 导入模块
+
+```TypeScript
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+```
+
 ## create
 
 ```TypeScript
@@ -9,10 +15,6 @@ function create(colorSpaceName: ColorSpace): ColorSpaceManager
 创建标准色域对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-colorSpaceManager-function create(colorSpaceName: ColorSpace): ColorSpaceManager--><!--Device-colorSpaceManager-function create(colorSpaceName: ColorSpace): ColorSpaceManager-End-->
 
@@ -37,7 +39,7 @@ function create(colorSpaceName: ColorSpace): ColorSpaceManager
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
 | [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal. |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {
@@ -58,10 +60,6 @@ function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManage
 创建用户自定义色域对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-colorSpaceManager-function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManager--><!--Device-colorSpaceManager-function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManager-End-->
 
@@ -87,7 +85,7 @@ function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManage
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
 | [18600001](../errorcode-colorspace-manager.md#18600001-参数值异常) | The parameter value is abnormal. |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

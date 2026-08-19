@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uiEffect-interface BrightnessParam--><!--Device-uiEffect-interface BrightnessParam-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
 
 ## cubicCoeff
 
@@ -25,10 +27,6 @@ cubicCoeff : double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BrightnessParam-cubicCoeff : double--><!--Device-BrightnessParam-cubicCoeff : double-End-->
 
@@ -48,10 +46,6 @@ fraction : double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BrightnessParam-fraction : double--><!--Device-BrightnessParam-fraction : double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -69,10 +63,6 @@ lightUpDegree : double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BrightnessParam-lightUpDegree : double--><!--Device-BrightnessParam-lightUpDegree : double-End-->
 
@@ -92,10 +82,6 @@ negRgb : [double, double, double]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BrightnessParam-negRgb : [double, double, double]--><!--Device-BrightnessParam-negRgb : [double, double, double]-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -113,10 +99,6 @@ posRgb : [double, double, double]
 **类型：** [double, double, double]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BrightnessParam-posRgb : [double, double, double]--><!--Device-BrightnessParam-posRgb : [double, double, double]-End-->
 
@@ -136,10 +118,6 @@ quadCoeff : double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BrightnessParam-quadCoeff : double--><!--Device-BrightnessParam-quadCoeff : double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -158,10 +136,6 @@ rate : double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BrightnessParam-rate : double--><!--Device-BrightnessParam-rate : double-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -179,10 +153,6 @@ saturation : double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BrightnessParam-saturation : double--><!--Device-BrightnessParam-saturation : double-End-->
 

@@ -1,12 +1,8 @@
 # ShowMode
 
-表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md#embeddableuiability)被拉起时的显示模式。
+表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)被拉起时的显示模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-wantConstant-export enum ShowMode--><!--Device-wantConstant-export enum ShowMode-End-->
 
@@ -21,10 +17,6 @@ WINDOW = 0
 表示独立窗口拉起模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ EMBEDDED_FULL = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ShowMode-EMBEDDED_FULL = 1--><!--Device-ShowMode-EMBEDDED_FULL = 1-End-->
@@ -61,10 +49,6 @@ EMBEDDED_HALF = 2
 表示嵌入式半屏拉起模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

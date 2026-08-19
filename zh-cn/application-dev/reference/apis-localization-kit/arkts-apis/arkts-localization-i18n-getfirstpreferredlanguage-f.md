@@ -1,5 +1,11 @@
 # getFirstPreferredLanguage
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## getFirstPreferredLanguage
 
 ```TypeScript
@@ -9,8 +15,6 @@ export function getFirstPreferredLanguage(): string
 获取偏好语言列表中的第一个语言。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -26,7 +30,7 @@ export function getFirstPreferredLanguage(): string
 | --- | --- |
 | string | 偏好语言列表中的第一个语言。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

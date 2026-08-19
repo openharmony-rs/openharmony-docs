@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wallpaper-enum WallpaperResourceType--><!--Device-wallpaper-enum WallpaperResourceType-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -23,10 +19,6 @@ DEFAULT
 默认为图片资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WallpaperResourceType-DEFAULT--><!--Device-WallpaperResourceType-DEFAULT-End-->
 
@@ -44,10 +36,6 @@ PICTURE
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WallpaperResourceType-PICTURE--><!--Device-WallpaperResourceType-PICTURE-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -64,10 +52,6 @@ VIDEO
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WallpaperResourceType-VIDEO--><!--Device-WallpaperResourceType-VIDEO-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -83,10 +67,6 @@ PACKAGE
 包资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WallpaperResourceType-PACKAGE--><!--Device-WallpaperResourceType-PACKAGE-End-->
 

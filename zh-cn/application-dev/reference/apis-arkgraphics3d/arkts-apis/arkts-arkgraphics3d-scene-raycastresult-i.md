@@ -1,12 +1,8 @@
 # RaycastResult
 
-射线检测命中结果.
+射线检测命中结果对象，包含被射线击中的3D物体详细信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RaycastResult--><!--Device-unnamed-export interface RaycastResult-End-->
 
@@ -18,15 +14,11 @@
 centerDistance: double
 ```
 
-到轴对齐包围盒中心的距离, 单位为世界坐标系下的场景单位（例如cm、m、km等）.
+命中物体包围盒中心到相机中心的距离，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RaycastResult-centerDistance: double--><!--Device-RaycastResult-centerDistance: double-End-->
 
@@ -38,15 +30,11 @@ centerDistance: double
 hitPosition: Position3
 ```
 
-命中点的世界坐标位置, 单位为世界坐标系下的场景单位（例如cm、m、km等）.
+射线与物体碰撞点的精确世界坐标（{x: number, y: number, z: number}），单位为世界坐标系下的场景单位（比如cm、m、km等）。
 
 **类型：** [Position3](arkts-arkgraphics3d-position3-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RaycastResult-hitPosition: Position3--><!--Device-RaycastResult-hitPosition: Position3-End-->
 
@@ -58,15 +46,11 @@ hitPosition: Position3
 node: Node
 ```
 
-被击中的节点.
+被射线击中的3D场景节点，可通过该节点操作目标物体（如移动、旋转、隐藏）。
 
 **类型：** [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RaycastResult-node: Node--><!--Device-RaycastResult-node: Node-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface ToolSummary--><!--Device-unnamed-export interface ToolSummary-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -25,10 +21,6 @@ CLI工具的功能描述。该描述应清晰说明工具的核心功能和用�
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +42,6 @@ CLI工具的名称，用于在系统中唯一标识一个CLI工具。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ToolSummary-readonly name: string--><!--Device-ToolSummary-readonly name: string-End-->
@@ -73,10 +61,6 @@ CLI工具的版本号。遵循语义化版本规范（如"1.0.0"），格式由�
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

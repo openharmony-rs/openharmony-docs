@@ -8,10 +8,6 @@ export type NotificationMultiLineContent = _NotificationMultiLineContent
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export type NotificationMultiLineContent = _NotificationMultiLineContent--><!--Device-notificationManager-export type NotificationMultiLineContent = _NotificationMultiLineContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

@@ -4,10 +4,6 @@ Enumerates tone types for player.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum ToneType--><!--Device-audio-enum ToneType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -23,10 +19,6 @@ TONE_TYPE_DIAL_0 = 0
 Dial tone for key 0.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_0 = 0--><!--Device-ToneType-TONE_TYPE_DIAL_0 = 0-End-->
 
@@ -44,10 +36,6 @@ Dial tone for key 1.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_1 = 1--><!--Device-ToneType-TONE_TYPE_DIAL_1 = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -63,10 +51,6 @@ TONE_TYPE_DIAL_2 = 2
 Dial tone for key 2.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_2 = 2--><!--Device-ToneType-TONE_TYPE_DIAL_2 = 2-End-->
 
@@ -84,10 +68,6 @@ Dial tone for key 3.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_3 = 3--><!--Device-ToneType-TONE_TYPE_DIAL_3 = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -103,10 +83,6 @@ TONE_TYPE_DIAL_4 = 4
 Dial tone for key 4.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_4 = 4--><!--Device-ToneType-TONE_TYPE_DIAL_4 = 4-End-->
 
@@ -124,10 +100,6 @@ Dial tone for key 5.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_5 = 5--><!--Device-ToneType-TONE_TYPE_DIAL_5 = 5-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -143,10 +115,6 @@ TONE_TYPE_DIAL_6 = 6
 Dial tone for key 6.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_6 = 6--><!--Device-ToneType-TONE_TYPE_DIAL_6 = 6-End-->
 
@@ -164,10 +132,6 @@ Dial tone for key 7.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_7 = 7--><!--Device-ToneType-TONE_TYPE_DIAL_7 = 7-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -183,10 +147,6 @@ TONE_TYPE_DIAL_8 = 8
 Dial tone for key 8.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_8 = 8--><!--Device-ToneType-TONE_TYPE_DIAL_8 = 8-End-->
 
@@ -204,10 +164,6 @@ Dial tone for key 9.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_9 = 9--><!--Device-ToneType-TONE_TYPE_DIAL_9 = 9-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -223,10 +179,6 @@ TONE_TYPE_DIAL_S = 10
 Dial tone for key *.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_S = 10--><!--Device-ToneType-TONE_TYPE_DIAL_S = 10-End-->
 
@@ -244,10 +196,6 @@ Dial tone for key #.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_P = 11--><!--Device-ToneType-TONE_TYPE_DIAL_P = 11-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -263,10 +211,6 @@ TONE_TYPE_DIAL_A = 12
 Dial tone for key A.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_A = 12--><!--Device-ToneType-TONE_TYPE_DIAL_A = 12-End-->
 
@@ -284,10 +228,6 @@ Dial tone for key B.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_B = 13--><!--Device-ToneType-TONE_TYPE_DIAL_B = 13-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -303,10 +243,6 @@ TONE_TYPE_DIAL_C = 14
 Dial tone for key C.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_DIAL_C = 14--><!--Device-ToneType-TONE_TYPE_DIAL_C = 14-End-->
 
@@ -324,10 +260,6 @@ Dial tone for key D.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_DIAL_D = 15--><!--Device-ToneType-TONE_TYPE_DIAL_D = 15-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -343,10 +275,6 @@ TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100
 Supervisory tone for dial.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100-End-->
 
@@ -364,10 +292,6 @@ Supervisory tone for busy.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_BUSY = 101--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_BUSY = 101-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -383,10 +307,6 @@ TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102
 Supervisory tone for dial.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102-End-->
 
@@ -404,10 +324,6 @@ Supervisory tone for radio path acknowledgment.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK = 103--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK = 103-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -423,10 +339,6 @@ TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104
 Supervisory tone for radio path not available.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104-End-->
 
@@ -444,10 +356,6 @@ Supervisory tone for call waiting.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING = 106--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING = 106-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -463,10 +371,6 @@ TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107
 Supervisory tone for ringtone.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107-End-->
 
@@ -484,10 +388,6 @@ Supervisory tone for call holding.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING = 108--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING = 108-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -503,10 +403,6 @@ TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200
 Proprietary tone for beep.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200-End-->
 
@@ -524,10 +420,6 @@ Proprietary tone for positive acknowledgment.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_ACK = 201--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_ACK = 201-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -544,10 +436,6 @@ Proprietary tone for prompt.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_PROMPT = 203--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_PROMPT = 203-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Tone
@@ -563,10 +451,6 @@ TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204
 Proprietary tone for double beep.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204-End-->
 

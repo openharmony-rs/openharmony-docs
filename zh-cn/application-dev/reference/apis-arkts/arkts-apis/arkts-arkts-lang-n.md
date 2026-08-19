@@ -4,13 +4,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace lang--><!--Device-unnamed-declare namespace lang-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { lang, Retention, RetentionPolicy } from '@kit.ArkTS';
+```
 
 ## 汇总
 

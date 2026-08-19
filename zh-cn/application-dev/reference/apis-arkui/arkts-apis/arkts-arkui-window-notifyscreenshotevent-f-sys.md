@@ -1,5 +1,13 @@
 # notifyScreenshotEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## notifyScreenshotEvent
 
 ```TypeScript
@@ -9,10 +17,6 @@ function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>
 通知屏幕截屏的事件类型，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-window-function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>--><!--Device-window-function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>-End-->
 
@@ -40,7 +44,7 @@ function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

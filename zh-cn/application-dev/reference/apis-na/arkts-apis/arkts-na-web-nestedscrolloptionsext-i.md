@@ -4,9 +4,7 @@ Define nested scroll options
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface NestedScrollOptionsExt--><!--Device-unnamed-export declare interface NestedScrollOptionsExt-End-->
 
@@ -24,9 +22,7 @@ Set NestedScrollMode when the scrollable component scrolls down
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NestedScrollOptionsExt-scrollDown?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollDown?: NestedScrollMode-End-->
 
@@ -44,9 +40,7 @@ Set NestedScrollMode when the scrollable component scrolls left
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NestedScrollOptionsExt-scrollLeft?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollLeft?: NestedScrollMode-End-->
 
@@ -64,9 +58,7 @@ Set NestedScrollMode when the scrollable component scrolls right
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NestedScrollOptionsExt-scrollRight?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollRight?: NestedScrollMode-End-->
 
@@ -84,9 +76,7 @@ Set NestedScrollMode when the scrollable component scrolls up
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NestedScrollOptionsExt-scrollUp?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollUp?: NestedScrollMode-End-->
 

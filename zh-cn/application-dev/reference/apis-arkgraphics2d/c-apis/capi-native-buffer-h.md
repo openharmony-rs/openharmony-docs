@@ -486,7 +486,7 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br> buffer、virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br> 映射失败时返回NATIVE_ERROR_UNKNOWN。<br> 其他返回值可参考OHNativeErrorCode。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。\n  buffer、virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。\n  映射失败时返回NATIVE_ERROR_UNKNOWN。\n  其他返回值可参考OHNativeErrorCode。 |
 
 ### OH_NativeBuffer_WriteToParcel()
 
@@ -513,7 +513,7 @@ int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br> buffer或parcel为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br> IPC发送失败返回NATIVE_ERROR_BINDER_ERROR。<br> 其他返回值可参考OHNativeErrorCode。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。\n  buffer或parcel为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。\n  IPC发送失败返回NATIVE_ERROR_BINDER_ERROR。\n  其他返回值可参考OHNativeErrorCode。 |
 
 ### OH_NativeBuffer_ReadFromParcel()
 
@@ -540,7 +540,7 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br> parcel或buffer为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br> parcel反序列化失败返回NATIVE_ERROR_UNKNOWN。<br> 其他返回值可参考OHNativeErrorCode。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。\n  parcel或buffer为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。\n  parcel反序列化失败返回NATIVE_ERROR_UNKNOWN。\n  其他返回值可参考OHNativeErrorCode。 |
 
 ### OH_NativeBuffer_IsSupported()
 
@@ -567,7 +567,7 @@ int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSuppo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br> isSupported为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br> 其他返回值可参考OHNativeErrorCode。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。\n  isSupported为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。\n  其他返回值可参考OHNativeErrorCode。 |
 
 ### OH_NativeBuffer_MapAndGetConfig()
 
@@ -595,6 +595,6 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br> buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br> 映射失败时返回NATIVE_ERROR_UNKNOWN。<br> 其他返回值可参考OHNativeErrorCode。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。\n  buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。\n  映射失败时返回NATIVE_ERROR_UNKNOWN。\n  其他返回值可参考OHNativeErrorCode。 |
 
 

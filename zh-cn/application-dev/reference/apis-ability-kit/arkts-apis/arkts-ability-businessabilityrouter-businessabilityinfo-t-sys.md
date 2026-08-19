@@ -8,10 +8,6 @@ export type BusinessAbilityInfo = _BusinessAbilityInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-businessAbilityRouter-export type BusinessAbilityInfo = _BusinessAbilityInfo--><!--Device-businessAbilityRouter-export type BusinessAbilityInfo = _BusinessAbilityInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

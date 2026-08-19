@@ -13,10 +13,6 @@ type QueryFn = (
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-type QueryFn = (  uri: string,  predicates: dataSharePredicates.DataSharePredicates,  columns: Array<string>,  callback: AsyncCallback<Object>) => void--><!--Device-unnamed-type QueryFn = (  uri: string,  predicates: dataSharePredicates.DataSharePredicates,  columns: Array<string>,  callback: AsyncCallback<Object>) => void-End-->
@@ -32,5 +28,5 @@ type QueryFn = (
 | uri | string | 是 | Indicates the database table storing the data to query. |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | Indicates filter criteria. If this parameter is null, all data records will be queried by default. |
 | columns | Array&lt;string&gt; | 是 | Indicates the columns to be queried, in array, for example, {"name","age"}. You should define the processing logic when this parameter is null. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Object&gt; | 是 | Returns the queried data, only support result set of rdb or kvstore. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Object&gt; | 是 | Returns the queried data, only support result set of rdb or kvstore. |
 

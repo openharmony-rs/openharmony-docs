@@ -54,7 +54,7 @@ int32_t (*findAccessibilityNodeInfosById)(const char* instanceId, int64_t elemen
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>            参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。             参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 ### findAccessibilityNodeInfosByText()
 
@@ -80,7 +80,7 @@ int32_t (*findAccessibilityNodeInfosByText)(const char* instanceId, int64_t elem
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>            参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。             参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 ### findFocusedAccessibilityNode()
 
@@ -106,7 +106,7 @@ int32_t (*findFocusedAccessibilityNode)(const char* instanceId, int64_t elementI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>            参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。             参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 ### findNextFocusAccessibilityNode()
 
@@ -132,7 +132,7 @@ int32_t (*findNextFocusAccessibilityNode)(const char* instanceId, int64_t elemen
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>            参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。             参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 ### executeAccessibilityAction()
 
@@ -158,7 +158,7 @@ int32_t (*executeAccessibilityAction)(const char* instanceId, int64_t elementId,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>            参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。             参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 ### clearFocusedFocusAccessibilityNode()
 
@@ -180,7 +180,7 @@ int32_t (*clearFocusedFocusAccessibilityNode)(const char* instanceId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>            参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。             参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 ### getAccessibilityNodeCursorPosition()
 
@@ -205,6 +205,6 @@ int32_t (*getAccessibilityNodeCursorPosition)(const char* instanceId, int64_t el
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。<br>            参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
+| int32_t | 成功返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。             参数错误返回 [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。 |
 
 

@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Swiper](arkts-na-swiper-swiper-f.md#swiper) | 定义Swiper组件 |
+| [Swiper](arkts-na-swiper-swiper-f.md) | 定义Swiper组件 |
 
 ### 类
 
@@ -43,7 +43,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ContentDidScrollCallback](arkts-na-contentdidscrollcallback-t.md) | Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy](arkts-na-swiper-swipercontenttransitionproxy-i.md#swipercontenttransitionproxy)中的说明。 |
+| [ContentDidScrollCallback](arkts-na-contentdidscrollcallback-t.md) | Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy](arkts-na-swiper-swipercontenttransitionproxy-i.md)中的说明。 |
 | [ContentWillScrollCallback](arkts-na-contentwillscrollcallback-t.md) | Swiper即将滑动前触发的回调，返回值表示是否允许此次滑动。 |
 | [OnSwiperAnimationEndCallback](arkts-na-onswiperanimationendcallback-t.md) | 切换动画结束时触发的回调。 |
 | [OnSwiperAnimationStartCallback](arkts-na-onswiperanimationstartcallback-t.md) | 切换动画开始时触发的回调。 |

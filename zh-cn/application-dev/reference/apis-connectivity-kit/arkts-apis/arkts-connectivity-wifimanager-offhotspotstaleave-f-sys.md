@@ -1,5 +1,12 @@
 # offHotspotStaLeave（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## offHotspotStaLeave
 
 ```TypeScript
@@ -9,10 +16,6 @@ function offHotspotStaLeave(callback?: Callback<StationInfo>): void
 取消注册热点STA离开事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -26,7 +29,7 @@ function offHotspotStaLeave(callback?: Callback<StationInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;StationInfo&gt; | 否 | 状态改变回调函数。如果未指定callback参数，将取消注册该事件关联的所有回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;StationInfo&gt; | 否 | 状态改变回调函数。如果未指定callback参数，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 

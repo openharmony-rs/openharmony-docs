@@ -1,5 +1,11 @@
 # onKeyPressed
 
+## 导入模块
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+```
+
 ## onKeyPressed
 
 ```TypeScript
@@ -10,10 +16,6 @@ function onKeyPressed(options: KeyPressedConfig, callback: Callback<KeyEvent>): 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputConsumer-function onKeyPressed(options: KeyPressedConfig, callback: Callback<KeyEvent>): void--><!--Device-inputConsumer-function onKeyPressed(options: KeyPressedConfig, callback: Callback<KeyEvent>): void-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
@@ -22,8 +24,8 @@ function onKeyPressed(options: KeyPressedConfig, callback: Callback<KeyEvent>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [KeyPressedConfig](arkts-input-inputconsumer-keypressedconfig-i.md) | 是 | Key consumption settings. |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[KeyEvent](arkts-input-multimodalinput-keyevent-keyevent-i.md)&gt; | 是 | Callback used to return key events. |
+| options | [KeyPressedConfig](arkts-input-inputconsumer-keypressedconfig-i.md) | 是 | 按键事件消费设置。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[KeyEvent](arkts-input-multimodalinput-keyevent-keyevent-i.md)&gt; | 是 | 回调函数，返回按键事件。 |
 
 **错误码：**
 
@@ -32,7 +34,7 @@ function onKeyPressed(options: KeyPressedConfig, callback: Callback<KeyEvent>): 
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';

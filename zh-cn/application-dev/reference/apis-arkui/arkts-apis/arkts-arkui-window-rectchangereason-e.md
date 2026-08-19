@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum RectChangeReason--><!--Device-window-enum RectChangeReason-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ UNDEFINED = 0
 默认值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ MAXIMIZE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RectChangeReason-MAXIMIZE = 1--><!--Device-RectChangeReason-MAXIMIZE = 1-End-->
@@ -61,10 +49,6 @@ RECOVER = 2
 窗口恢复到上一次的状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ MOVE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RectChangeReason-MOVE = 3--><!--Device-RectChangeReason-MOVE = 3-End-->
@@ -101,10 +81,6 @@ DRAG = 4
 窗口拖拽缩放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ DRAG_START = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-RectChangeReason-DRAG_START = 5--><!--Device-RectChangeReason-DRAG_START = 5-End-->
@@ -141,10 +113,6 @@ DRAG_END = 6
 窗口结束拖拽缩放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

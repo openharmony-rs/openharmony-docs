@@ -1,5 +1,11 @@
 # getAllAppProvisionInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAllAppProvisionInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllAppProvisionInfo(userId?: int): Promise<Array<AppProvisionInfo>>
 根据userId获取指定用户下所有应用的Provision配置文件信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
@@ -26,7 +28,7 @@ function getAllAppProvisionInfo(userId?: int): Promise<Array<AppProvisionInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。<br>默认值：调用方所在用户ID。<br>取值范围：大于等于0。 |
+| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。<br>默认值：调用方所在用户ID。<br>取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -42,7 +44,7 @@ function getAllAppProvisionInfo(userId?: int): Promise<Array<AppProvisionInfo>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user id is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

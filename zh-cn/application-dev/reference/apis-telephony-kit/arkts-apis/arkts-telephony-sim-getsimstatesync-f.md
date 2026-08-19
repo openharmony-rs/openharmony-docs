@@ -1,5 +1,11 @@
 # getSimStateSync
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## getSimStateSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSimStateSync(slotId: int): SimState
 Obtains the state of the SIM card in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sim-function getSimStateSync(slotId: int): SimState--><!--Device-sim-function getSimStateSync(slotId: int): SimState-End-->
 
@@ -30,7 +32,7 @@ Obtains the state of the SIM card in a specified slot.
 | --- | --- |
 | SimState | Returns one of the following SIM card states: &lt;ul&gt; &lt;li&gt;{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sim } from '@kit.TelephonyKit';

@@ -1,5 +1,11 @@
 # releaseExemptionResource（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { deviceStandby } from '@kit.BackgroundTasksKit';
+```
+
 ## releaseExemptionResource
 
 ```TypeScript
@@ -9,10 +15,6 @@ function releaseExemptionResource(request: ResourceRequest): void
 取消应用订阅申请豁免。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.DEVICE_STANDBY_EXEMPTION
 
@@ -41,7 +43,7 @@ function releaseExemptionResource(request: ResourceRequest): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 | [18700001](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#18700001-资源申请接口信息校验失败) | Caller information verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { deviceStandby } from '@kit.BackgroundTasksKit';

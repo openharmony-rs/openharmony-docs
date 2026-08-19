@@ -10,10 +10,6 @@ export function borderStyles(all: BorderStyle): Edges<BorderStyle>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -34,7 +30,7 @@ export function borderStyles(all: BorderStyle): Edges<BorderStyle>
 | --- | --- |
 | [Edges](arkts-arkui-graphics-edges-i.md)&lt;BorderStyle&gt; | 边框样式均设置为传入值的边框样式对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, borderStyles } from '@kit.ArkUI';

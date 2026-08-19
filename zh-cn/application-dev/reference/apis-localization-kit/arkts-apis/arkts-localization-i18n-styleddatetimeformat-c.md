@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-i18n-export class StyledDateTimeFormat--><!--Device-i18n-export class StyledDateTimeFormat-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
 
 ## constructor
 
@@ -22,10 +24,6 @@ constructor(dateTimeFormat: Intl.DateTimeFormat | SimpleDateTimeFormat,
 创建需要富文本显示的时间日期格式化的对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -40,7 +38,7 @@ constructor(dateTimeFormat: Intl.DateTimeFormat | SimpleDateTimeFormat,
 | dateTimeFormat | Intl.DateTimeFormat \| [SimpleDateTimeFormat](../../apis-na/arkts-apis/arkts-na-i18n-simpledatetimeformat-c.md) | 是 | 用于格式化时间日期的对象。 |
 | options | [StyledDateTimeFormatOptions](../../apis-na/arkts-apis/arkts-na-i18n-styleddatetimeformatoptions-i.md) | 否 |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,10 +85,6 @@ format(date: Date): StyledString
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-StyledDateTimeFormat-format(date: Date): StyledString--><!--Device-StyledDateTimeFormat-format(date: Date): StyledString-End-->
@@ -109,7 +103,7 @@ format(date: Date): StyledString
 | --- | --- |
 | [StyledString](../../apis-arkui/arkts-apis/arkts-arkui-styledstring-styledstring-c.md) | 格式化后的富文本对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

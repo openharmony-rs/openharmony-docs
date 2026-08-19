@@ -1,5 +1,10 @@
 # copyFileSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## copyFileSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function copyFileSync(src: string | number, dest: string | number, mode?
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [copyFileSync](arkts-corefile-file-fs-copyfilesync-f.md#copyfilesync)
+**替代接口：** [copyFileSync](arkts-corefile-file-fs-copyfilesync-f.md)
 
 <!--Device-unnamed-declare function copyFileSync(src: string | number, dest: string | number, mode?: number): void--><!--Device-unnamed-declare function copyFileSync(src: string | number, dest: string | number, mode?: number): void-End-->
 

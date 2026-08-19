@@ -1,5 +1,11 @@
 # parse
 
+## 导入模块
+
+```TypeScript
+import { ArkTSUtils } from '@kit.ArkTS';
+```
+
 ## parse
 
 ```TypeScript
@@ -9,10 +15,6 @@ function parse(text: string, reviver?: Transformer, options?: ParseOptions): ISe
 用于解析JSON字符串生成ISendable数据或null。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

@@ -4,13 +4,14 @@ Badge的样式。包括文本颜色、大小、字重、标记颜色和标记大
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface BadgeStyle--><!--Device-unnamed-declare interface BadgeStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## badgeColor
 
@@ -25,10 +26,6 @@ Badge的颜色。 默认值：Color.Red
 **默认值：** Color.Red
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -52,10 +49,6 @@ Badge的大小。string类型支持number类型取值的字符串形式，可以
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -77,10 +70,6 @@ borderColor?: ResourceColor
 **默认值：** Color.Red
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -104,10 +93,6 @@ borderWidth?: Length
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -129,10 +114,6 @@ color?: ResourceColor
 **默认值：** Color.White
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -156,10 +137,6 @@ enableAutoAvoidance?: boolean
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -182,10 +159,6 @@ fontSize?: number | ResourceStr
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -205,10 +178,6 @@ fontWeight?: number | FontWeight | ResourceStr
 **类型：** number \| FontWeight \| ResourceStr
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -232,10 +201,6 @@ outerBorderColor?: ResourceColor
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -257,10 +222,6 @@ outerBorderWidth?: LengthMetrics
 **默认值：** 0vp
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

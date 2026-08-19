@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [BundleInfo](#bundleinfo)
@@ -20,15 +18,13 @@
 readonly abilityInfos: Array<AbilityInfo>
 ```
 
-Ability的配置信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) 接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
+Ability的配置信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md) 接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
 
 **类型：** Array&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt;
 
 **默认值：** Obtains configuration information about an ability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -52,8 +48,6 @@ readonly appId: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** appId
@@ -75,8 +69,6 @@ readonly appInfo: ApplicationInfo
 **默认值：** Obtains configuration information about an application
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -100,8 +92,6 @@ readonly compatibleVersion: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleInfo-readonly compatibleVersion: number--><!--Device-BundleInfo-readonly compatibleVersion: number-End-->
@@ -121,8 +111,6 @@ readonly cpuAbi: string
 **默认值：** Indicates the cpuAbi information of this bundle.
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -144,8 +132,6 @@ Entry是否支持免安装，取值为true表示支持免安装，取值为false
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleInfo-readonly entryInstallationFree: boolean--><!--Device-BundleInfo-readonly entryInstallationFree: boolean-End-->
@@ -166,8 +152,6 @@ Entry的模块名称。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleInfo-readonly entryModuleName: string--><!--Device-BundleInfo-readonly entryModuleName: string-End-->
@@ -187,8 +171,6 @@ readonly hapModuleInfos: Array<HapModuleInfo>
 **默认值：** Obtains configuration information about a module
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -212,8 +194,6 @@ HAP安装时间，单位：毫秒。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** installTime
@@ -236,8 +216,6 @@ readonly isCompressNativeLibs: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleInfo-readonly isCompressNativeLibs: boolean--><!--Device-BundleInfo-readonly isCompressNativeLibs: boolean-End-->
@@ -258,8 +236,6 @@ readonly isSilentInstallation: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-BundleInfo-readonly isSilentInstallation: string--><!--Device-BundleInfo-readonly isSilentInstallation: string-End-->
@@ -279,8 +255,6 @@ readonly minCompatibleVersionCode: number
 **默认值：** Indicates the earliest historical version compatible with the bundle
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -304,8 +278,6 @@ readonly name: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** name
@@ -320,15 +292,13 @@ readonly name: string
 readonly reqPermissionDetails: Array<ReqPermissionDetail>
 ```
 
-应用运行时需向系统申请的权限集合的详细信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+应用运行时需向系统申请的权限集合的详细信息 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
 **类型：** Array&lt;[ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)&gt;
 
 **默认值：** Indicates the required permissions details defined in file config.json
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -352,8 +322,6 @@ readonly reqPermissionStates: Array<number>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** permissionGrantStates
@@ -368,15 +336,13 @@ readonly reqPermissionStates: Array<number>
 readonly reqPermissions: Array<string>
 ```
 
-应用运行时需向系统申请的权限集合 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
+应用运行时需向系统申请的权限集合 通过调用 [bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md) 接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。
 
 **类型：** Array&lt;string&gt;
 
 **默认值：** Indicates the required permissions name defined in file config.json
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -400,8 +366,6 @@ readonly targetVersion: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** targetVersion
@@ -423,8 +387,6 @@ readonly type: string
 **默认值：** Indicates the name of this original bundle
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -448,8 +410,6 @@ readonly uid: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** uid
@@ -471,8 +431,6 @@ HAP更新时间，单位：毫秒。
 **默认值：** Indicates the hap update time
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -496,8 +454,6 @@ readonly vendor: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** vendor
@@ -520,8 +476,6 @@ readonly versionCode: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** versionCode
@@ -543,8 +497,6 @@ readonly versionName: string
 **默认值：** Indicates the text description of the bundle version
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

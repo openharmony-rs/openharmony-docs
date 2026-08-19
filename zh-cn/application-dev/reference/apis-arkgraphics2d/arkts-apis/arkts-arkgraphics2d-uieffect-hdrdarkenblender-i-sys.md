@@ -4,15 +4,17 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-uiEffect-interface HdrDarkenBlender--><!--Device-uiEffect-interface HdrDarkenBlender-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
 
 ## grayscaleFactor
 
@@ -27,10 +29,6 @@ grayscaleFactor?: [double, double, double]
 **默认值：** [0.299, 0.587, 0.114]
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,10 +49,6 @@ HDR的提亮倍数。取值范围为[1.0, 设备当前支持最大提亮倍数]�
 **类型：** double
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

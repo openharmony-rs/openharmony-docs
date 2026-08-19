@@ -1,5 +1,11 @@
 # getNativeHeapFreeSize
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getNativeHeapFreeSize
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getNativeHeapFreeSize() : bigint
 获取内存分配器统计的进程持有的空闲的普通块所占用的总字节数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getNativeHeapFreeSize() : bigint--><!--Device-hidebug-function getNativeHeapFreeSize() : bigint-End-->
 
@@ -24,7 +26,7 @@ function getNativeHeapFreeSize() : bigint
 | --- | --- |
 | bigint | 返回内存分配器统计的进程持有的空闲的普通块所占用内存大小，单位为Byte。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

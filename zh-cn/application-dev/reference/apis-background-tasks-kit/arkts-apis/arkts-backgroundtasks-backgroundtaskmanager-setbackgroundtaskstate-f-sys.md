@@ -1,5 +1,11 @@
 # setBackgroundTaskState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+```
+
 ## setBackgroundTaskState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 设置长时任务授权信息。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_BACKGROUND_TASK_STATE
 
@@ -39,7 +41,7 @@ function setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';

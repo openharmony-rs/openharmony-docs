@@ -1,16 +1,17 @@
-# ActionSheetOffset
+# ActionSheetOffset(ActionSheet)
 
 弹窗相对alignment所在位置的偏移量。
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface ActionSheetOffset--><!--Device-unnamed-interface ActionSheetOffset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## dx
 
@@ -23,10 +24,6 @@ dx: number | string | Resource
 **类型：** number \| string \| Resource
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +44,6 @@ dy: number | string | Resource
 **类型：** number \| string \| Resource
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

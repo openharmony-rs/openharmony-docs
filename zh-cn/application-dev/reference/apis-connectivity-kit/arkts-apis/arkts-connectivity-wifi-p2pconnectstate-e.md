@@ -4,11 +4,9 @@ P2P连接状态。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [P2pConnectState](arkts-connectivity-wifimanager-p2pconnectstate-e.md#p2pconnectstate)
+**替代接口：** [P2pConnectState](arkts-connectivity-wifimanager-p2pconnectstate-e.md)
 
 <!--Device-wifi-enum P2pConnectState--><!--Device-wifi-enum P2pConnectState-End-->
 
@@ -23,8 +21,6 @@ DISCONNECTED = 0
 P2P已断开连接。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -43,8 +39,6 @@ CONNECTED = 1
 P2P已连接。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

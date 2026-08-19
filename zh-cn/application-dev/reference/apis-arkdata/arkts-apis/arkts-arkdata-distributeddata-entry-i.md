@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** Entry
@@ -13,6 +11,12 @@
 <!--Device-distributedData-interface Entry--><!--Device-distributedData-interface Entry-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## key
 
@@ -25,8 +29,6 @@ key: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -47,8 +49,6 @@ value: Value
 **类型：** Value
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationSortingMap--><!--Device-unnamed-export interface NotificationSortingMap-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -26,10 +22,6 @@ readonly sortedHashCode: Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSortingMap-readonly sortedHashCode: Array<string>--><!--Device-NotificationSortingMap-readonly sortedHashCode: Array<string>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -47,10 +39,6 @@ readonly sortings: Record<string, NotificationSorting>
 **类型：** Record&lt;string, [NotificationSorting](arkts-notification-notificationsorting-notificationsorting-i-sys.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSortingMap-readonly sortings: Record<string, NotificationSorting>--><!--Device-NotificationSortingMap-readonly sortings: Record<string, NotificationSorting>-End-->
 

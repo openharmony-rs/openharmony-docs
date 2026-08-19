@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum ExtraKey--><!--Device-avSession-enum ExtraKey-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -21,10 +17,6 @@ LIVE_VIEW_HIDDEN_WHEN_KEYGUARD = 'hw_live_view_hidden_when_keyguard'
 作为setExtras)}接口传入的键，值传入bool类型列表，用于通知系统在锁屏时是 否隐藏实况窗卡片。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

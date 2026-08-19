@@ -4,15 +4,17 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-pluginComponentManager-interface PushParameterForStage--><!--Device-pluginComponentManager-interface PushParameterForStage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
+```
 
 ## data
 
@@ -22,13 +24,9 @@ data: KVObject
 
 组件数据，以键值对形式存储。用于向组件使用方传递业务数据，如页面路径（key为'js'，value为模板路径字符串）及自定义数据字段。
 
-**类型：** [KVObject](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-kvobject-t.md)
+**类型：** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-PushParameterForStage-data: KVObject--><!--Device-PushParameterForStage-data: KVObject-End-->
 
@@ -44,13 +42,9 @@ extraData: KVObject
 
 附加数据，用于在发送组件时传递额外的自定义数据，与组件数据（data）区分，可根据业务需要设置。
 
-**类型：** [KVObject](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-kvobject-t.md)
+**类型：** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-PushParameterForStage-extraData: KVObject--><!--Device-PushParameterForStage-extraData: KVObject-End-->
 
@@ -70,10 +64,6 @@ jsonPath?: string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-PushParameterForStage-jsonPath?: string--><!--Device-PushParameterForStage-jsonPath?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -91,10 +81,6 @@ name: string
 **类型：** string
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-PushParameterForStage-name: string--><!--Device-PushParameterForStage-name: string-End-->
 
@@ -114,10 +100,6 @@ owner: Want
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-PushParameterForStage-owner: Want--><!--Device-PushParameterForStage-owner: Want-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -135,10 +117,6 @@ target: Want
 **类型：** [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-PushParameterForStage-target: Want--><!--Device-PushParameterForStage-target: Want-End-->
 

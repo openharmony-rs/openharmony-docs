@@ -1,18 +1,22 @@
 # copyFile
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## copyFile
 
 ```TypeScript
 declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>
 ```
 
-复制文件，使用promise异步回调。
+复制文件。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -26,7 +30,7 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 | --- | --- | --- | --- |
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件的文件描述符。 |
-| mode | number | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
+| mode | number | 否 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁剪掉。 |
 
 **返回值：**
 
@@ -64,13 +68,9 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void
 ```
 
-复制文件，覆盖方式为完全覆盖目标文件，未覆盖部分将被裁切。使用callback异步回调。
+复制文件，覆盖方式为完全覆盖目标文件，未覆盖部分将被裁剪。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -84,7 +84,7 @@ declare function copyFile(src: string | number, dest: string | number, callback:
 | --- | --- | --- | --- |
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件的文件描述符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
 
 **错误码：**
 
@@ -120,13 +120,9 @@ declare function copyFile(
 ): void
 ```
 
-复制文件，可设置覆盖文件的方式，使用callback异步回调。
+复制文件，可设置覆盖文件的方式。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -140,8 +136,8 @@ declare function copyFile(
 | --- | --- | --- | --- |
 | src | string \| number | 是 | 待复制文件的路径或待复制文件的文件描述符。 |
 | dest | string \| number | 是 | 目标文件路径或目标文件的文件描述符。 |
-| mode | number | 是 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
+| mode | number | 是 | mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁剪掉。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
 
 **错误码：**
 

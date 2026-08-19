@@ -1,18 +1,20 @@
 # uninstall
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+```
+
 ## uninstall
 
 ```TypeScript
 function uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean): Promise<void>
 ```
 
-卸载当前/指定用户下的指定包，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。调用成功后，应用被卸载，数据根据isKeepData参数保留或删除。 > **说明：** > > 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md#adddisalloweduninstallbundlessync)接口设置了不 > 允许卸载时，调用此接口卸载应用会返回401错误码。
+卸载当前/指定用户下的指定包，选择是否保留包数据（由isKeepData指定）。使用Promise异步回调。调用成功后，应用被卸载，数据根据isKeepData参数保留或删除。 > **说明：** > > 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md)接口设置了不 > 允许卸载时，调用此接口卸载应用会返回401错误码。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -46,7 +48,7 @@ function uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.MDMKit';

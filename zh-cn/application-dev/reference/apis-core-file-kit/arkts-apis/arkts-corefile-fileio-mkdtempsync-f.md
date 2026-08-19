@@ -1,5 +1,10 @@
 # mkdtempSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## mkdtempSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function mkdtempSync(prefix: string): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md#mkdtempsync)
+**替代接口：** [mkdtempSync](arkts-corefile-file-fs-mkdtempsync-f.md)
 
 <!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
 

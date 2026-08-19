@@ -4,13 +4,15 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface DialogDismissal--><!--Device-unnamed-export interface DialogDismissal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, DialogResult, DialogDismissal, DialogBaseController } from '@kit.ArkUI';
+```
 
 ## dismiss
 
@@ -23,10 +25,6 @@ dismiss: VoidCallback
 **类型：** VoidCallback
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +45,6 @@ reason: DismissReason
 **类型：** DismissReason
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

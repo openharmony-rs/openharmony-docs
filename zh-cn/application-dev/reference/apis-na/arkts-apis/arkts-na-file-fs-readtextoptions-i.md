@@ -1,18 +1,21 @@
 # ReadTextOptions
 
-可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](arkts-na-file-fs-readoptions-i.md#readoptions)。
+可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](arkts-na-file-fs-readoptions-i.md)。
 
-**继承/实现关系：** ReadTextOptions extends [ReadOptions](arkts-na-file-fs-readoptions-i.md#readoptions)
+**继承/实现关系：** ReadTextOptions extends [ReadOptions](arkts-na-file-fs-readoptions-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export interface ReadTextOptions--><!--Device-unnamed-export interface ReadTextOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## encoding
 
@@ -26,9 +29,7 @@ encoding?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ReadTextOptions-encoding?: string--><!--Device-ReadTextOptions-encoding?: string-End-->
 

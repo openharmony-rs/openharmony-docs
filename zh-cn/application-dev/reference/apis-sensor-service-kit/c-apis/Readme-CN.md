@@ -1,4 +1,4 @@
-# CAPI<!--c-sensor-service-kit-->
+# C API<!--c-sensor-service-kit-->
 
 - 头文件
     - [oh_sensor_type.h](capi-oh-sensor-type-h.md)

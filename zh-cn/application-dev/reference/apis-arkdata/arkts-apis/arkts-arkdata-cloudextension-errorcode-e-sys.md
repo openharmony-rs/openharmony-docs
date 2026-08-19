@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export enum ErrorCode--><!--Device-cloudExtension-export enum ErrorCode-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -23,10 +19,6 @@ SUCCESS = 0
 表示端云同步过程成功。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ErrorCode-SUCCESS = 0--><!--Device-ErrorCode-SUCCESS = 0-End-->
 
@@ -44,10 +36,6 @@ UNKNOWN_ERROR = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ErrorCode-UNKNOWN_ERROR = 1--><!--Device-ErrorCode-UNKNOWN_ERROR = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -63,10 +51,6 @@ NETWORK_ERROR = 2
 表示端云同步过程中遇到网络错误。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ErrorCode-NETWORK_ERROR = 2--><!--Device-ErrorCode-NETWORK_ERROR = 2-End-->
 
@@ -84,10 +68,6 @@ CLOUD_DISABLED = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ErrorCode-CLOUD_DISABLED = 3--><!--Device-ErrorCode-CLOUD_DISABLED = 3-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -103,10 +83,6 @@ LOCKED_BY_OTHERS = 4
 表示有其他设备正在进行端云同步，本设备无法进行端云同步。请确保无其他设备占用端云资源后，再使用本设备进行端云同步任务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ErrorCode-LOCKED_BY_OTHERS = 4--><!--Device-ErrorCode-LOCKED_BY_OTHERS = 4-End-->
 
@@ -124,10 +100,6 @@ RECORD_LIMIT_EXCEEDED = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ErrorCode-RECORD_LIMIT_EXCEEDED = 5--><!--Device-ErrorCode-RECORD_LIMIT_EXCEEDED = 5-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -143,10 +115,6 @@ NO_SPACE_FOR_ASSET = 6
 表示云空间剩余空间小于待同步的资产大小。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ErrorCode-NO_SPACE_FOR_ASSET = 6--><!--Device-ErrorCode-NO_SPACE_FOR_ASSET = 6-End-->
 

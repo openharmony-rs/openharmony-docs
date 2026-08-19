@@ -4,13 +4,16 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare struct ComposeTitleBarV2--><!--Device-unnamed-export declare struct ComposeTitleBarV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## build
 
@@ -23,9 +26,7 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,13 +43,11 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 用于左侧头像的单个菜单项。
 
-**类型：** [ComposeTitleBarV2MenuItem](arkts-na-arkui-advanced-composetitlebarv2-composetitlebarv2menuitem-c.md)
+**类型：** [ComposeTitleBarV2MenuItem](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composetitlebarv2-composetitlebarv2menuitem-c.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -65,13 +64,11 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 右侧菜单项列表。
 
-**类型：** Array&lt;[ComposeTitleBarV2MenuItem](arkts-na-arkui-advanced-composetitlebarv2-composetitlebarv2menuitem-c.md)&gt;
+**类型：** Array&lt;[ComposeTitleBarV2MenuItem](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composetitlebarv2-composetitlebarv2menuitem-c.md)&gt;
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,9 +89,7 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -115,9 +110,7 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,13 +4,19 @@ WebContextMenuResult是ArkWeb组件中用于处理上下文菜单（长按页面
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class WebContextMenuResult--><!--Device-unnamed-declare class WebContextMenuResult-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## closeContextMenu
 
@@ -21,10 +27,6 @@ closeContextMenu(): void
 不执行WebContextMenuResult其他接口操作时，需要调用此接口关闭菜单。 > **说明：** > > 调用说明： > > - 调用WebContextMenuResult的其他方法（如copy、paste、cut等）完成操作后，应调用此方法关闭菜单。 > > - 如果不再需要执行其他菜单操作，也应及时调用此方法关闭菜单。 > > - 未调用此方法可能导致菜单资源未正确释放。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +44,6 @@ WebContextMenuResult的构造函数。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuResult-constructor()--><!--Device-WebContextMenuResult-constructor()-End-->
@@ -61,10 +59,6 @@ copy(): void
 执行复制文本操作。 > **说明：** > > 完成操作后，应调用[closeContextMenu](#closecontextmenu)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +76,6 @@ copyImage(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuResult-copyImage(): void--><!--Device-WebContextMenuResult-copyImage(): void-End-->
@@ -101,10 +91,6 @@ cut(): void
 执行剪切操作。 > **说明：** > > 完成操作后，应调用[closeContextMenu](#closecontextmenu)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +108,6 @@ paste(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuResult-paste(): void--><!--Device-WebContextMenuResult-paste(): void-End-->
@@ -142,10 +124,6 @@ pasteAndMatchStyle(): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebContextMenuResult-pasteAndMatchStyle(): void--><!--Device-WebContextMenuResult-pasteAndMatchStyle(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -159,10 +137,6 @@ redo(): void
 执行重做操作，重新执行被撤销的操作。 > **说明：** > > 完成操作后，应调用[closeContextMenu](#closecontextmenu)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-WebContextMenuResult-redo(): void--><!--Device-WebContextMenuResult-redo(): void-End-->
 
@@ -178,10 +152,6 @@ requestPasswordAutoFill(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WebContextMenuResult-requestPasswordAutoFill(): void--><!--Device-WebContextMenuResult-requestPasswordAutoFill(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -195,10 +165,6 @@ saveImage(): void
 保存上下文菜单相关的图片，调用后将触发下载流程。 > **说明：** > > 完成操作后，应调用[closeContextMenu](#closecontextmenu)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -216,10 +182,6 @@ selectAll(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebContextMenuResult-selectAll(): void--><!--Device-WebContextMenuResult-selectAll(): void-End-->
@@ -235,10 +197,6 @@ undo(): void
 执行撤销操作，撤销上一次的编辑操作。 > **说明：** > > 完成操作后，应调用[closeContextMenu](#closecontextmenu)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-WebContextMenuResult-undo(): void--><!--Device-WebContextMenuResult-undo(): void-End-->
 

@@ -4,13 +4,14 @@
 
 **起始版本：** 16
 
-**ArkTS模式：** 起始版本为16。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface TextMenuOptions--><!--Device-unnamed-declare interface TextMenuOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## showMode
 
@@ -23,10 +24,6 @@ showMode?: TextMenuShowMode
 **类型：** [TextMenuShowMode](arkts-arkui-textmenushowmode-e.md)
 
 **起始版本：** 16
-
-**ArkTS模式：** 起始版本为16。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

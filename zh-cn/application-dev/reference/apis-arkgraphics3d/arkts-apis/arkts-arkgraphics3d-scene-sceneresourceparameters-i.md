@@ -1,12 +1,8 @@
 # SceneResourceParameters
 
-场景资源参数类型.
+场景资源参数对象，包含name和uri，用于提供场景资源的名称以及3D场景所需的资源文件路径。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface SceneResourceParameters--><!--Device-unnamed-export interface SceneResourceParameters-End-->
 
@@ -18,15 +14,11 @@
 name: string
 ```
 
-场景资源参数的名称.
+要创建资源的名称，可由开发者自定义填写，用于标识该场景资源。
 
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceParameters-name: string--><!--Device-SceneResourceParameters-name: string-End-->
 
@@ -38,15 +30,11 @@ name: string
 uri?: ResourceStr
 ```
 
-场景资源参数的资源URI.
+3D场景所需的资源文件路径。默认值为undefined。
 
 **类型：** ResourceStr
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceParameters-uri?: ResourceStr--><!--Device-SceneResourceParameters-uri?: ResourceStr-End-->
 

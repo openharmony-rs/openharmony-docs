@@ -1,18 +1,20 @@
 # saveAppState
 
+## 导入模块
+
+```TypeScript
+import { appRecovery } from '@kit.AbilityKit';
+```
+
 ## saveAppState
 
 ```TypeScript
 function saveAppState(): boolean
 ```
 
-保存当前App状态，可以配合[errorManager](arkts-app-ability-errormanager.md#ohosappabilityerrormanager)相关接口使用。
+保存当前App状态，可以配合[errorManager](arkts-app-ability-errormanager.md)相关接口使用。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,7 +30,7 @@ function saveAppState(): boolean
 | --- | --- |
 | boolean | 保存成功与否。true：保存成功，false：保存失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appRecovery, errorManager } from '@kit.AbilityKit';
@@ -55,13 +57,9 @@ try {
 function saveAppState(context?: UIAbilityContext): boolean
 ```
 
-主动保存Ability的状态，这个状态将在下次恢复启动时使用。可以配合[errorManager](arkts-app-ability-errormanager.md#ohosappabilityerrormanager)相关接口使用。
+主动保存Ability的状态，这个状态将在下次恢复启动时使用。可以配合[errorManager](arkts-app-ability-errormanager.md)相关接口使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -83,7 +81,7 @@ function saveAppState(context?: UIAbilityContext): boolean
 | --- | --- |
 | boolean | 保存成功与否。true：保存成功，false：保存失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appRecovery, errorManager } from '@kit.AbilityKit';

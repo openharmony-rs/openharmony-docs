@@ -1,58 +1,54 @@
 # Matrix4Result
 
 ```TypeScript
-type Matrix4Result = [
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-  ]
+export type Matrix4Result = [
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double
+    ]
 ```
 
 列优先四阶矩阵。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-<!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]--><!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]-End-->
+<!--Device-componentUtils-export type Matrix4Result = [        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double    ]--><!--Device-componentUtils-export type Matrix4Result = [        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double,        double    ]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **属性类型：** [
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-  ]
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double,
+        double
+    ]
 

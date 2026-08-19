@@ -1,16 +1,18 @@
 # VibratorEvent
 
-振动事件。用于[VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md#vibratorpattern)的events数组中定义具体的振动事件。
+振动事件。用于[VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md)的events数组中定义具体的振动事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-vibrator-interface VibratorEvent--><!--Device-vibrator-interface VibratorEvent-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
+
+## 导入模块
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+```
 
 ## duration
 
@@ -23,10 +25,6 @@ duration?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorEvent-duration?: int--><!--Device-VibratorEvent-duration?: int-End-->
 
@@ -44,10 +42,6 @@ eventType: VibratorEventType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VibratorEvent-eventType: VibratorEventType--><!--Device-VibratorEvent-eventType: VibratorEventType-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -63,10 +57,6 @@ frequency?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorEvent-frequency?: int--><!--Device-VibratorEvent-frequency?: int-End-->
 
@@ -84,10 +74,6 @@ index?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VibratorEvent-index?: int--><!--Device-VibratorEvent-index?: int-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -103,10 +89,6 @@ intensity?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorEvent-intensity?: int--><!--Device-VibratorEvent-intensity?: int-End-->
 
@@ -124,10 +106,6 @@ points?: Array<VibratorCurvePoint>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VibratorEvent-points?: Array<VibratorCurvePoint>--><!--Device-VibratorEvent-points?: Array<VibratorCurvePoint>-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -143,10 +121,6 @@ time: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VibratorEvent-time: int--><!--Device-VibratorEvent-time: int-End-->
 

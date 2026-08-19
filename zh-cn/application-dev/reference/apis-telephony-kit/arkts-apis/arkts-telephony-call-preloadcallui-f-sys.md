@@ -1,5 +1,11 @@
 # preloadCallUI（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## preloadCallUI
 
 ```TypeScript
@@ -9,10 +15,6 @@ function preloadCallUI(): Promise<boolean>
 预加载通话应用
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 

@@ -1,5 +1,11 @@
 # getPointerSpeedSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## getPointerSpeedSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getPointerSpeedSync(): int
 使用同步方式获取当前鼠标移动速度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-pointer-function getPointerSpeedSync(): int--><!--Device-pointer-function getPointerSpeedSync(): int-End-->
 
@@ -33,7 +35,7 @@ function getPointerSpeedSync(): int
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

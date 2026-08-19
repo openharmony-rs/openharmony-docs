@@ -1,5 +1,12 @@
 # abortSession
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## abortSession
 
 ```TypeScript
@@ -9,10 +16,6 @@ function abortSession(handle: number, options: HuksOptions, callback: AsyncCallb
 abortSession终止密钥操作。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -26,7 +29,7 @@ abortSession终止密钥操作。使用callback异步回调。
 | --- | --- | --- | --- |
 | handle | number | 是 | abortSession操作的uint64类型的handle值。 |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | abortSession操作的参数集合。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当密钥操作abort成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -44,7 +47,7 @@ abortSession终止密钥操作。使用callback异步回调。
 | [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 22+ |
 
-## 示例
+**示例**
 
 ArkTS示例：
 
@@ -431,10 +434,6 @@ abortSession终止密钥操作。使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-huks-function abortSession(handle: number, options: HuksOptions): Promise<void>--><!--Device-huks-function abortSession(handle: number, options: HuksOptions): Promise<void>-End-->
@@ -470,7 +469,7 @@ abortSession终止密钥操作。使用Promise异步回调。
 | [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 22+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

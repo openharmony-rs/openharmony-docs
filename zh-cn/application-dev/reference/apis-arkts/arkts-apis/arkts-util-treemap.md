@@ -1,5 +1,13 @@
 # @ohos.util.TreeMap
 
+## 导入模块
+
+```TypeScript
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+```
+
 ## 汇总
 
 ### 类

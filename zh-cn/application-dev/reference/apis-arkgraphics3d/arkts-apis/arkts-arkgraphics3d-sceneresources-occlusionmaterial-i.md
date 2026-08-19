@@ -1,14 +1,10 @@
 # OcclusionMaterial
 
-遮挡材质资源
+遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境，继承自Material。
 
-**继承/实现关系：** OcclusionMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md#material)
+**继承/实现关系：** OcclusionMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface OcclusionMaterial--><!--Device-unnamed-export interface OcclusionMaterial-End-->
 

@@ -1,5 +1,11 @@
 # getSelfManagedBrowserPolicyVersion
 
+## 导入模块
+
+```TypeScript
+import { browser } from '@kit.MDMKit';
+```
+
 ## getSelfManagedBrowserPolicyVersion
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSelfManagedBrowserPolicyVersion(): string
 获取当前设备浏览器策略版本。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function getSelfManagedBrowserPolicyVersion(): string
 | --- | --- |
 | string | 浏览器策略版本。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { browser } from '@kit.MDMKit';

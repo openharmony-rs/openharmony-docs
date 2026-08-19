@@ -1,5 +1,11 @@
 # getAVScreenCaptureConfigurableParameters（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## getAVScreenCaptureConfigurableParameters
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<strin
 get Configurations which user can changes from AVScreenCapture server
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-media-function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<string>--><!--Device-media-function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<string>-End-->
 
@@ -36,10 +38,10 @@ get Configurations which user can changes from AVScreenCapture server
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called from Non-System applications. Return by promise. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) |  |
 | [5400109](../errorcode-media.md#5400109-会话id不存在) | Sessions not exist. Return by promise. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

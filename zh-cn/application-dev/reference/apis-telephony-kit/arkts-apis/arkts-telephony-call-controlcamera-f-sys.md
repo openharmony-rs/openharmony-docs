@@ -1,5 +1,11 @@
 # controlCamera（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## controlCamera
 
 ```TypeScript
@@ -9,10 +15,6 @@ function controlCamera(callId: int, cameraId: string): Promise<void>
 设置使用指定的相机进行视频通话，cameraId为空表示关闭相机。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -47,7 +49,7 @@ function controlCamera(callId: int, cameraId: string): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

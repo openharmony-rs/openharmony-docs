@@ -4,10 +4,6 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum PixelRoundMode--><!--Device-unnamed-declare enum PixelRoundMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ PIXEL_ROUND_ON_LAYOUT_FINISH = 0
 布局结束后像素取整
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +37,6 @@ PIXEL_ROUND_AFTER_MEASURE = 1
 计算大小后像素取整。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

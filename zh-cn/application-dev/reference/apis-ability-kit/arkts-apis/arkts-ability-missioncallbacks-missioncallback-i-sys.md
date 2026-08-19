@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface MissionCallback--><!--Device-unnamed-export interface MissionCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -25,10 +21,6 @@ notifyMissionsChanged: NotifyMissionsChangedCallback
 **类型：** [NotifyMissionsChangedCallback](arkts-ability-notifymissionschangedcallback-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -52,10 +44,6 @@ Called by system when network disconnect.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -77,10 +65,6 @@ notifySnapshot: NotifySnapshotCallback
 **类型：** [NotifySnapshotCallback](arkts-ability-notifysnapshotcallback-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 

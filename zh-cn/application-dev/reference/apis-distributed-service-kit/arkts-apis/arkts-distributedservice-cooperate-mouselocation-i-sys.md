@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cooperate-interface MouseLocation--><!--Device-cooperate-interface MouseLocation-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cooperate } from '@kit.DistributedServiceKit';
+```
 
 ## displayHeight
 
@@ -25,10 +27,6 @@ displayHeight: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MouseLocation-displayHeight: int--><!--Device-MouseLocation-displayHeight: int-End-->
 
@@ -48,10 +46,6 @@ displayWidth: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MouseLocation-displayWidth: int--><!--Device-MouseLocation-displayWidth: int-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -70,10 +64,6 @@ displayX: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MouseLocation-displayX: int--><!--Device-MouseLocation-displayX: int-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -91,10 +81,6 @@ displayY: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MouseLocation-displayY: int--><!--Device-MouseLocation-displayY: int-End-->
 

@@ -4,15 +4,19 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [MessageSequence](arkts-ipc-rpc-messagesequence-c.md#messagesequence)
+**替代接口：** [MessageSequence](arkts-ipc-rpc-messagesequence-c.md)
 
 <!--Device-rpc-class MessageParcel--><!--Device-rpc-class MessageParcel-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+## 导入模块
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+```
 
 ## closeFileDescriptor
 
@@ -23,8 +27,6 @@ static closeFileDescriptor(fd: number): void
 静态方法，关闭给定的文件描述符。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -40,7 +42,7 @@ static closeFileDescriptor(fd: number): void
 | --- | --- | --- | --- |
 | fd | number | 是 | 要关闭的文件描述符。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -66,8 +68,6 @@ containFileDescriptors(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [containFileDescriptors](arkts-ipc-rpc-messagesequence-c.md#containfiledescriptors)()
@@ -82,7 +82,7 @@ containFileDescriptors(): boolean
 | --- | --- |
 | boolean | true：包含文件描述符，false：未包含文件描述符。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -112,8 +112,6 @@ static create(): MessageParcel
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [create](arkts-ipc-rpc-messagesequence-c.md#create)()
@@ -128,7 +126,7 @@ static create(): MessageParcel
 | --- | --- |
 | [MessageParcel](arkts-ipc-rpc-messageparcel-c.md) | 返回创建的MessageParcel对象，用于在IPC过程中封装请求和响应数据。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -155,8 +153,6 @@ static dupFileDescriptor(fd: number): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [dupFileDescriptor](arkts-ipc-rpc-messagesequence-c.md#dupfiledescriptor)(fd: int)
@@ -177,7 +173,7 @@ static dupFileDescriptor(fd: number): number
 | --- | --- |
 | number | 返回新的文件描述符。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -203,8 +199,6 @@ getCapacity(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [getCapacity](arkts-ipc-rpc-messagesequence-c.md#getcapacity)()
@@ -219,7 +213,7 @@ getCapacity(): number
 | --- | --- |
 | number | 获取的MessageParcel的容量大小。以字节为单位。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -244,8 +238,6 @@ getRawDataCapacity(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [getRawDataCapacity](arkts-ipc-rpc-messagesequence-c.md#getrawdatacapacity)()
@@ -260,7 +252,7 @@ getRawDataCapacity(): number
 | --- | --- |
 | number | 返回MessageParcel可以容纳的最大原始数据量，即128MB。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -285,8 +277,6 @@ getReadPosition(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [getReadPosition](arkts-ipc-rpc-messagesequence-c.md#getreadposition)()
@@ -301,7 +291,7 @@ getReadPosition(): number
 | --- | --- |
 | number | 返回MessageParcel实例中的当前读取位置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -326,8 +316,6 @@ getReadableBytes(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [getReadableBytes](arkts-ipc-rpc-messagesequence-c.md#getreadablebytes)()
@@ -342,7 +330,7 @@ getReadableBytes(): number
 | --- | --- |
 | number | 获取到的MessageParcel的可读字节空间。以字节为单位。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -368,8 +356,6 @@ getSize(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [getSize](arkts-ipc-rpc-messagesequence-c.md#getsize)()
@@ -384,7 +370,7 @@ getSize(): number
 | --- | --- |
 | number | 获取的MessageParcel的数据大小。以字节为单位。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -410,8 +396,6 @@ getWritableBytes(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [getWritableBytes](arkts-ipc-rpc-messagesequence-c.md#getwritablebytes)()
@@ -426,7 +410,7 @@ getWritableBytes(): number
 | --- | --- |
 | number | 获取到的MessageParcel的可写字节空间。以字节为单位。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -452,8 +436,6 @@ getWritePosition(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [getWritePosition](arkts-ipc-rpc-messagesequence-c.md#getwriteposition)()
@@ -468,7 +450,7 @@ getWritePosition(): number
 | --- | --- |
 | number | 返回MessageParcel实例中的当前写入位置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -494,8 +476,6 @@ readAshmem(): Ashmem
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readAshmem](arkts-ipc-rpc-messagesequence-c.md#readashmem)()
@@ -510,7 +490,7 @@ readAshmem(): Ashmem
 | --- | --- |
 | [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回匿名共享对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -538,8 +518,6 @@ readBoolean(): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readBoolean](arkts-ipc-rpc-messagesequence-c.md#readboolean)()
@@ -554,7 +532,7 @@ readBoolean(): boolean
 | --- | --- |
 | boolean | 返回读取到的布尔值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -581,8 +559,6 @@ readBooleanArray(dataIn: boolean[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray)(dataIn: boolean[])
@@ -597,7 +573,7 @@ readBooleanArray(dataIn: boolean[]): void
 | --- | --- | --- | --- |
 | dataIn | boolean[] | 是 | 要读取的布尔数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -625,8 +601,6 @@ readBooleanArray(): boolean[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray)()
@@ -641,7 +615,7 @@ readBooleanArray(): boolean[]
 | --- | --- |
 | boolean[] | 返回布尔数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -668,8 +642,6 @@ readByte(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readByte](arkts-ipc-rpc-messagesequence-c.md#readbyte)()
@@ -684,7 +656,7 @@ readByte(): number
 | --- | --- |
 | number | 返回字节值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -711,8 +683,6 @@ readByteArray(dataIn: number[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readByteArray](arkts-ipc-rpc-messagesequence-c.md#readbytearray)(dataIn: int[])
@@ -727,7 +697,7 @@ readByteArray(dataIn: number[]): void
 | --- | --- | --- | --- |
 | dataIn | number[] | 是 | 要读取的字节数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -755,8 +725,6 @@ readByteArray(): number[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readByteArray](arkts-ipc-rpc-messagesequence-c.md#readbytearray)()
@@ -771,7 +739,7 @@ readByteArray(): number[]
 | --- | --- |
 | number[] | 返回字节数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -799,8 +767,6 @@ readChar(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readChar](arkts-ipc-rpc-messagesequence-c.md#readchar)()
@@ -815,7 +781,7 @@ readChar(): number
 | --- | --- |
 | number | 返回单个字符值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -842,8 +808,6 @@ readCharArray(dataIn: number[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readCharArray](arkts-ipc-rpc-messagesequence-c.md#readchararray)(dataIn: int[])
@@ -858,7 +822,7 @@ readCharArray(dataIn: number[]): void
 | --- | --- | --- | --- |
 | dataIn | number[] | 是 | 要读取的单个字符数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -886,8 +850,6 @@ readCharArray(): number[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readCharArray](arkts-ipc-rpc-messagesequence-c.md#readchararray)()
@@ -902,7 +864,7 @@ readCharArray(): number[]
 | --- | --- |
 | number[] | 返回单个字符数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -929,8 +891,6 @@ readDouble(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readDouble](arkts-ipc-rpc-messagesequence-c.md#readdouble)()
@@ -945,7 +905,7 @@ readDouble(): number
 | --- | --- |
 | number | 返回双精度浮点值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -972,8 +932,6 @@ readDoubleArray(dataIn: number[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readDoubleArray](arkts-ipc-rpc-messagesequence-c.md#readdoublearray)(dataIn: double[])
@@ -988,7 +946,7 @@ readDoubleArray(dataIn: number[]): void
 | --- | --- | --- | --- |
 | dataIn | number[] | 是 | 要读取的双精度浮点数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1016,8 +974,6 @@ readDoubleArray(): number[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readDoubleArray](arkts-ipc-rpc-messagesequence-c.md#readdoublearray)()
@@ -1032,7 +988,7 @@ readDoubleArray(): number[]
 | --- | --- |
 | number[] | 返回双精度浮点数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1059,8 +1015,6 @@ readException(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readException](arkts-ipc-rpc-messagesequence-c.md#readexception)()
@@ -1069,7 +1023,7 @@ readException(): void
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -1155,8 +1109,6 @@ readFileDescriptor(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readFileDescriptor](arkts-ipc-rpc-messagesequence-c.md#readfiledescriptor)()
@@ -1171,7 +1123,7 @@ readFileDescriptor(): number
 | --- | --- |
 | number | 返回文件描述符。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1200,8 +1152,6 @@ readFloat(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readFloat](arkts-ipc-rpc-messagesequence-c.md#readfloat)()
@@ -1216,7 +1166,7 @@ readFloat(): number
 | --- | --- |
 | number | 返回双精度浮点值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1243,8 +1193,6 @@ readFloatArray(dataIn: number[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readFloatArray](arkts-ipc-rpc-messagesequence-c.md#readfloatarray)(dataIn: double[])
@@ -1259,7 +1207,7 @@ readFloatArray(dataIn: number[]): void
 | --- | --- | --- | --- |
 | dataIn | number[] | 是 | 要读取的双精度浮点数组。由于系统内部对float类型的数据是按照double处理的，使用时对于数组所占的总字节数应按照double类型来计算。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1287,8 +1235,6 @@ readFloatArray(): number[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readFloatArray](arkts-ipc-rpc-messagesequence-c.md#readfloatarray)()
@@ -1303,7 +1249,7 @@ readFloatArray(): number[]
 | --- | --- |
 | number[] | 返回双精度浮点数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1330,8 +1276,6 @@ readInt(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readInt](arkts-ipc-rpc-messagesequence-c.md#readint)()
@@ -1346,7 +1290,7 @@ readInt(): number
 | --- | --- |
 | number | 返回整数值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1373,8 +1317,6 @@ readIntArray(dataIn: number[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readIntArray](arkts-ipc-rpc-messagesequence-c.md#readintarray)(dataIn: int[])
@@ -1389,7 +1331,7 @@ readIntArray(dataIn: number[]): void
 | --- | --- | --- | --- |
 | dataIn | number[] | 是 | 要读取的整数数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1417,8 +1359,6 @@ readIntArray(): number[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readIntArray](arkts-ipc-rpc-messagesequence-c.md#readintarray)()
@@ -1433,7 +1373,7 @@ readIntArray(): number[]
 | --- | --- |
 | number[] | 返回整数数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1460,8 +1400,6 @@ readInterfaceToken(): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readInterfaceToken](arkts-ipc-rpc-messagesequence-c.md#readinterfacetoken)()
@@ -1476,7 +1414,7 @@ readInterfaceToken(): string
 | --- | --- |
 | string | 返回读取到的接口描述符。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1502,8 +1440,6 @@ readLong(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readLong](arkts-ipc-rpc-messagesequence-c.md#readlong)()
@@ -1518,7 +1454,7 @@ readLong(): number
 | --- | --- |
 | number | 返回长整数值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1545,8 +1481,6 @@ readLongArray(dataIn: number[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readLongArray](arkts-ipc-rpc-messagesequence-c.md#readlongarray)(dataIn: long[])
@@ -1561,7 +1495,7 @@ readLongArray(dataIn: number[]): void
 | --- | --- | --- | --- |
 | dataIn | number[] | 是 | 要读取的长整数数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1589,8 +1523,6 @@ readLongArray(): number[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readLongArray](arkts-ipc-rpc-messagesequence-c.md#readlongarray)()
@@ -1605,7 +1537,7 @@ readLongArray(): number[]
 | --- | --- |
 | number[] | 返回长整数数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1632,8 +1564,6 @@ readRawData(size: number): number[]
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readRawDataBuffer](arkts-ipc-rpc-messagesequence-c.md#readrawdatabuffer)(size: int)
@@ -1654,7 +1584,7 @@ readRawData(size: number): number[]
 | --- | --- |
 | number[] | 返回原始数据（以字节为单位）。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1682,8 +1612,6 @@ readRemoteObject(): IRemoteObject
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readRemoteObject](arkts-ipc-rpc-messagesequence-c.md#readremoteobject)()
@@ -1698,7 +1626,7 @@ readRemoteObject(): IRemoteObject
 | --- | --- |
 | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md) | 读取到的远程对象，用于IPC/RPC通信。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1736,8 +1664,6 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
@@ -1752,7 +1678,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 | --- | --- | --- | --- |
 | objects | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md)[] | 是 | 从MessageParcel读取的IRemoteObject对象数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1792,8 +1718,6 @@ readRemoteObjectArray(): IRemoteObject[]
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
@@ -1808,7 +1732,7 @@ readRemoteObjectArray(): IRemoteObject[]
 | --- | --- |
 | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md)[] | 返回IRemoteObject对象数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1848,8 +1772,6 @@ readSequenceable(dataIn: Sequenceable): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readParcelable](arkts-ipc-rpc-messagesequence-c.md#readparcelable)(dataIn: Parcelable)
@@ -1870,7 +1792,7 @@ readSequenceable(dataIn: Sequenceable): boolean
 | --- | --- |
 | boolean | true：反序列化成功，false：反序列化失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1918,8 +1840,6 @@ readSequenceableArray(sequenceableArray: Sequenceable[]): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readParcelableArray](arkts-ipc-rpc-messagesequence-c.md#readparcelablearray)(parcelableArray: Parcelable[])
@@ -1934,7 +1854,7 @@ readSequenceableArray(sequenceableArray: Sequenceable[]): void
 | --- | --- | --- | --- |
 | sequenceableArray | [Sequenceable](arkts-ipc-rpc-sequenceable-i.md)[] | 是 | 要读取的可序列化对象数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1984,8 +1904,6 @@ readShort(): number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readShort](arkts-ipc-rpc-messagesequence-c.md#readshort)()
@@ -2000,7 +1918,7 @@ readShort(): number
 | --- | --- |
 | number | 返回短整数值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2027,8 +1945,6 @@ readShortArray(dataIn: number[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readShortArray](arkts-ipc-rpc-messagesequence-c.md#readshortarray)(dataIn: int[])
@@ -2043,7 +1959,7 @@ readShortArray(dataIn: number[]): void
 | --- | --- | --- | --- |
 | dataIn | number[] | 是 | 要读取的短整数数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2071,8 +1987,6 @@ readShortArray(): number[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readShortArray](arkts-ipc-rpc-messagesequence-c.md#readshortarray)()
@@ -2087,7 +2001,7 @@ readShortArray(): number[]
 | --- | --- |
 | number[] | 返回短整数数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2114,8 +2028,6 @@ readString(): string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readString](arkts-ipc-rpc-messagesequence-c.md#readstring)()
@@ -2130,7 +2042,7 @@ readString(): string
 | --- | --- |
 | string | 返回字符串值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2157,8 +2069,6 @@ readStringArray(dataIn: string[]): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray)(dataIn: string[])
@@ -2173,7 +2083,7 @@ readStringArray(dataIn: string[]): void
 | --- | --- | --- | --- |
 | dataIn | string[] | 是 | 要读取的字符串数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2201,8 +2111,6 @@ readStringArray(): string[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray)()
@@ -2217,7 +2125,7 @@ readStringArray(): string[]
 | --- | --- |
 | string[] | 返回字符串数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2244,8 +2152,6 @@ reclaim(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [reclaim](arkts-ipc-rpc-messagesequence-c.md#reclaim)()
@@ -2254,7 +2160,7 @@ reclaim(): void
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2278,8 +2184,6 @@ rewindRead(pos: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [rewindRead](arkts-ipc-rpc-messagesequence-c.md#rewindread)(pos: int)
@@ -2300,7 +2204,7 @@ rewindRead(pos: number): boolean
 | --- | --- |
 | boolean | true：读取位置发生更改，false：读取位置未发生更改。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2330,8 +2234,6 @@ rewindWrite(pos: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [rewindWrite](arkts-ipc-rpc-messagesequence-c.md#rewindwrite)(pos: int)
@@ -2352,7 +2254,7 @@ rewindWrite(pos: number): boolean
 | --- | --- |
 | boolean | true：写入位置发生更改，false：写入位置未发生更改。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2380,8 +2282,6 @@ setCapacity(size: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [setCapacity](arkts-ipc-rpc-messagesequence-c.md#setcapacity)(size: int)
@@ -2402,7 +2302,7 @@ setCapacity(size: number): boolean
 | --- | --- |
 | boolean | true：设置成功，false：设置失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2427,8 +2327,6 @@ setSize(size: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [setSize](arkts-ipc-rpc-messagesequence-c.md#setsize)(size: int)
@@ -2449,7 +2347,7 @@ setSize(size: number): boolean
 | --- | --- |
 | boolean | true：设置成功，false：设置失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2474,8 +2372,6 @@ writeAshmem(ashmem: Ashmem): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [writeAshmem](arkts-ipc-rpc-messagesequence-c.md#writeashmem)(ashmem: Ashmem)
@@ -2496,7 +2392,7 @@ writeAshmem(ashmem: Ashmem): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2522,8 +2418,6 @@ writeBoolean(val: boolean): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeBoolean](arkts-ipc-rpc-messagesequence-c.md#writeboolean)(val: boolean)
@@ -2544,7 +2438,7 @@ writeBoolean(val: boolean): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2569,8 +2463,6 @@ writeBooleanArray(booleanArray: boolean[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeBooleanArray](arkts-ipc-rpc-messagesequence-c.md#writebooleanarray)(booleanArray: boolean[])
@@ -2591,7 +2483,7 @@ writeBooleanArray(booleanArray: boolean[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2616,8 +2508,6 @@ writeByte(val: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeByte](arkts-ipc-rpc-messagesequence-c.md#writebyte)(val: int)
@@ -2638,7 +2528,7 @@ writeByte(val: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2663,8 +2553,6 @@ writeByteArray(byteArray: number[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeByteArray](arkts-ipc-rpc-messagesequence-c.md#writebytearray)(byteArray: int[])
@@ -2685,7 +2573,7 @@ writeByteArray(byteArray: number[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2711,8 +2599,6 @@ writeChar(val: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeChar](arkts-ipc-rpc-messagesequence-c.md#writechar)(val: int)
@@ -2733,7 +2619,7 @@ writeChar(val: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2758,8 +2644,6 @@ writeCharArray(charArray: number[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeCharArray](arkts-ipc-rpc-messagesequence-c.md#writechararray)(charArray: int[])
@@ -2780,7 +2664,7 @@ writeCharArray(charArray: number[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2805,8 +2689,6 @@ writeDouble(val: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeDouble](arkts-ipc-rpc-messagesequence-c.md#writedouble)(val: double)
@@ -2827,7 +2709,7 @@ writeDouble(val: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2852,8 +2734,6 @@ writeDoubleArray(doubleArray: number[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeDoubleArray](arkts-ipc-rpc-messagesequence-c.md#writedoublearray)(doubleArray: double[])
@@ -2874,7 +2754,7 @@ writeDoubleArray(doubleArray: number[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2899,8 +2779,6 @@ writeFileDescriptor(fd: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [writeFileDescriptor](arkts-ipc-rpc-messagesequence-c.md#writefiledescriptor)(fd: int)
@@ -2921,7 +2799,7 @@ writeFileDescriptor(fd: number): boolean
 | --- | --- |
 | boolean | true：操作成功，false：操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2949,8 +2827,6 @@ writeFloat(val: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeFloat](arkts-ipc-rpc-messagesequence-c.md#writefloat)(val: double)
@@ -2971,7 +2847,7 @@ writeFloat(val: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -2996,8 +2872,6 @@ writeFloatArray(floatArray: number[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeFloatArray](arkts-ipc-rpc-messagesequence-c.md#writefloatarray)(floatArray: double[])
@@ -3018,7 +2892,7 @@ writeFloatArray(floatArray: number[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3043,8 +2917,6 @@ writeInt(val: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeInt](arkts-ipc-rpc-messagesequence-c.md#writeint)(val: int)
@@ -3065,7 +2937,7 @@ writeInt(val: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3090,8 +2962,6 @@ writeIntArray(intArray: number[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeIntArray](arkts-ipc-rpc-messagesequence-c.md#writeintarray)(intArray: int[])
@@ -3112,7 +2982,7 @@ writeIntArray(intArray: number[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3137,8 +3007,6 @@ writeInterfaceToken(token: string): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeInterfaceToken](arkts-ipc-rpc-messagesequence-c.md#writeinterfacetoken)(token: string)
@@ -3159,7 +3027,7 @@ writeInterfaceToken(token: string): boolean
 | --- | --- |
 | boolean | true：操作成功，false：操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3184,8 +3052,6 @@ writeLong(val: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeLong](arkts-ipc-rpc-messagesequence-c.md#writelong)(val: long)
@@ -3206,7 +3072,7 @@ writeLong(val: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3231,8 +3097,6 @@ writeLongArray(longArray: number[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeLongArray](arkts-ipc-rpc-messagesequence-c.md#writelongarray)(longArray: long[])
@@ -3253,7 +3117,7 @@ writeLongArray(longArray: number[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3278,8 +3142,6 @@ writeNoException(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [writeNoException](arkts-ipc-rpc-messagesequence-c.md#writenoexception)()
@@ -3288,7 +3150,7 @@ writeNoException(): void
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3327,8 +3189,6 @@ writeRawData(rawData: number[], size: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [writeRawDataBuffer](arkts-ipc-rpc-messagesequence-c.md#writerawdatabuffer)(rawData: ArrayBuffer, size: int)
@@ -3350,7 +3210,7 @@ writeRawData(rawData: number[], size: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3376,8 +3236,6 @@ writeRemoteObject(object: IRemoteObject): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeRemoteObject](arkts-ipc-rpc-messagesequence-c.md#writeremoteobject)(obj: IRemoteObject)
@@ -3398,7 +3256,7 @@ writeRemoteObject(object: IRemoteObject): boolean
 | --- | --- |
 | boolean | true：操作成功，false：操作失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3433,8 +3291,6 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [writeRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#writeremoteobjectarray)(objectArray: IRemoteObject[])
@@ -3455,7 +3311,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3492,8 +3348,6 @@ writeSequenceable(val: Sequenceable): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeParcelable](arkts-ipc-rpc-messagesequence-c.md#writeparcelable)(val: Parcelable)
@@ -3514,7 +3368,7 @@ writeSequenceable(val: Sequenceable): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3559,8 +3413,6 @@ writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeParcelableArray](arkts-ipc-rpc-messagesequence-c.md#writeparcelablearray)(parcelableArray: Parcelable[])
@@ -3581,7 +3433,7 @@ writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3629,8 +3481,6 @@ writeShort(val: number): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeShort](arkts-ipc-rpc-messagesequence-c.md#writeshort)(val: int)
@@ -3651,7 +3501,7 @@ writeShort(val: number): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3676,8 +3526,6 @@ writeShortArray(shortArray: number[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeShortArray](arkts-ipc-rpc-messagesequence-c.md#writeshortarray)(shortArray: int[])
@@ -3698,7 +3546,7 @@ writeShortArray(shortArray: number[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3723,8 +3571,6 @@ writeString(val: string): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeString](arkts-ipc-rpc-messagesequence-c.md#writestring)(val: string)
@@ -3745,7 +3591,7 @@ writeString(val: string): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -3770,8 +3616,6 @@ writeStringArray(stringArray: string[]): boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [writeStringArray](arkts-ipc-rpc-messagesequence-c.md#writestringarray)(stringArray: string[])
@@ -3792,7 +3636,7 @@ writeStringArray(stringArray: string[]): boolean
 | --- | --- |
 | boolean | true：写入成功，false：写入失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';

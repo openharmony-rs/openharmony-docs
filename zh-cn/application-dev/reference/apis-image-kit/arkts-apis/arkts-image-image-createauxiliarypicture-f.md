@@ -1,5 +1,11 @@
 # createAuxiliaryPicture
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## createAuxiliaryPicture
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: Auxiliary
 通过ArrayBuffer图片数据、辅助图尺寸、辅助图类型创建AuxiliaryPicture实例。该接口仅支持传入BGRA的连续像素数据，会创建出RGBA的辅助图。 由于图片占用内存较大，所以当AuxiliaryPicture实例使用完成后，应主动调用[release](arkts-image-image-auxiliarypicture-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法 均执行完成，且后续不再使用该实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture--><!--Device-image-function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture-End-->
 
@@ -38,7 +40,7 @@ function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: Auxiliary
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; 3.Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

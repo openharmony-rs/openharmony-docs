@@ -12,7 +12,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [CalendarDialogOptions](arkts-na-calendarpicker-calendardialogoptions-i.md) | 日历选择器弹窗选项。 继承自[CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md#calendaroptions)。 |
+| [CalendarDialogOptions](arkts-na-calendarpicker-calendardialogoptions-i.md) | 日历选择器弹窗选项。 继承自[CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md)。 |
 | [CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md) | 日历选择器组件的参数说明。 |
 
 <!--Del-->
@@ -20,7 +20,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [CalendarDialogOptions](arkts-na-calendarpicker-calendardialogoptions-i-sys.md) | 日历选择器弹窗选项。 继承自[CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md#calendaroptions)。 |
+| [CalendarDialogOptions](arkts-na-calendarpicker-calendardialogoptions-i-sys.md) | 日历选择器弹窗选项。 继承自[CalendarOptions](arkts-na-calendarpicker-calendaroptions-i.md)。 |
 <!--DelEnd-->
 
 ### 枚举

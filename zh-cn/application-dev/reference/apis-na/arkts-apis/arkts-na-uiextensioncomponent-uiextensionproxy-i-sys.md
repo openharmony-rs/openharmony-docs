@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface UIExtensionProxy--><!--Device-unnamed-export declare interface UIExtensionProxy-End-->
 
@@ -24,9 +22,7 @@ offAsyncReceiverRegister(callback?: Callback<UIExtensionProxy>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +36,7 @@ offAsyncReceiverRegister(callback?: Callback<UIExtensionProxy>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 否 | 监听事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 否 | 监听事件的回调。 |
 
 **错误码：**
 
@@ -58,9 +54,7 @@ offSyncReceiverRegister(callback?: Callback<UIExtensionProxy>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,7 +68,7 @@ offSyncReceiverRegister(callback?: Callback<UIExtensionProxy>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 否 | 监听事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 否 | 监听事件的回调。 |
 
 **错误码：**
 
@@ -92,9 +86,7 @@ onAsyncReceiverRegister(callback: Callback<UIExtensionProxy>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -108,7 +100,7 @@ onAsyncReceiverRegister(callback: Callback<UIExtensionProxy>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 是 | 监听事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 是 | 监听事件的回调。 |
 
 **错误码：**
 
@@ -126,9 +118,7 @@ onSyncReceiverRegister(callback: Callback<UIExtensionProxy>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -142,7 +132,7 @@ onSyncReceiverRegister(callback: Callback<UIExtensionProxy>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 是 | 监听事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[UIExtensionProxy](arkts-na-uiextensioncomponent-uiextensionproxy-i-sys.md)&gt; | 是 | 监听事件的回调。 |
 
 **错误码：**
 
@@ -160,9 +150,7 @@ send(data: Record<string, RecordData>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,7 +164,7 @@ send(data: Record<string, RecordData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 异步发送给被拉起的UIExtensionAbility的数据。API version 18之前的版本，data的类型为Object。 |
+| data | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 异步发送给被拉起的UIExtensionAbility的数据。API version 18之前的版本，data的类型为Object。 |
 
 **错误码：**
 
@@ -194,9 +182,7 @@ sendSync(data: Record<string, RecordData>): Record<string, RecordData>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -210,13 +196,13 @@ sendSync(data: Record<string, RecordData>): Record<string, RecordData>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 同步发送给被拉起的UIExtensionAbility的数据。API version 18之前的版本，data的类型为Object。 |
+| data | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 同步发送给被拉起的UIExtensionAbility的数据。API version 18之前的版本，data的类型为Object。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | data - 扩展Ability回复的数据。 |
+| Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | data - 扩展Ability回复的数据。 |
 
 **错误码：**
 

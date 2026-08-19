@@ -1,5 +1,11 @@
 # getMacSync
 
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
+
 ## getMacSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getMacSync(admin: Want, networkInterface: string): string
 根据网络接口获取设备MAC地址。适用于企业网络管理场景，例如设备识别、网络准入控制、MAC地址审计、设备资产管理，帮助企业识别和追踪设备，实现精细化的网络访问控制。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -44,7 +46,7 @@ function getMacSync(admin: Want, networkInterface: string): string
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { networkManager } from '@kit.MDMKit';

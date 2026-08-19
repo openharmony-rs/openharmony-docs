@@ -1,18 +1,19 @@
 # CalendarDialogOptions
 
-日历选择器弹窗选项。 继承自[CalendarOptions](arkts-arkui-calendaroptions-i.md#calendaroptions)。 > **说明：** > > 在应用窗口缩小过程中，弹窗的宽度会被不断压缩，当缩小到一定程度时会导致其内容无法完整显示，保证CalendarPickerDialog内容能够完整显示的最小 > 窗口宽度为386vp。
+日历选择器弹窗选项。 继承自[CalendarOptions](arkts-arkui-calendaroptions-i.md)。 > **说明：** > > 在应用窗口缩小过程中，弹窗的宽度会被不断压缩，当缩小到一定程度时会导致其内容无法完整显示，保证CalendarPickerDialog内容能够完整显示的最小 > 窗口宽度为386vp。
 
-**继承/实现关系：** CalendarDialogOptions extends [CalendarOptions](arkts-arkui-calendaroptions-i.md#calendaroptions)
+**继承/实现关系：** CalendarDialogOptions extends [CalendarOptions](arkts-arkui-calendaroptions-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface CalendarDialogOptions--><!--Device-unnamed-declare interface CalendarDialogOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## acceptButtonStyle
 
@@ -25,10 +26,6 @@ acceptButtonStyle?: PickerDialogButtonStyle
 **类型：** PickerDialogButtonStyle
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +49,6 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -75,10 +68,6 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **类型：** BackgroundBlurStyleOptions
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,10 +91,6 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -126,10 +111,6 @@ backgroundEffect?: BackgroundEffectOptions
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -149,10 +130,6 @@ cancelButtonStyle?: PickerDialogButtonStyle
 **类型：** PickerDialogButtonStyle
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,10 +153,6 @@ enableHoverMode?: boolean
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
@@ -201,10 +174,6 @@ hoverModeArea?: HoverModeAreaType
 **默认值：** HoverModeAreaType.BOTTOM_SCREEN
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -228,10 +197,6 @@ markToday?: boolean
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -251,10 +216,6 @@ onAccept?: Callback<Date>
 **类型：** Callback&lt;Date&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,10 +237,6 @@ onCancel?: VoidCallback
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -299,10 +256,6 @@ onChange?: Callback<Date>
 **类型：** Callback&lt;Date&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -324,10 +277,6 @@ onDidAppear?: VoidCallback
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -347,10 +296,6 @@ onDidDisappear?: VoidCallback
 **类型：** VoidCallback
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -372,10 +317,6 @@ onWillAppear?: VoidCallback
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -395,10 +336,6 @@ onWillDisappear?: VoidCallback
 **类型：** VoidCallback
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -420,10 +357,6 @@ shadow?: ShadowOptions | ShadowStyle
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -438,15 +371,11 @@ shadow?: ShadowOptions | ShadowStyle
 systemMaterial?: SystemUiMaterial
 ```
 
-设置弹窗的系统材质。 > **说明：** > > - 默认值：[ImmersiveOptions](../../apis-na/arkts-apis/arkts-na-uimaterial-immersiveoptions-i.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的 > [ImmersiveMaterial](../../apis-na/arkts-apis/arkts-na-uimaterial-immersivematerial-c.md#immersivematerial)对象。设置undefined时与默认值保持一致。 > - 不同的材质具有不同的视觉效果，包括背景透明度、模糊程度、阴影样式等方面的差异，该接口影响背景色 > backgroundColor、背景模糊 > backgroundBlurStyle > 、背景效果backgroundEffect、边框颜色 > borderColor、边框宽度borderWidth、阴影 > shadow，当设置系统材质时，上述接口不生效。
+设置弹窗的系统材质。 > **说明：** > > - 默认值：[ImmersiveOptions](../arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的 > [ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。 > - 不同的材质具有不同的视觉效果，包括背景透明度、模糊程度、阴影样式等方面的差异，该接口影响背景色 > backgroundColor、背景模糊 > backgroundBlurStyle > 、背景效果backgroundEffect、边框颜色 > borderColor、边框宽度borderWidth、阴影 > shadow，当设置系统材质时，上述接口不生效。
 
 **类型：** SystemUiMaterial
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

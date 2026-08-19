@@ -1,5 +1,11 @@
 # identity
 
+## 导入模块
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+```
+
 ## identity
 
 ```TypeScript
@@ -10,9 +16,7 @@ Matrix的初始化函数，可以返回一个单位矩阵对象。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

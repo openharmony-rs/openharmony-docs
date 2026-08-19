@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationSubscriber--><!--Device-unnamed-export interface NotificationSubscriber-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -25,10 +21,6 @@ onBadgeChanged?:(data: BadgeNumberCallbackData) => void
 **类型：** (data: BadgeNumberCallbackData) =&gt; void
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSubscriber-onBadgeChanged?:(data: BadgeNumberCallbackData) => void--><!--Device-NotificationSubscriber-onBadgeChanged?:(data: BadgeNumberCallbackData) => void-End-->
 
@@ -48,10 +40,6 @@ onBadgeEnabledChanged?: BadgeEnabledChangedCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSubscriber-onBadgeEnabledChanged?: BadgeEnabledChangedCallback--><!--Device-NotificationSubscriber-onBadgeEnabledChanged?: BadgeEnabledChangedCallback-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -69,10 +57,6 @@ onBatchCancel?: (data: Array<SubscribeCallbackData>) => void
 **类型：** (data: Array&lt;[SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md)&gt;) =&gt; void
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSubscriber-onBatchCancel?: (data: Array<SubscribeCallbackData>) => void--><!--Device-NotificationSubscriber-onBatchCancel?: (data: Array<SubscribeCallbackData>) => void-End-->
 
@@ -92,10 +76,6 @@ onCancel?:(data: SubscribeCallbackData) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSubscriber-onCancel?:(data: SubscribeCallbackData) => void--><!--Device-NotificationSubscriber-onCancel?:(data: SubscribeCallbackData) => void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -113,10 +93,6 @@ onConnect?:() => void
 **类型：** () =&gt; void
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSubscriber-onConnect?:() => void--><!--Device-NotificationSubscriber-onConnect?:() => void-End-->
 
@@ -136,10 +112,6 @@ onConsume?:(data: SubscribeCallbackData) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSubscriber-onConsume?:(data: SubscribeCallbackData) => void--><!--Device-NotificationSubscriber-onConsume?:(data: SubscribeCallbackData) => void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -157,10 +129,6 @@ onDestroy?:() => void
 **类型：** () =&gt; void
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSubscriber-onDestroy?:() => void--><!--Device-NotificationSubscriber-onDestroy?:() => void-End-->
 
@@ -180,10 +148,6 @@ onDisconnect?:() => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSubscriber-onDisconnect?:() => void--><!--Device-NotificationSubscriber-onDisconnect?:() => void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -202,10 +166,6 @@ onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSubscriber-onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void--><!--Device-NotificationSubscriber-onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -223,8 +183,6 @@ onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 **类型：** (mode: notification.DoNotDisturbDate) =&gt; void
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -248,10 +206,6 @@ onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) =>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSubscriber-onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) => void--><!--Device-NotificationSubscriber-onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) => void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -269,10 +223,6 @@ onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByB
 **类型：** (callbackData: EnabledPriorityNotificationByBundleCallbackData) =&gt; void
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSubscriber-onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void--><!--Device-NotificationSubscriber-onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void-End-->
 
@@ -292,10 +242,6 @@ onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackDat
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationSubscriber-onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void--><!--Device-NotificationSubscriber-onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -314,10 +260,6 @@ onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-NotificationSubscriber-onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback--><!--Device-NotificationSubscriber-onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback-End-->
@@ -332,15 +274,11 @@ onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 onNotificationSwitchChanged?: NotificationSwitchChangedCallback
 ```
 
-返回由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md#setnotificationswitch系统接口)接口设置的通知开关状态变化。
+返回由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md)接口设置的通知开关状态变化。
 
 **类型：** [NotificationSwitchChangedCallback](arkts-notification-notificationswitchchangedcallback-t-sys.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -362,10 +300,6 @@ onSystemUpdate?: SystemUpdateCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-NotificationSubscriber-onSystemUpdate?: SystemUpdateCallback--><!--Device-NotificationSubscriber-onSystemUpdate?: SystemUpdateCallback-End-->
@@ -385,10 +319,6 @@ onUpdate?:(data: NotificationSortingMap) => void
 **类型：** (data: NotificationSortingMap) =&gt; void
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationSubscriber-onUpdate?:(data: NotificationSortingMap) => void--><!--Device-NotificationSubscriber-onUpdate?:(data: NotificationSortingMap) => void-End-->
 

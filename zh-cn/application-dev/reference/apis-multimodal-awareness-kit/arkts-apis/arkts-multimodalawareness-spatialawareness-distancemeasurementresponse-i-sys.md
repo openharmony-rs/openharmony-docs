@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-spatialAwareness-export interface DistanceMeasurementResponse--><!--Device-spatialAwareness-export interface DistanceMeasurementResponse-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
+```
 
 ## confidence
 
@@ -25,10 +27,6 @@ confidence: float
 **类型：** float
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +48,6 @@ deviceId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DistanceMeasurementResponse-deviceId: string--><!--Device-DistanceMeasurementResponse-deviceId: string-End-->
@@ -74,10 +68,6 @@ distance: float
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DistanceMeasurementResponse-distance: float--><!--Device-DistanceMeasurementResponse-distance: float-End-->
@@ -97,10 +87,6 @@ rank: DistanceRank
 **类型：** [DistanceRank](arkts-multimodalawareness-spatialawareness-distancerank-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

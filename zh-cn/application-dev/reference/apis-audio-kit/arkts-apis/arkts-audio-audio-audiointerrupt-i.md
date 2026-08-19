@@ -4,15 +4,20 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md#audiorendereroptions)
+**替代接口：** [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md)
 
 <!--Device-audio-interface AudioInterrupt--><!--Device-audio-interface AudioInterrupt-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## contentType
 
@@ -25,8 +30,6 @@ contentType: ContentType
 **类型：** ContentType
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -48,8 +51,6 @@ pauseWhenDucked: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
@@ -69,8 +70,6 @@ streamUsage: StreamUsage
 **类型：** [StreamUsage](arkts-audio-audio-streamusage-e.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

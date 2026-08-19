@@ -1,20 +1,23 @@
 # Macro（系统接口）
 
-Macro继承自[MacroQuery](arkts-camera-camera-macroquery-i-sys.md#macroquery系统接口)。 提供使能微距能力的接口。
+Macro继承自[MacroQuery](arkts-camera-camera-macroquery-i-sys.md)。 提供使能微距能力的接口。
 
-**继承/实现关系：** Macro extends [MacroQuery](arkts-camera-camera-macroquery-i-sys.md#macroquery系统接口)
+**继承/实现关系：** Macro extends [MacroQuery](arkts-camera-camera-macroquery-i-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface Macro--><!--Device-camera-interface Macro-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## enableMacro
 
@@ -25,10 +28,6 @@ enableMacro(enabled: boolean): void
 使能当前的微距能力。 > **说明：** > > 使用该接口前，需要先通过[isMacroSupported](arkts-camera-camera-macroquery-i-sys.md#ismacrosupported)接口查询当前设备是否支持微距能力。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

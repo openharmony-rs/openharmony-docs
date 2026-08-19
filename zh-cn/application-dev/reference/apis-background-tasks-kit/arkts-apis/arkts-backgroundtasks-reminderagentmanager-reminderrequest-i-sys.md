@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-reminderAgentManager-interface ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequest-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## forceDistributed
 
@@ -25,10 +27,6 @@ forceDistributed?: boolean
 **默认值：** false
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-forceDistributed?: boolean--><!--Device-ReminderRequest-forceDistributed?: boolean-End-->
 
@@ -49,10 +47,6 @@ notDistributed?: boolean
 **默认值：** false
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-notDistributed?: boolean--><!--Device-ReminderRequest-notDistributed?: boolean-End-->
 

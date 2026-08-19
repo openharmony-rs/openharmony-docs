@@ -1,5 +1,11 @@
 # setPointerVisible
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## setPointerVisible
 
 ```TypeScript
@@ -10,10 +16,6 @@ function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): void--><!--Device-pointer-function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -23,7 +25,7 @@ function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | visible | boolean | 是 | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置鼠标光标显示状态成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置鼠标光标显示状态成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -32,7 +34,7 @@ function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): voi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported;<br>**适用版本：** 18+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -108,10 +110,6 @@ function setPointerVisible(visible: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function setPointerVisible(visible: boolean): Promise<void>--><!--Device-pointer-function setPointerVisible(visible: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -135,7 +133,7 @@ function setPointerVisible(visible: boolean): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported;<br>**适用版本：** 18+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

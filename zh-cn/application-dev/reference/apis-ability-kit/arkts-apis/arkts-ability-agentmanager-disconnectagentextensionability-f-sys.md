@@ -1,18 +1,20 @@
 # disconnectAgentExtensionAbility（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { agentManager } from '@kit.AbilityKit';
+```
+
 ## disconnectAgentExtensionAbility
 
 ```TypeScript
 function disconnectAgentExtensionAbility(proxy: AgentProxy): Promise<void>
 ```
 
-断开与指定proxy的[AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability) 的连接。
+断开与指定proxy的[AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md) 的连接。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_AGENT
 
@@ -28,7 +30,7 @@ function disconnectAgentExtensionAbility(proxy: AgentProxy): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| proxy | [AgentProxy](arkts-ability-agentproxy-i-sys.md) | 是 | 要断开连接的 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability)对应的 Proxy对象，在调用[connectAgentExtensionAbility](arkts-ability-agentmanager-connectagentextensionability-f-sys.md#connectagentextensionability系统接口)接口连接 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md#agentextensionability)时会返回其对应 的proxy对象。 |
+| proxy | [AgentProxy](arkts-ability-agentproxy-i-sys.md) | 是 | 要断开连接的 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)对应的 Proxy对象，在调用[connectAgentExtensionAbility](arkts-ability-agentmanager-connectagentextensionability-f-sys.md)接口连接 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)时会返回其对应 的proxy对象。 |
 
 **返回值：**
 

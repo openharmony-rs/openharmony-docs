@@ -4,13 +4,15 @@ Describes the information of an Metrics Event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-interface AVMetricsEvent--><!--Device-media-interface AVMetricsEvent-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## details
 
@@ -23,10 +25,6 @@ The detailed information of the event.
 **类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ Type of the metrics event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMetricsEvent-event: AVMetricsEventType--><!--Device-AVMetricsEvent-event: AVMetricsEventType-End-->
@@ -68,10 +62,6 @@ The playback progress position when the event occurs.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVMetricsEvent-playbackPosition: int--><!--Device-AVMetricsEvent-playbackPosition: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
@@ -87,10 +77,6 @@ Absolute timestamp when the event occurred.
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVMetricsEvent-timeStamp: long--><!--Device-AVMetricsEvent-timeStamp: long-End-->
 

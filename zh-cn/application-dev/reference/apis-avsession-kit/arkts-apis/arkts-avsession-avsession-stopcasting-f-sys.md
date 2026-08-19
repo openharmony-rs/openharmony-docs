@@ -1,5 +1,11 @@
 # stopCasting（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## stopCasting
 
 ```TypeScript
@@ -9,10 +15,6 @@ function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void
 结束投播。结果通过callback异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void--><!--Device-avSession-function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void-End-->
 
@@ -25,7 +27,7 @@ function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | session | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) | 是 | 会话令牌。SessionToken表示单个token。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当成功结束投播，err为undefined，否则返回错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当成功结束投播，err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -35,7 +37,7 @@ function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let myToken: avSession.SessionToken = {
@@ -56,10 +58,6 @@ function stopCasting(session: SessionToken): Promise<void>
 结束投播。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function stopCasting(session: SessionToken): Promise<void>--><!--Device-avSession-function stopCasting(session: SessionToken): Promise<void>-End-->
 
@@ -87,7 +85,7 @@ function stopCasting(session: SessionToken): Promise<void>
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let myToken: avSession.SessionToken = {

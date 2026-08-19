@@ -1,5 +1,14 @@
 # getStations（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## getStations
 
 ```TypeScript
@@ -9,8 +18,6 @@ function getStations(): Array<StationInfo>
 获取连接的设备。 &lt;p&gt;该方法只能在作为热点的设备上使用。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -30,7 +37,7 @@ function getStations(): Array<StationInfo>
 | --- | --- |
 | Array&lt;StationInfo&gt; | 连接的设备数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

@@ -1,12 +1,19 @@
 # @ohos.arkui.advanced.Popup
 
+## 导入模块
+
+```TypeScript
+import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOptions } from '@kit.ArkUI';
+import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 函数
 
 | 名称 | 说明 |
 | --- | --- |
-| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md#popup) |  |
+| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md) |  |
 
 ### 接口
 

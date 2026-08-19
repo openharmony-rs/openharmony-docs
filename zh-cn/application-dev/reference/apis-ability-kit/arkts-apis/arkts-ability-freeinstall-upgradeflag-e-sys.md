@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-freeInstall-export enum UpgradeFlag--><!--Device-freeInstall-export enum UpgradeFlag-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -23,10 +19,6 @@ NOT_UPGRADE = 0
 模块无需升级。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-UpgradeFlag-NOT_UPGRADE = 0--><!--Device-UpgradeFlag-NOT_UPGRADE = 0-End-->
 
@@ -44,10 +36,6 @@ SINGLE_UPGRADE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-UpgradeFlag-SINGLE_UPGRADE = 1--><!--Device-UpgradeFlag-SINGLE_UPGRADE = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -63,10 +51,6 @@ RELATION_UPGRADE = 2
 关系模块需要升级。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-UpgradeFlag-RELATION_UPGRADE = 2--><!--Device-UpgradeFlag-RELATION_UPGRADE = 2-End-->
 

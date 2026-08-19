@@ -1,5 +1,11 @@
 # cwd（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { process } from '@kit.ArkTS';
+```
+
 ## cwd
 
 ```TypeScript
@@ -9,10 +15,6 @@ function cwd(): string
 返回当前工作目录。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-process-function cwd(): string--><!--Device-process-function cwd(): string-End-->
 

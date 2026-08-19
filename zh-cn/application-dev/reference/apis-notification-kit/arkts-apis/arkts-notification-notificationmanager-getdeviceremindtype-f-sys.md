@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## getDeviceRemindType
@@ -15,8 +15,6 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 获取通知的提醒方式。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
@@ -32,7 +30,7 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceRemindType&gt; | 是 | 获取通知提醒方式的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;DeviceRemindType&gt; | 是 | 获取通知提醒方式的回调函数。 |
 
 **错误码：**
 
@@ -46,7 +44,7 @@ function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -89,8 +87,6 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
 **废弃版本：** 26.0.0
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
@@ -118,7 +114,7 @@ function getDeviceRemindType(): Promise<DeviceRemindType>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

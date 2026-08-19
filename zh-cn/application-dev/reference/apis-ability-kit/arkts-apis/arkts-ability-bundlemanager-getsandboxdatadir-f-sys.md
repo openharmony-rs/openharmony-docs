@@ -1,5 +1,11 @@
 # getSandboxDataDir（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getSandboxDataDir
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSandboxDataDir(bundleName: string, appIndex: int): string
 根据应用包名和分身索引获取对应的沙箱目录。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -44,7 +46,7 @@ function getSandboxDataDir(bundleName: string, appIndex: int): string
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appManager-export enum KeepAliveAppType--><!--Device-appManager-export enum KeepAliveAppType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -20,13 +16,9 @@
 ALL = 0
 ```
 
-三方应用和系统应用。此选项只能作为[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md#getkeepalivebundles系统接口)接口的入参被调用。
+三方应用和系统应用。此选项只能作为[getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md)接口的入参被调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeepAliveAppType-ALL = 0--><!--Device-KeepAliveAppType-ALL = 0-End-->
 
@@ -44,10 +36,6 @@ THIRD_PARTY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeepAliveAppType-THIRD_PARTY = 1--><!--Device-KeepAliveAppType-THIRD_PARTY = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -63,10 +51,6 @@ SYSTEM = 2
 系统应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeepAliveAppType-SYSTEM = 2--><!--Device-KeepAliveAppType-SYSTEM = 2-End-->
 

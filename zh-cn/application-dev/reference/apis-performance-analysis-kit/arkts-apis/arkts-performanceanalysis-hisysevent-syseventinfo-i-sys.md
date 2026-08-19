@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hiSysEvent-interface SysEventInfo--><!--Device-hiSysEvent-interface SysEventInfo-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+```
 
 ## domain
 
@@ -25,10 +27,6 @@ domain: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SysEventInfo-domain: string--><!--Device-SysEventInfo-domain: string-End-->
 
@@ -48,10 +46,6 @@ eventType: EventType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SysEventInfo-eventType: EventType--><!--Device-SysEventInfo-eventType: EventType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -70,10 +64,6 @@ name: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SysEventInfo-name: string--><!--Device-SysEventInfo-name: string-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -91,10 +81,6 @@ params?: Record<string, boolean | int | double | string | bigint | boolean[] | i
 **类型：** Record&lt;string, boolean \| int \| double \| string \| bigint \| boolean[] \| int[] \| double[] \| string[] \| bigint[]&gt; \| null \| undefined
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SysEventInfo-params?: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> | null | undefined--><!--Device-SysEventInfo-params?: Record<string, boolean | int | double | string | bigint | boolean[] | int[] | double[] | string[] | bigint[]> | null | undefined-End-->
 

@@ -1,12 +1,8 @@
 # SceneResourceType
 
-场景资源类型枚举.
+场景资源类型枚举，对场景中的资源进行分类。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum SceneResourceType--><!--Device-unnamed-export enum SceneResourceType-End-->
 
@@ -18,13 +14,9 @@
 UNKNOWN = 0
 ```
 
-资源是Unknown类型.
+未定义类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-UNKNOWN = 0--><!--Device-SceneResourceType-UNKNOWN = 0-End-->
 
@@ -36,13 +28,9 @@ UNKNOWN = 0
 NODE = 1
 ```
 
-资源是Node类型.
+节点类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-NODE = 1--><!--Device-SceneResourceType-NODE = 1-End-->
 
@@ -54,13 +42,9 @@ NODE = 1
 ENVIRONMENT = 2
 ```
 
-资源是Environment类型.
+环境类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-ENVIRONMENT = 2--><!--Device-SceneResourceType-ENVIRONMENT = 2-End-->
 
@@ -72,13 +56,9 @@ ENVIRONMENT = 2
 MATERIAL = 3
 ```
 
-资源是Material类型.
+材质类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-MATERIAL = 3--><!--Device-SceneResourceType-MATERIAL = 3-End-->
 
@@ -90,13 +70,9 @@ MATERIAL = 3
 MESH = 4
 ```
 
-资源是Mesh类型.
+网格类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-MESH = 4--><!--Device-SceneResourceType-MESH = 4-End-->
 
@@ -108,13 +84,9 @@ MESH = 4
 ANIMATION = 5
 ```
 
-资源是Animation类型.
+动画类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-ANIMATION = 5--><!--Device-SceneResourceType-ANIMATION = 5-End-->
 
@@ -126,13 +98,9 @@ ANIMATION = 5
 SHADER = 6
 ```
 
-资源是Shader类型.
+着色器类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-SHADER = 6--><!--Device-SceneResourceType-SHADER = 6-End-->
 
@@ -144,13 +112,9 @@ SHADER = 6
 IMAGE = 7
 ```
 
-资源是Image类型.
+图片类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-IMAGE = 7--><!--Device-SceneResourceType-IMAGE = 7-End-->
 
@@ -162,13 +126,9 @@ IMAGE = 7
 MESH_RESOURCE = 8
 ```
 
-资源是MeshResource类型
+网格资源类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-MESH_RESOURCE = 8--><!--Device-SceneResourceType-MESH_RESOURCE = 8-End-->
 
@@ -180,13 +140,9 @@ MESH_RESOURCE = 8
 EFFECT = 9
 ```
 
-资源是Effect类型.
+后处理特效类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneResourceType-EFFECT = 9--><!--Device-SceneResourceType-EFFECT = 9-End-->
 

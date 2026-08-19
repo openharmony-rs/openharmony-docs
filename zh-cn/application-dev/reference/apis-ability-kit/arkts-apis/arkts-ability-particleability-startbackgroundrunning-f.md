@@ -1,5 +1,11 @@
 # startBackgroundRunning
 
+## 导入模块
+
+```TypeScript
+import { particleAbility } from '@kit.AbilityKit';
+```
+
 ## startBackgroundRunning
 
 ```TypeScript
@@ -10,11 +16,9 @@ function startBackgroundRunning(id: number, request: NotificationRequest, callba
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)
+**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -30,9 +34,9 @@ function startBackgroundRunning(id: number, request: NotificationRequest, callba
 | --- | --- | --- | --- |
 | id | number | 是 | 长时任务通知id号。 |
 | request | [NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md) | 是 | 通知参数，用于显示通知栏的信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当向系统申请长时任务成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当向系统申请长时任务成功，err为undefined，否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { particleAbility, wantAgent } from '@kit.AbilityKit';
@@ -87,11 +91,9 @@ function startBackgroundRunning(id: number, request: NotificationRequest): Promi
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)
+**替代接口：** [startBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -114,7 +116,7 @@ function startBackgroundRunning(id: number, request: NotificationRequest): Promi
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { particleAbility, wantAgent } from '@kit.AbilityKit';

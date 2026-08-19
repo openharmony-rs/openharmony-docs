@@ -4,11 +4,9 @@ P2P群组所有者频段。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [GroupOwnerBand](arkts-connectivity-wifimanager-groupownerband-e.md#groupownerband)
+**替代接口：** [GroupOwnerBand](arkts-connectivity-wifimanager-groupownerband-e.md)
 
 <!--Device-wifi-enum GroupOwnerBand--><!--Device-wifi-enum GroupOwnerBand-End-->
 
@@ -24,11 +22,9 @@ GO_BAND_AUTO = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [GO_BAND_AUTO](arkts-connectivity-wifimanager-groupownerband-e.md#gobandauto)
+**替代接口：** [GO_BAND_AUTO](arkts-connectivity-wifimanager-groupownerband-e.md#go_band_auto)
 
 <!--Device-GroupOwnerBand-GO_BAND_AUTO = 0--><!--Device-GroupOwnerBand-GO_BAND_AUTO = 0-End-->
 
@@ -44,11 +40,9 @@ GO_BAND_2GHZ = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [GO_BAND_2GHZ](arkts-connectivity-wifimanager-groupownerband-e.md#goband2ghz)
+**替代接口：** [GO_BAND_2GHZ](arkts-connectivity-wifimanager-groupownerband-e.md#go_band_2ghz)
 
 <!--Device-GroupOwnerBand-GO_BAND_2GHZ = 1--><!--Device-GroupOwnerBand-GO_BAND_2GHZ = 1-End-->
 
@@ -64,11 +58,9 @@ GO_BAND_5GHZ = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [GO_BAND_5GHZ](arkts-connectivity-wifimanager-groupownerband-e.md#goband5ghz)
+**替代接口：** [GO_BAND_5GHZ](arkts-connectivity-wifimanager-groupownerband-e.md#go_band_5ghz)
 
 <!--Device-GroupOwnerBand-GO_BAND_5GHZ = 2--><!--Device-GroupOwnerBand-GO_BAND_5GHZ = 2-End-->
 

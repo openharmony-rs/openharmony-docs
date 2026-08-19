@@ -4,10 +4,6 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum GridDirection--><!--Device-unnamed-declare enum GridDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ Row
 主轴布局方向沿水平方向布局，即自左往右先填满一行，再去填下一行。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ Column
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GridDirection-Column--><!--Device-GridDirection-Column-End-->
@@ -62,10 +50,6 @@ RowReverse
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GridDirection-RowReverse--><!--Device-GridDirection-RowReverse-End-->
@@ -81,10 +65,6 @@ ColumnReverse
 主轴布局方向沿垂直方向反向布局，即自下往上先填满一列，再去填下一列。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

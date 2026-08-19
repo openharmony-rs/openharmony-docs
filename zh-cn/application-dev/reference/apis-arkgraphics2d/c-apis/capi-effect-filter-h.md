@@ -53,7 +53,7 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当pixelmap或filter为空指针时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当pixelmap或filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_Release()
 
@@ -77,7 +77,7 @@ EffectErrorCode OH_Filter_Release(OH_Filter* filter)
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_Blur()
 
@@ -102,7 +102,7 @@ EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_BlurWithTileMode()
 
@@ -128,7 +128,7 @@ EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, Effe
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针或radius小于0时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_Brighten()
 
@@ -153,7 +153,7 @@ EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针或<br>         brightness超出[0,1]时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针或          brightness超出[0,1]时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_GrayScale()
 
@@ -177,7 +177,7 @@ EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_Invert()
 
@@ -201,7 +201,7 @@ EffectErrorCode OH_Filter_Invert(OH_Filter* filter)
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_SetColorMatrix()
 
@@ -226,7 +226,7 @@ EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatri
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter或matrix为空指针时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter或matrix为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 ### OH_Filter_GetEffectPixelMap()
 
@@ -251,6 +251,6 @@ EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative
 
 | 类型 | 说明 |
 | -- | -- |
-| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul><br>         <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li><br>         <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter或pixelmap为空指针时，返回EFFECT_BAD_PARAMETER。</li><br>         </ul> |
+| [EffectErrorCode](capi-effect-types-h.md#effecterrorcode) | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} 操作成功则返回EFFECT_SUCCESS。</li>          <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} 当filter或pixelmap为空指针时，返回EFFECT_BAD_PARAMETER。</li>          </ul> |
 
 

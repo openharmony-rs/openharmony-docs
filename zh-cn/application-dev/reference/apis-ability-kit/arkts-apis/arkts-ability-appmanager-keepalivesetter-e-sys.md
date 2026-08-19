@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appManager-export enum KeepAliveSetter--><!--Device-appManager-export enum KeepAliveSetter-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -24,10 +20,6 @@ SYSTEM = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-KeepAliveSetter-SYSTEM = 0--><!--Device-KeepAliveSetter-SYSTEM = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -43,10 +35,6 @@ USER = 1
 应用保活设置方为用户。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeepAliveSetter-USER = 1--><!--Device-KeepAliveSetter-USER = 1-End-->
 

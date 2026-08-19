@@ -1,5 +1,11 @@
 # setAppGroup（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
+
 ## setAppGroup
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCal
 将指定bundleName应用的分组设置为newGroup，仅支持当前应用为其他应用设置，使用CallBack异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -28,7 +30,7 @@ function setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCal
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用的bundleName。 |
 | newGroup | [GroupType](arkts-backgroundtasks-usagestatistics-grouptype-e-sys.md) | 是 | 应用分组类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 当设置成功，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 当设置成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -45,7 +47,7 @@ function setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCal
 | [10000004](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -73,10 +75,6 @@ function setAppGroup(bundleName: string, newGroup: GroupType): Promise<void>
 将指定bundleName应用的分组设置为newGroup，仅支持当前应用为其他应用设置，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -114,7 +112,7 @@ function setAppGroup(bundleName: string, newGroup: GroupType): Promise<void>
 | [10000004](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

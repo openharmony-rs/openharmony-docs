@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-image-enum AvisPropertyKey--><!--Device-image-enum AvisPropertyKey-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ DELAY_TIME = 'AvisDelayTime'
 AVIS图片的每帧播放时长。 单位：毫秒（ms）。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

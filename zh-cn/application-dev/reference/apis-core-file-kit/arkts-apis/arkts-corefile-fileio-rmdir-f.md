@@ -1,5 +1,10 @@
 # rmdir
 
+## 导入模块
+
+```TypeScript
+```
+
 ## rmdir
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function rmdir(path: string): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [rmdir](arkts-corefile-file-fs-rmdir-f.md#rmdir)
+**替代接口：** [rmdir](arkts-corefile-file-fs-rmdir-f.md)
 
 <!--Device-unnamed-declare function rmdir(path: string): Promise<void>--><!--Device-unnamed-declare function rmdir(path: string): Promise<void>-End-->
 
@@ -43,11 +46,9 @@ declare function rmdir(path: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [rmdir](arkts-corefile-file-fs-rmdir-f.md#rmdir)
+**替代接口：** [rmdir](arkts-corefile-file-fs-rmdir-f.md)
 
 <!--Device-unnamed-declare function rmdir(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function rmdir(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -58,5 +59,5 @@ declare function rmdir(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 待删除目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步删除目录之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步删除目录之后的回调。 |
 

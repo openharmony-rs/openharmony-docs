@@ -1,5 +1,12 @@
 # getAuthenticator
 
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
+
 ## getAuthenticator
 
 ```TypeScript
@@ -10,11 +17,9 @@ function getAuthenticator(): Authenticator
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
-**替代接口：** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md#getauthinstance)
+**替代接口：** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
 
 <!--Device-userAuth-function getAuthenticator(): Authenticator--><!--Device-userAuth-function getAuthenticator(): Authenticator-End-->
 
@@ -26,7 +31,7 @@ function getAuthenticator(): Authenticator
 | --- | --- |
 | Authenticator | 认证器对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

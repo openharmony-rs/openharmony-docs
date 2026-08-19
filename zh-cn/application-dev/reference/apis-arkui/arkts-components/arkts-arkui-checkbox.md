@@ -14,10 +14,6 @@ Checkbox(options?: CheckboxOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -34,6 +30,16 @@ Checkbox(options?: CheckboxOptions)
 
 ## 汇总
 
-- [CheckBoxConfiguration](arkts-arkui-checkboxconfiguration-i.md)
-- [CheckboxOptions](arkts-arkui-checkboxoptions-i.md)
-- [OnCheckboxChangeCallback](arkts-arkui-oncheckboxchangecallback-t.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [CheckBoxConfiguration](arkts-arkui-checkboxconfiguration-i.md) | 开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。 |
+| [CheckboxOptions](arkts-arkui-checkboxoptions-i.md) | 多选框的信息。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [OnCheckboxChangeCallback](arkts-arkui-oncheckboxchangecallback-t.md) | 选中的状态。 |
+

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface BundleOptions--><!--Device-unnamed-export interface BundleOptions-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -25,10 +21,6 @@ Ability名称。默认值为空字符串。 **模型约束：** 此接口仅可�
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +42,6 @@ appIndex?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BundleOptions-appIndex?: int--><!--Device-BundleOptions-appIndex?: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -71,10 +59,6 @@ bundleName?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +80,6 @@ Ability所属的模块名称。默认值为空字符串。 **模型约束：** �
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BundleOptions-moduleName?: string--><!--Device-BundleOptions-moduleName?: string-End-->
@@ -119,10 +99,6 @@ userId?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BundleOptions-userId?: int--><!--Device-BundleOptions-userId?: int-End-->
 

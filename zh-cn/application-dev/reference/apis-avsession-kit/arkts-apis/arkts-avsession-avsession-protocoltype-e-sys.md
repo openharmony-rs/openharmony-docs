@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum ProtocolType--><!--Device-avSession-enum ProtocolType-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -21,10 +17,6 @@ TYPE_CAST_PLUS_MIRROR = 1
 Cast+的镜像模式。 **系统接口：** 该接口为系统接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ProtocolType-TYPE_CAST_PLUS_MIRROR = 1--><!--Device-ProtocolType-TYPE_CAST_PLUS_MIRROR = 1-End-->
 

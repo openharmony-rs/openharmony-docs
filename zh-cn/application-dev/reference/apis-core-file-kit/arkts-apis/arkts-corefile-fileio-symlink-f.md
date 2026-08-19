@@ -1,5 +1,10 @@
 # symlink
 
+## 导入模块
+
+```TypeScript
+```
+
 ## symlink
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [symlink](arkts-corefile-file-fs-symlink-f.md#symlink)
+**替代接口：** [symlink](arkts-corefile-file-fs-symlink-f.md)
 
 <!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>--><!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>-End-->
 
@@ -44,11 +47,9 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [symlink](arkts-corefile-file-fs-symlink-f.md#symlink)
+**替代接口：** [symlink](arkts-corefile-file-fs-symlink-f.md)
 
 <!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void-End-->
 
@@ -60,5 +61,5 @@ declare function symlink(target: string, srcPath: string, callback: AsyncCallbac
 | --- | --- | --- | --- |
 | target | string | 是 | 目标文件的应用沙箱路径。 |
 | srcPath | string | 是 | 符号链接文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 异步创建符号链接信息之后的回调。 |
 

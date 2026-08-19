@@ -22,5 +22,8 @@ typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions
 | -- | -- |
 | [JSVM_CompileOptionId](capi-jsvm-types-h.md#jsvm_compileoptionid) id | JSVM编译选项ID。 |
 | union | id对应的编译选项值联合体。 |
+| void *ptr | 指向编译选项值的指针。 |
+| int num | 存储整数类型的编译选项值。 |
+| bool boolean; } content | 存储布尔类型的编译选项值。 |
 
 

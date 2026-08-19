@@ -1,5 +1,11 @@
 # getAllSystemHotkeys
 
+## 导入模块
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+```
+
 ## getAllSystemHotkeys
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>
 获取所有系统快捷键，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputConsumer-function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>--><!--Device-inputConsumer-function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>-End-->
 
@@ -30,7 +32,7 @@ function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

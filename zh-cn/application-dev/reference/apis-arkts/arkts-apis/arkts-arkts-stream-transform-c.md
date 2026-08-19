@@ -1,18 +1,20 @@
 # Transform
 
-一种特殊的双工流，支持数据转换和结果输出。**Transform**类继承自[Duplex](arkts-arkts-stream-duplex-c.md#duplex)，支持**Duplex**中的所有API。
+一种特殊的双工流，支持数据转换和结果输出。**Transform**类继承自[Duplex](arkts-arkts-stream-duplex-c.md)，支持**Duplex**中的所有API。
 
-**继承/实现关系：** Transform extends [Duplex](arkts-arkts-stream-duplex-c.md#duplex)
+**继承/实现关系：** Transform extends [Duplex](arkts-arkts-stream-duplex-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-stream-class Transform--><!--Device-stream-class Transform-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { stream } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -24,17 +26,13 @@ constructor()
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Transform-constructor()--><!--Device-Transform-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 let transformStream = new stream.Transform();
@@ -50,10 +48,6 @@ doFlush(callback: Function): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Transform-doFlush(callback: Function): void--><!--Device-Transform-doFlush(callback: Function): void-End-->
@@ -66,7 +60,7 @@ doFlush(callback: Function): void
 | --- | --- | --- | --- |
 | callback | Function | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -126,10 +120,6 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Transform-doTransform(chunk: string, encoding: string, callback: Function): void--><!--Device-Transform-doTransform(chunk: string, encoding: string, callback: Function): void-End-->
@@ -144,7 +134,7 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 | encoding | string | 是 | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 | callback | Function | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

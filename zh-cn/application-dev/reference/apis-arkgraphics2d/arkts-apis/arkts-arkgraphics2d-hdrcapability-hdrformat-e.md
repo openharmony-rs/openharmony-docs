@@ -4,10 +4,6 @@ HDR格式枚举。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hdrCapability-enum HDRFormat--><!--Device-hdrCapability-enum HDRFormat-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
@@ -21,10 +17,6 @@ NONE = 0
 不支持HDR类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ VIDEO_HLG = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HDRFormat-VIDEO_HLG = 1--><!--Device-HDRFormat-VIDEO_HLG = 1-End-->
@@ -61,10 +49,6 @@ VIDEO_HDR10 = 2
 支持视频的HDR10格式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ VIDEO_HDR_VIVID = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HDRFormat-VIDEO_HDR_VIVID = 3--><!--Device-HDRFormat-VIDEO_HDR_VIVID = 3-End-->
@@ -101,10 +81,6 @@ IMAGE_HDR_VIVID_DUAL = 4
 支持图片的HDR_VIVID格式，以dual JPEG格式存储。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ IMAGE_HDR_VIVID_SINGLE = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HDRFormat-IMAGE_HDR_VIVID_SINGLE = 5--><!--Device-HDRFormat-IMAGE_HDR_VIVID_SINGLE = 5-End-->
@@ -141,10 +113,6 @@ IMAGE_HDR_ISO_DUAL = 6
 支持图片的HDR_ISO格式，以dual JPEG格式存储。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ IMAGE_HDR_ISO_SINGLE = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HDRFormat-IMAGE_HDR_ISO_SINGLE = 7--><!--Device-HDRFormat-IMAGE_HDR_ISO_SINGLE = 7-End-->
@@ -181,10 +145,6 @@ VIDEO_AIHDR = 8
 支持视频的AIHDR格式。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

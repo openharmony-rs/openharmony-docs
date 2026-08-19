@@ -1,18 +1,21 @@
 # WriteOptions
 
-可选项类型，支持write接口使用，WriteOptions继承自[Options](arkts-na-file-fs-options-i.md#options)。
+可选项类型，支持write接口使用，WriteOptions继承自[Options](arkts-na-file-fs-options-i.md)。
 
-**继承/实现关系：** WriteOptions extends [Options](arkts-na-file-fs-options-i.md#options)
+**继承/实现关系：** WriteOptions extends [Options](arkts-na-file-fs-options-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export interface WriteOptions--><!--Device-unnamed-export interface WriteOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## length
 
@@ -26,9 +29,7 @@ length?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WriteOptions-length?: long--><!--Device-WriteOptions-length?: long-End-->
 
@@ -46,9 +47,7 @@ offset?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WriteOptions-offset?: long--><!--Device-WriteOptions-offset?: long-End-->
 

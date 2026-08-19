@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface Caller--><!--Device-unnamed-export interface Caller-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+## 导入模块
+
+```TypeScript
+import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteStateChangeCallback } from '@kit.AbilityKit';
+```
 
 ## call
 
@@ -21,10 +23,6 @@ call(method: string, data: rpc.Parcelable): Promise<void>
 Caller UIAbility向Callee UIAbility发送双方约定好的序列化的数据。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,7 +52,7 @@ Caller UIAbility向Callee UIAbility发送双方约定好的序列化的数据。
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -185,10 +183,6 @@ Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Caller-callWithResult(method: string, data: rpc.Parcelable): Promise<rpc.MessageSequence>--><!--Device-Caller-callWithResult(method: string, data: rpc.Parcelable): Promise<rpc.MessageSequence>-End-->
@@ -217,7 +211,7 @@ Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成�
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -354,10 +348,6 @@ offRelease(callback: OnReleaseCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Caller-offRelease(callback: OnReleaseCallback): void--><!--Device-Caller-offRelease(callback: OnReleaseCallback): void-End-->
@@ -370,7 +360,7 @@ offRelease(callback: OnReleaseCallback): void
 | --- | --- | --- | --- |
 | callback | [OnReleaseCallback](arkts-ability-app-ability-uiability-onreleasecallback-i.md) | 是 | 回调函数，返回off回调结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 
@@ -418,17 +408,13 @@ offRelease(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Caller-offRelease(): void--><!--Device-Caller-offRelease(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 
@@ -466,7 +452,7 @@ export default class MainUIAbility extends UIAbility {
 }
 ```
 
-## off_release
+## off('release')
 
 ```TypeScript
 off(type: 'release', callback: OnReleaseCallback): void
@@ -475,10 +461,6 @@ off(type: 'release', callback: OnReleaseCallback): void
 取消注册Callee UIAbility断开通知的监听，与[on('release')](#onrelease)是反向操作，当前暂未支持。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -499,7 +481,7 @@ off(type: 'release', callback: OnReleaseCallback): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, Caller, OnReleaseCallback } from '@kit.AbilityKit';
@@ -531,7 +513,7 @@ export default class MainUIAbility extends UIAbility {
 }
 ```
 
-## off_release
+## off('release')
 
 ```TypeScript
 off(type: 'release'): void
@@ -540,10 +522,6 @@ off(type: 'release'): void
 取消注册Callee UIAbility断开通知的监听，与[Caller.on('release')](#onrelease)是反向操作，当前暂未支持。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -563,7 +541,7 @@ off(type: 'release'): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, Caller, OnReleaseCallback } from '@kit.AbilityKit';
@@ -606,10 +584,6 @@ Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Caller-onRelease(callback: OnReleaseCallback): void--><!--Device-Caller-onRelease(callback: OnReleaseCallback): void-End-->
@@ -629,7 +603,7 @@ Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, Caller } from '@kit.AbilityKit';
@@ -669,10 +643,6 @@ onRemoteStateChange(callback: OnRemoteStateChangeCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Caller-onRemoteStateChange(callback: OnRemoteStateChangeCallback): void--><!--Device-Caller-onRemoteStateChange(callback: OnRemoteStateChangeCallback): void-End-->
@@ -692,7 +662,7 @@ onRemoteStateChange(callback: OnRemoteStateChangeCallback): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, Caller } from '@kit.AbilityKit';
@@ -725,7 +695,7 @@ export default class MainAbility extends UIAbility {
 }
 ```
 
-## on_release
+## on('release')
 
 ```TypeScript
 on(type: 'release', callback: OnReleaseCallback): void
@@ -734,10 +704,6 @@ on(type: 'release', callback: OnReleaseCallback): void
 Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的监听。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -759,7 +725,7 @@ Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, Caller } from '@kit.AbilityKit';
@@ -800,10 +766,6 @@ Caller主动释放与Callee UIAbility的连接。调用该接口后，Caller不�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Caller-release(): void--><!--Device-Caller-release(): void-End-->
@@ -817,7 +779,7 @@ Caller主动释放与Callee UIAbility的连接。调用该接口后，Caller不�
 | [16200002](../errorcode-ability.md#16200002-通用组件服务端callee无效) | The callee does not exist. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, Caller } from '@kit.AbilityKit';

@@ -1,5 +1,11 @@
 # queryDriverInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
+
 ## queryDriverInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryDriverInfo(driverUid?: string): Array<Readonly<DriverInfo>>
 查询扩展外设驱动详细信息列表。如果没有设备接入，那么将会返回一个空的列表。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -26,7 +28,7 @@ function queryDriverInfo(driverUid?: string): Array<Readonly<DriverInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| driverUid | string | 否 | 驱动UID，通过queryDeviceInfo获得。 |
+| driverUid | string | 否 | 驱动UID，通过[queryDeviceInfo](arkts-driverdevelopment-devicemanager-querydeviceinfo-f-sys.md)返回的设备信息获得。如果不传入驱动UID，则默 认获取所有的驱动信息；如果传入了UID但不存在对应的驱动，则会返回空列表。 |
 
 **返回值：**
 
@@ -43,7 +45,7 @@ function queryDriverInfo(driverUid?: string): Array<Readonly<DriverInfo>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | The permission check failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application cannot call a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { deviceManager } from '@kit.DriverDevelopmentKit';

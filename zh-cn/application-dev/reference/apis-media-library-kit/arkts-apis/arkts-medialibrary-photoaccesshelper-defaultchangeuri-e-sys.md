@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum DefaultChangeUri--><!--Device-photoAccessHelper-enum DefaultChangeUri-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ DEFAULT_HIDDEN_ALBUM_URI = 'file://media/HiddenAlbum'
 隐藏相册-相册视图中相册的Uri，即系统中包含隐藏文件的相册（不包含系统预置隐藏相册和回收站相册）的Uri， 仅用于隐藏相册-相册视图场景的通知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DefaultChangeUri-DEFAULT_HIDDEN_ALBUM_URI = 'file://media/HiddenAlbum'--><!--Device-DefaultChangeUri-DEFAULT_HIDDEN_ALBUM_URI = 'file://media/HiddenAlbum'-End-->
 

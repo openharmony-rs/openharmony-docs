@@ -1,12 +1,8 @@
 # RenderResourceFactory
 
-渲染资源工厂，用于创建可在共享RenderContext的场景间共享的资源。
+用于创建可在共享RenderContext的多个场景（[Scene](arkts-arkgraphics3d-scene-c.md)）中共享的渲染资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RenderResourceFactory--><!--Device-unnamed-export interface RenderResourceFactory-End-->
 
@@ -18,13 +14,9 @@
 createImage(params: SceneResourceParameters): Promise<Image>
 ```
 
-创建图像.
+根据指定场景资源参数创建一个图像资源，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderResourceFactory-createImage(params: SceneResourceParameters): Promise<Image>--><!--Device-RenderResourceFactory-createImage(params: SceneResourceParameters): Promise<Image>-End-->
 
@@ -34,15 +26,15 @@ createImage(params: SceneResourceParameters): Promise<Image>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建图像的参数 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建图像的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Image](arkts-arkgraphics3d-sceneresources-image-i.md)&gt; | 返回创建的图像 |
+| Promise&lt;[Image](arkts-arkgraphics3d-sceneresources-image-i.md)&gt; | Promise对象，返回创建的图像对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Image, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
@@ -68,13 +60,9 @@ function createImageResource(): Promise<Image> {
 createImageStream(params: SceneResourceParameters): Promise<ImageStream>
 ```
 
-创建图像流.
+根据指定场景资源参数创建流图片，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,15 +74,15 @@ createImageStream(params: SceneResourceParameters): Promise<ImageStream>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建图像流的参数 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建流图片的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ImageStream](arkts-arkgraphics3d-sceneresources-imagestream-i.md)&gt; | 返回创建的图像流 |
+| Promise&lt;[ImageStream](arkts-arkgraphics3d-sceneresources-imagestream-i.md)&gt; | Promise对象，返回创建的流图片。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { ImageStream, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
@@ -118,13 +106,9 @@ function createImageStreamResource(): Promise<ImageStream> {
 createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise<MeshResource>
 ```
 
-从顶点数组创建网格.
+根据指定场景资源参数和几何体定义（GeometryDefinition）创建一个网格资源（MeshResource），使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderResourceFactory-createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise<MeshResource>--><!--Device-RenderResourceFactory-createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise<MeshResource>-End-->
 
@@ -134,16 +118,16 @@ createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建网格对象的参数 |
-| geometry | [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md) | 是 | 要创建的几何形状类型 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建网格资源的参数。 |
+| geometry | [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md) | 是 | 几何形状定义，描述要创建的网格形状。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[MeshResource](arkts-arkgraphics3d-sceneresources-meshresource-i.md)&gt; | 返回创建的网格 |
+| Promise&lt;[MeshResource](arkts-arkgraphics3d-sceneresources-meshresource-i.md)&gt; | Promise对象，返回创建的网格资源对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneResourceParameters, Scene, CustomGeometry, PrimitiveTopology, RenderContext, RenderResourceFactory,
@@ -220,13 +204,9 @@ function createMeshResource(): Promise<MeshResource> {
 createSampler(params:SceneResourceParameters): Promise<Sampler>
 ```
 
-创建采样器.
+根据指定场景资源参数创建一个采样器资源，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderResourceFactory-createSampler(params:SceneResourceParameters): Promise<Sampler>--><!--Device-RenderResourceFactory-createSampler(params:SceneResourceParameters): Promise<Sampler>-End-->
 
@@ -236,15 +216,15 @@ createSampler(params:SceneResourceParameters): Promise<Sampler>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建采样器的参数 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建采样器的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Sampler](arkts-arkgraphics3d-sceneresources-sampler-i.md)&gt; | 返回创建的采样器 |
+| Promise&lt;[Sampler](arkts-arkgraphics3d-sceneresources-sampler-i.md)&gt; | Promise对象，返回创建的采样器对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { SceneResourceParameters, Scene, RenderContext, RenderResourceFactory, Sampler } from '@kit.ArkGraphics3D';
@@ -274,10 +254,6 @@ createScene(uri?: ResourceStr): Promise<Scene>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RenderResourceFactory-createScene(uri?: ResourceStr): Promise<Scene>--><!--Device-RenderResourceFactory-createScene(uri?: ResourceStr): Promise<Scene>-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -286,15 +262,15 @@ createScene(uri?: ResourceStr): Promise<Scene>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | ResourceStr | 否 | 创建场景的资源 |
+| uri | ResourceStr | 否 | 创建场景使用的资源路径，如果未传入资源路径，则默认创建一个空场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | 返回创建的场景 |
+| Promise&lt;[Scene](arkts-arkgraphics3d-scene-c.md)&gt; | Promise对象，返回创建的场景对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';
@@ -323,13 +299,9 @@ function createScenePromise(fromFile: boolean = false): Promise<Scene> {
 createShader(params: SceneResourceParameters): Promise<Shader>
 ```
 
-创建着色器.
+根据指定场景资源参数创建一个着色器，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderResourceFactory-createShader(params: SceneResourceParameters): Promise<Shader>--><!--Device-RenderResourceFactory-createShader(params: SceneResourceParameters): Promise<Shader>-End-->
 
@@ -339,15 +311,15 @@ createShader(params: SceneResourceParameters): Promise<Shader>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建着色器的参数 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建着色器的参数。详细.shader文件格式请参考.shader资源文件格式要求。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Shader](arkts-arkgraphics3d-sceneresources-shader-i.md)&gt; | 返回创建的着色器 |
+| Promise&lt;[Shader](arkts-arkgraphics3d-sceneresources-shader-i.md)&gt; | Promise对象，返回创建的着色器对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Shader, SceneResourceParameters, Scene, RenderContext, RenderResourceFactory } from '@kit.ArkGraphics3D';

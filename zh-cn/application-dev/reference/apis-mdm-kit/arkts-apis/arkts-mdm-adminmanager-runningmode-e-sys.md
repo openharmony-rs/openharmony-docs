@@ -4,10 +4,6 @@
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 <!--Device-adminManager-export enum RunningMode--><!--Device-adminManager-export enum RunningMode-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -24,10 +20,6 @@ DEFAULT = 0
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 <!--Device-RunningMode-DEFAULT = 0--><!--Device-RunningMode-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -43,10 +35,6 @@ MULTI_USER = 1
 多用户运行模式，表示应用能够在多个用户下同时运行。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 <!--Device-RunningMode-MULTI_USER = 1--><!--Device-RunningMode-MULTI_USER = 1-End-->
 

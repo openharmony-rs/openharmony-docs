@@ -1,5 +1,11 @@
 # queryKey
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## queryKey
 
 ```TypeScript
@@ -9,8 +15,6 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 根据联系人的id查询联系人的唯一查询键key。使用callback异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -27,9 +31,9 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 联系人对象的id属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -55,10 +59,6 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function queryKey(context: Context, id: number, callback: AsyncCallback<string>): void--><!--Device-contact-function queryKey(context: Context, id: number, callback: AsyncCallback<string>): void-End-->
@@ -71,7 +71,7 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性，是联系人对象在数据库中的唯一标识符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -80,7 +80,7 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -111,8 +111,6 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [queryKey](#querykey)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
@@ -129,9 +127,9 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 | --- | --- | --- | --- |
 | id | number | 是 | 联系人对象的id属性。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -161,10 +159,6 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function queryKey(context: Context, id: number, holder: Holder, callback: AsyncCallback<string>): void--><!--Device-contact-function queryKey(context: Context, id: number, holder: Holder, callback: AsyncCallback<string>): void-End-->
@@ -178,7 +172,7 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 | context | Context | 是 | 应用上下文Context。 |
 | id | number | 是 | 联系人对象的id属性。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -187,7 +181,7 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -222,8 +216,6 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [queryKey](#querykey)(context: Context, id: number, holder?: Holder)
@@ -247,7 +239,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象。返回查询到的联系人对应的key。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
@@ -272,10 +264,6 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 根据联系人的id和holder查询联系人的唯一查询键key。使用Promise异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -304,7 +292,7 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 

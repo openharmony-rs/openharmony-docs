@@ -4,13 +4,15 @@ TIFF metadata.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-image-class TiffMetadata--><!--Device-image-class TiffMetadata-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## artist
 
@@ -23,10 +25,6 @@ Name of the image creator or artist.
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ Compression scheme used for image data (e.g., None, LZW, JPEG, Deflate). The val
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly compression?: int--><!--Device-TiffMetadata-readonly compression?: int-End-->
@@ -67,10 +61,6 @@ Copyright notice for the image.
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +80,6 @@ Date and time associated with the image (typically last modification).
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly dateTime?: string--><!--Device-TiffMetadata-readonly dateTime?: string-End-->
@@ -111,10 +97,6 @@ Name of the document or image.
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +116,6 @@ Host computer/system used for image processing.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly hostComputer?: string--><!--Device-TiffMetadata-readonly hostComputer?: string-End-->
@@ -155,10 +133,6 @@ Description of the image content.
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,10 +152,6 @@ Manufacturer of the capture device.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly make?: string--><!--Device-TiffMetadata-readonly make?: string-End-->
@@ -199,10 +169,6 @@ Model name/number of the capture device.
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,10 +188,6 @@ Indicates image orientation for correct display rotation/flip.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly orientation?: Orientation--><!--Device-TiffMetadata-readonly orientation?: Orientation-End-->
@@ -243,10 +205,6 @@ Defines how pixel colors are interpreted (e.g., RGB, grayscale). The value shoul
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -266,10 +224,6 @@ Chromaticity coordinates of the RGB primaries.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly primaryChromaticities?: double[]--><!--Device-TiffMetadata-readonly primaryChromaticities?: double[]-End-->
@@ -287,10 +241,6 @@ Unit for X/Y resolution. The value should be an integer.
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,10 +260,6 @@ Software used to create or process the image.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly software?: string--><!--Device-TiffMetadata-readonly software?: string-End-->
@@ -331,10 +277,6 @@ Height of each image tile in pixels. The value should be an integer.
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -354,10 +296,6 @@ Width of each image tile in pixels. The value should be an integer.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly tileWidth?: int--><!--Device-TiffMetadata-readonly tileWidth?: int-End-->
@@ -375,10 +313,6 @@ Tone transfer curve mapping pixel values to output intensity.
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -398,10 +332,6 @@ Chromaticity coordinates of the reference white point.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly whitePoint?: double[]--><!--Device-TiffMetadata-readonly whitePoint?: double[]-End-->
@@ -420,10 +350,6 @@ Horizontal resolution (pixels per resolution unit).
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffMetadata-readonly xResolution?: double--><!--Device-TiffMetadata-readonly xResolution?: double-End-->
@@ -441,10 +367,6 @@ Vertical resolution (pixels per resolution unit).
 **类型：** double
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

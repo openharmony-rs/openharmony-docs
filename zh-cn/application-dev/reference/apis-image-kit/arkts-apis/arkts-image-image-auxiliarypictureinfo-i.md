@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-interface AuxiliaryPictureInfo--><!--Device-image-interface AuxiliaryPictureInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## auxiliaryPictureType
 
@@ -23,10 +25,6 @@ auxiliaryPictureType: AuxiliaryPictureType
 **类型：** [AuxiliaryPictureType](arkts-image-image-auxiliarypicturetype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPictureInfo-auxiliaryPictureType: AuxiliaryPictureType--><!--Device-AuxiliaryPictureInfo-auxiliaryPictureType: AuxiliaryPictureType-End-->
 
@@ -44,10 +42,6 @@ colorSpace: colorSpaceManager.ColorSpaceManager
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPictureInfo-colorSpace: colorSpaceManager.ColorSpaceManager--><!--Device-AuxiliaryPictureInfo-colorSpace: colorSpaceManager.ColorSpaceManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -63,10 +57,6 @@ pixelFormat: PixelMapFormat
 **类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPictureInfo-pixelFormat: PixelMapFormat--><!--Device-AuxiliaryPictureInfo-pixelFormat: PixelMapFormat-End-->
 
@@ -84,10 +74,6 @@ rowStride: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuxiliaryPictureInfo-rowStride: int--><!--Device-AuxiliaryPictureInfo-rowStride: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -103,10 +89,6 @@ size: Size
 **类型：** Size
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuxiliaryPictureInfo-size: Size--><!--Device-AuxiliaryPictureInfo-size: Size-End-->
 

@@ -1,20 +1,22 @@
 # SarResponse（系统接口）
 
-吸收比率传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。用于表示吸收比率传感器上报的响应数据，包含电磁波吸收率信息。
+吸收比率传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。用于表示吸收比率传感器上报的响应数据，包含电磁波吸收率信息。
 
-**继承/实现关系：** SarResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
+**继承/实现关系：** SarResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-interface SarResponse--><!--Device-sensor-interface SarResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
 
 ## absorptionRatio
 
@@ -27,10 +29,6 @@ absorptionRatio: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SarResponse-absorptionRatio: double--><!--Device-SarResponse-absorptionRatio: double-End-->
 

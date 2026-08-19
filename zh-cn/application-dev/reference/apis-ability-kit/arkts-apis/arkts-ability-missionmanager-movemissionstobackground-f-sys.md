@@ -1,5 +1,11 @@
 # moveMissionsToBackground（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## moveMissionsToBackground
 
 ```TypeScript
@@ -9,10 +15,6 @@ function moveMissionsToBackground(missionIds: Array<int>, callback: AsyncCallbac
 将指定任务批量切到后台，返回的结果任务ID按被隐藏时的任务层级排序。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -38,7 +40,7 @@ function moveMissionsToBackground(missionIds: Array<int>, callback: AsyncCallbac
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -126,10 +128,6 @@ function moveMissionsToBackground(missionIds: Array<int>): Promise<Array<int>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function moveMissionsToBackground(missionIds: Array<int>): Promise<Array<int>>--><!--Device-missionManager-function moveMissionsToBackground(missionIds: Array<int>): Promise<Array<int>>-End-->
@@ -159,7 +157,7 @@ function moveMissionsToBackground(missionIds: Array<int>): Promise<Array<int>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

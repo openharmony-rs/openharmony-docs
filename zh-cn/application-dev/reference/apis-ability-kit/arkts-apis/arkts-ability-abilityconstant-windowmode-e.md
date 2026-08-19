@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityConstant-export enum WindowMode--><!--Device-AbilityConstant-export enum WindowMode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ WINDOW_MODE_FULLSCREEN = 1
 全屏模式。仅在2in1和Tablet设备上生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ WINDOW_MODE_SPLIT_PRIMARY = 100
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowMode-WINDOW_MODE_SPLIT_PRIMARY = 100--><!--Device-WindowMode-WINDOW_MODE_SPLIT_PRIMARY = 100-End-->
@@ -61,10 +49,6 @@ WINDOW_MODE_SPLIT_SECONDARY = 101
 支持应用内拉起Ability时设置为分屏，右侧分屏。仅在折叠屏和Tablet设备上生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

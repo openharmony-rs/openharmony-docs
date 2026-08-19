@@ -1,12 +1,8 @@
 # VideoMeetingControlGroup
 
-视频会议控件组枚举。仅当[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md#piptemplatetype) 为VIDEO_MEETING时使用。
+视频会议控件组枚举。仅当[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) 为VIDEO_MEETING时使用。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-PiPWindow-enum VideoMeetingControlGroup--><!--Device-PiPWindow-enum VideoMeetingControlGroup-End-->
 
@@ -21,10 +17,6 @@ HANG_UP_BUTTON = 301
 挂断控件组。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ CAMERA_SWITCH = 302
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoMeetingControlGroup-CAMERA_SWITCH = 302--><!--Device-VideoMeetingControlGroup-CAMERA_SWITCH = 302-End-->
@@ -62,10 +50,6 @@ MUTE_SWITCH = 303
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303--><!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303-End-->
@@ -81,10 +65,6 @@ MICROPHONE_SWITCH = 304
 打开/关闭麦克风控件组。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

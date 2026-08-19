@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dragInteraction-interface Summary--><!--Device-dragInteraction-interface Summary-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { dragInteraction } from '@kit.ArkUI';
+```
 
 ## dataSize
 
@@ -25,10 +27,6 @@ dataSize: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Summary-dataSize: int--><!--Device-Summary-dataSize: int-End-->
 
@@ -47,10 +45,6 @@ dataType: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Summary-dataType: string--><!--Device-Summary-dataType: string-End-->
 

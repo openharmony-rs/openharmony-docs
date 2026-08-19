@@ -1,18 +1,21 @@
 # beforeComponent
 
+## 导入模块
+
+```TypeScript
+import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
+import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
+```
+
 ## beforeComponent
 
 ```TypeScript
 export function beforeComponent(com: Component): On
 ```
 
-要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md#component)指定的另一个组件之前 对象，用于相对于组件定位。
+要求目标组件位于由给定[Component](arkts-test-uitest-component-c.md)指定的另一个组件之前 对象，用于相对于组件定位。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-ON-export function beforeComponent(com: Component): On--><!--Device-ON-export function beforeComponent(com: Component): On-End-->
 

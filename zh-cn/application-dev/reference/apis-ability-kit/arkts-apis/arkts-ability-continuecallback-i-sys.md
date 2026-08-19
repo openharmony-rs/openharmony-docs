@@ -4,10 +4,6 @@ ContinueCallback registered for notify continue result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface ContinueCallback--><!--Device-unnamed-export interface ContinueCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -25,10 +21,6 @@ Called by system when continue mission done.
 **类型：** [OnContinueDoneCallback](arkts-ability-oncontinuedonecallback-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

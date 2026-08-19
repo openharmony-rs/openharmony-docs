@@ -14,10 +14,6 @@ TextClock(options?: TextClockOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -34,5 +30,10 @@ TextClock(options?: TextClockOptions)
 
 ## 汇总
 
-- [TextClockConfiguration](arkts-arkui-textclockconfiguration-i.md)
-- [TextClockOptions](arkts-arkui-textclockoptions-i.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [TextClockConfiguration](arkts-arkui-textclockconfiguration-i.md) | 开发者需要自定义class实现ContentModifier接口。 |
+| [TextClockOptions](arkts-arkui-textclockoptions-i.md) | 用于构建TextClock组件的选项。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+

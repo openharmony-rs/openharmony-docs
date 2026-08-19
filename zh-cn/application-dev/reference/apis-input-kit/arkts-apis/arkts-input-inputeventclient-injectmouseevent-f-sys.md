@@ -1,5 +1,11 @@
 # injectMouseEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputEventClient } from '@kit.InputKit';
+```
+
 ## injectMouseEvent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function injectMouseEvent(mouseEvent: MouseEventData): void
 鼠标/触控板事件注入。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本12+：ohos.permission.INJECT_INPUT_EVENT
@@ -27,7 +29,7 @@ function injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mouseEvent | [MouseEventData](arkts-input-inputeventclient-mouseeventdata-i-sys.md) | 是 | 鼠标/触控板事件注入描述信息。此参数中[Action](arkts-input-multimodalinput-mouseevent-action-e.md#action)属性 不支持设置为CANCEL。 |
+| mouseEvent | [MouseEventData](arkts-input-inputeventclient-mouseeventdata-i-sys.md) | 是 | 鼠标/触控板事件注入描述信息。此参数中[Action](arkts-input-multimodalinput-mouseevent-action-e.md)属性 不支持设置为CANCEL。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function injectMouseEvent(mouseEvent: MouseEventData): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

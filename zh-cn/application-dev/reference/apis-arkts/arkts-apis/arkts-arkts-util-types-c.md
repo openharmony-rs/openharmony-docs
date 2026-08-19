@@ -4,13 +4,50 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-util-class types--><!--Device-util-class types-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -22,17 +59,13 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-constructor()--><!--Device-types-constructor()-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -47,10 +80,6 @@ isAnyArrayBuffer(value: Object): boolean
 判断入参是否为 ArrayBuffer 或 SharedArrayBuffer 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -70,7 +99,7 @@ isAnyArrayBuffer(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 ArrayBuffer 或 SharedArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -88,10 +117,6 @@ isArgumentsObject(value: Object): boolean
 判断入参是否为 **arguments** 对象。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -111,7 +136,7 @@ isArgumentsObject(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 **arguments** 对象，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -133,10 +158,6 @@ isArrayBuffer(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isArrayBuffer(value: Object): boolean--><!--Device-types-isArrayBuffer(value: Object): boolean-End-->
@@ -155,7 +176,7 @@ isArrayBuffer(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 ArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -173,10 +194,6 @@ isArrayBufferView(value: Object): boolean
 判断入参是否为 ArrayBufferView 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -196,7 +213,7 @@ isArrayBufferView(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 ArrayBufferView 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -214,10 +231,6 @@ isAsyncFunction(value: Object): boolean
 判断入参是否为异步函数。 > **说明：** > > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。 > > 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -237,7 +250,7 @@ isAsyncFunction(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为异步函数，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -286,10 +299,6 @@ isBigInt64Array(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isBigInt64Array(value: Object): boolean--><!--Device-types-isBigInt64Array(value: Object): boolean-End-->
@@ -308,7 +317,7 @@ isBigInt64Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 BigInt64Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -326,10 +335,6 @@ isBigUint64Array(value: Object): boolean
 判断入参是否为 BigUint64Array 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -349,7 +354,7 @@ isBigUint64Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 BigUint64Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -367,8 +372,6 @@ isBooleanObject(value: Object): boolean
 判断入参是否为 Boolean 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 14
 
@@ -390,7 +393,7 @@ isBooleanObject(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Boolean 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -408,8 +411,6 @@ isBoxedPrimitive(value: Object): boolean
 判断入参是否为 Boolean、Number、String 或 Symbol 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 14
 
@@ -431,7 +432,7 @@ isBoxedPrimitive(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Boolean、Number、String 或 Symbol 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -449,10 +450,6 @@ isDataView(value: Object): boolean
 判断入参是否为 DataView 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -472,7 +469,7 @@ isDataView(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 DataView 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -492,10 +489,6 @@ isDate(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isDate(value: Object): boolean--><!--Device-types-isDate(value: Object): boolean-End-->
@@ -514,7 +507,7 @@ isDate(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Date 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -532,10 +525,6 @@ isExternal(value: Object): boolean
 判断入参是否为 native external 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -555,7 +544,7 @@ isExternal(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 native external 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // /entry/src/main/cpp/napi_init.cpp
@@ -612,10 +601,6 @@ isFloat32Array(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isFloat32Array(value: Object): boolean--><!--Device-types-isFloat32Array(value: Object): boolean-End-->
@@ -634,7 +619,7 @@ isFloat32Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Float32Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -652,10 +637,6 @@ isFloat64Array(value: Object): boolean
 判断入参是否为 Float64Array 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -675,7 +656,7 @@ isFloat64Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Float64Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -693,10 +674,6 @@ isGeneratorFunction(value: Object): boolean
 判断入参是否为 generator 函数。 > **说明：** > > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的constructor.name属性与'AsyncGeneratorFunction'做判等的方式替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -716,7 +693,7 @@ isGeneratorFunction(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 generator 函数，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // /entry/src/main/ets/pages/test.ts
@@ -762,10 +739,6 @@ isGeneratorObject(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isGeneratorObject(value: Object): boolean--><!--Device-types-isGeneratorObject(value: Object): boolean-End-->
@@ -784,7 +757,7 @@ isGeneratorObject(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 generator 对象，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // /entry/src/main/ets/pages/test.ts
@@ -811,10 +784,6 @@ isInt16Array(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isInt16Array(value: Object): boolean--><!--Device-types-isInt16Array(value: Object): boolean-End-->
@@ -833,7 +802,7 @@ isInt16Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Int16Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -851,10 +820,6 @@ isInt32Array(value: Object): boolean
 判断入参是否为 Int32Array 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -874,7 +839,7 @@ isInt32Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Int32Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -892,10 +857,6 @@ isInt8Array(value: Object): boolean
 判断入参是否为 Int8Array 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -915,7 +876,7 @@ isInt8Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Int8Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -933,10 +894,6 @@ isMap(value: Object): boolean
 判断入参是否为 Map 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -956,7 +913,7 @@ isMap(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Map 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -974,10 +931,6 @@ isMapIterator(value: Object): boolean
 判断入参是否为 MapIterator 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -997,7 +950,7 @@ isMapIterator(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 MapIterator 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1029,10 +982,6 @@ isModuleNamespaceObject(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isModuleNamespaceObject(value: Object): boolean--><!--Device-types-isModuleNamespaceObject(value: Object): boolean-End-->
@@ -1051,7 +1000,7 @@ isModuleNamespaceObject(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为模块命名空间对象，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // /entry/src/main/ets/pages/test.ts
@@ -1079,10 +1028,6 @@ isNativeError(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isNativeError(value: Object): boolean--><!--Device-types-isNativeError(value: Object): boolean-End-->
@@ -1101,7 +1046,7 @@ isNativeError(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Error 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1119,8 +1064,6 @@ isNumberObject(value: Object): boolean
 判断入参是否为 Number 类型。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 14
 
@@ -1142,7 +1085,7 @@ isNumberObject(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Number 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1160,10 +1103,6 @@ isPromise(value: Object): boolean
 判断入参是否为 promise。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1183,7 +1122,7 @@ isPromise(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 promise，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1201,10 +1140,6 @@ isProxy(value: Object): boolean
 判断入参是否为 proxy。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1224,7 +1159,7 @@ isProxy(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 proxy，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class Target{
@@ -1247,10 +1182,6 @@ isRegExp(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isRegExp(value: Object): boolean--><!--Device-types-isRegExp(value: Object): boolean-End-->
@@ -1269,7 +1200,7 @@ isRegExp(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 RegExp 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1287,10 +1218,6 @@ isSet(value: Object): boolean
 判断入参是否为 Set 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1310,7 +1237,7 @@ isSet(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Set 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1342,10 +1269,6 @@ isSetIterator(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isSetIterator(value: Object): boolean--><!--Device-types-isSetIterator(value: Object): boolean-End-->
@@ -1364,7 +1287,7 @@ isSetIterator(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 SetIterator 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1396,10 +1319,6 @@ isSharedArrayBuffer(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isSharedArrayBuffer(value: Object): boolean--><!--Device-types-isSharedArrayBuffer(value: Object): boolean-End-->
@@ -1418,7 +1337,7 @@ isSharedArrayBuffer(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 SharedArrayBuffer 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1436,8 +1355,6 @@ isStringObject(value: Object): boolean
 判断入参是否为字符串对象。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 14
 
@@ -1459,7 +1376,7 @@ isStringObject(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为字符串对象，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1477,8 +1394,6 @@ isSymbolObject(value: Object): boolean
 判断入参是否为 symbol 对象。 > **NOTE：**> > 本接口从 API version 8 起支持，从 API version 14 起废弃。无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 14
 
@@ -1500,7 +1415,7 @@ isSymbolObject(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 symbol 对象，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // /entry/src/main/ets/pages/test.ts
@@ -1526,10 +1441,6 @@ isTypedArray(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isTypedArray(value: Object): boolean--><!--Device-types-isTypedArray(value: Object): boolean-End-->
@@ -1548,7 +1459,7 @@ isTypedArray(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 TypedArray 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1566,10 +1477,6 @@ isUint16Array(value: Object): boolean
 判断入参是否为 Uint16Array 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1589,7 +1496,7 @@ isUint16Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Uint16Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1607,10 +1514,6 @@ isUint32Array(value: Object): boolean
 判断入参是否为 Uint32Array 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1630,7 +1533,7 @@ isUint32Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Uint32Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1648,10 +1551,6 @@ isUint8Array(value: Object): boolean
 判断入参是否为 Uint8Array 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1671,7 +1570,7 @@ isUint8Array(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Uint8Array 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1689,10 +1588,6 @@ isUint8ClampedArray(value: Object): boolean
 判断入参是否为 Uint8ClampedArray 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1712,7 +1607,7 @@ isUint8ClampedArray(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 Uint8ClampedArray 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();
@@ -1730,10 +1625,6 @@ isWeakMap(value: Object): boolean
 判断入参是否为 WeakMap 类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1753,7 +1644,7 @@ isWeakMap(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 WeakMap 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1785,10 +1676,6 @@ isWeakSet(value: Object): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-types-isWeakSet(value: Object): boolean--><!--Device-types-isWeakSet(value: Object): boolean-End-->
@@ -1807,7 +1694,7 @@ isWeakSet(value: Object): boolean
 | --- | --- |
 | boolean | 检查结果。如果入参为 WeakSet 类型，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let type = new util.types();

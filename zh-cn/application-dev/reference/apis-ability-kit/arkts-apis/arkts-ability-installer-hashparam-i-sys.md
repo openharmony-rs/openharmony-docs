@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-installer-export interface HashParam--><!--Device-installer-export interface HashParam-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+```
 
 ## hashValue
 
@@ -25,10 +27,6 @@ hashValue: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HashParam-hashValue: string--><!--Device-HashParam-hashValue: string-End-->
 
@@ -47,10 +45,6 @@ moduleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HashParam-moduleName: string--><!--Device-HashParam-moduleName: string-End-->
 

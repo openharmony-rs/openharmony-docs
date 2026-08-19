@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace cloudSync--><!--Device-unnamed-declare namespace cloudSync-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
 
 ## 汇总
 
@@ -18,21 +21,21 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getCoreFileSyncState](arkts-corefile-cloudsync-getcorefilesyncstate-f.md#getcorefilesyncstate) | 同步方法获取云盘文件同步上行状态。 |
-| [registerChange](arkts-corefile-cloudsync-registerchange-f.md#registerchange) | 订阅监听指定文件的变化通知。callback返回更改的数据。 |
-| [unregisterChange](arkts-corefile-cloudsync-unregisterchange-f.md#unregisterchange) | 取消订阅监听指定文件的变化通知。 |
+| [getCoreFileSyncState](arkts-corefile-cloudsync-getcorefilesyncstate-f.md) | 同步方法获取云盘文件同步上行状态。 |
+| [registerChange](arkts-corefile-cloudsync-registerchange-f.md) | 订阅监听指定文件的变化通知。callback返回更改的数据。 |
+| [unregisterChange](arkts-corefile-cloudsync-unregisterchange-f.md) | 取消订阅监听指定文件的变化通知。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate) | 异步方法获取文件同步状态。使用Promise异步回调。 |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate系统接口) | 异步方法获取文件同步状态。使用callback异步回调。 |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate系统接口) | 获取文件同步状态。 |
-| [optimizeStorage](arkts-corefile-cloudsync-optimizestorage-f-sys.md#optimizestorage) | 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。 |
-| [startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md#startoptimizespace) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。 startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。 |
-| [stopOptimizeSpace](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md#stopoptimizespace) | 同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 异步方法获取文件同步状态。使用Promise异步回调。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 异步方法获取文件同步状态。使用callback异步回调。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 获取文件同步状态。 |
+| [optimizeStorage](arkts-corefile-cloudsync-optimizestorage-f-sys.md) | 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。 |
+| [startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。 startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。 |
+| [stopOptimizeSpace](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md) | 同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。 |
 <!--DelEnd-->
 
 ### 类
@@ -62,9 +65,9 @@
 | [ChangeData](arkts-corefile-cloudsync-changedata-i.md) | 定义变更数据。 |
 | [DownloadProgress](arkts-corefile-cloudsync-downloadprogress-i.md) | 云文件下载过程。 |
 | [FailedFileInfo](arkts-corefile-cloudsync-failedfileinfo-i.md) | 云文件批量缓存失败列表及失败原因。 |
-| [HistoryVersion](arkts-corefile-cloudsync-historyversion-i.md) | 端云文件历史版本信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md#fileversion)的 [gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist)方法时，历史版本列表中的属性。 |
+| [HistoryVersion](arkts-corefile-cloudsync-historyversion-i.md) | 端云文件历史版本信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md)的 [gethistoryversionlist](arkts-corefile-cloudsync-fileversion-c.md#gethistoryversionlist)方法时，历史版本列表中的属性。 |
 | [SyncProgress](arkts-corefile-cloudsync-syncprogress-i.md) | 端云同步过程。 |
-| [VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md) | 历史版本文件下载状态和进度信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md#fileversion)的 [downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion)方法时，回调函数的入参类型。 |
+| [VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md) | 历史版本文件下载状态和进度信息，调用端云文件版本管理类[FileVersion](arkts-corefile-cloudsync-fileversion-c.md)的 [downloadHistoryVersion](arkts-corefile-cloudsync-fileversion-c.md#downloadhistoryversion)方法时，回调函数的入参类型。 |
 
 <!--Del-->
 ### 接口（系统接口）

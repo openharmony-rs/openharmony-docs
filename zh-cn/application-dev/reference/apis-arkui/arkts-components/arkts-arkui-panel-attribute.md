@@ -6,13 +6,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class PanelAttribute--><!--Device-unnamed-declare class PanelAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## backgroundMask
 
@@ -23,8 +24,6 @@ backgroundMask(color: ResourceColor)
 指定Panel的背景蒙层。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -50,8 +49,6 @@ customHeight(value: Dimension | PanelHeight)
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -75,8 +72,6 @@ dragBar(value: boolean)
 设置是否存在控制条。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 12
 
@@ -102,8 +97,6 @@ fullHeight(value: number | string)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -127,8 +120,6 @@ halfHeight(value: number | string)
 指定PanelMode.Half状态下的高度。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 12
 
@@ -154,8 +145,6 @@ miniHeight(value: number | string)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -179,8 +168,6 @@ mode(value: PanelMode)
 可滑动面板的初始状态。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 12
 
@@ -259,8 +246,6 @@ onChange(
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -284,8 +269,6 @@ onHeightChange(callback: (value: number) => void)
 当可滑动面板发生高度变化时触发。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -311,8 +294,6 @@ show(value: boolean)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -337,8 +318,6 @@ showCloseIcon(value: boolean)
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -362,8 +341,6 @@ type(value: PanelType)
 可滑动面板的类型。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 12
 

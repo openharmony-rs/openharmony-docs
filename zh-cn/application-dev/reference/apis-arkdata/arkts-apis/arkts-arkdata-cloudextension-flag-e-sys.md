@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export enum Flag--><!--Device-cloudExtension-export enum Flag-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -23,10 +19,6 @@ INSERT = 0
 插入操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Flag-INSERT = 0--><!--Device-Flag-INSERT = 0-End-->
 
@@ -44,10 +36,6 @@ UPDATE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Flag-UPDATE = 1--><!--Device-Flag-UPDATE = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -63,10 +51,6 @@ DELETE = 2
 删除操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Flag-DELETE = 2--><!--Device-Flag-DELETE = 2-End-->
 

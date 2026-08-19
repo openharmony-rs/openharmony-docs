@@ -4,10 +4,6 @@ supplicant状态枚举。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-export enum SuppState--><!--Device-wifiManager-export enum SuppState-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -23,10 +19,6 @@ DISCONNECTED
 supplicant未与AP关联或已断开连接。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SuppState-DISCONNECTED--><!--Device-SuppState-DISCONNECTED-End-->
 
@@ -44,10 +36,6 @@ INTERFACE_DISABLED
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SuppState-INTERFACE_DISABLED--><!--Device-SuppState-INTERFACE_DISABLED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -63,10 +51,6 @@ INACTIVE
 supplicant已去使能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SuppState-INACTIVE--><!--Device-SuppState-INACTIVE-End-->
 
@@ -84,10 +68,6 @@ supplicant正在扫描WLAN连接。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SuppState-SCANNING--><!--Device-SuppState-SCANNING-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -103,10 +83,6 @@ AUTHENTICATING
 supplicant正在与指定AP进行认证。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SuppState-AUTHENTICATING--><!--Device-SuppState-AUTHENTICATING-End-->
 
@@ -124,10 +100,6 @@ supplicant正在与指定AP进行关联。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SuppState-ASSOCIATING--><!--Device-SuppState-ASSOCIATING-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -143,10 +115,6 @@ ASSOCIATED
 supplicant已与指定AP关联。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SuppState-ASSOCIATED--><!--Device-SuppState-ASSOCIATED-End-->
 
@@ -164,10 +132,6 @@ FOUR_WAY_HANDSHAKE
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SuppState-FOUR_WAY_HANDSHAKE--><!--Device-SuppState-FOUR_WAY_HANDSHAKE-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -183,10 +147,6 @@ GROUP_HANDSHAKE
 群组握手正在进行中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SuppState-GROUP_HANDSHAKE--><!--Device-SuppState-GROUP_HANDSHAKE-End-->
 
@@ -204,10 +164,6 @@ COMPLETED
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SuppState-COMPLETED--><!--Device-SuppState-COMPLETED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -224,10 +180,6 @@ UNINITIALIZED
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SuppState-UNINITIALIZED--><!--Device-SuppState-UNINITIALIZED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -243,10 +195,6 @@ INVALID
 supplicant处于未知或无效状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SuppState-INVALID--><!--Device-SuppState-INVALID-End-->
 

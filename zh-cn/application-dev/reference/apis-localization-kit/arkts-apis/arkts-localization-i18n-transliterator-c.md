@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-i18n-export class Transliterator--><!--Device-i18n-export class Transliterator-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
 
 ## getAvailableIDs
 
@@ -21,10 +23,6 @@ static getAvailableIDs(): string[]
 获取音译支持的转换ID列表。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +36,7 @@ static getAvailableIDs(): string[]
 | --- | --- |
 | string[] | 音译支持的转换ID列表。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -58,10 +56,6 @@ static getInstance(id: string): Transliterator
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Transliterator-static getInstance(id: string): Transliterator--><!--Device-Transliterator-static getInstance(id: string): Transliterator-End-->
@@ -80,7 +74,7 @@ static getInstance(id: string): Transliterator
 | --- | --- |
 | [Transliterator](../../apis-na/arkts-apis/arkts-na-i18n-transliterator-c.md) | 音译对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';
@@ -97,10 +91,6 @@ transform(text: string): string
 将输入文本从源格式转换为目标格式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -120,7 +110,7 @@ transform(text: string): string
 | --- | --- |
 | string | 转换后的文本。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

@@ -1,4 +1,4 @@
-# CAPI<!--c-network-kit-->
+# C API<!--c-network-kit-->
 
 - 头文件
     - [net_http_type.h](capi-net-http-type-h.md)

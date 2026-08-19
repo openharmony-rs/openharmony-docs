@@ -4,9 +4,7 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-unnamed-interface StackLayoutAlgorithmOptions--><!--Device-unnamed-interface StackLayoutAlgorithmOptions-End-->
 
@@ -26,9 +24,7 @@ alignContent?: LocalizedAlignment
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-StackLayoutAlgorithmOptions-alignContent?: LocalizedAlignment--><!--Device-StackLayoutAlgorithmOptions-alignContent?: LocalizedAlignment-End-->
 

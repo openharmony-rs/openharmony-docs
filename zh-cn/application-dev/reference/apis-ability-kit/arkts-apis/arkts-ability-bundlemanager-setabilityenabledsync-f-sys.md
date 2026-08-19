@@ -1,5 +1,11 @@
 # setAbilityEnabledSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## setAbilityEnabledSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 以同步方法设置指定组件的禁用或使能状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -39,7 +41,7 @@ function setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified abilityInfo is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

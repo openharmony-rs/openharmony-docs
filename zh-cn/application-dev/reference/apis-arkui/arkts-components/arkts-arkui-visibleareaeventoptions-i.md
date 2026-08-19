@@ -4,13 +4,14 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface VisibleAreaEventOptions--><!--Device-unnamed-declare interface VisibleAreaEventOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## expectedUpdateInterval
 
@@ -25,10 +26,6 @@ expectedUpdateInterval?: number
 **默认值：** 1000
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +49,6 @@ measureFromViewport?: boolean
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -75,10 +68,6 @@ ratios: Array<number>
 **类型：** Array&lt;number&gt;
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum ContextMenuMediaType--><!--Device-unnamed-declare enum ContextMenuMediaType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ None = 0
 其他非图片媒体类型。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ Image = 1
 图片类型。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

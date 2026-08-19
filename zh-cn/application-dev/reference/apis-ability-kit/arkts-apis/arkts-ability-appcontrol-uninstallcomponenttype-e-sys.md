@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appControl-export enum UninstallComponentType--><!--Device-appControl-export enum UninstallComponentType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -24,10 +20,6 @@ EXTENSION = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-UninstallComponentType-EXTENSION = 1--><!--Device-UninstallComponentType-EXTENSION = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
@@ -43,10 +35,6 @@ UI_EXTENSION = 2
 UI扩展能力类型。 被拉起的UIExtensionAbility通过want中bundleName、moduleName、abilityName字段共同确定，同时want.parameters中的 ability.want.params.uiExtensionType字段需要配置为 [UIExtensionAbility](../../../application-models/uiextensionability-sys.md)的类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-UninstallComponentType-UI_EXTENSION = 2--><!--Device-UninstallComponentType-UI_EXTENSION = 2-End-->
 

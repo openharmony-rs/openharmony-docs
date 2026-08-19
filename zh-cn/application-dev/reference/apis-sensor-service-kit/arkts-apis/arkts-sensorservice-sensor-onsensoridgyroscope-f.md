@@ -1,5 +1,11 @@
 # on_SensorId.GYROSCOPE
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## on_SensorId.GYROSCOPE
 
 ```TypeScript
@@ -10,10 +16,6 @@ function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,
 订阅校准的陀螺仪传感器数据。陀螺仪传感器用于测量设备绕X、Y、Z轴的旋转角速度，适用于设备旋转检测、姿态跟踪、游戏操控等场景。调用后，系统会按设定频率通过callback持续上报角速度数据。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -28,7 +30,7 @@ function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | SensorId.GYROSCOPE | 是 | 传感器类型，该值固定为SensorId.GYROSCOPE。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;GyroscopeResponse&gt; | 是 | 回调函数，异步上报的传感器数据固定为GyroscopeResponse。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;GyroscopeResponse&gt; | 是 | 回调函数，异步上报的传感器数据固定为GyroscopeResponse。 |
 | options | Options | 否 | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 **错误码：**
@@ -39,7 +41,7 @@ function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sensor } from '@kit.SensorServiceKit';

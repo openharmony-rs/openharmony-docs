@@ -1,16 +1,18 @@
 # Filter
 
-Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前， 需要先通过[createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md#createfilter)创建一个Filter实例。
+Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前， 需要先通过[createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md)创建一个Filter实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-uiEffect-interface Filter--><!--Device-uiEffect-interface Filter-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { uiEffect } from '@kit.ArkGraphics2D';
+```
 
 ## blur
 
@@ -21,10 +23,6 @@ blur(blurRadius: double): Filter
 将模糊效果添加至组件上。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Filter-blur(blurRadius: double): Filter--><!--Device-Filter-blur(blurRadius: double): Filter-End-->
 
@@ -42,7 +40,7 @@ blur(blurRadius: double): Filter
 | --- | --- |
 | Filter | 返回挂载了模糊效果的Filter，支持链式调用继续添加其他效果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ts

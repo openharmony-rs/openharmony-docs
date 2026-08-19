@@ -1,20 +1,22 @@
 # AutoFillExtensionAbility（系统接口）
 
-AutoFillExtensionAbility模块支持账号、密码、地址等多种数据类型的自动填充与保存，继承自 [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)。
+AutoFillExtensionAbility模块支持账号、密码、地址等多种数据类型的自动填充与保存，继承自 [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)。
 
 **继承/实现关系：** AutoFillExtensionAbility extends ExtensionAbility
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class AutoFillExtensionAbility--><!--Device-unnamed-declare class AutoFillExtensionAbility-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { AutoFillExtensionAbility } from '@kit.AbilityKit';
+```
 
 ## onBackground
 
@@ -26,10 +28,6 @@ onBackground(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onBackground(): void--><!--Device-AutoFillExtensionAbility-onBackground(): void-End-->
@@ -38,7 +36,7 @@ onBackground(): void
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AutoFillExtensionAbility } from '@kit.AbilityKit';
@@ -61,10 +59,6 @@ AutoFillExtensionAbility创建时触发回调函数。在此方法中可进行�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onCreate(): void--><!--Device-AutoFillExtensionAbility-onCreate(): void-End-->
@@ -73,7 +67,7 @@ AutoFillExtensionAbility创建时触发回调函数。在此方法中可进行�
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AutoFillExtensionAbility } from '@kit.AbilityKit';
@@ -96,10 +90,6 @@ onDestroy(): void | Promise<void>
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onDestroy(): void | Promise<void>--><!--Device-AutoFillExtensionAbility-onDestroy(): void | Promise<void>-End-->
@@ -108,7 +98,7 @@ onDestroy(): void | Promise<void>
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AutoFillExtensionAbility } from '@kit.AbilityKit';
@@ -131,10 +121,6 @@ onDestroy(): Promise<void> | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onDestroy(): Promise<void> | undefined--><!--Device-AutoFillExtensionAbility-onDestroy(): Promise<void> | undefined-End-->
@@ -149,7 +135,7 @@ onDestroy(): Promise<void> | undefined
 | --- | --- |
 | Promise&lt;void&gt; | the promise returned by the function. |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 
@@ -175,10 +161,6 @@ onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback: FillRequestCallback): void--><!--Device-AutoFillExtensionAbility-onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback: FillRequestCallback): void-End-->
@@ -195,7 +177,7 @@ onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback
 | request | [FillRequest](arkts-ability-autofillrequest-fillrequest-i.md) | 是 | 自动填充数据。 |
 | callback | [FillRequestCallback](arkts-ability-autofillrequest-fillrequestcallback-i-sys.md) | 是 | 自动填充请求回调。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -282,10 +264,6 @@ onForeground(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onForeground(): void--><!--Device-AutoFillExtensionAbility-onForeground(): void-End-->
@@ -294,7 +272,7 @@ onForeground(): void
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AutoFillExtensionAbility } from '@kit.AbilityKit';
@@ -317,10 +295,6 @@ onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback: SaveRequestCallback): void--><!--Device-AutoFillExtensionAbility-onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback: SaveRequestCallback): void-End-->
@@ -337,7 +311,7 @@ onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback
 | request | [SaveRequest](arkts-ability-autofillrequest-saverequest-i-sys.md) | 是 | 保存请求数据。 |
 | callback | [SaveRequestCallback](arkts-ability-autofillrequest-saverequestcallback-i-sys.md) | 是 | 保存请求回调。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -420,10 +394,6 @@ onSessionDestroy(session: UIExtensionContentSession): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void--><!--Device-AutoFillExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void-End-->
@@ -438,7 +408,7 @@ onSessionDestroy(session: UIExtensionContentSession): void
 | --- | --- | --- | --- |
 | session | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | AutoFillExtensionAbility界面内容相关信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AutoFillExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
@@ -461,10 +431,6 @@ onUpdateRequest(request: UpdateRequest): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AutoFillExtensionAbility-onUpdateRequest(request: UpdateRequest): void--><!--Device-AutoFillExtensionAbility-onUpdateRequest(request: UpdateRequest): void-End-->
@@ -479,7 +445,7 @@ onUpdateRequest(request: UpdateRequest): void
 | --- | --- | --- | --- |
 | request | [UpdateRequest](arkts-ability-autofillrequest-updaterequest-i-sys.md) | 是 | 更新请求。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AutoFillExtensionAbility, autoFillManager } from '@kit.AbilityKit';
@@ -504,10 +470,6 @@ AutoFillExtension的上下文环境，继承自ExtensionContext。
 **类型：** [AutoFillExtensionContext](arkts-ability-autofillextensioncontext-c-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

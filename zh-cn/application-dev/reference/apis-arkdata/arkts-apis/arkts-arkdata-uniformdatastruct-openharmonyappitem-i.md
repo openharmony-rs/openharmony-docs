@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uniformDataStruct-interface OpenHarmonyAppItem--><!--Device-uniformDataStruct-interface OpenHarmonyAppItem-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## 导入模块
+
+```TypeScript
+import { uniformDataStruct } from '@kit.ArkData';
+```
 
 ## abilityName
 
@@ -23,10 +25,6 @@ abilityName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ appIconId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-OpenHarmonyAppItem-appIconId: string--><!--Device-OpenHarmonyAppItem-appIconId: string-End-->
@@ -67,10 +61,6 @@ appId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +80,6 @@ appLabelId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-OpenHarmonyAppItem-appLabelId: string--><!--Device-OpenHarmonyAppItem-appLabelId: string-End-->
@@ -111,10 +97,6 @@ appName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +116,6 @@ bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-OpenHarmonyAppItem-bundleName: string--><!--Device-OpenHarmonyAppItem-bundleName: string-End-->
@@ -156,10 +134,6 @@ details?: Record<string, int | long | double | string | Uint8Array>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-OpenHarmonyAppItem-details?: Record<string, int | long | double | string | Uint8Array>--><!--Device-OpenHarmonyAppItem-details?: Record<string, int | long | double | string | Uint8Array>-End-->
@@ -172,15 +146,11 @@ details?: Record<string, int | long | double | string | Uint8Array>
 readonly uniformDataType: 'openharmony.app-item'
 ```
 
-统一数据类型标识为桌面图标类型数据，固定为“openharmony.app-item”，数据类型描述信息见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md#uniformdatatype)。
+统一数据类型标识为桌面图标类型数据，固定为“openharmony.app-item”，数据类型描述信息见 [UniformDataType](arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md)。
 
 **类型：** 'openharmony.app-item'
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

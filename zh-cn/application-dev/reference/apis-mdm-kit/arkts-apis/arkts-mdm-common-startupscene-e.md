@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-common-export enum StartupScene--><!--Device-common-export enum StartupScene-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -21,10 +17,6 @@ USER_SETUP = 0
 子用户被首次切换并完成其开机向导场景（仅限PC）。后续再次切换该子用户不会触发回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ OTA升级完成场景。
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-StartupScene-OTA = 1--><!--Device-StartupScene-OTA = 1-End-->
@@ -61,10 +49,6 @@ DEVICE_PROVISION = 2
 首次开机完成开机向导场景。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum CameraErrorCode--><!--Device-camera-enum CameraErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -21,10 +17,6 @@ INVALID_ARGUMENT = 7400101
 参数缺失或者参数类型不对。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ OPERATION_NOT_ALLOWED = 7400102
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraErrorCode-OPERATION_NOT_ALLOWED = 7400102--><!--Device-CameraErrorCode-OPERATION_NOT_ALLOWED = 7400102-End-->
@@ -61,10 +49,6 @@ SESSION_NOT_CONFIG = 7400103
 session 未配置返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ session 未运行返回。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraErrorCode-SESSION_NOT_RUNNING = 7400104--><!--Device-CameraErrorCode-SESSION_NOT_RUNNING = 7400104-End-->
@@ -101,10 +81,6 @@ SESSION_CONFIG_LOCKED = 7400105
 session 配置已锁定返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ DEVICE_SETTING_LOCKED = 7400106
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraErrorCode-DEVICE_SETTING_LOCKED = 7400106--><!--Device-CameraErrorCode-DEVICE_SETTING_LOCKED = 7400106-End-->
@@ -141,10 +113,6 @@ CONFLICT_CAMERA = 7400107
 设备重复打开返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ DEVICE_DISABLED = 7400108
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraErrorCode-DEVICE_DISABLED = 7400108--><!--Device-CameraErrorCode-DEVICE_DISABLED = 7400108-End-->
@@ -181,10 +145,6 @@ DEVICE_PREEMPTED = 7400109
 相机被抢占导致无法使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -202,10 +162,6 @@ UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraErrorCode-UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110--><!--Device-CameraErrorCode-UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110-End-->
@@ -221,10 +177,6 @@ SERVICE_FATAL_ERROR = 7400201
 相机服务异常返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

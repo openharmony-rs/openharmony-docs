@@ -1,5 +1,13 @@
 # getGlobalWindowMode
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## getGlobalWindowMode
 
 ```TypeScript
@@ -9,10 +17,6 @@ function getGlobalWindowMode(displayId?: long): Promise<int>
 获取指定屏幕上生命周期位于前台的窗口对应的窗口模式，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -40,7 +44,7 @@ function getGlobalWindowMode(displayId?: long): Promise<int>
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. function getGlobalWindowMode can not work correctly due to limited device capabilities. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

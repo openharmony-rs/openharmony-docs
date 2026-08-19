@@ -1,5 +1,11 @@
 # offAppForegroundStateChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## offAppForegroundStateChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offAppForegroundStateChange(observer?: AppForegroundStateObserver): voi
 注销应用启动和退出的监听器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -36,7 +38,7 @@ function offAppForegroundStateChange(observer?: AppForegroundStateObserver): voi
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 

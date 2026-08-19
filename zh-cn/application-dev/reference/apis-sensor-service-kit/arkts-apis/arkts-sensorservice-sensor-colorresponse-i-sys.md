@@ -1,20 +1,22 @@
 # ColorResponse（系统接口）
 
-颜色传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
+颜色传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
 
-**继承/实现关系：** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
+**继承/实现关系：** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-interface ColorResponse--><!--Device-sensor-interface ColorResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
 
 ## colorTemperature
 
@@ -27,10 +29,6 @@ colorTemperature: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ColorResponse-colorTemperature: double--><!--Device-ColorResponse-colorTemperature: double-End-->
 
@@ -49,10 +47,6 @@ lightIntensity: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ColorResponse-lightIntensity: double--><!--Device-ColorResponse-lightIntensity: double-End-->
 

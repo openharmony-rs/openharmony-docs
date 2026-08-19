@@ -1,5 +1,11 @@
 # turnBySpeed（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## turnBySpeed
 
 ```TypeScript
@@ -9,10 +15,6 @@ function turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise<Re
 以固定速度原地旋转
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise<Result>--><!--Device-mechanicManager-function turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise<Result>-End-->
 

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## getNotificationStatisticsByBundle
@@ -15,10 +15,6 @@ function getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise<Bun
 批量获取指定应用列表的通知统计信息，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -50,7 +46,7 @@ function getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise<Bun
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

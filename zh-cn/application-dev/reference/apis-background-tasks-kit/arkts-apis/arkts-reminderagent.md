@@ -4,15 +4,20 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [reminderAgentManager](arkts-reminderagentmanager.md#ohosreminderagentmanager)
+**替代接口：** [reminderAgentManager](arkts-reminderagentmanager.md)
 
 <!--Device-unnamed-declare namespace reminderAgent--><!--Device-unnamed-declare namespace reminderAgent-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgent } from '@kit.BackgroundTasksKit';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## 汇总
 
@@ -20,18 +25,18 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md#addnotificationslot) | 添加一个NotificationSlot，使用回调的方式实现异步调用。 |
-| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md#addnotificationslot) | 添加一个NotificationSlot，使用Promise方式实现异步调用。 |
-| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md#cancelallreminders) | 取消当前应用所有的提醒，使用回调的方式实现异步调用。 |
-| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md#cancelallreminders) | 取消当前应用所有的提醒，使用Promise方式实现异步调用。 |
-| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md#cancelreminder) | 取消指定id的提醒，使用回调的方式实现异步调用。 |
-| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md#cancelreminder) | 取消指定id的提醒，使用Promise方式实现异步调用。 |
-| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md#getvalidreminders) | 获取当前应用已设置的所有有效（未过期）的提醒，使用回调的方式实现异步调用。 |
-| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md#getvalidreminders) | 获取当前应用已设置的所有有效（未过期）的提醒，使用Promise方式实现异步调用。 |
-| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md#publishreminder) | 发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限 [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification) 后才能调用。 |
-| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md#publishreminder) | 发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限 [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification) 后才能调用。 |
-| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md#removenotificationslot) | 删除目标NotificationSlot，使用callback方式实现异步调用。 |
-| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md#removenotificationslot) | 删除目标NotificationSlot，使用Promise方式实现异步调用。 |
+| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md) | 添加一个NotificationSlot，使用回调的方式实现异步调用。 |
+| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md) | 添加一个NotificationSlot，使用Promise方式实现异步调用。 |
+| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md) | 取消当前应用所有的提醒，使用回调的方式实现异步调用。 |
+| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md) | 取消当前应用所有的提醒，使用Promise方式实现异步调用。 |
+| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md) | 取消指定id的提醒，使用回调的方式实现异步调用。 |
+| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md) | 取消指定id的提醒，使用Promise方式实现异步调用。 |
+| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md) | 获取当前应用已设置的所有有效（未过期）的提醒，使用回调的方式实现异步调用。 |
+| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md) | 获取当前应用已设置的所有有效（未过期）的提醒，使用Promise方式实现异步调用。 |
+| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md) | 发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限 [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification) 后才能调用。 |
+| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md) | 发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限 [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification) 后才能调用。 |
+| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md) | 删除目标NotificationSlot，使用callback方式实现异步调用。 |
+| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md) | 删除目标NotificationSlot，使用Promise方式实现异步调用。 |
 
 ### 接口
 

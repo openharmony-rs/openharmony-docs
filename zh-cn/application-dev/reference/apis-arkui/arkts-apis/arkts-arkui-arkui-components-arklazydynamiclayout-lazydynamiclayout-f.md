@@ -1,5 +1,11 @@
 # LazyDynamicLayout
 
+## 导入模块
+
+```TypeScript
+import { LazyDynamicLayout, LazyDynamicLayoutAttribute } from '@kit.ArkUI';
+```
+
 ## LazyDynamicLayout
 
 ```TypeScript
@@ -9,10 +15,6 @@ export declare function LazyDynamicLayout(algorithm: LazyLayoutAlgorithm): LazyD
 定义LazyDynamicLayout组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ export declare function LazyDynamicLayout(algorithm: LazyLayoutAlgorithm): LazyD
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algorithm | [LazyLayoutAlgorithm](../../apis-na/arkts-apis/arkts-na-lazylayoutalgorithm-i.md) | 是 | Lazy layout algorithm. |
+| algorithm | [LazyLayoutAlgorithm](arkts-arkui-lazylayoutalgorithm-i.md) | 是 | Lazy layout algorithm. |
 
 **返回值：**
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-export class ContextRecoveryInfo--><!--Device-photoAccessHelper-export class ContextRecoveryInfo-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## albumUri
 
@@ -23,10 +25,6 @@ albumUri: string
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ displayName: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContextRecoveryInfo-displayName: string--><!--Device-ContextRecoveryInfo-displayName: string-End-->
@@ -67,10 +61,6 @@ fileSize?: int
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,10 +82,6 @@ gridLevel?: GridLevel
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -110,15 +96,11 @@ gridLevel?: GridLevel
 recommendationType: int
 ```
 
-用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-medialibrary-photoaccesshelper-recommendationtype-e.md#recommendationtype)值定义。 上次选择时未设置推荐时，默认为0。
+用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-medialibrary-photoaccesshelper-recommendationtype-e.md)值定义。 上次选择时未设置推荐时，默认为0。
 
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -132,15 +114,11 @@ recommendationType: int
 selectedRecommendationType: int
 ```
 
-用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-medialibrary-photoaccesshelper-recommendationtype-e.md#recommendationtype)值定义。 当上次选择未选中推荐项，选中"全部"时，默认为0。
+用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-medialibrary-photoaccesshelper-recommendationtype-e.md)值定义。 当上次选择未选中推荐项，选中"全部"时，默认为0。
 
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -159,10 +137,6 @@ sortRule?: string
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -184,10 +158,6 @@ time: long
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContextRecoveryInfo-time: long--><!--Device-ContextRecoveryInfo-time: long-End-->
@@ -205,10 +175,6 @@ version: int
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

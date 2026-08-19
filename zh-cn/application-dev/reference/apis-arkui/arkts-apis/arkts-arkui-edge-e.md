@@ -4,10 +4,6 @@ Edge.
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum Edge--><!--Device-unnamed-declare enum Edge-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ Top
 The top is centered horizontally.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,8 +34,6 @@ Center horizontal and vertical.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-Edge-Center--><!--Device-Edge-Center-End-->
@@ -59,10 +49,6 @@ Bottom
 The bottom is centered horizontally.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -80,8 +66,6 @@ Cross axis direction text baseline alignment.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-Edge-Baseline--><!--Device-Edge-Baseline-End-->
@@ -97,10 +81,6 @@ Start
 Align the head of the cross axis direction.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -118,8 +98,6 @@ Middle
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-Edge-Middle--><!--Device-Edge-Middle-End-->
@@ -135,10 +113,6 @@ End
 Align the head of the cross axis direction.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

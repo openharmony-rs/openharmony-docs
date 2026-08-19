@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 <!--Device-fileAccess-interface FileIterator--><!--Device-fileAccess-interface FileIterator-End-->
@@ -13,6 +11,12 @@
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { fileAccess } from '@kit.CoreFileKit';
+```
 
 ## next
 
@@ -23,8 +27,6 @@ next(): { value: FileInfo, done: boolean }
 可以通过next同步方法获取下一级文件(夹)信息。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 

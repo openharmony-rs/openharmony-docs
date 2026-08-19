@@ -4,13 +4,15 @@ XMPMetadata instance.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-image-class XMPMetadata--><!--Device-image-class XMPMetadata-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## enumerateTags
 
@@ -25,10 +27,6 @@ public enumerateTags(
 Enumerate the XMP tags from specified path and uses a callback to return the result.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,10 +58,6 @@ Obtains the XMP metadata as a blob.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-XMPMetadata-public getBlob(): Promise<ArrayBuffer>--><!--Device-XMPMetadata-public getBlob(): Promise<ArrayBuffer>-End-->
@@ -92,10 +86,6 @@ public getTag(path: string): Promise<XMPTag | null>
 Get a single XMP tag from specified path.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -130,10 +120,6 @@ public getTags(rootPath?: string, options?: XMPEnumerateOptions): Promise<Record
 Get all XMP tags from specified path.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -170,10 +156,6 @@ Register a new namespace according to the xml namespace and prefix.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-XMPMetadata-public registerXMPNamespace(xmpNamespace: XMPNamespace): Promise<void>--><!--Device-XMPMetadata-public registerXMPNamespace(xmpNamespace: XMPNamespace): Promise<void>-End-->
@@ -207,10 +189,6 @@ public removeTag(path: string): Promise<void>
 Remove the XMP tag from specified path.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -246,10 +224,6 @@ Set a blob into the XMP metadata.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-XMPMetadata-public setBlob(buffer: ArrayBuffer): Promise<void>--><!--Device-XMPMetadata-public setBlob(buffer: ArrayBuffer): Promise<void>-End-->
@@ -283,10 +257,6 @@ public setValue(path: string, type: XMPTagType, value?: string): Promise<void>
 Set the XMP type and value of the XMP tag in the specified path.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

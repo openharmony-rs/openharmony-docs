@@ -54,7 +54,7 @@ Defines a set of Text enum and interface.
 | [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | 获取文本跑马灯模式配置项的运行方向。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | 设置文本跑马灯模式配置项的每轮滚动延迟时间。 |
 | [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | 获取文本跑马灯模式配置项的每轮滚动延迟时间。 |
-| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | 设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。<br>        若两端均有文字未完全显示，则两端同时应用渐隐效果。<br>        在渐隐效果开启状态下，{@link ArkUI_NodeAttributeType}中的NODE_CLIP属性将自动锁定为true，不允许设置为false。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | 设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。<br> 若两端均有文字未完全显示，则两端同时应用渐隐效果。<br> 在渐隐效果开启状态下，{@link ArkUI_NodeAttributeType}中的NODE_CLIP属性将自动锁定为true，不允许设置为false。 |
 | [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | 获取文本跑马灯模式配置项是否支持文字超长时的渐隐效果。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | 设置文本跑马灯模式配置项的启动策略。 |
 | [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | 获取文本跑马灯模式配置项的启动策略。 |
@@ -504,7 +504,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 
 **描述**
 
-设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。<br>        若两端均有文字未完全显示，则两端同时应用渐隐效果。<br>        在渐隐效果开启状态下，{@link ArkUI_NodeAttributeType}中的NODE_CLIP属性将自动锁定为true，不允许设置为false。
+设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。<br> 若两端均有文字未完全显示，则两端同时应用渐隐效果。<br> 在渐隐效果开启状态下，{@link ArkUI_NodeAttributeType}中的NODE_CLIP属性将自动锁定为true，不允许设置为false。
 
 **起始版本：** 23
 
@@ -774,7 +774,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回是否启用可变字重调节。<br>         true表示启用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。<br>         false表示禁用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。<br>         默认值为false。字重weight取值为[100, 900]范围外的值，字重取默认值400。 |
+| bool | 返回是否启用可变字重调节。\n          true表示启用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。\n          false表示禁用可变字重调节。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。\n          默认值为false。字重weight取值为[100, 900]范围外的值，字重取默认值400。 |
 
 ### OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory()
 
@@ -817,7 +817,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontW
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回文本字体粗细是否跟随设备的字体粗细级别更新。<br>         true表示当设备的字体粗细级别改变时，文本字体粗细将自动更新。<br>         false表示当设备的字体粗细级别改变时，文本字体粗细不会自动更新。 |
+| bool | 返回文本字体粗细是否跟随设备的字体粗细级别更新。\n          true表示当设备的字体粗细级别改变时，文本字体粗细将自动更新。\n          false表示当设备的字体粗细级别改变时，文本字体粗细不会自动更新。 |
 
 ### OH_ArkUI_FontConfigs_Create()
 
@@ -957,7 +957,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 结果码。<br>     <ul><br>     <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示操作成功。</li><br>     <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 表示options参数为空。</li><br>     </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 结果码。      <ul>      <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示操作成功。</li>      <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 表示options参数为空。</li>      </ul> |
 
 ### OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines()
 
@@ -982,6 +982,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 结果码。<br>     <ul><br>     <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示操作成功。</li><br>     <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 表示任意参数为空。</li><br>     </ul> |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 结果码。      <ul>      <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示操作成功。</li>      <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 表示任意参数为空。</li>      </ul> |
 
 

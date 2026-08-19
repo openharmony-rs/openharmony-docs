@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface ChangeData--><!--Device-photoAccessHelper-interface ChangeData-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## extraUris
 
@@ -23,10 +25,6 @@ extraUris: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ChangeData-extraUris: Array<string>--><!--Device-ChangeData-extraUris: Array<string>-End-->
 
@@ -44,10 +42,6 @@ ChangeData的通知类型。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ChangeData-type: NotifyType--><!--Device-ChangeData-type: NotifyType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -58,15 +52,11 @@ ChangeData的通知类型。
 uris: Array<string>
 ```
 
-相同[NotifyType](arkts-medialibrary-photoaccesshelper-notifytype-e.md#notifytype)的所有uri，可以是PhotoAsset或Album。
+相同[NotifyType](arkts-medialibrary-photoaccesshelper-notifytype-e.md)的所有uri，可以是PhotoAsset或Album。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ChangeData-uris: Array<string>--><!--Device-ChangeData-uris: Array<string>-End-->
 

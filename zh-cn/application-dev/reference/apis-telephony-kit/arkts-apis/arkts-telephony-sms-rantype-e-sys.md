@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export enum RanType--><!--Device-sms-export enum RanType-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -24,10 +20,6 @@ GSM
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RanType-TYPE_GSM = 1--><!--Device-RanType-TYPE_GSM = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -43,10 +35,6 @@ TYPE_CDMA = 2
 CMDA
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RanType-TYPE_CDMA = 2--><!--Device-RanType-TYPE_CDMA = 2-End-->
 

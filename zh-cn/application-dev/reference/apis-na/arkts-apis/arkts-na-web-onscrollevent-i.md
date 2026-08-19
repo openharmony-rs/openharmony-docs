@@ -4,9 +4,7 @@ Defines function Triggered when the scroll bar slides to the specified position.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnScrollEvent--><!--Device-unnamed-export declare interface OnScrollEvent-End-->
 
@@ -24,9 +22,7 @@ The X offset of the scroll. The unit is vp.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnScrollEvent-xOffset: double--><!--Device-OnScrollEvent-xOffset: double-End-->
 
@@ -44,9 +40,7 @@ The Y offset of the scroll. The unit is vp.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnScrollEvent-yOffset: double--><!--Device-OnScrollEvent-yOffset: double-End-->
 

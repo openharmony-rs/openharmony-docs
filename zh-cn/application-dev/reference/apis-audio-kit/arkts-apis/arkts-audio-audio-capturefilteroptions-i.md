@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 12
 
 **替代接口：** OH_AVScreenCapture in native interface.
@@ -13,6 +11,13 @@
 <!--Device-audio-interface CaptureFilterOptions--><!--Device-audio-interface CaptureFilterOptions-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## usages
 
@@ -25,8 +30,6 @@ Filter by stream usages. But not allow to capture voice streams.
 **类型：** Array&lt;[StreamUsage](arkts-audio-audio-streamusage-e.md)&gt;
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 12
 

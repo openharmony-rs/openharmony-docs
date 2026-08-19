@@ -2,7 +2,7 @@
 
 ## 概述
 
-BackgroundProcessManager provides APIs.
+提供后台子进程调度策略管控C接口。
 
 **起始版本：** 17
 ## 文件汇总

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum AlbumSubtype--><!--Device-photoAccessHelper-enum AlbumSubtype-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ USER_GENERIC = 1
 用户相册。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-USER_GENERIC = 1--><!--Device-AlbumSubtype-USER_GENERIC = 1-End-->
 
@@ -40,10 +32,6 @@ FAVORITE = 1025
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-FAVORITE = 1025--><!--Device-AlbumSubtype-FAVORITE = 1025-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -58,10 +46,6 @@ VIDEO = 1026
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AlbumSubtype-VIDEO = 1026--><!--Device-AlbumSubtype-VIDEO = 1026-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -75,10 +59,6 @@ SOURCE_GENERIC_FROM_FILE_MANAGER = 2050
 来自文件管理的来源相册。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -95,10 +75,6 @@ ANY = 2147483647
 任意相册。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumSubtype-ANY = 2147483647--><!--Device-AlbumSubtype-ANY = 2147483647-End-->
 

@@ -4,15 +4,18 @@ WLAN Ipv6配置信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-interface Ipv6Config--><!--Device-wifiManager-interface Ipv6Config-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## dnsServers
 
@@ -25,10 +28,6 @@ DNS服务器。
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Ipv6Config-dnsServers: Array<string>--><!--Device-Ipv6Config-dnsServers: Array<string>-End-->
 
@@ -48,10 +47,6 @@ domains: Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ipv6Config-domains: Array<string>--><!--Device-Ipv6Config-domains: Array<string>-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -69,10 +64,6 @@ gateway: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Ipv6Config-gateway: string--><!--Device-Ipv6Config-gateway: string-End-->
 
@@ -92,10 +83,6 @@ IPv6地址。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ipv6Config-ipAddress: string--><!--Device-Ipv6Config-ipAddress: string-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -113,10 +100,6 @@ prefixLength: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Ipv6Config-prefixLength: int--><!--Device-Ipv6Config-prefixLength: int-End-->
 

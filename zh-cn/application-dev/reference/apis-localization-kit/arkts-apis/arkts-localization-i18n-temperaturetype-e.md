@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-i18n-export enum TemperatureType--><!--Device-i18n-export enum TemperatureType-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -21,10 +17,6 @@ CELSIUS = 1
 摄氏度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ FAHRENHEIT = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-TemperatureType-FAHRENHEIT = 2--><!--Device-TemperatureType-FAHRENHEIT = 2-End-->
@@ -61,10 +49,6 @@ KELVIN = 3
 开尔文。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

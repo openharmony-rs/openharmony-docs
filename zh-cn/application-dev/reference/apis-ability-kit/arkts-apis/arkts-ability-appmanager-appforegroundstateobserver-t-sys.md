@@ -8,10 +8,6 @@ export type AppForegroundStateObserver = _AppForegroundStateObserver
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-appManager-export type AppForegroundStateObserver = _AppForegroundStateObserver--><!--Device-appManager-export type AppForegroundStateObserver = _AppForegroundStateObserver-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

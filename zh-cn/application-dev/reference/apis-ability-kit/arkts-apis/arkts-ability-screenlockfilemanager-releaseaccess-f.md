@@ -1,18 +1,20 @@
 # releaseAccess
 
+## 导入模块
+
+```TypeScript
+import { screenLockFileManager } from '@kit.AbilityKit';
+```
+
 ## releaseAccess
 
 ```TypeScript
 function releaseAccess(): ReleaseStatus
 ```
 
-以同步方法释放调用方应用锁屏下敏感数据访问权限。释放成功后，敏感数据密钥的引用计数减少，当计数归零时，密钥可以在屏幕被锁定达到系统配置的时长阈值后被销毁。 调用此接口前，请确保应用已开启锁屏下敏感数据保护功能，并且先调用[acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f.md#acquireaccess)接口成功申请权限后才能使用。
+以同步方法释放调用方应用锁屏下敏感数据访问权限。释放成功后，敏感数据密钥的引用计数减少，当计数归零时，密钥可以在屏幕被锁定达到系统配置的时长阈值后被销毁。 调用此接口前，请确保应用已开启锁屏下敏感数据保护功能，并且先调用[acquireAccess](arkts-ability-screenlockfilemanager-acquireaccess-f.md)接口成功申请权限后才能使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screenLockFileManager-function releaseAccess(): ReleaseStatus--><!--Device-screenLockFileManager-function releaseAccess(): ReleaseStatus-End-->
 
@@ -33,7 +35,7 @@ function releaseAccess(): ReleaseStatus
 | [29300003](../errorcode-screenLockFileManager.md#29300003-应用未开启锁屏敏感数据保护功能) | The application is not enabled the data protection under lock screen. |
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

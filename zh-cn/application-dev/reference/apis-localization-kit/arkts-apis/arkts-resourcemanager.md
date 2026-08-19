@@ -2,13 +2,15 @@
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace resourceManager--><!--Device-unnamed-declare namespace resourceManager-End-->
 
 **系统能力：** SystemCapability.Global.ResourceManager
+
+## 导入模块
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+```
 
 ## 汇总
 
@@ -16,12 +18,12 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | 获取当前应用的资源管理对象。使用callback异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | 获取指定应用的资源管理对象。使用callback异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | 获取当前应用的资源管理对象。使用Promise异步回调。 |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | 获取指定应用的资源管理对象。使用Promise异步回调。 |
-| [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md#getsysresourcemanager) | 获取系统资源管理对象，用于访问系统预置的资源。 |
-| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md#getsystemresourcemanager) | 获取系统资源管理对象，用于访问系统预置的资源。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取当前应用的资源管理对象。使用callback异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取指定应用的资源管理对象。使用callback异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取当前应用的资源管理对象。使用Promise异步回调。 |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | 获取指定应用的资源管理对象。使用Promise异步回调。 |
+| [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md) | 获取系统资源管理对象，用于访问系统预置的资源。 |
+| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md) | 获取系统资源管理对象，用于访问系统预置的资源。 |
 
 ### 类
 
@@ -42,7 +44,7 @@
 | 名称 | 说明 |
 | --- | --- |
 | [ColorMode](arkts-localization-resourcemanager-colormode-e.md) | 用于表示当前设备颜色模式。 |
-| [DeviceType](arkts-localization-resourcemanager-devicetype-e.md) | 用于表示当前设备类型。 &lt;!--RP1--&gt; &lt;!--RP1End--&gt; |
+| [DeviceType](arkts-localization-resourcemanager-devicetype-e.md) | 用于表示当前设备类型。 <!--RP1--> <!--RP1End--> |
 | [Direction](arkts-localization-resourcemanager-direction-e.md) | 用于表示设备屏幕方向。 |
 | [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md) | 用于表示当前设备屏幕密度。 |
 

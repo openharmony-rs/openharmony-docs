@@ -4,15 +4,20 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#reminderrequest)
+**替代接口：** [ReminderRequest](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md)
 
 <!--Device-reminderAgent-interface ReminderRequest--><!--Device-reminderAgent-interface ReminderRequest-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgent } from '@kit.BackgroundTasksKit';
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## actionButton
 
@@ -25,8 +30,6 @@ actionButton?: [ActionButton?, ActionButton?]
 **类型：** [ActionButton?, ActionButton?]
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -48,8 +51,6 @@ content?: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** content
@@ -69,8 +70,6 @@ expiredContent?: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -92,8 +91,6 @@ maxScreenWantAgent?: MaxScreenWantAgent
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** maxScreenWantAgent
@@ -113,8 +110,6 @@ notificationId?: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -136,8 +131,6 @@ reminderType: ReminderType
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** reminderType
@@ -157,8 +150,6 @@ ringDuration?: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -180,8 +171,6 @@ slotType?: notification.SlotType
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** slotType
@@ -201,8 +190,6 @@ snoozeContent?: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -224,8 +211,6 @@ snoozeTimes?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** snoozeTimes
@@ -245,8 +230,6 @@ timeInterval?: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -268,8 +251,6 @@ title?: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** title
@@ -289,8 +270,6 @@ wantAgent?: WantAgent
 **类型：** WantAgent
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

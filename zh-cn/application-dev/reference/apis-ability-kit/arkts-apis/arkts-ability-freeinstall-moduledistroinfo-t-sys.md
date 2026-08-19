@@ -8,10 +8,6 @@ module发行版信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-freeInstall-export type ModuleDistroInfo = _ModuleDistroInfo--><!--Device-freeInstall-export type ModuleDistroInfo = _ModuleDistroInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall

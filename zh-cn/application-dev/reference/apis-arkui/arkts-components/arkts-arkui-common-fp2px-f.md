@@ -1,5 +1,10 @@
 # fp2px
 
+## 导入模块
+
+```TypeScript
+```
+
 ## fp2px
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function fp2px(value: number): number
 Converts a number in fp units to a number in px.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 18
 

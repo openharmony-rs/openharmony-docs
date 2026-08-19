@@ -1,5 +1,11 @@
 # getValueForAccount
 
+## 导入模块
+
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+```
+
 ## getValueForAccount
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getValueForAccount(admin: Want, item: SettingsItem, accountId: number):
 获取指定用户的设备设置策略。该接口可以获取指定用户在设置应用中的某个参数，比如获取用户100的设备名称等。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
@@ -28,7 +30,7 @@ function getValueForAccount(admin: Want, item: SettingsItem, accountId: number):
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item | [SettingsItem](arkts-mdm-devicesettings-settingsitem-e.md) | 是 | 设备设置策略类型。支持的策略类型包括：DEVICE_NAME（设备名称）、FLOATING_NAVIGATION（三键导航）。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 
 **返回值：**
 
@@ -46,7 +48,7 @@ function getValueForAccount(admin: Want, item: SettingsItem, accountId: number):
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { deviceSettings } from '@kit.MDMKit';

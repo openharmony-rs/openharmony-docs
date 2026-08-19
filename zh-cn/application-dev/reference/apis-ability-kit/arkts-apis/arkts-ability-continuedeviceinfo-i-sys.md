@@ -1,12 +1,8 @@
 # ContinueDeviceInfo（系统接口）
 
-表示发起Mission迁移时所需参数的枚举，迁移Mission详见： [continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission系统接口)
+表示发起Mission迁移时所需参数的枚举，迁移Mission详见： [continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface ContinueDeviceInfo--><!--Device-unnamed-export interface ContinueDeviceInfo-End-->
 
@@ -25,10 +21,6 @@ dstDeviceId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +42,6 @@ missionId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinueDeviceInfo-missionId: int--><!--Device-ContinueDeviceInfo-missionId: int-End-->
@@ -74,10 +62,6 @@ srcDeviceId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinueDeviceInfo-srcDeviceId: string--><!--Device-ContinueDeviceInfo-srcDeviceId: string-End-->
@@ -97,10 +81,6 @@ wantParam: Record<string, Object>
 **类型：** Record&lt;string, Object&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

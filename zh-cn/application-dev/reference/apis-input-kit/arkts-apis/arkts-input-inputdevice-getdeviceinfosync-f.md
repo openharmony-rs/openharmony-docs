@@ -1,5 +1,12 @@
 # getDeviceInfoSync
 
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
 ## getDeviceInfoSync
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getDeviceInfoSync(deviceId: int): InputDeviceData
 获取指定输入设备的信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputDevice-function getDeviceInfoSync(deviceId: int): InputDeviceData--><!--Device-inputDevice-function getDeviceInfoSync(deviceId: int): InputDeviceData-End-->
 
@@ -36,7 +39,7 @@ function getDeviceInfoSync(deviceId: int): InputDeviceData
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

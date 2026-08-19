@@ -1,5 +1,11 @@
 # onMission（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## onMission
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onMission(listener: MissionListener): long
 注册系统任务状态监听器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -41,7 +43,7 @@ function onMission(listener: MissionListener): long
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Sta示例：
 

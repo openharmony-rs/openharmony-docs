@@ -1,18 +1,22 @@
-# ShowToastOptions
+# ShowToastOptions(弹窗)
 
 定义ShowToast的选项。
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [ShowToastOptions](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#showtoastoptions)
+**替代接口：** [ShowToastOptions](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md)
 
 <!--Device-unnamed-export interface ShowToastOptions--><!--Device-unnamed-export interface ShowToastOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuccessResponse, ShowToastOptions } from '@kit.ArkUI';
+```
 
 ## bottom
 
@@ -25,8 +29,6 @@ bottom?: string | number
 **类型：** string \| number
 
 **起始版本：** 5
-
-**ArkTS模式：** 起始版本为5。
 
 **废弃版本：** 8
 
@@ -48,8 +50,6 @@ duration?: number
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
 **替代接口：** [duration](../../apis-na/arkts-apis/arkts-na-promptaction-showtoastoptions-i.md#duration)
@@ -69,8 +69,6 @@ message: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

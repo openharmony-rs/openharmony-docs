@@ -1,18 +1,19 @@
 # ContentCoverOptions
 
-继承自[BindOptions](arkts-arkui-bindoptions-i.md#bindoptions)。 全屏模态页面内容选项。
+继承自[BindOptions](arkts-arkui-bindoptions-i.md)。 全屏模态页面内容选项。
 
-**继承/实现关系：** ContentCoverOptions extends [BindOptions](arkts-arkui-bindoptions-i.md#bindoptions)
+**继承/实现关系：** ContentCoverOptions extends [BindOptions](arkts-arkui-bindoptions-i.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface ContentCoverOptions--><!--Device-unnamed-declare interface ContentCoverOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## enableSafeArea
 
@@ -27,10 +28,6 @@ enableSafeArea?: boolean
 **默认值：** false
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,10 +51,6 @@ modalTransition?: ModalTransition
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -78,10 +71,6 @@ onWillDismiss?: Callback<DismissContentCoverAction>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -101,10 +90,6 @@ transition?: TransitionEffect
 **类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

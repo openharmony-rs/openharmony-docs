@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum ThumbnailChangeStatus--><!--Device-photoAccessHelper-enum ThumbnailChangeStatus-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ THUMBNAIL_NOT_EXISTS = 0
 缩略图不存在。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_EXISTS = 0--><!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_EXISTS = 0-End-->
 
@@ -44,10 +36,6 @@ THUMBNAIL_ADD = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ThumbnailChangeStatus-THUMBNAIL_ADD = 1--><!--Device-ThumbnailChangeStatus-THUMBNAIL_ADD = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -64,10 +52,6 @@ THUMBNAIL_UPDATE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ThumbnailChangeStatus-THUMBNAIL_UPDATE = 2--><!--Device-ThumbnailChangeStatus-THUMBNAIL_UPDATE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -83,10 +67,6 @@ THUMBNAIL_NOT_CHANGE = 3
 缩略图没有变化。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_CHANGE = 3--><!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_CHANGE = 3-End-->
 

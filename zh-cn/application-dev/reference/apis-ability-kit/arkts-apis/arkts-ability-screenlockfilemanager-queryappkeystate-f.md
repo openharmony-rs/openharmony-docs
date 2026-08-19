@@ -1,5 +1,11 @@
 # queryAppKeyState
 
+## 导入模块
+
+```TypeScript
+import { screenLockFileManager } from '@kit.AbilityKit';
+```
+
 ## queryAppKeyState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryAppKeyState(): KeyStatus
 以同步方法查询调用方应用锁屏下敏感数据密钥的状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screenLockFileManager-function queryAppKeyState(): KeyStatus--><!--Device-screenLockFileManager-function queryAppKeyState(): KeyStatus-End-->
 
@@ -31,7 +33,7 @@ function queryAppKeyState(): KeyStatus
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | The specified SystemCapability name was not found. |
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

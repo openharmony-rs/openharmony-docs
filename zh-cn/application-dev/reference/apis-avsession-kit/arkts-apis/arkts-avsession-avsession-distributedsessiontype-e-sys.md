@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum DistributedSessionType--><!--Device-avSession-enum DistributedSessionType-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
@@ -23,10 +19,6 @@ TYPE_SESSION_REMOTE = 0
 远端设备会话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DistributedSessionType-TYPE_SESSION_REMOTE = 0--><!--Device-DistributedSessionType-TYPE_SESSION_REMOTE = 0-End-->
 
@@ -44,10 +36,6 @@ TYPE_SESSION_MIGRATE_IN = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_IN = 1--><!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_IN = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
@@ -63,10 +51,6 @@ TYPE_SESSION_MIGRATE_OUT = 2
 迁移至远端的设备会话。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_OUT = 2--><!--Device-DistributedSessionType-TYPE_SESSION_MIGRATE_OUT = 2-End-->
 

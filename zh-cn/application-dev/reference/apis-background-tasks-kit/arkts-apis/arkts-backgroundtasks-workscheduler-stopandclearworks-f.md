@@ -1,5 +1,11 @@
 # stopAndClearWorks
 
+## 导入模块
+
+```TypeScript
+import { workScheduler } from '@kit.BackgroundTasksKit';
+```
+
 ## stopAndClearWorks
 
 ```TypeScript
@@ -9,10 +15,6 @@ function stopAndClearWorks(): void
 停止和取消当前应用所有的延迟任务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -29,7 +31,7 @@ function stopAndClearWorks(): void
 | [9700002](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | [9700003](../../apis-backgroundtasks-kit/errorcode-workScheduler.md#9700003-系统服务失败) | System service operation failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,5 +1,11 @@
 # convertRecordsToEntries
 
+## 导入模块
+
+```TypeScript
+import { unifiedDataChannel } from '@kit.ArkData';
+```
+
 ## convertRecordsToEntries
 
 ```TypeScript
@@ -9,10 +15,6 @@ function convertRecordsToEntries(data: UnifiedData): void
 本接口用于将传入的data转换成多样式数据结构。若原data使用多个record去承载同一份数据的不同数据格式，则可以使用此接口将原data转换为多样式数据结构。 当满足以下规则时进行转换，传入的data经转换后变为多样式数据结构： 1. data中的record数量大于1； 2. data中的properties中的tag值为"records_to_entries_data_format"。 否则不会产生任何行为。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -34,7 +36,7 @@ function convertRecordsToEntries(data: UnifiedData): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

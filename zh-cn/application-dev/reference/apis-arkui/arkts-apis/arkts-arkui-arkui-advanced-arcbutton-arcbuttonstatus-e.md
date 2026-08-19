@@ -4,10 +4,6 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum ArcButtonStatus--><!--Device-unnamed-export declare enum ArcButtonStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
@@ -21,10 +17,6 @@ NORMAL = 0
 正常状态。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ PRESSED = 1
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArcButtonStatus-PRESSED = 1--><!--Device-ArcButtonStatus-PRESSED = 1-End-->
@@ -61,10 +49,6 @@ DISABLED = 2
 禁用状态。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

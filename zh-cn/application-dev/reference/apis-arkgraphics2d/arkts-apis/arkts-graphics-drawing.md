@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace drawing--><!--Device-unnamed-declare namespace drawing-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## 汇总
 
@@ -18,7 +20,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Brush](arkts-arkgraphics2d-drawing-brush-c.md) | 画刷对象，用于设置图形的填充样式，包括颜色、抗锯齿、混合模式、颜色滤波器、蒙版滤波器、着色器效果、阴影层效果及图像滤波器等，并支持获取颜色、透明度、抗锯齿等属性及重置画刷为初始状态。 画刷需通过Canvas的[attachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#attachbrush)方法绑定到画布后生效，绘制完成后通过 [detachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#detachbrush)方法解绑；画刷用于图形填充，画笔（Pen）用于图形描边，详见[Pen](arkts-arkgraphics2d-drawing-pen-c.md#pen)。 |
+| [Brush](arkts-arkgraphics2d-drawing-brush-c.md) | 画刷对象，用于设置图形的填充样式，包括颜色、抗锯齿、混合模式、颜色滤波器、蒙版滤波器、着色器效果、阴影层效果及图像滤波器等，并支持获取颜色、透明度、抗锯齿等属性及重置画刷为初始状态。 画刷需通过Canvas的[attachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#attachbrush)方法绑定到画布后生效，绘制完成后通过 [detachBrush](arkts-arkgraphics2d-drawing-canvas-c.md#detachbrush)方法解绑；画刷用于图形填充，画笔（Pen）用于图形描边，详见[Pen](arkts-arkgraphics2d-drawing-pen-c.md)。 |
 | [Canvas](arkts-arkgraphics2d-drawing-canvas-c.md) | 承载绘制内容与绘制状态的载体。Canvas提供矩形、圆形、椭圆、弧线、路径、文字、图片等多种图形的绘制能力，支持通过画笔和画刷设置绘制样式，支持画布裁剪、矩阵变换、画布状态保存与恢复等功能。 |
 | [ColorFilter](arkts-arkgraphics2d-drawing-colorfilter-c.md) | 颜色滤波器，用于对图像或图形的颜色进行变换和处理，支持创建混合模式颜色滤波器、组合颜色滤波器、矩阵颜色滤波器、伽马颜色空间转换滤波器、亮度颜色滤波器和光照颜色滤波器等多种类型。 |
 | [Font](arkts-arkgraphics2d-drawing-font-c.md) | Font类用于描述字型绘制时所使用的属性（如大小、字体、粗细、倾斜、缩放等），并支持文本测量、字形转换、路径轮廓获取、主题字体跟随等能力。 |
@@ -38,7 +40,7 @@
 | [ShaderEffect](arkts-arkgraphics2d-drawing-shadereffect-c.md) | 着色器，用于在绘图中填充颜色和渐变效果。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画刷和画笔的透明度属性仍然生效。 着色器支持创建单色着色器、线性渐变、径向渐变、扇形渐变、锥形渐变、图片着色器及混合着色器等多种类型。 |
 | [ShadowLayer](arkts-arkgraphics2d-drawing-shadowlayer-c.md) | 阴影层对象，通过设置模糊半径、偏移量和颜色，可为图形、文本等绘制内容添加阴影渲染效果。 |
 | [TextBlob](arkts-arkgraphics2d-drawing-textblob-c.md) | TextBlob是由一个或多个具有相同字型的字符组成的字块。支持通过文本、字符串、RunBuffer等多种方式创建字形集合，适用于需要批量渲染文本或获取文字边界框的场景。 |
-| [Tool](arkts-arkgraphics2d-drawing-tool-c.md) | 本模块定义的工具类，仅提供静态的方法，主要完成其他模块和[common2D](arkts-graphics-common2d.md#ohosgraphicscommon2d)中定义的数据结构的转换功能。 |
+| [Tool](arkts-arkgraphics2d-drawing-tool-c.md) | 本模块定义的工具类，仅提供静态的方法，主要完成其他模块和[common2D](arkts-graphics-common2d.md)中定义的数据结构的转换功能。 |
 | [Typeface](arkts-arkgraphics2d-drawing-typeface-c.md) | Typeface类用于表示和管理字体对象。支持的字体操作包括：获取字体族名、从字体文件或rawfile资源构造字体、结合字体属性构造新字体，以及检查字体的加粗、斜体状态等。 |
 | [TypefaceArguments](arkts-arkgraphics2d-drawing-typefacearguments-c.md) | 提供字体属性配置的类，用于配置可变字体的属性参数（如字重维度等轴标签及对应属性值）。 |
 
@@ -71,7 +73,7 @@
 | [PathMeasureMatrixFlags](arkts-arkgraphics2d-drawing-pathmeasurematrixflags-e.md) | 路径测量中的矩阵信息维度枚举，常用于控制物体沿路径移动的动画场景。位置矩阵包含路径上某点的坐标平移信息； 切线矩阵包含路径上某点切线方向的旋转变换信息；位置和切线矩阵同时包含位置和切线信息，提供完整的路径几何信息。 |
 | [PathOp](arkts-arkgraphics2d-drawing-pathop-e.md) | 路径操作类型枚举，可用于合并或裁剪路径等功能。 |
 | [PointMode](arkts-arkgraphics2d-drawing-pointmode-e.md) | 绘制点数组的方式的枚举。 |
-| [RectType](arkts-arkgraphics2d-drawing-recttype-e.md) | 定义填充网格的矩形类型的枚举，用于在图像分割绘制时指定各个矩形区域的填充方式。仅在[Lattice](arkts-arkgraphics2d-drawing-lattice-c.md#lattice)中使用。 |
+| [RectType](arkts-arkgraphics2d-drawing-recttype-e.md) | 定义填充网格的矩形类型的枚举，用于在图像分割绘制时指定各个矩形区域的填充方式。仅在[Lattice](arkts-arkgraphics2d-drawing-lattice-c.md)中使用。 |
 | [RegionOp](arkts-arkgraphics2d-drawing-regionop-e.md) | 两个区域合并时的操作的枚举。常用于图形编辑、裁剪区域计算等需要组合多个区域的场景。 |
 | [ScaleToFit](arkts-arkgraphics2d-drawing-scaletofit-e.md) | 源矩形到目标矩形的缩放方式枚举。 |
 | [ShadowFlag](arkts-arkgraphics2d-drawing-shadowflag-e.md) | 控制阴影绘制行为的枚举。 |

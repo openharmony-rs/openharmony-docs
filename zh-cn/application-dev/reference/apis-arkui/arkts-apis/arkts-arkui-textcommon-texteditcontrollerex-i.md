@@ -1,14 +1,12 @@
 # TextEditControllerEx
 
-文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#textbasecontroller)。
+文本扩展编辑控制器。 继承自[TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md)。
 
-**继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md#textbasecontroller)
+**继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-textcommon-textbasecontroller-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface TextEditControllerEx--><!--Device-unnamed-export declare interface TextEditControllerEx-End-->
 
@@ -24,9 +22,7 @@ getCaretOffset(): int | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,9 +44,7 @@ getPreviewText(): PreviewText | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,9 +68,7 @@ isEditing(): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -100,9 +92,7 @@ setCaretOffset(offset: int): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,9 +122,7 @@ stopEditing(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## getSlotNumByBundle
@@ -15,10 +15,6 @@ function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<long>)
 获取指定应用的通知渠道数量。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -33,7 +29,7 @@ function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<long>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 获取通知渠道数量回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 获取通知渠道数量回调函数。 |
 
 **错误码：**
 
@@ -48,7 +44,7 @@ function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<long>)
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -102,10 +98,6 @@ function getSlotNumByBundle(bundle: BundleOption): Promise<long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function getSlotNumByBundle(bundle: BundleOption): Promise<long>--><!--Device-notificationManager-function getSlotNumByBundle(bundle: BundleOption): Promise<long>-End-->
@@ -139,7 +131,7 @@ function getSlotNumByBundle(bundle: BundleOption): Promise<long>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

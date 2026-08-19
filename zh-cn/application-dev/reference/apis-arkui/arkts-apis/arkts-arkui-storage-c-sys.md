@@ -4,15 +4,16 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class Storage--><!--Device-unnamed-declare class Storage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## clear
 
@@ -23,10 +24,6 @@ clear(): void
 清除所有存储数据。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-Storage-clear(): void--><!--Device-Storage-clear(): void-End-->
 
@@ -43,10 +40,6 @@ constructor(needCrossThread?: boolean, file?: string)
 创建Storage实例的构造函数。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)--><!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)-End-->
 
@@ -71,10 +64,6 @@ delete(key: string): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-Storage-delete(key: string): void--><!--Device-Storage-delete(key: string): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -96,10 +85,6 @@ get(key: string): string | undefined
 根据指定key从磁盘中读取对应的存储数据。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-Storage-get(key: string): string | undefined--><!--Device-Storage-get(key: string): string | undefined-End-->
 
@@ -126,10 +111,6 @@ set(key: string, val: any): void
 将指定key对应的数据持久化存储到磁盘。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-Storage-set(key: string, val: any): void--><!--Device-Storage-set(key: string, val: any): void-End-->
 

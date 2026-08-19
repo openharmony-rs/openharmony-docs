@@ -1,5 +1,12 @@
 # unregisterRemoteAuthCallback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
+
 ## unregisterRemoteAuthCallback
 
 ```TypeScript
@@ -9,10 +16,6 @@ function unregisterRemoteAuthCallback(): void
 注销远程认证回调。该接口用于注销已注册的远程认证回调，注销后系统不再接收远程认证的页面参数请求和认证结果通知。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
@@ -32,7 +35,7 @@ function unregisterRemoteAuthCallback(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

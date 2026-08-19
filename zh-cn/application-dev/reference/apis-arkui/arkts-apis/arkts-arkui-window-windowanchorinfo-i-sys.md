@@ -4,15 +4,19 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-window-interface WindowAnchorInfo--><!--Device-window-interface WindowAnchorInfo-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## anchorType
 
@@ -25,10 +29,6 @@ anchorType: WindowAnchor
 **类型：** [WindowAnchor](arkts-arkui-window-windowanchor-e.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +52,6 @@ offsetX?: int
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowAnchorInfo-offsetX?: int--><!--Device-WindowAnchorInfo-offsetX?: int-End-->
@@ -77,10 +73,6 @@ offsetY?: int
 **默认值：** 0
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

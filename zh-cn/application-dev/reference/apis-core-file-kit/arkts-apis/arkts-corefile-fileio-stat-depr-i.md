@@ -1,18 +1,21 @@
 # Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](arkts-corefile-fileio-stat-f.md#stat)方法（同步或异步）来构建一个Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过[stat()](arkts-corefile-fileio-stat-f.md)方法（同步或异步）来构建一个Stat实例。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [Stat](arkts-corefile-file-fs-stat-i.md#stat)
+**替代接口：** [Stat](arkts-corefile-file-fs-stat-i.md)
 
 <!--Device-unnamed-declare interface Stat--><!--Device-unnamed-declare interface Stat-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## isBlockDevice
 
@@ -23,8 +26,6 @@ isBlockDevice(): boolean
 用于判断文件是否是块特殊文件。一个块特殊文件只能以块为粒度进行访问，且访问的时候带缓存。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -40,7 +41,7 @@ isBlockDevice(): boolean
 | --- | --- |
 | boolean | 表示文件是否是块特殊设备。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -57,8 +58,6 @@ isCharacterDevice(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [isCharacterDevice](arkts-corefile-file-fs-stat-i.md#ischaracterdevice)
@@ -73,7 +72,7 @@ isCharacterDevice(): boolean
 | --- | --- |
 | boolean | 表示文件是否是字符特殊设备。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -90,8 +89,6 @@ isDirectory(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [isDirectory](arkts-corefile-file-fs-stat-i.md#isdirectory)
@@ -106,7 +103,7 @@ isDirectory(): boolean
 | --- | --- |
 | boolean | 表示文件是否是目录。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dirPath = pathDir + "/test";
@@ -123,8 +120,6 @@ isFIFO(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [isFIFO](arkts-corefile-file-fs-stat-i.md#isfifo)
@@ -139,7 +134,7 @@ isFIFO(): boolean
 | --- | --- |
 | boolean | 表示文件是否是?FIFO。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -156,8 +151,6 @@ isFile(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [isFile](arkts-corefile-file-fs-stat-i.md#isfile)
@@ -172,7 +165,7 @@ isFile(): boolean
 | --- | --- |
 | boolean | 表示文件是否是普通文件。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -189,8 +182,6 @@ isSocket(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [isSocket](arkts-corefile-file-fs-stat-i.md#issocket)
@@ -205,7 +196,7 @@ isSocket(): boolean
 | --- | --- |
 | boolean | 表示文件是否是套接字。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test.txt";
@@ -222,8 +213,6 @@ isSymbolicLink(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [isSymbolicLink](arkts-corefile-file-fs-stat-i.md#issymboliclink)
@@ -238,7 +227,7 @@ isSymbolicLink(): boolean
 | --- | --- |
 | boolean | 表示文件是否是符号链接。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + "/test";
@@ -256,8 +245,6 @@ readonly atime: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -279,8 +266,6 @@ readonly blocks: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Stat-readonly blocks: number--><!--Device-Stat-readonly blocks: number-End-->
@@ -298,8 +283,6 @@ readonly ctime: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -321,8 +304,6 @@ readonly dev: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Stat-readonly dev: number--><!--Device-Stat-readonly dev: number-End-->
@@ -340,8 +321,6 @@ readonly gid: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -363,8 +342,6 @@ readonly ino: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** ino
@@ -384,8 +361,6 @@ readonly mode: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -407,8 +382,6 @@ readonly mtime: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 **替代接口：** [mtime](arkts-corefile-file-fs-stat-i.md#mtime)
@@ -429,8 +402,6 @@ readonly nlink: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Stat-readonly nlink: number--><!--Device-Stat-readonly nlink: number-End-->
@@ -449,8 +420,6 @@ readonly rdev: number
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
 <!--Device-Stat-readonly rdev: number--><!--Device-Stat-readonly rdev: number-End-->
@@ -468,8 +437,6 @@ readonly size: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 
@@ -490,8 +457,6 @@ readonly uid: number
 **类型：** number
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 9
 

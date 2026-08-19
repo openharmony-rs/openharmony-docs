@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface AVRecorderConfig--><!--Device-unnamed-interface AVRecorderConfig-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## audioSourceType
 
@@ -23,10 +25,6 @@ audioSourceType?: AudioSourceType
 **类型：** [AudioSourceType](arkts-media-multimedia-media-audiosourcetype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ fileGenerationMode?: FileGenerationMode
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVRecorderConfig-fileGenerationMode?: FileGenerationMode--><!--Device-AVRecorderConfig-fileGenerationMode?: FileGenerationMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
@@ -65,8 +59,6 @@ location?: Location
 **类型：** [Location](arkts-media-multimedia-media-location-i.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -88,10 +80,6 @@ maxDuration?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVRecorderConfig-maxDuration?: int--><!--Device-AVRecorderConfig-maxDuration?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
@@ -108,10 +96,6 @@ metadata?: AVMetadata
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVRecorderConfig-metadata?: AVMetadata--><!--Device-AVRecorderConfig-metadata?: AVMetadata-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
@@ -127,10 +111,6 @@ profile: AVRecorderProfile
 **类型：** [AVRecorderProfile](arkts-media-multimedia-media-avrecorderprofile-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -149,8 +129,6 @@ rotation?: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -172,10 +150,6 @@ url: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVRecorderConfig-url: string--><!--Device-AVRecorderConfig-url: string-End-->
@@ -193,10 +167,6 @@ videoSourceType?: VideoSourceType
 **类型：** [VideoSourceType](arkts-media-multimedia-media-videosourcetype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVRecorderConfig-videoSourceType?: VideoSourceType--><!--Device-AVRecorderConfig-videoSourceType?: VideoSourceType-End-->
 

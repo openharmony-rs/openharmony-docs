@@ -1,12 +1,8 @@
 # InteropAbilityMonitor
 
-本模块提供监听指定[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)生命周期状态变化的能力。开发者可以将InteropAbilityMonitor作为abilityDelegator. addInteropAbilityMonitorSync 的入参来注册监听。
+本模块提供监听指定[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)生命周期状态变化的能力。开发者可以将InteropAbilityMonitor作为abilityDelegator. addInteropAbilityMonitorSync 的入参来注册监听。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface InteropAbilityMonitor--><!--Device-unnamed-export interface InteropAbilityMonitor-End-->
 
@@ -23,10 +19,6 @@ abilityName: string
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +40,6 @@ moduleName?: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -71,10 +59,6 @@ UIAbility对象状态变成后台时，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +80,6 @@ UIAbility对象被创建时，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -119,10 +99,6 @@ UIAbility对象被销毁前，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -144,10 +120,6 @@ UIAbility对象状态变成前台时，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -167,10 +139,6 @@ onWindowStageCreate?: AbilityCallbackFn
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -192,10 +160,6 @@ onWindowStageDestroy?: AbilityCallbackFn
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -215,10 +179,6 @@ onWindowStageRestore?: AbilityCallbackFn
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

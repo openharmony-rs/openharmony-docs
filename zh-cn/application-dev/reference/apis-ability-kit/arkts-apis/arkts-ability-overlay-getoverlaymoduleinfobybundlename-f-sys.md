@@ -1,5 +1,11 @@
 # getOverlayModuleInfoByBundleName（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+```
+
 ## getOverlayModuleInfoByBundleName
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getOverlayModuleInfoByBundleName(bundleName: string,
 获取指定应用中所有module的OverlayModuleInfo信息。使用callback异步回调。 指定应用是调用方自身时不需要权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -28,7 +30,7 @@ function getOverlayModuleInfoByBundleName(bundleName: string,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定应用的bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，当获取指定应用中所有 module的[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md#overlaymoduleinfo)信息成功时，err返回undefined。否则回调函 数返回具体错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取指定应用中所有 module的[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)信息成功时，err返回undefined。否则回调函 数返回具体错误对象。 |
 
 **错误码：**
 
@@ -40,7 +42,7 @@ function getOverlayModuleInfoByBundleName(bundleName: string,
 | [17700032](../errorcode-bundle.md#17700032-指定的应用不包含overlay特征的module) | The specified bundle does not contain any overlay module. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';
@@ -75,10 +77,6 @@ function getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 <!--Device-overlay-function getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void--><!--Device-overlay-function getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void-End-->
@@ -93,7 +91,7 @@ function getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定应用的bundle名称。 |
 | moduleName | string | 是 | 指定应用中的overlay module的名称。缺省该字段时，查询接口将查询指定应用中所有module的OverlayModuleInfo信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，当获取指定应用中指定 module的[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md#overlaymoduleinfo)信息成功时，err返回undefined。否则回调函 数返回具体错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;OverlayModuleInfo&gt;&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，当获取指定应用中指定 module的[OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)信息成功时，err返回undefined。否则回调函 数返回具体错误对象。 |
 
 **错误码：**
 
@@ -107,7 +105,7 @@ function getOverlayModuleInfoByBundleName(bundleName: string, moduleName: string
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';
@@ -143,10 +141,6 @@ function getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: strin
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 <!--Device-overlay-function getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: string): Promise<Array<OverlayModuleInfo>>--><!--Device-overlay-function getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: string): Promise<Array<OverlayModuleInfo>>-End-->
@@ -180,7 +174,7 @@ function getOverlayModuleInfoByBundleName(bundleName: string, moduleName?: strin
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';

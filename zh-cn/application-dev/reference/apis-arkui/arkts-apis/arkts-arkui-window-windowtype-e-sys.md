@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum WindowType--><!--Device-window-enum WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -21,8 +17,6 @@ TYPE_INPUT_METHOD
 表示输入法窗口。 **说明：** 从API version 9开始支持，从API version 13开始废弃，无替代窗口类型，输入法相关控制都请调用 [输入法框架侧接口](../../../inputmethod/inputmethod-application-guide.md)执行。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 13
 
@@ -44,10 +38,6 @@ TYPE_STATUS_BAR = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_STATUS_BAR = 3--><!--Device-WindowType-TYPE_STATUS_BAR = 3-End-->
@@ -65,10 +55,6 @@ TYPE_PANEL = 4
 表示通知栏。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,10 +74,6 @@ TYPE_KEYGUARD = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_KEYGUARD = 5--><!--Device-WindowType-TYPE_KEYGUARD = 5-End-->
@@ -109,10 +91,6 @@ TYPE_VOLUME_OVERLAY = 6
 表示音量条。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,10 +110,6 @@ TYPE_NAVIGATION_BAR = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_NAVIGATION_BAR = 7--><!--Device-WindowType-TYPE_NAVIGATION_BAR = 7-End-->
@@ -153,10 +127,6 @@ TYPE_WALLPAPER = 9
 表示壁纸。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,10 +146,6 @@ TYPE_DESKTOP = 10
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_DESKTOP = 10--><!--Device-WindowType-TYPE_DESKTOP = 10-End-->
@@ -197,10 +163,6 @@ TYPE_LAUNCHER_RECENT = 11
 表示多任务中心。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,10 +182,6 @@ TYPE_LAUNCHER_DOCK = 12
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_LAUNCHER_DOCK = 12--><!--Device-WindowType-TYPE_LAUNCHER_DOCK = 12-End-->
@@ -241,10 +199,6 @@ TYPE_VOICE_INTERACTION = 13
 表示智慧语音。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,10 +218,6 @@ TYPE_POINTER = 14
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_POINTER = 14--><!--Device-WindowType-TYPE_POINTER = 14-End-->
@@ -285,10 +235,6 @@ TYPE_FLOAT_CAMERA = 15
 表示相机类型悬浮窗。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -308,10 +254,6 @@ TYPE_SCREENSHOT = 17
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_SCREENSHOT = 17--><!--Device-WindowType-TYPE_SCREENSHOT = 17-End-->
@@ -329,10 +271,6 @@ TYPE_SYSTEM_TOAST = 18
 表示顶层提示窗口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -352,10 +290,6 @@ TYPE_DIVIDER = 19
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_DIVIDER = 19--><!--Device-WindowType-TYPE_DIVIDER = 19-End-->
@@ -373,10 +307,6 @@ TYPE_GLOBAL_SEARCH = 20
 表示全局搜索窗口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -396,10 +326,6 @@ TYPE_HANDWRITE = 21
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_HANDWRITE = 21--><!--Device-WindowType-TYPE_HANDWRITE = 21-End-->
@@ -417,10 +343,6 @@ TYPE_WALLET_SWIPE_CARD = 22
 表示钱包刷卡窗口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -440,10 +362,6 @@ TYPE_SCREEN_CONTROL = 23
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_SCREEN_CONTROL = 23--><!--Device-WindowType-TYPE_SCREEN_CONTROL = 23-End-->
@@ -461,10 +379,6 @@ TYPE_FLOAT_NAVIGATION = 22
 TYPE_FLOAT_NAVIGATION.
 
 **起始版本：** 16
-
-**ArkTS模式：** 起始版本为16。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -484,10 +398,6 @@ TYPE_DYNAMIC = 25
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowType-TYPE_DYNAMIC = 25--><!--Device-WindowType-TYPE_DYNAMIC = 25-End-->
@@ -505,10 +415,6 @@ TYPE_MUTISCREEN_COLLABORATION = 26
 表示多屏协同窗口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

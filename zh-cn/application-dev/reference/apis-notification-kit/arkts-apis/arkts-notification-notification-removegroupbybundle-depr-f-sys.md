@@ -1,5 +1,13 @@
 # removeGroupByBundle（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+import { notificationSubscribe } from '@kit.NotificationKit';
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
+```
+
 ## removeGroupByBundle
 
 ```TypeScript
@@ -10,11 +18,9 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: 
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md#removegroupbybundle系统接口)
+**替代接口：** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -30,7 +36,7 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: 
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 应用的包信息。 |
 | groupName | string | 是 | 通知组名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定应用指定组下通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定应用指定组下通知的回调函数。 |
 
 
 ## removeGroupByBundle
@@ -43,11 +49,9 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<v
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md#removegroupbybundle系统接口)
+**替代接口：** [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

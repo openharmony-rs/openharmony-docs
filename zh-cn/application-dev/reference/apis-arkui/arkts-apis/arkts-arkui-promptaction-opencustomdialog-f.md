@@ -1,16 +1,20 @@
 # openCustomDialog
 
+## 导入模块
+
+```TypeScript
+import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+```
+
 ## openCustomDialog
 
 ```TypeScript
 function openCustomDialog(options: CustomDialogOptions): Promise<number>
 ```
 
-打开自定义弹窗。通过Promise返回结果。 &lt;!--Del--&gt;不支持在ServiceExtension中使用。&lt;!--DelEnd--&gt; 弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。 > **说明：** > > - 从API version 11开始支持，从API version 18开始废弃，建议使用openCustomDialog替代。 openCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的 [getPromptAction](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取 [PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用openCustomDialog可能导致 [UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。 > > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的 [getPromptAction](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的 [PromptAction](arkts-apis-uicontext-promptaction.md)对象。
+打开自定义弹窗。通过Promise返回结果。 <!--Del-->不支持在ServiceExtension中使用。<!--DelEnd--> 弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。 > **说明：** > > - 从API version 11开始支持，从API version 18开始废弃，建议使用openCustomDialog替代。 openCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的 [getPromptAction](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取 [PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用openCustomDialog可能导致 [UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。 > > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的 [getPromptAction](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的 [PromptAction](arkts-apis-uicontext-promptaction.md)对象。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 18
 

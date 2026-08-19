@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unifiedDataChannel-enum ProgressIndicator--><!--Device-unifiedDataChannel-enum ProgressIndicator-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
@@ -21,10 +17,6 @@ NONE = 0
 不采用系统默认进度显示。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ DEFAULT = 1
 采用系统默认进度显示，500ms内获取数据完成将不会拉起默认进度条。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

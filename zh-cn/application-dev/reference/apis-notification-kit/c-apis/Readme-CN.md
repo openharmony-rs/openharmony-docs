@@ -1,4 +1,4 @@
-# CAPI<!--c-notification-kit-->
+# C API<!--c-notification-kit-->
 
 - 头文件
     - [notification.h](capi-notification-h.md)

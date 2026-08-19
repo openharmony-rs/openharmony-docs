@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avMusicTemplate-interface QueryMediaEntityParam--><!--Device-avMusicTemplate-interface QueryMediaEntityParam-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+## 导入模块
+
+```TypeScript
+import { avMusicTemplate } from '@kit.AVSessionKit';
+```
 
 ## entityId
 
@@ -23,10 +25,6 @@ entityId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ episodeRange?: EpisodeRange
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-QueryMediaEntityParam-episodeRange?: EpisodeRange--><!--Device-QueryMediaEntityParam-episodeRange?: EpisodeRange-End-->
@@ -67,10 +61,6 @@ pageIndex: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +80,6 @@ sort?: Sort
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-QueryMediaEntityParam-sort?: Sort--><!--Device-QueryMediaEntityParam-sort?: Sort-End-->
@@ -112,10 +98,6 @@ subEntityType?: EntityType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-QueryMediaEntityParam-subEntityType?: EntityType--><!--Device-QueryMediaEntityParam-subEntityType?: EntityType-End-->
@@ -133,10 +115,6 @@ type: EntityType
 **类型：** [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

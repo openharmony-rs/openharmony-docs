@@ -1,5 +1,11 @@
 # createConnection
 
+## 导入模块
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+```
+
 ## createConnection
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createConnection(deviceId: string, name: string): Connection
 作为客户端的设备创建连接对象。创建Connection对象后，订阅on('connectResult')，然后调用connect()方法向服务端设备发起连接，连接成功后，可通过sendData()发送数据，当连接不需要使用，可调用 close()销毁连接对象释放资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -43,7 +45,7 @@ function createConnection(deviceId: string, name: string): Connection
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because the linkEnhance function has been trimmed.<br>**适用版本：** 26.0.0+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在客户端设备上，应用需要主动调用createConnection()接口创建连接对象。
 

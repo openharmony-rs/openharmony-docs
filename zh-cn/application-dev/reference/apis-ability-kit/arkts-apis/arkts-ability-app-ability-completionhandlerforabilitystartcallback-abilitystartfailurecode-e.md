@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum AbilityStartFailureCode--><!--Device-unnamed-export enum AbilityStartFailureCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ FAILURE_CODE_SYSTEM_MALFUNCTION = 0
 表示由于系统错误（如跳转弹框崩溃）而无法拉起Ability组件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ FAILURE_CODE_USER_CANCEL = 1
 用户取消。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

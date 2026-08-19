@@ -1,5 +1,11 @@
 # getBundleName
 
+## 导入模块
+
+```TypeScript
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+```
+
 ## getBundleName
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void
 获取WantAgent实例所属应用的包名，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -25,7 +27,7 @@ function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-t.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -35,7 +37,7 @@ function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -183,10 +185,6 @@ function getBundleName(agent: WantAgent): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-wantAgent-function getBundleName(agent: WantAgent): Promise<string>--><!--Device-wantAgent-function getBundleName(agent: WantAgent): Promise<string>-End-->
@@ -213,7 +211,7 @@ function getBundleName(agent: WantAgent): Promise<string>
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

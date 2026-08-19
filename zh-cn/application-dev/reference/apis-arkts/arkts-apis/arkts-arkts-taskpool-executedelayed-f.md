@@ -1,5 +1,11 @@
 # executeDelayed
 
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
+
 ## executeDelayed
 
 ```TypeScript
@@ -9,10 +15,6 @@ function executeDelayed(delayTime: number, task: Task, priority?: Priority): Pro
 延时执行任务。当前执行模式可以设置任务优先级，可通过cancel取消任务。使用Promise异步回调。 > **说明：** > > - 该任务不能是任务组任务、串行队列任务、异步队列任务或周期任务。 > - 如果任务不是长时任务，可以多次调用executeDelayed执行。 > - 如果是长时任务，则仅支持执行一次。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -44,7 +46,7 @@ function executeDelayed(delayTime: number, task: Task, priority?: Priority): Pro
 | [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again.<br>**适用版本：** 12+ |
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 // import BusinessError
@@ -76,10 +78,6 @@ function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: Gen
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
 
 <!--Device-taskpool-function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: GenericsTask<A, R>, priority?: Priority): Promise<R>--><!--Device-taskpool-function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: GenericsTask<A, R>, priority?: Priority): Promise<R>-End-->
@@ -108,7 +106,7 @@ function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: Gen
 | [10200028](../errorcode-utils.md#10200028-延时时间小于零) | The delayTime is less than zero. |
 | [10200051](../errorcode-utils.md#10200051-无法再次执行周期任务) | The periodic task cannot be executed again. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // import BusinessError

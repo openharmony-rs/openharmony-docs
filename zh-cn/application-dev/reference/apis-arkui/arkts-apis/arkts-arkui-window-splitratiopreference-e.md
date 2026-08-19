@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-window-enum SplitRatioPreference--><!--Device-window-enum SplitRatioPreference-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -21,10 +17,6 @@ EQUAL = 0
 分屏窗口比例相等
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ PRIMARY_DOMINANT = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SplitRatioPreference-PRIMARY_DOMINANT = 1--><!--Device-SplitRatioPreference-PRIMARY_DOMINANT = 1-End-->
@@ -61,10 +49,6 @@ SECONDARY_DOMINANT = 2
 将次窗口设置为较大的分屏比例。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

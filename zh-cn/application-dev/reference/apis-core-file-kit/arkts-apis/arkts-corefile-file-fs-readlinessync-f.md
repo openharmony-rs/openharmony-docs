@@ -1,18 +1,22 @@
 # readLinesSync
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## readLinesSync
 
 ```TypeScript
 declare function readLinesSync(filePath: string, options?: Options): ReaderIterator
 ```
 
-以同步方式逐行读取文件的文本内容。
+以同步方式逐行读取文件的文本内容，只支持读取utf-8格式文件。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare function readLinesSync(filePath: string, options?: Options): ReaderIterator--><!--Device-unnamed-declare function readLinesSync(filePath: string, options?: Options): ReaderIterator-End-->
 

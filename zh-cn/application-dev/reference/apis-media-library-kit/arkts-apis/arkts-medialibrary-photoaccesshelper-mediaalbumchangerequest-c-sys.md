@@ -1,18 +1,20 @@
 # MediaAlbumChangeRequest
 
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md#mediachangerequest). 相册变更请求。 > **说明：** > > - 本Class首批接口从API version 11开始支持。
+MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). 相册变更请求。 > **说明：** > > - 本Class首批接口从API version 11开始支持。
 
-**继承/实现关系：** MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md#mediachangerequest)
+**继承/实现关系：** MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-photoAccessHelper-class MediaAlbumChangeRequest--><!--Device-photoAccessHelper-class MediaAlbumChangeRequest-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## createAlbumRequest
 
@@ -23,10 +25,6 @@ static createAlbumRequest(context: Context, name: string): MediaAlbumChangeReque
 创建相册变更请求。 相册名的参数规格为： - 相册名字符串长度为1~255。 - 不允许出现的非法英文字符，包括： . .. \ / : * ? " ' ` &lt; &gt; | { } [ ] - 英文字符大小写不敏感。 - 相册名不允许重名。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest--><!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest-End-->
 
@@ -55,7 +53,7 @@ static createAlbumRequest(context: Context, name: string): MediaAlbumChangeReque
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -82,10 +80,6 @@ static createAlbumRequest(context: Context, name: string): MediaAlbumChangeReque
 创建相册变更请求。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest | null--><!--Device-MediaAlbumChangeRequest-static createAlbumRequest(context: Context, name: string): MediaAlbumChangeRequest | null-End-->
 
@@ -124,10 +118,6 @@ static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-MediaAlbumChangeRequest-static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>--><!--Device-MediaAlbumChangeRequest-static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>-End-->
@@ -158,7 +148,7 @@ static deleteAlbums(context: Context, albums: Array<Album>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -193,10 +183,6 @@ static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-MediaAlbumChangeRequest-static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<void>--><!--Device-MediaAlbumChangeRequest-static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<void>-End-->
@@ -227,7 +213,7 @@ static deleteAlbumsWithUri(context: Context, albumUris: Array<string>): Promise<
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out; |
 
-## 示例
+**示例**
 
 ```TypeScript
 async function example(context: Context, albumUri: string) {
@@ -251,10 +237,6 @@ deleteAssets(assets: Array<PhotoAsset>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-deleteAssets(assets: Array<PhotoAsset>): void--><!--Device-MediaAlbumChangeRequest-deleteAssets(assets: Array<PhotoAsset>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -276,7 +258,7 @@ deleteAssets(assets: Array<PhotoAsset>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -324,10 +306,6 @@ deleteAssetsWithUri(assetUris: Array<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-deleteAssetsWithUri(assetUris: Array<string>): void--><!--Device-MediaAlbumChangeRequest-deleteAssetsWithUri(assetUris: Array<string>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -359,10 +337,6 @@ dismiss(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-dismiss(): void--><!--Device-MediaAlbumChangeRequest-dismiss(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -377,7 +351,7 @@ dismiss(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -410,10 +384,6 @@ dismissAssets(assets: Array<PhotoAsset>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-dismissAssets(assets: Array<PhotoAsset>): void--><!--Device-MediaAlbumChangeRequest-dismissAssets(assets: Array<PhotoAsset>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -435,7 +405,7 @@ dismissAssets(assets: Array<PhotoAsset>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -481,10 +451,6 @@ mergeAlbum(target: Album): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-mergeAlbum(target: Album): void--><!--Device-MediaAlbumChangeRequest-mergeAlbum(target: Album): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -506,7 +472,7 @@ mergeAlbum(target: Album): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -550,10 +516,6 @@ moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void--><!--Device-MediaAlbumChangeRequest-moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -576,7 +538,7 @@ moveAssets(assets: Array<PhotoAsset>, targetAlbum: Album): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -621,10 +583,6 @@ moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void--><!--Device-MediaAlbumChangeRequest-moveAssetsWithUri(assetUris: Array<string>, targetAlbum: Album): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -657,10 +615,6 @@ operateAttribute(operation: AlbumOperation): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本26.0.0：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 - API版本26.1.0+：ohos.permission.ACCESS_MEDIALIB_THUMB_DB or ohos.permission.WRITE_IMAGEVIDEO
@@ -689,7 +643,7 @@ operateAttribute(operation: AlbumOperation): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The attr of operation is invalid; <br>2. The type of operation is invalid; <br>3. The values of operation is incorrect; |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -739,10 +693,6 @@ placeBefore(album: Album): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-placeBefore(album: Album): void--><!--Device-MediaAlbumChangeRequest-placeBefore(album: Album): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -763,7 +713,7 @@ placeBefore(album: Album): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -798,10 +748,6 @@ recoverAssets(assets: Array<PhotoAsset>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-recoverAssets(assets: Array<PhotoAsset>): void--><!--Device-MediaAlbumChangeRequest-recoverAssets(assets: Array<PhotoAsset>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -823,7 +769,7 @@ recoverAssets(assets: Array<PhotoAsset>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -863,10 +809,6 @@ recoverAssetsWithUri(assetUris: Array<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-recoverAssetsWithUri(assetUris: Array<string>): void--><!--Device-MediaAlbumChangeRequest-recoverAssetsWithUri(assetUris: Array<string>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -898,10 +840,6 @@ resetCoverUri(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-resetCoverUri(): void--><!--Device-MediaAlbumChangeRequest-resetCoverUri(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -915,7 +853,7 @@ resetCoverUri(): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error.It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](./arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -953,10 +891,6 @@ setAlbumNameByFile(name: string): void
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaAlbumChangeRequest-setAlbumNameByFile(name: string): void--><!--Device-MediaAlbumChangeRequest-setAlbumNameByFile(name: string): void-End-->
@@ -979,7 +913,7 @@ setAlbumNameByFile(name: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The album is not exist; |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1015,10 +949,6 @@ setCoverUri(coverUri: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-setCoverUri(coverUri: string): void--><!--Device-MediaAlbumChangeRequest-setCoverUri(coverUri: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1039,7 +969,7 @@ setCoverUri(coverUri: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1086,10 +1016,6 @@ setDisplayLevel(displayLevel: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-setDisplayLevel(displayLevel: int): void--><!--Device-MediaAlbumChangeRequest-setDisplayLevel(displayLevel: int): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1110,7 +1036,7 @@ setDisplayLevel(displayLevel: int): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1147,10 +1073,6 @@ setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaAlbumChangeRequest-setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void--><!--Device-MediaAlbumChangeRequest-setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void-End-->
@@ -1174,7 +1096,7 @@ setHiddenAttribute(hiddenState: boolean, isInherited: boolean): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The ablum is not exist; |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1211,10 +1133,6 @@ setIsMe(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAlbumChangeRequest-setIsMe(): void--><!--Device-MediaAlbumChangeRequest-setIsMe(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1229,7 +1147,7 @@ setIsMe(): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1266,10 +1184,6 @@ static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean):
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-MediaAlbumChangeRequest-static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean): Promise<void>--><!--Device-MediaAlbumChangeRequest-static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean): Promise<void>-End-->
@@ -1301,7 +1215,7 @@ static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean):
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The context is empty; <br>2. Album array size is bigger than 500. |
 
-## 示例
+**示例**
 
 ```TypeScript
 async function example(context: Context, album: photoAccessHelper.Album) {

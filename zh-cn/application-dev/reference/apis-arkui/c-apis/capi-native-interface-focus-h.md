@@ -2,7 +2,7 @@
 
 ## 概述
 
-Declares APIs for focus management, mainly used for actively transferring focus, managing the default focustransfer behavior, and controlling the focus activation state.
+定义焦点管理的相关接口，主要用于主动转移焦点或管理控制焦点转移默认行为，控制焦点激活态。
 
 **库：** libace_ndk.z.so
 
@@ -74,7 +74,7 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>     <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 请求成功。<br>     <br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE](capi-native-type-h.md#arkui_errorcode) 节点无法获得焦点。<br>     <br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR](capi-native-type-h.md#arkui_errorcode) 祖先节点无法获得焦点。<br>     <br>[ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT](capi-native-type-h.md#arkui_errorcode) 节点不存在。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 请求成功。      <br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE](capi-native-type-h.md#arkui_errorcode) 节点无法获得焦点。      <br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR](capi-native-type-h.md#arkui_errorcode) 祖先节点无法获得焦点。      <br>[ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT](capi-native-type-h.md#arkui_errorcode) 节点不存在。 |
 
 ### OH_ArkUI_FocusClear()
 

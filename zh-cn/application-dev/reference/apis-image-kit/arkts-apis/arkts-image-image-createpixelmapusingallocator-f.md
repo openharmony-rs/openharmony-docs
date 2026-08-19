@@ -1,5 +1,11 @@
 # createPixelMapUsingAllocator
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## createPixelMapUsingAllocator
 
 ```TypeScript
@@ -10,10 +16,6 @@ function createPixelMapUsingAllocator(colors: ArrayBuffer, param: Initialization
 Create pixelmap by data buffer based on opts, the memory type used by the PixelMap can be specified by allocatorType. By default, the system selects the memory type based on the image type, image size, platform capability, etc. When processing the PixelMap returned by this interface, please always consider the impact of stride.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-function createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions,    allocatorType?: AllocatorType): Promise<PixelMap>--><!--Device-image-function createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions,    allocatorType?: AllocatorType): Promise<PixelMap>-End-->
 
@@ -41,7 +43,7 @@ Create pixelmap by data buffer based on opts, the memory type used by the PixelM
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Memory copy failed. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Memory alloc failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

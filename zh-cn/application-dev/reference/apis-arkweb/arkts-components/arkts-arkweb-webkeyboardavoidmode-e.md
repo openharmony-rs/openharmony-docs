@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum WebKeyboardAvoidMode--><!--Device-unnamed-declare enum WebKeyboardAvoidMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ RESIZE_VISUAL = 0
 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ RESIZE_CONTENT = 1
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebKeyboardAvoidMode-RESIZE_CONTENT = 1--><!--Device-WebKeyboardAvoidMode-RESIZE_CONTENT = 1-End-->
@@ -62,10 +50,6 @@ OVERLAYS_CONTENT = 2
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2--><!--Device-WebKeyboardAvoidMode-OVERLAYS_CONTENT = 2-End-->
@@ -78,13 +62,9 @@ OVERLAYS_CONTENT = 2
 RETURN_TO_UICONTEXT = 3
 ```
 
-Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-keyboardavoidmode-e.md#keyboardavoidmode)模式，Web组件不再处理组件的避让。
+Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-keyboardavoidmode-e.md)模式，Web组件不再处理组件的避让。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 <!--Device-WebKeyboardAvoidMode-RETURN_TO_UICONTEXT = 3--><!--Device-WebKeyboardAvoidMode-RETURN_TO_UICONTEXT = 3-End-->
 

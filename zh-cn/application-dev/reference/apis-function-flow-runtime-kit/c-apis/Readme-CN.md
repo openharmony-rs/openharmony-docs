@@ -1,4 +1,4 @@
-# CAPI<!--c-function-flow-runtime-kit-->
+# C API<!--c-function-flow-runtime-kit-->
 
 - 头文件
     - [condition_variable.h](capi-condition-variable-h.md)
@@ -14,6 +14,8 @@
 - 模块
     - [FFRT](capi-ffrt.md)
 - 结构体
+    - [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md)
+    - [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md)
     - [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md)
     - [ffrt_dependence_t](capi-ffrt-ffrt-dependence-t.md)
     - [ffrt_deps_t](capi-ffrt-ffrt-deps-t.md)
@@ -26,3 +28,4 @@
     - [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)
     - [ffrt_cond_t](capi-ffrt-ffrt-cond-t.md)
     - [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md)
+    - [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md)

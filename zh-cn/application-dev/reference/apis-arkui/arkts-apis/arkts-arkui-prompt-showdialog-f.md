@@ -1,5 +1,12 @@
 # showDialog
 
+## 导入模块
+
+```TypeScript
+import { prompt } from '@kit.ArkUI';
+import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+```
+
 ## showDialog
 
 ```TypeScript
@@ -9,8 +16,6 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 创建并显示对话框，对话框响应结果异步返回。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -25,9 +30,9 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | ShowDialogOptions | 是 | 页面显示对话框信息描述。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ShowDialogSuccessResponse&gt; | 是 | 对话框响应结果回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ShowDialogSuccessResponse&gt; | 是 | 对话框响应结果回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import prompt from '@ohos.prompt'
@@ -64,8 +69,6 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** showDialog
@@ -86,7 +89,7 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 | --- | --- |
 | Promise&lt;ShowDialogSuccessResponse&gt; | 对话框响应结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import prompt from '@ohos.prompt'

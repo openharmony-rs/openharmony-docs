@@ -4,13 +4,19 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface NativeEmbedVisibilityInfo--><!--Device-unnamed-declare interface NativeEmbedVisibilityInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## embedId
 
@@ -23,10 +29,6 @@ embedId: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-NativeEmbedVisibilityInfo-embedId: string--><!--Device-NativeEmbedVisibilityInfo-embedId: string-End-->
 
@@ -43,10 +45,6 @@ visibility: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-NativeEmbedVisibilityInfo-visibility: boolean--><!--Device-NativeEmbedVisibilityInfo-visibility: boolean-End-->
 

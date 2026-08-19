@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export enum SecurityMode--><!--Device-inputMethodEngine-export enum SecurityMode-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -22,10 +18,6 @@ BASIC = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SecurityMode-BASIC = 0--><!--Device-SecurityMode-BASIC = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -39,10 +31,6 @@ FULL
 完全访问模式，不做限制，可以访问网络。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SecurityMode-FULL--><!--Device-SecurityMode-FULL-End-->
 

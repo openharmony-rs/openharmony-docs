@@ -1,5 +1,11 @@
 # openCertificateManagerDialog
 
+## 导入模块
+
+```TypeScript
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## openCertificateManagerDialog
 
 ```TypeScript
@@ -9,10 +15,6 @@ function openCertificateManagerDialog(context: common.Context, pageType: Certifi
 打开证书管理对话框，显示相应的页面。调用成功后，用户可以在弹出的对话框中对证书进行查看、安装、卸载等操作。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -43,7 +45,7 @@ function openCertificateManagerDialog(context: common.Context, pageType: Certifi
 | [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';

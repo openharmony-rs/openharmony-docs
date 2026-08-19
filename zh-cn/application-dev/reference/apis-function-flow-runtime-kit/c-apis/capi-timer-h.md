@@ -79,7 +79,7 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 操作成功时返回`0`；<br>         否则返回`-1`。 |
+| FFRT_C_API int | 操作成功时返回`0`；          否则返回`-1`。 |
 
 **参考：**
 

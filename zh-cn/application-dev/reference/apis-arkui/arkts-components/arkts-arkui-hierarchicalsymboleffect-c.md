@@ -2,17 +2,18 @@
 
 HierarchicalSymbolEffect继承自父类SymbolEffect。
 
-**继承/实现关系：** HierarchicalSymbolEffect extends [SymbolEffect](arkts-arkui-symboleffect-c.md#symboleffect)
+**继承/实现关系：** HierarchicalSymbolEffect extends [SymbolEffect](arkts-arkui-symboleffect-c.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class HierarchicalSymbolEffect--><!--Device-unnamed-declare class HierarchicalSymbolEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -23,10 +24,6 @@ constructor(fillStyle?: EffectFillStyle)
 HierarchicalSymbolEffect的构造函数，层级动效。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -55,10 +52,6 @@ fillStyle?: EffectFillStyle
 **类型：** [EffectFillStyle](arkts-arkui-effectfillstyle-e.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

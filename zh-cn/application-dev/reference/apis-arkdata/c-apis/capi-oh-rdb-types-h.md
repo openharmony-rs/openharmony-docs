@@ -79,7 +79,7 @@ OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_RDB_ReturningContext *](capi-rdb-oh-rdb-returningcontext.md) | 执行成功时返回指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。<br>     <br>否则返回nullptr。使用完成后必须通过[OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext)接口释放内存。 |
+| [OH_RDB_ReturningContext *](capi-rdb-oh-rdb-returningcontext.md) | 执行成功时返回指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。      <br>否则返回nullptr。使用完成后必须通过[OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext)接口释放内存。 |
 
 **参考：**
 
@@ -128,7 +128,7 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。<br>     <br>执行成功返回RDB_OK。<br>     <br>输入参数无效返回RDB_E_INVALID_ARGS。 |
+| int | 返回执行结果。      <br>执行成功返回RDB_OK。      <br>输入参数无效返回RDB_E_INVALID_ARGS。 |
 
 ### OH_RDB_SetMaxReturningCount()
 
@@ -153,7 +153,7 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行结果。<br>     <br>执行成功返回RDB_OK。<br>     <br>输入参数无效返回RDB_E_INVALID_ARGS。 |
+| int | 返回执行结果。      <br>执行成功返回RDB_OK。      <br>输入参数无效返回RDB_E_INVALID_ARGS。 |
 
 ### OH_RDB_GetReturningValues()
 
@@ -177,7 +177,7 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 返回指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。<br>     <br>如果获取游标失败，则返回nullptr。使用[OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext)接口释放内存时会销毁游标，无需单独释放。 |
+| [OH_Cursor *](capi-rdb-oh-cursor.md) | 返回指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。      <br>如果获取游标失败，则返回nullptr。使用[OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext)接口释放内存时会销毁游标，无需单独释放。 |
 
 ### OH_RDB_GetChangedCount()
 

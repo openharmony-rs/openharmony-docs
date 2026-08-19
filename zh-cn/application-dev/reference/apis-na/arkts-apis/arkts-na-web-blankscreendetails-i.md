@@ -4,9 +4,7 @@ The details of this blank screen detection result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface BlankScreenDetails--><!--Device-unnamed-export declare interface BlankScreenDetails-End-->
 
@@ -24,9 +22,7 @@ The count of detected contentful nodes. This value only exists when developers c
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-BlankScreenDetails-detectedContentfulNodesCount?: int--><!--Device-BlankScreenDetails-detectedContentfulNodesCount?: int-End-->
 

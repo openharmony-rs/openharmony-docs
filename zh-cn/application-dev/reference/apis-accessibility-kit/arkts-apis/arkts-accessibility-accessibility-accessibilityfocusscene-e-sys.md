@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum AccessibilityFocusScene--><!--Device-unnamed-export enum AccessibilityFocusScene-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -23,10 +19,6 @@ HOVER_FOCUS = 1
 表示当前聚焦的场景为点击聚焦。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ SWIPE_FOCUS = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AccessibilityFocusScene-SWIPE_FOCUS = 2--><!--Device-AccessibilityFocusScene-SWIPE_FOCUS = 2-End-->
@@ -67,10 +55,6 @@ SCROLL_FOCUS = 3
 表示当前聚焦的场景为滚动聚焦。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

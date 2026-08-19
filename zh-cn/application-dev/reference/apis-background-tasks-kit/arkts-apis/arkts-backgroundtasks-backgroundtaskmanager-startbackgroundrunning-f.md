@@ -1,5 +1,11 @@
 # startBackgroundRunning
 
+## 导入模块
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+```
+
 ## startBackgroundRunning
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过 API version 21新增接口 [startBackgroundRunning](#startbackgroundrunning) 申请多个长时任务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -26,10 +28,10 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。 <br> <br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#context)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context | Context | 是 | 应用运行的上下文。 <br> <br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 | bgMode | BackgroundMode | 是 | 长时任务类型。 |
 | wantAgent | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md) | 是 | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，申请长时任务成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，申请长时任务成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -46,7 +48,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -163,10 +165,6 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -179,7 +177,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文。 <br> <br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#context)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context | Context | 是 | 应用运行的上下文。 <br> <br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 | bgMode | BackgroundMode | 是 | 长时任务类型。 |
 | wantAgent | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md) | 是 | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
 
@@ -204,7 +202,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -313,10 +311,6 @@ function startBackgroundRunning(context: Context, bgModes: string[], wantAgent: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -329,7 +323,7 @@ function startBackgroundRunning(context: Context, bgModes: string[], wantAgent: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文 <br> FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#context)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context | Context | 是 | 应用运行的上下文 <br> FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 | bgModes | string[] | 是 | 长时任务类型 <br> 取值范围请参考长时任务类型中的[配置项](../../../task-management/continuous-task.md#使用场景)。<br> **说明：** 支持传入一个或多个类型。 |
 | wantAgent | [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md) | 是 | 通知参数，用于指定点击长时任务通知后跳转的界面。 |
 
@@ -353,7 +347,7 @@ function startBackgroundRunning(context: Context, bgModes: string[], wantAgent: 
 | [9800002](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -507,13 +501,9 @@ export default class EntryAbility extends UIAbility {
 function startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise<ContinuousTaskNotification>
 ```
 
-申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考 [ContinuousTaskRequest](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskrequest-c.md#continuoustaskrequest)。&lt;/br&gt;同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息， 没有提示音。&lt;/br&gt;如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同 步移除。接口返回的长时任务通知Id为数据传输类型的Id，主要用于数据传输的进度更新。
+申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考 [ContinuousTaskRequest](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskrequest-c.md)。&lt;/br&gt;同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息， 没有提示音。&lt;/br&gt;如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同 步移除。接口返回的长时任务通知Id为数据传输类型的Id，主要用于数据传输的进度更新。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -527,7 +517,7 @@ function startBackgroundRunning(context: Context, request: ContinuousTaskRequest
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用运行的上下文 <br> <br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md#context)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context | Context | 是 | 应用运行的上下文 <br> <br>FA模型的应用Context定义见Context。<br>Stage模型的应用Context定义见 [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 | request | [ContinuousTaskRequest](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskrequest-c.md) | 是 | 长时任务请求信息，包括长时任务主类型、子类型等。 |
 
 **返回值：**
@@ -547,7 +537,7 @@ function startBackgroundRunning(context: Context, request: ContinuousTaskRequest
 | [9800001](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#9800001-内存操作失败) | Memory operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

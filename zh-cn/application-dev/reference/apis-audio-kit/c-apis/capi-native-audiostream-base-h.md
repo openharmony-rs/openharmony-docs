@@ -507,7 +507,7 @@ typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* re
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioRenderer\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
 | void\* userData | 指向通过回调函数传递的应用数据指针。 |
 | [OH_AudioStream_DeviceChangeReason](capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) reason | 流设备变更原因。 |
 
@@ -527,7 +527,7 @@ typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* rendere
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioRenderer\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
 | uint32_t samplePos | 设置目标标记位置。 |
 | void\* userData | 指向通过回调函数传递的应用数据指针。 |
 
@@ -547,7 +547,7 @@ typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRender
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioRenderer\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
 | void\* userData | 指向通过回调函数传递的应用数据指针。 |
 | void\* audioData | 指向用户写入的音频数据的指针。 |
 | int32_t audioDataSize | 用户写入的音频数据的数据长度，以字节为单位。 |
@@ -576,7 +576,7 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioRenderer\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
+| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)\* renderer | 指向{@link OH_AudioStreamBuilder_GenerateRenderer}创建的音频流实例。 |
 | void\* userData | 指向通过回调函数传递的应用数据指针。 |
 | void\* audioData | 指向用户写入的音频数据的指针。 |
 | int32_t audioDataSize | 用户写入的音频数据的数据长度，以字节为单位。 |
@@ -585,7 +585,7 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioData_Callback_Result](capi-native-audiostream-base-h.md#oh_audiodata_callback_result) | AUDIO_DATA_CALLBACK_RESULT_INVALID：音频数据回调结果无效，音频数据不播放。<br>     <br>AUDIO_DATA_CALLBACK_RESULT_VALID：音频数据回调结果有效，音频数据将被播放。 |
+| [OH_AudioData_Callback_Result](capi-native-audiostream-base-h.md#oh_audiodata_callback_result) | AUDIO_DATA_CALLBACK_RESULT_INVALID：音频数据回调结果无效，音频数据不播放。      <br>AUDIO_DATA_CALLBACK_RESULT_VALID：音频数据回调结果有效，音频数据将被播放。 |
 
 **参考：**
 

@@ -37,30 +37,7 @@
 | [OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videoencoder_setcallback) | - | 设置OH_AVCodecAsyncCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。(API11废弃) |
 | [OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videoencoder_registercallback) | - | 注册OH_AVCodecCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。 |
 | [OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_VideoEncoder_OnNeedInputParameter onInputParameter, void *userData)](#oh_videoencoder_registerparametercallback) | - | 注册OH_VideoEncoder_OnNeedInputParameter输入参数回调函数，让应用可以响应视频编码器生成的事件。编码Surface模式，<br> 需要设置随帧参数时，须使用该接口。如果使用该接口，必须在[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)之前调用该接口。 |
-| [OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_configure) | - | 配置视频编码器的编码参数，通常需要配置输入视频帧的描述信息，如帧的宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。<br> 该接口对配置参数进行合法性校验，部分非法参数不会强校验，使用默认值或直接丢弃。部分非法参数会强校验，具体规则如下：<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_I_FRAME_INTERVAL暂不支持能力查询。<br> 设置OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY、OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT参数时，如果当前平台不支持这些功能，该接口不会报错，而是继续按照正常编码流程执行。参数校验：
-\| Key     \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \|
-\| ------- \| -------- \| -------- \| ------ \|
-\| OH_MD_KEY_WIDTH  \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \|
-\| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \|
-\| OH_MD_KEY_PIXEL_FORMAT 请参阅[OH_AVPixelFormat](_core.md#oh_avpixelformat-1) \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK    \|
-\| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
-\| OH_MD_KEY_PROFILE 请参阅[OH_MD_KEY_PROFILE](_codec_base.md#oh_md_key_profile)    \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
-\| OH_MD_KEY_I_FRAME_INTERVAL \| AV_ERR_OK \|  \\       \| AV_ERR_OK \|
-
-\| OH_MD_KEY_<br>BITRATE \| OH_MD_KEY_<br>QUALITY \| OH_MD_KEY_<br>VIDEO_ENCODER_BITRATE_MODE \| 返回值 \| 说明     \|
-\| -------- \| ---------\| ---------- \| ---- \| ---------- \|
-\| \\      \| \\      \| \\           \|  AV_ERR_OK    \| 使用编码器默认值 \|
-\| 超出范围    \| 超出范围    \| 不支持的模式       \| AV_ERR_INVALID_VAL \| 异常值均报错 \|
-\| 正常值     \| 正常值     \| \\           \| AV_ERR_INVALID_VAL \| Bitrate与Quality冲突 \|
-\| 正常值     \| \\      \| \\           \| AV_ERR_OK \| 使能默认码控模式 \|
-\| 正常值     \| \\      \| BITRATE_MODE_VBR、BITRATE_MODE_CBR      \| AV_ERR_OK \| \\        \|
-\| 正常值     \| \\      \| BITRATE_MODE_CQ           \| AV_ERR_INVALID_VAL \| Bitrate 与 CQ 模式冲突      \|
-\| \\      \| 正常值     \| \\           \| AV_ERR_OK \| 使能 CQ 模式 \|
-\| \\      \| 正常值     \| BITRATE_MODE_CQ           \| AV_ERR_OK \|  \\       \|
-\| \\      \| 正常值     \| BITRATE_MODE_VBR、BITRATE_MODE_CBR      \| AV_ERR_INVALID_VAL \| Quality 与 VBR、CBR 模式冲突 \|
-\| \\      \| \\      \| BITRATE_MODE_VBR、BITRATE_MODE_CBR      \| AV_ERR_OK \| 使用编码器默认码率\|
-\| \\      \| \\      \| BITRATE_MODE_CQ           \| AV_ERR_OK    \| 使用默认quality  \|
- |
+| [OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_configure) | - | 配置视频编码器的编码参数，通常需要配置输入视频帧的描述信息，如帧的宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。<br> 该接口对配置参数进行合法性校验，部分非法参数不会强校验，使用默认值或直接丢弃。部分非法参数会强校验，具体规则如下：<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_I_FRAME_INTERVAL暂不支持能力查询。<br> 设置OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY、OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT参数时，如果当前平台不支持这些功能，该接口不会报错，而是继续按照正常编码流程执行。参数校验： \| Key \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \| \| ------- \| -------- \| -------- \| ------ \| \| OH_MD_KEY_WIDTH \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_PIXEL_FORMAT 请参阅[OH_AVPixelFormat](_core.md#oh_avpixelformat-1) \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \| \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_PROFILE 请参阅[OH_MD_KEY_PROFILE](_codec_base.md#oh_md_key_profile) \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_I_FRAME_INTERVAL \| AV_ERR_OK \| \\ \| AV_ERR_OK \| \| OH_MD_KEY_<br>BITRATE \| OH_MD_KEY_<br>QUALITY \| OH_MD_KEY_<br>VIDEO_ENCODER_BITRATE_MODE \| 返回值 \| 说明 \| \| -------- \| ---------\| ---------- \| ---- \| ---------- \| \| \\ \| \\ \| \\ \| AV_ERR_OK \| 使用编码器默认值 \| \| 超出范围 \| 超出范围 \| 不支持的模式 \| AV_ERR_INVALID_VAL \| 异常值均报错 \| \| 正常值 \| 正常值 \| \\ \| AV_ERR_INVALID_VAL \| Bitrate与Quality冲突 \| \| 正常值 \| \\ \| \\ \| AV_ERR_OK \| 使能默认码控模式 \| \| 正常值 \| \\ \| BITRATE_MODE_VBR、BITRATE_MODE_CBR \| AV_ERR_OK \| \\ \| \| 正常值 \| \\ \| BITRATE_MODE_CQ \| AV_ERR_INVALID_VAL \| Bitrate 与 CQ 模式冲突 \| \| \\ \| 正常值 \| \\ \| AV_ERR_OK \| 使能 CQ 模式 \| \| \\ \| 正常值 \| BITRATE_MODE_CQ \| AV_ERR_OK \| \\ \| \| \\ \| 正常值 \| BITRATE_MODE_VBR、BITRATE_MODE_CBR \| AV_ERR_INVALID_VAL \| Quality 与 VBR、CBR 模式冲突 \| \| \\ \| \\ \| BITRATE_MODE_VBR、BITRATE_MODE_CBR \| AV_ERR_OK \| 使用编码器默认码率\| \| \\ \| \\ \| BITRATE_MODE_CQ \| AV_ERR_OK \| 使用默认quality \|  |
 | [OH_AVErrCode OH_VideoEncoder_Prepare(OH_AVCodec *codec)](#oh_videoencoder_prepare) | - | 准备编码器的内部资源，在OH_VideoEncoder_Configure接口后调用。 |
 | [OH_AVErrCode OH_VideoEncoder_Start(OH_AVCodec *codec)](#oh_videoencoder_start) | - | 调用[OH_VideoEncoder_Prepare](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare)接口成功后调用此接口启动编码器。成功启动后，编码器将开始报告注册的回调事件。<br> Surface模式下，在surface中有正确的输入后，每完成一帧编码会触发OnNewOutputBuffer。<br> Buffer模式下，编码器会立即触发输入回调，开发者每完成一次输入，编码器执行编码，每完成一帧编码会触发OnNewOutputBuffer。 |
 | [OH_AVErrCode OH_VideoEncoder_Stop(OH_AVCodec *codec)](#oh_videoencoder_stop) | - | 停止编码器，释放输入输出buffer。停止之后，可以通过调用OH_VideoEncoder_Start接口重新进入Running状态。 |
@@ -129,7 +106,7 @@ typedef void (*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVCodec \*codec | 指向视频编码实例的指针。 |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) \*codec | 指向视频编码实例的指针。 |
 | uint32_t index | 对应编码帧的index。 |
 | OH_AVFormat \*parameter |  编码参数。 |
 | void \*userData | 开发者执行回调所依赖的数据。 |
@@ -158,7 +135,7 @@ OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVCodec *](capi-codecbase-oh-avcodec.md) | 成功则返回一个指向视频编码实例的指针。<br> 如果输入为不支持的编码器类型或内存不足时，则返回NULL。 |
+| [OH_AVCodec *](capi-codecbase-oh-avcodec.md) | 成功则返回一个指向视频编码实例的指针。  如果输入为不支持的编码器类型或内存不足时，则返回NULL。 |
 
 ### OH_VideoEncoder_CreateByName()
 
@@ -184,7 +161,7 @@ OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVCodec *](capi-codecbase-oh-avcodec.md) | 成功则返回一个指向视频编码实例的指针。<br> 如果输入是不支持编码器名称或者内存资源不足，则返回NULL。 |
+| [OH_AVCodec *](capi-codecbase-oh-avcodec.md) | 成功则返回一个指向视频编码实例的指针。  如果输入是不支持编码器名称或者内存资源不足，则返回NULL。 |
 
 ### OH_VideoEncoder_CreatePrimaryWithPreproc()
 
@@ -209,7 +186,7 @@ OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCod
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：mime为NULL/codec为NULL/MIME类型不支持。<br>         AV_ERR_NO_MEMORY：内存分配失败。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：mime为NULL/codec为NULL/MIME类型不支持。\n          AV_ERR_NO_MEMORY：内存分配失败。 |
 
 ### OH_VideoEncoder_CreateSecondaryFromPrimary()
 
@@ -234,7 +211,7 @@ OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：primary为NULL/codec为NULL/primary不是有效的主编码器。<br>         AV_ERR_OPERATE_NOT_PERMIT：主编码器已存在关联的副编码器。<br>         AV_ERR_NO_MEMORY：内存分配失败。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。          AV_ERR_INVALID_VAL：primary为NULL/codec为NULL/primary不是有效的主编码器。          AV_ERR_OPERATE_NOT_PERMIT：主编码器已存在关联的副编码器。          AV_ERR_NO_MEMORY：内存分配失败。 |
 
 ### OH_VideoEncoder_Destroy()
 
@@ -260,7 +237,7 @@ OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
 
 ### OH_VideoEncoder_SetCallback()
 
@@ -292,7 +269,7 @@ OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
 
 ### OH_VideoEncoder_RegisterCallback()
 
@@ -320,7 +297,7 @@ OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallb
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
 
 ### OH_VideoEncoder_RegisterParameterCallback()
 
@@ -348,7 +325,7 @@ OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_Vid
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：本接口必须在OH_VideoEncoder_Prepare接口前调用，如果在其他状态时调用，则返回此错误码。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：本接口必须在OH_VideoEncoder_Prepare接口前调用，如果在其他状态时调用，则返回此错误码。 |
 
 ### OH_VideoEncoder_Configure()
 
@@ -358,30 +335,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 **描述**
 
-配置视频编码器的编码参数，通常需要配置输入视频帧的描述信息，如帧的宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。<br> 该接口对配置参数进行合法性校验，部分非法参数不会强校验，使用默认值或直接丢弃。部分非法参数会强校验，具体规则如下：<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_I_FRAME_INTERVAL暂不支持能力查询。<br> 设置OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY、OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT参数时，如果当前平台不支持这些功能，该接口不会报错，而是继续按照正常编码流程执行。参数校验：
-\| Key     \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \|
-\| ------- \| -------- \| -------- \| ------ \|
-\| OH_MD_KEY_WIDTH  \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \|
-\| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \|
-\| OH_MD_KEY_PIXEL_FORMAT 请参阅[OH_AVPixelFormat](_core.md#oh_avpixelformat-1) \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK    \|
-\| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
-\| OH_MD_KEY_PROFILE 请参阅[OH_MD_KEY_PROFILE](_codec_base.md#oh_md_key_profile)    \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
-\| OH_MD_KEY_I_FRAME_INTERVAL \| AV_ERR_OK \|  \\       \| AV_ERR_OK \|
-
-\| OH_MD_KEY_<br>BITRATE \| OH_MD_KEY_<br>QUALITY \| OH_MD_KEY_<br>VIDEO_ENCODER_BITRATE_MODE \| 返回值 \| 说明     \|
-\| -------- \| ---------\| ---------- \| ---- \| ---------- \|
-\| \\      \| \\      \| \\           \|  AV_ERR_OK    \| 使用编码器默认值 \|
-\| 超出范围    \| 超出范围    \| 不支持的模式       \| AV_ERR_INVALID_VAL \| 异常值均报错 \|
-\| 正常值     \| 正常值     \| \\           \| AV_ERR_INVALID_VAL \| Bitrate与Quality冲突 \|
-\| 正常值     \| \\      \| \\           \| AV_ERR_OK \| 使能默认码控模式 \|
-\| 正常值     \| \\      \| BITRATE_MODE_VBR、BITRATE_MODE_CBR      \| AV_ERR_OK \| \\        \|
-\| 正常值     \| \\      \| BITRATE_MODE_CQ           \| AV_ERR_INVALID_VAL \| Bitrate 与 CQ 模式冲突      \|
-\| \\      \| 正常值     \| \\           \| AV_ERR_OK \| 使能 CQ 模式 \|
-\| \\      \| 正常值     \| BITRATE_MODE_CQ           \| AV_ERR_OK \|  \\       \|
-\| \\      \| 正常值     \| BITRATE_MODE_VBR、BITRATE_MODE_CBR      \| AV_ERR_INVALID_VAL \| Quality 与 VBR、CBR 模式冲突 \|
-\| \\      \| \\      \| BITRATE_MODE_VBR、BITRATE_MODE_CBR      \| AV_ERR_OK \| 使用编码器默认码率\|
-\| \\      \| \\      \| BITRATE_MODE_CQ           \| AV_ERR_OK    \| 使用默认quality  \|
-
+配置视频编码器的编码参数，通常需要配置输入视频帧的描述信息，如帧的宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。<br> 该接口对配置参数进行合法性校验，部分非法参数不会强校验，使用默认值或直接丢弃。部分非法参数会强校验，具体规则如下：<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_I_FRAME_INTERVAL暂不支持能力查询。<br> 设置OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY、OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT参数时，如果当前平台不支持这些功能，该接口不会报错，而是继续按照正常编码流程执行。参数校验： \| Key \| 配置正常范围的值 \| 配置超出范围的值 \| 不配置该参数 \| \| ------- \| -------- \| -------- \| ------ \| \| OH_MD_KEY_WIDTH \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \| \| OH_MD_KEY_PIXEL_FORMAT 请参阅[OH_AVPixelFormat](_core.md#oh_avpixelformat-1) \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \| \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_PROFILE 请参阅[OH_MD_KEY_PROFILE](_codec_base.md#oh_md_key_profile) \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| \| OH_MD_KEY_I_FRAME_INTERVAL \| AV_ERR_OK \| \\ \| AV_ERR_OK \| \| OH_MD_KEY_<br>BITRATE \| OH_MD_KEY_<br>QUALITY \| OH_MD_KEY_<br>VIDEO_ENCODER_BITRATE_MODE \| 返回值 \| 说明 \| \| -------- \| ---------\| ---------- \| ---- \| ---------- \| \| \\ \| \\ \| \\ \| AV_ERR_OK \| 使用编码器默认值 \| \| 超出范围 \| 超出范围 \| 不支持的模式 \| AV_ERR_INVALID_VAL \| 异常值均报错 \| \| 正常值 \| 正常值 \| \\ \| AV_ERR_INVALID_VAL \| Bitrate与Quality冲突 \| \| 正常值 \| \\ \| \\ \| AV_ERR_OK \| 使能默认码控模式 \| \| 正常值 \| \\ \| BITRATE_MODE_VBR、BITRATE_MODE_CBR \| AV_ERR_OK \| \\ \| \| 正常值 \| \\ \| BITRATE_MODE_CQ \| AV_ERR_INVALID_VAL \| Bitrate 与 CQ 模式冲突 \| \| \\ \| 正常值 \| \\ \| AV_ERR_OK \| 使能 CQ 模式 \| \| \\ \| 正常值 \| BITRATE_MODE_CQ \| AV_ERR_OK \| \\ \| \| \\ \| 正常值 \| BITRATE_MODE_VBR、BITRATE_MODE_CBR \| AV_ERR_INVALID_VAL \| Quality 与 VBR、CBR 模式冲突 \| \| \\ \| \\ \| BITRATE_MODE_VBR、BITRATE_MODE_CBR \| AV_ERR_OK \| 使用编码器默认码率\| \| \\ \| \\ \| BITRATE_MODE_CQ \| AV_ERR_OK \| 使用默认quality \| 
 
 参数校验：
 | Key     | 配置正常范围的值 | 配置超出范围的值 | 不配置该参数 |
@@ -409,7 +363,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非编码器实例，或者为空指针；2. 输入format参数不支持。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：本接口必须在OH_VideoEncoder_Prepare接口前调用，如果在其他状态时调用，则返回此错误码。<br>         AV_ERR_UNSUPPORT：不支持的像素格式。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：1. 输入的codec指针为非编码器实例，或者为空指针；2. 输入format参数不支持。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：本接口必须在OH_VideoEncoder_Prepare接口前调用，如果在其他状态时调用，则返回此错误码。\n          AV_ERR_UNSUPPORT：不支持的像素格式。 |
 
 ### OH_VideoEncoder_Prepare()
 
@@ -435,7 +389,7 @@ OH_AVErrCode OH_VideoEncoder_Prepare(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_Start()
 
@@ -461,7 +415,7 @@ OH_AVErrCode OH_VideoEncoder_Start(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_Stop()
 
@@ -487,7 +441,7 @@ OH_AVErrCode OH_VideoEncoder_Stop(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_Flush()
 
@@ -513,7 +467,7 @@ OH_AVErrCode OH_VideoEncoder_Flush(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_Reset()
 
@@ -539,7 +493,7 @@ OH_AVErrCode OH_VideoEncoder_Reset(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
 
 ### OH_VideoEncoder_GetOutputDescription()
 
@@ -565,7 +519,7 @@ OH_AVFormat *OH_VideoEncoder_GetOutputDescription(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 返回指向OH_AVFormat实例的指针。<br> 当输入的codec指针非编码实例，或者为空指针，则返回NULL。 |
+| OH_AVFormat * | 返回指向OH_AVFormat实例的指针。  当输入的codec指针非编码实例，或者为空指针，则返回NULL。 |
 
 ### OH_VideoEncoder_SetParameter()
 
@@ -592,7 +546,7 @@ OH_AVErrCode OH_VideoEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：1. 输入的codec指针为非编码器实例，或者为空指针；2. 输入format参数不支持。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：1. 输入的codec指针为非编码器实例，或者为空指针；2. 输入format参数不支持。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_GetSurface()
 
@@ -619,7 +573,7 @@ OH_AVErrCode OH_VideoEncoder_GetSurface(OH_AVCodec *codec, OHNativeWindow **wind
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。 |
 
 ### OH_VideoEncoder_FreeOutputData()
 
@@ -650,7 +604,7 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_NotifyEndOfStream()
 
@@ -676,7 +630,7 @@ OH_AVErrCode OH_VideoEncoder_NotifyEndOfStream(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_PushInputData()
 
@@ -708,7 +662,7 @@ OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：<br>         1. 输入的codec指针为非编码器实例，或者为空指针；<br>         2. index非法，该错误不影响后续编码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：\n          1. 输入的codec指针为非编码器实例，或者为空指针；\n          2. index非法，该错误不影响后续编码流程。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_PushInputBuffer()
 
@@ -735,7 +689,7 @@ Buffer模式下，将index对应的OH_AVBuffer送入编码器编码。
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：<br>         1. 输入的codec指针为非编码器实例，或者为空指针；<br>         2. index非法，该错误不影响后续编码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：          1. 输入的codec指针为非编码器实例，或者为空指针；          2. index非法，该错误不影响后续编码流程。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_PushInputParameter()
 
@@ -762,7 +716,7 @@ Surface模式下，将index对应帧的编码参数送入编码器编码。
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：<br>         1. 输入的codec指针为非编码器实例，或者为空指针；<br>         2. index非法，该错误不影响后续编码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：\n          1. 输入的codec指针为非编码器实例，或者为空指针；\n          2. index非法，该错误不影响后续编码流程。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_FreeOutputBuffer()
 
@@ -789,7 +743,7 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。<br>         AV_ERR_INVALID_VAL：<br>         1. 输入的codec指针为非编码器实例，或者为空指针；<br>         2. index非法，该错误不影响后续编码流程。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作不允许。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码实例内部异常，如内部出现异常空指针。\n          AV_ERR_INVALID_VAL：\n          1. 输入的codec指针为非编码器实例，或者为空指针；\n          2. index非法，该错误不影响后续编码流程。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_OPERATE_NOT_PERMIT：操作不允许。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。 |
 
 ### OH_VideoEncoder_GetInputDescription()
 
@@ -815,7 +769,7 @@ OH_AVFormat *OH_VideoEncoder_GetInputDescription(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVFormat * | 返回指向OH_AVFormat实例的指针。<br> 当codec指针非编码实例，或者为空指针，则返回NULL。 |
+| OH_AVFormat * | 返回指向OH_AVFormat实例的指针。  当codec指针非编码实例，或者为空指针，则返回NULL。 |
 
 ### OH_VideoEncoder_IsValid()
 
@@ -842,7 +796,7 @@ OH_AVErrCode OH_VideoEncoder_IsValid(OH_AVCodec *codec, bool *isValid)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。 |
 
 ### OH_VideoEncoder_QueryInputBuffer()
 
@@ -870,7 +824,7 @@ OH_AVErrCode OH_VideoEncoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码器实例已经销毁。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。\n          AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。\n          AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
 
 ### OH_VideoEncoder_GetInputBuffer()
 
@@ -925,7 +879,7 @@ OH_AVErrCode OH_VideoEncoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：执行成功。<br>         AV_ERR_NO_MEMORY：输入的编码器实例已经销毁。<br>         AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。<br>         AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。<br>         AV_ERR_STREAM_CHANGED：流格式已变更，可以通过调用[OH_VideoEncoder_GetOutputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription)接口获取新的流信息。<br>         AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
+| OH_AVErrCode | AV_ERR_OK：执行成功。\n          AV_ERR_NO_MEMORY：输入的编码器实例已经销毁。\n          AV_ERR_INVALID_VAL：输入的codec指针为非编码器实例，或者为空指针。\n          AV_ERR_UNKNOWN：未知错误。\n          AV_ERR_INVALID_STATE：当前编码器状态不支持调用本接口。\n          AV_ERR_OPERATE_NOT_PERMIT：禁止异步模式下使用。\n          AV_ERR_STREAM_CHANGED：流格式已变更，可以通过调用[OH_VideoEncoder_GetOutputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription)接口获取新的流信息。\n          AV_ERR_TRY_AGAIN_LATER：查询失败，建议等待短暂间隔后重试。 |
 
 ### OH_VideoEncoder_GetOutputBuffer()
 

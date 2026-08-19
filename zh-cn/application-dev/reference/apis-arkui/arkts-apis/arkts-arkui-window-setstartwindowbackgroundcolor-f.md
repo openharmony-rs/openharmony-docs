@@ -1,5 +1,13 @@
 # setStartWindowBackgroundColor
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## setStartWindowBackgroundColor
 
 ```TypeScript
@@ -9,10 +17,6 @@ function setStartWindowBackgroundColor(moduleName: string, abilityName: string, 
 设置同一应用包名下指定moduleName、abilityName对应UIAbility的启动页背景色，使用Promise异步回调。 该接口对同一应用包名下的所有进程生效，例如多实例或应用分身场景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,7 +46,7 @@ function setStartWindowBackgroundColor(moduleName: string, abilityName: string, 
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.function setStartWindowBackgroundColor can not work correctly due to limited device capabilities. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

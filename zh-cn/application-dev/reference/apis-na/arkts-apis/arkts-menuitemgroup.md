@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [MenuItemGroup](arkts-na-menuitemgroup-menuitemgroup-f.md#menuitemgroup) | Defines MenuItem Component. |
+| [MenuItemGroup](arkts-na-menuitemgroup-menuitemgroup-f.md) | Defines MenuItem Component. |
 
 ### 接口
 

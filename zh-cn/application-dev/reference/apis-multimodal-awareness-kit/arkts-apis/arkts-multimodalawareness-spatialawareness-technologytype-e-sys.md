@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-spatialAwareness-export enum TechnologyType--><!--Device-spatialAwareness-export enum TechnologyType-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.DistanceMeasurement
@@ -23,10 +19,6 @@ BLE_RSSI = 0
 表示蓝牙强度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ WIFI_RSSI = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TechnologyType-WIFI_RSSI = 1--><!--Device-TechnologyType-WIFI_RSSI = 1-End-->
@@ -67,10 +55,6 @@ ULTRASOUND = 2
 表示超声强度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ NEAR_LINK = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TechnologyType-NEAR_LINK = 3--><!--Device-TechnologyType-NEAR_LINK = 3-End-->
@@ -111,10 +91,6 @@ WIFI_BLE_RSSI = 4
 表示WIFI和蓝牙强度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

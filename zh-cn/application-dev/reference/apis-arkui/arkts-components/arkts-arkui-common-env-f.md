@@ -1,5 +1,10 @@
 # Env
 
+## 导入模块
+
+```TypeScript
+```
+
 ## Env
 
 ```TypeScript
@@ -9,10 +14,6 @@ declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecora
 定义Env PropertyDecorator。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

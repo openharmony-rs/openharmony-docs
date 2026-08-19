@@ -4,9 +4,7 @@ Defines the user mouse info on embed layer.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface NativeEmbedMouseInfo--><!--Device-unnamed-export declare interface NativeEmbedMouseInfo-End-->
 
@@ -24,9 +22,7 @@ The native embed id.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedMouseInfo-embedId?: string--><!--Device-NativeEmbedMouseInfo-embedId?: string-End-->
 
@@ -44,9 +40,7 @@ An event sent when the state of contacts with a mouse-sensitive surface changes.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedMouseInfo-mouseEvent?: MouseEvent--><!--Device-NativeEmbedMouseInfo-mouseEvent?: MouseEvent-End-->
 
@@ -64,9 +58,7 @@ Handle the user's mouse result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-NativeEmbedMouseInfo-result?: EventResult--><!--Device-NativeEmbedMouseInfo-result?: EventResult-End-->
 

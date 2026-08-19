@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## disableNotificationFeature
@@ -15,10 +15,6 @@ function disableNotificationFeature(disabled:boolean, bundleList: Array<string>)
 将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。支持启用或关闭该功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.MANAGE_EDM_POLICY
 
@@ -52,7 +48,7 @@ function disableNotificationFeature(disabled:boolean, bundleList: Array<string>)
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -99,10 +95,6 @@ function disableNotificationFeature(disabled: boolean, bundleList: Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.MANAGE_EDM_POLICY
 
 <!--Device-notificationManager-function disableNotificationFeature(disabled: boolean, bundleList: Array<string>, userId: int): Promise<void>--><!--Device-notificationManager-function disableNotificationFeature(disabled: boolean, bundleList: Array<string>, userId: int): Promise<void>-End-->
@@ -134,7 +126,7 @@ function disableNotificationFeature(disabled: boolean, bundleList: Array<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

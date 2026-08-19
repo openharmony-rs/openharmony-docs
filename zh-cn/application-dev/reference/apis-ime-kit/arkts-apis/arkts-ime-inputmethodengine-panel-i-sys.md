@@ -4,13 +4,15 @@ Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-interface Panel--><!--Device-inputMethodEngine-interface Panel-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethodEngine } from '@kit.IMEKit';
+```
 
 ## offSizeUpdate
 
@@ -21,10 +23,6 @@ offSizeUpdate(callback?: SizeUpdateCallback): void
 取消订阅面板尺寸更新（sizeUpdate）事件，停止监听输入法面板尺寸的变更动作, 使用callback异步回调。 &lt;p&gt;此接口仅支持固定或悬浮态的软键盘类型Panel。&lt;/p&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Panel-offSizeUpdate(callback?: SizeUpdateCallback): void--><!--Device-Panel-offSizeUpdate(callback?: SizeUpdateCallback): void-End-->
 
@@ -38,7 +36,7 @@ offSizeUpdate(callback?: SizeUpdateCallback): void
 | --- | --- | --- | --- |
 | callback | [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | 否 | 回调函数。 可选参数，需取消的目标回调函数：传入指定回调函数实例时，仅取消该回调的订阅；不传入时，取消所有sizeUpdate事件的订阅。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { window } from '@kit.ArkUI';
@@ -48,7 +46,7 @@ panel.offSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.Ke
 });
 ```
 
-## off_sizeUpdate
+## off('sizeUpdate')
 
 ```TypeScript
 off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
@@ -57,10 +55,6 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 通过Panel实例取消监听当前面板大小变化，停止callback异步回调。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-Panel-off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void--><!--Device-Panel-off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void-End-->
 
@@ -75,7 +69,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 | type | 'sizeUpdate' | 是 | 监听当前面板的大小是否产生变化，固定值为'sizeUpdate'。 |
 | callback | [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | 否 | 回调函数。用于指定要取消监听的回调函数，如果不填则取消所有sizeUpdate监听。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { window } from '@kit.ArkUI';
@@ -97,10 +91,6 @@ onSizeUpdate(callback: SizeUpdateCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Panel-onSizeUpdate(callback: SizeUpdateCallback): void--><!--Device-Panel-onSizeUpdate(callback: SizeUpdateCallback): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -113,7 +103,7 @@ onSizeUpdate(callback: SizeUpdateCallback): void
 | --- | --- | --- | --- |
 | callback | [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | 是 | 面板尺寸更新时触发的回调函数，入参为面板尺寸信息对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { window } from '@kit.ArkUI';
@@ -123,7 +113,7 @@ panel.onSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.Key
 });
 ```
 
-## on_sizeUpdate
+## on('sizeUpdate')
 
 ```TypeScript
 on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
@@ -132,10 +122,6 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 通过Panel实例监听当前面板大小变化，在变化发生时通过callback异步回调。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-Panel-on(type: 'sizeUpdate', callback: SizeUpdateCallback): void--><!--Device-Panel-on(type: 'sizeUpdate', callback: SizeUpdateCallback): void-End-->
 
@@ -150,7 +136,7 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 | type | 'sizeUpdate' | 是 | 监听当前面板的大小是否产生变化，固定取值为'sizeUpdate'。 |
 | callback | [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | 是 | 面板大小变化时的回调，参数包含当前软键盘面板的宽度和高度。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { window } from '@kit.ArkUI';
@@ -172,10 +158,6 @@ setShadow(radius: double, color: string, offsetX: double, offsetY: double): void
 通过Panel实例设置输入法窗口阴影效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Panel-setShadow(radius: double, color: string, offsetX: double, offsetY: double): void--><!--Device-Panel-setShadow(radius: double, color: string, offsetX: double, offsetY: double): void-End-->
 

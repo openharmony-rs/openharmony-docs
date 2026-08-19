@@ -4,15 +4,18 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md#storeconfig)
+**替代接口：** [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md)
 
 <!--Device-rdb-interface StoreConfig--><!--Device-rdb-interface StoreConfig-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## 导入模块
+
+```TypeScript
+```
 
 ## name
 
@@ -25,8 +28,6 @@ name: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

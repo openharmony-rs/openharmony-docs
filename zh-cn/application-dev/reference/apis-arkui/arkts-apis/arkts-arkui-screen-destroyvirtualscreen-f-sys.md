@@ -1,5 +1,12 @@
 # destroyVirtualScreen（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## destroyVirtualScreen
 
 ```TypeScript
@@ -9,10 +16,6 @@ function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): voi
 销毁虚拟屏幕，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screen-function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): void--><!--Device-screen-function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): void-End-->
 
@@ -25,7 +28,7 @@ function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | screenId | long | 是 | 屏幕的id，该参数仅支持整数输入。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当销毁虚拟屏幕成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当销毁虚拟屏幕成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -36,7 +39,7 @@ function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): voi
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -83,10 +86,6 @@ function destroyVirtualScreen(screenId:long): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-screen-function destroyVirtualScreen(screenId:long): Promise<void>--><!--Device-screen-function destroyVirtualScreen(screenId:long): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -114,7 +113,7 @@ function destroyVirtualScreen(screenId:long): Promise<void>
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

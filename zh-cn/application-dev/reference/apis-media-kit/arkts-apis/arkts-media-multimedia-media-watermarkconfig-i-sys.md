@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface WatermarkConfig--><!--Device-unnamed-interface WatermarkConfig-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## left
 
@@ -25,10 +27,6 @@ left: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WatermarkConfig-left: int--><!--Device-WatermarkConfig-left: int-End-->
 
@@ -47,10 +45,6 @@ top: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WatermarkConfig-top: int--><!--Device-WatermarkConfig-top: int-End-->
 

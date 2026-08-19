@@ -1,6 +1,12 @@
 # on_applicationState（系统接口）
 
-## on_applicationState
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
+## on('applicationState')
 
 ```TypeScript
 function on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStateFilter): int
@@ -9,10 +15,6 @@ function on(type: 'applicationState', observer: ApplicationStateObserver, filter
 注册应用程序的状态监听器，并通过设置过滤条件来筛选所需监听的应用生命周期变化事件。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RUNNING_STATE_OBSERVER
 
@@ -44,7 +46,7 @@ function on(type: 'applicationState', observer: ApplicationStateObserver, filter
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

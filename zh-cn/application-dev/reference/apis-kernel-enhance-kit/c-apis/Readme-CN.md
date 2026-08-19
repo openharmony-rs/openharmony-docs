@@ -1,4 +1,4 @@
-# CAPI<!--c-kernel-enhance-kit-->
+# C API<!--c-kernel-enhance-kit-->
 
 - 头文件
     - [purgeable_memory.h](capi-purgeable-memory-h.md)

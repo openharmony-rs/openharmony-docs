@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSync-enum OptimizeState--><!--Device-cloudSync-enum OptimizeState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -23,10 +19,6 @@ RUNNING = 0
 正在优化空间。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-OptimizeState-RUNNING = 0--><!--Device-OptimizeState-RUNNING = 0-End-->
 
@@ -44,10 +36,6 @@ COMPLETED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-OptimizeState-COMPLETED = 1--><!--Device-OptimizeState-COMPLETED = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -64,10 +52,6 @@ FAILED = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-OptimizeState-FAILED = 2--><!--Device-OptimizeState-FAILED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -83,10 +67,6 @@ STOPPED = 3
 优化空间停止。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-OptimizeState-STOPPED = 3--><!--Device-OptimizeState-STOPPED = 3-End-->
 

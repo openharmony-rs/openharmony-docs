@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-enum ComponentType--><!--Device-image-enum ComponentType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -21,10 +17,6 @@ YUV_Y = 1
 亮度信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ComponentType-YUV_Y = 1--><!--Device-ComponentType-YUV_Y = 1-End-->
 
@@ -40,10 +32,6 @@ YUV_U = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ComponentType-YUV_U = 2--><!--Device-ComponentType-YUV_U = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -58,10 +46,6 @@ YUV_V = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ComponentType-YUV_V = 3--><!--Device-ComponentType-YUV_V = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
@@ -75,10 +59,6 @@ JPEG = 4
 JPEG 类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ComponentType-JPEG = 4--><!--Device-ComponentType-JPEG = 4-End-->
 

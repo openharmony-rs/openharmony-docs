@@ -4,13 +4,15 @@ AbilityStage是一个[Module](../../../quick-start/application-package-overview.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class AbilityStage--><!--Device-unnamed-declare class AbilityStage-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { AbilityStage } from '@kit.AbilityKit';
+```
 
 ## onAboutToCreateAbility
 
@@ -22,17 +24,13 @@ onAboutToCreateAbility(): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AbilityStage-onAboutToCreateAbility(): void--><!--Device-AbilityStage-onAboutToCreateAbility(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage } from '@kit.AbilityKit';
@@ -55,10 +53,6 @@ onAcceptWant(want: Want): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -79,7 +73,7 @@ onAcceptWant(want: Want): string
 | --- | --- |
 | string | 返回开发者自定义的UIAbility标识。如果已经启动了相同标识的UIAbility，则复用该UIAbility，否则创建新的实例并启动。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage, Want } from '@kit.AbilityKit';
@@ -102,10 +96,6 @@ onAcceptWantAsync(want: Want): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -126,7 +116,7 @@ onAcceptWantAsync(want: Want): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | Promise对象，返回一个string作为待启动的UIAbility实例的唯一标识。如果系统中已经有该标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage, Want } from '@kit.AbilityKit';
@@ -148,13 +138,9 @@ class MyAbilityStage extends AbilityStage {
 onConfigurationUpdate(newConfig: Configuration): void
 ```
 
-当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](arkts-ability-app-ability-configuration-configuration-i.md#configuration)类中。同步接口 ，不支持异步回调。 > **说明：** > > 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setlanguage)接口 > 设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见 > [使用场景](../../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
+当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](arkts-ability-app-ability-configuration-configuration-i.md)类中。同步接口 ，不支持异步回调。 > **说明：** > > 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setlanguage)接口 > 设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见 > [使用场景](../../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -170,7 +156,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 | --- | --- | --- | --- |
 | newConfig | [Configuration](arkts-ability-app-ability-configuration-configuration-i.md) | 是 | 发生全局配置变更时触发回调，当前全局配置包括系统语言、深浅色模式。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage, Configuration } from '@kit.AbilityKit';
@@ -192,10 +178,6 @@ onCreate(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -204,7 +186,7 @@ onCreate(): void
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage } from '@kit.AbilityKit';
@@ -226,10 +208,6 @@ onDestroy(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -238,7 +216,7 @@ onDestroy(): void
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage } from '@kit.AbilityKit';
@@ -260,17 +238,13 @@ onLaunchFromHyperSnap(): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AbilityStage-onLaunchFromHyperSnap(): void--><!--Device-AbilityStage-onLaunchFromHyperSnap(): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage } from '@kit.AbilityKit';
@@ -293,10 +267,6 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -309,9 +279,9 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| level | AbilityConstant.MemoryLevel | 是 | 整机可用内存级别，对应的触发场景详见 [AbilityConstant.MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md#memorylevel)。 |
+| level | AbilityConstant.MemoryLevel | 是 | 整机可用内存级别，对应的触发场景详见 [AbilityConstant.MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md)。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage, AbilityConstant } from '@kit.AbilityKit';
@@ -329,13 +299,9 @@ export default class MyAbilityStage extends AbilityStage {
 onNewProcessRequest(want: Want): string
 ```
 
-如果UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!-- DelEnd--&gt;的isolationProcess字段取值为true），当该UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。同步接口，不支持异步回调。 如果该应用已有相同标识的进程存在，则待启动的UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;运行在此进程中，否则创建新的进程。 如果开发者同时实现onNewProcessRequest和[onAcceptWant](#onacceptwant)，将先收到onNewProcessRequest回调，再收到 onAcceptWant回调。 &lt;!--Del--&gt; 仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)配置文件中配 置isolationProcess字段为true。 &lt;!--DelEnd--&gt; > **说明：** > > - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。&lt;!--Del--&gt;从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。&lt;!--DelEnd &gt; --> > > - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync)实现时，本回调函 > 数将不执行。
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!-- DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。同步接口，不支持异步回调。 如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。 如果开发者同时实现onNewProcessRequest和[onAcceptWant](#onacceptwant)，将先收到onNewProcessRequest回调，再收到 onAcceptWant回调。 <!--Del--> 仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)配置文件中配 置isolationProcess字段为true。 <!--DelEnd--> > **说明：** > > - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。<!--Del-->从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。<!--DelEnd > --> > > - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync)实现时，本回调函 > 数将不执行。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -347,7 +313,7 @@ onNewProcessRequest(want: Want): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
 
 **返回值：**
 
@@ -355,7 +321,7 @@ onNewProcessRequest(want: Want): string
 | --- | --- |
 | string | 返回一个由开发者自行决定的进程字符串标识，如果之前此标识对应的进程已被创建，就让ability在此进程中运行，否则创建新的进程。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage, Want } from '@kit.AbilityKit';
@@ -374,13 +340,9 @@ export default class MyAbilityStage extends AbilityStage {
 onNewProcessRequestAsync(want: Want): Promise<string>
 ```
 
-如果UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!-- DelEnd--&gt;的isolationProcess字段取值为true），当该UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。使用Promise异步回调。 如果该应用已有相同标识的进程存在，则待启动的UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;运行在此进程中，否则创建新的进程。 &lt;!--Del--&gt; 仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配置 isolationProcess字段为true。 &lt;!--DelEnd--&gt;
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!-- DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。使用Promise异步回调。 如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。 <!--Del--> 仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配置 isolationProcess字段为true。 <!--DelEnd-->
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -394,15 +356,15 @@ onNewProcessRequestAsync(want: Want): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility&lt;!--Del--&gt;或UIExtensionAbility&lt;!--DelEnd--&gt;名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | Want类型参数，此处表示调用方传入的启动参数，如UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->名称、Bundle名称等。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility&lt;!--Del--&gt;或UIExtensionAbility &lt;!--DelEnd--&gt;在此进程中运行，否则创建新的进程。 |
+| Promise&lt;string&gt; | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility<!--Del-->或UIExtensionAbility <!--DelEnd-->在此进程中运行，否则创建新的进程。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage, Want } from '@kit.AbilityKit';
@@ -428,10 +390,6 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.PREPARE_APP_TERMINATE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -448,7 +406,7 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 | --- | --- |
 | AbilityConstant.PrepareTermination | The user's choice. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, AbilityStage } from '@kit.AbilityKit';
@@ -471,10 +429,6 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.PREPARE_APP_TERMINATE
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -491,7 +445,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 | --- | --- |
 | Promise&lt;AbilityConstant.PrepareTermination&gt; | Promise used to return the user's choice. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, AbilityStage } from '@kit.AbilityKit';
@@ -517,10 +471,6 @@ AbilityStage上下文。
 **类型：** [AbilityStageContext](arkts-ability-abilitystagecontext-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

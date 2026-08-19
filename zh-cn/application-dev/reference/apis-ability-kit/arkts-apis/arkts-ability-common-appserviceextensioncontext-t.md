@@ -4,13 +4,9 @@
 export type AppServiceExtensionContext = _AppServiceExtensionContext
 ```
 
-[AppServiceExtensionAbility](arkts-ability-app-ability-appserviceextensionability-appserviceextensionability-c.md#appserviceextensionability) 组件上下文，继承自Context。
+[AppServiceExtensionAbility](arkts-ability-app-ability-appserviceextensionability-appserviceextensionability-c.md) 组件上下文，继承自Context。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

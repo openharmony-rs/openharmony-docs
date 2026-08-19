@@ -4,11 +4,7 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
-<!--Device-jsLeakWatcher-export declare enum MonitorObjectType--><!--Device-jsLeakWatcher-export declare enum MonitorObjectType-End-->
+<!--Device-jsLeakWatcher-export enum MonitorObjectType--><!--Device-jsLeakWatcher-export enum MonitorObjectType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
 
@@ -21,10 +17,6 @@ ALL = -1
 监测所有组件类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-MonitorObjectType-ALL = -1--><!--Device-MonitorObjectType-ALL = -1-End-->
 
@@ -40,10 +32,6 @@ CUSTOM_COMPONENT = 1 << 0
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-MonitorObjectType-CUSTOM_COMPONENT = 1 << 0--><!--Device-MonitorObjectType-CUSTOM_COMPONENT = 1 << 0-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -57,10 +45,6 @@ WINDOW = 1 << 1
 监测Window组件类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-MonitorObjectType-WINDOW = 1 << 1--><!--Device-MonitorObjectType-WINDOW = 1 << 1-End-->
 
@@ -76,10 +60,6 @@ NODE_CONTAINER = 1 << 2
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-MonitorObjectType-NODE_CONTAINER = 1 << 2--><!--Device-MonitorObjectType-NODE_CONTAINER = 1 << 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -94,10 +74,6 @@ X_COMPONENT = 1 << 3
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-MonitorObjectType-X_COMPONENT = 1 << 3--><!--Device-MonitorObjectType-X_COMPONENT = 1 << 3-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -111,10 +87,6 @@ ABILITY = 1 << 4
 监测Ability组件类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-MonitorObjectType-ABILITY = 1 << 4--><!--Device-MonitorObjectType-ABILITY = 1 << 4-End-->
 

@@ -1,5 +1,10 @@
 # rmdir
 
+## 导入模块
+
+```TypeScript
+```
+
 ## rmdir
 
 ```TypeScript
@@ -10,9 +15,7 @@ function rmdir(path: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function rmdir(path: string): Promise<void>--><!--Device-fileIo-function rmdir(path: string): Promise<void>-End-->
 
@@ -58,9 +61,7 @@ function rmdir(path: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function rmdir(path: string, callback: AsyncCallback<void>): void--><!--Device-fileIo-function rmdir(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -71,7 +72,7 @@ function rmdir(path: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 目录的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当删除目录成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当删除目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 

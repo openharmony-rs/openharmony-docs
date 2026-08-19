@@ -1,5 +1,11 @@
 # getContext
 
+## 导入模块
+
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+```
+
 ## getContext
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getContext(): Context
 获取应用上下文。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -26,7 +28,7 @@ function getContext(): Context
 | --- | --- |
 | Context | 返回应用程序上下文。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { featureAbility } from '@kit.AbilityKit';

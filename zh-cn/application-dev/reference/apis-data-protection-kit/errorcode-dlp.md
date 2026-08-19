@@ -22,7 +22,7 @@ Invalid parameter value.
 
 **可能原因**
 
-1. 账号为空或账号长度大于1024。
+1. 账号为空或账号长度大于1024字符。
 
 2. 账号类型错误。
 
@@ -72,7 +72,7 @@ Credential task time out.
 
 **错误描述**
 
-DLP（数据防泄漏，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
+DLP（数据防泄露，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
 
 **可能原因**
 
@@ -541,7 +541,7 @@ The specified userId is inconsistent with the current userId.
 
 **处理步骤**
 
-请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId]等接口来获取。
+请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。
 
 ## 19100024 个人空间用户不支持设置受控应用
 

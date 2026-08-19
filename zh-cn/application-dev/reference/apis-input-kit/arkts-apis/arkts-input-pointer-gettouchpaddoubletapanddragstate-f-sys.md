@@ -1,5 +1,11 @@
 # getTouchpadDoubleTapAndDragState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## getTouchpadDoubleTapAndDragState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getTouchpadDoubleTapAndDragState(callback: AsyncCallback<boolean>): voi
 获取触控板双击拖拽开关的开启状态，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-pointer-function getTouchpadDoubleTapAndDragState(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function getTouchpadDoubleTapAndDragState(callback: AsyncCallback<boolean>): void-End-->
 
@@ -24,7 +26,7 @@ function getTouchpadDoubleTapAndDragState(callback: AsyncCallback<boolean>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取触控板双击拖拽开关的开启状态成功，err为undefined，返回true代表开启，返回false代表关闭；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。当获取触控板双击拖拽开关的开启状态成功，err为undefined，返回true代表开启，返回false代表关闭；否则为错误对象。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function getTouchpadDoubleTapAndDragState(callback: AsyncCallback<boolean>): voi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -109,10 +111,6 @@ function getTouchpadDoubleTapAndDragState(): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function getTouchpadDoubleTapAndDragState(): Promise<boolean>--><!--Device-pointer-function getTouchpadDoubleTapAndDragState(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -131,7 +129,7 @@ function getTouchpadDoubleTapAndDragState(): Promise<boolean>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

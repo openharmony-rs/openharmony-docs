@@ -1,5 +1,11 @@
 # unsubscribeReminderState
 
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
+
 ## unsubscribeReminderState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unsubscribeReminderState(callback?: Callback<Array<ReminderState>>): Pr
 取消订阅代理提醒状态。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ function unsubscribeReminderState(callback?: Callback<Array<ReminderState>>): Pr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[ReminderState](arkts-backgroundtasks-reminderagentmanager-reminderstate-i.md)&gt;&gt; | 否 | 回调函数。如果不传参数callback，则取消所有订阅。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[ReminderState](arkts-backgroundtasks-reminderagentmanager-reminderstate-i.md)&gt;&gt; | 否 | 回调函数。如果不传参数callback，则取消所有订阅。 |
 
 **返回值：**
 
@@ -38,7 +40,7 @@ function unsubscribeReminderState(callback?: Callback<Array<ReminderState>>): Pr
 | --- | --- |
 | [1700007](../../apis-backgroundtasks-kit/errorcode-reminderAgentManager.md#1700007-参数错误) | If the input parameter is not valid parameter. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

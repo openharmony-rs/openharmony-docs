@@ -1,12 +1,8 @@
 # AbilityStageMonitor
 
-本模块提供监听指定[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md#abilitystage)对象的能力。开发者可以将AbilityStageMonitor作为 [abilityDelegator.waitAbilityStageMonitor](arkts-ability-abilitydelegator-i.md#waitabilitystagemonitor) 的入参来注册监听。
+本模块提供监听指定[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象的能力。开发者可以将AbilityStageMonitor作为 [abilityDelegator.waitAbilityStageMonitor](arkts-ability-abilitydelegator-i.md#waitabilitystagemonitor) 的入参来注册监听。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface AbilityStageMonitor--><!--Device-unnamed-export interface AbilityStageMonitor-End-->
 
@@ -23,10 +19,6 @@ moduleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +37,6 @@ srcEntrance: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

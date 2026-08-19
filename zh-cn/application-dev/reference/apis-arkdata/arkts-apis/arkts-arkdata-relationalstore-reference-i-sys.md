@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-interface Reference--><!--Device-relationalStore-interface Reference-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData';
+```
 
 ## refFields
 
@@ -25,10 +27,6 @@ refFields: Record<string, string>
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Reference-refFields: Record<string, string>--><!--Device-Reference-refFields: Record<string, string>-End-->
 
@@ -48,10 +46,6 @@ sourceTable: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Reference-sourceTable: string--><!--Device-Reference-sourceTable: string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -69,10 +63,6 @@ targetTable: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Reference-targetTable: string--><!--Device-Reference-targetTable: string-End-->
 

@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-certificateManager-export interface CMHandle--><!--Device-certificateManager-export interface CMHandle-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## handle
 
@@ -23,10 +26,6 @@ handle: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CMHandle-handle: Uint8Array--><!--Device-CMHandle-handle: Uint8Array-End-->
 

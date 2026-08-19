@@ -1,12 +1,8 @@
-# NetworkPolicy
+# NetworkPolicy(智慧数据平台)
 
 下载云侧模型的网络策略枚举。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-intelligence-enum NetworkPolicy--><!--Device-intelligence-enum NetworkPolicy-End-->
 
@@ -21,10 +17,6 @@ WIFI_ONLY = 0
 仅在Wi-Fi状态下下载模型，适用于需要节省移动数据流量的场景。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,10 +33,6 @@ WIFI_AND_CELLULAR = 1
 在Wi-Fi和蜂窝网络状态下下载模型，适用于需要快速获取模型且允许使用移动数据的场景。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

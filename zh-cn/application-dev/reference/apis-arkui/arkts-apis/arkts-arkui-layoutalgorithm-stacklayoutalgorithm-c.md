@@ -1,14 +1,10 @@
 # StackLayoutAlgorithm
 
-堆叠布局算法类。 > **说明：** > > StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](../../apis-na/arkts-apis/arkts-na-arkui-components-arkdynamiclayout-dynamiclayout-f.md#dynamiclayout)组件的 > 入参指定布局算法。
+堆叠布局算法类。 > **说明：** > > StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](../../apis-na/arkts-apis/arkts-na-arkui-components-arkdynamiclayout-dynamiclayout-f.md)组件的 > 入参指定布局算法。
 
-**继承/实现关系：** StackLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md#layoutalgorithm)
+**继承/实现关系：** StackLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export class StackLayoutAlgorithm--><!--Device-unnamed-export class StackLayoutAlgorithm-End-->
 
@@ -23,10 +19,6 @@ constructor(option?: StackLayoutAlgorithmOptions)
 堆叠布局算法类的构造函数。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -55,10 +47,6 @@ constructor(option?: StackLayoutAlgorithmOptions)
 **类型：** [LocalizedAlignment](../../apis-na/arkts-apis/arkts-na-enums-localizedalignment-e.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

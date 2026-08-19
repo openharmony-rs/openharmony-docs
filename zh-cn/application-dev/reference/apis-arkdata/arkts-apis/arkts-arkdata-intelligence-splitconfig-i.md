@@ -1,16 +1,18 @@
-# SplitConfig
+# SplitConfig(智慧数据平台)
 
 管理文本分块的配置信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-intelligence-interface SplitConfig--><!--Device-intelligence-interface SplitConfig-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+## 导入模块
+
+```TypeScript
+import { intelligence } from '@kit.ArkData';
+```
 
 ## overlapRatio
 
@@ -23,10 +25,6 @@ overlapRatio: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SplitConfig-overlapRatio: double--><!--Device-SplitConfig-overlapRatio: double-End-->
 
@@ -43,10 +41,6 @@ size: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SplitConfig-size: int--><!--Device-SplitConfig-size: int-End-->
 

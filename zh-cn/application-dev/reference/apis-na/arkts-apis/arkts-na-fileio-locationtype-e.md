@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-enum LocationType--><!--Device-fileIo-enum LocationType-End-->
 
@@ -22,9 +20,7 @@ LOCAL = 1 << 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LocationType-LOCAL = 1 << 0--><!--Device-LocationType-LOCAL = 1 << 0-End-->
 
@@ -40,9 +36,7 @@ CLOUD = 1 << 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-LocationType-CLOUD = 1 << 1--><!--Device-LocationType-CLOUD = 1 << 1-End-->
 

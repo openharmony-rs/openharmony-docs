@@ -1,5 +1,10 @@
 # getWallpaperByState（系统接口）
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getWallpaperByState
 
 ```TypeScript
@@ -9,10 +14,6 @@ function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState,
 获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land -> unfolded-port ->normal-port。使用promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_WALLPAPER
 
@@ -44,7 +45,7 @@ function getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState,
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

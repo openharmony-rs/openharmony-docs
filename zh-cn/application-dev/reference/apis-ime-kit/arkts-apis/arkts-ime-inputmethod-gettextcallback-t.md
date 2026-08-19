@@ -8,10 +8,6 @@ export type GetTextCallback = (length: int) => string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethod-export type GetTextCallback = (length: int) => string--><!--Device-inputMethod-export type GetTextCallback = (length: int) => string-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

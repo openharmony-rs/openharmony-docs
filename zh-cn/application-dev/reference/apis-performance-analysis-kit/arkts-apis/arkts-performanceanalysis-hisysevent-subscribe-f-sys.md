@@ -1,5 +1,11 @@
 # subscribe（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## subscribe
 
 ```TypeScript
@@ -9,10 +15,6 @@ function subscribe(rules: QueryRule[]): long
 订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
@@ -44,7 +46,7 @@ function subscribe(rules: QueryRule[]): long
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. An attempt was made to read system event forbidden by permission: ohos.permission.READ_DFX_SYSEVENT. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

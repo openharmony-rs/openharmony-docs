@@ -97,7 +97,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Configure(OH_LowPowerVideoSink* sink, const OH
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_UNSUPPORT：不支持的格式。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_SetParameter()
 
@@ -122,7 +122,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetParameter(OH_LowPowerVideoSink* sink, const
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_UNSUPPORT：不支持的格式。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_GetParameter()
 
@@ -147,7 +147,7 @@ OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_SetVideoSurface()
 
@@ -172,7 +172,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, co
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_Prepare()
 
@@ -196,7 +196,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Prepare(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_UNSUPPORT：不支持的格式。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_StartDecoder()
 
@@ -220,7 +220,7 @@ OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_UNSUPPORT：不支持的格式。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_RenderFirstFrame()
 
@@ -244,7 +244,7 @@ OH_AVErrCode OH_LowPowerVideoSink_RenderFirstFrame(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_StartRenderer()
 
@@ -268,7 +268,7 @@ OH_AVErrCode OH_LowPowerVideoSink_StartRenderer(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_UNSUPPORT：不支持的格式。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_UNSUPPORT：不支持的格式。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_Pause()
 
@@ -292,7 +292,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_Resume()
 
@@ -316,7 +316,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_Flush()
 
@@ -340,7 +340,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_Stop()
 
@@ -364,7 +364,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Stop(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_Reset()
 
@@ -388,7 +388,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_Destroy()
 
@@ -412,7 +412,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_SetSyncAudioSink()
 
@@ -437,7 +437,7 @@ LowPowerVideoSink设置用于音画同步的OH_LowPowerAudioSink。
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_SetTargetStartFrame()
 
@@ -465,7 +465,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_SetPlaybackSpeed()
 
@@ -490,7 +490,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_ReturnSamples()
 
@@ -515,7 +515,7 @@ OH_AVErrCode OH_LowPowerVideoSink_ReturnSamples(OH_LowPowerVideoSink* sink, OH_A
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_RegisterCallback()
 
@@ -540,7 +540,7 @@ OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, O
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSinkCallback_Create()
 
@@ -582,7 +582,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_Destroy(OH_LowPowerVideoSinkCallback* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。 |
 
 ### OH_LowPowerVideoSinkCallback_SetDataNeededListener()
 
@@ -608,7 +608,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetDataNeededListener(OH_LowPowerVideo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSinkCallback_SetErrorListener()
 
@@ -634,7 +634,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkC
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSinkCallback_SetRenderStartListener()
 
@@ -660,7 +660,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVide
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSinkCallback_SetStreamChangedListener()
 
@@ -686,7 +686,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVi
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener()
 
@@ -712,7 +712,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSinkCallback_SetEosListener()
 
@@ -738,7 +738,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCal
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 ### OH_LowPowerVideoSink_GetLatestPts()
 
@@ -763,6 +763,6 @@ OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_SERVICE_DIED：媒体服务端已销毁。<br> AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。  AV_ERR_INVALID_VAL：参数为nullptr或参数非法。  AV_ERR_SERVICE_DIED：媒体服务端已销毁。  AV_ERR_OPERATE_NOT_PERMIT：操作不支持。 |
 
 

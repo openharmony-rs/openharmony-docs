@@ -1,4 +1,4 @@
-# DataCallback（系统接口）
+# DataCallback(跨设备唤醒与消息传输)（系统接口）
 
 ```TypeScript
 type DataCallback = (deviceId: string, msg: ArrayBuffer) => void
@@ -7,10 +7,6 @@ type DataCallback = (deviceId: string, msg: ArrayBuffer) => void
 数据接收回调函数类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

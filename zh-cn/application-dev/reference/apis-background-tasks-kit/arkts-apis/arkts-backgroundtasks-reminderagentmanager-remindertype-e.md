@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-reminderAgentManager-export enum ReminderType--><!--Device-reminderAgentManager-export enum ReminderType-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -21,10 +17,6 @@ REMINDER_TYPE_TIMER = 0
 表示提醒类型：倒计时。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderType-REMINDER_TYPE_TIMER = 0--><!--Device-ReminderType-REMINDER_TYPE_TIMER = 0-End-->
 
@@ -40,10 +32,6 @@ REMINDER_TYPE_CALENDAR = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderType-REMINDER_TYPE_CALENDAR = 1--><!--Device-ReminderType-REMINDER_TYPE_CALENDAR = 1-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -57,10 +45,6 @@ REMINDER_TYPE_ALARM = 2
 表示提醒类型：闹钟。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderType-REMINDER_TYPE_ALARM = 2--><!--Device-ReminderType-REMINDER_TYPE_ALARM = 2-End-->
 

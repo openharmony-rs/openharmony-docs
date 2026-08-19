@@ -4,13 +4,14 @@ ListItem划出菜单的管理器。
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class ListItemSwipeActionManager--><!--Device-unnamed-declare class ListItemSwipeActionManager-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## collapse
 
@@ -21,10 +22,6 @@ static collapse(node: FrameNode): void
 收起指定ListItem的划出菜单。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -56,10 +53,6 @@ static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 展开指定ListItem的划出菜单。 > **说明：** > > - 如果List组件cachedCount属性show参数设置为true，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,8 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
 **废弃版本：** 20
 
 **替代接口：** [editMenuOptions](arkts-arkweb-web-attribute.md#editmenuoptions)
@@ -13,6 +11,16 @@
 <!--Device-unnamed-declare interface ExpandedMenuItemOptions--><!--Device-unnamed-declare interface ExpandedMenuItemOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## action
 
@@ -25,8 +33,6 @@ action: (selectedText: {plainText: string}) => void
 **类型：** (selectedText: {plainText: string}) =&gt; void
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 20
 
@@ -50,8 +56,6 @@ content: ResourceStr
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
 **废弃版本：** 20
 
 **替代接口：** EditMenuOptions
@@ -73,8 +77,6 @@ startIcon?: ResourceStr
 **类型：** ResourceStr
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 20
 

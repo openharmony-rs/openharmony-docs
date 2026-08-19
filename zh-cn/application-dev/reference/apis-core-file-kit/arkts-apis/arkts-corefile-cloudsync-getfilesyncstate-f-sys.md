@@ -1,5 +1,12 @@
 # getFileSyncState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## getFileSyncState
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getFileSyncState(uri: Array<string>): Promise<Array<FileSyncState>>
 异步方法获取文件同步状态。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
@@ -45,7 +48,7 @@ function getFileSyncState(uri: Array<string>): Promise<Array<FileSyncState>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -88,10 +91,6 @@ function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<File
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC
 
 <!--Device-cloudSync-function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<FileSyncState>>): void--><!--Device-cloudSync-function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<FileSyncState>>): void-End-->
@@ -105,7 +104,7 @@ function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<File
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | Array&lt;string&gt; | 是 | 待获取同步状态的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[FileSyncState](arkts-corefile-cloudsync-filesyncstate-e-sys.md)&gt;&gt; | 是 | 回调函数。异步获取文件状态。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[FileSyncState](arkts-corefile-cloudsync-filesyncstate-e-sys.md)&gt;&gt; | 是 | 回调函数。异步获取文件状态。 |
 
 **错误码：**
 
@@ -118,7 +117,7 @@ function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<File
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -169,10 +168,6 @@ function getFileSyncState(uri: string): FileSyncState
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSync-function getFileSyncState(uri: string): FileSyncState--><!--Device-cloudSync-function getFileSyncState(uri: string): FileSyncState-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -205,7 +200,7 @@ function getFileSyncState(uri: string): FileSyncState
 | 13900010 | Try again |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

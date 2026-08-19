@@ -117,7 +117,7 @@ OH_Swapfs_ErrCode OH_Swapfs_CreateManager(const OH_SwapfsConfig *config, OH_Swap
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针。</li><br>         <li>SWAPFS_E_NOMEM：内存分配失败。</li><br>         <li>SWAPFS_E_ACCES：换出根路径权限被拒绝。</li><br>         <li>SWAPFS_E_PATH_UNAVAILABLE：换出根路径无法创建。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针。</li>          <li>SWAPFS_E_NOMEM：内存分配失败。</li>          <li>SWAPFS_E_ACCES：换出根路径权限被拒绝。</li>          <li>SWAPFS_E_PATH_UNAVAILABLE：换出根路径无法创建。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 
@@ -148,7 +148,7 @@ OH_Swapfs_ErrCode OH_Swapfs_DestroyManager(OH_SwapfsManager *manager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针。</li><br>         <li>SWAPFS_E_BUSY：存在进行中的活跃操作。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针。</li>          <li>SWAPFS_E_BUSY：存在进行中的活跃操作。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 
@@ -181,7 +181,7 @@ OH_Swapfs_ErrCode OH_Swapfs_SwapOut(OH_SwapfsManager *manager, const OH_SwapfsSw
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针、request为空指针、keyId为空指针、buffer为空指针，或bufferSize为0。</li><br>         <li>SWAPFS_E_DIO_ALIGN：useDirectIo为true且buffer未对齐到SWAPFS_DIO_ALIGNMENT。</li><br>         <li>SWAPFS_E_NOSPC：设备存储空间不足。</li><br>         <li>SWAPFS_E_QUOTA_EXCEEDED：换出空间配额超限。</li><br>         <li>SWAPFS_E_FEATURE_DISABLED：换出功能因空间不足或策略被禁用。</li><br>         <li>SWAPFS_E_IO_ERROR：IO写入失败。</li><br>         <li>SWAPFS_E_NOMEM：内存分配失败。</li><br>         <li>SWAPFS_E_ACCES：权限被拒绝。</li><br>         <li>SWAPFS_E_BUSY：[OH_Swapfs_RemoveAllData](capi-oh-swapfs-h.md#oh_swapfs_removealldata)正在进行或并发操作过多。</li><br>         <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针、request为空指针、keyId为空指针、buffer为空指针，或bufferSize为0。</li>          <li>SWAPFS_E_DIO_ALIGN：useDirectIo为true且buffer未对齐到SWAPFS_DIO_ALIGNMENT。</li>          <li>SWAPFS_E_NOSPC：设备存储空间不足。</li>          <li>SWAPFS_E_QUOTA_EXCEEDED：换出空间配额超限。</li>          <li>SWAPFS_E_FEATURE_DISABLED：换出功能因空间不足或策略被禁用。</li>          <li>SWAPFS_E_IO_ERROR：IO写入失败。</li>          <li>SWAPFS_E_NOMEM：内存分配失败。</li>          <li>SWAPFS_E_ACCES：权限被拒绝。</li>          <li>SWAPFS_E_BUSY：[OH_Swapfs_RemoveAllData](capi-oh-swapfs-h.md#oh_swapfs_removealldata)正在进行或并发操作过多。</li>          <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 
@@ -214,7 +214,7 @@ OH_Swapfs_ErrCode OH_Swapfs_SwapIn(OH_SwapfsManager *manager, const OH_SwapfsSwa
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针、request为空指针、keyId为0、buffer为空指针，或bufferSize为0。</li><br>         <li>SWAPFS_E_DIO_ALIGN：缓冲区地址或大小未对齐到SWAPFS_DIO_ALIGNMENT。</li><br>         <li>SWAPFS_E_BUFFER_TOO_SMALL：bufferSize小于所需大小。</li><br>         <li>SWAPFS_E_KEY_NOT_FOUND：keyId不存在。</li><br>         <li>SWAPFS_E_KEY_STATE_INVALID：key处于 OH_SWAPFS_KEY_STATUS_REMOVING 状态。</li><br>         <li>SWAPFS_E_IO_ERROR：IO读取失败。</li><br>         <li>SWAPFS_E_NOMEM：内存分配失败。</li><br>         <li>SWAPFS_E_ACCES：权限被拒绝。</li><br>         <li>SWAPFS_E_BUSY：并发操作过多。</li><br>         <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针、request为空指针、keyId为0、buffer为空指针，或bufferSize为0。</li>          <li>SWAPFS_E_DIO_ALIGN：缓冲区地址或大小未对齐到SWAPFS_DIO_ALIGNMENT。</li>          <li>SWAPFS_E_BUFFER_TOO_SMALL：bufferSize小于所需大小。</li>          <li>SWAPFS_E_KEY_NOT_FOUND：keyId不存在。</li>          <li>SWAPFS_E_KEY_STATE_INVALID：key处于 OH_SWAPFS_KEY_STATUS_REMOVING 状态。</li>          <li>SWAPFS_E_IO_ERROR：IO读取失败。</li>          <li>SWAPFS_E_NOMEM：内存分配失败。</li>          <li>SWAPFS_E_ACCES：权限被拒绝。</li>          <li>SWAPFS_E_BUSY：并发操作过多。</li>          <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 
@@ -247,7 +247,7 @@ OH_Swapfs_ErrCode OH_Swapfs_QueryData(OH_SwapfsManager *manager, uint64_t keyId,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针、keyId为0，或info为空指针。</li><br>         <li>SWAPFS_E_KEY_NOT_FOUND：keyId不存在。</li><br>         <li>SWAPFS_E_KEY_STATE_INVALID：key处于 OH_SWAPFS_KEY_STATUS_REMOVING 状态。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针、keyId为0，或info为空指针。</li>          <li>SWAPFS_E_KEY_NOT_FOUND：keyId不存在。</li>          <li>SWAPFS_E_KEY_STATE_INVALID：key处于 OH_SWAPFS_KEY_STATUS_REMOVING 状态。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 
@@ -279,7 +279,7 @@ OH_Swapfs_ErrCode OH_Swapfs_GetStats(OH_SwapfsManager *manager, OH_SwapfsStats *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针，或stats为空指针。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针，或stats为空指针。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 
@@ -311,7 +311,7 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveData(OH_SwapfsManager *manager, uint64_t keyId
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针或keyId为0。</li><br>         <li>SWAPFS_E_KEY_NOT_FOUND：keyId不存在。</li><br>         <li>SWAPFS_E_KEY_STATE_INVALID：key已处于OH_SWAPFS_KEY_STATUS_REMOVING状态。</li><br>         <li>SWAPFS_E_NOMEM：内存分配失败。</li><br>         <li>SWAPFS_E_BUSY：并发操作过多。</li><br>         <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针或keyId为0。</li>          <li>SWAPFS_E_KEY_NOT_FOUND：keyId不存在。</li>          <li>SWAPFS_E_KEY_STATE_INVALID：key已处于OH_SWAPFS_KEY_STATUS_REMOVING状态。</li>          <li>SWAPFS_E_NOMEM：内存分配失败。</li>          <li>SWAPFS_E_BUSY：并发操作过多。</li>          <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 
@@ -342,7 +342,7 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveAllData(OH_SwapfsManager *manager)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。<br>         <ul><br>         <li>SWAPFS_E_OK：执行成功。</li><br>         <li>SWAPFS_E_INVAL：manager为空指针。</li><br>         <li>SWAPFS_E_NOMEM：内存分配失败。</li><br>         <li>SWAPFS_E_BUSY：存在进行中的活跃操作或有key处于OH_SWAPFS_KEY_STATUS_REMOVING状态。</li><br>         <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li><br>         <li>202：非系统应用调用此系统API。请确保为系统应用。</li><br>         </ul> |
+| [OH_Swapfs_ErrCode](capi-swapfs-errcode-h.md#oh_swapfs_errcode) | 返回执行的错误码。          <ul>          <li>SWAPFS_E_OK：执行成功。</li>          <li>SWAPFS_E_INVAL：manager为空指针。</li>          <li>SWAPFS_E_NOMEM：内存分配失败。</li>          <li>SWAPFS_E_BUSY：存在进行中的活跃操作或有key处于OH_SWAPFS_KEY_STATUS_REMOVING状态。</li>          <li>SWAPFS_E_SHUTTING_DOWN：管理器正在关闭。</li>          <li>202：非系统应用调用此系统API。请确保为系统应用。</li>          </ul> |
 
 **参考：**
 

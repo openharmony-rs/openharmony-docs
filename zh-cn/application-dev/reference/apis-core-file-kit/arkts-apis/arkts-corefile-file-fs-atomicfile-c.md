@@ -1,16 +1,20 @@
 # AtomicFile
 
-AtomicFile是一个用于对文件进行原子读写操作的类。 在写操作时，通过写入临时文件，并在写入成功后将其重命名到原始文件位置来确保写入文件的完整性；而在写入失败时删除临时文件，不修改原始文件内容。 使用者可以自行调用finishWrite或failWrite来完成文件内容的写入或回滚。
+AtomicFile是一个用于对文件进行原子读写等操作的类。 在写操作时，通过写入临时文件，并在写入成功后将其重命名到原始文件位置来确保写入文件的完整性；而在写入失败时删除临时文件，不修改原始文件内容。 使用者可以自行调用finishWrite或failWrite来完成文件内容的写入或回滚。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export class AtomicFile--><!--Device-unnamed-export class AtomicFile-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -21,10 +25,6 @@ constructor(path: string)
 对于给定路径的文件创建一个AtomicFile类。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 <!--Device-AtomicFile-constructor(path: string)--><!--Device-AtomicFile-constructor(path: string)-End-->
 
@@ -40,7 +40,7 @@ constructor(path: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) |  |
 
 ## delete
 
@@ -52,10 +52,6 @@ delete(): void
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-AtomicFile-delete(): void--><!--Device-AtomicFile-delete(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -64,13 +60,13 @@ delete(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
-| 13900027 | Read-only file system |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
+| 13900027 |  |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -135,10 +131,6 @@ failWrite(): void
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-AtomicFile-failWrite(): void--><!--Device-AtomicFile-failWrite(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -147,9 +139,9 @@ failWrite(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900042 | Internal error |
+| 13900042 |  |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -200,10 +192,6 @@ finishWrite(): void
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-AtomicFile-finishWrite(): void--><!--Device-AtomicFile-finishWrite(): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -212,9 +200,9 @@ finishWrite(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900042 | Internal error |
+| 13900042 |  |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -263,10 +251,6 @@ getBaseFile(): File
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-AtomicFile-getBaseFile(): File--><!--Device-AtomicFile-getBaseFile(): File-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -281,12 +265,12 @@ getBaseFile(): File
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900005 | IO error |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
+| 13900005 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -339,10 +323,6 @@ openRead(): ReadStream
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-AtomicFile-openRead(): ReadStream--><!--Device-AtomicFile-openRead(): ReadStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -357,12 +337,12 @@ openRead(): ReadStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -433,10 +413,6 @@ readFully(): ArrayBuffer
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-AtomicFile-readFully(): ArrayBuffer--><!--Device-AtomicFile-readFully(): ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -451,10 +427,10 @@ readFully(): ArrayBuffer
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900005 | I/O error |
-| 13900042 | Internal error |
+| 13900005 |  |
+| 13900042 |  |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -517,10 +493,6 @@ startWrite(): WriteStream
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-AtomicFile-startWrite(): WriteStream--><!--Device-AtomicFile-startWrite(): WriteStream-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -535,13 +507,13 @@ startWrite(): WriteStream
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900001 | Operation not permitted |
-| 13900002 | No such file or directory |
-| 13900012 | Permission denied |
-| 13900042 | Internal error |
-| 13900027 | Read-only file system |
+| 13900001 |  |
+| 13900002 |  |
+| 13900012 |  |
+| 13900042 |  |
+| 13900027 |  |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

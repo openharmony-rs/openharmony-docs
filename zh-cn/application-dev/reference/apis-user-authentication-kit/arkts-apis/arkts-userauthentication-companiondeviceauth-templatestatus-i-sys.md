@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-companionDeviceAuth-interface TemplateStatus--><!--Device-companionDeviceAuth-interface TemplateStatus-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
+```
 
 ## addedTime
 
@@ -25,10 +27,6 @@ addedTime: Date
 **类型：** Date
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +48,6 @@ deviceStatus: DeviceStatus
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TemplateStatus-deviceStatus: DeviceStatus--><!--Device-TemplateStatus-deviceStatus: DeviceStatus-End-->
@@ -68,15 +62,11 @@ deviceStatus: DeviceStatus
 enabledBusinessIds: int[]
 ```
 
-支持的业务ID列表。该模板已启用的业务场景范围，可通过[updateEnabledBusinessIds](arkts-userauthentication-companiondeviceauth-updateenabledbusinessids-f-sys.md#updateenabledbusinessids系统接口)接口更新。
+支持的业务ID列表。该模板已启用的业务场景范围，可通过[updateEnabledBusinessIds](arkts-userauthentication-companiondeviceauth-updateenabledbusinessids-f-sys.md)接口更新。
 
 **类型：** int[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,10 +88,6 @@ isConfirmed: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TemplateStatus-isConfirmed: boolean--><!--Device-TemplateStatus-isConfirmed: boolean-End-->
@@ -121,10 +107,6 @@ isValid: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -146,10 +128,6 @@ localUserId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TemplateStatus-localUserId: int--><!--Device-TemplateStatus-localUserId: int-End-->
@@ -169,10 +147,6 @@ templateId: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

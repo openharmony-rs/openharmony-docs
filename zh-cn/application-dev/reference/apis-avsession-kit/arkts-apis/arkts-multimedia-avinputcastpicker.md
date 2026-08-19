@@ -1,5 +1,11 @@
 # @ohos.multimedia.avInputCastPicker
 
+## 导入模块
+
+```TypeScript
+import { AVInputCastPicker } from '@kit.AVSessionKit';
+```
+
 ## 汇总
 
 ### 结构体

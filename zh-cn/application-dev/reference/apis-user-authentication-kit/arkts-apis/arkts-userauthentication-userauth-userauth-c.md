@@ -4,15 +4,20 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md#authinstance)
+**替代接口：** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
 
 <!--Device-userAuth-class UserAuth--><!--Device-userAuth-class UserAuth-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## auth
 
@@ -28,8 +33,6 @@ auth(
 执行用户认证，使用回调函数返回结果。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -56,7 +59,7 @@ auth(
 | --- | --- |
 | Uint8Array | ContextId，作为取消认证[cancelAuth]{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -89,8 +92,6 @@ cancelAuth(contextID: Uint8Array): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [cancel](arkts-userauthentication-userauth-authinstance-i.md#cancel)
@@ -113,7 +114,7 @@ cancelAuth(contextID: Uint8Array): number
 | --- | --- |
 | number | 取消认证的结果，结果为SUCCESS时表示取消成功，其他返回值参见[ResultCode]{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -139,17 +140,15 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md#getauthinstance)
+**替代接口：** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
 
 <!--Device-UserAuth-constructor()--><!--Device-UserAuth-constructor()-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -167,11 +166,9 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): numb
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md#getavailablestatus)
+**替代接口：** [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md)
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -192,7 +189,7 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): numb
 | --- | --- |
 | number | 查询结果，结果为SUCCESS时表示支持，其他返回值参见[ResultCode]{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';
@@ -216,8 +213,6 @@ getVersion(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
@@ -232,7 +227,7 @@ getVersion(): number
 | --- | --- |
 | number | 认证器版本信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

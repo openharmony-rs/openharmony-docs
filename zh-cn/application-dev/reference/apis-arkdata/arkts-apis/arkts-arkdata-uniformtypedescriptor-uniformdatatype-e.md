@@ -1,12 +1,8 @@
-# UniformDataType
+# UniformDataType(标准化数据定义与描述)
 
 标准化数据类型之间存在归属关系，例如JPEG图片类型归属于IMAGE类型。更多预置数据类型参考[UTD预置列表](../../../database/uniform-data-type-list.md)。 下表以枚举形式，列举了常用的标准化数据类型定义。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-uniformTypeDescriptor-enum UniformDataType--><!--Device-uniformTypeDescriptor-enum UniformDataType-End-->
 
@@ -21,10 +17,6 @@ ENTITY = 'general.entity'
 所有表示物理存储类型的基类型，无归属类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ OBJECT = 'general.object'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OBJECT = 'general.object'--><!--Device-UniformDataType-OBJECT = 'general.object'-End-->
@@ -62,10 +50,6 @@ COMPOSITE_OBJECT = 'general.composite-object'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-COMPOSITE_OBJECT = 'general.composite-object'--><!--Device-UniformDataType-COMPOSITE_OBJECT = 'general.composite-object'-End-->
@@ -81,10 +65,6 @@ TEXT = 'general.text'
 所有文本的基类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -104,10 +84,6 @@ PLAIN_TEXT = 'general.plain-text'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -125,10 +101,6 @@ HTML = 'general.html'
 HTML文本类型，归属类型为TEXT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -148,10 +120,6 @@ HYPERLINK = 'general.hyperlink'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -170,10 +138,6 @@ XML文本类型，归属类型为TEXT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-XML = 'general.xml'--><!--Device-UniformDataType-XML = 'general.xml'-End-->
@@ -189,10 +153,6 @@ XHTML = 'general.xhtml'
 XHTML文本类型，归属类型为XML。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -210,10 +170,6 @@ RSS文本类型，归属类型为XML。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-RSS = 'general.rss'--><!--Device-UniformDataType-RSS = 'general.rss'-End-->
@@ -229,10 +185,6 @@ SMIL = 'com.real.smil'
 同步多媒体集成语言类型，归属类型为XML。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -250,10 +202,6 @@ SOURCE_CODE = 'general.source-code'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-SOURCE_CODE = 'general.source-code'--><!--Device-UniformDataType-SOURCE_CODE = 'general.source-code'-End-->
@@ -269,10 +217,6 @@ SCRIPT = 'general.script'
 所有脚本语言源代码的基类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -290,10 +234,6 @@ shell脚本类型，归属类型为SCRIPT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-SHELL_SCRIPT = 'general.shell-script'--><!--Device-UniformDataType-SHELL_SCRIPT = 'general.shell-script'-End-->
@@ -309,10 +249,6 @@ CSH_SCRIPT = 'general.csh-script'
 C-shell脚本类型，归属类型为SHELL_SCRIPT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -330,10 +266,6 @@ Perl脚本类型，归属类型为SHELL_SCRIPT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-PERL_SCRIPT = 'general.perl-script'--><!--Device-UniformDataType-PERL_SCRIPT = 'general.perl-script'-End-->
@@ -349,10 +281,6 @@ PHP_SCRIPT = 'general.php-script'
 PHP脚本类型，归属类型为SHELL_SCRIPT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -370,10 +298,6 @@ Python脚本类型，归属类型为SHELL_SCRIPT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-PYTHON_SCRIPT = 'general.python-script'--><!--Device-UniformDataType-PYTHON_SCRIPT = 'general.python-script'-End-->
@@ -389,10 +313,6 @@ RUBY_SCRIPT = 'general.ruby-script'
 Ruby脚本类型，归属类型为SHELL_SCRIPT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -410,10 +330,6 @@ TypeScript源代码类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-TYPE_SCRIPT = 'general.type-script'--><!--Device-UniformDataType-TYPE_SCRIPT = 'general.type-script'-End-->
@@ -429,10 +345,6 @@ JAVA_SCRIPT = 'general.java-script'
 JavaScript源代码类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -450,10 +362,6 @@ CSS样式表类型，归属类型为SCRIPT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-CSS = 'general.css'--><!--Device-UniformDataType-CSS = 'general.css'-End-->
@@ -469,10 +377,6 @@ C_HEADER = 'general.c-header'
 C头文件类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -490,10 +394,6 @@ C源代码类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-C_SOURCE = 'general.c-source'--><!--Device-UniformDataType-C_SOURCE = 'general.c-source'-End-->
@@ -509,10 +409,6 @@ C_PLUS_PLUS_HEADER = 'general.c-plus-plus-header'
 C++头文件类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -530,10 +426,6 @@ C++源代码类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-C_PLUS_PLUS_SOURCE = 'general.c-plus-plus-source'--><!--Device-UniformDataType-C_PLUS_PLUS_SOURCE = 'general.c-plus-plus-source'-End-->
@@ -549,10 +441,6 @@ JAVA_SOURCE = 'general.java-source'
 Java源代码类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -570,10 +458,6 @@ TEX源代码类型，归属类型为SOURCE_CODE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-TEX = 'general.tex'--><!--Device-UniformDataType-TEX = 'general.tex'-End-->
@@ -589,10 +473,6 @@ MARKDOWN = 'general.markdown'
 标记语言文本类型，归属类型为TEXT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -610,10 +490,6 @@ ASCII文本类型，归属类型为TEXT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-ASC_TEXT = 'general.asc-text'--><!--Device-UniformDataType-ASC_TEXT = 'general.asc-text'-End-->
@@ -629,10 +505,6 @@ RICH_TEXT = 'general.rich-text'
 富文本类型，归属类型为TEXT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -650,10 +522,6 @@ DELIMITED_VALUES_TEXT = 'general.delimited-values-text'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-DELIMITED_VALUES_TEXT = 'general.delimited-values-text'--><!--Device-UniformDataType-DELIMITED_VALUES_TEXT = 'general.delimited-values-text'-End-->
@@ -669,10 +537,6 @@ COMMA_SEPARATED_VALUES_TEXT = 'general.comma-separated-values-text'
 CSV文本类型，归属类型为DELIMITED_VALUES_TEXT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -690,10 +554,6 @@ TSV文本类型，归属类型为DELIMITED_VALUES_TEXT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-TAB_SEPARATED_VALUES_TEXT = 'general.tab-separated-values-text'--><!--Device-UniformDataType-TAB_SEPARATED_VALUES_TEXT = 'general.tab-separated-values-text'-End-->
@@ -709,10 +569,6 @@ EBOOK = 'general.ebook'
 所有电子书文件格式的基类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -730,10 +586,6 @@ EPUB = 'general.epub'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-EPUB = 'general.epub'--><!--Device-UniformDataType-EPUB = 'general.epub'-End-->
@@ -749,10 +601,6 @@ AZW = 'com.amazon.azw'
 AZW电子书文件格式类型，归属类型为EBOOK。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -770,10 +618,6 @@ AZW3电子书文件格式类型，归属类型为EBOOK。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-AZW3 = 'com.amazon.azw3'--><!--Device-UniformDataType-AZW3 = 'com.amazon.azw3'-End-->
@@ -789,10 +633,6 @@ KFX = 'com.amazon.kfx'
 KFX电子书文件格式类型，归属类型为EBOOK。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -810,10 +650,6 @@ MOBI电子书文件格式类型，归属类型为EBOOK。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MOBI = 'com.amazon.mobi'--><!--Device-UniformDataType-MOBI = 'com.amazon.mobi'-End-->
@@ -830,10 +666,6 @@ MEDIA = 'general.media'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MEDIA = 'general.media'--><!--Device-UniformDataType-MEDIA = 'general.media'-End-->
@@ -849,10 +681,6 @@ IMAGE = 'general.image'
 所有图片的基类型，归属类型为MEDIA。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -872,10 +700,6 @@ JPEG图片类型，归属类型为IMAGE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-JPEG = 'general.jpeg'--><!--Device-UniformDataType-JPEG = 'general.jpeg'-End-->
@@ -891,10 +715,6 @@ PNG = 'general.png'
 PNG图片类型，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -912,10 +732,6 @@ RAW_IMAGE = 'general.raw-image'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-RAW_IMAGE = 'general.raw-image'--><!--Device-UniformDataType-RAW_IMAGE = 'general.raw-image'-End-->
@@ -931,10 +747,6 @@ TIFF = 'general.tiff'
 TIFF图片类型，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -952,10 +764,6 @@ WINDOWS位图图像类型，归属类型为IMAGE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-BMP = 'com.microsoft.bmp'--><!--Device-UniformDataType-BMP = 'com.microsoft.bmp'-End-->
@@ -971,10 +779,6 @@ ICO = 'com.microsoft.ico'
 WINDOWS图标图像类型，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -992,10 +796,6 @@ Adobe Photoshop图片类型，归属类型为IMAGE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-PHOTOSHOP_IMAGE = 'com.adobe.photoshop-image'--><!--Device-UniformDataType-PHOTOSHOP_IMAGE = 'com.adobe.photoshop-image'-End-->
@@ -1011,10 +811,6 @@ AI_IMAGE = 'com.adobe.illustrator.ai-image'
 Adobe Illustrator图片类型，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1032,10 +828,6 @@ FAX = 'general.fax'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-FAX = 'general.fax'--><!--Device-UniformDataType-FAX = 'general.fax'-End-->
@@ -1051,10 +843,6 @@ JFX_FAX = 'com.j2.jfx-fax'
 J2 jConnect传真文件类型，归属类型为FAX。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1072,10 +860,6 @@ EFX_FAX = 'com.js.efx-fax'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-EFX_FAX = 'com.js.efx-fax'--><!--Device-UniformDataType-EFX_FAX = 'com.js.efx-fax'-End-->
@@ -1091,10 +875,6 @@ XBITMAP_IMAGE = 'general.xbitmap-image'
 X Window系统（X11）中使用的位图图像格式，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1112,10 +892,6 @@ GIF图像类型，归属类型为IMAGE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-GIF = 'general.gif'--><!--Device-UniformDataType-GIF = 'general.gif'-End-->
@@ -1131,10 +907,6 @@ TGA_IMAGE = 'com.truevision.tga-image'
 标签图形（TaggedGraphics）图像类型，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1152,10 +924,6 @@ SGI_IMAGE = 'com.sgi.sgi-image'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-SGI_IMAGE = 'com.sgi.sgi-image'--><!--Device-UniformDataType-SGI_IMAGE = 'com.sgi.sgi-image'-End-->
@@ -1171,10 +939,6 @@ OPENEXR_IMAGE = 'com.ilm.openexr-image'
 开放标准的高动态范围图像格式类型，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1192,10 +956,6 @@ FlashPix 图像文件类型，归属类型为IMAGE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-FLASHPIX_IMAGE = 'com.kodak.flashpix.image'--><!--Device-UniformDataType-FLASHPIX_IMAGE = 'com.kodak.flashpix.image'-End-->
@@ -1211,10 +971,6 @@ WORD_DOC = 'com.microsoft.word.doc'
 Microsoft Word数据类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1232,10 +988,6 @@ Microsoft Excel数据类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-EXCEL = 'com.microsoft.excel.xls'--><!--Device-UniformDataType-EXCEL = 'com.microsoft.excel.xls'-End-->
@@ -1251,10 +1003,6 @@ PPT = 'com.microsoft.powerpoint.ppt'
 Microsoft PowerPoint演示文稿类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1272,10 +1020,6 @@ Microsoft Word模板类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-WORD_DOT = 'com.microsoft.word.dot'--><!--Device-UniformDataType-WORD_DOT = 'com.microsoft.word.dot'-End-->
@@ -1291,10 +1035,6 @@ POWERPOINT_PPS = 'com.microsoft.powerpoint.pps'
 Microsoft PowerPoint演示文稿幻灯片放映类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1312,10 +1052,6 @@ Microsoft PowerPoint演示文稿模板类型，归属类型为COMPOSITE_OBJECT�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-POWERPOINT_POT = 'com.microsoft.powerpoint.pot'--><!--Device-UniformDataType-POWERPOINT_POT = 'com.microsoft.powerpoint.pot'-End-->
@@ -1331,10 +1067,6 @@ EXCEL_XLT = 'com.microsoft.excel.xlt'
 Microsoft Excel模板类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1352,10 +1084,6 @@ Microsoft Visio数据类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-VISIO_VSD = 'com.microsoft.visio.vsd'--><!--Device-UniformDataType-VISIO_VSD = 'com.microsoft.visio.vsd'-End-->
@@ -1371,10 +1099,6 @@ PDF = 'com.adobe.pdf'
 PDF数据类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1392,10 +1116,6 @@ PostScript数据类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-POSTSCRIPT = 'com.adobe.postscript'--><!--Device-UniformDataType-POSTSCRIPT = 'com.adobe.postscript'-End-->
@@ -1412,10 +1132,6 @@ Encapsulated PostScript类型，归属类型为POSTSCRIPT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-ENCAPSULATED_POSTSCRIPT = 'com.adobe.encapsulated-postscript'--><!--Device-UniformDataType-ENCAPSULATED_POSTSCRIPT = 'com.adobe.encapsulated-postscript'-End-->
@@ -1431,10 +1147,6 @@ VIDEO = 'general.video'
 所有视频的基类型，归属类型为MEDIA。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1454,10 +1166,6 @@ AVI视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-AVI = 'general.avi'--><!--Device-UniformDataType-AVI = 'general.avi'-End-->
@@ -1473,10 +1181,6 @@ MPEG = 'general.mpeg'
 MPEG-1或MPEG-2视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1494,10 +1198,6 @@ MPEG-4视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MPEG4 = 'general.mpeg-4'--><!--Device-UniformDataType-MPEG4 = 'general.mpeg-4'-End-->
@@ -1513,10 +1213,6 @@ VIDEO_3GPP = 'general.3gpp'
 3GPP视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1534,10 +1230,6 @@ VIDEO_3GPP2 = 'general.3gpp2'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-VIDEO_3GPP2 = 'general.3gpp2'--><!--Device-UniformDataType-VIDEO_3GPP2 = 'general.3gpp2'-End-->
@@ -1553,10 +1245,6 @@ TS = 'general.ts'
 MPEG-TS类型，归属类型为VIDEO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1574,10 +1262,6 @@ MPEG视频播放列表文件类型，归属类型为VIDEO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MPEGURL_VIDEO = 'general.mpegurl-video'--><!--Device-UniformDataType-MPEGURL_VIDEO = 'general.mpegurl-video'-End-->
@@ -1593,10 +1277,6 @@ WINDOWS_MEDIA_WM = 'com.microsoft.windows-media-wm'
 WINDOWS WM视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1614,10 +1294,6 @@ WINDOWS WMV视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-WINDOWS_MEDIA_WMV = 'com.microsoft.windows-media-wmv'--><!--Device-UniformDataType-WINDOWS_MEDIA_WMV = 'com.microsoft.windows-media-wmv'-End-->
@@ -1633,10 +1309,6 @@ WINDOWS_MEDIA_WMP = 'com.microsoft.windows-media-wmp'
 WINDOWS WMP视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1654,10 +1326,6 @@ WINDOWS WVX视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-WINDOWS_MEDIA_WVX = 'com.microsoft.windows-media-wvx'--><!--Device-UniformDataType-WINDOWS_MEDIA_WVX = 'com.microsoft.windows-media-wvx'-End-->
@@ -1673,10 +1341,6 @@ WINDOWS_MEDIA_WMX = 'com.microsoft.windows-media-wmx'
 WINDOWS WMX视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1694,10 +1358,6 @@ REALMEDIA = 'com.real.realmedia'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-REALMEDIA = 'com.real.realmedia'--><!--Device-UniformDataType-REALMEDIA = 'com.real.realmedia'-End-->
@@ -1713,10 +1373,6 @@ MATROSKA_VIDEO = 'org.matroska.mkv'
 MKV视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1734,10 +1390,6 @@ FLASH视频类型，归属类型为VIDEO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-FLASH = 'com.adobe.flash'--><!--Device-UniformDataType-FLASH = 'com.adobe.flash'-End-->
@@ -1753,10 +1405,6 @@ AUDIO = 'general.audio'
 所有音频的基类型，归属类型为MEDIA。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1776,10 +1424,6 @@ AAC音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-AAC = 'general.aac'--><!--Device-UniformDataType-AAC = 'general.aac'-End-->
@@ -1795,10 +1439,6 @@ AIFF = 'general.aiff'
 AIFF音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1816,10 +1456,6 @@ ALAC音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-ALAC = 'general.alac'--><!--Device-UniformDataType-ALAC = 'general.alac'-End-->
@@ -1835,10 +1471,6 @@ FLAC = 'general.flac'
 FLAC音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1856,10 +1488,6 @@ MP3音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MP3 = 'general.mp3'--><!--Device-UniformDataType-MP3 = 'general.mp3'-End-->
@@ -1875,10 +1503,6 @@ OGG = 'general.ogg'
 OGG音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1896,10 +1520,6 @@ PCM音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-PCM = 'general.pcm'--><!--Device-UniformDataType-PCM = 'general.pcm'-End-->
@@ -1915,10 +1535,6 @@ WINDOWS_MEDIA_WMA = 'com.microsoft.windows-media-wma'
 WINDOWS WMA音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1936,10 +1552,6 @@ WINDOWS波形音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-WAVEFORM_AUDIO = 'com.microsoft.waveform-audio'--><!--Device-UniformDataType-WAVEFORM_AUDIO = 'com.microsoft.waveform-audio'-End-->
@@ -1955,10 +1567,6 @@ WINDOWS_MEDIA_WAX = 'com.microsoft.windows-media-wax'
 WINDOWS WAX音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1976,10 +1584,6 @@ Au数据格式，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-AU_AUDIO = 'general.au-audio'--><!--Device-UniformDataType-AU_AUDIO = 'general.au-audio'-End-->
@@ -1995,10 +1599,6 @@ AIFC_AUDIO = 'general.aifc-audio'
 音频交换数据类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2016,10 +1616,6 @@ MPEG音频播放列表文件类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MPEGURL_AUDIO = 'general.mpegurl-audio'--><!--Device-UniformDataType-MPEGURL_AUDIO = 'general.mpegurl-audio'-End-->
@@ -2035,10 +1631,6 @@ MPEG_4_AUDIO = 'general.mpeg-4-audio'
 MPEG-4音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2056,10 +1648,6 @@ MP2音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MP2 = 'general.mp2'--><!--Device-UniformDataType-MP2 = 'general.mp2'-End-->
@@ -2075,10 +1663,6 @@ MPEG_AUDIO = 'general.mpeg-audio'
 MPEG音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2096,10 +1680,6 @@ ULAW音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-ULAW_AUDIO = 'general.ulaw-audio'--><!--Device-UniformDataType-ULAW_AUDIO = 'general.ulaw-audio'-End-->
@@ -2115,10 +1695,6 @@ SD2_AUDIO = 'com.digidesign.sd2-audio'
 单声道/立体声音频类型（Digidesign Sound Designer II），归属类型为AUDIO。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2136,10 +1712,6 @@ RealMedia音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-REALAUDIO = 'com.real.realaudio'--><!--Device-UniformDataType-REALAUDIO = 'com.real.realaudio'-End-->
@@ -2156,10 +1728,6 @@ MKA音频类型，归属类型为AUDIO。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MATROSKA_AUDIO = 'org.matroska.mka'--><!--Device-UniformDataType-MATROSKA_AUDIO = 'org.matroska.mka'-End-->
@@ -2175,10 +1743,6 @@ FILE = 'general.file'
 所有文件的基类型，归属类型为ENTITY。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2198,10 +1762,6 @@ DIRECTORY = 'general.directory'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-DIRECTORY = 'general.directory'--><!--Device-UniformDataType-DIRECTORY = 'general.directory'-End-->
@@ -2217,10 +1777,6 @@ FOLDER = 'general.folder'
 所有文件夹的基类型，归属类型为DIRECTORY。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2240,10 +1796,6 @@ SYMLINK = 'general.symlink'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-SYMLINK = 'general.symlink'--><!--Device-UniformDataType-SYMLINK = 'general.symlink'-End-->
@@ -2259,10 +1811,6 @@ ARCHIVE = 'general.archive'
 所有文件和目录存档文件的基类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2280,10 +1828,6 @@ BZ2存档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-BZ2_ARCHIVE = 'general.bz2-archive'--><!--Device-UniformDataType-BZ2_ARCHIVE = 'general.bz2-archive'-End-->
@@ -2299,10 +1843,6 @@ OPG = 'general.opg'
 OPG存档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2320,10 +1860,6 @@ TAR压缩文件类型，归属类型为TAR_ARCHIVE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-TAZ_ARCHIVE = 'general.taz-archive'--><!--Device-UniformDataType-TAZ_ARCHIVE = 'general.taz-archive'-End-->
@@ -2339,10 +1875,6 @@ WEB_ARCHIVE = 'general.web-archive'
 MHTML网页归档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2360,10 +1892,6 @@ DISK_IMAGE = 'general.disk-image'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-DISK_IMAGE = 'general.disk-image'--><!--Device-UniformDataType-DISK_IMAGE = 'general.disk-image'-End-->
@@ -2379,10 +1907,6 @@ ISO = 'general.iso'
 光盘映像文件类型，归属类型为DISK_IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2400,10 +1924,6 @@ TAR存档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-TAR_ARCHIVE = 'general.tar-archive'--><!--Device-UniformDataType-TAR_ARCHIVE = 'general.tar-archive'-End-->
@@ -2419,10 +1939,6 @@ ZIP_ARCHIVE = 'general.zip-archive'
 ZIP存档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2440,10 +1956,6 @@ JAVA存档文件类型，归属类型为ARCHIVE和EXECUTABLE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-JAVA_ARCHIVE = 'com.sun.java-archive'--><!--Device-UniformDataType-JAVA_ARCHIVE = 'com.sun.java-archive'-End-->
@@ -2459,10 +1971,6 @@ GNU_TAR_ARCHIVE = 'org.gnu.gnu-tar-archive'
 GNU存档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2480,10 +1988,6 @@ GZIP存档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-GNU_ZIP_ARCHIVE = 'org.gnu.gnu-zip-archive'--><!--Device-UniformDataType-GNU_ZIP_ARCHIVE = 'org.gnu.gnu-zip-archive'-End-->
@@ -2499,10 +2003,6 @@ GNU_ZIP_TAR_ARCHIVE = 'org.gnu.gnu-zip-tar-archive'
 GZIP TAR存档文件类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2520,10 +2020,6 @@ OPENXML = 'org.openxmlformats.openxml'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENXML = 'org.openxmlformats.openxml'--><!--Device-UniformDataType-OPENXML = 'org.openxmlformats.openxml'-End-->
@@ -2539,10 +2035,6 @@ WORDPROCESSINGML_DOCUMENT = 'org.openxmlformats.wordprocessingml.document'
 开源XML文档类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2560,10 +2052,6 @@ SPREADSHEETML_SHEET = 'org.openxmlformats.spreadsheetml.sheet'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-SPREADSHEETML_SHEET = 'org.openxmlformats.spreadsheetml.sheet'--><!--Device-UniformDataType-SPREADSHEETML_SHEET = 'org.openxmlformats.spreadsheetml.sheet'-End-->
@@ -2579,10 +2067,6 @@ PRESENTATIONML_PRESENTATION = 'org.openxmlformats.presentationml.presentation'
 开源XML演示文稿类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2600,10 +2084,6 @@ DRAWINGML_VISIO = 'org.openxmlformats.drawingml.visio'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-DRAWINGML_VISIO = 'org.openxmlformats.drawingml.visio'--><!--Device-UniformDataType-DRAWINGML_VISIO = 'org.openxmlformats.drawingml.visio'-End-->
@@ -2619,10 +2099,6 @@ DRAWINGML_TEMPLATE = 'org.openxmlformats.drawingml.template'
 开源XML绘图模板类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2640,10 +2116,6 @@ WORDPROCESSINGML_TEMPLATE = 'org.openxmlformats.wordprocessingml.template'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-WORDPROCESSINGML_TEMPLATE = 'org.openxmlformats.wordprocessingml.template'--><!--Device-UniformDataType-WORDPROCESSINGML_TEMPLATE = 'org.openxmlformats.wordprocessingml.template'-End-->
@@ -2659,10 +2131,6 @@ PRESENTATIONML_TEMPLATE = 'org.openxmlformats.presentationml.template'
 开源XML演示文稿模板类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2680,10 +2148,6 @@ PRESENTATIONML_SLIDESHOW = 'org.openxmlformats.presentationml.slideshow'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-PRESENTATIONML_SLIDESHOW = 'org.openxmlformats.presentationml.slideshow'--><!--Device-UniformDataType-PRESENTATIONML_SLIDESHOW = 'org.openxmlformats.presentationml.slideshow'-End-->
@@ -2699,10 +2163,6 @@ SPREADSHEETML_TEMPLATE = 'org.openxmlformats.spreadsheetml.template'
 开源XML电子表格模板类型，归属类型为OPENXML和COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2720,10 +2180,6 @@ Office应用程序的开源文档类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENDOCUMENT = 'org.oasis.opendocument'--><!--Device-UniformDataType-OPENDOCUMENT = 'org.oasis.opendocument'-End-->
@@ -2739,10 +2195,6 @@ OPENDOCUMENT_TEXT = 'org.oasis.opendocument.text'
 开源文档类型，归属类型为OPENDOCUMENT和COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2760,10 +2212,6 @@ OPENDOCUMENT_SPREADSHEET = 'org.oasis.opendocument.spreadsheet'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENDOCUMENT_SPREADSHEET = 'org.oasis.opendocument.spreadsheet'--><!--Device-UniformDataType-OPENDOCUMENT_SPREADSHEET = 'org.oasis.opendocument.spreadsheet'-End-->
@@ -2779,10 +2227,6 @@ OPENDOCUMENT_PRESENTATION = 'org.oasis.opendocument.presentation'
 开源文档演示类型，归属类型为OPENDOCUMENT和COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2800,10 +2244,6 @@ OPENDOCUMENT_GRAPHICS = 'org.oasis.opendocument.graphics'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENDOCUMENT_GRAPHICS = 'org.oasis.opendocument.graphics'--><!--Device-UniformDataType-OPENDOCUMENT_GRAPHICS = 'org.oasis.opendocument.graphics'-End-->
@@ -2819,10 +2259,6 @@ OPENDOCUMENT_FORMULA = 'org.oasis.opendocument.formula'
 开源文档公式集类型，归属类型为OPENDOCUMENT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2840,10 +2276,6 @@ Stuffit压缩格式类型（Stuffit archive），归属类型为ARCHIVE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-STUFFIT_ARCHIVE = 'com.allume.stuffit-archive'--><!--Device-UniformDataType-STUFFIT_ARCHIVE = 'com.allume.stuffit-archive'-End-->
@@ -2859,10 +2291,6 @@ RAR_ARCHIVE = 'com.rarlab.rar-archive'
 WinRAR压缩格式类型，归属类型为ARCHIVE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2880,10 +2308,6 @@ SEVEN_ZIP_ARCHIVE = 'org.7-zip.7-zip-archive'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-SEVEN_ZIP_ARCHIVE = 'org.7-zip.7-zip-archive'--><!--Device-UniformDataType-SEVEN_ZIP_ARCHIVE = 'org.7-zip.7-zip-archive'-End-->
@@ -2899,10 +2323,6 @@ CALENDAR = 'general.calendar'
 所有日程类数据的基类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2920,10 +2340,6 @@ VCalendar日历数据类型，归属类型为CALENDAR和TEXT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-VCS = 'general.vcs'--><!--Device-UniformDataType-VCS = 'general.vcs'-End-->
@@ -2939,10 +2355,6 @@ ICS = 'general.ics'
 ICalendar日历数据类型，归属类型为CALENDAR和TEXT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2960,10 +2372,6 @@ CONTACT = 'general.contact'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-CONTACT = 'general.contact'--><!--Device-UniformDataType-CONTACT = 'general.contact'-End-->
@@ -2979,10 +2387,6 @@ DATABASE = 'general.database'
 所有数据库文件的基类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3000,10 +2404,6 @@ MESSAGE = 'general.message'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-MESSAGE = 'general.message'--><!--Device-UniformDataType-MESSAGE = 'general.message'-End-->
@@ -3019,10 +2419,6 @@ EXECUTABLE = 'general.executable'
 所有可执行文件的基类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3040,10 +2436,6 @@ Microsoft Windows应用程序类型，归属类型为EXECUTABLE。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-PORTABLE_EXECUTABLE = 'com.microsoft.portable-executable'--><!--Device-UniformDataType-PORTABLE_EXECUTABLE = 'com.microsoft.portable-executable'-End-->
@@ -3059,10 +2451,6 @@ SUN_JAVA_CLASS = 'com.sun.java-class'
 Java类文件类型，归属类型为EXECUTABLE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3080,10 +2468,6 @@ VCARD = 'general.vcard'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-VCARD = 'general.vcard'--><!--Device-UniformDataType-VCARD = 'general.vcard'-End-->
@@ -3099,10 +2483,6 @@ NAVIGATION = 'general.navigation'
 所有导航类数据的基类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3120,10 +2500,6 @@ LOCATION = 'general.location'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-LOCATION = 'general.location'--><!--Device-UniformDataType-LOCATION = 'general.location'-End-->
@@ -3139,10 +2515,6 @@ FONT = 'general.font'
 所有字体数据类型的基础类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3160,10 +2532,6 @@ TrueType字体类型，归属类型为FONT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-TRUETYPE_FONT = 'general.truetype-font'--><!--Device-UniformDataType-TRUETYPE_FONT = 'general.truetype-font'-End-->
@@ -3179,10 +2547,6 @@ TRUETYPE_COLLECTION_FONT = 'general.truetype-collection-font'
 TrueType collection字体类型，归属类型为FONT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3200,10 +2564,6 @@ OpenType 字体类型，归属类型为FONT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENTYPE_FONT = 'general.opentype-font'--><!--Device-UniformDataType-OPENTYPE_FONT = 'general.opentype-font'-End-->
@@ -3219,10 +2579,6 @@ POSTSCRIPT_FONT = 'com.adobe.postscript-font'
 PostScript 字体类型，归属类型为FONT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3240,10 +2596,6 @@ PostScript Font Binary字体类型，归属类型为FONT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-POSTSCRIPT_PFB_FONT = 'com.adobe.postscript-pfb-font'--><!--Device-UniformDataType-POSTSCRIPT_PFB_FONT = 'com.adobe.postscript-pfb-font'-End-->
@@ -3260,10 +2612,6 @@ Adobe Type 1 字体类型，归属类型为FONT。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-POSTSCRIPT_PFA_FONT = 'com.adobe.postscript-pfa-font'--><!--Device-UniformDataType-POSTSCRIPT_PFA_FONT = 'com.adobe.postscript-pfa-font'-End-->
@@ -3279,10 +2627,6 @@ OPENHARMONY_FORM = 'openharmony.form'
 系统定义的卡片类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3302,10 +2646,6 @@ OPENHARMONY_APP_ITEM = 'openharmony.app-item'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -3323,10 +2663,6 @@ OPENHARMONY_PIXEL_MAP = 'openharmony.pixel-map'
 系统定义的像素图类型，归属类型为IMAGE。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3346,10 +2682,6 @@ OPENHARMONY_ATOMIC_SERVICE = 'openharmony.atomic-service'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENHARMONY_ATOMIC_SERVICE = 'openharmony.atomic-service'--><!--Device-UniformDataType-OPENHARMONY_ATOMIC_SERVICE = 'openharmony.atomic-service'-End-->
@@ -3365,10 +2697,6 @@ OPENHARMONY_PACKAGE = 'openharmony.package'
 系统定义的包（即目录的打包文件），归属类型为DIRECTORY。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3386,10 +2714,6 @@ OPENHARMONY_HAP = 'openharmony.hap'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENHARMONY_HAP = 'openharmony.hap'--><!--Device-UniformDataType-OPENHARMONY_HAP = 'openharmony.hap'-End-->
@@ -3405,10 +2729,6 @@ OPENHARMONY_HDOC = 'openharmony.hdoc'
 系统定义的备忘录数据类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3426,10 +2746,6 @@ OPENHARMONY_HINOTE = 'openharmony.hinote'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENHARMONY_HINOTE = 'openharmony.hinote'--><!--Device-UniformDataType-OPENHARMONY_HINOTE = 'openharmony.hinote'-End-->
@@ -3445,10 +2761,6 @@ OPENHARMONY_STYLED_STRING = 'openharmony.styled-string'
 系统定义的样式字符串类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3466,10 +2778,6 @@ OPENHARMONY_WANT = 'openharmony.want'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-OPENHARMONY_WANT = 'openharmony.want'--><!--Device-UniformDataType-OPENHARMONY_WANT = 'openharmony.want'-End-->
@@ -3485,10 +2793,6 @@ OFD = 'general.ofd'
 开放版式文档类型，归属类型为COMPOSITE_OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3506,10 +2810,6 @@ CAD = 'general.cad'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-CAD = 'general.cad'--><!--Device-UniformDataType-CAD = 'general.cad'-End-->
@@ -3525,10 +2825,6 @@ OCTET_STREAM = 'general.octet-stream'
 任意二进制数据类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3546,10 +2842,6 @@ FILE_URI = 'general.file-uri'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UniformDataType-FILE_URI = 'general.file-uri'--><!--Device-UniformDataType-FILE_URI = 'general.file-uri'-End-->
@@ -3565,10 +2857,6 @@ CONTENT_FORM = 'general.content-form'
 内容卡片类型，归属类型为OBJECT。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

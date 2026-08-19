@@ -4,13 +4,15 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default class App--><!--Device-unnamed-export default class App-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
+
+## 导入模块
+
+```TypeScript
+import { App, AppResponse, RequestFullWindowOptions, ScreenOnVisibleOptions } from '@kit.ArkUI';
+```
 
 ## getInfo
 
@@ -18,13 +20,9 @@
 static getInfo(): AppResponse
 ```
 
-获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。 从API version9开始，推荐使用 [bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself) 。
+获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。 从API version9开始，推荐使用 [bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md) 。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +36,7 @@ static getInfo(): AppResponse
 | --- | --- |
 | [AppResponse](arkts-arkui-system-app-appresponse-i.md) | 定义AppResponse信息。 |
 
-## 示例
+**示例**
 
 ArkTS示例：
 
@@ -163,8 +161,6 @@ Requests the application to run in full window. In some scenarios, such as semi-
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
 **替代接口：** startAbility
@@ -179,7 +175,7 @@ Requests the application to run in full window. In some scenarios, such as semi-
 | --- | --- | --- | --- |
 | options | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | 否 | Transition time from non-full window to full window, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import app, { AppResponse } from '@system.app';
@@ -201,8 +197,6 @@ static screenOnVisible(options?: ScreenOnVisibleOptions): void
 定义屏幕唤醒时是否保持应用可见。 该接口从API version 8 开始废弃。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
@@ -226,10 +220,6 @@ Set image cache capacity of decoded image count. if not set, the application wil
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-App-static setImageCacheCount(value: number): void--><!--Device-App-static setImageCacheCount(value: number): void-End-->
@@ -242,7 +232,7 @@ Set image cache capacity of decoded image count. if not set, the application wil
 | --- | --- | --- | --- |
 | value | number | 是 | capacity of decoded image count. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -281,10 +271,6 @@ static setImageFileCacheSize(value: number): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-App-static setImageFileCacheSize(value: number): void--><!--Device-App-static setImageFileCacheSize(value: number): void-End-->
@@ -297,7 +283,7 @@ static setImageFileCacheSize(value: number): void
 | --- | --- | --- | --- |
 | value | number | 是 | 原始图像数据大小的容量，单位为字节。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // app.ets
@@ -325,10 +311,6 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-App-static setImageRawDataCacheSize(value: number): void--><!--Device-App-static setImageRawDataCacheSize(value: number): void-End-->
@@ -341,7 +323,7 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 | --- | --- | --- | --- |
 | value | number | 是 | capacity of raw image data size in bytes. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets
@@ -376,13 +358,9 @@ struct Index {
 static terminate(): void
 ```
 
-退出当前Ability。在Stage模型下接口功能不生效。 从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../../apis-ability-kit/arkts-apis/arkts-ability-featureability.md#ohosabilityfeatureability)。
+退出当前Ability。在Stage模型下接口功能不生效。 从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../../apis-ability-kit/arkts-apis/arkts-ability-featureability.md)。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -390,7 +368,7 @@ static terminate(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
-## 示例
+**示例**
 
 ArkTS示例：
 

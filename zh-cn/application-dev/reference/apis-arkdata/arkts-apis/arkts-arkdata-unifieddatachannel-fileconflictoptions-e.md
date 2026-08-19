@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unifiedDataChannel-enum FileConflictOptions--><!--Device-unifiedDataChannel-enum FileConflictOptions-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
@@ -21,10 +17,6 @@ OVERWRITE = 0
 目标路径存在同文件名时覆盖。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ SKIP = 1
 目标路径存在同文件名时跳过。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

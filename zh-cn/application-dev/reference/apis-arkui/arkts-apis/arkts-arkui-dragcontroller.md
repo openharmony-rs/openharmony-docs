@@ -1,12 +1,10 @@
 # @ohos.arkui.dragController
 
-本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。 > **说明：** > > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)说明。 > > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
+本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。 > **说明：** > > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见 > [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)说明。 > > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
-**起始版本：** 10
+**起始版本：** 23
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -14,16 +12,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## 导入模块
+
+```TypeScript
+import { dragController } from '@kit.ArkUI';
+```
+
 ## 汇总
-
-### 函数
-
-| 名称 | 说明 |
-| --- | --- |
-| [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md#createdragaction) | 创建拖拽的Action对象，需要显式指定拖拽背板图（可多个），以及拖拽的数据，跟手点等信息；当通过一个已创建的 Action 对象发起的拖拽未结束时，无法再次创建新的 Action 对象，接口会抛出异常； 当Action对象的生命周期结束后，注册在该对象上的回调函数会失效，因此需要在一个尽量长的作用域下持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。 |
-| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag) | Execute a drag event. |
-| [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md#executedrag) | 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。使用Promise异步回调。 |
-| [getDragPreview](arkts-arkui-dragcontroller-getdragpreview-f.md#getdragpreview) | 返回一个代表拖拽背板的对象。 |
 
 ### 类
 

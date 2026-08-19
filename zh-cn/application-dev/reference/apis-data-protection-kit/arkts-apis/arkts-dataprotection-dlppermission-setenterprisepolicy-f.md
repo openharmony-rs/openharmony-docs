@@ -1,5 +1,11 @@
 # setEnterprisePolicy
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## setEnterprisePolicy
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setEnterprisePolicy(policy: EnterprisePolicy): void
 设置企业应用防护策略。调用成功后，企业应用的DLP防护将按照设置的策略执行。 该接口可用于企业管理员配置DLP安全策略，以统一管理企业数据安全防护规则。 > **说明：** > > 该接口仅支持企业账号调用。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -35,7 +37,7 @@ function setEnterprisePolicy(policy: EnterprisePolicy): void
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

@@ -10,10 +10,6 @@ Key的最大长度限制为1024个字节。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-preferences-const MAX_KEY_LENGTH: int--><!--Device-preferences-const MAX_KEY_LENGTH: int-End-->
@@ -29,10 +25,6 @@ const MAX_VALUE_LENGTH: int
 Value的最大长度限制为16MB。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

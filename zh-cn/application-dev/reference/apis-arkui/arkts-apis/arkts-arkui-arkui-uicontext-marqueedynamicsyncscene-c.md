@@ -2,17 +2,22 @@
 
 提供Marquee组件动态帧率的配置能力，支持在Marquee组件运行动画时动态调节帧率，优化性能和功耗，适用于需要在跑马灯场景中平衡动画流畅度和系统资源消耗的场景。
 
-**继承/实现关系：** MarqueeDynamicSyncScene extends [DynamicSyncScene](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-dynamicsyncscene-c.md#dynamicsyncscene)
+**继承/实现关系：** MarqueeDynamicSyncScene extends [DynamicSyncScene](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-dynamicsyncscene-c.md)
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export class MarqueeDynamicSyncScene--><!--Device-unnamed-export class MarqueeDynamicSyncScene-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
+import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
+import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+```
 
 ## type
 
@@ -25,10 +30,6 @@ Marquee的动态帧率场景类型。用于指定Marquee组件的动态帧率场
 **类型：** [MarqueeDynamicSyncSceneType](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-marqueedynamicsyncscenetype-e.md)
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

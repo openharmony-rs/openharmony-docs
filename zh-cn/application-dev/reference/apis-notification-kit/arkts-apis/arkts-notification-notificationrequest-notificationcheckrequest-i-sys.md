@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationCheckRequest--><!--Device-unnamed-export interface NotificationCheckRequest-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -25,10 +21,6 @@ contentType: notificationManager.ContentType
 **类型：** notificationManager.ContentType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationCheckRequest-contentType: notificationManager.ContentType--><!--Device-NotificationCheckRequest-contentType: notificationManager.ContentType-End-->
 
@@ -48,10 +40,6 @@ extraInfoKeys: Array<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationCheckRequest-extraInfoKeys: Array<string>--><!--Device-NotificationCheckRequest-extraInfoKeys: Array<string>-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -69,10 +57,6 @@ slotType: notificationManager.SlotType
 **类型：** notificationManager.SlotType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationCheckRequest-slotType: notificationManager.SlotType--><!--Device-NotificationCheckRequest-slotType: notificationManager.SlotType-End-->
 

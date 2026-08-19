@@ -136,7 +136,7 @@ int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_Fram
 
 | 类型 | 说明 |
 | -- | -- |
-| int | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync或callback为空。<br>     NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
+| int | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync或callback为空。\n      NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
 
 ### OH_NativeVSync_RequestFrameWithMultiCallback()
 
@@ -164,7 +164,7 @@ int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| int | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync或callback为空。<br>     NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
+| int | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync或callback为空。\n      NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
 
 ### OH_NativeVSync_GetPeriod()
 
@@ -218,7 +218,7 @@ int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync为空。<br>     NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
+| int | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync为空。\n      NATIVE_ERROR_BINDER_ERROR 50401000 - ipc发送失败。 |
 
 ### OH_NativeVSync_SetExpectedFrameRateRange()
 
@@ -245,6 +245,6 @@ int OH_NativeVSync_SetExpectedFrameRateRange(OH_NativeVSync* nativeVsync, OH_Nat
 
 | 类型 | 说明 |
 | -- | -- |
-| int | NATIVE_ERROR_OK 0 - 成功。<br>     NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync为空，或者range为空或无效。 |
+| int | NATIVE_ERROR_OK 0 - 成功。\n      NATIVE_ERROR_INVALID_ARGUMENTS 40001000 - 参数nativeVsync为空，或者range为空或无效。 |
 
 

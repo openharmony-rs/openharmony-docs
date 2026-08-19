@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSync-enum DownloadFileType--><!--Device-cloudSync-enum DownloadFileType-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -21,10 +17,6 @@ CONTENT = 0
 content类型文件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DownloadFileType-CONTENT = 0--><!--Device-DownloadFileType-CONTENT = 0-End-->
 
@@ -40,10 +32,6 @@ thumbnail类型文件。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DownloadFileType-THUMBNAIL = 1--><!--Device-DownloadFileType-THUMBNAIL = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -57,10 +45,6 @@ LCD = 2
 lcd类型文件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DownloadFileType-LCD = 2--><!--Device-DownloadFileType-LCD = 2-End-->
 

@@ -20,15 +20,15 @@ Invalid netId.
 
 **错误描述**
 
-不合法的net Id值。
+不合法的netId值。
 
 **可能原因**
 
-net Id值不存在。
+netId值不存在。
 
 **处理步骤**
 
-输入一个合法的net ID值。
+输入一个合法的netId值。
 
 ## 33200002 退出指定netId网卡扩展认证失败
 
@@ -38,15 +38,15 @@ log off fail.
 
 **错误描述**
 
-退出指定的net Id的扩展认证失败。
+退出指定的netId的扩展认证失败。
 
 **可能原因**
 
-net Id值不存在。
+netId值不存在。
 
 **处理步骤**
 
-输入一个合法的net ID值。
+输入一个合法的netId值。
 
 ## 33200003 无效的eth eap配置
 
@@ -92,7 +92,7 @@ Invalid size of eap data.
 
 **错误描述**
 
-不合法的EAP数据长度值。
+不合法的eap数据长度值。
 
 **可能原因**
 
@@ -118,7 +118,7 @@ Invalid net type.
 
 **处理步骤**
 
-传入支持的合法网络类型: WLAN: 1; ETH: 2。
+传入支持的合法网络类型：WLAN：1；ETH：2。
 
 
 ## 33200007 无效的eapCode值
@@ -129,7 +129,7 @@ Invalid eap code.
 
 **错误描述**
 
-eap code不合法。
+eapCode不合法。
 
 **可能原因**
 
@@ -137,7 +137,7 @@ eap code不合法。
 
 **处理步骤**
 
-eap code的合法取值为1、2、3、4。
+eapCode的合法取值为1、2、3、4。
 
 ## 33200008 无效的eapType值
 
@@ -147,7 +147,7 @@ Invalid eap type.
 
 **错误描述**
 
-eap type不合法。
+eapType不合法。
 
 **可能原因**
 
@@ -155,7 +155,7 @@ eap type不合法。
 
 **处理步骤**
 
-传入合法的eap type，取值范围为[1, 255]。
+传入合法的eapType，取值范围为[1, 255]。
 
 ## 33200009 netmanager进程不存在
 
@@ -175,7 +175,7 @@ netmanager进程不存在。
 
 重启机器。
 
-## 33200010 无效的eap状态
+## 33200010 无效的eth状态
 
 **错误信息**
 
@@ -213,11 +213,11 @@ internal error.
 
 4.回调函数异常，如回调未正确实现或抛出未捕获异常，通过日志关键词过滤replyCustomEapData进行定位分析。
 
-5.通信失败，如socket通信异常、连接断开。此原因常见于startEthEap和logOffEthEap接口，通过日志关键词过滤startEap或stopEap检查命令是否正常下发。
+5.通信失败，如socket通信异常、连接断开。此原因常见于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口，通过日志关键词过滤startEap或stopEap检查命令是否正常下发。
 
 **处理步骤**
 
-1.查看系统日志定位具体异常原因，通过日志关键词过滤supplicant定位EAP报文处理异常，通过日志关键词过滤replyCustomEapData定位回调函数异常；对于startEthEap和logOffEthEap接口触发的通信异常，可通过日志关键词过滤startEap或stopEap进行定位。
+1.查看系统日志定位具体异常原因，通过日志关键词过滤supplicant定位EAP报文处理异常，通过日志关键词过滤replyCustomEapData定位回调函数异常；对于[startEthEap](js-apis-net-eap.md#eapstartetheap)和[logOffEthEap](js-apis-net-eap.md#eaplogoffetheap)接口触发的通信异常，可通过日志关键词过滤startEap或stopEap进行定位。
 
 2.确认EAP认证流程调用顺序正确，避免在未完成上一步操作时进行下一步操作。
 

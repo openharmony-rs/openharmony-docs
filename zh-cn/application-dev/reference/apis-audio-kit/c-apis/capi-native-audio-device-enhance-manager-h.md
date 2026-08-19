@@ -55,7 +55,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDeviceEnhanceManager(OH_AudioDevic
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager为nullptr。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager为nullptr。 |
 
 ### OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported()
 
@@ -80,7 +80,7 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(OH
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager或supported为nullptr。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager或supported为nullptr。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
 
 ### OH_AudioDeviceEnhanceManager_SelectOutputDevice()
 
@@ -105,7 +105,7 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDevice(OH_AudioDe
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager为nullptr，<br>     <br>参数deviceDescriptor无效或指定输出设备已离线。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager为nullptr，      <br>参数deviceDescriptor无效或指定输出设备已离线。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
 
 ### OH_AudioDeviceEnhanceManager_SelectInputDevice()
 
@@ -130,7 +130,7 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDev
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager为nullptr，<br>     <br>参数deviceDescriptor无效或指定输入设备已离线。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager为nullptr，      <br>参数deviceDescriptor无效或指定输入设备已离线。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
 
 ### OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer()
 
@@ -156,7 +156,7 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRen
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager或renderer为nullptr，<br>     <br>参数deviceDescriptor无效或指定输出设备已离线。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager或renderer为nullptr，      <br>参数deviceDescriptor无效或指定输出设备已离线。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
 
 ### OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer()
 
@@ -182,6 +182,6 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapt
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。<br>     <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager或capturer为nullptr，<br>     <br>参数deviceDescriptor无效或指定输入设备已离线。<br>     <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS: 函数执行成功。      <br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: 参数audioDeviceEnhanceManager或capturer为nullptr，      <br>参数deviceDescriptor无效或指定输入设备已离线。      <br>AUDIOCOMMON_RESULT_ERROR_SYSTEM: 音频客户端调用音频服务失败或系统错误。 |
 
 

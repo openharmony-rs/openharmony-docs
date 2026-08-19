@@ -1,12 +1,8 @@
 # MaterialType
 
-材质类型枚举.
+场景中物体材质类型枚举，定义材质的渲染方式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum MaterialType--><!--Device-unnamed-export enum MaterialType-End-->
 
@@ -18,13 +14,9 @@
 SHADER = 1
 ```
 
-材质类型是Shader.
+材质由着色器定义。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MaterialType-SHADER = 1--><!--Device-MaterialType-SHADER = 1-End-->
 
@@ -36,13 +28,9 @@ SHADER = 1
 METALLIC_ROUGHNESS = 2
 ```
 
-材质是基于物理的金属粗糙度材质.
+采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MaterialType-METALLIC_ROUGHNESS = 2--><!--Device-MaterialType-METALLIC_ROUGHNESS = 2-End-->
 
@@ -54,13 +42,9 @@ METALLIC_ROUGHNESS = 2
 UNLIT = 3
 ```
 
-材质是无光照材质.
+不受光照影响的材质。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MaterialType-UNLIT = 3--><!--Device-MaterialType-UNLIT = 3-End-->
 
@@ -72,13 +56,9 @@ UNLIT = 3
 OCCLUSION = 4
 ```
 
-材质是遮挡材质
+遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MaterialType-OCCLUSION = 4--><!--Device-MaterialType-OCCLUSION = 4-End-->
 

@@ -1,18 +1,20 @@
-# AtomicServiceMenuBar（系统接口）
+# AtomicServiceMenuBar(系统接口)（系统接口）
 
 依赖当前原子化服务的UI上下文，创建AtomicServiceMenuBar对象，用于操控右上角菜单功能胶囊的显隐状态。 > **说明：** > > 该组件从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare class AtomicServiceMenuBar--><!--Device-unnamed-export declare class AtomicServiceMenuBar-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceMenuBar } from '@kit.ArkUI';
+```
 
 ## constructor
 
@@ -23,10 +25,6 @@ constructor(uiContext: UIContext)
 AtomicServiceMenuBar的构造函数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,10 +51,6 @@ public setVisible(visible: boolean): void
 设置当前原子化服务菜单功能胶囊的显隐状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

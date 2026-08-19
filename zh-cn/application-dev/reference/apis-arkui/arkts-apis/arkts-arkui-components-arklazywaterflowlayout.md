@@ -1,5 +1,11 @@
 # @ohos.arkui.components.ArkLazyWaterFlowLayout
 
+## 导入模块
+
+```TypeScript
+import { LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute, LazyWaterFlowLayoutAttribute } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 类

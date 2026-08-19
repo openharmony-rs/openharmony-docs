@@ -2,13 +2,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default class Configuration--><!--Device-unnamed-export default class Configuration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
+
+## 导入模块
+
+```TypeScript
+import { Configuration, LocaleResponse } from '@kit.ArkUI';
+```
 
 ## getLocale
 
@@ -19,10 +21,6 @@ static getLocale(): LocaleResponse
 获取应用当前的语言和地区。默认与系统的语言和地区同步。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,11 @@
 # getSmsShortCodeType（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
+
 ## getSmsShortCodeType
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSmsShortCodeType(slotId: int, destAddr: string): Promise<SmsShortCod
 获取拟发送短信的目标地址短码类型
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SEND_MESSAGES
 

@@ -6,13 +6,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface PinchGestureInterface--><!--Device-unnamed-interface PinchGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -20,13 +21,9 @@
 (value?: { fingers?: number; distance?: number }): PinchGestureInterface
 ```
 
-继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#gestureinterface)，设置捏合手势事件。
+继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)，设置捏合手势事件。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -55,10 +52,6 @@
 设置捏合手势事件。与PinchGesture)}相比， options参数新增isFingerCountLimited，表示是否检查触摸屏幕的手指数量。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +83,6 @@ Pinch手势识别成功，接收到触摸取消事件触发的回调，不返回
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PinchGestureInterface-onActionCancel(event: () => void): PinchGestureInterface--><!--Device-PinchGestureInterface-onActionCancel(event: () => void): PinchGestureInterface-End-->
@@ -121,10 +110,6 @@ onActionCancel(event: Callback<GestureEvent>): PinchGestureInterface
 Pinch手势识别成功并接收到触摸取消事件的回调。与onActionCancel相比，该回调返回手势 事件信息。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -156,10 +141,6 @@ Pinch手势识别成功，当抬起最后一根满足手势触发条件的手指
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PinchGestureInterface-onActionEnd(event: (event: GestureEvent) => void): PinchGestureInterface--><!--Device-PinchGestureInterface-onActionEnd(event: (event: GestureEvent) => void): PinchGestureInterface-End-->
@@ -188,10 +169,6 @@ Pinch手势识别成功后触发回调。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PinchGestureInterface-onActionStart(event: (event: GestureEvent) => void): PinchGestureInterface--><!--Device-PinchGestureInterface-onActionStart(event: (event: GestureEvent) => void): PinchGestureInterface-End-->
@@ -219,10 +196,6 @@ onActionUpdate(event: (event: GestureEvent) => void): PinchGestureInterface
 Pinch手势移动过程中回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -234,9 +234,9 @@
   - [ArcSliderEnlargeHandler](arkts-arkui-arcsliderenlargehandler-t.md)
   - [ArcSliderTouchHandler](arkts-arkui-arcslidertouchhandler-t.md)
   - [ArcSliderPosition](arkts-arkui-arkui-advanced-arcslider-arcsliderposition-e.md)
-- @ohos.arkui.advanced.Chip
+- [@ohos.arkui.advanced.Chip](arkts-arkui-advanced-chip.md)
   - [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md)
-- @ohos.arkui.advanced.ChipGroup
+- [@ohos.arkui.advanced.ChipGroup](arkts-arkui-advanced-chipgroup.md)
 - [@ohos.arkui.advanced.ChipGroupV2](arkts-arkui-advanced-chipgroupv2.md)
   - [ChipGroupV2Item](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2item-c.md)
   - [ChipGroupV2Items](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2items-c.md)
@@ -277,7 +277,7 @@
   - [IChipV2OptionsConfig](arkts-arkui-arkui-advanced-chipv2-ichipv2optionsconfig-i.md)
   - [ChipV2AccessibilitySelectedType](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityselectedtype-e.md)
   - [ChipV2Size](arkts-arkui-arkui-advanced-chipv2-chipv2size-e.md)
-- @ohos.arkui.advanced.ComposeListItem
+- [@ohos.arkui.advanced.ComposeListItem](arkts-arkui-advanced-composelistitem.md)
   - [ContentItem](arkts-arkui-arkui-advanced-composelistitem-contentitem-c.md)
   - [OperateButton](arkts-arkui-arkui-advanced-composelistitem-operatebutton-c.md)
   - [OperateCheck](arkts-arkui-arkui-advanced-composelistitem-operatecheck-c.md)
@@ -308,8 +308,8 @@
   - [ComposeTitleBarV2](arkts-arkui-arkui-advanced-composetitlebarv2-composetitlebarv2-s.md)
   - [ComposeTitleBarV2MenuItemParams](arkts-arkui-arkui-advanced-composetitlebarv2-composetitlebarv2menuitemparams-i.md)
   - [OnActionCallback](arkts-arkui-onactioncallback-t.md)
-- @ohos.arkui.advanced.Counter
-- @ohos.arkui.advanced.CounterV2
+- [@ohos.arkui.advanced.Counter](arkts-arkui-advanced-counter.md)
+- [@ohos.arkui.advanced.CounterV2](arkts-arkui-advanced-counterv2.md)
   - [CounterV2CommonOptions](arkts-arkui-arkui-advanced-counterv2-counterv2commonoptions-c.md)
   - [CounterV2DateData](arkts-arkui-arkui-advanced-counterv2-counterv2datedata-c.md)
   - [CounterV2DateStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2datestyleoptions-c.md)
@@ -355,7 +355,7 @@
   - [AdvancedDialogV2ButtonAction](arkts-arkui-advanceddialogv2buttonaction-t.md)
   - [AdvancedDialogV2OnCheckedChange](arkts-arkui-advanceddialogv2oncheckedchange-t.md)
   - [PopoverDialogV2OnVisibleChange](arkts-arkui-popoverdialogv2onvisiblechange-t.md)
-- @ohos.arkui.advanced.EditableTitleBar
+- [@ohos.arkui.advanced.EditableTitleBar](arkts-arkui-advanced-editabletitlebar.md)
 - [@ohos.arkui.advanced.EditableTitleBarV2](arkts-arkui-advanced-editabletitlebarv2.md)
   - [EditableLeftIconV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticonv2-c.md)
   - [EditableSaveButtonV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2-c.md)
@@ -397,12 +397,14 @@
   - [OnHoverStatusChangeHandler](arkts-arkui-onhoverstatuschangehandler-t.md)
   - [ExtraRegionPosition](arkts-arkui-arkui-advanced-foldsplitcontainer-extraregionposition-e.md)
   - [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md)
+- [@ohos.arkui.advanced.FormMenu](arkts-arkui-advanced-formmenu.md)
+  - [AddFormMenuItem](arkts-arkui-arkui-advanced-formmenu-addformmenuitem-f.md)
 - [@ohos.arkui.advanced.FullScreenLaunchComponent](arkts-arkui-advanced-fullscreenlaunchcomponent.md)
   - [FullScreenLaunchComponent](arkts-arkui-arkui-advanced-fullscreenlaunchcomponent-fullscreenlaunchcomponent-s.md)
 - [@ohos.arkui.advanced.FullScreenLaunchComponent](arkts-arkui-advanced-fullscreenlaunchcomponent.md)
   - [FullScreenLaunchComponent](arkts-arkui-arkui-advanced-fullscreenlaunchcomponent-fullscreenlaunchcomponent-s.md)
   - [ContentBuilder](arkts-arkui-contentbuilder-t.md)
-- @ohos.arkui.advanced.GridObjectSortComponent
+- [@ohos.arkui.advanced.GridObjectSortComponent](arkts-arkui-advanced-gridobjectsortcomponent.md)
 <!--Del-->
 - [@ohos.arkui.advanced.InnerFullScreenLaunchComponent](arkts-arkui-advanced-innerfullscreenlaunchcomponent.md)<!--DelEnd-->
   <!--Del-->
@@ -431,13 +433,13 @@
   - [ItemRestriction](arkts-arkui-itemrestriction-t.md)
   - [SegmentButtonItemTuple](arkts-arkui-segmentbuttonitemtuple-t.md)
   - [BorderRadiusMode](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md)
-- @ohos.arkui.advanced.SegmentButtonV2
+- [@ohos.arkui.advanced.SegmentButtonV2](arkts-arkui-advanced-segmentbuttonv2.md)
 - [@ohos.arkui.advanced.SelectTitleBar](arkts-arkui-advanced-selecttitlebar.md)
   - [SelectTitleBarMenuItem](arkts-arkui-arkui-advanced-selecttitlebar-selecttitlebarmenuitem-c.md)
   - [SelectTitleBar](arkts-arkui-arkui-advanced-selecttitlebar-selecttitlebar-s.md)
-- @ohos.arkui.advanced.SelectionMenu
+- [@ohos.arkui.advanced.SelectionMenu](arkts-arkui-advanced-selectionmenu.md)
   - [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)
-- @ohos.arkui.advanced.SplitLayout
+- [@ohos.arkui.advanced.SplitLayout](arkts-arkui-advanced-splitlayout.md)
 - [@ohos.arkui.advanced.SubHeader](arkts-arkui-advanced-subheader.md)
   - [OperationOption](arkts-arkui-arkui-advanced-subheader-operationoption-c.md)
   - [SelectOptions](arkts-arkui-arkui-advanced-subheader-selectoptions-c.md)
@@ -458,13 +460,13 @@
   - [SubHeaderV2SelectOnSelect](arkts-arkui-subheaderv2selectonselect-t.md)
   - [SubHeaderV2TitleBuilder](arkts-arkui-subheaderv2titlebuilder-t.md)
   - [SubHeaderV2OperationType](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2operationtype-e.md)
-- @ohos.arkui.advanced.SwipeRefresher
+- [@ohos.arkui.advanced.SwipeRefresher](arkts-arkui-advanced-swiperefresher.md)
 - [@ohos.arkui.advanced.SwipeRefresherV2](arkts-arkui-advanced-swiperefresherv2.md)
   - [SwipeRefresherV2](arkts-arkui-arkui-advanced-swiperefresherv2-swiperefresherv2-s.md)
-- @ohos.arkui.advanced.TabTitleBar
-- @ohos.arkui.advanced.ToolBar
-- @ohos.arkui.advanced.ToolBarV2
-- @ohos.arkui.advanced.TreeView
+- [@ohos.arkui.advanced.TabTitleBar](arkts-arkui-advanced-tabtitlebar.md)
+- [@ohos.arkui.advanced.ToolBar](arkts-arkui-advanced-toolbar.md)
+- [@ohos.arkui.advanced.ToolBarV2](arkts-arkui-advanced-toolbarv2.md)
+- [@ohos.arkui.advanced.TreeView](arkts-arkui-advanced-treeview.md)
 - [@ohos.arkui.advanced.TreeViewV2](arkts-arkui-advanced-treeviewv2.md)
   - [TreeControllerV2](arkts-arkui-arkui-advanced-treeviewv2-treecontrollerv2-c.md)
   - [TreeListenerManagerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenermanagerv2-c.md)
@@ -485,10 +487,35 @@
   - [SnapshotRegion](arkts-arkui-componentsnapshot-snapshotregion-i.md)
   - [SnapshotSizeLimitation](arkts-arkui-componentsnapshot-snapshotsizelimitation-i.md)
   - [SnapshotRegionType](arkts-arkui-componentsnapshot-snapshotregiontype-t.md)
+- [@ohos.arkui.componentSnapshot](arkts-arkui-componentsnapshot.md)
+  - [getSync](arkts-arkui-componentsnapshot-getsync-f.md)
+  - [ColorModeOptions](arkts-arkui-componentsnapshot-colormodeoptions-i.md)
+  - [DynamicRangeModeOptions](arkts-arkui-componentsnapshot-dynamicrangemodeoptions-i.md)
+  - [LocalizedSnapshotRegion](arkts-arkui-componentsnapshot-localizedsnapshotregion-i.md)
+  - [SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md)
+  - [SnapshotRegion](arkts-arkui-componentsnapshot-snapshotregion-i.md)
+  - [SnapshotSizeLimitation](arkts-arkui-componentsnapshot-snapshotsizelimitation-i.md)
+  - [SnapshotRegionType](arkts-arkui-componentsnapshot-snapshotregiontype-t.md)
 - [@ohos.arkui.componentUtils](arkts-arkui-componentutils.md)
   <!--Del-->
   - [getItemsInShapePath(系统接口)](arkts-arkui-componentutils-getitemsinshapepath-f-sys.md)<!--DelEnd-->
   - [getRectangleById](arkts-arkui-componentutils-getrectanglebyid-f.md)
+  - [ComponentInfo](arkts-arkui-componentutils-componentinfo-i.md)
+  <!--Del-->
+  - [GetItemsInShapePathParams(系统接口)](arkts-arkui-componentutils-getitemsinshapepathparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ImageItem(系统接口)](arkts-arkui-componentutils-imageitem-i-sys.md)<!--DelEnd-->
+  - [Offset](arkts-arkui-componentutils-offset-i.md)
+  - [RotateResult](arkts-arkui-componentutils-rotateresult-i.md)
+  <!--Del-->
+  - [Rotation2D(系统接口)](arkts-arkui-componentutils-rotation2d-i-sys.md)<!--DelEnd-->
+  - [ScaleResult](arkts-arkui-componentutils-scaleresult-i.md)
+  - [Size](arkts-arkui-componentutils-size-i.md)
+  - [TranslateResult](arkts-arkui-componentutils-translateresult-i.md)
+  - [Matrix4Result](arkts-arkui-componentutils-matrix4result-t.md)
+- [@ohos.arkui.componentUtils](arkts-arkui-componentutils.md)
+  <!--Del-->
+  - [getItemsInShapePath(系统接口)](arkts-arkui-componentutils-getitemsinshapepath-f-sys.md)<!--DelEnd-->
   - [ComponentInfo](arkts-arkui-componentutils-componentinfo-i.md)
   <!--Del-->
   - [GetItemsInShapePathParams(系统接口)](arkts-arkui-componentutils-getitemsinshapepathparams-i-sys.md)<!--DelEnd-->
@@ -556,6 +583,19 @@
   - [createDragAction](arkts-arkui-dragcontroller-createdragaction-f.md)
   - [executeDrag](arkts-arkui-dragcontroller-executedrag-f.md)
   - [getDragPreview](arkts-arkui-dragcontroller-getdragpreview-f.md)
+  - [DragPreview](arkts-arkui-dragcontroller-dragpreview-c.md)
+  - [SpringLoadingContext](arkts-arkui-dragcontroller-springloadingcontext-c.md)
+  - [AnimationOptions](arkts-arkui-dragcontroller-animationoptions-i.md)
+  - [DragAction](arkts-arkui-dragcontroller-dragaction-i.md)
+  - [DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md)
+  - [DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md)
+  - [DragInfo](arkts-arkui-dragcontroller-draginfo-i.md)
+  - [DragSpringLoadingConfiguration](arkts-arkui-dragcontroller-dragspringloadingconfiguration-i.md)
+  - [SpringLoadingDragInfos](arkts-arkui-dragcontroller-springloadingdraginfos-i.md)
+  - [DragSpringLoadingState](arkts-arkui-dragcontroller-dragspringloadingstate-e.md)
+  - [DragStartRequestStatus](arkts-arkui-dragcontroller-dragstartrequeststatus-e.md)
+  - [DragStatus](arkts-arkui-dragcontroller-dragstatus-e.md)
+- [@ohos.arkui.dragController](arkts-arkui-dragcontroller.md)
   - [DragPreview](arkts-arkui-dragcontroller-dragpreview-c.md)
   - [SpringLoadingContext](arkts-arkui-dragcontroller-springloadingcontext-c.md)
   - [AnimationOptions](arkts-arkui-dragcontroller-animationoptions-i.md)
@@ -2060,6 +2100,10 @@
     - [Flex](arkts-arkui-flex-flex-f.md)
     - [FlexOptions](arkts-arkui-flex-flexoptions-i.md)
     - [FlexSpaceOptions](arkts-arkui-flex-flexspaceoptions-i.md)
+  - [focus](arkts-focus.md)
+    - [FocusBoxStyle](arkts-arkui-focus-focusboxstyle-i.md)
+    - [FocusPriority](arkts-arkui-focus-focuspriority-e.md)
+    - [KeyProcessingMode](arkts-arkui-focus-keyprocessingmode-e.md)
   - [folderStack](arkts-folderstack.md)
     - [FolderStack](arkts-arkui-folderstack-folderstack-f.md)
     - [FolderStackOptions](arkts-arkui-folderstack-folderstackoptions-i.md)

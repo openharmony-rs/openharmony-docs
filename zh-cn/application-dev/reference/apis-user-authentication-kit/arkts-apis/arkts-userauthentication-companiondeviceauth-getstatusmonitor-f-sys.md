@@ -1,5 +1,11 @@
 # getStatusMonitor（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
+```
+
 ## getStatusMonitor
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getStatusMonitor(localUserId: int): StatusMonitor
 获取状态监听器。用于获取指定用户的状态监听器对象，通过该对象可查询和订阅伴随设备的模板状态、持续认证状态、可添加设备状态等信息。 生命周期：订阅在系统服务侧按用户维护。使用完毕应调用对应的off方法取消订阅以释放资源；应用进程退出时已注册的订阅会自动清理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.USE_USER_IDM
 
@@ -45,7 +47,7 @@ function getStatusMonitor(localUserId: int): StatusMonitor
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

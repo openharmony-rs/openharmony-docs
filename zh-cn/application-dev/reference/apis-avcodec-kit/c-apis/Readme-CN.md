@@ -1,4 +1,4 @@
-# CAPI<!--c-avcodec-kit-->
+# C API<!--c-avcodec-kit-->
 
 - 头文件
     - [media_types.h](capi-media-types-h.md)

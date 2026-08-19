@@ -1,5 +1,12 @@
 # @ohos.arkui.advanced.ComposeTitleBar
 
+## 导入模块
+
+```TypeScript
+import { ComposeTitleBar, ComposeTitleBarMenuItem } from '@kit.ArkUI';
+import { ComposeTitleBarV2, ComposeTitleBarV2MenuItem, ComposeTitleBarV2MenuItemParams } from '@kit.ArkUI';
+```
+
 ## 汇总
 
 ### 类

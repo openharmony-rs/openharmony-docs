@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum VideoStabilizationMode--><!--Device-camera-enum VideoStabilizationMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -21,10 +17,6 @@ OFF = 0
 关闭视频防抖功能。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ LOW = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoStabilizationMode-LOW = 1--><!--Device-VideoStabilizationMode-LOW = 1-End-->
@@ -61,10 +49,6 @@ MIDDLE = 2
 使用防抖效果一般的防抖算法，防抖效果优于LOW类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ HIGH = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoStabilizationMode-HIGH = 3--><!--Device-VideoStabilizationMode-HIGH = 3-End-->
@@ -101,10 +81,6 @@ AUTO = 4
 自动进行选择防抖算法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

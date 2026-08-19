@@ -1,5 +1,10 @@
 # format
 
+## 导入模块
+
+```TypeScript
+```
+
 ## format
 
 ```TypeScript
@@ -10,9 +15,7 @@ function format(format: string, ...args: Object[]): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-util-function format(format: string, ...args: Object[]): string--><!--Device-util-function format(format: string, ...args: Object[]): string-End-->
 

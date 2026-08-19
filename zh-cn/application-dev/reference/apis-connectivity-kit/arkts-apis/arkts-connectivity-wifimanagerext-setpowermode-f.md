@@ -1,5 +1,11 @@
 # setPowerMode
 
+## 导入模块
+
+```TypeScript
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## setPowerMode
 
 ```TypeScript
@@ -9,8 +15,6 @@ function setPowerMode(mode: PowerMode): void
 设置功率模式。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 10
 
@@ -34,7 +38,7 @@ function setPowerMode(mode: PowerMode): void
 | [2701000](../errorcode-wifi.md#2701000-ap扩展模块异常) | Operation failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManagerExt } from '@kit.ConnectivityKit';

@@ -1,6 +1,13 @@
 # @ohos.UiTest
 
-用于便捷构造[On](arkts-test-uitest-on-c.md#on)对象的静态构造器，使用示例：ON.text('txt').enabled(true)。
+用于便捷构造[On](arkts-test-uitest-on-c.md)对象的静态构造器，使用示例：ON.text('txt').enabled(true)。
+
+## 导入模块
+
+```TypeScript
+import { Component, DisplayRotation, Driver, MatchPattern, MouseButton, ON, On, PointerMatrix, ResizeDirection, UIElementInfo, UIEventObserver, UiDirection, UiWindow, WindowMode, Point, WindowFilter, Rect, TouchPadSwipeOptions, InputTextMode, WindowChangeType, ComponentEventType, WindowChangeOptions, ComponentEventOptions, TouchOptions, KeyOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
+import { UiComponent, UiDriver, BY, By } from '@kit.TestKit';
+```
 
 ## 汇总
 
@@ -8,7 +15,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [ON](arkts-test-on-n.md) | 用于便捷构造[On](arkts-test-uitest-on-c.md#on)对象的静态构造器，使用示例：ON.text('txt').enabled(true)。 |
+| [ON](arkts-test-on-n.md) | 用于便捷构造[On](arkts-test-uitest-on-c.md)对象的静态构造器，使用示例：ON.text('txt').enabled(true)。 |
 
 ### 类
 

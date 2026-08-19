@@ -1,5 +1,10 @@
 # reset
 
+## 导入模块
+
+```TypeScript
+```
+
 ## reset
 
 ```TypeScript
@@ -9,8 +14,6 @@ function reset(wallpaperType: WallpaperType, callback: AsyncCallback<void>): voi
 移除指定类型的壁纸，恢复为默认显示的壁纸。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -25,9 +28,9 @@ function reset(wallpaperType: WallpaperType, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -52,8 +55,6 @@ function reset(wallpaperType: WallpaperType): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.SET_WALLPAPER
@@ -74,7 +75,7 @@ function reset(wallpaperType: WallpaperType): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

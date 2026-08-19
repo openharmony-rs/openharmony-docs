@@ -54,7 +54,7 @@ typedef void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoA
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AudioSuite_DownloadStatusInfoArray \*downloadStatusInfoArray | 下载状态信息数组指针。 |
+| [OH_AudioSuite_DownloadStatusInfoArray](capi-audiosuite-oh-audiosuite-downloadstatusinfoarray.md) \*downloadStatusInfoArray | 下载状态信息数组指针。 |
 
 ### OH_AudioSuite_GetDownloadManager()
 
@@ -78,7 +78,7 @@ int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager为nullptr。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager为nullptr。</li>  </ul> |
 
 ### OH_AudioSuite_RegisterDownloadCallback()
 
@@ -103,7 +103,7 @@ int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *do
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果下载管理器或回调为nullptr，则返回错误。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果下载管理器或回调为nullptr，则返回错误。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li>  </ul> |
 
 ### OH_AudioSuite_UnregisterDownloadCallback()
 
@@ -128,7 +128,7 @@ int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果下载管理器或回调为nullptr，则返回错误。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果下载管理器或回调为nullptr，则返回错误。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li>  </ul> |
 
 ### OH_AudioSuite_StartDownload()
 
@@ -153,7 +153,7 @@ int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li>  </ul> |
 
 ### OH_AudioSuite_CancelDownload()
 
@@ -178,7 +178,7 @@ int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadMana
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li><br> <li>{@link AVPCOMMON_RESULT_ERROR_LINAL_STATE}如果当前状态不允许取消。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li>  <li>{@link AVPCOMMON_RESULT_ERROR_LINAL_STATE}如果当前状态不允许取消。</li>  </ul> |
 
 ### OH_AudioSuite_StartBackgroundDownload()
 
@@ -203,7 +203,7 @@ int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *dow
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li>  </ul> |
 
 ### OH_AudioSuite_GetDownloadStatus()
 
@@ -229,7 +229,7 @@ int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadM
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager、featureName或status为nullptr。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager、featureName或status为nullptr。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li>  </ul> |
 
 ### OH_AudioSuite_UninstallCloudRom()
 
@@ -254,6 +254,6 @@ int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadM
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul><br> <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li><br> <li>202如果非系统应用程序调用此系统API。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li><br> <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li><br> </ul> |
+| int32_t | <ul>  <li>{@link AUDIOCOMMON_RESULT_SUCCESS}如果执行成功</li>  <li>202如果非系统应用程序调用此系统API。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}如果downloadManager或featureName为nullptr。</li>  <li>{@link AUDIOCOMMON_RESULT_ERROR_SYSTEM}如果IPC通信失败或操作失败。</li>  </ul> |
 
 

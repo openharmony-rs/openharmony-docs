@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum VideoEnhancementType--><!--Device-photoAccessHelper-enum VideoEnhancementType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ QUALITY_ENHANCEMENT_LOCAL = 0
 在端侧增强处理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL = 0--><!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL = 0-End-->
 
@@ -44,10 +36,6 @@ QUALITY_ENHANCEMENT_CLOUD = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_CLOUD = 1--><!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_CLOUD = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ QUALITY_ENHANCEMENT_LOCAL_AND_CLOUD = 2
 在端侧和云侧同时增强处理。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL_AND_CLOUD = 2--><!--Device-VideoEnhancementType-QUALITY_ENHANCEMENT_LOCAL_AND_CLOUD = 2-End-->
 

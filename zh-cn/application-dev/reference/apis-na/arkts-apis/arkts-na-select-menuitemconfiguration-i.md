@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface MenuItemConfiguration--><!--Device-unnamed-export declare interface MenuItemConfiguration-End-->
 
@@ -20,13 +18,11 @@
 triggerSelect(index: int, value: string): void
 ```
 
-下拉菜单选中某一项的回调函数。 <br/>index：选中菜单项的索引。 <br/>value：选中菜单项的文本。 <br/>**说明：** <br/>index会赋值给事件[onSelect](arkts-na-onselectcallback-t.md#onselectcallback)回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件[onSelect](arkts-na-onselectcallback-t.md#onselectcallback)回调中的文本参数。
+下拉菜单选中某一项的回调函数。 <br/>index：选中菜单项的索引。 <br/>value：选中菜单项的文本。 <br/>**说明：** <br/>index会赋值给事件[onSelect](arkts-na-onselectcallback-t.md)回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件[onSelect](arkts-na-onselectcallback-t.md)回调中的文本参数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,9 +49,7 @@ icon?: ResourceStr
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -75,9 +69,7 @@ index: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -97,9 +89,7 @@ selected: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -119,9 +109,7 @@ symbolIcon?: SymbolGlyphModifier
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -141,9 +129,7 @@ value: ResourceStr
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

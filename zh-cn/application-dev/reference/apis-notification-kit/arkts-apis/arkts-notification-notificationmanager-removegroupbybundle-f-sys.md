@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## removeGroupByBundle
@@ -15,10 +15,6 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: 
 删除指定应用的指定组下的通知。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -34,7 +30,7 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: 
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 应用的包信息。 |
 | groupName | string | 是 | 通知组名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定应用指定组下通知的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 删除指定应用指定组下通知的回调函数。 |
 
 **错误码：**
 
@@ -48,7 +44,7 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: 
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -99,10 +95,6 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<v
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<void>--><!--Device-notificationManager-function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<void>-End-->
@@ -136,7 +128,7 @@ function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<v
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,13 +4,15 @@ Defines the screen capture parameters.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface AVScreenCaptureRecordConfig--><!--Device-unnamed-interface AVScreenCaptureRecordConfig-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## audioBitrate
 
@@ -23,10 +25,6 @@ Audio bit rate, in bit/s. This value is used for both internal capture and exter
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVScreenCaptureRecordConfig-audioBitrate?: int--><!--Device-AVScreenCaptureRecordConfig-audioBitrate?: int-End-->
 
@@ -44,10 +42,6 @@ Number of audio channels. This value is used for both internal capture and exter
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVScreenCaptureRecordConfig-audioChannelCount?: int--><!--Device-AVScreenCaptureRecordConfig-audioChannelCount?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -63,10 +57,6 @@ Audio sampling rate, in Hz. This value is used for both internal capture and ext
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVScreenCaptureRecordConfig-audioSampleRate?: int--><!--Device-AVScreenCaptureRecordConfig-audioSampleRate?: int-End-->
 
@@ -84,10 +74,6 @@ ID of the display used for screen capture. By default, the main screen is captur
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVScreenCaptureRecordConfig-displayId?: int--><!--Device-AVScreenCaptureRecordConfig-displayId?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -103,10 +89,6 @@ FD of the file output.
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVScreenCaptureRecordConfig-fd: int--><!--Device-AVScreenCaptureRecordConfig-fd: int-End-->
 
@@ -124,10 +106,6 @@ Video fill mode during screen capture.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVScreenCaptureRecordConfig-fillMode?: AVScreenCaptureFillMode--><!--Device-AVScreenCaptureRecordConfig-fillMode?: AVScreenCaptureFillMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -143,10 +121,6 @@ Video height, in px. The default value varies according to the display in use.
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVScreenCaptureRecordConfig-frameHeight?: int--><!--Device-AVScreenCaptureRecordConfig-frameHeight?: int-End-->
 
@@ -164,10 +138,6 @@ Video width, in px. The default value varies according to the display in use.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVScreenCaptureRecordConfig-frameWidth?: int--><!--Device-AVScreenCaptureRecordConfig-frameWidth?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -183,10 +153,6 @@ Encoding and container format used. The default value is **SCREEN_RECORD_PRESET_
 **类型：** [AVScreenCaptureRecordPreset](arkts-media-multimedia-media-avscreencapturerecordpreset-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVScreenCaptureRecordConfig-preset?: AVScreenCaptureRecordPreset--><!--Device-AVScreenCaptureRecordConfig-preset?: AVScreenCaptureRecordPreset-End-->
 
@@ -206,10 +172,6 @@ Screen Capture Policy Configuration Fields
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AVScreenCaptureRecordConfig-strategy?: AVScreenCaptureStrategy--><!--Device-AVScreenCaptureRecordConfig-strategy?: AVScreenCaptureStrategy-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -225,10 +187,6 @@ Video bit rate, in bit/s. The default value is **10000000**.
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AVScreenCaptureRecordConfig-videoBitrate?: int--><!--Device-AVScreenCaptureRecordConfig-videoBitrate?: int-End-->
 

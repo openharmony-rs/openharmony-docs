@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-reminderAgentManager-export enum ActionButtonType--><!--Device-reminderAgentManager-export enum ActionButtonType-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -21,10 +17,6 @@ ACTION_BUTTON_TYPE_CUSTOM = 2
 表示自定义的按钮。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ActionButtonType-ACTION_BUTTON_TYPE_CUSTOM = 2--><!--Device-ActionButtonType-ACTION_BUTTON_TYPE_CUSTOM = 2-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum DeliveryMode--><!--Device-photoAccessHelper-enum DeliveryMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ FAST_MODE = 0
 快速模式。 针对分段式拍照或视频场景，若当前存在高质量图或视频，则立即返回高质量图或视频的请求结果回调；若当前存在低质量图或视频， 则立即返回低质量图或视频的请求结果回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeliveryMode-FAST_MODE = 0--><!--Device-DeliveryMode-FAST_MODE = 0-End-->
 
@@ -40,10 +32,6 @@ HIGH_QUALITY_MODE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeliveryMode-HIGH_QUALITY_MODE = 1--><!--Device-DeliveryMode-HIGH_QUALITY_MODE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -57,10 +45,6 @@ BALANCE_MODE = 2
 均衡模式。 - 针对分段式拍照场景，若当前存在高质量图，则立即返回高质量图的请求结果回调；若当前存在低质量图，则立即返回低质量图的请求 结果回调，并申请高质量图生成任务，待高质量图生成后，再次返回高质量图的请求结果回调。 - 针对分段式视频场景，若当前存在高质量视频，则立即返回高质量视频的请求结果回调；若当前存在低质量视频， 则立即返回低质量视频的请求结果回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeliveryMode-BALANCE_MODE = 2--><!--Device-DeliveryMode-BALANCE_MODE = 2-End-->
 

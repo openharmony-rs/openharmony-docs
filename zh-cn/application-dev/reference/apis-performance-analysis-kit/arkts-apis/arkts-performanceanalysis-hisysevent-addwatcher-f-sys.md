@@ -1,18 +1,20 @@
 # addWatcher（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## addWatcher
 
 ```TypeScript
 function addWatcher(watcher: Watcher): void
 ```
 
-订阅系统事件，接收[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md#watcher系统接口)类型的对象作为事件参数。
+订阅系统事件，接收[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md)类型的对象作为事件参数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
@@ -38,7 +40,7 @@ function addWatcher(watcher: Watcher): void
 | [11200102](../errorcode-hisysevent-sys.md#11200102-系统事件监听者包含的监听规则数量超过限制) | The number of watch rules exceeds the limit. |
 | [11200101](../errorcode-hisysevent-sys.md#11200101-系统事件监听者的数量超过限制) | The number of watchers exceeds the limit. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';

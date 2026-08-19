@@ -1,14 +1,12 @@
 # ContentCoverOptions
 
-继承自[BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)。 全屏模态页面内容选项。
+继承自[BindOptions](arkts-na-common-bindoptions-i.md)。 全屏模态页面内容选项。
 
-**继承/实现关系：** ContentCoverOptions extends [BindOptions](arkts-na-common-bindoptions-i.md#bindoptions)
+**继承/实现关系：** ContentCoverOptions extends [BindOptions](arkts-na-common-bindoptions-i.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface ContentCoverOptions--><!--Device-unnamed-export declare interface ContentCoverOptions-End-->
 
@@ -28,9 +26,7 @@ enableSafeArea?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,9 +48,7 @@ modalTransition?: ModalTransition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,9 +68,7 @@ onWillDismiss?: Callback<DismissContentCoverAction>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,9 +88,7 @@ transition?: TransitionEffect
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-remoteDevice-enum ConnectionReason--><!--Device-remoteDevice-enum ConnectionReason-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -21,10 +17,6 @@ CONNECTION_SUCCESS = 0
 连接成功。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ CONNECTION_FAILURE = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAILURE = 1--><!--Device-ConnectionReason-CONNECTION_FAILURE = 1-End-->
@@ -61,10 +49,6 @@ CONNECTION_LOCAL_DISCONNECT = 2
 已由用户断开连接。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ CONNECTION_REMOTE_DISCONNECT = 3
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionReason-CONNECTION_REMOTE_DISCONNECT = 3--><!--Device-ConnectionReason-CONNECTION_REMOTE_DISCONNECT = 3-End-->
@@ -101,10 +81,6 @@ CONNECTION_FAIL_ACB_CONNECTION = 4
 连接失败：超过ACB连接限制。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,10 +98,6 @@ CONNECTION_FAIL_SERVICE_DISCOVERY = 5
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_SERVICE_DISCOVERY = 5--><!--Device-ConnectionReason-CONNECTION_FAIL_SERVICE_DISCOVERY = 5-End-->
@@ -142,10 +114,6 @@ CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionReason-CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6--><!--Device-ConnectionReason-CONNECTION_FAIL_NO_AVAILABLE_SERVICE = 6-End-->
@@ -161,10 +129,6 @@ CONNECTION_FAIL_CONNECTION_NUM_LIMITED = 7
 连接失败：超过ACB连接限制。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

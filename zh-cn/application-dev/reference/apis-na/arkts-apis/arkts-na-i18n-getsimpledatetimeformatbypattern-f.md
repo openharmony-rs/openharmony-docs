@@ -1,18 +1,21 @@
 # getSimpleDateTimeFormatByPattern
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getSimpleDateTimeFormatByPattern
 
 ```TypeScript
 export function getSimpleDateTimeFormatByPattern(pattern: string, locale?: Intl.Locale): SimpleDateTimeFormat
 ```
 
-通过模式字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatBySkeleton](arkts-na-i18n-getsimpledatetimeformatbyskeleton-f.md#getsimpledatetimeformatbyskeleton)接 口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-na-i18n-simpledatetimeformat-c.md#format)的示例。
+通过模式字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatBySkeleton](arkts-na-i18n-getsimpledatetimeformatbyskeleton-f.md)接 口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](arkts-na-i18n-simpledatetimeformat-c.md#format)的示例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

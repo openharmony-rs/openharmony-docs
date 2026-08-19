@@ -1,14 +1,10 @@
 # ImageStream
 
-图像流资源.
+流图片类型，继承自Image。
 
-**继承/实现关系：** ImageStream extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md#image)
+**继承/实现关系：** ImageStream extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface ImageStream--><!--Device-unnamed-export interface ImageStream-End-->
 
@@ -20,15 +16,11 @@
 readonly surfaceId: string
 ```
 
-图像流的surfaceId.
+流ID，由数字字符组成，数字取值必须为大于0的整数。
 
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

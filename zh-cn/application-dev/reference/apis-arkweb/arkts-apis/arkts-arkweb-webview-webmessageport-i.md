@@ -4,13 +4,15 @@ WebMessagePort是Web组件中用于应用侧（ArkTS）与HTML5侧（JavaScript�
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-webview-interface WebMessagePort--><!--Device-webview-interface WebMessagePort-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## close
 
@@ -21,10 +23,6 @@ close(): void
 不需要发送消息时关闭该消息端口。在使用close前，请先使用[createWebMessagePorts](arkts-arkweb-webview-webviewcontroller-c.md#createwebmessageports)创建消息端 口。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -38,13 +36,9 @@ close(): void
 onMessageEvent(callback: (result: WebMessage) => void): void
 ```
 
-在应用侧的消息端口上注册回调函数，接收HTML5侧发送过来的[WebMessage](arkts-arkweb-webview-webmessage-t.md#webmessage)类型消息。完整示例代码参考 [postMessage](arkts-arkweb-webview-webviewcontroller-c.md#postmessage)。
+在应用侧的消息端口上注册回调函数，接收HTML5侧发送过来的[WebMessage](arkts-arkweb-webview-webmessage-t.md)类型消息。完整示例代码参考 [postMessage](arkts-arkweb-webview-webviewcontroller-c.md#postmessage)。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -71,13 +65,9 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 onMessageEventExt(callback: (result: WebMessageExt) => void): void
 ```
 
-在应用侧的消息端口上注册回调函数，接收HTML5侧发送过来的[WebMessageType](arkts-arkweb-webview-webmessagetype-e.md#webmessagetype)类型消息。
+在应用侧的消息端口上注册回调函数，接收HTML5侧发送过来的[WebMessageType](arkts-arkweb-webview-webmessagetype-e.md)类型消息。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -104,13 +94,9 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 postMessageEvent(message: WebMessage): void
 ```
 
-发送[WebMessage](arkts-arkweb-webview-webmessage-t.md#webmessage)类型消息给HTML5侧，必须先调用 onMessageEvent，否则会发送失败。完整示 例代码参考[postMessage](arkts-arkweb-webview-webviewcontroller-c.md#postmessage)。
+发送[WebMessage](arkts-arkweb-webview-webmessage-t.md)类型消息给HTML5侧，必须先调用 onMessageEvent，否则会发送失败。完整示 例代码参考[postMessage](arkts-arkweb-webview-webviewcontroller-c.md#postmessage)。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -137,13 +123,9 @@ postMessageEvent(message: WebMessage): void
 postMessageEventExt(message: WebMessageExt): void
 ```
 
-发送[WebMessageType](arkts-arkweb-webview-webmessagetype-e.md#webmessagetype)类型消息给HTML5侧，必须先调用 onMessageEventExt，否则 会发送失败。完整示例代码参考 onMessageEventExt。
+发送[WebMessageType](arkts-arkweb-webview-webmessagetype-e.md)类型消息给HTML5侧，必须先调用 onMessageEventExt，否则 会发送失败。完整示例代码参考 onMessageEventExt。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -175,10 +157,6 @@ isExtentionType?: boolean
 **类型：** boolean
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

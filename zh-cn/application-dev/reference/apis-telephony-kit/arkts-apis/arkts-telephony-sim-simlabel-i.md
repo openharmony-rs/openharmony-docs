@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sim-export interface SimLabel--><!--Device-sim-export interface SimLabel-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
+
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
 
 ## index
 
@@ -23,10 +25,6 @@ index: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SimLabel-index: int--><!--Device-SimLabel-index: int-End-->
 
@@ -43,10 +41,6 @@ simType: SimType
 **类型：** [SimType](arkts-telephony-sim-simtype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SimLabel-simType: SimType--><!--Device-SimLabel-simType: SimType-End-->
 

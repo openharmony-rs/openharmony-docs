@@ -2,19 +2,22 @@
 
 物理光圈对象。 Aperture继承自ApertureQuery。
 
-**继承/实现关系：** Aperture extends [ApertureQuery](arkts-camera-camera-aperturequery-i-sys.md#aperturequery系统接口)
+**继承/实现关系：** Aperture extends [ApertureQuery](arkts-camera-camera-aperturequery-i-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface Aperture--><!--Device-camera-interface Aperture-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## getPhysicalAperture
 
@@ -25,10 +28,6 @@ getPhysicalAperture(): double
 获取当前物理光圈值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -62,10 +61,6 @@ getVirtualAperture(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Aperture-getVirtualAperture(): double--><!--Device-Aperture-getVirtualAperture(): double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -85,7 +80,7 @@ getVirtualAperture(): double
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function getVirtualAperture(session: camera.PortraitPhotoSession): number {
@@ -103,10 +98,6 @@ setPhysicalAperture(aperture: double): void
 设置物理光圈值。需要先通过getSupportedPhysicalApertures接口获取不同焦段支持的可设置光圈值，再通过调整焦段范围，设置支持的物理光圈值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -140,10 +131,6 @@ setVirtualAperture(aperture: double): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Aperture-setVirtualAperture(aperture: double): void--><!--Device-Aperture-setVirtualAperture(aperture: double): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -163,7 +150,7 @@ setVirtualAperture(aperture: double): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function setVirtualAperture(session: camera.PortraitPhotoSession, virtualAperture: number): void {

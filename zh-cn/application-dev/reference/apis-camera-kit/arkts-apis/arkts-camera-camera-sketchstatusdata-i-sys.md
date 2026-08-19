@@ -4,15 +4,18 @@ Defines the PiP status data.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-interface SketchStatusData--><!--Device-camera-interface SketchStatusData-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## centerPointOffset
 
@@ -25,10 +28,6 @@ Offset of PiP.
 **类型：** Point
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SketchStatusData-centerPointOffset: Point--><!--Device-SketchStatusData-centerPointOffset: Point-End-->
 
@@ -48,10 +47,6 @@ Zoom ratio of PiP.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SketchStatusData-sketchRatio: double--><!--Device-SketchStatusData-sketchRatio: double-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -69,10 +64,6 @@ Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (st
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SketchStatusData-status: int--><!--Device-SketchStatusData-status: int-End-->
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-contact-class Event--><!--Device-contact-class Event-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## CUSTOM_LABEL
 
@@ -23,10 +25,6 @@ static readonly CUSTOM_LABEL: 0
 **类型：** 0
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ static readonly EVENT_ANNIVERSARY: 1
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-static readonly EVENT_ANNIVERSARY: 1--><!--Device-Event-static readonly EVENT_ANNIVERSARY: 1-End-->
@@ -67,10 +61,6 @@ static readonly EVENT_BIRTHDAY: 3
 **类型：** 3
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +80,6 @@ static readonly EVENT_OTHER: 2
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-static readonly EVENT_OTHER: 2--><!--Device-Event-static readonly EVENT_OTHER: 2-End-->
@@ -111,10 +97,6 @@ static readonly INVALID_LABEL_ID: -1
 **类型：** -1
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -134,10 +116,6 @@ eventDate: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-eventDate: string--><!--Device-Event-eventDate: string-End-->
@@ -156,10 +134,6 @@ labelId?: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Event-labelId?: number--><!--Device-Event-labelId?: number-End-->
@@ -177,10 +151,6 @@ labelName?: string
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

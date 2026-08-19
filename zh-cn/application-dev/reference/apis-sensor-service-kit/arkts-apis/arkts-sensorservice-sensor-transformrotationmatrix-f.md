@@ -1,5 +1,11 @@
 # transformRotationMatrix
 
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
+
 ## transformRotationMatrix
 
 ```TypeScript
@@ -11,10 +17,6 @@ function transformRotationMatrix(inRotationVector: Array<double>, coordinates: C
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions,    callback: AsyncCallback<Array<double>>): void--><!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions,    callback: AsyncCallback<Array<double>>): void-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -25,7 +27,7 @@ function transformRotationMatrix(inRotationVector: Array<double>, coordinates: C
 | --- | --- | --- | --- |
 | inRotationVector | Array&lt;double&gt; | 是 | 旋转矩阵。 |
 | coordinates | [CoordinatesOptions](arkts-sensorservice-sensor-coordinatesoptions-i.md) | 是 | 指定坐标系方向。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;double&gt;&gt; | 是 | 回调函数，异步返回映射后的旋转矩阵。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;double&gt;&gt; | 是 | 回调函数，异步返回映射后的旋转矩阵。 |
 
 **错误码：**
 
@@ -34,7 +36,7 @@ function transformRotationMatrix(inRotationVector: Array<double>, coordinates: C
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -106,10 +108,6 @@ function transformRotationMatrix(inRotationVector: Array<double>, coordinates: C
 根据指定坐标系映射旋转矩阵。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions): Promise<Array<double>>--><!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions): Promise<Array<double>>-End-->
 

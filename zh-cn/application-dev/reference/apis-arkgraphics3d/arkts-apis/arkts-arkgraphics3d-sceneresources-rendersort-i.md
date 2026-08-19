@@ -1,12 +1,8 @@
 # RenderSort
 
-渲染排序层。在渲染槽中，层可以定义排序层顺序。 可用值为0-63（0最先，63最后）。默认id值为32。 典型用法：1. 将渲染排序层设置为对使用深度测试但未写入深度的对象进行渲染。 2. 始终首先渲染角色和/或相机对象以剔除大部分视图。 3. 对平面层进行排序。
+定义材质物体的渲染顺序，控制不同物体在渲染管线中的绘制先后。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RenderSort--><!--Device-unnamed-export interface RenderSort-End-->
 
@@ -18,17 +14,13 @@
 renderSortLayer?: int
 ```
 
-用于在渲染槽中对子网格进行排序的排序层. 有效值为0-63.
+渲染图层id，数值越小，渲染顺序越靠前。取值范围[0, 63]，默认图层id为32。
 
 **类型：** int
 
-**默认值：** 32 默认渲染排序层id。
+**默认值：** 32
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderSort-renderSortLayer?: int--><!--Device-RenderSort-renderSortLayer?: int-End-->
 
@@ -40,17 +32,13 @@ renderSortLayer?: int
 renderSortLayerOrder?: int
 ```
 
-排序层内描述精细顺序的排序层顺序. 有效值为0-255.
+同一渲染图层内，不同物体的渲染顺序，数值越小，越先渲染。取值范围[0, 255]，默认值为0。
 
 **类型：** int
 
-**默认值：** 0 默认渲染排序层顺序。
+**默认值：** 0
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RenderSort-renderSortLayerOrder?: int--><!--Device-RenderSort-renderSortLayerOrder?: int-End-->
 

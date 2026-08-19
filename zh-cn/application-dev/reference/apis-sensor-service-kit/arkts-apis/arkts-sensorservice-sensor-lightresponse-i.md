@@ -1,18 +1,20 @@
 # LightResponse
 
-环境光传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。
+环境光传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
-**继承/实现关系：** LightResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
+**继承/实现关系：** LightResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-interface LightResponse--><!--Device-sensor-interface LightResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
+
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
 
 ## colorTemperature
 
@@ -25,10 +27,6 @@ colorTemperature?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LightResponse-colorTemperature?: double--><!--Device-LightResponse-colorTemperature?: double-End-->
 
@@ -46,10 +44,6 @@ infraredLuminance?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-LightResponse-infraredLuminance?: double--><!--Device-LightResponse-infraredLuminance?: double-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -65,10 +59,6 @@ intensity: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LightResponse-intensity: double--><!--Device-LightResponse-intensity: double-End-->
 

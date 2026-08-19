@@ -1,5 +1,11 @@
 # getPermissionUsedRecordToggleStatus（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+```
+
 ## getPermissionUsedRecordToggleStatus
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getPermissionUsedRecordToggleStatus(): Promise<boolean>
 系统应用调用此接口，可以获取当前用户的权限使用记录开关状态，例如在权限管理界面展示当前开关设置状态。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
@@ -34,10 +36,10 @@ function getPermissionUsedRecordToggleStatus(): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
-| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md#setpermissionusedrecordtogglestatus).<br>**适用版本：** 26.1.0+ |
+| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**适用版本：** 26.1.0+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { privacyManager } from '@kit.AbilityKit';
@@ -67,10 +69,6 @@ function getPermissionUsedRecordToggleStatus(subProfileId: int): Promise<boolean
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -85,7 +83,7 @@ function getPermissionUsedRecordToggleStatus(subProfileId: int): Promise<boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subProfileId | int | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。 <br>取值限定为整数。取值约束：该参数必须为大于0的整数。 |
+| subProfileId | int | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。 <br>取值限定为整数。取值约束：该参数必须为大于0的整数。 |
 
 **返回值：**
 
@@ -103,7 +101,7 @@ function getPermissionUsedRecordToggleStatus(subProfileId: int): Promise<boolean
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { privacyManager } from '@kit.AbilityKit';

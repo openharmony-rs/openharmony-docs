@@ -1,5 +1,11 @@
 # getUkeyPinAuthState
 
+## 导入模块
+
+```TypeScript
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## getUkeyPinAuthState
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getUkeyPinAuthState(resourceId: string, params?: Array<HuksExternalCryp
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-huksExternalCrypto-function getUkeyPinAuthState(resourceId: string, params?: Array<HuksExternalCryptoParam>): Promise<HuksExternalPinAuthState>--><!--Device-huksExternalCrypto-function getUkeyPinAuthState(resourceId: string, params?: Array<HuksExternalCryptoParam>): Promise<HuksExternalPinAuthState>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
@@ -22,8 +24,8 @@ function getUkeyPinAuthState(resourceId: string, params?: Array<HuksExternalCryp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resourceId | string | 是 | 资源ID，可通过 [导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog) 获取，其结果中附带资源ID。 |
-| params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | 否 | 操作的属性。非系统应用传入 [HUKS_EXT_CRYPTO_TAG_UID](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md#huksexternalcryptotagtype)是非法参数。 |
+| resourceId | string | 是 | 资源ID，可通过 [导出证书的接口](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md) 获取，其结果中附带资源ID。 |
+| params | Array&lt;[HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt; | 否 | 操作的属性。非系统应用传入 [HUKS_EXT_CRYPTO_TAG_UID](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptotagtype-e.md)是非法参数。 |
 
 **返回值：**
 
@@ -45,7 +47,7 @@ function getUkeyPinAuthState(resourceId: string, params?: Array<HuksExternalCryp
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist. This may happen because the resource ID has not been opened. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

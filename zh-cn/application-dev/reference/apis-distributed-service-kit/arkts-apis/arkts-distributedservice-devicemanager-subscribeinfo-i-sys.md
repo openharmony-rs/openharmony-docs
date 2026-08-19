@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-deviceManager-interface SubscribeInfo--><!--Device-deviceManager-interface SubscribeInfo-End-->
@@ -13,6 +11,12 @@
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## capability
 
@@ -25,8 +29,6 @@ capability: SubscribeCap
 **类型：** [SubscribeCap](arkts-distributedservice-devicemanager-subscribecap-e-sys.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -48,8 +50,6 @@ freq: ExchangeFreq
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-SubscribeInfo-freq: ExchangeFreq--><!--Device-SubscribeInfo-freq: ExchangeFreq-End-->
@@ -69,8 +69,6 @@ isSameAccount: boolean
 **类型：** boolean
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -92,8 +90,6 @@ isWakeRemote: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-SubscribeInfo-isWakeRemote: boolean--><!--Device-SubscribeInfo-isWakeRemote: boolean-End-->
@@ -113,8 +109,6 @@ medium: ExchangeMedium
 **类型：** [ExchangeMedium](arkts-distributedservice-devicemanager-exchangemedium-e-sys.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -136,8 +130,6 @@ mode: DiscoverMode
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-SubscribeInfo-mode: DiscoverMode--><!--Device-SubscribeInfo-mode: DiscoverMode-End-->
@@ -157,8 +149,6 @@ subscribeId: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 

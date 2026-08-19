@@ -1,5 +1,11 @@
 # copy
 
+## 导入模块
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+```
+
 ## copy
 
 ```TypeScript
@@ -9,8 +15,6 @@ function copy(): Matrix4Transit
 Matrix的拷贝函数，可以拷贝一份当前的矩阵对象。 > **说明：**
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -26,7 +30,7 @@ Matrix的拷贝函数，可以拷贝一份当前的矩阵对象。 > **说明：
 | --- | --- |
 | Matrix4Transit | 当前矩阵的拷贝对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ets

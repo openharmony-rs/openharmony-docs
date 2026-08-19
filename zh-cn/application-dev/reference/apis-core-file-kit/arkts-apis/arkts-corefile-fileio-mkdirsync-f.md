@@ -1,5 +1,10 @@
 # mkdirSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## mkdirSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function mkdirSync(path: string, mode?: number): void
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md#mkdirsync)
+**替代接口：** [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md)
 
 <!--Device-unnamed-declare function mkdirSync(path: string, mode?: number): void--><!--Device-unnamed-declare function mkdirSync(path: string, mode?: number): void-End-->
 

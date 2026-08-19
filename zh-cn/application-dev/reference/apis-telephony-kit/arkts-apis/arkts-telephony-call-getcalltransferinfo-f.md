@@ -1,5 +1,11 @@
 # getCallTransferInfo
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## getCallTransferInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getCallTransferInfo(type: CallTransferType, number: string): Promise<Ca
 获取电话号码的呼叫转移状态。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_CALL_TRANSFER_INFO
 
@@ -45,7 +47,7 @@ function getCallTransferInfo(type: CallTransferType, number: string): Promise<Ca
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { call } from '@kit.TelephonyKit';

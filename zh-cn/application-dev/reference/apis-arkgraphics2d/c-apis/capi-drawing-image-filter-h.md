@@ -52,7 +52,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sig
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；<br> 可能的原因是可用内存不足。 |
+| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足。 |
 
 ### OH_Drawing_ImageFilterCreateBlurWithCrop()
 
@@ -80,7 +80,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, f
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；<br> 可能的原因是可用内存不足。 |
+| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足。 |
 
 ### OH_Drawing_ImageFilterCreateFromColorFilter()
 
@@ -105,7 +105,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_C
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；<br> 可能的原因是可用内存不足，或者是colorFilter为NULL。 |
+| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足，或者是colorFilter为NULL。 |
 
 ### OH_Drawing_ImageFilterCreateOffset()
 
@@ -131,7 +131,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；<br> 可能的原因是可用内存不足。 |
+| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足。 |
 
 ### OH_Drawing_ImageFilterCreateFromShaderEffect()
 
@@ -155,7 +155,7 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；<br> 可能的原因是可用内存不足，或者是shaderEffect为NULL。 |
+| [OH_Drawing_ImageFilter*](capi-drawing-oh-drawing-imagefilter.md) | 函数会返回一个指针，指针指向创建的图像滤波器对象[OH_Drawing_ImageFilter](capi-drawing-oh-drawing-imagefilter.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足，或者是shaderEffect为NULL。 |
 
 ### OH_Drawing_ImageFilterDestroy()
 

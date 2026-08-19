@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-enum ScaleMode--><!--Device-image-enum ScaleMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ FIT_TARGET_SIZE = 0
 图像适合目标尺寸的效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -43,10 +35,6 @@ CENTER_CROP = 1
 缩放图像以填充目标图像区域并居中裁剪区域外的效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -55,7 +55,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* pl
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：<br>                                                         1. 参数playbackState为nullptr。<br>                                                         2. 参数state为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数state为nullptr。 |
 
 ### OH_AVSession_GetPlaybackPosition()
 
@@ -80,7 +80,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：<br>                                                         1. 参数playbackState为nullptr。<br>                                                         2. 参数position为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数position为nullptr。 |
 
 ### OH_AVSession_GetPlaybackSpeed()
 
@@ -105,7 +105,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。<br>         AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：<br>                                                         1. 参数playbackState为nullptr。<br>                                                         2. 参数speed为nullptr。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数speed为nullptr。 |
 
 ### OH_AVSession_GetPlaybackVolume()
 

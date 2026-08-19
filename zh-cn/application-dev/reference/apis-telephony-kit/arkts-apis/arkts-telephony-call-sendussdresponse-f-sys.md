@@ -1,5 +1,11 @@
 # sendUssdResponse（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## sendUssdResponse
 
 ```TypeScript
@@ -9,10 +15,6 @@ function sendUssdResponse(slotId: int, content: string): void
 用于向运营商发送USSD业务（Unstructured Supplementary Service Data，非结构化补充数据业务）的响应消息。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -39,7 +41,7 @@ function sendUssdResponse(slotId: int, content: string): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

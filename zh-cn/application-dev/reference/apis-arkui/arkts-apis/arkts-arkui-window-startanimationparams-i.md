@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-interface StartAnimationParams--><!--Device-window-interface StartAnimationParams-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## type
 
@@ -23,10 +27,6 @@ The type of window animation
 **类型：** [AnimationType](arkts-arkui-window-animationtype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StartAnimationParams-type: AnimationType--><!--Device-StartAnimationParams-type: AnimationType-End-->
 

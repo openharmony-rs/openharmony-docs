@@ -1,10 +1,8 @@
 # HuksErrorCode
 
-表示错误码的枚举。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksExceptionErrCode&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-huksexceptionerrcode-e.md#huksexceptionerrcode)替代。
+表示错误码的枚举。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksExceptionErrCode&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-huksexceptionerrcode-e.md)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -24,8 +22,6 @@ HUKS_SUCCESS = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_SUCCESS = 0--><!--Device-HuksErrorCode-HUKS_SUCCESS = 0-End-->
@@ -41,8 +37,6 @@ HUKS_FAILURE = -1
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -60,8 +54,6 @@ HUKS_ERROR_BAD_STATE = -2
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_BAD_STATE = -2--><!--Device-HuksErrorCode-HUKS_ERROR_BAD_STATE = -2-End-->
@@ -77,8 +69,6 @@ HUKS_ERROR_INVALID_ARGUMENT = -3
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -96,8 +86,6 @@ HUKS_ERROR_NOT_SUPPORTED = -4
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_NOT_SUPPORTED = -4--><!--Device-HuksErrorCode-HUKS_ERROR_NOT_SUPPORTED = -4-End-->
@@ -113,8 +101,6 @@ HUKS_ERROR_NO_PERMISSION = -5
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -132,8 +118,6 @@ HUKS_ERROR_INSUFFICIENT_DATA = -6
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_DATA = -6--><!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_DATA = -6-End-->
@@ -149,8 +133,6 @@ HUKS_ERROR_BUFFER_TOO_SMALL = -7
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -168,8 +150,6 @@ HUKS_ERROR_INSUFFICIENT_MEMORY = -8
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_MEMORY = -8--><!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_MEMORY = -8-End-->
@@ -185,8 +165,6 @@ HUKS_ERROR_COMMUNICATION_FAILURE = -9
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -204,8 +182,6 @@ HUKS_ERROR_STORAGE_FAILURE = -10
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_STORAGE_FAILURE = -10--><!--Device-HuksErrorCode-HUKS_ERROR_STORAGE_FAILURE = -10-End-->
@@ -221,8 +197,6 @@ HUKS_ERROR_HARDWARE_FAILURE = -11
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -240,8 +214,6 @@ HUKS_ERROR_ALREADY_EXISTS = -12
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_ALREADY_EXISTS = -12--><!--Device-HuksErrorCode-HUKS_ERROR_ALREADY_EXISTS = -12-End-->
@@ -257,8 +229,6 @@ HUKS_ERROR_NOT_EXIST = -13
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -276,8 +246,6 @@ HUKS_ERROR_NULL_POINTER = -14
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_NULL_POINTER = -14--><!--Device-HuksErrorCode-HUKS_ERROR_NULL_POINTER = -14-End-->
@@ -293,8 +261,6 @@ HUKS_ERROR_FILE_SIZE_FAIL = -15
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -312,8 +278,6 @@ HUKS_ERROR_READ_FILE_FAIL = -16
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_READ_FILE_FAIL = -16--><!--Device-HuksErrorCode-HUKS_ERROR_READ_FILE_FAIL = -16-End-->
@@ -329,8 +293,6 @@ HUKS_ERROR_INVALID_PUBLIC_KEY = -17
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -348,8 +310,6 @@ HUKS_ERROR_INVALID_PRIVATE_KEY = -18
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PRIVATE_KEY = -18--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PRIVATE_KEY = -18-End-->
@@ -365,8 +325,6 @@ HUKS_ERROR_INVALID_KEY_INFO = -19
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -384,8 +342,6 @@ HUKS_ERROR_HASH_NOT_EQUAL = -20
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_HASH_NOT_EQUAL = -20--><!--Device-HuksErrorCode-HUKS_ERROR_HASH_NOT_EQUAL = -20-End-->
@@ -401,8 +357,6 @@ HUKS_ERROR_MALLOC_FAIL = -21
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -420,8 +374,6 @@ HUKS_ERROR_WRITE_FILE_FAIL = -22
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_WRITE_FILE_FAIL = -22--><!--Device-HuksErrorCode-HUKS_ERROR_WRITE_FILE_FAIL = -22-End-->
@@ -437,8 +389,6 @@ HUKS_ERROR_REMOVE_FILE_FAIL = -23
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -456,8 +406,6 @@ HUKS_ERROR_OPEN_FILE_FAIL = -24
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_OPEN_FILE_FAIL = -24--><!--Device-HuksErrorCode-HUKS_ERROR_OPEN_FILE_FAIL = -24-End-->
@@ -473,8 +421,6 @@ HUKS_ERROR_CLOSE_FILE_FAIL = -25
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -492,8 +438,6 @@ HUKS_ERROR_MAKE_DIR_FAIL = -26
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_MAKE_DIR_FAIL = -26--><!--Device-HuksErrorCode-HUKS_ERROR_MAKE_DIR_FAIL = -26-End-->
@@ -509,8 +453,6 @@ HUKS_ERROR_INVALID_KEY_FILE = -27
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -528,8 +470,6 @@ HUKS_ERROR_IPC_MSG_FAIL = -28
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_IPC_MSG_FAIL = -28--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_MSG_FAIL = -28-End-->
@@ -545,8 +485,6 @@ HUKS_ERROR_REQUEST_OVERFLOWS = -29
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -564,8 +502,6 @@ HUKS_ERROR_PARAM_NOT_EXIST = -30
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_PARAM_NOT_EXIST = -30--><!--Device-HuksErrorCode-HUKS_ERROR_PARAM_NOT_EXIST = -30-End-->
@@ -581,8 +517,6 @@ HUKS_ERROR_CRYPTO_ENGINE_ERROR = -31
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -600,8 +534,6 @@ HUKS_ERROR_COMMUNICATION_TIMEOUT = -32
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_TIMEOUT = -32--><!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_TIMEOUT = -32-End-->
@@ -617,8 +549,6 @@ HUKS_ERROR_IPC_INIT_FAIL = -33
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -636,8 +566,6 @@ HUKS_ERROR_IPC_DLOPEN_FAIL = -34
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_IPC_DLOPEN_FAIL = -34--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_DLOPEN_FAIL = -34-End-->
@@ -653,8 +581,6 @@ HUKS_ERROR_EFUSE_READ_FAIL = -35
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -672,8 +598,6 @@ HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36--><!--Device-HuksErrorCode-HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36-End-->
@@ -689,8 +613,6 @@ HUKS_ERROR_UPDATE_ROOT_KEY_MATERIAL_FAIL = -37
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -708,8 +630,6 @@ HUKS_ERROR_VERIFICATION_FAILED = -38
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_VERIFICATION_FAILED = -38--><!--Device-HuksErrorCode-HUKS_ERROR_VERIFICATION_FAILED = -38-End-->
@@ -725,8 +645,6 @@ HUKS_ERROR_CHECK_GET_ALG_FAIL = -100
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -744,8 +662,6 @@ HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101-End-->
@@ -761,8 +677,6 @@ HUKS_ERROR_CHECK_GET_PADDING_FAIL = -102
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -780,8 +694,6 @@ HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103-End-->
@@ -797,8 +709,6 @@ HUKS_ERROR_CHECK_GET_DIGEST_FAIL = -104
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -816,8 +726,6 @@ HUKS_ERROR_CHECK_GET_MODE_FAIL = -105
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_MODE_FAIL = -105--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_MODE_FAIL = -105-End-->
@@ -833,8 +741,6 @@ HUKS_ERROR_CHECK_GET_NONCE_FAIL = -106
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -852,8 +758,6 @@ HUKS_ERROR_CHECK_GET_AAD_FAIL = -107
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AAD_FAIL = -107--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AAD_FAIL = -107-End-->
@@ -869,8 +773,6 @@ HUKS_ERROR_CHECK_GET_IV_FAIL = -108
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -888,8 +790,6 @@ HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109-End-->
@@ -905,8 +805,6 @@ HUKS_ERROR_CHECK_GET_SALT_FAIL = -110
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -924,8 +822,6 @@ HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111-End-->
@@ -941,8 +837,6 @@ HUKS_ERROR_INVALID_ALGORITHM = -112
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -960,8 +854,6 @@ HUKS_ERROR_INVALID_KEY_SIZE = -113
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_SIZE = -113--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_SIZE = -113-End-->
@@ -977,8 +869,6 @@ HUKS_ERROR_INVALID_PADDING = -114
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -996,8 +886,6 @@ HUKS_ERROR_INVALID_PURPOSE = -115
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PURPOSE = -115--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PURPOSE = -115-End-->
@@ -1013,8 +901,6 @@ HUKS_ERROR_INVALID_MODE = -116
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1032,8 +918,6 @@ HUKS_ERROR_INVALID_DIGEST = -117
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_DIGEST = -117--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_DIGEST = -117-End-->
@@ -1049,8 +933,6 @@ HUKS_ERROR_INVALID_SIGNATURE_SIZE = -118
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1068,8 +950,6 @@ HUKS_ERROR_INVALID_IV = -119
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_IV = -119--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_IV = -119-End-->
@@ -1085,8 +965,6 @@ HUKS_ERROR_INVALID_AAD = -120
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1104,8 +982,6 @@ HUKS_ERROR_INVALID_NONCE = -121
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_NONCE = -121--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_NONCE = -121-End-->
@@ -1121,8 +997,6 @@ HUKS_ERROR_INVALID_AE_TAG = -122
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1140,8 +1014,6 @@ HUKS_ERROR_INVALID_SALT = -123
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SALT = -123--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SALT = -123-End-->
@@ -1157,8 +1029,6 @@ HUKS_ERROR_INVALID_ITERATION = -124
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1176,8 +1046,6 @@ HUKS_ERROR_INVALID_OPERATION = -125
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INVALID_OPERATION = -125--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_OPERATION = -125-End-->
@@ -1194,8 +1062,6 @@ HUKS_ERROR_INTERNAL_ERROR = -999
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksErrorCode-HUKS_ERROR_INTERNAL_ERROR = -999--><!--Device-HuksErrorCode-HUKS_ERROR_INTERNAL_ERROR = -999-End-->
@@ -1211,8 +1077,6 @@ HUKS_ERROR_UNKNOWN_ERROR = -1000
 原为预留字段。 **说明：** 从API version 9开始废弃，无替代接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

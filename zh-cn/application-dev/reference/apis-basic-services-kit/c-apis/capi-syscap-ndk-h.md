@@ -2,13 +2,15 @@
 
 ## 概述
 
-Declares APIs for acquiring the set of system capabilities .
+查询单个系统能力（SystemCapability）是否被支持的API。开发者可在运行时查询设备是否支持特定系统能力，实现差异化功能适配。典型使用场景包括：针对不同设备型号适配功能、特性降级开关控制、条件功能分支判断等。该API具有轻量级、高效的特点，能帮助开发者避免因调用设备不支持的API而导致的崩溃问题，提高应用在不同设备上的兼容性和稳定性。
+
+**引用文件：** <syscap_ndk.h>
 
 **库：** NA
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 10
+**起始版本：** 8
 
 **相关模块：** [SyscapNdk](capi-syscapndk.md)
 
@@ -18,7 +20,7 @@ Declares APIs for acquiring the set of system capabilities .
 
 | 名称 | 描述 |
 | -- | -- |
-| [bool canIUse(const char *cap)](#caniuse) | 查询单个系统能力是否被支持的API。 |
+| [bool canIUse(const char *cap)](#caniuse) | 返回指定的系统能力是否被支持。返回true表示支持，返回false表示不支持。cap参数为系统能力名称，格式为"SystemCapability.xxx.xxx"。<br>系统能力（SystemCapability，简称 SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应一个或多个API。开发者可根据系统能力来判断是否可以使用对应的API。 |
 
 ## 函数说明
 
@@ -30,7 +32,7 @@ bool canIUse(const char *cap)
 
 **描述**
 
-查询单个系统能力是否被支持的API。
+返回指定的系统能力是否被支持。返回true表示支持，返回false表示不支持。cap参数为系统能力名称，格式为"SystemCapability.xxx.xxx"。<br>系统能力（SystemCapability，简称 SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应一个或多个API。开发者可根据系统能力来判断是否可以使用对应的API。
 
 **起始版本：** 8
 
@@ -38,12 +40,12 @@ bool canIUse(const char *cap)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *cap | SystemCapability whether supported |
+| const char *cap | 待查询的系统能力名称。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 查询指定的系统能力是否被支持。<br>     <br>系统能力（SystemCapability，简称SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应一个或多个API。开发者可根据系统能力来判断是否可以使用某接口。 |
+| bool | 查询指定的系统能力是否被支持。      <br>系统能力（SystemCapability，简称SysCap），指操作系统中每一个相对独立的特性。不同的设备对应不同的系统能力集，每个系统能力对应一个或多个API。开发者可根据系统能力来判断是否可以使用某接口。 |
 
 

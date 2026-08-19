@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum SceneMode--><!--Device-camera-enum SceneMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -21,10 +17,6 @@ PORTRAIT_PHOTO = 3
 Portrait photo mode. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneMode-PORTRAIT_PHOTO = 3--><!--Device-SceneMode-PORTRAIT_PHOTO = 3-End-->
 
@@ -42,10 +34,6 @@ Night photo mode. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneMode-NIGHT_PHOTO = 4--><!--Device-SceneMode-NIGHT_PHOTO = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -61,10 +49,6 @@ PROFESSIONAL_PHOTO = 5
 Professional photo mode. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneMode-PROFESSIONAL_PHOTO = 5--><!--Device-SceneMode-PROFESSIONAL_PHOTO = 5-End-->
 
@@ -82,10 +66,6 @@ Professional video mode. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneMode-PROFESSIONAL_VIDEO = 6--><!--Device-SceneMode-PROFESSIONAL_VIDEO = 6-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -101,10 +81,6 @@ SLOW_MOTION_VIDEO = 7
 Slow-motion video mode. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneMode-SLOW_MOTION_VIDEO = 7--><!--Device-SceneMode-SLOW_MOTION_VIDEO = 7-End-->
 
@@ -122,10 +98,6 @@ Macro photo mode. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneMode-MACRO_PHOTO = 8--><!--Device-SceneMode-MACRO_PHOTO = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -141,10 +113,6 @@ MACRO_VIDEO = 9
 Macro video mode. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneMode-MACRO_VIDEO = 9--><!--Device-SceneMode-MACRO_VIDEO = 9-End-->
 
@@ -162,10 +130,6 @@ Light painting mode. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneMode-LIGHT_PAINTING_PHOTO = 10--><!--Device-SceneMode-LIGHT_PAINTING_PHOTO = 10-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -181,10 +145,6 @@ HIGH_RESOLUTION_PHOTO = 11
 High-resolution photo mode. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneMode-HIGH_RESOLUTION_PHOTO = 11--><!--Device-SceneMode-HIGH_RESOLUTION_PHOTO = 11-End-->
 
@@ -202,10 +162,6 @@ Quick snap mode. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneMode-QUICK_SHOT_PHOTO = 13--><!--Device-SceneMode-QUICK_SHOT_PHOTO = 13-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -221,10 +177,6 @@ APERTURE_VIDEO = 14
 Large aperture video mode. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneMode-APERTURE_VIDEO = 14--><!--Device-SceneMode-APERTURE_VIDEO = 14-End-->
 
@@ -242,10 +194,6 @@ Panoramic photo mode. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneMode-PANORAMA_PHOTO = 15--><!--Device-SceneMode-PANORAMA_PHOTO = 15-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -262,10 +210,6 @@ Time-lapse photo mode. This is a system API.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SceneMode-TIME_LAPSE_PHOTO = 16--><!--Device-SceneMode-TIME_LAPSE_PHOTO = 16-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -281,10 +225,6 @@ FLUORESCENCE_PHOTO = 17
 Fluorescence photo mode. This is a system API.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SceneMode-FLUORESCENCE_PHOTO = 17--><!--Device-SceneMode-FLUORESCENCE_PHOTO = 17-End-->
 

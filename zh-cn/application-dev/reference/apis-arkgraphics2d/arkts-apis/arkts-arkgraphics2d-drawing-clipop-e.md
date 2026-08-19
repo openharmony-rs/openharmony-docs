@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum ClipOp--><!--Device-drawing-enum ClipOp-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -22,10 +18,6 @@ DIFFERENCE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ClipOp-DIFFERENCE = 0--><!--Device-ClipOp-DIFFERENCE = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -39,10 +31,6 @@ INTERSECT = 1
 将指定区域保留（取交集）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ClipOp-INTERSECT = 1--><!--Device-ClipOp-INTERSECT = 1-End-->
 

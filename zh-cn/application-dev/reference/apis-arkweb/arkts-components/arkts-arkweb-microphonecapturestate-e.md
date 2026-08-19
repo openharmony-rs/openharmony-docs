@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum MicrophoneCaptureState--><!--Device-unnamed-declare enum MicrophoneCaptureState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ NONE = 0
 麦克风未工作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MicrophoneCaptureState-NONE = 0--><!--Device-MicrophoneCaptureState-NONE = 0-End-->
 
@@ -40,10 +32,6 @@ PAUSED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MicrophoneCaptureState-PAUSED = 1--><!--Device-MicrophoneCaptureState-PAUSED = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -57,10 +45,6 @@ ACTIVE = 2
 麦克风捕获中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MicrophoneCaptureState-ACTIVE = 2--><!--Device-MicrophoneCaptureState-ACTIVE = 2-End-->
 

@@ -4,15 +4,17 @@ USB设备接口描述符。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-deviceManager-interface USBInterfaceDesc--><!--Device-deviceManager-interface USBInterfaceDesc-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
 
 ## bClass
 
@@ -25,10 +27,6 @@ bClass: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-USBInterfaceDesc-bClass: int--><!--Device-USBInterfaceDesc-bClass: int-End-->
 
@@ -48,10 +46,6 @@ bInterfaceNumber: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-USBInterfaceDesc-bInterfaceNumber: int--><!--Device-USBInterfaceDesc-bInterfaceNumber: int-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
@@ -70,10 +64,6 @@ bProtocol: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-USBInterfaceDesc-bProtocol: int--><!--Device-USBInterfaceDesc-bProtocol: int-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
@@ -91,10 +81,6 @@ bSubClass: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-USBInterfaceDesc-bSubClass: int--><!--Device-USBInterfaceDesc-bSubClass: int-End-->
 

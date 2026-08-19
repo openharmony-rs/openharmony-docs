@@ -4,8 +4,6 @@ LauncherAbilityInfo信息，通过接口 innerBundleManager.getLauncherAbilityIn
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [LauncherAbilityInfo](#launcherabilityinfo系统接口)
@@ -27,8 +25,6 @@ launcher ability的应用程序的配置信息。
 **类型：** [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -52,8 +48,6 @@ launcher ability的ElementName信息。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** elementName
@@ -75,8 +69,6 @@ launcher ability的图标的资源ID值。
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -100,8 +92,6 @@ launcher ability的安装时间戳，单位毫秒。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** installTime
@@ -124,8 +114,6 @@ launcher ability的标签的资源ID值。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** labelId
@@ -147,8 +135,6 @@ launcher ability的用户ID。
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-window-enum AcrossDisplayPresentation--><!--Device-window-enum AcrossDisplayPresentation-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ FOLLOW_ACROSS_DISPLAY_SETTING = 0
 表示跟随当前的最大化瀑布流模式切换的策略。 如果未设置跨屏显示，则应用默认的系统策略： 在设备对折状态下，窗口进入单屏最大化 （即最大化时，窗口只显示在屏幕的上半部分或下半部分）。 在展开状态下，窗口最大化，并在折回为对折时保持瀑布模式。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ ENTER_ACROSS_DISPLAY_MODE = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AcrossDisplayPresentation-ENTER_ACROSS_DISPLAY_MODE = 1--><!--Device-AcrossDisplayPresentation-ENTER_ACROSS_DISPLAY_MODE = 1-End-->
@@ -61,10 +49,6 @@ EXIT_ACROSS_DISPLAY_MODE = 2
 在设备对折状态下，窗口退出瀑布模式，进入单屏最大化 （即最大化时，窗口仅显示在屏幕的上半部分或下半部分）。 在展开状态下，窗口最大化，重新进入半折后将退出瀑布模式。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

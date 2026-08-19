@@ -2,13 +2,11 @@
 
 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
 
-**继承/实现关系：** PanGesture extends [Gesture](arkts-arkui-gesture-gesture-c.md#gesture)
+**继承/实现关系：** PanGesture extends [Gesture](arkts-arkui-gesture-gesture-c.md)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class PanGesture--><!--Device-unnamed-export declare class PanGesture-End-->
 
@@ -20,13 +18,11 @@
 static $_instantiate(factory: () => PanGesture, value?: PanGestureHandlerOptions | PanGestureOptions): PanGesture
 ```
 
-创建滑动手势对象。继承自[Gesture](arkts-arkui-gesture-gesture-c.md#gesture)。
+创建滑动手势对象。继承自[Gesture](arkts-arkui-gesture-gesture-c.md)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -57,9 +53,7 @@ onActionCancel(event: Callback<GestureEvent>): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -89,9 +83,7 @@ onActionEnd(event: Callback<GestureEvent>): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -121,9 +113,7 @@ onActionStart(event: Callback<GestureEvent>): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -153,9 +143,7 @@ onActionUpdate(event: Callback<GestureEvent>): this
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

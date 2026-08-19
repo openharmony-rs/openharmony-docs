@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-vibrator-interface ContinuousParam--><!--Device-vibrator-interface ContinuousParam-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
+
+## 导入模块
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+```
 
 ## frequency
 
@@ -23,10 +25,6 @@ frequency?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContinuousParam-frequency?: int--><!--Device-ContinuousParam-frequency?: int-End-->
 
@@ -44,10 +42,6 @@ index?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContinuousParam-index?: int--><!--Device-ContinuousParam-index?: int-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -64,10 +58,6 @@ intensity?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContinuousParam-intensity?: int--><!--Device-ContinuousParam-intensity?: int-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -83,10 +73,6 @@ points?: VibratorCurvePoint[]
 **类型：** [VibratorCurvePoint](arkts-sensorservice-vibrator-vibratorcurvepoint-i.md)[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContinuousParam-points?: VibratorCurvePoint[]--><!--Device-ContinuousParam-points?: VibratorCurvePoint[]-End-->
 

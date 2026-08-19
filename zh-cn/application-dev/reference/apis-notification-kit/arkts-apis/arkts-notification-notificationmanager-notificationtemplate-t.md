@@ -8,10 +8,6 @@ export type NotificationTemplate = _NotificationTemplate
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export type NotificationTemplate = _NotificationTemplate--><!--Device-notificationManager-export type NotificationTemplate = _NotificationTemplate-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

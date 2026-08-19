@@ -4,10 +4,6 @@ ChipV2AccessibilitySelectedType是ChipV2可指定的选中态类型，用于控�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum ChipV2AccessibilitySelectedType--><!--Device-unnamed-export declare enum ChipV2AccessibilitySelectedType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ CLICKED = 0
 单击型。组件不向无障碍辅助服务报告任何选中状态，仅作为可单击组件使用。适用于执行某个操作但不保持状态的场景，如普通按钮。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ CHECKED = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -65,10 +53,6 @@ SELECTED = 2
 单选型。组件通过accessibilitySelected属性向无障碍辅助服务报告选中状态。适用于表示当前选中项的场景，如导航栏标签、单选列表 项等。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

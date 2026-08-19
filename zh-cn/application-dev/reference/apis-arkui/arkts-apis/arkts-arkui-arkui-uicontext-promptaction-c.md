@@ -4,13 +4,18 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export class PromptAction--><!--Device-unnamed-export class PromptAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
+import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
+import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+```
 
 ## closeCustomDialog
 
@@ -21,10 +26,6 @@ closeCustomDialog<T extends Object>(dialogContent: ComponentContent<T>): Promise
 关闭已弹出的dialogContent对应的自定义弹窗，使用Promise异步回调。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -64,10 +65,6 @@ closeCustomDialog(dialogId: number): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -98,10 +95,6 @@ closeMenu<T extends Object>(content: ComponentContent<T>): Promise<void>
 关闭content对应的Menu弹窗。使用Promise异步回调。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -141,10 +134,6 @@ closePopup<T extends Object>(content: ComponentContent<T>): Promise<void>
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -183,10 +172,6 @@ closeToast(toastId: number): void
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -219,10 +204,6 @@ getBottomOrder(): LevelOrder
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -246,10 +227,6 @@ getTopOrder(): LevelOrder
 返回最顶层显示的弹窗的顺序。 获取最顶层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -275,10 +252,6 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -292,7 +265,7 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | dialogContent | ComponentContent&lt;T&gt; | 是 | 自定义弹窗中显示的组件内容。 |
-| options | promptAction.BaseDialogOptions | 否 | 弹窗样式。<br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions) 与[showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
+| options | promptAction.BaseDialogOptions | 否 | 弹窗样式。<br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md) 与[showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
 
 **返回值：**
 
@@ -318,10 +291,6 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -334,7 +303,7 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | promptAction.CustomDialogOptions | 是 | 自定义弹窗的内容。<br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)与 [showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
+| options | promptAction.CustomDialogOptions | 是 | 自定义弹窗的内容。<br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)与 [showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
 
 **返回值：**
 
@@ -360,10 +329,6 @@ openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -378,7 +343,7 @@ openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent
 | --- | --- | --- | --- |
 | dialogContent | ComponentContent&lt;T&gt; | 是 | 自定义弹窗中显示的组件内容。 |
 | controller | promptAction.DialogController | 是 | 自定义弹窗的控制器。 |
-| options | promptAction.BaseDialogOptions | 否 | 自定义弹窗的样式。 <br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)与 [showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
+| options | promptAction.BaseDialogOptions | 否 | 自定义弹窗的样式。 <br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)与 [showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。 |
 
 **返回值：**
 
@@ -400,13 +365,9 @@ openCustomDialogWithController<T extends Object>(dialogContent: ComponentContent
 openMenu<T extends Object>(content: ComponentContent<T>, target: TargetInfo, options?: MenuOptions): Promise<void>
 ```
 
-创建并弹出以content作为内容的Menu弹窗。使用Promise异步回调。 > **说明：** > > - 使用该接口时，若未传入有效的target，则无法弹出menu弹窗。 > > - 由于[updateMenu](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#updatemenu)和[closeMenu](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#closemenu)依赖content去更新或者关闭指定的menu弹窗，开发者需自行维护传入的content。 > > - 如果在wrapBuilder中包含其他组件（例如：Popup、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)组件），则 [ComponentContent](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#componentcontent)应采用带有四个参数的构造函数constructor， 其中options参数应传递{ nestingBuilderSupported: true }。 > > - 子窗弹窗里不能再弹出子窗弹窗，例如[openMenu](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#openmenu)设置了showInSubWindow为true时，则不能再弹出另一个设置了 showInSubWindow为true的弹窗。
+创建并弹出以content作为内容的Menu弹窗。使用Promise异步回调。 > **说明：** > > - 使用该接口时，若未传入有效的target，则无法弹出menu弹窗。 > > - 由于[updateMenu](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#updatemenu)和[closeMenu](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#closemenu)依赖content去更新或者关闭指定的menu弹窗，开发者需自行维护传入的content。 > > - 如果在wrapBuilder中包含其他组件（例如：Popup、 [Chip](arkts-arkui-arkui-advanced-chip-chip-f.md)组件），则 [ComponentContent](arkts-arkui-componentcontent-c.md)应采用带有四个参数的构造函数constructor， 其中options参数应传递{ nestingBuilderSupported: true }。 > > - 子窗弹窗里不能再弹出子窗弹窗，例如[openMenu](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#openmenu)设置了showInSubWindow为true时，则不能再弹出另一个设置了 showInSubWindow为true的弹窗。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -446,13 +407,9 @@ openMenu<T extends Object>(content: ComponentContent<T>, target: TargetInfo, opt
 openPopup<T extends Object>(content: ComponentContent<T>, target: TargetInfo, options?: PopupCommonOptions): Promise<void>
 ```
 
-创建并弹出以content作为内容的Popup弹窗，使用Promise异步回调。 > **说明：** > > - 使用该接口时，若未传入有效的target，则无法弹出popup弹窗。 > > - 由于[updatePopup](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#updatepopup)和[closePopup](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#closepopup)依赖content去更新或者关闭指定的popup弹窗，开发者需自行维护传入的content。 > > - 如果在wrapBuilder中包含其他组件（例如：Popup、[Chip](arkts-arkui-arkui-advanced-chip-chip-f.md#chip)组件），则[ComponentContent](../../apis-na/arkts-apis/arkts-na-componentcontent-c.md#componentcontent)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
+创建并弹出以content作为内容的Popup弹窗，使用Promise异步回调。 > **说明：** > > - 使用该接口时，若未传入有效的target，则无法弹出popup弹窗。 > > - 由于[updatePopup](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#updatepopup)和[closePopup](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-promptaction-c.md#closepopup)依赖content去更新或者关闭指定的popup弹窗，开发者需自行维护传入的content。 > > - 如果在wrapBuilder中包含其他组件（例如：Popup、[Chip](arkts-arkui-arkui-advanced-chip-chip-f.md)组件），则[ComponentContent](arkts-arkui-componentcontent-c.md)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -496,10 +453,6 @@ openToast(options: promptAction.ShowToastOptions): Promise<number>
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -538,10 +491,6 @@ presentCustomDialog(builder: CustomBuilder | CustomBuilderWithId, controller?: p
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -556,7 +505,7 @@ presentCustomDialog(builder: CustomBuilder | CustomBuilderWithId, controller?: p
 | --- | --- | --- | --- |
 | builder | CustomBuilder \| [CustomBuilderWithId](../../apis-na/arkts-apis/arkts-na-custombuilderwithid-t.md) | 是 | 自定义弹窗的内容。 |
 | controller | promptAction.DialogController | 否 | 自定义弹窗的控制器。<br>**起始版本：** 26.0.0 |
-| options | promptAction.DialogOptions | 否 | 自定义弹窗的样式。<br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)与 [showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。<br>**起始版本：** 26.0.0 |
+| options | promptAction.DialogOptions | 否 | 自定义弹窗的样式。<br> **说明：** 如果BaseDialogOptions中的[isModal](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)与 [showInSubWindow](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)同时设置为true，则只生效showInSubWindow = true， 此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。<br>**起始版本：** 26.0.0 |
 
 **返回值：**
 
@@ -580,8 +529,6 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.A
 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -615,10 +562,6 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -632,7 +575,7 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | promptAction.ActionMenuOptions | 是 | 操作菜单选项。用于配置操作菜单的显示内容和样式，包括title、buttons等属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;promptAction.ActionMenuSuccessResponse&gt; | 是 | 菜单响应结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;promptAction.ActionMenuSuccessResponse&gt; | 是 | 菜单响应结果。 |
 
 **错误码：**
 
@@ -650,10 +593,6 @@ showActionMenu(options: promptAction.ActionMenuOptions): Promise<promptAction.Ac
 创建并显示操作菜单，通过Promise异步回调获取菜单的响应结果。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -692,10 +631,6 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<prom
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -709,7 +644,7 @@ showDialog(options: promptAction.ShowDialogOptions, callback: AsyncCallback<prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | promptAction.ShowDialogOptions | 是 | 页面显示对话框信息描述。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;promptAction.ShowDialogSuccessResponse&gt; | 是 | 回调函数。弹出对话框成功，err为undefined， data为获取到的对话框响应结果，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;promptAction.ShowDialogSuccessResponse&gt; | 是 | 回调函数。弹出对话框成功，err为undefined， data为获取到的对话框响应结果，否则为错误对象。 |
 
 **错误码：**
 
@@ -727,10 +662,6 @@ showDialog(options: promptAction.ShowDialogOptions): Promise<promptAction.ShowDi
 创建并显示对话框，使用Promise异步回调获取对话框的响应结果。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -769,10 +700,6 @@ showToast(options: promptAction.ShowToastOptions): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -803,10 +730,6 @@ updateCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options
 更新已弹出的dialogContent对应的自定义弹窗的样式，使用Promise异步回调。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -847,10 +770,6 @@ updateMenu<T extends Object>(content: ComponentContent<T>, options: MenuOptions,
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -890,10 +809,6 @@ updatePopup<T extends Object>(content: ComponentContent<T>, options: PopupCommon
 更新content对应的Popup弹窗的样式，使用Promise异步回调。 > **说明：** > > 不支持更新showInSubWindow、focusable、onStateChange、onWillDismiss、transition。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

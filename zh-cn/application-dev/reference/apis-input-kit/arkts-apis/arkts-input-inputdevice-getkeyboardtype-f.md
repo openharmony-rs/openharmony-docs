@@ -1,5 +1,12 @@
 # getKeyboardType
 
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
 ## getKeyboardType
 
 ```TypeScript
@@ -10,10 +17,6 @@ function getKeyboardType(deviceId: int, callback: AsyncCallback<KeyboardType>): 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputDevice-function getKeyboardType(deviceId: int, callback: AsyncCallback<KeyboardType>): void--><!--Device-inputDevice-function getKeyboardType(deviceId: int, callback: AsyncCallback<KeyboardType>): void-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -23,7 +26,7 @@ function getKeyboardType(deviceId: int, callback: AsyncCallback<KeyboardType>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | int | 是 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KeyboardType](arkts-input-inputdevice-keyboardtype-e.md)&gt; | 是 | 回调函数。当查询成功，err为undefined，data为输入设备的键盘类型；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KeyboardType](arkts-input-inputdevice-keyboardtype-e.md)&gt; | 是 | 回调函数。当查询成功，err为undefined，data为输入设备的键盘类型；否则为错误对象。 |
 
 **错误码：**
 
@@ -31,7 +34,7 @@ function getKeyboardType(deviceId: int, callback: AsyncCallback<KeyboardType>): 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -111,10 +114,6 @@ function getKeyboardType(deviceId: int): Promise<KeyboardType>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputDevice-function getKeyboardType(deviceId: int): Promise<KeyboardType>--><!--Device-inputDevice-function getKeyboardType(deviceId: int): Promise<KeyboardType>-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -137,7 +136,7 @@ function getKeyboardType(deviceId: int): Promise<KeyboardType>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

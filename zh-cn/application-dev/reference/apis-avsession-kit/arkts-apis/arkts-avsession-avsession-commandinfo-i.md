@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-interface CommandInfo--><!--Device-avSession-interface CommandInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
 
 ## callerBundleName
 
@@ -23,10 +25,6 @@ callerBundleName?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CommandInfo-callerBundleName?: string--><!--Device-CommandInfo-callerBundleName?: string-End-->
 
@@ -44,10 +42,6 @@ callerDeviceId?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CommandInfo-callerDeviceId?: string--><!--Device-CommandInfo-callerDeviceId?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -64,10 +58,6 @@ callerModuleName?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CommandInfo-callerModuleName?: string--><!--Device-CommandInfo-callerModuleName?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -83,10 +73,6 @@ callerType?: CallerType
 **类型：** [CallerType](arkts-avsession-avsession-callertype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CommandInfo-callerType?: CallerType--><!--Device-CommandInfo-callerType?: CallerType-End-->
 

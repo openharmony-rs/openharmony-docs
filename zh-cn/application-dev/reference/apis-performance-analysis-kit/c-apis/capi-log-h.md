@@ -385,7 +385,7 @@ typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsi
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const LogType type | 日志类型，三方应用日志类型为[LOG_APP](capi-log-h.md#logtype)。 |
+| [const LogType](capi-log-h.md#logtype) type | 日志类型，三方应用日志类型为[LOG_APP](capi-log-h.md#logtype)。 |
 | [const LogLevel](capi-log-h.md#loglevel) level | 日志级别，日志级别包括<b>LOG_DEBUG</b>, <b>LOG_INFO</b>, <b>LOG_WARN</b>, <b>LOG_ERROR</b>, and <b>LOG_FATAL</b>。 |
 | const unsigned int domain | 日志业务领域，16进制整数，范围0x0~0xFFFF。 |
 | const char \*tag | 日志标签，这是一个用于标识调用所在的类或者业务的字符串。 |

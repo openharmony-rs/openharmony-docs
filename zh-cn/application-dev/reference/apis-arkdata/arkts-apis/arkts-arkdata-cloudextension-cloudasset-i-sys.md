@@ -6,15 +6,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export interface CloudAsset--><!--Device-cloudExtension-export interface CloudAsset-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudExtension } from '@kit.ArkData';
+```
 
 ## assetId
 
@@ -27,10 +29,6 @@ assetId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudAsset-assetId: string--><!--Device-CloudAsset-assetId: string-End-->
 
@@ -49,10 +47,6 @@ hash: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudAsset-hash: string--><!--Device-CloudAsset-hash: string-End-->
 

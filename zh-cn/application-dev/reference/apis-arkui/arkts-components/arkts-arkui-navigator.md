@@ -14,8 +14,6 @@ Navigator(value?: { target: string; type?: NavigationType })
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 13
 
 **替代接口：** NavPathInfo
@@ -42,8 +40,6 @@ Navigator()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 13
 
 **替代接口：** NavigationAttribute
@@ -56,4 +52,9 @@ Navigator()
 
 ## 汇总
 
-- [NavigationType](arkts-arkui-navigationtype-e.md)
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [NavigationType](arkts-arkui-navigationtype-e.md) | 路由的跳转方式。 |
+

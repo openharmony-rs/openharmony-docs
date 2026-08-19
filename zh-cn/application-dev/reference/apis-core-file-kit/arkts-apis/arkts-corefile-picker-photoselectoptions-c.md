@@ -4,15 +4,19 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
-**替代接口：** [PhotoSelectOptions](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectoptions-c.md#photoselectoptions)
+**替代接口：** [PhotoSelectOptions](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectoptions-c.md)
 
 <!--Device-picker-class PhotoSelectOptions--><!--Device-picker-class PhotoSelectOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
+
+## 导入模块
+
+```TypeScript
+import { picker } from '@kit.CoreFileKit';
+```
 
 ## MIMEType
 
@@ -25,8 +29,6 @@ MIMEType?: PhotoViewMIMETypes
 **类型：** PhotoViewMIMETypes
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 18
 
@@ -49,8 +51,6 @@ maxSelectNumber?: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 18
 

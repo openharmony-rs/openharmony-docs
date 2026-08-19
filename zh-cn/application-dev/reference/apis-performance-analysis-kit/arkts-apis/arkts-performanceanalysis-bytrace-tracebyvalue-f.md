@@ -1,5 +1,10 @@
 # traceByValue
 
+## 导入模块
+
+```TypeScript
+```
+
 ## traceByValue
 
 ```TypeScript
@@ -9,8 +14,6 @@ function traceByValue(name: string, count: number): void
 标记预追踪耗时任务的数值变量，该变量的数值会不断变化。traceByValue可独立使用，用于记录某个数值变量的变化轨迹。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 8
 
@@ -27,7 +30,7 @@ function traceByValue(name: string, count: number): void
 | name | string | 是 | 数值变量的名称。 |
 | count | number | 是 | 数值变量的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let traceCount = 3;

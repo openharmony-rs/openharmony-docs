@@ -1,5 +1,11 @@
 # preloadApplication（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## preloadApplication
 
 ```TypeScript
@@ -9,10 +15,6 @@ function preloadApplication(bundleName: string, userId: int, mode: PreloadMode, 
 预加载应用进程。接口返回成功并不代表预加载成功，具体结果以目标应用进程是否创建成功为准。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PRELOAD_APPLICATION
 
@@ -49,7 +51,7 @@ function preloadApplication(bundleName: string, userId: int, mode: PreloadMode, 
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [16300005](../errorcode-ability.md#16300005-指定的包信息不存在) | The target bundle does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

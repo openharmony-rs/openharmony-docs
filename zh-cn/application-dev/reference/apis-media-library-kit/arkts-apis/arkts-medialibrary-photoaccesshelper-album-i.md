@@ -2,17 +2,19 @@
 
 实体相册。
 
-**继承/实现关系：** Album extends [AbsAlbum](arkts-medialibrary-photoaccesshelper-absalbum-i.md#absalbum)
+**继承/实现关系：** Album extends [AbsAlbum](arkts-medialibrary-photoaccesshelper-absalbum-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-photoAccessHelper-interface Album--><!--Device-photoAccessHelper-interface Album-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## addAssets
 
@@ -23,8 +25,6 @@ addAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 向用户相册中添加图片或视频，需预置相册和文件资源。使用callback异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -41,7 +41,7 @@ addAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | assets | Array&lt;PhotoAsset&gt; | 是 | 待添加到相册中的图片或视频数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当添加图片或视频成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当添加图片或视频成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -61,8 +61,6 @@ addAssets(assets: Array<PhotoAsset>): Promise<void>
 向用户相册添加图片或视频，需预置相册和文件资源。使用Promise异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -105,10 +103,6 @@ commitModify(callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-Album-commitModify(callback: AsyncCallback<void>): void--><!--Device-Album-commitModify(callback: AsyncCallback<void>): void-End-->
@@ -119,7 +113,7 @@ commitModify(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当相册属性修改成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当相册属性修改成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -139,10 +133,6 @@ commitModify(): Promise<void>
 更新相册属性修改到数据库中。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -175,8 +165,6 @@ removeAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [removeAssets](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md#removeassets)
@@ -192,7 +180,7 @@ removeAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | assets | Array&lt;PhotoAsset&gt; | 是 | 相册中待移除的图片或视频数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当移除图片或视频成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当移除图片或视频成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -212,8 +200,6 @@ removeAssets(assets: Array<PhotoAsset>): Promise<void>
 从用户相册中移除图片或视频，需预置相册和文件资源。使用Promise异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -258,10 +244,6 @@ readonly imageCount?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Album-readonly imageCount?: int--><!--Device-Album-readonly imageCount?: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -277,10 +259,6 @@ readonly videoCount?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Album-readonly videoCount?: int--><!--Device-Album-readonly videoCount?: int-End-->
 

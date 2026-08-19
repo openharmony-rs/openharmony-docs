@@ -1,12 +1,8 @@
 # ElementName
 
-应用组件结构体，包含bundleName、moduleName和abilityName等。通常用于组件启动信息 [AbilityRunningInfo.ability](arkts-ability-abilityrunninginfo-i.md#abilityrunninginfo)和组件启动回调函数 [connectOptions.onConnect](arkts-ability-connectoptions-connectoptions-i.md#onconnect) 中。
+应用组件结构体，包含bundleName、moduleName和abilityName等。通常用于组件启动信息 [AbilityRunningInfo.ability](arkts-ability-abilityrunninginfo-i.md)和组件启动回调函数 [connectOptions.onConnect](arkts-ability-connectoptions-connectoptions-i.md#onconnect) 中。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface ElementName--><!--Device-unnamed-export interface ElementName-End-->
 
@@ -23,10 +19,6 @@ Ability名称。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -48,10 +40,6 @@ bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ElementName-bundleName: string--><!--Device-ElementName-bundleName: string-End-->
@@ -69,10 +57,6 @@ deviceId?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -94,10 +78,6 @@ Ability所属的HAP的模块名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ElementName-moduleName?: string--><!--Device-ElementName-moduleName?: string-End-->
@@ -116,10 +96,6 @@ Ability短名称，以“.”为开头的字符串。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ElementName-shortName?: string--><!--Device-ElementName-shortName?: string-End-->
@@ -137,10 +113,6 @@ uri?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

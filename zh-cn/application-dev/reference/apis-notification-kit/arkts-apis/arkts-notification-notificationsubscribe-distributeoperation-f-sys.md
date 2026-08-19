@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from 'notificationSubscribe';
+import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
 ## distributeOperation
@@ -15,10 +15,6 @@ function distributeOperation(hashcode: string, operationInfo?: OperationInfo): P
 触发指定通知的跨设备协同操作（例如通知跨设备点击跳转、通知跨设备快捷回复等）。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -51,7 +47,7 @@ function distributeOperation(hashcode: string, operationInfo?: OperationInfo): P
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application to call the interface. |
 | [1600021](../errorcode-notification.md#1600021-跨设备通信超时) | Distributed operation timed out. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

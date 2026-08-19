@@ -1,5 +1,11 @@
 # set24HourClock
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## set24HourClock
 
 ```TypeScript
@@ -9,8 +15,6 @@ export function set24HourClock(option: boolean): boolean
 修改系统时间的24小时制设置。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -34,7 +38,7 @@ export function set24HourClock(option: boolean): boolean
 | --- | --- |
 | boolean | true表示修改成功，false表示修改失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

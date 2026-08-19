@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-fileShare-export interface PathPolicyInfo--><!--Device-fileShare-export interface PathPolicyInfo-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+## 导入模块
+
+```TypeScript
+import { fileShare } from '@kit.CoreFileKit';
+```
 
 ## operationMode
 
@@ -23,10 +25,6 @@ operationMode: OperationMode
 **类型：** [OperationMode](arkts-corefile-fileshare-operationmode-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathPolicyInfo-operationMode: OperationMode--><!--Device-PathPolicyInfo-operationMode: OperationMode-End-->
 
@@ -43,10 +41,6 @@ path: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PathPolicyInfo-path: string--><!--Device-PathPolicyInfo-path: string-End-->
 

@@ -4,13 +4,15 @@ Provides preferred playback settings for player.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface PlaybackStrategy--><!--Device-unnamed-interface PlaybackStrategy-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## enableCameraPostprocessing
 
@@ -23,10 +25,6 @@ Indicates whether to enable camera post-processing during video playback, which 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PlaybackStrategy-enableCameraPostprocessing?: boolean--><!--Device-PlaybackStrategy-enableCameraPostprocessing?: boolean-End-->
 

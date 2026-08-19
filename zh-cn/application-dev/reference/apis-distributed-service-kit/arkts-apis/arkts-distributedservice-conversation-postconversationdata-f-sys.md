@@ -1,5 +1,11 @@
 # postConversationData（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { conversation } from '@kit.DistributedServiceKit';
+```
+
 ## postConversationData
 
 ```TypeScript
@@ -15,10 +21,6 @@ function postConversationData(
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.sec.ACCESS_UDID
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -33,8 +35,8 @@ function postConversationData(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | 目标设备的networkId或UDID。可通过调用 [getTrustedDevices()](arkts-distributedservice-conversation-gettrusteddevices-f-sys.md#gettrusteddevices系统接口)获取。networkId、UDID的长度都应为64字节。 传入无效值时返回错误码401。 |
-| bundleName | string | 是 | 数据发送目标Bundle名，Bundle名长度范围为1-127字节，需与目标设备上通过 [registerConversationListener](arkts-distributedservice-conversation-registerconversationlistener-f-sys.md#registerconversationlistener系统接口)注册会话监听的应用Bundle名一致。 不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。 |
+| deviceId | string | 是 | 目标设备的networkId或UDID。可通过调用 [getTrustedDevices()](arkts-distributedservice-conversation-gettrusteddevices-f-sys.md)获取。networkId、UDID的长度都应为64字节。 传入无效值时返回错误码401。 |
+| bundleName | string | 是 | 数据发送目标Bundle名，Bundle名长度范围为1-127字节，需与目标设备上通过 [registerConversationListener](arkts-distributedservice-conversation-registerconversationlistener-f-sys.md)注册会话监听的应用Bundle名一致。 不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。 |
 | abilityName | string | 是 | 数据发送目标Ability名，Ability名长度范围为1-127字节，需与目标设备上已注册会话监听的 Ability名一致。不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。 |
 | msg | ArrayBuffer | 是 | 要发送的数据内容，一次调用最大支持发送10240字节。数据结构由应用层协议定义。传入空数据或 无效数据时返回错误码401。 |
 
@@ -58,7 +60,7 @@ function postConversationData(
 | [2000001](../../apis-distributedservice-kit/errorcode-conversation.md#2000001-内部错误) | Internal error. |
 | [2004001](../../apis-distributedservice-kit/errorcode-conversation.md#2004001-对端设备系统版本过低) | Remote system version is too low. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';

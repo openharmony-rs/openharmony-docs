@@ -4,13 +4,15 @@ ProxyRule是ArkWeb框架中代理规则只读信息的类，通过[getProxyRules
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-webview-class ProxyRule--><!--Device-webview-class ProxyRule-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## getSchemeFilter
 
@@ -21,10 +23,6 @@ getSchemeFilter(): ProxySchemeFilter
 获取代理规则中的ProxySchemeFilter信息。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -47,10 +45,6 @@ getUrl(): string
 获取代理规则中代理的URL信息。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

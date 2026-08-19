@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [CheckboxGroup](arkts-na-checkboxgroup-checkboxgroup-f.md#checkboxgroup) | Defines CheckboxGroup Component. |
+| [CheckboxGroup](arkts-na-checkboxgroup-checkboxgroup-f.md) | Defines CheckboxGroup Component. |
 
 ### 接口
 

@@ -4,15 +4,18 @@ Defines the effect parameters used to preheat an image.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-interface SettingParam--><!--Device-camera-interface SettingParam-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## faceSlender
 
@@ -25,10 +28,6 @@ Face slimming level, which is obtained through [Beauty.getSupportedBeautyRange](
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SettingParam-faceSlender: int--><!--Device-SettingParam-faceSlender: int-End-->
 
@@ -48,10 +47,6 @@ Skin smoothing level, which is obtained through [Beauty.getSupportedBeautyRange]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SettingParam-skinSmoothLevel: int--><!--Device-SettingParam-skinSmoothLevel: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -69,10 +64,6 @@ Skin tone perfection level, which is obtained through [Beauty.getSupportedBeauty
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SettingParam-skinTone: int--><!--Device-SettingParam-skinTone: int-End-->
 

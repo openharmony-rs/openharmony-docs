@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface LineAttribute--><!--Device-unnamed-export declare interface LineAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<LineAttribute> | AttributeModifier
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-LineAttribute-attributeModifier(modifier: AttributeModifier<LineAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-LineAttribute-attributeModifier(modifier: AttributeModifier<LineAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ endPoint(value: ShapePoint | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-LineAttribute-endPoint(value: ShapePoint | undefined): this--><!--Device-LineAttribute-endPoint(value: ShapePoint | undefined): this-End-->
 
@@ -74,9 +68,7 @@ setLineOptions(options?: LineOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-LineAttribute-setLineOptions(options?: LineOptions): this--><!--Device-LineAttribute-setLineOptions(options?: LineOptions): this-End-->
 
@@ -100,9 +92,7 @@ startPoint(value: ShapePoint | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-LineAttribute-startPoint(value: ShapePoint | undefined): this--><!--Device-LineAttribute-startPoint(value: ShapePoint | undefined): this-End-->
 
@@ -128,9 +118,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

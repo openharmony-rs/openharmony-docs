@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-text-enum Affinity--><!--Device-text-enum Affinity-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ UPSTREAM = 0
 该位置与文本位置的前一位有关联。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ DOWNSTREAM = 1
 该位置与文本位置的后一位有关联。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

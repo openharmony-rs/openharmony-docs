@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum PopupPlacement--><!--Device-unnamed-export declare enum PopupPlacement-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -23,10 +19,6 @@ LEFT = 0
 气泡弹窗位于组件左侧，与组件左侧中心对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ RIGHT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupPlacement-RIGHT = 1--><!--Device-PopupPlacement-RIGHT = 1-End-->
@@ -67,10 +55,6 @@ TOP = 2
 气泡弹窗位于组件上侧，与组件上侧中心对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ BOTTOM = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupPlacement-BOTTOM = 3--><!--Device-PopupPlacement-BOTTOM = 3-End-->
@@ -111,10 +91,6 @@ TOP_LEFT = 4
 气泡弹窗位于组件上侧，与组件左侧边缘对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +110,6 @@ TOP_RIGHT = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupPlacement-TOP_RIGHT = 5--><!--Device-PopupPlacement-TOP_RIGHT = 5-End-->
@@ -155,10 +127,6 @@ BOTTOM_LEFT = 6
 气泡弹窗位于组件下侧，与组件左侧边缘对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,10 +146,6 @@ BOTTOM_RIGHT = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupPlacement-BOTTOM_RIGHT = 7--><!--Device-PopupPlacement-BOTTOM_RIGHT = 7-End-->
@@ -199,10 +163,6 @@ LEFT_TOP = 8
 气泡弹窗位于组件左侧，与组件上侧边缘对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,10 +182,6 @@ LEFT_BOTTOM = 9
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupPlacement-LEFT_BOTTOM = 9--><!--Device-PopupPlacement-LEFT_BOTTOM = 9-End-->
@@ -243,10 +199,6 @@ RIGHT_TOP = 10
 气泡弹窗位于组件右侧，与组件上侧边缘对齐。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -266,10 +218,6 @@ RIGHT_BOTTOM = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PopupPlacement-RIGHT_BOTTOM = 11--><!--Device-PopupPlacement-RIGHT_BOTTOM = 11-End-->
@@ -287,10 +235,6 @@ NONE = 12
 不设置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

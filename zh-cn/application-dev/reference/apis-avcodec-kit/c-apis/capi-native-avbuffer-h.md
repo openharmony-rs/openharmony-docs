@@ -65,7 +65,7 @@ OH_AVBuffer *OH_AVBuffer_Create(int32_t capacity)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVBuffer *](capi-core-oh-avbuffer.md) | 如果创建成功，则返回OH_AVBuffer实例的指针，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.capacity <= 0。<br> 2.出现内部错误，系统没有资源等。 |
+| [OH_AVBuffer *](capi-core-oh-avbuffer.md) | 如果创建成功，则返回OH_AVBuffer实例的指针，如果失败，则返回NULL。\n  可能的失败原因：\n  1.capacity <= 0。\n  2.出现内部错误，系统没有资源等。 |
 
 ### OH_AVBuffer_Destroy()
 
@@ -91,7 +91,7 @@ OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：输入的buffer为空指针或者buffer格式校验失败。<br> AV_ERR_OPERATE_NOT_PERMIT：输入的buffer不是用户创建的。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n  AV_ERR_INVALID_VAL：输入的buffer为空指针或者buffer格式校验失败。\n  AV_ERR_OPERATE_NOT_PERMIT：输入的buffer不是用户创建的。 |
 
 ### OH_AVBuffer_GetBufferAttr()
 
@@ -118,7 +118,7 @@ OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：可能的原因：<br> 1. 输入的buffer或attr为空指针。<br> 2. buffer结构校验失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n  AV_ERR_INVALID_VAL：可能的原因：\n  1. 输入的buffer或attr为空指针。\n  2. buffer结构校验失败。 |
 
 ### OH_AVBuffer_SetBufferAttr()
 
@@ -145,7 +145,7 @@ OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBuff
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：可能的原因：<br> 1. 输入的buffer或attr为空指针。<br> 2. buffer结构校验失败。<br> 3. 输入buffer中内存的size或offset是无效值。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n  AV_ERR_INVALID_VAL：可能的原因：\n  1. 输入的buffer或attr为空指针。\n  2. buffer结构校验失败。\n  3. 输入buffer中内存的size或offset是无效值。 |
 
 ### OH_AVBuffer_GetParameter()
 
@@ -171,7 +171,7 @@ OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](capi-core-oh-avformat.md) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：可能的原因：<br> 1. 输入的buffer为空指针。<br> 2. 输入buffer的meta为空指针。<br> 3. buffer结构校验失败。 |
+| [OH_AVFormat *](capi-core-oh-avformat.md) | AV_ERR_OK：操作成功。\n  AV_ERR_INVALID_VAL：可能的原因：\n  1. 输入的buffer为空指针。\n  2. 输入buffer的meta为空指针。\n  3. buffer结构校验失败。 |
 
 ### OH_AVBuffer_SetParameter()
 
@@ -198,7 +198,7 @@ OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *fo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。<br> AV_ERR_INVALID_VAL：可能的原因：<br> 1. 输入的buffer或format为空指针。<br> 2. 输入buffer的meta为空指针。<br> 3. buffer结构校验失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：操作成功。\n  AV_ERR_INVALID_VAL：可能的原因：\n  1. 输入的buffer或format为空指针。\n  2. 输入buffer的meta为空指针。\n  3. buffer结构校验失败。 |
 
 ### OH_AVBuffer_GetAddr()
 
@@ -224,7 +224,7 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| uint8_t * | 如果成功，则返回数据缓冲区的虚拟地址，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.输入的buffer为空指针。<br> 2.OH_AVBuffer结构校验失败。<br> 3.出现内部错误。 |
+| uint8_t * | 如果成功，则返回数据缓冲区的虚拟地址，如果失败，则返回NULL。\n  可能的失败原因：\n  1.输入的buffer为空指针。\n  2.OH_AVBuffer结构校验失败。\n  3.出现内部错误。 |
 
 ### OH_AVBuffer_GetCapacity()
 
@@ -250,7 +250,7 @@ int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果成功，则返回数据缓冲区的容量，如果失败，则返回-1。<br> 可能的失败原因：<br> 1.输入的buffer为空指针。<br> 2.OH_AVBuffer结构校验失败。<br> 3.出现内部错误。 |
+| int32_t | 如果成功，则返回数据缓冲区的容量，如果失败，则返回-1。\n  可能的失败原因：\n  1.输入的buffer为空指针。\n  2.OH_AVBuffer结构校验失败。\n  3.出现内部错误。 |
 
 ### OH_AVBuffer_GetNativeBuffer()
 
@@ -276,6 +276,6 @@ OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBuffer *](capi-core-oh-nativebuffer.md) | 如果成功，则返回OH_NativeBuffer实例的指针，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.输入的buffer为空指针。<br> 2.OH_AVBuffer结构校验失败。<br> 3.出现内部错误。 |
+| [OH_NativeBuffer *](capi-core-oh-nativebuffer.md) | 如果成功，则返回OH_NativeBuffer实例的指针，如果失败，则返回NULL。\n  可能的失败原因：\n  1.输入的buffer为空指针。\n  2.OH_AVBuffer结构校验失败。\n  3.出现内部错误。 |
 
 

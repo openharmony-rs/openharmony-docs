@@ -1,12 +1,8 @@
 # NodeType
 
-节点类型枚举.
+节点类型枚举。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum NodeType--><!--Device-unnamed-export enum NodeType-End-->
 
@@ -18,13 +14,9 @@
 NODE = 1
 ```
 
-节点是空节点.
+节点是空节点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NodeType-NODE = 1--><!--Device-NodeType-NODE = 1-End-->
 
@@ -36,13 +28,9 @@ NODE = 1
 GEOMETRY = 2
 ```
 
-节点是几何节点.
+几何类型节点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NodeType-GEOMETRY = 2--><!--Device-NodeType-GEOMETRY = 2-End-->
 
@@ -54,13 +42,9 @@ GEOMETRY = 2
 CAMERA = 3
 ```
 
-节点是相机节点.
+相机类型节点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NodeType-CAMERA = 3--><!--Device-NodeType-CAMERA = 3-End-->
 
@@ -72,13 +56,9 @@ CAMERA = 3
 LIGHT = 4
 ```
 
-节点是光源节点.
+灯光类型节点。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NodeType-LIGHT = 4--><!--Device-NodeType-LIGHT = 4-End-->
 
@@ -90,13 +70,9 @@ LIGHT = 4
 CUSTOM = 255
 ```
 
-节点是自定义类型. 通常这意味着该节点是在扩展插件中定义的类型.
+自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NodeType-CUSTOM = 255--><!--Device-NodeType-CUSTOM = 255-End-->
 

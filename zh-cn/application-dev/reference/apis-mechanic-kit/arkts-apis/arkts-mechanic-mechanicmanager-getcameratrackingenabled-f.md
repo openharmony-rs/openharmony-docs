@@ -1,5 +1,11 @@
 # getCameraTrackingEnabled
 
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
+
 ## getCameraTrackingEnabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getCameraTrackingEnabled(): boolean
 获取相机跟踪状态
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-mechanicManager-function getCameraTrackingEnabled(): boolean--><!--Device-mechanicManager-function getCameraTrackingEnabled(): boolean-End-->
 
@@ -31,7 +33,7 @@ function getCameraTrackingEnabled(): boolean
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
-## 示例
+**示例**
 
 ```TypeScript
 console.info('Get tracking status');

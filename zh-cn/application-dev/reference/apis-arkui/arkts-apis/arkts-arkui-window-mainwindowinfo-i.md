@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-interface MainWindowInfo--><!--Device-window-interface MainWindowInfo-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## displayId
 
@@ -23,10 +27,6 @@ ID of the display to which the main window belongs.
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MainWindowInfo-displayId: long--><!--Device-MainWindowInfo-displayId: long-End-->
 
@@ -44,10 +44,6 @@ label: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MainWindowInfo-label: string--><!--Device-MainWindowInfo-label: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -64,10 +60,6 @@ Foreground/Background status of the main window. **true** if the main window is 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MainWindowInfo-showing: boolean--><!--Device-MainWindowInfo-showing: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -83,10 +75,6 @@ ID of the main window.
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MainWindowInfo-windowId: int--><!--Device-MainWindowInfo-windowId: int-End-->
 

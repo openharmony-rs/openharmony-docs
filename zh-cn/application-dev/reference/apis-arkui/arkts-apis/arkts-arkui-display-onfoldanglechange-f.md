@@ -1,5 +1,11 @@
 # onFoldAngleChange
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## onFoldAngleChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ Register the callback for fold angle changes.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-function onFoldAngleChange(callback: Callback<Array<double>>): void--><!--Device-display-function onFoldAngleChange(callback: Callback<Array<double>>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -22,7 +24,7 @@ Register the callback for fold angle changes.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;double&gt;&gt; | 是 | Callback used to return the current fold angle of device. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;double&gt;&gt; | 是 | Callback used to return the current fold angle of device. |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ Register the callback for fold angle changes.
 | --- | --- |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Callback } from '@kit.BasicServicesKit';

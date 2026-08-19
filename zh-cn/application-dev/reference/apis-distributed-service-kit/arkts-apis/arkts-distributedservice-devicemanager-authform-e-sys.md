@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 <!--Device-deviceManager-enum AuthForm--><!--Device-deviceManager-enum AuthForm-End-->
@@ -23,8 +21,6 @@ INVALID_TYPE = -1
 设备没有认证。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -44,8 +40,6 @@ PEER_TO_PEER = 0
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 <!--Device-AuthForm-PEER_TO_PEER = 0--><!--Device-AuthForm-PEER_TO_PEER = 0-End-->
@@ -64,8 +58,6 @@ IDENTICAL_ACCOUNT = 1
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 <!--Device-AuthForm-IDENTICAL_ACCOUNT = 1--><!--Device-AuthForm-IDENTICAL_ACCOUNT = 1-End-->
@@ -83,8 +75,6 @@ ACROSS_ACCOUNT = 2
 设备跨账号认证。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 

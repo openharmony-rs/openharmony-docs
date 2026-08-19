@@ -1,5 +1,11 @@
 # disconnectNative
 
+## 导入模块
+
+```TypeScript
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+```
+
 ## disconnectNative
 
 ```TypeScript
@@ -9,10 +15,6 @@ function disconnectNative(connectionId: number): Promise<void>
 断开指定Web原生消息扩展连接。
 
 **起始版本：** 21
-
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WEB_NATIVE_MESSAGING
 
@@ -26,7 +28,7 @@ function disconnectNative(connectionId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| connectionId | number | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由 [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative)方法返回。建立连接后需要通过disconnectNative释放。需使用由 connectNative返回的有效连接ID。 |
+| connectionId | number | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由 [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md)方法返回。建立连接后需要通过disconnectNative释放。需使用由 connectNative返回的有效连接ID。 |
 
 **返回值：**
 
@@ -43,7 +45,7 @@ function disconnectNative(connectionId: number): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

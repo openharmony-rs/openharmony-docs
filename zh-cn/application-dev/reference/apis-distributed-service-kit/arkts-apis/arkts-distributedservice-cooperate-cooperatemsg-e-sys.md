@@ -4,11 +4,9 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [CooperateState](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperatestate系统接口)
+**替代接口：** [CooperateState](arkts-distributedservice-cooperate-cooperatestate-e-sys.md)
 
 <!--Device-cooperate-enum CooperateMsg--><!--Device-cooperate-enum CooperateMsg-End-->
 
@@ -26,11 +24,9 @@ COOPERATE_PREPARE = 0
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_PREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperateprepare)
+**替代接口：** [COOPERATE_PREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_prepare)
 
 <!--Device-CooperateMsg-COOPERATE_PREPARE = 0--><!--Device-CooperateMsg-COOPERATE_PREPARE = 0-End-->
 
@@ -48,11 +44,9 @@ COOPERATE_UNPREPARE = 1
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_UNPREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperateunprepare)
+**替代接口：** [COOPERATE_UNPREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_unprepare)
 
 <!--Device-CooperateMsg-COOPERATE_UNPREPARE = 1--><!--Device-CooperateMsg-COOPERATE_UNPREPARE = 1-End-->
 
@@ -70,11 +64,9 @@ COOPERATE_ACTIVATE = 2
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_ACTIVATE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperateactivate)
+**替代接口：** [COOPERATE_ACTIVATE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate)
 
 <!--Device-CooperateMsg-COOPERATE_ACTIVATE = 2--><!--Device-CooperateMsg-COOPERATE_ACTIVATE = 2-End-->
 
@@ -92,11 +84,9 @@ COOPERATE_ACTIVATE_SUCCESS = 3
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_ACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperateactivatesuccess)
+**替代接口：** [COOPERATE_ACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate_success)
 
 <!--Device-CooperateMsg-COOPERATE_ACTIVATE_SUCCESS = 3--><!--Device-CooperateMsg-COOPERATE_ACTIVATE_SUCCESS = 3-End-->
 
@@ -114,11 +104,9 @@ COOPERATE_ACTIVATE_FAIL = 4
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_ACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperateactivatefailure)
+**替代接口：** [COOPERATE_ACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate_failure)
 
 <!--Device-CooperateMsg-COOPERATE_ACTIVATE_FAIL = 4--><!--Device-CooperateMsg-COOPERATE_ACTIVATE_FAIL = 4-End-->
 
@@ -136,11 +124,9 @@ COOPERATE_DEACTIVATE_SUCCESS = 5
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_DEACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperatedeactivatesuccess)
+**替代接口：** [COOPERATE_DEACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_deactivate_success)
 
 <!--Device-CooperateMsg-COOPERATE_DEACTIVATE_SUCCESS = 5--><!--Device-CooperateMsg-COOPERATE_DEACTIVATE_SUCCESS = 5-End-->
 
@@ -158,11 +144,9 @@ COOPERATE_DEACTIVATE_FAIL = 6
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_DEACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperatedeactivatefailure)
+**替代接口：** [COOPERATE_DEACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_deactivate_failure)
 
 <!--Device-CooperateMsg-COOPERATE_DEACTIVATE_FAIL = 6--><!--Device-CooperateMsg-COOPERATE_DEACTIVATE_FAIL = 6-End-->
 
@@ -180,11 +164,9 @@ COOPERATE_SESSION_DISCONNECTED = 7
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [COOPERATE_SESSION_DISCONNECTED](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperatesessiondisconnected)
+**替代接口：** [COOPERATE_SESSION_DISCONNECTED](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_session_disconnected)
 
 <!--Device-CooperateMsg-COOPERATE_SESSION_DISCONNECTED = 7--><!--Device-CooperateMsg-COOPERATE_SESSION_DISCONNECTED = 7-End-->
 

@@ -1,12 +1,8 @@
 # VideoPlayControlGroup
 
-视频播放控件组枚举。仅当[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md#piptemplatetype)为VIDEO_PLAY时使用。
+视频播放控件组枚举。仅当[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)为VIDEO_PLAY时使用。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-PiPWindow-enum VideoPlayControlGroup--><!--Device-PiPWindow-enum VideoPlayControlGroup-End-->
 
@@ -21,10 +17,6 @@ VIDEO_PREVIOUS_NEXT = 101
 视频上一个/下一个控件组。 与视频快进/后退控件组为互斥控件组。如添加视频快进/后退控件组，则不可添加该控件组。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ FAST_FORWARD_BACKWARD = 102
 视频快进/后退控件组。 与视频上一个/下一个控件组为互斥控件组。如添加视频上一个/下一个控件组，则不可添加该控件组。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

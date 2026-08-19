@@ -1,12 +1,8 @@
-# TabBarPosition
+# TabBarPosition(Provides an advanced struct of tabs for atomic services)
 
 设置页签栏位置，默认值为TabBarPosition.BOTTOM。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare enum TabBarPosition--><!--Device-unnamed-export declare enum TabBarPosition-End-->
 
@@ -21,10 +17,6 @@ LEFT = 0
 设置TabBar位于屏幕左侧
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ BOTTOM = 1
 设置TabBar位于屏幕底部
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

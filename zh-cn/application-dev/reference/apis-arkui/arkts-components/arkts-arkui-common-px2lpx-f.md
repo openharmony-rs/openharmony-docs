@@ -1,5 +1,10 @@
 # px2lpx
 
+## 导入模块
+
+```TypeScript
+```
+
 ## px2lpx
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function px2lpx(value: number): number
 Converts a number in units of px to a number in units of lpx.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 18
 

@@ -1,5 +1,11 @@
 # remove（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { recent } from '@kit.CoreFileKit';
+```
+
 ## remove
 
 ```TypeScript
@@ -9,8 +15,6 @@ function remove(uri: string): void
 将uri对应的文件从最近访问列表中移除。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -38,7 +42,7 @@ function remove(uri: string): void
 | 13900002 | No such file or directory |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let uri = 'file://docs/storage/Users/currentUser/<publicPath>';

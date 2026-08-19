@@ -1,16 +1,20 @@
 # getLength
 
+## 导入模块
+
+```TypeScript
+import { router } from '@kit.ArkUI';
+```
+
 ## getLength
 
 ```TypeScript
 function getLength(): string
 ```
 
-获取当前在页面栈内的页面数量。 > **说明：** > > - 从API version 8开始支持，从API version 18开始废弃，建议使用[getLength](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-router-c.md#getlength)替代。 > getLength需先通过[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取 > [Router](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)实例，然后通过该实例进行调用。 > > - 从API version 10开始，可以通过使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的 > [Router](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)对象。
+获取当前在页面栈内的页面数量。 > **说明：** > > - 从API version 8开始支持，从API version 18开始废弃，建议使用[getLength](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-router-c.md#getlength)替代。 > getLength需先通过[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取 > [Router](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。 > > - 从API version 10开始，可以通过使用[UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)中的 > [getRouter](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的 > [Router](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)对象。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 18
 
@@ -28,7 +32,7 @@ function getLength(): string
 | --- | --- |
 | string | 页面数量，页面栈支持最大数值是32。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let size = this.getUIContext().getRouter().getLength();

@@ -1,10 +1,8 @@
-# Locale
+# Locale(国际化-Intl)
 
 区域信息
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -13,6 +11,12 @@
 <!--Device-intl-export class Locale--><!--Device-intl-export class Locale-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+```
 
 ## constructor
 
@@ -23,8 +27,6 @@ constructor()
 创建区域对象。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 20
 
@@ -38,7 +40,7 @@ constructor()
 
 **系统能力：** SystemCapability.Global.I18n
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -59,8 +61,6 @@ constructor(locale: string, options?: LocaleOptions)
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.Locale.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)
@@ -80,7 +80,7 @@ constructor(locale: string, options?: LocaleOptions)
 | locale | string | 是 | 表示区域ID的字符串，由语言、脚本、国家地区组成。 |
 | options | [LocaleOptions](arkts-localization-intl-localeoptions-i.md) | 否 | 创建区域对象的配置项。 <br>默认值：所有属性都取默认值时的配置项。<br>**起始版本：** 12 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -100,8 +100,6 @@ maximize(): Locale
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.Locale.maximize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize)
@@ -120,7 +118,7 @@ maximize(): Locale
 | --- | --- |
 | [Locale](arkts-localization-intl-locale-c.md) | 补齐完脚本、国家地区信息后的区域对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -148,8 +146,6 @@ minimize(): Locale
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.Locale.minimize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize)
@@ -168,7 +164,7 @@ minimize(): Locale
 | --- | --- |
 | [Locale](arkts-localization-intl-locale-c.md) | 移除完脚本、国家地区信息后的区域对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -196,8 +192,6 @@ toString(): string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.Locale.toString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/toString)
@@ -216,7 +210,7 @@ toString(): string
 | --- | --- |
 | string | 区域对象的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';
@@ -237,8 +231,6 @@ baseName: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -264,8 +256,6 @@ calendar: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.calendar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar)
@@ -289,8 +279,6 @@ caseFirst: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -316,8 +304,6 @@ collation: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.collation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/collation)
@@ -341,8 +327,6 @@ hourCycle: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -368,8 +352,6 @@ language: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.language](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/language)
@@ -393,8 +375,6 @@ numberingSystem: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -420,8 +400,6 @@ true表示对数字字符进行特殊的排序规则处理（把数字字符作�
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.numeric](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numeric)
@@ -446,8 +424,6 @@ region: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.region](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/region)
@@ -471,8 +447,6 @@ script: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 

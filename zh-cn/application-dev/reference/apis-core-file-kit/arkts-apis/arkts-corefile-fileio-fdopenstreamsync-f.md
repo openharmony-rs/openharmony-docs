@@ -1,5 +1,10 @@
 # fdopenStreamSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## fdopenStreamSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function fdopenStreamSync(fd: number, mode: string): Stream
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md#fdopenstreamsync)
+**替代接口：** [fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md)
 
 <!--Device-unnamed-declare function fdopenStreamSync(fd: number, mode: string): Stream--><!--Device-unnamed-declare function fdopenStreamSync(fd: number, mode: string): Stream-End-->
 

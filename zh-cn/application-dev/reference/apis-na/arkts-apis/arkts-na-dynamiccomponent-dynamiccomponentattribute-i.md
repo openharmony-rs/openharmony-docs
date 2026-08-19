@@ -6,9 +6,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare interface DynamicComponentAttribute--><!--Device-unnamed-export declare interface DynamicComponentAttribute-End-->
 
@@ -24,9 +22,7 @@ onError(callback: ErrorCallback<BusinessError> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DynamicComponentAttribute-onError(callback: ErrorCallback<BusinessError> | undefined): this--><!--Device-DynamicComponentAttribute-onError(callback: ErrorCallback<BusinessError> | undefined): this-End-->
 
@@ -34,7 +30,7 @@ onError(callback: ErrorCallback<BusinessError> | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [ErrorCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-errorcallback-t.md)&lt;[BusinessError](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-businesserror-c.md)&gt; \| undefined | 是 |  |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-errorcallback-t.md)&lt;[BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-c.md)&gt; \| undefined | 是 |  |
 
 **返回值：**
 
@@ -50,9 +46,7 @@ setDynamicComponentOptions(options: DynamicOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-DynamicComponentAttribute-setDynamicComponentOptions(options: DynamicOptions): this--><!--Device-DynamicComponentAttribute-setDynamicComponentOptions(options: DynamicOptions): this-End-->
 

@@ -4,13 +4,15 @@ XmlDynamicSerializer类用于动态生成XML字符串。当无法确定XML内容
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-xml-class XmlDynamicSerializer--><!--Device-xml-class XmlDynamicSerializer-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { xml } from '@kit.ArkTS';
+```
 
 ## addEmptyElement
 
@@ -21,10 +23,6 @@ addEmptyElement(name: string): void
 写入一个空元素。 > **说明：** > > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -45,7 +43,7 @@ addEmptyElement(name: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -68,10 +66,6 @@ constructor(encoding?: string)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-constructor(encoding?: string)--><!--Device-XmlDynamicSerializer-constructor(encoding?: string)-End-->
@@ -90,7 +84,7 @@ constructor(encoding?: string)
 | --- | --- |
 | [10200066](../errorcode-utils.md#10200066-编码格式错误) | 编码格式错误，目前仅支持utf-8。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let serializer = new xml.XmlDynamicSerializer('utf-8');
@@ -106,10 +100,6 @@ endElement(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-endElement(): void--><!--Device-XmlDynamicSerializer-endElement(): void-End-->
@@ -123,7 +113,7 @@ endElement(): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200065](../errorcode-utils.md#10200065-元素开始标记与元素结束标记未匹配使用) | startElement和endElement不匹配。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -148,10 +138,6 @@ getOutput(): ArrayBuffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-getOutput(): ArrayBuffer--><!--Device-XmlDynamicSerializer-getOutput(): ArrayBuffer-End-->
@@ -164,7 +150,7 @@ getOutput(): ArrayBuffer
 | --- | --- |
 | ArrayBuffer | 用于接收写入XML信息的ArrayBuffer内存。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -189,10 +175,6 @@ setAttributes(name: string, value: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-setAttributes(name: string, value: string): void--><!--Device-XmlDynamicSerializer-setAttributes(name: string, value: string): void-End-->
@@ -214,7 +196,7 @@ setAttributes(name: string, value: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -239,10 +221,6 @@ setCdata(text: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-setCdata(text: string): void--><!--Device-XmlDynamicSerializer-setCdata(text: string): void-End-->
@@ -262,7 +240,7 @@ setCdata(text: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -281,13 +259,9 @@ console.info(result); // <![CDATA[root SYSTEM]]>
 setComment(text: string): void
 ```
 
-写入注释内容，所生成的注释结构为：`&lt;!--` + 注释内容 + `--&gt;`。
+写入注释内容，所生成的注释结构为：`<!--` + 注释内容 + `-->`。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -308,7 +282,7 @@ setComment(text: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -331,10 +305,6 @@ setDeclaration(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-setDeclaration(): void--><!--Device-XmlDynamicSerializer-setDeclaration(): void-End-->
@@ -348,7 +318,7 @@ setDeclaration(): void
 | [10200063](../errorcode-utils.md#10200063-xml文件声明或属性位置设置错误) | xml位置非法。 |
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -371,10 +341,6 @@ setDocType(text: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-setDocType(text: string): void--><!--Device-XmlDynamicSerializer-setDocType(text: string): void-End-->
@@ -394,7 +360,7 @@ setDocType(text: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -417,10 +383,6 @@ setNamespace(prefix: string, namespace: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-setNamespace(prefix: string, namespace: string): void--><!--Device-XmlDynamicSerializer-setNamespace(prefix: string, namespace: string): void-End-->
@@ -441,7 +403,7 @@ setNamespace(prefix: string, namespace: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -466,10 +428,6 @@ setText(text: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-setText(text: string): void--><!--Device-XmlDynamicSerializer-setText(text: string): void-End-->
@@ -489,7 +447,7 @@ setText(text: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';
@@ -515,10 +473,6 @@ startElement(name: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-XmlDynamicSerializer-startElement(name: string): void--><!--Device-XmlDynamicSerializer-startElement(name: string): void-End-->
@@ -538,7 +492,7 @@ startElement(name: string): void
 | [10200062](../errorcode-utils.md#10200062-xml的累积长度已超过上限) | xml累计长度超过上限100000。 |
 | [10200064](../errorcode-utils.md#10200064-入参字符串不能为空) | 不能为空字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { util } from '@kit.ArkTS';

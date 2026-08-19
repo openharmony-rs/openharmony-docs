@@ -4,13 +4,15 @@ CompletionHandlerForAtomicService提供了 [onAtomicServiceRequestSuccess](#onat
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class CompletionHandlerForAtomicService--><!--Device-unnamed-declare class CompletionHandlerForAtomicService-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
+```
 
 ## onAtomicServiceRequestFailure
 
@@ -21,10 +23,6 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 打开原子化服务失败时的回调函数。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +40,7 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 | failureCode | [FailureCode](arkts-ability-app-ability-completionhandlerforatomicservice-failurecode-e.md) | 是 | 失败原因的错误码。 |
 | failureMessage | string | 是 | 失败原因的描述。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, AtomicServiceOptions, common, UIAbility, Want, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
@@ -85,10 +83,6 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -103,7 +97,7 @@ onAtomicServiceRequestSuccess(appId: string): void
 | --- | --- | --- | --- |
 | appId | string | 是 | 被拉起原子化服务的appId。 |
 
-## 示例
+**示例**
 
 参见[onAtomicServiceRequestFailure](#onatomicservicerequestfailure)接口的示例。
 

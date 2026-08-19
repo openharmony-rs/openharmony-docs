@@ -4,10 +4,6 @@ The enum of connection interval values.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-nearlinkConstant-export enum ConnectionInterval--><!--Device-nearlinkConstant-export enum ConnectionInterval-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -23,10 +19,6 @@ HIGH_SPEED_INTERVAL_4_5 = 0
 Connection interval 4.5ms.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ Connection interval 4.875ms.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionInterval-HIGH_SPEED_INTERVAL_4_875 = 1--><!--Device-ConnectionInterval-HIGH_SPEED_INTERVAL_4_875 = 1-End-->
@@ -67,10 +55,6 @@ MID_SPEED_INTERVAL_11_25 = 2
 Connection interval 11.25ms.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ Connection interval 15ms.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionInterval-MID_SPEED_INTERVAL_15 = 3--><!--Device-ConnectionInterval-MID_SPEED_INTERVAL_15 = 3-End-->
@@ -111,10 +91,6 @@ MID_SPEED_INTERVAL_50 = 4
 Connection interval 50ms.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +110,6 @@ Connection interval 100ms.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_100 = 5--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_100 = 5-End-->
@@ -155,10 +127,6 @@ LOW_SPEED_INTERVAL_150 = 6
 Connection interval 150ms.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,10 +146,6 @@ Connection interval 200ms.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_200 = 7--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_200 = 7-End-->
@@ -200,10 +164,6 @@ Connection interval 300ms.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_300 = 8--><!--Device-ConnectionInterval-LOW_SPEED_INTERVAL_300 = 8-End-->
@@ -221,10 +181,6 @@ LOW_SPEED_INTERVAL_500 = 9
 Connection interval 500ms.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

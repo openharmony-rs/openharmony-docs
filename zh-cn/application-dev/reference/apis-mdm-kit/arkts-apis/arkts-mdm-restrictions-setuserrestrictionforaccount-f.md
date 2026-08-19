@@ -1,5 +1,11 @@
 # setUserRestrictionForAccount
 
+## 导入模块
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+```
+
 ## setUserRestrictionForAccount
 
 ```TypeScript
@@ -9,8 +15,6 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: string, account
 设置指定用户行为的限制规则。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
 
 **废弃版本：** 26.0.0
 
@@ -30,7 +34,7 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: string, account
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | settingsItem | string | 是 | 行为名称。<br/>- modifyWallpaper：修改壁纸，包含锁屏壁纸和桌面壁纸。 |
-| accountId | int | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 <br>取值限定为整数。 |
+| accountId | int | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 <br>取值限定为整数。 |
 | restricted | boolean | 是 | 是否禁用行为。true表示禁用，false表示不禁用。 |
 
 **错误码：**
@@ -42,7 +46,7 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: string, account
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -75,10 +79,6 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: SettingsForAcco
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -93,7 +93,7 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: SettingsForAcco
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | settingsItem | [SettingsForAccount](arkts-mdm-restrictions-settingsforaccount-e.md) | 是 | 指定要限制修改的用户设置项。 |
-| accountId | int | 是 | 用户ID，取值范围：大于等于0。 <br>取值限定为整数。 <br>accountId可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
+| accountId | int | 是 | 用户ID，取值范围：大于等于0。 <br>取值限定为整数。 <br>accountId可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 | restricted | boolean | 是 | true表示禁用，false表示不禁用。 |
 
 **错误码：**
@@ -106,7 +106,7 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: SettingsForAcco
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { restrictions } from '@kit.MDMKit';

@@ -1,5 +1,11 @@
 # setRttCapability（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## setRttCapability
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setRttCapability(accountId: int, isEnable: boolean): Promise<void>
 设置rtt功能
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PLACE_CALL
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare class ShapeClip--><!--Device-unnamed-export declare class ShapeClip-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ constructor()
 ShapeClip的构造函数。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ setCircleShape(circle: Circle): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -62,7 +50,7 @@ setCircleShape(circle: Circle): void
 | --- | --- | --- | --- |
 | circle | [Circle](arkts-arkui-graphics-circle-i.md) | 是 | 圆形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -124,10 +112,6 @@ setCommandPath(path: CommandPath): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -142,7 +126,7 @@ setCommandPath(path: CommandPath): void
 | --- | --- | --- | --- |
 | path | [CommandPath](arkts-arkui-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -203,10 +187,6 @@ setOvalShape(oval: Rect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -221,7 +201,7 @@ setOvalShape(oval: Rect): void
 | --- | --- | --- | --- |
 | oval | [Rect](arkts-arkui-rect-t.md) | 是 | 椭圆形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -287,10 +267,6 @@ setRectShape(rect: Rect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -305,7 +281,7 @@ setRectShape(rect: Rect): void
 | --- | --- | --- | --- |
 | rect | [Rect](arkts-arkui-rect-t.md) | 是 | 矩形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -374,10 +350,6 @@ setRoundRectShape(roundRect: RoundRect): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -392,7 +364,7 @@ setRoundRectShape(roundRect: RoundRect): void
 | --- | --- | --- | --- |
 | roundRect | [RoundRect](arkts-arkui-graphics-roundrect-i.md) | 是 | 圆角矩形的形状。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';

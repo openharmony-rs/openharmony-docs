@@ -1,6 +1,12 @@
 # off_sessionCreate（系统接口）
 
-## off_sessionCreate
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
+## off('sessionCreate')
 
 ```TypeScript
 function off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): void
@@ -9,10 +15,6 @@ function off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) =>
 注销会话创建事件监听。注销后，不再接收该事件。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-avSession-function off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): void--><!--Device-avSession-function off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): void-End-->
 
@@ -35,7 +37,7 @@ function off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) =>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.off('sessionCreate');

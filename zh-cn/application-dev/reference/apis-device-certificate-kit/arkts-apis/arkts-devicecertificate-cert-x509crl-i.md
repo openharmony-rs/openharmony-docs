@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cert-interface X509CRL--><!--Device-cert-interface X509CRL-End-->
 
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## getEncoded
 
@@ -22,10 +26,6 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509CRL-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
@@ -36,18 +36,18 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | 是 | 回调函数。当获取X.509证书吊销列表序列化数据成功时，err为undefined， data为获取到的X.509证书吊销列表序列化数据；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md)&gt; | 是 | 回调函数。当获取X.509证书吊销列表序列化数据成功时，err为undefined， data为获取到的X.509证书吊销列表序列化数据；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -155,10 +155,6 @@ getEncoded(): Promise<EncodingBlob>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getEncoded(): Promise<EncodingBlob>--><!--Device-X509CRL-getEncoded(): Promise<EncodingBlob>-End-->
@@ -175,12 +171,12 @@ getEncoded(): Promise<EncodingBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -279,10 +275,6 @@ getExtensions(): DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getExtensions(): DataBlob--><!--Device-X509CRL-getExtensions(): DataBlob-End-->
@@ -299,11 +291,11 @@ getExtensions(): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -420,10 +412,6 @@ getExtensionsObject(): CertExtension
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getExtensionsObject(): CertExtension--><!--Device-X509CRL-getExtensionsObject(): CertExtension-End-->
@@ -440,11 +428,11 @@ getExtensionsObject(): CertExtension
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -555,10 +543,6 @@ getIssuerName(): DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getIssuerName(): DataBlob--><!--Device-X509CRL-getIssuerName(): DataBlob-End-->
@@ -575,11 +559,11 @@ getIssuerName(): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -690,10 +674,6 @@ getIssuerName(encodingType: EncodingType): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getIssuerName(encodingType: EncodingType): string--><!--Device-X509CRL-getIssuerName(encodingType: EncodingType): string-End-->
@@ -716,12 +696,12 @@ getIssuerName(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. encodingType的值不在EncodingType枚举范围内。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -837,10 +817,6 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getIssuerX500DistinguishedName(): X500DistinguishedName--><!--Device-X509CRL-getIssuerX500DistinguishedName(): X500DistinguishedName-End-->
@@ -857,11 +833,11 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -962,10 +938,6 @@ getLastUpdate(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getLastUpdate(): string--><!--Device-X509CRL-getLastUpdate(): string-End-->
@@ -976,17 +948,17 @@ getLastUpdate(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 表示X.509证书吊销列表最后一次更新日期，日期采用 ASN.1 UTCTime 或 GeneralizedTime 格式。 |
+| string | 表示X.509证书吊销列表最后一次更新日期，日期采用ASN.1 UTCTime或GeneralizedTime格式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1097,10 +1069,6 @@ getNextUpdate(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getNextUpdate(): string--><!--Device-X509CRL-getNextUpdate(): string-End-->
@@ -1111,17 +1079,17 @@ getNextUpdate(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 表示X.509证书吊销列表下一次更新的日期，日期采用 ASN.1 UTCTime 或 GeneralizedTime 格式。 |
+| string | 表示X.509证书吊销列表下一次更新的日期，日期采用ASN.1 UTCTime或GeneralizedTime格式。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1232,10 +1200,6 @@ getRevokedCert(serialNumber: bigint): X509CRLEntry
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getRevokedCert(serialNumber: bigint): X509CRLEntry--><!--Device-X509CRL-getRevokedCert(serialNumber: bigint): X509CRLEntry-End-->
@@ -1258,11 +1222,11 @@ getRevokedCert(serialNumber: bigint): X509CRLEntry
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1373,10 +1337,6 @@ getRevokedCertWithCert(cert: X509Cert): X509CRLEntry
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getRevokedCertWithCert(cert: X509Cert): X509CRLEntry--><!--Device-X509CRL-getRevokedCertWithCert(cert: X509Cert): X509CRLEntry-End-->
@@ -1387,7 +1347,7 @@ getRevokedCertWithCert(cert: X509Cert): X509CRLEntry
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 是 | 表示证书对象。 |
+| cert | X509Cert | 是 | 表示证书对象。 |
 
 **返回值：**
 
@@ -1399,11 +1359,11 @@ getRevokedCertWithCert(cert: X509Cert): X509CRLEntry
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1592,10 +1552,6 @@ getRevokedCerts(callback: AsyncCallback<Array<X509CRLEntry>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getRevokedCerts(callback: AsyncCallback<Array<X509CRLEntry>>): void--><!--Device-X509CRL-getRevokedCerts(callback: AsyncCallback<Array<X509CRLEntry>>): void-End-->
@@ -1606,17 +1562,17 @@ getRevokedCerts(callback: AsyncCallback<Array<X509CRLEntry>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md)&gt;&gt; | 是 | 回调函数。当获取证书吊销条目列表成功时，err为undefined， data为获取到的证书吊销条目列表；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md)&gt;&gt; | 是 | 回调函数。当获取证书吊销条目列表成功时，err为undefined， data为获取到的证书吊销条目列表；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1725,10 +1681,6 @@ getRevokedCerts(): Promise<Array<X509CRLEntry>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getRevokedCerts(): Promise<Array<X509CRLEntry>>--><!--Device-X509CRL-getRevokedCerts(): Promise<Array<X509CRLEntry>>-End-->
@@ -1745,11 +1697,11 @@ getRevokedCerts(): Promise<Array<X509CRLEntry>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1852,10 +1804,6 @@ getSignature(): DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getSignature(): DataBlob--><!--Device-X509CRL-getSignature(): DataBlob-End-->
@@ -1872,11 +1820,11 @@ getSignature(): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1987,10 +1935,6 @@ getSignatureAlgName(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getSignatureAlgName(): string--><!--Device-X509CRL-getSignatureAlgName(): string-End-->
@@ -2007,11 +1951,11 @@ getSignatureAlgName(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2122,10 +2066,6 @@ getSignatureAlgOid(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getSignatureAlgOid(): string--><!--Device-X509CRL-getSignatureAlgOid(): string-End-->
@@ -2142,11 +2082,11 @@ getSignatureAlgOid(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2257,10 +2197,6 @@ getSignatureAlgParams(): DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getSignatureAlgParams(): DataBlob--><!--Device-X509CRL-getSignatureAlgParams(): DataBlob-End-->
@@ -2277,12 +2213,12 @@ getSignatureAlgParams(): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2393,10 +2329,6 @@ getTBSInfo(): DataBlob
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getTBSInfo(): DataBlob--><!--Device-X509CRL-getTBSInfo(): DataBlob-End-->
@@ -2413,11 +2345,11 @@ getTBSInfo(): DataBlob
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2528,10 +2460,6 @@ getType(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getType(): string--><!--Device-X509CRL-getType(): string-End-->
@@ -2544,7 +2472,7 @@ getType(): string
 | --- | --- |
 | string | 表示证书吊销列表类型。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2643,10 +2571,6 @@ getVersion(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-getVersion(): int--><!--Device-X509CRL-getVersion(): int-End-->
@@ -2659,7 +2583,7 @@ getVersion(): int
 | --- | --- |
 | int | 表示获取X.509证书吊销列表的版本号。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2758,10 +2682,6 @@ hashCode(): Uint8Array
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-hashCode(): Uint8Array--><!--Device-X509CRL-hashCode(): Uint8Array-End-->
@@ -2778,11 +2698,11 @@ hashCode(): Uint8Array
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -2882,10 +2802,6 @@ isRevoked(cert: X509Cert): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-isRevoked(cert: X509Cert): boolean--><!--Device-X509CRL-isRevoked(cert: X509Cert): boolean-End-->
@@ -2896,7 +2812,7 @@ isRevoked(cert: X509Cert): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 是 | 表示被检查的证书对象。 |
+| cert | X509Cert | 是 | 表示被检查的证书对象。 |
 
 **返回值：**
 
@@ -2908,9 +2824,9 @@ isRevoked(cert: X509Cert): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3066,10 +2982,6 @@ match(param: X509CRLMatchParameters): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-match(param: X509CRLMatchParameters): boolean--><!--Device-X509CRL-match(param: X509CRLMatchParameters): boolean-End-->
@@ -3092,11 +3004,11 @@ match(param: X509CRLMatchParameters): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3288,10 +3200,6 @@ toString(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-toString(): string--><!--Device-X509CRL-toString(): string-End-->
@@ -3308,11 +3216,11 @@ toString(): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3412,10 +3320,6 @@ toString(encodingType: EncodingType): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-toString(encodingType: EncodingType): string--><!--Device-X509CRL-toString(encodingType: EncodingType): string-End-->
@@ -3438,12 +3342,12 @@ toString(encodingType: EncodingType): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. encodingType的值不在EncodingType枚举范围内。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3549,10 +3453,6 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void--><!--Device-X509CRL-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void-End-->
@@ -3564,16 +3464,16 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | cryptoFramework.PubKey | 是 | 表示用于验签的公钥对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当验签成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当验签成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -3840,10 +3740,6 @@ verify(key: cryptoFramework.PubKey): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-X509CRL-verify(key: cryptoFramework.PubKey): Promise<void>--><!--Device-X509CRL-verify(key: cryptoFramework.PubKey): Promise<void>-End-->
@@ -3866,10 +3762,10 @@ verify(key: cryptoFramework.PubKey): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,9 +4,7 @@ Defines the triggered when the file selector shows.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnShowFileSelectorEvent--><!--Device-unnamed-export declare interface OnShowFileSelectorEvent-End-->
 
@@ -24,9 +22,7 @@ Encompassed message information as parameters to fileSelector.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnShowFileSelectorEvent-fileSelector: FileSelectorParam--><!--Device-OnShowFileSelectorEvent-fileSelector: FileSelectorParam-End-->
 
@@ -44,9 +40,7 @@ Defines the file selector result.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnShowFileSelectorEvent-result: FileSelectorResult--><!--Device-OnShowFileSelectorEvent-result: FileSelectorResult-End-->
 

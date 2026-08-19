@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backup-interface FileMeta--><!--Device-backup-interface FileMeta-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { backup } from '@kit.CoreFileKit';
+```
 
 ## bundleName
 
@@ -25,10 +27,6 @@ bundleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileMeta-bundleName: string--><!--Device-FileMeta-bundleName: string-End-->
 
@@ -48,10 +46,6 @@ uri: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileMeta-uri: string--><!--Device-FileMeta-uri: string-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
@@ -69,10 +63,6 @@ uris?: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,10 @@
 # read
 
+## 导入模块
+
+```TypeScript
+```
+
 ## read
 
 ```TypeScript
@@ -14,9 +19,7 @@ function read(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function read(  fd: int,  buffer: ArrayBuffer,  options?: ReadOptions): Promise<long>--><!--Device-fileIo-function read(  fd: int,  buffer: ArrayBuffer,  options?: ReadOptions): Promise<long>-End-->
 
@@ -62,9 +65,7 @@ function read(fd: int, buffer: ArrayBuffer, callback: AsyncCallback<long>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function read(fd: int, buffer: ArrayBuffer, callback: AsyncCallback<long>): void--><!--Device-fileIo-function read(fd: int, buffer: ArrayBuffer, callback: AsyncCallback<long>): void-End-->
 
@@ -76,7 +77,7 @@ function read(fd: int, buffer: ArrayBuffer, callback: AsyncCallback<long>): void
 | --- | --- | --- | --- |
 | fd | int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数。返回实际读取的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -108,9 +109,7 @@ function read(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-fileIo-function read(  fd: int,  buffer: ArrayBuffer,  options: ReadOptions,  callback: AsyncCallback<long>): void--><!--Device-fileIo-function read(  fd: int,  buffer: ArrayBuffer,  options: ReadOptions,  callback: AsyncCallback<long>): void-End-->
 
@@ -123,7 +122,7 @@ function read(
 | fd | int | 是 | 已打开的文件描述符fd。 |
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | options | [ReadOptions](arkts-na-file-fs-readoptions-i.md) | 是 | 支持如下选项：<br/>- offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- length， number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回实际读取的数据长度，单位为Byte。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;long&gt; | 是 | 回调函数，返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 

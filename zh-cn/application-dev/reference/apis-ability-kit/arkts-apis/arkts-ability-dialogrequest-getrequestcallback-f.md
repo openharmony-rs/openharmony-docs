@@ -1,5 +1,11 @@
 # getRequestCallback
 
+## 导入模块
+
+```TypeScript
+import { dialogRequest } from '@kit.AbilityKit';
+```
+
 ## getRequestCallback
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getRequestCallback(want: Want): RequestCallback
 从Want中获取请求方的RequestCallback。 > **说明：** > > 该接口可以在ServiceExtensionAbility下使用，如果ServiceExtensionAbility实现了模态弹框，则能从Want中获取请求方的RequestCallback。其他场景使用该接口，均无法获取返回 > 值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-dialogRequest-function getRequestCallback(want: Want): RequestCallback--><!--Device-dialogRequest-function getRequestCallback(want: Want): RequestCallback-End-->
 
@@ -36,7 +38,7 @@ function getRequestCallback(want: Want): RequestCallback
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want, dialogRequest } from '@kit.AbilityKit';

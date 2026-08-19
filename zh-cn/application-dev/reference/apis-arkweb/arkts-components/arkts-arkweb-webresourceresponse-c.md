@@ -4,13 +4,19 @@ WebResourceResponse是Web组件中表示HTTP响应并允许自定义网页资源
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class WebResourceResponse--><!--Device-unnamed-declare class WebResourceResponse-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## constructor
 
@@ -21,10 +27,6 @@ constructor()
 WebResourceResponse的构造函数。用于创建HTTP响应对象，常用于资源请求拦截场景中自定义响应内容。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +43,6 @@ getReasonMessage(): string
 获取资源响应的状态码描述。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -68,10 +66,6 @@ getResponseCode(): number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceResponse-getResponseCode(): number--><!--Device-WebResourceResponse-getResponseCode(): number-End-->
@@ -93,10 +87,6 @@ getResponseData(): string
 获取资源响应数据。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -120,10 +110,6 @@ getResponseDataEx(): string | number | ArrayBuffer | Resource | undefined
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceResponse-getResponseDataEx(): string | number | ArrayBuffer | Resource | undefined--><!--Device-WebResourceResponse-getResponseDataEx(): string | number | ArrayBuffer | Resource | undefined-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -143,10 +129,6 @@ getResponseEncoding(): string
 获取资源响应的编码。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -170,10 +152,6 @@ getResponseHeader(): Array<Header>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceResponse-getResponseHeader(): Array<Header>--><!--Device-WebResourceResponse-getResponseHeader(): Array<Header>-End-->
@@ -196,10 +174,6 @@ getResponseIsReady(): boolean
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceResponse-getResponseIsReady(): boolean--><!--Device-WebResourceResponse-getResponseIsReady(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -219,10 +193,6 @@ getResponseMimeType(): string
 获取资源响应的媒体（MIME）类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -246,10 +216,6 @@ setReasonMessage(reason: string): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceResponse-setReasonMessage(reason: string): void--><!--Device-WebResourceResponse-setReasonMessage(reason: string): void-End-->
@@ -272,10 +238,6 @@ setResponseCode(code: number): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceResponse-setResponseCode(code: number): void--><!--Device-WebResourceResponse-setResponseCode(code: number): void-End-->
@@ -286,7 +248,7 @@ setResponseCode(code: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| code | number | 是 | 要设置的资源响应的状态码。如果该资源请求失败或响应状态为错误状态，请参考 [@ohos.web.netErrorList](../arkts-apis/arkts-arkweb-web-neterrorlist-webneterrorlist-e.md#webneterrorlist)设置相应错误码。常见错误码场景：404表示资源不存在，请检查资源路径；500表示服 务器内部错误，请检查服务器状态；403表示无访问权限，请申请相应访问权限；401表示未授权，请检查认证信息。根据错误码检查网络配置、服务器状态或资源访问权限。避免设置错误码为 ERR_IO_PENDING，设置为该错误码可 能会导致XMLHttpRequest同步请求阻塞。 |
+| code | number | 是 | 要设置的资源响应的状态码。如果该资源请求失败或响应状态为错误状态，请参考 [@ohos.web.netErrorList](../../apis-na/arkts-apis/arkts-na-web-neterrorlist-webneterrorlist-e.md)设置相应错误码。常见错误码场景：404表示资源不存在，请检查资源路径；500表示服 务器内部错误，请检查服务器状态；403表示无访问权限，请申请相应访问权限；401表示未授权，请检查认证信息。根据错误码检查网络配置、服务器状态或资源访问权限。避免设置错误码为 ERR_IO_PENDING，设置为该错误码可 能会导致XMLHttpRequest同步请求阻塞。 |
 
 ## setResponseData
 
@@ -297,10 +259,6 @@ setResponseData(data: string | number | Resource | ArrayBuffer): void
 设置资源响应数据。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -324,10 +282,6 @@ setResponseEncoding(encoding: string): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceResponse-setResponseEncoding(encoding: string): void--><!--Device-WebResourceResponse-setResponseEncoding(encoding: string): void-End-->
@@ -349,10 +303,6 @@ setResponseHeader(header: Array<Header>): void
 设置资源响应头。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -376,10 +326,6 @@ setResponseIsReady(IsReady: boolean): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebResourceResponse-setResponseIsReady(IsReady: boolean): void--><!--Device-WebResourceResponse-setResponseIsReady(IsReady: boolean): void-End-->
@@ -401,10 +347,6 @@ setResponseMimeType(mimeType: string): void
 设置资源响应的媒体（MIME）类型。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

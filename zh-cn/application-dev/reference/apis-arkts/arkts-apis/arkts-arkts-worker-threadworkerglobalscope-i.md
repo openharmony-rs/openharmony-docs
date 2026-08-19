@@ -2,17 +2,19 @@
 
 Worker线程用于与宿主线程通信的类。其中postMessage接口用于向宿主线程发送消息，close接口用于销毁Worker线程。 ThreadWorkerGlobalScope类继承GlobalScope9+。
 
-**继承/实现关系：** ThreadWorkerGlobalScope extends [GlobalScope](arkts-arkts-worker-globalscope-i.md#globalscope)
+**继承/实现关系：** ThreadWorkerGlobalScope extends [GlobalScope](arkts-arkts-worker-globalscope-i.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface ThreadWorkerGlobalScope--><!--Device-unnamed-export interface ThreadWorkerGlobalScope-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
+```
 
 ## callGlobalCallObjectMethod
 
@@ -23,10 +25,6 @@ callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: nu
 Worker线程调用宿主线程上注册的对象的指定方法，此调用对Worker线程同步，对宿主线程异步， 返回值通过数据拷贝传递。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -59,7 +57,7 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200020](../errorcode-utils.md#10200020-调用注册对象上的方法类型错误) | The method to be called is not callable or is an async method or a generator. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -116,10 +114,6 @@ close(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-close(): void--><!--Device-ThreadWorkerGlobalScope-close(): void-End-->
@@ -132,7 +126,7 @@ close(): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -162,10 +156,6 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void-End-->
@@ -186,7 +176,7 @@ Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -220,10 +210,6 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void-End-->
@@ -244,7 +230,7 @@ Worker线程通过转移对象所有权或拷贝数据的方式向宿主线程�
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -277,10 +263,6 @@ Worker线程通过转移对象所有权的方式向宿主线程发送插队消�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -304,7 +286,7 @@ Worker线程通过转移对象所有权的方式向宿主线程发送插队消�
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker文件路径为：entry/src/main/ets/workers/Worker.ets
@@ -396,10 +378,6 @@ Worker线程向宿主线程发送消息，消息中的Sendable对象通过引用
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void-End-->
@@ -420,7 +398,7 @@ Worker线程向宿主线程发送消息，消息中的Sendable对象通过引用
 | [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker文件路径为：entry/src/main/ets/workers/Worker.ets
@@ -474,10 +452,6 @@ onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerGlobalScope-onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void--><!--Device-ThreadWorkerGlobalScope-onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void-End-->
@@ -495,10 +469,6 @@ onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void
 **类型：** (this: ThreadWorkerGlobalScope, ev: MessageEvents) =&gt; void
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

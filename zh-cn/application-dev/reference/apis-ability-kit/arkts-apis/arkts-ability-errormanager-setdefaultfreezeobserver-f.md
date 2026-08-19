@@ -1,18 +1,20 @@
 # setDefaultFreezeObserver
 
+## 导入模块
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+```
+
 ## setDefaultFreezeObserver
 
 ```TypeScript
 function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver
 ```
 
-设置默认冻屏观测器。此函数将在通过errorManager.on注册的回调函数执行后立即执行。 可用于替代errorManager.on实现链式调用。 如果为某个模块设置空观测器，将导致调用链中断。 此API必须在主线程中调用。
+发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。 > **说明：** > > 该接口请勿与 > [on('freeze')](arkts-ability-errormanager-onerror-f.md#onerror) > 或 > [off('freeze')](arkts-ability-errormanager-offerror-f.md#offerror) > 接口混用。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +42,7 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 | --- | --- |
 | [16000205](../errorcode-ability.md#16000205-当前接口未在主线程中调用) | API未在主线程中调用。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

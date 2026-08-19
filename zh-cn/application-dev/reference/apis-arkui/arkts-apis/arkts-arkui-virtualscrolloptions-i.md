@@ -1,16 +1,17 @@
-# VirtualScrollOptions
+# VirtualScrollOptions(Defines Repeat component.)
 
 配置懒加载模式下期望加载的数据项总数、复用能力、数据精准懒加载能力。从API版本26.0.0开始，支持配置内存优化策略。
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface VirtualScrollOptions--><!--Device-unnamed-interface VirtualScrollOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## onLazyLoading
 
@@ -21,10 +22,6 @@ onLazyLoading?(index: number): void
 可选方法，懒加载指定索引的数据。需要开发者给定数据加载方法。 onLazyLoading方法需在懒加载场景下使用。开发者可设置自定义方法，用于向指定的数据源index中写入数据。以下为onLazyLoading的处理规则： - Repeat读取数据源中index对应的数据之前，会先检查index处是否存在数据。 - 如果不存在数据，但开发者提供了onLazyLoading方法，Repeat将调用此方法。 - 在onLazyLoading方法中，开发者需要向Repeat指定的index中写入数据，方式如下：`arr[index] = ...`，其中`arr`表示传入Repeat的数组。不允许使用除`[]`以外的数组操作，且不允许写入 指定index以外的元素，否则系统将抛出异常。 - onLazyLoading方法执行完成后，若指定index中仍无数据，将导致当前index和后续索引对应的组件无法加载。 - 精准懒加载能力为可选配置项。当onLazyLoading缺省，并且totalCount或onTotalCount的返回值大于数据源长度时，Repeat不会渲染列表滚动到数据源末尾时缺失的后续数据。 - onLazyLoading方法中应避免阻塞式耗时操作（如同步网络请求、复杂计算）。若数据加载耗时可能影响滚动流畅度，建议先在onLazyLoading方法中为此数据创建占位符，再创建异步任务加载数据。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -40,7 +37,7 @@ onLazyLoading?(index: number): void
 | --- | --- | --- | --- |
 | index | number | 是 | 需要加载的数据项对应的索引。 <br>取值范围：自然数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 假设数据项总数为100，首屏渲染需3项数据
@@ -65,10 +62,6 @@ onTotalCount?(): number
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -89,15 +82,11 @@ onTotalCount?(): number
 memoryOptimizationStrategy?: RepeatMemOptStrategy
 ```
 
-Repeat的内存优化策略。该参数在创建Repeat时设定，不支持动态修改。 默认值：[DEFAULT](arkts-arkui-repeatmemoptstrategy-e.md#repeatmemoptstrategy)
+Repeat的内存优化策略。该参数在创建Repeat时设定，不支持动态修改。 默认值：[DEFAULT](arkts-arkui-repeatmemoptstrategy-e.md)
 
 **类型：** [RepeatMemOptStrategy](arkts-arkui-repeatmemoptstrategy-e.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -119,10 +108,6 @@ reusable?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -142,10 +127,6 @@ totalCount?: number
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

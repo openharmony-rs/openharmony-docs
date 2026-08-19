@@ -6,13 +6,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface LongPressGestureInterface--><!--Device-unnamed-interface LongPressGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -20,13 +21,9 @@
 (value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface
 ```
 
-创建长按手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md#gestureinterface)。 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
+创建长按手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-gestureinterface-i.md)。 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -55,10 +52,6 @@
 创建长按手势对象。与LongPressGesture)}相比， options参数新增了对isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +83,6 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LongPressGestureInterface-onAction(event: (event: GestureEvent) => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onAction(event: (event: GestureEvent) => void): LongPressGestureInterface-End-->
@@ -122,10 +111,6 @@ onActionCancel(event: () => void): LongPressGestureInterface
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LongPressGestureInterface-onActionCancel(event: () => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onActionCancel(event: () => void): LongPressGestureInterface-End-->
@@ -153,10 +138,6 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface
 设置长按手势取消回调。长按手势识别成功后，接收到触摸取消事件时触发回调。返回手势事件信息。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -187,10 +168,6 @@ onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface
 设置长按手势结束回调。长按手势识别成功后，最后一根手指抬起时触发回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

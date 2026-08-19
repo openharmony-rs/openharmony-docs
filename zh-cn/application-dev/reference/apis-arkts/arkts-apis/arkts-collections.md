@@ -1,16 +1,18 @@
 # @arkts.collections
 
-本模块提供的ArkTS容器集，可以用于并发场景下的高性能数据传递。功能与JavaScript内建的对应容器类似，但ArkTS容器实例无法通过`"."`或者`"[]"`添加或更新属性。 ArkTS容器在多个并发实例间传递时，其默认行为是引用传递，支持多个并发实例可以同时操作同一个容器实例。另外，也支持拷贝传递，即每个并发实例持有一个ArkTS容器实例。 ArkTS容器并不是线程安全的，内部使用了fail-fast（快速失败）机制：当检测多个并发实例同时对容器进行结构性改变时，会触发异常。因此，在多线程读写容器时，容器使用方需要使用ArkTS提供的异步锁机制保证ArkTS容器的安全访问。 当前ArkTS容器集主要包含以下几种容器：[Array](#arktscollections), [Map](#arktscollections), [Set](#arktscollections), TypedArray ([Int8Array](#arktscollections), [Uint8Array](#arktscollections), [Int16Array](#arktscollections), [Uint16Array](#arktscollections), [Int32Array](#arktscollections), [Uint32Array](#arktscollections), [Uint8ClampedArray](#arktscollections) and [Float32Array](#arktscollections)), [ArrayBuffer](#arktscollections), [BitVector](#arktscollections), and [ConcatArray](#arktscollections). > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+本模块提供的ArkTS容器集，可以用于并发场景下的高性能数据传递。功能与JavaScript内建的对应容器类似，但ArkTS容器实例无法通过`"."`或者`"[]"`添加或更新属性。 ArkTS容器在多个并发实例间传递时，其默认行为是引用传递，支持多个并发实例可以同时操作同一个容器实例。另外，也支持拷贝传递，即每个并发实例持有一个ArkTS容器实例。 ArkTS容器并不是线程安全的，内部使用了fail-fast（快速失败）机制：当检测多个并发实例同时对容器进行结构性改变时，会触发异常。因此，在多线程读写容器时，容器使用方需要使用ArkTS提供的异步锁机制保证ArkTS容器的安全访问。 当前ArkTS容器集主要包含以下几种容器：[Array](../../apis-na/arkts-apis/arkts-collections.md), [Map](../../apis-na/arkts-apis/arkts-collections.md), [Set](../../apis-na/arkts-apis/arkts-collections.md), TypedArray ([Int8Array](../../apis-na/arkts-apis/arkts-collections.md), [Uint8Array](../../apis-na/arkts-apis/arkts-collections.md), [Int16Array](../../apis-na/arkts-apis/arkts-collections.md), [Uint16Array](../../apis-na/arkts-apis/arkts-collections.md), [Int32Array](../../apis-na/arkts-apis/arkts-collections.md), [Uint32Array](../../apis-na/arkts-apis/arkts-collections.md), [Uint8ClampedArray](../../apis-na/arkts-apis/arkts-collections.md) and [Float32Array](../../apis-na/arkts-apis/arkts-collections.md)), [ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md), [BitVector](../../apis-na/arkts-apis/arkts-collections.md), and [ConcatArray](../../apis-na/arkts-apis/arkts-collections.md). > **说明：**> > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace collections--><!--Device-unnamed-declare namespace collections-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { collections } from '@kit.ArkTS';
+```
 
 ## 汇总
 
@@ -19,18 +21,18 @@
 | 名称 | 说明 |
 | --- | --- |
 | [Array](arkts-arkts-collections-array-c.md) | 一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。 当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。 @Sendable |
-| [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md) | ArkTS TypedArray（[Int8Array](#arktscollections)、 [Uint8Array](#arktscollections)、 [Int16Array](#arktscollections)、 [Uint16Array](#arktscollections)、 [Int32Array](#arktscollections)、 [Uint32Array](#arktscollections)、 [Uint8ClampedArray](#arktscollections)、 [Float32Array](#arktscollections)）的底层数据结构。 @Sendable |
+| [ArrayBuffer](arkts-arkts-collections-arraybuffer-c.md) | ArkTS TypedArray（[Int8Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint8Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Int16Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint16Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Int32Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint32Array](../../apis-na/arkts-apis/arkts-collections.md)、 [Uint8ClampedArray](../../apis-na/arkts-apis/arkts-collections.md)、 [Float32Array](../../apis-na/arkts-apis/arkts-collections.md)）的底层数据结构。 @Sendable |
 | [BitVector](arkts-arkts-collections-bitvector-c.md) | 一种线性数据结构，底层基于数组实现。BitVector 中存储的元素为 bit 值，能够存储和处理 bit 级别的操作。 > **NOTE：**> > - 此模块仅支持在 ArkTS 文件（文件后缀为 .ets）中导入使用。 > **装饰器**：\@Sendable |
-| [Float32Array](arkts-arkts-collections-float32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
-| [Int16Array](arkts-arkts-collections-int16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
-| [Int32Array](arkts-arkts-collections-int32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
-| [Int8Array](arkts-arkts-collections-int8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
+| [Float32Array](arkts-arkts-collections-float32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
+| [Int16Array](arkts-arkts-collections-int16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
+| [Int32Array](arkts-arkts-collections-int32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
+| [Int8Array](arkts-arkts-collections-int8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
 | [Map](arkts-arkts-collections-map-c.md) | 一种基于键值对存储的非线性数据结构，能够高效地通过唯一键来存取对应的值。 @Sendable |
 | [Set](arkts-arkts-collections-set-c.md) | 一种存储唯一值的非线性数据结构，能够高效地进行元素存在性检测和去重操作。 @Sendable |
-| [Uint16Array](arkts-arkts-collections-uint16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
-| [Uint32Array](arkts-arkts-collections-uint32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
-| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
-| [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](#arktscollections)实现。 @Sendable |
+| [Uint16Array](arkts-arkts-collections-uint16array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
+| [Uint32Array](arkts-arkts-collections-uint32array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
+| [Uint8Array](arkts-arkts-collections-uint8array-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
+| [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | 一种线性数据结构，底层基于[ArkTS ArrayBuffer](../../apis-na/arkts-apis/arkts-collections.md)实现。 @Sendable |
 
 ### 接口
 

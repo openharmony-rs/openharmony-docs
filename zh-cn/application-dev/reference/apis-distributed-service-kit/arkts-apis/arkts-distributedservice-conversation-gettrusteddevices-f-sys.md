@@ -1,5 +1,11 @@
 # getTrustedDevices（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { conversation } from '@kit.DistributedServiceKit';
+```
+
 ## getTrustedDevices
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getTrustedDevices(): DeviceNodeInfo[]
 获取历史可信设备列表。典型使用场景包括：跨设备数据发送前查询可用目标设备。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.sec.ACCESS_UDID
 
@@ -39,7 +41,7 @@ function getTrustedDevices(): DeviceNodeInfo[]
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [2000001](../../apis-distributedservice-kit/errorcode-conversation.md#2000001-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';

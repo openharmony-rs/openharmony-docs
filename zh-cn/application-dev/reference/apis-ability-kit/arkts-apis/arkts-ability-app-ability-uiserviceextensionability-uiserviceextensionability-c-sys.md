@@ -1,14 +1,10 @@
 # UIServiceExtensionAbility（系统接口）
 
-UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability). 主要用于向三方应用提供带界面的服务。
+UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md). 主要用于向三方应用提供带界面的服务。
 
 **继承/实现关系：** UIServiceExtensionAbility extends ExtensionAbility
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class UIServiceExtensionAbility--><!--Device-unnamed-declare class UIServiceExtensionAbility-End-->
 
@@ -16,19 +12,21 @@ UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[Extens
 
 **系统接口：** 此接口为系统接口。
 
+## 导入模块
+
+```TypeScript
+import { UIServiceExtensionAbility } from '@kit.AbilityKit';
+```
+
 ## onConnect
 
 ```TypeScript
 onConnect(want: Want, proxy: UIServiceHostProxy): void
 ```
 
-UIServiceExtension生命周期回调。如果是 [connectUIServiceExtensionAbility()](arkts-ability-uiextensioncontext-c.md#connectuiserviceextensionability) 拉起的服务，会在[onCreate()](#oncreate)之后回调。接收一个 [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md#uiservicehostproxy系统接口)对象，用于客户端和服务端进行通信。
+UIServiceExtension生命周期回调。如果是 [connectUIServiceExtensionAbility()](arkts-ability-uiextensioncontext-c.md#connectuiserviceextensionability) 拉起的服务，会在[onCreate()](#oncreate)之后回调。接收一个 [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md)对象，用于客户端和服务端进行通信。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +40,10 @@ UIServiceExtension生命周期回调。如果是 [connectUIServiceExtensionAbili
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md#want)类型信息，包括Ability名称、Bundle名称等。 |
-| proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md#uiservicehostproxy系统接口) 对象，用于客户端和服务端进行通信。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
+| proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) 对象，用于客户端和服务端进行通信。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility, Want, common} from '@kit.AbilityKit';
@@ -63,13 +61,9 @@ class UIServiceExt extends UIServiceExtensionAbility {
 onCreate(want: Want): void
 ```
 
-[UIServiceExtensionContext](../../apis-na/arkts-apis/arkts-na-uiserviceextensioncontext-c-sys.md#uiserviceextensioncontext系统接口)生命周期创建接口，执行初始化 业务逻辑操作。
+[UIServiceExtensionContext](../../apis-na/arkts-apis/arkts-na-uiserviceextensioncontext-c-sys.md)生命周期创建接口，执行初始化 业务逻辑操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -83,9 +77,9 @@ onCreate(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md#want)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -108,10 +102,6 @@ onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionAbility-onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void--><!--Device-UIServiceExtensionAbility-onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void-End-->
@@ -127,7 +117,7 @@ onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往客户端发送数据的Proxy。 |
 | data | Record&lt;string, Object&gt; | 是 | 表示接收到的数据。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility, common} from '@kit.AbilityKit';
@@ -149,10 +139,6 @@ onData(proxy: UIServiceHostProxy, data: Record<string, RecordData>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionAbility-onData(proxy: UIServiceHostProxy, data: Record<string, RecordData>): void--><!--Device-UIServiceExtensionAbility-onData(proxy: UIServiceHostProxy, data: Record<string, RecordData>): void-End-->
@@ -166,7 +152,7 @@ onData(proxy: UIServiceHostProxy, data: Record<string, RecordData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往客户端发送数据的Proxy。 |
-| data | Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 表示接收到的数据。 |
+| data | Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt; | 是 | 表示接收到的数据。 |
 
 ## onDestroy
 
@@ -178,10 +164,6 @@ UIServiceExtension销毁时回调，执行资源清理等操作。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionAbility-onDestroy(): void--><!--Device-UIServiceExtensionAbility-onDestroy(): void-End-->
@@ -190,7 +172,7 @@ UIServiceExtension销毁时回调，执行资源清理等操作。
 
 **系统接口：** 此接口为系统接口。
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility } from '@kit.AbilityKit';
@@ -212,10 +194,6 @@ onDisconnect(want: Want, proxy: UIServiceHostProxy): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionAbility-onDisconnect(want: Want, proxy: UIServiceHostProxy): void--><!--Device-UIServiceExtensionAbility-onDisconnect(want: Want, proxy: UIServiceHostProxy): void-End-->
@@ -228,10 +206,10 @@ onDisconnect(want: Want, proxy: UIServiceHostProxy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md#want)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往发起方发送数据的Proxy。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility, Want, common } from '@kit.AbilityKit';
@@ -253,10 +231,6 @@ onRequest(want: Want, startId: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionAbility-onRequest(want: Want, startId: int): void--><!--Device-UIServiceExtensionAbility-onRequest(want: Want, startId: int): void-End-->
@@ -269,10 +243,10 @@ onRequest(want: Want, startId: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md#want)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 | startId | int | 是 | 返回浮窗拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility, Want} from '@kit.AbilityKit';
@@ -294,10 +268,6 @@ UIServiceExtension创建后回调。UIServiceExtension服务创建窗口成功�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionAbility-onWindowDidCreate(window: window.Window): void--><!--Device-UIServiceExtensionAbility-onWindowDidCreate(window: window.Window): void-End-->
@@ -312,7 +282,7 @@ UIServiceExtension创建后回调。UIServiceExtension服务创建窗口成功�
 | --- | --- | --- | --- |
 | window | window.Window | 是 | 表示已创建的Window。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility } from '@kit.AbilityKit';
@@ -335,10 +305,6 @@ UIServiceExtension窗体创建前的回调。前台应用把要创建windows的�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UIServiceExtensionAbility-onWindowWillCreate(config: window.ExtensionWindowConfig): void--><!--Device-UIServiceExtensionAbility-onWindowWillCreate(config: window.ExtensionWindowConfig): void-End-->
@@ -353,7 +319,7 @@ UIServiceExtension窗体创建前的回调。前台应用把要创建windows的�
 | --- | --- | --- | --- |
 | config | window.ExtensionWindowConfig | 是 | UIServiceExtension窗体配置信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIServiceExtensionAbility } from '@kit.AbilityKit';
@@ -372,15 +338,11 @@ class UIServiceExt extends UIServiceExtensionAbility {
 context: UIServiceExtensionContext
 ```
 
-UIServiceExtension的上下文环境，继承自[ExtensionContext](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)。
+UIServiceExtension的上下文环境，继承自[ExtensionContext](arkts-ability-app-ability-extensionability-extensionability-c.md)。
 
 **类型：** [UIServiceExtensionContext](../../apis-na/arkts-apis/arkts-na-uiserviceextensioncontext-c-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

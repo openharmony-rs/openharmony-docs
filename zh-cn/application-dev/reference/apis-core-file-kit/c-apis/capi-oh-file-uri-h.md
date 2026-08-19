@@ -52,7 +52,7 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：<br>                  1. 参数path为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的path长度与length不一致。<br>         {@link ERR_UNKNOWN} 13900042 - 未知错误。转换后的URI长度为0会返回此错误。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n                   1. 参数path为空指针；\n                   2. 参数result为空指针；\n                   3. 输入的path长度与length不一致。\n          {@link ERR_UNKNOWN} 13900042 - 未知错误。转换后的URI长度为0会返回此错误。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetPathFromUri()
 
@@ -80,7 +80,7 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：<br>                  1. 参数uri为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的uri长度与length不一致。<br>         {@link ERR_UNKNOWN} 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。<br>         {@link ERR_ENOMEM}  13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n                   1. 参数uri为空指针；\n                   2. 参数result为空指针；\n                   3. 输入的uri长度与length不一致。\n          {@link ERR_UNKNOWN} 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。\n          {@link ERR_ENOMEM}  13900011 - 分配或者拷贝内存失败。          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetFullDirectoryUri()
 
@@ -108,7 +108,7 @@ FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：<br>                  1. 参数uri为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的uri长度与length不一致。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_ENOENT} 13900002 - 没有该文件或目录。<br>         {@link ERR_UNKNOWN} 13900042 - 未知错误。获取到的目录URI长度为0会返回此错误。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n                   1. 参数uri为空指针；\n                   2. 参数result为空指针；\n                   3. 输入的uri长度与length不一致。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_ENOENT} 13900002 - 没有该文件或目录。\n          {@link ERR_UNKNOWN} 13900042 - 未知错误。获取到的目录URI长度为0会返回此错误。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 ### OH_FileUri_IsValidUri()
 
@@ -163,6 +163,6 @@ FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int leng
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。<br>         {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：<br>                  1. 参数uri为空指针；<br>                  2. 参数result为空指针；<br>                  3. 输入的uri长度与length不一致；<br>                  4. uri格式不正确。<br>         {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。<br>         {@link ERR_OK} 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看{@link FileManagement_ErrCode}。\n          {@link ERR_INVALID_PARAMETER}  401 - 输入参数无效。可能的原因：\n                   1. 参数uri为空指针；\n                   2. 参数result为空指针；\n                   3. 输入的uri长度与length不一致；\n                   4. uri格式不正确。\n          {@link ERR_ENOMEM} 13900011 - 分配或者拷贝内存失败。\n          {@link ERR_OK} 0 - 接口调用成功。 |
 
 

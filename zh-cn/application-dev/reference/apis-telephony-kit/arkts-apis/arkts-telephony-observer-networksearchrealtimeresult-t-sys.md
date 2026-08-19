@@ -8,10 +8,6 @@ Callback when the network state corresponding to the default sim card is updated
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-type NetworkSearchRealTimeResult = radio.NetworkSearchRealTimeResult--><!--Device-observer-type NetworkSearchRealTimeResult = radio.NetworkSearchRealTimeResult-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry

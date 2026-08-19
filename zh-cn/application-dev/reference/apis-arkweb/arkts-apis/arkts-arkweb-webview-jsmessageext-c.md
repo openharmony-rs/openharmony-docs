@@ -4,13 +4,15 @@ JsMessageExt是ArkWeb框架中用于封装 [runJavaScriptExt](arkts-arkweb-webvi
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-webview-class JsMessageExt--><!--Device-webview-class JsMessageExt-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## getArray
 
@@ -21,10 +23,6 @@ getArray(): Array<string | number | boolean>
 获取数据对象的数组类型数据。完整示例代码参考 [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext) 。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -54,10 +52,6 @@ getArrayBuffer(): ArrayBuffer
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer--><!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer-End-->
@@ -85,10 +79,6 @@ getBoolean(): boolean
 获取数据对象的布尔类型数据。完整示例代码参考 [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext) 。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -118,10 +108,6 @@ getErrorDescription(): string | null
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-JsMessageExt-getErrorDescription(): string | null--><!--Device-JsMessageExt-getErrorDescription(): string | null-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -141,10 +127,6 @@ getNumber(): number
 获取数据对象的数值类型数据。完整示例代码参考 [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext) 。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -174,10 +156,6 @@ getString(): string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-JsMessageExt-getString(): string--><!--Device-JsMessageExt-getString(): string-End-->
@@ -205,10 +183,6 @@ getType(): JsMessageType
 获取数据对象的类型。完整示例代码参考 [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext) 。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

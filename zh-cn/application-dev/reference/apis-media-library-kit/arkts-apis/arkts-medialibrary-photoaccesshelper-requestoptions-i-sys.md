@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface RequestOptions--><!--Device-photoAccessHelper-interface RequestOptions-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## sourceMode
 
@@ -23,10 +25,6 @@ sourceMode?: SourceMode
 **类型：** [SourceMode](arkts-medialibrary-photoaccesshelper-sourcemode-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RequestOptions-sourceMode?: SourceMode--><!--Device-RequestOptions-sourceMode?: SourceMode-End-->
 

@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backup-interface FileData--><!--Device-backup-interface FileData-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { backup } from '@kit.CoreFileKit';
+```
 
 ## fd
 
@@ -25,10 +27,6 @@ fd: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileData-fd: int--><!--Device-FileData-fd: int-End-->
 

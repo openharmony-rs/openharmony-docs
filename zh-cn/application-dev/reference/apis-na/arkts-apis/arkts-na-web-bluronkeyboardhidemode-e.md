@@ -4,9 +4,7 @@ Enum type supplied to blurOnKeyboardHideMode for setting the web blurOnKeyboardH
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum BlurOnKeyboardHideMode--><!--Device-unnamed-export declare enum BlurOnKeyboardHideMode-End-->
 
@@ -22,9 +20,7 @@ The focused input elements on webview will not blur when soft keyboard is hidden
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-BlurOnKeyboardHideMode-SILENT = 0--><!--Device-BlurOnKeyboardHideMode-SILENT = 0-End-->
 
@@ -40,9 +36,7 @@ The focused input elements on webview will blur when soft keyboard is hidden man
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-BlurOnKeyboardHideMode-BLUR = 1--><!--Device-BlurOnKeyboardHideMode-BLUR = 1-End-->
 

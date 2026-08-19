@@ -1,5 +1,12 @@
 # connectToCandidateConfig
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## connectToCandidateConfig
 
 ```TypeScript
@@ -9,10 +16,6 @@ function connectToCandidateConfig(networkId: int): void
 通过networkId连接到指定的候选热点，只允许连接自己添加的配置。此方法一次连接一个配置。 应用必须在前台运行。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -38,7 +41,7 @@ function connectToCandidateConfig(networkId: int): void
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';
@@ -61,10 +64,6 @@ function connectToCandidateConfig(settings: ConnectSettings): Promise<void>
 使用连接设置连接到指定的候选热点。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -100,7 +99,7 @@ function connectToCandidateConfig(settings: ConnectSettings): Promise<void>
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

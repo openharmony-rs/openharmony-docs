@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-insightIntent-enum QueryType--><!--Device-insightIntent-enum QueryType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -21,10 +17,6 @@ ALL = 'all'
 查询所有实体。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ BY_PROPERTY = 'byProperty'
 根据属性查询实体。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

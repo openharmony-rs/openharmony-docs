@@ -4,13 +4,15 @@ ArcSliderValueOptions的构造信息。
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface ArcSliderValueOptionsConstructorOptions--><!--Device-unnamed-interface ArcSliderValueOptionsConstructorOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+## 导入模块
+
+```TypeScript
+import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstructorOptions, ArcSliderLayoutOptions, ArcSliderLayoutOptionsConstructorOptions, ArcSliderStyleOptions, ArcSliderStyleOptionsConstructorOptions, ArcSliderValueOptions, ArcSliderValueOptionsConstructorOptions } from '@kit.ArkUI';
+```
 
 ## max
 
@@ -25,10 +27,6 @@ max?: number
 **默认值：** 100
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -50,10 +48,6 @@ min?: number
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ArcSliderValueOptionsConstructorOptions-min?: number--><!--Device-ArcSliderValueOptionsConstructorOptions-min?: number-End-->
@@ -71,10 +65,6 @@ progress?: number
 **类型：** number
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 

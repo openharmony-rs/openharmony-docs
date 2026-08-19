@@ -4,9 +4,7 @@ Defines the namespace of focus controller.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -20,5 +18,5 @@ Defines the namespace of focus controller.
 
 | 名称 | 说明 |
 | --- | --- |
-| [requestFocus](arkts-na-focuscontrol-requestfocus-f.md#requestfocus) | Request focus to the specific component by param: 'id/key'. |
+| [requestFocus](arkts-na-focuscontrol-requestfocus-f.md) | Request focus to the specific component by param: 'id/key'. |
 

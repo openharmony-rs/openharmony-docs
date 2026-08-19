@@ -1,5 +1,11 @@
 # getUserRestricted
 
+## 导入模块
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+```
+
 ## getUserRestricted
 
 ```TypeScript
@@ -9,8 +15,6 @@ function getUserRestricted(admin: Want, settingsItem: string): boolean
 获取设置项的禁用状态。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
 
 **废弃版本：** 26.0.0
 
@@ -45,7 +49,7 @@ function getUserRestricted(admin: Want, settingsItem: string): boolean
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -77,10 +81,6 @@ function getUserRestricted(admin: Want | null, settingsItem: SettingsForDevice):
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -111,7 +111,7 @@ function getUserRestricted(admin: Want | null, settingsItem: SettingsForDevice):
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { restrictions } from '@kit.MDMKit';

@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum ArcButtonStatus--><!--Device-unnamed-export declare enum ArcButtonStatus-End-->
 
@@ -22,9 +20,7 @@ NORMAL = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonStatus-NORMAL = 0--><!--Device-ArcButtonStatus-NORMAL = 0-End-->
 
@@ -40,9 +36,7 @@ PRESSED = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonStatus-PRESSED = 1--><!--Device-ArcButtonStatus-PRESSED = 1-End-->
 
@@ -58,9 +52,7 @@ DISABLED = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ArcButtonStatus-DISABLED = 2--><!--Device-ArcButtonStatus-DISABLED = 2-End-->
 

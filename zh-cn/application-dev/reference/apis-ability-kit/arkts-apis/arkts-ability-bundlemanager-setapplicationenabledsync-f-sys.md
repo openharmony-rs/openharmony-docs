@@ -1,5 +1,11 @@
 # setApplicationEnabledSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## setApplicationEnabledSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 以同步方法设置指定应用的禁用或使能状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -38,7 +40,7 @@ function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -66,10 +68,6 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 设置应用程序是启用还是禁用，并控制在禁用时是否杀死进程。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -99,7 +97,7 @@ function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled:
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Non-system APP calling system API. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

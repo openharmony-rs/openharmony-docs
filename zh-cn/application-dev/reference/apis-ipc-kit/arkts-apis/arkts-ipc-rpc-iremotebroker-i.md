@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-rpc-interface IRemoteBroker--><!--Device-rpc-interface IRemoteBroker-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+## 导入模块
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+```
 
 ## asObject
 
@@ -22,10 +24,6 @@ asObject(): IRemoteObject
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-IRemoteBroker-asObject(): IRemoteObject--><!--Device-IRemoteBroker-asObject(): IRemoteObject-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -36,7 +34,7 @@ asObject(): IRemoteObject
 | --- | --- |
 | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md) | 如果调用者是RemoteObject对象，则直接返回本身；如果调用者是[RemoteProxy]{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';

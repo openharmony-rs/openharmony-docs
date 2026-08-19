@@ -1,5 +1,12 @@
 # stopDiscoverDevices
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## stopDiscoverDevices
 
 ```TypeScript
@@ -9,10 +16,6 @@ function stopDiscoverDevices(): void
 停止发现WLAN P2P设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -29,7 +32,7 @@ function stopDiscoverDevices(): void
 | [2801001](../errorcode-wifi.md#2801001-p2p模块异常) | Wi-Fi STA disabled. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

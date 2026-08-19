@@ -1,16 +1,17 @@
-# EnvPropsOptions
+# EnvPropsOptions(System API)
 
 用于指定环境变量名称及其默认值的键值对对象，作为[envProps](arkts-arkui-environment-c.md#envprops)参数传入。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface EnvPropsOptions--><!--Device-unnamed-declare interface EnvPropsOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## defaultValue
 
@@ -24,10 +25,6 @@ defaultValue: number | string | boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-EnvPropsOptions-defaultValue: number | string | boolean--><!--Device-EnvPropsOptions-defaultValue: number | string | boolean-End-->
@@ -40,15 +37,11 @@ defaultValue: number | string | boolean
 key: string
 ```
 
-环境变量名称，支持的范围详见[内置环境变量说明](arkts-arkui-environment-c.md#environment)。
+环境变量名称，支持的范围详见[内置环境变量说明](arkts-arkui-environment-c.md)。
 
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

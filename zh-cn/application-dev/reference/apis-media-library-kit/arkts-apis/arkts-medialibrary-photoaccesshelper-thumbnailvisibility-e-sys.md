@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum ThumbnailVisibility--><!--Device-photoAccessHelper-enum ThumbnailVisibility-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -24,10 +20,6 @@ INVISIBLE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ThumbnailVisibility-INVISIBLE = 0--><!--Device-ThumbnailVisibility-INVISIBLE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -43,10 +35,6 @@ VISIBLE = 1
 缩略图可访问。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ThumbnailVisibility-VISIBLE = 1--><!--Device-ThumbnailVisibility-VISIBLE = 1-End-->
 

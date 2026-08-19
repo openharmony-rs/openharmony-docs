@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avMusicTemplate-enum AVMusicTemplateErrorCode--><!--Device-avMusicTemplate-enum AVMusicTemplateErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -21,10 +17,6 @@ ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_FAILED = 35000001
 音频模板创建失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_CONTROLLER_FAILED = 35000002
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMusicTemplateErrorCode-ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_CONTROLLER_FAILED = 35000002--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_CONTROLLER_FAILED = 35000002-End-->
@@ -61,10 +49,6 @@ ERR_CODE_TEMPLATE_LISTENER_NO_EXIT = 35000003
 模板监听未注册。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ ERR_CODE_CONTROLLER_CALLBACK_NO_EXIT = 35000004
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_CALLBACK_NO_EXIT = 35000004--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_CALLBACK_NO_EXIT = 35000004-End-->
@@ -101,10 +81,6 @@ ERR_CODE_AV_MUSIC_TEMPLATE_NOT_EXIST = 35000005
 音频模板不存在。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,10 +98,6 @@ ERR_CODE_CONTROLLER_NOT_EXIST = 35000006
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_NOT_EXIST = 35000006--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_NOT_EXIST = 35000006-End-->
@@ -141,10 +113,6 @@ ERR_CODE_CONTROLLER_IS_EXIST = 35000007
 模板控制器已经存在。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -162,10 +130,6 @@ ERR_CODE_SERVICE_NOT_EXIST = 35000008
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMusicTemplateErrorCode-ERR_CODE_SERVICE_NOT_EXIST = 35000008--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_SERVICE_NOT_EXIST = 35000008-End-->
@@ -181,10 +145,6 @@ ERR_CODE_SERVICE_EXCEPTION = 35000009
 音频模板管理服务异常。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -202,10 +162,6 @@ ERR_CODE_EXCEED_MAX_DATA_SIZE = 35000010
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMusicTemplateErrorCode-ERR_CODE_EXCEED_MAX_DATA_SIZE = 35000010--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_EXCEED_MAX_DATA_SIZE = 35000010-End-->
@@ -222,10 +178,6 @@ ERR_CODE_WRITE_RESULT_EXCEPTION = 35000011
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMusicTemplateErrorCode-ERR_CODE_WRITE_RESULT_EXCEPTION = 35000011--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_WRITE_RESULT_EXCEPTION = 35000011-End-->
@@ -241,10 +193,6 @@ ERR_CODE_AV_MUSIC_TEMPLATE_ERROR = 35000012
 音频模板错误。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

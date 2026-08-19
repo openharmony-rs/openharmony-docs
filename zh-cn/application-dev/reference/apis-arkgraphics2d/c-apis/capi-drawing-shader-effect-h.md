@@ -83,7 +83,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针[OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)。如果返回NULL，表示创建失败；<br> 可能的原因是可用内存不足。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针[OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足。 |
 
 ### OH_Drawing_ShaderEffectCreateLinearGradient()
 
@@ -112,7 +112,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Dr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，startPt、endPt、<br> colors中任一为NULL，或tileMode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，startPt、endPt、  colors中任一为NULL，或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix()
 
@@ -142,7 +142,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMat
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，startPt、endPt、<br> colors中任一为NULL，或tileMode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，startPt、endPt、  colors中任一为NULL，或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateRadialGradient()
 
@@ -171,7 +171,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Dr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，<br> 或tileMode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，  或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix()
 
@@ -201,7 +201,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMat
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，<br> 或tileMode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，  或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix()
 
@@ -230,7 +230,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，<br> 或tileMode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，  或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateSweepGradient()
 
@@ -258,7 +258,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Dra
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，<br> 或tileMode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，  或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateImageShader()
 
@@ -286,7 +286,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Ima
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，image、<br> samplingOptions为NULL，或tileX、tileY超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，image、  samplingOptions为NULL，或tileX、tileY超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreatePixelMapShader()
 
@@ -314,7 +314,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreatePixelMapShader(OH_Drawing_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，pixelMap、<br> samplingOptions为NULL，或tileX、tileY超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，pixelMap、  samplingOptions为NULL，或tileX、tileY超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateTwoPointConicalGradient()
 
@@ -346,7 +346,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(co
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，startPt、endPt、<br> colors为NULL，或tileMode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，startPt、endPt、  colors为NULL，或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateCompose()
 
@@ -372,7 +372,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderE
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，dst、src为NULL，<br> 或mode超出枚举范围。 |
+| [OH_Drawing_ShaderEffect*](capi-drawing-oh-drawing-shadereffect.md) | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，dst、src为NULL，  或mode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectDestroy()
 

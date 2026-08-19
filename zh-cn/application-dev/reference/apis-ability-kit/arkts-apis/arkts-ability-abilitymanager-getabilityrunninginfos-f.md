@@ -1,5 +1,11 @@
 # getAbilityRunningInfos
 
+## 导入模块
+
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+```
+
 ## getAbilityRunningInfos
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAbilityRunningInfos(): Promise<Array<AbilityRunningInfo>>
 获取UIAbility运行时的相关信息。使用Promise异步回调。 > **说明：** > > 如果应用申请了ohos.permission.GET_RUNNING_INFO权限，可以获取所有应用UIAbility的运行信息，否则只能获取当前应用UIAbility的运行信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_RUNNING_INFO
 
@@ -32,7 +34,7 @@ function getAbilityRunningInfos(): Promise<Array<AbilityRunningInfo>>
 | --- | --- |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityManager } from '@kit.AbilityKit';

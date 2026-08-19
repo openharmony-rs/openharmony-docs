@@ -4,6 +4,8 @@
 
 声明用于查询终端设备信息的API。该模块提供了获取设备类型、制造商、品牌、型号、版本信息等设备基础信息的能力，适用于需要根据设备特性进行适配、统计设备信息或进行设备管理的场景。这些API通过读取系统属性获取设备信息，返回值为指向常量字符串的指针。该指针指向系统内部存储的数据，调用者无需释放内存。
 
+**引用文件：** <deviceinfo.h>
+
 **库：** libdeviceinfo_ndk.z.so
 
 **系统能力：** SystemCapability.Startup.SystemInfo
@@ -66,7 +68,7 @@ const char *OH_GetDeviceType(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 返回设备类型字符串。可能的值包括：<br>    <br>• "phone"<br>    <br>• "default"（设备类型无法识别时的默认返回值）<br>    <br>• "wearable"<br>    <br>• "liteWearable"<br>    <br>• "tablet"<br>    <br>• "tv"<br>    <br>• "car"<br>    <br>• "smartVision" |
+| const char * | 返回设备类型字符串。可能的值包括：     <br>• "phone"     <br>• "default"（设备类型无法识别时的默认返回值）     <br>• "wearable"     <br>• "liteWearable"     <br>• "tablet"     <br>• "tv"     <br>• "car"     <br>• "smartVision" |
 
 ### OH_GetManufacture()
 
@@ -326,7 +328,7 @@ const char *OH_GetOsReleaseType(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 操作系统发布类别包括"Release"、"Beta"和"Canary"。<br>         <br> 具体的发布类型可能是"release"，"Beta1"，或其他类似的。<br>         <br>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br>         <br>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br>         <br>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。 |
+| const char * | 操作系统发布类别包括"Release"、"Beta"和"Canary"。          <br> 具体的发布类型可能是"release"，"Beta1"，或其他类似的。          <br>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。          <br>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。          <br>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。 |
 
 ### OH_GetOSFullName()
 
@@ -386,7 +388,7 @@ int OH_GetFirstApiVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本，取值范围为整数。<br>         常见的取值包括：3等。 |
+| int | 首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本，取值范围为整数。          常见的取值包括：3等。 |
 
 ### OH_GetVersionId()
 
@@ -526,7 +528,7 @@ const char *OH_GetDistributionOSName(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | ISV发行版系统名称。<br>     <br>如果没有指定ISV，它将返回一个空字符串。 |
+| const char * | ISV发行版系统名称。      <br>如果没有指定ISV，它将返回一个空字符串。 |
 
 ### OH_GetDistributionOSVersion()
 
@@ -546,7 +548,7 @@ const char *OH_GetDistributionOSVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | ISV发行版系统版本号。<br>     <br>如果没有指定ISV，它将返回与[OH_GetOSFullName](capi-deviceinfo-h.md#oh_getosfullname)相同的值。 |
+| const char * | ISV发行版系统版本号。      <br>如果没有指定ISV，它将返回与[OH_GetOSFullName](capi-deviceinfo-h.md#oh_getosfullname)相同的值。 |
 
 ### OH_GetDistributionOSApiVersion()
 
@@ -566,7 +568,7 @@ int OH_GetDistributionOSApiVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | ISV发行版系统API版本。<br>     <br>如果没有指定ISV，它将返回与[OH_GetSdkApiVersion](capi-deviceinfo-h.md#oh_getsdkapiversion)相同的值。 |
+| int | ISV发行版系统API版本。      <br>如果没有指定ISV，它将返回与[OH_GetSdkApiVersion](capi-deviceinfo-h.md#oh_getsdkapiversion)相同的值。 |
 
 ### OH_GetDistributionOSReleaseType()
 
@@ -586,6 +588,6 @@ const char *OH_GetDistributionOSReleaseType(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | ISV发行版系统类型。<br>     <br>如果没有指定ISV，它将返回与[OH_GetOsReleaseType](capi-deviceinfo-h.md#oh_getosreleasetype)相同的值。 |
+| const char * | ISV发行版系统类型。      <br>如果没有指定ISV，它将返回与[OH_GetOsReleaseType](capi-deviceinfo-h.md#oh_getosreleasetype)相同的值。 |
 
 

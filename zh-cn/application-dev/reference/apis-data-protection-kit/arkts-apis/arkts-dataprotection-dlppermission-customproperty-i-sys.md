@@ -4,15 +4,17 @@
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-dlpPermission-export interface CustomProperty--><!--Device-dlpPermission-export interface CustomProperty-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
 
 ## enterprise
 
@@ -25,10 +27,6 @@ enterprise: string
 **类型：** string
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-CustomProperty-enterprise: string--><!--Device-CustomProperty-enterprise: string-End-->
 

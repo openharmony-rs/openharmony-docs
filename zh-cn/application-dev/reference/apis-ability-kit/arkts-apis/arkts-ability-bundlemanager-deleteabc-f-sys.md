@@ -1,5 +1,11 @@
 # deleteAbc（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## deleteAbc
 
 ```TypeScript
@@ -9,10 +15,6 @@ function deleteAbc(abcPath: string): Promise<void>
 根据给定的abcPath删除.abc文件。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RUN_DYN_CODE
 
@@ -43,7 +45,7 @@ function deleteAbc(abcPath: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

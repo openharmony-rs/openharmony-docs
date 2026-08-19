@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum AVMimeTypes--><!--Device-unnamed-enum AVMimeTypes-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -21,10 +17,6 @@ APPLICATION_M3U8 = 'application/m3u8'
 表示m3u8本地文件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

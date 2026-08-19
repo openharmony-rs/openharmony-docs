@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-enum AVErrorCode--><!--Device-media-enum AVErrorCode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -21,10 +17,6 @@ AVERR_OK = 0
 表示操作成功。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ AVERR_NO_PERMISSION = 201
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_NO_PERMISSION = 201--><!--Device-AVErrorCode-AVERR_NO_PERMISSION = 201-End-->
@@ -61,10 +49,6 @@ AVERR_INVALID_PARAMETER = 401
 表示传入参数无效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ AVERR_UNSUPPORT_CAPABILITY = 801
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_UNSUPPORT_CAPABILITY = 801--><!--Device-AVErrorCode-AVERR_UNSUPPORT_CAPABILITY = 801-End-->
@@ -101,10 +81,6 @@ AVERR_NO_MEMORY = 5400101
 表示系统内存不足或服务数量达到上限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ AVERR_OPERATE_NOT_PERMIT = 5400102
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_OPERATE_NOT_PERMIT = 5400102--><!--Device-AVErrorCode-AVERR_OPERATE_NOT_PERMIT = 5400102-End-->
@@ -141,10 +113,6 @@ AVERR_IO = 5400103
 表示数据流异常信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ AVERR_TIMEOUT = 5400104
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_TIMEOUT = 5400104--><!--Device-AVErrorCode-AVERR_TIMEOUT = 5400104-End-->
@@ -181,10 +145,6 @@ AVERR_SERVICE_DIED = 5400105
 表示服务进程死亡。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -202,10 +162,6 @@ AVERR_UNSUPPORT_FORMAT = 5400106
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_UNSUPPORT_FORMAT = 5400106--><!--Device-AVErrorCode-AVERR_UNSUPPORT_FORMAT = 5400106-End-->
@@ -221,10 +177,6 @@ AVERR_AUDIO_INTERRUPTED = 5400107
 表示音频焦点被抢占。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -242,10 +194,6 @@ AVERR_IO_HOST_NOT_FOUND = 5411001
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_IO_HOST_NOT_FOUND = 5411001--><!--Device-AVErrorCode-AVERR_IO_HOST_NOT_FOUND = 5411001-End-->
@@ -261,10 +209,6 @@ AVERR_IO_CONNECTION_TIMEOUT = 5411002
 表示网络连接超时。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -282,10 +226,6 @@ AVERR_IO_NETWORK_ABNORMAL = 5411003
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_IO_NETWORK_ABNORMAL = 5411003--><!--Device-AVErrorCode-AVERR_IO_NETWORK_ABNORMAL = 5411003-End-->
@@ -301,10 +241,6 @@ AVERR_IO_NETWORK_UNAVAILABLE = 5411004
 表示网络被禁用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -322,10 +258,6 @@ AVERR_IO_NO_PERMISSION = 5411005
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_IO_NO_PERMISSION = 5411005--><!--Device-AVErrorCode-AVERR_IO_NO_PERMISSION = 5411005-End-->
@@ -341,10 +273,6 @@ AVERR_IO_REQUEST_DENIED = 5411006
 表示客户端请求参数错误或超出处理能力。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -362,10 +290,6 @@ AVERR_IO_RESOURCE_NOT_FOUND = 5411007
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_IO_RESOURCE_NOT_FOUND = 5411007--><!--Device-AVErrorCode-AVERR_IO_RESOURCE_NOT_FOUND = 5411007-End-->
@@ -381,10 +305,6 @@ AVERR_IO_SSL_CLIENT_CERT_NEEDED = 5411008
 表示服务端校验客户端证书失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -402,10 +322,6 @@ AVERR_IO_SSL_CONNECTION_FAILED = 5411009
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_IO_SSL_CONNECTION_FAILED = 5411009--><!--Device-AVErrorCode-AVERR_IO_SSL_CONNECTION_FAILED = 5411009-End-->
@@ -421,10 +337,6 @@ AVERR_IO_SSL_SERVER_CERT_UNTRUSTED = 5411010
 表示客户端校验服务端证书失败。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -442,10 +354,6 @@ AVERR_IO_UNSUPPORTED_REQUEST = 5411011
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_IO_UNSUPPORTED_REQUEST = 5411011--><!--Device-AVErrorCode-AVERR_IO_UNSUPPORTED_REQUEST = 5411011-End-->
@@ -461,10 +369,6 @@ AVERR_SEEK_CONTINUOUS_UNSUPPORTED = 5410002
 表示不支持SEEK_CONTINUOUS模式的seek。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -482,10 +386,6 @@ AVERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003--><!--Device-AVErrorCode-AVERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003-End-->
@@ -501,10 +401,6 @@ AVERR_SUPER_RESOLUTION_NOT_ENABLED = 5410004
 表示未使能超分。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -522,10 +418,6 @@ AVERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AVErrorCode-AVERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012--><!--Device-AVErrorCode-AVERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012-End-->
@@ -541,10 +433,6 @@ AVERR_PARAMETER_OUT_OF_RANGE = 5400108
 表示参数超过取值范围。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

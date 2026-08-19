@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
@@ -13,6 +11,11 @@
 <!--Device-unnamed-declare interface GridContainerOptions--><!--Device-unnamed-declare interface GridContainerOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## columns
 
@@ -25,8 +28,6 @@ columns?: number | "auto"
 **类型：** number \| "auto"
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -48,8 +49,6 @@ gutter?: number | string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
@@ -70,8 +69,6 @@ margin?: number | string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** grid_col/GridColOptions and grid_row/GridRowOptions
@@ -91,8 +88,6 @@ sizeType?: SizeType
 **类型：** [SizeType](arkts-arkui-sizetype-e.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

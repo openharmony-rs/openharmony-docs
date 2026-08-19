@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backup-class SessionRestore--><!--Device-backup-class SessionRestore-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { backup } from '@kit.CoreFileKit';
+```
 
 ## appendBundles
 
@@ -23,10 +25,6 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: stri
 添加需要恢复的应用及其扩展信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKUP
 
@@ -62,7 +60,7 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: stri
 | 13900042 | Unknown error |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -165,10 +163,6 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: As
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: AsyncCallback<void>): void--><!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: AsyncCallback<void>): void-End-->
@@ -183,7 +177,7 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: As
 | --- | --- | --- | --- |
 | remoteCapabilitiesFd | int | 是 | 保存远端设备能力信息的已打开JSON文件描述符。 可通过getLocalCapabilities方法获取该值。 |
 | bundlesToBackup | string[] | 是 | 需要恢复的应用名称数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 添加恢复应用完成后的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 添加恢复应用完成后的异步回调。 |
 
 **错误码：**
 
@@ -197,7 +191,7 @@ appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: As
 | 13900042 | Unknown error |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -280,10 +274,6 @@ cancel(bundleName: string): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-cancel(bundleName: string): int--><!--Device-SessionRestore-cancel(bundleName: string): int-End-->
@@ -312,7 +302,7 @@ cancel(bundleName: string): int
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -389,10 +379,6 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-cleanBundleTempDir(bundleName: string): Promise<boolean>--><!--Device-SessionRestore-cleanBundleTempDir(bundleName: string): Promise<boolean>-End-->
@@ -420,7 +406,7 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -496,10 +482,6 @@ constructor(callbacks: GeneralCallbacks)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-constructor(callbacks: GeneralCallbacks)--><!--Device-SessionRestore-constructor(callbacks: GeneralCallbacks)-End-->
@@ -514,7 +496,7 @@ constructor(callbacks: GeneralCallbacks)
 | --- | --- | --- | --- |
 | callbacks | [GeneralCallbacks](arkts-corefile-backup-generalcallbacks-i-sys.md) | 是 | 恢复流程所需的回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -573,10 +555,6 @@ getApkFileHandle(path: string, fileName: string): Promise<FileData>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -610,7 +588,7 @@ getApkFileHandle(path: string, fileName: string): Promise<FileData>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { backup } from '@kit.CoreFileKit';
@@ -689,10 +667,6 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>--><!--Device-SessionRestore-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>-End-->
@@ -721,7 +695,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup } from '@kit.CoreFileKit';
@@ -796,10 +770,6 @@ getFileHandle(fileMeta: FileMeta): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta): Promise<void>-End-->
@@ -829,7 +799,7 @@ getFileHandle(fileMeta: FileMeta): Promise<void>
 | 13600001 | IPC error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -901,10 +871,6 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void--><!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void-End-->
@@ -918,7 +884,7 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | 是 | 待发送文件的元数据。所有文件都应来自 备份流程或getLocalCapabilities方法。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 获取文件句柄完成后的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 获取文件句柄完成后的异步回调。 |
 
 **错误码：**
 
@@ -929,7 +895,7 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 | 13600001 | IPC error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -998,10 +964,6 @@ getFileHandles(fileMeta: FileMeta): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1034,7 +996,7 @@ getFileHandles(fileMeta: FileMeta): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup } from '@kit.CoreFileKit';
@@ -1119,10 +1081,6 @@ getLocalCapabilities(): Promise<FileData>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-getLocalCapabilities(): Promise<FileData>--><!--Device-SessionRestore-getLocalCapabilities(): Promise<FileData>-End-->
@@ -1148,7 +1106,7 @@ getLocalCapabilities(): Promise<FileData>
 | 13600001 | IPC error |
 | 13900042 | Internal error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1286,10 +1244,6 @@ migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1323,7 +1277,7 @@ migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { backup } from '@kit.CoreFileKit';
@@ -1409,10 +1363,6 @@ publishFile(fileMeta: FileMeta): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-publishFile(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-publishFile(fileMeta: FileMeta): Promise<void>-End-->
@@ -1442,7 +1392,7 @@ publishFile(fileMeta: FileMeta): Promise<void>
 | 13600001 | IPC error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -1526,10 +1476,6 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void--><!--Device-SessionRestore-publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void-End-->
@@ -1543,7 +1489,7 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fileMeta | [FileMeta](arkts-corefile-backup-filemeta-i-sys.md) | 是 | 待发送文件的元数据。应确保备份框架已持有 通过getFileHandle获取的文件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 发布文件句柄完成后的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 发布文件句柄完成后的异步回调。 |
 
 **错误码：**
 
@@ -1554,7 +1500,7 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void
 | 13600001 | IPC error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -1640,10 +1586,6 @@ release(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.BACKUP
 
 <!--Device-SessionRestore-release(): Promise<void>--><!--Device-SessionRestore-release(): Promise<void>-End-->
@@ -1670,7 +1612,7 @@ release(): Promise<void>
 | 13600001 | IPC error |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { fileIo, backup} from '@kit.CoreFileKit';

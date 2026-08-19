@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum BlurType--><!--Device-drawing-enum BlurType-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ NORMAL = 0
 全面模糊，外圈边缘和内部实体一起模糊。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlurType-NORMAL = 0--><!--Device-BlurType-NORMAL = 0-End-->
 
@@ -40,10 +32,6 @@ SOLID = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlurType-SOLID = 1--><!--Device-BlurType-SOLID = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -58,10 +46,6 @@ OUTER = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlurType-OUTER = 2--><!--Device-BlurType-OUTER = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -75,10 +59,6 @@ INNER = 3
 只有内部实体模糊，外圈边缘清晰。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlurType-INNER = 3--><!--Device-BlurType-INNER = 3-End-->
 

@@ -1,5 +1,10 @@
 # animateToImmediately
 
+## 导入模块
+
+```TypeScript
+```
+
 ## animateToImmediately
 
 ```TypeScript
@@ -7,10 +12,6 @@ declare function animateToImmediately(value: AnimateParam, event: () => void): v
 ```
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

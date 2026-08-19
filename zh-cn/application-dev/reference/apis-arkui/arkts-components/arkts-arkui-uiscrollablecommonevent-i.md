@@ -2,17 +2,18 @@
 
 用于设置滚动事件回调。
 
-**继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](arkts-arkui-uicommonevent-i.md#uicommonevent)
+**继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](arkts-arkui-uicommonevent-i.md)
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface UIScrollableCommonEvent--><!--Device-unnamed-declare interface UIScrollableCommonEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## setOnReachEnd
 
@@ -23,10 +24,6 @@ setOnReachEnd(callback: Callback<void> | undefined): void
 设置[onReachEnd](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onreachend11)事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +49,6 @@ setOnReachStart(callback: Callback<void> | undefined): void
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -79,10 +72,6 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 设置onScrollFrameBegin事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -108,10 +97,6 @@ setOnScrollStart(callback: Callback<void> | undefined): void
 
 **起始版本：** 19
 
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
@@ -135,10 +120,6 @@ setOnScrollStop(callback: Callback<void> | undefined): void
 设置[onScrollStop](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#onscrollstop11)事件的回调。 方法入参为undefined时，会重置事件回调。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

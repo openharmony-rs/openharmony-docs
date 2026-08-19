@@ -1,5 +1,11 @@
 # getSystemLocale
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## getSystemLocale
 
 ```TypeScript
@@ -9,8 +15,6 @@ export function getSystemLocale(): string
 > [System.getSystemLocale](../../apis-na/arkts-apis/arkts-na-i18n-system-c.md#getsystemlocaleinstance)代替。 > 获取系统区域ID。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -26,7 +30,7 @@ export function getSystemLocale(): string
 | --- | --- |
 | string | 系统区域ID。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

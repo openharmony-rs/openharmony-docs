@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-interface AuthLockState--><!--Device-userAuth-interface AuthLockState-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## isLocked
 
@@ -24,10 +27,6 @@ isLocked: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AuthLockState-isLocked: boolean--><!--Device-AuthLockState-isLocked: boolean-End-->
@@ -40,15 +39,11 @@ isLocked: boolean
 lockoutDuration: int
 ```
 
-认证被冻结时的剩余冻结时间，单位为毫秒。此字段仅在isLocked为true时有效。 当永久冻结时，值为 [PERMANENT_LOCKOUT_DURATION](arkts-userauthentication-userauth-con.md#permanentlockoutduration)， 表示认证器已永久锁定，需要用户通过PIN认证解锁后才能继续使用该认证类型。临时冻结时，该值为实际的剩余冻结时长，冻结结束后用户可继续尝试认证。
+认证被冻结时的剩余冻结时间，单位为毫秒。此字段仅在isLocked为true时有效。 当永久冻结时，值为 [PERMANENT_LOCKOUT_DURATION](arkts-userauthentication-userauth-con.md#permanent_lockout_duration)， 表示认证器已永久锁定，需要用户通过PIN认证解锁后才能继续使用该认证类型。临时冻结时，该值为实际的剩余冻结时长，冻结结束后用户可继续尝试认证。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -67,10 +62,6 @@ remainingAuthAttempts: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,11 @@
 # createAVMetadataExtractor
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## createAVMetadataExtractor
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createAVMetadataExtractor(): Promise<AVMetadataExtractor>
 创建AVMetadataExtractor实例。使用Promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor>--><!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor>-End-->
 
@@ -30,7 +32,7 @@ function createAVMetadataExtractor(): Promise<AVMetadataExtractor>
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by promise. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -59,10 +61,6 @@ Creates an **AVMetadataExtractor** instance. This API uses a promise to return t
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor | undefined>--><!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor | undefined>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
@@ -90,10 +88,6 @@ function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>)
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void--><!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
@@ -102,7 +96,7 @@ function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md)&gt; | 是 | 回调函数。当创建AVMetadataExtractor实例成功，err为undefined，data为获取到的 AVMetadataExtractor实例，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md)&gt; | 是 | 回调函数。当创建AVMetadataExtractor实例成功，err为undefined，data为获取到的 AVMetadataExtractor实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -110,7 +104,7 @@ function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>)
 | --- | --- |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Returned by callback. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,10 +131,6 @@ Creates an **AVMetadataExtractor** instance. This API uses an asynchronous callb
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor | undefined>): void--><!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor | undefined>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
@@ -149,7 +139,7 @@ Creates an **AVMetadataExtractor** instance. This API uses an asynchronous callb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md) \| undefined&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **AVMetadataExtractor** instance created; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md) \| undefined&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **AVMetadataExtractor** instance created; otherwise, **err** is an error object. |
 
 **错误码：**
 

@@ -6,5 +6,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [NodeContainer](arkts-na-nodecontainer-nodecontainer-f.md#nodecontainer) | 定义NodeContainer组件。需要在组件属性设置开始时调用setNodeContainerOptions，并在组件属性设置结束时调用applyAttributeFinish。 |
+| [NodeContainer](arkts-na-nodecontainer-nodecontainer-f.md) | 定义NodeContainer组件。需要在组件属性设置开始时调用setNodeContainerOptions，并在组件属性设置结束时调用applyAttributeFinish。 |
 

@@ -96,7 +96,7 @@
 | [OH_UdsPixelMap* OH_UdsPixelMap_Create()](#oh_udspixelmap_create) | 创建像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象以及指向它的指针。当不再需要使用指针时，请使用[OH_UdsPixelMap_Destroy](capi-uds-h.md#oh_udspixelmap_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)](#oh_udspixelmap_destroy) | 销毁像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)的实例对象。 |
 | [const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)](#oh_udspixelmap_gettype) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取类型ID。 |
-| [void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)](#oh_udspixelmap_getpixelmap) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取像素图片{@link OH_PixelmapNative}实例的指针。 |
+| [void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)](#oh_udspixelmap_getpixelmap) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取像素图片[OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md)实例的指针。 |
 | [int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)](#oh_udspixelmap_getdetails) | 从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
 | [int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)](#oh_udspixelmap_setpixelmap) | 设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的像素图片内容。 |
 | [int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)](#oh_udspixelmap_setdetails) | 设置像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)对象的字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)参数。 |
@@ -308,7 +308,7 @@ int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -338,7 +338,7 @@ int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -368,7 +368,7 @@ int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -398,7 +398,7 @@ int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* deta
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -561,7 +561,7 @@ int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -591,7 +591,7 @@ int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -621,7 +621,7 @@ int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* descripti
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -651,7 +651,7 @@ int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* deta
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -814,7 +814,7 @@ int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -844,7 +844,7 @@ int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -874,7 +874,7 @@ int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -904,7 +904,7 @@ int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -934,7 +934,7 @@ int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>返回UDMF_E_OK表示执行成功。<br>     <br>返回UDMF_E_INVALID_PARAM表示传入了无效参数。<br>     <br>具体请参见{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>返回UDMF_E_OK表示执行成功。      <br>返回UDMF_E_INVALID_PARAM表示传入了无效参数。      <br>具体请参见{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1213,7 +1213,7 @@ int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1243,7 +1243,7 @@ int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1273,7 +1273,7 @@ int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1303,7 +1303,7 @@ int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1333,7 +1333,7 @@ int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1363,7 +1363,7 @@ int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1393,7 +1393,7 @@ int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1423,7 +1423,7 @@ int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1586,7 +1586,7 @@ int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1616,7 +1616,7 @@ int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1646,7 +1646,7 @@ int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1676,7 +1676,7 @@ int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1706,7 +1706,7 @@ int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1796,7 +1796,7 @@ void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelm
 
 **描述**
 
-从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取像素图片{@link OH_PixelmapNative}实例的指针。
+从像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例中获取像素图片[OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md)实例的指针。
 
 **起始版本：** 13
 
@@ -1805,7 +1805,7 @@ void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelm
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | 表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
-| OH_PixelmapNative* pixelmapNative | 该参数是输出参数，表示指向像素图片{@link OH_PixelmapNative}实例的指针。 |
+| [OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md)* pixelmapNative | 该参数是输出参数，表示指向像素图片[OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md)实例的指针。 |
 
 **参考：**
 
@@ -1835,7 +1835,7 @@ int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1859,13 +1859,13 @@ int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelma
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | 表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
-| OH_PixelmapNative* pixelmapNative | 表示指向像素图片{@link OH_PixelmapNative}实例的指针。 |
+| [OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md)* pixelmapNative | 表示指向像素图片[OH_PixelmapNative](../ImageKit/capi-image-nativemodule-oh-pixelmapnative.md)实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1895,7 +1895,7 @@ int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* detail
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1947,7 +1947,7 @@ int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -1978,7 +1978,7 @@ int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, un
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2009,7 +2009,7 @@ int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, u
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2115,7 +2115,7 @@ int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thu
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>     <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2204,7 +2204,7 @@ int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIc
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>     <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。      <br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2293,7 +2293,7 @@ int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2323,7 +2323,7 @@ int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* descr
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2353,7 +2353,7 @@ int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2384,7 +2384,7 @@ int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2414,7 +2414,7 @@ int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2444,7 +2444,7 @@ int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2550,7 +2550,7 @@ int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2579,7 +2579,7 @@ int OH_UdsDetails_Clear(OH_UdsDetails* pThis)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2610,7 +2610,7 @@ int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* va
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的状态代码。<br>     <br>若返回UDMF_E_OK，表示执行成功。<br>     <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
+| int | 返回执行的状态代码。      <br>若返回UDMF_E_OK，表示执行成功。      <br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义{@link Udmf_ErrCode}。 |
 
 **参考：**
 
@@ -2670,7 +2670,7 @@ char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)
 
 | 类型 | 说明 |
 | -- | -- |
-| char** | 执行成功时返回字典类型中键的结果集，否则返回nullptr。<br> <br>当使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象，该返回值也会被释放。 |
+| char** | 执行成功时返回字典类型中键的结果集，否则返回nullptr。  <br>当使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象，该返回值也会被释放。 |
 
 **参考：**
 

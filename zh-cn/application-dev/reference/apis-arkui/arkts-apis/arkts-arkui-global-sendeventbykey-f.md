@@ -1,5 +1,10 @@
 # sendEventByKey
 
+## 导入模块
+
+```TypeScript
+```
+
 ## sendEventByKey
 
 ```TypeScript
@@ -9,10 +14,6 @@ export declare function sendEventByKey(id: string, action: number, params: strin
 Sends an event to the component with the specified ID.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

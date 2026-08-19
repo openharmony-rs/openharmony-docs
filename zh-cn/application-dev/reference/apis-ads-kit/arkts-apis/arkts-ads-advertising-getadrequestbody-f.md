@@ -1,5 +1,14 @@
 # getAdRequestBody
 
+## 导入模块
+
+```TypeScript
+import { AdComponent } from '@kit.AdsKit';
+import { AdsServiceExtensionAbility, RespCallback } from '@kit.AdsKit';
+import { AutoAdComponent } from '@kit.AdsKit';
+import { advertising } from '@kit.AdsKit';
+```
+
 ## getAdRequestBody
 
 ```TypeScript
@@ -9,10 +18,6 @@ function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Pr
 获取广告请求体，使用Promise异步回调（该接口仅对部分系统预置应用开放）。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-advertising-function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise<string>--><!--Device-advertising-function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise<string>-End-->
 
@@ -39,7 +44,7 @@ function getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Pr
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Device not supported. |
 | [21800001](../errorcode-ads.md#21800001-系统内部错误) | System internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { advertising } from '@kit.AdsKit';

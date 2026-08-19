@@ -4,15 +4,19 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md#weardetectionresponse)
+**替代接口：** [WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md)
 
 <!--Device-unnamed-export interface OnBodyStateResponse--><!--Device-unnamed-export interface OnBodyStateResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
+
+## 导入模块
+
+```TypeScript
+import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, DeviceOrientationResponse, GetOnBodyStateOptions, GyroscopeResponse, HeartRateResponse, LightResponse, OnBodyStateResponse, ProximityResponse, StepCounterResponse, SubscribeBarometerOptions, SubscribeCompassOptions, SubscribeDeviceOrientationOptions, SubscribeGyroscopeOptions, SubscribeHeartRateOptions, SubscribeLightOptions, SubscribeOnBodyStateOptions, SubscribeProximityOptions, SubscribeStepCounterOptions, subscribeAccelerometerOptions } from '@kit.SensorServiceKit';
+```
 
 ## value
 
@@ -25,8 +29,6 @@ value: boolean
 **类型：** boolean
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

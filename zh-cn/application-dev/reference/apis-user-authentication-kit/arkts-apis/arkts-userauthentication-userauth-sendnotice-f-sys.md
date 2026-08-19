@@ -1,5 +1,12 @@
 # sendNotice（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
+
 ## sendNotice
 
 ```TypeScript
@@ -9,10 +16,6 @@ function sendNotice(noticeType: NoticeType, eventData: string): void
 发送来自身份认证组件的通知。在使用统一身份认证控件进行用户身份认证时，该接口用于接收来自统一身份认证组件的通知，并将通知发送给用户认证框架。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
@@ -38,7 +41,7 @@ function sendNotice(noticeType: NoticeType, eventData: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

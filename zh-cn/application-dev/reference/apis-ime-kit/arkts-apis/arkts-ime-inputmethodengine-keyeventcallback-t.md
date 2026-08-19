@@ -8,10 +8,6 @@ export type KeyEventCallback = (event: KeyEvent) => boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export type KeyEventCallback = (event: KeyEvent) => boolean--><!--Device-inputMethodEngine-export type KeyEventCallback = (event: KeyEvent) => boolean-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

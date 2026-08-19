@@ -1,5 +1,11 @@
 # genSessionId
 
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
+
 ## genSessionId
 
 ```TypeScript
@@ -9,10 +15,6 @@ function genSessionId(): string
 随机创建一个sessionId。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-distributedDataObject-function genSessionId(): string--><!--Device-distributedDataObject-function genSessionId(): string-End-->
 
@@ -24,7 +26,7 @@ function genSessionId(): string
 | --- | --- |
 | string | 随机创建的sessionId。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let sessionId: string = distributedDataObject.genSessionId();

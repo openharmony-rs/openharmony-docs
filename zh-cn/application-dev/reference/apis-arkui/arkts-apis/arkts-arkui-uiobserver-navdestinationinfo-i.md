@@ -4,13 +4,15 @@ NavDestination组件信息，由系统返回给开发者。
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-uiObserver-export interface NavDestinationInfo--><!--Device-uiObserver-export interface NavDestinationInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { uiObserver } from '@kit.ArkUI';
+```
 
 ## index
 
@@ -23,10 +25,6 @@ NavDestination在页面栈中的索引。 取值应≥0。
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +46,6 @@ NavDestination类型。 默认值：NavDestinationMode.Standard。
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -71,10 +65,6 @@ NavDestination组件的名称。
 **类型：** [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md)
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +86,6 @@ Auto-generated navDestination id, which is different from common property id of 
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -119,10 +105,6 @@ navigationId: ResourceStr
 **类型：** [ResourceStr](../../apis-na/arkts-apis/arkts-na-resourcestr-t.md)
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -144,10 +126,6 @@ The detailed parameter of NavDestination.
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -168,10 +146,6 @@ NavDestination组件的大小,单位是vp。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -188,13 +162,9 @@ state: NavDestinationState
 
 NavDestination组件的状态。
 
-**类型：** [NavDestinationState](../../apis-na/arkts-apis/arkts-na-uiobserver-navdestinationstate-e.md)
+**类型：** [NavDestinationState](arkts-arkui-uiobserver-navdestinationstate-e.md)
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -215,10 +185,6 @@ NavDestination组件的uniqueId。
 **类型：** number
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

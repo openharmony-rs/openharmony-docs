@@ -4,13 +4,15 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-taskpool-interface Configs--><!--Device-taskpool-interface Configs-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { taskpool } from '@kit.ArkTS';
+```
 
 ## priority
 
@@ -23,10 +25,6 @@ priority?: Priority
 **类型：** Priority
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ timeout?: number
 **类型：** number
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 

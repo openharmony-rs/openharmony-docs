@@ -1,5 +1,11 @@
 # stopStream（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+```
+
 ## stopStream
 
 ```TypeScript
@@ -9,10 +15,6 @@ function stopStream(streamId: int): void
 Stop Streaming
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -35,7 +37,7 @@ Stop Streaming
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';

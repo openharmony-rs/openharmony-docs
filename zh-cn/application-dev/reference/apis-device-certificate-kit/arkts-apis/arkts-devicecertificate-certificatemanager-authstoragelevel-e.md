@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-certificateManager-export enum AuthStorageLevel--><!--Device-certificateManager-export enum AuthStorageLevel-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -21,10 +17,6 @@ EL1 = 1
 EL1级别，表示设备启动后可以访问。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuthStorageLevel-EL1 = 1--><!--Device-AuthStorageLevel-EL1 = 1-End-->
 
@@ -40,10 +32,6 @@ EL2级别，表示设备首次解锁后可以访问。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AuthStorageLevel-EL2 = 2--><!--Device-AuthStorageLevel-EL2 = 2-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -57,10 +45,6 @@ EL4 = 4
 EL4级别，表示设备解锁时可以访问。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuthStorageLevel-EL4 = 4--><!--Device-AuthStorageLevel-EL4 = 4-End-->
 

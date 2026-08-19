@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-interface AudioCapturerChangeInfo--><!--Device-audio-interface AudioCapturerChangeInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## capturerState
 
@@ -21,10 +24,6 @@ readonly capturerState: AudioState
 **类型：** AudioState
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioCapturerChangeInfo-readonly capturerState: AudioState--><!--Device-AudioCapturerChangeInfo-readonly capturerState: AudioState-End-->
 
@@ -43,10 +42,6 @@ Uid for audio capturer client application.
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioCapturerChangeInfo-readonly clientUid: int--><!--Device-AudioCapturerChangeInfo-readonly clientUid: int-End-->
 

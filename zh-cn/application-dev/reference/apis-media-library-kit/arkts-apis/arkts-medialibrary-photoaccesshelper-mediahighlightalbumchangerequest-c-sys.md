@@ -1,20 +1,22 @@
 # MediaHighlightAlbumChangeRequest（系统接口）
 
-时刻相册变更请求，MediaHighlightAlbumChangeRequest继承自 [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md#mediaanalysisalbumchangerequest系统接口)。
+时刻相册变更请求，MediaHighlightAlbumChangeRequest继承自 [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md)。
 
-**继承/实现关系：** MediaHighlightAlbumChangeRequest extends [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md#mediaanalysisalbumchangerequest系统接口)
+**继承/实现关系：** MediaHighlightAlbumChangeRequest extends [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-photoAccessHelper-class MediaHighlightAlbumChangeRequest--><!--Device-photoAccessHelper-class MediaHighlightAlbumChangeRequest-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## constructor
 
@@ -25,10 +27,6 @@ constructor(album: Album)
 构造函数。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-MediaHighlightAlbumChangeRequest-constructor(album: Album)--><!--Device-MediaHighlightAlbumChangeRequest-constructor(album: Album)-End-->
 
@@ -49,7 +47,7 @@ constructor(album: Album)
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -84,10 +82,6 @@ setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-MediaHighlightAlbumChangeRequest-setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): void--><!--Device-MediaHighlightAlbumChangeRequest-setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): void-End-->
@@ -112,7 +106,7 @@ setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): 
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

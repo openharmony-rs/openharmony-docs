@@ -1,5 +1,11 @@
 # uninstallLocalPlugin
 
+## 导入模块
+
+```TypeScript
+import { pluginBundleManager } from '@kit.AbilityKit';
+```
+
 ## uninstallLocalPlugin
 
 ```TypeScript
@@ -9,10 +15,6 @@ function uninstallLocalPlugin(pluginBundleName: string): Promise<void>
 卸载当前应用已通过自分发方式安装的指定插件。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
 

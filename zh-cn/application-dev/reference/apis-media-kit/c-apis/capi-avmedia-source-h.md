@@ -4,13 +4,15 @@
 
 定义AVMediaSource的结构体和枚举类型。
 
+**引用文件：** <multimedia/player_framework/avmedia_source.h>
+
 **库：** libavmedia_source.so
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
-**相关模块：** [avmedia_source](capi-avmedia-source.md)
+**相关模块：** [AVMediaSource](capi-avmediasource.md)
 
 ## 汇总
 
@@ -18,10 +20,10 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) | OH_AVHttpHeader | 声明HTTP头部类型。 |
-| [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) | OH_AVMediaSource | 声明媒体源类型。 |
-| [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md) | OH_AVMediaSourceLoadingRequest | 加载请求对象，用于表示媒体资源的加载请求，应用通过该对象获取所请求资源的位置。 |
-| [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md) | OH_AVMediaSourceLoader | 声明媒体数据加载器类型，该类型由应用程序实现。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) | OH_AVHttpHeader | 声明HTTP头部类型。 |
+| [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md) | OH_AVMediaSource | 声明媒体源类型。 |
+| [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) | OH_AVMediaSourceLoadingRequest | 加载请求对象，用于表示媒体资源的加载请求，应用通过该对象获取所请求资源的位置。 |
+| [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) | OH_AVMediaSourceLoader | 声明媒体数据加载器类型，该类型由应用程序实现。 |
 
 ### 枚举
 
@@ -101,7 +103,7 @@ OH_AVHttpHeader *OH_AVHttpHeader_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVHttpHeader *](capi-avmedia-source-oh-avhttpheader.md) | 成功时返回指向OH_AVHttpHeader实例的指针，失败时返回空指针。 |
+| [OH_AVHttpHeader *](capi-avmediasource-oh-avhttpheader.md) | 成功时返回指向OH_AVHttpHeader实例的指针，失败时返回空指针。 |
 
 ### OH_AVHttpHeader_Destroy()
 
@@ -119,13 +121,13 @@ OH_AVErrCode OH_AVHttpHeader_Destroy(OH_AVHttpHeader *header)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示header为空指针或实例销毁失败。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示header为空指针或实例销毁失败。 |
 
 ### OH_AVHttpHeader_GetCount()
 
@@ -143,14 +145,14 @@ OH_AVErrCode OH_AVHttpHeader_GetCount(OH_AVHttpHeader *header, uint32_t *count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
 | uint32_t *count | 用于输出头部实例中记录项的数量。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示header为空指针。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示header为空指针。 |
 
 ### OH_AVHttpHeader_AddRecord()
 
@@ -168,7 +170,7 @@ OH_AVErrCode OH_AVHttpHeader_AddRecord(OH_AVHttpHeader *header, const char *key,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
 | const char *key | 记录的键名。 |
 | const char *value | 记录的值。 |
 
@@ -176,7 +178,7 @@ OH_AVErrCode OH_AVHttpHeader_AddRecord(OH_AVHttpHeader *header, const char *key,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示任一参数为空指针。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示任一参数为空指针。 |
 
 ### OH_AVHttpHeader_GetRecord()
 
@@ -194,7 +196,7 @@ OH_AVErrCode OH_AVHttpHeader_GetRecord(OH_AVHttpHeader *header, uint32_t index, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
 | uint32_t index | 记录在头部中的位置。 |
 | const char **key | 用于输出记录的键名。 |
 | const char **value | 用于输出记录的值。 |
@@ -203,7 +205,7 @@ OH_AVErrCode OH_AVHttpHeader_GetRecord(OH_AVHttpHeader *header, uint32_t index, 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示header为空指针或索引越界。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示header为空指针或索引越界。 |
 
 ### OH_AVMediaSource_CreateWithUrl()
 
@@ -222,13 +224,13 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithUrl(const char *url, OH_AVHttpHeade
 | 参数项 | 描述 |
 | -- | -- |
 | const char *url | 媒体源的URL。支持以下流媒体格式：HLS、HTTP-FLV、DASH和HTTPS。 |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) *header | 附加到网络请求的HTTP头部。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 附加到网络请求的HTTP头部。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVMediaSource *](capi-avmedia-source-oh-avmediasource.md) | 成功时返回指向OH_AVMediaSource实例的指针，失败时返回空指针。 |
+| [OH_AVMediaSource *](capi-avmediasource-oh-avmediasource.md) | 成功时返回指向OH_AVMediaSource实例的指针，失败时返回空指针。 |
 
 ### OH_AVMediaSource_CreateWithDataSource()
 
@@ -252,7 +254,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithDataSource(OH_AVDataSource *dataSou
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVMediaSource *](capi-avmedia-source-oh-avmediasource.md) | 成功时返回指向OH_AVMediaSource实例的指针，失败时返回空指针。 |
+| [OH_AVMediaSource *](capi-avmediasource-oh-avmediasource.md) | 成功时返回指向OH_AVMediaSource实例的指针，失败时返回空指针。 |
 
 ### OH_AVMediaSource_CreateWithFd()
 
@@ -278,7 +280,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithFd(int32_t fd, int64_t offset, int6
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVMediaSource *](capi-avmedia-source-oh-avmediasource.md) | 成功时返回指向OH_AVMediaSource实例的指针，失败时返回空指针。 |
+| [OH_AVMediaSource *](capi-avmediasource-oh-avmediasource.md) | 成功时返回指向OH_AVMediaSource实例的指针，失败时返回空指针。 |
 
 ### OH_AVMediaSource_Destroy()
 
@@ -296,13 +298,13 @@ OH_AVErrCode OH_AVMediaSource_Destroy(OH_AVMediaSource *source)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | 指向OH_AVMediaSource实例的指针。 |
+| [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md) *source | 指向OH_AVMediaSource实例的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示source为空指针或释放失败。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示source为空指针或释放失败。 |
 
 ### OH_AVMediaSource_SetMimeType()
 
@@ -320,14 +322,14 @@ OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | 指向OH_AVMediaSource的指针。 |
-| const char *mimetype | 媒体源的MIME类型{@link AV_MimeTypes}。 |
+| [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md) *source | 指向OH_AVMediaSource的指针。 |
+| const char *mimetype | 媒体源的MIME类型。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示source或mimetype为空指针。<br> AV_ERR_UNSUPPORTED_FORMAT：表示不支持该mimetype。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示source或mimetype为空指针。  AV_ERR_UNSUPPORTED_FORMAT：表示不支持该mimetype。 |
 
 ### OH_AVMediaSourceLoadingRequest_GetUrl()
 
@@ -345,14 +347,14 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetUrl(OH_AVMediaSourceLoadingReques
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md) *request | OH_AVMediaSourceLoadingRequest实例。 |
+| [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | OH_AVMediaSourceLoadingRequest实例。 |
 | const char **url | 用于输出的URL字符串。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示request为空指针或不存在URL。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示request为空指针或不存在URL。 |
 
 ### OH_AVMediaSourceLoadingRequest_GetHttpHeader()
 
@@ -370,14 +372,14 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetHttpHeader(OH_AVMediaSourceLoadin
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md) *request | OH_AVMediaSourceLoadingRequest实例。 |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) **header | 用于HTTP请求的HTTP头部。 |
+| [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | OH_AVMediaSourceLoadingRequest实例。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) **header | 用于HTTP请求的HTTP头部。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示request为空指针。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示request为空指针。 |
 
 ### OH_AVMediaSourceLoadingRequest_RespondData()
 
@@ -395,7 +397,7 @@ int32_t OH_AVMediaSourceLoadingRequest_RespondData(OH_AVMediaSourceLoadingReques
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md) *request | 资源打开请求的参数。 |
+| [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | 资源打开请求的参数。 |
 | int64_t uuid | 资源句柄的ID。 |
 | int64_t offset | 当前媒体数据相对于资源起始位置的偏移量。 |
 | const uint8_t *data | 发送给播放器的媒体数据。 |
@@ -405,7 +407,7 @@ int32_t OH_AVMediaSourceLoadingRequest_RespondData(OH_AVMediaSourceLoadingReques
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 当前读取操作接受的字节数。返回值小于零表示失败；<br> -2 表示播放器不再需要当前数据，客户端应停止当前读取过程；<br> -3 表示播放器缓冲区已满，客户端应等待下一次读取。 |
+| int32_t | 当前读取操作接受的字节数。返回值小于零表示失败；  -2 表示播放器不再需要当前数据，客户端应停止当前读取过程；  -3 表示播放器缓冲区已满，客户端应等待下一次读取。 |
 
 ### OH_AVMediaSourceLoadingRequest_RespondHeader()
 
@@ -423,9 +425,9 @@ void OH_AVMediaSourceLoadingRequest_RespondHeader(OH_AVMediaSourceLoadingRequest
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md) *request | 资源打开请求的参数。 |
+| [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | 资源打开请求的参数。 |
 | int64_t uuid | 资源句柄的ID。 |
-| [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md) *header | HTTP响应中的头部信息。应用可将该头部字段与底层支持的字段进行交集处理后再传入，也可直接传入所有对应的头部信息。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | HTTP响应中的头部信息。应用可将该头部字段与底层支持的字段进行交集处理后再传入，也可直接传入所有对应的头部信息。 |
 | const char *redirectUrl | HTTP响应中包含的重定向URL（如果存在）。 |
 
 ### OH_AVMediaSourceLoadingRequest_FinishLoading()
@@ -444,7 +446,7 @@ void OH_AVMediaSourceLoadingRequest_FinishLoading(OH_AVMediaSourceLoadingRequest
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md) *request | 资源打开请求的参数。 |
+| [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | 资源打开请求的参数。 |
 | int64_t uuid | 资源句柄的ID。 |
 | [AVLoadingRequestError](capi-avmedia-source-h.md#avloadingrequesterror) error | 错误状态。 |
 
@@ -464,7 +466,7 @@ OH_AVMediaSourceLoader *OH_AVMediaSourceLoader_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVMediaSourceLoader *](capi-avmedia-source-oh-avmediasourceloader.md) | OH_AVMediaSourceLoader pointer if success, else return NULL. |
+| [OH_AVMediaSourceLoader *](capi-avmediasource-oh-avmediasourceloader.md) | 成功时返回OH_AVMediaSourceLoader指针，失败时返回空指针。 |
 
 ### OH_AVMediaSourceLoader_Destroy()
 
@@ -482,13 +484,13 @@ OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md) *loader | 待释放的OH_AVMediaSourceLoader实例。 |
+| [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) *loader | 待释放的OH_AVMediaSourceLoader实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示loader为空指针或释放失败。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示loader为空指针或释放失败。 |
 
 ### OH_AVMediaSource_SetMediaSourceLoader()
 
@@ -506,14 +508,14 @@ OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | 需要网络代理的OH_AVMediaSource。 |
-| [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md) *loader | OH_AVMediaSourceLoader实例。 |
+| [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md) *source | 需要网络代理的OH_AVMediaSource。 |
+| [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) *loader | OH_AVMediaSourceLoader实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示source或loader为空指针，或操作失败。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示source或loader为空指针，或操作失败。 |
 
 ### OH_AVMediaSourceLoaderOnSourceOpenedCallback()
 
@@ -531,14 +533,14 @@ typedef int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSource
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVMediaSourceLoadingRequest \*request | Parameters for the resource open request,including detailed information about the requested resource and the data push method. |
-| void \*userData | The data set by user in OH_AVMediaSourceLoader_SetSourceOpenCallback |
+| [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) \*request | 资源打开请求的参数，包含所请求资源的详细信息及数据推送方式。 |
+| void \*userData | 用户在OH_AVMediaSourceLoader_SetSourceOpenCallback中设置的数据。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | The handler of current resource open request, the handler for the request object is unique.<br>     A value greater than 0 means the request is successful.<br>     A value less than or equal to 0 means it fails. |
+| int64_t | 当前资源打开请求的句柄，该句柄对请求对象是唯一的。      大于0的值表示请求成功；      小于或等于0的值表示失败。 |
 
 ### OH_AVMediaSourceLoaderOnSourceReadCallback()
 
@@ -556,10 +558,10 @@ typedef void (*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int64_t uuid | 资源句柄的ID。 |
+| int64_t uuid | 资源句柄的ID。 |
 | int64_t requestedOffset | 当前媒体数据相对于资源起始位置的偏移量。 |
 | int64_t requestedLength | 当前请求的数据长度。-1 表示已到达资源末尾，需通过[OH_AVMediaSourceLoadingRequest_FinishLoading](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_finishloading)方法通知播放器推送结束。 |
-| void \*userData | The data set by user in OH_AVMediaSourceLoader_SetSourceReadCallback |
+| void \*userData | 用户在OH_AVMediaSourceLoader_SetSourceReadCallback中设置的数据。 |
 
 ### OH_AVMediaSourceLoaderOnSourceClosedCallback()
 
@@ -577,8 +579,8 @@ typedef void (*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int64_t uuid | 资源句柄的ID。 |
-| void \*userData | The data set by user in OH_AVMediaSourceLoader_SetSourceCloseCallback |
+| int64_t uuid | 资源句柄的ID。 |
+| void \*userData | 用户在OH_AVMediaSourceLoader_SetSourceCloseCallback中设置的数据。 |
 
 ### OH_AVMediaSourceLoader_SetSourceOpenCallback()
 
@@ -596,7 +598,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md) *loader | 要设置回调函数的OH_AVMediaSourceLoader实例。 |
+| [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) *loader | 要设置回调函数的OH_AVMediaSourceLoader实例。 |
 | [OH_AVMediaSourceLoaderOnSourceOpenedCallback](capi-avmedia-source-h.md#oh_avmediasourceloaderonsourceopenedcallback) callback | 要设置的打开回调函数。 |
 | void *userData | 回调函数中使用的用户自定义数据。 |
 
@@ -604,7 +606,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
 
 ### OH_AVMediaSourceLoader_SetSourceReadCallback()
 
@@ -622,7 +624,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md) *loader | 要设置回调函数的OH_AVMediaSourceLoader实例。 |
+| [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) *loader | 要设置回调函数的OH_AVMediaSourceLoader实例。 |
 | [OH_AVMediaSourceLoaderOnSourceReadCallback](capi-avmedia-source-h.md#oh_avmediasourceloaderonsourcereadcallback) callback | 要设置的读取回调函数。 |
 | void *userData | 回调函数中使用的用户自定义数据。 |
 
@@ -630,7 +632,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
 
 ### OH_AVMediaSourceLoader_SetSourceCloseCallback()
 
@@ -648,7 +650,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoade
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md) *loader | 要设置回调函数的OH_AVMediaSourceLoader实例。 |
+| [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) *loader | 要设置回调函数的OH_AVMediaSourceLoader实例。 |
 | [OH_AVMediaSourceLoaderOnSourceClosedCallback](capi-avmedia-source-h.md#oh_avmediasourceloaderonsourceclosedcallback) callback | 要设置的关闭回调函数。 |
 | void *userData | 回调函数中使用的用户自定义数据。 |
 
@@ -656,6 +658,6 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoade
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br> AV_ERR_OK：表示执行成功。<br> AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
+| OH_AVErrCode | 函数执行结果。  AV_ERR_OK：表示执行成功。  AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
 
 

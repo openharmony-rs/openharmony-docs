@@ -8,10 +8,6 @@ type IconType = Resource | image.PixelMap
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-type IconType = Resource | image.PixelMap--><!--Device-unnamed-type IconType = Resource | image.PixelMap-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

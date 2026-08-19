@@ -1,16 +1,18 @@
 # FaultLogExtensionAbility
 
-本模块实现故障的延迟通知功能。 [HiAppEvent](arkts-performanceanalysis-hiappevent-n.md#hiappevent)订阅崩溃、应用冻屏事件时， 只有当应用下次启动后才能接收上一次的事件。如果应用无法启动或长时间未打开，则存在故障无法及时上 报的局限性。 本模块作为该场景的补充。在应用实现FaultLogExtensionAbility后，当应用发生崩溃或冻屏时， 系统服务预计会在30分钟后拉起FaultLogExtensionAbility。 开发者可在[onFaultReportReady](#onfaultreportready)中订阅并处理故障事件。 > **说明：** > > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > > - 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见 > 附录。
+本模块实现故障的延迟通知功能。 [HiAppEvent](arkts-performanceanalysis-hiappevent-n.md)订阅崩溃、应用冻屏事件时， 只有当应用下次启动后才能接收上一次的事件。如果应用无法启动或长时间未打开，则存在故障无法及时上 报的局限性。 本模块作为该场景的补充。在应用实现FaultLogExtensionAbility后，当应用发生崩溃或冻屏时， 系统服务预计会在30分钟后拉起FaultLogExtensionAbility。 开发者可在[onFaultReportReady](#onfaultreportready)中订阅并处理故障事件。 > **说明：** > > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 > > - 本模块设置了不允许调用的API名单，调用名单中的API将导致功能异常，详情请参见 > 附录。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class FaultLogExtensionAbility--><!--Device-unnamed-declare class FaultLogExtensionAbility-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
+
+## 导入模块
+
+```TypeScript
+import { FaultLogExtensionAbility } from '@kit.PerformanceAnalysisKit';
+```
 
 ## onConnect
 
@@ -22,17 +24,13 @@ FaultLogExtensionAbility生命周期回调。当系统服务完成连接时调�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FaultLogExtensionAbility-onConnect(): void--><!--Device-FaultLogExtensionAbility-onConnect(): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-## 示例
+**示例**
 
 ```TypeScript
 export default class MyFaultLogExtension extends FaultLogExtensionAbility {
@@ -52,17 +50,13 @@ FaultLogExtensionAbility生命周期回调。当系统服务完成断开连接�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FaultLogExtensionAbility-onDisconnect(): void--><!--Device-FaultLogExtensionAbility-onDisconnect(): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-## 示例
+**示例**
 
 ```TypeScript
 export default class MyFaultLogExtension extends FaultLogExtensionAbility {
@@ -82,17 +76,13 @@ FaultLogExtensionAbility回调。系统服务通知FaultLogExtensionAbility可�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FaultLogExtensionAbility-onFaultReportReady(): void--><!--Device-FaultLogExtensionAbility-onFaultReportReady(): void-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
@@ -121,15 +111,11 @@ export default class MyFaultLogExtension extends FaultLogExtensionAbility {
 context: FaultLogExtensionContext
 ```
 
-FaultLogExtensionAbility的上下文环境， 继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md#extensioncontext)。
+FaultLogExtensionAbility的上下文环境， 继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
 **类型：** [FaultLogExtensionContext](arkts-performanceanalysis-hiviewdfx-faultlogextensioncontext-faultlogextensioncontext-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

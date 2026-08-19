@@ -1,5 +1,11 @@
 # offCaptureStatusChange
 
+## 导入模块
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+```
+
 ## offCaptureStatusChange
 
 ```TypeScript
@@ -10,10 +16,6 @@ Unregister the callback for device capture, casting, or recording status changes
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-display-function offCaptureStatusChange(callback?: Callback<boolean>): void--><!--Device-display-function offCaptureStatusChange(callback?: Callback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -22,7 +24,7 @@ Unregister the callback for device capture, casting, or recording status changes
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 否 | Unregister the callback function. If not provided, all callbacks for the given event type will be removed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;boolean&gt; | 否 | Unregister the callback function. If not provided, all callbacks for the given event type will be removed. |
 
 **错误码：**
 
@@ -30,7 +32,7 @@ Unregister the callback for device capture, casting, or recording status changes
 | --- | --- |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 如果通过on注册多个callback，同时关闭所有callback监听

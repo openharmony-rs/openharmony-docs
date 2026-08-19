@@ -4,13 +4,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default struct UserAuthIcon--><!--Device-unnamed-export default struct UserAuthIcon-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## 导入模块
+
+```TypeScript
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
 
 ## authParam
 
@@ -23,10 +25,6 @@ authParam: userAuth.AuthParam
 **类型：** userAuth.AuthParam
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -48,10 +46,6 @@ iconColor?: ResourceColor
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthIcon-iconColor?: ResourceColor--><!--Device-UserAuthIcon-iconColor?: ResourceColor-End-->
@@ -72,10 +66,6 @@ iconHeight?: Dimension
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthIcon-iconHeight?: Dimension--><!--Device-UserAuthIcon-iconHeight?: Dimension-End-->
@@ -93,10 +83,6 @@ onAuthResult: (result: userAuth.UserAuthResult) => void
 **类型：** (result: userAuth.UserAuthResult) =&gt; void
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -116,10 +102,6 @@ onIconClick?: () => void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-UserAuthIcon-onIconClick?: () => void--><!--Device-UserAuthIcon-onIconClick?: () => void-End-->
@@ -137,10 +119,6 @@ widgetParam: userAuth.WidgetParam
 **类型：** userAuth.WidgetParam
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

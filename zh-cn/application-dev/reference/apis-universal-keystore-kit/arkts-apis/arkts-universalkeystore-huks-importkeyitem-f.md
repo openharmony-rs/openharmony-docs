@@ -1,5 +1,12 @@
 # importKeyItem
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## importKeyItem
 
 ```TypeScript
@@ -9,10 +16,6 @@ function importKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 Imports a key in plaintext. This API uses an asynchronous callback to return the result.
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -28,7 +31,7 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | Alias of the key. The value can contain up to 128 bytes and should not include sensitive data such as personal information. |
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | Tags required for the import and key to import. The algorithm, key purpose, and key length are mandatory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **错误码：**
 
@@ -50,7 +53,7 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist<br>**适用版本：** 9 - 19 |
 
-## 示例
+**示例**
 
 ```TypeScript
 /* 以导入AES密钥为例 */
@@ -114,10 +117,6 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions): Promise<void>--><!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions): Promise<void>-End-->
@@ -157,7 +156,7 @@ Imports a key in plaintext. This API uses a promise to return the result.
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist<br>**适用版本：** 9 - 19 |
 
-## 示例
+**示例**
 
 ```TypeScript
 /* 以导入AES密钥为例 */

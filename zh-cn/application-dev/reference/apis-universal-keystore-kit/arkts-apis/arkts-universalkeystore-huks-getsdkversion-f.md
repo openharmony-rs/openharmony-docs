@@ -1,5 +1,12 @@
 # getSdkVersion
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## getSdkVersion
 
 ```TypeScript
@@ -9,8 +16,6 @@ function getSdkVersion(options: HuksOptions): string
 获取当前系统sdk版本。 > **说明：** > > 从API version 8开始支持，从API version 11开始废弃。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 11
 
@@ -30,7 +35,7 @@ function getSdkVersion(options: HuksOptions): string
 | --- | --- |
 | string | 返回sdk版本。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

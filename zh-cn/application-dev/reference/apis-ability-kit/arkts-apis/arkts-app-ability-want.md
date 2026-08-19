@@ -1,5 +1,11 @@
 # @ohos.app.ability.Want
 
+## 导入模块
+
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

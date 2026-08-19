@@ -1,16 +1,18 @@
-# URI
+# URI(URI字符串解析)
 
 构造一个URI对象，并提供URI比较、路径规范化、查询参数操作、路径段追加和URI类型判断等方法。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uri-export class URI--><!--Device-uri-export class URI-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { uri } from '@kit.ArkTS';
+```
 
 ## addEncodedSegment
 
@@ -21,10 +23,6 @@ addEncodedSegment(pathSegment: string): URI
 将已编码的字段追加到当前URI的path字段中，创建新URI对象并返回，保持原有URI对象不变。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -44,7 +42,7 @@ addEncodedSegment(pathSegment: string): URI
 | --- | --- |
 | URI | 返回已追加字段的URI对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('http://www.test.com');
@@ -61,10 +59,6 @@ addQueryValue(key: string, value: string): URI
 在当前URI对象上添加查询参数后返回新的URI对象，保持原有URI对象不变。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -85,7 +79,7 @@ addQueryValue(key: string, value: string): URI
 | --- | --- |
 | URI | 返回添加查询部分后的URI对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://www.test.com');
@@ -102,10 +96,6 @@ addSegment(pathSegment: string): URI
 对指定字段进行编码，并将其追加到当前URI对象的path中，创建并返回新的URI对象，保持原有URI对象不变。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -125,7 +115,7 @@ addSegment(pathSegment: string): URI
 | --- | --- |
 | URI | 返回已追加字段的URI对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('http://www.test.com');
@@ -143,10 +133,6 @@ checkHierarchical(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-checkHierarchical(): boolean--><!--Device-URI-checkHierarchical(): boolean-End-->
@@ -159,7 +145,7 @@ checkHierarchical(): boolean
 | --- | --- |
 | boolean | 如果是分层的URI返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('http://www.test.com/images/pic.jpg');
@@ -178,10 +164,6 @@ checkIsAbsolute(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-checkIsAbsolute(): boolean--><!--Device-URI-checkIsAbsolute(): boolean-End-->
@@ -194,7 +176,7 @@ checkIsAbsolute(): boolean
 | --- | --- |
 | boolean | 如果是绝对URI返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://username:password@www.qwer.com:8080?query=pppppp');
@@ -213,10 +195,6 @@ checkOpaque(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-checkOpaque(): boolean--><!--Device-URI-checkOpaque(): boolean-End-->
@@ -229,7 +207,7 @@ checkOpaque(): boolean
 | --- | --- |
 | boolean | 如果是不透明的URI返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('http://www.test.com/images/pic.jpg');
@@ -248,10 +226,6 @@ checkRelative(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-checkRelative(): boolean--><!--Device-URI-checkRelative(): boolean-End-->
@@ -264,7 +238,7 @@ checkRelative(): boolean
 | --- | --- |
 | boolean | 如果是相对URI返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://username:password@www.qwer.com:8080?query=p');
@@ -283,10 +257,6 @@ clearQuery(): URI
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-clearQuery(): URI--><!--Device-URI-clearQuery(): URI-End-->
@@ -299,7 +269,7 @@ clearQuery(): URI
 | --- | --- |
 | URI | 返回一个已被清除查询部分的URI对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://www.test.com?param1=value1');
@@ -315,10 +285,6 @@ constructor(uri: string)
 构造函数用于创建URI对象，将输入的URI字符串按照RFC3986规范解析并分解为scheme、userInfo、host、port、path、query和fragment等组件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -338,7 +304,7 @@ constructor(uri: string)
 | --- | --- |
 | [10200002](../errorcode-utils.md#10200002-参数解析错误) | Invalid uri string. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let uriString = 'https://username:password@host:8080/directory/file?foo=1&bar=2#fragment';
@@ -358,10 +324,6 @@ static createFromParts(scheme: string, ssp: string, fragment: string): URI
 根据提供的方案（scheme）、方案特定部分（ssp）以及片段（fragment）创建一个新的URI对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -383,7 +345,7 @@ static createFromParts(scheme: string, ssp: string, fragment: string): URI
 | --- | --- |
 | URI | 返回由给定方案、方案特定部分和片段创建的URI对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = uri.URI.createFromParts('mailto', 'no body', 'top');
@@ -399,8 +361,6 @@ equals(other: URI): boolean
 判断此URI是否与其他URI对象相等，通过逐组件比较scheme、authority、path、query和fragment等内容来确定两个URI是否等价。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -422,7 +382,7 @@ equals(other: URI): boolean
 | --- | --- |
 | boolean | 返回true表示相等，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
@@ -439,10 +399,6 @@ equalsTo(other: URI): boolean
 判断此URI是否与其他URI对象相等，通过逐组件比较scheme、authority、path、query和fragment等内容来确定两个URI是否等价。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -462,7 +418,7 @@ equalsTo(other: URI): boolean
 | --- | --- |
 | boolean | 返回true表示相等，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
@@ -479,10 +435,6 @@ getBooleanQueryValue(key: string, defaultValue: boolean): boolean
 根据指定键名，搜索此URI查询字符串并返回其对应的布尔类型值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -503,7 +455,7 @@ getBooleanQueryValue(key: string, defaultValue: boolean): boolean
 | --- | --- |
 | boolean | 如果指定的查询参数不存在，则返回defaultValue的值；查询参数对应第一个值为“false”或者“0”返回false，否则返回true。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://www.test.com/search?active=true');
@@ -528,10 +480,6 @@ getLastSegment(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-getLastSegment(): string--><!--Device-URI-getLastSegment(): string-End-->
@@ -544,7 +492,7 @@ getLastSegment(): string
 | --- | --- |
 | string | 返回此URI路径中的最后一个段，如果路径为空则返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('content://com.test.provider/files/image.jpg');
@@ -561,10 +509,6 @@ getQueryNames(): string[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-getQueryNames(): string[]--><!--Device-URI-getQueryNames(): string[]-End-->
@@ -577,7 +521,7 @@ getQueryNames(): string[]
 | --- | --- |
 | string[] | 返回URI查询部分中所有不重复的已解码参数名集合。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://www.test.com?param1=value1&param2=value2');
@@ -594,10 +538,6 @@ getQueryValue(key: string): string
 根据给定的查询关键词，从URI查询参数部分中提取出该关键词对应的第一个值，若查询参数中存在已编码过的内容，需将对应Key进行解码后获取Value。 查询参数在问号“?”后，由键值对组成。键和值用等号“=”连接，键值对用与号“&”分隔。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -617,7 +557,7 @@ getQueryValue(key: string): string
 | --- | --- |
 | string | 返回经解码处理后的URI查询参数的第一个值，若未找到对应值则返回null对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://www.com?param1=value1&param2=value2');
@@ -636,10 +576,6 @@ getQueryValue(key: string): string | null
 从当前 URI 的查询组件中获取指定键的第一个值。如果查询组件包含编码内容，此 API 会在获取值之前对键进行解码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -669,10 +605,6 @@ getQueryValues(key: string): string[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-getQueryValues(key: string): string[]--><!--Device-URI-getQueryValues(key: string): string[]-End-->
@@ -691,7 +623,7 @@ getQueryValues(key: string): string[]
 | --- | --- |
 | string[] | 返回此URI中查询参数内指定键对应所有值的集合，若没有找到则返回一个空字符串数组[]。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://www.test.com/search?query=name&query=my');
@@ -709,10 +641,6 @@ getSegment(): string[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-getSegment(): string[]--><!--Device-URI-getSegment(): string[]-End-->
@@ -725,7 +653,7 @@ getSegment(): string[]
 | --- | --- |
 | string[] | 返回此URI中已解码的所有路径段，各段前后均不含 “/”。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('http://www.test.com/path/to/image.jpg');
@@ -742,10 +670,6 @@ normalize(): URI
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-normalize(): URI--><!--Device-URI-normalize(): URI-End-->
@@ -758,7 +682,7 @@ normalize(): URI
 | --- | --- |
 | URI | 返回一个path被规范化后的URI对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const uriInstance = new uri.URI('https://username:password@www.qwer.com:8080/path/path1/../path2/./path3?query=pppppp');
@@ -783,10 +707,6 @@ toString(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-toString(): string--><!--Device-URI-toString(): string-End-->
@@ -799,7 +719,7 @@ toString(): string
 | --- | --- |
 | string | 返回URI的字符串序列化。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const result = new uri.URI('https://username:password@host:8080/directory/file?ab=pppppp#qwer da');
@@ -817,10 +737,6 @@ authority: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -840,10 +756,6 @@ encodedAuthority: string
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-encodedAuthority: string--><!--Device-URI-encodedAuthority: string-End-->
@@ -861,10 +773,6 @@ encodedFragment: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -884,10 +792,6 @@ encodedPath: string
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-encodedPath: string--><!--Device-URI-encodedPath: string-End-->
@@ -905,10 +809,6 @@ encodedQuery: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -928,10 +828,6 @@ encodedSSP: string
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-encodedSSP: string--><!--Device-URI-encodedSSP: string-End-->
@@ -949,10 +845,6 @@ encodedUserInfo: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -972,10 +864,6 @@ fragment: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-fragment: string--><!--Device-URI-fragment: string-End-->
@@ -993,10 +881,6 @@ host: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1016,10 +900,6 @@ path: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-path: string--><!--Device-URI-path: string-End-->
@@ -1037,10 +917,6 @@ port: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1060,10 +936,6 @@ query: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-query: string--><!--Device-URI-query: string-End-->
@@ -1081,10 +953,6 @@ scheme: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1104,10 +972,6 @@ ssp: string
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-URI-ssp: string--><!--Device-URI-ssp: string-End-->
@@ -1125,10 +989,6 @@ userInfo: string
 **类型：** string
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

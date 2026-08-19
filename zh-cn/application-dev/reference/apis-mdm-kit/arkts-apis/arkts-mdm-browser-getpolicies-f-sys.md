@@ -1,5 +1,11 @@
 # getPolicies（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { browser } from '@kit.MDMKit';
+```
+
 ## getPolicies
 
 ```TypeScript
@@ -10,11 +16,9 @@ function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync)
+**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,7 +34,7 @@ function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | appId | string | 是 | 应用ID，用于指定浏览器。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数，当接口调用成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -40,7 +44,7 @@ function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { browser } from '@kit.MDMKit';
@@ -73,11 +77,9 @@ function getPolicies(admin: Want, appId: string): Promise<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 26.0.0
 
-**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync)
+**替代接口：** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -108,7 +110,7 @@ function getPolicies(admin: Want, appId: string): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { browser } from '@kit.MDMKit';

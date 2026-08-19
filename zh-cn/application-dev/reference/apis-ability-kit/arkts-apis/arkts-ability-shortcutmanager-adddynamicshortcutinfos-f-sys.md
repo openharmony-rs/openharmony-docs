@@ -1,5 +1,11 @@
 # addDynamicShortcutInfos（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { shortcutManager } from '@kit.AbilityKit';
+```
+
 ## addDynamicShortcutInfos
 
 ```TypeScript
@@ -9,10 +15,6 @@ function addDynamicShortcutInfos(shortcutInfo: Array<ShortcutInfo>, userId: int)
 添加指定用户的动态快捷方式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SHORTCUTS or (ohos.permission.MANAGE_SHORTCUTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
@@ -27,7 +29,7 @@ function addDynamicShortcutInfos(shortcutInfo: Array<ShortcutInfo>, userId: int)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | shortcutInfo | Array&lt;ShortcutInfo&gt; | 是 | 待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：&lt;/br&gt; 1.ShortcutInfo中的sourceType字段会被设置为2 。&lt;/br&gt; 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。&lt;/br&gt; 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校 验对应的ability是否存在，不存在时，会抛出17700003错误码。 |
-| userId | int | 是 | 动态快捷方式所属的用户id。可以通过 [getOsAccountLocalId接口](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | int | 是 | 动态快捷方式所属的用户id。可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -51,7 +53,7 @@ function addDynamicShortcutInfos(shortcutInfo: Array<ShortcutInfo>, userId: int)
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { shortcutManager } from '@kit.AbilityKit';

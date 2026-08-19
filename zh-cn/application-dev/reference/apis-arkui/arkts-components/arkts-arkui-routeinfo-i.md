@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 13
 
 **替代接口：** NavPathStack and navDestination
@@ -13,6 +11,11 @@
 <!--Device-unnamed-declare interface RouteInfo--><!--Device-unnamed-declare interface RouteInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## name
 
@@ -25,8 +28,6 @@ name: string
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 13
 
@@ -51,8 +52,6 @@ param?: unknown
 **类型：** unknown
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 13
 

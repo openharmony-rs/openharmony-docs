@@ -4,9 +4,7 @@ ImageData对象可以存储canvas渲染的像素数据。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class ImageData--><!--Device-unnamed-export declare class ImageData-End-->
 
@@ -22,9 +20,7 @@ constructor(width: double, height: double, data?: Uint8ClampedArray, unit?: Leng
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

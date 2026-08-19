@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-export enum PhotoViewMIMETypes--><!--Device-photoAccessHelper-export enum PhotoViewMIMETypes-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ IMAGE_TYPE = 'image/*'
 图片类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ VIDEO_TYPE = 'video/*'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'--><!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'-End-->
@@ -62,10 +50,6 @@ IMAGE_VIDEO_TYPE = '*/*'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PhotoViewMIMETypes-IMAGE_VIDEO_TYPE = '*/*'--><!--Device-PhotoViewMIMETypes-IMAGE_VIDEO_TYPE = '*/*'-End-->
@@ -81,10 +65,6 @@ MOVING_PHOTO_IMAGE_TYPE = 'image/movingPhoto'
 动态照片类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

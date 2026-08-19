@@ -1,20 +1,21 @@
-# ISinglePropertyChangeSubscriber（系统接口）
+# ISinglePropertyChangeSubscriber(System API)（系统接口）
 
-继承自[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md#ipropertysubscriber系统接口)。用于订阅单个属性值的变化，当被订阅的属性发生变化时接收通知。
+继承自[IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md)。用于订阅单个属性值的变化，当被订阅的属性发生变化时接收通知。
 
-**继承/实现关系：** ISinglePropertyChangeSubscriber extends [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md#ipropertysubscriber系统接口)
+**继承/实现关系：** ISinglePropertyChangeSubscriber extends [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-interface ISinglePropertyChangeSubscriber--><!--Device-unnamed-interface ISinglePropertyChangeSubscriber-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## hasChanged
 
@@ -25,10 +26,6 @@ hasChanged(newValue: T): void
 变化时调用。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-ISinglePropertyChangeSubscriber-hasChanged(newValue: T): void--><!--Device-ISinglePropertyChangeSubscriber-hasChanged(newValue: T): void-End-->
 

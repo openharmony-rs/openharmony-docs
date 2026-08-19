@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface InteropAbilityLifecycleCallback--><!--Device-unnamed-declare interface InteropAbilityLifecycleCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+## 导入模块
+
+```TypeScript
+import { InteropAbilityLifecycleCallback } from '@kit.AbilityKit';
+```
 
 ## onAbilityBackground
 
@@ -23,10 +25,6 @@ Ability状态切换至后台时，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ Ability准备迁移时，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onAbilityContinue?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityContinue?: AbilityCallbackFn-End-->
@@ -67,10 +61,6 @@ Ability被创建时，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +80,6 @@ Ability被销毁时，触发该回调函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onAbilityDestroy: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityDestroy: AbilityCallbackFn-End-->
@@ -111,10 +97,6 @@ Ability状态切换至前台时，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +116,6 @@ Ability调用onSaveState后，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onAbilitySaveState?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilitySaveState?: AbilityCallbackFn-End-->
@@ -155,10 +133,6 @@ Ability状态切换至后台前，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,10 +152,6 @@ Ability准备调用onContinue时，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onAbilityWillContinue?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillContinue?: AbilityCallbackFn-End-->
@@ -199,10 +169,6 @@ Ability被创建前，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,10 +188,6 @@ Ability被销毁前，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onAbilityWillDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillDestroy?: AbilityCallbackFn-End-->
@@ -243,10 +205,6 @@ Ability状态切换至前台前，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -266,10 +224,6 @@ Ability准备调用onSaveState时，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onAbilityWillSaveState?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillSaveState?: AbilityCallbackFn-End-->
@@ -287,10 +241,6 @@ UIAbility调用onNewWant后，触发该回调函数。
 **类型：** [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,10 +260,6 @@ UIAbility调用onNewWant前，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onWillNewWant?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWillNewWant?: AbilityCallbackFn-End-->
@@ -331,10 +277,6 @@ WindowStage获焦时，触发该回调函数。
 **类型：** [WindowStageCallbackFn](arkts-ability-windowstagecallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -354,10 +296,6 @@ WindowStage被创建时，触发该回调函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onWindowStageCreate: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageCreate: WindowStageCallbackFn-End-->
@@ -375,10 +313,6 @@ WindowStage被销毁时，触发该回调函数。
 **类型：** [WindowStageCallbackFn](arkts-ability-windowstagecallbackfn-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -398,10 +332,6 @@ WindowStage失焦时，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onWindowStageInactive?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageInactive?: WindowStageCallbackFn-End-->
@@ -419,10 +349,6 @@ Ability调用onWindowStageRestore后，触发该回调函数。
 **类型：** [WindowStageCallbackFn](arkts-ability-windowstagecallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -442,10 +368,6 @@ WindowStage被创建前，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onWindowStageWillCreate?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageWillCreate?: WindowStageCallbackFn-End-->
@@ -464,10 +386,6 @@ WindowStage被销毁前，触发该回调函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InteropAbilityLifecycleCallback-onWindowStageWillDestroy?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageWillDestroy?: WindowStageCallbackFn-End-->
@@ -485,10 +403,6 @@ Ability调用onWindowStageWillRestore后，触发该回调函数。
 **类型：** [WindowStageCallbackFn](arkts-ability-windowstagecallbackfn-t.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

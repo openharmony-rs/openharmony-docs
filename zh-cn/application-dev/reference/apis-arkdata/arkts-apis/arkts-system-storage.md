@@ -1,25 +1,13 @@
 # @system.storage(数据存储)
 
-/*
- Copyright (c) 2022 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
- > **说明：**
+> **说明：**
  >
  > - 模块维护策略：
  >
  > - 对于Lite Wearable设备类型，该模块长期维护，可正常使用。
  >
- > - 对于支持该模块的其他设备类型，该模块从API version 6开始不再维护，可以使用模块[`@ohos.data.storage`](arkts-data-storage.md#ohosdatastorage)。在API
- > version 9后，推荐使用新模块[`@ohos.data.preferences`](arkts-data-preferences.md#ohosdatapreferences)。
+ > - 对于支持该模块的其他设备类型，该模块从API version 6开始不再维护，可以使用模块[`@ohos.data.storage`](arkts-data-storage.md)。在API
+ > version 9后，推荐使用新模块[`@ohos.data.preferences`](arkts-data-preferences.md)。
  >
  > - 本模块接口仅可在FA模型下使用。
  >
@@ -31,7 +19,7 @@
  **参数：**
  | 参数名  | 类型                    | 必填 | 说明       |
  | ------- | -------------------- | ---- | ---------- |
- | options | [GetStorageOptions](arkts-arkdata-system-storage-getstorageoptions-i.md#getstorageoptions) | 是   | 接口配置信息。 |
+ | options | [GetStorageOptions](arkts-arkdata-system-storage-getstorageoptions-i.md) | 是   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js
@@ -114,7 +102,7 @@
  **参数：**
  | 参数名  | 类型                   | 必填 | 说明       |
  | ------- | ------------------- | ---- | ---------- |
- | options | [SetStorageOptions](arkts-arkdata-system-storage-setstorageoptions-i.md#setstorageoptions) | 是   | 接口配置信息。 |
+ | options | [SetStorageOptions](arkts-arkdata-system-storage-setstorageoptions-i.md) | 是   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js
@@ -196,7 +184,7 @@
  **参数：**
  | 参数名  | 类型                                        | 必填 | 说明           |
  | ------- | ------------------------------------------- | ---- | -------------- |
- | options | [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md#clearstorageoptions) | 否   | 接口配置信息。 |
+ | options | [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md) | 否   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js
@@ -276,7 +264,7 @@
  **参数：**
  | 参数名  | 类型                                          | 必填 | 说明           |
  | ------- | --------------------------------------------- | ---- | -------------- |
- | options | [DeleteStorageOptions](arkts-arkdata-system-storage-deletestorageoptions-i.md#deletestorageoptions) | 是   | 接口配置信息。 |
+ | options | [DeleteStorageOptions](arkts-arkdata-system-storage-deletestorageoptions-i.md) | 是   | 接口配置信息。 |
  **示例：**
  ArkTS示例：
  ```js
@@ -351,20 +339,25 @@
  ```
 
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
-| [Storage](arkts-arkdata-system-storage-storage-c.md) |  |
+| [Storage(数据存储)](arkts-arkdata-system-storage-storage-c.md) |  |
 
 ### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md) |  |
-| [DeleteStorageOptions](arkts-arkdata-system-storage-deletestorageoptions-i.md) |  |
-| [GetStorageOptions](arkts-arkdata-system-storage-getstorageoptions-i.md) |  |
-| [SetStorageOptions](arkts-arkdata-system-storage-setstorageoptions-i.md) |  |
+| [ClearStorageOptions(数据存储)](arkts-arkdata-system-storage-clearstorageoptions-i.md) |  |
+| [DeleteStorageOptions(数据存储)](arkts-arkdata-system-storage-deletestorageoptions-i.md) |  |
+| [GetStorageOptions(数据存储)](arkts-arkdata-system-storage-getstorageoptions-i.md) |  |
+| [SetStorageOptions(数据存储)](arkts-arkdata-system-storage-setstorageoptions-i.md) |  |
 

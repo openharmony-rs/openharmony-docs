@@ -4,13 +4,15 @@ BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接�
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-webview-interface BackForwardList--><!--Device-webview-interface BackForwardList-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## getItemAtIndex
 
@@ -21,10 +23,6 @@ getItemAtIndex(index: number): HistoryItem
 获取历史列表中指定索引的历史记录项信息。需先通过[getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries)方法获取 BackForwardList实例。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -62,10 +60,6 @@ currentIndex: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BackForwardList-currentIndex: number--><!--Device-BackForwardList-currentIndex: number-End-->
@@ -83,10 +77,6 @@ size: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

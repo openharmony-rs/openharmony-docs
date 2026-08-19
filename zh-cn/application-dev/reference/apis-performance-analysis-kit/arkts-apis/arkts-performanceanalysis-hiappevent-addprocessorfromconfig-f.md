@@ -1,5 +1,11 @@
 # addProcessorFromConfig
 
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## addProcessorFromConfig
 
 ```TypeScript
@@ -9,10 +15,6 @@ function addProcessorFromConfig(processorName: string, configName?: string): Pro
 添加数据处理者配置信息，通过配置文件配置处理者接收的事件名等信息，事件发生后处理者可以接收事件，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -39,7 +41,7 @@ function addProcessorFromConfig(processorName: string, configName?: string): Pro
 | --- | --- |
 | [11105001](../errorcode-hiappevent.md#11105001-非法的参数值) | Invalid parameter value. Possible causes: 1. Incorrect parameter length; 2. Incorrect parameter format. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

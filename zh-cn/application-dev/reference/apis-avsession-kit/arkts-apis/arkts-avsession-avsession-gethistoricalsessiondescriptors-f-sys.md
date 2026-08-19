@@ -1,5 +1,11 @@
 # getHistoricalSessionDescriptors（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## getHistoricalSessionDescriptors
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getHistoricalSessionDescriptors(maxSize: int, callback: AsyncCallback<A
 获取所有已被销毁的会话相关描述。结果通过callback异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -27,7 +29,7 @@ function getHistoricalSessionDescriptors(maxSize: int, callback: AsyncCallback<A
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | maxSize | int | 是 | 指定获取描述符数量的最大值，可选范围是0-10。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;Readonly&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i-sys.md)&gt;&gt;&gt; | 是 | 回调函数。返回所有会话描述的只读对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;Readonly&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i-sys.md)&gt;&gt;&gt; | 是 | 回调函数。返回所有会话描述的只读对象。 |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function getHistoricalSessionDescriptors(maxSize: int, callback: AsyncCallback<A
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDescriptor[]) => { 
@@ -63,10 +65,6 @@ function getHistoricalSessionDescriptors(maxSize?: int): Promise<Array<Readonly<
 获取所有已被销毁的会话相关描述。结果通过Promise异步回调方式返回。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -97,7 +95,7 @@ function getHistoricalSessionDescriptors(maxSize?: int): Promise<Array<Readonly<
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App |
 
-## 示例
+**示例**
 
 ```TypeScript
 avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {

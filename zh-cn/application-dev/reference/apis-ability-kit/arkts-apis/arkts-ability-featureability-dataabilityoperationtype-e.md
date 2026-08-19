@@ -4,10 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-featureAbility-export enum DataAbilityOperationType--><!--Device-featureAbility-export enum DataAbilityOperationType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
@@ -21,10 +17,6 @@ TYPE_INSERT = 1
 插入类型。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -42,10 +34,6 @@ TYPE_UPDATE = 2
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-DataAbilityOperationType-TYPE_UPDATE = 2--><!--Device-DataAbilityOperationType-TYPE_UPDATE = 2-End-->
@@ -62,10 +50,6 @@ TYPE_DELETE = 3
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-DataAbilityOperationType-TYPE_DELETE = 3--><!--Device-DataAbilityOperationType-TYPE_DELETE = 3-End-->
@@ -81,10 +65,6 @@ TYPE_ASSERT = 4
 声明类型。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

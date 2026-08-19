@@ -1,5 +1,12 @@
 # Popup
 
+## 导入模块
+
+```TypeScript
+import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOptions } from '@kit.ArkUI';
+import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
+```
+
 ## Popup
 
 ```TypeScript
@@ -8,10 +15,6 @@ export declare function Popup(options: PopupOptions): void
 ```
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

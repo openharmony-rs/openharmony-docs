@@ -1,5 +1,11 @@
 # unbind
 
+## 导入模块
+
+```TypeScript
+import { floatView } from '@kit.ArkUI';
+```
+
 ## unbind
 
 ```TypeScript
@@ -7,13 +13,9 @@ function unbind(floatViewController: FloatViewController,
     floatingBallController: floatingBall.FloatingBallController): Promise<void>
 ```
 
-解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md#floatviewcontroller)和 [闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md#floatingballcontroller)均停止后才可解绑。使用Promise异步回调。
+解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](arkts-arkui-floatview-floatviewcontroller-i.md)和 [闪控球控制器](arkts-arkui-floatingball-floatingballcontroller-i.md)均停止后才可解绑。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +44,7 @@ function unbind(floatViewController: FloatViewController,
 | [1300025](../errorcode-window.md#1300025-闪控球状态不支持该操作) | The floating ball state does not support this operation. Possible cause: 1. The floating ball has started but not stopped yet. 2. The floatingBallController has not been bound. |
 | [1300031](../errorcode-window.md#1300031-闪控窗状态不支持该操作) | The floatView state does not support this operation. Possible cause: 1. The float view has started but not stopped yet. 2. The floatViewController has not been bound. 3. The floatViewController and the floatingBallController are not bound together. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Entry.ets

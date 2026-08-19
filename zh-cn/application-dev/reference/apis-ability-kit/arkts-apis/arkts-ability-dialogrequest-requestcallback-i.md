@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dialogRequest-export interface RequestCallback--><!--Device-dialogRequest-export interface RequestCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { dialogRequest } from '@kit.AbilityKit';
+```
 
 ## setRequestResult
 
@@ -21,10 +23,6 @@ setRequestResult(result: RequestResult): void
 设置请求结果
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +42,7 @@ setRequestResult(result: RequestResult): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want, dialogRequest } from '@kit.AbilityKit';

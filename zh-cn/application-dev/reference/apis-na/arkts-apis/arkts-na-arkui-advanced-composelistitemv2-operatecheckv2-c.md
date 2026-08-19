@@ -4,13 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare class OperateCheckV2--><!--Device-unnamed-export declare class OperateCheckV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -22,9 +25,7 @@ OperateCheckV2的构造函数。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +37,7 @@ OperateCheckV2的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [OperateCheckV2Options](arkts-na-arkui-advanced-composelistitemv2-operatecheckv2options-i.md) | 否 | OperateCheckV2的可选项 |
+| options | [OperateCheckV2Options](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2options-i.md) | 否 | OperateCheckV2的可选项 |
 
 ## accessibilityDescription
 
@@ -51,9 +52,7 @@ Switch/CheckBox/Radio的无障碍描述。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -76,9 +75,7 @@ Switch/CheckBox/Radio的无障碍重要性。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -99,9 +96,7 @@ Switch/CheckBox/Radio的无障碍文本属性。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,9 +117,7 @@ Switch/CheckBox/Radio的无障碍文本属性。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -141,13 +134,11 @@ Switch/CheckBox/Radio的无障碍文本属性。
 
 操作checkbox/switch/radio时的回调函数。
 
-**类型：** [OnChangeCallback](arkts-na-onchangecallback-t.md)
+**类型：** [OnChangeCallback](../../apis-arkui/arkts-apis/arkts-arkui-onchangecallback-t.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

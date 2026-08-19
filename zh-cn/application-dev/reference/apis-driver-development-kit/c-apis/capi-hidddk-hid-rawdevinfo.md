@@ -6,7 +6,7 @@ typedef struct Hid_RawDevInfo {...} Hid_RawDevInfo
 
 ## 概述
 
-原始设备信息定义。
+HID原始设备信息，包含总线类型、供应商ID、产品ID等关键标识信息。开发者可以通过此结构体识别和区分不同的HID设备，通常用于设备识别、设备匹配、设备过滤等场景。
 
 **起始版本：** 18
 
@@ -20,8 +20,8 @@ typedef struct Hid_RawDevInfo {...} Hid_RawDevInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t busType | 总线类型 |
-| uint16_t vendor | 供应商ID |
-| uint16_t product | 产品ID |
+| uint32_t busType | 总线类型，取值含义参考标准HID协议的总线类型定义。 |
+| uint16_t vendor | 厂商ID。 |
+| uint16_t product | 产品ID。 |
 
 

@@ -4,13 +4,16 @@ LightWeightMap可用于存储具有关联关系的key-value键值对，其中key
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class LightWeightMap--><!--Device-unnamed-declare class LightWeightMap-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+```
 
 ## $_iterator
 
@@ -21,10 +24,6 @@ $_iterator(): IterableIterator<[K, V]>
 返回一个迭代器，迭代器的每一项都是一个包含键和值的[K, V]数组。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +37,7 @@ $_iterator(): IterableIterator<[K, V]>
 | --- | --- |
 | IterableIterator&lt;[K, V]&gt; | LightWeightMap的迭代器。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap: LightWeightMap<string, int> = new LightWeightMap<string, int>();
@@ -71,10 +70,6 @@ while(!temp.done) {
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-LightWeightMap-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
@@ -93,7 +88,7 @@ while(!temp.done) {
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The Symbol.iterator method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap = new LightWeightMap<string, number>();
@@ -145,10 +140,6 @@ clear(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-clear(): void--><!--Device-LightWeightMap-clear(): void-End-->
@@ -161,7 +152,7 @@ clear(): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -195,10 +186,6 @@ LightWeightMap的构造函数，创建一个空的LightWeightMap实例。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-constructor()--><!--Device-LightWeightMap-constructor()-End-->
@@ -211,7 +198,7 @@ LightWeightMap的构造函数，创建一个空的LightWeightMap实例。
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The LightWeightMap's constructor cannot be directly invoked. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -235,10 +222,6 @@ entries(): IterableIterator<[K, V]>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-entries(): IterableIterator<[K, V]>--><!--Device-LightWeightMap-entries(): IterableIterator<[K, V]>-End-->
@@ -257,7 +240,7 @@ entries(): IterableIterator<[K, V]>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The entries method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap = new LightWeightMap<string, number>();
@@ -319,10 +302,6 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object): void--><!--Device-LightWeightMap-forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object): void-End-->
@@ -342,7 +321,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap = new LightWeightMap<string, number>();
@@ -376,10 +355,6 @@ forEach(callbackFn: LightWeightMapCbFn<K, V>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-forEach(callbackFn: LightWeightMapCbFn<K, V>): void--><!--Device-LightWeightMap-forEach(callbackFn: LightWeightMapCbFn<K, V>): void-End-->
@@ -392,7 +367,7 @@ forEach(callbackFn: LightWeightMapCbFn<K, V>): void
 | --- | --- | --- | --- |
 | callbackFn | [LightWeightMapCbFn](arkts-arkts-lightweightmapcbfn-t.md)&lt;K, V&gt; | 是 | 回调函数，用于遍历LightWeightMap实例中的元素及下标。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { LightWeightMapCbFn } from '@kit.ArkTS';
@@ -419,10 +394,6 @@ get(key: K): V
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-get(key: K): V--><!--Device-LightWeightMap-get(key: K): V-End-->
@@ -447,7 +418,7 @@ get(key: K): V
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The get method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap = new LightWeightMap<string, number>();
@@ -467,10 +438,6 @@ get(key: K): V | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-get(key: K): V | undefined--><!--Device-LightWeightMap-get(key: K): V | undefined-End-->
@@ -489,7 +456,7 @@ get(key: K): V | undefined
 | --- | --- |
 | V | 如果存在与key关联的值则返回该值，否则返回undefined。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap: LightWeightMap<string, int> = new LightWeightMap<string, int>();
@@ -508,10 +475,6 @@ getIndexOfKey(key: K): int
 查找key元素首次出现的下标值，如果未找到返回-1。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -537,7 +500,7 @@ getIndexOfKey(key: K): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOfKey method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -569,10 +532,6 @@ getIndexOfValue(value: V): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-getIndexOfValue(value: V): int--><!--Device-LightWeightMap-getIndexOfValue(value: V): int-End-->
@@ -597,7 +556,7 @@ getIndexOfValue(value: V): int
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getIndexOfValue method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -629,10 +588,6 @@ getKeyAt(index: number): K
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-getKeyAt(index: number): K--><!--Device-LightWeightMap-getKeyAt(index: number): K-End-->
@@ -658,7 +613,7 @@ getKeyAt(index: number): K
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getKeyAt method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 不建议在keys中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
@@ -678,10 +633,6 @@ getKeyAt(index: int): K | undefined
 查找指定下标的元素键值对中key值，如果未找到则返回undefined。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -707,7 +658,7 @@ getKeyAt(index: int): K | undefined
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap: LightWeightMap<string, int> = new LightWeightMap<string, int>();
@@ -726,10 +677,6 @@ getValueAt(index: number): V
 获取指定下标对应键值对中的值。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -756,7 +703,7 @@ getValueAt(index: number): V
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The getValueAt method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 不建议在values中使用set、setValueAt、remove、removeAt方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
@@ -776,10 +723,6 @@ getValueAt(index: int): V | undefined
 获取指定下标对应键值对中的值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -805,7 +748,7 @@ getValueAt(index: int): V | undefined
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap: LightWeightMap<string, int> = new LightWeightMap<string, int>();
@@ -824,10 +767,6 @@ hasAll(map: LightWeightMap<K, V>): boolean
 判断LightWeightMap中是否包含指定map中的所有元素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -853,7 +792,7 @@ hasAll(map: LightWeightMap<K, V>): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasAll method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -889,10 +828,6 @@ hasKey(key: K): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-hasKey(key: K): boolean--><!--Device-LightWeightMap-hasKey(key: K): boolean-End-->
@@ -917,7 +852,7 @@ hasKey(key: K): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasKey method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -946,10 +881,6 @@ hasValue(value: V): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-hasValue(value: V): boolean--><!--Device-LightWeightMap-hasValue(value: V): boolean-End-->
@@ -974,7 +905,7 @@ hasValue(value: V): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The hasValue method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1004,10 +935,6 @@ increaseCapacityTo(minimumCapacity: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-increaseCapacityTo(minimumCapacity: int): void--><!--Device-LightWeightMap-increaseCapacityTo(minimumCapacity: int): void-End-->
@@ -1026,7 +953,7 @@ increaseCapacityTo(minimumCapacity: int): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The increaseCapacityTo method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1052,10 +979,6 @@ isEmpty(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-isEmpty(): boolean--><!--Device-LightWeightMap-isEmpty(): boolean-End-->
@@ -1074,7 +997,7 @@ isEmpty(): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The isEmpty method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1102,10 +1025,6 @@ keys(): IterableIterator<K>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-keys(): IterableIterator<K>--><!--Device-LightWeightMap-keys(): IterableIterator<K>-End-->
@@ -1124,7 +1043,7 @@ keys(): IterableIterator<K>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The keys method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1166,10 +1085,6 @@ remove(key: K): V
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-remove(key: K): V--><!--Device-LightWeightMap-remove(key: K): V-End-->
@@ -1194,7 +1109,7 @@ remove(key: K): V
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The remove method cannot be bound. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap = new LightWeightMap<string, number>();
@@ -1212,10 +1127,6 @@ remove(key: K): V | undefined
 删除指定key映射的元素。当key为number类型且值大于INT32_MAX或小于INT32_MIN时，结果可能与预期不一致。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -1235,7 +1146,7 @@ remove(key: K): V | undefined
 | --- | --- |
 | V | 如果删除了元素则返回该元素的值，否则返回undefined。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap<string, number>();
@@ -1254,10 +1165,6 @@ removeAt(index: int): boolean
 删除指定下标对应的元素。调用成功后，若下标有效则该位置的键值对从LightWeightMap中移除且length减少。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1283,7 +1190,7 @@ removeAt(index: int): boolean
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The removeAt method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1315,10 +1222,6 @@ set(key: K, value: V): Object
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-set(key: K, value: V): Object--><!--Device-LightWeightMap-set(key: K, value: V): Object-End-->
@@ -1344,7 +1247,7 @@ set(key: K, value: V): Object
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The set method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1372,10 +1275,6 @@ setAll(map: LightWeightMap<K, V>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-setAll(map: LightWeightMap<K, V>): void--><!--Device-LightWeightMap-setAll(map: LightWeightMap<K, V>): void-End-->
@@ -1394,7 +1293,7 @@ setAll(map: LightWeightMap<K, V>): void
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setAll method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1430,10 +1329,6 @@ setValueAt(index: int, newValue: V): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-setValueAt(index: int, newValue: V): boolean--><!--Device-LightWeightMap-setValueAt(index: int, newValue: V): boolean-End-->
@@ -1460,7 +1355,7 @@ setValueAt(index: int, newValue: V): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The setValueAt method cannot be bound. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of index is out of range. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1492,10 +1387,6 @@ toString(): String
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-toString(): String--><!--Device-LightWeightMap-toString(): String-End-->
@@ -1514,7 +1405,7 @@ toString(): String
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The toString method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1546,10 +1437,6 @@ values(): IterableIterator<V>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LightWeightMap-values(): IterableIterator<V>--><!--Device-LightWeightMap-values(): IterableIterator<V>-End-->
@@ -1568,7 +1455,7 @@ values(): IterableIterator<V>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The values method cannot be bound. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1611,10 +1498,6 @@ LightWeightMap的元素个数。
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

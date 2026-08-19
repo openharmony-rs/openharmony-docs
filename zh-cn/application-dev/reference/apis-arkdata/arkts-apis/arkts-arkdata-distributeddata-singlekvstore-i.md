@@ -1,12 +1,10 @@
 # SingleKVStore
 
-单版本数据库，继承自[KVStore](arkts-arkdata-distributeddata-kvstoretype-e.md#kvstoretype)数据库，提供查询数据和同步数据的方法。 单版本数据库，不对数据所属设备进行区分，不同设备使用相同键写入数据会互相覆盖。比如，可以使用单版本数据库实现个人日历、联系人数据在不同设备间的数据同步。 在调用SingleKVStore的方法前，需要先通过 getKVStore 构建一个SingleKVStore实例。
+单版本数据库，继承自[KVStore](arkts-arkdata-distributeddata-kvstoretype-e.md)数据库，提供查询数据和同步数据的方法。 单版本数据库，不对数据所属设备进行区分，不同设备使用相同键写入数据会互相覆盖。比如，可以使用单版本数据库实现个人日历、联系人数据在不同设备间的数据同步。 在调用SingleKVStore的方法前，需要先通过 getKVStore 构建一个SingleKVStore实例。
 
-**继承/实现关系：** SingleKVStore extends [KVStore](arkts-arkdata-distributeddata-kvstore-i.md#kvstore)
+**继承/实现关系：** SingleKVStore extends [KVStore](arkts-arkdata-distributeddata-kvstore-i.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -15,6 +13,12 @@
 <!--Device-distributedData-interface SingleKVStore--><!--Device-distributedData-interface SingleKVStore-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## closeResultSet
 
@@ -25,8 +29,6 @@ closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 关闭由 [SingleKVStore.getResultSet](#getresultset) 返回的KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -41,9 +43,9 @@ closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resultSet | [KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md) | 是 | 表示要关闭的KvStoreResultSet对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -71,8 +73,6 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** closeResultSet
@@ -93,7 +93,7 @@ closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -119,8 +119,6 @@ get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** get
@@ -133,10 +131,10 @@ get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](arkts-arkdata-distributeddata-constants-n.md#constants)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Uint8Array \| string \| boolean \| number&gt; | 是 | 回调函数。返回获取查询的值。 |
+| key | string | 是 | 要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](arkts-arkdata-distributeddata-constants-n.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Uint8Array \| string \| boolean \| number&gt; | 是 | 回调函数。返回获取查询的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -168,8 +166,6 @@ get(key: string): Promise<Uint8Array | string | boolean | number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** get
@@ -182,7 +178,7 @@ get(key: string): Promise<Uint8Array | string | boolean | number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](arkts-arkdata-distributeddata-constants-n.md#constants)。 |
+| key | string | 是 | 要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](arkts-arkdata-distributeddata-constants-n.md)。 |
 
 **返回值：**
 
@@ -190,7 +186,7 @@ get(key: string): Promise<Uint8Array | string | boolean | number>
 | --- | --- |
 | Promise&lt;Uint8Array \| string \| boolean \| number&gt; | Promise对象。返回获取查询的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -222,8 +218,6 @@ getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getEntries
@@ -237,9 +231,9 @@ getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Entry[]&gt; | 是 | 回调函数。返回匹配指定前缀的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Entry[]&gt; | 是 | 回调函数。返回匹配指定前缀的键值对列表。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -279,8 +273,6 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getEntries
@@ -301,7 +293,7 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 | --- | --- |
 | Promise&lt;Entry[]&gt; | Promise对象。返回匹配指定前缀的键值对列表。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -348,8 +340,6 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getEntries
@@ -363,9 +353,9 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | Query | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Entry[]&gt; | 是 | 回调函数。返回与指定Query对象匹配的键值对列表。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Entry[]&gt; | 是 | 回调函数。返回与指定Query对象匹配的键值对列表。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -410,8 +400,6 @@ getEntries(query: Query): Promise<Entry[]>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getEntries
@@ -432,7 +420,7 @@ getEntries(query: Query): Promise<Entry[]>
 | --- | --- |
 | Promise&lt;Entry[]&gt; | Promise对象。返回与指定Query对象匹配的键值对列表。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -479,8 +467,6 @@ getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getResultSet
@@ -494,9 +480,9 @@ getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyPrefix | string | 是 | 表示要匹配的键前缀。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数。返回具有指定前缀的结果集。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数。返回具有指定前缀的结果集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -539,8 +525,6 @@ getResultSet(keyPrefix: string): Promise<KvStoreResultSet>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getResultSet
@@ -561,7 +545,7 @@ getResultSet(keyPrefix: string): Promise<KvStoreResultSet>
 | --- | --- |
 | Promise&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | Promise对象。返回具有指定前缀的结果集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -610,8 +594,6 @@ getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getResultSet
@@ -625,9 +607,9 @@ getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | Query | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Query对象匹配的KvStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Query对象匹配的KvStoreResultSet对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -669,8 +651,6 @@ getResultSet(query: Query): Promise<KvStoreResultSet>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getResultSet
@@ -691,7 +671,7 @@ getResultSet(query: Query): Promise<KvStoreResultSet>
 | --- | --- |
 | Promise&lt;[KvStoreResultSet](arkts-arkdata-distributeddata-kvstoreresultset-i.md)&gt; | Promise对象。获取与指定Query对象匹配的KvStoreResultSet对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -737,8 +717,6 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getResultSize
@@ -752,9 +730,9 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | query | Query | 是 | 表示查询对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回与指定Query对象匹配的结果数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回与指定Query对象匹配的结果数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -794,8 +772,6 @@ getResultSize(query: Query): Promise<number>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getResultSize
@@ -816,7 +792,7 @@ getResultSize(query: Query): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -860,8 +836,6 @@ getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getSecurityLevel
@@ -874,9 +848,9 @@ getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;SecurityLevel&gt; | 是 | 回调函数。返回数据库的安全级别。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;SecurityLevel&gt; | 是 | 回调函数。返回数据库的安全级别。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -899,8 +873,6 @@ getSecurityLevel(): Promise<SecurityLevel>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** getSecurityLevel
@@ -915,7 +887,7 @@ getSecurityLevel(): Promise<SecurityLevel>
 | --- | --- |
 | Promise&lt;SecurityLevel&gt; | Promise对象。返回数据库的安全级别。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -940,8 +912,6 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** off
@@ -955,9 +925,9 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 取消订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
-| listener | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeNotification&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeNotification&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -988,8 +958,6 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** off
@@ -1003,9 +971,9 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 取消订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[string, number]&gt;&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
+| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[string, number]&gt;&gt; | 否 | 取消订阅的函数。如不设置callback，则取消所有订阅的函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -1036,8 +1004,6 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** on
@@ -1052,9 +1018,9 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 | --- | --- | --- | --- |
 | event | 'dataChange' | 是 | 订阅的事件名，固定为'dataChange'，表示数据变更事件。 |
 | type | SubscribeType | 是 | 表示订阅的类型。 |
-| listener | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeNotification&gt; | 是 | 回调函数。 |
+| listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;ChangeNotification&gt; | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -1073,8 +1039,6 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** on
@@ -1088,9 +1052,9 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | 是 | 订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[string, number]&gt;&gt; | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
+| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[string, number]&gt;&gt; | 是 | 回调函数。用于向调用方发送同步结果的回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -1116,11 +1080,9 @@ try {
 removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-删除指定设备的数据，使用callback异步回调。 > **说明：** > > 其中deviceId通过调用&lt;!--RP1--&gt; > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。&lt;!--RP1End--&gt;deviceManager模块的接口均为系统接口，仅系统应用可用。 > > deviceId具体获取方式请参考[sync接口示例](#sync)。
+删除指定设备的数据，使用callback异步回调。 > **说明：** > > 其中deviceId通过调用<!--RP1--> > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。 > > deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1135,9 +1097,9 @@ removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 表示要删除设备的名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -1169,11 +1131,9 @@ try {
 removeDeviceData(deviceId: string): Promise<void>
 ```
 
-删除指定设备的数据，使用Promise异步回调。 > **说明：** > > 其中deviceId通过调用&lt;!--RP1--&gt; > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。&lt;!--RP1End--&gt;deviceManager模块的接口均为系统接口，仅系统应用可用。 > > deviceId具体获取方式请参考[sync接口示例](#sync)。
+删除指定设备的数据，使用Promise异步回调。 > **说明：** > > 其中deviceId通过调用<!--RP1--> > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。 > > deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1195,7 +1155,7 @@ removeDeviceData(deviceId: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -1233,8 +1193,6 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** setSyncParam
@@ -1248,9 +1206,9 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | defaultAllowedDelayMs | number | 是 | 表示数据库同步允许的默认延迟，以毫秒为单位。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -1274,8 +1232,6 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** setSyncParam
@@ -1296,7 +1252,7 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvStore;
@@ -1318,11 +1274,9 @@ try {
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 ```
 
-在手动同步方式下，触发数据库同步。 > **说明：** > > 其中deviceIds为&lt;!--RP2--&gt;[DeviceInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-deviceinfo-i-sys.md#deviceinfo系统接口)中的 > networkId, 通过调用 > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。&lt;!--RP2End--&gt;deviceManager模块的接口均为系统接口，仅系统应用可用。
+在手动同步方式下，触发数据库同步。 > **说明：** > > 其中deviceIds为<!--RP2-->[DeviceInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-deviceinfo-i-sys.md)中的 > networkId, 通过调用 > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync) > 方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -1342,7 +1296,7 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 | mode | SyncMode | 是 | 同步模式。 |
 | delayMs | number | 否 | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import deviceManager from '@ohos.distributedHardware.deviceManager';

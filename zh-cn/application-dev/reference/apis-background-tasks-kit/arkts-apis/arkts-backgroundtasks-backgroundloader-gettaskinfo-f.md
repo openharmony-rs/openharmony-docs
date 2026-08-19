@@ -1,5 +1,11 @@
 # getTaskInfo
 
+## 导入模块
+
+```TypeScript
+import { backgroundLoader } from '@kit.BackgroundTasksKit';
+```
+
 ## getTaskInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getTaskInfo(taskId: int): Promise<TaskInfo>
 获取后台预取任务信息。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

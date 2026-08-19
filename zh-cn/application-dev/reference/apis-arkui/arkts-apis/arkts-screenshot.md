@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace screenshot--><!--Device-unnamed-declare namespace screenshot-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## 导入模块
+
+```TypeScript
+import { screenshot } from '@kit.ArkUI';
+```
 
 ## 汇总
 
@@ -18,18 +20,18 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [capture](arkts-arkui-screenshot-capture-f.md#capture) | 获取屏幕全屏截图，使用Promise异步回调。 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](arkts-arkui-screenshot-pick-f.md#pick)接口可实现区域截屏。 |
-| [pick](arkts-arkui-screenshot-pick-f.md#pick) | 获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](arkts-arkui-screenshot-capture-f.md#capture)接口实现），使用Promise异步回调。 |
+| [capture](arkts-arkui-screenshot-capture-f.md) | 获取屏幕全屏截图，使用Promise异步回调。 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](arkts-arkui-screenshot-pick-f.md)接口可实现区域截屏。 |
+| [pick](arkts-arkui-screenshot-pick-f.md) | 获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](arkts-arkui-screenshot-capture-f.md)接口实现），使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save) | 获取屏幕截图，使用callback异步回调。 |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save系统接口) | 获取屏幕截图，使用callback异步回调。 |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save系统接口) | 获取屏幕截图，使用Promise异步回调。 |
-| [saveHdrPicture](arkts-arkui-screenshot-savehdrpicture-f-sys.md#savehdrpicture) | 获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。 - 当物理屏不存在HDR资源时，与[save](arkts-arkui-screenshot-save-f-sys.md#save系统接口) 接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备 [save](arkts-arkui-screenshot-save-f-sys.md#save系统接口)接口的裁剪、拉伸、旋转功能。 |
+| [save](arkts-arkui-screenshot-save-f-sys.md) | 获取屏幕截图，使用callback异步回调。 |
+| [save](arkts-arkui-screenshot-save-f-sys.md) | 获取屏幕截图，使用callback异步回调。 |
+| [save](arkts-arkui-screenshot-save-f-sys.md) | 获取屏幕截图，使用Promise异步回调。 |
+| [saveHdrPicture](arkts-arkui-screenshot-savehdrpicture-f-sys.md) | 获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。 - 当物理屏不存在HDR资源时，与[save](arkts-arkui-screenshot-save-f-sys.md) 接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备 [save](arkts-arkui-screenshot-save-f-sys.md)接口的裁剪、拉伸、旋转功能。 |
 <!--DelEnd-->
 
 ### 接口

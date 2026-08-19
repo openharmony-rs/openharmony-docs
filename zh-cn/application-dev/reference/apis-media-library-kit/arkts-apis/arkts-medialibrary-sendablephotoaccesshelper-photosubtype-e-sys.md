@@ -1,12 +1,8 @@
 # PhotoSubtype
 
-枚举，不同[PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i.md#photoasset)的类型。
+枚举，不同[PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i.md)的类型。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-sendablePhotoAccessHelper-enum PhotoSubtype--><!--Device-sendablePhotoAccessHelper-enum PhotoSubtype-End-->
 
@@ -21,10 +17,6 @@ SCREENSHOT = 1
 Screenshot Photo Type
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-PhotoSubtype-SCREENSHOT = 1--><!--Device-PhotoSubtype-SCREENSHOT = 1-End-->
 

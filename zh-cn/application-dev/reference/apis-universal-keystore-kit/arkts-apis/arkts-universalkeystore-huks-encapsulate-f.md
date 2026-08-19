@@ -1,5 +1,12 @@
 # encapsulate
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## encapsulate
 
 ```TypeScript
@@ -10,10 +17,6 @@ function encapsulate(keyAlias: string, params: HuksParam[],
 后量子加密密钥封装操作，支持HUKS密钥管理 或由应用程序本身决定。如果应用程序选择管理密钥， 对称密钥携带在HuksReturnResult的outData字段中。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -56,7 +59,7 @@ function encapsulate(keyAlias: string, params: HuksParam[],
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameters are abnormal. |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The queried key does not exist, please check the key-related parameters. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

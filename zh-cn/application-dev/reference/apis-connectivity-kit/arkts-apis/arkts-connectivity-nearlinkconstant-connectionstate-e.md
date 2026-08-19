@@ -4,10 +4,6 @@ The enum of connection state.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-nearlinkConstant-export enum ConnectionState--><!--Device-nearlinkConstant-export enum ConnectionState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -21,10 +17,6 @@ STATE_CONNECTING = 0
 The current profile is being connected.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ The current device is connected.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionState-STATE_CONNECTED = 1--><!--Device-ConnectionState-STATE_CONNECTED = 1-End-->
@@ -62,10 +50,6 @@ The current device is being disconnected.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectionState-STATE_DISCONNECTING = 2--><!--Device-ConnectionState-STATE_DISCONNECTING = 2-End-->
@@ -81,10 +65,6 @@ STATE_DISCONNECTED = 3
 The current device is disconnected.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

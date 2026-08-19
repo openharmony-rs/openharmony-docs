@@ -8,10 +8,6 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void--><!--Device-unnamed-type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

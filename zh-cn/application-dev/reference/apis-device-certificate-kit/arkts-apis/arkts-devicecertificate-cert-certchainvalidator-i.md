@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cert-interface CertChainValidator--><!--Device-cert-interface CertChainValidator-End-->
 
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## validate
 
@@ -21,10 +25,6 @@ validate(certChain: CertChainData, callback: AsyncCallback<void>): void
 表示校验X.509证书链。使用Callback异步回调。 <br>由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的 [checkValidityWithDate](arkts-devicecertificate-cert-x509cert-i.md#checkvaliditywithdate)方法进行检查。详见 [证书规格](../../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -37,24 +37,24 @@ validate(certChain: CertChainData, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | certChain | [CertChainData](arkts-devicecertificate-cert-certchaindata-i.md) | 是 | 表示X.509证书链序列化数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当校验成功时，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当校验成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | 证书签名验证错误。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | 证书尚未生效。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
-| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | 证书的密钥用途不含证书签名。 |
-| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | 证书的密钥用途不含数字签名。 |
-| [19030004](../errorcode-cert.md#19030004-证书过期) | 证书过期。 |
-| [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | 无法获取证书的颁发者。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
+| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
+| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
+| [19030004](../errorcode-cert.md#19030004-证书过期) | The certificate has expired. |
+| [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | Failed to obtain the certificate issuer. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -157,10 +157,6 @@ validate(certChain: CertChainData): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CertChainValidator-validate(certChain: CertChainData): Promise<void>--><!--Device-CertChainValidator-validate(certChain: CertChainData): Promise<void>-End-->
@@ -183,18 +179,18 @@ validate(certChain: CertChainData): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | 证书签名验证错误。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | 证书尚未生效。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
-| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | 证书的密钥用途不含证书签名。 |
-| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | 证书的密钥用途不含数字签名。 |
-| [19030004](../errorcode-cert.md#19030004-证书过期) | 证书过期。 |
-| [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | 无法获取证书的颁发者。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
+| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
+| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
+| [19030004](../errorcode-cert.md#19030004-证书过期) | The certificate has expired. |
+| [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | Failed to obtain the certificate issuer. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -386,10 +382,6 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidati
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -402,7 +394,7 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 是 | 待验证的证书。 |
+| cert | X509Cert | 是 | 待验证的证书。 |
 | params | [CertValidationParams](arkts-devicecertificate-cert-certvalidationparams-i.md) | 是 | 证书验证参数。 |
 
 **返回值：**
@@ -415,34 +407,34 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidati
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | 证书签名验证错误。 |
-| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | 证书尚未生效。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
-| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | 证书的密钥用途不含证书签名。 |
-| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | 证书的密钥用途不含数字签名。 |
-| [19030004](../errorcode-cert.md#19030004-证书过期) | 证书过期。 |
-| [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | 无法获取证书的颁发者。 |
-| [19030010](../errorcode-cert.md#19030010-证书已被吊销) | 证书已被吊销。 |
-| [19030011](../errorcode-cert.md#19030011-未知的关键扩展) | 未知的关键扩展。 |
-| [19030009](../errorcode-cert.md#19030009-证书不受信任) | 证书不受信任。 |
-| [19030014](../errorcode-cert.md#19030014-密钥用途不匹配) | 证书密钥用途不匹配。 |
-| [19030015](../errorcode-cert.md#19030015-无法获取证书吊销列表) | 无法获取证书吊销列表。 |
-| [19030012](../errorcode-cert.md#19030012-主机名不匹配) | 证书主机名不匹配。 |
-| [19030013](../errorcode-cert.md#19030013-邮箱地址不匹配) | 证书邮箱地址不匹配。 |
-| [19030018](../errorcode-cert.md#19030018-证书吊销列表签名验证失败) | 证书吊销列表签名验证失败。 |
-| [19030019](../errorcode-cert.md#19030019-无法获取证书吊销列表颁发者) | 无法获取证书吊销列表颁发者。 |
-| [19030016](../errorcode-cert.md#19030016-证书吊销列表尚未生效) | 证书吊销列表尚未生效。 |
-| [19030017](../errorcode-cert.md#19030017-证书吊销列表已过期) | 证书吊销列表已过期。 |
-| [19030022](../errorcode-cert.md#19030022-ocsp签名验证失败) | OCSP签名验证失败。 |
-| [19030023](../errorcode-cert.md#19030023-ocsp证书状态未知) | OCSP证书状态未知。 |
-| [19030020](../errorcode-cert.md#19030020-无法获取在线证书状态协议ocsp响应) | 无法获取在线证书状态协议（OCSP）响应。 |
-| [19030021](../errorcode-cert.md#19030021-无效的ocsp响应) | OCSP响应无效。 |
-| [19030024](../errorcode-cert.md#19030024-网络连接超时) | 网络连接超时。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
+| [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
+| [19030006](../errorcode-cert.md#19030006-证书的密钥用途不含证书签名) | The key cannot be used for signing a certificate. |
+| [19030007](../errorcode-cert.md#19030007-证书的密钥用途不含数字签名) | The key cannot be used for a digital signature. |
+| [19030004](../errorcode-cert.md#19030004-证书过期) | The certificate has expired. |
+| [19030005](../errorcode-cert.md#19030005-无法获取证书的颁发者) | Failed to obtain the certificate issuer. |
+| [19030010](../errorcode-cert.md#19030010-证书已被吊销) | The certificate has been revoked. |
+| [19030011](../errorcode-cert.md#19030011-未知的关键扩展) | Unsupported critical extension. |
+| [19030009](../errorcode-cert.md#19030009-证书不受信任) | Untrusted certificate. |
+| [19030014](../errorcode-cert.md#19030014-密钥用途不匹配) | Key usage mismatch in the certificate. |
+| [19030015](../errorcode-cert.md#19030015-无法获取证书吊销列表) | Failed to obtain the certificate revocation list. |
+| [19030012](../errorcode-cert.md#19030012-主机名不匹配) | Hostname mismatch in the certificate. |
+| [19030013](../errorcode-cert.md#19030013-邮箱地址不匹配) | Email address mismatch in the certificate. |
+| [19030018](../errorcode-cert.md#19030018-证书吊销列表签名验证失败) | Failed to verify the signature of the certificate revocation list. |
+| [19030019](../errorcode-cert.md#19030019-无法获取证书吊销列表颁发者) | Failed to find the issuer of the certificate revocation list. |
+| [19030016](../errorcode-cert.md#19030016-证书吊销列表尚未生效) | The certificate revocation list has not taken effect. |
+| [19030017](../errorcode-cert.md#19030017-证书吊销列表已过期) | The certificate revocation list has expired. |
+| [19030022](../errorcode-cert.md#19030022-ocsp签名验证失败) | Failed to verify the OCSP signature. |
+| [19030023](../errorcode-cert.md#19030023-ocsp证书状态未知) | Unknown OCSP certificate status. |
+| [19030020](../errorcode-cert.md#19030020-无法获取在线证书状态协议ocsp响应) | Failed to obtain the OCSP response. |
+| [19030021](../errorcode-cert.md#19030021-无效的ocsp响应) | Invalid OCSP response. |
+| [19030024](../errorcode-cert.md#19030024-网络连接超时) | Network connection timed out. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -569,10 +561,6 @@ X.509证书链校验器算法名称。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

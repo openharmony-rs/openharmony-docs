@@ -4,13 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface WatermarkConfiguration--><!--Device-unnamed-interface WatermarkConfiguration-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## height
 
@@ -23,10 +25,6 @@ target height of the watermark in pixel The value range is all integers.
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ left: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WatermarkConfiguration-left: int--><!--Device-WatermarkConfiguration-left: int-End-->
@@ -68,10 +62,6 @@ top: int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WatermarkConfiguration-top: int--><!--Device-WatermarkConfiguration-top: int-End-->
@@ -89,10 +79,6 @@ target width of the watermark in pixel The value range is all integers.
 **类型：** int
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

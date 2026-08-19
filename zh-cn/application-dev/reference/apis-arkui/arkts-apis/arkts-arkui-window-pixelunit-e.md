@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum PixelUnit--><!--Device-window-enum PixelUnit-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -22,10 +18,6 @@ PX = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PixelUnit-PX = 0--><!--Device-PixelUnit-PX = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -39,10 +31,6 @@ VP = 1
 虚拟像素单位（vp）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PixelUnit-VP = 1--><!--Device-PixelUnit-VP = 1-End-->
 

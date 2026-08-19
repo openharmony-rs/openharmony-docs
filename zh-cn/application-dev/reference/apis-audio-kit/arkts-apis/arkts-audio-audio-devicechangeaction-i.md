@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-interface DeviceChangeAction--><!--Device-audio-interface DeviceChangeAction-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## deviceDescriptors
 
@@ -23,10 +26,6 @@ deviceDescriptors: AudioDeviceDescriptors
 **类型：** [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceChangeAction-deviceDescriptors: AudioDeviceDescriptors--><!--Device-DeviceChangeAction-deviceDescriptors: AudioDeviceDescriptors-End-->
 
@@ -43,10 +42,6 @@ type: DeviceChangeType
 **类型：** [DeviceChangeType](arkts-audio-audio-devicechangetype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceChangeAction-type: DeviceChangeType--><!--Device-DeviceChangeAction-type: DeviceChangeType-End-->
 

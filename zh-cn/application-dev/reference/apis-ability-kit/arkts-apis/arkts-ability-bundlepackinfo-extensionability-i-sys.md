@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface ExtensionAbility--><!--Device-unnamed-export interface ExtensionAbility-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -26,10 +22,6 @@ readonly forms: Array<AbilityFormInfo>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ExtensionAbility-readonly forms: Array<AbilityFormInfo>--><!--Device-ExtensionAbility-readonly forms: Array<AbilityFormInfo>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -47,10 +39,6 @@ readonly name: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExtensionAbility-readonly name: string--><!--Device-ExtensionAbility-readonly name: string-End-->
 

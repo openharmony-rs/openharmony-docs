@@ -1,5 +1,12 @@
 # isKeyItemExist
 
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## isKeyItemExist
 
 ```TypeScript
@@ -10,10 +17,6 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncC
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void--><!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -23,8 +26,8 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncC
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 所需查找的密钥的别名。 |
-| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md#huksauthstoragelevel)指定需查询密钥的 安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。密钥存在时，data为true；密钥不存在时，data为undefined，err中的错误码为12000011，并附带对应错误描述 。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需查询密钥的 安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 回调函数。密钥存在时，data为true；密钥不存在时，data为undefined，err中的错误码为12000011，并附带对应错误描述 。 |
 
 **错误码：**
 
@@ -40,7 +43,7 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncC
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-## 示例
+**示例**
 
 ArkTS示例：
 
@@ -155,10 +158,6 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean>--><!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
@@ -168,7 +167,7 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyAlias | string | 是 | 所需查找的密钥的别名。 |
-| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md#huksauthstoragelevel)指定需查询密钥的 安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](arkts-universalkeystore-huks-huksauthstoragelevel-e.md)指定需查询密钥的 安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。 |
 
 **返回值：**
 
@@ -190,7 +189,7 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | queried entity does not exist |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

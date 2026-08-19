@@ -1,5 +1,11 @@
 # offUnhandledRejection
 
+## 导入模块
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+```
+
 ## offUnhandledRejection
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offUnhandledRejection(observer?: UnhandledRejectionObserver): void
 Unregister unhandled rejection observer.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-errorManager-function offUnhandledRejection(observer?: UnhandledRejectionObserver): void--><!--Device-errorManager-function offUnhandledRejection(observer?: UnhandledRejectionObserver): void-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationBasicContent--><!--Device-unnamed-export interface NotificationBasicContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ structuredText?: Map<string, string>
 **类型：** Map&lt;string, string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationBasicContent-structuredText?: Map<string, string>--><!--Device-NotificationBasicContent-structuredText?: Map<string, string>-End-->
 

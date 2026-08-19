@@ -2,15 +2,18 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-interface AudioEffectProperty--><!--Device-audio-interface AudioEffectProperty-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## category
 
@@ -21,10 +24,6 @@ category: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioEffectProperty-category: string--><!--Device-AudioEffectProperty-category: string-End-->
 
@@ -42,10 +41,6 @@ flag: EffectFlag
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioEffectProperty-flag: EffectFlag--><!--Device-AudioEffectProperty-flag: EffectFlag-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
@@ -61,10 +56,6 @@ name: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioEffectProperty-name: string--><!--Device-AudioEffectProperty-name: string-End-->
 

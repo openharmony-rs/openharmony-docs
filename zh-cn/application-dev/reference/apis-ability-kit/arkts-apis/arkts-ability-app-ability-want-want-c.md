@@ -4,13 +4,15 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default class Want--><!--Device-unnamed-export default class Want-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
+
+## 导入模块
+
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+```
 
 ## abilityName
 
@@ -23,10 +25,6 @@ abilityName?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ action?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Want-action?: string--><!--Device-Want-action?: string-End-->
@@ -67,10 +61,6 @@ bundleName?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +80,6 @@ deviceId?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Want-deviceId?: string--><!--Device-Want-deviceId?: string-End-->
@@ -111,10 +97,6 @@ entities?: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -134,10 +116,6 @@ readonly fds?: Record<string, int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Want-readonly fds?: Record<string, int>--><!--Device-Want-readonly fds?: Record<string, int>-End-->
@@ -150,15 +128,11 @@ readonly fds?: Record<string, int>
 flags?: int
 ```
 
-表示处理Want的方式。值为枚举类型[Flags](arkts-ability-wantconstant-flags-e.md#flags)，默认传数字。 例如取值为0x00000001（即wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION）表示临时授予接收方读取该URI指向的数据的权限。
+表示处理Want的方式。值为枚举类型[Flags](arkts-ability-wantconstant-flags-e.md)，默认传数字。 例如取值为0x00000001（即wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION）表示临时授予接收方读取该URI指向的数据的权限。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -178,10 +152,6 @@ moduleName?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Want-moduleName?: string--><!--Device-Want-moduleName?: string-End-->
@@ -194,15 +164,11 @@ moduleName?: string
 parameters?: Record<string, RecordData>
 ```
 
-表示WantParams描述。 一、以下Key均由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。 - ohos.aafwk.param.callerPid：表示拉起方的pid，值为字符串类型。 - ohos.aafwk.param.callerBundleName：表示拉起方的BundleName，值为字符串类型。 - ohos.aafwk.param.callerAbilityName：表示拉起方的AbilityName，值为字符串类型。 - ohos.aafwk.param.callerNativeName：表示native调用时拉起方的进程名，值为字符串类型。 - ohos.aafwk.param.callerAppId：表示拉起应用的AppId信息，值为字符串类型。 - ohos.aafwk.param.callerAppIdentifier：表示拉起应用的AppIdentifier信息，值为字符串类型。 - ohos.aafwk.param.callerToken：表示拉起方的token，值为字符串类型。 - ohos.aafwk.param.callerUid：表示[BundleInfo](arkts-ability-bundleinfo-i.md#bundleinfo)中的uid，应用包里应用程序的uid，值为数 值类型。 - ohos.param.callerAppCloneIndex：表示拉起方应用的分身索引，值为数值类型。 - component.startup.newRules：表示是否启用新的管控规则，值为布尔类型。 - moduleName：表示被拉起方的moduleName，值为字符串类型。 - ohos.ability.params.abilityRecoveryRestart：表示当前Ability是否发生了故障恢复重启，值为布尔类型。 - ohos.extra.param.key.showMode：表示拉起原子化服务的展示模式，值为枚举类型 wantConstant.ShowMode。 **说明：** 在跨端场景中，以下三个字段不生效，不可用于身份或权限校验：ohos.aafwk.param.callerPid、ohos.aafwk.param.callerToken、ohos.aafwk.param.callerUid。 二、提供了一些由系统定义、开发者按需赋值的Key。具体的key值与对应说明详见 wantConstant.Params。 三、除了上述情况，应用间还可以相互约定传入的键值对。 **说明：** want的Params操作的常量的具体信息请参考[wantConstant](arkts-app-ability-wantconstant.md#ohosappabilitywantconstant)。 需注意，WantParams支持传输的最大数据量遵循Want约束限制。当数据量超过该限制时，请使用 WriteRawDataBuffer或[uri](../../apis-arkts/arkts-apis/arkts-uri.md#ohosuriuri字符串解析)的方式进行数 据传输。 parameters的Value值仅支持基本数据类型：String、Number、Boolean、Object、undefined和null，不支持传递Object内部的function。
+表示WantParams描述。 一、以下Key均由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。 - ohos.aafwk.param.callerPid：表示拉起方的pid，值为字符串类型。 - ohos.aafwk.param.callerBundleName：表示拉起方的BundleName，值为字符串类型。 - ohos.aafwk.param.callerAbilityName：表示拉起方的AbilityName，值为字符串类型。 - ohos.aafwk.param.callerNativeName：表示native调用时拉起方的进程名，值为字符串类型。 - ohos.aafwk.param.callerAppId：表示拉起应用的AppId信息，值为字符串类型。 - ohos.aafwk.param.callerAppIdentifier：表示拉起应用的AppIdentifier信息，值为字符串类型。 - ohos.aafwk.param.callerToken：表示拉起方的token，值为字符串类型。 - ohos.aafwk.param.callerUid：表示[BundleInfo](arkts-ability-bundleinfo-i.md)中的uid，应用包里应用程序的uid，值为数 值类型。 - ohos.param.callerAppCloneIndex：表示拉起方应用的分身索引，值为数值类型。 - component.startup.newRules：表示是否启用新的管控规则，值为布尔类型。 - moduleName：表示被拉起方的moduleName，值为字符串类型。 - ohos.ability.params.abilityRecoveryRestart：表示当前Ability是否发生了故障恢复重启，值为布尔类型。 - ohos.extra.param.key.showMode：表示拉起原子化服务的展示模式，值为枚举类型 wantConstant.ShowMode。 **说明：** 在跨端场景中，以下三个字段不生效，不可用于身份或权限校验：ohos.aafwk.param.callerPid、ohos.aafwk.param.callerToken、ohos.aafwk.param.callerUid。 二、提供了一些由系统定义、开发者按需赋值的Key。具体的key值与对应说明详见 wantConstant.Params。 三、除了上述情况，应用间还可以相互约定传入的键值对。 **说明：** want的Params操作的常量的具体信息请参考[wantConstant](arkts-app-ability-wantconstant.md)。 需注意，WantParams支持传输的最大数据量遵循Want约束限制。当数据量超过该限制时，请使用 WriteRawDataBuffer或[uri](../../apis-arkts/arkts-apis/arkts-uri.md)的方式进行数 据传输。 parameters的Value值仅支持基本数据类型：String、Number、Boolean、Object、undefined和null，不支持传递Object内部的function。
 
-**类型：** Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Want-parameters?: Record<string, RecordData>--><!--Device-Want-parameters?: Record<string, RecordData>-End-->
 
@@ -219,10 +185,6 @@ type?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -241,10 +203,6 @@ uri?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

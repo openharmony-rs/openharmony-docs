@@ -42,8 +42,7 @@
 | [Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_deleteframerates) | - | 删除帧率列表。 |
 | [Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutput, int32_t minFps, int32_t maxFps)](#oh_previewoutput_setframerate) | - | 设置预览输出帧率。 |
 | [Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_getactiveframerate) | - | 获取当前预览输出帧率。 |
-| [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)
-	](#oh_previewoutput_isbandwidthcompressionsupported) | - | 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。 |
+| [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported) ](#oh_previewoutput_isbandwidthcompressionsupported) | - | 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。 |
 | [Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)](#oh_previewoutput_enablebandwidthcompression) | - | 使能预览带宽压缩。<br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之前调用，否则会影响预览流出流格式。 |
 | [bool OH_PreviewOutput_IsLogViewAssistSupported(const Camera_PreviewOutput* previewOutput)](#oh_previewoutput_islogviewassistsupported) | - | 检查是否支持辅助监看功能。 |
 | [Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* previewOutput, bool enable)](#oh_previewoutput_setlogviewassistenable) | - | 使能辅助监看功能。<br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之后调用。 |
@@ -67,7 +66,7 @@ typedef void (*OH_PreviewOutput_OnFrameStart)(Camera_PreviewOutput* previewOutpu
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_PreviewOutput\* previewOutput | 传递回调的预览输出实例。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)\* previewOutput | 传递回调的预览输出实例。 |
 
 ### OH_PreviewOutput_OnFrameEnd()
 
@@ -85,7 +84,7 @@ typedef void (*OH_PreviewOutput_OnFrameEnd)(Camera_PreviewOutput* previewOutput,
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_PreviewOutput\* previewOutput | 传递回调的预览输出实例。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)\* previewOutput | 传递回调的预览输出实例。 |
 | int32_t frameCount | 回调传递的帧计数。 |
 
 ### OH_PreviewOutput_OnError()
@@ -104,7 +103,7 @@ typedef void (*OH_PreviewOutput_OnError)(Camera_PreviewOutput* previewOutput, Ca
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Camera_PreviewOutput\* previewOutput | 传递回调的预览输出实例。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)\* previewOutput | 传递回调的预览输出实例。 |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 预览输出的错误码。 |
 
 **参考：**
@@ -135,7 +134,7 @@ Camera_ErrorCode OH_PreviewOutput_RegisterCallback(Camera_PreviewOutput* preview
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PreviewOutput_UnregisterCallback()
 
@@ -160,7 +159,7 @@ Camera_ErrorCode OH_PreviewOutput_UnregisterCallback(Camera_PreviewOutput* previ
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PreviewOutput_Start()
 
@@ -184,7 +183,7 @@ Camera_ErrorCode OH_PreviewOutput_Start(Camera_PreviewOutput* previewOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_Stop()
 
@@ -208,7 +207,7 @@ Camera_ErrorCode OH_PreviewOutput_Stop(Camera_PreviewOutput* previewOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_Release()
 
@@ -232,7 +231,7 @@ Camera_ErrorCode OH_PreviewOutput_Release(Camera_PreviewOutput* previewOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_GetActiveProfile()
 
@@ -257,7 +256,7 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveProfile(Camera_PreviewOutput* preview
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_DeleteProfile()
 
@@ -281,7 +280,7 @@ Camera_ErrorCode OH_PreviewOutput_DeleteProfile(Camera_Profile* profile)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PreviewOutput_GetPreviewRotation()
 
@@ -307,7 +306,7 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previ
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_GetPreviewRotationWithoutDisplayRotation()
 
@@ -332,7 +331,7 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotationWithoutDisplayRotation(Camer
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_SetPreviewRotation()
 
@@ -358,7 +357,7 @@ Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previ
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_GetSupportedFrameRates()
 
@@ -384,7 +383,7 @@ Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* p
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_DeleteFrameRates()
 
@@ -409,7 +408,7 @@ Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* preview
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PreviewOutput_SetFrameRate()
 
@@ -435,7 +434,7 @@ Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutp
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PreviewOutput_GetActiveFrameRate()
 
@@ -460,13 +459,12 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previ
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_IsBandwidthCompressionSupported()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)
-	
+Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported) 
 ```
 
 **描述**
@@ -486,7 +484,7 @@ Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_Preview
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_EnableBandwidthCompression()
 
@@ -511,7 +509,7 @@ Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_OPERATION_NOT_ALLOWED: 操作不允许。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SESSION_NOT_CONFIG：相机会话未配置。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_OPERATION_NOT_ALLOWED: 操作不允许。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_CONFIG：相机会话未配置。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_IsLogViewAssistSupported()
 
@@ -560,7 +558,7 @@ Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* p
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED：表示设备当前不支持该能力。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>     <br>CAMERA_SESSION_NOT_CONFIG：相机会话未配置。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED：表示设备当前不支持该能力。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_CONFIG：相机会话未配置。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PreviewOutput_AddDeferredSurface()
 
@@ -585,6 +583,6 @@ Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput*
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 

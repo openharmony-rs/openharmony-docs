@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audioHaptic-interface AudioHapticPlayer--><!--Device-audioHaptic-interface AudioHapticPlayer-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+## 导入模块
+
+```TypeScript
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## isMuted
 
@@ -21,10 +23,6 @@ isMuted(type: AudioHapticType): boolean
 查询该音振类型是否被静音。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioHapticPlayer-isMuted(type: AudioHapticType): boolean--><!--Device-AudioHapticPlayer-isMuted(type: AudioHapticType): boolean-End-->
 
@@ -48,7 +46,7 @@ isMuted(type: AudioHapticType): boolean
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let audioHapticType: audioHaptic.AudioHapticType = audioHaptic.AudioHapticType.AUDIO_HAPTIC_TYPE_AUDIO;
@@ -66,10 +64,6 @@ Unsubscribes audio interrupt event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioHapticPlayer-offAudioInterrupt(callback?: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-offAudioInterrupt(callback?: Callback<audio.InterruptEvent>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
@@ -78,9 +72,9 @@ Unsubscribes audio interrupt event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 否 | Callback used to listen for audio interrupt info. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 否 | Callback used to listen for audio interrupt info. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -152,10 +146,6 @@ Unsubscribes end of stream event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioHapticPlayer-offEndOfStream(callback?: Callback<void>): void--><!--Device-AudioHapticPlayer-offEndOfStream(callback?: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
@@ -164,9 +154,9 @@ Unsubscribes end of stream event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | Callback used to listen for the playback end of stream. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | Callback used to listen for the playback end of stream. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 取消该事件的所有监听。
@@ -182,7 +172,7 @@ audioHapticPlayerInstance.onEndOfStream(endOfStreamCallback);
 audioHapticPlayerInstance.offEndOfStream(endOfStreamCallback);
 ```
 
-## off_audioInterrupt
+## off('audioInterrupt')
 
 ```TypeScript
 off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
@@ -191,10 +181,6 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 取消监听音频中断事件。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-AudioHapticPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void-End-->
 
@@ -205,9 +191,9 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当取消监听音频中断事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 否 | 回调函数，返回中断事件信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 否 | 回调函数，返回中断事件信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -270,7 +256,7 @@ audioHapticPlayerInstance.on('audioInterrupt', audioInterruptCallback);
 audioHapticPlayerInstance.off('audioInterrupt', audioInterruptCallback);
 ```
 
-## off_endOfStream
+## off('endOfStream')
 
 ```TypeScript
 off(type: 'endOfStream', callback?: Callback<void>): void
@@ -279,10 +265,6 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 取消监听流结束事件。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-AudioHapticPlayer-off(type: 'endOfStream', callback?: Callback<void>): void--><!--Device-AudioHapticPlayer-off(type: 'endOfStream', callback?: Callback<void>): void-End-->
 
@@ -293,9 +275,9 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当取消监听流结束事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数，无返回结果。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 回调函数，无返回结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 取消该事件的所有监听。
@@ -321,10 +303,6 @@ Subscribes audio interrupt event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioHapticPlayer-onAudioInterrupt(callback: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-onAudioInterrupt(callback: Callback<audio.InterruptEvent>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
@@ -333,9 +311,9 @@ Subscribes audio interrupt event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 是 | Callback used to listen for audio interrupt info. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 是 | Callback used to listen for audio interrupt info. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -400,10 +378,6 @@ Subscribes end of stream event.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioHapticPlayer-onEndOfStream(callback: Callback<void>): void--><!--Device-AudioHapticPlayer-onEndOfStream(callback: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
@@ -412,9 +386,9 @@ Subscribes end of stream event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Callback used to listen for the playback end of stream. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Callback used to listen for the playback end of stream. |
 
-## 示例
+**示例**
 
 ```TypeScript
 audioHapticPlayerInstance.onEndOfStream(() => {
@@ -422,7 +396,7 @@ audioHapticPlayerInstance.onEndOfStream(() => {
 });
 ```
 
-## on_audioInterrupt
+## on('audioInterrupt')
 
 ```TypeScript
 on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
@@ -431,10 +405,6 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-AudioHapticPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void-End-->
 
@@ -445,9 +415,9 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当音频焦点状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 是 | 回调函数，返回中断事件信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;audio.InterruptEvent&gt; | 是 | 回调函数，返回中断事件信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -503,7 +473,7 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
 });
 ```
 
-## on_endOfStream
+## on('endOfStream')
 
 ```TypeScript
 on(type: 'endOfStream', callback: Callback<void>): void
@@ -512,10 +482,6 @@ on(type: 'endOfStream', callback: Callback<void>): void
 监听流结束事件（音频流播放结束时触发）。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-AudioHapticPlayer-on(type: 'endOfStream', callback: Callback<void>): void--><!--Device-AudioHapticPlayer-on(type: 'endOfStream', callback: Callback<void>): void-End-->
 
@@ -526,9 +492,9 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当音频流播放结束时，触发该事件。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，无返回结果。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | 回调函数，无返回结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 audioHapticPlayerInstance.on('endOfStream', () => {
@@ -546,10 +512,6 @@ release(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioHapticPlayer-release(): Promise<void>--><!--Device-AudioHapticPlayer-release(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
@@ -566,7 +528,7 @@ release(): Promise<void>
 | --- | --- |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Service died. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -587,10 +549,6 @@ setLoop(loop: boolean): Promise<void>
 设置音振播放器循环播放。使用Promise异步回调。 > **注意：** > > 该方法需在音振播放器销毁前调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioHapticPlayer-setLoop(loop: boolean): Promise<void>--><!--Device-AudioHapticPlayer-setLoop(loop: boolean): Promise<void>-End-->
 
@@ -614,7 +572,7 @@ setLoop(loop: boolean): Promise<void>
 | --- | --- |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit in current state. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -635,10 +593,6 @@ setVolume(volume: double): Promise<void>
 设置音振播放器的音量。使用Promise异步回调。 > **注意：** > > 该方法需在音振播放器释放前调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AudioHapticPlayer-setVolume(volume: double): Promise<void>--><!--Device-AudioHapticPlayer-setVolume(volume: double): Promise<void>-End-->
 
@@ -664,7 +618,7 @@ setVolume(volume: double): Promise<void>
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Service died. |
 | [5400108](../../apis-media-kit/errorcode-media.md#5400108-参数超过取值范围) | Parameter out of range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -686,10 +640,6 @@ start(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioHapticPlayer-start(): Promise<void>--><!--Device-AudioHapticPlayer-start(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
@@ -708,7 +658,7 @@ start(): Promise<void>
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | IO error. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Service died. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -730,10 +680,6 @@ stop(): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioHapticPlayer-stop(): Promise<void>--><!--Device-AudioHapticPlayer-stop(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
@@ -751,7 +697,7 @@ stop(): Promise<void>
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operate not permit. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-播放服务死亡) | Service died. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

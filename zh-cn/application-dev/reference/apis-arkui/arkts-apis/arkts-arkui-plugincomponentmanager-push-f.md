@@ -1,5 +1,11 @@
 # push
 
+## 导入模块
+
+```TypeScript
+import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
+```
+
 ## push
 
 ```TypeScript
@@ -9,10 +15,6 @@ function push(param: PushParameters, callback: AsyncCallback<void>): void
 组件提供方向组件使用方主动发送组件和数据。适用于提供方数据更新后需主动通知使用方刷新显示的场景。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -24,10 +26,10 @@ function push(param: PushParameters, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | [PushParameters](../../apis-na/arkts-apis/arkts-na-plugincomponentmanager-pushparameters-i.md) | 是 | 推送组件的详细参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 此次接口调用的异步回调。 |
+| param | [PushParameters](arkts-arkui-plugincomponentmanager-pushparameters-i.md) | 是 | 推送组件的详细参数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 此次接口调用的异步回调。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { pluginComponentManager } from '@kit.ArkUI';

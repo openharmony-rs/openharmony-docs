@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum FontHinting--><!--Device-drawing-enum FontHinting-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ NONE = 0
 不修改字型轮廓。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ SLIGHT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FontHinting-SLIGHT = 1--><!--Device-FontHinting-SLIGHT = 1-End-->
@@ -62,10 +50,6 @@ NORMAL = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FontHinting-NORMAL = 2--><!--Device-FontHinting-NORMAL = 2-End-->
@@ -81,10 +65,6 @@ FULL = 3
 修改字型轮廓以获得最大对比度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

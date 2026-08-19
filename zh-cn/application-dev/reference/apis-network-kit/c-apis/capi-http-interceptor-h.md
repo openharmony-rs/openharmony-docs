@@ -172,7 +172,7 @@ int32_t OH_Http_StartAllInterceptors(int32_t groupId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [OH_HTTP_RESULT_OK](capi-net-http-type-h.md#http_errcode) 0 -if the operation is successful.<br>     [OH_HTTP_PERMISSION_DENIED](capi-net-http-type-h.md#http_errcode) 201 -if permission is denied. |
+| int32_t | [OH_HTTP_RESULT_OK](capi-net-http-type-h.md#http_errcode) 0 -if the operation is successful.      [OH_HTTP_PERMISSION_DENIED](capi-net-http-type-h.md#http_errcode) 201 -if permission is denied. |
 
 ### OH_Http_StopAllInterceptors()
 
@@ -198,6 +198,6 @@ int32_t OH_Http_StopAllInterceptors(int32_t groupId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [OH_HTTP_RESULT_OK](capi-net-http-type-h.md#http_errcode) 0 -if the operation is successful.<br>     [OH_HTTP_PERMISSION_DENIED](capi-net-http-type-h.md#http_errcode) 201 -if permission is denied. |
+| int32_t | [OH_HTTP_RESULT_OK](capi-net-http-type-h.md#http_errcode) 0 -if the operation is successful.      [OH_HTTP_PERMISSION_DENIED](capi-net-http-type-h.md#http_errcode) 201 -if permission is denied. |
 
 

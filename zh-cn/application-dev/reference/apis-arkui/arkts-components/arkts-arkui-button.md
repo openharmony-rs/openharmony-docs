@@ -14,10 +14,6 @@ Button()
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -35,10 +31,6 @@ Button(options: ButtonOptions)
 创建可以包含单个子组件的按钮。未通过该接口设置时，则按照ButtonOptions中各参数的默认值配置。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -64,10 +56,6 @@ Button(label: ResourceStr, options?: ButtonOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -85,11 +73,26 @@ Button(label: ResourceStr, options?: ButtonOptions)
 
 ## 汇总
 
-- [ButtonConfiguration](arkts-arkui-buttonconfiguration-i.md)
-- [ButtonOptions](arkts-arkui-buttonoptions-i.md)
-- [LabelStyle](arkts-arkui-labelstyle-i.md)
-- [ButtonTriggerClickCallback](arkts-arkui-buttontriggerclickcallback-t.md)
-- [ButtonRole](arkts-arkui-buttonrole-e.md)
-- [ButtonStyleMode](arkts-arkui-buttonstylemode-e.md)
-- [ButtonType](arkts-arkui-buttontype-e.md)
-- [ControlSize](arkts-arkui-controlsize-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ButtonConfiguration](arkts-arkui-buttonconfiguration-i.md) | 开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。 |
+| [ButtonOptions](arkts-arkui-buttonoptions-i.md) | 按钮的样式。 |
+| [LabelStyle](arkts-arkui-labelstyle-i.md) | Button组件的label文本及其字体样式。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [ButtonTriggerClickCallback](arkts-arkui-buttontriggerclickcallback-t.md) | 定义ButtonConfiguration中使用的回调类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ButtonRole](arkts-arkui-buttonrole-e.md) | 按钮的角色。 |
+| [ButtonStyleMode](arkts-arkui-buttonstylemode-e.md) | 按钮的重要程度。 |
+| [ButtonType](arkts-arkui-buttontype-e.md) | 按钮的类型。 |
+| [ControlSize](arkts-arkui-controlsize-e.md) | 按钮的尺寸。 |
+

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-bundleManager-export enum AppDistributionType--><!--Device-bundleManager-export enum AppDistributionType-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -23,10 +19,6 @@ APP_GALLERY = 1
 应用市场安装的应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AppDistributionType-APP_GALLERY = 1--><!--Device-AppDistributionType-APP_GALLERY = 1-End-->
 
@@ -44,10 +36,6 @@ ENTERPRISE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AppDistributionType-ENTERPRISE = 2--><!--Device-AppDistributionType-ENTERPRISE = 2-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -64,10 +52,6 @@ ENTERPRISE_NORMAL = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3--><!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -80,13 +64,9 @@ ENTERPRISE_NORMAL = 3
 ENTERPRISE_MDM = 4
 ```
 
-企业MDM应用，只能安装在企业设备上。需要被激活 [adminManager.enableAdmin](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md#enableadmin系统接口) 后，才能安装普通企业应用。
+企业MDM应用，只能安装在企业设备上。需要被激活 [adminManager.enableAdmin](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md) 后，才能安装普通企业应用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AppDistributionType-ENTERPRISE_MDM = 4--><!--Device-AppDistributionType-ENTERPRISE_MDM = 4-End-->
 
@@ -104,10 +84,6 @@ OS_INTEGRATION = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AppDistributionType-OS_INTEGRATION = 5--><!--Device-AppDistributionType-OS_INTEGRATION = 5-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -124,10 +100,6 @@ CROWDTESTING = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -143,10 +115,6 @@ NONE = 7
 其他。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AppDistributionType-NONE = 7--><!--Device-AppDistributionType-NONE = 7-End-->
 

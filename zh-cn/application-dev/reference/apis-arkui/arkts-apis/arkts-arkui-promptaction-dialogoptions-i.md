@@ -1,18 +1,20 @@
 # DialogOptions
 
-自定义弹窗的内容，继承自[BaseDialogOptions](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)，用于配置自定义弹窗的显示参数和行为。
+自定义弹窗的内容，继承自[BaseDialogOptions](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)，用于配置自定义弹窗的显示参数和行为。
 
-**继承/实现关系：** DialogOptions extends [BaseDialogOptions](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md#basedialogoptions)
+**继承/实现关系：** DialogOptions extends [BaseDialogOptions](../../apis-na/arkts-apis/arkts-na-promptaction-basedialogoptions-i.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-promptAction-interface DialogOptions--><!--Device-promptAction-interface DialogOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+```
 
 ## backgroundBlurStyle
 
@@ -27,10 +29,6 @@ backgroundBlurStyle?: BlurStyle
 **默认值：** BlurStyle.COMPONENT_ULTRA_THICK
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +50,6 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -75,10 +69,6 @@ borderColor?: DialogOptionsBorderColor
 **类型：** [DialogOptionsBorderColor](../../apis-na/arkts-apis/arkts-na-promptaction-dialogoptionsbordercolor-t.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -100,10 +90,6 @@ borderStyle?: DialogOptionsBorderStyle
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -123,10 +109,6 @@ borderWidth?: DialogOptionsBorderWidth
 **类型：** [DialogOptionsBorderWidth](../../apis-na/arkts-apis/arkts-na-promptaction-dialogoptionsborderwidth-t.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -148,10 +130,6 @@ cornerRadius?: DialogOptionsCornerRadius
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -171,10 +149,6 @@ height?: Dimension
 **类型：** Dimension
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -196,10 +170,6 @@ shadow?: DialogOptionsShadow
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -219,10 +189,6 @@ width?: Dimension
 **类型：** Dimension
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

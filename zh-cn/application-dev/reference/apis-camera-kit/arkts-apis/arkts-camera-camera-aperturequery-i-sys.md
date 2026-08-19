@@ -4,15 +4,18 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-interface ApertureQuery--><!--Device-camera-interface ApertureQuery-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## getSupportedPhysicalApertures
 
@@ -23,10 +26,6 @@ getSupportedPhysicalApertures(): Array<PhysicalAperture>
 获取支持的物理光圈。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -60,10 +59,6 @@ getSupportedVirtualApertures(): Array<double>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApertureQuery-getSupportedVirtualApertures(): Array<double>--><!--Device-ApertureQuery-getSupportedVirtualApertures(): Array<double>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -83,7 +78,7 @@ getSupportedVirtualApertures(): Array<double>
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Array<number> {

@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudSync-class FileVersion--><!--Device-cloudSync-class FileVersion-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## 导入模块
+
+```TypeScript
+import { cloudSync } from '@kit.CoreFileKit';
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
 
 ## clearFileConflict
 
@@ -21,10 +24,6 @@ clearFileConflict(uri: string): Promise<void>
 清除本地文件版本冲突标志。如果产生冲突，本地解决冲突后需要调用此方法来清除冲突标记，后续才可以触发自动同步机制，和云上保持一致。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileVersion-clearFileConflict(uri: string): Promise<void>--><!--Device-FileVersion-clearFileConflict(uri: string): Promise<void>-End-->
 
@@ -54,7 +53,7 @@ clearFileConflict(uri: string): Promise<void>
 | 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900010 | Try again. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -114,10 +113,6 @@ A constructor used to create a FileVersion object.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileVersion-constructor()--><!--Device-FileVersion-constructor()-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -128,7 +123,7 @@ A constructor used to create a FileVersion object.
 | --- | --- |
 | 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let fileVersion = new cloudSync.FileVersion();
@@ -144,10 +139,6 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileVersion-downloadHistoryVersion(uri: string, versionId: string, callback: Callback<VersionDownloadProgress>): Promise<string>--><!--Device-FileVersion-downloadHistoryVersion(uri: string, versionId: string, callback: Callback<VersionDownloadProgress>): Promise<string>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -158,7 +149,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback<Versio
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件的URI。 |
 | versionId | string | 是 | 文件某一版本的版本号，格式以接口 [gethistoryversionlist](#gethistoryversionlist)返回为准。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md)&gt; | 是 | 回调函数，返回下载进度。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[VersionDownloadProgress](arkts-corefile-cloudsync-versiondownloadprogress-i.md)&gt; | 是 | 回调函数，返回下载进度。 |
 
 **返回值：**
 
@@ -188,10 +179,6 @@ getHistoryVersionList(uri: string, versionNumLimit: int): Promise<Array<HistoryV
 获取历史版本列表，返回内容按修改时间排序，修改时间越早，位置越靠后。使用Promise异步回调。 当云上版本数量小于传入的长度限制时，按照实际版本数量返回历史版本列表。 当云上版本数量大于等于传入的长度限制时，则返回最新的versionNumLimit个版本。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FileVersion-getHistoryVersionList(uri: string, versionNumLimit: int): Promise<Array<HistoryVersion>>--><!--Device-FileVersion-getHistoryVersionList(uri: string, versionNumLimit: int): Promise<Array<HistoryVersion>>-End-->
 
@@ -223,7 +210,7 @@ getHistoryVersionList(uri: string, versionNumLimit: int): Promise<Array<HistoryV
 | 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900010 | Try again. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -275,10 +262,6 @@ isFileConflict(uri: string): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileVersion-isFileConflict(uri: string): Promise<boolean>--><!--Device-FileVersion-isFileConflict(uri: string): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -307,7 +290,7 @@ isFileConflict(uri: string): Promise<boolean>
 | 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900010 | Try again. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -353,10 +336,6 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FileVersion-replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<void>--><!--Device-FileVersion-replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -389,7 +368,7 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise<
 | 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900010 | Try again. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

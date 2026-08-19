@@ -4,15 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wallpaper-interface WallpaperInfo--><!--Device-wallpaper-interface WallpaperInfo-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## foldState
 
@@ -25,10 +26,6 @@ foldState: FoldState
 **类型：** [FoldState](arkts-na-wallpaper-foldstate-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WallpaperInfo-foldState: FoldState--><!--Device-WallpaperInfo-foldState: FoldState-End-->
 
@@ -48,10 +45,6 @@ rotateState: RotateState
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WallpaperInfo-rotateState: RotateState--><!--Device-WallpaperInfo-rotateState: RotateState-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
@@ -69,10 +62,6 @@ source: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WallpaperInfo-source: string--><!--Device-WallpaperInfo-source: string-End-->
 

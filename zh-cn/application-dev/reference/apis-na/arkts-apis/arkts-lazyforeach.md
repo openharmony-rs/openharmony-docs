@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [LazyForEach](arkts-na-lazyforeach-lazyforeach-f.md#lazyforeach) | 定义LazyForEach组件。它需要在组件属性设置开始时调用setLazyForEachOptions。 并且它需要在组件属性设置结束时调用applyAttributeFinish。 |
+| [LazyForEach](arkts-na-lazyforeach-lazyforeach-f.md) | 定义LazyForEach组件。它需要在组件属性设置开始时调用setLazyForEachOptions。 并且它需要在组件属性设置结束时调用applyAttributeFinish。 |
 
 ### 接口
 

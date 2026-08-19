@@ -1,5 +1,13 @@
 # createX509CRL
 
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## createX509CRL
 
 ```TypeScript
@@ -9,10 +17,6 @@ function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>)
 表示创建X.509证书吊销列表对象。使用Callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -25,17 +29,17 @@ function createX509CRL(inStream: EncodingBlob, callback: AsyncCallback<X509CRL>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | 是 | 表示证书吊销列表序列化数据。当前支持的数据长度不超过8192字节。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | 是 | 回调函数。当创建X.509证书吊销列表对象成功时，err为undefined，data为获取到的 X509CRL实例；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[X509CRL](arkts-devicecertificate-cert-x509crl-i.md)&gt; | 是 | 回调函数。当创建X.509证书吊销列表对象成功时，err为undefined，data为获取到的 X509CRL实例；否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -85,10 +89,6 @@ function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-cert-function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>--><!--Device-cert-function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>-End-->
@@ -111,11 +111,11 @@ function createX509CRL(inStream: EncodingBlob): Promise<X509CRL>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | 不支持该操作。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | This operation is not supported. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

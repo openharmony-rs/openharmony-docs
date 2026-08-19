@@ -1,5 +1,11 @@
 # getPreferencesSync
 
+## 导入模块
+
+```TypeScript
+import { sendablePreferences } from '@kit.ArkData';
+```
+
 ## getPreferencesSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getPreferencesSync(context: Context, options: Options): Preferences
 获取Preferences实例，此为同步接口。 应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -43,7 +45,7 @@ function getPreferencesSync(context: Context, options: Options): Preferences
 | [15501002](../errorcode-preferences.md#15501002-options中传入的datagroupid参数非法) | Invalid dataGroupId. |
 | [15500000](../errorcode-preferences.md#15500000-内部错误) | Inner error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';

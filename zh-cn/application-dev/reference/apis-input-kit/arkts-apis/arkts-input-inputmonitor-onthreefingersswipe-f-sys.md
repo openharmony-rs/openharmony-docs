@@ -1,5 +1,11 @@
 # onThreeFingersSwipe（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputMonitor } from '@kit.InputKit';
+```
+
 ## onThreeFingersSwipe
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onThreeFingersSwipe(receiver: Callback<ThreeFingersSwipe>): void
 监听全局触控板的三指滑动事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -26,7 +28,7 @@ function onThreeFingersSwipe(receiver: Callback<ThreeFingersSwipe>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| receiver | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ThreeFingersSwipe](arkts-input-multimodalinput-gestureevent-threefingersswipe-i.md)&gt; | 是 | 回调函数，异步上报三指滑动输入事件。 |
+| receiver | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ThreeFingersSwipe](arkts-input-multimodalinput-gestureevent-threefingersswipe-i.md)&gt; | 是 | 回调函数，返回三指滑动输入事件。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function onThreeFingersSwipe(receiver: Callback<ThreeFingersSwipe>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';

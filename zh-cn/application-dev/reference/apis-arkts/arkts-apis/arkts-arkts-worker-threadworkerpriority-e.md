@@ -4,10 +4,6 @@ Worker线程的优先级枚举，各优先级对应关系请参考QoS等级定�
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum ThreadWorkerPriority--><!--Device-unnamed-export enum ThreadWorkerPriority-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -21,10 +17,6 @@ HIGH = 0
 适用于打开文档等用户触发并且可以看到进展的任务，任务在几秒钟之内完成。对应QOS_USER_INITIATED。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ MEDIUM = 1
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerPriority-MEDIUM = 1--><!--Device-ThreadWorkerPriority-MEDIUM = 1-End-->
@@ -61,10 +49,6 @@ LOW = 2
 适用于下载等不需要立即看到响应效果的任务，任务完成需要几秒到几分钟。对应QOS_UTILITY。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ IDLE = 3
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerPriority-IDLE = 3--><!--Device-ThreadWorkerPriority-IDLE = 3-End-->
@@ -102,10 +82,6 @@ DEADLINE = 4
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ThreadWorkerPriority-DEADLINE = 4--><!--Device-ThreadWorkerPriority-DEADLINE = 4-End-->
@@ -121,10 +97,6 @@ VIP = 5
 适用于UI线程、动画渲染等用户交互任务，任务是即时的。对应QOS_USER_INTERACTIVE。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 

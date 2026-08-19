@@ -4,13 +4,14 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface RichEditorParagraphResult--><!--Device-unnamed-declare interface RichEditorParagraphResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## range
 
@@ -23,10 +24,6 @@ range: [number, number]
 **类型：** [number, number]
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +44,6 @@ style: RichEditorParagraphStyle
 **类型：** [RichEditorParagraphStyle](arkts-arkui-richeditorparagraphstyle-i.md)
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

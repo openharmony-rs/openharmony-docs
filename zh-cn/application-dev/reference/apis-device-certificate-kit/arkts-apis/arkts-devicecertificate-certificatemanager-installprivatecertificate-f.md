@@ -1,5 +1,12 @@
 # installPrivateCertificate
 
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## installPrivateCertificate
 
 ```TypeScript
@@ -15,10 +22,6 @@ function installPrivateCertificate(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 <!--Device-certificateManager-function installPrivateCertificate(    keystore: Uint8Array,    keystorePwd: string,    certAlias: string,    callback: AsyncCallback<CMResult>  ): void--><!--Device-certificateManager-function installPrivateCertificate(    keystore: Uint8Array,    keystorePwd: string,    certAlias: string,    callback: AsyncCallback<CMResult>  ): void-End-->
@@ -32,7 +35,7 @@ function installPrivateCertificate(
 | keystore | Uint8Array | 是 | 表示带有密钥对和证书的密钥库文件，  <br>最大长度为20480字节。 |
 | keystorePwd | string | 是 | 表示密钥库文件的密码，长度限制32字节以内。 |
 | certAlias | string | 是 | 表示用户输入的凭据别名，当前仅支持传入数字、字母或下划线，长度建议32字节以内。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)&gt; | 是 | 回调函数。当安装私有凭据成功时，err为null，data为 [CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md#cmresult)对象中的uri属性；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)&gt; | 是 | 回调函数。当安装私有凭据成功时，err为null，data为 [CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)对象中的uri属性；否则为错误对象。 |
 
 **错误码：**
 
@@ -44,7 +47,7 @@ function installPrivateCertificate(
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -79,10 +82,6 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 <!--Device-certificateManager-function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise<CMResult>--><!--Device-certificateManager-function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise<CMResult>-End-->
@@ -113,7 +112,7 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -148,10 +147,6 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 <!--Device-certificateManager-function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel): Promise<CMResult>--><!--Device-certificateManager-function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel): Promise<CMResult>-End-->
@@ -183,7 +178,7 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500004](../errorcode-certManager.md#17500004-证书或凭据数量达到上限) | The number of certificates or credentials reaches the maximum allowed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

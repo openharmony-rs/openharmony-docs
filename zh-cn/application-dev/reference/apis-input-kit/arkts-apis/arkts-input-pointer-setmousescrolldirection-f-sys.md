@@ -1,5 +1,11 @@
 # setMouseScrollDirection（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## setMouseScrollDirection
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setMouseScrollDirection(inverted: boolean): Promise<void>
 设置鼠标滚轮滚动的方向，使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -42,7 +44,7 @@ function setMouseScrollDirection(inverted: boolean): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

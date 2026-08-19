@@ -1,18 +1,20 @@
 # postQuerySync
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## postQuerySync
 
 ```TypeScript
 function postQuerySync(handle: AssetMap): void
 ```
 
-查询的后置处理，用于需要用户认证的关键资产。需与[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync)函数成对出现。使用同步方式返回结果。
+查询的后置处理，用于需要用户认证的关键资产。需与[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md)函数成对出现。使用同步方式返回结果。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function postQuerySync(handle: AssetMap): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handle | [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 是 | 待处理的查询句柄，包含[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md#prequerysync)执行成功返回的挑战值。 |
+| handle | [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 是 | 待处理的查询句柄，包含[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md)执行成功返回的挑战值。 |
 
 **错误码：**
 
@@ -38,7 +40,7 @@ function postQuerySync(handle: AssetMap): void
 | [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

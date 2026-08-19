@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-picker-class AudioViewPicker--><!--Device-picker-class AudioViewPicker-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
+
+## 导入模块
+
+```TypeScript
+import { picker } from '@kit.CoreFileKit';
+```
 
 ## constructor
 
@@ -22,17 +24,13 @@ constructor()
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AudioViewPicker-constructor()--><!--Device-AudioViewPicker-constructor()-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
-## 示例
+**示例**
 
 ```TypeScript
 let audioPicker = new picker.AudioViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
@@ -48,10 +46,6 @@ constructor(context: Context)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AudioViewPicker-constructor(context: Context)--><!--Device-AudioViewPicker-constructor(context: Context)-End-->
@@ -64,7 +58,7 @@ constructor(context: Context)
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见Context。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -102,10 +96,6 @@ save(option?: AudioSaveOptions): Promise<Array<string>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>-End-->
@@ -124,7 +114,7 @@ save(option?: AudioSaveOptions): Promise<Array<string>>
 | --- | --- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [文档类uri的使用方式](../../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -182,10 +172,6 @@ save(option: AudioSaveOptions, callback: AsyncCallback<Array<string>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioViewPicker-save(option: AudioSaveOptions, callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-save(option: AudioSaveOptions, callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
@@ -195,9 +181,9 @@ save(option: AudioSaveOptions, callback: AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | option | [AudioSaveOptions](arkts-corefile-picker-audiosaveoptions-c.md) | 是 | audioPicker保存音频文件选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [文档类uri的使用方式](../../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [文档类uri的使用方式](../../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -259,10 +245,6 @@ save(callback: AsyncCallback<Array<string>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioViewPicker-save(callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-save(callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
@@ -271,9 +253,9 @@ save(callback: AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [文档类uri的使用方式](../../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker保存音频文件后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [文档类uri的使用方式](../../../file-management/user-file-uri-intro.md#文档类uri的使用方式)。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -331,10 +313,6 @@ select(option?: AudioSelectOptions): Promise<Array<string>>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>-End-->
@@ -353,7 +331,7 @@ select(option?: AudioSelectOptions): Promise<Array<string>>
 | --- | --- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象。返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [媒体类uri的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -410,10 +388,6 @@ select(option: AudioSelectOptions, callback: AsyncCallback<Array<string>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioViewPicker-select(option: AudioSelectOptions, callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-select(option: AudioSelectOptions, callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
@@ -423,9 +397,9 @@ select(option: AudioSelectOptions, callback: AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | option | [AudioSelectOptions](arkts-corefile-picker-audioselectoptions-c.md) | 是 | audioPicker音频选择选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [媒体类uri的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [媒体类uri的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -486,10 +460,6 @@ select(callback: AsyncCallback<Array<string>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AudioViewPicker-select(callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-select(callback: AsyncCallback<Array<string>>): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
@@ -498,9 +468,9 @@ select(callback: AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [媒体类uri的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | callback 返回audioPicker选择音频后的结果集。 <br>**注意**： 此接口返回的URI数组的具体使用方式参见用户文件URI介绍中的 [媒体类uri的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri介绍)。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

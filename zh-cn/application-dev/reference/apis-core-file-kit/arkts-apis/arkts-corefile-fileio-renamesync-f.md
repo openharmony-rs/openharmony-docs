@@ -1,5 +1,10 @@
 # renameSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## renameSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function renameSync(oldPath: string, newPath: string): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [renameSync](arkts-corefile-file-fs-renamesync-f.md#renamesync)
+**替代接口：** [renameSync](arkts-corefile-file-fs-renamesync-f.md)
 
 <!--Device-unnamed-declare function renameSync(oldPath: string, newPath: string): void--><!--Device-unnamed-declare function renameSync(oldPath: string, newPath: string): void-End-->
 

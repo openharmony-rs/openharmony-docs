@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cryptoFramework-enum SignSpecItem--><!--Device-cryptoFramework-enum SignSpecItem-End-->
 
 **系统能力：** 
@@ -23,10 +19,6 @@ PSS_MD_NAME_STR = 100
 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +38,6 @@ PSS_MGF_NAME_STR = 101
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SignSpecItem-PSS_MGF_NAME_STR = 101--><!--Device-SignSpecItem-PSS_MGF_NAME_STR = 101-End-->
@@ -67,10 +55,6 @@ PSS_MGF1_MD_STR = 102
 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要算法。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +74,6 @@ PSS_SALT_LEN_NUM = 103
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SignSpecItem-PSS_SALT_LEN_NUM = 103--><!--Device-SignSpecItem-PSS_SALT_LEN_NUM = 103-End-->
@@ -111,10 +91,6 @@ PSS_TRAILER_FIELD_NUM = 104
 表示RSA算法中，使用PSS模式时，用于编码操作的整数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -134,10 +110,6 @@ SM2_USER_ID_UINT8ARR = 105
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SignSpecItem-SM2_USER_ID_UINT8ARR = 105--><!--Device-SignSpecItem-SM2_USER_ID_UINT8ARR = 105-End-->
@@ -155,10 +127,6 @@ ML_DSA_DETERMINISTIC_BOOL = 106
 指示ML-DSA签名和验证过程中是否使用确定性签名。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,10 +146,6 @@ ML_DSA_MU_BOOL = 107
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -199,10 +163,6 @@ ML_DSA_CONTEXT_UINT8ARR = 108
 指示ML-DSA签名和验证过程中的上下文数据。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

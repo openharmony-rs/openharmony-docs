@@ -1,5 +1,11 @@
 # getAppVMObjectUsedSize
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getAppVMObjectUsedSize
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAppVMObjectUsedSize(): bigint
 获取当前虚拟机中ArkTS对象所占用的内存大小。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getAppVMObjectUsedSize(): bigint--><!--Device-hidebug-function getAppVMObjectUsedSize(): bigint-End-->
 
@@ -24,7 +26,7 @@ function getAppVMObjectUsedSize(): bigint
 | --- | --- |
 | bigint | 当前虚拟机中ArkTS对象所占用的内存大小，单位为KB。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

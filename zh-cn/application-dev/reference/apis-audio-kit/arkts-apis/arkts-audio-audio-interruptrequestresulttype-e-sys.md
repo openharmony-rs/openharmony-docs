@@ -4,10 +4,6 @@ Enumerates audio interrupt request result type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum InterruptRequestResultType--><!--Device-audio-enum InterruptRequestResultType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
@@ -24,10 +20,6 @@ Request audio interrupt success
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_GRANT = 0--><!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_GRANT = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
@@ -43,10 +35,6 @@ INTERRUPT_REQUEST_REJECT = 1
 Request audio interrupt fail, may have higher priority type
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_REJECT = 1--><!--Device-InterruptRequestResultType-INTERRUPT_REQUEST_REJECT = 1-End-->
 

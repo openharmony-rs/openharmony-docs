@@ -1,5 +1,10 @@
 # isChangePermitted
 
+## 导入模块
+
+```TypeScript
+```
+
 ## isChangePermitted
 
 ```TypeScript
@@ -9,8 +14,6 @@ function isChangePermitted(callback: AsyncCallback<boolean>): void
 是否允许应用改变当前用户的壁纸。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -22,9 +25,9 @@ function isChangePermitted(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -49,8 +52,6 @@ function isChangePermitted(): Promise<boolean>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-wallpaper-function isChangePermitted(): Promise<boolean>--><!--Device-wallpaper-function isChangePermitted(): Promise<boolean>-End-->
@@ -63,7 +64,7 @@ function isChangePermitted(): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | 返回是否允许应用改变当前用户的壁纸。如果允许返回true，否则返回false。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -4,13 +4,15 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions--><!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { ProgressButtonV2, ProgressButtonV2Color, ProgressButtonV2ColorOptions } from '@kit.ArkUI';
+```
 
 ## backgroundColor
 
@@ -23,10 +25,6 @@ backgroundColor?: ColorMetrics
 **类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +46,6 @@ borderColor?: ColorMetrics
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -72,10 +66,6 @@ progressColor?: ColorMetrics
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -95,10 +85,6 @@ textColor?: ColorMetrics
 **类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,18 +1,20 @@
 # closeOpenedEnterpriseDlpFiles
 
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
+
 ## closeOpenedEnterpriseDlpFiles
 
 ```TypeScript
 function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<void>
 ```
 
-关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。 在需要批量关闭企业DLP文件、清理文件资源或应用退出前释放文件句柄时调用该接口。 > **说明：** > > 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md#generatedlpfileforenterprise系统接口)生成的企业DLP文件。
+关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。 在需要批量关闭企业DLP文件、清理文件资源或应用退出前释放文件句柄时调用该接口。 > **说明：** > > 该接口仅能关闭调用方应用通过[generateDlpFileForEnterprise](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md)生成的企业DLP文件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -43,7 +45,7 @@ function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<v
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';

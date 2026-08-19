@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-export interface CallStateInfo--><!--Device-observer-export interface CallStateInfo-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
+
+## 导入模块
+
+```TypeScript
+import { observer } from '@kit.TelephonyKit';
+```
 
 ## number
 
@@ -23,10 +25,6 @@ number: string
 **类型：** string
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-CallStateInfo-number: string--><!--Device-CallStateInfo-number: string-End-->
 
@@ -44,10 +42,6 @@ state: CallState
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CallStateInfo-state: CallState--><!--Device-CallStateInfo-state: CallState-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
@@ -63,10 +57,6 @@ Indicates call number.
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CallStateInfo-teleNumber: string--><!--Device-CallStateInfo-teleNumber: string-End-->
 

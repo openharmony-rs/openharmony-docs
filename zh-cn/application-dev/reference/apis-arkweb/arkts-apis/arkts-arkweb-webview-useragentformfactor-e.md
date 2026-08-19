@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-webview-enum UserAgentFormFactor--><!--Device-webview-enum UserAgentFormFactor-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ AUTOMOTIVE = 'Automotive'
 车机，字符串类型。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ PC，字符串类型。
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentFormFactor-DESKTOP = 'Desktop'--><!--Device-UserAgentFormFactor-DESKTOP = 'Desktop'-End-->
@@ -61,10 +49,6 @@ MOBILE = 'Mobile'
 手机，字符串类型。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,10 +66,6 @@ EINK = 'EInk'
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentFormFactor-EINK = 'EInk'--><!--Device-UserAgentFormFactor-EINK = 'EInk'-End-->
@@ -101,10 +81,6 @@ TABLET = 'Tablet'
 平板，字符串类型。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -122,10 +98,6 @@ WATCH = 'Watch'
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentFormFactor-WATCH = 'Watch'--><!--Device-UserAgentFormFactor-WATCH = 'Watch'-End-->
@@ -141,10 +113,6 @@ XR = 'XR'
 VR+AR设备，字符串类型。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

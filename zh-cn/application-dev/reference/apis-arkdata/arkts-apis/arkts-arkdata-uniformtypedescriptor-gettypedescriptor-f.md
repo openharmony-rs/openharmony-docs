@@ -1,5 +1,11 @@
 # getTypeDescriptor
 
+## 导入模块
+
+```TypeScript
+import { uniformTypeDescriptor } from '@kit.ArkData';
+```
+
 ## getTypeDescriptor
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getTypeDescriptor(typeId: string): TypeDescriptor
 按给定的标准化数据类型ID查询并返回对应的标准化数据类型描述类对象。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +40,7 @@ function getTypeDescriptor(typeId: string): TypeDescriptor
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -103,10 +105,6 @@ function getTypeDescriptor(typeId: string): TypeDescriptor | null
 按给定的标准化数据类型ID查询并返回对应的标准化数据类型描述类对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

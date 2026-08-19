@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare interface ThreeFingersSwipe--><!--Device-unnamed-export declare interface ThreeFingersSwipe-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## 导入模块
+
+```TypeScript
+import { ActionType, FourFingersSwipe, Pinch, Rotate, ThreeFingersSwipe, ThreeFingersTap, SwipeInward, TouchGestureEvent } from '@kit.InputKit';
+```
 
 ## type
 
@@ -18,15 +20,11 @@
 type: ActionType
 ```
 
-手势事件类型。如：手势开始、手势更新、手势结束等。
+手势事件类型，包括手势取消、手势开始、手势更新、手势结束。
 
 **类型：** [ActionType](arkts-input-multimodalinput-gestureevent-actiontype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ThreeFingersSwipe-type: ActionType--><!--Device-ThreeFingersSwipe-type: ActionType-End-->
 
@@ -44,10 +42,6 @@ x: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ThreeFingersSwipe-x: int--><!--Device-ThreeFingersSwipe-x: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -63,10 +57,6 @@ y: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ThreeFingersSwipe-y: int--><!--Device-ThreeFingersSwipe-y: int-End-->
 

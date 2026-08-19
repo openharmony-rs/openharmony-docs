@@ -4,11 +4,9 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md#powermode)
+**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
 <!--Device-wifiext-export enum PowerModel--><!--Device-wifiext-export enum PowerModel-End-->
 
@@ -24,11 +22,9 @@ SLEEPING = 0
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md#powermode)
+**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
 <!--Device-PowerModel-SLEEPING = 0--><!--Device-PowerModel-SLEEPING = 0-End-->
 
@@ -44,11 +40,9 @@ GENERAL = 1
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md#powermode)
+**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
 <!--Device-PowerModel-GENERAL = 1--><!--Device-PowerModel-GENERAL = 1-End-->
 
@@ -64,11 +58,9 @@ THROUGH_WALL = 2
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md#powermode)
+**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
 <!--Device-PowerModel-THROUGH_WALL = 2--><!--Device-PowerModel-THROUGH_WALL = 2-End-->
 

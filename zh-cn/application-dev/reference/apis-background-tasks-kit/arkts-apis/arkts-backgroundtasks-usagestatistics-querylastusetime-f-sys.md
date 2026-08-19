@@ -1,5 +1,11 @@
 # queryLastUseTime（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
+
 ## queryLastUseTime
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryLastUseTime(appInfo: Record<string, Array<long>>): Promise<AppStat
 通过指定bundleName和应用的index，查询应用使用具体信息，统计的最小颗粒度是天，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -49,7 +51,7 @@ function queryLastUseTime(appInfo: Record<string, Array<long>>): Promise<AppStat
 | [10000006](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 | [10000007](../../apis-backgroundtasks-kit/errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -1,5 +1,11 @@
 # queryTouchEvents（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputMonitor } from '@kit.InputKit';
+```
+
 ## queryTouchEvents
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>
 查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -26,7 +28,7 @@ function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | int | 是 | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个， 但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
+| count | int | 是 | 需要查询的触屏输入事件数量，取值范围为[0, 100]的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个， 但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
 
 **返回值：**
 
@@ -41,7 +43,7 @@ function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

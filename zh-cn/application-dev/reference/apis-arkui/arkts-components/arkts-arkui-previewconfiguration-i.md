@@ -4,13 +4,14 @@
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface PreviewConfiguration--><!--Device-unnamed-declare interface PreviewConfiguration-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## delayCreating
 
@@ -25,10 +26,6 @@ delayCreating?: boolean
 **默认值：** false
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,10 +48,6 @@ onlyForLifting?: boolean
 **默认值：** false
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

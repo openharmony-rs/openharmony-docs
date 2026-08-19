@@ -1,5 +1,11 @@
 # isInEmergencyCall（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## isInEmergencyCall
 
 ```TypeScript
@@ -9,10 +15,6 @@ function isInEmergencyCall(callback: AsyncCallback<boolean>): void
 判断是否正在处于紧急呼叫。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -26,7 +28,7 @@ function isInEmergencyCall(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 以回调函数的方式返回结果。true表示紧急号码，false表示非紧急号码。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 以回调函数的方式返回结果。true表示紧急号码，false表示非紧急号码。 |
 
 **错误码：**
 
@@ -40,7 +42,7 @@ function isInEmergencyCall(callback: AsyncCallback<boolean>): void
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -64,10 +66,6 @@ function isInEmergencyCall(): Promise<boolean>
 判断是否正在处于紧急呼叫。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -93,7 +91,7 @@ function isInEmergencyCall(): Promise<boolean>
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

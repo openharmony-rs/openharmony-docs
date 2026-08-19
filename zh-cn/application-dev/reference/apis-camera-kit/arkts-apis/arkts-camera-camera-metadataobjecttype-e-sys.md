@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum MetadataObjectType--><!--Device-camera-enum MetadataObjectType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -21,10 +17,6 @@ HUMAN_BODY = 1
 元数据的对象类型，用于人体检测。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -44,10 +36,6 @@ CAT_FACE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MetadataObjectType-CAT_FACE = 2--><!--Device-MetadataObjectType-CAT_FACE = 2-End-->
@@ -65,10 +53,6 @@ CAT_BODY = 3
 用于检测猫的身体的metadata类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -88,10 +72,6 @@ DOG_FACE = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MetadataObjectType-DOG_FACE = 4--><!--Device-MetadataObjectType-DOG_FACE = 4-End-->
@@ -109,10 +89,6 @@ DOG_BODY = 5
 用于检测狗的身体的metadata类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -132,10 +108,6 @@ SALIENT_DETECTION = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MetadataObjectType-SALIENT_DETECTION = 6--><!--Device-MetadataObjectType-SALIENT_DETECTION = 6-End-->
@@ -153,10 +125,6 @@ BAR_CODE_DETECTION = 7
 用于二维码检测。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -176,10 +144,6 @@ BASIC_FACE_DETECTION = 8
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MetadataObjectType-BASIC_FACE_DETECTION = 8--><!--Device-MetadataObjectType-BASIC_FACE_DETECTION = 8-End-->
@@ -197,10 +161,6 @@ TEXT_DETECTION = 9
 Text detection type.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

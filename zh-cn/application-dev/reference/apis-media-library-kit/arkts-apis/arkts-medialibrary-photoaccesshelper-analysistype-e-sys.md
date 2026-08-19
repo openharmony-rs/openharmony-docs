@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum AnalysisType--><!--Device-photoAccessHelper-enum AnalysisType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ ANALYSIS_AESTHETICS_SCORE = 0
 美学评分分析类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_AESTHETICS_SCORE = 0--><!--Device-AnalysisType-ANALYSIS_AESTHETICS_SCORE = 0-End-->
 
@@ -44,10 +36,6 @@ ANALYSIS_LABEL = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_LABEL = 1--><!--Device-AnalysisType-ANALYSIS_LABEL = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -63,10 +51,6 @@ ANALYSIS_OCR = 2
 文字识别分析类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_OCR = 2--><!--Device-AnalysisType-ANALYSIS_OCR = 2-End-->
 
@@ -84,10 +68,6 @@ ANALYSIS_FACE = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_FACE = 3--><!--Device-AnalysisType-ANALYSIS_FACE = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -103,10 +83,6 @@ ANALYSIS_OBJECT = 4
 目标检测分析类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_OBJECT = 4--><!--Device-AnalysisType-ANALYSIS_OBJECT = 4-End-->
 
@@ -124,10 +100,6 @@ ANALYSIS_RECOMMENDATION = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_RECOMMENDATION = 5--><!--Device-AnalysisType-ANALYSIS_RECOMMENDATION = 5-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -143,10 +115,6 @@ ANALYSIS_SEGMENTATION = 6
 抠图分析类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_SEGMENTATION = 6--><!--Device-AnalysisType-ANALYSIS_SEGMENTATION = 6-End-->
 
@@ -164,10 +132,6 @@ ANALYSIS_COMPOSITION = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_COMPOSITION = 7--><!--Device-AnalysisType-ANALYSIS_COMPOSITION = 7-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -183,10 +147,6 @@ ANALYSIS_SALIENCY = 8
 最佳呈现主体中心分析类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_SALIENCY = 8--><!--Device-AnalysisType-ANALYSIS_SALIENCY = 8-End-->
 
@@ -204,10 +164,6 @@ ANALYSIS_DETAIL_ADDRESS = 9
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_DETAIL_ADDRESS = 9--><!--Device-AnalysisType-ANALYSIS_DETAIL_ADDRESS = 9-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -223,10 +179,6 @@ ANALYSIS_HUMAN_FACE_TAG = 10
 人像聚类信息分析类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_HUMAN_FACE_TAG = 10--><!--Device-AnalysisType-ANALYSIS_HUMAN_FACE_TAG = 10-End-->
 
@@ -244,10 +196,6 @@ ANALYSIS_HEAD_POSITION = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_HEAD_POSITION = 11--><!--Device-AnalysisType-ANALYSIS_HEAD_POSITION = 11-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -263,10 +211,6 @@ ANALYSIS_BONE_POSE = 12
 人体骨骼点信息分析类别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_BONE_POSE = 12--><!--Device-AnalysisType-ANALYSIS_BONE_POSE = 12-End-->
 
@@ -284,10 +228,6 @@ ANALYSIS_VIDEO_LABEL = 13
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_VIDEO_LABEL = 13--><!--Device-AnalysisType-ANALYSIS_VIDEO_LABEL = 13-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -303,10 +243,6 @@ ANALYSIS_HIGHLIGHT = 14
 时刻标签。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AnalysisType-ANALYSIS_HIGHLIGHT = 14--><!--Device-AnalysisType-ANALYSIS_HIGHLIGHT = 14-End-->
 
@@ -324,10 +260,6 @@ ANALYSIS_MULTI_CROP = 15
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_MULTI_CROP = 15--><!--Device-AnalysisType-ANALYSIS_MULTI_CROP = 15-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -344,10 +276,6 @@ ANALYSIS_SEARCH_INDEX = 16
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AnalysisType-ANALYSIS_SEARCH_INDEX = 16--><!--Device-AnalysisType-ANALYSIS_SEARCH_INDEX = 16-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -363,10 +291,6 @@ ANALYSIS_SELECTED = 17
 优选分析类别。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -386,10 +310,6 @@ ANALYSIS_DUPLICATE_SIMILARITY = 18
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisType-ANALYSIS_DUPLICATE_SIMILARITY = 18--><!--Device-AnalysisType-ANALYSIS_DUPLICATE_SIMILARITY = 18-End-->
@@ -407,10 +327,6 @@ ANALYSIS_NEGATIVE_EMOTION = 19
 负向情绪分析类别。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -430,10 +346,6 @@ ANALYSIS_FACE_AESTHETICS = 20
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisType-ANALYSIS_FACE_AESTHETICS = 20--><!--Device-AnalysisType-ANALYSIS_FACE_AESTHETICS = 20-End-->
@@ -452,10 +364,6 @@ ANALYSIS_MAGIC_EMOJI = 21
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisType-ANALYSIS_MAGIC_EMOJI = 21--><!--Device-AnalysisType-ANALYSIS_MAGIC_EMOJI = 21-End-->
@@ -473,10 +381,6 @@ ANALYSIS_AI_EDIT = 22
 AI编辑分析类别。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

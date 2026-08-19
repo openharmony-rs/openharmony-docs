@@ -4,13 +4,15 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-dlpPermission-export interface RetentionSandboxInfo--><!--Device-dlpPermission-export interface RetentionSandboxInfo-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
+
+## 导入模块
+
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+```
 
 ## appIndex
 
@@ -23,10 +25,6 @@ appIndex: number
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-RetentionSandboxInfo-appIndex: number--><!--Device-RetentionSandboxInfo-appIndex: number-End-->
 
@@ -44,10 +42,6 @@ bundleName: string
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-RetentionSandboxInfo-bundleName: string--><!--Device-RetentionSandboxInfo-bundleName: string-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -63,10 +57,6 @@ docUris: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-RetentionSandboxInfo-docUris: Array<string>--><!--Device-RetentionSandboxInfo-docUris: Array<string>-End-->
 

@@ -1,18 +1,23 @@
 # SwiperDynamicSyncScene
 
-提供Swiper组件动态帧率场景的相关配置，适用于为动画过渡和手势跟手等不同交互场景设置差异化帧率范围，以兼顾流畅度和功耗。 > **说明：**> SwiperDynamicSyncScene继承自[DynamicSyncScene](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md#uicontext)，对应Swiper的动态帧率场景。使用前需先通过UIContext的requireDynamicSyncScene方法获取实例，再调用继承的方法设置对应场景的帧率范围。
+提供Swiper组件动态帧率场景的相关配置，适用于为动画过渡和手势跟手等不同交互场景设置差异化帧率范围，以兼顾流畅度和功耗。 > **说明：**> SwiperDynamicSyncScene继承自[DynamicSyncScene](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md)，对应Swiper的动态帧率场景。使用前需先通过UIContext的requireDynamicSyncScene方法获取实例，再调用继承的方法设置对应场景的帧率范围。
 
-**继承/实现关系：** SwiperDynamicSyncScene extends [DynamicSyncScene](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-dynamicsyncscene-c.md#dynamicsyncscene)
+**继承/实现关系：** SwiperDynamicSyncScene extends [DynamicSyncScene](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-dynamicsyncscene-c.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export class SwiperDynamicSyncScene--><!--Device-unnamed-export class SwiperDynamicSyncScene-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
+import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
+import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+```
 
 ## type
 
@@ -25,10 +30,6 @@ Swiper的动态帧率场景类型。
 **类型：** [SwiperDynamicSyncSceneType](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-swiperdynamicsyncscenetype-e.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

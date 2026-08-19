@@ -8,9 +8,7 @@ The callback of ViewportFit Changed.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void--><!--Device-unnamed-export type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void-End-->
 

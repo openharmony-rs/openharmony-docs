@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export enum SwitchState--><!--Device-notificationManager-export enum SwitchState-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ USER_MODIFIED_OFF = 0
 表示用户设置的关闭状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SwitchState-USER_MODIFIED_OFF = 0--><!--Device-SwitchState-USER_MODIFIED_OFF = 0-End-->
 
@@ -44,10 +36,6 @@ USER_MODIFIED_ON = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SwitchState-USER_MODIFIED_ON = 1--><!--Device-SwitchState-USER_MODIFIED_ON = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -64,10 +52,6 @@ SYSTEM_DEFAULT_OFF = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SwitchState-SYSTEM_DEFAULT_OFF = 2--><!--Device-SwitchState-SYSTEM_DEFAULT_OFF = 2-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -83,10 +67,6 @@ SYSTEM_DEFAULT_ON = 3
 表示在用户设置前的初始开启状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SwitchState-SYSTEM_DEFAULT_ON = 3--><!--Device-SwitchState-SYSTEM_DEFAULT_ON = 3-End-->
 

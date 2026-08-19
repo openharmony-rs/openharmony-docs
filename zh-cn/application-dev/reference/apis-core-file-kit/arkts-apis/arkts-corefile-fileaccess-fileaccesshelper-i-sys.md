@@ -4,8 +4,6 @@ FileAccessHelper对象。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 <!--Device-fileAccess-interface FileAccessHelper--><!--Device-fileAccess-interface FileAccessHelper-End-->
@@ -13,6 +11,12 @@ FileAccessHelper对象。
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { fileAccess } from '@kit.CoreFileKit';
+```
 
 ## access
 
@@ -24,11 +28,9 @@ access(sourceFileUri: string) : Promise<boolean>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [access](../../apis-na/arkts-apis/arkts-na-fileio-access-f.md#access)(path: string, mode?: AccessModeType)
+**替代接口：** [access](../../apis-na/arkts-apis/arkts-na-fileio-access-f.md)(path: string, mode?: AccessModeType)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -89,7 +91,7 @@ access(sourceFileUri: string) : Promise<boolean>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -126,11 +128,9 @@ access(sourceFileUri: string, callback: AsyncCallback<boolean>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [access](../../apis-na/arkts-apis/arkts-na-fileio-access-f.md#access)(path: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [access](../../apis-na/arkts-apis/arkts-na-fileio-access-f.md)(path: string, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -145,7 +145,7 @@ access(sourceFileUri: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sourceFileUri | string | 是 | Indicates the selected file or directory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | The callback is used to return whether it exists. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | The callback is used to return whether it exists. |
 
 **错误码：**
 
@@ -186,7 +186,7 @@ access(sourceFileUri: string, callback: AsyncCallback<boolean>): void
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -225,11 +225,9 @@ copy(sourceUri: string, destUri: string, force?: boolean): Promise<Array<CopyRes
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [copy](../../apis-na/arkts-apis/arkts-na-fileio-copy-f.md#copy)(srcUri: string, destUri: string, options?: CopyOptions)
+**替代接口：** [copy](../../apis-na/arkts-apis/arkts-na-fileio-copy-f.md)(srcUri: string, destUri: string, options?: CopyOptions)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -263,11 +261,9 @@ copy(sourceUri: string, destUri: string, callback: AsyncCallback<Array<CopyResul
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [copy](../../apis-na/arkts-apis/arkts-na-fileio-copy-f.md#copy)(srcUri: string, destUri: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [copy](../../apis-na/arkts-apis/arkts-na-fileio-copy-f.md)(srcUri: string, destUri: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -283,9 +279,9 @@ copy(sourceUri: string, destUri: string, callback: AsyncCallback<Array<CopyResul
 | --- | --- | --- | --- |
 | sourceUri | string | 是 | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。 |
 | destUri | string | 是 | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[CopyResult](arkts-corefile-fileaccess-copyresult-i-sys.md)&gt;&gt; | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[CopyResult](arkts-corefile-fileaccess-copyresult-i-sys.md)&gt;&gt; | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -330,11 +326,9 @@ copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [copy](../../apis-na/arkts-apis/arkts-na-fileio-copy-f.md#copy)(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [copy](../../apis-na/arkts-apis/arkts-na-fileio-copy-f.md)(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -351,9 +345,9 @@ copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback
 | sourceUri | string | 是 | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。 |
 | destUri | string | 是 | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。 |
 | force | boolean | 是 | 含有同名文件时是否强制覆盖原文件。force 为 true 时强制覆盖原文件；force 为空或 false 时不覆盖原文件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[CopyResult](arkts-corefile-fileaccess-copyresult-i-sys.md)&gt;&gt; | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[CopyResult](arkts-corefile-fileaccess-copyresult-i-sys.md)&gt;&gt; | 是 | 返回 copyresult 数组。copyResult 为复制操作失败的返回信息；复制成功无返回信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -398,11 +392,9 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
-**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md#copyfile)(src: string | number, dest: string | number, mode?: number)
+**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md)(src: string | number, dest: string | number, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -467,11 +459,9 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
-**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md#copyfile)(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [copyFile](../../apis-na/arkts-apis/arkts-na-fileio-copyfile-f.md)(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -490,7 +480,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | sourceUri | string | 是 | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。 |
 | destUri | string | 是 | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。 |
 | fileName | string | 是 | 如果目标目录中有1.txt文件。就是用fileName 作为文件名进行复制。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回一个复制成功的文件的uri。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回一个复制成功的文件的uri。 |
 
 **错误码：**
 
@@ -521,7 +511,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -555,11 +545,9 @@ createFile(uri: string, displayName: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md#createrandomaccessfile)(file: string | File, mode?: number, options?: RandomAccessFileOptions)
+**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md)(file: string | File, mode?: number, options?: RandomAccessFileOptions)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -621,7 +609,7 @@ createFile(uri: string, displayName: string) : Promise<string>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -660,11 +648,9 @@ createFile(uri: string, displayName: string, callback: AsyncCallback<string>): v
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md#createrandomaccessfile)(file: string | File, callback: AsyncCallback&lt;RandomAccessFile&gt;)
+**替代接口：** [createRandomAccessFile](../../apis-na/arkts-apis/arkts-na-fileio-createrandomaccessfile-f.md)(file: string | File, callback: AsyncCallback&lt;RandomAccessFile&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -680,7 +666,7 @@ createFile(uri: string, displayName: string, callback: AsyncCallback<string>): v
 | --- | --- | --- | --- |
 | uri | string | 是 | Represents a specific parent directory. |
 | displayName | string | 是 | Indicates the new file name, and supports with suffix. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return the new file's URI. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return the new file's URI. |
 
 **错误码：**
 
@@ -721,7 +707,7 @@ createFile(uri: string, displayName: string, callback: AsyncCallback<string>): v
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -756,8 +742,6 @@ delete(uri: string) : Promise<number>
 以异步方法删除文件(夹)，返回错误码。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -822,7 +806,7 @@ delete(uri: string) : Promise<number>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -856,8 +840,6 @@ delete(uri: string, callback: AsyncCallback<number>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
 **替代接口：** [delete](arkts-corefile-file-fs-atomicfile-c.md#delete)
@@ -875,7 +857,7 @@ delete(uri: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the file or directory to be deleted. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 |  |
 
 **错误码：**
 
@@ -916,7 +898,7 @@ delete(uri: string, callback: AsyncCallback<number>): void
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -951,11 +933,9 @@ getFileInfoFromRelativePath(relativePath: string) : Promise<FileInfo>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md#stat)(file: string | number)
+**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md)(file: string | number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -977,7 +957,7 @@ getFileInfoFromRelativePath(relativePath: string) : Promise<FileInfo>
 | --- | --- |
 | Promise&lt;FileInfo&gt; | Returns a FileInfo. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1008,11 +988,9 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback<FileIn
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md#stat)(file: string | number, callback: AsyncCallback&lt;Stat&gt;)
+**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md)(file: string | number, callback: AsyncCallback&lt;Stat&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1027,9 +1005,9 @@ getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback<FileIn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | relativePath | string | 是 | Indicates the selected file or directory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FileInfo&gt; | 是 | The callback is used to return a fileinfo object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FileInfo&gt; | 是 | The callback is used to return a fileinfo object. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1064,11 +1042,9 @@ getFileInfoFromUri(uri: string) : Promise<FileInfo>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md#stat)(file: string | number)
+**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md)(file: string | number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1090,7 +1066,7 @@ getFileInfoFromUri(uri: string) : Promise<FileInfo>
 | --- | --- |
 | Promise&lt;FileInfo&gt; | Returns a FileInfo. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1122,11 +1098,9 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback<FileInfo>) : void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md#stat)(file: string | number, callback: AsyncCallback&lt;Stat&gt;)
+**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md)(file: string | number, callback: AsyncCallback&lt;Stat&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1141,9 +1115,9 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback<FileInfo>) : void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the selected file or directory. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FileInfo&gt; | 是 | The callback is used to return a fileinfo object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;FileInfo&gt; | 是 | The callback is used to return a fileinfo object. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1175,11 +1149,9 @@ try {
 getRoots(): Promise<RootIterator>
 ```
 
-以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。 该方法返回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md#rootinfo系统接口)。
+以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。 该方法返回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回[RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md)。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -1236,7 +1208,7 @@ getRoots(): Promise<RootIterator>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 async function getRoots() {
@@ -1273,11 +1245,9 @@ async function getRoots() {
 getRoots(callback: AsyncCallback<RootIterator>): void
 ```
 
-以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。 callback带回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回 [RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md#rootinfo系统接口)。
+以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。 callback带回迭代器对象RootIterator，然后通过[next](arkts-corefile-fileaccess-fileiterator-i-sys.md#next)方法返回 [RootInfo](arkts-corefile-fileaccess-rootinfo-i-sys.md)。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 23
 
@@ -1293,7 +1263,7 @@ getRoots(callback: AsyncCallback<RootIterator>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RootIterator](arkts-corefile-fileaccess-rootiterator-i-sys.md)&gt; | 是 | The callback is used to return a RootIterator. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RootIterator](arkts-corefile-fileaccess-rootiterator-i-sys.md)&gt; | 是 | The callback is used to return a RootIterator. |
 
 **错误码：**
 
@@ -1334,7 +1304,7 @@ getRoots(callback: AsyncCallback<RootIterator>): void
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1376,11 +1346,9 @@ mkDir(parentUri: string, displayName: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [mkdir](../../apis-na/arkts-apis/arkts-na-fileio-mkdir-f.md#mkdir)(path: string)
+**替代接口：** [mkdir](../../apis-na/arkts-apis/arkts-na-fileio-mkdir-f.md)(path: string)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1442,7 +1410,7 @@ mkDir(parentUri: string, displayName: string) : Promise<string>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1481,11 +1449,9 @@ mkDir(parentUri: string, displayName: string, callback: AsyncCallback<string>): 
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [mkdir](../../apis-na/arkts-apis/arkts-na-fileio-mkdir-f.md#mkdir)(path: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [mkdir](../../apis-na/arkts-apis/arkts-na-fileio-mkdir-f.md)(path: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1501,7 +1467,7 @@ mkDir(parentUri: string, displayName: string, callback: AsyncCallback<string>): 
 | --- | --- | --- | --- |
 | parentUri | string | 是 | Represents a specific parent directory. |
 | displayName | string | 是 | Indicates the new directory name. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return the new directory's URI. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return the new directory's URI. |
 
 **错误码：**
 
@@ -1542,7 +1508,7 @@ mkDir(parentUri: string, displayName: string, callback: AsyncCallback<string>): 
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1578,11 +1544,9 @@ move(sourceFile: string, destFile: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode?: number)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md)(src: string, dest: string, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1644,7 +1608,7 @@ move(sourceFile: string, destFile: string) : Promise<string>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1678,11 +1642,9 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback<string>): voi
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1698,7 +1660,7 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback<string>): voi
 | --- | --- | --- | --- |
 | sourceFile | string | 是 | Indicates the file or directory to be moved. |
 | destFile | string | 是 | Represents the destination folder. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return the generated new file or directory. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return the generated new file or directory. |
 
 **错误码：**
 
@@ -1739,7 +1701,7 @@ move(sourceFile: string, destFile: string, callback: AsyncCallback<string>): voi
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1775,11 +1737,9 @@ moveFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode?: number)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md)(src: string, dest: string, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1834,7 +1794,7 @@ moveFile(sourceUri: string, destUri: string, fileName: string): Promise<string>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1869,11 +1829,9 @@ moveFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -1892,7 +1850,7 @@ moveFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | sourceUri | string | 是 | 待移动的源文件的uri。 |
 | destUri | string | 是 | 目标文件夹的uri。 |
 | fileName | string | 是 | 冲突文件的新名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 新路径下的文件uri。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 新路径下的文件uri。 |
 
 **错误码：**
 
@@ -1923,7 +1881,7 @@ moveFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1960,11 +1918,9 @@ moveItem(sourceUri: string, destUri: string, force?: boolean): Promise<Array<Mov
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode?: number)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md)(src: string, dest: string, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2029,11 +1985,9 @@ moveItem(sourceUri: string, destUri: string, callback: AsyncCallback<Array<MoveR
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md)(src: string, dest: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2051,7 +2005,7 @@ moveItem(sourceUri: string, destUri: string, callback: AsyncCallback<Array<MoveR
 | --- | --- | --- | --- |
 | sourceUri | string | 是 | 待移动的源文件(夹)的uri。 |
 | destUri | string | 是 | 目标文件夹的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[MoveResult](arkts-corefile-fileaccess-moveresult-i-sys.md)&gt;&gt; | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[MoveResult](arkts-corefile-fileaccess-moveresult-i-sys.md)&gt;&gt; | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
 
 **错误码：**
 
@@ -2082,7 +2036,7 @@ moveItem(sourceUri: string, destUri: string, callback: AsyncCallback<Array<MoveR
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -2127,11 +2081,9 @@ moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCall
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
 **废弃版本：** 23
 
-**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md#movefile)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [moveFile](../../apis-na/arkts-apis/arkts-na-fileio-movefile-f.md)(src: string, dest: string, mode: number, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2150,7 +2102,7 @@ moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCall
 | sourceUri | string | 是 | 待移动的源文件(夹)的uri。 |
 | destUri | string | 是 | 目标文件夹的uri。 |
 | force | boolean | 是 | 选择当存在同名文件时，是否强制覆盖文件。当force为true时，强制覆盖文件；为false时不强制覆盖文件。该参数不填，默认为false。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[MoveResult](arkts-corefile-fileaccess-moveresult-i-sys.md)&gt;&gt; | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[MoveResult](arkts-corefile-fileaccess-moveresult-i-sys.md)&gt;&gt; | 是 | 回调返回MoveResult数组。MoveResult为移动操作失败的返回信息；移动成功无返回信息。 |
 
 **错误码：**
 
@@ -2181,7 +2133,7 @@ moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCall
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -2226,11 +2178,9 @@ openFile(uri: string, flags: OPENFLAGS) : Promise<number>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md#open)(path: string, mode?: number)
+**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md)(path: string, mode?: number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2292,7 +2242,7 @@ openFile(uri: string, flags: OPENFLAGS) : Promise<number>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2324,11 +2274,9 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback<number>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md#open)(path: string, callback: AsyncCallback&lt;File&gt;)
+**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md)(path: string, callback: AsyncCallback&lt;File&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2344,7 +2292,7 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the path of the file to open. |
 | flags | [OPENFLAGS](arkts-corefile-fileaccess-openflags-e-sys.md) | 是 | Indicate options of opening a file. The default value is read-only. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | The callback is used to return the file descriptor. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | The callback is used to return the file descriptor. |
 
 **错误码：**
 
@@ -2385,7 +2333,7 @@ openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback<number>): void
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2420,11 +2368,9 @@ query(uri: string, metaJson: string) : Promise<string>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md#stat)(file: string | number)
+**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md)(file: string | number)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2438,8 +2384,8 @@ query(uri: string, metaJson: string) : Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md#fileinfo系统接口)中获取）。 |
-| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md#filekey系统接口) 。 |
+| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md)中获取）。 |
+| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md) 。 |
 
 **返回值：**
 
@@ -2447,7 +2393,7 @@ query(uri: string, metaJson: string) : Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | 返回json字符串，包括查询属性和值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -2479,11 +2425,9 @@ query(uri: string, metaJson: string, callback: AsyncCallback<string>) : void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md#stat)(file: string | number, callback: AsyncCallback&lt;Stat&gt;)
+**替代接口：** [stat](../../apis-na/arkts-apis/arkts-na-fileio-stat-f.md)(file: string | number, callback: AsyncCallback&lt;Stat&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2497,11 +2441,11 @@ query(uri: string, metaJson: string, callback: AsyncCallback<string>) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md#fileinfo系统接口)中获取）。 |
-| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md#filekey系统接口)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回json字符串，包括查询属性和值。 |
+| uri | string | 是 | 所选文件或目录的uri（从[FileInfo](arkts-corefile-fileaccess-fileinfo-i-sys.md)中获取）。 |
+| metaJson | string | 是 | json字符串，包含查询属性[FILEKEY](arkts-corefile-fileaccess-filekey-e-sys.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回json字符串，包括查询属性和值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -2538,11 +2482,9 @@ registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
-**替代接口：** [createWatcher](../../apis-na/arkts-apis/arkts-na-fileio-createwatcher-f.md#createwatcher)
+**替代接口：** [createWatcher](../../apis-na/arkts-apis/arkts-na-fileio-createwatcher-f.md)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2558,7 +2500,7 @@ registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件或目录的uri。 |
 | notifyForDescendants | boolean | 是 | 监听目录时，是否监听子文件变化。true为监听；false为不监听。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[NotifyMessage](arkts-corefile-fileaccess-notifymessage-i-sys.md)&gt; | 是 | 返回通知信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[NotifyMessage](arkts-corefile-fileaccess-notifymessage-i-sys.md)&gt; | 是 | 返回通知信息。 |
 
 **错误码：**
 
@@ -2576,11 +2518,9 @@ rename(uri: string, displayName: string) : Promise<string>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [rename](../../apis-na/arkts-apis/arkts-na-fileio-rename-f.md#rename)(oldPath: string, newPath: string)
+**替代接口：** [rename](../../apis-na/arkts-apis/arkts-na-fileio-rename-f.md)(oldPath: string, newPath: string)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2642,7 +2582,7 @@ rename(uri: string, displayName: string) : Promise<string>
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2675,11 +2615,9 @@ rename(uri: string, displayName: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [rename](../../apis-na/arkts-apis/arkts-na-fileio-rename-f.md#rename)(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [rename](../../apis-na/arkts-apis/arkts-na-fileio-rename-f.md)(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
 
@@ -2695,7 +2633,7 @@ rename(uri: string, displayName: string, callback: AsyncCallback<string>): void
 | --- | --- | --- | --- |
 | uri | string | 是 | Indicates the selected file or directory. |
 | displayName | string | 是 | Indicates the new directory or file name. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return a URI representing the new file or directory. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | The callback is used to return a URI representing the new file or directory. |
 
 **错误码：**
 
@@ -2736,7 +2674,7 @@ rename(uri: string, displayName: string, callback: AsyncCallback<string>): void
 | 14300004 | Get wrong result |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2771,8 +2709,6 @@ unregisterObserver(uri: string, callback?: Callback<NotifyMessage>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 23
 
 **需要权限：** ohos.permission.FILE_ACCESS_MANAGER
@@ -2788,7 +2724,7 @@ unregisterObserver(uri: string, callback?: Callback<NotifyMessage>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 文件或目录的uri。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[NotifyMessage](arkts-corefile-fileaccess-notifymessage-i-sys.md)&gt; | 否 | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callbackback。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[NotifyMessage](arkts-corefile-fileaccess-notifymessage-i-sys.md)&gt; | 否 | 解注册uri下对应的callback。如果该参数不填，则解注册对应的所有callbackback。 |
 
 **错误码：**
 

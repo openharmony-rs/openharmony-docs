@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum CastDisplayState--><!--Device-avSession-enum CastDisplayState-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
@@ -21,10 +17,6 @@ STATE_OFF = 1
 设备断开，扩展屏不再显示内容。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ STATE_ON = 2
 设备连接成功，扩展屏可用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

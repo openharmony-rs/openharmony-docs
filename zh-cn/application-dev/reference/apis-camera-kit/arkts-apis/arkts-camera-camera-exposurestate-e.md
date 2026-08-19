@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum ExposureState--><!--Device-camera-enum ExposureState-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -21,10 +17,6 @@ EXPOSURE_STATE_SCAN = 0
 曝光处于扫描状态。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -43,10 +35,6 @@ EXPOSURE_STATE_CONVERGED = 1
 曝光已经收敛。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-distributedDeviceManager-interface DeviceStateChangeResult--><!--Device-distributedDeviceManager-interface DeviceStateChangeResult-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+## 导入模块
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+```
 
 ## action
 
@@ -23,10 +25,6 @@ action: DeviceStateChange
 **类型：** [DeviceStateChange](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceStateChangeResult-action: DeviceStateChange--><!--Device-DeviceStateChangeResult-action: DeviceStateChange-End-->
 
@@ -43,10 +41,6 @@ device: DeviceBasicInfo
 **类型：** [DeviceBasicInfo](arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceStateChangeResult-device: DeviceBasicInfo--><!--Device-DeviceStateChangeResult-device: DeviceBasicInfo-End-->
 

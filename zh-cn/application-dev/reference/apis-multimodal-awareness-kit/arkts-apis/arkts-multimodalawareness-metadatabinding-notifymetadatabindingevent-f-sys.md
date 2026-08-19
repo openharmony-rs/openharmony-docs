@@ -1,5 +1,11 @@
 # notifyMetadataBindingEvent（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';
+```
+
 ## notifyMetadataBindingEvent
 
 ```TypeScript
@@ -9,10 +15,6 @@ function notifyMetadataBindingEvent(bundleName: string): Promise<string>
 推送待嵌入的元数据信息给调用编码接口的应用或服务。系统会向指定包名的应用推送信息，并返回当前所在页面的applink信息，用于后续的编码处理。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-metadataBinding-function notifyMetadataBindingEvent(bundleName: string): Promise<string>--><!--Device-metadataBinding-function notifyMetadataBindingEvent(bundleName: string): Promise<string>-End-->
 

@@ -8,10 +8,6 @@ export type ProcessData = _ProcessData.default
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export type ProcessData = _ProcessData.default--><!--Device-unnamed-export type ProcessData = _ProcessData.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

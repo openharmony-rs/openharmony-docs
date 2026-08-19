@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface BundleInfo--><!--Device-unnamed-export interface BundleInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -24,10 +20,6 @@ readonly appIndex: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BundleInfo-readonly appIndex: int--><!--Device-BundleInfo-readonly appIndex: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -38,15 +30,11 @@ readonly appIndex: int
 readonly appInfo: ApplicationInfo | null
 ```
 
-应用程序的配置信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION获取。
+应用程序的配置信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION获取。
 
 **类型：** [ApplicationInfo](arkts-ability-applicationinfo-i.md) \| null
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BundleInfo-readonly appInfo: ApplicationInfo | null--><!--Device-BundleInfo-readonly appInfo: ApplicationInfo | null-End-->
 
@@ -63,10 +51,6 @@ readonly buildVersion?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,10 +72,6 @@ readonly firstInstallTime?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BundleInfo-readonly firstInstallTime?: long--><!--Device-BundleInfo-readonly firstInstallTime?: long-End-->
@@ -104,15 +84,11 @@ readonly firstInstallTime?: long
 readonly hapModulesInfo: Array<HapModuleInfo>
 ```
 
-模块的配置信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE获取。
+模块的配置信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE获取。
 
 **类型：** Array&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -132,10 +108,6 @@ readonly installTime: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BundleInfo-readonly installTime: long--><!--Device-BundleInfo-readonly installTime: long-End-->
@@ -153,10 +125,6 @@ readonly minCompatibleVersionCode: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -176,10 +144,6 @@ readonly name: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BundleInfo-readonly name: string--><!--Device-BundleInfo-readonly name: string-End-->
@@ -192,15 +156,11 @@ readonly name: string
 readonly permissionGrantStates: Array<bundleManager.PermissionGrantState>
 ```
 
-申请权限的授予状态，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对 应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
+申请权限的授予状态，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对 应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
 
 **类型：** Array&lt;bundleManager.PermissionGrantState&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -214,15 +174,11 @@ readonly permissionGrantStates: Array<bundleManager.PermissionGrantState>
 readonly reqPermissionDetails: Array<ReqPermissionDetail>
 ```
 
-应用运行时需向系统申请的权限集合的详细信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对 应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
+应用运行时需向系统申请的权限集合的详细信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION获取。reqPermissionDetails数组和permissionGrantStates数组的索引顺序一一对 应，即reqPermissionDetails[2]的授权状态为permissionGrantStates[2]。
 
 **类型：** Array&lt;[ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -236,15 +192,11 @@ readonly reqPermissionDetails: Array<ReqPermissionDetail>
 readonly routerMap: Array<RouterItem>
 ```
 
-应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。
+应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP获取。
 
 **类型：** Array&lt;[RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -258,15 +210,11 @@ readonly routerMap: Array<RouterItem>
 readonly signatureInfo: SignatureInfo | null
 ```
 
-应用包的签名信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md#getbundleinfoforself)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO获取。
+应用包的签名信息，通过调用 [getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)接 口，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO获取。
 
 **类型：** [SignatureInfo](arkts-ability-bundleinfo-signatureinfo-i.md) \| null
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BundleInfo-readonly signatureInfo: SignatureInfo | null--><!--Device-BundleInfo-readonly signatureInfo: SignatureInfo | null-End-->
 
@@ -283,10 +231,6 @@ readonly targetVersion: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -306,10 +250,6 @@ readonly updateTime: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BundleInfo-readonly updateTime: long--><!--Device-BundleInfo-readonly updateTime: long-End-->
@@ -327,10 +267,6 @@ readonly vendor: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -350,10 +286,6 @@ readonly versionCode: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BundleInfo-readonly versionCode: long--><!--Device-BundleInfo-readonly versionCode: long-End-->
@@ -371,10 +303,6 @@ readonly versionName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

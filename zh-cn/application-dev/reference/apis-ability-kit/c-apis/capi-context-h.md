@@ -66,7 +66,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetTempDir()
 
@@ -93,7 +93,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_Con
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。The error code. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。The error code. |
 
 ### OH_AbilityRuntime_Context_GetFilesDir()
 
@@ -120,7 +120,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetDatabaseDir()
 
@@ -147,7 +147,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetPreferencesDir()
 
@@ -174,7 +174,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRunt
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetBundleCodeDir()
 
@@ -201,7 +201,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRunti
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetDistributedFilesDir()
 
@@ -228,7 +228,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(Abilit
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetResourceDir()
 
@@ -255,7 +255,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetCloudFileDir()
 
@@ -282,7 +282,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntim
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetAreaMode()
 
@@ -307,7 +307,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参areaMode为空。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参areaMode为空。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_SetAreaMode()
 
@@ -332,7 +332,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参context为空。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参context为空。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetLogFileDir()
 
@@ -359,7 +359,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 	返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 	返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetProcessName()
 
@@ -386,6 +386,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。<br>     <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 

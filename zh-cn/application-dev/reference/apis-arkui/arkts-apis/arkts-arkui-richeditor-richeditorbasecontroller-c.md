@@ -6,9 +6,7 @@ RichEditor组件控制器基类。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class RichEditorBaseController--><!--Device-unnamed-export declare class RichEditorBaseController-End-->
 
@@ -24,9 +22,7 @@ closeSelectionMenu(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,9 +40,7 @@ deleteBackward(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -64,9 +58,7 @@ getCaretOffset(): int | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,9 +82,7 @@ getCaretRect(): RectResult | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -116,9 +106,7 @@ getLayoutManager(): LayoutManager | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -142,9 +130,7 @@ getPreviewText(): PreviewText | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,9 +154,7 @@ getTypingStyle(): RichEditorTextStyle | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -194,9 +178,7 @@ isEditing(): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -220,9 +202,7 @@ scrollToVisible(range?: TextRange): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-RichEditorBaseController-scrollToVisible(range?: TextRange): void--><!--Device-RichEditorBaseController-scrollToVisible(range?: TextRange): void-End-->
 
@@ -244,9 +224,7 @@ setCaretOffset(offset: int): boolean | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -276,9 +254,7 @@ setSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,7 +268,7 @@ setSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions)
 | --- | --- | --- | --- |
 | selectionStart | int | 是 | 选中开始位置。 |
 | selectionEnd | int | 是 | 选中结束位置。 |
-| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。<br/>缺省时，按照 [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md#selectionoptions)中的默认值处理。 |
+| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。<br/>缺省时，按照 [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md)中的默认值处理。 |
 
 ## setStyledPlaceholder
 
@@ -304,9 +280,7 @@ setStyledPlaceholder(styledString: StyledString): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -318,7 +292,7 @@ setStyledPlaceholder(styledString: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | [StyledString](arkts-arkui-styledstring-styledstring-c.md) | 是 | 设置属性字符串样式的提示文本，其优先级高于placeholder属 性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](arkts-arkui-gesturestyle-c.md#gesturestyle)样式 绑定的手势事件，以及[UrlStyle](arkts-arkui-urlstyle-c.md#urlstyle)样式的超链接跳转能力。 |
+| styledString | [StyledString](arkts-arkui-styledstring-styledstring-c.md) | 是 | 设置属性字符串样式的提示文本，其优先级高于placeholder属 性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](arkts-arkui-gesturestyle-c.md)样式 绑定的手势事件，以及[UrlStyle](arkts-arkui-urlstyle-c.md)样式的超链接跳转能力。 |
 
 ## setTypingParagraphStyle
 
@@ -330,9 +304,7 @@ setTypingParagraphStyle(style: RichEditorParagraphStyle | undefined): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -356,9 +328,7 @@ setTypingStyle(value: RichEditorTextStyle): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -382,9 +352,7 @@ stopEditing(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,11 @@
 # stopScan
 
+## 导入模块
+
+```TypeScript
+import { scan } from '@kit.ConnectivityKit';
+```
+
 ## stopScan
 
 ```TypeScript
@@ -9,10 +15,6 @@ function stopScan(): Promise<void>
 停止扫描。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 

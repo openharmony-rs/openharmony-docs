@@ -162,7 +162,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize()
 
@@ -232,7 +232,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_UpdateSize()
 
@@ -258,7 +258,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetMainSize()
 

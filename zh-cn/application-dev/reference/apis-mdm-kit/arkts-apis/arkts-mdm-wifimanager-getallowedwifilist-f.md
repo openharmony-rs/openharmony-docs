@@ -1,5 +1,11 @@
 # getAllowedWifiList
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+```
+
 ## getAllowedWifiList
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllowedWifiList(admin: Want): Array<WifiAccessInfo>
 获取Wi-Fi允许名单。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -42,7 +44,7 @@ function getAllowedWifiList(admin: Want): Array<WifiAccessInfo>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.MDMKit';
@@ -72,10 +74,6 @@ function getAllowedWifiList(admin: Want | null): Array<WifiAccessInfo>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -104,7 +102,7 @@ function getAllowedWifiList(admin: Want | null): Array<WifiAccessInfo>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.MDMKit';

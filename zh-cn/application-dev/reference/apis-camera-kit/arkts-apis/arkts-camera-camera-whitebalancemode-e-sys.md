@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum WhiteBalanceMode--><!--Device-camera-enum WhiteBalanceMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -23,10 +19,6 @@ AUTO = 0
 自动
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +38,6 @@ CLOUDY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WhiteBalanceMode-CLOUDY = 1--><!--Device-WhiteBalanceMode-CLOUDY = 1-End-->
@@ -67,10 +55,6 @@ INCANDESCENT =2
 白炽光
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +74,6 @@ FLUORESCENT =3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WhiteBalanceMode-FLUORESCENT =3--><!--Device-WhiteBalanceMode-FLUORESCENT =3-End-->
@@ -111,10 +91,6 @@ DAYLIGHT = 4
 日光
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
@@ -134,10 +110,6 @@ MANUAL = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WhiteBalanceMode-MANUAL = 5--><!--Device-WhiteBalanceMode-MANUAL = 5-End-->
@@ -155,10 +127,6 @@ LOCKED = 6
 锁定
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 

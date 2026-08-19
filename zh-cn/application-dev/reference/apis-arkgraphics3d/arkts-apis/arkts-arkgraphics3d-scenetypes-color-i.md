@@ -1,12 +1,8 @@
 # Color
 
-定义颜色.
+用于表示RGBA格式的颜色，包含四个分量，依次为红色、绿色、蓝色和透明度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Color--><!--Device-unnamed-export interface Color-End-->
 
@@ -18,15 +14,11 @@
 a: double
 ```
 
-颜色的A分量.
+透明度分量，取值范围是[0, 1]。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Color-a: double--><!--Device-Color-a: double-End-->
 
@@ -38,15 +30,11 @@ a: double
 b: double
 ```
 
-颜色的B分量.
+蓝色分量，取值范围是[0, 1]。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Color-b: double--><!--Device-Color-b: double-End-->
 
@@ -58,15 +46,11 @@ b: double
 g: double
 ```
 
-颜色的G分量.
+绿色分量，取值范围是[0, 1]。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Color-g: double--><!--Device-Color-g: double-End-->
 
@@ -78,15 +62,11 @@ g: double
 r: double
 ```
 
-颜色的R分量.
+红色分量，取值范围是[0, 1]。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Color-r: double--><!--Device-Color-r: double-End-->
 

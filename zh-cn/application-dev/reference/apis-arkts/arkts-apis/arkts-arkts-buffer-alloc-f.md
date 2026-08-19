@@ -1,5 +1,11 @@
 # alloc
 
+## 导入模块
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+```
+
 ## alloc
 
 ```TypeScript
@@ -9,10 +15,6 @@ function alloc(size: int, fill?: string | Buffer | int | double | long, encoding
 创建指定字节长度的Buffer对象，并使用指定值进行初始化填充（默认填充0）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

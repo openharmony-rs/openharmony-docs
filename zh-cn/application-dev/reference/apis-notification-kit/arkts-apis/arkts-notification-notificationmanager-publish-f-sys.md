@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## publish
@@ -15,10 +15,6 @@ function publish(request: NotificationRequest, userId: int, callback: AsyncCallb
 发布通知给指定的用户。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本18+：ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.SEND_NOTIFICATION_CROSS_USER
@@ -36,7 +32,7 @@ function publish(request: NotificationRequest, userId: int, callback: AsyncCallb
 | --- | --- | --- | --- |
 | request | NotificationRequest | 是 | 用于设置要发布通知的内容和相关配置信息。 |
 | userId | int | 是 | 用户ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 被指定的回调方法。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 被指定的回调方法。 |
 
 **错误码：**
 
@@ -65,7 +61,7 @@ function publish(request: NotificationRequest, userId: int, callback: AsyncCallb
 | [1600005](../errorcode-notification.md#1600005-通知渠道关闭) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist.<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -138,10 +134,6 @@ function publish(request: NotificationRequest, userId: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本18+：ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.SEND_NOTIFICATION_CROSS_USER
 - API版本9 - 17：ohos.permission.NOTIFICATION_CONTROLLER
@@ -192,7 +184,7 @@ function publish(request: NotificationRequest, userId: int): Promise<void>
 | [1600005](../errorcode-notification.md#1600005-通知渠道关闭) | Notification slot disabled. |
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist.<br>**适用版本：** 11+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum BlurOnKeyboardHideMode--><!--Device-unnamed-declare enum BlurOnKeyboardHideMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ SILENT = 0
 软键盘收起时Web组件失焦功能关闭，当用户手动收起软键盘时焦点仍在文本框。适用于需要保持输入焦点的场景。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ BLUR = 1
 软键盘收起时Web组件失焦功能开启，当用户手动收起软键盘时，焦点会从文本框转移到Web的body上，文本框失焦。适用于需要标准输入框行为的场景。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 

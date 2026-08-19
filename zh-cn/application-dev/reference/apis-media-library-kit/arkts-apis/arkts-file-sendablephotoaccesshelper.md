@@ -4,13 +4,15 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace sendablePhotoAccessHelper--><!--Device-unnamed-declare namespace sendablePhotoAccessHelper-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## 汇总
 
@@ -18,14 +20,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f.md#getphotoaccesshelper) | 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
+| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f.md) | 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper系统接口) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
+| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f-sys.md) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
 <!--DelEnd-->
 
 ### 接口
@@ -57,7 +59,7 @@
 | [AlbumSubtype](arkts-medialibrary-sendablephotoaccesshelper-albumsubtype-e.md) | 枚举，相册子类型，表示具体的相册类型。 |
 | [AlbumType](arkts-medialibrary-sendablephotoaccesshelper-albumtype-e.md) | 枚举，相册类型，表示是用户相册还是系统预置相册。 |
 | [DynamicRangeType](arkts-medialibrary-sendablephotoaccesshelper-dynamicrangetype-e.md) | 枚举，媒体文件的动态范围类型。 |
-| [PhotoSubtype](arkts-medialibrary-sendablephotoaccesshelper-photosubtype-e.md) | 枚举，不同[PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i.md#photoasset)的类型。 |
+| [PhotoSubtype](arkts-medialibrary-sendablephotoaccesshelper-photosubtype-e.md) | 枚举，不同[PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i.md)的类型。 |
 | [PhotoType](arkts-medialibrary-sendablephotoaccesshelper-phototype-e.md) | 枚举，媒体文件类型。 |
 
 <!--Del-->
@@ -68,7 +70,7 @@
 | [AlbumSubtype](arkts-medialibrary-sendablephotoaccesshelper-albumsubtype-e-sys.md) | 枚举，相册子类型，表示具体的相册类型。 |
 | [AlbumType](arkts-medialibrary-sendablephotoaccesshelper-albumtype-e-sys.md) | 枚举，相册类型，表示是用户相册还是系统预置相册。 |
 | [MovingPhotoEffectMode](arkts-medialibrary-sendablephotoaccesshelper-movingphotoeffectmode-e-sys.md) | Enumeration of moving photo effect mode. |
-| [PhotoSubtype](arkts-medialibrary-sendablephotoaccesshelper-photosubtype-e-sys.md) | 枚举，不同[PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i.md#photoasset)的类型。 |
+| [PhotoSubtype](arkts-medialibrary-sendablephotoaccesshelper-photosubtype-e-sys.md) | 枚举，不同[PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i.md)的类型。 |
 | [PositionType](arkts-medialibrary-sendablephotoaccesshelper-positiontype-e-sys.md) | Photo asset position |
 | [ThumbnailVisibility](arkts-medialibrary-sendablephotoaccesshelper-thumbnailvisibility-e-sys.md) | Ability to access thumbnail |
 <!--DelEnd-->

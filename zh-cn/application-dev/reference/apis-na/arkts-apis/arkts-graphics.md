@@ -6,10 +6,10 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [borderRadiuses](arkts-na-graphics-borderradiuses-f.md#borderradiuses) | 获取所有边都设置为相同半径的BorderRadiuses对象。 |
-| [borderStyles](arkts-na-graphics-borderstyles-f.md#borderstyles) |  |
-| [edgeColors](arkts-na-graphics-edgecolors-f.md#edgecolors) |  |
-| [edgeWidths](arkts-na-graphics-edgewidths-f.md#edgewidths) |  |
+| [borderRadiuses](arkts-na-graphics-borderradiuses-f.md) | 获取所有边都设置为相同半径的BorderRadiuses对象。 |
+| [borderStyles](arkts-na-graphics-borderstyles-f.md) |  |
+| [edgeColors](arkts-na-graphics-edgecolors-f.md) |  |
+| [edgeWidths](arkts-na-graphics-edgewidths-f.md) |  |
 
 ### 类
 

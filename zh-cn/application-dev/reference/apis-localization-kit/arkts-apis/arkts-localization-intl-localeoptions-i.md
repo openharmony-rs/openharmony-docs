@@ -1,10 +1,8 @@
-# LocaleOptions
+# LocaleOptions(国际化-Intl)
 
 > 从API version 6开始支持，从API version 20开始废弃，以calendar为例， > 区域初始化配置项。从API version 9开始，LocaleOptions属性由必填改为可选。 > **说明：** > > - calendar：不同取值的含义请参考[设置日历和历法表1](../../../internationalization/i18n-calendar.md)。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -13,6 +11,12 @@
 <!--Device-intl-export interface LocaleOptions--><!--Device-intl-export interface LocaleOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
+
+## 导入模块
+
+```TypeScript
+import { intl } from '@kit.LocalizationKit';
+```
 
 ## calendar
 
@@ -25,8 +29,6 @@ calendar?: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -52,8 +54,6 @@ caseFirst?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.caseFirst](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale#casefirst)
@@ -77,8 +77,6 @@ collation?: string
 **类型：** string
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 
@@ -104,8 +102,6 @@ hourCycle?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.hourCycle](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale#hourcycle)
@@ -130,8 +126,6 @@ numberingSystem?: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 20
 
 **替代接口：** [Intl.LocaleOptions.numberingSystem](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale#numberingsystem)
@@ -155,8 +149,6 @@ true表示将数字字符视为数字进行排序处理，false表示将数字�
 **类型：** boolean
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 20
 

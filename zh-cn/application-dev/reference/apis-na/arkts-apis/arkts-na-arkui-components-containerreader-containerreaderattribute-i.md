@@ -6,13 +6,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare interface ContainerReaderAttribute--><!--Device-unnamed-export declare interface ContainerReaderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## attributeModifier
 
@@ -22,9 +25,7 @@ attributeModifier(modifier: AttributeModifier<ContainerReaderAttribute> | Attrib
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ContainerReaderAttribute-attributeModifier(modifier: AttributeModifier<ContainerReaderAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-ContainerReaderAttribute-attributeModifier(modifier: AttributeModifier<ContainerReaderAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -32,7 +33,7 @@ attributeModifier(modifier: AttributeModifier<ContainerReaderAttribute> | Attrib
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | AttributeModifier&lt;[ContainerReaderAttribute](arkts-na-arkui-components-containerreader-containerreaderattribute-i.md)&gt; \| AttributeModifier&lt;CommonMethod&gt; \| undefined | 是 |  |
+| modifier | AttributeModifier&lt;[ContainerReaderAttribute](../../apis-arkui/arkts-apis/arkts-arkui-arkui-components-containerreader-containerreaderattribute-c.md)&gt; \| AttributeModifier&lt;CommonMethod&gt; \| undefined | 是 |  |
 
 **返回值：**
 
@@ -48,9 +49,7 @@ breakpointConfig(value?: BreakpointOptions): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ContainerReaderAttribute-breakpointConfig(value?: BreakpointOptions): this--><!--Device-ContainerReaderAttribute-breakpointConfig(value?: BreakpointOptions): this-End-->
 
@@ -58,7 +57,7 @@ breakpointConfig(value?: BreakpointOptions): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BreakpointOptions](arkts-na-arkui-components-containerreader-breakpointoptions-i.md) | 否 |  |
+| value | [BreakpointOptions](../../apis-arkui/arkts-apis/arkts-arkui-arkui-components-containerreader-breakpointoptions-i.md) | 否 |  |
 
 **返回值：**
 
@@ -74,9 +73,7 @@ setContainerReaderOptions(value: ContainerReaderInfo): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ContainerReaderAttribute-setContainerReaderOptions(value: ContainerReaderInfo): this--><!--Device-ContainerReaderAttribute-setContainerReaderOptions(value: ContainerReaderInfo): this-End-->
 
@@ -84,7 +81,7 @@ setContainerReaderOptions(value: ContainerReaderInfo): this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ContainerReaderInfo](arkts-na-arkui-components-containerreader-containerreaderinfo-i.md) | 是 |  |
+| value | [ContainerReaderInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-components-containerreader-containerreaderinfo-i.md) | 是 |  |
 
 **返回值：**
 
@@ -102,9 +99,7 @@ Sets the attribute modifier.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

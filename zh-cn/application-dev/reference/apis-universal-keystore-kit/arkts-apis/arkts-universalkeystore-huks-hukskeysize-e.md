@@ -4,10 +4,6 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-huks-export enum HuksKeySize--><!--Device-huks-export enum HuksKeySize-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -21,10 +17,6 @@ HUKS_RSA_KEY_SIZE_512 = 512
 表示使用RSA算法的密钥长度为512bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -44,10 +36,6 @@ HUKS_RSA_KEY_SIZE_768 = 768
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_768 = 768-End-->
@@ -65,10 +53,6 @@ HUKS_RSA_KEY_SIZE_1024 = 1024
 表示使用RSA算法的密钥长度为1024bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -88,10 +72,6 @@ HUKS_RSA_KEY_SIZE_2048 = 2048
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_2048 = 2048-End-->
@@ -109,10 +89,6 @@ HUKS_RSA_KEY_SIZE_3072 = 3072
 表示使用RSA算法的密钥长度为3072bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -132,10 +108,6 @@ HUKS_RSA_KEY_SIZE_4096 = 4096
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_RSA_KEY_SIZE_4096 = 4096-End-->
@@ -153,10 +125,6 @@ HUKS_ECC_KEY_SIZE_224 = 224
 表示使用ECC算法的密钥长度为224bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -176,10 +144,6 @@ HUKS_ECC_KEY_SIZE_256 = 256
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_256 = 256-End-->
@@ -197,10 +161,6 @@ HUKS_ECC_KEY_SIZE_384 = 384
 表示使用ECC算法的密钥长度为384bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -220,10 +180,6 @@ HUKS_ECC_KEY_SIZE_521 = 521
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_521 = 521--><!--Device-HuksKeySize-HUKS_ECC_KEY_SIZE_521 = 521-End-->
@@ -242,10 +198,6 @@ HUKS_AES_KEY_SIZE_128 = 128
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_128 = 128-End-->
@@ -261,10 +213,6 @@ HUKS_AES_KEY_SIZE_192 = 192
 表示使用AES算法的密钥长度为192bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -282,10 +230,6 @@ HUKS_AES_KEY_SIZE_256 = 256
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_256 = 256-End-->
@@ -302,8 +246,6 @@ HUKS_AES_KEY_SIZE_512 = 512
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 11
 
 <!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512--><!--Device-HuksKeySize-HUKS_AES_KEY_SIZE_512 = 512-End-->
@@ -319,10 +261,6 @@ HUKS_CURVE25519_KEY_SIZE_256 = 256
 表示使用CURVE25519算法的密钥长度为256bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -342,10 +280,6 @@ HUKS_DH_KEY_SIZE_2048 = 2048
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_2048 = 2048-End-->
@@ -363,10 +297,6 @@ HUKS_DH_KEY_SIZE_3072 = 3072
 表示使用DH算法的密钥长度为3072bit。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -386,10 +316,6 @@ HUKS_DH_KEY_SIZE_4096 = 4096
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096--><!--Device-HuksKeySize-HUKS_DH_KEY_SIZE_4096 = 4096-End-->
@@ -407,10 +333,6 @@ HUKS_SM2_KEY_SIZE_256 = 256
 表示SM2算法的密钥长度为256bit。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -430,10 +352,6 @@ HUKS_SM4_KEY_SIZE_128 = 128
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128--><!--Device-HuksKeySize-HUKS_SM4_KEY_SIZE_128 = 128-End-->
@@ -452,10 +370,6 @@ HUKS_DES_KEY_SIZE_64 = 64
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64--><!--Device-HuksKeySize-HUKS_DES_KEY_SIZE_64 = 64-End-->
@@ -471,10 +385,6 @@ HUKS_3DES_KEY_SIZE_128 = 128
 表示3DES算法的密钥长度为128bit。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -492,10 +402,6 @@ HUKS_3DES_KEY_SIZE_192 = 192
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192--><!--Device-HuksKeySize-HUKS_3DES_KEY_SIZE_192 = 192-End-->
@@ -511,10 +417,6 @@ HUKS_ML_DSA_KEY_PARAM_SET_44 = 44
 ML-DSA-44参数集。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -532,10 +434,6 @@ ML-DSA-65参数集。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_65 = 65--><!--Device-HuksKeySize-HUKS_ML_DSA_KEY_PARAM_SET_65 = 65-End-->
@@ -551,10 +449,6 @@ HUKS_ML_DSA_KEY_PARAM_SET_87 = 87
 ML-DSA-87参数集。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -572,10 +466,6 @@ ML-KEM-768参数集。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_768 = 768--><!--Device-HuksKeySize-HUKS_ML_KEM_KEY_PARAM_SET_768 = 768-End-->
@@ -591,10 +481,6 @@ HUKS_ML_KEM_KEY_PARAM_SET_1024 = 1024
 ML-KEM-1024参数集。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

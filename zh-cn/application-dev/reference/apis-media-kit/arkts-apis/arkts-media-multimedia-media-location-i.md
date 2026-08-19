@@ -4,13 +4,15 @@ Provides the geographical location definitions for media resources.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface Location--><!--Device-unnamed-interface Location-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## latitude
 
@@ -23,10 +25,6 @@ Latitude.
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Location-latitude: double--><!--Device-Location-latitude: double-End-->
 
@@ -43,10 +41,6 @@ Longitude.
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Location-longitude: double--><!--Device-Location-longitude: double-End-->
 

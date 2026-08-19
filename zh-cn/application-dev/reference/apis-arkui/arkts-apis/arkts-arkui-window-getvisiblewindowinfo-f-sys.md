@@ -1,5 +1,13 @@
 # getVisibleWindowInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## getVisibleWindowInfo
 
 ```TypeScript
@@ -9,10 +17,6 @@ function getVisibleWindowInfo(): Promise<Array<WindowInfo>>
 获取当前屏幕的可见主窗口（未退至后台的主窗口）信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本18+：ohos.permission.VISIBLE_WINDOW_INFO
@@ -38,7 +42,7 @@ function getVisibleWindowInfo(): Promise<Array<WindowInfo>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission.<br>**适用版本：** 18+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API.<br>**适用版本：** 12 - 17 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -4,15 +4,17 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-networkManager-interface AddFilterRule--><!--Device-networkManager-interface AddFilterRule-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
 
 ## action
 
@@ -25,10 +27,6 @@ action: Action
 **类型：** Action
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +48,6 @@ ip目标地址。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AddFilterRule-destAddr?: string--><!--Device-AddFilterRule-destAddr?: string-End-->
@@ -73,10 +67,6 @@ ip目标端口。
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,10 +88,6 @@ direction: Direction
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AddFilterRule-direction: Direction--><!--Device-AddFilterRule-direction: Direction-End-->
@@ -121,10 +107,6 @@ method: AddMethod
 **类型：** [AddMethod](arkts-mdm-networkmanager-addmethod-e-sys.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -146,10 +128,6 @@ protocol?: Protocol
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AddFilterRule-protocol?: Protocol--><!--Device-AddFilterRule-protocol?: Protocol-End-->
@@ -169,10 +147,6 @@ ruleNo?: number
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -194,10 +168,6 @@ ip源地址。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AddFilterRule-srcAddr?: string--><!--Device-AddFilterRule-srcAddr?: string-End-->
@@ -218,10 +188,6 @@ ip源端口。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AddFilterRule-srcPort?: string--><!--Device-AddFilterRule-srcPort?: string-End-->
@@ -241,10 +207,6 @@ uid?: string
 **类型：** string
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

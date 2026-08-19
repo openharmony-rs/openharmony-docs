@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-rpc-class Ashmem--><!--Device-rpc-class Ashmem-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
+
+## 导入模块
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+```
 
 ## closeAshmem
 
@@ -22,15 +24,11 @@ closeAshmem(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-closeAshmem(): void--><!--Device-Ashmem-closeAshmem(): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -53,10 +51,6 @@ static create(name: string, size: int): Ashmem
 静态方法，根据指定的名称和大小创建Ashmem对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Ashmem-static create(name: string, size: int): Ashmem--><!--Device-Ashmem-static create(name: string, size: int): Ashmem-End-->
 
@@ -81,7 +75,7 @@ static create(name: string, size: int): Ashmem
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The Ashmem name passed is empty; 4.The Ashmem size passed is less than or equal to 0. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -110,10 +104,6 @@ static create(ashmem: Ashmem): Ashmem
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-static create(ashmem: Ashmem): Ashmem--><!--Device-Ashmem-static create(ashmem: Ashmem): Ashmem-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -136,7 +126,7 @@ static create(ashmem: Ashmem): Ashmem
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The passed parameter is not an Ashmem object; 3.The ashmem instance for obtaining packaging is empty. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -165,8 +155,6 @@ static createAshmem(name: string, size: number): Ashmem
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** create()
@@ -188,7 +176,7 @@ static createAshmem(name: string, size: number): Ashmem
 | --- | --- |
 | [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回创建的Ashmem对象；如果创建失败，返回null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -214,8 +202,6 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** create()
@@ -236,7 +222,7 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 | --- | --- |
 | [Ashmem](arkts-ipc-rpc-ashmem-c.md) | 返回创建的Ashmem对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -262,10 +248,6 @@ getAshmemSize(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-getAshmemSize(): int--><!--Device-Ashmem-getAshmemSize(): int-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -276,7 +258,7 @@ getAshmemSize(): int
 | --- | --- |
 | int | 返回Ashmem对象的内存大小。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -301,8 +283,6 @@ mapAshmem(mapType: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [mapTypedAshmem](#maptypedashmem)(mapType: int)
@@ -323,7 +303,7 @@ mapAshmem(mapType: number): boolean
 | --- | --- |
 | boolean | true：映射成功，false：映射失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -348,8 +328,6 @@ mapReadAndWriteAshmem(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [mapReadWriteAshmem](#mapreadwriteashmem)()
@@ -364,7 +342,7 @@ mapReadAndWriteAshmem(): boolean
 | --- | --- |
 | boolean | true：映射成功，false：映射失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -389,8 +367,6 @@ mapReadOnlyAshmem(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [mapReadonlyAshmem](#mapreadonlyashmem)()
@@ -405,7 +381,7 @@ mapReadOnlyAshmem(): boolean
 | --- | --- |
 | boolean | true：映射成功，false：映射失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -430,10 +406,6 @@ mapReadWriteAshmem(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-mapReadWriteAshmem(): void--><!--Device-Ashmem-mapReadWriteAshmem(): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -444,7 +416,7 @@ mapReadWriteAshmem(): void
 | --- | --- |
 | [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -471,10 +443,6 @@ mapReadonlyAshmem(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-mapReadonlyAshmem(): void--><!--Device-Ashmem-mapReadonlyAshmem(): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -485,7 +453,7 @@ mapReadonlyAshmem(): void
 | --- | --- |
 | [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -512,10 +480,6 @@ mapTypedAshmem(mapType: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-mapTypedAshmem(mapType: int): void--><!--Device-Ashmem-mapTypedAshmem(mapType: int): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -533,7 +497,7 @@ mapTypedAshmem(mapType: int): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The passed mapType exceeds the maximum protection level. |
 | [1900001](../errorcode-rpc.md#1900001-系统调用mmap失败) | Failed to call mmap. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -559,8 +523,6 @@ readAshmem(size: number, offset: number): number[]
 从此Ashmem对象关联的共享文件中读取数据。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -590,7 +552,7 @@ readAshmem(size: number, offset: number): number[]
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -621,10 +583,6 @@ readDataFromAshmem(size: int, offset: int): ArrayBuffer
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-readDataFromAshmem(size: int, offset: int): ArrayBuffer--><!--Device-Ashmem-readDataFromAshmem(size: int, offset: int): ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -649,7 +607,7 @@ readDataFromAshmem(size: int, offset: int): ArrayBuffer
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900004](../errorcode-rpc.md#1900004-共享内存读数据失败) | Failed to read data from the shared memory. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -686,8 +644,6 @@ readFromAshmem(size: number, offset: number): number[]
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [readDataFromAshmem](#readdatafromashmem)(size: int, offset: int)
@@ -709,7 +665,7 @@ readFromAshmem(size: number, offset: number): number[]
 | --- | --- |
 | number[] | 返回读取的数据。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -739,8 +695,6 @@ setProtection(protectionType: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [setProtectionType](#setprotectiontype)(protectionType: int)
@@ -761,7 +715,7 @@ setProtection(protectionType: number): boolean
 | --- | --- |
 | boolean | true：设置成功，false：设置失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -787,10 +741,6 @@ setProtectionType(protectionType: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-setProtectionType(protectionType: int): void--><!--Device-Ashmem-setProtectionType(protectionType: int): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -808,7 +758,7 @@ setProtectionType(protectionType: int): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match. |
 | [1900002](../errorcode-rpc.md#1900002-系统调用ioctl失败) | Failed to call ioctl. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -835,15 +785,11 @@ unmapAshmem(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-unmapAshmem(): void--><!--Device-Ashmem-unmapAshmem(): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -866,8 +812,6 @@ writeAshmem(buf: number[], size: number, offset: number): void
 将数据写入此Ashmem对象关联的共享文件。 > **说明：** > > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem)进行映射。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 11
 
@@ -892,7 +836,7 @@ writeAshmem(buf: number[], size: number, offset: number): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The element does not exist in the array. |
 | [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -921,10 +865,6 @@ writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void--><!--Device-Ashmem-writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -944,7 +884,7 @@ writeDataToAshmem(buf: ArrayBuffer, size: int, offset: int): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information. |
 | [1900003](../errorcode-rpc.md#1900003-共享内存写数据失败) | Failed to write data to the shared memory. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -978,8 +918,6 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [writeDataToAshmem](#writedatatoashmem)(buf: ArrayBuffer, size: int, offset: int)
@@ -1002,7 +940,7 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 | --- | --- |
 | boolean | true：如果数据写入成功，false：在其他情况下，如数据写入越界或未获得写入权限。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
@@ -1034,10 +972,6 @@ static readonly PROT_EXEC: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-static readonly PROT_EXEC: number--><!--Device-Ashmem-static readonly PROT_EXEC: number-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -1055,10 +989,6 @@ static readonly PROT_NONE: number
 **默认值：** 0
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 <!--Device-Ashmem-static readonly PROT_NONE: number--><!--Device-Ashmem-static readonly PROT_NONE: number-End-->
 
@@ -1078,10 +1008,6 @@ static readonly PROT_READ: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-Ashmem-static readonly PROT_READ: number--><!--Device-Ashmem-static readonly PROT_READ: number-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -1099,10 +1025,6 @@ static readonly PROT_WRITE: number
 **默认值：** 2
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 <!--Device-Ashmem-static readonly PROT_WRITE: number--><!--Device-Ashmem-static readonly PROT_WRITE: number-End-->
 

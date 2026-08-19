@@ -1,5 +1,11 @@
 # clean（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudSyncManager } from '@kit.CoreFileKit';
+```
+
 ## clean
 
 ```TypeScript
@@ -9,10 +15,6 @@ function clean(accountId: string, appActions: Record<string, Action>): Promise<v
 异步方法清理本地云相关数据。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -27,7 +29,7 @@ function clean(accountId: string, appActions: Record<string, Action>): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
-| appActions | Record&lt;string, Action&gt; | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md#action系统接口)为清理动 作类型。 |
+| appActions | Record&lt;string, Action&gt; | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md)为清理动 作类型。 |
 
 **返回值：**
 
@@ -43,7 +45,7 @@ function clean(accountId: string, appActions: Record<string, Action>): Promise<v
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -89,10 +91,6 @@ function clean(accountId: string, appActions: Record<string, Action>, callback: 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 <!--Device-cloudSyncManager-function clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback<void>): void--><!--Device-cloudSyncManager-function clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback<void>): void-End-->
@@ -106,8 +104,8 @@ function clean(accountId: string, appActions: Record<string, Action>, callback: 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | accountId | string | 是 | 账号Id。 |
-| appActions | Record&lt;string, Action&gt; | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md#action系统接口)为清理动 作类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步方法清理本地云相关数据。 |
+| appActions | Record&lt;string, Action&gt; | 是 | 清理动作类型，string类型为待清理应用包名， [Action](arkts-corefile-cloudsyncmanager-action-e-sys.md)为清理动 作类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。异步方法清理本地云相关数据。 |
 
 **错误码：**
 
@@ -117,7 +115,7 @@ function clean(accountId: string, appActions: Record<string, Action>, callback: 
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

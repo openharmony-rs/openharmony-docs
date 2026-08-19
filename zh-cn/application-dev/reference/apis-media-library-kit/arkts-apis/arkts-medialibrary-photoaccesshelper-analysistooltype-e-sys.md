@@ -4,10 +4,6 @@
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-export enum AnalysisToolType--><!--Device-photoAccessHelper-export enum AnalysisToolType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ ANALYSIS_BASE_TOOL_TYPE = 0
 默认工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ IMAGE_RETRIEVAL_TOOL_TYPE = 1
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisToolType-IMAGE_RETRIEVAL_TOOL_TYPE = 1--><!--Device-AnalysisToolType-IMAGE_RETRIEVAL_TOOL_TYPE = 1-End-->
@@ -67,10 +55,6 @@ NEGATIVE_FILTER_TOOL_TYPE = 2
 负向过滤工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ FACE_RECOGNITION_TOOL_TYPE = 3
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisToolType-FACE_RECOGNITION_TOOL_TYPE = 3--><!--Device-AnalysisToolType-FACE_RECOGNITION_TOOL_TYPE = 3-End-->
@@ -111,10 +91,6 @@ BATCH_SIMILARITY_SELECTION_TOOL_TYPE = 4
 批量相似度选择工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,10 +110,6 @@ BALANCED_SELECTION_TOOL_TYPE = 5
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisToolType-BALANCED_SELECTION_TOOL_TYPE = 5--><!--Device-AnalysisToolType-BALANCED_SELECTION_TOOL_TYPE = 5-End-->
@@ -155,10 +127,6 @@ COVER_GRID_SELECTION_TOOL_TYPE = 6
 封面优选工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,10 +146,6 @@ HIGHLIGHT_TOOL_TYPE = 7
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisToolType-HIGHLIGHT_TOOL_TYPE = 7--><!--Device-AnalysisToolType-HIGHLIGHT_TOOL_TYPE = 7-End-->
@@ -199,10 +163,6 @@ SEARCH_TOOL_TYPE = 8
 搜索工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -222,10 +182,6 @@ SELECTION_TOOL_TYPE = 9
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisToolType-SELECTION_TOOL_TYPE = 9--><!--Device-AnalysisToolType-SELECTION_TOOL_TYPE = 9-End-->
@@ -243,10 +199,6 @@ PORTRAIT_ALBUM_TOOL_TYPE = 10
 人像相册工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -266,10 +218,6 @@ CLASSIFY_ALBUM_TOOL_TYPE = 11
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisToolType-CLASSIFY_ALBUM_TOOL_TYPE = 11--><!--Device-AnalysisToolType-CLASSIFY_ALBUM_TOOL_TYPE = 11-End-->
@@ -287,10 +235,6 @@ SIMILARITY_CLEANING_TOOL_TYPE = 12
 相似性清理工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,10 +254,6 @@ EDIT_RECOMMENDATION_TOOL_TYPE = 13
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AnalysisToolType-EDIT_RECOMMENDATION_TOOL_TYPE = 13--><!--Device-AnalysisToolType-EDIT_RECOMMENDATION_TOOL_TYPE = 13-End-->
@@ -331,10 +271,6 @@ AI_SEARCH_TOOL_TYPE = 14
 AI搜索工具类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

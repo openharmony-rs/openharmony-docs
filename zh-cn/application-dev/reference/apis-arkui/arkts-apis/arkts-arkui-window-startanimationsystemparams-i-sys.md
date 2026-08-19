@@ -4,15 +4,19 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-interface StartAnimationSystemParams--><!--Device-window-interface StartAnimationSystemParams-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## animationConfig
 
@@ -25,10 +29,6 @@ animationConfig?: WindowAnimationConfig
 **类型：** [WindowAnimationConfig](arkts-arkui-window-windowanimationconfig-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig--><!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig-End-->
 
@@ -47,10 +47,6 @@ type: AnimationType
 **类型：** [AnimationType](arkts-arkui-window-animationtype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-StartAnimationSystemParams-type: AnimationType--><!--Device-StartAnimationSystemParams-type: AnimationType-End-->
 

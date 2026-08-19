@@ -1,10 +1,8 @@
 # DistributedObject
 
-表示一个分布式数据对象。在使用以下接口前，需调用[createDistributedObject()](arkts-arkdata-distributeddataobject-createdistributedobject-f.md#createdistributedobject)获取 DistributedObject对象。
+表示一个分布式数据对象。在使用以下接口前，需调用[createDistributedObject()](arkts-arkdata-distributeddataobject-createdistributedobject-f.md)获取 DistributedObject对象。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -14,7 +12,13 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
-## off_change
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
+
+## off('change')
 
 ```TypeScript
 off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => void): void
@@ -23,8 +27,6 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 当不再进行数据变更监听时，使用此接口删除对象的变更监听。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -41,7 +43,7 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 否 | 需要删除的数据变更回调，若不设置则删除该对象所有的数据变更回调。 <br>sessionId：标识变更对象的sessionId； <br>fields：标识对象变更的属性名。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class SourceObject {
@@ -71,7 +73,7 @@ g_object.off('change', (sessionId: string, fields: Array<string>) => {
 g_object.off('change');
 ```
 
-## off_status
+## off('status')
 
 ```TypeScript
 off(
@@ -83,8 +85,6 @@ off(
 当不再进行对象上下线监听时，使用此接口删除对象的上下线监听。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -101,7 +101,7 @@ off(
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
 | callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) =&gt; void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。 <br>sessionId：标识变更对象的sessionId； <br>networkId：标识对象设备； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class SourceObject {
@@ -126,7 +126,7 @@ g_object.off('status', (sessionId: string, networkId: string, status: 'online' |
 g_object.off('status');
 ```
 
-## on_change
+## on('change')
 
 ```TypeScript
 on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void): void
@@ -135,8 +135,6 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void)
 监听分布式数据对象的变更。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -153,7 +151,7 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void)
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 是 | 变更回调对象实例。 <br>sessionId：标识变更对象的sessionId； <br>fields：标识对象变更的属性名。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class SourceObject {
@@ -180,7 +178,7 @@ g_object.on('change', (sessionId: string, fields: Array<string>) => {
 });
 ```
 
-## on_status
+## on('status')
 
 ```TypeScript
 on(
@@ -192,8 +190,6 @@ on(
 监听分布式数据对象的上下线。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -210,7 +206,7 @@ on(
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
 | callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) =&gt; void | 是 | 监听上下线回调实例。 <br>sessionId：标识变更对象的sessionId； <br>networkId：标识对象设备； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class SourceObject {
@@ -243,8 +239,6 @@ setSessionId(sessionId?: string): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [setSessionId](arkts-arkdata-distributeddataobject-dataobject-i.md#setsessionid)(sessionId: string, callback: AsyncCallback&lt;void&gt;)
@@ -267,7 +261,7 @@ setSessionId(sessionId?: string): boolean
 | --- | --- |
 | boolean | true：标识设置sessionId成功。 <br>false：标识设置sessionId失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class SourceObject {

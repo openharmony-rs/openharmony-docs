@@ -4,6 +4,8 @@
 
 定义密钥协商接口。
 
+**引用文件：** <CryptoArchitectureKit/crypto_key_agreement.h>
+
 **库：** libohcrypto.so
 
 **系统能力：** SystemCapability.Security.CryptoFramework
@@ -53,7 +55,7 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} algoName或ctx为NULL。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密钥协商操作失败。</li><br>         </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} algoName或ctx为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密钥协商操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -85,7 +87,7 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ct
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx、privkey、pubkey或secret为NULL。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>         <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密钥协商操作失败。可能的原因：公钥和私钥不属于同一曲线或算法，或公钥数据无效。</li><br>         </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx、privkey、pubkey或secret为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密钥协商操作失败。可能的原因：公钥和私钥不属于同一曲线或算法，或公钥数据无效。</li>          </ul> |
 
 ### OH_CryptoKeyAgreement_Destroy()
 

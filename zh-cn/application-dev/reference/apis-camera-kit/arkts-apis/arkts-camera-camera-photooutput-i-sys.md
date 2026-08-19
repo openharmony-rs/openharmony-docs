@@ -1,18 +1,21 @@
 # PhotoOutput
 
-拍照会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md#cameraoutput)。
+拍照会话中使用的输出信息，继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
-**继承/实现关系：** PhotoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md#cameraoutput)
+**继承/实现关系：** PhotoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface PhotoOutput--><!--Device-camera-interface PhotoOutput-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## burstCapture
 
@@ -23,10 +26,6 @@ burstCapture(setting: PhotoCaptureSetting): Promise<void>
 Starts the burst mode, in which users can capture a series of photos in quick succession. This API is generally used in photo mode. After the burst mode starts, the bottom layer continues displaying photos. You can call [confirmCapture](#confirmcapture) to cancel the burst mode. This API uses a promise to return the result.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-burstCapture(setting: PhotoCaptureSetting): Promise<void>--><!--Device-PhotoOutput-burstCapture(setting: PhotoCaptureSetting): Promise<void>-End-->
 
@@ -55,7 +54,7 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -90,10 +89,6 @@ Confirms photo capture. This API is generally used in night photo mode when user
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-confirmCapture(): void--><!--Device-PhotoOutput-confirmCapture(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -108,7 +103,7 @@ Confirms photo capture. This API is generally used in night photo mode when user
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -133,10 +128,6 @@ Enables deferred delivery of a certain type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-deferImageDelivery(type: DeferredDeliveryImageType): void--><!--Device-PhotoOutput-deferImageDelivery(type: DeferredDeliveryImageType): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -158,7 +149,7 @@ Enables deferred delivery of a certain type.
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function deferImageDelivery(photoOutput: camera.PhotoOutput, type: camera.DeferredDeliveryImageType): void {
@@ -175,10 +166,6 @@ enableAutoCloudImageEnhancement(enabled: boolean): void
 Enable auto cloud image enhancement
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-enableAutoCloudImageEnhancement(enabled: boolean): void--><!--Device-PhotoOutput-enableAutoCloudImageEnhancement(enabled: boolean): void-End-->
 
@@ -210,10 +197,6 @@ Enables automatic high quality for photos. Before using this API, call [isAutoHi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-enableAutoHighQualityPhoto(enabled: boolean): void--><!--Device-PhotoOutput-enableAutoHighQualityPhoto(enabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -235,7 +218,7 @@ Enables automatic high quality for photos. Before using this API, call [isAutoHi
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -254,10 +237,6 @@ enableDepthDataDelivery(enabled: boolean): void
 Enable depth data delivery.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-enableDepthDataDelivery(enabled: boolean): void--><!--Device-PhotoOutput-enableDepthDataDelivery(enabled: boolean): void-End-->
 
@@ -290,10 +269,6 @@ Enable offline processing.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-enableOffline(): void--><!--Device-PhotoOutput-enableOffline(): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -317,10 +292,6 @@ enableOriginalImageGeneration(enabled: boolean): void
 Enable original image generation.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -353,10 +324,6 @@ Enables or disables the quick thumbnail feature. This API takes effect after [ad
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-enableQuickThumbnail(enabled: boolean): void--><!--Device-PhotoOutput-enableQuickThumbnail(enabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -378,7 +345,7 @@ Enables or disables the quick thumbnail feature. This API takes effect after [ad
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -423,10 +390,6 @@ Enable raw image image delivery.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-enableRawDelivery(enabled: boolean): void--><!--Device-PhotoOutput-enableRawDelivery(enabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -458,10 +421,6 @@ Confirm if the auto cloud image enhancement is supported.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-isAutoCloudImageEnhancementSupported(): boolean--><!--Device-PhotoOutput-isAutoCloudImageEnhancementSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -491,10 +450,6 @@ Checks whether automatic high quality is supported for photos.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-isAutoHighQualityPhotoSupported(): boolean--><!--Device-PhotoOutput-isAutoHighQualityPhotoSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -515,7 +470,7 @@ Checks whether automatic high quality is supported for photos.
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -534,10 +489,6 @@ isDeferredImageDeliveryEnabled(type: DeferredDeliveryImageType): boolean
 Checks whether deferred delivery of a certain type is enabled.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-isDeferredImageDeliveryEnabled(type: DeferredDeliveryImageType): boolean--><!--Device-PhotoOutput-isDeferredImageDeliveryEnabled(type: DeferredDeliveryImageType): boolean-End-->
 
@@ -566,7 +517,7 @@ Checks whether deferred delivery of a certain type is enabled.
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput, type: camera.DeferredDeliveryImageType): boolean {
@@ -585,10 +536,6 @@ isDeferredImageDeliverySupported(type: DeferredDeliveryImageType): boolean
 Checks whether deferred delivery of a certain type is supported.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-isDeferredImageDeliverySupported(type: DeferredDeliveryImageType): boolean--><!--Device-PhotoOutput-isDeferredImageDeliverySupported(type: DeferredDeliveryImageType): boolean-End-->
 
@@ -617,7 +564,7 @@ Checks whether deferred delivery of a certain type is supported.
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 function isDeferredImageDeliverySupported(photoOutput: camera.PhotoOutput, type: camera.DeferredDeliveryImageType): boolean {
@@ -636,10 +583,6 @@ isDepthDataDeliverySupported(): boolean
 Check if the depth data delivery is supported.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-isDepthDataDeliverySupported(): boolean--><!--Device-PhotoOutput-isDepthDataDeliverySupported(): boolean-End-->
 
@@ -671,10 +614,6 @@ Confirm if offline processing is supported.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-isOfflineSupported(): boolean--><!--Device-PhotoOutput-isOfflineSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -703,10 +642,6 @@ isOriginalImageGenerationSupported(): boolean
 Confirm if original image generation supported.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -739,10 +674,6 @@ Checks whether the quick thumbnail feature is supported. This API takes effect a
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-isQuickThumbnailSupported(): boolean--><!--Device-PhotoOutput-isQuickThumbnailSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -762,7 +693,7 @@ Checks whether the quick thumbnail feature is supported. This API takes effect a
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -807,10 +738,6 @@ Confirm if the raw image delivery is supported
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-isRawDeliverySupported(): boolean--><!--Device-PhotoOutput-isRawDeliverySupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -841,10 +768,6 @@ Unsubscribes deferred photo proxy available event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-offDeferredPhotoProxyAvailable(callback?: AsyncCallback<DeferredPhotoProxy>): void--><!--Device-PhotoOutput-offDeferredPhotoProxyAvailable(callback?: AsyncCallback<DeferredPhotoProxy>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -855,7 +778,7 @@ Unsubscribes deferred photo proxy available event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 否 | Callback used to get the DeferredPhotoProxy. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 否 | Callback used to get the DeferredPhotoProxy. |
 
 **错误码：**
 
@@ -873,10 +796,6 @@ Unsubscribes offline Delivery finished events. This method is valid only after e
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-offOfflineDeliveryFinished(callback?: AsyncCallback<void>): void--><!--Device-PhotoOutput-offOfflineDeliveryFinished(callback?: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -887,7 +806,7 @@ Unsubscribes offline Delivery finished events. This method is valid only after e
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | Callback used to get offline Delivery finished events. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | Callback used to get offline Delivery finished events. |
 
 **错误码：**
 
@@ -905,10 +824,6 @@ Unsubscribes from camera thumbnail events. This method is valid only after enabl
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-offQuickThumbnail(callback?: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoOutput-offQuickThumbnail(callback?: AsyncCallback<image.PixelMap>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -919,9 +834,9 @@ Unsubscribes from camera thumbnail events. This method is valid only after enabl
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 否 | Callback used to get the quick thumbnail. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 否 | Callback used to get the quick thumbnail. |
 
-## off_deferredPhotoProxyAvailable
+## off('deferredPhotoProxyAvailable')
 
 ```TypeScript
 off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback<DeferredPhotoProxy>): void
@@ -930,10 +845,6 @@ off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback<DeferredPhotoP
 Unsubscribes from events indicating available thumbnail proxies.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback<DeferredPhotoProxy>): void--><!--Device-PhotoOutput-off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback<DeferredPhotoProxy>): void-End-->
 
@@ -946,7 +857,7 @@ Unsubscribes from events indicating available thumbnail proxies.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deferredPhotoProxyAvailable' | 是 | Event type. The value is fixed at **'deferredPhotoProxyAvailable'**. The event can be listened for when a photoOutput instance is created. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('deferredPhotoProxyAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('deferredPhotoProxyAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
 
 **错误码：**
 
@@ -954,7 +865,7 @@ Unsubscribes from events indicating available thumbnail proxies.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -975,7 +886,7 @@ function unRegisterPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Ph
 }
 ```
 
-## off_offlineDeliveryFinished
+## off('offlineDeliveryFinished')
 
 ```TypeScript
 off(type: 'offlineDeliveryFinished', callback?: AsyncCallback<void>): void
@@ -984,10 +895,6 @@ off(type: 'offlineDeliveryFinished', callback?: AsyncCallback<void>): void
 Unsubscribes offline Delivery finished events. This method is valid only after enableOffline() is called.
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-off(type: 'offlineDeliveryFinished', callback?: AsyncCallback<void>): void--><!--Device-PhotoOutput-off(type: 'offlineDeliveryFinished', callback?: AsyncCallback<void>): void-End-->
 
@@ -1000,7 +907,7 @@ Unsubscribes offline Delivery finished events. This method is valid only after e
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'offlineDeliveryFinished' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | Callback used to get offline Delivery finished events. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 否 | Callback used to get offline Delivery finished events. |
 
 **错误码：**
 
@@ -1008,7 +915,7 @@ Unsubscribes offline Delivery finished events. This method is valid only after e
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## off_quickThumbnail
+## off('quickThumbnail')
 
 ```TypeScript
 off(type: 'quickThumbnail', callback?: AsyncCallback<image.PixelMap>): void
@@ -1017,10 +924,6 @@ off(type: 'quickThumbnail', callback?: AsyncCallback<image.PixelMap>): void
 Unsubscribes from quick thumbnail output events.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-off(type: 'quickThumbnail', callback?: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoOutput-off(type: 'quickThumbnail', callback?: AsyncCallback<image.PixelMap>): void-End-->
 
@@ -1033,9 +936,9 @@ Unsubscribes from quick thumbnail output events.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('quickThumbnail')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('quickThumbnail')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
 
-## 示例
+**示例**
 
 ```TypeScript
 function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
@@ -1053,10 +956,6 @@ Subscribes deferred photo proxy available event callback.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-onDeferredPhotoProxyAvailable(callback: AsyncCallback<DeferredPhotoProxy>): void--><!--Device-PhotoOutput-onDeferredPhotoProxyAvailable(callback: AsyncCallback<DeferredPhotoProxy>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -1067,7 +966,7 @@ Subscribes deferred photo proxy available event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 是 | Callback used to get the DeferredPhotoProxy. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 是 | Callback used to get the DeferredPhotoProxy. |
 
 **错误码：**
 
@@ -1085,10 +984,6 @@ Subscribes offline Delivery finished events. This method is valid only after ena
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-onOfflineDeliveryFinished(callback: AsyncCallback<void>): void--><!--Device-PhotoOutput-onOfflineDeliveryFinished(callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -1099,7 +994,7 @@ Subscribes offline Delivery finished events. This method is valid only after ena
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to get offline Delivery finished events. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to get offline Delivery finished events. |
 
 **错误码：**
 
@@ -1117,10 +1012,6 @@ Subscribes to camera thumbnail events. This method is valid only after enableQui
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoOutput-onQuickThumbnail(callback: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoOutput-onQuickThumbnail(callback: AsyncCallback<image.PixelMap>): void-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -1131,9 +1022,9 @@ Subscribes to camera thumbnail events. This method is valid only after enableQui
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback used to get the quick thumbnail. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback used to get the quick thumbnail. |
 
-## on_deferredPhotoProxyAvailable
+## on('deferredPhotoProxyAvailable')
 
 ```TypeScript
 on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback<DeferredPhotoProxy>): void
@@ -1142,10 +1033,6 @@ on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback<DeferredPhotoPro
 Subscribes to events indicating available thumbnail proxies. This API uses an asynchronous callback to return the result.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback<DeferredPhotoProxy>): void--><!--Device-PhotoOutput-on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback<DeferredPhotoProxy>): void-End-->
 
@@ -1158,7 +1045,7 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'deferredPhotoProxyAvailable' | 是 | Event type. The value is fixed at **'deferredPhotoProxyAvailable'**. The event can be listened for when a photoOutput instance is created. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 是 | Callback used to return the thumbnail proxy. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DeferredPhotoProxy](arkts-camera-camera-deferredphotoproxy-i-sys.md)&gt; | 是 | Callback used to return the thumbnail proxy. |
 
 **错误码：**
 
@@ -1166,7 +1053,7 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1187,7 +1074,7 @@ function registerPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Phot
 }
 ```
 
-## on_offlineDeliveryFinished
+## on('offlineDeliveryFinished')
 
 ```TypeScript
 on(type: 'offlineDeliveryFinished', callback: AsyncCallback<void>): void
@@ -1196,10 +1083,6 @@ on(type: 'offlineDeliveryFinished', callback: AsyncCallback<void>): void
 Subscribes offline Delivery finished events. This method is valid only after enableOffline() is called.
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-on(type: 'offlineDeliveryFinished', callback: AsyncCallback<void>): void--><!--Device-PhotoOutput-on(type: 'offlineDeliveryFinished', callback: AsyncCallback<void>): void-End-->
 
@@ -1212,7 +1095,7 @@ Subscribes offline Delivery finished events. This method is valid only after ena
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'offlineDeliveryFinished' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to get offline Delivery finished events. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to get offline Delivery finished events. |
 
 **错误码：**
 
@@ -1220,7 +1103,7 @@ Subscribes offline Delivery finished events. This method is valid only after ena
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-## on_quickThumbnail
+## on('quickThumbnail')
 
 ```TypeScript
 on(type: 'quickThumbnail', callback: AsyncCallback<image.PixelMap>): void
@@ -1229,10 +1112,6 @@ on(type: 'quickThumbnail', callback: AsyncCallback<image.PixelMap>): void
 Subscribes to quick thumbnail output events. This API uses an asynchronous callback to return the result. The listening takes effect after **enableQuickThumbnail(true)** is called.
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-PhotoOutput-on(type: 'quickThumbnail', callback: AsyncCallback<image.PixelMap>): void--><!--Device-PhotoOutput-on(type: 'quickThumbnail', callback: AsyncCallback<image.PixelMap>): void-End-->
 
@@ -1245,9 +1124,9 @@ Subscribes to quick thumbnail output events. This API uses an asynchronous callb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback that returns a PixelMap instance. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback that returns a PixelMap instance. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';
@@ -1303,10 +1182,6 @@ setEditData(editData: string): void
 Set edit data.
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

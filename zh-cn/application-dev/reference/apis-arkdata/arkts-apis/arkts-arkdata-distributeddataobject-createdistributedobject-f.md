@@ -1,5 +1,11 @@
 # createDistributedObject
 
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
+
 ## createDistributedObject
 
 ```TypeScript
@@ -10,11 +16,9 @@ function createDistributedObject(source: object): DistributedObject
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [create](arkts-arkdata-distributeddataobject-create-f.md#create)
+**替代接口：** [create](arkts-arkdata-distributeddataobject-create-f.md)
 
 <!--Device-distributedDataObject-function createDistributedObject(source: object): DistributedObject--><!--Device-distributedDataObject-function createDistributedObject(source: object): DistributedObject-End-->
 
@@ -32,7 +36,7 @@ function createDistributedObject(source: object): DistributedObject
 | --- | --- |
 | [DistributedObject](arkts-arkdata-distributeddataobject-distributedobject-i.md) | 创建完成的分布式数据对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 class SourceObject {

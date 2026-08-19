@@ -4,10 +4,6 @@ Enumerates the focus drive types.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum FocusDrivenType--><!--Device-camera-enum FocusDrivenType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -24,10 +20,6 @@ Automatic.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FocusDrivenType-AUTO = 0--><!--Device-FocusDrivenType-AUTO = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -43,10 +35,6 @@ FACE = 1
 Face-driven.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FocusDrivenType-FACE = 1--><!--Device-FocusDrivenType-FACE = 1-End-->
 

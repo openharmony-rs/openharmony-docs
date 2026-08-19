@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-camera-enum CameraType--><!--Device-camera-enum CameraType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -21,10 +17,6 @@ CAMERA_TYPE_DEFAULT = 0
 默认相机类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ CAMERA_TYPE_WIDE_ANGLE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraType-CAMERA_TYPE_WIDE_ANGLE = 1--><!--Device-CameraType-CAMERA_TYPE_WIDE_ANGLE = 1-End-->
@@ -61,10 +49,6 @@ CAMERA_TYPE_ULTRA_WIDE = 2
 超广角相机。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ CAMERA_TYPE_TELEPHOTO = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CameraType-CAMERA_TYPE_TELEPHOTO = 3--><!--Device-CameraType-CAMERA_TYPE_TELEPHOTO = 3-End-->
@@ -101,10 +81,6 @@ CAMERA_TYPE_TRUE_DEPTH = 4
 带景深信息的相机。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace stationary--><!--Device-unnamed-declare namespace stationary-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
+
+## 导入模块
+
+```TypeScript
+import { stationary } from '@kit.MultimodalAwarenessKit';
+```
 
 ## 汇总
 
@@ -18,9 +20,9 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [off_ActivityType](arkts-multimodalawareness-stationary-offactivitytype-f.md#offactivitytype) | 取消订阅设备状态服务。取消订阅后，将停止接收该状态相关的回调函数调用。调用off()时需要使用与on()相同的activity和event参数。 |
-| [on_ActivityType](arkts-multimodalawareness-stationary-onactivitytype-f.md#onactivitytype) | 订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。 |
-| [once_ActivityType](arkts-multimodalawareness-stationary-onceactivitytype-f.md#onceactivitytype) | 查询设备状态。通过callback回调返回查询结果，仅执行一次。使用callback异步回调。 |
+| [off_ActivityType](arkts-multimodalawareness-stationary-offactivitytype-f.md#off_activitytype) | 取消订阅设备状态服务。取消订阅后，将停止接收该状态相关的回调函数调用。调用off()时需要使用与on()相同的activity和event参数。 |
+| [on_ActivityType](arkts-multimodalawareness-stationary-onactivitytype-f.md#on_activitytype) | 订阅设备状态变化事件。当设备满足指定状态条件时，系统会触发回调函数上报状态变化事件。调用on()后，必须在不使用时调用off()取消订阅，避免多余的性能功耗开销。 |
+| [once_ActivityType](arkts-multimodalawareness-stationary-onceactivitytype-f.md#once_activitytype) | 查询设备状态。通过callback回调返回查询结果，仅执行一次。使用callback异步回调。 |
 
 ### 接口
 

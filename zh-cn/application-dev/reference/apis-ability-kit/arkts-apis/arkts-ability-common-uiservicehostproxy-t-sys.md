@@ -8,10 +8,6 @@ UIServiceHostProxy二级模块。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-common-export type UIServiceHostProxy = _UIServiceHostProxy--><!--Device-common-export type UIServiceHostProxy = _UIServiceHostProxy-End-->

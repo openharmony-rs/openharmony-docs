@@ -4,13 +4,15 @@ AdsBlockManager是ArkWeb框架中用于管理Web组件广告过滤功能的类�
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-webview-class AdsBlockManager--><!--Device-webview-class AdsBlockManager-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## addAdsBlockAllowedList
 
@@ -21,10 +23,6 @@ static addAdsBlockAllowedList(domainSuffixes: Array<string>): void
 向AdsBlockManager的AllowedList中添加一组域名，主要用于重新开启DisallowedList中的部分网站的广告过滤。 > **说明：** > > - 此接口设置的域名不会持久化，应用重启需要重新设置。 > > - AllowedList的优先级比DisallowedList高，例如，DisallowedList中配置了['example.com']，禁用了所有example.com域名下的网页，此时如果需要开启' > news.example.com'下的广告过滤，可以使用addAdsBlockAllowedList(['news.example.com'])。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -55,10 +53,6 @@ static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdsBlockManager-static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void--><!--Device-AdsBlockManager-static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void-End-->
@@ -88,10 +82,6 @@ static clearAdsBlockAllowedList(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdsBlockManager-static clearAdsBlockAllowedList(): void--><!--Device-AdsBlockManager-static clearAdsBlockAllowedList(): void-End-->
@@ -114,10 +104,6 @@ static clearAdsBlockDisallowedList(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdsBlockManager-static clearAdsBlockDisallowedList(): void--><!--Device-AdsBlockManager-static clearAdsBlockDisallowedList(): void-End-->
@@ -139,10 +125,6 @@ static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void
 从AdsBlockManager的AllowedList中删除一组域名。 > **说明：** > > - AdsBlockManager的AllowedList不会持久化，应用重启需要重新设置。删除不存在的条目不会触发异常。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -173,10 +155,6 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdsBlockManager-static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void--><!--Device-AdsBlockManager-static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void-End-->
@@ -205,10 +183,6 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 向Web组件中设置自定义的符合通用EasyList语法规则的广告过滤配置文件。 > **说明：** > > - 此接口设置的广告过滤规则，内部解析成功后会持久化存储，应用重启后不需要重复设置。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

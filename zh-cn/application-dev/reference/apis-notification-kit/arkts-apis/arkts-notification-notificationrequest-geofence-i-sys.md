@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface Geofence--><!--Device-unnamed-export interface Geofence-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -25,10 +21,6 @@ coordinateSystemType:CoordinateSystemType
 **类型：** [CoordinateSystemType](arkts-notification-notificationrequest-coordinatesystemtype-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Geofence-coordinateSystemType:CoordinateSystemType--><!--Device-Geofence-coordinateSystemType:CoordinateSystemType-End-->
 
@@ -48,10 +40,6 @@ delayTime?:int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Geofence-delayTime?:int--><!--Device-Geofence-delayTime?:int-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -69,10 +57,6 @@ latitude:double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Geofence-latitude:double--><!--Device-Geofence-latitude:double-End-->
 
@@ -92,10 +76,6 @@ longitude:double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Geofence-longitude:double--><!--Device-Geofence-longitude:double-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -114,10 +94,6 @@ monitorEvent:MonitorEvent
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Geofence-monitorEvent:MonitorEvent--><!--Device-Geofence-monitorEvent:MonitorEvent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -135,10 +111,6 @@ radius:double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Geofence-radius:double--><!--Device-Geofence-radius:double-End-->
 

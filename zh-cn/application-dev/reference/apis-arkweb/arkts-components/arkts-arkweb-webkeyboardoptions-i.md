@@ -4,13 +4,19 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface WebKeyboardOptions--><!--Device-unnamed-declare interface WebKeyboardOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## customKeyboard
 
@@ -24,10 +30,6 @@ customKeyboard?: CustomBuilder
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebKeyboardOptions-customKeyboard?: CustomBuilder--><!--Device-WebKeyboardOptions-customKeyboard?: CustomBuilder-End-->
@@ -40,15 +42,11 @@ customKeyboard?: CustomBuilder
 enterKeyType?: number
 ```
 
-指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-enterkeytype-e.md#enterkeytype)，该参数为可选参数，默认值为 UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。
+指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-enterkeytype-e.md)，该参数为可选参数，默认值为 UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。
 
 **类型：** number
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -67,10 +65,6 @@ useSystemKeyboard: boolean
 **类型：** boolean
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

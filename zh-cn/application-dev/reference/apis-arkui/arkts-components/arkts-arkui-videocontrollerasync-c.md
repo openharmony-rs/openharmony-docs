@@ -6,13 +6,14 @@ VideoControllerAsync是VideoController的异步版本，可以通过Promise获�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class VideoControllerAsync--><!--Device-unnamed-declare class VideoControllerAsync-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -23,10 +24,6 @@ constructor()
 VideoControllerAsync的构造函数。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +43,6 @@ exitFullscreen()
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -67,10 +60,6 @@ pause(): Promise<void>
 暂停播放视频，显示当前帧，再次播放时从当前位置继续播放。使用Promise异步回调。 只能在正在播放的状态下调用，其他情况下调用pause()方法会失败。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +85,6 @@ requestFullscreen(value: boolean)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -123,10 +108,6 @@ reset(): Promise<void>
 重置视频播放器。显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -152,10 +133,6 @@ setCurrentTime(value: double, seekMode?: SeekMode)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -168,7 +145,7 @@ setCurrentTime(value: double, seekMode?: SeekMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | double | 是 | 视频播放进度位置。 <br>取值范围：[0, [duration](arkts-arkui-preparedinfo-i.md#preparedinfo)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。 <br>单位：s |
+| value | double | 是 | 视频播放进度位置。 <br>取值范围：[0, [duration](arkts-arkui-preparedinfo-i.md)] <br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。 <br>单位：s |
 | seekMode | [SeekMode](arkts-arkui-seekmode-e.md) | 否 | 跳转模式。 <br>异常值undefined、null、NaN和Infinity按PreviousKeyframe处理。 <br>默认值：PreviousKeyframe |
 
 ## start
@@ -180,10 +157,6 @@ start(): Promise<void>
 开始播放视频。使用Promise异步回调。 视频准备完成前（未收到[onPrepared](arkts-arkui-video-attribute.md#onprepared)回调）调用start()方法会失败。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -208,10 +181,6 @@ stop(): Promise<void>
 停止播放视频，显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

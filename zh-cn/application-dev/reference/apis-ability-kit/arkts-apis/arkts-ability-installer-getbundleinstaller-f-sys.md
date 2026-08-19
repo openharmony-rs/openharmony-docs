@@ -1,5 +1,11 @@
 # getBundleInstaller（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+```
+
 ## getBundleInstaller
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 获取BundleInstaller对象。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-installer-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void--><!--Device-installer-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void-End-->
 
@@ -24,7 +26,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;BundleInstaller&gt; | 是 | [回调函数](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md#asynccallback)，获取BundleInstaller对象，err 为undefined，data为获取到的BundleInstaller对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;BundleInstaller&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)，获取BundleInstaller对象，err 为undefined，data为获取到的BundleInstaller对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -88,10 +90,6 @@ function getBundleInstaller(): Promise<BundleInstaller>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-installer-function getBundleInstaller(): Promise<BundleInstaller>--><!--Device-installer-function getBundleInstaller(): Promise<BundleInstaller>-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -110,7 +108,7 @@ function getBundleInstaller(): Promise<BundleInstaller>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

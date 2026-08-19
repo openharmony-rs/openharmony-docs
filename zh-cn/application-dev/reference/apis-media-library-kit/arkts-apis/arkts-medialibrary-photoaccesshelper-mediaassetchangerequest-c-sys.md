@@ -1,18 +1,20 @@
 # MediaAssetChangeRequest
 
-MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md#mediachangerequest). 资产变更请求。 > **说明：** > > - 本Class首批接口从API version 11开始支持。
+MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md). 资产变更请求。 > **说明：** > > - 本Class首批接口从API version 11开始支持。
 
-**继承/实现关系：** MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md#mediachangerequest)
+**继承/实现关系：** MediaAssetChangeRequest implements [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-photoAccessHelper-class MediaAssetChangeRequest--><!--Device-photoAccessHelper-class MediaAssetChangeRequest-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## addResource
 
@@ -23,10 +25,6 @@ addResource(type: ResourceType, proxy: PhotoProxy): void
 通过PhotoProxy数据添加资源。 > **注意：** > > 对于同一个资产变更请求，不支持在成功添加资源后，重复调用该接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MediaAssetChangeRequest-addResource(type: ResourceType, proxy: PhotoProxy): void--><!--Device-MediaAssetChangeRequest-addResource(type: ResourceType, proxy: PhotoProxy): void-End-->
 
@@ -50,7 +48,7 @@ addResource(type: ResourceType, proxy: PhotoProxy): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -81,13 +79,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 addResourceForPicker(type: ResourceType, fileUri: string): void
 ```
 
-通过[fileUri](../../apis-core-file-kit/arkts-apis/arkts-file-fileuri.md#ohosfilefileuri)从应用沙箱添加资源。
+通过[fileUri](../../apis-core-file-kit/arkts-apis/arkts-file-fileuri.md)从应用沙箱添加资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
@@ -111,7 +105,7 @@ addResourceForPicker(type: ResourceType, fileUri: string): void
 | [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The file corresponding to the URI is not in the app sandbox. <br>2. ResourceType must be image or video |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) |  |
 
 ## createAssetRequest
 
@@ -122,10 +116,6 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 指定待创建的图片或者视频的文件名，创建资产变更请求。 待创建的文件名参数规格为： - 应包含有效文件主名和图片或视频扩展名。 - 文件名字符串长度为1~255。 - 文件主名中不允许出现的非法英文字符。 API18开始，非法字符包括： \ / : * ? " &lt; &gt; | API10-17，非法字符包括：. .. \ / : * ? " ' ` &lt; &gt; | { } [ ]
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-MediaAssetChangeRequest-static createAssetRequest(context: Context, displayName: string, options?: PhotoCreateOptions): MediaAssetChangeRequest--><!--Device-MediaAssetChangeRequest-static createAssetRequest(context: Context, displayName: string, options?: PhotoCreateOptions): MediaAssetChangeRequest-End-->
 
@@ -156,7 +146,7 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -186,10 +176,6 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 指定待创建的图片或者视频的文件名，创建资产变更请求。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MediaAssetChangeRequest-static createAssetRequest(context: Context, displayName: string, options?: PhotoCreateOptions): MediaAssetChangeRequest | null--><!--Device-MediaAssetChangeRequest-static createAssetRequest(context: Context, displayName: string, options?: PhotoCreateOptions): MediaAssetChangeRequest | null-End-->
 
@@ -230,10 +216,6 @@ static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Pr
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -266,7 +248,7 @@ static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Pr
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by nonsystem application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500 . |
 
-## 示例
+**示例**
 
 ```TypeScript
 async function example(context: Context, assetUri: string) {
@@ -289,10 +271,6 @@ static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise<
 批量删除云端状态的媒体资产（照片或视频）到回收站。使用promise异步回调。 > **说明：** > > - 对仅存在于本端设备的资产，不做任何处理。 > > - 对仅存在于云端的资产，直接删除到回收站。 > > - 对存在于本端设备和云端的资产，删除后变化为本地资产，云端资产进入回收站。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -324,7 +302,7 @@ static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise<
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500 . |
 
-## 示例
+**示例**
 
 ```TypeScript
 async function example(context: Context, assetUri: string) {
@@ -346,10 +324,6 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array<PhotoAsset>)
 批量彻底删除照片或者视频。使用Promise异步回调。 > **注意：** > > 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -381,7 +355,7 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array<PhotoAsset>)
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -413,10 +387,6 @@ static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array<st
 通过资产Uri批量彻底删除照片或者视频。使用promise异步回调。 > **注意：** > > 此操作不可逆，执行此操作后文件资源将被彻底删除，请谨慎操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -458,10 +428,6 @@ static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise<
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-MediaAssetChangeRequest-static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise<void>--><!--Device-MediaAssetChangeRequest-static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise<void>-End-->
@@ -492,7 +458,7 @@ static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise<
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500 . |
 
-## 示例
+**示例**
 
 ```TypeScript
 async function example(context: Context, assetUri: string) {
@@ -515,10 +481,6 @@ setAppLinkInfo(appLink: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setAppLinkInfo(appLink: string): void--><!--Device-MediaAssetChangeRequest-setAppLinkInfo(appLink: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -539,7 +501,7 @@ setAppLinkInfo(appLink: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The input parameter's length is not within the valid range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -570,10 +532,6 @@ setAppLinkState(appLinkState: AppLinkState): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaAssetChangeRequest-setAppLinkState(appLinkState: AppLinkState): void--><!--Device-MediaAssetChangeRequest-setAppLinkState(appLinkState: AppLinkState): void-End-->
@@ -596,7 +554,7 @@ setAppLinkState(appLinkState: AppLinkState): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Invoked by non-system applications |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -626,10 +584,6 @@ setCameraEditData(editData: MediaAssetEditData): void
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setCameraEditData(editData: MediaAssetEditData): void--><!--Device-MediaAssetChangeRequest-setCameraEditData(editData: MediaAssetEditData): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -650,7 +604,7 @@ setCameraEditData(editData: MediaAssetEditData): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -693,10 +647,6 @@ setCameraShotKey(cameraShotKey: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setCameraShotKey(cameraShotKey: string): void--><!--Device-MediaAssetChangeRequest-setCameraShotKey(cameraShotKey: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -717,7 +667,7 @@ setCameraShotKey(cameraShotKey: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -746,10 +696,6 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise<voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise<void>--><!--Device-MediaAssetChangeRequest-setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -776,7 +722,7 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise<voi
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameter verification failed. Possible causes: <br>1. The compositeDisplayMode is not within the supported range. <br>2. The original file does not exist locally in PhotoAsset. <br>3. The PhotoAsset is not a composite asset. <br>4. The original file format is not within the supported range. <br>5. The original file has been edited. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -811,10 +757,6 @@ setEditData(editData: MediaAssetEditData): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setEditData(editData: MediaAssetEditData): void--><!--Device-MediaAssetChangeRequest-setEditData(editData: MediaAssetEditData): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -835,7 +777,7 @@ setEditData(editData: MediaAssetEditData): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -877,10 +819,6 @@ setEffectMode(mode: MovingPhotoEffectMode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setEffectMode(mode: MovingPhotoEffectMode): void--><!--Device-MediaAssetChangeRequest-setEffectMode(mode: MovingPhotoEffectMode): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -902,7 +840,7 @@ setEffectMode(mode: MovingPhotoEffectMode): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -935,10 +873,6 @@ setFavorite(favoriteState: boolean): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setFavorite(favoriteState: boolean): void--><!--Device-MediaAssetChangeRequest-setFavorite(favoriteState: boolean): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -967,10 +901,6 @@ setHasAppLink(hasAppLink: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setHasAppLink(hasAppLink: int): void--><!--Device-MediaAssetChangeRequest-setHasAppLink(hasAppLink: int): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -991,7 +921,7 @@ setHasAppLink(hasAppLink: int): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -1027,10 +957,6 @@ setHidden(hiddenState: boolean): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setHidden(hiddenState: boolean): void--><!--Device-MediaAssetChangeRequest-setHidden(hiddenState: boolean): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1051,7 +977,7 @@ setHidden(hiddenState: boolean): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1088,10 +1014,6 @@ setHiddenAttribute(hiddenState: boolean): void
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaAssetChangeRequest-setHiddenAttribute(hiddenState: boolean): void--><!--Device-MediaAssetChangeRequest-setHiddenAttribute(hiddenState: boolean): void-End-->
@@ -1114,7 +1036,7 @@ setHiddenAttribute(hiddenState: boolean): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The asset is not exist; |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1151,10 +1073,6 @@ Set recentShow state of the asset.
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setIsRecentShow(isRencentShow: boolean): void--><!--Device-MediaAssetChangeRequest-setIsRecentShow(isRencentShow: boolean): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1184,10 +1102,6 @@ setLivePhoto4dStatus(status: LivePhoto4dStatus, livephoto_4d_latest_pair?: strin
 子弹时间状态
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1221,10 +1135,6 @@ setLocation(longitude: double, latitude: double): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setLocation(longitude: double, latitude: double): void--><!--Device-MediaAssetChangeRequest-setLocation(longitude: double, latitude: double): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1246,7 +1156,7 @@ setLocation(longitude: double, latitude: double): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1283,10 +1193,6 @@ setMovingPhotoVersion(version: int): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setMovingPhotoVersion(version: int): void--><!--Device-MediaAssetChangeRequest-setMovingPhotoVersion(version: int): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1307,7 +1213,7 @@ setMovingPhotoVersion(version: int): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Parameter error, only supports 9. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1344,10 +1250,6 @@ setSupportedWatermarkType(watermarkType: WatermarkType): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setSupportedWatermarkType(watermarkType: WatermarkType): void--><!--Device-MediaAssetChangeRequest-setSupportedWatermarkType(watermarkType: WatermarkType): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1368,7 +1270,7 @@ setSupportedWatermarkType(watermarkType: WatermarkType): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1403,10 +1305,6 @@ setTitleByFile(name: string): void
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaAssetChangeRequest-setTitleByFile(name: string): void--><!--Device-MediaAssetChangeRequest-setTitleByFile(name: string): void-End-->
@@ -1429,7 +1327,7 @@ setTitleByFile(name: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. The asset is not exist; |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1465,10 +1363,6 @@ setUserComment(userComment: string): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MediaAssetChangeRequest-setUserComment(userComment: string): void--><!--Device-MediaAssetChangeRequest-setUserComment(userComment: string): void-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1489,7 +1383,7 @@ setUserComment(userComment: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1526,10 +1420,6 @@ setVideoEnhancementAttr(videoEnhancementType: VideoEnhancementType, photoId: str
 设置视频的二阶段增强处理类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MediaAssetChangeRequest-setVideoEnhancementAttr(videoEnhancementType: VideoEnhancementType, photoId: string): void--><!--Device-MediaAssetChangeRequest-setVideoEnhancementAttr(videoEnhancementType: VideoEnhancementType, photoId: string): void-End-->
 

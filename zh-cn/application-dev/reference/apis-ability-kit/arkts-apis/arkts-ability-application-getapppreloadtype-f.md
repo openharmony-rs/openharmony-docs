@@ -1,5 +1,11 @@
 # getAppPreloadType
 
+## 导入模块
+
+```TypeScript
+import { application } from '@kit.AbilityKit';
+```
+
 ## getAppPreloadType
 
 ```TypeScript
@@ -9,10 +15,6 @@ export function getAppPreloadType(): AppPreloadType
 获取应用当前进程的预加载类型。 > **说明：** > > - 只有在进程首次执行[AbilityStage.onCreate](arkts-ability-app-ability-abilitystage-abilitystage-c.md#oncreate)完成之前调用该接口，才可以返回真实的预 > 加载类型。 > > - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ export function getAppPreloadType(): AppPreloadType
 | --- | --- |
 | [AppPreloadType](arkts-ability-application-apppreloadtype-e.md) | 应用当前进程的预加载类型。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityStage, application } from '@kit.AbilityKit';

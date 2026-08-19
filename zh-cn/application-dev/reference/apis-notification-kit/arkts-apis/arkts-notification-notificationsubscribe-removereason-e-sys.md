@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationSubscribe-export enum RemoveReason--><!--Device-notificationSubscribe-export enum RemoveReason-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -24,10 +20,6 @@ CLICK_REASON_REMOVE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RemoveReason-CLICK_REASON_REMOVE = 1--><!--Device-RemoveReason-CLICK_REASON_REMOVE = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -43,10 +35,6 @@ CANCEL_REASON_REMOVE = 2
 用户删除通知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RemoveReason-CANCEL_REASON_REMOVE = 2--><!--Device-RemoveReason-CANCEL_REASON_REMOVE = 2-End-->
 

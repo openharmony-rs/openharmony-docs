@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avMusicTemplate-interface MediaTab--><!--Device-avMusicTemplate-interface MediaTab-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+## 导入模块
+
+```TypeScript
+import { avMusicTemplate } from '@kit.AVSessionKit';
+```
 
 ## extraDataJson
 
@@ -23,10 +25,6 @@ extraDataJson?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ tabIcon?: image.PixelMap
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaTab-tabIcon?: image.PixelMap--><!--Device-MediaTab-tabIcon?: image.PixelMap-End-->
@@ -68,10 +62,6 @@ tabId: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaTab-tabId: string--><!--Device-MediaTab-tabId: string-End-->
@@ -89,10 +79,6 @@ tabName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

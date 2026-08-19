@@ -6,13 +6,14 @@
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class UIPickerComponentAttribute--><!--Device-unnamed-declare class UIPickerComponentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## canLoop
 
@@ -23,10 +24,6 @@ canLoop(isLoop: Optional<boolean>)
 设置选项列是否可循环滚动。选项数量较多且需要无限滚动浏览时，可开启循环；选项较少或需要限制选择范围时，可关闭循环。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +49,6 @@ displayedItemCount(count: Optional<int>)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -79,10 +72,6 @@ enableHapticFeedback(enable: Optional<boolean>)
 设置是否开启触控反馈。在需要增强用户交互体验的场景可开启触控反馈。 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下： > > "requestPermissions": [{"name": "ohos.permission.VIBRATE"}]
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -108,10 +97,6 @@ itemHeight(height: Optional<LengthMetrics>)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -124,7 +109,7 @@ itemHeight(height: Optional<LengthMetrics>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| height | Optional&lt;LengthMetrics&gt; | 是 | 选项高度。 <br>单位：与[LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#lengthmetrics)一致。 <br>取值范围：[40vp, 64vp] <br>设置小于40vp或大于64vp时，使用默认值40vp。 <br>当height的值为undefined时，使用默认值40vp。 <br>不支持“百分比”类型。 |
+| height | Optional&lt;LengthMetrics&gt; | 是 | 选项高度。 <br>单位：与[LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md)一致。 <br>取值范围：[40vp, 64vp] <br>设置小于40vp或大于64vp时，使用默认值40vp。 <br>当height的值为undefined时，使用默认值40vp。 <br>不支持“百分比”类型。 |
 
 ## onChange
 
@@ -135,10 +120,6 @@ onChange(callback: Optional<OnUIPickerComponentCallback>)
 滑动选择器选项时，若选中项发生变化，触发该事件。适用于需要在选中项变化时实时更新界面、加载对应数据或执行相关逻辑的场景。 > **说明：** > > - 如果某个选项有一半以上的区域进入选中项区域内，则该选项成为选中项。 > > - 选中项区域可通过设置[selectionIndicator](#selectionindicator)进行标识。 > 如果设置选中项指示器为背景，则背景区域即为选中项区域。如果设置选中项指示器为分割线，则上下分割线的中心线内的区域为选中项区域。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -164,10 +145,6 @@ onScrollStop(callback: Optional<OnUIPickerComponentCallback>)
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -191,10 +168,6 @@ selectionIndicator(style: Optional<PickerIndicatorStyle>)
 设置选中项指示器的样式。需要突出显示选中区域时使用背景指示器，需要简洁轻量标识时使用分割线指示器。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

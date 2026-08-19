@@ -1,5 +1,11 @@
 # getVoiceMailNumber（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## getVoiceMailNumber
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getVoiceMailNumber(slotId: int, callback: AsyncCallback<string>): void
 Obtains the voice mailbox number of the SIM card in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -27,7 +29,7 @@ Obtains the voice mailbox number of the SIM card in a specified slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | int | 是 | Indicates the card slot index number, ranging from {@code 0} to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | Indicates the callback for getting the voice mailbox number; returns an empty string if no voice mailbox number is written into the SIM card. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | Indicates the callback for getting the voice mailbox number; returns an empty string if no voice mailbox number is written into the SIM card. |
 
 **错误码：**
 
@@ -42,7 +44,7 @@ Obtains the voice mailbox number of the SIM card in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -63,10 +65,6 @@ function getVoiceMailNumber(slotId: int): Promise<string>
 Obtains the voice mailbox number of the SIM card in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -101,7 +99,7 @@ Obtains the voice mailbox number of the SIM card in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

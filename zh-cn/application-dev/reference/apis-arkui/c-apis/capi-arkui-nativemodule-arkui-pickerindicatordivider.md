@@ -20,9 +20,9 @@ typedef struct ArkUI_PickerIndicatorDivider {...} ArkUI_PickerIndicatorDivider
 
 | 名称 | 描述 |
 | -- | -- |
-| float strokeWidth | 分割线的线宽。 <br>        默认值：0 <br>        单位：vp <br>        取值范围：[0, 选中项高度的一半（即20vp）]。 <br>        小于0时设置失败，大于选中项高度的一半时使用默认值0。不支持百分比类型。 |
-| uint32_t dividerColor | 分割线的颜色。 <br>        默认值：0（表示全透明颜色，分割线不可见） <br>        格式要求：0xARGB格式，例如0xFF1122FF。未设置颜色时使用默认值。 |
-| float startMargin | 分割线与Picker容器侧边起始端的距离。 <br>        默认值：0 <br>        单位：vp <br>        取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。 <br>        小于0时设置失败。startMargin与endMargin之和超过容器宽度时使用默认值0。不支持百分比类型。 |
-| float endMargin | 分割线与Picker容器侧边结束端的距离。 <br>        默认值：0 <br>        单位：vp <br>        取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。 <br>        小于0时设置失败。startMargin与endMargin之和超过容器宽度时使用默认值0。不支持百分比类型。 |
+| float strokeWidth | 分割线的线宽。 <br> 默认值：0 <br> 单位：vp <br> 取值范围：[0, 选中项高度的一半（即20vp）]。 <br> 小于0时设置失败，大于选中项高度的一半时使用默认值0。不支持百分比类型。 |
+| uint32_t dividerColor | 分割线的颜色。 <br> 默认值：0（表示全透明颜色，分割线不可见） <br> 格式要求：0xARGB格式，例如0xFF1122FF。未设置颜色时使用默认值。 |
+| float startMargin | 分割线与Picker容器侧边起始端的距离。 <br> 默认值：0 <br> 单位：vp <br> 取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。 <br> 小于0时设置失败。startMargin与endMargin之和超过容器宽度时使用默认值0。不支持百分比类型。 |
+| float endMargin | 分割线与Picker容器侧边结束端的距离。 <br> 默认值：0 <br> 单位：vp <br> 取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。 <br> 小于0时设置失败。startMargin与endMargin之和超过容器宽度时使用默认值0。不支持百分比类型。 |
 
 

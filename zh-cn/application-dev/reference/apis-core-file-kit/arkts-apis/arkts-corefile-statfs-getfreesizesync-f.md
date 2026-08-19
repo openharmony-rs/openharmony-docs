@@ -1,18 +1,20 @@
 # getFreeSizeSync
 
+## 导入模块
+
+```TypeScript
+import { statfs } from '@kit.CoreFileKit';
+```
+
 ## getFreeSizeSync
 
 ```TypeScript
 function getFreeSizeSync(path: string): long
 ```
 
-以同步方法获取指定文件系统空闲字节数。
+以同步方法获取指定文件或目录所在文件系统的空闲字节数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-statfs-function getFreeSizeSync(path: string): long--><!--Device-statfs-function getFreeSizeSync(path: string): long-End-->
 
@@ -22,13 +24,13 @@ function getFreeSizeSync(path: string): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 需要查询的文件系统的文件路径。 |
+| path | string | 是 | 文件或目录的应用沙箱路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| long | 返回空闲字节数。 |
+| long | 返回空闲字节数，单位为Byte。 |
 
 **错误码：**
 
@@ -48,7 +50,7 @@ function getFreeSizeSync(path: string): long
 | 13900042 | Unknown error |
 | 13900011 | Out of memory |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { common } from '@kit.AbilityKit';

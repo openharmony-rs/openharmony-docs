@@ -6,13 +6,14 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class PanGestureHandler--><!--Device-unnamed-declare class PanGestureHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## constructor
 
@@ -23,10 +24,6 @@ constructor(options?: PanGestureHandlerOptions)
 滑动手势处理器的构造函数。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,10 +48,6 @@ onActionCancel(event: Callback<void>): PanGestureHandler
 设置滑动手势处理器取消回调。滑动手势处理器识别成功后，接收到触摸取消事件时触发回调。不返回手势事件信息。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,10 +79,6 @@ onActionCancel(event: Callback<GestureEvent>): PanGestureHandler
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -119,10 +108,6 @@ onActionEnd(event: Callback<GestureEvent>): PanGestureHandler
 设置滑动手势处理器结束回调。滑动手势处理器识别成功后，手指抬起时触发回调。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -154,10 +139,6 @@ onActionStart(event: Callback<GestureEvent>): PanGestureHandler
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -187,10 +168,6 @@ onActionUpdate(event: Callback<GestureEvent>): PanGestureHandler
 设置滑动手势处理器更新回调。滑动手势处理器移动过程中触发回调。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

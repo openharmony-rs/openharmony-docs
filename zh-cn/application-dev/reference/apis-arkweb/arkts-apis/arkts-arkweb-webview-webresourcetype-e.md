@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-webview-enum WebResourceType--><!--Device-webview-enum WebResourceType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ MAIN_FRAME = 0
 顶层页面。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-MAIN_FRAME = 0--><!--Device-WebResourceType-MAIN_FRAME = 0-End-->
 
@@ -40,10 +32,6 @@ Frame或Iframe。
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-SUB_FRAME = 1--><!--Device-WebResourceType-SUB_FRAME = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -57,10 +45,6 @@ STYLE_SHEET = 2
 CSS样式表。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-STYLE_SHEET = 2--><!--Device-WebResourceType-STYLE_SHEET = 2-End-->
 
@@ -76,10 +60,6 @@ SCRIPT = 3
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-SCRIPT = 3--><!--Device-WebResourceType-SCRIPT = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -93,10 +73,6 @@ IMAGE = 4
 图片（jpg/gif/png/以及其他）。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-IMAGE = 4--><!--Device-WebResourceType-IMAGE = 4-End-->
 
@@ -112,10 +88,6 @@ FONT_RESOURCE = 5
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-FONT_RESOURCE = 5--><!--Device-WebResourceType-FONT_RESOURCE = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -129,10 +101,6 @@ SUB_RESOURCE = 6
 其他子资源。如果实际类型未知，则是默认类型。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-SUB_RESOURCE = 6--><!--Device-WebResourceType-SUB_RESOURCE = 6-End-->
 
@@ -148,10 +116,6 @@ OBJECT = 7
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-OBJECT = 7--><!--Device-WebResourceType-OBJECT = 7-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -165,10 +129,6 @@ MEDIA = 8
 媒体资源。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-MEDIA = 8--><!--Device-WebResourceType-MEDIA = 8-End-->
 
@@ -184,10 +144,6 @@ WORKER = 9
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-WORKER = 9--><!--Device-WebResourceType-WORKER = 9-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -201,10 +157,6 @@ SHARED_WORKER = 10
 共享工作线程的主资源。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-SHARED_WORKER = 10--><!--Device-WebResourceType-SHARED_WORKER = 10-End-->
 
@@ -220,10 +172,6 @@ PREFETCH = 11
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-PREFETCH = 11--><!--Device-WebResourceType-PREFETCH = 11-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -237,10 +185,6 @@ FAVICON = 12
 网站图标。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-FAVICON = 12--><!--Device-WebResourceType-FAVICON = 12-End-->
 
@@ -256,10 +200,6 @@ XMLHttpRequest.
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-XHR = 13--><!--Device-WebResourceType-XHR = 13-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -273,10 +213,6 @@ PING = 14
 &lt;a ping&gt;/sendBeacon的Ping请求。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-PING = 14--><!--Device-WebResourceType-PING = 14-End-->
 
@@ -292,10 +228,6 @@ service worker的主资源。
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-SERVICE_WORKER = 15--><!--Device-WebResourceType-SERVICE_WORKER = 15-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -309,10 +241,6 @@ CSP_REPORT = 16
 内容安全策略违规报告。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-CSP_REPORT = 16--><!--Device-WebResourceType-CSP_REPORT = 16-End-->
 
@@ -328,10 +256,6 @@ PLUGIN_RESOURCE = 17
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-PLUGIN_RESOURCE = 17--><!--Device-WebResourceType-PLUGIN_RESOURCE = 17-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -346,10 +270,6 @@ NAVIGATION_PRELOAD_MAIN_FRAME = 19
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebResourceType-NAVIGATION_PRELOAD_MAIN_FRAME = 19--><!--Device-WebResourceType-NAVIGATION_PRELOAD_MAIN_FRAME = 19-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -363,10 +283,6 @@ NAVIGATION_PRELOAD_SUB_FRAME = 20
 触发service worker预热的子frame跳转请求。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebResourceType-NAVIGATION_PRELOAD_SUB_FRAME = 20--><!--Device-WebResourceType-NAVIGATION_PRELOAD_SUB_FRAME = 20-End-->
 

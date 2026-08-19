@@ -1,16 +1,18 @@
 # DataObject
 
-表示一个分布式数据对象。在使用以下接口前，需调用[create()](arkts-arkdata-distributeddataobject-create-f.md#create)获取DataObject对象。
+表示一个分布式数据对象。在使用以下接口前，需调用[create()](arkts-arkdata-distributeddataobject-create-f.md)获取DataObject对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-distributedDataObject-interface DataObject--><!--Device-distributedDataObject-interface DataObject-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## bindAssetStore
 
@@ -22,10 +24,6 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback<voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback<void>): void--><!--Device-DataObject-bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -36,7 +34,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | assetKey | string | 是 | 待绑定的融合资产在分布式对象中的键值。 |
 | bindInfo | [BindInfo](arkts-arkdata-distributeddataobject-bindinfo-i.md) | 是 | 待绑定的融合资产在数据库中的信息，包含库名、表名、主键、列名及在数据库中的资产名。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 绑定数据库的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 绑定数据库的回调。 |
 
 **错误码：**
 
@@ -45,7 +43,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback<voi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -167,10 +165,6 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>--><!--Device-DataObject-bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -195,7 +189,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -315,10 +309,6 @@ offChange(callback?: DataObserver): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-offChange(callback?: DataObserver): void--><!--Device-DataObject-offChange(callback?: DataObserver): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -329,7 +319,7 @@ offChange(callback?: DataObserver): void
 | --- | --- | --- | --- |
 | callback | [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | 否 | 需要删除的数据变更回调实例，若不设置则删除该对象所有的数据变更回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
@@ -374,10 +364,6 @@ offProgressChanged(callback?: ProgressObserver): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-offProgressChanged(callback?: ProgressObserver): void--><!--Device-DataObject-offProgressChanged(callback?: ProgressObserver): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -388,7 +374,7 @@ offProgressChanged(callback?: ProgressObserver): void
 | --- | --- | --- | --- |
 | callback | [ProgressObserver](arkts-arkdata-distributeddataobject-progressobserver-t.md) | 否 | 需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: int) => {
@@ -424,10 +410,6 @@ offStatus(callback?: StatusObserver): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-offStatus(callback?: StatusObserver): void--><!--Device-DataObject-offStatus(callback?: StatusObserver): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -438,7 +420,7 @@ offStatus(callback?: StatusObserver): void
 | --- | --- | --- | --- |
 | callback | [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | 否 | 需要删除状态变更的回调实例，若不设置则删除该对象所有的状态变更回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const statusCallback1: distributedDataObject.StatusObserver =
@@ -464,7 +446,7 @@ try {
 }
 ```
 
-## off_change
+## off('change')
 
 ```TypeScript
 off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => void ): void
@@ -473,10 +455,6 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 当不再进行数据变更监听时，使用此接口删除对象的变更监听。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => void ): void--><!--Device-DataObject-off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => void ): void-End-->
 
@@ -495,7 +473,7 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 删除数据变更回调
@@ -511,7 +489,7 @@ g_object.off('change', (sessionId: string, fields: Array<string>) => {
 g_object.off('change');
 ```
 
-## off_change
+## off('change')
 
 ```TypeScript
 off(type: 'change', callback?: DataObserver): void
@@ -520,10 +498,6 @@ off(type: 'change', callback?: DataObserver): void
 当不再进行数据变更监听时，使用此接口删除分布式对象数据变更监听的回调实例。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-off(type: 'change', callback?: DataObserver): void--><!--Device-DataObject-off(type: 'change', callback?: DataObserver): void-End-->
 
@@ -536,7 +510,7 @@ off(type: 'change', callback?: DataObserver): void
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | 否 | 需要删除的数据变更回调实例，若不设置则删除该对象所有的数据变更回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
@@ -571,7 +545,7 @@ try {
 }
 ```
 
-## off_progressChanged
+## off('progressChanged')
 
 ```TypeScript
 off(type: 'progressChanged', callback?: ProgressObserver): void
@@ -580,10 +554,6 @@ off(type: 'progressChanged', callback?: ProgressObserver): void
 当不再进行资产传输进度监听时，使用此接口删除资产传输进度监听的回调实例。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-off(type: 'progressChanged', callback?: ProgressObserver): void--><!--Device-DataObject-off(type: 'progressChanged', callback?: ProgressObserver): void-End-->
 
@@ -596,7 +566,7 @@ off(type: 'progressChanged', callback?: ProgressObserver): void
 | type | 'progressChanged' | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
 | callback | [ProgressObserver](arkts-arkdata-distributeddataobject-progressobserver-t.md) | 否 | 需要取消监听的回调实例，若不设置，则取消对该事件的所有监听。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
@@ -622,7 +592,7 @@ try {
 }
 ```
 
-## off_status
+## off('status')
 
 ```TypeScript
 off(
@@ -634,10 +604,6 @@ off(
 当不再进行对象上下线监听时，使用此接口删除对象的上下线监听。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-off(      type: 'status',      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void--><!--Device-DataObject-off(      type: 'status',      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void-End-->
 
@@ -656,7 +622,7 @@ off(
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 删除上下线回调
@@ -667,7 +633,7 @@ g_object.off('status', (sessionId: string, networkId: string, status: 'online' |
 g_object.off('status');
 ```
 
-## off_status
+## off('status')
 
 ```TypeScript
 off(type: 'status', callback?: StatusObserver): void
@@ -676,10 +642,6 @@ off(type: 'status', callback?: StatusObserver): void
 当不再进行分布式对象状态变更监听时，使用此接口删除分布式对象状态变更的回调实例。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-off(type: 'status', callback?: StatusObserver): void--><!--Device-DataObject-off(type: 'status', callback?: StatusObserver): void-End-->
 
@@ -692,7 +654,7 @@ off(type: 'status', callback?: StatusObserver): void
 | type | 'status' | 是 | 事件类型，固定为'status'，表示数据对象状态变更事件。 |
 | callback | [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | 否 | 需要删除状态变更的回调实例，若不设置则删除该对象所有的状态变更回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
@@ -726,10 +688,6 @@ onChange(callback: DataObserver): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-onChange(callback: DataObserver): void--><!--Device-DataObject-onChange(callback: DataObserver): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -740,7 +698,7 @@ onChange(callback: DataObserver): void
 | --- | --- | --- | --- |
 | callback | [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | 是 | 表示分布式对象数据变更的回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
@@ -768,10 +726,6 @@ onProgressChanged(callback: ProgressObserver): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-onProgressChanged(callback: ProgressObserver): void--><!--Device-DataObject-onProgressChanged(callback: ProgressObserver): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -782,7 +736,7 @@ onProgressChanged(callback: ProgressObserver): void
 | --- | --- | --- | --- |
 | callback | [ProgressObserver](arkts-arkdata-distributeddataobject-progressobserver-t.md) | 是 |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: int) => {
@@ -806,10 +760,6 @@ onStatus(callback: StatusObserver): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataObject-onStatus(callback: StatusObserver): void--><!--Device-DataObject-onStatus(callback: StatusObserver): void-End-->
@@ -822,7 +772,7 @@ onStatus(callback: StatusObserver): void
 | --- | --- | --- | --- |
 | callback | [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | 是 | 表示分布式对象状态变更的回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const statusCallback1: distributedDataObject.StatusObserver =
@@ -836,7 +786,7 @@ try {
 }
 ```
 
-## on_change
+## on('change')
 
 ```TypeScript
 on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void ): void
@@ -845,10 +795,6 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void 
 监听分布式数据对象的数据变更。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void ): void--><!--Device-DataObject-on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void ): void-End-->
 
@@ -867,7 +813,7 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 g_object.on('change', (sessionId: string, fields: Array<string>) => {
@@ -880,7 +826,7 @@ g_object.on('change', (sessionId: string, fields: Array<string>) => {
 });
 ```
 
-## on_change
+## on('change')
 
 ```TypeScript
 on(type: 'change', callback: DataObserver): void
@@ -889,10 +835,6 @@ on(type: 'change', callback: DataObserver): void
 监听分布式对象的数据变更。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-on(type: 'change', callback: DataObserver): void--><!--Device-DataObject-on(type: 'change', callback: DataObserver): void-End-->
 
@@ -905,7 +847,7 @@ on(type: 'change', callback: DataObserver): void
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | 是 | 表示分布式对象数据变更的回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
@@ -923,7 +865,7 @@ try {
 }
 ```
 
-## on_progressChanged
+## on('progressChanged')
 
 ```TypeScript
 on(type: 'progressChanged', callback: ProgressObserver): void
@@ -932,10 +874,6 @@ on(type: 'progressChanged', callback: ProgressObserver): void
 监听资产传输进度。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-on(type: 'progressChanged', callback: ProgressObserver): void--><!--Device-DataObject-on(type: 'progressChanged', callback: ProgressObserver): void-End-->
 
@@ -948,7 +886,7 @@ on(type: 'progressChanged', callback: ProgressObserver): void
 | type | 'progressChanged' | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
 | callback | [ProgressObserver](arkts-arkdata-distributeddataobject-progressobserver-t.md) | 是 | 表示资产传输进度变化的回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
@@ -962,7 +900,7 @@ try {
 }
 ```
 
-## on_status
+## on('status')
 
 ```TypeScript
 on(
@@ -974,10 +912,6 @@ on(
 监听分布式数据对象的上下线。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-on(      type: 'status',      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void--><!--Device-DataObject-on(      type: 'status',      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void    ): void-End-->
 
@@ -996,7 +930,7 @@ on(
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ```TypeScript
 g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
@@ -1004,7 +938,7 @@ g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 
 });
 ```
 
-## on_status
+## on('status')
 
 ```TypeScript
 on(type: 'status', callback: StatusObserver): void
@@ -1013,10 +947,6 @@ on(type: 'status', callback: StatusObserver): void
 监听分布式对象的状态变更。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-DataObject-on(type: 'status', callback: StatusObserver): void--><!--Device-DataObject-on(type: 'status', callback: StatusObserver): void-End-->
 
@@ -1029,7 +959,7 @@ on(type: 'status', callback: StatusObserver): void
 | type | 'status' | 是 | 事件类型，固定为'status'，表示分布式对象状态变更事件。 |
 | callback | [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | 是 | 表示分布式对象状态变更的回调实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
@@ -1052,10 +982,6 @@ revokeSave(callback: AsyncCallback<RevokeSaveSuccessResponse>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-revokeSave(callback: AsyncCallback<RevokeSaveSuccessResponse>): void--><!--Device-DataObject-revokeSave(callback: AsyncCallback<RevokeSaveSuccessResponse>): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -1064,7 +990,7 @@ revokeSave(callback: AsyncCallback<RevokeSaveSuccessResponse>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RevokeSaveSuccessResponse](arkts-arkdata-distributeddataobject-revokesavesuccessresponse-i.md)&gt; | 是 | 回调函数。返回RevokeSaveSuccessResponse，包含sessionId。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[RevokeSaveSuccessResponse](arkts-arkdata-distributeddataobject-revokesavesuccessresponse-i.md)&gt; | 是 | 回调函数。返回RevokeSaveSuccessResponse，包含sessionId。 |
 
 **错误码：**
 
@@ -1073,7 +999,7 @@ revokeSave(callback: AsyncCallback<RevokeSaveSuccessResponse>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1137,10 +1063,6 @@ revokeSave(): Promise<RevokeSaveSuccessResponse>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-revokeSave(): Promise<RevokeSaveSuccessResponse>--><!--Device-DataObject-revokeSave(): Promise<RevokeSaveSuccessResponse>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -1157,7 +1079,7 @@ revokeSave(): Promise<RevokeSaveSuccessResponse>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1214,10 +1136,6 @@ save(deviceId: string, callback: AsyncCallback<SaveSuccessResponse>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-save(deviceId: string, callback: AsyncCallback<SaveSuccessResponse>): void--><!--Device-DataObject-save(deviceId: string, callback: AsyncCallback<SaveSuccessResponse>): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -1227,7 +1145,7 @@ save(deviceId: string, callback: AsyncCallback<SaveSuccessResponse>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[SaveSuccessResponse](arkts-arkdata-distributeddataobject-savesuccessresponse-i.md)&gt; | 是 | 回调函数。返回SaveSuccessResponse，包含sessionId、version、deviceId等 信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[SaveSuccessResponse](arkts-arkdata-distributeddataobject-savesuccessresponse-i.md)&gt; | 是 | 回调函数。返回SaveSuccessResponse，包含sessionId、version、deviceId等 信息。 |
 
 **错误码：**
 
@@ -1236,7 +1154,7 @@ save(deviceId: string, callback: AsyncCallback<SaveSuccessResponse>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1280,10 +1198,6 @@ save(deviceId: string): Promise<SaveSuccessResponse>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-save(deviceId: string): Promise<SaveSuccessResponse>--><!--Device-DataObject-save(deviceId: string): Promise<SaveSuccessResponse>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -1307,7 +1221,7 @@ save(deviceId: string): Promise<SaveSuccessResponse>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1347,10 +1261,6 @@ setAsset(assetKey: string, uri: string): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-setAsset(assetKey: string, uri: string): Promise<void>--><!--Device-DataObject-setAsset(assetKey: string, uri: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -1359,7 +1269,7 @@ setAsset(assetKey: string, uri: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetKey | string | 是 | 分布式对象中资产类型数据对应的属性名。<br/>**使用约束：** <br/>（1）提供的assetKey对应的文件必须已存在且类型为资产 [Asset](arkts-arkdata-commontype-asset-i.md#asset)，才可进行正确的设置资产。若assetKey对应文件不存在或文件存在但类型不是资产类型，可能会出现资产设置错误。 <br/>（2）在协同或接续场景下需要双端满足assetKey对应的文件存在且为资产类型，才可将设置的资产同步到对端设备。 |
+| assetKey | string | 是 | 分布式对象中资产类型数据对应的属性名。<br/>**使用约束：** <br/>（1）提供的assetKey对应的文件必须已存在且类型为资产 [Asset](arkts-arkdata-commontype-asset-i.md)，才可进行正确的设置资产。若assetKey对应文件不存在或文件存在但类型不是资产类型，可能会出现资产设置错误。 <br/>（2）在协同或接续场景下需要双端满足assetKey对应的文件存在且为资产类型，才可将设置的资产同步到对端设备。 |
 | uri | string | 是 | 待设置的新资产的uri，表示该资产的存放的分布式路径。必须为真实存在的资产对应的分布式路径。 |
 
 **返回值：**
@@ -1375,7 +1285,7 @@ setAsset(assetKey: string, uri: string): Promise<void>
 | [15400002](../errorcode-distributed-dataObject.md#15400002-参数错误) | Parameter error. Possible causes: 1. The assetKey is invalid, such as ""; 2. The uri is invalid, such as "". |
 | [15400003](../errorcode-distributed-dataObject.md#15400003-已设置分布式对象的sessionid) | The sessionId of the distributed object has been set. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1475,10 +1385,6 @@ setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataObject-setAssets(assetsKey: string, uris: Array<string>): Promise<void>--><!--Device-DataObject-setAssets(assetsKey: string, uris: Array<string>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -1487,7 +1393,7 @@ setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| assetsKey | string | 是 | 分布式对象中资产数组类型数据对应的属性名。<br/>**使用约束：** <br/>（1）提供的assetsKey对应的文件已存在且类型必须为资产 [Asset](arkts-arkdata-commontype-asset-i.md#asset)，才可进行正确的设置资产。若assetsKey对应文件不存在或文件存在但类型不是资产类型，可能会出现资产设置错 误。<br/>（2）在协同或接续场景下需要双端满足assetsKey对应的文件存在且为资产类型，才可将设置的资产数组同步到对端设备。 |
+| assetsKey | string | 是 | 分布式对象中资产数组类型数据对应的属性名。<br/>**使用约束：** <br/>（1）提供的assetsKey对应的文件已存在且类型必须为资产 [Asset](arkts-arkdata-commontype-asset-i.md)，才可进行正确的设置资产。若assetsKey对应文件不存在或文件存在但类型不是资产类型，可能会出现资产设置错 误。<br/>（2）在协同或接续场景下需要双端满足assetsKey对应的文件存在且为资产类型，才可将设置的资产数组同步到对端设备。 |
 | uris | Array&lt;string&gt; | 是 | 待设置的新资产数组的uri集合，表示资产数组内每个资产存放的分布式路径。数组中元素的数量为[1, 50]，元素uri必须为真实存在的资产对应的分布式路径。 |
 
 **返回值：**
@@ -1503,7 +1409,7 @@ setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 | [15400002](../errorcode-distributed-dataObject.md#15400002-参数错误) | Parameter error. Possible causes: 1. The assetsKey is invalid, such as ""; 2. The uris is invalid, such as the length of uris is more than 50. |
 | [15400003](../errorcode-distributed-dataObject.md#15400003-已设置分布式对象的sessionid) | The sessionId of the distributed object has been set. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -1603,10 +1509,6 @@ setSessionId(sessionId: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-DataObject-setSessionId(sessionId: string, callback: AsyncCallback<void>): void--><!--Device-DataObject-setSessionId(sessionId: string, callback: AsyncCallback<void>): void-End-->
@@ -1618,7 +1520,7 @@ setSessionId(sessionId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | sessionId | string | 是 | 分布式数据对象在可信组网中的标识ID，长度不大于128字节，且只能包含字母数字或下划线_。当传入""、null时表示退出分布式组网。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 加入session的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 加入session的异步回调。 |
 
 **错误码：**
 
@@ -1628,7 +1530,7 @@ setSessionId(sessionId: string, callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [15400001](../errorcode-distributed-dataObject.md#15400001-创建内存数据库失败) | Failed to create the in-memory database. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // g_object加入分布式组网
@@ -1651,10 +1553,6 @@ setSessionId(callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本9 - 19：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1666,7 +1564,7 @@ setSessionId(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 退出所有已加入session的异步回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 退出所有已加入session的异步回调。 |
 
 **错误码：**
 
@@ -1676,7 +1574,7 @@ setSessionId(callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 19 |
 | [15400001](../errorcode-distributed-dataObject.md#15400001-创建内存数据库失败) | Failed to create the in-memory database. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // g_object加入分布式组网
@@ -1698,10 +1596,6 @@ setSessionId(sessionId?: string): Promise<void>
 设置sessionId或退出分布式组网，使用Promise异步回调。当传入""、null或不传入参数时，表示退出分布式组网。当可信组网中有多个设备处于协同状态时，如果多个设备间的分布式对象设置为同一个sessionId，就能自 动同步。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1729,7 +1623,7 @@ setSessionId(sessionId?: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [15400001](../errorcode-distributed-dataObject.md#15400001-创建内存数据库失败) | Failed to create the in-memory database. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

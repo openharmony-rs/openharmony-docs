@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-workScheduler-export enum ChargingType--><!--Device-workScheduler-export enum ChargingType-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
@@ -21,10 +17,6 @@ CHARGING_PLUGGED_ANY = 0
 表示这个触发条件是任何类型的充电器连接。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ CHARGING_PLUGGED_AC = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ChargingType-CHARGING_PLUGGED_AC = 1--><!--Device-ChargingType-CHARGING_PLUGGED_AC = 1-End-->
@@ -62,10 +50,6 @@ CHARGING_PLUGGED_USB = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ChargingType-CHARGING_PLUGGED_USB = 2--><!--Device-ChargingType-CHARGING_PLUGGED_USB = 2-End-->
@@ -81,10 +65,6 @@ CHARGING_PLUGGED_WIRELESS = 3
 表示这个触发条件是无线充电器连接。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,18 +1,20 @@
 # getKeepAliveAppServiceExtensions（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+```
+
 ## getKeepAliveAppServiceExtensions
 
 ```TypeScript
 function getKeepAliveAppServiceExtensions(): Promise<Array<KeepAliveBundleInfo>>
 ```
 
-获取所有保活的AppServiceExtensionAbility应用信息，此信息由[KeepAliveBundleInfo](arkts-ability-appmanager-keepalivebundleinfo-i-sys.md#keepalivebundleinfo系统接口)定义。使用Promise异步 回调。 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+获取所有保活的AppServiceExtensionAbility应用信息，此信息由[KeepAliveBundleInfo](arkts-ability-appmanager-keepalivebundleinfo-i-sys.md)定义。使用Promise异步 回调。 该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -37,7 +39,7 @@ function getKeepAliveAppServiceExtensions(): Promise<Array<KeepAliveBundleInfo>>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';

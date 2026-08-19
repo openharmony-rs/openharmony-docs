@@ -4,10 +4,6 @@ AbilityStateData是Ability状态信息的数据结构。使用 [on](arkts-abilit
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class AbilityStateData--><!--Device-unnamed-declare class AbilityStateData-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -24,10 +20,6 @@ Ability名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityStateData-abilityName: string--><!--Device-AbilityStateData-abilityName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -38,15 +30,11 @@ Ability名称。
 abilityType: int
 ```
 
-[Ability类型](#abilitytype)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)或 [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)等。
+[Ability类型](#abilitytype)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)或 [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)等。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityStateData-abilityType: int--><!--Device-AbilityStateData-abilityType: int-End-->
 
@@ -64,10 +52,6 @@ appCloneIndex?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityStateData-appCloneIndex?: int--><!--Device-AbilityStateData-appCloneIndex?: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -83,10 +67,6 @@ bundleName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityStateData-bundleName: string--><!--Device-AbilityStateData-bundleName: string-End-->
 
@@ -104,10 +84,6 @@ Ability创建时的拉起方Bundle名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityStateData-callerBundleName?: string--><!--Device-AbilityStateData-callerBundleName?: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -123,10 +99,6 @@ isAtomicService: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityStateData-isAtomicService: boolean--><!--Device-AbilityStateData-isAtomicService: boolean-End-->
 
@@ -144,10 +116,6 @@ Ability所属的模块名称。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityStateData-moduleName: string--><!--Device-AbilityStateData-moduleName: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -164,10 +132,6 @@ pid: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AbilityStateData-pid: int--><!--Device-AbilityStateData-pid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -178,15 +142,11 @@ pid: int
 state: int
 ```
 
-Ability状态。 - [Stage模型](../../../application-models/ability-terminology.md#stage模型)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md#uiability)的状态参见 UIAbility状态； [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)的状态参见 ExtensionAbility状态 ；[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#uiextensionability)的状态参见 UIExtensionAbility状态 。 - [FA模型](../../../application-models/ability-terminology.md#fa模型)：参见 Ability状态。
+Ability状态。 - [Stage模型](../../../application-models/ability-terminology.md#stage模型)： [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)的状态参见 UIAbility状态； [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)的状态参见 ExtensionAbility状态 ；[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的状态参见 UIExtensionAbility状态 。 - [FA模型](../../../application-models/ability-terminology.md#fa模型)：参见 Ability状态。
 
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityStateData-state: int--><!--Device-AbilityStateData-state: int-End-->
 
@@ -203,10 +163,6 @@ uid: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AbilityStateData-uid: int--><!--Device-AbilityStateData-uid: int-End-->
 

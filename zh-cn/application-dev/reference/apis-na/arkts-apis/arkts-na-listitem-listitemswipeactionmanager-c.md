@@ -4,9 +4,7 @@ ListItem划出菜单的管理器。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare class ListItemSwipeActionManager--><!--Device-unnamed-export declare class ListItemSwipeActionManager-End-->
 
@@ -22,9 +20,7 @@ static collapse(node: FrameNode): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +32,7 @@ static collapse(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | ListItem节点对象。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | ListItem节点对象。 |
 
 **错误码：**
 
@@ -55,9 +51,7 @@ static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -69,7 +63,7 @@ static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | ListItem节点对象。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | ListItem节点对象。 |
 | direction | [ListItemSwipeActionDirection](arkts-na-listitem-listitemswipeactiondirection-e.md) | 是 | ListItem划出菜单的展开方向。 |
 
 **错误码：**

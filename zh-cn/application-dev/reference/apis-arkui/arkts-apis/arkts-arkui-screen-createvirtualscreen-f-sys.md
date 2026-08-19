@@ -1,5 +1,12 @@
 # createVirtualScreen（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## createVirtualScreen
 
 ```TypeScript
@@ -9,10 +16,6 @@ function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallbac
 创建虚拟屏幕，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CAPTURE_SCREEN
 
@@ -27,7 +30,7 @@ function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [VirtualScreenOption](arkts-arkui-screen-virtualscreenoption-i-sys.md) | 是 | 用于创建虚拟屏幕的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Screen](arkts-arkui-screen-screen-i-sys.md)&gt; | 是 | 回调函数，返回创建的虚拟屏幕对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Screen](arkts-arkui-screen-screen-i-sys.md)&gt; | 是 | 回调函数，返回创建的虚拟屏幕对象。 |
 
 **错误码：**
 
@@ -38,7 +41,7 @@ function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallbac
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -106,10 +109,6 @@ function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.CAPTURE_SCREEN
 
 <!--Device-screen-function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>--><!--Device-screen-function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>-End-->
@@ -139,7 +138,7 @@ function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,5 +1,11 @@
 # addKeyEventPolicies
 
+## 导入模块
+
+```TypeScript
+import { systemManager } from '@kit.MDMKit';
+```
+
 ## addKeyEventPolicies
 
 ```TypeScript
@@ -9,10 +15,6 @@ function addKeyEventPolicies(admin: Want, keyPolicies: Array<KeyEventPolicy>): v
 添加按键事件处理策略。系统触发按键事件时，若匹配下发的按键事件策略，将通过 [EnterpriseAdminExtensionAbility.onKeyEvent](../../apis-na/arkts-apis/arkts-na-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onkeyevent) 回调通知MDM应用，并携带匹配策略的按键事件信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -40,7 +42,7 @@ function addKeyEventPolicies(admin: Want, keyPolicies: Array<KeyEventPolicy>): v
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

@@ -1,16 +1,20 @@
 # completelyDelete（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { trash } from '@kit.CoreFileKit';
+```
+
 ## completelyDelete
 
 ```TypeScript
 function completelyDelete(uri: string): void
 ```
 
-Permanently deletes a file or directory from the **Recently deleted** list.
+将uri对应文件/目录从最近删除（回收站）列表中彻底删除。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 23
 
@@ -28,7 +32,7 @@ Permanently deletes a file or directory from the **Recently deleted** list.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | URI of the file or directory. |
+| uri | string | 是 | 回收站文件/文件夹URI。 |
 
 **错误码：**
 
@@ -38,7 +42,7 @@ Permanently deletes a file or directory from the **Recently deleted** list.
 | 13900002 | No such file or directory |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let fileinfos = trash.listFile();

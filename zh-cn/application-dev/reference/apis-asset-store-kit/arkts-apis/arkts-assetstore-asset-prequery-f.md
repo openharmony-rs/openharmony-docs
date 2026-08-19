@@ -1,18 +1,20 @@
 # preQuery
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## preQuery
 
 ```TypeScript
 function preQuery(query: AssetMap): Promise<Uint8Array>
 ```
 
-查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.query](arkts-assetstore-asset-query-f.md#query)和[asset.postQuery](arkts-assetstore-asset-postquery-f.md#postquery)接口。 使用Promise异步回调。
+查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.query](arkts-assetstore-asset-query-f.md)和[asset.postQuery](arkts-assetstore-asset-postquery-f.md)接口。 使用Promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -51,7 +53,7 @@ function preQuery(query: AssetMap): Promise<Uint8Array>
 | [24000016](../errorcode-asset.md#24000016-缓存数量超限) | The cache exceeds the limit. |
 | [24000017](../errorcode-asset.md#24000017-该子功能不支持) | The capability is not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

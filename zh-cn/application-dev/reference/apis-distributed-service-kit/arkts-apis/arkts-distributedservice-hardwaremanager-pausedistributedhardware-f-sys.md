@@ -1,5 +1,11 @@
 # pauseDistributedHardware（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { hardwareManager } from '@kit.DistributedServiceKit';
+```
+
 ## pauseDistributedHardware
 
 ```TypeScript
@@ -9,10 +15,6 @@ function pauseDistributedHardware(description: HardwareDescriptor): Promise<void
 暂停被控端分布式硬件业务。使用promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
 
@@ -44,7 +46,7 @@ function pauseDistributedHardware(description: HardwareDescriptor): Promise<void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hardwareManager } from '@kit.DistributedServiceKit';

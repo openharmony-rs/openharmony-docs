@@ -1,5 +1,12 @@
 # setMultiScreenMode（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { screen } from '@kit.ArkUI';
+import { screenshot } from '@kit.ArkUI';
+```
+
 ## setMultiScreenMode
 
 ```TypeScript
@@ -10,10 +17,6 @@ function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,
 设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏显示。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screen-function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,    secondaryScreenMode: MultiScreenMode): Promise<void>--><!--Device-screen-function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,    secondaryScreenMode: MultiScreenMode): Promise<void>-End-->
 
@@ -43,7 +46,7 @@ function setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long,
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

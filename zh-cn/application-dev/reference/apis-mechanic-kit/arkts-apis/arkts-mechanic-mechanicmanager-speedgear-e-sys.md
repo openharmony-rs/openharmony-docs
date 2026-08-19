@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export enum SpeedGear--><!--Device-mechanicManager-export enum SpeedGear-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -23,10 +19,6 @@ LOW_SPEED = 0
 低速档定义
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-SpeedGear-LOW_SPEED = 0--><!--Device-SpeedGear-LOW_SPEED = 0-End-->
 
@@ -44,10 +36,6 @@ MIDDLE_SPEED = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-SpeedGear-MIDDLE_SPEED = 1--><!--Device-SpeedGear-MIDDLE_SPEED = 1-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -63,10 +51,6 @@ HIGH_SPEED = 2
 高速档定义
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-SpeedGear-HIGH_SPEED = 2--><!--Device-SpeedGear-HIGH_SPEED = 2-End-->
 

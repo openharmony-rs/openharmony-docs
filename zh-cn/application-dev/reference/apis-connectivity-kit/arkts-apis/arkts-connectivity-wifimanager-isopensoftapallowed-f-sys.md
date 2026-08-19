@@ -1,5 +1,12 @@
 # isOpenSoftApAllowed（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## isOpenSoftApAllowed
 
 ```TypeScript
@@ -9,10 +16,6 @@ function isOpenSoftApAllowed(): boolean
 检查在某些情况下是否可以操作WLAN热点。当飞行模式开启 且不支持softap与sta共存，也不支持信号桥接时， 热点开关无法操作。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_WIFI_INFO and ohos.permission.MANAGE_WIFI_HOTSPOT
 
@@ -37,7 +40,7 @@ function isOpenSoftApAllowed(): boolean
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | System API is not allowed called by Non-system application. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot模块异常) | Operation failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wifiManager } from '@kit.ConnectivityKit';

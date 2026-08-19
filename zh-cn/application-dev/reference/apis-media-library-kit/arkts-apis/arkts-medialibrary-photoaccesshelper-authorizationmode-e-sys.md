@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum AuthorizationMode--><!--Device-photoAccessHelper-enum AuthorizationMode-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -23,10 +19,6 @@ SHORT_TIME_AUTHORIZATION = 0
 短时授权。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AuthorizationMode-SHORT_TIME_AUTHORIZATION = 0--><!--Device-AuthorizationMode-SHORT_TIME_AUTHORIZATION = 0-End-->
 

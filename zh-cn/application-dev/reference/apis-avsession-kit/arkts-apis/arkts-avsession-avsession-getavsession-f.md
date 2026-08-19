@@ -1,5 +1,11 @@
 # getAVSession
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## getAVSession
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAVSession(context: Context): Promise<AVSession>
 获取会话对象。使用Promise异步回调。 该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，该接口调用会失败并抛出异常。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
 
@@ -39,7 +41,7 @@ function getAVSession(context: Context): Promise<AVSession>
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

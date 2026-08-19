@@ -1,12 +1,8 @@
 # Morpher
 
-定义用于指定节点几何体形变目标的Morpher接口.
+用于控制3D模型的形变，通过调整不同形变目标的权重，实现模型的动态变形效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Morpher--><!--Device-unnamed-export interface Morpher-End-->
 
@@ -18,15 +14,11 @@
 readonly targets: Record<string, double>
 ```
 
-形变目标名称和权重
+用于存储所有形变目标的名称和对应的权重。权重值通常在[0.0, 1.0]范围内。
 
 **类型：** Record&lt;string, double&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Morpher-readonly targets: Record<string, double>--><!--Device-Morpher-readonly targets: Record<string, double>-End-->
 

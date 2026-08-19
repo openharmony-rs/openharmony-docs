@@ -8,10 +8,6 @@ type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-pluginComponentManager-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }--><!--Device-pluginComponentManager-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }-End-->

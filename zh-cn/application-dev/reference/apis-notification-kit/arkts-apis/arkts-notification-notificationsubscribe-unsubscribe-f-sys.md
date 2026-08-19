@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationSubscribe } from 'notificationSubscribe';
+import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
 ## unsubscribe
@@ -15,10 +15,6 @@ function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback
 取消订阅。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本9 - 19：ohos.permission.NOTIFICATION_CONTROLLER
@@ -34,7 +30,7 @@ function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | subscriber | NotificationSubscriber | 是 | 通知订阅对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 取消订阅动作回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 取消订阅动作回调函数。 |
 
 **错误码：**
 
@@ -47,7 +43,7 @@ function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -102,10 +98,6 @@ function unsubscribe(subscriber: NotificationSubscriber): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本9 - 19：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -138,7 +130,7 @@ function unsubscribe(subscriber: NotificationSubscriber): Promise<void>
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

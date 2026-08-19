@@ -1,18 +1,20 @@
 # execute（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { insightIntentDriver } from '@kit.AbilityKit';
+```
+
 ## execute
 
 ```TypeScript
 function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult>): void
 ```
 
-执行意图调用的接口。使用callback异步回调。 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。 当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要 申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
+执行意图调用的接口。使用callback异步回调。 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。 当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要 申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.EXECUTE_INSIGHT_INTENT
 
@@ -29,7 +31,7 @@ function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.Exec
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [ExecuteParam](arkts-ability-insightintentdriver-executeparam-i-sys.md) | 是 | 执行意图调用的参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;insightIntent.ExecuteResult&gt; | 是 | 回调函数，返回意图调用执行结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;insightIntent.ExecuteResult&gt; | 是 | 回调函数，返回意图调用执行结果。 |
 
 **错误码：**
 
@@ -55,7 +57,7 @@ function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.Exec
 | [16000138](../errorcode-ability.md#16000138-跨设备执行意图设备断连) | Device disconnected during cross-device intent execution.<br>**适用版本：** 26.0.0+ |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
@@ -99,13 +101,9 @@ function executeInsightIntentAsync() {
 function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 ```
 
-执行意图调用的接口。使用Promise异步回调。 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。 当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要 申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
+执行意图调用的接口。使用Promise异步回调。 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。 当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要 申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.EXECUTE_INSIGHT_INTENT
 
@@ -153,7 +151,7 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 | [16000138](../errorcode-ability.md#16000138-跨设备执行意图设备断连) | Device disconnected during cross-device intent execution.<br>**适用版本：** 26.0.0+ |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';

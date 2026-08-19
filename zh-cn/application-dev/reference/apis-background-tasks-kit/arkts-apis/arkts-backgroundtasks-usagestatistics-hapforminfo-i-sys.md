@@ -4,15 +4,17 @@ FA模型的使用信息属性集合。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-usageStatistics-interface HapFormInfo--><!--Device-usageStatistics-interface HapFormInfo-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
 
 ## count
 
@@ -25,10 +27,6 @@ count: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapFormInfo-count: int--><!--Device-HapFormInfo-count: int-End-->
 
@@ -48,10 +46,6 @@ formDimension: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapFormInfo-formDimension: int--><!--Device-HapFormInfo-formDimension: int-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -69,10 +63,6 @@ formId: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapFormInfo-formId: long--><!--Device-HapFormInfo-formId: long-End-->
 
@@ -92,10 +82,6 @@ formLastUsedTime: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapFormInfo-formLastUsedTime: long--><!--Device-HapFormInfo-formLastUsedTime: long-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -113,10 +99,6 @@ formName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapFormInfo-formName: string--><!--Device-HapFormInfo-formName: string-End-->
 

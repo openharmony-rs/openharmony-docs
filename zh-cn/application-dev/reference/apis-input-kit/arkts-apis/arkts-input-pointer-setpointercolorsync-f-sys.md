@@ -1,5 +1,11 @@
 # setPointerColorSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## setPointerColorSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setPointerColorSync(color: int): void
 设置鼠标光标颜色，使用同步方式进行设置。 > **说明：** > > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-pointer-function setPointerColorSync(color: int): void--><!--Device-pointer-function setPointerColorSync(color: int): void-End-->
 
@@ -33,7 +35,7 @@ function setPointerColorSync(color: int): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

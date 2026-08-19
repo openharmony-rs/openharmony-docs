@@ -4,13 +4,15 @@ JS跨线程通信工具。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace worker--><!--Device-unnamed-declare namespace worker-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
+```
 
 ## 汇总
 
@@ -26,7 +28,7 @@ JS跨线程通信工具。
 
 | 名称 | 说明 |
 | --- | --- |
-| [RestrictedWorker](arkts-arkts-worker-restrictedworker-c-sys.md) | RestrictedWorker类继承[ThreadWorker](arkts-arkts-worker-threadworker-c.md#threadworker)，具有ThreadWorker中所有的方法。 RestrictedWorker主要用于提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。 |
+| [RestrictedWorker](arkts-arkts-worker-restrictedworker-c-sys.md) | RestrictedWorker类继承[ThreadWorker](arkts-arkts-worker-threadworker-c.md)，具有ThreadWorker中所有的方法。 RestrictedWorker主要用于提供受限的Worker线程运行环境，该线程运行环境中只允许导入Worker模块，不允许导入其他API。 |
 <!--DelEnd-->
 
 ### 常量

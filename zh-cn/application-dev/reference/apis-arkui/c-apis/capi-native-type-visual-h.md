@@ -548,7 +548,7 @@ ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_MotionPathOptions*](capi-arkui-nativemodule-arkui-motionpathoptions.md) | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。<br>     <br>新建的[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)对象中，路径动画的运动路径path值为空字符串，路径动画起点进度from值为0，路径动画终点进度to值为1，<br>     组件是否沿路径旋转rotatable值为false。 |
+| [ArkUI_MotionPathOptions*](capi-arkui-nativemodule-arkui-motionpathoptions.md) | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。      <br>新建的[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)对象中，路径动画的运动路径path值为空字符串，路径动画起点进度from值为0，路径动画终点进度to值为1，      组件是否沿路径旋转rotatable值为false。 |
 
 ### OH_ArkUI_MotionPathOptions_Dispose()
 
@@ -591,7 +591,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* opti
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_MotionPathOptions_GetPath()
 
@@ -618,7 +618,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>     <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 缓冲区大小不足。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。      <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 缓冲区大小不足。 |
 
 ### OH_ArkUI_MotionPathOptions_SetFrom()
 
@@ -643,7 +643,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* opti
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} from超出[0.0, 1.0]范围，或from大于终点进度to。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。      <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} from超出[0.0, 1.0]范围，或from大于终点进度to。 |
 
 ### OH_ArkUI_MotionPathOptions_GetFrom()
 
@@ -668,7 +668,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_MotionPathOptions_SetTo()
 
@@ -693,7 +693,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} to超出[0.0, 1.0]范围，或to小于起点进度from。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。      <br>{@link ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE} to超出[0.0, 1.0]范围，或to小于起点进度from。 |
 
 ### OH_ArkUI_MotionPathOptions_GetTo()
 
@@ -718,7 +718,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_MotionPathOptions_SetRotatable()
 
@@ -743,7 +743,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions*
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_MotionPathOptions_GetRotatable()
 
@@ -768,7 +768,7 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOp
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_ShadowOptions_Create()
 
@@ -829,7 +829,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_GetRadius()
 
@@ -854,7 +854,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_SetType()
 
@@ -879,7 +879,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_GetType()
 
@@ -904,7 +904,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_SetColor()
 
@@ -929,7 +929,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options,
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_GetColor()
 
@@ -954,7 +954,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options,
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_SetOffsetX()
 
@@ -979,7 +979,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_GetOffsetX()
 
@@ -1004,7 +1004,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_SetOffsetY()
 
@@ -1029,7 +1029,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_GetOffsetY()
 
@@ -1054,7 +1054,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* option
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_SetFill()
 
@@ -1079,7 +1079,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_ShadowOptions_GetFill()
 
@@ -1104,7 +1104,7 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 返回结果码。<br>     <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 返回结果码。      <br>若操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>若参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_Create()
 
@@ -1165,7 +1165,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetX()
 
@@ -1190,7 +1190,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetY()
 
@@ -1215,7 +1215,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetY()
 
@@ -1240,7 +1240,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetZ()
 
@@ -1265,7 +1265,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetZ()
 
@@ -1290,7 +1290,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetCenterX()
 
@@ -1315,7 +1315,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetCenterX()
 
@@ -1340,7 +1340,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4Scale
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_SetCenterY()
 
@@ -1365,7 +1365,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4ScaleOptions_GetCenterY()
 
@@ -1390,7 +1390,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4Scale
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_Create()
 
@@ -1451,7 +1451,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetX()
 
@@ -1476,7 +1476,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4Rotation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetY()
 
@@ -1501,7 +1501,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetY()
 
@@ -1526,7 +1526,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4Rotation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetZ()
 
@@ -1551,7 +1551,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOption
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetZ()
 
@@ -1576,7 +1576,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4Rotation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetAngle()
 
@@ -1601,7 +1601,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOp
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetAngle()
 
@@ -1626,7 +1626,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4Rota
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetCenterX()
 
@@ -1651,7 +1651,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4Rotation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetCenterX()
 
@@ -1676,7 +1676,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4Ro
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_SetCenterY()
 
@@ -1701,7 +1701,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4Rotation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4RotationOptions_GetCenterY()
 
@@ -1726,7 +1726,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4Ro
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4TranslationOptions_Create()
 
@@ -1787,7 +1787,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4Translation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetX()
 
@@ -1812,7 +1812,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4Trans
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4TranslationOptions_SetY()
 
@@ -1837,7 +1837,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4Translation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetY()
 
@@ -1862,7 +1862,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4Trans
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4TranslationOptions_SetZ()
 
@@ -1887,7 +1887,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4Translation
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4TranslationOptions_GetZ()
 
@@ -1912,7 +1912,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4Trans
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_CreateIdentity()
 
@@ -2020,7 +2020,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_Combine()
 
@@ -2045,7 +2045,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_M
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_Translate()
 
@@ -2070,7 +2070,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Ma
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_Scale()
 
@@ -2095,7 +2095,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_Rotate()
 
@@ -2120,7 +2120,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matri
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_Skew()
 
@@ -2146,7 +2146,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, 
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_TransformPoint()
 
@@ -2172,7 +2172,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, con
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_SetPolyToPoly()
 
@@ -2199,7 +2199,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkU
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_Matrix4_GetElements()
 
@@ -2224,6 +2224,6 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float*
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。<br>     <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。<br>     <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| ArkUI_ErrorCode | 错误码。      <br>如果操作成功，返回{@link ARKUI_ERROR_CODE_NO_ERROR}。      <br>如果发生参数异常，返回{@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 

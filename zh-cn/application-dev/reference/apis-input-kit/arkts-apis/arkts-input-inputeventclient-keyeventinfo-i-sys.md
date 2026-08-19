@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputEventClient-interface KeyEventInfo--><!--Device-inputEventClient-interface KeyEventInfo-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { inputEventClient } from '@kit.InputKit';
+```
 
 ## KeyEvent
 
@@ -25,10 +27,6 @@ KeyEvent: KeyEvent
 **类型：** KeyEvent
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-KeyEventInfo-KeyEvent: KeyEvent--><!--Device-KeyEventInfo-KeyEvent: KeyEvent-End-->
 

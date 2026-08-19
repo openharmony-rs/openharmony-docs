@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-vibrator-interface TransientParam--><!--Device-vibrator-interface TransientParam-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
+
+## 导入模块
+
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+```
 
 ## frequency
 
@@ -23,10 +25,6 @@ frequency?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TransientParam-frequency?: int--><!--Device-TransientParam-frequency?: int-End-->
 
@@ -44,10 +42,6 @@ index?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TransientParam-index?: int--><!--Device-TransientParam-index?: int-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
@@ -63,10 +57,6 @@ intensity?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TransientParam-intensity?: int--><!--Device-TransientParam-intensity?: int-End-->
 

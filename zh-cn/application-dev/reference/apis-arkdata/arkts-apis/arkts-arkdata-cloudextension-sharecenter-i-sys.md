@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudExtension-export interface ShareCenter--><!--Device-cloudExtension-export interface ShareCenter-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudExtension } from '@kit.ArkData';
+```
 
 ## changeConfirmation
 
@@ -28,10 +30,6 @@ changeConfirmation(
 更改端云共享邀请。更改共享邀请时，需指定当前更改共享邀请的应用、共享数据的共享资源标识以及更改的状态，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ShareCenter-changeConfirmation(      userId: int,      bundleName: string,      sharingResource: string,      state: cloudData.sharing.State    ): Promise<Result<void>>--><!--Device-ShareCenter-changeConfirmation(      userId: int,      bundleName: string,      sharingResource: string,      state: cloudData.sharing.State    ): Promise<Result<void>>-End-->
 
@@ -54,7 +52,7 @@ changeConfirmation(
 | --- | --- |
 | Promise&lt;Result&lt;void&gt;&gt; | Promise对象，返回更改共享邀请的结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -115,10 +113,6 @@ changePrivilege(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShareCenter-changePrivilege(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-changePrivilege(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -140,7 +134,7 @@ changePrivilege(
 | --- | --- |
 | Promise&lt;Result&lt;Array&lt;Result&lt;cloudData.sharing.Participant&gt;&gt;&gt;&gt; | Promise对象，返回更改权限的结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -221,10 +215,6 @@ confirmInvitation(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShareCenter-confirmInvitation(      userId: int,      bundleName: string,      invitationCode: string,      state: cloudData.sharing.State    ): Promise<Result<string>>--><!--Device-ShareCenter-confirmInvitation(      userId: int,      bundleName: string,      invitationCode: string,      state: cloudData.sharing.State    ): Promise<Result<string>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -246,7 +236,7 @@ confirmInvitation(
 | --- | --- |
 | Promise&lt;Result&lt;string&gt;&gt; | Promise对象，返回确认端云共享邀请数据的共享资源标识。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -304,10 +294,6 @@ exit(userId: int, bundleName: string, sharingResource: string): Promise<Result<v
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShareCenter-exit(userId: int, bundleName: string, sharingResource: string): Promise<Result<void>>--><!--Device-ShareCenter-exit(userId: int, bundleName: string, sharingResource: string): Promise<Result<void>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -328,7 +314,7 @@ exit(userId: int, bundleName: string, sharingResource: string): Promise<Result<v
 | --- | --- |
 | Promise&lt;Result&lt;void&gt;&gt; | Promise对象，返回退出共享的结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -412,10 +398,6 @@ queryParticipants(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShareCenter-queryParticipants(      userId: int,      bundleName: string,      sharingResource: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>--><!--Device-ShareCenter-queryParticipants(      userId: int,      bundleName: string,      sharingResource: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -436,7 +418,7 @@ queryParticipants(
 | --- | --- |
 | Promise&lt;Result&lt;Array&lt;cloudData.sharing.Participant&gt;&gt;&gt; | Promise对象，返回查询共享参与者的结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -556,10 +538,6 @@ queryParticipantsByInvitation(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShareCenter-queryParticipantsByInvitation(      userId: int,      bundleName: string,      invitationCode: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>--><!--Device-ShareCenter-queryParticipantsByInvitation(      userId: int,      bundleName: string,      invitationCode: string    ): Promise<Result<Array<cloudData.sharing.Participant>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -580,7 +558,7 @@ queryParticipantsByInvitation(
 | --- | --- |
 | Promise&lt;Result&lt;Array&lt;cloudData.sharing.Participant&gt;&gt;&gt; | Promise对象，返回根据邀请码查询共享参与者的结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -724,10 +702,6 @@ share(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShareCenter-share(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-share(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -749,7 +723,7 @@ share(
 | --- | --- |
 | Promise&lt;Result&lt;Array&lt;Result&lt;cloudData.sharing.Participant&gt;&gt;&gt;&gt; | Promise对象，返回发起共享的结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -852,10 +826,6 @@ unshare(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ShareCenter-unshare(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>--><!--Device-ShareCenter-unshare(      userId: int,      bundleName: string,      sharingResource: string,      participants: Array<cloudData.sharing.Participant>    ): Promise<Result<Array<Result<cloudData.sharing.Participant>>>>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -877,7 +847,7 @@ unshare(
 | --- | --- |
 | Promise&lt;Result&lt;Array&lt;Result&lt;cloudData.sharing.Participant&gt;&gt;&gt;&gt; | Promise对象，返回取消共享的结果。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

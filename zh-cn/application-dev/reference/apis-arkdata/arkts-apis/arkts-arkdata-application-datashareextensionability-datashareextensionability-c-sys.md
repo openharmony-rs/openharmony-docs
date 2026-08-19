@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class DataShareExtensionAbility--><!--Device-unnamed-declare class DataShareExtensionAbility-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { DataShareExtensionAbility } from '@kit.ArkData';
+```
 
 ## batchInsert
 
@@ -23,10 +25,6 @@ batchInsert?(uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCall
 在数据库批量插入时服务端回调此接口，该方法可以选择性重写。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,9 +40,9 @@ batchInsert?(uri: string, valueBuckets: Array<ValuesBucket>, callback: AsyncCall
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要批量插入的数据的路径。 |
 | valueBuckets | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | 是 | 指示要批量插入的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回插入的数据记录数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回插入的数据记录数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility, relationalStore, ValuesBucket } from '@kit.ArkData';
@@ -80,10 +78,6 @@ batchUpdate?(
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-batchUpdate?(    operations: Record<string, Array<UpdateOperation>>,    callback: AsyncCallback<Record<string, Array<number>>>  ): void--><!--Device-DataShareExtensionAbility-batchUpdate?(    operations: Record<string, Array<UpdateOperation>>,    callback: AsyncCallback<Record<string, Array<number>>>  ): void-End-->
@@ -97,9 +91,9 @@ batchUpdate?(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | operations | Record&lt;string, Array&lt;[UpdateOperation](arkts-arkdata-updateoperation-t-sys.md)&gt;&gt; | 是 | 要更新数据的路径、筛选条件和数据集合。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | 是 | 回调函数。返回更新的数据记录数集合，更新失败的UpdateOperation的数据记录数为-1。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | 是 | 回调函数。返回更新的数据记录数集合，更新失败的UpdateOperation的数据记录数为-1。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility, relationalStore, dataShare } from '@kit.ArkData';
@@ -143,10 +137,6 @@ delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<number>): void--><!--Device-DataShareExtensionAbility-delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<number>): void-End-->
@@ -161,9 +151,9 @@ delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callba
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要删除的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回已删除的数据记录数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回已删除的数据记录数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility, relationalStore, dataSharePredicates } from '@kit.ArkData';
@@ -195,10 +185,6 @@ denormalizeUri?(uri: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-denormalizeUri?(uri: string, callback: AsyncCallback<string>): void--><!--Device-DataShareExtensionAbility-denormalizeUri?(uri: string, callback: AsyncCallback<string>): void-End-->
@@ -211,10 +197,10 @@ denormalizeUri?(uri: string, callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 指示服务端使用的[URI](../../apis-arkts/arkts-apis/arkts-arkts-uri-uri-c.md#uri)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果反规范化成功，则返回反规范化的URI；如果无需进行反规范化，则返回原始URI；若不支持则返回空。 |
+| uri | string | 是 | 指示服务端使用的[URI](../../apis-arkts/arkts-apis/arkts-arkts-uri-uri-c.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果反规范化成功，则返回反规范化的URI；如果无需进行反规范化，则返回原始URI；若不支持则返回空。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility } from '@kit.ArkData';
@@ -245,10 +231,6 @@ insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>): void--><!--Device-DataShareExtensionAbility-insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>): void-End-->
@@ -263,9 +245,9 @@ insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback<number>)
 | --- | --- | --- | --- |
 | uri | string | 是 | 指示要插入的数据的路径。 |
 | valueBucket | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | 是 | 指示要插入的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility, relationalStore, ValuesBucket } from '@kit.ArkData';
@@ -299,10 +281,6 @@ normalizeUri?(uri: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-normalizeUri?(uri: string, callback: AsyncCallback<string>): void--><!--Device-DataShareExtensionAbility-normalizeUri?(uri: string, callback: AsyncCallback<string>): void-End-->
@@ -315,10 +293,10 @@ normalizeUri?(uri: string, callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uri | string | 是 | 指示用户传入的[URI](../../apis-arkts/arkts-apis/arkts-arkts-uri-uri-c.md#uri)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果支持URI规范化，则返回规范化URI，否则返回空。 |
+| uri | string | 是 | 指示用户传入的[URI](../../apis-arkts/arkts-apis/arkts-arkts-uri-uri-c.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 回调函数。如果支持URI规范化，则返回规范化URI，否则返回空。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility } from '@kit.ArkData';
@@ -349,10 +327,6 @@ DataShare客户端连接DataShareExtensionAbility服务端时，服务端回调�
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-onCreate?(want: Want, callback: AsyncCallback<void>): void--><!--Device-DataShareExtensionAbility-onCreate?(want: Want, callback: AsyncCallback<void>): void-End-->
@@ -366,9 +340,9 @@ DataShare客户端连接DataShareExtensionAbility服务端时，服务端回调�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | Want类型信息，包括Ability名称、Bundle名称等。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。无返回值。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。无返回值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility, relationalStore } from '@kit.ArkData';
@@ -415,10 +389,6 @@ query?(
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-query?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    columns: Array<string>,    callback: AsyncCallback<Object>  ): void--><!--Device-DataShareExtensionAbility-query?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    columns: Array<string>,    callback: AsyncCallback<Object>  ): void-End-->
@@ -434,9 +404,9 @@ query?(
 | uri | string | 是 | 指示要查询的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件。 |
 | columns | Array&lt;string&gt; | 是 | 指示要查询的列。如果此参数为空，则查询所有列。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Object&gt; | 是 | 回调函数。返回查询到的结果集。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Object&gt; | 是 | 回调函数。返回查询到的结果集。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility, relationalStore, dataSharePredicates } from '@kit.ArkData';
@@ -476,10 +446,6 @@ update?(
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-update?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    valueBucket: ValuesBucket,    callback: AsyncCallback<number>  ): void--><!--Device-DataShareExtensionAbility-update?(    uri: string,    predicates: dataSharePredicates.DataSharePredicates,    valueBucket: ValuesBucket,    callback: AsyncCallback<number>  ): void-End-->
@@ -495,9 +461,9 @@ update?(
 | uri | string | 是 | 指示要更新的数据的路径。 |
 | predicates | dataSharePredicates.DataSharePredicates | 是 | 指示筛选条件。 |
 | valueBucket | [ValuesBucket](arkts-arkdata-valuesbucket-t.md) | 是 | 指示要更新的数据。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回更新的数据记录数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数。返回更新的数据记录数。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { DataShareExtensionAbility, relationalStore, dataSharePredicates, ValuesBucket } from '@kit.ArkData';
@@ -531,10 +497,6 @@ batchInsert?: BatchInsertFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-batchInsert?: BatchInsertFn--><!--Device-DataShareExtensionAbility-batchInsert?: BatchInsertFn-End-->
@@ -554,10 +516,6 @@ batchUpdate?: BatchUpdateFn
 **类型：** [BatchUpdateFn](arkts-arkdata-batchupdatefn-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -579,10 +537,6 @@ context: ExtensionContext
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-context: ExtensionContext--><!--Device-DataShareExtensionAbility-context: ExtensionContext-End-->
@@ -602,10 +556,6 @@ delete?: DeleteFn
 **类型：** [DeleteFn](arkts-arkdata-deletefn-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -627,10 +577,6 @@ denormalizeUri?: DenormalizeUriFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-denormalizeUri?: DenormalizeUriFn--><!--Device-DataShareExtensionAbility-denormalizeUri?: DenormalizeUriFn-End-->
@@ -650,10 +596,6 @@ insert?: InsertFn
 **类型：** [InsertFn](arkts-arkdata-insertfn-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -675,10 +617,6 @@ normalizeUri?: NormalizeUriFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-normalizeUri?: NormalizeUriFn--><!--Device-DataShareExtensionAbility-normalizeUri?: NormalizeUriFn-End-->
@@ -698,10 +636,6 @@ onCreate?: OnCreateFn
 **类型：** [OnCreateFn](arkts-arkdata-oncreatefn-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -723,10 +657,6 @@ query?: QueryFn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataShareExtensionAbility-query?: QueryFn--><!--Device-DataShareExtensionAbility-query?: QueryFn-End-->
@@ -746,10 +676,6 @@ update?: UpdateFn
 **类型：** [UpdateFn](arkts-arkdata-updatefn-t-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

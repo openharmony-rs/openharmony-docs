@@ -52,7 +52,7 @@ FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex属性初始化成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex属性初始化成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 ### ffrt_mutexattr_settype()
 
@@ -77,7 +77,7 @@ FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex属性类型设置成功时返回`ffrt_success`；<br>         当attr为空指针，或mutex属性类型既不是`ffrt_mutex_normal`也不是`ffrt_mutex_recursive`时<br>         返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex属性类型设置成功时返回`ffrt_success`；          当attr为空指针，或mutex属性类型既不是`ffrt_mutex_normal`也不是`ffrt_mutex_recursive`时          返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -107,7 +107,7 @@ FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex属性类型获取成功时返回`ffrt_success`；<br>         attr或type为空指针时返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex属性类型获取成功时返回`ffrt_success`；          attr或type为空指针时返回`ffrt_error_inval`。 |
 
 ### ffrt_mutexattr_destroy()
 
@@ -131,7 +131,7 @@ FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex属性销毁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex属性销毁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 ### ffrt_mutex_init()
 
@@ -156,7 +156,7 @@ FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex初始化成功时返回`ffrt_success`；<br>         `mutex`为空，或`attr`非空但未指定合法的mutex类型时返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex初始化成功时返回`ffrt_success`；          `mutex`为空，或`attr`非空但未指定合法的mutex类型时返回`ffrt_error_inval`。 |
 
 ### ffrt_mutex_lock()
 
@@ -180,7 +180,7 @@ FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex加锁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex加锁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -209,7 +209,7 @@ FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex解锁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex解锁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 ### ffrt_mutex_trylock()
 
@@ -233,7 +233,7 @@ FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex加锁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`或`ffrt_error_busy`。 |
+| FFRT_C_API int | mutex加锁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`或`ffrt_error_busy`。 |
 
 **参考：**
 
@@ -262,6 +262,6 @@ FFRT_C_API int ffrt_mutex_destroy(ffrt_mutex_t* mutex)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | mutex销毁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | mutex销毁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 

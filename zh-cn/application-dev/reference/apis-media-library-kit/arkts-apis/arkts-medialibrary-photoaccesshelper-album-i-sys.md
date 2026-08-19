@@ -2,17 +2,19 @@
 
 实体相册。
 
-**继承/实现关系：** Album extends [AbsAlbum](arkts-medialibrary-photoaccesshelper-absalbum-i.md#absalbum)
+**继承/实现关系：** Album extends [AbsAlbum](arkts-medialibrary-photoaccesshelper-absalbum-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-photoAccessHelper-interface Album--><!--Device-photoAccessHelper-interface Album-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## deleteAssets
 
@@ -23,8 +25,6 @@ deleteAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 从回收站中彻底删除图片或者视频，需要先在回收站中预置文件资源。使用callback异步回调。 > **说明：** > > 此操作不可逆，执行此操作后文件资源将彻底删除，请谨慎操作。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -43,7 +43,7 @@ deleteAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | assets | Array&lt;PhotoAsset&gt; | 是 | 回收站中待彻底删除图片或者视频数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -55,7 +55,7 @@ deleteAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -97,8 +97,6 @@ deleteAssets(assets: Array<PhotoAsset>): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [deleteAssets](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#deleteassets)
@@ -133,7 +131,7 @@ deleteAssets(assets: Array<PhotoAsset>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -174,10 +172,6 @@ getAttribute(attrs: AlbumAttribute[]): Promise<Record<AlbumAttribute, AlbumAttri
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -209,7 +203,7 @@ getAttribute(attrs: AlbumAttribute[]): Promise<Record<AlbumAttribute, AlbumAttri
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. Possible causes: <br>1. Unsupported attribute; <br>2. The attrs size exceed 20; <br>3. Empty or duplicate attribute; |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -259,10 +253,6 @@ getFaceId(): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-Album-getFaceId(): Promise<string>--><!--Device-Album-getFaceId(): Promise<string>-End-->
@@ -285,7 +275,7 @@ getFaceId(): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -336,10 +326,6 @@ getFusionAssetsInfo(): Promise<FusionAssetsInfo[]>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-Album-getFusionAssetsInfo(): Promise<FusionAssetsInfo[]>--><!--Device-Album-getFusionAssetsInfo(): Promise<FusionAssetsInfo[]>-End-->
@@ -372,10 +358,6 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise<FetchResu
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-Album-getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise<FetchResult<PhotoAsset>>--><!--Device-Album-getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise<FetchResult<PhotoAsset>>-End-->
@@ -406,7 +388,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise<FetchResu
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: 1. The input parameter is not within the valid range. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -474,8 +456,6 @@ recoverAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [recoverAssets](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#recoverassets)
@@ -493,7 +473,7 @@ recoverAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | assets | Array&lt;PhotoAsset&gt; | 是 | 回收站中待恢复图片或者视频数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -505,7 +485,7 @@ recoverAssets(assets: Array<PhotoAsset>, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -547,8 +527,6 @@ recoverAssets(assets: Array<PhotoAsset>): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [recoverAssets](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#recoverassets)
@@ -583,7 +561,7 @@ recoverAssets(assets: Array<PhotoAsset>): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -624,8 +602,6 @@ setCoverUri(uri: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [setCoverUri](arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#setcoveruri)
@@ -643,7 +619,7 @@ setCoverUri(uri: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uri | string | 是 | 待设置为相册封面文件的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -655,7 +631,7 @@ setCoverUri(uri: string, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -696,8 +672,6 @@ setCoverUri(uri: string): Promise<void>
 设置用户相册封面。使用Promise异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
 
 **废弃版本：** 11
 
@@ -745,10 +719,6 @@ readonly dateAdded?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Album-readonly dateAdded?: long--><!--Device-Album-readonly dateAdded?: long-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -766,10 +736,6 @@ readonly dateModified?: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Album-readonly dateModified?: long--><!--Device-Album-readonly dateModified?: long-End-->
 

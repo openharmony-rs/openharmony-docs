@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationContent--><!--Device-unnamed-export interface NotificationContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,8 +19,6 @@ contentType?: notification.ContentType
 **类型：** notification.ContentType
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 
@@ -46,10 +40,6 @@ longText?: NotificationLongTextContent
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationContent-longText?: NotificationLongTextContent--><!--Device-NotificationContent-longText?: NotificationLongTextContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -65,10 +55,6 @@ multiLine?: NotificationMultiLineContent
 **类型：** [NotificationMultiLineContent](arkts-notification-notificationcontent-notificationmultilinecontent-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationContent-multiLine?: NotificationMultiLineContent--><!--Device-NotificationContent-multiLine?: NotificationMultiLineContent-End-->
 
@@ -86,10 +72,6 @@ normal?: NotificationBasicContent
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationContent-normal?: NotificationBasicContent--><!--Device-NotificationContent-normal?: NotificationBasicContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -105,10 +87,6 @@ notificationContentType?: notificationManager.ContentType
 **类型：** notificationManager.ContentType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationContent-notificationContentType?: notificationManager.ContentType--><!--Device-NotificationContent-notificationContentType?: notificationManager.ContentType-End-->
 
@@ -126,10 +104,6 @@ picture?: NotificationPictureContent
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationContent-picture?: NotificationPictureContent--><!--Device-NotificationContent-picture?: NotificationPictureContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -145,10 +119,6 @@ systemLiveView?: NotificationSystemLiveViewContent
 **类型：** [NotificationSystemLiveViewContent](arkts-notification-notificationcontent-notificationsystemliveviewcontent-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationContent-systemLiveView?: NotificationSystemLiveViewContent--><!--Device-NotificationContent-systemLiveView?: NotificationSystemLiveViewContent-End-->
 

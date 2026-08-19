@@ -205,7 +205,7 @@ OH_Drawing_Array* OH_Drawing_TextLineGetGlyphRuns(OH_Drawing_TextLine* line)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 指向文本渲染单元[OH_Drawing_Run](capi-drawing-oh-drawing-run.md)数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用<br>     [OH_Drawing_DestroyRuns](capi-drawing-text-line-h.md#oh_drawing_destroyruns)接口释放该对象的指针。 |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | 指向文本渲染单元[OH_Drawing_Run](capi-drawing-oh-drawing-run.md)数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用      [OH_Drawing_DestroyRuns](capi-drawing-text-line-h.md#oh_drawing_destroyruns)接口释放该对象的指针。 |
 
 ### OH_Drawing_DestroyRuns()
 
@@ -304,7 +304,7 @@ OH_Drawing_TextLine* OH_Drawing_TextLineCreateTruncatedLine(OH_Drawing_TextLine*
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_TextLine*](capi-drawing-oh-drawing-textline.md) | 返回指向截断的文本行对象[OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)的指针，当line或ellipsis为NULL时返回NULL，不再需要时请使用<br>     [OH_Drawing_DestroyTextLine](capi-drawing-text-line-h.md#oh_drawing_destroytextline)释放该对象的内存。 |
+| [OH_Drawing_TextLine*](capi-drawing-oh-drawing-textline.md) | 返回指向截断的文本行对象[OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md)的指针，当line或ellipsis为NULL时返回NULL，不再需要时请使用      [OH_Drawing_DestroyTextLine](capi-drawing-text-line-h.md#oh_drawing_destroytextline)释放该对象的内存。 |
 
 ### OH_Drawing_TextLineGetTypographicBounds()
 
@@ -359,7 +359,7 @@ OH_Drawing_Rect* OH_Drawing_TextLineGetImageBounds(OH_Drawing_TextLine* line)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Rect*](capi-drawing-oh-drawing-rect.md) | 指向文本行对象的图像边界[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针，传入的line为NULL时返回NULL，不再需要[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)时，请使用<br>     {@link OH_Drawing_RectDestroy}接口释放该对象的指针。 |
+| [OH_Drawing_Rect*](capi-drawing-oh-drawing-rect.md) | 指向文本行对象的图像边界[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针，传入的line为NULL时返回NULL，不再需要[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)时，请使用      {@link OH_Drawing_RectDestroy}接口释放该对象的指针。 |
 
 ### OH_Drawing_TextLineGetTrailingSpaceWidth()
 
@@ -459,7 +459,7 @@ typedef bool (*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (double offset | 文本行对象中每个字符的偏移量，单位为物理像素px。 |
+| double offset | 文本行对象中每个字符的偏移量，单位为物理像素px。 |
 | int32_t index | 文本行对象中每个字符的索引值。 |
 | bool leadingEdge | 光标是否位于字符的前缘。true表示位于字符前缘，即偏移量不包含该字符宽度，false表示位于字符后缘，即偏移量包含该字符宽度。 |
 

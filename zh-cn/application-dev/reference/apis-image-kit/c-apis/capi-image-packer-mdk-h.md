@@ -56,7 +56,7 @@ int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：执行成功。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：执行成功。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。 |
 
 ### OH_ImagePacker_InitNative()
 
@@ -114,7 +114,7 @@ int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：执行成功。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>ERR_IMAGE_DATA_ABNORMAL：输出缓冲区异常。<br>     <br>ERR_IMAGE_MISMATCHED_FORMAT：格式不匹配。<br>     <br>ERR_IMAGE_MALLOC_ABNORMAL：malloc内部缓冲区错误。<br>     <br>ERR_IMAGE_DECODE_ABNORMAL：init编解码器内部错误。<br>     <br>ERR_IMAGE_ENCODE_FAILED：编码器在编码过程中出现错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：执行成功。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>ERR_IMAGE_DATA_ABNORMAL：输出缓冲区异常。      <br>ERR_IMAGE_MISMATCHED_FORMAT：格式不匹配。      <br>ERR_IMAGE_MALLOC_ABNORMAL：malloc内部缓冲区错误。      <br>ERR_IMAGE_DECODE_ABNORMAL：init编解码器内部错误。      <br>ERR_IMAGE_ENCODE_FAILED：编码器在编码过程中出现错误。 |
 
 **参考：**
 
@@ -146,7 +146,7 @@ int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：执行成功。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>ERR_IMAGE_DATA_ABNORMAL：输出缓冲区异常。<br>     <br>ERR_IMAGE_MISMATCHED_FORMAT：格式不匹配。<br>     <br>ERR_IMAGE_MALLOC_ABNORMAL：malloc内部缓冲区错误。<br>     <br>ERR_IMAGE_DECODE_ABNORMAL：init编解码器内部错误。<br>     <br>ERR_IMAGE_ENCODE_FAILED：编码器在编码过程中出现错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：执行成功。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>ERR_IMAGE_DATA_ABNORMAL：输出缓冲区异常。      <br>ERR_IMAGE_MISMATCHED_FORMAT：格式不匹配。      <br>ERR_IMAGE_MALLOC_ABNORMAL：malloc内部缓冲区错误。      <br>ERR_IMAGE_DECODE_ABNORMAL：init编解码器内部错误。      <br>ERR_IMAGE_ENCODE_FAILED：编码器在编码过程中出现错误。 |
 
 **参考：**
 
@@ -175,7 +175,7 @@ int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：执行成功。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：执行成功。 |
 
 **参考：**
 

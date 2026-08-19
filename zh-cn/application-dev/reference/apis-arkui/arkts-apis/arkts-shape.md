@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Shape](arkts-arkui-shape-shape-f.md#shape) | 用于绘制Shape组件的构造函数。 |
+| [Shape](arkts-arkui-shape-shape-f.md) | 用于绘制Shape组件的构造函数。 |
 
 ### 接口
 

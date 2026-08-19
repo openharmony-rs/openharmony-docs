@@ -2,19 +2,23 @@
 
 Worker线程自身的运行环境，与宿主线程环境隔离。
 
-**继承/实现关系：** DedicatedWorkerGlobalScope extends [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md#workerglobalscope)
+**继承/实现关系：** DedicatedWorkerGlobalScope extends [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [ThreadWorkerGlobalScope](arkts-arkts-worker-threadworkerglobalscope-i.md#threadworkerglobalscope)
+**替代接口：** [ThreadWorkerGlobalScope](arkts-arkts-worker-threadworkerglobalscope-i.md)
 
 <!--Device-unnamed-export interface DedicatedWorkerGlobalScope--><!--Device-unnamed-export interface DedicatedWorkerGlobalScope-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
+```
 
 ## close
 
@@ -26,8 +30,6 @@ close(): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** close
@@ -36,7 +38,7 @@ close(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -66,8 +68,6 @@ Worker线程向宿主线程发送消息。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** postMessage
@@ -93,8 +93,6 @@ Worker线程向宿主线程发送消息。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** postMessage
@@ -110,7 +108,7 @@ Worker线程向宿主线程发送消息。
 | messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
 | options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 可为postMessage设置的选项。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -143,8 +141,6 @@ Worker线程向宿主线程发送消息。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 9
 
 **替代接口：** postMessage
@@ -160,7 +156,7 @@ Worker线程向宿主线程发送消息。
 | messageObject | Object | 是 | messageObject 发送至宿主线程的数据。 |
 | transfer | ArrayBuffer[] | 是 | transfer 数组不可包含null。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -199,8 +195,6 @@ onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** onmessage
@@ -220,8 +214,6 @@ onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 **类型：** (this: DedicatedWorkerGlobalScope, ev: MessageEvent) =&gt; void
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

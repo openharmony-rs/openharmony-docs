@@ -1,5 +1,11 @@
 # unlockSimLock（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## unlockSimLock
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unlockSimLock(slotId: int, lockInfo: PersoLockInfo, callback: AsyncCall
 Unlock SIM card.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -28,7 +30,7 @@ Unlock SIM card.
 | --- | --- | --- | --- |
 | slotId | int | 是 | Indicates the card slot index number, ranging from 0 to the maximum card slot index number supported by the device. |
 | lockInfo | [PersoLockInfo](arkts-telephony-sim-persolockinfo-i-sys.md) | 是 | Indicates customized lock type information. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[LockStatusResponse](arkts-telephony-sim-lockstatusresponse-i-sys.md)&gt; | 是 | Indicates the callback used to obtain a response to obtain the SIM card lock status for the specified card slot. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[LockStatusResponse](arkts-telephony-sim-lockstatusresponse-i-sys.md)&gt; | 是 | Indicates the callback used to obtain a response to obtain the SIM card lock status for the specified card slot. |
 
 **错误码：**
 
@@ -44,7 +46,7 @@ Unlock SIM card.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -69,10 +71,6 @@ function unlockSimLock(slotId: int, lockInfo: PersoLockInfo): Promise<LockStatus
 Unlock SIM card.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -109,7 +107,7 @@ Unlock SIM card.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

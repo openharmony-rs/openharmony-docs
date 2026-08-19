@@ -1,20 +1,24 @@
 # getState（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
 ## getState
 
 ```TypeScript
 function getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>): void
 ```
 
-获取键鼠穿越开关的状态，使用callback异步回调。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用 > [cooperate.getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate系统接口) > 替代。
+获取键鼠穿越开关的状态，使用callback异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate系统接口)
+**替代接口：** [getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md)
 
 <!--Device-inputDeviceCooperate-function getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>): void--><!--Device-inputDeviceCooperate-function getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>): void-End-->
 
@@ -27,7 +31,7 @@ function getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | deviceDescriptor | string | 是 | 键鼠穿越目标设备描述符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ state: boolean }&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;{ state: boolean }&gt; | 是 |  |
 
 **错误码：**
 
@@ -36,7 +40,7 @@ function getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boo
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { inputDeviceCooperate } from '@kit.InputKit';
@@ -74,15 +78,13 @@ struct Index {
 function getState(deviceDescriptor: string): Promise<{ state: boolean }>
 ```
 
-获取键鼠穿越开关的状态，使用Promise异步回调。 > **说明：** > > 从 API version 9开始支持，从API version 23开始废弃。建议使用 > [cooperate.getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate系统接口)替 > 代。
+获取键鼠穿越开关的状态，使用Promise异步回调。
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 23
 
-**替代接口：** [getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate系统接口)
+**替代接口：** [getCooperateSwitchState](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md)
 
 <!--Device-inputDeviceCooperate-function getState(deviceDescriptor: string): Promise<{ state: boolean }>--><!--Device-inputDeviceCooperate-function getState(deviceDescriptor: string): Promise<{ state: boolean }>-End-->
 
@@ -100,7 +102,7 @@ function getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;{ state: boolean }&gt; | > } Promise used to return the state of the screen hopping switch. **true** if enabled and **false** if disabled. |
+| Promise&lt;{ state: boolean }&gt; | > } Promise对象，返回键鼠穿越开关状态。true表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。 |
 
 **错误码：**
 
@@ -109,7 +111,7 @@ function getState(deviceDescriptor: string): Promise<{ state: boolean }>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { inputDeviceCooperate } from '@kit.InputKit';

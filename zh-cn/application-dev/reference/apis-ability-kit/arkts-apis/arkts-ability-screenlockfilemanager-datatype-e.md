@@ -1,12 +1,8 @@
-# DataType
+# DataType(锁屏敏感数据管理)
 
 表示锁屏下访问敏感数据类型的枚举。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screenLockFileManager-export enum DataType--><!--Device-screenLockFileManager-export enum DataType-End-->
 
@@ -22,10 +18,6 @@ MEDIA_DATA = 0x00000001
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DataType-MEDIA_DATA = 0x00000001--><!--Device-DataType-MEDIA_DATA = 0x00000001-End-->
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
@@ -39,10 +31,6 @@ ALL_DATA = 0xffffffff
 所有敏感数据类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DataType-ALL_DATA = 0xffffffff--><!--Device-DataType-ALL_DATA = 0xffffffff-End-->
 

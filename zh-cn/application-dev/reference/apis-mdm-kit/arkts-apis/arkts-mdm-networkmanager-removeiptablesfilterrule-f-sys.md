@@ -1,5 +1,11 @@
 # removeIptablesFilterRule（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+```
+
 ## removeIptablesFilterRule
 
 ```TypeScript
@@ -9,10 +15,6 @@ function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule, cal
 移除网络包过滤规则，仅支持IPv4。使用callback异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -30,7 +32,7 @@ function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule, cal
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | filterRule | [RemoveFilterRule](arkts-mdm-networkmanager-removefilterrule-i-sys.md) | 是 | 移除网络包过滤规则。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
 
 **错误码：**
 
@@ -42,7 +44,7 @@ function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule, cal
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { networkManager } from '@kit.MDMKit';
@@ -85,10 +87,6 @@ function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule): Pr
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -122,7 +120,7 @@ function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule): Pr
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { networkManager } from '@kit.MDMKit';

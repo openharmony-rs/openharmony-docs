@@ -1,12 +1,8 @@
 # VignetteSettings
 
-定义暗角参数.
+边缘暗角设置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface VignetteSettings--><!--Device-unnamed-export interface VignetteSettings-End-->
 
@@ -18,17 +14,13 @@
 intensity?: double
 ```
 
-控制暗边或亮边的强度. 当intensity > 0时，边缘变暗且中心变亮，创建经典暗角效果. 当intensity &lt; 0时，中心变暗且边缘变亮，产生反向暗角效果.
+作用强度，取值范围为[0, 1]，取值为0时无暗角效果，取值为1时为最大暗角强度，默认值为0.4。
 
 **类型：** double
 
 **默认值：** 0.4
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VignetteSettings-intensity?: double--><!--Device-VignetteSettings-intensity?: double-End-->
 
@@ -40,17 +32,13 @@ intensity?: double
 roundness?: double
 ```
 
-控制暗角在[0, 1]之间的圆度. 较低的值将使暗角效果更接近方形.
+暗角的圆度，取值范围为[0, 1]，取值为0时暗角形状趋近矩形，取值为1时暗角形状趋近圆形，默认值为sqrt(0.5)（约0.707）。
 
 **类型：** double
 
 **默认值：** sqrt(0.5)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-VignetteSettings-roundness?: double--><!--Device-VignetteSettings-roundness?: double-End-->
 

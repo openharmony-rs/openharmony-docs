@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-avSession-interface DeviceInfo--><!--Device-avSession-interface DeviceInfo-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
 
 ## authenticationStatus
 
@@ -23,10 +25,6 @@ authenticationStatus?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceInfo-authenticationStatus?: int--><!--Device-DeviceInfo-authenticationStatus?: int-End-->
 
@@ -45,10 +43,6 @@ HiPlay设备类型定义
 **类型：** [HiPlayDeviceInfo](arkts-avsession-avsession-hiplaydeviceinfo-i-sys.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,10 +64,6 @@ ipAddress?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceInfo-ipAddress?: string--><!--Device-DeviceInfo-ipAddress?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -91,10 +81,6 @@ isLegacy?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceInfo-isLegacy?: boolean--><!--Device-DeviceInfo-isLegacy?: boolean-End-->
 
@@ -114,10 +100,6 @@ mediumTypes?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceInfo-mediumTypes?: int--><!--Device-DeviceInfo-mediumTypes?: int-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -136,10 +118,6 @@ networkId?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceInfo-networkId?: string--><!--Device-DeviceInfo-networkId?: string-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
@@ -157,10 +135,6 @@ providerId?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceInfo-providerId?: int--><!--Device-DeviceInfo-providerId?: int-End-->
 

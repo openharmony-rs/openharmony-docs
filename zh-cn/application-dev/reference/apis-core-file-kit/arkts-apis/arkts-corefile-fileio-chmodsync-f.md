@@ -1,5 +1,10 @@
 # chmodSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## chmodSync
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function chmodSync(path: string, mode: number): void
 以同步方法改变文件权限。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

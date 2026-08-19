@@ -1,5 +1,11 @@
 # queryExtensionAbilityInfoSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -10,10 +16,6 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Extensi
 以同步方法根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。 获取调用方自身的信息时不需要权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
@@ -29,8 +31,8 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Extensi
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | extensionAbilityType | [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 是 | 标识extensionAbility的类型。 |
-| extensionAbilityFlags | int | 是 | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考 [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md#extensionabilityflag系统接口)。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| extensionAbilityFlags | int | 是 | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考 [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -50,7 +52,7 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: Extensi
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -111,10 +113,6 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 <!--Device-bundleManager-function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,    extensionAbilityFlags: int, userId?: int): Array<ExtensionAbilityInfo>--><!--Device-bundleManager-function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,    extensionAbilityFlags: int, userId?: int): Array<ExtensionAbilityInfo>-End-->
@@ -129,8 +127,8 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | extensionAbilityType | string | 是 | 表示自定义extensionAbility的类型。 |
-| extensionAbilityFlags | int | 是 | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考 [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md#extensionabilityflag系统接口)。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| extensionAbilityFlags | int | 是 | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考 [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -150,7 +148,7 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 示例接口带userId参数查询
@@ -211,10 +209,6 @@ function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAb
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 <!--Device-bundleManager-function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: int,    userId?: int): Array<ExtensionAbilityInfo>--><!--Device-bundleManager-function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: int,    userId?: int): Array<ExtensionAbilityInfo>-End-->
@@ -228,8 +222,8 @@ function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | extensionAbilityType | string | 是 | 表示自定义extensionAbility的类型。 |
-| extensionAbilityFlags | int | 是 | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考 [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md#extensionabilityflag系统接口)。 |
-| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
+| extensionAbilityFlags | int | 是 | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考 [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md)。 |
+| userId | int | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -247,7 +241,7 @@ function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAb
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified userId is invalid. |
 | [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified extensionAbility is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 示例接口带userId参数查询

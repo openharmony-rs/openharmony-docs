@@ -12,10 +12,6 @@ PageTransitionEnter(value: PageTransitionOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-(value: PageTransitionOptions): PageTransitionEnterInterface-End-->
@@ -38,10 +34,6 @@ PageTransitionEnter(event: PageTransitionCallback)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface--><!--Device-PageTransitionEnterInterface-onEnter(event: PageTransitionCallback): PageTransitionEnterInterface-End-->
@@ -56,7 +48,22 @@ PageTransitionEnter(event: PageTransitionCallback)
 
 ## 汇总
 
-- [PageTransitionOptions](arkts-arkui-pagetransitionoptions-i.md)
-- [PageTransitionCallback](arkts-arkui-pagetransitioncallback-t.md)
-- [RouteType](arkts-arkui-routetype-e.md)
-- [SlideEffect](arkts-arkui-slideeffect-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [PageTransitionOptions](arkts-arkui-pagetransitionoptions-i.md) | 退场/进场动效的参数。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [PageTransitionCallback](arkts-arkui-pagetransitioncallback-t.md) | 页面转场事件回调。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [RouteType](arkts-arkui-routetype-e.md) | 页面转场类型。 |
+| [SlideEffect](arkts-arkui-slideeffect-e.md) | 页面转场时的滑入滑出效果。 |
+

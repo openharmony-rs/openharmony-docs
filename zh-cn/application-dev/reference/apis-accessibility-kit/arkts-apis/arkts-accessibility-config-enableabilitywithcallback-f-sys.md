@@ -1,18 +1,20 @@
 # enableAbilityWithCallback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+```
+
 ## enableAbilityWithCallback
 
 ```TypeScript
 function enableAbilityWithCallback(name: string, capability: Array<accessibility.Capability>, connectCallback: ConnectCallback): Promise<void>
 ```
 
-启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md#connectcallback系统接口)作为辅助扩展连接断开事件的回调函数。使用Promise异步回调。 当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](arkts-accessibility-config-disableability-f-sys.md#disableability系统接口)配对使用。
+启用辅助扩展，并指定[ConnectCallback](arkts-accessibility-config-connectcallback-i-sys.md)作为辅助扩展连接断开事件的回调函数。使用Promise异步回调。 当辅助扩展进程异常断开连接时，将触发ConnectCallback的onDisconnect回调。需与[config.disableAbility](arkts-accessibility-config-disableability-f-sys.md)配对使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
@@ -47,7 +49,7 @@ function enableAbilityWithCallback(name: string, capability: Array<accessibility
 | [9300001](../errorcode-accessibility.md#9300001-输入无效的包名称或者ability名称) | Invalid bundle name or ability name. |
 | [9300002](../errorcode-accessibility.md#9300002-目标ability已启用) | Target ability already enabled. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { accessibility, config } from '@kit.AccessibilityKit';

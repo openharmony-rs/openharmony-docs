@@ -4,9 +4,7 @@ Enum type supplied to cacheMode for setting the Web cache mode.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum CacheMode--><!--Device-unnamed-export declare enum CacheMode-End-->
 
@@ -22,9 +20,7 @@ load cache when they are available and not expired, otherwise load online.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-CacheMode-DEFAULT = 0--><!--Device-CacheMode-DEFAULT = 0-End-->
 
@@ -40,9 +36,7 @@ load cache when they are available, otherwise load online.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-CacheMode-NONE = 1--><!--Device-CacheMode-NONE = 1-End-->
 
@@ -58,9 +52,7 @@ Load online and not cache.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-CacheMode-ONLINE = 2--><!--Device-CacheMode-ONLINE = 2-End-->
 
@@ -76,9 +68,7 @@ load cache and not online.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-CacheMode-ONLY = 3--><!--Device-CacheMode-ONLY = 3-End-->
 

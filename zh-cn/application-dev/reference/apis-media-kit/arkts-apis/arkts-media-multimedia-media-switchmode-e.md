@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum SwitchMode--><!--Device-unnamed-enum SwitchMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -21,10 +17,6 @@ SMOOTH = 0
 表示切换后视频平滑播放，该模式切换存在延迟，不会立即生效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ SEGMENT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SwitchMode-SEGMENT = 1--><!--Device-SwitchMode-SEGMENT = 1-End-->
@@ -61,10 +49,6 @@ CLOSEST = 2
 表示从距离当前播放时间点最近的帧开始播放，该模式立即切换，切换后会卡住3到5s，然后恢复播放。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

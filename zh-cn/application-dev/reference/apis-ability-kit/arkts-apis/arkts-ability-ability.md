@@ -4,16 +4,18 @@ Ability模块将二级模块API组织在一起方便开发者进行导出。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 
 - API版本9-10：此接口仅可在FA模型下使用。
 
 <!--Device-unnamed-declare namespace ability--><!--Device-unnamed-declare namespace ability-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+## 导入模块
+
+```TypeScript
+import { ability } from '@kit.AbilityKit';
+```
 
 ## 汇总
 

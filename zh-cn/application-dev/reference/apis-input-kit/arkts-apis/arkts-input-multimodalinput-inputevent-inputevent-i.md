@@ -1,16 +1,19 @@
-# InputEvent
+# InputEvent(输入事件)
 
-设备上报的基本事件。
+输入事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export declare interface InputEvent--><!--Device-unnamed-export declare interface InputEvent-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## 导入模块
+
+```TypeScript
+import { InputEvent } from '@kit.InputKit';
+import { inputEventClient } from '@kit.InputKit';
+```
 
 ## actionTime
 
@@ -23,10 +26,6 @@ actionTime: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +45,6 @@ deviceId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-InputEvent-deviceId: int--><!--Device-InputEvent-deviceId: int-End-->
@@ -67,10 +62,6 @@ id: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +81,6 @@ screenId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-InputEvent-screenId: int--><!--Device-InputEvent-screenId: int-End-->
@@ -111,10 +98,6 @@ windowId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,11 @@
 # createMediaSourceWithStreamData
 
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
+
 ## createMediaSourceWithStreamData
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSour
 创建流媒体多码率媒体来源实例方法，当前仅支持HTTP-FLV协议格式多码率。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 
@@ -32,7 +34,7 @@ function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSour
 | --- | --- |
 | [MediaSource](arkts-media-multimedia-media-mediasource-i.md) | 返回MediaSource，用于媒体资源设置。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let streams : Array<media.MediaStream> = [];
@@ -52,10 +54,6 @@ function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSour
 Creates a multi-bitrate media source for streaming media. Currently, only the HTTP-FLV multi-bitrate media source is supported.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource | undefined--><!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource | undefined-End-->
 

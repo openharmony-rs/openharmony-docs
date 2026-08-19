@@ -1,5 +1,10 @@
 # fstatSync
 
+## 导入模块
+
+```TypeScript
+```
+
 ## fstatSync
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function fstatSync(fd: number): Stat
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [statSync](arkts-corefile-file-fs-statsync-f.md#statsync)
+**替代接口：** [statSync](arkts-corefile-file-fs-statsync-f.md)
 
 <!--Device-unnamed-declare function fstatSync(fd: number): Stat--><!--Device-unnamed-declare function fstatSync(fd: number): Stat-End-->
 

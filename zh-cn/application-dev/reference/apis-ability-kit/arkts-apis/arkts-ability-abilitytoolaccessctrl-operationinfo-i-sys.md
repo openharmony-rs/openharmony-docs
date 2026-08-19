@@ -4,15 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-abilityToolAccessCtrl-interface OperationInfo--><!--Device-abilityToolAccessCtrl-interface OperationInfo-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## info
 
@@ -25,10 +26,6 @@ info: CliCmdInfo | Permissions
 **类型：** [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i-sys.md) \| Permissions
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-OperationInfo-info: CliCmdInfo | Permissions--><!--Device-OperationInfo-info: CliCmdInfo | Permissions-End-->
 
@@ -47,10 +44,6 @@ operationType: OperationType
 **类型：** OperationType
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-OperationInfo-operationType: OperationType--><!--Device-OperationInfo-operationType: OperationType-End-->
 

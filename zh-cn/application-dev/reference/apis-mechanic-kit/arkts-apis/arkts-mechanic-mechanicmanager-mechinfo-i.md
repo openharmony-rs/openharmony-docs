@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export interface MechInfo--><!--Device-mechanicManager-export interface MechInfo-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
+
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
 
 ## mechDeviceType
 
@@ -23,10 +25,6 @@ mechDeviceType: MechDeviceType
 **类型：** [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MechInfo-mechDeviceType: MechDeviceType--><!--Device-MechInfo-mechDeviceType: MechDeviceType-End-->
 
@@ -44,10 +42,6 @@ mechId: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MechInfo-mechId: int--><!--Device-MechInfo-mechId: int-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -63,10 +57,6 @@ mechName: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MechInfo-mechName: string--><!--Device-MechInfo-mechName: string-End-->
 

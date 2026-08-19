@@ -100,7 +100,7 @@ OH_Data_Value *OH_Value_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Data_Value *](capi-rdb-oh-data-value.md) | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。否则返回nullptr。<br>     <br>使用完成后，必须通过[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)接口释放内存。 |
+| [OH_Data_Value *](capi-rdb-oh-data-value.md) | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。否则返回nullptr。      <br>使用完成后，必须通过[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)接口释放内存。 |
 
 **参考：**
 
@@ -129,7 +129,7 @@ int OH_Value_Destroy(OH_Data_Value *value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutNull()
 
@@ -153,7 +153,7 @@ int OH_Value_PutNull(OH_Data_Value *value)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutInt()
 
@@ -178,7 +178,7 @@ int OH_Value_PutInt(OH_Data_Value *value, int64_t val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutReal()
 
@@ -203,7 +203,7 @@ int OH_Value_PutReal(OH_Data_Value *value, double val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutText()
 
@@ -228,7 +228,7 @@ int OH_Value_PutText(OH_Data_Value *value, const char *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutBlob()
 
@@ -254,7 +254,7 @@ int OH_Value_PutBlob(OH_Data_Value *value, const unsigned char *val, size_t leng
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutAsset()
 
@@ -279,7 +279,7 @@ int OH_Value_PutAsset(OH_Data_Value *value, const Data_Asset *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutAssets()
 
@@ -305,7 +305,7 @@ int OH_Value_PutAssets(OH_Data_Value *value, const Data_Asset * const * val, siz
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutFloatVector()
 
@@ -331,7 +331,7 @@ int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t lengt
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_PutUnlimitedInt()
 
@@ -358,7 +358,7 @@ int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *tru
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_GetType()
 
@@ -383,7 +383,7 @@ int OH_Value_GetType(OH_Data_Value *value, OH_ColumnType *type)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_IsNull()
 
@@ -408,7 +408,7 @@ int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 ### OH_Value_GetInt()
 
@@ -433,7 +433,7 @@ int OH_Value_GetInt(OH_Data_Value *value, int64_t *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetReal()
 
@@ -458,7 +458,7 @@ int OH_Value_GetReal(OH_Data_Value *value, double *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetText()
 
@@ -483,7 +483,7 @@ int OH_Value_GetText(OH_Data_Value *value, const char **val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetBlob()
 
@@ -509,7 +509,7 @@ int OH_Value_GetBlob(OH_Data_Value *value, const uint8_t **val, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetAsset()
 
@@ -534,7 +534,7 @@ int OH_Value_GetAsset(OH_Data_Value *value, Data_Asset *val)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetAssetsCount()
 
@@ -559,7 +559,7 @@ int OH_Value_GetAssetsCount(OH_Data_Value *value, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetAssets()
 
@@ -586,7 +586,7 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 **参考：**
 
@@ -616,7 +616,7 @@ int OH_Value_GetFloatVectorCount(OH_Data_Value *value, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示参数无效。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示参数无效。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetFloatVector()
 
@@ -643,7 +643,7 @@ int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 **参考：**
 
@@ -673,7 +673,7 @@ int OH_Value_GetUnlimitedIntBand(OH_Data_Value *value, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 ### OH_Value_GetUnlimitedInt()
 
@@ -701,7 +701,7 @@ int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回错误码。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。<br>     <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>     <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+| int | 返回错误码。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。      <br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。      <br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
 **参考：**
 

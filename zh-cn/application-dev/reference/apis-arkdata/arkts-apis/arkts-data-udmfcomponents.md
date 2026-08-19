@@ -1,5 +1,11 @@
 # @ohos.data.UdmfComponents
 
+## 导入模块
+
+```TypeScript
+import { ContentFormCard, FormType } from '@kit.ArkData';
+```
+
 ## 汇总
 
 ### 结构体

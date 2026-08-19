@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-certificateManager-export enum CertificatePurpose--><!--Device-certificateManager-export enum CertificatePurpose-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -21,10 +17,6 @@ PURPOSE_DEFAULT = 0
 默认用途，用于凭据签名。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0--><!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0-End-->
 
@@ -40,10 +32,6 @@ PURPOSE_ALL = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CertificatePurpose-PURPOSE_ALL = 1--><!--Device-CertificatePurpose-PURPOSE_ALL = 1-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -58,10 +46,6 @@ PURPOSE_SIGN = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CertificatePurpose-PURPOSE_SIGN = 2--><!--Device-CertificatePurpose-PURPOSE_SIGN = 2-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
@@ -75,10 +59,6 @@ PURPOSE_ENCRYPT = 3
 用于凭据加密。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CertificatePurpose-PURPOSE_ENCRYPT = 3--><!--Device-CertificatePurpose-PURPOSE_ENCRYPT = 3-End-->
 

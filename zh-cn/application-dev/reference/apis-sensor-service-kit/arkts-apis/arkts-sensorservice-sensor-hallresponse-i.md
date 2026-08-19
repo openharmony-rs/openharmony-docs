@@ -1,18 +1,20 @@
 # HallResponse
 
-霍尔传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md#response)。
+霍尔传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
-**继承/实现关系：** HallResponse extends [Response](arkts-sensorservice-sensor-response-i.md#response)
+**继承/实现关系：** HallResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sensor-interface HallResponse--><!--Device-sensor-interface HallResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor
+
+## 导入模块
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+```
 
 ## status
 
@@ -25,10 +27,6 @@ status: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HallResponse-status: double--><!--Device-HallResponse-status: double-End-->
 

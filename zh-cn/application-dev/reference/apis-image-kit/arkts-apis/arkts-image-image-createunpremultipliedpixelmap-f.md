@@ -1,5 +1,11 @@
 # createUnpremultipliedPixelMap
 
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
 ## createUnpremultipliedPixelMap
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: A
 Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha format.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-image-function createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback<void>): void--><!--Device-image-function createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback<void>): void-End-->
 
@@ -24,7 +26,7 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 | --- | --- | --- | --- |
 | src | PixelMap | 是 | The source pixelmap. |
 | dst | PixelMap | 是 | The destination pixelmap. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the operation result. If the operation fails, an error message is returned. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback used to return the operation result. If the operation fails, an error message is returned. |
 
 **错误码：**
 
@@ -35,7 +37,7 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 | [62980246](../errorcode-image.md#62980246-读取pixelmap失败) | Failed to read the pixelMap. |
 | [62980248](../errorcode-image.md#62980248-pixelmap不允许修改) | Pixelmap not allow modify. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -74,10 +76,6 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-function createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise<void>--><!--Device-image-function createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -104,7 +102,7 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 | [62980246](../errorcode-image.md#62980246-读取pixelmap失败) | Failed to read the pixelMap. |
 | [62980248](../errorcode-image.md#62980248-pixelmap不允许修改) | Pixelmap not allow modify. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

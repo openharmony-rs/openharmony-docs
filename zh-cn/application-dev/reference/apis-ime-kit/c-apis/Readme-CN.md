@@ -1,4 +1,4 @@
-# CAPI<!--c-ime-kit-->
+# C API<!--c-imekit-->
 
 - 头文件
     - [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)

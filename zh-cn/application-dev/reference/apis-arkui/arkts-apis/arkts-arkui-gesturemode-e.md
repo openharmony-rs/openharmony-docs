@@ -4,10 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum GestureMode--><!--Device-unnamed-declare enum GestureMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,10 +18,6 @@ Sequence
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-GestureMode-Sequence--><!--Device-GestureMode-Sequence-End-->
@@ -38,13 +30,9 @@ Sequence
 Parallel
 ```
 
-并行识别，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。
+Simultaneous recognition. Registration gestures participate in recognition. Everything can be triggered.
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -58,13 +46,9 @@ Parallel
 Exclusive
 ```
 
-互斥识别，注册的手势同时识别，若有一个手势识别成功，则结束手势识别，其他手势识别均失败。
+Mutually exclusive recognition. Only one gesture is successfully recognized.
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

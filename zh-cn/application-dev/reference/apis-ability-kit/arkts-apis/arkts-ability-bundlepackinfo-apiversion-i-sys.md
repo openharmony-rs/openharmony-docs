@@ -4,10 +4,6 @@ module的api版本。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface ApiVersion--><!--Device-unnamed-export interface ApiVersion-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -25,10 +21,6 @@ readonly compatible: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApiVersion-readonly compatible: int--><!--Device-ApiVersion-readonly compatible: int-End-->
 
@@ -48,10 +40,6 @@ readonly releaseType: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ApiVersion-readonly releaseType: string--><!--Device-ApiVersion-readonly releaseType: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -69,10 +57,6 @@ readonly target: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ApiVersion-readonly target: int--><!--Device-ApiVersion-readonly target: int-End-->
 

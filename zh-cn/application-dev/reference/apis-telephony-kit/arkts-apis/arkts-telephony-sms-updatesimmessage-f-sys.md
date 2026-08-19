@@ -1,5 +1,11 @@
 # updateSimMessage（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
+
 ## updateSimMessage
 
 ```TypeScript
@@ -9,10 +15,6 @@ function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallb
 更新SIM卡消息。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
 
@@ -27,7 +29,7 @@ function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [UpdateSimMessageOptions](arkts-telephony-sms-updatesimmessageoptions-i-sys.md) | 是 | 更新SIM卡消息选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 更新SIM卡消息的回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 更新SIM卡消息的回调函数。 |
 
 **错误码：**
 
@@ -41,7 +43,7 @@ function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallb
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';
@@ -69,10 +71,6 @@ function updateSimMessage(options: UpdateSimMessageOptions): Promise<void>
 更新SIM卡消息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.RECEIVE_SMS and ohos.permission.SEND_MESSAGES
 
@@ -106,7 +104,7 @@ function updateSimMessage(options: UpdateSimMessageOptions): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { sms } from '@kit.TelephonyKit';

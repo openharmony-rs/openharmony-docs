@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputDevice-interface InputDeviceData--><!--Device-inputDevice-interface InputDeviceData-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
 
 ## axisRanges
 
@@ -23,10 +26,6 @@ axisRanges: Array<AxisRange>
 **类型：** Array&lt;[AxisRange](arkts-input-inputdevice-axisrange-i.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-InputDeviceData-axisRanges: Array<AxisRange>--><!--Device-InputDeviceData-axisRanges: Array<AxisRange>-End-->
 
@@ -44,10 +43,6 @@ bus: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputDeviceData-bus: int--><!--Device-InputDeviceData-bus: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -63,10 +58,6 @@ displayId?: int
 **类型：** int
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,10 +77,6 @@ id: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputDeviceData-id: int--><!--Device-InputDeviceData-id: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -100,15 +87,11 @@ id: int
 isLocal?: boolean
 ```
 
-输入设备是否为本地设备。 true表示是本地设备，false表示是非本地设备。
+输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。当该字段不存在时，默认值为false。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-InputDeviceData-isLocal?: boolean--><!--Device-InputDeviceData-isLocal?: boolean-End-->
 
@@ -120,15 +103,11 @@ isLocal?: boolean
 isVirtual?: boolean
 ```
 
-输入设备是否为虚拟设备。 true表示是虚拟设备，false表示是非虚拟设备。
+输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。当该字段不存在时，默认值为false。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-InputDeviceData-isVirtual?: boolean--><!--Device-InputDeviceData-isVirtual?: boolean-End-->
 
@@ -146,10 +125,6 @@ name: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputDeviceData-name: string--><!--Device-InputDeviceData-name: string-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -165,10 +140,6 @@ phys: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-InputDeviceData-phys: string--><!--Device-InputDeviceData-phys: string-End-->
 
@@ -186,10 +157,6 @@ product: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputDeviceData-product: int--><!--Device-InputDeviceData-product: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -205,10 +172,6 @@ sources: Array<SourceType>
 **类型：** Array&lt;SourceType&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-InputDeviceData-sources: Array<SourceType>--><!--Device-InputDeviceData-sources: Array<SourceType>-End-->
 
@@ -226,10 +189,6 @@ uniq: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputDeviceData-uniq: string--><!--Device-InputDeviceData-uniq: string-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -246,10 +205,6 @@ vendor: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputDeviceData-vendor: int--><!--Device-InputDeviceData-vendor: int-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
@@ -265,10 +220,6 @@ version: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-InputDeviceData-version: int--><!--Device-InputDeviceData-version: int-End-->
 

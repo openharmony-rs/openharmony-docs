@@ -51,7 +51,7 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | rwlock初始化成功且attr为空指针时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | rwlock初始化成功且attr为空指针时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 ### ffrt_rwlock_wrlock()
 
@@ -75,7 +75,7 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；<br>         `rwlock`为空指针时返回`ffrt_error_inval`。 |
+| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；          `rwlock`为空指针时返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -105,7 +105,7 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`或`ffrt_error_busy`。 |
+| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`或`ffrt_error_busy`。 |
 
 **参考：**
 
@@ -134,7 +134,7 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；<br>         `rwlock`为空指针时返回`ffrt_error_inval`。 |
+| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；          `rwlock`为空指针时返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -164,7 +164,7 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`或`ffrt_error_busy`。 |
+| FFRT_C_API int | rwlock加锁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`或`ffrt_error_busy`。 |
 
 **参考：**
 
@@ -193,7 +193,7 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | rwlock解锁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | rwlock解锁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 ### ffrt_rwlock_destroy()
 
@@ -217,6 +217,6 @@ FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | rwlock销毁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | rwlock销毁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 

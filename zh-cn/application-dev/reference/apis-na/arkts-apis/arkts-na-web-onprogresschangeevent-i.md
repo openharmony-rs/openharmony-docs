@@ -4,9 +4,7 @@ Defines the triggered function when the page loading progress changes.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface OnProgressChangeEvent--><!--Device-unnamed-export declare interface OnProgressChangeEvent-End-->
 
@@ -24,9 +22,7 @@ The new progress of the page.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-OnProgressChangeEvent-newProgress: int--><!--Device-OnProgressChangeEvent-newProgress: int-End-->
 

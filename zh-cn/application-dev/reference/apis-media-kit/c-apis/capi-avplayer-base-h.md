@@ -188,7 +188,7 @@ OnInfo类型。可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废弃)
 | AV_INFO_TYPE_VOLUME_CHANGE = 7 | return the message when volume changed. |
 | AV_INFO_TYPE_RESOLUTION_CHANGE = 8 | return the message when video size is first known or updated. |
 | AV_INFO_TYPE_BUFFERING_UPDATE = 9 | return multiqueue buffering time. |
-| AV_INFO_TYPE_BITRATE_COLLECT = 10 | return hls bitrate.       Bitrate is to convert data into uint8_t array storage, |
+| AV_INFO_TYPE_BITRATE_COLLECT = 10 | return hls bitrate. Bitrate is to convert data into uint8_t array storage, |
 | AV_INFO_TYPE_INTERRUPT_EVENT = 11 | return the message when audio focus changed. |
 | AV_INFO_TYPE_DURATION_UPDATE = 12 | return the duration of playback. |
 | AV_INFO_TYPE_IS_LIVE_STREAM = 13 | return the playback is live stream. |
@@ -276,7 +276,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
+| OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。类型为[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)，与extra的对应关系可见方法描述。 |
 | int32_t extra | 其他信息，如播放文件的开始时间位置。 |
 
@@ -296,7 +296,7 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
+| OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)。 |
 | [OH_AVFormat](capi-core-oh-avformat.md)\* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
 | void \*userData | 指向应用调用者设置该回调函数时提供的实例的指针。 |
@@ -321,7 +321,7 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
+| OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | int32_t errorCode | 错误码。AV_ERR_NO_MEMORY：无内存，取值为1。AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。AV_ERR_INVALID_VAL：无效值，取值为3。AV_ERR_IO：IO错误，取值为4。AV_ERR_TIMEOUT：超时错误，取值为5。AV_ERR_UNKNOWN：未知错误，取值为6。AV_ERR_SERVICE_DIED：服务死亡，取值为7。AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。AV_ERR_UNSUPPORT：未支持的接口，取值为9。AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
 | const char \*errorMsg | Error message. |
 
@@ -341,7 +341,7 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
+| OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
 | int32_t errorCode | 错误码。AV_ERR_NO_MEMORY：无内存，取值为1。AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。AV_ERR_INVALID_VAL：无效值，取值为3。AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。AV_ERR_TIMEOUT：超时错误，取值为5。AV_ERR_UNKNOWN：未知错误，取值为6。AV_ERR_SERVICE_DIED：服务死亡，取值为7。AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。AV_ERR_UNSUPPORT：未支持的接口，取值为9。AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
 | const char \*errorMsg | Error message, only valid in callback function. |
 | void \*userData | Pointer to user specific data. |
@@ -362,7 +362,7 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVPlayer \*player | Pointer to an OH_AVPlayer instance. |
+| OH_AVPlayer \*player | Pointer to an OH_AVPlayer instance. |
 | double \*amplitudes | The pointer to the maximum audio level values array.Note: the amplitudes array will be released after callback automatically.If necessary, user need copy the data for the further use. |
 | uint32_t size | 最大音频电平值数组的大小。 |
 | void \*userData | Pointer to user specific data. |
@@ -383,7 +383,7 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVPlayer \*player | Pointer to an OH_AVPlayer instance |
+| OH_AVPlayer \*player | Pointer to an OH_AVPlayer instance |
 | [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) \*message | SEI message array.Note: the message array will be released after callback automatically.If necessary, user need copy the data for the further use. |
 | int32_t playbackPosition | 播放位置。 |
 | void \*userData | Pointer to user specific data |

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hiSysEvent-enum EventType--><!--Device-hiSysEvent-enum EventType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -23,10 +19,6 @@ FAULT = 1
 错误事件类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EventType-FAULT = 1--><!--Device-EventType-FAULT = 1-End-->
 
@@ -44,10 +36,6 @@ STATISTIC = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -64,10 +52,6 @@ SECURITY = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-EventType-SECURITY = 3--><!--Device-EventType-SECURITY = 3-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -83,10 +67,6 @@ BEHAVIOR = 4
 用户行为事件类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
 

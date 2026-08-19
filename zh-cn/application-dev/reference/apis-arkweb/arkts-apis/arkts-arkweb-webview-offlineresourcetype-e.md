@@ -1,12 +1,8 @@
 # OfflineResourceType
 
-[OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md#offlineresourcemap)对象对应的本地离线资源的接口类型。
+[OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md)对象对应的本地离线资源的接口类型。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-webview-enum OfflineResourceType--><!--Device-webview-enum OfflineResourceType-End-->
 
@@ -22,10 +18,6 @@ IMAGE = 0
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-OfflineResourceType-IMAGE = 0--><!--Device-OfflineResourceType-IMAGE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -39,10 +31,6 @@ CSS = 1
 CSS类型的资源。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-OfflineResourceType-CSS = 1--><!--Device-OfflineResourceType-CSS = 1-End-->
 
@@ -58,10 +46,6 @@ CLASSIC_JS = 2
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-OfflineResourceType-CLASSIC_JS = 2--><!--Device-OfflineResourceType-CLASSIC_JS = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -75,10 +59,6 @@ MODULE_JS = 3
 通过&lt;script src="" type="module" /&gt;标签加载的JavaScript资源。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-OfflineResourceType-MODULE_JS = 3--><!--Device-OfflineResourceType-MODULE_JS = 3-End-->
 

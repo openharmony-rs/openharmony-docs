@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface UIPickerComponentAttribute--><!--Device-unnamed-export declare interface UIPickerComponentAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<UIPickerComponentAttribute> | Attr
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-attributeModifier(modifier: AttributeModifier<UIPickerComponentAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-UIPickerComponentAttribute-attributeModifier(modifier: AttributeModifier<UIPickerComponentAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ canLoop(isLoop: boolean | undefined): UIPickerComponentAttribute
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-canLoop(isLoop: boolean | undefined): UIPickerComponentAttribute--><!--Device-UIPickerComponentAttribute-canLoop(isLoop: boolean | undefined): UIPickerComponentAttribute-End-->
 
@@ -74,9 +68,7 @@ displayedItemCount(count: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-displayedItemCount(count: int | undefined): this--><!--Device-UIPickerComponentAttribute-displayedItemCount(count: int | undefined): this-End-->
 
@@ -100,9 +92,7 @@ enableHapticFeedback(enable: boolean | undefined): UIPickerComponentAttribute
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-enableHapticFeedback(enable: boolean | undefined): UIPickerComponentAttribute--><!--Device-UIPickerComponentAttribute-enableHapticFeedback(enable: boolean | undefined): UIPickerComponentAttribute-End-->
 
@@ -126,9 +116,7 @@ itemHeight(height: LengthMetrics | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-itemHeight(height: LengthMetrics | undefined): this--><!--Device-UIPickerComponentAttribute-itemHeight(height: LengthMetrics | undefined): this-End-->
 
@@ -152,9 +140,7 @@ onChange(callback: OnUIPickerComponentCallback | undefined): UIPickerComponentAt
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-onChange(callback: OnUIPickerComponentCallback | undefined): UIPickerComponentAttribute--><!--Device-UIPickerComponentAttribute-onChange(callback: OnUIPickerComponentCallback | undefined): UIPickerComponentAttribute-End-->
 
@@ -178,9 +164,7 @@ onScrollStop(callback: OnUIPickerComponentCallback | undefined): UIPickerCompone
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-onScrollStop(callback: OnUIPickerComponentCallback | undefined): UIPickerComponentAttribute--><!--Device-UIPickerComponentAttribute-onScrollStop(callback: OnUIPickerComponentCallback | undefined): UIPickerComponentAttribute-End-->
 
@@ -204,9 +188,7 @@ selectionIndicator(style: PickerIndicatorStyle | undefined): UIPickerComponentAt
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-UIPickerComponentAttribute-selectionIndicator(style: PickerIndicatorStyle | undefined): UIPickerComponentAttribute--><!--Device-UIPickerComponentAttribute-selectionIndicator(style: PickerIndicatorStyle | undefined): UIPickerComponentAttribute-End-->
 
@@ -232,9 +214,7 @@ default
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

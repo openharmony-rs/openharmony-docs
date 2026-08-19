@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-privacyManager-enum PermissionUsageFlag--><!--Device-privacyManager-enum PermissionUsageFlag-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -24,10 +20,6 @@ FLAG_PERMISSION_USAGE_SUMMARY = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0--><!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_SUMMARY = 0-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
@@ -43,10 +35,6 @@ FLAG_PERMISSION_USAGE_DETAIL = 1
 表示查询详细数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_DETAIL = 1--><!--Device-PermissionUsageFlag-FLAG_PERMISSION_USAGE_DETAIL = 1-End-->
 

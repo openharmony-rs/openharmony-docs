@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-enum BlendMode--><!--Device-drawing-enum BlendMode-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ CLEAR = 0
 清除模式，r = 0，设置为全透明。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-CLEAR = 0--><!--Device-BlendMode-CLEAR = 0-End-->
 
@@ -40,10 +32,6 @@ r = s，result的4个通道都等于source的4个通道，即结果等于源。�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-SRC = 1--><!--Device-BlendMode-SRC = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -57,10 +45,6 @@ DST = 2
 r = d，result的4个通道都等于destination的4个通道，即结果等于目标。保持目标像素不变。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-DST = 2--><!--Device-BlendMode-DST = 2-End-->
 
@@ -76,10 +60,6 @@ r = s + (1 - sa) * d，在目标像素上方绘制源像素，考虑源像素的
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-SRC_OVER = 3--><!--Device-BlendMode-SRC_OVER = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -93,10 +73,6 @@ DST_OVER = 4
 r = d + (1 - da) * s，在源像素上方绘制目标像素，考虑目标像素的透明度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-DST_OVER = 4--><!--Device-BlendMode-DST_OVER = 4-End-->
 
@@ -112,10 +88,6 @@ r = s * da，仅保留源像素与目标不透明部分的交集。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-SRC_IN = 5--><!--Device-BlendMode-SRC_IN = 5-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -129,10 +101,6 @@ DST_IN = 6
 r = d * sa，仅保留目标像素与源不透明部分的交集。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-DST_IN = 6--><!--Device-BlendMode-DST_IN = 6-End-->
 
@@ -148,10 +116,6 @@ r = s * (1 - da)，保留源像素中不与目标重叠的部分。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-SRC_OUT = 7--><!--Device-BlendMode-SRC_OUT = 7-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -165,10 +129,6 @@ DST_OUT = 8
 r = d * (1 - sa)，保留目标像素中不与源重叠的部分。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-DST_OUT = 8--><!--Device-BlendMode-DST_OUT = 8-End-->
 
@@ -184,10 +144,6 @@ r = s * da + d * (1 - sa)，源像素覆盖在目标像素上，仅在目标不�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-SRC_ATOP = 9--><!--Device-BlendMode-SRC_ATOP = 9-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -201,10 +157,6 @@ DST_ATOP = 10
 r = d * sa + s * (1 - da)，目标像素覆盖在源像素上，仅在源不透明部分显示目标像素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-DST_ATOP = 10--><!--Device-BlendMode-DST_ATOP = 10-End-->
 
@@ -220,10 +172,6 @@ r = s * (1 - da) + d * (1 - sa)，仅显示源像素和目标像素中不重叠�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-XOR = 11--><!--Device-BlendMode-XOR = 11-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -237,10 +185,6 @@ PLUS = 12
 r = min(s + d, 1)，源和目标像素的颜色值相加。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-PLUS = 12--><!--Device-BlendMode-PLUS = 12-End-->
 
@@ -256,10 +200,6 @@ r = s * d，源和目标像素的颜色值相乘。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-MODULATE = 13--><!--Device-BlendMode-MODULATE = 13-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -273,10 +213,6 @@ SCREEN = 14
 滤色模式，r = s + d - s * d，反转源和目标像素的颜色值，相乘后再反转，结果通常更亮。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-SCREEN = 14--><!--Device-BlendMode-SCREEN = 14-End-->
 
@@ -292,10 +228,6 @@ OVERLAY = 15
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-OVERLAY = 15--><!--Device-BlendMode-OVERLAY = 15-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -309,10 +241,6 @@ DARKEN = 16
 变暗模式，rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d，取源和目标像素中较暗的颜色值。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-DARKEN = 16--><!--Device-BlendMode-DARKEN = 16-End-->
 
@@ -328,10 +256,6 @@ LIGHTEN = 17
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-LIGHTEN = 17--><!--Device-BlendMode-LIGHTEN = 17-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -345,10 +269,6 @@ COLOR_DODGE = 18
 颜色减淡模式，通过减小对比度使目标像素变亮以反映源像素。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-COLOR_DODGE = 18--><!--Device-BlendMode-COLOR_DODGE = 18-End-->
 
@@ -364,10 +284,6 @@ COLOR_BURN = 19
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-COLOR_BURN = 19--><!--Device-BlendMode-COLOR_BURN = 19-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -381,10 +297,6 @@ HARD_LIGHT = 20
 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-HARD_LIGHT = 20--><!--Device-BlendMode-HARD_LIGHT = 20-End-->
 
@@ -400,10 +312,6 @@ SOFT_LIGHT = 21
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-SOFT_LIGHT = 21--><!--Device-BlendMode-SOFT_LIGHT = 21-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -417,10 +325,6 @@ DIFFERENCE = 22
 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d，计算源和目标像素颜色值的差异。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-DIFFERENCE = 22--><!--Device-BlendMode-DIFFERENCE = 22-End-->
 
@@ -436,10 +340,6 @@ EXCLUSION = 23
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-EXCLUSION = 23--><!--Device-BlendMode-EXCLUSION = 23-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -453,10 +353,6 @@ MULTIPLY = 24
 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d，源和目标像素的颜色值相乘，结果通常更暗。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-MULTIPLY = 24--><!--Device-BlendMode-MULTIPLY = 24-End-->
 
@@ -472,10 +368,6 @@ HUE = 25
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-HUE = 25--><!--Device-BlendMode-HUE = 25-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -489,10 +381,6 @@ SATURATION = 26
 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-SATURATION = 26--><!--Device-BlendMode-SATURATION = 26-End-->
 
@@ -508,10 +396,6 @@ COLOR = 27
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BlendMode-COLOR = 27--><!--Device-BlendMode-COLOR = 27-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -525,10 +409,6 @@ LUMINOSITY = 28
 亮度模式，使用源像素的亮度，目标像素的色相和饱和度。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BlendMode-LUMINOSITY = 28--><!--Device-BlendMode-LUMINOSITY = 28-End-->
 

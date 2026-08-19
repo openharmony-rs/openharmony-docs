@@ -1,5 +1,11 @@
 # getMissionSnapShot（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## getMissionSnapShot
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getMissionSnapShot(deviceId: string, missionId: int, callback: AsyncCal
 获取任务快照。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -38,7 +40,7 @@ function getMissionSnapShot(deviceId: string, missionId: int, callback: AsyncCal
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';
@@ -73,10 +75,6 @@ function getMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSn
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function getMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSnapshot>--><!--Device-missionManager-function getMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSnapshot>-End-->
@@ -106,7 +104,7 @@ function getMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSn
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';

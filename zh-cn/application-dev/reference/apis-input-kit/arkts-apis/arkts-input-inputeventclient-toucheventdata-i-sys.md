@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputEventClient-interface TouchEventData--><!--Device-inputEventClient-interface TouchEventData-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { inputEventClient } from '@kit.InputKit';
+```
 
 ## touchEvent
 
@@ -25,10 +27,6 @@ touchEvent: TouchEvent
 **类型：** [TouchEvent](arkts-input-multimodalinput-touchevent-touchevent-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchEventData-touchEvent: TouchEvent--><!--Device-TouchEventData-touchEvent: TouchEvent-End-->
 
@@ -47,10 +45,6 @@ useGlobalCoordinate?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TouchEventData-useGlobalCoordinate?: boolean--><!--Device-TouchEventData-useGlobalCoordinate?: boolean-End-->
 

@@ -38,6 +38,6 @@ bool OH_Notification_IsNotificationEnabled(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | true  - 表示当前应用已使能通知。<br>         false - 表示当前应用未使能通知。 |
+| bool | true  - 表示当前应用已使能通知。          false - 表示当前应用未使能通知。 |
 
 

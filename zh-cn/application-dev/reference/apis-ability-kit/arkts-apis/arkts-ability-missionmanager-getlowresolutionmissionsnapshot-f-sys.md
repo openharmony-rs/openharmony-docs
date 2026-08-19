@@ -1,5 +1,11 @@
 # getLowResolutionMissionSnapShot（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## getLowResolutionMissionSnapShot
 
 ```TypeScript
@@ -13,10 +19,6 @@ function getLowResolutionMissionSnapShot(
 获取任务低分辨率快照。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -42,7 +44,7 @@ function getLowResolutionMissionSnapShot(
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';
@@ -77,10 +79,6 @@ function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Prom
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSnapshot>--><!--Device-missionManager-function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Promise<MissionSnapshot>-End-->
@@ -110,7 +108,7 @@ function getLowResolutionMissionSnapShot(deviceId: string, missionId: int): Prom
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';

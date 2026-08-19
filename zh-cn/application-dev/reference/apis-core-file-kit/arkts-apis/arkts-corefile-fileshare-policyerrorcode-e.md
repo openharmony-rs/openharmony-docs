@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-fileShare-export enum PolicyErrorCode--><!--Device-fileShare-export enum PolicyErrorCode-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
@@ -21,10 +17,6 @@ PERSISTENCE_FORBIDDEN = 1
 URI禁止被持久化。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1--><!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1-End-->
 
@@ -40,10 +32,6 @@ INVALID_MODE = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PolicyErrorCode-INVALID_MODE = 2--><!--Device-PolicyErrorCode-INVALID_MODE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
@@ -58,10 +46,6 @@ INVALID_PATH = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PolicyErrorCode-INVALID_PATH = 3--><!--Device-PolicyErrorCode-INVALID_PATH = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
@@ -75,10 +59,6 @@ PERMISSION_NOT_PERSISTED = 4
 权限没有被持久化。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolicyErrorCode-PERMISSION_NOT_PERSISTED = 4--><!--Device-PolicyErrorCode-PERMISSION_NOT_PERSISTED = 4-End-->
 

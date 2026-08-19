@@ -1,5 +1,11 @@
 # clearUkeyPinAuthState
 
+## 导入模块
+
+```TypeScript
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
+
 ## clearUkeyPinAuthState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function clearUkeyPinAuthState(resourceId: string): Promise<void>
 清除指定资源ID的PIN码认证状态。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +48,7 @@ function clearUkeyPinAuthState(resourceId: string): Promise<void>
 | [12000011](../errorcode-huks.md#12000011-目标对象不存在) | The cached resource ID not found. |
 | [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | The provider or UKey is busy. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

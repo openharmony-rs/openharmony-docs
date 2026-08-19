@@ -1,5 +1,11 @@
 # getFontDescriptorByFullName
 
+## 导入模块
+
+```TypeScript
+import { text } from '@kit.ArkGraphics2D';
+```
+
 ## getFontDescriptorByFullName
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 根据字体名称和类型获取字体描述符，使用Promise异步回调。 字体描述符是描述字体特征的数据结构，包含字体外观和属性的详细信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fullName | string | 是 | 指定的字体名称。可以使用[getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md#getsystemfontfullnamesbytype)获取。 |
+| fullName | string | 是 | 指定的字体名称。可以使用[getSystemFontFullNamesByType](arkts-arkgraphics2d-text-getsystemfontfullnamesbytype-f.md)获取。 |
 | fontType | [SystemFontType](arkts-arkgraphics2d-text-systemfonttype-e.md) | 是 | 指定的字体类型。 |
 
 **返回值：**
@@ -39,7 +41,7 @@ function getFontDescriptorByFullName(fullName: string, fontType: SystemFontType)
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

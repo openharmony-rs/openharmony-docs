@@ -1,5 +1,11 @@
 # setDisposedRules（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+```
+
 ## setDisposedRules
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfigur
 批量设置指定应用或分身应用的拦截规则。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
@@ -38,7 +40,7 @@ function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfigur
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is invalid. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

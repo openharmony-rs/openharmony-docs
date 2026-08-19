@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-systemSoundManager-enum ToneHapticsType--><!--Device-systemSoundManager-enum ToneHapticsType-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -23,10 +19,6 @@ TEXT_MESSAGE_SIM_CARD_1 = 21
 sim卡2的短信提示音的振动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_1 = 21--><!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_1 = 21-End-->
 
@@ -44,10 +36,6 @@ sim卡1的来电铃声的振动。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneHapticsType-CALL_SIM_CARD_0 = 0--><!--Device-ToneHapticsType-CALL_SIM_CARD_0 = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -63,10 +51,6 @@ NOTIFICATION = 40
 通知提示音的振动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneHapticsType-NOTIFICATION = 40--><!--Device-ToneHapticsType-NOTIFICATION = 40-End-->
 
@@ -84,10 +68,6 @@ sim卡2的来电铃声的振动。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToneHapticsType-CALL_SIM_CARD_1 = 1--><!--Device-ToneHapticsType-CALL_SIM_CARD_1 = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -103,10 +83,6 @@ TEXT_MESSAGE_SIM_CARD_0 = 20
 sim卡1的短信提示音的振动。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_0 = 20--><!--Device-ToneHapticsType-TEXT_MESSAGE_SIM_CARD_0 = 20-End-->
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backgroundTaskManager-export enum ContinuousTaskSuspendReason--><!--Device-backgroundTaskManager-export enum ContinuousTaskSuspendReason-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -21,10 +17,6 @@ SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED = 4
 申请DATA_TRANSFER类型长时任务，但是数据传输速率低。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED = 4-End-->
 
@@ -40,10 +32,6 @@ SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -57,10 +45,6 @@ SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING = 6
 申请AUDIO_PLAYBACK类型长时任务，但是未播放音视频。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING = 6--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING = 6-End-->
 
@@ -76,10 +60,6 @@ SYSTEM_SUSPEND_AUDIO_RECORDING_NOT_RUNNING = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_RECORDING_NOT_RUNNING = 7--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_RECORDING_NOT_RUNNING = 7-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -93,10 +73,6 @@ SYSTEM_SUSPEND_LOCATION_NOT_USED = 8
 申请LOCATION类型长时任务，但是未使用定位导航。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_LOCATION_NOT_USED = 8--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_LOCATION_NOT_USED = 8-End-->
 
@@ -112,10 +88,6 @@ SYSTEM_SUSPEND_BLUETOOTH_NOT_USED = 9
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_NOT_USED = 9--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_NOT_USED = 9-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -129,10 +101,6 @@ SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED = 10
 申请MULTI_DEVICE_CONNECTION类型长时任务，但是未使用多设备互联。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED = 10--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED = 10-End-->
 
@@ -148,10 +116,6 @@ SYSTEM_SUSPEND_USED_ILLEGALLY = 11
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USED_ILLEGALLY = 11--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USED_ILLEGALLY = 11-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -166,10 +130,6 @@ SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING = 12
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING = 12--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING = 12-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -183,10 +143,6 @@ SYSTEM_SUSPEND_VOIP_NOT_USED = 13
 申请VOIP类型长时任务，但是未检测到音频流或者录音流。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,10 +160,6 @@ SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST = 14
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST = 14--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST = 14-End-->
@@ -223,10 +175,6 @@ SYSTEM_SUSPEND_POSITION_NOT_MOVED = 15
 申请LOCATION类型长时任务，但是一段时间内设备处于绝对静止状态。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,10 +192,6 @@ SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE = 16
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE = 16--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE = 16-End-->
@@ -263,10 +207,6 @@ SYSTEM_SUSPEND_NEARLINK_NOT_USED = 17
 申请星闪类型长时任务，但是一段时间没有星闪配对连接。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -284,10 +224,6 @@ SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST = 18
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST = 18--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST = 18-End-->
@@ -303,10 +239,6 @@ SYSTEM_SUSPEND_USER_UNAUTHORIZED = 19
 申请特殊场景类型长时任务，但是用户未授权。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

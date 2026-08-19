@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-text-enum BreakStrategy--><!--Device-text-enum BreakStrategy-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ GREEDY = 0
 尽可能将当前行填满，不会自动添加连词符。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ HIGH_QUALITY = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-BreakStrategy-HIGH_QUALITY = 1--><!--Device-BreakStrategy-HIGH_QUALITY = 1-End-->
@@ -61,10 +49,6 @@ BALANCED = 2
 保证一个段落的每一行的宽度相同，必要时会添加连词符。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

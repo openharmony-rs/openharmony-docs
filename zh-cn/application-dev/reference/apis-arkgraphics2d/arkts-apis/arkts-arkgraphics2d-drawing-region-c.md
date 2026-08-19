@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-class Region--><!--Device-drawing-class Region-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## constructor
 
@@ -21,10 +23,6 @@ constructor()
 构造一个区域对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-constructor()--><!--Device-Region-constructor()-End-->
 
@@ -39,10 +37,6 @@ constructor(region: Region)
 拷贝一个区域对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-constructor(region: Region)--><!--Device-Region-constructor(region: Region)-End-->
 
@@ -63,10 +57,6 @@ constructor(left: int, top: int, right: int, bottom: int)
 构造矩形区域。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-constructor(left: int, top: int, right: int, bottom: int)--><!--Device-Region-constructor(left: int, top: int, right: int, bottom: int)-End-->
 
@@ -91,10 +81,6 @@ getBoundaryPath(): Path
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-Region-getBoundaryPath(): Path--><!--Device-Region-getBoundaryPath(): Path-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -114,10 +100,6 @@ getBoundaryPath(): Path | undefined
 返回一个新路径，该路径取自当前区域的边界。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-Region-getBoundaryPath(): Path | undefined--><!--Device-Region-getBoundaryPath(): Path | undefined-End-->
 
@@ -139,10 +121,6 @@ getBounds(): common2D.Rect
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-Region-getBounds(): common2D.Rect--><!--Device-Region-getBounds(): common2D.Rect-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -162,10 +140,6 @@ getBounds(): common2D.Rect | undefined
 获取区域的边界。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-Region-getBounds(): common2D.Rect | undefined--><!--Device-Region-getBounds(): common2D.Rect | undefined-End-->
 
@@ -187,10 +161,6 @@ isComplex(): boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-Region-isComplex(): boolean--><!--Device-Region-isComplex(): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -211,10 +181,6 @@ isEmpty(): boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-Region-isEmpty(): boolean--><!--Device-Region-isEmpty(): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -234,10 +200,6 @@ isEqual(other: Region): boolean
 判断指定区域是否与当前区域相等。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-Region-isEqual(other: Region): boolean--><!--Device-Region-isEqual(other: Region): boolean-End-->
 
@@ -264,10 +226,6 @@ isPointContained(x: int, y:int): boolean
 判断测试点是否在区域内。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-isPointContained(x: int, y:int): boolean--><!--Device-Region-isPointContained(x: int, y:int): boolean-End-->
 
@@ -302,10 +260,6 @@ isRect(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Region-isRect(): boolean--><!--Device-Region-isRect(): boolean-End-->
@@ -327,10 +281,6 @@ isRegionContained(other: Region): boolean
 判断其他区域是否在当前区域内。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-isRegionContained(other: Region): boolean--><!--Device-Region-isRegionContained(other: Region): boolean-End-->
 
@@ -364,10 +314,6 @@ offset(dx: int, dy: int): void
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-Region-offset(dx: int, dy: int): void--><!--Device-Region-offset(dx: int, dy: int): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -388,10 +334,6 @@ op(region: Region, regionOp: RegionOp): boolean
 将当前区域与指定区域进行运算，并替换为运算结果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-op(region: Region, regionOp: RegionOp): boolean--><!--Device-Region-op(region: Region, regionOp: RegionOp): boolean-End-->
 
@@ -426,10 +368,6 @@ quickContains(left: int, top: int, right: int, bottom: int): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Region-quickContains(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-quickContains(left: int, top: int, right: int, bottom: int): boolean-End-->
@@ -460,10 +398,6 @@ quickReject(left: int, top: int, right: int, bottom: int): boolean
 快速判断矩形和区域是否不相交。实际上比较的是矩形和区域的外接矩形是否不相交，因此当外接矩形相交但实际区域不相交时，会返回false（即误判为相交）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-quickReject(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-quickReject(left: int, top: int, right: int, bottom: int): boolean-End-->
 
@@ -500,10 +434,6 @@ quickRejectRegion(region: Region): boolean
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-Region-quickRejectRegion(region: Region): boolean--><!--Device-Region-quickRejectRegion(region: Region): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -530,10 +460,6 @@ setEmpty(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Region-setEmpty(): void--><!--Device-Region-setEmpty(): void-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -547,10 +473,6 @@ setPath(path: Path, clip: Region): boolean
 设置一个与裁剪区域内路径轮廓相匹配的区域。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-setPath(path: Path, clip: Region): boolean--><!--Device-Region-setPath(path: Path, clip: Region): boolean-End-->
 
@@ -584,10 +506,6 @@ setRect(left: int, top: int, right: int, bottom: int): boolean
 设置一个矩形区域。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Region-setRect(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-setRect(left: int, top: int, right: int, bottom: int): boolean-End-->
 
@@ -623,10 +541,6 @@ setRegion(region: Region): void
 设置当前区域为指定区域。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-Region-setRegion(region: Region): void--><!--Device-Region-setRegion(region: Region): void-End-->
 

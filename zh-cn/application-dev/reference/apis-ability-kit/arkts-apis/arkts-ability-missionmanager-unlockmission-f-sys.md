@@ -1,5 +1,11 @@
 # unlockMission（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## unlockMission
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unlockMission(missionId: int, callback: AsyncCallback<void>): void
 解锁指定任务ID的任务。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -38,7 +40,7 @@ function unlockMission(missionId: int, callback: AsyncCallback<void>): void
 | [16300001](../errorcode-ability.md#16300001-指定的任务不存在) | Mission not found. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';
@@ -72,10 +74,6 @@ function unlockMission(missionId: int): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function unlockMission(missionId: int): Promise<void>--><!--Device-missionManager-function unlockMission(missionId: int): Promise<void>-End-->
@@ -105,7 +103,7 @@ function unlockMission(missionId: int): Promise<void>
 | [16300001](../errorcode-ability.md#16300001-指定的任务不存在) | Mission not found. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { missionManager } from '@kit.AbilityKit';

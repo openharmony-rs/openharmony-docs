@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export interface MmsReadRecInd--><!--Device-sms-export interface MmsReadRecInd-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
 
 ## date
 
@@ -25,10 +27,6 @@ date?: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmsReadRecInd-date?: long--><!--Device-MmsReadRecInd-date?: long-End-->
 
@@ -48,10 +46,6 @@ from: MmsAddress
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MmsReadRecInd-from: MmsAddress--><!--Device-MmsReadRecInd-from: MmsAddress-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -69,10 +63,6 @@ messageId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmsReadRecInd-messageId: string--><!--Device-MmsReadRecInd-messageId: string-End-->
 
@@ -92,10 +82,6 @@ readStatus: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MmsReadRecInd-readStatus: int--><!--Device-MmsReadRecInd-readStatus: int-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -114,10 +100,6 @@ to: Array<MmsAddress>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MmsReadRecInd-to: Array<MmsAddress>--><!--Device-MmsReadRecInd-to: Array<MmsAddress>-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -135,10 +117,6 @@ version: MmsVersionType
 **类型：** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MmsReadRecInd-version: MmsVersionType--><!--Device-MmsReadRecInd-version: MmsVersionType-End-->
 

@@ -8,10 +8,6 @@ type GcStats = Record<string, long>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hidebug-type GcStats = Record<string, long>--><!--Device-hidebug-type GcStats = Record<string, long>-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug

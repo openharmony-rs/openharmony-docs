@@ -8,9 +8,7 @@ The callback reports the time required for the first screen painting of the curr
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void--><!--Device-unnamed-export type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void-End-->
 

@@ -11,10 +11,6 @@ type BatchUpdateFn = (
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-type BatchUpdateFn = (  operations: Record<string, Array<UpdateOperation>>,  callback: AsyncCallback<Record<string, Array<int>>>) => void--><!--Device-unnamed-type BatchUpdateFn = (  operations: Record<string, Array<UpdateOperation>>,  callback: AsyncCallback<Record<string, Array<int>>>) => void-End-->
@@ -28,5 +24,5 @@ type BatchUpdateFn = (
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | operations | Record&lt;string, Array&lt;[UpdateOperation](arkts-arkdata-updateoperation-t-sys.md)&gt;&gt; | 是 | Indicates the data to update. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Record&lt;string, Array&lt;int&gt;&gt;&gt; | 是 | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Record&lt;string, Array&lt;int&gt;&gt;&gt; | 是 | Callback used to return the result. |
 

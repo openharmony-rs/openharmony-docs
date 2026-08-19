@@ -1,5 +1,12 @@
 # getAllAppPrivateCertificatesByUid（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## getAllAppPrivateCertificatesByUid
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getAllAppPrivateCertificatesByUid(appUid: int) : Promise<CMResult>
 获取指定应用的所有私有凭据，仅证书管理应用调用。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -44,7 +47,7 @@ function getAllAppPrivateCertificatesByUid(appUid: int) : Promise<CMResult>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

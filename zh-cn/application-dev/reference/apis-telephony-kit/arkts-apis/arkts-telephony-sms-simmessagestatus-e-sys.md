@@ -4,10 +4,6 @@ SIM卡消息状态。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export enum SimMessageStatus--><!--Device-sms-export enum SimMessageStatus-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -23,10 +19,6 @@ SIM_MESSAGE_STATUS_FREE = 0
 SIM卡上的可用空间状态
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_FREE = 0--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_FREE = 0-End-->
 
@@ -44,10 +36,6 @@ SIM_MESSAGE_STATUS_READ = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_READ = 1--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_READ = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -63,10 +51,6 @@ SIM_MESSAGE_STATUS_UNREAD = 3
 消息未读状态
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNREAD = 3-End-->
 
@@ -84,10 +68,6 @@ SIM_MESSAGE_STATUS_SENT = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_SENT = 5--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_SENT = 5-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
@@ -103,10 +83,6 @@ SIM_MESSAGE_STATUS_UNSENT = 7
 存储未发送消息（仅适用于SMS）
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNSENT = 7--><!--Device-SimMessageStatus-SIM_MESSAGE_STATUS_UNSENT = 7-End-->
 

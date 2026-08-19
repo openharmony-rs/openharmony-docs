@@ -1,18 +1,19 @@
 # PanGestureEvent
 
-继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)。可将该对象作为onGestureJudgeBegin的 event参数来传递。
+继承自[BaseGestureEvent](arkts-arkui-basegestureevent-i.md)。可将该对象作为onGestureJudgeBegin的 event参数来传递。
 
-**继承/实现关系：** PanGestureEvent extends [BaseGestureEvent](arkts-arkui-basegestureevent-i.md#basegestureevent)
+**继承/实现关系：** PanGestureEvent extends [BaseGestureEvent](arkts-arkui-basegestureevent-i.md)
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-interface PanGestureEvent--><!--Device-unnamed-interface PanGestureEvent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## offsetX
 
@@ -25,10 +26,6 @@ offsetX: number
 **类型：** number
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +47,6 @@ offsetY: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -73,10 +66,6 @@ velocity: number
 **类型：** number
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,10 +87,6 @@ velocityX: number
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -121,10 +106,6 @@ velocityY: number
 **类型：** number
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,4 +1,4 @@
-# Want（系统接口）
+# Want(System API)（系统接口）
 
 ```TypeScript
 declare type Want = import('../api/@ohos.app.ability.Want').default
@@ -7,10 +7,6 @@ declare type Want = import('../api/@ohos.app.ability.Want').default
 表示Want。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

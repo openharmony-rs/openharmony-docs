@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-i18n-export interface SortOptions--><!--Device-i18n-export interface SortOptions-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
 
 ## isSuggestedFirst
 
@@ -25,10 +27,6 @@ true表示将推荐语言或国家地区在排序结果中置顶，false表示�
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SortOptions-isSuggestedFirst?: boolean--><!--Device-SortOptions-isSuggestedFirst?: boolean-End-->
 
@@ -48,10 +46,6 @@ true表示使用本地名称进行排序，false表示不使用本地名称进�
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SortOptions-isUseLocalName?: boolean--><!--Device-SortOptions-isUseLocalName?: boolean-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -69,10 +63,6 @@ locale?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SortOptions-locale?: string--><!--Device-SortOptions-locale?: string-End-->
 

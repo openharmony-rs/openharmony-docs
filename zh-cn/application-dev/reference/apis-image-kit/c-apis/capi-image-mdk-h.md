@@ -134,7 +134,7 @@ int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -164,7 +164,7 @@ int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -194,7 +194,7 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -225,7 +225,7 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED：从surface获取参数失败。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 
@@ -254,7 +254,7 @@ int32_t OH_Image_Release(ImageNative* native)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>     <br>IMAGE_RESULT_SUCCESS：操作成功。<br>     <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br>     <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。<br>     <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
+| int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：      <br>IMAGE_RESULT_SUCCESS：操作成功。      <br>IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。      <br>IMAGE_RESULT_INVALID_PARAMETER：参数无效。      <br>IMAGE_RESULT_BAD_PARAMETER：参数错误。 |
 
 **参考：**
 

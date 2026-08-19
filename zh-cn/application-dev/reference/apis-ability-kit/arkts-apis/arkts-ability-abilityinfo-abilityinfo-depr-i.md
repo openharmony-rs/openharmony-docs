@@ -1,10 +1,8 @@
 # AbilityInfo
 
-Ability信息，未做特殊说明的属性，均通过 [bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo)获取。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-AbilityInfo](#abilityinfo)替代。
+Ability信息，未做特殊说明的属性，均通过 [bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md)获取。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-AbilityInfo](#abilityinfo)替代。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -20,15 +18,13 @@ Ability信息，未做特殊说明的属性，均通过 [bundle.getAbilityInfo](
 readonly applicationInfo: ApplicationInfo
 ```
 
-应用程序的配置信息。 通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo) 接口时，传入GET_ABILITY_INFO_WITH_APPLICATION获取。
+应用程序的配置信息。 通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md) 接口时，传入GET_ABILITY_INFO_WITH_APPLICATION获取。
 
 **类型：** [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
 
 **默认值：** Obtains configuration information about an application
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -52,8 +48,6 @@ readonly backgroundModes: number
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -75,8 +69,6 @@ readonly bundleName: string
 **默认值：** Indicates the name of the bundle containing the ability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -100,8 +92,6 @@ Ability的描述。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** description
@@ -123,8 +113,6 @@ Ability的描述的资源id值。
 **默认值：** Indicates the description id of the ability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -148,8 +136,6 @@ Ability需要的设备能力。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 <!--Device-AbilityInfo-readonly deviceCapabilities: Array<string>--><!--Device-AbilityInfo-readonly deviceCapabilities: Array<string>-End-->
@@ -169,8 +155,6 @@ Ability支持的设备类型。
 **默认值：** The device types that this ability can run on
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -194,8 +178,6 @@ Ability是否可用，取值为true表示Ability可用，取值为false表示Abi
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** enabled
@@ -217,8 +199,6 @@ readonly formEnabled: boolean
 **默认值：** Indicates whether the ability provides the embedded card capability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -242,8 +222,6 @@ Ability的图标资源文件索引。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** icon
@@ -265,8 +243,6 @@ Ability的图标的资源id值。
 **默认值：** Indicates the icon id of the ability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -290,8 +266,6 @@ readonly isVisible: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** exported
@@ -313,8 +287,6 @@ Ability对用户显示的名称。
 **默认值：** Indicates the label of the ability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -338,8 +310,6 @@ Ability的标签的资源id值。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** labelId
@@ -362,8 +332,6 @@ Ability的启动模式。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** launchType
@@ -378,15 +346,13 @@ Ability的启动模式。
 readonly metaData: Array<CustomizeData>
 ```
 
-Ability的元信息。 通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo) 接口时，传入GET_ABILITY_INFO_WITH_METADATA获取。
+Ability的元信息。 通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md) 接口时，传入GET_ABILITY_INFO_WITH_METADATA获取。
 
 **类型：** Array&lt;[CustomizeData](arkts-ability-customizedata-customizedata-depr-i.md)&gt;
 
 **默认值：** Indicates the metadata of ability
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -410,8 +376,6 @@ Ability所属的HAP的名称。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** moduleName
@@ -433,8 +397,6 @@ Ability名称。
 **默认值：** Ability simplified class name
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -458,8 +420,6 @@ Ability的显示模式。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** orientation
@@ -474,15 +434,13 @@ Ability的显示模式。
 readonly permissions: Array<string>
 ```
 
-被其他应用Ability调用时需要申请的权限集合。 通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo) 接口时，传入GET_ABILITY_INFO_WITH_PERMISSION获取。
+被其他应用Ability调用时需要申请的权限集合。 通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md) 接口时，传入GET_ABILITY_INFO_WITH_PERMISSION获取。
 
 **类型：** Array&lt;string&gt;
 
 **默认值：** The permissions that others need to launch this ability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -506,8 +464,6 @@ Ability的进程名称。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** process
@@ -529,8 +485,6 @@ readonly readPermission: string
 **默认值：** Indicates the permission required for reading ability data
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -554,8 +508,6 @@ Ability中枚举使用的模板的子类型。 **模型约束：** 此接口仅�
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -577,8 +529,6 @@ readonly targetAbility: string
 **默认值：** Info about which ability is this nick point to
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -602,8 +552,6 @@ Ability类型。 **模型约束：** 此接口仅可在FA模型下使用。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -626,8 +574,6 @@ readonly uri: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **模型约束：** 此接口仅可在FA模型下使用。
@@ -649,8 +595,6 @@ readonly writePermission: string
 **默认值：** Indicates the permission required for writing data to the ability
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

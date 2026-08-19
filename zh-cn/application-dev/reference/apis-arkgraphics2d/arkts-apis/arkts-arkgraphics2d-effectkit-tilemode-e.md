@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-effectKit-enum TileMode--><!--Device-effectKit-enum TileMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -21,10 +17,6 @@ CLAMP = 0
 如果着色器效果超出其原始边界，剩余区域使用着色器的边缘颜色填充。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TileMode-CLAMP = 0--><!--Device-TileMode-CLAMP = 0-End-->
 
@@ -40,10 +32,6 @@ REPEAT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -58,10 +46,6 @@ MIRROR = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TileMode-MIRROR = 2--><!--Device-TileMode-MIRROR = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -75,10 +59,6 @@ DECAL = 3
 仅在其原始边界内渲染着色器效果。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
 

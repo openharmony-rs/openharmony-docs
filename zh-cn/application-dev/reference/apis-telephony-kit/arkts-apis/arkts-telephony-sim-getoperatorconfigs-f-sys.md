@@ -1,5 +1,11 @@
 # getOperatorConfigs（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { sim } from '@kit.TelephonyKit';
+```
+
 ## getOperatorConfigs
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getOperatorConfigs(slotId: int, callback: AsyncCallback<Array<OperatorC
 Obtains the operatorconfigs of the SIM card in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -27,7 +29,7 @@ Obtains the operatorconfigs of the SIM card in a specified slot.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | int | 是 | Indicates the card slot index number, ranging from 0 to the maximum card slot index number supported by the device. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[OperatorConfig](arkts-telephony-sim-operatorconfig-i-sys.md)&gt;&gt; | 是 | Indicates the callback for getting the operatorconfigs in a specified slot; returns empty OperatorConfig if no SIM card is inserted. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[OperatorConfig](arkts-telephony-sim-operatorconfig-i-sys.md)&gt;&gt; | 是 | Indicates the callback for getting the operatorconfigs in a specified slot; returns empty OperatorConfig if no SIM card is inserted. |
 
 **错误码：**
 
@@ -41,7 +43,7 @@ Obtains the operatorconfigs of the SIM card in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,10 +64,6 @@ function getOperatorConfigs(slotId: int): Promise<Array<OperatorConfig>>
 Obtains the operatorconfigs of the SIM card in a specified slot.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_TELEPHONY_STATE
 
@@ -99,7 +97,7 @@ Obtains the operatorconfigs of the SIM card in a specified slot.
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

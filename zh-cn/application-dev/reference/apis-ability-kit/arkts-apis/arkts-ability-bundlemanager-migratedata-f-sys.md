@@ -1,5 +1,11 @@
 # migrateData（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## migrateData
 
 ```TypeScript
@@ -9,10 +15,6 @@ function migrateData(sourcePaths: Array<string>, destinationPath: string): Promi
 拷贝文件，将文件从源路径拷贝到目标路径。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MIGRATE_DATA
 
@@ -49,7 +51,7 @@ function migrateData(sourcePaths: Array<string>, destinationPath: string): Promi
 | [17700080](../errorcode-bundle.md#17700080-源路径中存在无效路径) | The source paths are invalid. |
 | [17700081](../errorcode-bundle.md#17700081-目标路径为无效路径) | The destination path is invalid. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

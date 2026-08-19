@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-i18n-export interface LocaleItem--><!--Device-i18n-export interface LocaleItem-End-->
 
 **系统能力：** SystemCapability.Global.I18n
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
 
 ## displayName
 
@@ -25,10 +27,6 @@ id在SystemLocaleManager的指定区域下的表示。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LocaleItem-displayName: string--><!--Device-LocaleItem-displayName: string-End-->
 
@@ -48,10 +46,6 @@ id: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-LocaleItem-id: string--><!--Device-LocaleItem-id: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -70,10 +64,6 @@ id的本地名称。只有在表示语言相关信息时才存在该选项。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-LocaleItem-localName?: string--><!--Device-LocaleItem-localName?: string-End-->
 
 **系统能力：** SystemCapability.Global.I18n
@@ -91,10 +81,6 @@ suggestionType: SuggestionType
 **类型：** [SuggestionType](../../apis-na/arkts-apis/arkts-na-i18n-suggestiontype-e-sys.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-LocaleItem-suggestionType: SuggestionType--><!--Device-LocaleItem-suggestionType: SuggestionType-End-->
 

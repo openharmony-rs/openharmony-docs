@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-motion-export enum HoldingHandStatus--><!--Device-motion-export enum HoldingHandStatus-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
@@ -21,10 +17,6 @@ NOT_HELD = 0
 表示未握持。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HoldingHandStatus-NOT_HELD = 0--><!--Device-HoldingHandStatus-NOT_HELD = 0-End-->
 
@@ -40,10 +32,6 @@ LEFT_HAND_HELD = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HoldingHandStatus-LEFT_HAND_HELD = 1--><!--Device-HoldingHandStatus-LEFT_HAND_HELD = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
@@ -57,10 +45,6 @@ RIGHT_HAND_HELD = 2
 表示右手握持。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2--><!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2-End-->
 
@@ -76,10 +60,6 @@ BOTH_HANDS_HELD = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3--><!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
@@ -93,10 +73,6 @@ UNKNOWN_STATUS = 16
 表示未识别。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HoldingHandStatus-UNKNOWN_STATUS = 16--><!--Device-HoldingHandStatus-UNKNOWN_STATUS = 16-End-->
 

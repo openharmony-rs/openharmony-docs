@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-class HighlightAlbum--><!--Device-photoAccessHelper-class HighlightAlbum-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## constructor
 
@@ -23,10 +25,6 @@ constructor(album: Album)
 构造函数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HighlightAlbum-constructor(album: Album)--><!--Device-HighlightAlbum-constructor(album: Album)-End-->
 
@@ -48,7 +46,7 @@ constructor(album: Album)
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -77,10 +75,6 @@ static deleteHighlightAlbums(context: Context, albums: Array<Album>): Promise<in
 删除指定时刻相册。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -112,7 +106,7 @@ static deleteHighlightAlbums(context: Context, albums: Array<Album>): Promise<in
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -151,10 +145,6 @@ getHighlightAlbumInfo(type: HighlightAlbumInfoType): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-HighlightAlbum-getHighlightAlbumInfo(type: HighlightAlbumInfoType): Promise<string>--><!--Device-HighlightAlbum-getHighlightAlbumInfo(type: HighlightAlbumInfoType): Promise<string>-End-->
@@ -184,7 +174,7 @@ getHighlightAlbumInfo(type: HighlightAlbumInfoType): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -223,10 +213,6 @@ getHighlightResource(resourceUri: string): Promise<ArrayBuffer>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-HighlightAlbum-getHighlightResource(resourceUri: string): Promise<ArrayBuffer>--><!--Device-HighlightAlbum-getHighlightResource(resourceUri: string): Promise<ArrayBuffer>-End-->
@@ -256,7 +242,7 @@ getHighlightResource(resourceUri: string): Promise<ArrayBuffer>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -293,10 +279,6 @@ setHighlightUserActionData(type: HighlightUserActionType, actionData: int): Prom
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-HighlightAlbum-setHighlightUserActionData(type: HighlightUserActionType, actionData: int): Promise<void>--><!--Device-HighlightAlbum-setHighlightUserActionData(type: HighlightUserActionType, actionData: int): Promise<void>-End-->
@@ -327,7 +309,7 @@ setHighlightUserActionData(type: HighlightUserActionType, actionData: int): Prom
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -362,10 +344,6 @@ setSubTitle(subTitle: string): Promise<void>
 设置时刻副标题内容。 副标题参数规格为： - 副标题字符串长度为0~255。 - 不允许出现的非法英文字符，包括： . \ / : * ? " ' ` &lt; &gt; | { } [ ] - 英文字符大小写不敏感。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 

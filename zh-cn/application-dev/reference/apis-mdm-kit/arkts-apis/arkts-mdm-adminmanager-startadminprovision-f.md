@@ -1,5 +1,11 @@
 # startAdminProvision
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## startAdminProvision
 
 ```TypeScript
@@ -9,10 +15,6 @@ function startAdminProvision(admin: Want, type: AdminType, context: common.Conte
 设备管理应用拉起BYOD管理员激活页面进行激活。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.START_PROVISIONING_MESSAGE
 
@@ -38,7 +40,7 @@ function startAdminProvision(admin: Want, type: AdminType, context: common.Conte
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';

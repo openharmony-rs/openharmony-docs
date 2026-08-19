@@ -1,16 +1,17 @@
 # ReuseOptions
 
-Defining the reusable configuration parameters.
+复用选项，用于配置复用标识ID，相同复用标识ID的组件会被互相复用，提高复用匹配的精确度。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare interface ReuseOptions--><!--Device-unnamed-declare interface ReuseOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## reuseId
 
@@ -18,15 +19,11 @@ Defining the reusable configuration parameters.
 reuseId? : ReuseIdCallback
 ```
 
-Defining reuseId function. The default reuseId is the custom component name.
+复用标识ID，相同复用标识ID的V2自定义组件会被互相复用。默认的复用标识ID为自定义组件名。 在API版本26.0.0之前，当reuseId不是显式返回字符串字面量的回调方法时，实际的复用标识ID为该自定义组件的名称。例如，`Child().reuse({ reuseId: () => getReuseId() })`的实 际复用标识ID为`"Child"`。 在API版本26.0.0及以后，支持将非显式返回字符串字面量形式的reuseId作为实际的复用标识ID。例如，`Child().reuse({ reuseId: () => getReuseId() })`的实际复用标识ID为 `getReuseId()`的返回结果。
 
 **类型：** [ReuseIdCallback](arkts-arkui-reuseidcallback-t.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

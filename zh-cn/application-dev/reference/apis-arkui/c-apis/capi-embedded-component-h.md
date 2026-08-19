@@ -88,7 +88,7 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)\* option | EmbeddedComponent组件选项的对象的指针。 |
+| rkUI_EmbeddedComponentOption\* option | EmbeddedComponent组件选项的对象的指针。 |
 | void (\*callback)(int32_t code | 开发者自定义回调函数。        - code：接口调用失败返回的错误码信息。错误码的详细介绍请参考[UIExtension错误码](errorcode-uiextension.md)。        - name：接口调用失败返回的名称信息。        - message：接口调用失败返回的详细信息。 |
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
@@ -107,7 +107,7 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)\* option | EmbeddedComponent组件选项的对象的指针。 |
+| rkUI_EmbeddedComponentOption\* option | EmbeddedComponent组件选项的对象的指针。 |
 | void (\*callback)(int32_t code | 开发者自定义回调函数。         - code：被拉起EmbeddedUIExtensionAbility退出时返回的结果码。         若EmbeddedUIExtensionAbility通过调用terminateSelfWithResult退出，结果码为EmbeddedUIExtensionAbility设置的值。         若EmbeddedUIExtensionAbility通过调用terminateSelf退出，结果码为默认值"0"。         - want：被拉起EmbeddedUIExtensionAbility退出时返回的数据。 |
 
 

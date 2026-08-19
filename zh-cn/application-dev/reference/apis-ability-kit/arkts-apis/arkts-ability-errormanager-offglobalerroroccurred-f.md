@@ -1,6 +1,12 @@
 # off_globalErrorOccurred
 
-## off_globalErrorOccurred
+## 导入模块
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+```
+
+## off('globalErrorOccurred')
 
 ```TypeScript
 function off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
@@ -9,10 +15,6 @@ function off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 注销错误观测器，注销之前注册在同一线程的callback全局监听。 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
 
@@ -35,7 +37,7 @@ function off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
 | [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | 观测器不存在。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';

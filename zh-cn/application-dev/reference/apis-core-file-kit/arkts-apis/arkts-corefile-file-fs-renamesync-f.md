@@ -1,5 +1,13 @@
 # renameSync
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## renameSync
 
 ```TypeScript
@@ -9,10 +17,6 @@ declare function renameSync(oldPath: string, newPath: string): void
 以同步方法重命名文件或目录。 > **说明：** > > 该接口不支持在分布式文件路径下操作。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -24,8 +28,8 @@ declare function renameSync(oldPath: string, newPath: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| oldPath | string | 是 | 文件的应用沙箱原路径。 |
-| newPath | string | 是 | 文件的应用沙箱新路径。 |
+| oldPath | string | 是 | 文件或目录的应用沙箱原路径。 |
+| newPath | string | 是 | 文件或目录的应用沙箱新路径。 |
 
 **错误码：**
 

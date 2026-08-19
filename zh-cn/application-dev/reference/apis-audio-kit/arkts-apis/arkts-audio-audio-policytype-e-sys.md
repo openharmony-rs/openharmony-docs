@@ -4,10 +4,6 @@ Enumerates type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum PolicyType--><!--Device-audio-enum PolicyType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -24,10 +20,6 @@ EDM type.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PolicyType-EDM = 0--><!--Device-PolicyType-EDM = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -43,10 +35,6 @@ PRIVACY = 1
 PRIVACY type.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PolicyType-PRIVACY = 1--><!--Device-PolicyType-PRIVACY = 1-End-->
 

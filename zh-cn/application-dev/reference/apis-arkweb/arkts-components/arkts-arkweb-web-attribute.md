@@ -6,13 +6,19 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class WebAttribute--><!--Device-unnamed-declare class WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## aiSessionOptions
 
@@ -24,10 +30,6 @@ aiSessionOptions(aiSessions: Array<AISessionEvent>)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebAttribute-aiSessionOptions(aiSessions: Array<AISessionEvent>): WebAttribute--><!--Device-WebAttribute-aiSessionOptions(aiSessions: Array<AISessionEvent>): WebAttribute-End-->
@@ -38,7 +40,7 @@ aiSessionOptions(aiSessions: Array<AISessionEvent>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| aiSessions | Array&lt;[AISessionEvent](arkts-arkweb-aisessionevent-i.md)&gt; | 是 | 前端AI会话配置对象数组，每个对象包含AI会话类型及对应的生命周期回调方法。当前仅支持 [AISessionType](arkts-arkweb-aisessiontype-e.md#aisessiontype)中包含的模型。 |
+| aiSessions | Array&lt;[AISessionEvent](arkts-arkweb-aisessionevent-i.md)&gt; | 是 | 前端AI会话配置对象数组，每个对象包含AI会话类型及对应的生命周期回调方法。当前仅支持 [AISessionType](arkts-arkweb-aisessiontype-e.md)中包含的模型。 |
 
 ## allowWindowOpenMethod
 
@@ -49,10 +51,6 @@ allowWindowOpenMethod(flag : boolean)
 设置网页是否可以通过JavaScript自动打开新窗口。 > **说明：** > > - 该属性仅在[javaScriptAccess](#javascriptaccess)开启时生效。 > > - 该属性在[multiWindowAccess](#multiwindowaccess)开启时打开新窗口，关闭时打开本地窗口。 > > - 该属性的默认值与系统属性`persist.web.allowWindowOpenMethod.enabled`保持一致，如果未设置系统属性则默认值为false。 > > - 通过`hdc shell param get persist.web.allowWindowOpenMethod.enabled` 检查是否开启系统属性 > `persist.web.allowWindowOpenMethod.enabled`。若属性值为1代表开启系统属性；若属性值为0或不存在，代表未开启系统属性，可通过命令 > `hdc shell param set persist.web.allowWindowOpenMethod.enabled 1` 开启系统属性。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -76,10 +74,6 @@ backToTop(backToTop: boolean)
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-backToTop(backToTop: boolean): WebAttribute--><!--Device-WebAttribute-backToTop(backToTop: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -100,10 +94,6 @@ bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseT
 设置自定义选择菜单。
 
 **起始版本：** 13
-
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
 
 <!--Device-WebAttribute-bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseType: WebResponseType,      options?: SelectionMenuOptionsExt): WebAttribute--><!--Device-WebAttribute-bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseType: WebResponseType,      options?: SelectionMenuOptionsExt): WebAttribute-End-->
 
@@ -128,10 +118,6 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig): WebAttribute--><!--Device-WebAttribute-blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -152,10 +138,6 @@ blockNetwork(block: boolean)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-blockNetwork(block: boolean): WebAttribute--><!--Device-WebAttribute-blockNetwork(block: boolean): WebAttribute-End-->
@@ -174,13 +156,9 @@ blockNetwork(block: boolean)
 blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 ```
 
-设置当软键盘收起时Web元素失焦模式。当属性没有显式调用时，默认按[BlurOnKeyboardHideMode.SILENT](arkts-arkweb-bluronkeyboardhidemode-e.md#bluronkeyboardhidemode)模式处理。
+设置当软键盘收起时Web元素失焦模式。当属性没有显式调用时，默认按[BlurOnKeyboardHideMode.SILENT](arkts-arkweb-bluronkeyboardhidemode-e.md)模式处理。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -204,10 +182,6 @@ bypassVsyncCondition(condition: WebBypassVsyncCondition)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-bypassVsyncCondition(condition: WebBypassVsyncCondition): WebAttribute--><!--Device-WebAttribute-bypassVsyncCondition(condition: WebBypassVsyncCondition): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -227,10 +201,6 @@ cacheMode(cacheMode: CacheMode)
 设置缓存模式。当属性没有显式调用时，默认为`CacheMode.Default`。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -254,10 +224,6 @@ copyOptions(value: CopyOptions)
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-copyOptions(value: CopyOptions): WebAttribute--><!--Device-WebAttribute-copyOptions(value: CopyOptions): WebAttribute-End-->
@@ -279,10 +245,6 @@ darkMode(mode: WebDarkMode)
 设置Web深色模式。当属性没有显式调用时，默认关闭。 当深色模式开启时，Web将启用媒体查询prefers-color-scheme中网页所定义的深色样式，若网页未定义深色样式，则保持原状。如需开启强制深色模式，建议配合 [forceDarkAccess](#forcedarkaccess)使用。深色模式具体用法可参考[Web深色模式适配](../../../web/web-set-dark-mode.md)。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -306,10 +268,6 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-dataDetectorConfig(config: TextDataDetectorConfig): WebAttribute--><!--Device-WebAttribute-dataDetectorConfig(config: TextDataDetectorConfig): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -329,10 +287,6 @@ databaseAccess(databaseAccess: boolean)
 设置Web SQL数据库存储API权限，若未显式调用，此权限默认关闭。 > **说明：** > > - 本接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的控制失效。ArkWeb内核版本参考ArkWeb简介 > [约束与限制](../../../web/web-component-overview.md#约束与限制)。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -356,10 +310,6 @@ defaultFixedFontSize(size: number)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-defaultFixedFontSize(size: number): WebAttribute--><!--Device-WebAttribute-defaultFixedFontSize(size: number): WebAttribute-End-->
@@ -381,10 +331,6 @@ defaultFontSize(size: number)
 设置网页的默认字体大小。对于html前端使用非monospace字体且未指定font-size样式的元素，将按此值渲染字体大小。 当属性没有显式调用时，网页的默认字体大小为16。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -408,10 +354,6 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-defaultTextEncodingFormat(textEncodingFormat: string): WebAttribute--><!--Device-WebAttribute-defaultTextEncodingFormat(textEncodingFormat: string): WebAttribute-End-->
@@ -433,10 +375,6 @@ domStorageAccess(domStorageAccess: boolean)
 设置是否开启文档对象模型存储接口（DOM Storage API）权限，当属性没有显式调用时，默认不开启文档对象模型存储接口（DOM Storage API）权限。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -460,10 +398,6 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-editMenuOptions(editMenu: EditMenuOptions): WebAttribute--><!--Device-WebAttribute-editMenuOptions(editMenu: EditMenuOptions): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -480,13 +414,9 @@ editMenuOptions(editMenu: EditMenuOptions)
 enableAutoFill(value: boolean)
 ```
 
-设置是否启用网页自动填充，默认开启。 &lt;!--RP1--&gt; > **说明：** > > 本接口的自动填充功能，依赖“智能填充服务”和“密码填充服务”的支持。 &lt;!--RP1End--&gt;
+设置是否启用网页自动填充，默认开启。 <!--RP1--> > **说明：** > > 本接口的自动填充功能，依赖“智能填充服务”和“密码填充服务”的支持。 <!--RP1End-->
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WebAttribute-enableAutoFill(value: boolean): WebAttribute--><!--Device-WebAttribute-enableAutoFill(value: boolean): WebAttribute-End-->
 
@@ -504,13 +434,9 @@ enableAutoFill(value: boolean)
 enableDataDetector(enable: boolean)
 ```
 
-设置是否识别网页文本特殊实体，如邮件、电话、网址等。该接口依赖设备底层具备文本识别能力，否则设置无效。该属性没有显式调用时，默认不启用。 > **说明：** > > [dataDetectorConfig](#datadetectorconfig)和 > [enableSelectedDataDetector](#enableselecteddatadetector)等属性依赖此属性开启时才能正常生效。 > 当enableDataDetector设置为true，同时不设置[dataDetectorConfig](#datadetectorconfig)属性时，默认识别所有类型的实体，所识别实体的 > color和decoration会被更改为如下样式： &lt;!--code_no_check--&gt; 当enableDataDetector设置为true且[copyOptions](#copyoptions)设置为CopyOptions.LocalDevice时，AI菜单功能将被激活。此时，在 网页中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括TextMenuItemId中的url（打开链接）、email（新建邮件）、phoneNumber（呼叫）、address （导航至该位置）、dateTime（新建日程提醒）。 AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才能展示对应的选项。该菜单项与TextMenuItemId中的askAI菜单项不同时出现。 示例使用场景详见[使用Web组件的智能分词能力](../../../web/web-data-detector.md)。
+设置是否识别网页文本特殊实体，如邮件、电话、网址等。该接口依赖设备底层具备文本识别能力，否则设置无效。该属性没有显式调用时，默认不启用。 > **说明：** > > [dataDetectorConfig](#datadetectorconfig)和 > [enableSelectedDataDetector](#enableselecteddatadetector)等属性依赖此属性开启时才能正常生效。 > 当enableDataDetector设置为true，同时不设置[dataDetectorConfig](#datadetectorconfig)属性时，默认识别所有类型的实体，所识别实体的 > color和decoration会被更改为如下样式： <!--code_no_check--> 当enableDataDetector设置为true且[copyOptions](#copyoptions)设置为CopyOptions.LocalDevice时，AI菜单功能将被激活。此时，在 网页中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括TextMenuItemId中的url（打开链接）、email（新建邮件）、phoneNumber（呼叫）、address （导航至该位置）、dateTime（新建日程提醒）。 AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才能展示对应的选项。该菜单项与TextMenuItemId中的askAI菜单项不同时出现。 示例使用场景详见[使用Web组件的智能分词能力](../../../web/web-data-detector.md)。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-WebAttribute-enableDataDetector(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableDataDetector(enable: boolean): WebAttribute-End-->
 
@@ -531,10 +457,6 @@ enableDefaultContextMenu(enable: boolean)
 设置是否启用默认右键上下文菜单。不调用该方法时，默认不启用。默认菜单仅支持CUT、COPY、PASTE、SELECT_ALL菜单项。 > **说明：** > > - 当设置了[onContextMenuShow](#oncontextmenushow)回调并在回调中返回true时，本接口的设置不生效。 > > - 默认菜单项会受[editMenuOptions](#editmenuoptions)控制，通过该属性可以自定义菜单选项。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -558,10 +480,6 @@ enableDrag(value: boolean)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebAttribute-enableDrag(value: boolean): WebAttribute--><!--Device-WebAttribute-enableDrag(value: boolean): WebAttribute-End-->
@@ -584,10 +502,6 @@ enableFollowSystemFontWeight(follow: boolean)
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-enableFollowSystemFontWeight(follow: boolean): WebAttribute--><!--Device-WebAttribute-enableFollowSystemFontWeight(follow: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -607,10 +521,6 @@ enableFullscreenVideoOverlay(enabled: boolean)
 设置 Web 组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。 > **说明：** > > - 当前只支持H264、H265解码格式的视频。 > > - 只有视频元素发出的全屏请求才会响应。 > 26.0.0
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -634,10 +544,6 @@ enableHapticFeedback(enabled: boolean)
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-enableHapticFeedback(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableHapticFeedback(enabled: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -658,10 +564,6 @@ enableImageAnalyzer(enable: boolean)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-enableImageAnalyzer(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableImageAnalyzer(enable: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -681,10 +583,6 @@ enableMediaNetworkProxy(enabled: boolean)
 设置Web组件是否开启媒体资源网络请求代理功能。当属性没有显式调用时，默认不开启该能力。 > **说明：** > > - 当前只支持HLS流媒体视频。 > 26.0.0
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -708,10 +606,6 @@ enableNativeEmbedMode(enabled: boolean)
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-enableNativeEmbedMode(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableNativeEmbedMode(enabled: boolean): WebAttribute-End-->
@@ -734,10 +628,6 @@ enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-enableNativeMediaPlayer(config: NativeMediaPlayerConfig): WebAttribute--><!--Device-WebAttribute-enableNativeMediaPlayer(config: NativeMediaPlayerConfig): WebAttribute-End-->
@@ -759,10 +649,6 @@ enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType)
 设置Web组件滑动方向锁定，防止用户在斜向滑动时同时触发水平和垂直滚动，提升滚动体验。不调用该方法设置时，默认在嵌套滚动场景下支持滑动方向锁定。ALL模式适用于所有需要锁定滑动的场景，NESTED_SCROLL模式仅适用于嵌套滚动 场景。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -787,10 +673,6 @@ enableSelectedDataDetector(enable: boolean)
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-enableSelectedDataDetector(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableSelectedDataDetector(enable: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -811,10 +693,6 @@ enableWebAVSession(enabled: boolean)
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-enableWebAVSession(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableWebAVSession(enabled: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -834,10 +712,6 @@ fileAccess(fileAccess: boolean)
 设置是否开启应用中文件系统的访问。[\$rawfile(filepath/filename)](../../../quick-start/resource-categories-and-access.md#资源访问)中的文件不受该 属性影响而被限制访问。API version 11及以前，当属性没有显式调用时，默认开启应用中文件系统的访问。API version 12及以后，当属性没有显式调用时，默认不开启应用中文件系统的访问。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -861,10 +735,6 @@ forceDarkAccess(access: boolean)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-forceDarkAccess(access: boolean): WebAttribute--><!--Device-WebAttribute-forceDarkAccess(access: boolean): WebAttribute-End-->
@@ -886,10 +756,6 @@ forceDisplayScrollBar(enabled: boolean)
 设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。该属性没有显式调用时，默认设置滚动条不常驻。 全量展开模式下不支持滚动条常驻，即layoutMode为WebLayoutMode.FIT_CONTENT模式时，参数enabled为false。 > **说明：** > > - 该接口在当前应用的所有Web组件中全局生效。多个Web组件设置不同值时，以首次设置的值为准。 > > - 若同时调用[setScrollbarMode](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setscrollbarmode)，该接口设置不生效。
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -913,10 +779,6 @@ forceEnableZoom(enable: boolean)
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-forceEnableZoom(enable: boolean): WebAttribute--><!--Device-WebAttribute-forceEnableZoom(enable: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -936,10 +798,6 @@ geolocationAccess(geolocationAccess: boolean)
 设置是否开启获取地理位置权限。当属性没有显式调用时，默认开启。具体使用方式参考[管理位置权限](../../../web/web-geolocation-permission.md)。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -963,10 +821,6 @@ gestureFocusMode(mode: GestureFocusMode)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-gestureFocusMode(mode: GestureFocusMode): WebAttribute--><!--Device-WebAttribute-gestureFocusMode(mode: GestureFocusMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -986,10 +840,6 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示。 > **说明：** > > - 通过[@State](../../../ui/state-management/arkts-state.md)变量控制横向滚动条的隐藏/显示后，需要调用 > [controller.refresh()](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh)生效。 > > - 通过[@State](../../../ui/state-management/arkts-state.md)变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1013,10 +863,6 @@ imageAccess(imageAccess: boolean)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-imageAccess(imageAccess: boolean): WebAttribute--><!--Device-WebAttribute-imageAccess(imageAccess: boolean): WebAttribute-End-->
@@ -1038,10 +884,6 @@ initialScale(percent: number)
 设置整体页面的缩放百分比。该属性没有显式调用时，默认为100。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1065,10 +907,6 @@ javaScriptAccess(javaScriptAccess: boolean)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-javaScriptAccess(javaScriptAccess: boolean): WebAttribute--><!--Device-WebAttribute-javaScriptAccess(javaScriptAccess: boolean): WebAttribute-End-->
@@ -1087,13 +925,9 @@ javaScriptAccess(javaScriptAccess: boolean)
 javaScriptOnDocumentEnd(scripts: Array<ScriptItem>)
 ```
 
-将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。 > **说明：** > > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。 > > - 该脚本按照字典序执行，非数组本身顺序。 > > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。 > > - 本接口不支持[UrlRegexRule](arkts-arkweb-urlregexrule-i.md#urlregexrule)。 > > - 建议使用[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend)代替。
+将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。 > **说明：** > > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。 > > - 该脚本按照字典序执行，非数组本身顺序。 > > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。 > > - 本接口不支持[UrlRegexRule](arkts-arkweb-urlregexrule-i.md)。 > > - 建议使用[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend)代替。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1113,13 +947,9 @@ javaScriptOnDocumentEnd(scripts: Array<ScriptItem>)
 javaScriptOnDocumentStart(scripts: Array<ScriptItem>)
 ```
 
-将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。 > **说明：** > > - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。 > > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart) > 接口。 > > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。 > > - 本接口不支持[UrlRegexRule](arkts-arkweb-urlregexrule-i.md#urlregexrule)。 > > - 建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart)代替。
+将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。 > **说明：** > > - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。 > > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart) > 接口。 > > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。 > > - 本接口不支持[UrlRegexRule](arkts-arkweb-urlregexrule-i.md)。 > > - 建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart)代替。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1143,10 +973,6 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-javaScriptProxy(javaScriptProxy: JavaScriptProxy): WebAttribute--><!--Device-WebAttribute-javaScriptProxy(javaScriptProxy: JavaScriptProxy): WebAttribute-End-->
@@ -1169,10 +995,6 @@ keyboardAppearance(mode: WebKeyboardAppearanceMode)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WebAttribute-keyboardAppearance(mode: WebKeyboardAppearanceMode): WebAttribute--><!--Device-WebAttribute-keyboardAppearance(mode: WebKeyboardAppearanceMode): WebAttribute-End-->
@@ -1191,13 +1013,9 @@ keyboardAppearance(mode: WebKeyboardAppearanceMode)
 keyboardAvoidMode(mode: WebKeyboardAvoidMode)
 ```
 
-Web组件自定义软件键盘避让模式。 当UIContext设置的键盘避让模式为[KeyboardAvoidMode.RESIZE](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-keyboardavoidmode-e.md#keyboardavoidmode)模式时，该接口功能不生效。
+Web组件自定义软件键盘避让模式。 当UIContext设置的键盘避让模式为[KeyboardAvoidMode.RESIZE](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-keyboardavoidmode-e.md)模式时，该接口功能不生效。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1221,10 +1039,6 @@ layoutMode(mode: WebLayoutMode)
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-layoutMode(mode: WebLayoutMode): WebAttribute--><!--Device-WebAttribute-layoutMode(mode: WebLayoutMode): WebAttribute-End-->
@@ -1243,13 +1057,9 @@ layoutMode(mode: WebLayoutMode)
 mediaOptions(options: WebMediaOptions)
 ```
 
-设置Web媒体播放的策略，其中包括：Web中的音频在重新获焦后能够自动续播的有效期、应用内多个Web实例的音频是否独占。当该属性未显式设置时，默认Web中的音频重新获焦后无法自动续播、应用内多个Web实例的音频是独占的。 > **说明：** > > - 同一Web实例中的多个音频均视为同一音频。 > > - 该媒体播放策略将同时管控有声视频。 > > - 建议为所有Web组件设置相同的[audioExclusive](arkts-arkweb-webmediaoptions-i.md#webmediaoptions)值。 > > - 音视频互相打断在应用内和应用间生效，续播只在应用间生效。
+设置Web媒体播放的策略，其中包括：Web中的音频在重新获焦后能够自动续播的有效期、应用内多个Web实例的音频是否独占。当该属性未显式设置时，默认Web中的音频重新获焦后无法自动续播、应用内多个Web实例的音频是独占的。 > **说明：** > > - 同一Web实例中的多个音频均视为同一音频。 > > - 该媒体播放策略将同时管控有声视频。 > > - 建议为所有Web组件设置相同的[audioExclusive](arkts-arkweb-webmediaoptions-i.md)值。 > > - 音视频互相打断在应用内和应用间生效，续播只在应用间生效。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1273,10 +1083,6 @@ mediaPlayGestureAccess(access: boolean)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-mediaPlayGestureAccess(access: boolean): WebAttribute--><!--Device-WebAttribute-mediaPlayGestureAccess(access: boolean): WebAttribute-End-->
@@ -1298,10 +1104,6 @@ metaViewport(enabled: boolean)
 设置meta标签的viewport属性是否可用。当属性没有显式调用时，默认支持meta标签的viewport属性。 > **说明：** > > - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关 > 闭，此时可通过显式设置metaViewport属性为true来覆盖关闭状态。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1325,10 +1127,6 @@ minFontSize(size: number)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-minFontSize(size: number): WebAttribute--><!--Device-WebAttribute-minFontSize(size: number): WebAttribute-End-->
@@ -1350,10 +1148,6 @@ minLogicalFontSize(size: number)
 设置网页逻辑字体大小最小值。 对于html前端未指定font-size样式的元素： 1. 若元素字体大小低于该接口设置值，将采用接口设置值渲染字体大小。 2. 若minLogicalFontSize和minFontSize同时设置时，对于未指定font-size样式元素，将采用两者中的较大值。 当属性没有显式调用时，默认网页逻辑字体大小最小值为8。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1377,10 +1171,6 @@ mixedMode(mixedMode: MixedMode)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-mixedMode(mixedMode: MixedMode): WebAttribute--><!--Device-WebAttribute-mixedMode(mixedMode: MixedMode): WebAttribute-End-->
@@ -1402,10 +1192,6 @@ multiWindowAccess(multiWindow: boolean)
 设置是否开启多窗口权限。当属性没有显式调用时，默认不开启。 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew](#onwindownew)。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1429,10 +1215,6 @@ nativeEmbedOptions(options?: EmbedOptions)
 
 **起始版本：** 16
 
-**ArkTS模式：** 起始版本为16。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-nativeEmbedOptions(options?: EmbedOptions): WebAttribute--><!--Device-WebAttribute-nativeEmbedOptions(options?: EmbedOptions): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1452,10 +1234,6 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 调用以设置嵌套滚动选项。 > **说明：** > > - 可以设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与父组件的滚动联动。 > > - 支持嵌套滚动的容器：Grid、List、Scroll、Swiper、 > Tabs、WaterFlow、Refresh、 > bindSheet。 > > - 支持嵌套滚动的输入事件：使用手势、鼠标、触控板。 > > - 嵌套滚动场景下，由于Web滚动到边缘时会优先触发过滚动的过界回弹效果，建议设置[overScrollMode](#overscrollmode)为 > `OverScrollMode.NEVER`，避免影响此场景的用户体验。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1479,10 +1257,6 @@ Web页面触发window.open(url, name)时，会根据name查找是否存在已绑
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onActivateContent(callback: Callback<void>): WebAttribute--><!--Device-WebAttribute-onActivateContent(callback: Callback<void>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1502,10 +1276,6 @@ onAdsBlocked(callback: OnAdsBlockedCallback)
 一个页面发生广告过滤后，通过此回调接口通知过滤的详细信息。由于页面可能随时发生变化并不断产生网络请求，为了减少通知频次、降低对页面加载过程的影响，仅在页面加载完成时进行首次通知，此后发生的过滤将间隔1秒钟上报，无广告过滤则无通知。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1529,10 +1299,6 @@ onAlert(callback: Callback<OnAlertEvent, boolean>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onAlert(callback: Callback<OnAlertEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onAlert(callback: Callback<OnAlertEvent, boolean>): WebAttribute-End-->
@@ -1554,10 +1320,6 @@ onAudioStateChanged(callback: Callback<OnAudioStateChangedEvent>)
 设置网页上的音频播放状态发生改变时的回调函数。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1581,10 +1343,6 @@ onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>): WebAttribute-End-->
@@ -1607,10 +1365,6 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback): WebAttribute--><!--Device-WebAttribute-onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1630,10 +1384,6 @@ onClientAuthenticationRequest(callback: Callback<OnClientAuthenticationEvent>)
 通知用户收到SSL客户端证书请求事件。 > **说明：** > > - Web组件有三种响应方式：[ClientAuthenticationHandler.confirm](arkts-arkweb-clientauthenticationhandler-c.md#confirm)（ > 继续）、[ClientAuthenticationHandler.cancel](arkts-arkweb-clientauthenticationhandler-c.md#cancel)（取消）或 > [ClientAuthenticationHandler.ignore](arkts-arkweb-clientauthenticationhandler-c.md#ignore)（忽略）。 > > - 如果调用ClientAuthenticationHandler.confirm或ClientAuthenticationHandler.cancel，ArkWeb会将认证结果存储在内存中（在应用程序的生命周期内），并且不会 > 对相同的主机和端口再次调用onClientAuthenticationRequest()。如果调用onClientAuthenticationRequest.ignore，ArkWeb则不会存储该认证结果。 > > - 需配置"ohos.permission.ACCESS_CERT_MANAGER"权限。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1657,10 +1407,6 @@ onConfirm(callback: Callback<OnConfirmEvent, boolean>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onConfirm(callback: Callback<OnConfirmEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onConfirm(callback: Callback<OnConfirmEvent, boolean>): WebAttribute-End-->
@@ -1682,10 +1428,6 @@ onConsole(callback: Callback<OnConsoleEvent, boolean>)
 通知宿主应用JavaScript console消息。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1709,10 +1451,6 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onContextMenuHide(callback: OnContextMenuHideCallback): WebAttribute--><!--Device-WebAttribute-onContextMenuHide(callback: OnContextMenuHideCallback): WebAttribute-End-->
@@ -1734,10 +1472,6 @@ onContextMenuShow(callback: Callback<OnContextMenuShowEvent, boolean>)
 长按特定元素（例如图片，链接）或鼠标右键，弹出菜单。用于自定义右键菜单项、实现复制、保存、分享等功能、隐藏默认菜单项，提供更好的上下文交互体验。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1761,10 +1495,6 @@ onControllerAttached(callback: () => void)
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onControllerAttached(callback: () => void): WebAttribute--><!--Device-WebAttribute-onControllerAttached(callback: () => void): WebAttribute-End-->
@@ -1786,10 +1516,6 @@ onDataResubmitted(callback: Callback<OnDataResubmittedEvent>)
 当网页表单可以重新提交时触发的回调函数。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1813,10 +1539,6 @@ Web组件检测到白屏时触发此回调。 > **说明：** > > - 需配合[bl
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onDetectedBlankScreen(callback: OnDetectBlankScreenCallback): WebAttribute--><!--Device-WebAttribute-onDetectedBlankScreen(callback: OnDetectBlankScreenCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -1836,10 +1558,6 @@ onDownloadStart(callback: Callback<OnDownloadStartEvent>)
 通知主应用开始下载文件。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -1863,10 +1581,6 @@ onErrorReceive(callback: Callback<OnErrorReceiveEvent>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onErrorReceive(callback: Callback<OnErrorReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onErrorReceive(callback: Callback<OnErrorReceiveEvent>): WebAttribute-End-->
@@ -1889,10 +1603,6 @@ onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>): WebAttribute--><!--Device-WebAttribute-onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>): WebAttribute-End-->
@@ -1914,8 +1624,6 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 调用此函数以处理具有“文件”输入类型的HTML表单，以响应用户按下的“选择文件”按钮。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -1941,10 +1649,6 @@ onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>)
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>): WebAttribute--><!--Device-WebAttribute-onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>): WebAttribute-End-->
@@ -1966,10 +1670,6 @@ onFirstMeaningfulPaint(callback: OnFirstMeaningfulPaintCallback)
 设置网页绘制页面主要内容回调函数。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -1993,10 +1693,6 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onFirstScreenPaint(callback: OnFirstScreenPaintCallback): WebAttribute--><!--Device-WebAttribute-onFirstScreenPaint(callback: OnFirstScreenPaintCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2016,10 +1712,6 @@ onFullScreenEnter(callback: OnFullScreenEnterCallback)
 通知开发者Web组件进入全屏模式。用于隐藏状态栏和导航栏、调整页面布局以适应全屏、实现沉浸式视频播放等全屏体验。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2043,10 +1735,6 @@ onFullScreenExit(callback: () => void)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onFullScreenExit(callback: () => void): WebAttribute--><!--Device-WebAttribute-onFullScreenExit(callback: () => void): WebAttribute-End-->
@@ -2068,10 +1756,6 @@ onGeolocationHide(callback: () => void)
 通知用户先前被调用[onGeolocationShow](#ongeolocationshow)时收到地理位置信息获取请求已被取消。用于清理定位相关资源，优化资源使用。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2095,10 +1779,6 @@ onGeolocationShow(callback: Callback<OnGeolocationShowEvent>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onGeolocationShow(callback: Callback<OnGeolocationShowEvent>): WebAttribute--><!--Device-WebAttribute-onGeolocationShow(callback: Callback<OnGeolocationShowEvent>): WebAttribute-End-->
@@ -2120,10 +1800,6 @@ onHttpAuthRequest(callback: Callback<OnHttpAuthRequestEvent, boolean>)
 通知收到HTTP认证请求。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2147,10 +1823,6 @@ onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>): WebAttribute-End-->
@@ -2172,10 +1844,6 @@ onInputmethodAttached(callback: OnInputmethodAttachedCallback)
 网页绑定输入法成功时触发此回调，使用callback异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2199,10 +1867,6 @@ onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionC
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback): WebAttribute--><!--Device-WebAttribute-onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback): WebAttribute-End-->
@@ -2224,10 +1888,6 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 设置键盘事件的回调函数，该回调在被Webview使用前触发。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2251,10 +1911,6 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onInterceptKeyboardAttach(callback: WebKeyboardCallback): WebAttribute--><!--Device-WebAttribute-onInterceptKeyboardAttach(callback: WebKeyboardCallback): WebAttribute-End-->
@@ -2273,13 +1929,9 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
 ```
 
-当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。`onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。 此类场景需改用[WebSchemeHandler](../arkts-apis/arkts-arkweb-webview-webschemehandler-c.md#webschemehandler)实现，依据具体业务需求进行判断。
+当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。`onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。 此类场景需改用[WebSchemeHandler](../arkts-apis/arkts-arkweb-webview-webschemehandler-c.md)实现，依据具体业务需求进行判断。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2303,10 +1955,6 @@ onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback): WebAttribute--><!--Device-WebAttribute-onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback): WebAttribute-End-->
@@ -2329,10 +1977,6 @@ onLoadFinished(callback: Callback<OnLoadFinishedEvent>)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onLoadFinished(callback: Callback<OnLoadFinishedEvent>): WebAttribute--><!--Device-WebAttribute-onLoadFinished(callback: Callback<OnLoadFinishedEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2352,10 +1996,6 @@ onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>)
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。 > **说明：** > > - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest)或者通过 > WebSchemeHandler的 > onRequestStart > 中获取。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2379,10 +2019,6 @@ onLoadStarted(callback: Callback<OnLoadStartedEvent>)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onLoadStarted(callback: Callback<OnLoadStartedEvent>): WebAttribute--><!--Device-WebAttribute-onLoadStarted(callback: Callback<OnLoadStartedEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2403,10 +2039,6 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback): WebAttribute--><!--Device-WebAttribute-onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2426,10 +2058,6 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 当手指触摸到同层标签时触发该回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2453,10 +2081,6 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void): WebAttribute--><!--Device-WebAttribute-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void): WebAttribute-End-->
@@ -2479,10 +2103,6 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onNativeEmbedMouseEvent(callback: MouseInfoCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedMouseEvent(callback: MouseInfoCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2503,10 +2123,6 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2523,13 +2139,9 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 ```
 
-当网页中同层标签（例如&lt;embed\&gt;标签或&lt;object\&gt;标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或 全部可见则视为可见。获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置 [nativeEmbedOptions](#nativeembedoptions)，并将[EmbedOptions](arkts-arkweb-embedoptions-i.md#embedoptions)中的 supportCssDisplayChange参数设为true。
+当网页中同层标签（例如&lt;embed\&gt;标签或&lt;object\&gt;标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或 全部可见则视为可见。获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置 [nativeEmbedOptions](#nativeembedoptions)，并将[EmbedOptions](arkts-arkweb-embedoptions-i.md)中的 supportCssDisplayChange参数设为true。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-WebAttribute-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback): WebAttribute-End-->
 
@@ -2550,10 +2162,6 @@ onNavigationEntryCommitted(callback: OnNavigationEntryCommittedCallback)
 当网页跳转提交时触发该回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2577,10 +2185,6 @@ onOverScroll(callback: Callback<OnOverScrollEvent>)
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onOverScroll(callback: Callback<OnOverScrollEvent>): WebAttribute--><!--Device-WebAttribute-onOverScroll(callback: Callback<OnOverScrollEvent>): WebAttribute-End-->
@@ -2603,10 +2207,6 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onOverrideErrorPage(callback: OnOverrideErrorPageCallback): WebAttribute--><!--Device-WebAttribute-onOverrideErrorPage(callback: OnOverrideErrorPageCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2626,10 +2226,6 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 当URL将要加载到当前Web中时触发该回调，让宿主应用程序有机会获得控制权，判断是否阻止Web加载URL。 > **说明：** > > - POST请求不会触发该回调。 > > - iframe加载HTTP(s)协议或about:blank时不会触发该回调，而加载非HTTP(s)协议的跳转会触发；调用loadUrl(url: string)主动触发的跳转不会触发该回调。 > > - 不要在回调中使用相同的URL调用loadUrl(url: string)方法，然后返回true。 这样会不必要地中止当前加载，并用相同的URL发起一次新的加载。 要继续加载当前请求URL的正确做法是直接返回false，而不 > 是调用loadUrl(url: string)。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2653,10 +2249,6 @@ onPageBegin(callback: Callback<OnPageBeginEvent>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onPageBegin(callback: Callback<OnPageBeginEvent>): WebAttribute--><!--Device-WebAttribute-onPageBegin(callback: Callback<OnPageBeginEvent>): WebAttribute-End-->
@@ -2678,10 +2270,6 @@ onPageEnd(callback: Callback<OnPageEndEvent>)
 网页加载完成时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2705,10 +2293,6 @@ onPageVisible(callback: Callback<OnPageVisibleEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onPageVisible(callback: Callback<OnPageVisibleEvent>): WebAttribute--><!--Device-WebAttribute-onPageVisible(callback: Callback<OnPageVisibleEvent>): WebAttribute-End-->
@@ -2731,10 +2315,6 @@ onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>): WebAttribute--><!--Device-WebAttribute-onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2755,10 +2335,6 @@ onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>)
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>): WebAttribute--><!--Device-WebAttribute-onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2778,10 +2354,6 @@ onPermissionRequest(callback: Callback<OnPermissionRequestEvent>)
 通知收到获取权限请求，需配置"ohos.permission.CAMERA"、"ohos.permission.MICROPHONE"权限。用于自定义权限申请弹窗样式、实现细粒度的权限控制、在特定条件下拒绝或授予权限请求，提供更好 的权限管理体验。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -2805,10 +2377,6 @@ onProgressChange(callback: Callback<OnProgressChangeEvent>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onProgressChange(callback: Callback<OnProgressChangeEvent>): WebAttribute--><!--Device-WebAttribute-onProgressChange(callback: Callback<OnProgressChangeEvent>): WebAttribute-End-->
@@ -2830,10 +2398,6 @@ onPrompt(callback: Callback<OnPromptEvent, boolean>)
 网页调用prompt()告警时触发此回调。若不调用[handleCancel](arkts-arkweb-jsresult-c.md#handlecancel)或 [handlePromptConfirm](arkts-arkweb-jsresult-c.md#handlepromptconfirm)接口，会造成渲染进程阻塞。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -2857,10 +2421,6 @@ onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>): WebAttribute--><!--Device-WebAttribute-onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>): WebAttribute-End-->
@@ -2883,10 +2443,6 @@ onRenderExited(callback: Callback<OnRenderExitedEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onRenderExited(callback: Callback<OnRenderExitedEvent>): WebAttribute--><!--Device-WebAttribute-onRenderExited(callback: Callback<OnRenderExitedEvent>): WebAttribute-End-->
@@ -2908,8 +2464,6 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 应用渲染进程因错误或崩溃退出时触发回调。 多个Web组件可能共享单个渲染进程，每个受影响的Web组件都会触发该回调。 应用处理该回调时，可以调用绑定的WebViewController接口来恢复页面。例如[refresh](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh)、 [loadUrl](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#loadurl)等。 详情可参考[Web组件的生命周期](../../../web/web-event-sequence.md)。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -2935,10 +2489,6 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback): WebAttribute--><!--Device-WebAttribute-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2959,10 +2509,6 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback): WebAttribute--><!--Device-WebAttribute-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2982,10 +2528,6 @@ onRequestSelected(callback: () => void)
 当Web组件获取焦点时触发回调。如果组件在未获焦状态下加载网页并成功获取焦点，将触发两次回调。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3009,10 +2551,6 @@ onResourceLoad(callback: Callback<OnResourceLoadEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onResourceLoad(callback: Callback<OnResourceLoadEvent>): WebAttribute--><!--Device-WebAttribute-onResourceLoad(callback: Callback<OnResourceLoadEvent>): WebAttribute-End-->
@@ -3035,10 +2573,6 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 **起始版本：** 21
 
-**ArkTS模式：** 起始版本为21。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback): WebAttribute--><!--Device-WebAttribute-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3058,10 +2592,6 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 收到网站安全风险检查结果时触发的回调。 > **说明：** > > - 需要使用release包，debug包不生效。 > > - 开启未成年模式，设置网页内容拦截，触发回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3085,10 +2615,6 @@ onScaleChange(callback: Callback<OnScaleChangeEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onScaleChange(callback: Callback<OnScaleChangeEvent>): WebAttribute--><!--Device-WebAttribute-onScaleChange(callback: Callback<OnScaleChangeEvent>): WebAttribute-End-->
@@ -3110,10 +2636,6 @@ onScreenCaptureRequest(callback: Callback<OnScreenCaptureRequestEvent>)
 通知收到屏幕捕获请求。用于控制页面截图权限、实现隐私保护、防止敏感信息泄露，保护用户隐私和数据安全。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3137,10 +2659,6 @@ onScroll(callback: Callback<OnScrollEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onScroll(callback: Callback<OnScrollEvent>): WebAttribute--><!--Device-WebAttribute-onScroll(callback: Callback<OnScrollEvent>): WebAttribute-End-->
@@ -3162,10 +2680,6 @@ onSearchResultReceive(callback: Callback<OnSearchResultReceiveEvent>)
 回调通知调用方网页页内查找的结果。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3189,10 +2703,6 @@ onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>): WebAttribute-End-->
@@ -3214,10 +2724,6 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用[isMainFrame](arkts-arkweb-webresourcerequest-c.md#ismainframe)字段进行区分。 > **说明：** > > - 主资源：浏览器加载网页的入口文件，通常是HTML文档。 > > - 子资源：主资源中引用的依赖文件，由主资源解析过程中遇到特定标签时触发加载。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3241,10 +2747,6 @@ onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>): WebAttribute-End-->
@@ -3266,8 +2768,6 @@ onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => vo
 通知用户加载资源时发生SSL错误。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -3293,10 +2793,6 @@ onTextSelectionChange(callback: TextSelectionChangeCallback)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onTextSelectionChange(callback: TextSelectionChangeCallback): WebAttribute--><!--Device-WebAttribute-onTextSelectionChange(callback: TextSelectionChangeCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3316,10 +2812,6 @@ onTitleReceive(callback: Callback<OnTitleReceiveEvent>)
 当页面文档标题`&lt;title&gt;`元素发生变更时，触发回调。若当前页面未显示设置标题，ArkWeb将在加载完成前基于页面的URL生成标题并返回给应用。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3343,10 +2835,6 @@ onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>): WebAttribute--><!--Device-WebAttribute-onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>): WebAttribute-End-->
@@ -3368,8 +2856,6 @@ onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest }) => 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 10
 
@@ -3395,10 +2881,6 @@ onVerifyPin(callback: OnVerifyPinCallback)
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-onVerifyPin(callback: OnVerifyPinCallback): WebAttribute--><!--Device-WebAttribute-onVerifyPin(callback: OnVerifyPinCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3418,10 +2900,6 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 网页meta中viewport-fit配置项更改时触发该回调，应用可在此回调中自适应布局视口。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3445,10 +2923,6 @@ onWindowExit(callback: () => void)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onWindowExit(callback: () => void): WebAttribute--><!--Device-WebAttribute-onWindowExit(callback: () => void): WebAttribute-End-->
@@ -3470,10 +2944,6 @@ onWindowNew(callback: Callback<OnWindowNewEvent>)
 在开启multiWindowAccess（多窗口访问）属性的情况下，通知应用有新建窗口请求。如需获取更丰富的窗口信息建议使用onWindowNewExt。 若不调用[setWebController](arkts-arkweb-controllerhandler-c.md#setwebcontroller)接口，会造成渲染进程阻塞。 如果没有创建新窗口，调用[setWebController](arkts-arkweb-controllerhandler-c.md#setwebcontroller)接口时设置成null，通知Web没有创建新窗口。 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法实现可信的URL可视化管理，则需考虑禁止创建新窗口。 需注意：新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3497,10 +2967,6 @@ onWindowNewExt(callback: Callback<OnWindowNewExtEvent>)
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-onWindowNewExt(callback: Callback<OnWindowNewExtEvent>): WebAttribute--><!--Device-WebAttribute-onWindowNewExt(callback: Callback<OnWindowNewExtEvent>): WebAttribute-End-->
@@ -3522,10 +2988,6 @@ onlineImageAccess(onlineImageAccess: boolean)
 设置是否允许从网络加载图片资源（通过 HTTP 和 HTTPS 访问的资源）。当属性没有显式调用时，默认允许。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3549,10 +3011,6 @@ optimizeParserBudget(optimizeParserBudget: boolean)
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-optimizeParserBudget(optimizeParserBudget: boolean): WebAttribute--><!--Device-WebAttribute-optimizeParserBudget(optimizeParserBudget: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3572,10 +3030,6 @@ overScrollMode(mode: OverScrollMode)
 设置Web过滚动模式。开启时，用户在Web根页面滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -3599,10 +3053,6 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-overviewModeAccess(overviewModeAccess: boolean): WebAttribute--><!--Device-WebAttribute-overviewModeAccess(overviewModeAccess: boolean): WebAttribute-End-->
@@ -3624,8 +3074,6 @@ password(password: boolean)
 设置是否应保存密码。该接口为空接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 10
 
@@ -3651,10 +3099,6 @@ pinchSmooth(isEnabled: boolean)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-pinchSmooth(isEnabled: boolean): WebAttribute--><!--Device-WebAttribute-pinchSmooth(isEnabled: boolean): WebAttribute-End-->
@@ -3676,10 +3120,6 @@ registerNativeEmbedRule(tag: string, type:string)
 注册使用同层渲染的HTML标签名和类型。标签名仅支持使用&lt;object\&gt;和&lt;embed\&gt;。标签类型只能使用ASCII可显示字符。 若指定类型与W3C定义的&lt;object\&gt;或&lt;embed\&gt;标准类型重合，ArkWeb内核将其识别为非同层标签。 本接口同样受enableNativeEmbedMode接口控制，在未使能同层渲染时本接口无效。在不使用本接口的情况下，ArkWeb内核默认将"native/"前缀类型的&lt;embed\&gt;标签识别为同层标签。 具体使用详情请参考[同层渲染](../../../web/web-same-layer.md#web页面中同层渲染输入框)指南。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -3704,10 +3144,6 @@ rotateRenderEffect(effect: WebRotateEffect)
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-rotateRenderEffect(effect: WebRotateEffect): WebAttribute--><!--Device-WebAttribute-rotateRenderEffect(effect: WebRotateEffect): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3727,10 +3163,6 @@ runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>)
 将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。 > **说明：** > > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。 > > - 该脚本按照数组本身顺序执行。 > > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 <!--Device-WebAttribute-runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
 
@@ -3752,10 +3184,6 @@ runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>)
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3776,10 +3204,6 @@ runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>)
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 <!--Device-WebAttribute-runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3799,10 +3223,6 @@ scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
 选择Web组件内垂直滚动条的布局方式，用于适配不同语言的书写方向。CONTENT模式适用于需要跟随网页CSS direction属性的场景，SYSTEM模式适用于多语言应用中需要跟随系统语言方向设置的场景，如阿拉伯语、希伯来语等从 右到左书写的语言。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3825,8 +3245,6 @@ selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>)
 Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本内容、图标、回调方法。 该接口只支持选中纯文本，当选中内容包含图片及其他非文本内容时，action信息中会显示乱码。 > **说明：** > > 本接口在与[editMenuOptions](#editmenuoptions)同时使用时，本接口不生效。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
 
 **废弃版本：** 20
 
@@ -3852,8 +3270,6 @@ tableData(tableData: boolean)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 10
 
 **替代接口：** enableAutofill
@@ -3878,10 +3294,6 @@ textAutosizing(textAutosizing: boolean)
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-textAutosizing(textAutosizing: boolean): WebAttribute--><!--Device-WebAttribute-textAutosizing(textAutosizing: boolean): WebAttribute-End-->
@@ -3903,8 +3315,6 @@ textZoomAtio(textZoomAtio: number)
 设置页面的文本缩放百分比。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -3930,10 +3340,6 @@ textZoomRatio(textZoomRatio: number)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-textZoomRatio(textZoomRatio: number): WebAttribute--><!--Device-WebAttribute-textZoomRatio(textZoomRatio: number): WebAttribute-End-->
@@ -3955,8 +3361,6 @@ userAgent(userAgent: string)
 设置用户代理。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 10
 
@@ -3982,10 +3386,6 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-verticalScrollBarAccess(verticalScrollBar: boolean): WebAttribute--><!--Device-WebAttribute-verticalScrollBarAccess(verticalScrollBar: boolean): WebAttribute-End-->
@@ -4007,10 +3407,6 @@ webCursiveFont(family: string)
 设置网页的cursive font字体库，用于渲染html前端使用cursive字体的元素。 当属性没有显式调用时，默认网页的cursive font字体库为cursive。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4034,10 +3430,6 @@ webFantasyFont(family: string)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-webFantasyFont(family: string): WebAttribute--><!--Device-WebAttribute-webFantasyFont(family: string): WebAttribute-End-->
@@ -4059,10 +3451,6 @@ webFixedFont(family: string)
 设置网页的fixed font字体库，用于渲染html前端使用monospace字体的元素。 当属性没有显式调用时，默认网页的fixed font字体库为monospace。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4086,10 +3474,6 @@ webSansSerifFont(family: string)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-webSansSerifFont(family: string): WebAttribute--><!--Device-WebAttribute-webSansSerifFont(family: string): WebAttribute-End-->
@@ -4111,10 +3495,6 @@ webSerifFont(family: string)
 设置网页的serif font字体库，用于渲染html前端使用serif字体的元素。 当属性没有显式调用时，默认网页的serif font字体库为serif。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -4138,10 +3518,6 @@ webStandardFont(family: string)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-webStandardFont(family: string): WebAttribute--><!--Device-WebAttribute-webStandardFont(family: string): WebAttribute-End-->
@@ -4163,8 +3539,6 @@ wideViewModeAccess(wideViewModeAccess: boolean)
 设置Web是否支持html中meta标签的viewport属性。该接口为空接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 10
 
@@ -4190,10 +3564,6 @@ zoomAccess(zoomAccess: boolean)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebAttribute-zoomAccess(zoomAccess: boolean): WebAttribute--><!--Device-WebAttribute-zoomAccess(zoomAccess: boolean): WebAttribute-End-->
@@ -4215,10 +3585,6 @@ zoomControlAccess(zoomControlAccess: boolean)
 设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。 当属性没有显式调用时，默认允许通过组合按键进行缩放。
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 <!--Device-WebAttribute-zoomControlAccess(zoomControlAccess: boolean): WebAttribute--><!--Device-WebAttribute-zoomControlAccess(zoomControlAccess: boolean): WebAttribute-End-->
 

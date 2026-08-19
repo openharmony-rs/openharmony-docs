@@ -4,13 +4,15 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
-<!--Device-jsLeakWatcher-interface LeakWatcherConfig--><!--Device-jsLeakWatcher-interface LeakWatcherConfig-End-->
+<!--Device-jsLeakWatcher-export interface LeakWatcherConfig--><!--Device-jsLeakWatcher-export interface LeakWatcherConfig-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
+
+## 导入模块
+
+```TypeScript
+import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
+```
 
 ## bgLeakCountThreshold
 
@@ -23,10 +25,6 @@ bgLeakCountThreshold?: int
 **类型：** int
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-LeakWatcherConfig-bgLeakCountThreshold?: int--><!--Device-LeakWatcherConfig-bgLeakCountThreshold?: int-End-->
 
@@ -44,10 +42,6 @@ checkInterval?: int
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-LeakWatcherConfig-checkInterval?: int--><!--Device-LeakWatcherConfig-checkInterval?: int-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -63,10 +57,6 @@ dumpHeapWaitTimeMs?: int
 **类型：** int
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-LeakWatcherConfig-dumpHeapWaitTimeMs?: int--><!--Device-LeakWatcherConfig-dumpHeapWaitTimeMs?: int-End-->
 
@@ -84,10 +74,6 @@ exclusionList?: Array<string>
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-LeakWatcherConfig-exclusionList?: Array<string>--><!--Device-LeakWatcherConfig-exclusionList?: Array<string>-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -103,10 +89,6 @@ fgLeakCountThreshold?: int
 **类型：** int
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-LeakWatcherConfig-fgLeakCountThreshold?: int--><!--Device-LeakWatcherConfig-fgLeakCountThreshold?: int-End-->
 
@@ -124,10 +106,6 @@ maxStoredHeapDumps?: int
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-LeakWatcherConfig-maxStoredHeapDumps?: int--><!--Device-LeakWatcherConfig-maxStoredHeapDumps?: int-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -144,10 +122,6 @@ monitorObjectTypes: MonitorObjectType
 
 **起始版本：** 26.1.0
 
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
-
 <!--Device-LeakWatcherConfig-monitorObjectTypes: MonitorObjectType--><!--Device-LeakWatcherConfig-monitorObjectTypes: MonitorObjectType-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiChecker
@@ -163,10 +137,6 @@ objectUniqueIDs?: Array<int>
 **类型：** Array&lt;int&gt;
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-LeakWatcherConfig-objectUniqueIDs?: Array<int>--><!--Device-LeakWatcherConfig-objectUniqueIDs?: Array<int>-End-->
 

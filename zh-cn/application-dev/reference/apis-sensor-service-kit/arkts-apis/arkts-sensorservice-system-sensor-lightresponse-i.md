@@ -4,15 +4,19 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [LightResponse](arkts-sensorservice-sensor-lightresponse-i.md#lightresponse)
+**替代接口：** [LightResponse](arkts-sensorservice-sensor-lightresponse-i.md)
 
 <!--Device-unnamed-export interface LightResponse--><!--Device-unnamed-export interface LightResponse-End-->
 
 **系统能力：** SystemCapability.Sensors.Sensor.Lite
+
+## 导入模块
+
+```TypeScript
+import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, DeviceOrientationResponse, GetOnBodyStateOptions, GyroscopeResponse, HeartRateResponse, LightResponse, OnBodyStateResponse, ProximityResponse, StepCounterResponse, SubscribeBarometerOptions, SubscribeCompassOptions, SubscribeDeviceOrientationOptions, SubscribeGyroscopeOptions, SubscribeHeartRateOptions, SubscribeLightOptions, SubscribeOnBodyStateOptions, SubscribeProximityOptions, SubscribeStepCounterOptions, subscribeAccelerometerOptions } from '@kit.SensorServiceKit';
+```
 
 ## intensity
 
@@ -25,8 +29,6 @@ intensity: number
 **类型：** number
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

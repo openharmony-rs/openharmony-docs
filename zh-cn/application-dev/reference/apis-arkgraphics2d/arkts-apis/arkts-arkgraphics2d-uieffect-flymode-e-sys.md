@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uiEffect-enum FlyMode--><!--Device-uiEffect-enum FlyMode-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -24,10 +20,6 @@ BOTTOM = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-FlyMode-BOTTOM = 0--><!--Device-FlyMode-BOTTOM = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -43,10 +35,6 @@ TOP = 1
 从顶部进行飞入飞出形变。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FlyMode-TOP = 1--><!--Device-FlyMode-TOP = 1-End-->
 

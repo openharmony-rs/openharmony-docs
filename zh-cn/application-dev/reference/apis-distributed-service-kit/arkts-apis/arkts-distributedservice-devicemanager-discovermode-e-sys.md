@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-deviceManager-enum DiscoverMode--><!--Device-deviceManager-enum DiscoverMode-End-->
@@ -24,8 +22,6 @@ DISCOVER_MODE_PASSIVE = 0x55
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 11
 
 <!--Device-DiscoverMode-DISCOVER_MODE_PASSIVE = 0x55--><!--Device-DiscoverMode-DISCOVER_MODE_PASSIVE = 0x55-End-->
@@ -43,8 +39,6 @@ DISCOVER_MODE_ACTIVE = 0xAA
 主动模式。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 11
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-advertising-enum AdvertisingState--><!--Device-advertising-enum AdvertisingState-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -21,10 +17,6 @@ STARTED = 1
 广播已开始。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,10 +33,6 @@ STOPPED = 2
 广播已停止。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

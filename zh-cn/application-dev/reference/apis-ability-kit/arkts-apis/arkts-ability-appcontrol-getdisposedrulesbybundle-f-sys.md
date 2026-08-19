@@ -1,5 +1,11 @@
 # getDisposedRulesByBundle（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+```
+
 ## getDisposedRulesByBundle
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfigu
 获取指定应用程序包设置的所有拦截规则。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS or ohos.permission.GET_DISPOSED_APP_STATUS
 
@@ -44,7 +46,7 @@ function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfigu
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. A non-system application is not allowed to call a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { appControl } from '@kit.AbilityKit';

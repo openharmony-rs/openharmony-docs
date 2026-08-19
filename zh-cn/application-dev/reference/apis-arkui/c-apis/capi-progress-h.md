@@ -272,6 +272,6 @@ ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ProgressLinearStyleOption*](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) | ProgressLinearStyleOption实例。 <br>         如果返回空指针，可能是因为内存不足。 |
+| [ArkUI_ProgressLinearStyleOption*](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) | ProgressLinearStyleOption实例。 \n          如果返回空指针，可能是因为内存不足。 |
 
 

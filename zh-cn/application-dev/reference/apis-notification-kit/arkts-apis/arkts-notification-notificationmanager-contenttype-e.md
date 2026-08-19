@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationManager-export enum ContentType--><!--Device-notificationManager-export enum ContentType-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -21,10 +17,6 @@ NOTIFICATION_CONTENT_BASIC_TEXT
 普通文本类型通知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ NOTIFICATION_CONTENT_LONG_TEXT
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContentType-NOTIFICATION_CONTENT_LONG_TEXT--><!--Device-ContentType-NOTIFICATION_CONTENT_LONG_TEXT-End-->
@@ -61,10 +49,6 @@ NOTIFICATION_CONTENT_PICTURE
 图片类型通知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ NOTIFICATION_CONTENT_CONVERSATION
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContentType-NOTIFICATION_CONTENT_CONVERSATION--><!--Device-ContentType-NOTIFICATION_CONTENT_CONVERSATION-End-->
@@ -101,10 +81,6 @@ NOTIFICATION_CONTENT_MULTILINE
 多行文本类型通知。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContentType-NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW--><!--Device-ContentType-NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW-End-->
@@ -141,10 +113,6 @@ NOTIFICATION_CONTENT_LIVE_VIEW
 普通实况窗类型通知。仅系统应用可用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

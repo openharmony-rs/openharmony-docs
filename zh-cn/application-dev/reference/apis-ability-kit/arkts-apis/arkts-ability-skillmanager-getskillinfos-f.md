@@ -1,5 +1,11 @@
 # getSkillInfos
 
+## 导入模块
+
+```TypeScript
+import { skillManager } from '@kit.AbilityKit';
+```
+
 ## getSkillInfos
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSkillInfos(bundleName: string, flags: int, userId?: int): Promise<Ar
 获取指定应用的所有技能信息。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE or ohos.permission.MANAGE_SKILL
 

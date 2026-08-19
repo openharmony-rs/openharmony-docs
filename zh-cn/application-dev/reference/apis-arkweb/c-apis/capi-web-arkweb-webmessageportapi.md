@@ -55,7 +55,7 @@ ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Result code.<br>         <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 执行成功。<br>         <br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。<br>    <br>         <br>可能原因：<br>         <br>- webMessagePort或webMessage参数为空。<br>         <br>- 参数类型不正确。<br>    <br>         <br>解决措施：<br>         <br>- 检查参数是否为空指针。<br>         <br>- 确认参数类型是否符合接口要求。<br>    <br>         <br>[ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode): 初始化失败，没有找到与webTag绑定的Web组件。<br>    <br>         <br>可能原因：<br>         <br>- Web组件未正确初始化。<br>         <br>- webTag参数与实际Web组件名称不匹配。<br>    <br>         <br>解决措施：<br>         <br>- 确认Web组件已完成初始化。<br>         <br>- 检查webTag参数是否与Web组件名称一致。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode) | Result code.          <br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 执行成功。          <br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。               <br>可能原因：          <br>- webMessagePort或webMessage参数为空。          <br>- 参数类型不正确。               <br>解决措施：          <br>- 检查参数是否为空指针。          <br>- 确认参数类型是否符合接口要求。               <br>[ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode): 初始化失败，没有找到与webTag绑定的Web组件。               <br>可能原因：          <br>- Web组件未正确初始化。          <br>- webTag参数与实际Web组件名称不匹配。               <br>解决措施：          <br>- 确认Web组件已完成初始化。          <br>- 检查webTag参数是否与Web组件名称一致。 |
 
 ### close()
 

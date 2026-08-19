@@ -4,13 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-audio-interface AudioRecordingManager--><!--Device-audio-interface AudioRecordingManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## offSystemRecordControllerEnabledChange
 
@@ -21,10 +24,6 @@ offSystemRecordControllerEnabledChange(callback?: Callback<SystemRecordControlle
 取消订阅系统录像控制器面板启用状态更改事件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +37,7 @@ offSystemRecordControllerEnabledChange(callback?: Callback<SystemRecordControlle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SystemRecordControllerChangeInfo](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md)&gt; | 否 | 订阅中使用的回调 取消订阅功能。如果不使用此参数，则当前订阅的所有回调 之前的流程将被取消订阅 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SystemRecordControllerChangeInfo](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md)&gt; | 否 | 订阅中使用的回调 取消订阅功能。如果不使用此参数，则当前订阅的所有回调 之前的流程将被取消订阅 |
 
 **错误码：**
 
@@ -48,7 +47,7 @@ offSystemRecordControllerEnabledChange(callback?: Callback<SystemRecordControlle
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
@@ -66,10 +65,6 @@ onSystemRecordControllerEnabledChange(callback: Callback<SystemRecordControllerC
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioRecordingManager-onSystemRecordControllerEnabledChange(callback: Callback<SystemRecordControllerChangeInfo>): void--><!--Device-AudioRecordingManager-onSystemRecordControllerEnabledChange(callback: Callback<SystemRecordControllerChangeInfo>): void-End-->
@@ -82,7 +77,7 @@ onSystemRecordControllerEnabledChange(callback: Callback<SystemRecordControllerC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SystemRecordControllerChangeInfo](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md)&gt; | 是 | 用于监听的回调 系统记录控制器面板启用状态更改事件 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SystemRecordControllerChangeInfo](arkts-audio-audio-systemrecordcontrollerchangeinfo-i-sys.md)&gt; | 是 | 用于监听的回调 系统记录控制器面板启用状态更改事件 |
 
 **错误码：**
 
@@ -93,7 +88,7 @@ onSystemRecordControllerEnabledChange(callback: Callback<SystemRecordControllerC
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';

@@ -4,8 +4,6 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** WebviewController
@@ -13,6 +11,16 @@
 <!--Device-unnamed-declare class WebController--><!--Device-unnamed-declare class WebController-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## accessBackward
 
@@ -23,8 +31,6 @@ accessBackward(): boolean
 当前页面是否可后退，即当前页面是否有返回历史记录。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -50,8 +56,6 @@ accessForward(): boolean
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** accessForward
@@ -75,8 +79,6 @@ accessStep(step: number): boolean
 检查当前页面是否可前进或者后退给定的step步。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -108,8 +110,6 @@ backward()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** backward
@@ -127,8 +127,6 @@ clearHistory(): void
 删除所有前进后退记录。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -148,8 +146,6 @@ WebController的构造函数。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** constructor
@@ -167,8 +163,6 @@ deleteJavaScriptRegister(name: string)
 删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。删除后立即生效，无须调用[refresh](#refresh)接口。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -194,8 +188,6 @@ forward()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** forward
@@ -214,11 +206,9 @@ getCookieManager(): WebCookie
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 9
 
-**替代接口：** [WebCookieManager](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md#webcookiemanager)
+**替代接口：** [WebCookieManager](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md)
 
 <!--Device-WebController-getCookieManager(): WebCookie--><!--Device-WebController-getCookieManager(): WebCookie-End-->
 
@@ -239,8 +229,6 @@ getHitTest(): HitTestType
 获取当前被点击区域的元素类型。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -266,8 +254,6 @@ baseUrl为空时，通过“data”协议加载指定的一段字符串。 当ba
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** loadData
@@ -291,8 +277,6 @@ loadUrl(options: { url: string | Resource, headers?: Array<Header> })
 使用指定的HTTP头加载指定的URL。 通过loadUrl注入的对象只在当前document有效，即通过loadUrl导航到新的页面会无效。 而通过registerJavaScriptProxy注入的对象，在loadUrl导航到新的页面也会有效。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -318,8 +302,6 @@ onActive(): void
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** onActive
@@ -337,8 +319,6 @@ onInactive(): void
 调用此接口通知Web组件进入未激活状态。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -358,8 +338,6 @@ refresh()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** refresh
@@ -377,8 +355,6 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
 注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -404,8 +380,6 @@ requestFocus()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** requestFocus
@@ -423,8 +397,6 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 异步执行JavaScript脚本，并通过回调方式返回脚本执行的结果。runJavaScript需要在loadUrl完成后，比如onPageEnd中调用。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -450,8 +422,6 @@ stop()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** stop
@@ -469,8 +439,6 @@ zoom(factor: number): void
 调整当前网页的缩放比例。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

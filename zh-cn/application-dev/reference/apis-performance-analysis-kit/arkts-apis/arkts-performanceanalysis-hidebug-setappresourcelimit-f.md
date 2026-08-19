@@ -1,5 +1,11 @@
 # setAppResourceLimit
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## setAppResourceLimit
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setAppResourceLimit(type: string, value: int, enableDebugLog: boolean):
 设置应用的文件描述符数量、线程数量、JS内存或Native内存资源限制。 主要应用场景在于构造内存泄漏故障。 > **注意** > > 打开设置中的开发者选项后，在开发者选项列表中找到"系统资源泄漏日志"并启用，重启设备后接口生效。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -35,7 +37,7 @@ function setAppResourceLimit(type: string, value: int, enableDebugLog: boolean):
 | [401](../../errorcode-universal.md#401-参数检查失败) | Invalid argument, Possible causes: 1.The limit parameter is too small 2.The parameter is not in the specified type 3.The parameter type error or parameter order error |
 | [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-cpuusage统计异常) | Set limit failed due to remote exception |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

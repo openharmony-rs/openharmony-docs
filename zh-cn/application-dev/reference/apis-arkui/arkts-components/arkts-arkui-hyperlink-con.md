@@ -10,10 +10,6 @@ declare const HyperlinkInterface: HyperlinkAttribute
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-unnamed-declare const HyperlinkInterface: HyperlinkAttribute--><!--Device-unnamed-declare const HyperlinkInterface: HyperlinkAttribute-End-->

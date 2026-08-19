@@ -1,5 +1,11 @@
 # unregisterTask
 
+## 导入模块
+
+```TypeScript
+import { backgroundLoader } from '@kit.BackgroundTasksKit';
+```
+
 ## unregisterTask
 
 ```TypeScript
@@ -9,10 +15,6 @@ function unregisterTask(taskInfo: TaskInfo): void
 取消注册后台加载任务。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

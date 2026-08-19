@@ -1,5 +1,11 @@
 # disconnectAbility
 
+## 导入模块
+
+```TypeScript
+import { particleAbility } from '@kit.AbilityKit';
+```
+
 ## disconnectAbility
 
 ```TypeScript
@@ -9,10 +15,6 @@ function disconnectAbility(connection: number, callback: AsyncCallback<void>): v
 断开当前ability与指定ServiceAbility的连接。使用callback异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -25,9 +27,9 @@ function disconnectAbility(connection: number, callback: AsyncCallback<void>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | connection | number | 是 | 表示断开连接的ServiceAbility的ID。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当断开当前ability与指定ServiceAbility的连接成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当断开当前ability与指定ServiceAbility的连接成功，err为undefined，否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { particleAbility } from '@kit.AbilityKit';
@@ -67,10 +69,6 @@ function disconnectAbility(connection: number): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-particleAbility-function disconnectAbility(connection: number): Promise<void>--><!--Device-particleAbility-function disconnectAbility(connection: number): Promise<void>-End-->
@@ -89,7 +87,7 @@ function disconnectAbility(connection: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { particleAbility } from '@kit.AbilityKit';

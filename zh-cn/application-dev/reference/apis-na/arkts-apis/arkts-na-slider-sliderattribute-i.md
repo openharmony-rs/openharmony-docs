@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface SliderAttribute--><!--Device-unnamed-export declare interface SliderAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<SliderAttribute> | AttributeModifi
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-attributeModifier(modifier: AttributeModifier<SliderAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-SliderAttribute-attributeModifier(modifier: AttributeModifier<SliderAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ blockBorderColor(value: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-blockBorderColor(value: ResourceColor | undefined): this--><!--Device-SliderAttribute-blockBorderColor(value: ResourceColor | undefined): this-End-->
 
@@ -74,9 +68,7 @@ blockBorderWidth(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-blockBorderWidth(value: Length | undefined): this--><!--Device-SliderAttribute-blockBorderWidth(value: Length | undefined): this-End-->
 
@@ -100,9 +92,7 @@ blockColor(value: ResourceColor | LinearGradient | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-blockColor(value: ResourceColor | LinearGradient | undefined): this--><!--Device-SliderAttribute-blockColor(value: ResourceColor | LinearGradient | undefined): this-End-->
 
@@ -126,9 +116,7 @@ blockSize(value: SizeOptions | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-blockSize(value: SizeOptions | undefined): this--><!--Device-SliderAttribute-blockSize(value: SizeOptions | undefined): this-End-->
 
@@ -152,9 +140,7 @@ blockStyle(value: SliderBlockStyle | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-blockStyle(value: SliderBlockStyle | undefined): this--><!--Device-SliderAttribute-blockStyle(value: SliderBlockStyle | undefined): this-End-->
 
@@ -178,9 +164,7 @@ contentModifier(modifier: ContentModifier<SliderConfiguration> | undefined): thi
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-contentModifier(modifier: ContentModifier<SliderConfiguration> | undefined): this--><!--Device-SliderAttribute-contentModifier(modifier: ContentModifier<SliderConfiguration> | undefined): this-End-->
 
@@ -204,9 +188,7 @@ digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this--><!--Device-SliderAttribute-digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this-End-->
 
@@ -230,9 +212,7 @@ enableHapticFeedback(enabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-enableHapticFeedback(enabled: boolean | undefined): this--><!--Device-SliderAttribute-enableHapticFeedback(enabled: boolean | undefined): this-End-->
 
@@ -256,9 +236,7 @@ minResponsiveDistance(value: double | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-minResponsiveDistance(value: double | undefined): this--><!--Device-SliderAttribute-minResponsiveDistance(value: double | undefined): this-End-->
 
@@ -282,9 +260,7 @@ onChange(callback: ((value: double, mode: SliderChangeMode) => void) | undefined
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-onChange(callback: ((value: double, mode: SliderChangeMode) => void) | undefined): this--><!--Device-SliderAttribute-onChange(callback: ((value: double, mode: SliderChangeMode) => void) | undefined): this-End-->
 
@@ -308,9 +284,7 @@ prefix<T extends Object>(content: ComponentContent<T> | undefined, options?: Sli
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-prefix<T extends Object>(content: ComponentContent<T> | undefined, options?: SliderPrefixOptions | undefined): this--><!--Device-SliderAttribute-prefix<T extends Object>(content: ComponentContent<T> | undefined, options?: SliderPrefixOptions | undefined): this-End-->
 
@@ -318,7 +292,7 @@ prefix<T extends Object>(content: ComponentContent<T> | undefined, options?: Sli
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](arkts-na-componentcontent-c.md)&lt;T&gt; \| undefined | 是 |  |
+| content | [ComponentContent](../../apis-arkui/arkts-apis/arkts-arkui-componentcontent-c.md)&lt;T&gt; \| undefined | 是 |  |
 | options | [SliderPrefixOptions](arkts-na-slider-sliderprefixoptions-i.md) \| undefined | 否 |  |
 
 **返回值：**
@@ -335,9 +309,7 @@ selectedBorderRadius(value: Dimension | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-selectedBorderRadius(value: Dimension | undefined): this--><!--Device-SliderAttribute-selectedBorderRadius(value: Dimension | undefined): this-End-->
 
@@ -361,9 +333,7 @@ selectedColor(selectedColor: ResourceColor | LinearGradient | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-selectedColor(selectedColor: ResourceColor | LinearGradient | undefined): this--><!--Device-SliderAttribute-selectedColor(selectedColor: ResourceColor | LinearGradient | undefined): this-End-->
 
@@ -387,9 +357,7 @@ showSteps(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-showSteps(value: boolean | undefined): this--><!--Device-SliderAttribute-showSteps(value: boolean | undefined): this-End-->
 
@@ -413,9 +381,7 @@ showSteps(value: boolean | undefined, options?: SliderShowStepOptions | undefine
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-showSteps(value: boolean | undefined, options?: SliderShowStepOptions | undefined): this--><!--Device-SliderAttribute-showSteps(value: boolean | undefined, options?: SliderShowStepOptions | undefined): this-End-->
 
@@ -440,9 +406,7 @@ showTips(value: boolean | undefined, content?: ResourceStr | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-showTips(value: boolean | undefined, content?: ResourceStr | undefined): this--><!--Device-SliderAttribute-showTips(value: boolean | undefined, content?: ResourceStr | undefined): this-End-->
 
@@ -467,9 +431,7 @@ slideRange(value: SlideRange | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-slideRange(value: SlideRange | undefined): this--><!--Device-SliderAttribute-slideRange(value: SlideRange | undefined): this-End-->
 
@@ -493,9 +455,7 @@ sliderInteractionMode(value: SliderInteraction | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-sliderInteractionMode(value: SliderInteraction | undefined): this--><!--Device-SliderAttribute-sliderInteractionMode(value: SliderInteraction | undefined): this-End-->
 
@@ -519,9 +479,7 @@ stepColor(value: ResourceColor | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-stepColor(value: ResourceColor | undefined): this--><!--Device-SliderAttribute-stepColor(value: ResourceColor | undefined): this-End-->
 
@@ -545,9 +503,7 @@ stepSize(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-stepSize(value: Length | undefined): this--><!--Device-SliderAttribute-stepSize(value: Length | undefined): this-End-->
 
@@ -571,9 +527,7 @@ suffix<T extends Object>(content: ComponentContent<T> | undefined, options?: Sli
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-suffix<T extends Object>(content: ComponentContent<T> | undefined, options?: SliderSuffixOptions | undefined): this--><!--Device-SliderAttribute-suffix<T extends Object>(content: ComponentContent<T> | undefined, options?: SliderSuffixOptions | undefined): this-End-->
 
@@ -581,7 +535,7 @@ suffix<T extends Object>(content: ComponentContent<T> | undefined, options?: Sli
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](arkts-na-componentcontent-c.md)&lt;T&gt; \| undefined | 是 |  |
+| content | [ComponentContent](../../apis-arkui/arkts-apis/arkts-arkui-componentcontent-c.md)&lt;T&gt; \| undefined | 是 |  |
 | options | [SliderSuffixOptions](arkts-na-slider-slidersuffixoptions-i.md) \| undefined | 否 |  |
 
 **返回值：**
@@ -598,9 +552,7 @@ trackBorderRadius(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-trackBorderRadius(value: Length | undefined): this--><!--Device-SliderAttribute-trackBorderRadius(value: Length | undefined): this-End-->
 
@@ -624,9 +576,7 @@ trackColor(value: ResourceColor | LinearGradient | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-trackColor(value: ResourceColor | LinearGradient | undefined): this--><!--Device-SliderAttribute-trackColor(value: ResourceColor | LinearGradient | undefined): this-End-->
 
@@ -650,9 +600,7 @@ trackColorMetrics(color: ColorMetricsLinearGradient | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-trackColorMetrics(color: ColorMetricsLinearGradient | undefined): this--><!--Device-SliderAttribute-trackColorMetrics(color: ColorMetricsLinearGradient | undefined): this-End-->
 
@@ -676,9 +624,7 @@ trackThickness(value: Length | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SliderAttribute-trackThickness(value: Length | undefined): this--><!--Device-SliderAttribute-trackThickness(value: Length | undefined): this-End-->
 
@@ -704,9 +650,7 @@ default
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

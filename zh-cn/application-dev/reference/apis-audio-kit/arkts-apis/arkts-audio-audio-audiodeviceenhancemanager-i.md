@@ -4,13 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-audio-interface AudioDeviceEnhanceManager--><!--Device-audio-interface AudioDeviceEnhanceManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## isEnhancedRoutingSupported
 
@@ -21,10 +24,6 @@ isEnhancedRoutingSupported(): boolean
 查询系统是否支持该管理器提供的增强路由功能。 包括为应用程序或音频流选择输入和输出设备。 建议您的应用在使用前先调用此API确认系统支持 这些增强的路由API。即使对于相同类型的主机设备，某些型号也可能支持这些功能，而其他功能由于硬件限制可能不具备。如果系统不支持这些增强的路由功能，调用它们将不起作用，系统将选择应用程序或音频流的默认输入/输出设备。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +46,6 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise<void>
 为您的应用程序选择输入设备。此设置适用于创建的所有录制流 在您的应用程序下，除非为特定流指定了特定输入设备 [selectInputDeviceForAudioCapturer](#selectinputdeviceforaudiocapturer).当应用程序实现 它自己的UX用于输入设备选择，它可以通过 get AvailableDevices，并使用[getPreferredInputDeviceForCapturerInfo](arkts-audio-audio-audioroutingmanager-i.md#getpreferredinputdeviceforcapturerinfo)接口获取当前 选择的输入设备。当您的应用程序退出或选择的 设备下线。在您的应用程序重新启动或设备重新联机后，您的应用程序必须重新发布选择才能使其生效。如果系统不支持该功能，它将为您的应用程序选择一个默认的输入设备。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -86,10 +81,6 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 选择目标AudioCapturer的输入设备。您的应用程序必须确保指定的AudioCapturer是有效的。此选择仅适用于指定流；其他录制流您的应用程序将使用您的应用程序的强制选择或系统的默认输入设备。 当您的应用程序退出或所选设备脱机时，选择将变为无效。 应用程序重新启动或设备重新联机后，您的应用程序必须重新发出选择使其生效。如果系统不支持该功能，系统将选择捕获器的默认输入设备。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -127,10 +118,6 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioDeviceEnhanceManager-selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>--><!--Device-AudioDeviceEnhanceManager-selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>-End-->
@@ -165,10 +152,6 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 选择目标AudioRenderer的输出设备。您的应用程序必须确保指定的AudioRenderer是有效的。此选择仅适用于指定流；其他播放流您的应用程序将使用您的应用程序的强制选择或系统的默认输出设备。 当您的应用程序退出或所选设备脱机时，选择将变为无效。 应用程序重新启动或设备重新联机后，您的应用程序必须重新发出选择使其生效。如果系统不支持该功能，系统将选择渲染器的默认输出设备。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

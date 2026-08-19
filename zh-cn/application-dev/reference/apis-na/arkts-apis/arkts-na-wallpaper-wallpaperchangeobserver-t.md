@@ -8,10 +8,6 @@ type WallpaperChangeObserver = (wallpaperType: WallpaperType, resourceType: Wall
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wallpaper-type WallpaperChangeObserver = (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void--><!--Device-wallpaper-type WallpaperChangeObserver = (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void-End-->
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper

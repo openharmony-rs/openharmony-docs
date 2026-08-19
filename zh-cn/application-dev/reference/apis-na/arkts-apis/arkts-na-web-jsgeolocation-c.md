@@ -4,9 +4,7 @@ Defines the js geolocation request.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class JsGeolocation--><!--Device-unnamed-export declare class JsGeolocation-End-->
 
@@ -22,9 +20,7 @@ Constructor.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsGeolocation-constructor()--><!--Device-JsGeolocation-constructor()-End-->
 
@@ -40,9 +36,7 @@ Sets the geolocation permission status of a web page.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void--><!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void-End-->
 
@@ -54,5 +48,5 @@ Sets the geolocation permission status of a web page.
 | --- | --- | --- | --- |
 | origin | string | 是 | Index of the origin. |
 | allow | boolean | 是 | Geolocation permission status. {@code true} means to allow geolocation permission; {@code false} means to disallow geolocation permission. |
-| retain | boolean | 是 | Whether the geolocation permission status can be saved to the system. {@code true} means to allow the geolocation permission status to be saved to the system; {@code false} means to disallow the geolocation permission status to be saved to the system. You can manage the geolocation permissions saved to the system through [GeolocationPermissions](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-geolocationpermissions-c.md#geolocationpermissions). |
+| retain | boolean | 是 | Whether the geolocation permission status can be saved to the system. {@code true} means to allow the geolocation permission status to be saved to the system; {@code false} means to disallow the geolocation permission status to be saved to the system. You can manage the geolocation permissions saved to the system through [GeolocationPermissions](../../apis-arkweb/arkts-apis/arkts-arkweb-webview-geolocationpermissions-c.md). |
 

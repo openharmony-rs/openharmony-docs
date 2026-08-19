@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-screen-enum MultiScreenMode--><!--Device-screen-enum MultiScreenMode-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -24,10 +20,6 @@ SCREEN_MIRROR = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MultiScreenMode-SCREEN_MIRROR = 0--><!--Device-MultiScreenMode-SCREEN_MIRROR = 0-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -43,10 +35,6 @@ SCREEN_EXTEND = 1
 表示屏幕为扩展模式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MultiScreenMode-SCREEN_EXTEND = 1--><!--Device-MultiScreenMode-SCREEN_EXTEND = 1-End-->
 

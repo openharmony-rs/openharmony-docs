@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [TabContent](arkts-na-tabcontent-tabcontent-f.md#tabcontent) | 定义选项卡内容组件 |
+| [TabContent](arkts-na-tabcontent-tabcontent-f.md) | 定义选项卡内容组件 |
 
 ### 类
 

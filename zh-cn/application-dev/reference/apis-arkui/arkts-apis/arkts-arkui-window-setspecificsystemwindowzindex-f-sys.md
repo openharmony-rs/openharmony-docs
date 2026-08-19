@@ -1,5 +1,13 @@
 # setSpecificSystemWindowZIndex（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## setSpecificSystemWindowZIndex
 
 ```TypeScript
@@ -9,10 +17,6 @@ function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Pro
 设置系统窗口的窗口层级。使用Promise异步回调。 将所有该类型系统窗口zIndex调整为所设置的值，调整前后，该类型窗口之间相对层级保持不变，焦点窗口不发生变化。当应用关闭之后该类型窗口层级恢复默认值。 推荐不同类型窗口设置不同的zIndex，如果已经存在相同zIndex的窗口，设置前后，窗口之间的相对层级保持不变。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-window-function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise<void>--><!--Device-window-function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise<void>-End-->
 
@@ -42,7 +46,7 @@ function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Pro
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, non-system application uses system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

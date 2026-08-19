@@ -4,15 +4,17 @@ FA模型的使用信息属性集合。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-usageStatistics-interface HapModuleInfo--><!--Device-usageStatistics-interface HapModuleInfo-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+```
 
 ## abilityDescriptionId
 
@@ -25,10 +27,6 @@ FA的MainAbility descriptionId。
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapModuleInfo-abilityDescriptionId?: long--><!--Device-HapModuleInfo-abilityDescriptionId?: long-End-->
 
@@ -48,10 +46,6 @@ FA的MainAbility iconId。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapModuleInfo-abilityIconId?: long--><!--Device-HapModuleInfo-abilityIconId?: long-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -69,10 +63,6 @@ FA的MainAbility labelId。
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapModuleInfo-abilityLableId?: long--><!--Device-HapModuleInfo-abilityLableId?: long-End-->
 
@@ -92,10 +82,6 @@ FA的MainAbility名。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapModuleInfo-abilityName?: string--><!--Device-HapModuleInfo-abilityName?: string-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -113,10 +99,6 @@ FA的应用labelId。
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapModuleInfo-appLabelId?: long--><!--Device-HapModuleInfo-appLabelId?: long-End-->
 
@@ -136,10 +118,6 @@ bundleName: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapModuleInfo-bundleName: string--><!--Device-HapModuleInfo-bundleName: string-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -157,10 +135,6 @@ FA所属的应用descriptionId。
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapModuleInfo-descriptionId?: long--><!--Device-HapModuleInfo-descriptionId?: long-End-->
 
@@ -180,10 +154,6 @@ deviceId?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapModuleInfo-deviceId?: string--><!--Device-HapModuleInfo-deviceId?: string-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -201,10 +171,6 @@ FA中卡片的使用记录。
 **类型：** Array&lt;[HapFormInfo](arkts-backgroundtasks-usagestatistics-hapforminfo-i-sys.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapModuleInfo-formRecords: Array<HapFormInfo>--><!--Device-HapModuleInfo-formRecords: Array<HapFormInfo>-End-->
 
@@ -224,10 +190,6 @@ FA所属module的labelId。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapModuleInfo-labelId?: long--><!--Device-HapModuleInfo-labelId?: long-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -245,10 +207,6 @@ FA的上一次使用时间，单位：ms。
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapModuleInfo-lastModuleUsedTime: long--><!--Device-HapModuleInfo-lastModuleUsedTime: long-End-->
 
@@ -268,10 +226,6 @@ FA的启动次数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HapModuleInfo-launchedCount: int--><!--Device-HapModuleInfo-launchedCount: int-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.UsageStatistics.App
@@ -289,10 +243,6 @@ FA所属module名。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HapModuleInfo-moduleName: string--><!--Device-HapModuleInfo-moduleName: string-End-->
 

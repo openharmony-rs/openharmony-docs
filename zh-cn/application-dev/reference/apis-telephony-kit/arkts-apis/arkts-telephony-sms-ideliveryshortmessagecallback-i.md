@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-sms-export interface IDeliveryShortMessageCallback--><!--Device-sms-export interface IDeliveryShortMessageCallback-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
+
+## 导入模块
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+```
 
 ## pdu
 
@@ -23,10 +25,6 @@ pdu: Array<int>
 **类型：** Array&lt;int&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-IDeliveryShortMessageCallback-pdu: Array<int>--><!--Device-IDeliveryShortMessageCallback-pdu: Array<int>-End-->
 

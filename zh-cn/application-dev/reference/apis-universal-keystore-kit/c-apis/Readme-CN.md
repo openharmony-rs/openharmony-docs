@@ -1,4 +1,4 @@
-# CAPI<!--c-universal-keystore-kit-->
+# C API<!--c-universal-keystore-kit-->
 
 - 头文件
     - [native_huks_api.h](capi-native-huks-api-h.md)

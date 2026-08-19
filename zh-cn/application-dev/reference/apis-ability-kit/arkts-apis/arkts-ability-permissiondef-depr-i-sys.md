@@ -1,14 +1,12 @@
 # PermissionDef（系统接口）
 
-配置文件中定义的权限详细信息。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-PermissionDef](arkts-ability-permissiondef-i-sys.md#permissiondef系统接口)替代。 > > 本模块为系统接口。
+配置文件中定义的权限详细信息。 > **说明：** > > 从API version 9开始，该模块不再维护，建议使用[bundleManager-PermissionDef](arkts-ability-permissiondef-i-sys.md)替代。 > > 本模块为系统接口。
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [PermissionDef](arkts-ability-permissiondef-i-sys.md#permissiondef系统接口)
+**替代接口：** [PermissionDef](arkts-ability-permissiondef-i-sys.md)
 
 <!--Device-unnamed-export interface PermissionDef--><!--Device-unnamed-export interface PermissionDef-End-->
 
@@ -29,8 +27,6 @@ descriptionId: number
 **默认值：** Indicates the descriptionId of this permission
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -56,8 +52,6 @@ grantMode: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** grantMode
@@ -82,8 +76,6 @@ labelId: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** labelId
@@ -107,8 +99,6 @@ permissionName: string
 **默认值：** Indicates the name of this permission
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

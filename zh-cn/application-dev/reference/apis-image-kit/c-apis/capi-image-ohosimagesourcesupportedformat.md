@@ -21,10 +21,8 @@ struct OhosImageSourceSupportedFormat {...}
 | 名称 | 描述 |
 | -- | -- |
 | char* format = nullptr |  |
-| size_t size = 0;
-#else |  |
+| size_t size = 0; #else |  |
 | char* format |  |
-| size_t size;
-#endif |  |
+| size_t size; #endif |  |
 
 

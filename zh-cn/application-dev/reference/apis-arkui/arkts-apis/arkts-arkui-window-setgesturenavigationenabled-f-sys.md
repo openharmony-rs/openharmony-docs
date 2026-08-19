@@ -1,5 +1,13 @@
 # setGestureNavigationEnabled（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
+
 ## setGestureNavigationEnabled
 
 ```TypeScript
@@ -9,10 +17,6 @@ function setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback<vo
 设置手势导航启用状态。使用callback异步回调。系统出于安全的考虑，不会干预手势的禁用和恢复。应用调用本接口禁用手势后异常退出的情况下，如果想要恢复手势，需自行实现自动拉起机制并再次调用本接口恢复手势。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-window-function setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-window-function setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -25,7 +29,7 @@ function setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback<vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 设置手势导航启用状态。true表示启用手势导航；false表示禁用手势导航。当前仅禁用从屏幕下拉的手势，其他手势未禁用。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调信息。 |
 
 **错误码：**
 
@@ -36,7 +40,7 @@ function setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback<vo
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -88,10 +92,6 @@ function setGestureNavigationEnabled(enable: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-function setGestureNavigationEnabled(enable: boolean): Promise<void>--><!--Device-window-function setGestureNavigationEnabled(enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -119,7 +119,7 @@ function setGestureNavigationEnabled(enable: boolean): Promise<void>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

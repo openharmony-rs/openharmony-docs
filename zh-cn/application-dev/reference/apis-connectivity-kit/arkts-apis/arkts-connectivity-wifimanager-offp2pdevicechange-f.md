@@ -1,5 +1,12 @@
 # offP2pDeviceChange
 
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## offP2pDeviceChange
 
 ```TypeScript
@@ -10,10 +17,6 @@ function offP2pDeviceChange(callback?: Callback<WifiP2pDevice>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-function offP2pDeviceChange(callback?: Callback<WifiP2pDevice>): void--><!--Device-wifiManager-function offP2pDeviceChange(callback?: Callback<WifiP2pDevice>): void-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -22,7 +25,7 @@ function offP2pDeviceChange(callback?: Callback<WifiP2pDevice>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;WifiP2pDevice&gt; | 否 | 状态改变回调函数。如果未指定callback参数，将取消注册该事件关联的所有回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;WifiP2pDevice&gt; | 否 | 状态改变回调函数。如果未指定callback参数，将取消注册该事件关联的所有回调函数。 |
 
 **错误码：**
 

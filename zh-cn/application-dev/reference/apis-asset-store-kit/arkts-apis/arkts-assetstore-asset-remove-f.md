@@ -1,5 +1,11 @@
 # remove
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## remove
 
 ```TypeScript
@@ -9,10 +15,6 @@ function remove(query: AssetMap): Promise<void>
 删除符合条件的一条或多条关键资产。使用Promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -48,7 +50,7 @@ function remove(query: AssetMap): Promise<void>
 | [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

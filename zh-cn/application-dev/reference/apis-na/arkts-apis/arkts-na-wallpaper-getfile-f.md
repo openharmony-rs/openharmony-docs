@@ -1,5 +1,10 @@
 # getFile
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getFile
 
 ```TypeScript
@@ -9,8 +14,6 @@ function getFile(wallpaperType: WallpaperType, callback: AsyncCallback<number>):
 获取指定类型的壁纸文件。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -25,9 +28,9 @@ function getFile(wallpaperType: WallpaperType, callback: AsyncCallback<number>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | wallpaperType | [WallpaperType](arkts-na-wallpaper-wallpapertype-e.md) | 是 |  |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 |  |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -52,8 +55,6 @@ function getFile(wallpaperType: WallpaperType): Promise<number>
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.GET_WALLPAPER
@@ -74,7 +75,7 @@ function getFile(wallpaperType: WallpaperType): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | 调用成功则返回壁纸文件描述符ID，调用失败则返回error信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

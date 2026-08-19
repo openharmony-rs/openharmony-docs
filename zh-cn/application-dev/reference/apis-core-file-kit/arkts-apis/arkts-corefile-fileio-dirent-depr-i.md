@@ -1,18 +1,21 @@
 # Dirent
 
-在调用Dirent的方法前，需要先通过[dir.read()](arkts-corefile-fileio-read-f.md#read)方法（同步或异步）来构建一个Dirent实例。
+在调用Dirent的方法前，需要先通过[dir.read()](arkts-corefile-fileio-read-f.md)方法（同步或异步）来构建一个Dirent实例。
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-unnamed-declare interface Dirent--><!--Device-unnamed-declare interface Dirent-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
+
+## 导入模块
+
+```TypeScript
+```
 
 ## isBlockDevice
 
@@ -24,11 +27,9 @@ isBlockDevice(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-isBlockDevice(): boolean--><!--Device-Dirent-isBlockDevice(): boolean-End-->
 
@@ -40,7 +41,7 @@ isBlockDevice(): boolean
 | --- | --- |
 | boolean | 表示当前目录项是否是块特殊设备。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -57,11 +58,9 @@ isCharacterDevice(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-isCharacterDevice(): boolean--><!--Device-Dirent-isCharacterDevice(): boolean-End-->
 
@@ -73,7 +72,7 @@ isCharacterDevice(): boolean
 | --- | --- |
 | boolean | 表示当前目录项是否是字符特殊设备。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -90,11 +89,9 @@ isDirectory(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-isDirectory(): boolean--><!--Device-Dirent-isDirectory(): boolean-End-->
 
@@ -106,7 +103,7 @@ isDirectory(): boolean
 | --- | --- |
 | boolean | 表示当前目录项是否是目录。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -123,11 +120,9 @@ isFIFO(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-isFIFO(): boolean--><!--Device-Dirent-isFIFO(): boolean-End-->
 
@@ -139,7 +134,7 @@ isFIFO(): boolean
 | --- | --- |
 | boolean | 表示当前目录项是否是FIFO。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -156,11 +151,9 @@ isFile(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-isFile(): boolean--><!--Device-Dirent-isFile(): boolean-End-->
 
@@ -172,7 +165,7 @@ isFile(): boolean
 | --- | --- |
 | boolean | 表示当前目录项是否是普通文件。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -189,11 +182,9 @@ isSocket(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-isSocket(): boolean--><!--Device-Dirent-isSocket(): boolean-End-->
 
@@ -205,7 +196,7 @@ isSocket(): boolean
 | --- | --- |
 | boolean | 表示当前目录项是否是套接字。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -222,11 +213,9 @@ isSymbolicLink(): boolean
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-isSymbolicLink(): boolean--><!--Device-Dirent-isSymbolicLink(): boolean-End-->
 
@@ -238,7 +227,7 @@ isSymbolicLink(): boolean
 | --- | --- |
 | boolean | 表示当前目录项是否是符号链接。true为是，false为不是。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dir = fileio.opendirSync(pathDir);
@@ -257,11 +246,9 @@ readonly name: string
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 9
 
-**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md#listfile)
+**替代接口：** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
 <!--Device-Dirent-readonly name: string--><!--Device-Dirent-readonly name: string-End-->
 

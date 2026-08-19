@@ -1,5 +1,11 @@
 # getBundleArchiveInfoSync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getBundleArchiveInfoSync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): Bundle
 以同步方法根据给定的hapFilePath和bundleFlags获取BundleInfo对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -44,7 +46,7 @@ function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): Bundle
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dataShare-enum SubscriptionType--><!--Device-dataShare-enum SubscriptionType-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -23,10 +19,6 @@ SUBSCRIPTION_TYPE_EXACT_URI = 0
 表示订阅指定uri路径的数据变更。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

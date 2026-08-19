@@ -4,13 +4,15 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-contact-class ContactAttributes--><!--Device-contact-class ContactAttributes-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
+
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
 
 ## attributes
 
@@ -23,10 +25,6 @@ attributes: Attribute[]
 **类型：** [Attribute](arkts-contacts-contact-attribute-e.md)[]
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

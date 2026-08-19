@@ -8,10 +8,6 @@ declare type Paragraph = import('../api/@ohos.graphics.text').default.Paragraph
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare type Paragraph = import('../api/@ohos.graphics.text').default.Paragraph--><!--Device-unnamed-declare type Paragraph = import('../api/@ohos.graphics.text').default.Paragraph-End-->

@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class FrameNode--><!--Device-unnamed-export declare class FrameNode-End-->
 
@@ -18,13 +16,11 @@
 addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent): void
 ```
 
-支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](#ismodifiable)的返回值为true，否则抛出异常信息。
+支持添加ComponentContent类型的组件内容。要求当前节点是一个可修改的节点，即[isModifiable](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#ismodifiable)的返回值为true，否则抛出异常信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -36,7 +32,7 @@ addComponentContent<T>(content: ComponentContent<T> | ReactiveComponentContent):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](arkts-na-componentcontent-c.md)&lt;T&gt; \| [ReactiveComponentContent](arkts-na-componentcontent-reactivecomponentcontent-c.md) | 是 | FrameNode节点中显示的组件内容。<br>**起始版本：** 23 |
+| content | [ComponentContent](../../apis-arkui/arkts-apis/arkts-arkui-componentcontent-c.md)&lt;T&gt; \| [ReactiveComponentContent](../../apis-arkui/arkts-apis/arkts-arkui-componentcontent-reactivecomponentcontent-c.md) | 是 | FrameNode节点中显示的组件内容。<br>**起始版本：** 23 |
 
 **错误码：**
 
@@ -54,9 +50,7 @@ addSupportedUIStates(uiStates: int, statesChangeHandler: UIStatesChangeHandler, 
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -69,7 +63,7 @@ addSupportedUIStates(uiStates: int, statesChangeHandler: UIStatesChangeHandler, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uiStates | int | 是 | 目标UI声明节点需要处理。可以组合多个状态 使用OR操作，例如`targetUIStates = UIState.PRESSED \| UIState.FOCUSED`。 <br>取值限定为整数。 - 需要处理目标节点的UI状态。<br>可以通过位或计算同时指定设置多个状态，如：targetUIStates = UIState.PRESSED  \| UIState.FOCUSED。 |
-| statesChangeHandler | [UIStatesChangeHandler](arkts-na-uistateschangehandler-t.md) | 是 | 状态变化时的回调函数。 |
+| statesChangeHandler | [UIStatesChangeHandler](../../apis-arkui/arkts-apis/arkts-arkui-uistateschangehandler-t.md) | 是 | 状态变化时的回调函数。 |
 | excludeInner | boolean | 否 | =false] - A flag to disable the system's default style handling for states. |
 
 ## adoptChild
@@ -82,9 +76,7 @@ adoptChild(child: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,7 +88,7 @@ adoptChild(child: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [FrameNode](arkts-na-framenode-c.md) | 是 | 指定待被接纳的节点。 |
+| child | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 指定待被接纳的节点。 |
 
 **错误码：**
 
@@ -116,9 +108,7 @@ appendChild(node: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -130,7 +120,7 @@ appendChild(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | 需要添加的FrameNode。<br/> node节点不可以为声明式创建的节点，即不可修改的FrameNode。仅有从BuilderNode中获取的声明式节点可以作为子节点。 若子节点不符合规格，则抛出异常信息。<br/> node节点不可以拥有父节点，否则抛出异常信息。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode。<br/> node节点不可以为声明式创建的节点，即不可修改的FrameNode。仅有从BuilderNode中获取的声明式节点可以作为子节点。 若子节点不符合规格，则抛出异常信息。<br/> node节点不可以拥有父节点，否则抛出异常信息。 |
 
 **错误码：**
 
@@ -149,9 +139,7 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -181,9 +169,7 @@ clearChildren(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -207,9 +193,7 @@ FrameNode的构造函数。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -234,9 +218,7 @@ convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -249,7 +231,7 @@ convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | position | [NodePosition](arkts-na-nodeposition-t.md) | 是 | 当前节点坐标系中的相对坐标。 |
-| targetNode | [FrameNode](arkts-na-framenode-c.md) | 是 | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。 |
+| targetNode | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。 |
 
 **返回值：**
 
@@ -272,9 +254,7 @@ convertPositionFromWindow(positionByWindow: NodePosition): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -309,9 +289,7 @@ convertPositionToWindow(positionByLocal: NodePosition): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -348,9 +326,7 @@ createAnimation(property: AnimationPropertyType, startValue: double[] | undefine
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -383,9 +359,7 @@ static createFrameNodes(uiContext: UIContext, count: int): FrameNode[]
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -404,7 +378,7 @@ static createFrameNodes(uiContext: UIContext, count: int): FrameNode[]
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md)[] | the array of created FrameNode objects. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md)[] | the array of created FrameNode objects. |
 
 ## dispose
 
@@ -412,13 +386,11 @@ static createFrameNodes(uiContext: UIContext, count: int): FrameNode[]
 dispose(): void
 ```
 
-立即解除当前FrameNode对象对实体FrameNode节点的引用关系。 > **说明：** > > - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](#getmeasuredsize)、 > [getLayoutPosition](#getlayoutposition))的时候会导致应用出现jscrash。 > > - 通过[getUniqueId](#getuniqueid)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体 > FrameNode节点。
+立即解除当前FrameNode对象对实体FrameNode节点的引用关系。 > **说明：** > > - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getmeasuredsize)、 > [getLayoutPosition](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getlayoutposition))的时候会导致应用出现jscrash。 > > - 通过[getUniqueId](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getuniqueid)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体 > FrameNode节点。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -436,9 +408,7 @@ disposeTree(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -454,9 +424,7 @@ getChild(index: int, expandMode?: ExpandMode | undefined): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -469,13 +437,13 @@ getChild(index: int, expandMode?: ExpandMode | undefined): FrameNode | null
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | index | int | 是 | 需要查询的子节点的序列号。index取值范围为[0, +∞)，若当前节点有n个子节点，index取值有效范围为[0, n-1]。 |
-| expandMode | [ExpandMode](arkts-na-framenode-expandmode-e.md) \| undefined | 否 | 指定子节点展开模式。<br/>默认值：ExpandMode.EXPAND |
+| expandMode | [ExpandMode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-expandmode-e.md) \| undefined | 否 | 指定子节点展开模式。<br/>默认值：ExpandMode.EXPAND |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | Returns a FrameNode. When the required node does not exist, returns null. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | Returns a FrameNode. When the required node does not exist, returns null. |
 
 ## getChildrenCount
 
@@ -485,9 +453,7 @@ getChildrenCount(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -511,9 +477,7 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -525,7 +489,7 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| countMode | [ChildrenCountMode](arkts-na-framenode-childrencountmode-e.md) | 否 | The children count mode. Default value is ChildrenCountMode.ALL_EXPAND. |
+| countMode | [ChildrenCountMode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-childrencountmode-e.md) | 否 | The children count mode. Default value is ChildrenCountMode.ALL_EXPAND. |
 
 **返回值：**
 
@@ -543,9 +507,7 @@ getCrossLanguageOptions(): CrossLanguageOptions
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -557,7 +519,7 @@ getCrossLanguageOptions(): CrossLanguageOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| [CrossLanguageOptions](arkts-na-framenode-crosslanguageoptions-i.md) | 跨ArkTS语言访问选项。 |
+| [CrossLanguageOptions](../../apis-arkui/arkts-apis/arkts-arkui-framenode-crosslanguageoptions-i.md) | 跨ArkTS语言访问选项。 |
 
 ## getCustomProperty
 
@@ -569,9 +531,7 @@ getCustomProperty(name: string): CustomProperty
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -601,9 +561,7 @@ getFirstChild(): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -615,7 +573,7 @@ getFirstChild(): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | Returns a FrameNode, which is first child of the current FrameNode. If current FrameNode does not have child node, returns null. If current FrameNode does not have child node, returns null. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | Returns a FrameNode, which is first child of the current FrameNode. If current FrameNode does not have child node, returns null. If current FrameNode does not have child node, returns null. |
 
 ## getFirstChildIndexWithoutExpand
 
@@ -625,9 +583,7 @@ getFirstChildIndexWithoutExpand(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -651,9 +607,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -671,7 +625,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | The first child node with the specified ID, or null if not found. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | The first child node with the specified ID, or null if not found. |
 
 ## getFrameNodeByUniqueId
 
@@ -679,13 +633,11 @@ getFrameNodeById(id: string): FrameNode | null
 getFrameNodeByUniqueId(id: int): FrameNode | null
 ```
 
-以当前节点为根节点，查找并返回指定UniqueID（系统分配的节点唯一标识，该标识可通过[getUniqueId](#getuniqueid)接口获取）的子节点。 1.如果唯一标识对应的是内置组件，则返回关联的FrameNode。 2.如果该onlyId对应自定义组件：如果该组件已经渲染了内容，则其根节点为 返回，类型为__Common__；如果组件没有渲染的内容，则返回其第一个子项的FrameNode 组件返回。 3.如果不对应任何组件，则返回null。 .0.0
+以当前节点为根节点，查找并返回指定UniqueID（系统分配的节点唯一标识，该标识可通过[getUniqueId](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#getuniqueid)接口获取）的子节点。 1.如果唯一标识对应的是内置组件，则返回关联的FrameNode。 2.如果该onlyId对应自定义组件：如果该组件已经渲染了内容，则其根节点为 返回，类型为__Common__；如果组件没有渲染的内容，则返回其第一个子项的FrameNode 组件返回。 3.如果不对应任何组件，则返回null。 .0.0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -703,7 +655,7 @@ getFrameNodeByUniqueId(id: int): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | The FrameNode with the target uniqueId, or null if the frameNode is not existed. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | The FrameNode with the target uniqueId, or null if the frameNode is not existed. |
 
 ## getGlobalPositionOnDisplay
 
@@ -713,9 +665,7 @@ getGlobalPositionOnDisplay(): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -739,9 +689,7 @@ getId(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -761,13 +709,11 @@ getId(): string
 getInspectorInfo(): Object
 ```
 
-获取节点的结构信息，该信息和DevEco Studio内置&lt;!--RP1--&gt;ArkUI Inspector&lt;!--RP1End--&gt;工具里面的一致。 > **说明：** > > getInspectorInfo接口用于获取所有节点的信息，作为调试接口使用，频繁调用会导致性能下降。
+获取节点的结构信息，该信息和DevEco Studio内置<!--RP1-->ArkUI Inspector<!--RP1End-->工具里面的一致。 > **说明：** > > getInspectorInfo接口用于获取所有节点的信息，作为调试接口使用，频繁调用会导致性能下降。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -791,9 +737,7 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -811,7 +755,7 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 | 类型 | 说明 |
 | --- | --- |
-| [InteractionEventBindingInfo](arkts-na-framenode-interactioneventbindinginfo-i.md) | Returns one InteractionEventBindingInfo object indicating the event binding details if any interaction events binded on current node, returns undefined if no one binded on. |
+| [InteractionEventBindingInfo](../../apis-arkui/arkts-apis/arkts-arkui-framenode-interactioneventbindinginfo-i.md) | Returns one InteractionEventBindingInfo object indicating the event binding details if any interaction events binded on current node, returns undefined if no one binded on. |
 
 ## getLastChildIndexWithoutExpand
 
@@ -821,9 +765,7 @@ getLastChildIndexWithoutExpand(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -845,9 +787,7 @@ getLayoutPosition(): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -871,9 +811,7 @@ getMeasuredSize(): Size
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -897,9 +835,7 @@ getNextSibling(): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -911,7 +847,7 @@ getNextSibling(): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | Returns a FrameNode. If current FrameNode does not have next sibling node, returns null. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | Returns a FrameNode. If current FrameNode does not have next sibling node, returns null. |
 
 ## getNodePropertyValue
 
@@ -923,9 +859,7 @@ getNodePropertyValue(property: AnimationPropertyType): double[]
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -955,9 +889,7 @@ getNodeType(): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -979,9 +911,7 @@ getOpacity(): double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1005,9 +935,7 @@ getParent(): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1019,7 +947,7 @@ getParent(): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | Returns a FrameNode. If current FrameNode does not have parent node, returns null. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | Returns a FrameNode. If current FrameNode does not have parent node, returns null. |
 
 ## getPositionToParent
 
@@ -1029,9 +957,7 @@ getPositionToParent(): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1053,9 +979,7 @@ getPositionToParentWithTransform(): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1077,9 +1001,7 @@ getPositionToScreen(): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1103,9 +1025,7 @@ getPositionToScreenWithTransform(): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1129,9 +1049,7 @@ Get the position of the node relative to window.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1153,9 +1071,7 @@ getPositionToWindowWithTransform(): NodePosition
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1179,9 +1095,7 @@ getPreviousSibling(): FrameNode | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1193,7 +1107,7 @@ getPreviousSibling(): FrameNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [FrameNode](arkts-na-framenode-c.md) | Returns a FrameNode. If current FrameNode does not have previous sibling node, returns null. |
+| [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | Returns a FrameNode. If current FrameNode does not have previous sibling node, returns null. |
 
 ## getRenderNode
 
@@ -1201,13 +1115,11 @@ getPreviousSibling(): FrameNode | null
 getRenderNode(): RenderNode | null
 ```
 
-获取FrameNode中持有的[RenderNode](arkts-na-rendernode-c.md#rendernode)。
+获取FrameNode中持有的[RenderNode](arkts-na-rendernode-c.md)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1229,9 +1141,7 @@ getUniqueId(): int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1253,9 +1163,7 @@ getUserConfigBorderWidth(): NodeEdges<LengthMetrics>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1277,9 +1185,7 @@ getUserConfigMargin(): NodeEdges<LengthMetrics>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1301,9 +1207,7 @@ getUserConfigPadding(): NodeEdges<LengthMetrics>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1327,9 +1231,7 @@ getUserConfigSize(): SizeT<LengthMetrics>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1353,9 +1255,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1367,8 +1267,8 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [FrameNode](arkts-na-framenode-c.md) | 是 | 需要添加的子节点。<br/>child节点不可以为声明式创建的节点，即不可修改的FrameNode。仅有从BuilderNode中获取的声明式节点可以作为子节点。若子节点不 符合规格，则抛出异常信息。<br/> child节点不可以拥有父节点，否则抛出异常信息。 |
-| sibling | [FrameNode](arkts-na-framenode-c.md) \| null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
+| child | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 需要添加的子节点。<br/>child节点不可以为声明式创建的节点，即不可修改的FrameNode。仅有从BuilderNode中获取的声明式节点可以作为子节点。若子节点不 符合规格，则抛出异常信息。<br/> child节点不可以拥有父节点，否则抛出异常信息。 |
+| sibling | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) \| null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
 
@@ -1387,9 +1287,7 @@ invalidate(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1407,9 +1305,7 @@ invalidateAttributes(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1427,9 +1323,7 @@ isAttached(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1449,13 +1343,11 @@ isAttached(): boolean
 isClipToFrame(): boolean
 ```
 
-获取节点是否是剪裁到组件区域。当调用[dispose](#dispose)解除对实体FrameNode节点的引用关系之后，返回值为true。
+获取节点是否是剪裁到组件区域。当调用[dispose](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#dispose)解除对实体FrameNode节点的引用关系之后，返回值为true。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1479,9 +1371,7 @@ isDisposed(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1505,9 +1395,7 @@ isInRenderState(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1531,9 +1419,7 @@ isMinimized(): boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1557,9 +1443,7 @@ isModifiable(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1583,9 +1467,7 @@ isOnMainTree(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1615,9 +1497,7 @@ isTransferred(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1641,9 +1521,7 @@ isVisible(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1665,9 +1543,7 @@ layout(position: NodePosition): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1687,13 +1563,11 @@ layout(position: NodePosition): void
 measure(constraint: LayoutConstraint): void
 ```
 
-调用FrameNode的测量方法，根据父容器的布局约束，对FrameNode进行测量，计算出尺寸，如果测量方法被重写，则调用重写的方法。建议在[onMeasure](#onmeasure)方法中调用。
+调用FrameNode的测量方法，根据父容器的布局约束，对FrameNode进行测量，计算出尺寸，如果测量方法被重写，则调用重写的方法。建议在[onMeasure](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md#onmeasure)方法中调用。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1705,7 +1579,7 @@ measure(constraint: LayoutConstraint): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| constraint | [LayoutConstraint](arkts-na-framenode-layoutconstraint-i.md) | 是 | 组件进行测量时使用的父容器布局约束。 |
+| constraint | [LayoutConstraint](../../apis-arkui/arkts-apis/arkts-arkui-framenode-layoutconstraint-i.md) | 是 | 组件进行测量时使用的父容器布局约束。 |
 
 ## moveTo
 
@@ -1717,9 +1591,7 @@ moveTo(targetParent: FrameNode, index?: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1731,7 +1603,7 @@ moveTo(targetParent: FrameNode, index?: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetParent | [FrameNode](arkts-na-framenode-c.md) | 是 | 目标父节点。 目标父节点不能是声明式创建的节点（即不可修改的 FrameNode）。 若不符合规范，将抛出异常。 |
+| targetParent | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 目标父节点。 目标父节点不能是声明式创建的节点（即不可修改的 FrameNode）。 若不符合规范，将抛出异常。 |
 | index | int | 否 | 节点移动至目标父节点中的索引位置。若该值为负数或无效值，节点将被移动到目标父节点的末尾。默认移动到目标父节点末尾。 若目标 FrameNode 已有 n 个子节点，则 index 的取值范围为 [0, n)。 <br>取值限定为整数。默认值：-1。 <br>默认值: -1 |
 
 **错误码：**
@@ -1747,13 +1619,11 @@ moveTo(targetParent: FrameNode, index?: int): void
 onDraw(context: DrawContext): void
 ```
 
-该接口的[DrawContext](../../apis-arkui/arkts-apis/arkts-arkui-graphics-drawcontext-c.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
+该接口的[DrawContext](../../apis-arkui/arkts-apis/arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-frameNode.md#调整自定义绘制canvas的变换矩阵)。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1775,9 +1645,7 @@ onLayout(position: NodePosition): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1801,9 +1669,7 @@ FrameNode的自定义测量方法，该方法会重写默认测量方法，在Fr
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1815,7 +1681,7 @@ FrameNode的自定义测量方法，该方法会重写默认测量方法，在Fr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| constraint | [LayoutConstraint](arkts-na-framenode-layoutconstraint-i.md) | 是 | 组件进行测量时使用的布局约束。 |
+| constraint | [LayoutConstraint](../../apis-arkui/arkts-apis/arkts-arkui-framenode-layoutconstraint-i.md) | 是 | 组件进行测量时使用的布局约束。 |
 
 ## recycle
 
@@ -1827,9 +1693,7 @@ recycle(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1847,9 +1711,7 @@ removeAdoptedChild(child: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1861,7 +1723,7 @@ removeAdoptedChild(child: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [FrameNode](arkts-na-framenode-c.md) | 是 | 正在被接纳的节点。 |
+| child | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 正在被接纳的节点。 |
 
 **错误码：**
 
@@ -1881,9 +1743,7 @@ removeChild(node: FrameNode): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1895,7 +1755,7 @@ removeChild(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-na-framenode-c.md) | 是 | 需要删除的子节点。 |
+| node | [FrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-c.md) | 是 | 需要删除的子节点。 |
 
 **错误码：**
 
@@ -1911,9 +1771,7 @@ removeSupportedUIStates(uiStates: int): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1937,9 +1795,7 @@ reuse(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1953,13 +1809,11 @@ reuse(): void
 setCrossLanguageOptions(value: CrossLanguageOptions): void
 ```
 
-设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前 FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。 > **说明：** > > 当前仅支持Scroll, > Swiper， > List， > ListItem， > ListItemGroup， > WaterFlow， > FlowItem， > Grid， > GridItem， > TextInput， > TextArea， > Column， > Row， > Stack， > Flex， > RelativeContainer， > Progress， > LoadingProgress， > Image， > Button， > CheckBox， > Radio， > Slider， > Toggle， > XComponent类型的 > [TypedFrameNode](arkts-na-framenode-typedframenode-c.md#typedframenode)设置跨ArkTS语言访问选项。
+设置当前FrameNode的跨ArkTS语言访问选项。例如ArkTS语言创建的节点，设置该节点是否可通过非ArkTS语言进行属性设置，从API版本26.0.0开始支持设置是否可通过非ArkTS语言进行组件树操作。当前 FrameNode如果不可修改或不可设置跨ArkTS语言访问选项，抛出异常信息。 > **说明：** > > 当前仅支持Scroll, > Swiper， > List， > ListItem， > ListItemGroup， > WaterFlow， > FlowItem， > Grid， > GridItem， > TextInput， > TextArea， > Column， > Row， > Stack， > Flex， > RelativeContainer， > Progress， > LoadingProgress， > Image， > Button， > CheckBox， > Radio， > Slider， > Toggle， > XComponent类型的 > [TypedFrameNode](../../apis-arkui/arkts-apis/arkts-arkui-framenode-typedframenode-i.md)设置跨ArkTS语言访问选项。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1971,7 +1825,7 @@ setCrossLanguageOptions(value: CrossLanguageOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [CrossLanguageOptions](arkts-na-framenode-crosslanguageoptions-i.md) | 是 | 跨ArkTS语言访问选项。 |
+| value | [CrossLanguageOptions](../../apis-arkui/arkts-apis/arkts-arkui-framenode-crosslanguageoptions-i.md) | 是 | 跨ArkTS语言访问选项。 |
 
 **错误码：**
 
@@ -1987,9 +1841,7 @@ setLayoutPosition(position: NodePosition): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2013,9 +1865,7 @@ setMeasuredSize(size: Size): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2039,9 +1889,7 @@ setNeedsLayout(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

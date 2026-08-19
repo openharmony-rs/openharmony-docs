@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface MultiAppMode--><!--Device-unnamed-export interface MultiAppMode-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -24,10 +20,6 @@ readonly maxCount: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MultiAppMode-readonly maxCount: int--><!--Device-MultiAppMode-readonly maxCount: int-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -43,10 +35,6 @@ readonly multiAppModeType: bundleManager.MultiAppModeType
 **类型：** bundleManager.MultiAppModeType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MultiAppMode-readonly multiAppModeType: bundleManager.MultiAppModeType--><!--Device-MultiAppMode-readonly multiAppModeType: bundleManager.MultiAppModeType-End-->
 

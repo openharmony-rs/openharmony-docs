@@ -6,9 +6,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface SwiperAttribute--><!--Device-unnamed-export declare interface SwiperAttribute-End-->
 
@@ -22,9 +20,7 @@ attributeModifier(modifier: AttributeModifier<SwiperAttribute> | AttributeModifi
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-attributeModifier(modifier: AttributeModifier<SwiperAttribute> | AttributeModifier<CommonMethod> | undefined): this--><!--Device-SwiperAttribute-attributeModifier(modifier: AttributeModifier<SwiperAttribute> | AttributeModifier<CommonMethod> | undefined): this-End-->
 
@@ -48,9 +44,7 @@ autoPlay(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-autoPlay(value: boolean | undefined): this--><!--Device-SwiperAttribute-autoPlay(value: boolean | undefined): this-End-->
 
@@ -74,9 +68,7 @@ autoPlay(autoPlay: boolean | undefined, options: AutoPlayOptions | undefined): t
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-autoPlay(autoPlay: boolean | undefined, options: AutoPlayOptions | undefined): this--><!--Device-SwiperAttribute-autoPlay(autoPlay: boolean | undefined, options: AutoPlayOptions | undefined): this-End-->
 
@@ -101,9 +93,7 @@ cachedCount(value: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-cachedCount(value: int | undefined): this--><!--Device-SwiperAttribute-cachedCount(value: int | undefined): this-End-->
 
@@ -127,9 +117,7 @@ cachedCount(count: int | undefined, isShown: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-cachedCount(count: int | undefined, isShown: boolean | undefined): this--><!--Device-SwiperAttribute-cachedCount(count: int | undefined, isShown: boolean | undefined): this-End-->
 
@@ -154,9 +142,7 @@ cachedCount(count: int | undefined, options: CachedCountOptions | undefined): th
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-cachedCount(count: int | undefined, options: CachedCountOptions | undefined): this--><!--Device-SwiperAttribute-cachedCount(count: int | undefined, options: CachedCountOptions | undefined): this-End-->
 
@@ -181,9 +167,7 @@ curve(value: Curve | string | ICurve | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-curve(value: Curve | string | ICurve | undefined): this--><!--Device-SwiperAttribute-curve(value: Curve | string | ICurve | undefined): this-End-->
 
@@ -207,9 +191,7 @@ customContentTransition(transition: SwiperContentAnimatedTransition | undefined)
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-customContentTransition(transition: SwiperContentAnimatedTransition | undefined): this--><!--Device-SwiperAttribute-customContentTransition(transition: SwiperContentAnimatedTransition | undefined): this-End-->
 
@@ -233,9 +215,7 @@ disableSwipe(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-disableSwipe(value: boolean | undefined): this--><!--Device-SwiperAttribute-disableSwipe(value: boolean | undefined): this-End-->
 
@@ -259,9 +239,7 @@ displayArrow(value: ArrowStyle | boolean | undefined, isHoverShow?: boolean | un
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-displayArrow(value: ArrowStyle | boolean | undefined, isHoverShow?: boolean | undefined): this--><!--Device-SwiperAttribute-displayArrow(value: ArrowStyle | boolean | undefined, isHoverShow?: boolean | undefined): this-End-->
 
@@ -286,9 +264,7 @@ displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy| undefined, s
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy| undefined, swipeByGroup?: boolean | undefined): this--><!--Device-SwiperAttribute-displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy| undefined, swipeByGroup?: boolean | undefined): this-End-->
 
@@ -313,9 +289,7 @@ displayMode(value: SwiperDisplayMode | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-displayMode(value: SwiperDisplayMode | undefined): this--><!--Device-SwiperAttribute-displayMode(value: SwiperDisplayMode | undefined): this-End-->
 
@@ -339,9 +313,7 @@ duration(value: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-duration(value: int | undefined): this--><!--Device-SwiperAttribute-duration(value: int | undefined): this-End-->
 
@@ -365,9 +337,7 @@ effectMode(value: EdgeEffect | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-effectMode(value: EdgeEffect | undefined): this--><!--Device-SwiperAttribute-effectMode(value: EdgeEffect | undefined): this-End-->
 
@@ -391,9 +361,7 @@ index(value: int | Bindable<int> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-index(value: int | Bindable<int> | undefined): this--><!--Device-SwiperAttribute-index(value: int | Bindable<int> | undefined): this-End-->
 
@@ -417,9 +385,7 @@ indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicato
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean | undefined): this--><!--Device-SwiperAttribute-indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean | undefined): this-End-->
 
@@ -443,9 +409,7 @@ indicatorInteractive(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-indicatorInteractive(value: boolean | undefined): this--><!--Device-SwiperAttribute-indicatorInteractive(value: boolean | undefined): this-End-->
 
@@ -469,9 +433,7 @@ interval(value: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-interval(value: int | undefined): this--><!--Device-SwiperAttribute-interval(value: int | undefined): this-End-->
 
@@ -495,9 +457,7 @@ itemSpace(value: double | string | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-itemSpace(value: double | string | undefined): this--><!--Device-SwiperAttribute-itemSpace(value: double | string | undefined): this-End-->
 
@@ -521,9 +481,7 @@ loop(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-loop(value: boolean | undefined): this--><!--Device-SwiperAttribute-loop(value: boolean | undefined): this-End-->
 
@@ -547,9 +505,7 @@ maintainVisibleContentPosition(enabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-maintainVisibleContentPosition(enabled: boolean | undefined): this--><!--Device-SwiperAttribute-maintainVisibleContentPosition(enabled: boolean | undefined): this-End-->
 
@@ -573,9 +529,7 @@ nestedScroll(value: SwiperNestedScrollMode | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-nestedScroll(value: SwiperNestedScrollMode | undefined): this--><!--Device-SwiperAttribute-nestedScroll(value: SwiperNestedScrollMode | undefined): this-End-->
 
@@ -599,9 +553,7 @@ nextMargin(value: Length | undefined, ignoreBlank?: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-nextMargin(value: Length | undefined, ignoreBlank?: boolean | undefined): this--><!--Device-SwiperAttribute-nextMargin(value: Length | undefined, ignoreBlank?: boolean | undefined): this-End-->
 
@@ -626,9 +578,7 @@ onAnimationEnd(event: OnSwiperAnimationEndCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onAnimationEnd(event: OnSwiperAnimationEndCallback | undefined): this--><!--Device-SwiperAttribute-onAnimationEnd(event: OnSwiperAnimationEndCallback | undefined): this-End-->
 
@@ -652,9 +602,7 @@ onAnimationStart(event: OnSwiperAnimationStartCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onAnimationStart(event: OnSwiperAnimationStartCallback | undefined): this--><!--Device-SwiperAttribute-onAnimationStart(event: OnSwiperAnimationStartCallback | undefined): this-End-->
 
@@ -678,9 +626,7 @@ onChange(event: Callback<int> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onChange(event: Callback<int> | undefined): this--><!--Device-SwiperAttribute-onChange(event: Callback<int> | undefined): this-End-->
 
@@ -704,9 +650,7 @@ onContentDidScroll(handler: ContentDidScrollCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onContentDidScroll(handler: ContentDidScrollCallback | undefined): this--><!--Device-SwiperAttribute-onContentDidScroll(handler: ContentDidScrollCallback | undefined): this-End-->
 
@@ -730,9 +674,7 @@ onContentWillScroll(handler: ContentWillScrollCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onContentWillScroll(handler: ContentWillScrollCallback | undefined): this--><!--Device-SwiperAttribute-onContentWillScroll(handler: ContentWillScrollCallback | undefined): this-End-->
 
@@ -756,9 +698,7 @@ onGestureSwipe(event: OnSwiperGestureSwipeCallback | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onGestureSwipe(event: OnSwiperGestureSwipeCallback | undefined): this--><!--Device-SwiperAttribute-onGestureSwipe(event: OnSwiperGestureSwipeCallback | undefined): this-End-->
 
@@ -782,9 +722,7 @@ onScrollStateChanged(event: Callback<ScrollState> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onScrollStateChanged(event: Callback<ScrollState> | undefined): this--><!--Device-SwiperAttribute-onScrollStateChanged(event: Callback<ScrollState> | undefined): this-End-->
 
@@ -808,9 +746,7 @@ onSelected(event: Callback<int> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onSelected(event: Callback<int> | undefined): this--><!--Device-SwiperAttribute-onSelected(event: Callback<int> | undefined): this-End-->
 
@@ -834,9 +770,7 @@ onUnselected(event: Callback<int> | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-onUnselected(event: Callback<int> | undefined): this--><!--Device-SwiperAttribute-onUnselected(event: Callback<int> | undefined): this-End-->
 
@@ -860,9 +794,7 @@ pageFlipMode(mode: PageFlipMode | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-pageFlipMode(mode: PageFlipMode | undefined): this--><!--Device-SwiperAttribute-pageFlipMode(mode: PageFlipMode | undefined): this-End-->
 
@@ -886,9 +818,7 @@ prevMargin(value: Length | undefined, ignoreBlank?: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-prevMargin(value: Length | undefined, ignoreBlank?: boolean | undefined): this--><!--Device-SwiperAttribute-prevMargin(value: Length | undefined, ignoreBlank?: boolean | undefined): this-End-->
 
@@ -913,9 +843,7 @@ setSwiperOptions(controller?: SwiperController): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-setSwiperOptions(controller?: SwiperController): this--><!--Device-SwiperAttribute-setSwiperOptions(controller?: SwiperController): this-End-->
 
@@ -939,9 +867,7 @@ vertical(value: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-SwiperAttribute-vertical(value: boolean | undefined): this--><!--Device-SwiperAttribute-vertical(value: boolean | undefined): this-End-->
 
@@ -967,9 +893,7 @@ default
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

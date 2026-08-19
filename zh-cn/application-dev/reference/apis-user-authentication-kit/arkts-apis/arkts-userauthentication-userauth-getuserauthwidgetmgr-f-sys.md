@@ -1,5 +1,12 @@
 # getUserAuthWidgetMgr（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
+
 ## getUserAuthWidgetMgr
 
 ```TypeScript
@@ -9,10 +16,6 @@ function getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 获取身份认证组件管理器对象。用于获取UserAuthWidgetMgr实例，通过该实例可将自定义身份认证控件注册到系统进行统一管理。 > **说明：** > > 每个UserAuthWidgetMgr实例可管理一个身份认证控件，若需要管理多个控件则需获取多个实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
@@ -43,7 +46,7 @@ function getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { userAuth } from '@kit.UserAuthenticationKit';

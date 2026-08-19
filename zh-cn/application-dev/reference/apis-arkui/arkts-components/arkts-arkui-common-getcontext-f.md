@@ -1,5 +1,10 @@
 # getContext
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getContext
 
 ```TypeScript
@@ -9,8 +14,6 @@ declare function getContext(component?: Object): Context
 Obtains the Context object associated with a component on the page.
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
 
 **废弃版本：** 18
 

@@ -1,5 +1,11 @@
 # create
 
+## 导入模块
+
+```TypeScript
+import { PiPWindow } from '@kit.ArkUI';
+```
+
 ## create
 
 ```TypeScript
@@ -9,10 +15,6 @@ function create(config: PiPConfiguration): Promise<PiPController>
 创建画中画控制器，使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -24,7 +26,7 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context和componentController不能为空。构造该参数时，如果指定了 templateType，需保证templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md#piptemplatetype)类型；如果指定了controlGroups，需保证 controlGroups与templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md#pipcontrolgroup)。 |
+| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context和componentController不能为空。构造该参数时，如果指定了 templateType，需保证templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)类型；如果指定了controlGroups，需保证 controlGroups与templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md)。 |
 
 **返回值：**
 
@@ -38,7 +40,7 @@ function create(config: PiPConfiguration): Promise<PiPController>
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -275,10 +277,6 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>--><!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>-End-->
@@ -289,7 +287,7 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证 templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md#piptemplatetype)类型；如果指定了controlGroups，需保证controlGroups与 templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md#pipcontrolgroup)。 |
+| config | [PiPConfiguration](arkts-arkui-pipwindow-pipconfiguration-i.md) | 是 | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证 templateType是[PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md)类型；如果指定了controlGroups，需保证controlGroups与 templateType匹配，详见[PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md)。 |
 | contentNode | typeNode.XComponent | 是 | 用于渲染画中画窗口中的内容。该参数不能为空。 |
 
 **返回值：**
@@ -304,7 +302,7 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 | --- | --- |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

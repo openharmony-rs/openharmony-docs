@@ -1,5 +1,11 @@
 # changeConfirmation（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cloudData } from '@kit.ArkData';
+```
+
 ## changeConfirmation
 
 ```TypeScript
@@ -9,10 +15,6 @@ function changeConfirmation(sharingResource: string, state: State, callback: Asy
 根据共享资源标识更改共享邀请的状态，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sharing-function changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback<Result<void>>): void--><!--Device-sharing-function changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback<Result<void>>): void-End-->
 
@@ -26,7 +28,7 @@ function changeConfirmation(sharingResource: string, state: State, callback: Asy
 | --- | --- | --- | --- |
 | sharingResource | string | 是 | 端云共享数据的资源标识。 |
 | state | State | 是 | 更改邀请的状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Result&lt;void&gt;&gt; | 是 | 回调函数。返回更改邀请状态的结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Result&lt;void&gt;&gt; | 是 | 回调函数。返回更改邀请状态的结果。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function changeConfirmation(sharingResource: string, state: State, callback: Asy
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -60,10 +62,6 @@ function changeConfirmation(sharingResource: string, state: State): Promise<Resu
 根据共享资源标识更改共享邀请的状态，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-sharing-function changeConfirmation(sharingResource: string, state: State): Promise<Result<void>>--><!--Device-sharing-function changeConfirmation(sharingResource: string, state: State): Promise<Result<void>>-End-->
 
@@ -92,7 +90,7 @@ function changeConfirmation(sharingResource: string, state: State): Promise<Resu
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

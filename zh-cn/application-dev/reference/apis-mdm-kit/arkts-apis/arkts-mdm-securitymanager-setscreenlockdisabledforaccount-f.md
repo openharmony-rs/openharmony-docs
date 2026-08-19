@@ -1,5 +1,11 @@
 # setScreenLockDisabledForAccount
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## setScreenLockDisabledForAccount
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 禁用/启用当前用户的滑动解锁能力。启用时：设备灭屏后再亮屏，用户需要在屏幕上滑动后才能进入桌面。禁用时：设备灭屏后再亮屏会直接进入桌面。适用于企业设备管理场景，如在特定安全环境下禁用滑动解锁简化操作，或在通用场景下启用滑动解锁作为 基础安全措施。 > **说明：** > > 1.该接口能力仅在设备无锁屏密码时生效。 > > 2.设备默认属于启用滑动解锁的状态。 > > 3.设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。 > > 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -39,7 +41,7 @@ function setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { securityManager } from '@kit.MDMKit';

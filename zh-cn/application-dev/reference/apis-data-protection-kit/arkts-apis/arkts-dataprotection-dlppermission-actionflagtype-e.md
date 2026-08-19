@@ -4,10 +4,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-dlpPermission-export enum ActionFlagType--><!--Device-dlpPermission-export enum ActionFlagType-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -21,10 +17,6 @@ ACTION_VIEW = 0x00000001
 表示文件的查看权限。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-ActionFlagType-ACTION_VIEW = 0x00000001--><!--Device-ActionFlagType-ACTION_VIEW = 0x00000001-End-->
 
@@ -40,10 +32,6 @@ ACTION_SAVE = 0x00000002
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-ActionFlagType-ACTION_SAVE = 0x00000002--><!--Device-ActionFlagType-ACTION_SAVE = 0x00000002-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -57,10 +45,6 @@ ACTION_SAVE_AS = 0x00000004
 表示文件的另存为权限。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-ActionFlagType-ACTION_SAVE_AS = 0x00000004--><!--Device-ActionFlagType-ACTION_SAVE_AS = 0x00000004-End-->
 
@@ -76,10 +60,6 @@ ACTION_EDIT = 0x00000008
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-ActionFlagType-ACTION_EDIT = 0x00000008--><!--Device-ActionFlagType-ACTION_EDIT = 0x00000008-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -93,10 +73,6 @@ ACTION_SCREEN_CAPTURE = 0x00000010
 表示文件的截屏权限。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-ActionFlagType-ACTION_SCREEN_CAPTURE = 0x00000010--><!--Device-ActionFlagType-ACTION_SCREEN_CAPTURE = 0x00000010-End-->
 
@@ -112,10 +88,6 @@ ACTION_SCREEN_SHARE = 0x00000020
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-ActionFlagType-ACTION_SCREEN_SHARE = 0x00000020--><!--Device-ActionFlagType-ACTION_SCREEN_SHARE = 0x00000020-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -129,10 +101,6 @@ ACTION_SCREEN_RECORD = 0x00000040
 表示文件的录屏权限。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-ActionFlagType-ACTION_SCREEN_RECORD = 0x00000040--><!--Device-ActionFlagType-ACTION_SCREEN_RECORD = 0x00000040-End-->
 
@@ -148,10 +116,6 @@ ACTION_COPY = 0x00000080
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-ActionFlagType-ACTION_COPY = 0x00000080--><!--Device-ActionFlagType-ACTION_COPY = 0x00000080-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -165,10 +129,6 @@ ACTION_PRINT = 0x00000100
 表示文件的打印权限。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-ActionFlagType-ACTION_PRINT = 0x00000100--><!--Device-ActionFlagType-ACTION_PRINT = 0x00000100-End-->
 
@@ -184,10 +144,6 @@ ACTION_EXPORT = 0x00000200
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-ActionFlagType-ACTION_EXPORT = 0x00000200--><!--Device-ActionFlagType-ACTION_EXPORT = 0x00000200-End-->
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -201,10 +157,6 @@ ACTION_PERMISSION_CHANGE = 0x00000400
 表示文件的修改文件权限。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-ActionFlagType-ACTION_PERMISSION_CHANGE = 0x00000400--><!--Device-ActionFlagType-ACTION_PERMISSION_CHANGE = 0x00000400-End-->
 

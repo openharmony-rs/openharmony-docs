@@ -4,13 +4,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-uiMaterial-export interface ImmersiveOptions--><!--Device-uiMaterial-export interface ImmersiveOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## applyShadow
 
@@ -26,9 +29,7 @@ applyShadow?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,9 +51,7 @@ colorInvert?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,9 +73,7 @@ interactive?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -92,13 +89,11 @@ lightEffect?: LightEffectOptions | null
 
 是否为设置材质的组件设置光感交互反馈效果。当该参数为null时，禁用光感交互反馈效果。 **说明：**该参数对所有档位的算力设备的显示效果生效。 默认值：undefined，不设置光感交互反馈效果。
 
-**类型：** [LightEffectOptions](arkts-na-uimaterial-lighteffectoptions-i.md) \| null
+**类型：** [LightEffectOptions](../../apis-arkui/arkts-apis/arkts-arkui-uimaterial-lighteffectoptions-i.md) \| null
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -120,9 +115,7 @@ materialColor?: ResourceColor
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,15 +131,13 @@ style?: ImmersiveStyle
 
 材质样式。不同样式对应不同的材质参数，影响材质的厚度。 **说明：**该参数仅对高档和中档算力设备的显示效果生效。 默认值：ImmersiveStyle.REGULAR
 
-**类型：** [ImmersiveStyle](arkts-na-uimaterial-immersivestyle-e.md)
+**类型：** [ImmersiveStyle](../../apis-arkui/arkts-apis/arkts-arkui-uimaterial-immersivestyle-e.md)
 
 **默认值：** uiMaterial.ImmersiveStyle.REGULAR
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

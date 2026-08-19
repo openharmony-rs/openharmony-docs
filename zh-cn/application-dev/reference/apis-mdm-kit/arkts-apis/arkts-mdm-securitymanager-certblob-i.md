@@ -1,16 +1,18 @@
-# CertBlob
+# CertBlob(安全管理)
 
 证书信息。
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-securityManager-export interface CertBlob--><!--Device-securityManager-export interface CertBlob-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
 
 ## alias
 
@@ -23,10 +25,6 @@ alias: string
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +43,6 @@ inData: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

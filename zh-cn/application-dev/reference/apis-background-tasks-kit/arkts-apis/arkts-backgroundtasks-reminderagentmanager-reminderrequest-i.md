@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-reminderAgentManager-interface ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequest-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
+
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
 
 ## actionButton
 
@@ -23,10 +25,6 @@ Action button displayed on the reminder notification.
 **类型：** Array&lt;ActionButton&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-actionButton?: Array<ActionButton>--><!--Device-ReminderRequest-actionButton?: Array<ActionButton>-End-->
 
@@ -44,10 +42,6 @@ autoDeletedTime?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-autoDeletedTime?: long--><!--Device-ReminderRequest-autoDeletedTime?: long-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -63,10 +57,6 @@ content?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-content?: string--><!--Device-ReminderRequest-content?: string-End-->
 
@@ -84,10 +74,6 @@ contentResourceId?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-contentResourceId?: int--><!--Device-ReminderRequest-contentResourceId?: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -103,10 +89,6 @@ customRingUri?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-customRingUri?: string--><!--Device-ReminderRequest-customRingUri?: string-End-->
 
@@ -124,10 +106,6 @@ expiredContent?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-expiredContent?: string--><!--Device-ReminderRequest-expiredContent?: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -144,10 +122,6 @@ expiredContentResourceId?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-expiredContentResourceId?: int--><!--Device-ReminderRequest-expiredContentResourceId?: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -163,10 +137,6 @@ fixedTimeZone?: TimeZoneType
 **类型：** [TimeZoneType](arkts-backgroundtasks-reminderagentmanager-timezonetype-e.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -186,10 +156,6 @@ groupId?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-groupId?: string--><!--Device-ReminderRequest-groupId?: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -205,10 +171,6 @@ maxScreenWantAgent?: MaxScreenWantAgent
 **类型：** MaxScreenWantAgent
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-maxScreenWantAgent?: MaxScreenWantAgent--><!--Device-ReminderRequest-maxScreenWantAgent?: MaxScreenWantAgent-End-->
 
@@ -226,10 +188,6 @@ notificationId?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-notificationId?: int--><!--Device-ReminderRequest-notificationId?: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -245,10 +203,6 @@ notificationRequestProxy?: NotificationRequestProxy
 **类型：** [NotificationRequestProxy](arkts-backgroundtasks-reminderagentmanager-notificationrequestproxy-i.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -268,10 +222,6 @@ reminderType: ReminderType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-reminderType: ReminderType--><!--Device-ReminderRequest-reminderType: ReminderType-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -287,10 +237,6 @@ ringChannel?: RingChannel
 **类型：** [RingChannel](arkts-backgroundtasks-reminderagentmanager-ringchannel-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-ringChannel?: RingChannel--><!--Device-ReminderRequest-ringChannel?: RingChannel-End-->
 
@@ -308,10 +254,6 @@ ringDuration?: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-ringDuration?: long--><!--Device-ReminderRequest-ringDuration?: long-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -327,10 +269,6 @@ slotType?: notification.SlotType
 **类型：** notification.SlotType
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-slotType?: notification.SlotType--><!--Device-ReminderRequest-slotType?: notification.SlotType-End-->
 
@@ -348,10 +286,6 @@ snoozeContent?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-snoozeContent?: string--><!--Device-ReminderRequest-snoozeContent?: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -367,10 +301,6 @@ snoozeContentResourceId?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-snoozeContentResourceId?: int--><!--Device-ReminderRequest-snoozeContentResourceId?: int-End-->
 
@@ -388,10 +318,6 @@ snoozeSlotType?: notification.SlotType
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-snoozeSlotType?: notification.SlotType--><!--Device-ReminderRequest-snoozeSlotType?: notification.SlotType-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -407,10 +333,6 @@ snoozeTimes?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-snoozeTimes?: int--><!--Device-ReminderRequest-snoozeTimes?: int-End-->
 
@@ -428,10 +350,6 @@ tapDismissed?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-tapDismissed?: boolean--><!--Device-ReminderRequest-tapDismissed?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -447,10 +365,6 @@ timeInterval?: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-timeInterval?: long--><!--Device-ReminderRequest-timeInterval?: long-End-->
 
@@ -468,10 +382,6 @@ title?: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-title?: string--><!--Device-ReminderRequest-title?: string-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -488,10 +398,6 @@ titleResourceId?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ReminderRequest-titleResourceId?: int--><!--Device-ReminderRequest-titleResourceId?: int-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -507,10 +413,6 @@ wantAgent?: WantAgent
 **类型：** WantAgent
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ReminderRequest-wantAgent?: WantAgent--><!--Device-ReminderRequest-wantAgent?: WantAgent-End-->
 

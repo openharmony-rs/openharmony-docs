@@ -1,5 +1,11 @@
 # cancelSuspendDelay
 
+## 导入模块
+
+```TypeScript
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+```
+
 ## cancelSuspendDelay
 
 ```TypeScript
@@ -10,10 +16,6 @@ function cancelSuspendDelay(requestId: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: int): void--><!--Device-backgroundTaskManager-function cancelSuspendDelay(requestId: int): void-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
@@ -22,7 +24,7 @@ function cancelSuspendDelay(requestId: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| requestId | int | 是 | 短时任务的请求ID。通过申请短时任务[requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-f.md#requestsuspenddelay) 接口获取。 |
+| requestId | int | 是 | 短时任务的请求ID。通过申请短时任务[requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-f.md) 接口获取。 |
 
 **错误码：**
 
@@ -36,7 +38,7 @@ function cancelSuspendDelay(requestId: int): void
 | [9900001](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#9900001-短时任务调用方信息校验失败) | Caller information verification failed for a transient task. |
 | [9800002](../../apis-backgroundtasks-kit/errorcode-backgroundTaskMgr.md#9800002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

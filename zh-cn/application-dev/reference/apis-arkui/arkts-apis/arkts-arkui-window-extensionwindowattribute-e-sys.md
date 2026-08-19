@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum ExtensionWindowAttribute--><!--Device-window-enum ExtensionWindowAttribute-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -23,10 +19,6 @@ SYSTEM_WINDOW = 0
 系统窗口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,10 +37,6 @@ SUB_WINDOW = 1
 子窗口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

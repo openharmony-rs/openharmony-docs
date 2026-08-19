@@ -4,13 +4,14 @@ FolderStack悬停态配置项对象，用于描述悬停态状态下需要移到
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface FolderStackOptions--><!--Device-unnamed-interface FolderStackOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## upperItems
 
@@ -23,10 +24,6 @@ upperItems?: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,10 @@
 # mkdtemp
 
+## 导入模块
+
+```TypeScript
+```
+
 ## mkdtemp
 
 ```TypeScript
@@ -10,11 +15,9 @@ declare function mkdtemp(prefix: string): Promise<string>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md#mkdtemp)
+**替代接口：** [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md)
 
 <!--Device-unnamed-declare function mkdtemp(prefix: string): Promise<string>--><!--Device-unnamed-declare function mkdtemp(prefix: string): Promise<string>-End-->
 
@@ -43,11 +46,9 @@ declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md#mkdtemp)
+**替代接口：** [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md)
 
 <!--Device-unnamed-declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void-End-->
 
@@ -58,5 +59,5 @@ declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | prefix | string | 是 | 用随机产生的字符串替换以“XXXXXX”结尾目录路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 异步创建临时目录之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 异步创建临时目录之后的回调。 |
 

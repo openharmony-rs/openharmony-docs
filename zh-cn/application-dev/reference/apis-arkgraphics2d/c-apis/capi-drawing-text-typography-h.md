@@ -782,7 +782,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyAttributeBool(const OH_Drawing_Typo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数typography或value为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数typography或value为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_SetTypographyAttributeBool()
 
@@ -808,7 +808,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyAttributeBool(OH_Drawing_Typography
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数typography为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数返回执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数typography为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_SetTextStyleAttributeDouble()
 
@@ -834,7 +834,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。<br>     <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入属性超出业务范围。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。      <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入属性超出业务范围。 |
 
 ### OH_Drawing_GetTextStyleAttributeDouble()
 
@@ -860,7 +860,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_SetTextStyleAttributeInt()
 
@@ -886,7 +886,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* s
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。<br>     <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入的value超出待设置属性取值范围。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。      <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入的value超出待设置属性取值范围。 |
 
 ### OH_Drawing_GetTextStyleAttributeInt()
 
@@ -912,7 +912,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* s
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_SetTypographyStyleAttributeDouble()
 
@@ -938,7 +938,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_Typ
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。<br>     <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入属性超出业务范围。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。      <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入属性超出业务范围。 |
 
 ### OH_Drawing_GetTypographyStyleAttributeDouble()
 
@@ -964,7 +964,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_Typ
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_SetTypographyStyleAttributeInt()
 
@@ -990,7 +990,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_Typogr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。<br>     <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入的value超出待设置属性取值范围。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。      <br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示传入的value超出待设置属性取值范围。 |
 
 ### OH_Drawing_GetTypographyStyleAttributeInt()
 
@@ -1016,7 +1016,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_Typogr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_SetTypographyStyleAttributeBool()
 
@@ -1042,7 +1042,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_Typog
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetTypographyStyleAttributeBool()
 
@@ -1068,7 +1068,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_Typog
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者value为空指针。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者value为空指针。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_SetTypographyStyleAttributeDoubleArray()
 
@@ -1095,7 +1095,7 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDoubleArray(OH_Drawin
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者arrayValue为空指针或arrayLength为0。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者arrayValue为空指针或arrayLength为0。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_GetTypographyStyleAttributeDoubleArray()
 
@@ -1122,7 +1122,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDoubleArray(const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者arrayValue为空指针或arrayLength为0。<br>     <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS，表示执行成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者arrayValue为空指针或arrayLength为0。      <br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_CreateTypographyStyle()
 
@@ -1985,7 +1985,7 @@ OH_Drawing_ErrorCode OH_Drawing_ReleaseArrayBuffer(OH_Drawing_Array* array)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>     <br>返回OH_DRAWING_SUCCESS表示操作成功。<br>     <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER表示array为空指针或类型不支持。 |
+| OH_Drawing_ErrorCode | 函数执行结果。      <br>返回OH_DRAWING_SUCCESS表示操作成功。      <br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER表示array为空指针或类型不支持。 |
 
 ### OH_Drawing_TypographyGetMaxWidth()
 
@@ -5397,7 +5397,7 @@ OH_Drawing_FontWeight OH_Drawing_TypographyTextlineStyleGetFontWeight(OH_Drawing
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) | 返回文本排版行样式字重。<br>     <br> 0字重为thin，1字重为extra-light，2字重为light，4字重为medium，5字重为semi-bold，6字重为bold，7字重为extra-bold，8字重为black，3或其它字重为normal/<br>     regular，具体可见[OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight)枚举。 |
+| [OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight) | 返回文本排版行样式字重。      <br> 0字重为thin，1字重为extra-light，2字重为light，4字重为medium，5字重为semi-bold，6字重为bold，7字重为extra-bold，8字重为black，3或其它字重为normal/      regular，具体可见[OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight)枚举。 |
 
 ### OH_Drawing_TypographyTextlineStyleGetFontStyle()
 
@@ -6058,7 +6058,7 @@ OH_Drawing_TypographyStyle* OH_Drawing_CopyTypographyStyle(OH_Drawing_Typography
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_TypographyStyle* | 返回拷贝的[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)对象指针。如果返回空指针，表示创建失败；可能的原因是无可用内存，或者style为空指针。不再需要时，请使用<br>     [OH_Drawing_DestroyTypographyStyle](capi-drawing-text-typography-h.md#oh_drawing_destroytypographystyle)释放该对象指针。 |
+| OH_Drawing_TypographyStyle* | 返回拷贝的[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)对象指针。如果返回空指针，表示创建失败；可能的原因是无可用内存，或者style为空指针。不再需要时，请使用      [OH_Drawing_DestroyTypographyStyle](capi-drawing-text-typography-h.md#oh_drawing_destroytypographystyle)释放该对象指针。 |
 
 ### OH_Drawing_CopyTextStyle()
 
@@ -6084,7 +6084,7 @@ OH_Drawing_TextStyle* OH_Drawing_CopyTextStyle(OH_Drawing_TextStyle* style)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_TextStyle* | 返回拷贝的[OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)对象指针。如果返回空指针，表示创建失败；可能的原因是无可用内存，或者style为空指针。不再需要时，请使用<br>     [OH_Drawing_DestroyTextStyle](capi-drawing-text-typography-h.md#oh_drawing_destroytextstyle)释放该对象指针。 |
+| OH_Drawing_TextStyle* | 返回拷贝的[OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)对象指针。如果返回空指针，表示创建失败；可能的原因是无可用内存，或者style为空指针。不再需要时，请使用      [OH_Drawing_DestroyTextStyle](capi-drawing-text-typography-h.md#oh_drawing_destroytextstyle)释放该对象指针。 |
 
 ### OH_Drawing_CopyTextShadow()
 
@@ -6110,7 +6110,7 @@ OH_Drawing_TextShadow* OH_Drawing_CopyTextShadow(OH_Drawing_TextShadow* shadow)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_TextShadow* | 返回拷贝的[OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md)对象指针。如果返回空指针，表示创建失败；可能的原因是无可用内存，或者shadow为空指针。不再需要时，请使用<br>     [OH_Drawing_DestroyTextShadow](capi-drawing-text-typography-h.md#oh_drawing_destroytextshadow)释放该对象指针。 |
+| OH_Drawing_TextShadow* | 返回拷贝的[OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md)对象指针。如果返回空指针，表示创建失败；可能的原因是无可用内存，或者shadow为空指针。不再需要时，请使用      [OH_Drawing_DestroyTextShadow](capi-drawing-text-typography-h.md#oh_drawing_destroytextshadow)释放该对象指针。 |
 
 ### OH_Drawing_DestroyPositionAndAffinity()
 
@@ -6183,7 +6183,7 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetCharacterPositionAtCoord
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_PositionAndAffinity* | 返回坐标处的字符索引位置和亲和性，返回类型为[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)结构体。<br>     <br>当不再需要该对象时，请使用[OH_Drawing_DestroyPositionAndAffinity](capi-drawing-text-typography-h.md#oh_drawing_destroypositionandaffinity)接口释放。 |
+| OH_Drawing_PositionAndAffinity* | 返回坐标处的字符索引位置和亲和性，返回类型为[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)结构体。      <br>当不再需要该对象时，请使用[OH_Drawing_DestroyPositionAndAffinity](capi-drawing-text-typography-h.md#oh_drawing_destroypositionandaffinity)接口释放。 |
 
 ### OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer()
 

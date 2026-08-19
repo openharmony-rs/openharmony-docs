@@ -1,5 +1,11 @@
 # moveMissionsToForeground（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+```
+
 ## moveMissionsToForeground
 
 ```TypeScript
@@ -9,10 +15,6 @@ function moveMissionsToForeground(missionIds: Array<int>, callback: AsyncCallbac
 将指定任务批量切到前台。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
@@ -38,7 +40,7 @@ function moveMissionsToForeground(missionIds: Array<int>, callback: AsyncCallbac
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -128,10 +130,6 @@ function moveMissionsToForeground(missionIds: Array<int>, topMission: int, callb
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function moveMissionsToForeground(missionIds: Array<int>, topMission: int, callback: AsyncCallback<void>): void--><!--Device-missionManager-function moveMissionsToForeground(missionIds: Array<int>, topMission: int, callback: AsyncCallback<void>): void-End-->
@@ -157,7 +155,7 @@ function moveMissionsToForeground(missionIds: Array<int>, topMission: int, callb
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -247,10 +245,6 @@ function moveMissionsToForeground(missionIds: Array<int>, topMission?: int): Pro
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.MANAGE_MISSIONS
 
 <!--Device-missionManager-function moveMissionsToForeground(missionIds: Array<int>, topMission?: int): Promise<void>--><!--Device-missionManager-function moveMissionsToForeground(missionIds: Array<int>, topMission?: int): Promise<void>-End-->
@@ -281,7 +275,7 @@ function moveMissionsToForeground(missionIds: Array<int>, topMission?: int): Pro
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

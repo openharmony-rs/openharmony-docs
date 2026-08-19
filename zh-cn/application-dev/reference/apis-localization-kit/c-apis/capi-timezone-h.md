@@ -121,7 +121,7 @@ I18n_ErrorCode OH_i18n_GetTimeZoneRules(const char* timeZoneID, TimeZoneRules* r
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule()
 
@@ -146,7 +146,7 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFirstStartFromAnnualTimeZoneRule()
 
@@ -171,7 +171,7 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule()
 
@@ -196,7 +196,7 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetFinalStartFromAnnualTimeZoneRule()
 
@@ -221,7 +221,7 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetNextStartFromTimeArrayTimeZoneRule()
 
@@ -246,7 +246,7 @@ I18n_ErrorCode OH_i18n_GetNextStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetNextStartFromAnnualTimeZoneRule()
 
@@ -271,7 +271,7 @@ I18n_ErrorCode OH_i18n_GetNextStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule()
 
@@ -296,7 +296,7 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetPrevStartFromAnnualTimeZoneRule()
 
@@ -321,7 +321,7 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetStartTimeAt()
 
@@ -347,7 +347,7 @@ I18n_ErrorCode OH_i18n_GetStartTimeAt(TimeArrayTimeZoneRule* rule, int32_t index
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 ### OH_i18n_GetStartInYear()
 
@@ -373,6 +373,6 @@ I18n_ErrorCode OH_i18n_GetStartInYear(AnnualTimeZoneRule* rule, int32_t year, Ti
 
 | 类型 | 说明 |
 | -- | -- |
-| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。<br>         [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。<br>         [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
+| [I18n_ErrorCode](capi-errorcode-h.md#i18n_errorcode) | [SUCCESS](capi-errorcode-h.md#i18n_errorcode) 0 - 成功。          [ERROR_INVALID_PARAMETER](capi-errorcode-h.md#i18n_errorcode) 8900001 - 传入参数无效。          [UNEXPECTED_ERROR](capi-errorcode-h.md#i18n_errorcode) 8900050 - 预期之外的错误，例如内存错误。 |
 
 

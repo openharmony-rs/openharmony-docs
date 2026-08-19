@@ -1,5 +1,11 @@
 # getSecurityLabelSync
 
+## 导入模块
+
+```TypeScript
+import { securityLabel } from '@kit.CoreFileKit';
+```
+
 ## getSecurityLabelSync
 
 ```TypeScript
@@ -10,10 +16,6 @@ function getSecurityLabelSync(path: string): string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-securityLabel-function getSecurityLabelSync(path: string): string--><!--Device-securityLabel-function getSecurityLabelSync(path: string): string-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
@@ -22,7 +24,7 @@ function getSecurityLabelSync(path: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 文件路径。 |
+| path | string | 是 | 文件或目录的应用沙箱路径。 |
 
 **返回值：**
 
@@ -43,7 +45,7 @@ function getSecurityLabelSync(path: string): string
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
-## 示例
+**示例**
 
 ```TypeScript
 let filePath = pathDir + '/test.txt';

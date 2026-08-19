@@ -4,13 +4,50 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-util-class LRUCache--><!--Device-util-class LRUCache-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## [Symbol.iterator]
 
@@ -21,10 +58,6 @@
 指定对象的默认迭代器。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -38,7 +71,7 @@
 | --- | --- |
 | IterableIterator&lt;[K, V]&gt; | 返回以键值对形式的二维数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -62,10 +95,6 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 在移除值后执行后续操作。后续操作必须由开发者实现。该 API 在删除操作期间会被调用，例如 [get&lt;sup&gt;9+&lt;/sup&gt;](#get)、[put&lt;sup&gt;9+&lt;/sup&gt;](#put)、 [remove&lt;sup&gt;9+&lt;/sup&gt;](#remove)、[clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和 [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity)。 > **NOTE：**> > 如果在调用 [clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) 和 > [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity) 后执行回调方法，并且输入的 **key** 和 > **value** 参数为 MapIterator 类型，请参考示例 2 执行后续操作。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -92,17 +121,13 @@ clear(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-clear(): void--><!--Device-LRUCache-clear(): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -142,10 +167,6 @@ constructor(capacity?: number)
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-constructor(capacity?: number)--><!--Device-LRUCache-constructor(capacity?: number)-End-->
@@ -158,7 +179,7 @@ constructor(capacity?: number)
 | --- | --- | --- | --- |
 | capacity | number | 否 | 要创建的缓存的容量。默认值为 **64**，最大值为 **2147483647**。<br>**起始版本：** 12 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -182,10 +203,6 @@ contains(key: K): boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-contains(key: K): boolean--><!--Device-LRUCache-contains(key: K): boolean-End-->
@@ -204,7 +221,7 @@ contains(key: K): boolean
 | --- | --- |
 | boolean | 检查结果。如果缓存包含指定的 key，则返回 **true**；否则返回 **false**。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -236,10 +253,6 @@ createDefault(key: K): V
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-createDefault(key: K): V--><!--Device-LRUCache-createDefault(key: K): V-End-->
@@ -258,7 +271,7 @@ createDefault(key: K): V
 | --- | --- |
 | V | key 对应的值。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -277,10 +290,6 @@ entries(): IterableIterator<[K, V]>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-entries(): IterableIterator<[K, V]>--><!--Device-LRUCache-entries(): IterableIterator<[K, V]>-End-->
@@ -293,7 +302,7 @@ entries(): IterableIterator<[K, V]>
 | --- | --- |
 | IterableIterator&lt;[K, V]&gt; | 可迭代的数组。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -336,10 +345,6 @@ get(key: K): V | undefined
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-get(key: K): V | undefined--><!--Device-LRUCache-get(key: K): V | undefined-End-->
@@ -358,7 +363,7 @@ get(key: K): V | undefined
 | --- | --- |
 | V | key 对应的值。如果未找到匹配项，则返回 **createDefault** 中指定的值。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -390,10 +395,6 @@ getCapacity(): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-getCapacity(): number--><!--Device-LRUCache-getCapacity(): number-End-->
@@ -406,7 +407,7 @@ getCapacity(): number
 | --- | --- |
 | number | 缓存的容量。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -436,10 +437,6 @@ getCreateCount(): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-getCreateCount(): number--><!--Device-LRUCache-getCreateCount(): number-End-->
@@ -452,7 +449,7 @@ getCreateCount(): number
 | --- | --- |
 | number | 创建对象的次数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -508,10 +505,6 @@ getMatchCount(): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-getMatchCount(): number--><!--Device-LRUCache-getMatchCount(): number-End-->
@@ -524,7 +517,7 @@ getMatchCount(): number
 | --- | --- |
 | number | 查询值匹配的次数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -558,10 +551,6 @@ getMissCount(): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-getMissCount(): number--><!--Device-LRUCache-getMissCount(): number-End-->
@@ -574,7 +563,7 @@ getMissCount(): number
 | --- | --- |
 | number | 查询值未匹配的次数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -608,10 +597,6 @@ getPutCount(): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-getPutCount(): number--><!--Device-LRUCache-getPutCount(): number-End-->
@@ -624,7 +609,7 @@ getPutCount(): number
 | --- | --- |
 | number | 向缓存添加的次数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -656,10 +641,6 @@ getRemovalCount(): number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-getRemovalCount(): number--><!--Device-LRUCache-getRemovalCount(): number-End-->
@@ -672,7 +653,7 @@ getRemovalCount(): number
 | --- | --- |
 | number | 此缓存中键值对被回收的次数。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -708,10 +689,6 @@ isEmpty(): boolean
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-isEmpty(): boolean--><!--Device-LRUCache-isEmpty(): boolean-End-->
@@ -724,7 +701,7 @@ isEmpty(): boolean
 | --- | --- |
 | boolean | 如果缓存不包含任何值，则返回 **true**。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -756,10 +733,6 @@ keys(): K[]
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-keys(): K[]--><!--Device-LRUCache-keys(): K[]-End-->
@@ -772,7 +745,7 @@ keys(): K[]
 | --- | --- |
 | K[] | 此缓存中所有 key 的列表，按从最近最少访问到最近最多访问的顺序排列。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let pro = new util.LRUCache<number, string>();
@@ -802,10 +775,6 @@ put(key: K, value: V): V
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-put(key: K, value: V): V--><!--Device-LRUCache-put(key: K, value: V): V-End-->
@@ -825,7 +794,7 @@ put(key: K, value: V): V
 | --- | --- |
 | V | 添加的键值对的值。如果 key 或 value 为空，则抛出异常。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let pro = new util.LRUCache<number, number>();
@@ -843,10 +812,6 @@ remove(key: K): V | undefined
 从此缓存中移除 key 及其关联的值，并返回与该 key 关联的值。如果 key 不存在，则返回 **undefined**。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -866,7 +831,7 @@ remove(key: K): V | undefined
 | --- | --- |
 | V | 如果 key 存在于缓存中，则返回包含被移除键值对的 **Optional** 对象；如果 key 不存在 则返回 **undefined**；如果 **key** 传入 **null**，则抛出错误。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -898,10 +863,6 @@ toString(): string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-toString(): string--><!--Device-LRUCache-toString(): string-End-->
@@ -914,7 +875,7 @@ toString(): string
 | --- | --- |
 | string | 此缓存的字符串表示形式。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -950,10 +911,6 @@ updateCapacity(newCapacity: number): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-updateCapacity(newCapacity: number): void--><!--Device-LRUCache-updateCapacity(newCapacity: number): void-End-->
@@ -966,7 +923,7 @@ updateCapacity(newCapacity: number): void
 | --- | --- | --- | --- |
 | newCapacity | number | 是 | 缓存的新容量。最大值为 **2147483647**。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -992,10 +949,6 @@ values(): V[]
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-LRUCache-values(): V[]--><!--Device-LRUCache-values(): V[]-End-->
@@ -1008,7 +961,7 @@ values(): V[]
 | --- | --- |
 | V[] | 此缓存中所有值的列表，按从最近最少访问到最近最多访问的顺序排列。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let pro = new util.LRUCache<number, string>();
@@ -1039,10 +992,6 @@ length: number
 **类型：** number
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

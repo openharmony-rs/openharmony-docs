@@ -1,5 +1,11 @@
 # setAbilityDisabled
 
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
 ## setAbilityDisabled
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setAbilityDisabled(admin: Want, bundleName: string, accountId: number, 
 设置是否禁用指定应用（系统应用和三方应用均支持）的Ability组件。当前仅支持UIAbility类型，禁用后无法拉起此Ability组件的用户界面。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -28,7 +30,7 @@ function setAbilityDisabled(admin: Want, bundleName: string, accountId: number, 
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | bundleName | string | 是 | 应用包名，指定是否禁用的应用包名。 |
-| accountId | number | 是 | 用户ID，取值范围：大于等于0的整数。 <br> accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0的整数。 <br> accountId可以通过@ohos.account.osAccount中的 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
 | abilityName | string | 是 | 表示要禁用/解除禁用的Ability组件名（当前仅支持UIAbility）。 |
 | isDisabled | boolean | 是 | 是否禁用该Ability组件。true表示禁用该Ability组件，false表示解除禁用该Ability组件。 |
 
@@ -41,7 +43,7 @@ function setAbilityDisabled(admin: Want, bundleName: string, accountId: number, 
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { applicationManager, common } from '@kit.MDMKit';

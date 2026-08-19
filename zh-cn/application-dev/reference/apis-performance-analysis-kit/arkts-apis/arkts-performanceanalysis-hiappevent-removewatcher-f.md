@@ -1,5 +1,11 @@
 # removeWatcher
 
+## 导入模块
+
+```TypeScript
+import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+```
+
 ## removeWatcher
 
 ```TypeScript
@@ -9,10 +15,6 @@ function removeWatcher(watcher: Watcher): void
 移除事件观察者。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -33,7 +35,7 @@ function removeWatcher(watcher: Watcher): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [11102001](../errorcode-hiappevent.md#11102001-非法的观察者名称) | Invalid watcher name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // 1. 定义一个事件观察者

@@ -1,5 +1,11 @@
 # addNotificationSlot
 
+## 导入模块
+
+```TypeScript
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+```
+
 ## addNotificationSlot
 
 ```TypeScript
@@ -10,10 +16,6 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -23,7 +25,7 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slot | [NotificationSlot](../../apis-notification-kit/arkts-apis/arkts-notification-notificationslot-notificationslot-i.md) | 是 | 通知渠道实例，仅支持设置其notificationType属性。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 当添加NotificationSlot成功，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。 当添加NotificationSlot成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -31,7 +33,7 @@ function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<voi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -86,10 +88,6 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot): Promise<void>--><!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
@@ -112,7 +110,7 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

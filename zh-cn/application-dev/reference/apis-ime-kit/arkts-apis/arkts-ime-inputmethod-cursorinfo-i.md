@@ -4,13 +4,20 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethod-export interface CursorInfo--><!--Device-inputMethod-export interface CursorInfo-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
 
 ## displayId
 
@@ -23,10 +30,6 @@ displayId?: long
 **类型：** long
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +49,6 @@ height: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CursorInfo-height: double--><!--Device-CursorInfo-height: double-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -65,10 +64,6 @@ left: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CursorInfo-left: double--><!--Device-CursorInfo-left: double-End-->
 
@@ -86,10 +81,6 @@ top: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-CursorInfo-top: double--><!--Device-CursorInfo-top: double-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -105,10 +96,6 @@ width: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CursorInfo-width: double--><!--Device-CursorInfo-width: double-End-->
 

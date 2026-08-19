@@ -1,18 +1,20 @@
 # preQuerySync
 
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
 ## preQuerySync
 
 ```TypeScript
 function preQuerySync(query: AssetMap): Uint8Array
 ```
 
-查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md#querysync)、 [asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md#postquerysync)。使用同步方式返回结果。
+查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md)、 [asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md)。使用同步方式返回结果。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
 
@@ -51,7 +53,7 @@ function preQuerySync(query: AssetMap): Uint8Array
 | [24000016](../errorcode-asset.md#24000016-缓存数量超限) | The cache exceeds the limit. |
 | [24000017](../errorcode-asset.md#24000017-该子功能不支持) | The capability is not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { asset } from '@kit.AssetStoreKit';

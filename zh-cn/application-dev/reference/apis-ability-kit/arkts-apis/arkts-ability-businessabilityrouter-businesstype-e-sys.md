@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-businessAbilityRouter-export enum BusinessType--><!--Device-businessAbilityRouter-export enum BusinessType-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -24,10 +20,6 @@ SHARE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-BusinessType-SHARE = 0--><!--Device-BusinessType-SHARE = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -43,10 +35,6 @@ UNSPECIFIED = 255
 标识未指定类型的Ability信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BusinessType-UNSPECIFIED = 255--><!--Device-BusinessType-UNSPECIFIED = 255-End-->
 

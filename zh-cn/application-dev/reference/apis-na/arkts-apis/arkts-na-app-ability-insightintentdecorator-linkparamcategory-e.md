@@ -4,9 +4,7 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare enum LinkParamCategory--><!--Device-unnamed-export declare enum LinkParamCategory-End-->
 
@@ -22,9 +20,7 @@ LINK = 'link'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,13 +34,11 @@ LINK = 'link'
 WANT = 'want'
 ```
 
-表示意图参数类别为'want'。系统获取paramName字段对应的意图参数映射名称，并将该意图参数映射名称及取值通过 [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md#want)的parameters字段进行传递。
+表示意图参数类别为'want'。系统获取paramName字段对应的意图参数映射名称，并将该意图参数映射名称及取值通过 [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)的parameters字段进行传递。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -8,10 +8,6 @@ Type definition of callback function for audio renderer write data.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackResult--><!--Device-audio-type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackResult-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum ResourceType--><!--Device-photoAccessHelper-enum ResourceType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ PHOTO_PROXY = 3
 表示照片代理资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResourceType-PHOTO_PROXY = 3--><!--Device-ResourceType-PHOTO_PROXY = 3-End-->
 
@@ -42,10 +34,6 @@ PRIVATE_MOVING_PHOTO_RESOURCE = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_RESOURCE = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -61,10 +49,6 @@ PRIVATE_MOVING_PHOTO_METADATA = 5
 表示私有动态照片元数据资源。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ResourceType-PRIVATE_MOVING_PHOTO_METADATA = 5--><!--Device-ResourceType-PRIVATE_MOVING_PHOTO_METADATA = 5-End-->
 

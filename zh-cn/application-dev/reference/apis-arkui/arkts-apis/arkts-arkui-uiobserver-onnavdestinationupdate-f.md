@@ -1,6 +1,12 @@
 # on_navDestinationUpdate
 
-## on_navDestinationUpdate
+## 导入模块
+
+```TypeScript
+import { uiObserver } from '@kit.ArkUI';
+```
+
+## on('navDestinationUpdate')
 
 ```TypeScript
 export function on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback<NavDestinationInfo>): void
@@ -9,10 +15,6 @@ export function on(type: 'navDestinationUpdate', options: { navigationId: Resour
 监听NavDestination组件的状态变化。与 * [uiObserver.on](#onnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,9 +30,9 @@ export function on(type: 'navDestinationUpdate', options: { navigationId: Resour
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
 | options | { navigationId: ResourceStr } | 是 | 指定监听的Navigation的id。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;NavDestinationInfo&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;NavDestinationInfo&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // Index.ets
@@ -87,7 +89,7 @@ struct Index {
 ```
 
 
-## on_navDestinationUpdate
+## on('navDestinationUpdate')
 
 ```TypeScript
 export function on(type: 'navDestinationUpdate', callback: Callback<NavDestinationInfo>): void
@@ -96,10 +98,6 @@ export function on(type: 'navDestinationUpdate', callback: Callback<NavDestinati
 监听NavDestination组件的状态变化。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -114,5 +112,5 @@ export function on(type: 'navDestinationUpdate', callback: Callback<NavDestinati
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;NavDestinationInfo&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;NavDestinationInfo&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
 

@@ -1,5 +1,11 @@
 # onPeerDimensionsChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
+
 ## onPeerDimensionsChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onPeerDimensionsChange(callback: Callback<PeerDimensionsDetail>): void
 Subscribe to the peerDimensionsChange event.
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
@@ -26,7 +28,7 @@ Subscribe to the peerDimensionsChange event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PeerDimensionsDetail](arkts-telephony-call-peerdimensionsdetail-i-sys.md)&gt; | 是 | Indicates the callback for getting the result of PeerDimensionsDetail details. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[PeerDimensionsDetail](arkts-telephony-call-peerdimensionsdetail-i-sys.md)&gt; | 是 | Indicates the callback for getting the result of PeerDimensionsDetail details. |
 
 **错误码：**
 

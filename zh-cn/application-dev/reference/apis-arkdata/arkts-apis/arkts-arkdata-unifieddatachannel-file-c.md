@@ -1,18 +1,20 @@
 # File
 
-File类型数据，是[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#unifiedrecord)的子类，也是文件类型数据的基类，用于描述文件类型数据，推荐开发者优先使用File的子类描述数据，如 [Image](arkts-arkdata-unifieddatachannel-image-c.md#image)、[Video](arkts-arkdata-unifieddatachannel-video-c.md#video)、 [Folder](arkts-arkdata-unifieddatachannel-folder-c.md#folder)等具体子类。
+File类型数据，是[UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)的子类，也是文件类型数据的基类，用于描述文件类型数据，推荐开发者优先使用File的子类描述数据，如 [Image](arkts-arkdata-unifieddatachannel-image-c.md)、[Video](arkts-arkdata-unifieddatachannel-video-c.md)、 [Folder](arkts-arkdata-unifieddatachannel-folder-c.md)等具体子类。
 
-**继承/实现关系：** File extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md#unifiedrecord)
+**继承/实现关系：** File extends [UnifiedRecord](arkts-arkdata-unifieddatachannel-unifiedrecord-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unifiedDataChannel-class File--><!--Device-unifiedDataChannel-class File-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+## 导入模块
+
+```TypeScript
+import { unifiedDataChannel } from '@kit.ArkData';
+```
 
 ## details
 
@@ -25,10 +27,6 @@ details?: Record<string, string>
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

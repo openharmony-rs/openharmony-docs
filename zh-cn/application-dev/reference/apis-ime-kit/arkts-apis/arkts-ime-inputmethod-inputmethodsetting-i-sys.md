@@ -1,16 +1,23 @@
 # InputMethodSetting
 
-InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md#getsetting)获取到InputMethodSetting实例后，通过实例调用。
+InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能： - **输入法变化订阅**：通过 on('imeChange') 订阅输入法及子类型变化事件，当用户切换输入法时收到通知。 - **输入法列表查询**：通过 [getInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getinputmethods) 查询已激活/未激活输入法列表，通过 [getAllInputMethods](arkts-ime-inputmethod-inputmethodsetting-i.md#getallinputmethods) 查询所有已安装输入法列表，通过 [listInputMethodSubtype](arkts-ime-inputmethod-inputmethodsetting-i.md#listinputmethodsubtype) 查询指定输入法的子类型列表。 - **面板可见性查询**：通过isPanelShown查询输入法面板是否显示。 - **输入法选择对话框**：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。 需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取InputMethodSetting实例后使用。 下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取到InputMethodSetting实例后，通过实例调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputMethod-interface InputMethodSetting--><!--Device-inputMethod-interface InputMethodSetting-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethod } from '@kit.IMEKit';
+import { inputMethodEngine } from '@kit.IMEKit';
+import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+import { InputMethodExtraConfig } from '@kit.IMEKit';
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
 
 ## enableInputMethod
 
@@ -21,10 +28,6 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 修改输入法的启用状态。使用promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
@@ -58,7 +61,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -97,10 +100,6 @@ enableInputMethod(
 修改指定用户输入法的启用状态。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
@@ -150,10 +149,6 @@ getAllInputMethodsSync(userId?: int): Array<InputMethodProperty>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodSetting-getAllInputMethodsSync(userId?: int): Array<InputMethodProperty>--><!--Device-InputMethodSetting-getAllInputMethodsSync(userId?: int): Array<InputMethodProperty>-End-->
@@ -195,10 +190,6 @@ getCursorInfo(userId?: int): CursorInfo
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodSetting-getCursorInfo(userId?: int): CursorInfo--><!--Device-InputMethodSetting-getCursorInfo(userId?: int): CursorInfo-End-->
@@ -230,7 +221,7 @@ getCursorInfo(userId?: int): CursorInfo
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | [12800024](../errorcode-inputmethod-framework.md#12800024-指定的用户未在前台) | the specified user is not in the foreground. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -254,10 +245,6 @@ getDefaultInputMethodAbility(): InputMethodProperty
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodSetting-getDefaultInputMethodAbility(): InputMethodProperty--><!--Device-InputMethodSetting-getDefaultInputMethodAbility(): InputMethodProperty-End-->
@@ -279,7 +266,7 @@ getDefaultInputMethodAbility(): InputMethodProperty
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -302,10 +289,6 @@ getInputMethodSubtypes(bundleName: string, userId?: int): Array<InputMethodSubty
 获取指定用户指定输入法的子类型列表。同步接口。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -349,10 +332,6 @@ getInputMethodsSync(enable: boolean, userId?: int): Array<InputMethodProperty>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodSetting-getInputMethodsSync(enable: boolean, userId?: int): Array<InputMethodProperty>--><!--Device-InputMethodSetting-getInputMethodsSync(enable: boolean, userId?: int): Array<InputMethodProperty>-End-->
@@ -395,10 +374,6 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputMethodSetting-isPanelShown(panelInfo: PanelInfo): boolean--><!--Device-InputMethodSetting-isPanelShown(panelInfo: PanelInfo): boolean-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -425,7 +400,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
@@ -452,10 +427,6 @@ isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 查询指定类型的输入法面板在指定屏幕上是否处于显示状态。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -485,7 +456,7 @@ isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -527,10 +498,6 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodSetting-offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void--><!--Device-InputMethodSetting-offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void-End-->
@@ -561,10 +528,6 @@ offImeHide(callback?: Callback<Array<InputWindowInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputMethodSetting-offImeHide(callback?: Callback<Array<InputWindowInfo>>): void--><!--Device-InputMethodSetting-offImeHide(callback?: Callback<Array<InputWindowInfo>>): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -575,9 +538,9 @@ offImeHide(callback?: Callback<Array<InputWindowInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 否 | 取消订阅的回调函数。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 否 | 取消订阅的回调函数。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().offImeHide();
@@ -593,10 +556,6 @@ offImeShow(callback?: Callback<Array<InputWindowInfo>>):void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodSetting-offImeShow(callback?: Callback<Array<InputWindowInfo>>):void--><!--Device-InputMethodSetting-offImeShow(callback?: Callback<Array<InputWindowInfo>>):void-End-->
@@ -609,27 +568,23 @@ offImeShow(callback?: Callback<Array<InputWindowInfo>>):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 否 | 取消订阅的回调函数。 参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 否 | 取消订阅的回调函数。 参数不填写时，取消订阅type对应的所有回调事件。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().offImeShow();
 ```
 
-## off_imeHide
+## off('imeHide')
 
 ```TypeScript
 off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
 ```
 
-取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘隐藏事件。
+取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md)固定态软键盘隐藏事件。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
 
@@ -644,25 +599,21 @@ off(type: 'imeHide', callback?: (info: Array<InputWindowInfo>) => void): void
 | type | 'imeHide' | 是 | 设置监听类型，固定取值'imeHide'。 |
 | callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 <br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().off('imeHide');
 ```
 
-## off_imeShow
+## off('imeShow')
 
 ```TypeScript
 off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
 ```
 
-取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘显示事件。
+取消订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md)固定态软键盘显示事件。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void-End-->
 
@@ -677,7 +628,7 @@ off(type: 'imeShow', callback?: (info: Array<InputWindowInfo>) => void): void
 | type | 'imeShow' | 是 | 设置监听类型，固定取值'imeShow'。 |
 | callback | (info: Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;) =&gt; void | 否 | 取消订阅的回调函数。 <br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().off('imeShow');
@@ -692,10 +643,6 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 订阅输入法及子类型变化监听事件，携带发生输入法变更的用户ID。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -727,10 +674,6 @@ onImeHide(callback: Callback<Array<InputWindowInfo>>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-InputMethodSetting-onImeHide(callback: Callback<Array<InputWindowInfo>>): void--><!--Device-InputMethodSetting-onImeHide(callback: Callback<Array<InputWindowInfo>>): void-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -741,7 +684,7 @@ onImeHide(callback: Callback<Array<InputWindowInfo>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
 
 **错误码：**
 
@@ -749,7 +692,7 @@ onImeHide(callback: Callback<Array<InputWindowInfo>>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().onImeHide((info: Array<inputMethod.InputWindowInfo>) => {
@@ -767,10 +710,6 @@ onImeShow(callback: Callback<Array<InputWindowInfo>>):void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-InputMethodSetting-onImeShow(callback: Callback<Array<InputWindowInfo>>):void--><!--Device-InputMethodSetting-onImeShow(callback: Callback<Array<InputWindowInfo>>):void-End-->
@@ -783,7 +722,7 @@ onImeShow(callback: Callback<Array<InputWindowInfo>>):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;Array&lt;[InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md)&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
 
 **错误码：**
 
@@ -791,7 +730,7 @@ onImeShow(callback: Callback<Array<InputWindowInfo>>):void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().onImeShow((info: Array<inputMethod.InputWindowInfo>) => {
@@ -799,19 +738,15 @@ inputMethod.getSetting().onImeShow((info: Array<inputMethod.InputWindowInfo>) =>
 });
 ```
 
-## on_imeHide
+## on('imeHide')
 
 ```TypeScript
 on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void
 ```
 
-订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘隐藏事件。使用callback异步回调。
+订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md)固定态软键盘隐藏事件。使用callback异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-InputMethodSetting-on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void-End-->
 
@@ -832,7 +767,7 @@ on(type: 'imeHide', callback: (info: Array<InputWindowInfo>) => void): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().on('imeHide', (info: Array<inputMethod.InputWindowInfo>) => {
@@ -840,19 +775,15 @@ inputMethod.getSetting().on('imeHide', (info: Array<inputMethod.InputWindowInfo>
 });
 ```
 
-## on_imeShow
+## on('imeShow')
 
 ```TypeScript
 on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void
 ```
 
-订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md#panel)固定态软键盘显示事件。使用callback异步回调。
+订阅输入法[Panel](arkts-ime-inputmethodengine-panel-i.md)固定态软键盘显示事件。使用callback异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-InputMethodSetting-on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void--><!--Device-InputMethodSetting-on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void-End-->
 
@@ -873,7 +804,7 @@ on(type: 'imeShow', callback: (info: Array<InputWindowInfo>) => void): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | not system application. |
 
-## 示例
+**示例**
 
 ```TypeScript
 inputMethod.getSetting().on('imeShow', (info: Array<inputMethod.InputWindowInfo>) => {

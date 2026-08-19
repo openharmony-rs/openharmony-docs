@@ -1,5 +1,11 @@
 # getAppThreadCpuUsage
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getAppThreadCpuUsage
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAppThreadCpuUsage(): ThreadCpuUsage[]
 获取应用线程CPU使用情况。 > **注意** > > 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getAppThreadCpuUsage(): ThreadCpuUsage[]--><!--Device-hidebug-function getAppThreadCpuUsage(): ThreadCpuUsage[]-End-->
 
@@ -24,7 +26,7 @@ function getAppThreadCpuUsage(): ThreadCpuUsage[]
 | --- | --- |
 | [ThreadCpuUsage](arkts-performanceanalysis-hidebug-threadcpuusage-i.md)[] | 返回当前应用进程下所有ThreadCpuUsage数组。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

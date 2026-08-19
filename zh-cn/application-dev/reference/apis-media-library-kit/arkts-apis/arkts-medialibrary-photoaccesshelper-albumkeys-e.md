@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum AlbumKeys--><!--Device-photoAccessHelper-enum AlbumKeys-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -21,10 +17,6 @@ URI = 'uri'
 相册uri。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumKeys-URI = 'uri'--><!--Device-AlbumKeys-URI = 'uri'-End-->
 
@@ -40,10 +32,6 @@ ALBUM_NAME = 'album_name'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AlbumKeys-ALBUM_NAME = 'album_name'--><!--Device-AlbumKeys-ALBUM_NAME = 'album_name'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -57,10 +45,6 @@ CHANGE_TIME = 'change_time'
 相册的更改时间（单位：秒）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumKeys-CHANGE_TIME = 'change_time'--><!--Device-AlbumKeys-CHANGE_TIME = 'change_time'-End-->
 

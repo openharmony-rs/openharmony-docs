@@ -4,13 +4,19 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface WebMediaOptions--><!--Device-unnamed-declare interface WebMediaOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## audioExclusive
 
@@ -24,10 +30,6 @@ audioExclusive?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WebMediaOptions-audioExclusive?: boolean--><!--Device-WebMediaOptions-audioExclusive?: boolean-End-->
@@ -40,15 +42,11 @@ audioExclusive?: boolean
 audioSessionType?: AudioSessionType
 ```
 
-应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../apis-audio-kit/arkts-apis/arkts-audio-audio-streamusage-e.md#streamusage)中的STREAM_USAGE_MUSIC。用于改变组件音频类型 与系统音频类型映射关系，影响ArkWeb音频焦点策略。
+应用中Web音频类型。默认值对应系统音频流类型[StreamUsage](../../apis-audio-kit/arkts-apis/arkts-audio-audio-streamusage-e.md)中的STREAM_USAGE_MUSIC。用于改变组件音频类型 与系统音频类型映射关系，影响ArkWeb音频焦点策略。
 
 **类型：** [AudioSessionType](arkts-arkweb-audiosessiontype-e.md)
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-WebMediaOptions-audioSessionType?: AudioSessionType--><!--Device-WebMediaOptions-audioSessionType?: AudioSessionType-End-->
 
@@ -65,10 +63,6 @@ resumeInterval?: number
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

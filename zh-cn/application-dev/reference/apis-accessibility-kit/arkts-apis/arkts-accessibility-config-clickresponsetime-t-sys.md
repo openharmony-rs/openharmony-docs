@@ -8,10 +8,6 @@ type ClickResponseTime = 'Short' | 'Medium' | 'Long'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-config-type ClickResponseTime = 'Short' | 'Medium' | 'Long'--><!--Device-config-type ClickResponseTime = 'Short' | 'Medium' | 'Long'-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core

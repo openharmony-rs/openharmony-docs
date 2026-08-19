@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum DisplayRotation--><!--Device-unnamed-declare enum DisplayRotation-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
@@ -21,10 +17,6 @@ ROTATION_0 = 0
 设备显示器不旋转，初始形态垂直显示。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ ROTATION_90 = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DisplayRotation-ROTATION_90 = 1--><!--Device-DisplayRotation-ROTATION_90 = 1-End-->
@@ -62,10 +50,6 @@ ROTATION_180 = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DisplayRotation-ROTATION_180 = 2--><!--Device-DisplayRotation-ROTATION_180 = 2-End-->
@@ -81,10 +65,6 @@ ROTATION_270 = 3
 设备显示器顺时针旋转270°，逆向水平显示。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

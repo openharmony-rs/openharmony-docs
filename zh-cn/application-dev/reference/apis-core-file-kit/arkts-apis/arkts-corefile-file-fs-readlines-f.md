@@ -1,18 +1,22 @@
 # readLines
 
+## 导入模块
+
+```TypeScript
+import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit'
+import { ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, TaskSignal } from '@kit.CoreFileKit';
+```
+
 ## readLines
 
 ```TypeScript
 declare function readLines(filePath: string, options?: Options): Promise<ReaderIterator>
 ```
 
-逐行读取文件文本内容，使用promise异步回调。只支持读取utf-8格式文件。
+逐行读取文件文本内容，只支持读取utf-8格式文件。使用promise异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare function readLines(filePath: string, options?: Options): Promise<ReaderIterator>--><!--Device-unnamed-declare function readLines(filePath: string, options?: Options): Promise<ReaderIterator>-End-->
 
@@ -56,13 +60,9 @@ declare function readLines(filePath: string, options?: Options): Promise<ReaderI
 declare function readLines(filePath: string, callback: AsyncCallback<ReaderIterator>): void
 ```
 
-逐行读取文件文本内容，使用callback异步回调，只支持读取utf-8格式文件。
+逐行读取文件文本内容，只支持读取utf-8格式文件。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare function readLines(filePath: string, callback: AsyncCallback<ReaderIterator>): void--><!--Device-unnamed-declare function readLines(filePath: string, callback: AsyncCallback<ReaderIterator>): void-End-->
 
@@ -73,7 +73,7 @@ declare function readLines(filePath: string, callback: AsyncCallback<ReaderItera
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ReaderIterator](arkts-corefile-file-fs-readeriterator-i.md)&gt; | 是 | 逐行读取文件文本内容回调。返回文件读取迭代器。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ReaderIterator](arkts-corefile-file-fs-readeriterator-i.md)&gt; | 是 | 回调函数，返回文件读取迭代器。 |
 
 **错误码：**
 
@@ -99,13 +99,9 @@ declare function readLines(filePath: string, callback: AsyncCallback<ReaderItera
 declare function readLines(filePath: string, options: Options, callback: AsyncCallback<ReaderIterator>): void
 ```
 
-逐行读取文件文本内容，使用callback异步回调，只支持读取utf-8格式文件。
+逐行读取文件文本内容，可配置读取选项，只支持读取utf-8格式文件。使用callback异步回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare function readLines(filePath: string, options: Options, callback: AsyncCallback<ReaderIterator>): void--><!--Device-unnamed-declare function readLines(filePath: string, options: Options, callback: AsyncCallback<ReaderIterator>): void-End-->
 
@@ -117,7 +113,7 @@ declare function readLines(filePath: string, options: Options, callback: AsyncCa
 | --- | --- | --- | --- |
 | filePath | string | 是 | 文件的应用沙箱路径。 |
 | options | [Options](../../apis-na/arkts-apis/arkts-na-file-fs-options-i.md) | 是 | 可选项。支持以下选项：<br/>- encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认'utf-8'，仅支持'utf-8'。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ReaderIterator](arkts-corefile-file-fs-readeriterator-i.md)&gt; | 是 | 逐行读取文件文本内容回调。返回文件读取迭代器。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[ReaderIterator](arkts-corefile-file-fs-readeriterator-i.md)&gt; | 是 | 回调函数，返回文件读取迭代器。 |
 
 **错误码：**
 

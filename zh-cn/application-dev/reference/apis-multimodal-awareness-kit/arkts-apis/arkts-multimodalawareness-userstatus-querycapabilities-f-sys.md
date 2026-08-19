@@ -1,5 +1,11 @@
 # queryCapabilities（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { userStatus } from '@kit.MultimodalAwarenessKit';
+```
+
 ## queryCapabilities
 
 ```TypeScript
@@ -9,10 +15,6 @@ function queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomi
 查询设备支持的原子化服务能力。该方法通过底层接口判断是否支持指定的原子化服务能力，返回设备实际支持的能力列表。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

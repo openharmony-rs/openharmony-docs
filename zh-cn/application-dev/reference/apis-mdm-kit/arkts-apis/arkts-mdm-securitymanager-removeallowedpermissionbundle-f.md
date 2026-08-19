@@ -1,18 +1,20 @@
 # removeAllowedPermissionBundle
 
+## 导入模块
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+```
+
 ## removeAllowedPermissionBundle
 
 ```TypeScript
 function removeAllowedPermissionBundle(admin: Want, permission: string, applicationInstance: common.ApplicationInstance): void
 ```
 
-从权限使用例外名单中移除指定应用，移除后该应用不能继续使用对应的权限。 > **说明：** > > 必须先通过[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md#setdisallowedpermission)接口禁用权限后，才能从权限使用例外名单移除应用，否则返回错误码92010 > 44。
+从权限使用例外名单中移除指定应用，移除后该应用不能继续使用对应的权限。 > **说明：** > > 必须先通过[setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md)接口禁用权限后，才能从权限使用例外名单移除应用，否则返回错误码92010 > 44。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -40,7 +42,7 @@ function removeAllowedPermissionBundle(admin: Want, permission: string, applicat
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { securityManager, common } from '@kit.MDMKit';

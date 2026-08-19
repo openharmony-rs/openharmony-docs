@@ -1,12 +1,8 @@
 # EnvironmentBackgroundType
 
-环境背景类型枚举.
+环境背景类型枚举，用于定义场景的背景呈现方式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export enum EnvironmentBackgroundType--><!--Device-unnamed-export enum EnvironmentBackgroundType-End-->
 
@@ -18,13 +14,9 @@
 BACKGROUND_NONE = 0
 ```
 
-背景为空.
+无背景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnvironmentBackgroundType-BACKGROUND_NONE = 0--><!--Device-EnvironmentBackgroundType-BACKGROUND_NONE = 0-End-->
 
@@ -36,13 +28,9 @@ BACKGROUND_NONE = 0
 BACKGROUND_IMAGE = 1
 ```
 
-背景为图像.
+图片背景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnvironmentBackgroundType-BACKGROUND_IMAGE = 1--><!--Device-EnvironmentBackgroundType-BACKGROUND_IMAGE = 1-End-->
 
@@ -54,13 +42,9 @@ BACKGROUND_IMAGE = 1
 BACKGROUND_CUBEMAP = 2
 ```
 
-背景为立方体贴图.
+立方体贴图背景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnvironmentBackgroundType-BACKGROUND_CUBEMAP = 2--><!--Device-EnvironmentBackgroundType-BACKGROUND_CUBEMAP = 2-End-->
 
@@ -72,13 +56,9 @@ BACKGROUND_CUBEMAP = 2
 BACKGROUND_EQUIRECTANGULAR = 3
 ```
 
-背景为等距柱状投影.
+等距柱状投影背景。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-EnvironmentBackgroundType-BACKGROUND_EQUIRECTANGULAR = 3--><!--Device-EnvironmentBackgroundType-BACKGROUND_EQUIRECTANGULAR = 3-End-->
 

@@ -4,13 +4,14 @@
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface VelocityOptions--><!--Device-unnamed-declare interface VelocityOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## angle
 
@@ -23,10 +24,6 @@ angle: ParticleTuple<number, number>
 **类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +44,6 @@ speed: ParticleTuple<number, number>
 **类型：** [ParticleTuple](arkts-arkui-particletuple-t.md)&lt;number, number&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

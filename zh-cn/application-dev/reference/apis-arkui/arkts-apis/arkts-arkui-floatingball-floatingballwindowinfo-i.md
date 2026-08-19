@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-floatingBall-interface FloatingBallWindowInfo--><!--Device-floatingBall-interface FloatingBallWindowInfo-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+```
 
 ## windowId
 
@@ -23,10 +25,6 @@ readonly windowId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-FloatingBallWindowInfo-readonly windowId: int--><!--Device-FloatingBallWindowInfo-readonly windowId: int-End-->
 

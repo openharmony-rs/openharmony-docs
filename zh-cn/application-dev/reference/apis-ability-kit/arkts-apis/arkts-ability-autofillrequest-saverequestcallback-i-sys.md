@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface SaveRequestCallback--><!--Device-unnamed-export interface SaveRequestCallback-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -24,10 +20,6 @@ onFailure(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SaveRequestCallback-onFailure(): void--><!--Device-SaveRequestCallback-onFailure(): void-End-->
@@ -43,7 +35,7 @@ onFailure(): void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -196,10 +188,6 @@ onSuccess(): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SaveRequestCallback-onSuccess(): void--><!--Device-SaveRequestCallback-onSuccess(): void-End-->
@@ -215,7 +203,7 @@ onSuccess(): void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

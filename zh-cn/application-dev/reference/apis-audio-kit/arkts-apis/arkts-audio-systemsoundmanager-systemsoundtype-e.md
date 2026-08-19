@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-systemSoundManager-enum SystemSoundType--><!--Device-systemSoundManager-enum SystemSoundType-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -21,10 +17,6 @@ PHOTO_SHUTTER = 0
 拍照音效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ VIDEO_RECORDING_BEGIN = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SystemSoundType-VIDEO_RECORDING_BEGIN = 1--><!--Device-SystemSoundType-VIDEO_RECORDING_BEGIN = 1-End-->
@@ -61,10 +49,6 @@ VIDEO_RECORDING_END = 2
 视频录制结束音效。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

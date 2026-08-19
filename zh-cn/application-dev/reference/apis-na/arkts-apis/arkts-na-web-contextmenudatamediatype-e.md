@@ -4,9 +4,7 @@ Defines the context menu media type, related to onContextMenuShow method.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare enum ContextMenuDataMediaType--><!--Device-unnamed-export declare enum ContextMenuDataMediaType-End-->
 
@@ -22,9 +20,7 @@ Default value, indicating that the current context menu is not associated with a
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ContextMenuDataMediaType-NONE = 0--><!--Device-ContextMenuDataMediaType-NONE = 0-End-->
 
@@ -40,9 +36,7 @@ Image.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ContextMenuDataMediaType-IMAGE = 1--><!--Device-ContextMenuDataMediaType-IMAGE = 1-End-->
 
@@ -58,9 +52,7 @@ Video.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ContextMenuDataMediaType-VIDEO = 2--><!--Device-ContextMenuDataMediaType-VIDEO = 2-End-->
 
@@ -76,9 +68,7 @@ Audio.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ContextMenuDataMediaType-AUDIO = 3--><!--Device-ContextMenuDataMediaType-AUDIO = 3-End-->
 
@@ -94,9 +84,7 @@ Canvas.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-ContextMenuDataMediaType-CANVAS = 4--><!--Device-ContextMenuDataMediaType-CANVAS = 4-End-->
 

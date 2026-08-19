@@ -4,13 +4,15 @@ NativeMediaPlayerSurfaceInfo 使用enableNativeMediaPlayer来进行同层渲染�
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-webview-class NativeMediaPlayerSurfaceInfo--><!--Device-webview-class NativeMediaPlayerSurfaceInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { webview } from '@kit.ArkWeb';
+```
 
 ## id
 
@@ -23,10 +25,6 @@ surface 的 id，用于同层渲染的 NativeImage 的 surfaceId。 详见Native
 **类型：** string
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ surface 的位置信息，用于指定同层渲染时 surface 的显示位置和
 **类型：** [RectEvent](arkts-arkweb-webview-rectevent-i.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 <!--Device-NativeMediaPlayerSurfaceInfo-rect: RectEvent--><!--Device-NativeMediaPlayerSurfaceInfo-rect: RectEvent-End-->
 

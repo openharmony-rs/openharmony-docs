@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface NotificationBasicContent--><!--Device-unnamed-export interface NotificationBasicContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -23,10 +19,6 @@ additionalText?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationBasicContent-additionalText?: string--><!--Device-NotificationBasicContent-additionalText?: string-End-->
 
@@ -44,10 +36,6 @@ lockscreenPicture?: image.PixelMap
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationBasicContent-lockscreenPicture?: image.PixelMap--><!--Device-NotificationBasicContent-lockscreenPicture?: image.PixelMap-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -64,10 +52,6 @@ text: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NotificationBasicContent-text: string--><!--Device-NotificationBasicContent-text: string-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
@@ -83,10 +67,6 @@ title: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NotificationBasicContent-title: string--><!--Device-NotificationBasicContent-title: string-End-->
 

@@ -50,7 +50,7 @@ FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 条件变量初始化成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | 条件变量初始化成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 ### ffrt_cond_signal()
 
@@ -74,7 +74,7 @@ FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 线程被唤醒时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | 线程被唤醒时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -103,7 +103,7 @@ FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 线程被唤醒时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | 线程被唤醒时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -133,7 +133,7 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 阻塞后被成功唤醒时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | 阻塞后被成功唤醒时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -166,7 +166,7 @@ FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 阻塞后被成功唤醒时返回`ffrt_success`；<br>         未被唤醒且到达`time_point`时返回`ffrt_error_timedout`；<br>         `cond`、`mutex`或`time_point`任一为null时返回`ffrt_error_inval`。 |
+| FFRT_C_API int | 阻塞后被成功唤醒时返回`ffrt_success`；          未被唤醒且到达`time_point`时返回`ffrt_error_timedout`；          `cond`、`mutex`或`time_point`任一为null时返回`ffrt_error_inval`。 |
 
 **参考：**
 
@@ -197,6 +197,6 @@ FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API int | 条件变量销毁成功时返回`ffrt_success`；<br>         否则返回`ffrt_error_inval`。 |
+| FFRT_C_API int | 条件变量销毁成功时返回`ffrt_success`；          否则返回`ffrt_error_inval`。 |
 
 

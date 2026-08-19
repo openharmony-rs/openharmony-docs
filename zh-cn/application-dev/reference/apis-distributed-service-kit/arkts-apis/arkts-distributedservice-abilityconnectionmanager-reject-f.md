@@ -1,5 +1,11 @@
 # reject
 
+## 导入模块
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+```
+
 ## reject
 
 ```TypeScript
@@ -9,10 +15,6 @@ function reject(token: string, reason: string): void
 在跨端应用协同过程中，在拒绝对端的连接请求后，向对端发送拒绝原因。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -33,7 +35,7 @@ function reject(token: string, reason: string): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

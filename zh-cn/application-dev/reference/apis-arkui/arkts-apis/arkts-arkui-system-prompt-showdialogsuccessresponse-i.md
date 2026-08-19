@@ -1,16 +1,18 @@
-# ShowDialogSuccessResponse
+# ShowDialogSuccessResponse(弹窗)
 
 定义ShowDialog的响应。
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface ShowDialogSuccessResponse--><!--Device-unnamed-export interface ShowDialogSuccessResponse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuccessResponse, ShowToastOptions } from '@kit.ArkUI';
+```
 
 ## index
 
@@ -23,10 +25,6 @@ index: number
 **类型：** number
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

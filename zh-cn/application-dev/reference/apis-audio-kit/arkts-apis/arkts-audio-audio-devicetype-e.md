@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum DeviceType--><!--Device-audio-enum DeviceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -21,10 +17,6 @@ INVALID = 0
 无效设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ EARPIECE = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-EARPIECE = 1--><!--Device-DeviceType-EARPIECE = 1-End-->
@@ -61,10 +49,6 @@ SPEAKER = 2
 扬声器。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ WIRED_HEADSET = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-WIRED_HEADSET = 3--><!--Device-DeviceType-WIRED_HEADSET = 3-End-->
@@ -101,10 +81,6 @@ WIRED_HEADPHONES = 4
 有线耳机，不带麦克风。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ BLUETOOTH_SCO = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-BLUETOOTH_SCO = 7--><!--Device-DeviceType-BLUETOOTH_SCO = 7-End-->
@@ -141,10 +113,6 @@ BLUETOOTH_A2DP = 8
 蓝牙设备A2DP（Advanced Audio Distribution Profile）连接。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ MIC = 15
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-MIC = 15--><!--Device-DeviceType-MIC = 15-End-->
@@ -181,10 +145,6 @@ USB_HEADSET = 22
 USB耳机，带麦克风。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -202,10 +162,6 @@ DisplayPort（显示接口，简称DP），用于外接扩展设备。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-DeviceType-DISPLAY_PORT = 23--><!--Device-DeviceType-DISPLAY_PORT = 23-End-->
@@ -221,10 +177,6 @@ REMOTE_CAST = 24
 音频被系统应用投送到其他的远程设备。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -242,10 +194,6 @@ USB设备（不包含USB耳机）。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceType-USB_DEVICE = 25--><!--Device-DeviceType-USB_DEVICE = 25-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -259,10 +207,6 @@ HDMI = 27
 HDMI设备（例如HDMI、ARC、eARC等）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceType-HDMI = 27--><!--Device-DeviceType-HDMI = 27-End-->
 
@@ -278,10 +222,6 @@ LINE_DIGITAL = 28
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceType-LINE_DIGITAL = 28--><!--Device-DeviceType-LINE_DIGITAL = 28-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -295,10 +235,6 @@ REMOTE_DAUDIO = 25
 Distributed virtual audio device.
 
 **起始版本：** 16
-
-**ArkTS模式：** 起始版本为16。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本16开始，该接口支持在原子化服务API中使用。
 
@@ -316,10 +252,6 @@ HEARING_AID = 30
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-DeviceType-HEARING_AID = 30--><!--Device-DeviceType-HEARING_AID = 30-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -333,10 +265,6 @@ NEARLINK = 31
 星闪设备。 Note: This original device type can be obtained after it is declared via [declareDeviceTypesCompatibility](arkts-audio-audio-audioroutingmanager-i.md#declaredevicetypescompatibility).
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 <!--Device-DeviceType-NEARLINK = 31--><!--Device-DeviceType-NEARLINK = 31-End-->
 
@@ -352,10 +280,6 @@ SYSTEM_PRIVATE = 200
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DeviceType-SYSTEM_PRIVATE = 200--><!--Device-DeviceType-SYSTEM_PRIVATE = 200-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
@@ -369,10 +293,6 @@ DEFAULT = 1000
 默认设备类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

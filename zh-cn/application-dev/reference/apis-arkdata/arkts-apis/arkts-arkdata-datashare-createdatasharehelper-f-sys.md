@@ -1,5 +1,12 @@
 # createDataShareHelper（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { dataShare } from '@kit.ArkData';
+import { dataSharePredicates } from '@kit.ArkData';
+```
+
 ## createDataShareHelper
 
 ```TypeScript
@@ -9,10 +16,6 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 创建DataShareHelper实例。使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,7 +31,7 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文环境。 |
 | uri | string | 是 | 要连接的服务端应用的路径。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md)&gt; | 是 | 回调函数。当创建DataShareHelper实例成功，err为undefined，data为获取到的 DataShareHelper实例；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md)&gt; | 是 | 回调函数。当创建DataShareHelper实例成功，err为undefined，data为获取到的 DataShareHelper实例；否则为错误对象。 |
 
 **错误码：**
 
@@ -38,7 +41,7 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -83,10 +86,6 @@ function createDataShareHelper(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options: DataShareHelperOptions,    callback: AsyncCallback<DataShareHelper>  ): void--><!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options: DataShareHelperOptions,    callback: AsyncCallback<DataShareHelper>  ): void-End-->
@@ -102,7 +101,7 @@ function createDataShareHelper(
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | Indicates the application context. |
 | uri | string | 是 | Indicates the path of the file to open. |
 | options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | 是 | Indicates the optional config. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md)&gt; | 是 | {DataShareHelper}: The dataShareHelper for consumer. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[DataShareHelper](arkts-arkdata-datashare-datasharehelper-i-sys.md)&gt; | 是 | {DataShareHelper}: The dataShareHelper for consumer. |
 
 **错误码：**
 
@@ -112,7 +111,7 @@ function createDataShareHelper(
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -156,10 +155,6 @@ function createDataShareHelper(
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options?: DataShareHelperOptions  ): Promise<DataShareHelper>--><!--Device-dataShare-function createDataShareHelper(    context: Context,    uri: string,    options?: DataShareHelperOptions  ): Promise<DataShareHelper>-End-->
@@ -174,7 +169,7 @@ function createDataShareHelper(
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用的上下文环境。 |
 | uri | string | 是 | 要连接的服务端应用的路径。 |
-| options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | 否 | 可选配置。指定[DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md#datasharehelperoptions系统接口)是否在代理模式 下，指定非静默访问时的等待拉起时间。如果不设置，则表示[DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md#datasharehelperoptions系统接口)不在代理模式下，且非静默访问时的等待拉起时间 为2秒。如果uri以datashareproxy为开头，则必须设置options的isProxy参数，否则DataShareHelper创建失败返回错误。<br>**起始版本：** 10 |
+| options | [DataShareHelperOptions](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md) | 否 | 可选配置。指定[DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md)是否在代理模式 下，指定非静默访问时的等待拉起时间。如果不设置，则表示[DataShareHelper](arkts-arkdata-datashare-datasharehelperoptions-i-sys.md)不在代理模式下，且非静默访问时的等待拉起时间 为2秒。如果uri以datashareproxy为开头，则必须设置options的isProxy参数，否则DataShareHelper创建失败返回错误。<br>**起始版本：** 10 |
 
 **返回值：**
 
@@ -190,7 +185,7 @@ function createDataShareHelper(
 | [15700010](../errorcode-datashare.md#15700010-创建datasharehelper异常) | The DataShareHelper fails to be initialized. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 19+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

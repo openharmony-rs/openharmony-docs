@@ -1,5 +1,11 @@
 # setCloudStrategy
 
+## 导入模块
+
+```TypeScript
+import { cloudData } from '@kit.ArkData';
+```
+
 ## setCloudStrategy
 
 ```TypeScript
@@ -10,10 +16,6 @@ function setCloudStrategy(strategy: StrategyType, param?: Array<commonType.Value
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudData-function setCloudStrategy(strategy: StrategyType, param?: Array<commonType.ValueType>): Promise<void>--><!--Device-cloudData-function setCloudStrategy(strategy: StrategyType, param?: Array<commonType.ValueType>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
@@ -23,7 +25,7 @@ function setCloudStrategy(strategy: StrategyType, param?: Array<commonType.Value
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | strategy | [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | 是 | 配置的策略类型。 |
-| param | Array&lt;commonType.ValueType&gt; | 否 | 策略参数，类型为Array&lt;commonType.ValueType&gt;，实际传入值为 [NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md#networkstrategy)枚举值，取值范围为WIFI和CELLULAR，默认支持WIFI和蜂窝网络策略。 |
+| param | Array&lt;commonType.ValueType&gt; | 否 | 策略参数，类型为Array&lt;commonType.ValueType&gt;，实际传入值为 [NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md)枚举值，取值范围为WIFI和CELLULAR，默认支持WIFI和蜂窝网络策略。 |
 
 **返回值：**
 
@@ -38,7 +40,7 @@ function setCloudStrategy(strategy: StrategyType, param?: Array<commonType.Value
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

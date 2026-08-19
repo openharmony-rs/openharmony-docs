@@ -14,10 +14,6 @@ Column(options?: ColumnOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -42,10 +38,6 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -64,6 +56,16 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 ## 汇总
 
-- [ColumnOptions](arkts-arkui-columnoptions-i.md)
-- [ColumnOptionsV2](arkts-arkui-columnoptionsv2-i.md)
-- [SpaceType](arkts-arkui-spacetype-t.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ColumnOptions](arkts-arkui-columnoptions-i.md) | 设置Column组件的子组件间距属性。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+| [ColumnOptionsV2](arkts-arkui-columnoptionsv2-i.md) | 设置Column组件的子组件间距属性。间距类型SpaceType支持number、string或Resource类型。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [SpaceType](arkts-arkui-spacetype-t.md) | Column组件构造函数中space支持的数据类型，取值类型为下表类型中的并集。 |
+

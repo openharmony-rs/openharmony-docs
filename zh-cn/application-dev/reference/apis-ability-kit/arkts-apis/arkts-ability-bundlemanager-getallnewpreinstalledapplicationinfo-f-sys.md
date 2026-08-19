@@ -1,5 +1,11 @@
 # getAllNewPreinstalledApplicationInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAllNewPreinstalledApplicationInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllNewPreinstalledApplicationInfo(): Promise<Array<PreinstalledAppli
 获取设备OTA升级期间当前用户下新增的所有预置应用信息。使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -37,7 +39,7 @@ function getAllNewPreinstalledApplicationInfo(): Promise<Array<PreinstalledAppli
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

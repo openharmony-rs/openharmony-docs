@@ -4,8 +4,6 @@
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 11
 
 **替代接口：** Cipher
@@ -13,6 +11,12 @@
 <!--Device-unnamed-export interface CipherResponse--><!--Device-unnamed-export interface CipherResponse-End-->
 
 **系统能力：** SystemCapability.Security.Cipher
+
+## 导入模块
+
+```TypeScript
+import { Cipher, CipherAesOptions, CipherResponse, CipherRsaOptions } from '@kit.CryptoArchitectureKit';
+```
 
 ## text
 
@@ -25,8 +29,6 @@ text: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 11
 

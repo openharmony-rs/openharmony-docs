@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudData-interface ExtraData--><!--Device-cloudData-interface ExtraData-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { cloudData } from '@kit.ArkData';
+```
 
 ## eventId
 
@@ -25,10 +27,6 @@ eventId: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExtraData-eventId: string--><!--Device-ExtraData-eventId: string-End-->
 
@@ -47,10 +45,6 @@ extraData: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ExtraData-extraData: string--><!--Device-ExtraData-extraData: string-End-->
 

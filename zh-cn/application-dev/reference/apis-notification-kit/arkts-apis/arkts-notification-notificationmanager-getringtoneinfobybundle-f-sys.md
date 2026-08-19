@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## getRingtoneInfoByBundle
@@ -15,10 +15,6 @@ function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 获取应用自定义铃声信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -51,7 +47,7 @@ function getRingtoneInfoByBundle(bundle: BundleOption): Promise<RingtoneInfo>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

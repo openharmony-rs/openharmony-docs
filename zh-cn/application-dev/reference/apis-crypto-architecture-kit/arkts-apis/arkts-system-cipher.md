@@ -1,5 +1,11 @@
 # @system.cipher
 
+## 导入模块
+
+```TypeScript
+import { Cipher, CipherAesOptions, CipherResponse, CipherRsaOptions } from '@kit.CryptoArchitectureKit';
+```
+
 ## 汇总
 
 ### 类

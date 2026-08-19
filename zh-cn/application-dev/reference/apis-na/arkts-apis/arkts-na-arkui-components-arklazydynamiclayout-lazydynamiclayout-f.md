@@ -1,5 +1,10 @@
 # LazyDynamicLayout
 
+## 导入模块
+
+```TypeScript
+```
+
 ## LazyDynamicLayout
 
 ```TypeScript
@@ -14,9 +19,7 @@ export declare function LazyDynamicLayout (
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,7 +31,7 @@ export declare function LazyDynamicLayout (
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| algorithm | [LazyLayoutAlgorithm](arkts-na-lazylayoutalgorithm-i.md) | 是 | 懒布局算法。 |
+| algorithm | [LazyLayoutAlgorithm](../../apis-arkui/arkts-apis/arkts-arkui-lazylayoutalgorithm-i.md) | 是 | 懒布局算法。 |
 | content_ | CustomBuilder | 是 |  |
 
 **返回值：**
@@ -52,9 +55,7 @@ export declare function LazyDynamicLayout(
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

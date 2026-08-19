@@ -59,7 +59,7 @@ Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，返回传感器方向属性。<br>     <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，返回传感器方向属性。      <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetHostDeviceName()
 
@@ -84,7 +84,7 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，将返回远程设备名称属性。<br>     <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，将返回远程设备名称属性。      <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetHostDeviceType()
 
@@ -109,7 +109,7 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，将返回远程设备名称属性。<br>     <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功，将返回远程设备名称属性。      <br>CAMERA_CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetLensEquivalentFocalLengths()
 
@@ -135,7 +135,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_IsLogicalCamera()
 
@@ -160,7 +160,7 @@ Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetLogicalCameraConstituentCameraDevices()
 
@@ -186,7 +186,7 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_DeleteConstituentCameraDevices()
 
@@ -212,7 +212,7 @@ Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Dev
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
 
 ### OH_CameraDevice_GetLensFocalLength()
 
@@ -237,7 +237,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetMinimumFocusDistance()
 
@@ -262,7 +262,7 @@ Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* ca
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetLensDistortion()
 
@@ -288,7 +288,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetIntrinsicCalibration()
 
@@ -314,7 +314,7 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetSensorPhysicalSize()
 
@@ -340,7 +340,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetSensorPixelArraySize()
 
@@ -366,7 +366,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetSensorColorFilterArrangement()
 
@@ -391,7 +391,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_CameraDevice_GetAutomotiveCameraPosition()
 
@@ -416,6 +416,6 @@ Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>     <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 

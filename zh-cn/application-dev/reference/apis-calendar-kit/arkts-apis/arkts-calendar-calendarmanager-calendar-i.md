@@ -4,13 +4,15 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-calendarManager-export interface Calendar--><!--Device-calendarManager-export interface Calendar-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
+
+## 导入模块
+
+```TypeScript
+import { calendarManager } from '@kit.CalendarKit';
+```
 
 ## addEvent
 
@@ -21,10 +23,6 @@ addEvent(event: Event): Promise<number>
 创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** 
 - API版本23+：ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
@@ -54,7 +52,7 @@ addEvent(event: Event): Promise<number>
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -96,10 +94,6 @@ addEvent(event: Event, callback: AsyncCallback<number>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本23+：ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 
@@ -114,7 +108,7 @@ addEvent(event: Event, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | Event | 是 | Event对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，当添加日程成功时，err为undefined，data为日程id；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | 回调函数，当添加日程成功时，err为undefined，data为日程id；否则为错误对象。 |
 
 **错误码：**
 
@@ -123,7 +117,7 @@ addEvent(event: Event, callback: AsyncCallback<number>): void
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -165,10 +159,6 @@ addEvents(events: Event[]): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本23+：ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 
@@ -195,7 +185,7 @@ addEvents(events: Event[]): Promise<void>
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -244,10 +234,6 @@ addEvents(events: Event[], callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本23+：ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 
@@ -260,7 +246,7 @@ addEvents(events: Event[], callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | events | Event[] | 是 | Event对象数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当添加日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当添加日程成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -269,7 +255,7 @@ addEvents(events: Event[], callback: AsyncCallback<void>): void
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -320,10 +306,6 @@ deleteEvent(id: number): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-deleteEvent(id: number): Promise<void>--><!--Device-Calendar-deleteEvent(id: number): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -340,7 +322,7 @@ deleteEvent(id: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -390,10 +372,6 @@ deleteEvent(id: number, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Calendar-deleteEvent(id: number, callback: AsyncCallback<void>): void--><!--Device-Calendar-deleteEvent(id: number, callback: AsyncCallback<void>): void-End-->
@@ -405,9 +383,9 @@ deleteEvent(id: number, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 日程id，传入的日程id为整数，表示已创建日程的id，是日程的唯一标识符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当删除日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当删除日程成功时，err为undefined；否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -459,10 +437,6 @@ deleteEvents(ids: number[]): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-deleteEvents(ids: number[]): Promise<void>--><!--Device-Calendar-deleteEvents(ids: number[]): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -479,7 +453,7 @@ deleteEvents(ids: number[]): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -542,10 +516,6 @@ deleteEvents(ids: number[], callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Calendar-deleteEvents(ids: number[], callback: AsyncCallback<void>): void--><!--Device-Calendar-deleteEvents(ids: number[], callback: AsyncCallback<void>): void-End-->
@@ -557,9 +527,9 @@ deleteEvents(ids: number[], callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ids | number[] | 是 | 日程id数组。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当删除多个日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当删除多个日程成功时，err为undefined；否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -624,10 +594,6 @@ getAccount(): CalendarAccount
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-getAccount(): CalendarAccount--><!--Device-Calendar-getAccount(): CalendarAccount-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -638,7 +604,7 @@ getAccount(): CalendarAccount
 | --- | --- |
 | [CalendarAccount](arkts-calendar-calendarmanager-calendaraccount-i.md) | 日历账户信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
@@ -670,10 +636,6 @@ getConfig(): CalendarConfig
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-getConfig(): CalendarConfig--><!--Device-Calendar-getConfig(): CalendarConfig-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -684,7 +646,7 @@ getConfig(): CalendarConfig
 | --- | --- |
 | [CalendarConfig](arkts-calendar-calendarmanager-calendarconfig-i.md) | 日历配置信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
@@ -716,10 +678,6 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise<Event[
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本23+：ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 
@@ -747,7 +705,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise<Event[
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -798,10 +756,6 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本23+：ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 
@@ -815,7 +769,7 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 | --- | --- | --- | --- |
 | eventFilter | [EventFilter](arkts-calendar-calendarmanager-eventfilter-c.md) | 是 | 查询条件。 |
 | eventKey | (keyof Event)[] | 是 | 查询字段。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Event[]&gt; | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Event[]&gt; | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -824,7 +778,7 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -890,10 +844,6 @@ getEvents(callback: AsyncCallback<Event[]>):void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本23+：ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 
@@ -905,7 +855,7 @@ getEvents(callback: AsyncCallback<Event[]>):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Event[]&gt; | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Event[]&gt; | 是 | 回调函数，当查询日程成功时，err为undefined，data为查询到的Event数组；否则为错误对象。 |
 
 **错误码：**
 
@@ -914,7 +864,7 @@ getEvents(callback: AsyncCallback<Event[]>):void
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -951,10 +901,6 @@ Opens the event edit page.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -982,7 +928,7 @@ Opens the event edit page.
 | [23900005](../errorcode-calendarManager.md#23900005-该日程不支持编辑) | 该日程不支持编辑。 |
 | [23900001](../errorcode-calendarManager.md#23900001-参数值错误) | 参数值错误。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 // EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
@@ -1043,10 +989,6 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **需要权限：** 
 - API版本23+：ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 
@@ -1078,7 +1020,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误； <br>2. 空指针错误； <br>3. 数据解析错误。<br>**适用版本：** 23+ |
 | [201](../../errorcode-universal.md#201-权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 // EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
@@ -1128,10 +1070,6 @@ setConfig(config: CalendarConfig): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-setConfig(config: CalendarConfig): Promise<void>--><!--Device-Calendar-setConfig(config: CalendarConfig): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -1154,7 +1092,7 @@ setConfig(config: CalendarConfig): Promise<void>
 | --- | --- |
 | [23900001](../errorcode-calendarManager.md#23900001-参数值错误) | 参数值错误。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1194,10 +1132,6 @@ setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void--><!--Device-Calendar-setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -1207,7 +1141,7 @@ setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [CalendarConfig](arkts-calendar-calendarmanager-calendarconfig-i.md) | 是 | 日历配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当设置Config成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当设置Config成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -1215,7 +1149,7 @@ setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void
 | --- | --- |
 | [23900001](../errorcode-calendarManager.md#23900001-参数值错误) | 参数值错误。<br>**适用版本：** 23+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1257,10 +1191,6 @@ updateEvent(event: Event): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-updateEvent(event: Event): Promise<void>--><!--Device-Calendar-updateEvent(event: Event): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -1277,7 +1207,7 @@ updateEvent(event: Event): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1329,10 +1259,6 @@ updateEvent(event: Event, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-Calendar-updateEvent(event: Event, callback: AsyncCallback<void>): void--><!--Device-Calendar-updateEvent(event: Event, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
@@ -1342,9 +1268,9 @@ updateEvent(event: Event, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | Event | 是 | Event对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当更新日程成功时，err为undefined；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数，当更新日程成功时，err为undefined；否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1399,10 +1325,6 @@ readonly id: number
 **类型：** number
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

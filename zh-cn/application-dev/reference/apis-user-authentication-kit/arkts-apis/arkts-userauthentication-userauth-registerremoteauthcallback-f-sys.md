@@ -1,5 +1,12 @@
 # registerRemoteAuthCallback（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
+
 ## registerRemoteAuthCallback
 
 ```TypeScript
@@ -9,10 +16,6 @@ function registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
 注册远程认证回调。该接口用于在远程认证场景下注册回调接口，注册后系统可通过回调获取远程认证所需的页面参数，并在认证完成后接收认证结果。不允许重复注册，在不使用时应调用 [unregisterRemoteAuthCallback](#registerremoteauthcallback系统接口)取消注册，避免回调无法释放。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
@@ -38,7 +41,7 @@ function registerRemoteAuthCallback(callback: IRemoteAuthCallback): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -6,7 +6,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Tabs](arkts-na-tabs-tabs-f.md#tabs) | 定义Tabs组件 |
+| [Tabs](arkts-na-tabs-tabs-f.md) | 定义Tabs组件 |
 
 ### 类
 

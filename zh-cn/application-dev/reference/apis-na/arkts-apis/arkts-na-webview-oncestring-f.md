@@ -1,5 +1,10 @@
 # once_string
 
+## 导入模块
+
+```TypeScript
+```
+
 ## once_string
 
 ```TypeScript
@@ -10,9 +15,7 @@ Subscribe to a callback of a specified type of web event once.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-webview-function once(type: string, callback: Callback<void>): void--><!--Device-webview-function once(type: string, callback: Callback<void>): void-End-->
 
@@ -23,7 +26,7 @@ Subscribe to a callback of a specified type of web event once.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | Types of web event. |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Indicate callback used to receive the web event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 是 | Indicate callback used to receive the web event. |
 
 **错误码：**
 

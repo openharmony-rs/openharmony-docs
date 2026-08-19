@@ -99,7 +99,7 @@ int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -129,7 +129,7 @@ int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -159,7 +159,7 @@ int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -189,7 +189,7 @@ int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -219,7 +219,7 @@ int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -249,7 +249,7 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -279,7 +279,7 @@ int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -310,7 +310,7 @@ int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_ERR表示函数执行异常。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -341,7 +341,7 @@ int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_ERR表示函数执行异常。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -372,7 +372,7 @@ int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_ERR表示函数执行异常。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -402,7 +402,7 @@ int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_ERR表示函数执行异常。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -432,7 +432,7 @@ int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_ERR表示函数执行异常。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -462,7 +462,7 @@ int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_ERR表示函数执行异常。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_ERR表示函数执行异常。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -492,7 +492,7 @@ int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。<br>     <br>返回RDB_OK表示成功。<br>     <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
+| int | 返回特定的错误码值。详细信息可以查看{@link OH_Rdb_ErrCode}。      <br>返回RDB_OK表示成功。      <br>返回RDB_E_INVALID_ARGS表示无效参数。 |
 
 **参考：**
 
@@ -515,7 +515,7 @@ Data_Asset *OH_Data_Asset_CreateOne(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset *](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。<br>     <br>使用完成后，必须通过[OH_Data_Asset_DestroyOne](capi-data-asset-h.md#oh_data_asset_destroyone)接口释放内存。 |
+| [Data_Asset *](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体实例的指针，否则返回NULL。      <br>使用完成后，必须通过[OH_Data_Asset_DestroyOne](capi-data-asset-h.md#oh_data_asset_destroyone)接口释放内存。 |
 
 **参考：**
 
@@ -573,7 +573,7 @@ Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Data_Asset **](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体指针数组的指针，否则返回NULL。<br>     <br>使用完成后，必须通过[OH_Data_Asset_DestroyMultiple](capi-data-asset-h.md#oh_data_asset_destroymultiple)接口释放内存。 |
+| [Data_Asset **](capi-rdb-data-asset.md) | 创建成功则返回一个指向[Data_Asset](capi-rdb-data-asset.md)结构体指针数组的指针，否则返回NULL。      <br>使用完成后，必须通过[OH_Data_Asset_DestroyMultiple](capi-data-asset-h.md#oh_data_asset_destroymultiple)接口释放内存。 |
 
 **参考：**
 

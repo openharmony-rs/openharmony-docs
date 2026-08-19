@@ -1,5 +1,11 @@
 # getSessionDescriptorsForAudioZone（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## getSessionDescriptorsForAudioZone
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSessionDescriptorsForAudioZone(userId: int): Promise<Array<Readonly<
 获取根据userid查询对应音区的会话
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 

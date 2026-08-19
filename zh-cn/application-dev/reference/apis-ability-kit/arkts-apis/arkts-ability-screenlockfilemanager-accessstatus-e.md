@@ -1,12 +1,8 @@
-# AccessStatus
+# AccessStatus(锁屏敏感数据管理)
 
 表示锁屏下敏感数据访问权限申请状态的枚举。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-screenLockFileManager-export enum AccessStatus--><!--Device-screenLockFileManager-export enum AccessStatus-End-->
 
@@ -22,10 +18,6 @@ ACCESS_DENIED = -1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AccessStatus-ACCESS_DENIED = -1--><!--Device-AccessStatus-ACCESS_DENIED = -1-End-->
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
@@ -39,10 +31,6 @@ ACCESS_GRANTED = 0
 申请锁屏下敏感数据访问权限被允许。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AccessStatus-ACCESS_GRANTED = 0--><!--Device-AccessStatus-ACCESS_GRANTED = 0-End-->
 

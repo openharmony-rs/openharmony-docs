@@ -1,18 +1,21 @@
 # MetadataOutput
 
-metadata流。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md#cameraoutput)。
+metadata流。继承[CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
-**继承/实现关系：** MetadataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md#cameraoutput)
+**继承/实现关系：** MetadataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface MetadataOutput--><!--Device-camera-interface MetadataOutput-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## addMetadataObjectTypes
 
@@ -23,10 +26,6 @@ addMetadataObjectTypes(types: Array<MetadataObjectType>): void
 新增需要上报的检测对象类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -60,10 +59,6 @@ removeMetadataObjectTypes(types: Array<MetadataObjectType>): void
 删除需要上报的检测对象类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

@@ -4,10 +4,6 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum OverScrollMode--><!--Device-unnamed-declare enum OverScrollMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ NEVER = 0
 Web过滚动模式关闭。适用于不需要额外滚动效果的页面，如内容高度与容器高度匹配的场景。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -41,10 +33,6 @@ ALWAYS = 1
 Web过滚动模式开启。适用于需要增强滚动反馈的场景，如列表页面或需要明确滚动边界指示的场景。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

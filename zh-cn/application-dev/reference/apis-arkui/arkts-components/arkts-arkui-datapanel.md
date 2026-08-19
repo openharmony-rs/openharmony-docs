@@ -14,10 +14,6 @@ DataPanel(options: DataPanelOptions)
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -34,8 +30,18 @@ DataPanel(options: DataPanelOptions)
 
 ## 汇总
 
-- [ColorStop](arkts-arkui-colorstop-i.md)
-- [DataPanelConfiguration](arkts-arkui-datapanelconfiguration-i.md)
-- [DataPanelOptions](arkts-arkui-datapaneloptions-i.md)
-- [DataPanelShadowOptions](arkts-arkui-datapanelshadowoptions-i.md)
-- [DataPanelType](arkts-arkui-datapaneltype-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ColorStop](arkts-arkui-colorstop-i.md) | 颜色断点类型，用于描述渐变色颜色断点。 |
+| [DataPanelConfiguration](arkts-arkui-datapanelconfiguration-i.md) | 开发者需要自定义class实现ContentModifier接口。继承自CommonConfiguration。 |
+| [DataPanelOptions](arkts-arkui-datapaneloptions-i.md) | 数据面板选项。 |
+| [DataPanelShadowOptions](arkts-arkui-datapanelshadowoptions-i.md) | DataPanelShadowOptions继承自MultiShadowOptions，具有MultiShadowOptions的全部属性。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [DataPanelType](arkts-arkui-datapaneltype-e.md) | 数据面板的类型。 |
+

@@ -1,5 +1,11 @@
 # onRotate（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputMonitor } from '@kit.InputKit';
+```
+
 ## onRotate
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onRotate(fingers: int, receiver: Callback<Rotate>): void
 监听全局触控板的旋转事件。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -26,8 +28,8 @@ function onRotate(fingers: int, receiver: Callback<Rotate>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fingers | int | 是 | 旋转的手指数，手指数不能小于0，当前仅支持收到旋转手势的回调。 |
-| receiver | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[Rotate](arkts-input-multimodalinput-gestureevent-rotate-i.md)&gt; | 是 | 回调函数，异步上报旋转输入事件。 |
+| fingers | int | 是 | 旋转的手指数，目前支持监听手指数是2。 |
+| receiver | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[Rotate](arkts-input-multimodalinput-gestureevent-rotate-i.md)&gt; | 是 | 回调函数，返回旋转输入事件。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function onRotate(fingers: int, receiver: Callback<Rotate>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';

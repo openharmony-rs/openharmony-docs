@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface PhotoAsset--><!--Device-photoAccessHelper-interface PhotoAsset-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## cancelPhotoRequest
 
@@ -21,10 +23,6 @@ cancelPhotoRequest(requestId: string): void
 根据id取消指定的获取媒体缩略图的任务。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -49,7 +47,7 @@ cancelPhotoRequest(requestId: string): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -93,13 +91,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 commitEditedAsset(editData: string, uri: string, callback: AsyncCallback<void>): void
 ```
 
-提交编辑数据以及编辑后的图片或视频。使用callback异步回调。 通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考 [FileUri](../../apis-core-file-kit/arkts-apis/arkts-file-fileuri.md#ohosfilefileuri)。 > **注意：** > > 新的编辑数据提交后，将覆盖掉原来的编辑数据。
+提交编辑数据以及编辑后的图片或视频。使用callback异步回调。 通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考 [FileUri](../../apis-core-file-kit/arkts-apis/arkts-file-fileuri.md)。 > **注意：** > > 新的编辑数据提交后，将覆盖掉原来的编辑数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -115,7 +109,7 @@ commitEditedAsset(editData: string, uri: string, callback: AsyncCallback<void>):
 | --- | --- | --- | --- |
 | editData | string | 是 | 提交的编辑数据。 |
 | uri | string | 是 | 提交的编辑后的图片或视频，在应用沙箱下的uri。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback对象，返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback对象，返回void。 |
 
 **错误码：**
 
@@ -132,13 +126,9 @@ commitEditedAsset(editData: string, uri: string, callback: AsyncCallback<void>):
 commitEditedAsset(editData: string, uri: string): Promise<void>
 ```
 
-提交编辑数据以及编辑后的图片或视频。使用Promise异步回调。 通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考 [FileUri](../../apis-core-file-kit/arkts-apis/arkts-file-fileuri.md#ohosfilefileuri)。 > **注意：** > > 新的编辑数据提交后，将覆盖掉原来的编辑数据。
+提交编辑数据以及编辑后的图片或视频。使用Promise异步回调。 通过uri将编辑后的文件传递给媒体库，uri是编辑后的文件在应用沙箱下的FileUri，可参考 [FileUri](../../apis-core-file-kit/arkts-apis/arkts-file-fileuri.md)。 > **注意：** > > 新的编辑数据提交后，将覆盖掉原来的编辑数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -170,7 +160,7 @@ commitEditedAsset(editData: string, uri: string): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -207,10 +197,6 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise<Ph
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAsset-convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise<PhotoAsset>--><!--Device-PhotoAsset-convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise<PhotoAsset>-End-->
@@ -241,7 +227,7 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise<Ph
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: <br>1. The original file does not exist locally in PhotoAsset; <br>2. The original file format is not within the supported range; <br>3. The original file is a temporary file or is being edited; <br>4. The title is the same with an image in the same album; <br>5. PhotoAsset is a photo in the trash or a hidden photo; <br>6. The title does not meet the parameter specifications. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -275,10 +261,6 @@ createTemporaryCompatibleDuplicate(): Promise<void>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAsset-createTemporaryCompatibleDuplicate(): Promise<void>--><!--Device-PhotoAsset-createTemporaryCompatibleDuplicate(): Promise<void>-End-->
@@ -302,7 +284,7 @@ createTemporaryCompatibleDuplicate(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: <br>1. The original file does not exist locally in PhotoAsset; <br>2. The original file format is not within the supported range; <br>3. The original file is a temporary file or is being edited; |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -335,10 +317,6 @@ getAnalysisData(analysisType: AnalysisType): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-getAnalysisData(analysisType: AnalysisType): Promise<string>--><!--Device-PhotoAsset-getAnalysisData(analysisType: AnalysisType): Promise<string>-End-->
@@ -368,7 +346,7 @@ getAnalysisData(analysisType: AnalysisType): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -407,10 +385,6 @@ getEditData(): Promise<MediaAssetEditData>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-getEditData(): Promise<MediaAssetEditData>--><!--Device-PhotoAsset-getEditData(): Promise<MediaAssetEditData>-End-->
@@ -434,7 +408,7 @@ getEditData(): Promise<MediaAssetEditData>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -466,13 +440,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getExif(callback: AsyncCallback<string>): void
 ```
 
-读取jpg格式图片的Exif标签，并返回json格式的字符串。使用callback异步回调。 此接口中获取的Exif标签信息是由 [image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md#ohosmultimediaimage)模块提供。Exif标签详细信息请参考 [image.PropertyKey](../../apis-image-kit/arkts-apis/arkts-image-image-propertykey-e.md#propertykey)。 > **注意：** > > 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与 > [PhotoKeys.USER_COMMENT](arkts-medialibrary-photoaccesshelper-photokeys-e.md#photokeys)组成， > [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md#fetchoptions).fetchColumns需要传入这两个字段。
+读取jpg格式图片的Exif标签，并返回json格式的字符串。使用callback异步回调。 此接口中获取的Exif标签信息是由 [image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)模块提供。Exif标签详细信息请参考 [image.PropertyKey](../../apis-image-kit/arkts-apis/arkts-image-image-propertykey-e.md)。 > **注意：** > > 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与 > [PhotoKeys.USER_COMMENT](arkts-medialibrary-photoaccesshelper-photokeys-e.md)组成， > [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md).fetchColumns需要传入这两个字段。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -486,7 +456,7 @@ getExif(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回Exif字段组成的json格式的字符串。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 返回Exif字段组成的json格式的字符串。 |
 
 **错误码：**
 
@@ -498,7 +468,7 @@ getExif(callback: AsyncCallback<string>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -539,13 +509,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getExif(): Promise<string>
 ```
 
-读取jpg格式图片的Exif标签，并返回json格式的字符串。使用Promise异步回调。 此接口中获取的Exif标签信息是由[image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md#ohosmultimediaimage) 模块提供。Exif标签详细信息请参考 [image.PropertyKey](../../apis-image-kit/arkts-apis/arkts-image-image-propertykey-e.md#propertykey). > **注意：** > > 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与 > [PhotoKeys.USER_COMMENT](arkts-medialibrary-photoaccesshelper-photokeys-e.md#photokeys)组成， > [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md#fetchoptions).fetchColumns需要传入这两个字段。
+读取jpg格式图片的Exif标签，并返回json格式的字符串。使用Promise异步回调。 此接口中获取的Exif标签信息是由[image](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md) 模块提供。Exif标签详细信息请参考 [image.PropertyKey](../../apis-image-kit/arkts-apis/arkts-image-image-propertykey-e.md). > **注意：** > > 此接口返回的是Exif标签组成的json格式的字符串，完整Exif信息由all_exif与 > [PhotoKeys.USER_COMMENT](arkts-medialibrary-photoaccesshelper-photokeys-e.md)组成， > [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md).fetchColumns需要传入这两个字段。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -571,7 +537,7 @@ getExif(): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -609,10 +575,6 @@ getKeyFrameThumbnail(beginFrameTimeMs: long, type: ThumbnailType): Promise<image
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-getKeyFrameThumbnail(beginFrameTimeMs: long, type: ThumbnailType): Promise<image.PixelMap>--><!--Device-PhotoAsset-getKeyFrameThumbnail(beginFrameTimeMs: long, type: ThumbnailType): Promise<image.PixelMap>-End-->
@@ -643,7 +605,7 @@ getKeyFrameThumbnail(beginFrameTimeMs: long, type: ThumbnailType): Promise<image
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -682,10 +644,6 @@ getReadOnlyFdWithCached(): Promise<int>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-getReadOnlyFdWithCached(): Promise<int>--><!--Device-PhotoAsset-getReadOnlyFdWithCached(): Promise<int>-End-->
@@ -709,7 +667,7 @@ getReadOnlyFdWithCached(): Promise<int>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -754,10 +712,6 @@ getThumbnailData(type: ThumbnailType): Promise<ArrayBuffer>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-getThumbnailData(type: ThumbnailType): Promise<ArrayBuffer>--><!--Device-PhotoAsset-getThumbnailData(type: ThumbnailType): Promise<ArrayBuffer>-End-->
@@ -787,7 +741,7 @@ getThumbnailData(type: ThumbnailType): Promise<ArrayBuffer>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -821,10 +775,6 @@ isEdited(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-isEdited(callback: AsyncCallback<boolean>): void--><!--Device-PhotoAsset-isEdited(callback: AsyncCallback<boolean>): void-End-->
@@ -837,7 +787,7 @@ isEdited(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback对象，返回图片或视频资源是否被编辑过。 true为被编辑过，false为没有被编辑过，默认是false。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | Callback对象，返回图片或视频资源是否被编辑过。 true为被编辑过，false为没有被编辑过，默认是false。 |
 
 **错误码：**
 
@@ -848,7 +798,7 @@ isEdited(callback: AsyncCallback<boolean>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -892,10 +842,6 @@ isEdited(): Promise<boolean>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-isEdited(): Promise<boolean>--><!--Device-PhotoAsset-isEdited(): Promise<boolean>-End-->
@@ -919,7 +865,7 @@ isEdited(): Promise<boolean>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -958,11 +904,9 @@ open(mode: string, callback: AsyncCallback<number>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md#open)
+**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md)
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO or ohos.permission.WRITE_IMAGEVIDEO
 
@@ -977,7 +921,7 @@ open(mode: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | string | 是 | 打开文件方式，分别为：'r'（只读）, 'w'（只写）, 'rw'（读写）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | callback返回文件描述符。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;number&gt; | 是 | callback返回文件描述符。 |
 
 **错误码：**
 
@@ -989,7 +933,7 @@ open(mode: string, callback: AsyncCallback<number>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1019,11 +963,9 @@ open(mode: string): Promise<number>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
-**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md#open)
+**替代接口：** [open](../../apis-na/arkts-apis/arkts-na-fileio-open-f.md)
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO or ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1055,7 +997,7 @@ open(mode: string): Promise<number>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1088,10 +1030,6 @@ requestEditData(callback: AsyncCallback<string>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestEditData(callback: AsyncCallback<string>): void--><!--Device-PhotoAsset-requestEditData(callback: AsyncCallback<string>): void-End-->
@@ -1104,7 +1042,7 @@ requestEditData(callback: AsyncCallback<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | Callback对象，返回图片或视频资源的编辑数据。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | Callback对象，返回图片或视频资源的编辑数据。 |
 
 **错误码：**
 
@@ -1115,7 +1053,7 @@ requestEditData(callback: AsyncCallback<string>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1155,10 +1093,6 @@ requestEditData(): Promise<string>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestEditData(): Promise<string>--><!--Device-PhotoAsset-requestEditData(): Promise<string>-End-->
@@ -1182,7 +1116,7 @@ requestEditData(): Promise<string>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1217,10 +1151,6 @@ requestPhoto(callback: AsyncCallback<image.PixelMap>): string
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestPhoto(callback: AsyncCallback<image.PixelMap>): string--><!--Device-PhotoAsset-requestPhoto(callback: AsyncCallback<image.PixelMap>): string-End-->
@@ -1233,7 +1163,7 @@ requestPhoto(callback: AsyncCallback<image.PixelMap>): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback对象，返回获取的缩略图，调用2次。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback对象，返回获取的缩略图，调用2次。 |
 
 **返回值：**
 
@@ -1250,7 +1180,7 @@ requestPhoto(callback: AsyncCallback<image.PixelMap>): string
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1291,10 +1221,6 @@ requestPhoto(callback: AsyncCallback<image.PixelMap>): string | null
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestPhoto(callback: AsyncCallback<image.PixelMap>): string | null--><!--Device-PhotoAsset-requestPhoto(callback: AsyncCallback<image.PixelMap>): string | null-End-->
@@ -1307,7 +1233,7 @@ requestPhoto(callback: AsyncCallback<image.PixelMap>): string | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback invoked twice to return the quick and quality thumbnails obtained. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback invoked twice to return the quick and quality thumbnails obtained. |
 
 **返回值：**
 
@@ -1334,10 +1260,6 @@ requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMa
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMap>): string--><!--Device-PhotoAsset-requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMap>): string-End-->
@@ -1351,7 +1273,7 @@ requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [RequestPhotoOptions](arkts-medialibrary-photoaccesshelper-requestphotooptions-i-sys.md) | 是 | 获取资源缩略图的选项。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback对象，返回获取的缩略图，根据选项的设置可能调用超过1次。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback对象，返回获取的缩略图，根据选项的设置可能调用超过1次。 |
 
 **返回值：**
 
@@ -1368,7 +1290,7 @@ requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMa
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1415,10 +1337,6 @@ requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMa
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMap>): string | null--><!--Device-PhotoAsset-requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMap>): string | null-End-->
@@ -1432,7 +1350,7 @@ requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback<image.PixelMa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [RequestPhotoOptions](arkts-medialibrary-photoaccesshelper-requestphotooptions-i-sys.md) | 是 | Options for obtaining the asset thumbnail. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback used to return the thumbnails obtained. The callback may be invoked more than once, depending on options. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;image.PixelMap&gt; | 是 | Callback used to return the thumbnails obtained. The callback may be invoked more than once, depending on options. |
 
 **返回值：**
 
@@ -1459,10 +1377,6 @@ requestSource(callback: AsyncCallback<int>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestSource(callback: AsyncCallback<int>): void--><!--Device-PhotoAsset-requestSource(callback: AsyncCallback<int>): void-End-->
@@ -1475,7 +1389,7 @@ requestSource(callback: AsyncCallback<int>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | Callback对象，返回源文件fd。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;int&gt; | 是 | Callback对象，返回源文件fd。 |
 
 **错误码：**
 
@@ -1486,7 +1400,7 @@ requestSource(callback: AsyncCallback<int>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1526,10 +1440,6 @@ requestSource(): Promise<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 <!--Device-PhotoAsset-requestSource(): Promise<int>--><!--Device-PhotoAsset-requestSource(): Promise<int>-End-->
@@ -1553,7 +1463,7 @@ requestSource(): Promise<int>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail. Possible causes: <br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1588,10 +1498,6 @@ revertToOriginal(callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAsset-revertToOriginal(callback: AsyncCallback<void>): void--><!--Device-PhotoAsset-revertToOriginal(callback: AsyncCallback<void>): void-End-->
@@ -1604,7 +1510,7 @@ revertToOriginal(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback对象，返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback对象，返回void。 |
 
 **错误码：**
 
@@ -1624,10 +1530,6 @@ revertToOriginal(): Promise<void>
 回退到编辑前的状态。使用Promise异步回调。 > **注意：** > > 调用该接口后，编辑数据和编辑后的图片或视频资源都将被删除，无法恢复，请谨慎调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1652,7 +1554,7 @@ revertToOriginal(): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1691,8 +1593,6 @@ setFavorite(favoriteState: boolean, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [setFavorite](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#setfavorite)
@@ -1710,7 +1610,7 @@ setFavorite(favoriteState: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | favoriteState | boolean | 是 | 是否设置为收藏文件， true：设置为收藏文件，false：取消收藏。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -1722,7 +1622,7 @@ setFavorite(favoriteState: boolean, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1758,8 +1658,6 @@ setFavorite(favoriteState: boolean): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [setFavorite](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#setfavorite)
@@ -1794,7 +1692,7 @@ setFavorite(favoriteState: boolean): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1833,8 +1731,6 @@ setHidden(hiddenState: boolean, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [setHidden](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#sethidden)
@@ -1852,7 +1748,7 @@ setHidden(hiddenState: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hiddenState | boolean | 是 | Whether to set a file to hidden state. **true** to hide, **false** otherwise. |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback that returns no value. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback that returns no value. |
 
 **错误码：**
 
@@ -1864,7 +1760,7 @@ setHidden(hiddenState: boolean, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1900,8 +1796,6 @@ setHidden(hiddenState: boolean): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [setHidden](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#sethidden)
@@ -1936,7 +1830,7 @@ setHidden(hiddenState: boolean): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -1974,10 +1868,6 @@ setPending(pendingState: boolean, callback: AsyncCallback<void>): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAsset-setPending(pendingState: boolean, callback: AsyncCallback<void>): void--><!--Device-PhotoAsset-setPending(pendingState: boolean, callback: AsyncCallback<void>): void-End-->
@@ -1991,7 +1881,7 @@ setPending(pendingState: boolean, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pendingState | boolean | 是 | 设置的pending状态，true为设置pending状态，false为解除pending状态。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback对象，返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | Callback对象，返回void。 |
 
 **错误码：**
 
@@ -2002,7 +1892,7 @@ setPending(pendingState: boolean, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2041,10 +1931,6 @@ setPending(pendingState: boolean): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 <!--Device-PhotoAsset-setPending(pendingState: boolean): Promise<void>--><!--Device-PhotoAsset-setPending(pendingState: boolean): Promise<void>-End-->
@@ -2074,7 +1960,7 @@ setPending(pendingState: boolean): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2103,8 +1989,6 @@ setUserComment(userComment: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [setUserComment](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#setusercomment)
@@ -2122,7 +2006,7 @@ setUserComment(userComment: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | userComment | string | 是 | 待修改的图片或视频的备注信息，备注信息最长为420字符。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | callback返回void。 |
 
 **错误码：**
 
@@ -2134,7 +2018,7 @@ setUserComment(userComment: string, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
@@ -2175,8 +2059,6 @@ setUserComment(userComment: string): Promise<void>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
 **废弃版本：** 11
 
 **替代接口：** [setUserComment](arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#setusercomment)
@@ -2211,7 +2093,7 @@ setUserComment(userComment: string): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Called by non-system application. |
 | 14000011 | System inner fail |
 
-## 示例
+**示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 

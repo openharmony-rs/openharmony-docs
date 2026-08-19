@@ -2,17 +2,18 @@
 
 安全控件通用属性模块，提供安全控件的布局、尺寸、文字、图标、颜色、边框和交互等通用属性的统一配置能力。 - 为PasteButton、SaveButton等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。 - 在满足安全控件规范的前提下，调整安全控件显示效果和交互体验。具体约束请参见[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。 - 通过链式调用方式复用安全控件通用属性能力。
 
-## 核心枚举类型 - **[SecurityComponentLayoutDirection](arkts-arkui-securitycomponentlayoutdirection-e.md#securitycomponentlayoutdirection)：** 安全控件图标和文字排列方向枚举，用于指定横向或纵向布局。 - **ButtonType：** 安全控件按钮样式枚举，用于指定胶囊、圆形、圆角矩形或普通按钮样式。 ###### 核心接口类型 - **[SecurityComponentMethod](#securitycomponentmethod)：** 安全控件通用属性方法集合，用于为具体安全控件配置布局、尺寸、文字、图标、颜色、边框和交互属性。 ###### 子组件 不支持
+## 核心枚举类型 - **[SecurityComponentLayoutDirection](arkts-arkui-securitycomponentlayoutdirection-e.md)：** 安全控件图标和文字排列方向枚举，用于指定横向或纵向布局。 - **ButtonType：** 安全控件按钮样式枚举，用于指定胶囊、圆形、圆角矩形或普通按钮样式。 ###### 核心接口类型 - **[SecurityComponentMethod](#securitycomponentmethod)：** 安全控件通用属性方法集合，用于为具体安全控件配置布局、尺寸、文字、图标、颜色、边框和交互属性。 ###### 子组件 不支持
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class SecurityComponentMethod--><!--Device-unnamed-declare class SecurityComponentMethod-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## accessibilityDefaultFocus
 
@@ -23,10 +24,6 @@ accessibilityDefaultFocus(focus: boolean): T
 设置页面的屏幕朗读初始焦点，用于指定页面加载后屏幕朗读首次播报的焦点组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -58,10 +55,6 @@ accessibilityDescription(description: string | Resource): T
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -91,10 +84,6 @@ accessibilityNextFocusId(nextId: string): T
 支持在屏幕朗读过程中，指定朗读的下一个焦点组件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,10 +115,6 @@ accessibilityRole(role: SecurityComponentRoleType): T
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -159,10 +144,6 @@ align(alignType: Alignment): T
 设置安全控件图标文本的对齐方式。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -194,10 +175,6 @@ alignRules(alignRule: AlignRuleOption): T
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -227,10 +204,6 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 设置在相对容器中子组件的对齐规则，仅当父容器为RelativeContainer时生效。该方法水平方向上以start和end分别替代上述[alignRules](#alignrules)的left和right，以便在RTL模式下能镜像显示，建议优先使用该方法。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -262,10 +235,6 @@ backgroundColor(value: ResourceColor): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -295,10 +264,6 @@ borderColor(value: ResourceColor): T
 设置安全控件的边框颜色。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -330,10 +295,6 @@ borderRadius(value: Dimension): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -363,10 +324,6 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 设置安全控件的边框圆角半径，支持分别设置四个圆角的半径。 borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Circle时，borderRadius设置不生效，按钮圆角半径由按钮类型自动确定；当按钮类型为Normal或 ROUNDED_RECTANGLE时，borderRadius设置生效。具体影响请参见ButtonType。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -398,10 +355,6 @@ borderStyle(value: BorderStyle): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -432,10 +385,6 @@ borderWidth(value: Dimension): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -465,10 +414,6 @@ chainMode(direction: Axis, style: ChainStyle): T
 设置以该组件为链头所构成的链式布局的参数（包括链的方向和样式），仅当父容器为RelativeContainer时生效。
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -501,10 +446,6 @@ constraintSize(value: ConstraintSizeOptions): T
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -534,10 +475,6 @@ enabled(respond: boolean): T
 设置安全控件是否可交互。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -569,10 +506,6 @@ fallbackLineSpacing(enabled: boolean): T
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -603,10 +536,6 @@ focusBox(style: FocusBoxStyle): T
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
@@ -619,7 +548,7 @@ focusBox(style: FocusBoxStyle): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [FocusBoxStyle](arkts-arkui-focusboxstyle-i.md) | 是 | 焦点框样式配置对象，包含margin（焦点框与控件的间距）和strokeColor（焦点框边框颜色）等属性，用于自定义系统焦点框的外观样式。 |
+| style | FocusBoxStyle | 是 | 焦点框样式配置对象，包含margin（焦点框与控件的间距）和strokeColor（焦点框边框颜色）等属性，用于自定义系统焦点框的外观样式。 |
 
 **返回值：**
 
@@ -636,10 +565,6 @@ fontColor(value: ResourceColor): T
 设置安全控件文字的颜色。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -671,10 +596,6 @@ fontFamily(value: string | Resource): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -704,10 +625,6 @@ fontSize(value: Dimension): T
 设置安全控件文字的尺寸。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -739,10 +656,6 @@ fontStyle(value: FontStyle): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -772,10 +685,6 @@ fontWeight(value: number | FontWeight | string | Resource): T
 设置安全控件文字的粗细。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -807,10 +716,6 @@ height(value: Length): T
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -840,10 +745,6 @@ heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 设置文字自适应高度的方式。适用于安全控件在不同尺寸或不同语言环境下，需要动态调整文本显示以保证文本完整显示的场景。 安全控件文本以[maxFontSize](#maxfontsize)的值进行布局，如果可以完整显示文本，则无需进行自适应调节，该接口设置不生效， 否则按指定文本自适应高度的方式进行调节，具体自适应调节规格如下： 当设置为TextHeightAdaptivePolicy.MAX_LINES_FIRST时，优先使用[maxLines](#maxlines)属性来调整文本高度。如果使用 maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize)和 [maxFontSize](#maxfontsize)的范围内缩小字体以显示更多文本，如果此时仍不能完整显示文本信息，安全控件会自适应调整高度以使得文本完整显示。 当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用[minFontSize](#minfontsize)属性来调整文本高度。如果使用minFontSize 属性可以将文本布局在一行中，则尝试在minFontSize和[maxFontSize](#maxfontsize)的范围内增大字体并使用最大可能的字体大小； 如果使用minFontSize属性无法将文本布局在一行中，则尝试使用[maxLines]{@linkSecurityComponentMethod.maxLines}属性进行布局，如果此时仍不能完整显示文本信息， 安全控件会自适应调整高度以使得文本完整显示。 当设置为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST时，优先使用布局约束来调整文本高度。如果布局大小超过布局约束，则尝试在 [minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体 以满足布局约束。如果将字体大小缩小到minFontSize后，布局大小仍然超过布局约束，则删除超过布局约束的行；如果设置了[maxLines](#maxlines) 属性，布局后行数不超过maxLines值（可能存在横向截断）；如果未设置maxLines属性值，布局后的行数不限制。 安全控件文本未完全显示时，点击不授权。文本是否完全显示受heightAdaptivePolicy、minFontSize、maxFontSize、maxLines、width和height等属性影响。 具体效果请见[示例](../../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md#示例3)。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -875,10 +776,6 @@ iconColor(value: ResourceColor): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -908,10 +805,6 @@ iconSize(value: Dimension): T
 设置安全控件图标的尺寸。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -943,10 +836,6 @@ id(id: string): T
 
 **起始版本：** 15
 
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
@@ -976,10 +865,6 @@ layoutDirection(value: SecurityComponentLayoutDirection): T
 设置安全控件图标和文字分布的方向。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1011,10 +896,6 @@ markAnchor(value: Position): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -1044,10 +925,6 @@ maxFontScale(scale: number | Resource): T
 设置文本最大的字体放大倍数。调用后，当系统字体缩放使文本放大时，文本放大倍数不会超过设定的最大放大倍数。 与[minFontScale](#minfontscale)可配合使用，maxFontScale控制放大倍数的上限，minFontScale控制缩小倍数的下限。 两者可独立设置，也可同时设置以精确控制字体缩放范围。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1079,10 +956,6 @@ maxFontSize(maxSize: number | string | Resource): T
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1112,10 +985,6 @@ maxLines(line: number | Resource): T
 设置文本的最大行数。默认情况下，文本自动换行，指定此属性后，文本的最大显示行数不会超过指定值。可独立使用限制文本行数，也可配合 [minFontSize](#minfontsize)、[maxFontSize](#maxfontsize)以及 [heightAdaptivePolicy](#heightadaptivepolicy)使用。配合自适应字号相关属性使用时，安全控件文本未完全显示将导致点击不授权。 maxLines的设置会影响文本是否能完整显示，进而影响安全控件的授权行为。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1147,10 +1016,6 @@ minFontScale(scale: number | Resource): T
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -1180,10 +1045,6 @@ minFontSize(minSize: number | string | Resource): T
 设置文本最小显示字号。 - 配合[maxFontSize](#maxfontsize)以及[maxLines]{@linkSecurityComponentMethod.maxLines}或布局 大小限制使用，可实现自适应字号，单独设置不生效。 - minFontSize应小于maxFontSize，若设置值大于maxFontSize，将按maxFontSize处理。 - minFontSize小于或等于0时，自适应字号不生效。 - 自适应字号生效时，fontSize设置不生效。 - 安全控件文本未完全显示时，点击不授权。minFontSize的设置会影响文本是否能完整显示，进而影响安全控件的授权行为。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1215,10 +1076,6 @@ offset(value: Position | Edges | LocalizedEdges): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -1248,10 +1105,6 @@ padding(value: Padding | Dimension): T
 设置安全控件的内边距。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1283,10 +1136,6 @@ position(value: Position): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -1316,10 +1165,6 @@ size(value: SizeOptions): T
 设置宽度和高度，缺省时将根据元素内容自适配宽高尺寸。size方法用于同时设置宽度和高度，如需单独设置宽度或高度，可使用[width](#width) 或[height](#height)方法。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1351,10 +1196,6 @@ textIconSpace(value: Dimension): T
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -1384,10 +1225,6 @@ width(value: Length): T
 设置安全控件自身的宽度，缺省时将根据元素内容自适配宽度。配合自适应字号相关属性使用时，width的设置会影响文本是否能完整显示。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

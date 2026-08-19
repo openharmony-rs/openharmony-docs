@@ -1,6 +1,12 @@
 # off_willDraw
 
-## off_willDraw
+## 导入模块
+
+```TypeScript
+import { uiObserver } from '@kit.ArkUI';
+```
+
+## off('willDraw')
 
 ```TypeScript
 export function off(type: 'willDraw', context: UIContext, callback?: Callback<void>): void
@@ -9,10 +15,6 @@ export function off(type: 'willDraw', context: UIContext, callback?: Callback<vo
 取消监听每一帧绘制指令下发情况。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,5 +30,5 @@ export function off(type: 'willDraw', context: UIContext, callback?: Callback<vo
 | --- | --- | --- | --- |
 | type | 'willDraw' | 是 | 监听事件，固定为'willDraw'，即是否将要绘制。 |
 | context | [UIContext](../../apis-na/arkts-apis/arkts-na-arkui-uicontext-uicontext-c.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 需要被注销的回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;void&gt; | 否 | 需要被注销的回调函数。 |
 

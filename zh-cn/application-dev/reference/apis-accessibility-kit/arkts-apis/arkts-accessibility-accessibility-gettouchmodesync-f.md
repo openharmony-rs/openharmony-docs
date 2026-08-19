@@ -1,5 +1,15 @@
 # getTouchModeSync
 
+## 导入模块
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+import { accessibility } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { GesturePath } from '@kit.AccessibilityKit';
+import { GesturePoint } from '@kit.AccessibilityKit';
+```
+
 ## getTouchModeSync
 
 ```TypeScript
@@ -9,10 +19,6 @@ function getTouchModeSync(): string
 查询触摸浏览功能下的单击/双击操作模式，可用于根据当前操作模式调整应用的交互响应方式（如单击模式下直接响应点击、双击模式下需双击确认操作）。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -28,7 +34,7 @@ function getTouchModeSync(): string
 | --- | --- |
 | string | 表示当前操作模式。 <br>- singleTouchMode：表示单击操作模式。 <br>- doubleTouchMode：表示双击操作模式。 <br>- none：表示未开启触摸浏览功能。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';

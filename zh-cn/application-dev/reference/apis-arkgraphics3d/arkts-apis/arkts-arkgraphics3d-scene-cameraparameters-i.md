@@ -1,12 +1,8 @@
 # CameraParameters
 
-相机创建参数. 可用于定义相机创建的额外选项.
+相机创建参数配置，用于定义相机创建的额外选项。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface CameraParameters--><!--Device-unnamed-export interface CameraParameters-End-->
 
@@ -18,17 +14,13 @@
 msaa?: boolean
 ```
 
-选择是否启用MSAA.
+相机是否使能MSAA，true表示使能MSAA，false表示不使能MSAA。默认值为false。
 
 **类型：** boolean
 
 **默认值：** false
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CameraParameters-msaa?: boolean--><!--Device-CameraParameters-msaa?: boolean-End-->
 
@@ -40,17 +32,13 @@ msaa?: boolean
 renderingPipeline?: RenderingPipelineType
 ```
 
-选择初始渲染管线类型.
+选择初始渲染管线类型，默认为轻量级前向渲染管线类型。
 
 **类型：** [RenderingPipelineType](arkts-arkgraphics3d-scenetypes-renderingpipelinetype-e.md)
 
-**默认值：** RenderingPipelineType.FORWARD_LIGHTWEIGHT 前向轻量级渲染管线
+**默认值：** RenderingPipelineType.FORWARD_LIGHTWEIGHT
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CameraParameters-renderingPipeline?: RenderingPipelineType--><!--Device-CameraParameters-renderingPipeline?: RenderingPipelineType-End-->
 

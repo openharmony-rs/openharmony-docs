@@ -1,12 +1,8 @@
 # ToneMappingSettings
 
-定义色调映射参数.
+色调映射设置。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface ToneMappingSettings--><!--Device-unnamed-export interface ToneMappingSettings-End-->
 
@@ -18,15 +14,11 @@
 exposure?: double
 ```
 
-色调映射曝光度.
+曝光度，取值大于0，默认值为undefined。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneMappingSettings-exposure?: double--><!--Device-ToneMappingSettings-exposure?: double-End-->
 
@@ -38,15 +30,11 @@ exposure?: double
 type?: ToneMappingType
 ```
 
-色调映射类型.
+色调映射类型，默认值为undefined。
 
 **类型：** [ToneMappingType](arkts-arkgraphics3d-scenepostprocesssettings-tonemappingtype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToneMappingSettings-type?: ToneMappingType--><!--Device-ToneMappingSettings-type?: ToneMappingType-End-->
 

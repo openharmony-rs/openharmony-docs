@@ -4,10 +4,6 @@
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare class ColorMetrics--><!--Device-unnamed-declare class ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -21,10 +17,6 @@ autoRefresh?(value: boolean): ColorMetrics
 设置ColorMetrics对象是否跟随系统配置变化自动更新。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -55,10 +47,6 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 在当前颜色的上方叠加上一层指定的颜色（overlayColor），并返回混合后的新颜色。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +84,6 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -134,10 +118,6 @@ static numeric(value: number): ColorMetrics
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -167,10 +147,6 @@ static resourceColor(color: ResourceColor): ColorMetrics
 使用资源格式颜色实例化 ColorMetrics 类。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -208,10 +184,6 @@ static rgba(red: number, green: number, blue: number, alpha?: number): ColorMetr
 使用rgb或者rgba格式颜色实例化 ColorMetrics 类。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

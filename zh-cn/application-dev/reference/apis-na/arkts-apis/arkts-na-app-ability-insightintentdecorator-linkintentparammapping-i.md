@@ -4,13 +4,16 @@ LinkIntentParamMapping是@InsightIntentLink装饰器的意图参数和URI信息�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare interface LinkIntentParamMapping--><!--Device-unnamed-export declare interface LinkIntentParamMapping-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+```
 
 ## paramCategory
 
@@ -18,15 +21,13 @@ LinkIntentParamMapping是@InsightIntentLink装饰器的意图参数和URI信息�
 paramCategory?: LinkParamCategory
 ```
 
-若取值为[LINK](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md#linkparamcategory)，系统获取paramName对应的映射名称，并以键值对形式拼接到URI末尾。若取值为[WANT](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md#linkparamcategory)， 系统获取paramName对应的映射名称及其取值，通过[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md#want)的parameters字段传递。
+若取值为[LINK](arkts-na-app-ability-insightintentdecorator-linkparamcategory-e.md)，系统获取paramName对应的映射名称，并以键值对形式拼接到URI末尾。若取值为[WANT](arkts-na-app-ability-insightintentdecorator-linkparamcategory-e.md)， 系统获取paramName对应的映射名称及其取值，通过[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)的parameters字段传递。
 
-**类型：** [LinkParamCategory](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-insightintentdecorator-linkparamcategory-e.md)
+**类型：** [LinkParamCategory](arkts-na-app-ability-insightintentdecorator-linkparamcategory-e.md)
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,9 +47,7 @@ paramMappingName?: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -68,9 +67,7 @@ paramName: string
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

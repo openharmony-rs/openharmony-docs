@@ -4,13 +4,15 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare struct AdComponent--><!--Device-unnamed-declare struct AdComponent-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
+
+## 导入模块
+
+```TypeScript
+import { AdComponent } from '@kit.AdsKit';
+```
 
 ## build
 
@@ -21,10 +23,6 @@ build(): void
 用于创建AdComponent对象的构造函数。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +43,6 @@ build(): void
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdComponent-@BuilderParam  adRenderer?: () => void--><!--Device-AdComponent-@BuilderParam  adRenderer?: () => void-End-->
@@ -66,10 +60,6 @@ ads: advertising.Advertisement[]
 **类型：** advertising.Advertisement[]
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -89,10 +79,6 @@ displayOptions: advertising.AdDisplayOptions
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-AdComponent-displayOptions: advertising.AdDisplayOptions--><!--Device-AdComponent-displayOptions: advertising.AdDisplayOptions-End-->
@@ -110,10 +96,6 @@ interactionListener: advertising.AdInteractionListener
 **类型：** advertising.AdInteractionListener
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -133,10 +115,6 @@ interactionListener: advertising.AdInteractionListener
 **类型：** number
 
 **起始版本：** 15
-
-**ArkTS模式：** 起始版本为15。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
 

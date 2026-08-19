@@ -1,28 +1,18 @@
 # @ohos.uri(URI字符串解析)
 
-/*
- Copyright (c) 2021-2022 Huawei Device Co., Ltd.
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- /
-
+本模块提供URI字符串解析功能，支持URI各组成部分（协议、主机、端口、路径、查询参数和片段等）的提取与设置，以及URI编码/解码、比较判断、路径规范化和查询参数操作等能力。 适用于网络请求URL处理、深链接解析或数据共享URI处理等场景。 URI遵循RFC3986规范标准，不支持非标准场景解析。 > **说明：** > > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace uri--><!--Device-unnamed-declare namespace uri-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { uri } from '@kit.ArkTS';
+```
 
 ## 汇总
 
@@ -30,5 +20,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [URI](arkts-arkts-uri-uri-c.md) | 构造一个URI对象，并提供URI比较、路径规范化、查询参数操作、路径段追加和URI类型判断等方法。 |
+| [URI(URI字符串解析)](arkts-arkts-uri-uri-c.md) | 构造一个URI对象，并提供URI比较、路径规范化、查询参数操作、路径段追加和URI类型判断等方法。 |
 

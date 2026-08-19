@@ -1,5 +1,10 @@
 # connectNative
 
+## 导入模块
+
+```TypeScript
+```
+
 ## connectNative
 
 ```TypeScript
@@ -10,9 +15,7 @@ function connectNative(context: UIAbilityContext, want: Want, callback: WebExten
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **需要权限：** ohos.permission.WEB_NATIVE_MESSAGING
 

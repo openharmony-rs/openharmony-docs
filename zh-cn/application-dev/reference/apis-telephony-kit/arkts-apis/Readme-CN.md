@@ -316,6 +316,34 @@
   - [VoNRState(系统接口)](arkts-telephony-call-vonrstate-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [XCallType(系统接口)](arkts-telephony-call-xcalltype-e-sys.md)<!--DelEnd-->
+- [@ohos.telephony.data](arkts-telephony-data.md)
+  <!--Del-->
+  - [disableCellularData(系统接口)](arkts-telephony-data-disablecellulardata-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [disableCellularDataRoaming(系统接口)](arkts-telephony-data-disablecellulardataroaming-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [enableCellularData(系统接口)](arkts-telephony-data-enablecellulardata-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [enableCellularDataRoaming(系统接口)](arkts-telephony-data-enablecellulardataroaming-f-sys.md)<!--DelEnd-->
+  - [getActiveApnName](arkts-telephony-data-getactiveapnname-f.md)
+  - [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md)
+  - [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md)
+  - [getDefaultCellularDataSimId](arkts-telephony-data-getdefaultcellulardatasimid-f.md)
+  - [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md)
+  - [getDefaultCellularDataSlotIdSync](arkts-telephony-data-getdefaultcellulardataslotidsync-f.md)
+  - [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md)
+  - [isCellularDataEnabledSync](arkts-telephony-data-iscellulardataenabledsync-f.md)
+  - [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md)
+  - [isCellularDataRoamingEnabledSync](arkts-telephony-data-iscellulardataroamingenabledsync-f.md)
+  - [queryAllApns](arkts-telephony-data-queryallapns-f.md)
+  - [queryApnIds](arkts-telephony-data-queryapnids-f.md)
+  <!--Del-->
+  - [setDefaultCellularDataSlotId(系统接口)](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md)<!--DelEnd-->
+  - [setPreferredApn](arkts-telephony-data-setpreferredapn-f.md)
+  - [showSystemApnSettings](arkts-telephony-data-showsystemapnsettings-f.md)
+  - [ApnInfo](arkts-telephony-data-apninfo-i.md)
+  - [DataConnectState](arkts-telephony-data-dataconnectstate-e.md)
+  - [DataFlowType](arkts-telephony-data-dataflowtype-e.md)
 - [@ohos.telephony.observer](arkts-telephony-observer.md)
   - [off_callStateChange](arkts-telephony-observer-offcallstatechange-f.md)
   - [off_callStateChangeEx](arkts-telephony-observer-offcallstatechangeex-f.md)

@@ -119,7 +119,7 @@ Ability_ChildProcessConfigs* OH_Ability_CreateChildProcessConfigs()
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_ChildProcessConfigs*](capi-childprocess-ability-childprocessconfigs.md) | 返回一个指向[Ability_ChildProcessConfigs](capi-childprocess-ability-childprocessconfigs.md)对象的指针 - 子进程配置信息对象创建成功。<br>     <br>返回nullptr - 发生内部错误或者内存分配失败。 |
+| [Ability_ChildProcessConfigs*](capi-childprocess-ability-childprocessconfigs.md) | 返回一个指向[Ability_ChildProcessConfigs](capi-childprocess-ability-childprocessconfigs.md)对象的指针 - 子进程配置信息对象创建成功。      <br>返回nullptr - 发生内部错误或者内存分配失败。 |
 
 ### OH_Ability_DestroyChildProcessConfigs()
 
@@ -143,7 +143,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_DestroyChildProcessConfigs(Ability
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 操作成功。<br>     <br>NCP_ERR_INVALID_PARAM - 传入参数为nullptr。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 操作成功。      <br>NCP_ERR_INVALID_PARAM - 传入参数为nullptr。 |
 
 ### OH_Ability_ChildProcessConfigs_SetIsolationMode()
 
@@ -168,7 +168,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。<br>     <br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。      <br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr。 |
 
 ### OH_Ability_ChildProcessConfigs_SetIsolationUid()
 
@@ -193,7 +193,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUi
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。<br>     <br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。      <br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr。 |
 
 ### OH_Ability_ChildProcessConfigs_SetProcessName()
 
@@ -218,7 +218,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。<br>     <br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr，或者processName包含除字母、数字、下划线以外的字符，或者processName长度超过64字符，<br>     或者processName为空字符串。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。      <br>NCP_ERR_INVALID_PARAM - 传入参数configs为nullptr，或者processName包含除字母、数字、下划线以外的字符，或者processName长度超过64字符，      或者processName为空字符串。 |
 
 ### OH_Ability_OnNativeChildProcessStarted()
 
@@ -236,7 +236,7 @@ typedef void (*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteP
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int errCode | 回调函数返回的错误码，可用的值如下：<br>[NCP_NO_ERROR](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 创建子进程成功。<br>[NCP_ERR_LIB_LOADING_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 加载动态库文件失败或动态库中未实现必要的导出函数。<br>[NCP_ERR_CONNECTION_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 动态库中实现的OnConnect方法未返回有效的IPC Stub指针。<br>详见[Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode)定义。 |
+| int errCode | 回调函数返回的错误码，可用的值如下：<br>[NCP_NO_ERROR](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 创建子进程成功。<br>[NCP_ERR_LIB_LOADING_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 加载动态库文件失败或动态库中未实现必要的导出函数。<br>[NCP_ERR_CONNECTION_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 动态库中实现的OnConnect方法未返回有效的IPC Stub指针。<br>详见[Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode)定义。 |
 | [OHIPCRemoteProxy](../IPCKit/capi-ohipcparcel-ohipcremoteproxy.md) \*remoteProxy | 子进程的IPC对象指针，出现异常时可能为nullptr：使用完毕后需要调用{@link OH_IPCRemoteProxy_Destroy}方法释放。 |
 
 **参考：**
@@ -268,7 +268,7 @@ int OH_Ability_CreateNativeChildProcess(const char* libName, OH_Ability_OnNative
 
 | 类型 | 说明 |
 | -- | -- |
-| int | [NCP_NO_ERROR](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 调用成功，但子进程的实际启动结果由回调函数通知。<br>     <br>[NCP_ERR_INVALID_PARAM](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 无效的动态库名称或者回调函数指针。<br>     <br>[NCP_ERR_NOT_SUPPORTED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 当前设备不支持创建Native子进程。<br>     <br>[NCP_ERR_MULTI_PROCESS_DISABLED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 当前设备已关闭多进程模式。<br>     <br>[NCP_ERR_ALREADY_IN_CHILD](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 不允许在子进程中再次创建子进程。<br>     <br>[NCP_ERR_MAX_CHILD_PROCESSES_REACHED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 到达最大Native子进程数限制。<br>     <br>详见[Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode)定义。 |
+| int | [NCP_NO_ERROR](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 调用成功，但子进程的实际启动结果由回调函数通知。      <br>[NCP_ERR_INVALID_PARAM](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 无效的动态库名称或者回调函数指针。      <br>[NCP_ERR_NOT_SUPPORTED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 当前设备不支持创建Native子进程。      <br>[NCP_ERR_MULTI_PROCESS_DISABLED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 当前设备已关闭多进程模式。      <br>[NCP_ERR_ALREADY_IN_CHILD](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 不允许在子进程中再次创建子进程。      <br>[NCP_ERR_MAX_CHILD_PROCESSES_REACHED](capi-native-child-process-h.md#ability_nativechildprocess_errcode) - 到达最大Native子进程数限制。      <br>详见[Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode)定义。 |
 
 **参考：**
 
@@ -299,7 +299,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfig
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。<br>     <br>NCP_ERR_INVALID_PARAM - 传入参数无效。<br>     <br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。<br>     <br>NCP_ERR_MULTI_PROCESS_DISABLED - 当前设备已关闭多进程模式，不允许启动子进程。<br>     <br>NCP_ERR_ALREADY_IN_CHILD - 不允许在子进程中再次创建子进程。<br>     <br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 超过最大Native子进程数限制。<br>     <br>详见Ability_NativeChildProcess_ErrCode定义。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。      <br>NCP_ERR_INVALID_PARAM - 传入参数无效。      <br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。      <br>NCP_ERR_MULTI_PROCESS_DISABLED - 当前设备已关闭多进程模式，不允许启动子进程。      <br>NCP_ERR_ALREADY_IN_CHILD - 不允许在子进程中再次创建子进程。      <br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 超过最大Native子进程数限制。      <br>详见Ability_NativeChildProcess_ErrCode定义。 |
 
 **参考：**
 
@@ -331,7 +331,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcess(const char
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br>     <br>NCP_ERR_INVALID_PARAM - 无效的动态库名称或者回调函数指针。<br>     <br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。<br>     <br>NCP_ERR_ALREADY_IN_CHILD - 不允许在子进程中再次创建子进程。<br>     <br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 到达最大Native子进程数限制。<br>     <br>详见Ability_NativeChildProcess_ErrCode定义。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。      <br>NCP_ERR_INVALID_PARAM - 无效的动态库名称或者回调函数指针。      <br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。      <br>NCP_ERR_ALREADY_IN_CHILD - 不允许在子进程中再次创建子进程。      <br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 到达最大Native子进程数限制。      <br>详见Ability_NativeChildProcess_ErrCode定义。 |
 
 **参考：**
 
@@ -363,7 +363,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。<br>     <br>NCP_ERR_INVALID_PARAM - 传入参数无效。<br>     <br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。<br>     <br>NCP_ERR_ALREADY_IN_CHILD - 不允许在子进程中再次创建子进程。<br>     <br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 超过最大Native子进程数限制。<br>     <br>详见Ability_NativeChildProcess_ErrCode定义。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 执行成功。      <br>NCP_ERR_INVALID_PARAM - 传入参数无效。      <br>NCP_ERR_NOT_SUPPORTED - 当前设备不支持创建Native子进程。      <br>NCP_ERR_ALREADY_IN_CHILD - 不允许在子进程中再次创建子进程。      <br>NCP_ERR_MAX_CHILD_PROCESSES_REACHED - 超过最大Native子进程数限制。      <br>详见Ability_NativeChildProcess_ErrCode定义。 |
 
 ### OH_Ability_GetCurrentChildProcessArgs()
 
@@ -399,7 +399,7 @@ typedef void (*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t pid | 启动的子进程id。 |
+| int32_t pid | 启动的子进程id。 |
 | int32_t signal | 子进程退出信号值，表示子进程的退出原因。常见的信号值包括：1（SIGHUP挂起）、2（SIGINT中断）、9（SIGKILL强制终止）、15（SIGTERM终止）等。 |
 
 ### OH_Ability_RegisterNativeChildProcessExitCallback()
@@ -424,7 +424,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCall
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br>     <br>NCP_ERR_INVALID_PARAM - 传入参数onProcessExit为nullptr或无效。<br>     <br>NCP_ERR_INTERNAL - 内部错误。<br>     <br>详见Ability_NativeChildProcess_ErrCode。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。      <br>NCP_ERR_INVALID_PARAM - 传入参数onProcessExit为nullptr或无效。      <br>NCP_ERR_INTERNAL - 内部错误。      <br>详见Ability_NativeChildProcess_ErrCode。 |
 
 ### OH_Ability_UnregisterNativeChildProcessExitCallback()
 
@@ -448,7 +448,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCa
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br>     <br>NCP_ERR_INVALID_PARAM - 参数不合法，传入参数onProcessExit为nullptr或无效。<br>     <br>NCP_ERR_INTERNAL - 内部错误。<br>     <br>NCP_ERR_CALLBACK_NOT_EXIST - 未找到回调函数。<br>     <br>详见Ability_NativeChildProcess_ErrCode。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。      <br>NCP_ERR_INVALID_PARAM - 参数不合法，传入参数onProcessExit为nullptr或无效。      <br>NCP_ERR_INTERNAL - 内部错误。      <br>NCP_ERR_CALLBACK_NOT_EXIST - 未找到回调函数。      <br>详见Ability_NativeChildProcess_ErrCode。 |
 
 ### OH_Ability_KillChildProcess()
 
@@ -472,7 +472,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。<br>     <br>NCP_ERR_SERVICE_ERROR - 服务端出错。<br>     <br>NCP_ERR_INVALID_PID - 所传入的子进程pid不合法。传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于<br>     {@link childProcessManager.startChildProcess}接口在SELF_FORK模式下启动的子进程。<br>     <br>详见Ability_NativeChildProcess_ErrCode。 |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | NCP_NO_ERROR - 调用成功。      <br>NCP_ERR_SERVICE_ERROR - 服务端出错。      <br>NCP_ERR_INVALID_PID - 所传入的子进程pid不合法。传入的进程pid不存在，或并非当前进程所创建的子进程pid，或属于      {@link childProcessManager.startChildProcess}接口在SELF_FORK模式下启动的子进程。      <br>详见Ability_NativeChildProcess_ErrCode。 |
 
 ### OH_Ability_IsNativeChildProcessSupported()
 
@@ -490,6 +490,6 @@ bool OH_Ability_IsNativeChildProcessSupported()
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否允许调用者创建Native子进程。<br>     <br>true：允许创建Native子进程。<br>     <br>false：不允许创建Native子进程。<br>     <br>默认值：false。 |
+| bool | 是否允许调用者创建Native子进程。      <br>true：允许创建Native子进程。      <br>false：不允许创建Native子进程。      <br>默认值：false。 |
 
 

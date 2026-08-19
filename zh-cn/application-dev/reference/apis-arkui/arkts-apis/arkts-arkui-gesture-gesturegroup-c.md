@@ -4,9 +4,7 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare class GestureGroup--><!--Device-unnamed-export declare class GestureGroup-End-->
 
@@ -22,9 +20,7 @@ static $_instantiate(factory: () => GestureGroup, mode: GestureMode, ...gesture:
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +34,7 @@ static $_instantiate(factory: () => GestureGroup, mode: GestureMode, ...gesture:
 | --- | --- | --- | --- |
 | factory | () =&gt; GestureGroup | 是 |  |
 | mode | [GestureMode](arkts-arkui-gesture-gesturemode-e.md) | 是 | 设置组合手势识别模式。<br/>默认值：GestureMode.Sequence |
-| gesture | [GestureType](arkts-arkui-gesturetype-t.md)[] | 是 | 设置一个或者多个基础手势类型时，这些手势会被识别为组合手势。 若此参数不填则组合手势识别功能不生效。<br/>**说明：**<br/>当需要为一个组件同时添加单击和双击手势时，可在组合手势中添加两个[TapGesture](arkts-arkui-gesture-tapgesture-c.md#tapgesture)， 需要双击手势在前，单击手势在后，否则不生效。 |
+| gesture | [GestureType](arkts-arkui-gesturetype-t.md)[] | 是 | 设置一个或者多个基础手势类型时，这些手势会被识别为组合手势。 若此参数不填则组合手势识别功能不生效。<br/>**说明：**<br/>当需要为一个组件同时添加单击和双击手势时，可在组合手势中添加两个[TapGesture](arkts-arkui-gesture-tapgesture-c.md)， 需要双击手势在前，单击手势在后，否则不生效。 |
 
 **返回值：**
 
@@ -56,9 +52,7 @@ onCancel(event: VoidCallback): GestureGroup
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

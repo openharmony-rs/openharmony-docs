@@ -4,13 +4,16 @@ ArcSwiper自定义切换动画相关信息。
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare interface ArcSwiperContentAnimatedTransition--><!--Device-unnamed-export declare interface ArcSwiperContentAnimatedTransition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+## 导入模块
+
+```TypeScript
+```
 
 ## timeout
 
@@ -26,9 +29,7 @@ ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页�
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,9 +49,7 @@ transition: Callback<ArcSwiperContentTransitionProxy>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

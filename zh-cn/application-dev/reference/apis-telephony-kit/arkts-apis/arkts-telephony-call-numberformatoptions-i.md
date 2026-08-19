@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-call-export interface NumberFormatOptions--><!--Device-call-export interface NumberFormatOptions-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+## 导入模块
+
+```TypeScript
+import { call } from '@kit.TelephonyKit';
+```
 
 ## countryCode
 
@@ -23,10 +25,6 @@ countryCode?: string
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NumberFormatOptions-countryCode?: string--><!--Device-NumberFormatOptions-countryCode?: string-End-->
 

@@ -1,5 +1,11 @@
 # destroyPort
 
+## 导入模块
+
+```TypeScript
+import { dataTransfer } from '@kit.ConnectivityKit';
+```
+
 ## destroyPort
 
 ```TypeScript
@@ -9,10 +15,6 @@ function destroyPort(uuid: string): void
 根据UUID销毁监听端口并释放相关资源。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 

@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dataShare-interface ProxyData--><!--Device-dataShare-interface ProxyData-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+## 导入模块
+
+```TypeScript
+import { dataShare } from '@kit.ArkData';
+import { dataSharePredicates } from '@kit.ArkData';
+```
 
 ## allowList
 
@@ -23,10 +26,6 @@ allowList?: string[]
 **类型：** string[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +45,6 @@ isMultiValues?: boolean
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ProxyData-isMultiValues?: boolean--><!--Device-ProxyData-isMultiValues?: boolean-End-->
@@ -67,10 +62,6 @@ trustProviders?: string[]
 **类型：** string[]
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +81,6 @@ uri: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ProxyData-uri: string--><!--Device-ProxyData-uri: string-End-->
@@ -106,15 +93,11 @@ uri: string
 value?: ValueType
 ```
 
-共享配置的值。不填则为空字符串。 **说明：** 1. API版本26.0.0之前，字符串长度不超过4096个字节；从API版本26.0.0开始，默认允许的字符串最大长度为4096字节，可以在 [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md#dataproxyconfig)中配置maxValueLength将最大长度扩展到102400字节。 2. 当首次发布共享配置时，如果未填写，将默认设置为空字符串。在更新共享配置时，如果未填写，共享配置的值将不会被更新。
+共享配置的值。不填则为空字符串。 **说明：** 1. API版本26.0.0之前，字符串长度不超过4096个字节；从API版本26.0.0开始，默认允许的字符串最大长度为4096字节，可以在 [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md)中配置maxValueLength将最大长度扩展到102400字节。 2. 当首次发布共享配置时，如果未填写，将默认设置为空字符串。在更新共享配置时，如果未填写，共享配置的值将不会被更新。
 
 **类型：** [ValueType](arkts-arkdata-valuetype-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -133,10 +116,6 @@ values?: Record<int, ValueType>
 **类型：** Record&lt;int, [ValueType](arkts-arkdata-valuetype-t.md)&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

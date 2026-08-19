@@ -4,13 +4,15 @@ Media Stream. AVPlayer use this for mediaData access, current version only suppo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface MediaStream--><!--Device-unnamed-interface MediaStream-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## bitrate
 
@@ -23,10 +25,6 @@ biterate of this mediaStream.
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +44,6 @@ video height.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaStream-height: int--><!--Device-MediaStream-height: int-End-->
@@ -68,10 +62,6 @@ url for this mediaStream
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaStream-url: string--><!--Device-MediaStream-url: string-End-->
@@ -89,10 +79,6 @@ video width.
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

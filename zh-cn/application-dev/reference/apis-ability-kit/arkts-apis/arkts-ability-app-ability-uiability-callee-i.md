@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface Callee--><!--Device-unnamed-export interface Callee-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+## 导入模块
+
+```TypeScript
+import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteStateChangeCallback } from '@kit.AbilityKit';
+```
 
 ## off_string
 
@@ -21,10 +23,6 @@ off(method: string): void
 解除通用组件服务端注册消息通知callback。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +44,7 @@ off(method: string): void
 | [16200005](../errorcode-ability.md#16200005-方法未注册) | The method has not been registered. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
@@ -77,10 +75,6 @@ on(method: string, callback: CalleeCallback): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-Callee-on(method: string, callback: CalleeCallback): void--><!--Device-Callee-on(method: string, callback: CalleeCallback): void-End-->
@@ -92,7 +86,7 @@ on(method: string, callback: CalleeCallback): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | method | string | 是 | 由Caller和Callee双方约定好的方法名，Callee方通过该字段区分消息类型。 |
-| callback | [CalleeCallback](arkts-ability-app-ability-uiability-calleecallback-i.md) | 是 | 一个[rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md#messagesequence)类型入参的js通知同步回调函数, 回 调函数至少要返回一个空的[rpc.Parcelable](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-parcelable-i.md#parcelable)数据对象, 其他视为函数执行错误。 |
+| callback | [CalleeCallback](arkts-ability-app-ability-uiability-calleecallback-i.md) | 是 | 一个[rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md)类型入参的js通知同步回调函数, 回 调函数至少要返回一个空的[rpc.Parcelable](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-parcelable-i.md)数据对象, 其他视为函数执行错误。 |
 
 **错误码：**
 
@@ -102,7 +96,7 @@ on(method: string, callback: CalleeCallback): void
 | [16200004](../errorcode-ability.md#16200004-方法已注册) | The method has been registered. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

@@ -1,12 +1,8 @@
 # RunningMultiInstanceInfo（系统接口）
 
-定义多实例应用在运行态的结构信息，通过appManager的 [getRunningMultiAppInfo](arkts-ability-appmanager-getrunningmultiappinfo-f-sys.md#getrunningmultiappinfo系统接口)来获取。
+定义多实例应用在运行态的结构信息，通过appManager的 [getRunningMultiAppInfo](arkts-ability-appmanager-getrunningmultiappinfo-f-sys.md)来获取。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface RunningMultiInstanceInfo--><!--Device-unnamed-export interface RunningMultiInstanceInfo-End-->
 
@@ -26,10 +22,6 @@ instanceKey: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RunningMultiInstanceInfo-instanceKey: string--><!--Device-RunningMultiInstanceInfo-instanceKey: string-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -48,10 +40,6 @@ pids: Array<int>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RunningMultiInstanceInfo-pids: Array<int>--><!--Device-RunningMultiInstanceInfo-pids: Array<int>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -69,10 +57,6 @@ uid: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RunningMultiInstanceInfo-uid: int--><!--Device-RunningMultiInstanceInfo-uid: int-End-->
 

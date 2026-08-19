@@ -1,12 +1,8 @@
-# Advertisement
+# Advertisement(广告内容)
 
 本模块为请求的广告内容。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Advertisement--><!--Device-unnamed-export interface Advertisement-End-->
 
@@ -23,10 +19,6 @@ adType: number
 **类型：** number
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +38,6 @@ clicked: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Advertisement-clicked: boolean--><!--Device-Advertisement-clicked: boolean-End-->
@@ -67,10 +55,6 @@ rewardVerifyConfig: Map<string, string>
 **类型：** Map&lt;string, string&gt;
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -90,10 +74,6 @@ rewarded: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Advertisement-rewarded: boolean--><!--Device-Advertisement-rewarded: boolean-End-->
@@ -112,10 +92,6 @@ shown: boolean
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Advertisement-shown: boolean--><!--Device-Advertisement-shown: boolean-End-->
@@ -133,10 +109,6 @@ uniqueId: string
 **类型：** string
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 

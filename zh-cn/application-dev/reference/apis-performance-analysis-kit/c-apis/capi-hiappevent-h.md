@@ -170,7 +170,7 @@ typedef void (*OH_HiAppEvent_OnReceive)(const char* domain, const struct HiAppEv
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char\* domain | 接收到的应用事件的领域。 |
+| const char\* domain | 接收到的应用事件的领域。 |
 | [const struct HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md)\* appEventGroups | 按照不同事件名称分组的事件组数组。 |
 | uint32_t groupLen | 事件组数组的长度。 |
 
@@ -190,7 +190,7 @@ typedef void (*OH_HiAppEvent_OnTrigger)(int row, int size)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int row | 事件观察者新接收到的事件消息的数量。 |
+| int row | 事件观察者新接收到的事件消息的数量。 |
 | int size | 事件观察者新接收的事件消息的大小总和（单个事件大小计算方式为：将消息转换为JSON字符串后，字符串的长度），单位为byte。 |
 
 ### OH_HiAppEvent_OnTake()
@@ -209,7 +209,7 @@ typedef void (*OH_HiAppEvent_OnTake)(const char* const *events, uint32_t eventLe
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char\* const \*events | JSON字符串格式的事件数组。 |
+| const char\* const \*events | JSON字符串格式的事件数组。 |
 | uint32_t eventLen | 事件数组大小。 |
 
 ### OH_HiAppEvent_CreateParamList()
@@ -697,7 +697,7 @@ int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType typ
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 如果事件参数校验成功，则返回0，将事件写入事件文件；<br>     如果事件中存在无效参数，则返回正值，丢弃无效参数后将事件写入事件文件；<br>     如果事件参数校验失败，则返回负值，并且事件将不会写入事件文件。<br>     <br>0 事件参数校验成功。<br>     <br>-1 非法的事件名称。<br>     <br>-4 非法的事件领域名称。<br>     <br>-99 打点功能被关闭。<br>     <br>1 非法的事件参数名称。<br>     <br>4 非法的事件参数字符串长度。<br>     <br>5 非法的事件参数数量。<br>     <br>6 非法的事件参数数组长度。<br>     <br>8 重复的事件参数名称。 |
+| int | 如果事件参数校验成功，则返回0，将事件写入事件文件；      如果事件中存在无效参数，则返回正值，丢弃无效参数后将事件写入事件文件；      如果事件参数校验失败，则返回负值，并且事件将不会写入事件文件。      <br>0 事件参数校验成功。      <br>-1 非法的事件名称。      <br>-4 非法的事件领域名称。      <br>-99 打点功能被关闭。      <br>1 非法的事件参数名称。      <br>4 非法的事件参数字符串长度。      <br>5 非法的事件参数数量。      <br>6 非法的事件参数数组长度。      <br>8 重复的事件参数名称。 |
 
 ### OH_HiAppEvent_Configure()
 
@@ -1005,7 +1005,7 @@ int OH_HiAppEvent_SetReportRoute(HiAppEvent_Processor* processor, const char* ap
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode) 参数值长度无效</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode) 参数值长度无效</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetReportPolicy()
 
@@ -1033,7 +1033,7 @@ int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodRep
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetReportEvent()
 
@@ -1060,7 +1060,7 @@ int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* do
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetCustomConfig()
 
@@ -1086,7 +1086,7 @@ int OH_HiAppEvent_SetCustomConfig(HiAppEvent_Processor* processor, const char* k
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode) 参数值长度无效</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode) 参数值长度无效</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetConfigId()
 
@@ -1111,7 +1111,7 @@ int OH_HiAppEvent_SetConfigId(HiAppEvent_Processor* processor, int configId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetConfigName()
 
@@ -1136,7 +1136,7 @@ int OH_HiAppEvent_SetConfigName(HiAppEvent_Processor* processor, const char* con
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode) 参数值长度无效</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 接口调用成功</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode) processor入参为空</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode) 用户标识无效</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode) 参数值长度无效</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetReportUserId()
 
@@ -1162,7 +1162,7 @@ int OH_HiAppEvent_SetReportUserId(HiAppEvent_Processor* processor, const char* c
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：processor入参为空；</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：参数值无效；</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效；</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode)：参数值长度无效。</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：processor入参为空；</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：参数值无效；</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效；</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode)：参数值长度无效。</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetReportUserProperty()
 
@@ -1188,7 +1188,7 @@ int OH_HiAppEvent_SetReportUserProperty(HiAppEvent_Processor* processor, const c
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：processor入参为空；</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：参数值无效；</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效；</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode)：参数值长度无效。</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：processor入参为空；</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：参数值无效；</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效；</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE_LENGTH](capi-hiappevent-h.md#hiappevent_errorcode)：参数值长度无效。</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_AddProcessor()
 
@@ -1212,7 +1212,7 @@ int64_t OH_HiAppEvent_AddProcessor(HiAppEvent_Processor* processor)
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | <ul><br>         <li>调用成功时返回处理者唯一ID，大于0；</li><br>         <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：processor入参为空；</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：参数值无效；</li><br>         <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode)：数据处理者名称未找到或注册失败；</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效。</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int64_t | <ul>          <li>调用成功时返回处理者唯一ID，大于0；</li>          <li>[HIAPPEVENT_PROCESSOR_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：processor入参为空；</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：参数值无效；</li>          <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode)：数据处理者名称未找到或注册失败；</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效。</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_DestroyProcessor()
 
@@ -1254,7 +1254,7 @@ int OH_HiAppEvent_RemoveProcessor(int64_t processorId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li><br>         <li>[HIAPPEVENT_PROCESSOR_NOT_FOUND](capi-hiappevent-h.md#hiappevent_errorcode)：事件处理者不存在；</li><br>         <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode)：操作失败；</li><br>         <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效。</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li>          <li>[HIAPPEVENT_PROCESSOR_NOT_FOUND](capi-hiappevent-h.md#hiappevent_errorcode)：事件处理者不存在；</li>          <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode)：操作失败；</li>          <li>[HIAPPEVENT_INVALID_UID](capi-hiappevent-h.md#hiappevent_errorcode)：用户标识无效。</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_CreateConfig()
 
@@ -1316,7 +1316,7 @@ int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName,
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li><br>         <li>[HIAPPEVENT_EVENT_CONFIG_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：传入的指向配置对象的指针为空；</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：设定的配置项无效。</li><br>         </ul><br>     具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li>          <li>[HIAPPEVENT_EVENT_CONFIG_IS_NULL](capi-hiappevent-h.md#hiappevent_errorcode)：传入的指向配置对象的指针为空；</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：设定的配置项无效。</li>          </ul>      具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_SetEventConfig()
 
@@ -1341,7 +1341,7 @@ int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：设置的参数无效。</li><br>         </ul><br> 具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：设置的参数无效。</li>          </ul>  具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
 ### OH_HiAppEvent_ReportFrameworkMemAnomaly()
 
@@ -1367,6 +1367,6 @@ int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType fra
 
 | 类型 | 说明 |
 | -- | -- |
-| int | <ul><br>         <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 操作成功。</li><br>         <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效。</li><br>         <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) 系统/应用事件写入失败或时间戳提取失败。</li><br>         <li>[HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED](capi-hiappevent-h.md#hiappevent_errorcode) 报告频率超出。</li><br>         </ul> |
+| int | <ul>          <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 操作成功。</li>          <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效。</li>          <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) 系统/应用事件写入失败或时间戳提取失败。</li>          <li>[HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED](capi-hiappevent-h.md#hiappevent_errorcode) 报告频率超出。</li>          </ul> |
 
 

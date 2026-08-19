@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare enum ToolType--><!--Device-unnamed-export declare enum ToolType-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -21,10 +17,6 @@ FINGER = 0
 手指。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToolType-FINGER = 0--><!--Device-ToolType-FINGER = 0-End-->
 
@@ -40,10 +32,6 @@ PEN = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToolType-PEN = 1--><!--Device-ToolType-PEN = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -57,10 +45,6 @@ RUBBER = 2
 橡皮擦。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToolType-RUBBER = 2--><!--Device-ToolType-RUBBER = 2-End-->
 
@@ -76,10 +60,6 @@ BRUSH = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToolType-BRUSH = 3--><!--Device-ToolType-BRUSH = 3-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -93,10 +73,6 @@ PENCIL = 4
 铅笔。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToolType-PENCIL = 4--><!--Device-ToolType-PENCIL = 4-End-->
 
@@ -112,10 +88,6 @@ AIRBRUSH = 5
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToolType-AIRBRUSH = 5--><!--Device-ToolType-AIRBRUSH = 5-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -130,10 +102,6 @@ MOUSE = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ToolType-MOUSE = 6--><!--Device-ToolType-MOUSE = 6-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
@@ -147,10 +115,6 @@ LENS = 7
 透镜。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ToolType-LENS = 7--><!--Device-ToolType-LENS = 7-End-->
 

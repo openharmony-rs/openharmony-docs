@@ -4,9 +4,7 @@ Defines the web keyboard callback info related to the onInterceptKeyboardAttach 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-unnamed-export declare interface WebKeyboardCallbackInfo--><!--Device-unnamed-export declare interface WebKeyboardCallbackInfo-End-->
 
@@ -24,9 +22,7 @@ The attributes of web input element.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebKeyboardCallbackInfo-attributes: Record<string, string>--><!--Device-WebKeyboardCallbackInfo-attributes: Record<string, string>-End-->
 
@@ -44,9 +40,7 @@ The web keyboard controller.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-WebKeyboardCallbackInfo-controller: WebKeyboardController--><!--Device-WebKeyboardCallbackInfo-controller: WebKeyboardController-End-->
 

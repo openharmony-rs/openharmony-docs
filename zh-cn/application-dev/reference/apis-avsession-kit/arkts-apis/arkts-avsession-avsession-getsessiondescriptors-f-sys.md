@@ -1,5 +1,11 @@
 # getSessionDescriptors（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## getSessionDescriptors
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getSessionDescriptors(category: SessionCategory): Promise<Array<Readonl
 根据不同的会话类别获取对应的会话描述。使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 

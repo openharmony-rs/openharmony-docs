@@ -1,5 +1,11 @@
 # getAppMemoryLimit
 
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
+
 ## getAppMemoryLimit
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAppMemoryLimit(): MemoryLimit
 获取应用程序进程的内存限制。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-hidebug-function getAppMemoryLimit(): MemoryLimit--><!--Device-hidebug-function getAppMemoryLimit(): MemoryLimit-End-->
 
@@ -24,7 +26,7 @@ function getAppMemoryLimit(): MemoryLimit
 | --- | --- |
 | [MemoryLimit](arkts-performanceanalysis-hidebug-memorylimit-i.md) | 应用程序进程内存限制。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { hidebug } from '@kit.PerformanceAnalysisKit';

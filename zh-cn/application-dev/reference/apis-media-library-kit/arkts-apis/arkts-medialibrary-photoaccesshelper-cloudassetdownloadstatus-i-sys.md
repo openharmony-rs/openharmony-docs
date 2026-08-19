@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-interface CloudAssetDownloadStatus--><!--Device-photoAccessHelper-interface CloudAssetDownloadStatus-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## taskInfos
 
@@ -25,10 +27,6 @@ readonly taskInfos: string[]
 **类型：** string[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-CloudAssetDownloadStatus-readonly taskInfos: string[]--><!--Device-CloudAssetDownloadStatus-readonly taskInfos: string[]-End-->
 

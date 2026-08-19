@@ -6,13 +6,16 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 <!--Device-unnamed-export declare interface ArcSwiperAttribute--><!--Device-unnamed-export declare interface ArcSwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+## 导入模块
+
+```TypeScript
+```
 
 ## customContentTransition
 
@@ -22,9 +25,7 @@ customContentTransition(transition: ArcSwiperContentAnimatedTransition | undefin
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-customContentTransition(transition: ArcSwiperContentAnimatedTransition | undefined): this--><!--Device-ArcSwiperAttribute-customContentTransition(transition: ArcSwiperContentAnimatedTransition | undefined): this-End-->
 
@@ -48,9 +49,7 @@ digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this--><!--Device-ArcSwiperAttribute-digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this-End-->
 
@@ -74,9 +73,7 @@ disableSwipe(disabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-disableSwipe(disabled: boolean | undefined): this--><!--Device-ArcSwiperAttribute-disableSwipe(disabled: boolean | undefined): this-End-->
 
@@ -100,9 +97,7 @@ disableTransitionAnimation(disabled: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-disableTransitionAnimation(disabled: boolean | undefined): this--><!--Device-ArcSwiperAttribute-disableTransitionAnimation(disabled: boolean | undefined): this-End-->
 
@@ -126,9 +121,7 @@ duration(duration: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-duration(duration: int | undefined): this--><!--Device-ArcSwiperAttribute-duration(duration: int | undefined): this-End-->
 
@@ -152,9 +145,7 @@ effectMode(edgeEffect: EdgeEffect | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-effectMode(edgeEffect: EdgeEffect | undefined): this--><!--Device-ArcSwiperAttribute-effectMode(edgeEffect: EdgeEffect | undefined): this-End-->
 
@@ -178,9 +169,7 @@ index(index: int | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-index(index: int | undefined): this--><!--Device-ArcSwiperAttribute-index(index: int | undefined): this-End-->
 
@@ -204,9 +193,7 @@ indicator(style: ArcDotIndicator | boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-indicator(style: ArcDotIndicator | boolean | undefined): this--><!--Device-ArcSwiperAttribute-indicator(style: ArcDotIndicator | boolean | undefined): this-End-->
 
@@ -230,9 +217,7 @@ onAnimationEnd(handler: AnimationEndHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-onAnimationEnd(handler: AnimationEndHandler | undefined): this--><!--Device-ArcSwiperAttribute-onAnimationEnd(handler: AnimationEndHandler | undefined): this-End-->
 
@@ -256,9 +241,7 @@ onAnimationStart(handler: AnimationStartHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-onAnimationStart(handler: AnimationStartHandler | undefined): this--><!--Device-ArcSwiperAttribute-onAnimationStart(handler: AnimationStartHandler | undefined): this-End-->
 
@@ -282,9 +265,7 @@ onChange(handler: IndexChangedHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-onChange(handler: IndexChangedHandler | undefined): this--><!--Device-ArcSwiperAttribute-onChange(handler: IndexChangedHandler | undefined): this-End-->
 
@@ -308,9 +289,7 @@ onGestureSwipe(handler: GestureSwipeHandler | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-onGestureSwipe(handler: GestureSwipeHandler | undefined): this--><!--Device-ArcSwiperAttribute-onGestureSwipe(handler: GestureSwipeHandler | undefined): this-End-->
 
@@ -334,9 +313,7 @@ setArcSwiperOptions(controller?: ArcSwiperController): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-setArcSwiperOptions(controller?: ArcSwiperController): this--><!--Device-ArcSwiperAttribute-setArcSwiperOptions(controller?: ArcSwiperController): this-End-->
 
@@ -360,9 +337,7 @@ vertical(isVertical: boolean | undefined): this
 
 **起始版本：** -1
 
-**ArkTS模式：** 起始版本为-1。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为-1。
 
 <!--Device-ArcSwiperAttribute-vertical(isVertical: boolean | undefined): this--><!--Device-ArcSwiperAttribute-vertical(isVertical: boolean | undefined): this-End-->
 
@@ -388,9 +363,7 @@ default
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为26.0.0。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

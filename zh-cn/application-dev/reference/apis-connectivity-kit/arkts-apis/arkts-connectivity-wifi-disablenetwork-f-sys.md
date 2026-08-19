@@ -1,5 +1,14 @@
 # disableNetwork（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## disableNetwork
 
 ```TypeScript
@@ -9,8 +18,6 @@ function disableNetwork(netId: number): boolean
 去使能网络配置。 &lt;p&gt;去使能的网络将不再被关联。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -36,7 +43,7 @@ function disableNetwork(netId: number): boolean
 | --- | --- |
 | boolean | 指定网络已去使能返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

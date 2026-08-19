@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-continueManager-enum ContinueStateCode--><!--Device-continueManager-enum ContinueStateCode-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -21,10 +17,6 @@ SUCCESS = 0
 操作成功。 此接口仅可在Stage模型下使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -41,10 +33,6 @@ SYSTEM_ERROR = 1
 操作失败。 此接口仅可在Stage模型下使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

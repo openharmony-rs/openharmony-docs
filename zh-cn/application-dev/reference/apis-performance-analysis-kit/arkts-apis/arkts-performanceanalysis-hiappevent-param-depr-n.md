@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** Param
@@ -14,13 +12,18 @@
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+## 导入模块
+
+```TypeScript
+```
+
 ## 汇总
 
 ### 常量
 
 | 名称 | 说明 |
 | --- | --- |
-| [USER_ID](arkts-performanceanalysis-param-depr-con.md#userid) | 用户自定义ID。 |
-| [DISTRIBUTED_SERVICE_NAME](arkts-performanceanalysis-param-depr-con.md#distributedservicename) | 分布式服务名称。 |
-| [DISTRIBUTED_SERVICE_INSTANCE_ID](arkts-performanceanalysis-param-depr-con.md#distributedserviceinstanceid) | 分布式服务实例ID。 |
+| [USER_ID](arkts-performanceanalysis-param-depr-con.md#user_id) | 用户自定义ID。 |
+| [DISTRIBUTED_SERVICE_NAME](arkts-performanceanalysis-param-depr-con.md#distributed_service_name) | 分布式服务名称。 |
+| [DISTRIBUTED_SERVICE_INSTANCE_ID](arkts-performanceanalysis-param-depr-con.md#distributed_service_instance_id) | 分布式服务实例ID。 |
 

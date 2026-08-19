@@ -4,13 +4,14 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface EmitterOptions--><!--Device-unnamed-interface EmitterOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## annulusRegion
 
@@ -25,10 +26,6 @@ annulusRegion?: ParticleAnnulusRegion
 **默认值：** {innerRadius:LengthMetrics.vp(0),outerRadius:LengthMetrics.vp(0)}
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,10 +49,6 @@ emitRate?: number
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -70,15 +63,11 @@ emitRate?: number
 particle: EmitterParticleOptions<PARTICLE>
 ```
 
-粒子配置。 -type表示粒子类型，可以选择图片或者是点。 -config表示对应类型的配置。 -config类型和type值有关联： 1. 如果type为ParticleType.POINT，则config类型为[PointParticleParameters](arkts-arkui-pointparticleparameters-i.md#pointparticleparameters) 。 2. 如果type为ParticleType.IMAGE，则config类型为[ImageParticleParameters](arkts-arkui-imageparticleparameters-i.md#imageparticleparameters) 。 -count表示发射的粒子总数，count取值>=-1，当count为-1表示粒子总数无限大。 -lifetime表示单个粒子的生命周期，默认值1000（即1000ms，1s），lifetime>=-1，当lifetime为-1表示粒子生命周期无限大。当lifetime&lt;-1，取默认值。 **说明：**如果不需要动画一直播放，建议不要将生命周期设置为-1，可能对性能造成较大影响。 lifetimeRange表示粒子生命周期取值范围，设置lifetimeRange后粒子的生命周期为[lifetime-lifetimeRange, lifetime+lifetimeRange]中间的一个随机整数。 lifetimeRange默认值为0，取值范围为[0, +∞）。设置为负值时取默认值。
+粒子配置。 -type表示粒子类型，可以选择图片或者是点。 -config表示对应类型的配置。 -config类型和type值有关联： 1. 如果type为ParticleType.POINT，则config类型为[PointParticleParameters](arkts-arkui-pointparticleparameters-i.md) 。 2. 如果type为ParticleType.IMAGE，则config类型为[ImageParticleParameters](arkts-arkui-imageparticleparameters-i.md) 。 -count表示发射的粒子总数，count取值>=-1，当count为-1表示粒子总数无限大。 -lifetime表示单个粒子的生命周期，默认值1000（即1000ms，1s），lifetime>=-1，当lifetime为-1表示粒子生命周期无限大。当lifetime&lt;-1，取默认值。 **说明：**如果不需要动画一直播放，建议不要将生命周期设置为-1，可能对性能造成较大影响。 lifetimeRange表示粒子生命周期取值范围，设置lifetimeRange后粒子的生命周期为[lifetime-lifetimeRange, lifetime+lifetimeRange]中间的一个随机整数。 lifetimeRange默认值为0，取值范围为[0, +∞）。设置为负值时取默认值。
 
 **类型：** [EmitterParticleOptions](arkts-arkui-emitterparticleoptions-i.md)&lt;PARTICLE&gt;
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,10 +91,6 @@ position?: ParticleTuple<Dimension, Dimension>
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -128,10 +113,6 @@ shape?: ParticleEmitterShape
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -153,10 +134,6 @@ size?: ParticleTuple<Dimension, Dimension>
 **默认值：** ['100%','100%']
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

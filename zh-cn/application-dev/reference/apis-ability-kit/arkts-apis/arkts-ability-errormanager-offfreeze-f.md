@@ -1,5 +1,11 @@
 # offFreeze
 
+## 导入模块
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+```
+
 ## offFreeze
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offFreeze(observer?: FreezeObserver): void
 注销冻屏事件观测器。 此函数只能在主线程中调用。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-errorManager-function offFreeze(observer?: FreezeObserver): void--><!--Device-errorManager-function offFreeze(observer?: FreezeObserver): void-End-->
 
@@ -32,7 +34,7 @@ function offFreeze(observer?: FreezeObserver): void
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
 | [16300004](../errorcode-ability.md#16300004-指定的observer不存在) | 观测器不存在。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';

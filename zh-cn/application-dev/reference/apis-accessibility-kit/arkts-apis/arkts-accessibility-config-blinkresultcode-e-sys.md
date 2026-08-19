@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-config-export enum BlinkResultCode--><!--Device-config-export enum BlinkResultCode-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -23,10 +19,6 @@ SUCCESS = 0
 表示闪烁接口执行成功。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ ALREADY_FLASHING = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BlinkResultCode-ALREADY_FLASHING = 1--><!--Device-BlinkResultCode-ALREADY_FLASHING = 1-End-->
@@ -67,10 +55,6 @@ DEVICE_IN_USE = 2
 表示设备正在使用中。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +74,6 @@ FLASH_BLINKING_UNSUPPORTED = 3
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BlinkResultCode-FLASH_BLINKING_UNSUPPORTED = 3--><!--Device-BlinkResultCode-FLASH_BLINKING_UNSUPPORTED = 3-End-->
@@ -112,10 +92,6 @@ SCREEN_BLINKING_UNSUPPORTED = 4
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BlinkResultCode-SCREEN_BLINKING_UNSUPPORTED = 4--><!--Device-BlinkResultCode-SCREEN_BLINKING_UNSUPPORTED = 4-End-->
@@ -133,10 +109,6 @@ FEATURE_DISABLED = 5
 表示闪烁功能开关未开启。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,17 +1,21 @@
 # on_BundleStatusChange（系统接口）
 
-## on_BundleStatusChange
+## 导入模块
+
+```TypeScript
+import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
+```
+
+## on('BundleStatusChange')
 
 ```TypeScript
 function on(type: 'BundleStatusChange',
     bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void
 ```
 
-注册Callback。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [on](arkts-ability-bundlemonitor-onbundlechangedevent-f-sys.md#onbundlechangedevent) > 替代。
+注册Callback。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [on](arkts-ability-bundlemonitor-onbundlechangedevent-f-sys.md#on_bundlechangedevent) > 替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -31,20 +35,18 @@ function on(type: 'BundleStatusChange',
 | --- | --- | --- | --- |
 | type | 'BundleStatusChange' | 是 | 指示应执行命令，只支持BundleStatusChange。 |
 | bundleStatusCallback | [BundleStatusCallback](arkts-ability-bundlestatuscallback-t-sys.md) | 是 | 指示要注册的回调。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回正确结果或错误信息。 |
 
 
-## on_BundleStatusChange
+## on('BundleStatusChange')
 
 ```TypeScript
 function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback): Promise<string>
 ```
 
-注册Callback。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [on](arkts-ability-bundlemonitor-onbundlechangedevent-f-sys.md#onbundlechangedevent) > 替代。
+注册Callback。 > **说明：** > > 从API version 8开始支持，从API version 9开始废弃，建议使用 > [on](arkts-ability-bundlemonitor-onbundlechangedevent-f-sys.md#on_bundlechangedevent) > 替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

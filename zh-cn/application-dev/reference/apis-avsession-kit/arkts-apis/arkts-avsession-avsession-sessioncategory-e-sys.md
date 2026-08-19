@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum SessionCategory--><!--Device-avSession-enum SessionCategory-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
@@ -23,10 +19,6 @@ CATEGORY_ACTIVE = 1
 允许在系统控制入口显示的会话类别。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-SessionCategory-CATEGORY_ACTIVE = 1--><!--Device-SessionCategory-CATEGORY_ACTIVE = 1-End-->
 
@@ -44,10 +36,6 @@ CATEGORY_NOT_ACTIVE = 2
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-SessionCategory-CATEGORY_NOT_ACTIVE = 2--><!--Device-SessionCategory-CATEGORY_NOT_ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
@@ -64,10 +52,6 @@ CATEGORY_ALL = 3
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-SessionCategory-CATEGORY_ALL = 3--><!--Device-SessionCategory-CATEGORY_ALL = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
@@ -83,10 +67,6 @@ CATEGORY_HIPLAY = 4
 会话类别是HiPlay
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

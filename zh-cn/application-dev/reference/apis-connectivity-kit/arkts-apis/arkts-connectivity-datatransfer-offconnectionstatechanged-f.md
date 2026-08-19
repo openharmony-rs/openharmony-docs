@@ -1,5 +1,11 @@
 # offConnectionStateChanged
 
+## 导入模块
+
+```TypeScript
+import { dataTransfer } from '@kit.ConnectivityKit';
+```
+
 ## offConnectionStateChanged
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offConnectionStateChanged(callback?: Callback<ConnectionResult>): void
 取消订阅连接状态变更事件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +26,7 @@ function offConnectionStateChanged(callback?: Callback<ConnectionResult>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ConnectionResult](arkts-connectivity-datatransfer-connectionresult-i.md)&gt; | 否 | 用于监听状态改变事件的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[ConnectionResult](arkts-connectivity-datatransfer-connectionresult-i.md)&gt; | 否 | 用于监听状态改变事件的回调。 |
 
 **错误码：**
 

@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-image-interface DecodingOptions--><!--Device-image-interface DecodingOptions-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+## 导入模块
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
 
 ## cropAndScaleStrategy
 
@@ -23,10 +25,6 @@ cropAndScaleStrategy?: CropAndScaleStrategy
 **类型：** [CropAndScaleStrategy](arkts-image-image-cropandscalestrategy-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DecodingOptions-cropAndScaleStrategy?: CropAndScaleStrategy--><!--Device-DecodingOptions-cropAndScaleStrategy?: CropAndScaleStrategy-End-->
 
@@ -44,10 +42,6 @@ desiredColorSpace?: colorSpaceManager.ColorSpaceManager
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DecodingOptions-desiredColorSpace?: colorSpaceManager.ColorSpaceManager--><!--Device-DecodingOptions-desiredColorSpace?: colorSpaceManager.ColorSpaceManager-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
@@ -58,15 +52,11 @@ desiredColorSpace?: colorSpaceManager.ColorSpaceManager
 desiredDynamicRange?: DecodingDynamicRange
 ```
 
-目标动态范围，默认值为SDR。 通过[CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md#createincrementalsource)创建的ImageSource不支持设置此属性，默认解码为SDR内容。 如果平台不支持HDR，设置无效，默认解码为SDR内容。
+目标动态范围，默认值为SDR。 通过[CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md)创建的ImageSource不支持设置此属性，默认解码为SDR内容。 如果平台不支持HDR，设置无效，默认解码为SDR内容。
 
 **类型：** [DecodingDynamicRange](arkts-image-image-decodingdynamicrange-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DecodingOptions-desiredDynamicRange?: DecodingDynamicRange--><!--Device-DecodingOptions-desiredDynamicRange?: DecodingDynamicRange-End-->
 
@@ -83,10 +73,6 @@ desiredPixelFormat?: PixelMapFormat
 **类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -108,10 +94,6 @@ desiredRegion?: Region
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -131,10 +113,6 @@ desiredSize?: Size
 **类型：** Size
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -156,10 +134,6 @@ editable?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -179,10 +153,6 @@ fitDensity?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -204,10 +174,6 @@ index?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -228,10 +194,6 @@ rotate?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
@@ -251,10 +213,6 @@ sampleSize?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

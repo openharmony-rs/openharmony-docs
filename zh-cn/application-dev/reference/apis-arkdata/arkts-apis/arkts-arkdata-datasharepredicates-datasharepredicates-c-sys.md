@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-dataSharePredicates-class DataSharePredicates--><!--Device-dataSharePredicates-class DataSharePredicates-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+```
 
 ## beginWrap
 
@@ -23,10 +25,6 @@ beginWrap(): DataSharePredicates
 该接口用于向谓词添加左括号，相当于sql语句的“(”，必须和右括号一起使用。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +40,7 @@ beginWrap(): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回带有左括号的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -63,10 +61,6 @@ beginsWith(field: string, value: string): DataSharePredicates
 该接口用于配置谓词以匹配值以指定字符串起始的字段。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -89,7 +83,7 @@ beginsWith(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -105,10 +99,6 @@ between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 该接口用于配置谓词以匹配值在指定范围内的字段。包含两端边界值，为左闭右闭区间。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,7 +122,7 @@ between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -148,10 +138,6 @@ contains(field: string, value: string): DataSharePredicates
 该接口用于配置谓词以匹配值包含指定字段的字段。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -174,7 +160,7 @@ contains(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -191,10 +177,6 @@ distinct(): DataSharePredicates
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataSharePredicates-distinct(): DataSharePredicates--><!--Device-DataSharePredicates-distinct(): DataSharePredicates-End-->
@@ -209,7 +191,7 @@ distinct(): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -226,10 +208,6 @@ endWrap(): DataSharePredicates
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataSharePredicates-endWrap(): DataSharePredicates--><!--Device-DataSharePredicates-endWrap(): DataSharePredicates-End-->
@@ -244,7 +222,7 @@ endWrap(): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回带有右括号的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -265,10 +243,6 @@ endsWith(field: string, value: string): DataSharePredicates
 该接口用于配置谓词以匹配值以指定字符串结尾的字段。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -291,7 +265,7 @@ endsWith(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -307,10 +281,6 @@ glob(field: string, value: string): DataSharePredicates
 该接口用于配置谓词以匹配指定通配符表达式的字段。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -333,7 +303,7 @@ glob(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -349,10 +319,6 @@ greaterThan(field: string, value: ValueType): DataSharePredicates
 该接口用于配置谓词以匹配值大于指定值的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -375,7 +341,7 @@ greaterThan(field: string, value: ValueType): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -391,10 +357,6 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 该接口用于配置谓词以匹配值大于或等于指定值的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -417,7 +379,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -433,10 +395,6 @@ groupBy(fields: Array<string>): DataSharePredicates
 该接口用于配置谓词按指定列分组查询结果。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -458,7 +416,7 @@ groupBy(fields: Array<string>): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -474,10 +432,6 @@ inKeys(keys: Array<string>): DataSharePredicates
 该接口用于配置谓词以匹配键在指定范围内的字段。 目前仅KVDB支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -499,7 +453,7 @@ inKeys(keys: Array<string>): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -515,10 +469,6 @@ indexedBy(field: string): DataSharePredicates
 该接口用于配置谓词按指定索引列查询结果。使用该方法前，需要设置索引列。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -540,7 +490,7 @@ indexedBy(field: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -556,10 +506,6 @@ isNotNull(field: string): DataSharePredicates
 该接口用于配置谓词以匹配值不为null的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -581,7 +527,7 @@ isNotNull(field: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -597,10 +543,6 @@ isNull(field: string): DataSharePredicates
 该接口用于配置谓词以匹配值为null的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -622,7 +564,7 @@ isNull(field: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | DataSharePredicates** object created. |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -638,10 +580,6 @@ lessThan(field: string, value: ValueType): DataSharePredicates
 该接口用于配置谓词以匹配值小于指定值的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -664,7 +602,7 @@ lessThan(field: string, value: ValueType): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -680,10 +618,6 @@ lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 该接口用于配置谓词以匹配值小于或等于指定值的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -706,7 +640,7 @@ lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -722,10 +656,6 @@ like(field: string, value: string): DataSharePredicates
 该接口用于配置谓词以匹配指定通配符表达式的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -748,7 +678,7 @@ like(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -764,10 +694,6 @@ notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 该接口用于配置谓词以匹配值超出指定范围的字段。不包含两端边界值，为左开右开区间。 目前仅关系型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -791,7 +717,7 @@ notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -807,10 +733,6 @@ notEqualTo(field: string, value: ValueType): DataSharePredicates
 该接口用于配置谓词以匹配值不等于指定值的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -833,7 +755,7 @@ notEqualTo(field: string, value: ValueType): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -849,10 +771,6 @@ notIn(field: string, value: Array<ValueType>): DataSharePredicates
 该接口用于配置谓词以匹配值不在指定范围内的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -875,7 +793,7 @@ notIn(field: string, value: Array<ValueType>): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -892,10 +810,6 @@ or(): DataSharePredicates
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DataSharePredicates-or(): DataSharePredicates--><!--Device-DataSharePredicates-or(): DataSharePredicates-End-->
@@ -910,7 +824,7 @@ or(): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回带有或条件的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates()
@@ -928,10 +842,6 @@ prefixKey(prefix: string): DataSharePredicates
 该接口用于配置谓词以匹配键前缀的指定字段。 目前仅KVDB支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -953,7 +863,7 @@ prefixKey(prefix: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
@@ -969,10 +879,6 @@ unlike(field: string, value: string): DataSharePredicates
 该接口用于配置谓词以匹配不类似指定通配符表达式的字段。 目前仅关系型数据库及键值型数据库支持该谓词。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -995,7 +901,7 @@ unlike(field: string, value: string): DataSharePredicates
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 返回与指定字段匹配的谓词。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();

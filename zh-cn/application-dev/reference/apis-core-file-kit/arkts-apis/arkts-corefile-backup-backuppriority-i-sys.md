@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-backup-interface BackupPriority--><!--Device-backup-interface BackupPriority-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { backup } from '@kit.CoreFileKit';
+```
 
 ## priority
 
@@ -25,10 +27,6 @@ priority?: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BackupPriority-priority?: int--><!--Device-BackupPriority-priority?: int-End-->
 

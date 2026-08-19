@@ -69,7 +69,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。<br>         AVMETADATA_ERROR_NO_MEMORY：内存不足。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。\n          AVMETADATA_ERROR_NO_MEMORY：内存不足。 |
 
 ### OH_AVMetadataBuilder_Destroy()
 
@@ -93,7 +93,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetAssetId()
 
@@ -118,7 +118,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数assetId为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数assetId为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetTitle()
 
@@ -143,7 +143,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数title为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数title为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetArtist()
 
@@ -168,7 +168,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数artist为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数artist为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetAuthor()
 
@@ -193,7 +193,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数author为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数author为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetAlbum()
 
@@ -218,7 +218,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数album为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数album为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetWriter()
 
@@ -243,7 +243,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数writer为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数writer为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetComposer()
 
@@ -268,7 +268,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数composer为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数composer为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetDuration()
 
@@ -293,7 +293,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetMediaImageUri()
 
@@ -318,7 +318,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数mediaImageUri为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数mediaImageUri为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetSubtitle()
 
@@ -343,7 +343,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数subtitle为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数subtitle为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetDescription()
 
@@ -368,7 +368,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数description为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数description为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetLyric()
 
@@ -393,7 +393,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数lyric为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数lyric为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetSkipIntervals()
 
@@ -418,7 +418,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数intervals为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数intervals为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetDisplayTags()
 
@@ -443,7 +443,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetFilter()
 
@@ -468,7 +468,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数filter是无效的。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数filter是无效的。 |
 
 ### OH_AVMetadataBuilder_GenerateAVMetadata()
 
@@ -493,7 +493,7 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_NO_MEMORY：内存不足。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数avMetadata为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_NO_MEMORY：内存不足。\n          AVMETADATA_ERROR_INVALID_PARAM：\n                                        1. 参数builder为nullptr。\n                                        2. 参数avMetadata为nullptr。 |
 
 ### OH_AVMetadata_Destroy()
 
@@ -517,6 +517,6 @@ AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：参数avMetadata为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。\n          AVMETADATA_ERROR_INVALID_PARAM：参数avMetadata为nullptr。 |
 
 

@@ -4,13 +4,19 @@
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface BlankScreenDetectionConfig--><!--Device-unnamed-declare interface BlankScreenDetectionConfig-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## contentfulNodesCountThreshold
 
@@ -23,10 +29,6 @@ contentfulNodesCountThreshold?: number
 **类型：** number
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 <!--Device-BlankScreenDetectionConfig-contentfulNodesCountThreshold?: number--><!--Device-BlankScreenDetectionConfig-contentfulNodesCountThreshold?: number-End-->
 
@@ -44,10 +46,6 @@ detectionMethods?: BlankScreenDetectionMethod[]
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-BlankScreenDetectionConfig-detectionMethods?: BlankScreenDetectionMethod[]--><!--Device-BlankScreenDetectionConfig-detectionMethods?: BlankScreenDetectionMethod[]-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -64,10 +62,6 @@ detectionTiming?: number[]
 
 **起始版本：** 22
 
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
-
 <!--Device-BlankScreenDetectionConfig-detectionTiming?: number[]--><!--Device-BlankScreenDetectionConfig-detectionTiming?: number[]-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -83,10 +77,6 @@ enable: boolean
 **类型：** boolean
 
 **起始版本：** 22
-
-**ArkTS模式：** 起始版本为22。
-
-**废弃版本：** -1
 
 <!--Device-BlankScreenDetectionConfig-enable: boolean--><!--Device-BlankScreenDetectionConfig-enable: boolean-End-->
 

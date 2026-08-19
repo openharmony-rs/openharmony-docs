@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export interface RotationLimits--><!--Device-mechanicManager-export interface RotationLimits-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
 
 ## negativePitchMax
 
@@ -25,10 +27,6 @@ Maximum pitch rotation angles in the negative direction, ranging from -2*Math.PI
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationLimits-negativePitchMax: double--><!--Device-RotationLimits-negativePitchMax: double-End-->
 
@@ -48,10 +46,6 @@ Maximum roll rotation angles in the negative direction, ranging from -2*Math.PI 
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationLimits-negativeRollMax: double--><!--Device-RotationLimits-negativeRollMax: double-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -69,10 +63,6 @@ Maximum yaw rotation angles in the negative direction, ranging from -2*Math.PI t
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationLimits-negativeYawMax: double--><!--Device-RotationLimits-negativeYawMax: double-End-->
 
@@ -92,10 +82,6 @@ Maximum pitch rotation angles in the positive direction, ranging from 0 to 2*Mat
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationLimits-positivePitchMax: double--><!--Device-RotationLimits-positivePitchMax: double-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -114,10 +100,6 @@ Maximum roll rotation angles in the positive direction, ranging from 0 to 2*Math
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationLimits-positiveRollMax: double--><!--Device-RotationLimits-positiveRollMax: double-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -135,10 +117,6 @@ Maximum yaw rotation angles in the positive direction, ranging from 0 to 2*Math.
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationLimits-positiveYawMax: double--><!--Device-RotationLimits-positiveYawMax: double-End-->
 

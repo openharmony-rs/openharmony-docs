@@ -1,18 +1,21 @@
 # AutoDeviceSwitch
 
-自动切换镜头类，继承自[AutoDeviceSwitchQuery](arkts-camera-camera-autodeviceswitchquery-i.md#autodeviceswitchquery)，用于使能或去使能自动切换镜头。自动切换镜头能力仅支持折叠屏设备使用，详细开发指导请参考 [自动切换摄像头实践](../../../media/camera/camera-auto-switch.md)。 使用建议：自动切换镜头功能由系统自动完成输入设备切换、会话配置和参数接续。如系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过 [AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md#autodeviceswitchstatus)中的isDeviceCapabilityChanged字段告知应用，但仍需要应用自己处理UX的变更（如变焦范 围的调整，需要重新通过[getZoomRatioRange](arkts-camera-camera-zoomquery-i.md#getzoomratiorange)接口获取数据并更新UX），因此更适用于极简UX交互的场景。
+自动切换镜头类，继承自[AutoDeviceSwitchQuery](arkts-camera-camera-autodeviceswitchquery-i.md)，用于使能或去使能自动切换镜头。自动切换镜头能力仅支持折叠屏设备使用，详细开发指导请参考 [自动切换摄像头实践](../../../media/camera/camera-auto-switch.md)。 使用建议：自动切换镜头功能由系统自动完成输入设备切换、会话配置和参数接续。如系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过 [AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md)中的isDeviceCapabilityChanged字段告知应用，但仍需要应用自己处理UX的变更（如变焦范 围的调整，需要重新通过[getZoomRatioRange](arkts-camera-camera-zoomquery-i.md#getzoomratiorange)接口获取数据并更新UX），因此更适用于极简UX交互的场景。
 
-**继承/实现关系：** AutoDeviceSwitch extends [AutoDeviceSwitchQuery](arkts-camera-camera-autodeviceswitchquery-i.md#autodeviceswitchquery)
+**继承/实现关系：** AutoDeviceSwitch extends [AutoDeviceSwitchQuery](arkts-camera-camera-autodeviceswitchquery-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-camera-interface AutoDeviceSwitch--><!--Device-camera-interface AutoDeviceSwitch-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## 导入模块
+
+```TypeScript
+import { camera } from '@kit.CameraKit';
+import { cameraPicker } from '@kit.CameraKit';
+```
 
 ## enableAutoDeviceSwitch
 
@@ -23,10 +26,6 @@ enableAutoDeviceSwitch(enabled: boolean): void
 使能或去使能自动切换镜头。可以先通过[isAutoDeviceSwitchSupported](arkts-camera-camera-autodeviceswitchquery-i.md#isautodeviceswitchsupported)获取 当前设备是否支持自动切换镜头。 > **说明：** > > 该接口仅用于有多个前置镜头的折叠设备，在不同的折叠状态下可自动切换到当前可使用的前置镜头。无法实现前后置镜头的切换。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
 

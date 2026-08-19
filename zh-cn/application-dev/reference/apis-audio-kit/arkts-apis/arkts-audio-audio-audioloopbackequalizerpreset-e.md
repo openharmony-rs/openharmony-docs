@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum AudioLoopbackEqualizerPreset--><!--Device-audio-enum AudioLoopbackEqualizerPreset-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -21,10 +17,6 @@ FLAT = 1
 保持原始声音，不进行均衡调节。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-AudioLoopbackEqualizerPreset-FLAT = 1--><!--Device-AudioLoopbackEqualizerPreset-FLAT = 1-End-->
 
@@ -40,10 +32,6 @@ FULL = 2
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-AudioLoopbackEqualizerPreset-FULL = 2--><!--Device-AudioLoopbackEqualizerPreset-FULL = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
@@ -57,10 +45,6 @@ BRIGHT = 3
 使人声更明亮。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3--><!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3-End-->
 

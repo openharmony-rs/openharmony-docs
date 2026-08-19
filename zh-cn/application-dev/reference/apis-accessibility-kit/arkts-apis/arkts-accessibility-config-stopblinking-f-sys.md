@@ -1,5 +1,11 @@
 # stopBlinking（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+```
+
 ## stopBlinking
 
 ```TypeScript
@@ -9,10 +15,6 @@ function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResu
 停止闪光灯闪烁或屏幕闪烁。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
@@ -45,7 +47,7 @@ function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResu
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. <br>A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { config } from '@kit.AccessibilityKit';

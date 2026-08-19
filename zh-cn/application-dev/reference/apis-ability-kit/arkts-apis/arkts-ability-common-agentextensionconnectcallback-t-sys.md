@@ -8,10 +8,6 @@ export type AgentExtensionConnectCallback = _AgentExtensionConnectCallback
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-common-export type AgentExtensionConnectCallback = _AgentExtensionConnectCallback--><!--Device-common-export type AgentExtensionConnectCallback = _AgentExtensionConnectCallback-End-->

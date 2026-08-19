@@ -4,13 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cert-interface CmsGenerator--><!--Device-cert-interface CmsGenerator-End-->
 
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## addCert
 
@@ -22,10 +26,6 @@ addCert(cert: X509Cert): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGenerator-addCert(cert: X509Cert): void--><!--Device-CmsGenerator-addCert(cert: X509Cert): void-End-->
@@ -36,18 +36,18 @@ addCert(cert: X509Cert): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 是 | 要添加的X.509证书。 |
+| cert | X509Cert | 是 | 要添加的X.509证书。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -175,10 +175,6 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGenerator-addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>--><!--Device-CmsGenerator-addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>-End-->
@@ -201,12 +197,12 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. 接收者证书类型无效或不支持； <br>2. CmsKeyAgreeRecipientInfo的digestAlgorithm无效或不支持； <br>3. recipientInfo中无接收者信息。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported; <br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported; <br>3. The recipientInfo does not have any recipient info. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -295,13 +291,9 @@ async function testAddRecipientInfo() {
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void
 ```
 
-用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
+用于为内容类型为SIGNED_DATA的CMS添加签名者信息。 > **说明：** > > 自签名证书不能作为签名者。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -313,7 +305,7 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | [X509Cert](arkts-devicecertificate-cert-x509cert-i.md) | 是 | 指定X.509证书。 |
+| cert | X509Cert | 是 | 指定X.509证书。 |
 | keyInfo | [PrivateKeyInfo](arkts-devicecertificate-cert-privatekeyinfo-i.md) | 是 | 指定私钥信息。 |
 | config | [CmsSignerConfig](arkts-devicecertificate-cert-cmssignerconfig-i.md) | 是 | 指定签名者选项。 |
 
@@ -321,13 +313,13 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
-| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | 私钥密码错误。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
+| [19030008](../errorcode-cert.md#19030008-私钥密码错误) | Maybe wrong password. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -513,10 +505,6 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGenerator-doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>--><!--Device-CmsGenerator-doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>-End-->
@@ -540,12 +528,12 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -749,10 +737,6 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGenerator-doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string--><!--Device-CmsGenerator-doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string-End-->
@@ -776,12 +760,12 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因： <br>1. 必填参数未指定； <br>2. 参数类型不正确； <br>3. 参数校验失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -987,10 +971,6 @@ getEncryptedContentData(): Promise<Uint8Array>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGenerator-getEncryptedContentData(): Promise<Uint8Array>--><!--Device-CmsGenerator-getEncryptedContentData(): Promise<Uint8Array>-End-->
@@ -1007,11 +987,11 @@ getEncryptedContentData(): Promise<Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -1118,10 +1098,6 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-CmsGenerator-setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void--><!--Device-CmsGenerator-setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void-End-->
@@ -1138,12 +1114,12 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | 运行时外部错误。可能的原因： <br>1. 内存拷贝失败； <br>2. 系统内部出现空指针； <br>3. 获取Native对象失败或参数转换失败。 |
-| [19020003](../errorcode-cert.md#19020003-参数检查失败) | 参数检查失败。可能的原因： <br>1. 算法类型无效或不支持。 |
-| [19020001](../errorcode-cert.md#19020001-内存错误) | 内存错误。 |
-| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | 调用三方算法库API出错。 |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-参数检查失败) | Parameter check failed. Possible causes: <br>1. The type of algorithm is invalid or not supported. |
+| [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
+| [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';

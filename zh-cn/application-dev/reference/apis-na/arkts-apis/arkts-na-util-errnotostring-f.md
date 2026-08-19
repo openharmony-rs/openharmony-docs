@@ -1,5 +1,10 @@
 # errnoToString
 
+## 导入模块
+
+```TypeScript
+```
+
 ## errnoToString
 
 ```TypeScript
@@ -10,9 +15,7 @@ Get the string name of the system errno.
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 <!--Device-util-function errnoToString(errno: int): string--><!--Device-util-function errnoToString(errno: int): string-End-->
 

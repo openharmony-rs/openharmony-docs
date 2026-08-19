@@ -1,5 +1,11 @@
 # getConnectionState
 
+## 导入模块
+
+```TypeScript
+import { dataTransfer } from '@kit.ConnectivityKit';
+```
+
 ## getConnectionState
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getConnectionState(params: ConnectionStateParams): ConnectionState
 获取数据传输的连接状态。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 

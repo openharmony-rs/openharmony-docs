@@ -1,5 +1,11 @@
 # getAllVolumes（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { volumeManager } from '@kit.CoreFileKit';
+```
+
 ## getAllVolumes
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllVolumes(callback: AsyncCallback<Array<Volume>>): void
 获取当前外置存储中所有卷设备信息，使用callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
@@ -26,7 +28,7 @@ function getAllVolumes(callback: AsyncCallback<Array<Volume>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[Volume](arkts-corefile-volumemanager-volume-i-sys.md)&gt;&gt; | 是 | 获取当前所有可获得的卷设备信息之后的回调。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[Volume](arkts-corefile-volumemanager-volume-i-sys.md)&gt;&gt; | 是 | 获取当前所有可获得的卷设备信息之后的回调。 |
 
 **错误码：**
 
@@ -48,10 +50,6 @@ function getAllVolumes(): Promise<Array<Volume>>
 获取当前外置存储中所有卷设备信息，使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 

@@ -4,13 +4,14 @@ guideLine参数，用于定义一条guideLine的id、方向和位置，辅助子
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface GuideLineStyle--><!--Device-unnamed-declare interface GuideLineStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## direction
 
@@ -23,10 +24,6 @@ direction : Axis
 **类型：** Axis
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +45,6 @@ guideLine的id，用于标识辅助线，子组件可通过此id引用该辅助�
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -71,10 +64,6 @@ position : GuideLinePosition
 **类型：** [GuideLinePosition](arkts-arkui-guidelineposition-i.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

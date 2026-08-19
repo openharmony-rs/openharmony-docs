@@ -4,10 +4,6 @@ WindowStage生命周期的状态类型枚举。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-enum WindowStageLifecycleEventType--><!--Device-window-enum WindowStageLifecycleEventType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ SHOWN = 1
 切到前台，例如点击应用图标启动，无论是首次启动还是从后台启动均会触发。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,10 +34,6 @@ RESUMED = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowStageLifecycleEventType-RESUMED = 2--><!--Device-WindowStageLifecycleEventType-RESUMED = 2-End-->
@@ -62,10 +50,6 @@ PAUSED = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowStageLifecycleEventType-PAUSED = 3--><!--Device-WindowStageLifecycleEventType-PAUSED = 3-End-->
@@ -81,10 +65,6 @@ HIDDEN = 4
 切到后台，例如应用上滑退出、应用窗口关闭。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

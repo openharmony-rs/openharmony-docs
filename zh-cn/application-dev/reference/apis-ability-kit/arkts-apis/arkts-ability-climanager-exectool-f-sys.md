@@ -1,5 +1,11 @@
 # execTool（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { cliManager } from '@kit.AbilityKit';
+```
+
 ## execTool
 
 ```TypeScript
@@ -10,10 +16,6 @@ function execTool(toolName: string, subCommand: string, args: Record<string, Obj
 执行CLI命令
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.EXEC_CLI_TOOL
 

@@ -1,5 +1,11 @@
 # createRdbPredicates
 
+## 导入模块
+
+```TypeScript
+import { dataAbility } from '@kit.ArkData';
+```
+
 ## createRdbPredicates
 
 ```TypeScript
@@ -9,10 +15,6 @@ function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPre
 通过表名和DataAbility谓词对象创建Rdb谓词对象。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 <!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates--><!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates-End-->
 
@@ -31,7 +33,7 @@ function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPre
 | --- | --- |
 | rdb.RdbPredicates | 返回RdbPredicates对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let dataAbilityPredicates = new dataAbility.DataAbilityPredicates()

@@ -1,0 +1,35 @@
+# isActive
+
+## 导入模块
+
+```TypeScript
+import { power } from '@kit.BasicServicesKit';
+```
+
+## isActive
+
+```TypeScript
+function isActive(): boolean
+```
+
+检测当前设备是否处于活动状态。可用于应用根据设备活动状态调整行为，例如在设备非活动状态下暂停后台任务等。 - 有屏的设备亮屏时为活动状态，灭屏时为非活动状态。 - 无屏的设备非休眠时为活动状态，休眠时为非活动状态。
+
+**起始版本：** 23
+
+<!--Device-power-function isActive(): boolean--><!--Device-power-function isActive(): boolean-End-->
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 活动状态返回true，非活动状态返回false。 |
+
+**示例**
+
+```TypeScript
+let isActive = power.isActive();
+console.info('power is active: ' + isActive);
+```
+

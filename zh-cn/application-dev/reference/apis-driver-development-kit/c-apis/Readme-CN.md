@@ -1,4 +1,4 @@
-# CAPI<!--c-driver-development-kit-->
+# C API<!--c-driver-development-kit-->
 
 - 头文件
     - [ddk_api.h](capi-ddk-api-h.md)

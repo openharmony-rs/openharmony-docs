@@ -1,10 +1,8 @@
-# RouterState
+# RouterState(页面路由)
 
 定义路由器的状态。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
@@ -13,6 +11,12 @@
 <!--Device-unnamed-export interface RouterState--><!--Device-unnamed-export interface RouterState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, EnableAlertBeforeBackPageOptions, RouterOptions, RouterState } from '@kit.ArkUI';
+```
 
 ## index
 
@@ -25,8 +29,6 @@ index: number
 **类型：** number
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
@@ -48,8 +50,6 @@ name: string
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
 **替代接口：** name
@@ -69,8 +69,6 @@ path: string
 **类型：** string
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

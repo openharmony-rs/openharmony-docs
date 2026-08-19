@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-avSession-enum ExtraKey--><!--Device-avSession-enum ExtraKey-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -21,10 +17,6 @@ REQUIRE_ABILITY_LIST = 'requireAbilityList'
 作为setExtras)}接口传入的键，用于向系统设置应用所需的能力列表。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,10 +36,6 @@ SUPPORT_URL_CASTING = 'url-cast'
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -62,13 +50,9 @@ SUPPORT_URL_CASTING = 'url-cast'
 DLNA_CURRENT_URI_METADATA = 'CurrentURIMetadata'
 ```
 
-[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md#avmediadescription)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。
+[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,13 +68,9 @@ DLNA_CURRENT_URI_METADATA = 'CurrentURIMetadata'
 DLNA_DIDL_LITE = 'DIDL-Lite'
 ```
 
-[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md#avmediadescription)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。
+[AVMediaDescription](arkts-avsession-avsession-avmediadescription-i.md)中extras属性可传入的键，值传入string类型。 用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

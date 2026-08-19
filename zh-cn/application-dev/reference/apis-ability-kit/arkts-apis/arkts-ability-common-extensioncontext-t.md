@@ -4,13 +4,9 @@
 export type ExtensionContext = _ExtensionContext
 ```
 
-[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md#extensionability)组件上下文，继承自Context。
+[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)组件上下文，继承自Context。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

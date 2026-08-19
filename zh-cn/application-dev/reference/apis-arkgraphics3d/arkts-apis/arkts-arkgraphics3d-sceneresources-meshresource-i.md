@@ -1,14 +1,10 @@
 # MeshResource
 
-几何节点的网络数据描述资源
+网格资源，继承自SceneResource。
 
-**继承/实现关系：** MeshResource extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)
+**继承/实现关系：** MeshResource extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface MeshResource--><!--Device-unnamed-export interface MeshResource-End-->
 

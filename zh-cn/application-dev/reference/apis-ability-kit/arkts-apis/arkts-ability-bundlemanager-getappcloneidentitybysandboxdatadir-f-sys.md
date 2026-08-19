@@ -1,5 +1,11 @@
 # getAppCloneIdentityBySandboxDataDir（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+```
+
 ## getAppCloneIdentityBySandboxDataDir
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneId
 根据应用的沙箱目录名称获取应用的身份信息，包括应用包名和分身索引信息。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-bundleManager-function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity--><!--Device-bundleManager-function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity-End-->
 
@@ -32,7 +34,7 @@ function getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneId
 | --- | --- |
 | AppCloneIdentity | 返回应用包名和分身索引信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

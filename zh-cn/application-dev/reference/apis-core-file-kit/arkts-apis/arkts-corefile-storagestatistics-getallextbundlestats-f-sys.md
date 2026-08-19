@@ -1,5 +1,11 @@
 # getAllExtBundleStats（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { storageStatistics } from '@kit.CoreFileKit';
+```
+
 ## getAllExtBundleStats
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllExtBundleStats(userId: int): Promise<Array<ExtBundleStats>>
 获取指定用户下所有系统应用或系统服务的空间占用详情。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.STORAGE_MANAGER
 
@@ -46,7 +48,7 @@ function getAllExtBundleStats(userId: int): Promise<Array<ExtBundleStats>>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The caller is not a system application. |
 | 13600001 | IPC error. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

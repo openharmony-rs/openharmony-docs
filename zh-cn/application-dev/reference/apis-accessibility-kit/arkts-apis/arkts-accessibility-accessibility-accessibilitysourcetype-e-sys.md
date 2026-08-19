@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export enum AccessibilitySourceType--><!--Device-unnamed-export enum AccessibilitySourceType-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -23,10 +19,6 @@ DEFAULT = 1
 表示默认节点类型。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ ADDED_FROM_ACCESSIBILITY_VIRTUAL_NODE = 2
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AccessibilitySourceType-ADDED_FROM_ACCESSIBILITY_VIRTUAL_NODE = 2--><!--Device-AccessibilitySourceType-ADDED_FROM_ACCESSIBILITY_VIRTUAL_NODE = 2-End-->
@@ -67,10 +55,6 @@ UPDATED_FROM_ACCESSIBILITY_VIRTUAL_NODE = 3
 表示当前节点是修改过属性的节点。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

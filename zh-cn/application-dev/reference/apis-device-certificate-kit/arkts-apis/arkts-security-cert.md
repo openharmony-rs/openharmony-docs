@@ -1,16 +1,20 @@
 # @ohos.security.cert
 
-证书算法库框架提供证书相关接口。其中，依赖加解密算法库框架的基础算法能力的部分，详细接口说明可参考 [cryptoFramework API参考](../../apis-crypto-architecture-kit/arkts-apis/arkts-security-cryptoframework.md#ohossecuritycryptoframework)。
+证书算法库框架提供证书相关接口。其中，依赖加解密算法库框架的基础算法能力的部分，详细接口说明可参考 [cryptoFramework API参考](../../apis-crypto-architecture-kit/arkts-apis/arkts-security-cryptoframework.md)。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare namespace cert--><!--Device-unnamed-declare namespace cert-End-->
 
 **系统能力：** SystemCapability.Security.Cert
+
+## 导入模块
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## 汇总
 
@@ -18,30 +22,30 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [buildX509CertChain](arkts-devicecertificate-cert-buildx509certchain-f.md#buildx509certchain) | 表示使用CertChainBuildParameters对象方式创建X.509证书链对象。使用Promise方式返回结果。 |
-| [createCertCRLCollection](arkts-devicecertificate-cert-createcertcrlcollection-f.md#createcertcrlcollection) | 表示创建证书和证书吊销列表集合对象，并返回相应的结果。 |
-| [createCertChainValidator](arkts-devicecertificate-cert-createcertchainvalidator-f.md#createcertchainvalidator) | 表示创建证书链校验器对象。 |
-| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md#createcertextension) | 创建一个证书扩展对象。使用Callback异步回调。 |
-| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md#createcertextension) | 创建一个证书扩展对象。使用Promise方式返回结果。 |
-| [createCmsGenerator](arkts-devicecertificate-cert-createcmsgenerator-f.md#createcmsgenerator) | 表示创建CmsGenerator对象。 |
-| [createCmsParser](arkts-devicecertificate-cert-createcmsparser-f.md#createcmsparser) | 表示创建CmsParser对象。 |
-| [createPkcs12](arkts-devicecertificate-cert-createpkcs12-f.md#createpkcs12) | 表示创建P12。使用Promise方式返回结果。 |
-| [createPkcs12Sync](arkts-devicecertificate-cert-createpkcs12sync-f.md#createpkcs12sync) | 表示创建P12，同步返回结果。 |
-| [createTrustAnchorsWithKeyStore](arkts-devicecertificate-cert-createtrustanchorswithkeystore-f.md#createtrustanchorswithkeystore) | 表示从P12中读取ca证书来构造[TrustAnchor](arkts-devicecertificate-cert-x509trustanchor-i.md#x509trustanchor)对象数组。使用Promise方式返回结果。 |
-| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md#createx500distinguishedname) | 表示使用字符串格式的名称创建X500DistinguishedName对象。使用Promise方式返回结果。 |
-| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md#createx500distinguishedname) | 表示使用DER格式的名称创建X500DistinguishedName对象。使用Promise方式返回结果。 |
-| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
-| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
-| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md#createx509cert) | 表示创建一个X.509证书对象。使用Callback异步回调。 |
-| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md#createx509cert) | 表示创建一个X.509证书对象。使用Promise方式返回结果。 |
-| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain) | 表示创建X.509证书链对象。使用Promise方式返回结果。 |
-| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain) | 表示创建X.509证书链对象。使用Callback异步回调。 |
-| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md#createx509certchain) | 表示使用X509Cert数组方式创建X.509证书链对象，并同步返回结果。 |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
-| [generateCsr](arkts-devicecertificate-cert-generatecsr-f.md#generatecsr) | 表示使用指定的私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。 |
-| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md#parsepkcs12) | 解析P12。 |
-| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md#parsepkcs12) | 解析P12。使用Promise方式返回结果。 |
+| [buildX509CertChain](arkts-devicecertificate-cert-buildx509certchain-f.md) | 表示使用CertChainBuildParameters对象方式创建X.509证书链对象。使用Promise方式返回结果。 |
+| [createCertCRLCollection](arkts-devicecertificate-cert-createcertcrlcollection-f.md) | 表示创建证书和证书吊销列表集合对象，并返回相应的结果。 |
+| [createCertChainValidator](arkts-devicecertificate-cert-createcertchainvalidator-f.md) | 表示创建证书链校验器对象。 |
+| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md) | 创建一个证书扩展对象。使用Callback异步回调。 |
+| [createCertExtension](arkts-devicecertificate-cert-createcertextension-f.md) | 创建一个证书扩展对象。使用Promise方式返回结果。 |
+| [createCmsGenerator](arkts-devicecertificate-cert-createcmsgenerator-f.md) | 表示创建CmsGenerator对象。 |
+| [createCmsParser](arkts-devicecertificate-cert-createcmsparser-f.md) | 表示创建CmsParser对象。 |
+| [createPkcs12](arkts-devicecertificate-cert-createpkcs12-f.md) | 表示创建P12。使用Promise方式返回结果。 |
+| [createPkcs12Sync](arkts-devicecertificate-cert-createpkcs12sync-f.md) | 表示创建P12，同步返回结果。 |
+| [createTrustAnchorsWithKeyStore](arkts-devicecertificate-cert-createtrustanchorswithkeystore-f.md) | 表示从P12中读取ca证书来构造[TrustAnchor](arkts-devicecertificate-cert-x509trustanchor-i.md)对象数组。使用Promise方式返回结果。 |
+| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md) | 表示使用字符串格式的名称创建X500DistinguishedName对象。使用Promise方式返回结果。 |
+| [createX500DistinguishedName](arkts-devicecertificate-cert-createx500distinguishedname-f.md) | 表示使用DER格式的名称创建X500DistinguishedName对象。使用Promise方式返回结果。 |
+| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
+| [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
+| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md) | 表示创建一个X.509证书对象。使用Callback异步回调。 |
+| [createX509Cert](arkts-devicecertificate-cert-createx509cert-f.md) | 表示创建一个X.509证书对象。使用Promise方式返回结果。 |
+| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示创建X.509证书链对象。使用Promise方式返回结果。 |
+| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示创建X.509证书链对象。使用Callback异步回调。 |
+| [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示使用X509Cert数组方式创建X.509证书链对象，并同步返回结果。 |
+| [createX509Crl](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
+| [createX509Crl](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
+| [generateCsr](arkts-devicecertificate-cert-generatecsr-f.md) | 表示使用指定的私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。 |
+| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md) | 解析P12。 |
+| [parsePkcs12](arkts-devicecertificate-cert-parsepkcs12-f.md) | 解析P12。使用Promise方式返回结果。 |
 
 ### 接口
 

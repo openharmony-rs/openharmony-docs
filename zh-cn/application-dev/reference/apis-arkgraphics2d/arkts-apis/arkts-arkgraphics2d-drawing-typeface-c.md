@@ -4,13 +4,15 @@ Typeface类用于表示和管理字体对象。支持的字体操作包括：获
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-drawing-class Typeface--><!--Device-drawing-class Typeface-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+## 导入模块
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+```
 
 ## getFamilyName
 
@@ -21,10 +23,6 @@ getFamilyName(): string
 获取字体的族名，即一套字体设计的名称。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 <!--Device-Typeface-getFamilyName(): string--><!--Device-Typeface-getFamilyName(): string-End-->
 
@@ -46,10 +44,6 @@ getFamilyName(): string | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Typeface-getFamilyName(): string | undefined--><!--Device-Typeface-getFamilyName(): string | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -69,10 +63,6 @@ isBold(): boolean
 检查字体是否加粗。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Typeface-isBold(): boolean--><!--Device-Typeface-isBold(): boolean-End-->
 
@@ -94,10 +84,6 @@ isItalic(): boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Typeface-isItalic(): boolean--><!--Device-Typeface-isItalic(): boolean-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -117,10 +103,6 @@ makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
 基于当前字体结合字体属性构造新的字体对象。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 <!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface-End-->
 
@@ -148,10 +130,6 @@ makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | undefined
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | undefined--><!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -177,10 +155,6 @@ static makeFromFile(filePath: string): Typeface
 从指定字体文件构造字体。
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -216,10 +190,6 @@ static makeFromFile(filePath: string): Typeface | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Typeface-static makeFromFile(filePath: string): Typeface | undefined--><!--Device-Typeface-static makeFromFile(filePath: string): Typeface | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -252,10 +222,6 @@ static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceAr
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface-End-->
@@ -285,10 +251,6 @@ static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceAr
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface | undefined--><!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -315,10 +277,6 @@ static makeFromRawFile(rawfile: Resource): Typeface
 使用指定的字体文件构造字体，该字体文件需保存在应用资源文件夹的rawfile路径下。
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -348,10 +306,6 @@ static makeFromRawFile(rawfile: Resource): Typeface | undefined
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface | undefined--><!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface | undefined-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -377,10 +331,6 @@ static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: Typefa
 使用指定的字体文件和字体属性构造新的字体，该字体文件需保存在应用资源文件夹的rawfile路径下。
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -410,10 +360,6 @@ static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: Typefa
 使用指定的字体文件和字体属性构造新的字体，该字体文件需保存在应用资源文件夹的rawfile路径下。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 <!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface | undefined--><!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface | undefined-End-->
 

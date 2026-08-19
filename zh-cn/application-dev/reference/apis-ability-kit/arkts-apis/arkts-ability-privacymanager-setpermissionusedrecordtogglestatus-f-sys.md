@@ -1,18 +1,20 @@
 # setPermissionUsedRecordToggleStatus（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+```
+
 ## setPermissionUsedRecordToggleStatus
 
 ```TypeScript
 function setPermissionUsedRecordToggleStatus(status: boolean): Promise<void>
 ```
 
-设置是否记录当前用户的权限使用情况。系统应用调用此接口，可以设置当前用户的权限使用记录开关状态。使用Promise异步回调。 status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord系统接口)接口可以正常添加使用记录；status为false时， [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord系统接口)接口不产生权限使用记录，并且删除当前用户的历史记录。
+设置是否记录当前用户的权限使用情况。系统应用调用此接口，可以设置当前用户的权限使用记录开关状态。使用Promise异步回调。 status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md)接口可以正常添加使用记录；status为false时， [addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md)接口不产生权限使用记录，并且删除当前用户的历史记录。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PERMISSION_RECORD_TOGGLE
 
@@ -45,7 +47,7 @@ function setPermissionUsedRecordToggleStatus(status: boolean): Promise<void>
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus).<br>**适用版本：** 26.1.0+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { privacyManager } from '@kit.AbilityKit';
@@ -66,13 +68,9 @@ privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
 function setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: int): Promise<void>
 ```
 
-设置是否记录指定子身份资料的权限使用情况。系统应用调用此接口，可以设置指定子身份资料的权限使用记录开关状态。使用Promise异步回调。 status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord系统接口)接口可以正常添加使用记录；status为false时，addPermissionUsedRecord][addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md#addpermissionusedrecord系统接口)接口不产生权限使用记录，并且删除指定子身份资料的历史记录。
+设置是否记录指定子身份资料的权限使用情况。系统应用调用此接口，可以设置指定子身份资料的权限使用记录开关状态。使用Promise异步回调。 status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md)接口可以正常添加使用记录；status为false时，addPermissionUsedRecord][addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md)接口不产生权限使用记录，并且删除指定子身份资料的历史记录。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.PERMISSION_RECORD_TOGGLE
 
@@ -89,7 +87,7 @@ function setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: int)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | status | boolean | 是 | 权限使用记录开关状态。true为开，false为关。 |
-| subProfileId | int | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。 <br>取值限定为整数。取值约束：该参数必须为大于0的整数。 |
+| subProfileId | int | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。 <br>取值限定为整数。取值约束：该参数必须为大于0的整数。 |
 
 **返回值：**
 
@@ -109,7 +107,7 @@ function setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: int)
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus). |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { privacyManager } from '@kit.AbilityKit';

@@ -1,5 +1,14 @@
 # removeGroup
 
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
+
 ## removeGroup
 
 ```TypeScript
@@ -9,8 +18,6 @@ function removeGroup(): boolean
 移除P2P群组。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -28,7 +35,7 @@ function removeGroup(): boolean
 | --- | --- |
 | boolean | 操作成功时返回{ |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wifi from '@ohos.wifi';

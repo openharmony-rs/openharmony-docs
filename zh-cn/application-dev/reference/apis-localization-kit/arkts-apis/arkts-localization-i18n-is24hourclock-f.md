@@ -1,5 +1,11 @@
 # is24HourClock
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## is24HourClock
 
 ```TypeScript
@@ -9,8 +15,6 @@ export function is24HourClock(): boolean
 判断系统时间是否为24小时制。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -26,7 +30,7 @@ export function is24HourClock(): boolean
 | --- | --- |
 | boolean | true表示系统24小时开关开启，false表示系统24小时开关关闭。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

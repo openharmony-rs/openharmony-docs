@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare namespace displaySync--><!--Device-unnamed-declare namespace displaySync-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { displaySync } from '@kit.ArkGraphics2D';
+```
 
 ## 汇总
 
@@ -18,7 +20,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [create](arkts-arkgraphics2d-displaysync-create-f.md#create) | 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。 |
+| [create](arkts-arkgraphics2d-displaysync-create-f.md) | 创建DisplaySync对象，通过此对象设置UI自绘制内容帧率。 |
 
 ### 接口
 

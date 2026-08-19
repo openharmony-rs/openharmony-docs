@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum MatchPattern--><!--Device-unnamed-declare enum MatchPattern-End-->
 
 **系统能力：** SystemCapability.Test.UiTest
@@ -21,10 +17,6 @@ EQUALS = 0
 等于给定值。 从API version 11开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ CONTAINS = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MatchPattern-CONTAINS = 1--><!--Device-MatchPattern-CONTAINS = 1-End-->
@@ -61,10 +49,6 @@ STARTS_WITH = 2
 以给定值开始。 从API version 11开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ ENDS_WITH = 3
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MatchPattern-ENDS_WITH = 3--><!--Device-MatchPattern-ENDS_WITH = 3-End-->
@@ -102,10 +82,6 @@ REG_EXP = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MatchPattern-REG_EXP = 4--><!--Device-MatchPattern-REG_EXP = 4-End-->
@@ -121,10 +97,6 @@ REG_EXP_ICASE = 5
 正则表达式匹配，忽略大小写。 从API version 18开始，该接口支持在原子化服务中使用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 

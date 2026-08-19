@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-text-enum FontWidth--><!--Device-text-enum FontWidth-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -21,10 +17,6 @@ ULTRA_CONDENSED = 1
 超窄字宽。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ EXTRA_CONDENSED = 2
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FontWidth-EXTRA_CONDENSED = 2--><!--Device-FontWidth-EXTRA_CONDENSED = 2-End-->
@@ -61,10 +49,6 @@ CONDENSED = 3
 窄的字宽。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -82,10 +66,6 @@ SEMI_CONDENSED = 4
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FontWidth-SEMI_CONDENSED = 4--><!--Device-FontWidth-SEMI_CONDENSED = 4-End-->
@@ -101,10 +81,6 @@ NORMAL = 5
 常规样式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -122,10 +98,6 @@ SEMI_EXPANDED = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FontWidth-SEMI_EXPANDED = 6--><!--Device-FontWidth-SEMI_EXPANDED = 6-End-->
@@ -141,10 +113,6 @@ EXPANDED = 7
 宽的字宽。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -162,10 +130,6 @@ EXTRA_EXPANDED = 8
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FontWidth-EXTRA_EXPANDED = 8--><!--Device-FontWidth-EXTRA_EXPANDED = 8-End-->
@@ -181,10 +145,6 @@ ULTRA_EXPANDED = 9
 超宽的字宽。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 

@@ -4,13 +4,19 @@
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface NestedScrollOptionsExt--><!--Device-unnamed-declare interface NestedScrollOptionsExt-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## 导入模块
+
+```TypeScript
+import { WebNetErrorList } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
+```
 
 ## scrollDown
 
@@ -23,10 +29,6 @@ scrollDown?: NestedScrollMode
 **类型：** NestedScrollMode
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-NestedScrollOptionsExt-scrollDown?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollDown?: NestedScrollMode-End-->
 
@@ -44,10 +46,6 @@ scrollLeft?: NestedScrollMode
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-NestedScrollOptionsExt-scrollLeft?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollLeft?: NestedScrollMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -64,10 +62,6 @@ scrollRight?: NestedScrollMode
 
 **起始版本：** 14
 
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
-
 <!--Device-NestedScrollOptionsExt-scrollRight?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollRight?: NestedScrollMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -83,10 +77,6 @@ scrollUp?: NestedScrollMode
 **类型：** NestedScrollMode
 
 **起始版本：** 14
-
-**ArkTS模式：** 起始版本为14。
-
-**废弃版本：** -1
 
 <!--Device-NestedScrollOptionsExt-scrollUp?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollUp?: NestedScrollMode-End-->
 

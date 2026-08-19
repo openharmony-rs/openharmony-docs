@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-class LiteResultSet--><!--Device-relationalStore-class LiteResultSet-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## 导入模块
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData';
+```
 
 ## getFloat32Array
 
@@ -18,13 +20,9 @@
 getFloat32Array(columnIndex: int): Float32Array
 ```
 
-以浮点数组的形式获取当前行中指定列的值，仅在向量数据库（在[StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md#storeconfig)中配置vector为true）下可用。
+以浮点数组的形式获取当前行中指定列的值，仅在向量数据库（在[StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md)中配置vector为true）下可用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,7 +49,7 @@ getFloat32Array(columnIndex: int): Float32Array
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800041](../errorcode-data-rdb.md#14800041-类型转换失败) | Type conversion failed. |
-| [14800013](../errorcode-data-rdb.md#14800013-列号越界或列类型与当前调用接口不兼容) | Column index is out of bounds. |
-| [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指定位置不合法) | ResultSet is empty or pointer index is out of bounds. |
+| [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
+| [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 

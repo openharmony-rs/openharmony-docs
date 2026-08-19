@@ -1,5 +1,11 @@
 # notifyLowCodeAgentComplete（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { agentManager } from '@kit.AbilityKit';
+```
+
 ## notifyLowCodeAgentComplete
 
 ```TypeScript
@@ -9,10 +15,6 @@ function notifyLowCodeAgentComplete(agentId: string): Promise<void>
 通知指定的 LOW_CODE类 型的AgentCard关联的Agent生命周期已结束。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CONNECT_AGENT
 

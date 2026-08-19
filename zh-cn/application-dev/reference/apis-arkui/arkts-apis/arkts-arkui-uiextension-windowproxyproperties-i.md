@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-uiExtension-interface WindowProxyProperties--><!--Device-uiExtension-interface WindowProxyProperties-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { uiExtension } from '@kit.ArkUI';
+```
 
 ## uiExtensionHostWindowProxyRect
 
@@ -23,10 +25,6 @@ uiExtensionHostWindowProxyRect: window.Rect
 **类型：** window.Rect
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

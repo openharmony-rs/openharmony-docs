@@ -8,10 +8,6 @@ export type ApplicationInfo = _ApplicationInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-bundleManager-export type ApplicationInfo = _ApplicationInfo--><!--Device-bundleManager-export type ApplicationInfo = _ApplicationInfo-End-->

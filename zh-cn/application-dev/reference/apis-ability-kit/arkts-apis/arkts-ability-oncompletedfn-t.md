@@ -8,10 +8,6 @@ type OnCompletedFn = (error: BusinessError<void>) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-type OnCompletedFn = (error: BusinessError<void>) => void--><!--Device-unnamed-type OnCompletedFn = (error: BusinessError<void>) => void-End-->
 
 **系统能力：** SystemCapability.Ability.AppStartup
@@ -20,5 +16,5 @@ type OnCompletedFn = (error: BusinessError<void>) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| error | [BusinessError](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-base-businesserror-c.md)&lt;void&gt; | 是 | 错误信息。 |
+| error | [BusinessError](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-businesserror-c.md)&lt;void&gt; | 是 | 错误信息。 |
 

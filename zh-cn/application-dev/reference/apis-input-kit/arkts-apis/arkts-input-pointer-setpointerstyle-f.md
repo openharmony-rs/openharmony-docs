@@ -1,5 +1,11 @@
 # setPointerStyle
 
+## 导入模块
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+```
+
 ## setPointerStyle
 
 ```TypeScript
@@ -10,10 +16,6 @@ function setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: As
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: AsyncCallback<void>): void--><!--Device-pointer-function setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -22,9 +24,9 @@ function setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: As
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | int | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置 结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle)获取。 |
+| windowId | int | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置 结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md)获取。 |
 | pointerStyle | PointerStyle | 是 | 鼠标样式。 不能传入DEVELOPER_DEFINED_ICON作为参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置鼠标样式类型成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当设置鼠标样式类型成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -33,7 +35,7 @@ function setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: As
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. <br> When the windowId value is -1, the system permission is required to set the global style. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 
@@ -117,10 +119,6 @@ function setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise<voi
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-pointer-function setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise<void>--><!--Device-pointer-function setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise<void>-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
@@ -129,8 +127,8 @@ function setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | int | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置 结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md#getpointerstyle)获取。 |
-| pointerStyle | PointerStyle | 是 | 鼠标样式。 |
+| windowId | int | 是 | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置 结果可通过[getPointerStyle](arkts-input-pointer-getpointerstyle-f.md)获取。 |
+| pointerStyle | PointerStyle | 是 | 鼠标样式。不能传入DEVELOPER_DEFINED_ICON作为参数。 |
 
 **返回值：**
 
@@ -145,7 +143,7 @@ function setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise<voi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. <br> When the windowId value is -1, the system permission is required to set the global style. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例:
 

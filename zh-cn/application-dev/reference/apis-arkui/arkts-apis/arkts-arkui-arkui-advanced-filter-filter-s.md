@@ -4,13 +4,15 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare struct Filter--><!--Device-unnamed-export declare struct Filter-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+import { Filter, FilterParams, FilterResult, FilterType } from '@kit.ArkUI';
+```
 
 ## additionFilters
 
@@ -23,10 +25,6 @@
 **类型：** [FilterParams](arkts-arkui-arkui-advanced-filter-filterparams-c.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,10 +46,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -71,10 +65,6 @@
 **类型：** [FilterType](arkts-arkui-arkui-advanced-filter-filtertype-e.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -96,10 +86,6 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -119,10 +105,6 @@ onFilterChanged: (filterResults: Array<FilterResult>) => void
 **类型：** (filterResults: Array&lt;[FilterResult](arkts-arkui-arkui-advanced-filter-filterresult-c.md)&gt;) =&gt; void
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

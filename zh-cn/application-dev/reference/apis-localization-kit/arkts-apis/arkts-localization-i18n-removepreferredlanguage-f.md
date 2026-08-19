@@ -1,5 +1,11 @@
 # removePreferredLanguage
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## removePreferredLanguage
 
 ```TypeScript
@@ -9,8 +15,6 @@ export function removePreferredLanguage(index: int): boolean
 从系统偏好语言列表中移除指定位置的偏好语言。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -34,7 +38,7 @@ export function removePreferredLanguage(index: int): boolean
 | --- | --- |
 | boolean | true表示移除成功，false表示移除失败。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

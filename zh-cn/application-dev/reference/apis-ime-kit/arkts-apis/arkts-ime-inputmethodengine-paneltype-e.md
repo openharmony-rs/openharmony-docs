@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export enum PanelType--><!--Device-inputMethodEngine-export enum PanelType-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -22,10 +18,6 @@ SOFT_KEYBOARD = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PanelType-SOFT_KEYBOARD = 0--><!--Device-PanelType-SOFT_KEYBOARD = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -39,10 +31,6 @@ STATUS_BAR
 状态栏类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PanelType-STATUS_BAR--><!--Device-PanelType-STATUS_BAR-End-->
 

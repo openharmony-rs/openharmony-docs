@@ -1,18 +1,20 @@
 # startArkChildProcess
 
+## 导入模块
+
+```TypeScript
+import { childProcessManager } from '@kit.AbilityKit';
+```
+
 ## startArkChildProcess
 
 ```TypeScript
 function startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise<int>
 ```
 
-启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。 > **说明：** > > 调用该接口创建的子进程不会继承父进程资源，子进程创建成功会返回子进程pid，然后执行子进程的 > [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart)函数。 > [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart)函数执行完后子进程不会自动销毁，需要子进程调用 > [process.abort](../../apis-arkts/arkts-apis/arkts-arkts-process-abort-f.md#abort)销毁。调用该接口的进程销毁后，所创建的子进程也会一并销毁。 **设备行为差异**：该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+启动[ArkTS子进程](../../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。 > **说明：** > > 调用该接口创建的子进程不会继承父进程资源，子进程创建成功会返回子进程pid，然后执行子进程的 > [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart)函数。 > [ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart)函数执行完后子进程不会自动销毁，需要子进程调用 > [process.abort](../../apis-arkts/arkts-apis/arkts-arkts-process-abort-f.md)销毁。调用该接口的进程销毁后，所创建的子进程也会一并销毁。 **设备行为差异**：该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +46,7 @@ function startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?
 | [16000061](../errorcode-ability.md#16000061-不支持的操作) | Operation not supported. |
 | [16000062](../errorcode-ability.md#16000062-子进程数量超出上限) | The number of child processes exceeds the upper limit.<br>**适用版本：** 13+ |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

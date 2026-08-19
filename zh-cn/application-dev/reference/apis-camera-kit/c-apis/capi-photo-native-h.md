@@ -47,13 +47,13 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | OH_PhotoNative实例。 |
-| [OH_ImageNative](../ImageKit/capi-image-nativemodule-oh-imagenative.md)** mainImage | 用于获取全质量图的OH_ImageNative。 |
+| OH_ImageNative** mainImage | 用于获取全质量图的OH_ImageNative。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoNative_GetUncompressedImage()
 
@@ -72,13 +72,13 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | OH_PhotoNative实例。 |
-| OH_PictureNative** picture | 用于获取非压缩图片的OH_PictureNative。 |
+| [OH_PictureNative](../ImageKit/capi-image-nativemodule-oh-picturenative.md)** picture | 用于获取非压缩图片的OH_PictureNative。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoNative_Release()
 
@@ -102,6 +102,6 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode | CAMERA_OK：方法调用成功。<br>     <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 

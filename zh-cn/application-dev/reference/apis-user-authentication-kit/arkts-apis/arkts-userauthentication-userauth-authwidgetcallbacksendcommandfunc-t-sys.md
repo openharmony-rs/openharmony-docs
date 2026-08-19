@@ -8,10 +8,6 @@ type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-userAuth-type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void--><!--Device-userAuth-type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core

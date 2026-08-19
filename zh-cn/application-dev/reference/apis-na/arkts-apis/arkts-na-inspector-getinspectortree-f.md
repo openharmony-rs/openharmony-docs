@@ -1,5 +1,10 @@
 # getInspectorTree
 
+## 导入模块
+
+```TypeScript
+```
+
 ## getInspectorTree
 
 ```TypeScript
@@ -10,9 +15,7 @@ function getInspectorTree(): RecordData
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为23。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,5 +27,5 @@ function getInspectorTree(): RecordData
 
 | 类型 | 说明 |
 | --- | --- |
-| [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md) | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考getInspectorInfo的返回值说明。 |
+| [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md) | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考getInspectorInfo的返回值说明。 |
 

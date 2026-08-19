@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-mechanicManager-export interface RotationSpeed--><!--Device-mechanicManager-export interface RotationSpeed-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { mechanicManager } from '@kit.MechanicKit';
+```
 
 ## pitchSpeed
 
@@ -25,10 +27,6 @@ pitchSpeed?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationSpeed-pitchSpeed?: double--><!--Device-RotationSpeed-pitchSpeed?: double-End-->
 
@@ -48,10 +46,6 @@ rollSpeed?: double
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-RotationSpeed-rollSpeed?: double--><!--Device-RotationSpeed-rollSpeed?: double-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
@@ -69,10 +63,6 @@ yawSpeed?: double
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-RotationSpeed-yawSpeed?: double--><!--Device-RotationSpeed-yawSpeed?: double-End-->
 

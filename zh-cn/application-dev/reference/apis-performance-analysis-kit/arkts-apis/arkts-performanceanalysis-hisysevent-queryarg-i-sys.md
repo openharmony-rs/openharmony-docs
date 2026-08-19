@@ -4,15 +4,17 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hiSysEvent-interface QueryArg--><!--Device-hiSysEvent-interface QueryArg-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
+```
 
 ## beginTime
 
@@ -25,10 +27,6 @@ beginTime: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-QueryArg-beginTime: long--><!--Device-QueryArg-beginTime: long-End-->
 
@@ -48,10 +46,6 @@ endTime: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-QueryArg-endTime: long--><!--Device-QueryArg-endTime: long-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -69,10 +63,6 @@ fromSeq?: long | null | undefined
 **类型：** long \| null \| undefined
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-QueryArg-fromSeq?: long | null | undefined--><!--Device-QueryArg-fromSeq?: long | null | undefined-End-->
 
@@ -92,10 +82,6 @@ maxEvents: long
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-QueryArg-maxEvents: long--><!--Device-QueryArg-maxEvents: long-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
@@ -113,10 +99,6 @@ toSeq?: long | null | undefined
 **类型：** long \| null \| undefined
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-QueryArg-toSeq?: long | null | undefined--><!--Device-QueryArg-toSeq?: long | null | undefined-End-->
 

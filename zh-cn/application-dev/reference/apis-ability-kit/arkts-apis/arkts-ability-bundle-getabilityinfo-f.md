@@ -1,5 +1,26 @@
 # getAbilityInfo
 
+## 导入模块
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+import { bundleManager } from '@kit.AbilityKit';
+import { bundleMonitor } from '@kit.AbilityKit';
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { bundle } from '@kit.AbilityKit';
+import { defaultAppManager } from '@kit.AbilityKit';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { freeInstall } from '@kit.AbilityKit';
+import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
+import { installer } from '@kit.AbilityKit';
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { overlay } from '@kit.AbilityKit';
+import { shortcutManager } from '@kit.AbilityKit';
+import { skillManager } from '@kit.AbilityKit';
+import { appDomainVerify } from '@kit.AbilityKit';
+import { pluginBundleManager } from '@kit.AbilityKit';
+```
+
 ## getAbilityInfo
 
 ```TypeScript
@@ -9,8 +30,6 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 通过Bundle名称和组件名获取Ability组件信息，使用callback异步回调。 获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -26,9 +45,9 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | abilityName | string | 是 | Ability名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -56,8 +75,6 @@ function getAbilityInfo(bundleName: string, abilityName: string): Promise<Abilit
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
@@ -79,7 +96,7 @@ function getAbilityInfo(bundleName: string, abilityName: string): Promise<Abilit
 | --- | --- |
 | Promise&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | Promise形式返回Ability信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import bundle from '@ohos.bundle';

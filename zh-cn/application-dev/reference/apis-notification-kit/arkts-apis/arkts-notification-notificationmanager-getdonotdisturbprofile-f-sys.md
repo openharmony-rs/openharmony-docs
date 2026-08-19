@@ -3,7 +3,7 @@
 ## 导入模块
 
 ```TypeScript
-import { notificationManager } from 'notificationManager';
+import { notificationManager } from '@kit.NotificationKit';
 ```
 
 ## getDoNotDisturbProfile
@@ -15,10 +15,6 @@ function getDoNotDisturbProfile(id: long): Promise<DoNotDisturbProfile>
 查询勿扰模式配置信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -53,7 +49,7 @@ function getDoNotDisturbProfile(id: long): Promise<DoNotDisturbProfile>
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600019](../errorcode-notification.md#1600019-没有对应勿扰模式编号的配置信息) | The do-not-disturb profile does not exist. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -91,10 +87,6 @@ function getDoNotDisturbProfile(id: long, userId: int): Promise<DoNotDisturbProf
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -131,7 +123,7 @@ function getDoNotDisturbProfile(id: long, userId: int): Promise<DoNotDisturbProf
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600019](../errorcode-notification.md#1600019-没有对应勿扰模式编号的配置信息) | The do-not-disturb profile does not exist. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

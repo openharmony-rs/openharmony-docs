@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputMethodEngine-export interface PanelRect--><!--Device-inputMethodEngine-export interface PanelRect-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## 导入模块
+
+```TypeScript
+import { inputMethodEngine } from '@kit.IMEKit';
+```
 
 ## landscapeRect
 
@@ -23,10 +25,6 @@ landscapeRect: window.Rect
 **类型：** window.Rect
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PanelRect-landscapeRect: window.Rect--><!--Device-PanelRect-landscapeRect: window.Rect-End-->
 
@@ -43,10 +41,6 @@ portraitRect: window.Rect
 **类型：** window.Rect
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PanelRect-portraitRect: window.Rect--><!--Device-PanelRect-portraitRect: window.Rect-End-->
 

@@ -1,12 +1,8 @@
 # MissionListener（系统接口）
 
-定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-onmission-f-sys.md#onmission)注册。
+定义系统任务状态监听，可以通过[on](arkts-ability-missionmanager-onmission-f-sys.md)注册。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface MissionListener--><!--Device-unnamed-export interface MissionListener-End-->
 
@@ -24,10 +20,6 @@ onMissionClosed(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MissionListener-onMissionClosed(mission: int): void--><!--Device-MissionListener-onMissionClosed(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -40,7 +32,7 @@ onMissionClosed(mission: int): void
 | --- | --- | --- | --- |
 | mission | int | 是 | 表示关闭的任务ID。 |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 
@@ -146,10 +138,6 @@ onMissionCreated(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MissionListener-onMissionCreated(mission: int): void--><!--Device-MissionListener-onMissionCreated(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -162,7 +150,7 @@ onMissionCreated(mission: int): void
 | --- | --- | --- | --- |
 | mission | int | 是 | 表示创建的任务ID。 |
 
-## 示例
+**示例**
 
 详细示例请见[onMissionClosed](#onmissionclosed)。
 
@@ -176,10 +164,6 @@ onMissionDestroyed(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MissionListener-onMissionDestroyed(mission: int): void--><!--Device-MissionListener-onMissionDestroyed(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -192,7 +176,7 @@ onMissionDestroyed(mission: int): void
 | --- | --- | --- | --- |
 | mission | int | 是 | 表示销毁的任务ID。 |
 
-## 示例
+**示例**
 
 详细示例请见[onMissionClosed](#onmissionclosed)。
 
@@ -205,10 +189,6 @@ onMissionIconUpdated(mission: int, icon: image.PixelMap): void
 当系统更新任务图标时会触发该回调函数。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MissionListener-onMissionIconUpdated(mission: int, icon: image.PixelMap): void--><!--Device-MissionListener-onMissionIconUpdated(mission: int, icon: image.PixelMap): void-End-->
 
@@ -223,7 +203,7 @@ onMissionIconUpdated(mission: int, icon: image.PixelMap): void
 | mission | int | 是 | 表示任务ID。 |
 | icon | image.PixelMap | 是 | 表示更新的任务图标。 |
 
-## 示例
+**示例**
 
 详细示例请见[onMissionClosed](#onmissionclosed)。
 
@@ -237,10 +217,6 @@ onMissionLabelUpdated(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MissionListener-onMissionLabelUpdated(mission: int): void--><!--Device-MissionListener-onMissionLabelUpdated(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -253,7 +229,7 @@ onMissionLabelUpdated(mission: int): void
 | --- | --- | --- | --- |
 | mission | int | 是 | 表示任务ID。 |
 
-## 示例
+**示例**
 
 详细示例请见[onMissionClosed](#onmissionclosed)。
 
@@ -267,10 +243,6 @@ onMissionMovedToFront(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MissionListener-onMissionMovedToFront(mission: int): void--><!--Device-MissionListener-onMissionMovedToFront(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -283,7 +255,7 @@ onMissionMovedToFront(mission: int): void
 | --- | --- | --- | --- |
 | mission | int | 是 | 表示任务ID。 |
 
-## 示例
+**示例**
 
 详细示例请见[onMissionClosed](#onmissionclosed)。
 
@@ -297,10 +269,6 @@ onMissionSnapshotChanged(mission: int): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-MissionListener-onMissionSnapshotChanged(mission: int): void--><!--Device-MissionListener-onMissionSnapshotChanged(mission: int): void-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
@@ -313,7 +281,7 @@ onMissionSnapshotChanged(mission: int): void
 | --- | --- | --- | --- |
 | mission | int | 是 | 表示任务ID。 |
 
-## 示例
+**示例**
 
 详细示例请见[onMissionClosed](#onmissionclosed)。
 

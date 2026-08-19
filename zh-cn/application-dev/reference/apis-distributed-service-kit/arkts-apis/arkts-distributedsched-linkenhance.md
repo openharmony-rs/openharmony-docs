@@ -4,15 +4,17 @@ linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace linkEnhance--><!--Device-unnamed-declare namespace linkEnhance-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## 导入模块
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+```
 
 ## 汇总
 
@@ -20,8 +22,8 @@ linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备
 
 | 名称 | 说明 |
 | --- | --- |
-| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md#createconnection) | 作为客户端的设备创建连接对象。创建Connection对象后，订阅on('connectResult')，然后调用connect()方法向服务端设备发起连接，连接成功后，可通过sendData()发送数据，当连接不需要使用，可调用 close()销毁连接对象释放资源。 |
-| [createServer](arkts-distributedservice-linkenhance-createserver-f.md#createserver) | 在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。使用完毕后，需调用close()销毁Server对象释放资源。若需重新使用，需重新创建Server对象。 |
+| [createConnection](arkts-distributedservice-linkenhance-createconnection-f.md) | 作为客户端的设备创建连接对象。创建Connection对象后，订阅on('connectResult')，然后调用connect()方法向服务端设备发起连接，连接成功后，可通过sendData()发送数据，当连接不需要使用，可调用 close()销毁连接对象释放资源。 |
+| [createServer](arkts-distributedservice-linkenhance-createserver-f.md) | 在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。使用完毕后，需调用close()销毁Server对象释放资源。若需重新使用，需重新创建Server对象。 |
 
 ### 接口
 

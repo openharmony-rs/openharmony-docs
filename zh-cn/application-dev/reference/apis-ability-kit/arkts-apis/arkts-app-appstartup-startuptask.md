@@ -1,5 +1,11 @@
 # @ohos.app.appstartup.StartupTask
 
+## 导入模块
+
+```TypeScript
+import { StartupTask } from '@kit.AbilityKit';
+```
+
 ## 汇总
 
 ### 类

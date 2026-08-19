@@ -1,5 +1,11 @@
 # disableDeviceAdmin
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## disableDeviceAdmin
 
 ```TypeScript
@@ -9,10 +15,6 @@ function disableDeviceAdmin(admin: Want): Promise<void>
 [SDA](../../../mdm/mdm-kit-term.md#super-device-admin-sda超级设备管理员)应用通过该接口可以解除激活其他 [DA](../../../mdm/mdm-kit-term.md#device-admin-da普通设备管理员)应用，使用Promise异步回调。调用成功后，指定的DA应用将被解除激活，不再具备设备管理能力。该接口仅支持超级设 备管理应用调用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
 
@@ -44,7 +46,7 @@ function disableDeviceAdmin(admin: Want): Promise<void>
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';

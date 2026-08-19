@@ -99,7 +99,7 @@ const char* OH_ArkUI_NativeModule_GetErrorMessage()
 ### OH_ArkUI_GetModuleInterface()
 
 ```c
-OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                     \do {                                                                                             \void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType) \if (anyNativeAPI) {                                                                          \structPtr = (structType*)(anyNativeAPI)                                                 \}                                                                                            \} while (0)
+OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr) \do { \void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType) \if (anyNativeAPI) { \structPtr = (structType*)(anyNativeAPI) \} \} while (0)
 ```
 
 **描述**

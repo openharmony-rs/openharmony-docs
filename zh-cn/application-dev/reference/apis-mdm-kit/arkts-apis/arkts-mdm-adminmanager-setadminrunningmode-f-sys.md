@@ -1,5 +1,11 @@
 # setAdminRunningMode（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+```
+
 ## setAdminRunningMode
 
 ```TypeScript
@@ -9,10 +15,6 @@ function setAdminRunningMode(admin: Want, mode: RunningMode): void
 设置设备管理应用的运行模式。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -39,7 +41,7 @@ function setAdminRunningMode(admin: Want, mode: RunningMode): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';

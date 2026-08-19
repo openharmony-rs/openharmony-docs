@@ -154,7 +154,7 @@ typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char \*host | 要查询的主机名。 |
+| const char \*host | 要查询的主机名。 |
 | const char \*serv | 服务名称。 |
 | const struct addrinfo \*hint | 指向addrinfo结构的指针。 |
 | struct addrinfo \*\*res | 存储DNS查询结果并以链表形式返回。 |
@@ -175,7 +175,7 @@ typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (NetConn_HttpProxy \*proxy | 变化的代理配置信息，可能是空指针。 |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | 变化的代理配置信息，可能是空指针。 |
 
 ### OH_NetConn_GlobalHttpProxyRefreshCallback()
 
@@ -193,7 +193,7 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t result | 重新认证结果。0表示成功，其他值表示失败。 |
+| int32_t result | 重新认证结果。0表示成功，其他值表示失败。 |
 | [const NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | 当result为0时的全局HTTP代理信息。如果重新认证失败，proxy为NULL。<br>proxy对象由系统所有，仅在此次回调调用期间有效。调用者不能释放或修改它。如果调用者需要在回调返回后使用代理信息，必须进行深拷贝。 |
 | void \*userContext | 传递给OH_NetConn_RefreshGlobalHttpProxyWithCallback的用户定义数据。系统不会访问、复制或释放它。 |
 
@@ -213,7 +213,7 @@ typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (NetConn_NetHandle \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
 
 ### OH_NetConn_NetCapabilitiesChange()
 
@@ -231,7 +231,7 @@ typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, N
 
 | 参数项 | 描述 |
 | -- | -- |
-| (NetConn_NetHandle \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
 | [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) \*netCapabilities | 网络能力集。 |
 
 ### OH_NetConn_NetConnectionPropertiesChange()
@@ -250,7 +250,7 @@ typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netH
 
 | 参数项 | 描述 |
 | -- | -- |
-| (NetConn_NetHandle \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
 | [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) \*connConnetionProperties | 网络连接属性。 |
 
 ### OH_NetConn_NetLost()
@@ -269,7 +269,7 @@ typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (NetConn_NetHandle \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
 
 ### OH_NetConn_NetUnavailable()
 
@@ -299,7 +299,7 @@ typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bo
 
 | 参数项 | 描述 |
 | -- | -- |
-| (NetConn_NetHandle \*netHandle | 网络句柄。 |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) \*netHandle | 网络句柄。 |
 | bool blocked | 指示网络是否将被阻塞的标志。true表示网络被阻塞，false表示网络未被阻塞。 |
 
 

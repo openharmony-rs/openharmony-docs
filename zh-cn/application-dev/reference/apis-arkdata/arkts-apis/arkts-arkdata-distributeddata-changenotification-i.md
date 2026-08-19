@@ -4,8 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** ChangeNotification
@@ -13,6 +11,12 @@
 <!--Device-distributedData-interface ChangeNotification--><!--Device-distributedData-interface ChangeNotification-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
 
 ## deleteEntries
 
@@ -25,8 +29,6 @@ deleteEntries: Entry[]
 **类型：** Entry[]
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -48,8 +50,6 @@ deviceId: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** deviceId
@@ -70,8 +70,6 @@ insertEntries: Entry[]
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** insertEntries
@@ -91,8 +89,6 @@ updateEntries: Entry[]
 **类型：** Entry[]
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

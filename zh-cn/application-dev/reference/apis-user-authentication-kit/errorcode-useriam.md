@@ -21,7 +21,7 @@ Authentication failed.
 
 **错误描述**
 
-用户身份认证不通过，表示用户提供的认证凭据与设备中已注册的凭据比对不匹配。常见的认证结果，通常表示用户输入错误或使用了未注册的凭据。
+用户身份认证不通过，表示用户提供的认证凭据与设备中已注册的凭据比对不匹配。这是常见的认证失败结果，通常表示用户输入错误或使用了未注册的凭据。
 
 **可能原因**
 
@@ -48,7 +48,7 @@ General operation error.
 
 **可能原因**
 
-1. NAPI层解析参数出错，参数传递过程中发生异常。
+1. NAPI（Native API）层解析参数出错，参数传递过程中发生异常。
 2. 用户认证服务的进程没有启动或意外终止。
 3. IPC通信的proxy客户端写数据出错，数据传输异常。
 4. IPC通信的stub服务端解析数据出错，数据接收异常。
@@ -58,7 +58,7 @@ General operation error.
 **处理步骤**
 
 1. 系统服务内部工作异常，建议重新调用接口。
-2. 如果多次重试仍然失败，建议重启设备尝试。
+2. 如果重试后仍然失败（建议重试不超过3次），建议重启设备尝试。
 
 ## 12500003 认证被取消
 
@@ -79,7 +79,7 @@ Authentication canceled.
 **处理步骤**
 
 1. 根据用户意图决定是否重新发起认证。
-2. 如果是系统抢占取消，建议稍后重新发起认证请求。
+2. 如果是因新的认证请求抢占导致取消，建议等待系统释放资源后重新发起认证请求。
 3. 避免同时发起多个认证请求，防止相互抢占。
 
 ## 12500004 认证操作超时
@@ -115,13 +115,13 @@ The authentication type is not supported.
 
 **可能原因**
 
-1. 传入的认证类型参数无效，例如调用[getAvailableStatus]接口时传入的authType参数不在支持的范围内（PIN、FACE、FINGERPRINT等）。
+1. 传入的认证类型参数无效，例如调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口时传入的authType参数不在支持的范围内（PIN、FACE、FINGERPRINT等）。
 2. 传入的认证类型参数在本设备上不支持，例如在没有部署指纹传感器的设备上发起指纹认证。
 
 **处理步骤**
 
 1. 请检查传入的认证类型参数是否正确，确保参数值在支持的范围内。
-2. 发起认证之前，调用[getAvailableStatus]预先检查设备是否支持指定的认证类型，如果设备不支持某种认证类型，建议切换到其他支持的认证类型。
+2. 发起认证之前，调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)预先检查设备是否支持指定的认证类型，如果设备不支持某种认证类型，建议切换到其他支持的认证类型。
 
 ## 12500006 认证信任等级不支持
 
@@ -135,7 +135,7 @@ The authentication trust level is not supported.
 
 **可能原因**
 
-1. 调用[getAvailableStatus]或[getUserAuthInstance]接口时，传入的authTrustLevel参数不在有效范围内（应为ATL1(10000)、ATL2(20000)、ATL3(30000)或ATL4(40000)）。
+1. 调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)或[getUserAuthInstance](js-apis-useriam-userauth.md#userauthgetuserauthinstance10)接口时，传入的authTrustLevel参数不在有效范围内（应为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000））。
 2. 当前设备的认证能力无法达到指定的认证信任等级，例如在2D人脸认证设备上发起ATL4等级的人脸认证。
 3. 用户注册的凭据安全等级低于请求的认证信任等级，如4位PIN密码只能达到ATL3，无法满足ATL4要求。
 
@@ -202,7 +202,7 @@ Authentication is locked out.
 
 **错误描述**
 
-指定认证方式已被锁定，表示因连续多次认证失败触发防暴力保护机制，认证功能暂时不可用。
+指定认证方式已被锁定，表示因连续多次认证失败触发防暴力破解保护机制，认证功能不可用。
 
 **可能原因**
 
@@ -211,7 +211,7 @@ Authentication is locked out.
 **处理步骤**
 
 1. 提示用户认证已锁定，需等待锁定解除后才能继续认证。
-2. 可通过[getAuthLockState]接口查询当前锁定状态，包括剩余锁定时间和剩余尝试次数。
+2. 可通过[getAuthLockState](js-apis-useriam-userauth.md#userauthgetauthlockstate22)接口查询当前锁定状态，包括剩余锁定时间和剩余尝试次数。
 3. 如果是临时锁定，提示用户等待锁定时间到期后重新尝试。
 4. 如果是永久锁定，提示用户使用密码解锁后才能继续使用生物认证。
 5. 建议用户在锁定解除后使用正确的凭据进行认证，避免再次触发锁定。
@@ -228,7 +228,7 @@ The type of credential has not been enrolled.
 
 **可能原因**
 
-1. 调用userAuth模块的[getAvailableStatus]接口检查认证能力时，传入的authType参数为FACE或FINGERPRINT，但用户未在设备上录入人脸或指纹凭据。
+1. 调用userAuth模块的[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口检查认证能力时，传入的authType参数为FACE或FINGERPRINT，但用户未在设备上录入人脸或指纹凭据。
 2. 调用start接口发起认证时，请求的认证类型对应的凭据未录入，如发起指纹认证但用户未录入指纹。
 3. 用户曾录入的凭据已被删除，如用户在设置中删除了已注册的人脸或指纹。
 4. 新用户账号未录入任何认证凭据。
@@ -237,7 +237,7 @@ The type of credential has not been enrolled.
 
 1. 检查用户是否已录入该类型的认证凭据。
 2. 如果用户未录入，引导用户前往系统设置录入相应凭据（人脸、指纹或PIN）。
-3. 可通过[getEnrolledState]接口查询凭据注册状态。
+3. 可通过[getEnrolledState](js-apis-useriam-userauth.md#userauthgetenrolledstate12)接口查询凭据注册状态。
 4. 如果用户拒绝录入，建议切换到其他已录入的认证类型。
 5. 提示用户录入凭据后才能使用相应的认证功能。
 
@@ -307,7 +307,7 @@ AuthToken完整性校验失败，表示验证的认证令牌无效或已被篡�
 1. 重新发起认证请求，获取系统签发的有效AuthToken。
 2. 确保AuthToken在传输过程中未被修改，使用安全的数据传输方式。
 3. 如果凭据已变更，需重新认证获取新的AuthToken。
-4. 参考[verifyAuthToken]接口了解AuthToken校验流程。
+4. 参考[verifyAuthToken](js-apis-useriam-useraccessctrl-sys.md#useraccessctrlverifyauthtoken)接口了解AuthToken校验流程。
 
 ## 12500016 AuthToken过期
 
@@ -321,16 +321,16 @@ AuthToken已过期，表示认证令牌的签发时间至验证时的时间间�
 
 **可能原因**
 
-1. AuthToken的签发时间至发起验证时的时间间隔超过了传入的最大有效时长（allowableDuration）参数。
-2. AuthToken使用时间过长，超过了系统设定的最大有效期（24小时）。
+1. AuthToken的签发时间至发起验证时的时间间隔超过了传入的最大有效时长参数（单位：毫秒）。
+2. AuthToken从签发到使用的时间超过系统设定的最大有效期（24小时）。
 3. 应用在AuthToken即将过期时才发起验证，导致验证时已超时。
 4. 复用AuthToken的最大有效时长参数过短，导致令牌提前过期。原因是AuthToken签发时间为原认证时间，而非当前调用时间。
 
 **处理步骤**
 
 1. 重新发起认证请求，获取新的有效AuthToken。
-2. 在AuthToken有效期内尽快使用，避免延迟导致过期。
-3. 根据业务场景合理设置allowableDuration参数，确保满足业务需求。
+2. 在AuthToken签发后24小时内使用，避免延迟导致过期。
+3. 根据业务场景合理设置allowableDuration参数，确保满足业务需求；在复用场景下需注意AuthToken签发时间为原认证时间，应据此合理评估参数取值。
 
 ## 12500017 复用身份认证结果失败
 
@@ -356,7 +356,7 @@ Failed to reuse authentication result.
 1. 发起新的认证请求，让用户手动完成认证以获取有效的AuthToken。
 2. 检查reuseUnlockResult参数配置是否正确，包括reuseMode和reuseDuration。
 3. 如果需要复用认证结果，确保在有效时长内发起请求（最长5分钟）。
-4. 参考[认证结果复用]了解复用机制和条件，选择合适的ReuseMode，设置合理的有效时长。
+4. 参考[认证结果复用](js-apis-useriam-userauth.md#reuseunlockresult12)了解复用机制和条件，选择合适的ReuseMode，设置合理的有效时长。
 
 ## 12700001 人脸服务不可用
 
@@ -370,7 +370,7 @@ The service is unavailable.
 
 **可能原因**
 
-1. 调用faceAuth模块的[setSurfaceId]接口时，人脸认证服务未启动。
+1. 调用faceAuth模块的[setSurfaceId](js-apis-useriam-faceauth-sys.md#setsurfaceid)接口时，人脸认证服务未启动。
 2. IPC通信的proxy客户端写数据出错，数据传输异常。
 3. IPC通信的stub服务端解析数据出错，数据接收异常。
 4. 人脸driver层调用出错，底层驱动服务异常。
@@ -431,7 +431,7 @@ The template is not found.
 1. 在更新业务范围或订阅认证状态前，先确认模板存在。
 2. 如果模板已被删除，需重新添加伴随设备并注册模板。
 3. 确保传入的模板ID与用户注册的模板匹配。
-4. 确认模板ID是否正确，可通过[getTemplateStatus]查询当前用户的模板列表。
+4. 确认模板ID是否正确，可通过[getTemplateStatus](js-apis-useriam-companiondeviceauth-sys.md#gettemplatestatus)查询当前用户的模板列表。
 
 ## 32600003 业务ID无效
 
@@ -453,9 +453,9 @@ The business id is invalid.
 
 **处理步骤**
 
-1. 确认业务ID是否正确，参考[BusinessId]枚举了解系统支持的业务ID。
+1. 确认业务ID是否正确，参考[BusinessId](js-apis-useriam-companiondeviceauth-sys.md#businessid)枚举了解系统支持的业务ID。
 2. 使用系统预定义的业务ID（如DEFAULT）或厂商自定义ID（≥10000）。
 3. 确保自定义业务ID在应用中有明确定义，避免与系统保留值冲突。
 4. 传入业务ID数组时，确保所有元素均为有效值。
-5. 参考[updateEnabledBusinessIds]接口了解业务ID的使用要求。
+5. 参考[updateEnabledBusinessIds](js-apis-useriam-companiondeviceauth-sys.md#companiondeviceauthupdateenabledbusinessids)接口了解业务ID的使用要求。
 <!--DelEnd-->

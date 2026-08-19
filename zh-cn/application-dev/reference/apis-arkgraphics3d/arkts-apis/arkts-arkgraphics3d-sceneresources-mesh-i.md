@@ -1,14 +1,10 @@
 # Mesh
 
-网格节点拥有的网格实例
+网格类型，继承自SceneResource。
 
-**继承/实现关系：** Mesh extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md#sceneresource)
+**继承/实现关系：** Mesh extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface Mesh--><!--Device-unnamed-export interface Mesh-End-->
 
@@ -20,15 +16,11 @@
 readonly aabb: Aabb
 ```
 
-网格的轴对齐包围盒.
+轴对齐包围盒。
 
 **类型：** [Aabb](arkts-arkgraphics3d-scenetypes-aabb-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Mesh-readonly aabb: Aabb--><!--Device-Mesh-readonly aabb: Aabb-End-->
 
@@ -40,15 +32,11 @@ readonly aabb: Aabb
 materialOverride?: Material
 ```
 
-覆盖子网格材质的材质.
+材质，默认为空。
 
 **类型：** [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Mesh-materialOverride?: Material--><!--Device-Mesh-materialOverride?: Material-End-->
 
@@ -60,15 +48,11 @@ materialOverride?: Material
 readonly subMeshes: SubMesh[]
 ```
 
-网格的子网格.
+子网格数组。
 
 **类型：** [SubMesh](arkts-arkgraphics3d-sceneresources-submesh-i.md)[]
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Mesh-readonly subMeshes: SubMesh[]--><!--Device-Mesh-readonly subMeshes: SubMesh[]-End-->
 

@@ -1,4 +1,4 @@
-# Worker（系统接口）
+# Worker(System API)（系统接口）
 
 ```TypeScript
 declare type Worker = import('../api/@ohos.worker').default.Worker
@@ -7,10 +7,6 @@ declare type Worker = import('../api/@ohos.worker').default.Worker
 用于运行Abc的Worker线程对象。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

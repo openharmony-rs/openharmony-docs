@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-hidebug-interface NativeMemInfo--><!--Device-hidebug-interface NativeMemInfo-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+## 导入模块
+
+```TypeScript
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+```
 
 ## privateClean
 
@@ -23,10 +25,6 @@ privateClean: bigint
 **类型：** bigint
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NativeMemInfo-privateClean: bigint--><!--Device-NativeMemInfo-privateClean: bigint-End-->
 
@@ -44,10 +42,6 @@ privateDirty: bigint
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NativeMemInfo-privateDirty: bigint--><!--Device-NativeMemInfo-privateDirty: bigint-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
@@ -63,10 +57,6 @@ pss: bigint
 **类型：** bigint
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NativeMemInfo-pss: bigint--><!--Device-NativeMemInfo-pss: bigint-End-->
 
@@ -84,10 +74,6 @@ rss: bigint
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NativeMemInfo-rss: bigint--><!--Device-NativeMemInfo-rss: bigint-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
@@ -103,10 +89,6 @@ sharedClean: bigint
 **类型：** bigint
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NativeMemInfo-sharedClean: bigint--><!--Device-NativeMemInfo-sharedClean: bigint-End-->
 
@@ -124,10 +106,6 @@ sharedDirty: bigint
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-NativeMemInfo-sharedDirty: bigint--><!--Device-NativeMemInfo-sharedDirty: bigint-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
@@ -143,10 +121,6 @@ vss: bigint
 **类型：** bigint
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-NativeMemInfo-vss: bigint--><!--Device-NativeMemInfo-vss: bigint-End-->
 

@@ -4,15 +4,54 @@
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
-**替代接口：** [Base64Helper](arkts-arkts-util-base64helper-c.md#base64helper)
+**替代接口：** [Base64Helper](arkts-arkts-util-base64helper-c.md)
 
 <!--Device-util-class Base64--><!--Device-util-class Base64-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { ArrayList } from '@kit.ArkTS';
+import { ArrayListComparatorFn } from '@kit.ArkTS';
+import { ArrayListForEachCb } from '@kit.ArkTS';
+import { ArrayListReplaceCb } from '@kit.ArkTS';
+import { util } from '@kit.ArkTS';
+import { Deque } from '@kit.ArkTS';
+import { DequeForEachCb } from '@kit.ArkTS';
+import { HashMap } from '@kit.ArkTS';
+import { HashMapCbFn } from '@kit.ArkTS';
+import { HashSet } from '@kit.ArkTS';
+import { HashSetCbFn } from '@kit.ArkTS';
+import { LightWeightMap } from '@kit.ArkTS';
+import { LightWeightMapCbFn } from '@kit.ArkTS';
+import { LightWeightSet } from '@kit.ArkTS';
+import { LightWeightSetForEachCb } from '@kit.ArkTS';
+import { LinkedList } from '@kit.ArkTS';
+import { LinkedListForEachCb } from '@kit.ArkTS';
+import { List } from '@kit.ArkTS';
+import { ListComparatorFn } from '@kit.ArkTS';
+import { ListForEachCb } from '@kit.ArkTS';
+import { ListReplaceCb } from '@kit.ArkTS';
+import { PlainArray } from '@kit.ArkTS';
+import { PlainArrayForEachCb } from '@kit.ArkTS';
+import { Queue } from '@kit.ArkTS';
+import { QueueForEachCb } from '@kit.ArkTS';
+import { Stack } from '@kit.ArkTS';
+import { StackForEachCb } from '@kit.ArkTS';
+import { TreeMap } from '@kit.ArkTS';
+import { TreeMapForEachCb } from '@kit.ArkTS';
+import { TreeMapComparator } from '@kit.ArkTS';
+import { TreeSet } from '@kit.ArkTS';
+import { TreeSetForEachCb } from '@kit.ArkTS';
+import { TreeSetComparator } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
+import { Vector } from '@kit.ArkTS';
+import { JSON } from '@kit.ArkTS';
+```
 
 ## constructor
 
@@ -24,8 +63,6 @@ constructor()
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 **替代接口：** [constructor](arkts-arkts-util-base64helper-c.md#constructor)
@@ -34,7 +71,7 @@ constructor()
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## 示例
+**示例**
 
 ```TypeScript
 let base64 = new  util.Base64();
@@ -49,8 +86,6 @@ decode(src: Uint8Array | string): Promise<Uint8Array>
 将输入内容解码为 Uint8Array 对象。该接口使用 promise 返回结果。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -72,7 +107,7 @@ decode(src: Uint8Array | string): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let base64 = new util.Base64();
@@ -92,8 +127,6 @@ decodeSync(src: Uint8Array | string): Uint8Array
 将输入内容解码为 Uint8Array 对象。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -115,7 +148,7 @@ decodeSync(src: Uint8Array | string): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let base64 = new util.Base64();
@@ -134,8 +167,6 @@ encode(src: Uint8Array): Promise<Uint8Array>
 将输入内容编码为 Uint8Array 对象。该接口使用 promise 返回结果。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -157,7 +188,7 @@ encode(src: Uint8Array): Promise<Uint8Array>
 | --- | --- |
 | Promise&lt;Uint8Array&gt; | 用于返回获取到的 Uint8Array 对象的 promise。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let base64 = new util.Base64();
@@ -177,8 +208,6 @@ encodeSync(src: Uint8Array): Uint8Array
 对输入的 Uint8Array 字节数组进行 Base64 编码，并返回编码后的 Uint8Array。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -200,7 +229,7 @@ encodeSync(src: Uint8Array): Uint8Array
 | --- | --- |
 | Uint8Array | 获取到的 Uint8Array 对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let base64 = new util.Base64();
@@ -219,8 +248,6 @@ encodeToString(src: Uint8Array): Promise<string>
 将输入内容编码为字符串。该接口使用 promise 返回结果。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -242,7 +269,7 @@ encodeToString(src: Uint8Array): Promise<string>
 | --- | --- |
 | Promise&lt;string&gt; | 用于返回获取到的字符串的 promise。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let base64 = new util.Base64();
@@ -262,8 +289,6 @@ encodeToStringSync(src: Uint8Array): string
 对输入的 Uint8Array 字节数组进行 Base64 编码，并返回编码后的字符串。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -285,7 +310,7 @@ encodeToStringSync(src: Uint8Array): string
 | --- | --- |
 | string | 获取到的字符串。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let base64 = new util.Base64();

@@ -4,13 +4,16 @@ P2P连接信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-wifiManager-interface WifiP2pLinkedInfo--><!--Device-wifiManager-interface WifiP2pLinkedInfo-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
+
+## 导入模块
+
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## connectState
 
@@ -23,10 +26,6 @@ P2P连接状态。
 **类型：** P2pConnectState
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiP2pLinkedInfo-connectState: P2pConnectState--><!--Device-WifiP2pLinkedInfo-connectState: P2pConnectState-End-->
 
@@ -44,10 +43,6 @@ groupOwnerAddr: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-WifiP2pLinkedInfo-groupOwnerAddr: string--><!--Device-WifiP2pLinkedInfo-groupOwnerAddr: string-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -63,10 +58,6 @@ isGroupOwner: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-WifiP2pLinkedInfo-isGroupOwner: boolean--><!--Device-WifiP2pLinkedInfo-isGroupOwner: boolean-End-->
 

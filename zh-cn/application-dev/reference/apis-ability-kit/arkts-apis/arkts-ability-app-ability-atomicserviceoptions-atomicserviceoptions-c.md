@@ -1,18 +1,20 @@
 # AtomicServiceOptions
 
-**AtomicServiceOptions**可以作为 [openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice)的入参，用于携带参数。继承自 [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md#startoptions)。
+**AtomicServiceOptions**可以作为 [openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice)的入参，用于携带参数。继承自 [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)。
 
-**继承/实现关系：** AtomicServiceOptions extends [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md#startoptions)
+**继承/实现关系：** AtomicServiceOptions extends [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export default class AtomicServiceOptions--><!--Device-unnamed-export default class AtomicServiceOptions-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { AtomicServiceOptions } from '@kit.AbilityKit';
+```
 
 ## completionHandlerForAtomicService
 
@@ -25,10 +27,6 @@ completionHandlerForAtomicService?: CompletionHandlerForAtomicService
 **类型：** [CompletionHandlerForAtomicService](arkts-ability-app-ability-completionhandlerforatomicservice-completionhandlerforatomicservice-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,10 +48,6 @@ flags?: int
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -68,15 +62,11 @@ flags?: int
 parameters?: Record<string, RecordData>
 ```
 
-表示额外参数描述。具体描述参考[Want](arkts-ability-app-ability-want-want-c.md#want)中parameters字段描述。
+表示额外参数描述。具体描述参考[Want](arkts-ability-app-ability-want-want-c.md)中parameters字段描述。
 
-**类型：** Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

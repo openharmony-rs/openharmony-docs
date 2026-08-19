@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-deviceManager-interface Device--><!--Device-deviceManager-interface Device-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
+
+## 导入模块
+
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+```
 
 ## busType
 
@@ -23,10 +25,6 @@ busType: BusType
 **类型：** [BusType](arkts-driverdevelopment-devicemanager-bustype-e.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Device-busType: BusType--><!--Device-Device-busType: BusType-End-->
 
@@ -44,10 +42,6 @@ description: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-Device-description: string--><!--Device-Device-description: string-End-->
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
@@ -63,10 +57,6 @@ deviceId: long
 **类型：** long
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-Device-deviceId: long--><!--Device-Device-deviceId: long-End-->
 

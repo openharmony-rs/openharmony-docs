@@ -14,10 +14,6 @@ Search(options?: SearchOptions)
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-SearchInterface-(options?: SearchOptions): SearchAttribute--><!--Device-SearchInterface-(options?: SearchOptions): SearchAttribute-End-->
@@ -32,10 +28,25 @@ Search(options?: SearchOptions)
 
 ## 汇总
 
-- [CancelButtonOptions](arkts-arkui-cancelbuttonoptions-i.md)
-- [IconOptions](arkts-arkui-iconoptions-i.md)
-- [SearchButtonOptions](arkts-arkui-searchbuttonoptions-i.md)
-- [SearchOptions](arkts-arkui-searchoptions-i.md)
-- [SearchSubmitCallback](arkts-arkui-searchsubmitcallback-t.md)
-- [CancelButtonStyle](arkts-arkui-cancelbuttonstyle-e.md)
-- [SearchType](arkts-arkui-searchtype-e.md)
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [CancelButtonOptions](arkts-arkui-cancelbuttonoptions-i.md) | 定义清除按钮选项。 |
+| [IconOptions](arkts-arkui-iconoptions-i.md) | 定义图标选项。 |
+| [SearchButtonOptions](arkts-arkui-searchbuttonoptions-i.md) | 定义搜索按钮选项。 |
+| [SearchOptions](arkts-arkui-searchoptions-i.md) | Search初始化参数。 @since版本号高于内层元素版本号的情况，但这不影响接口的使用。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [SearchSubmitCallback](arkts-arkui-searchsubmitcallback-t.md) | 点击搜索图标、搜索按钮或者按下软键盘搜索按钮时的回调事件。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [CancelButtonStyle](arkts-arkui-cancelbuttonstyle-e.md) | 清除按钮样式枚举。 |
+| [SearchType](arkts-arkui-searchtype-e.md) | 搜索输入框类型。 |
+

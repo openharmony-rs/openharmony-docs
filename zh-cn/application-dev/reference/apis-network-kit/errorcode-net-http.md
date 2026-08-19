@@ -19,7 +19,7 @@ Unsupported protocol.
 
 **错误描述**
 
-协议版本服务器不支持。
+协议不支持。
 
 **可能原因**
 
@@ -232,21 +232,21 @@ Failed to write the received data to the disk or application.
 
 1. 应用没有写文件权限。
 
-2. 调用request接口下载超过大小限制（API version 23之前限制为5MB，API version 23及之后的版本，限制为50MB），且未在HttpRequestOptions中设置maxLimit参数。
+2. 调用[request](./js-apis-http.md#request)接口下载超过大小限制（API version 23之前限制为5MB，API version 23及之后的版本，限制为50MB），且未在[HttpRequestOptions](./js-apis-http.md#httprequestoptions)中设置maxLimit参数。
 
 3. 磁盘空间不足。
 
-4. 上一次请求数据未接收完毕便调用destroy销毁导致接收数据不完整。
+4. 上一次请求数据未接收完毕便调用[destroy](./js-apis-http.md#destroy)销毁导致接收数据不完整。
 
 **处理步骤**
 
 1. 检查应用是否具有写文件权限。
 
-2. 若需下载超过5MB的数据，请在HttpRequestOptions中设置合适的maxLimit参数，或改用requestInStream接口发起流式请求。
+2. 若需下载超过5MB的数据，请在[HttpRequestOptions](./js-apis-http.md#httprequestoptions)中设置合适的maxLimit参数，或改用[requestInStream](./js-apis-http.md#requestinstream10)接口发起流式请求。
 
 3. 检查磁盘空间是否充足。
 
-4. 确保请求完成后再调用destroy方法。
+4. 确保请求完成后再调用[destroy](./js-apis-http.md#destroy)方法。
 
 5. 可查看日志关键词"HttpClient CURLcode result 23"定位该错误。
 
@@ -324,6 +324,8 @@ Operation timeout.
 
 4. 服务器负载过高，处理速度缓慢。
 
+5. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，导致域名解析到过期或错误的IP地址，连接无法建立。
+
 **处理步骤**
 
 1. 检查网络连接状态，确认网络稳定。
@@ -332,7 +334,9 @@ Operation timeout.
 
 3. 排查服务器负载情况。
 
-4. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试。
+
+5. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
 
 ## 2300047 重定向次数达到最大值
 
@@ -406,6 +410,8 @@ Failed to receive data from the peer.
 
 3. 对端发送数据过程中出现异常。
 
+4. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，但规则中IP地址已失效，导致向错误的地址发送请求后无法接收响应。
+
 **处理步骤**
 
 1. 检查网络连接状态。
@@ -414,7 +420,9 @@ Failed to receive data from the peer.
 
 3. 重新发起请求尝试。
 
-4. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试，确保域名解析到正确的IP地址。
+
+5. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
 
 ## 2300058 本地SSL证书错误
 
@@ -434,7 +442,7 @@ SSL证书格式有错误。
 
 检查SSL证书格式。
 
-## 2300059 无法使用指定的密码
+## 2300059 无法使用指定的加密算法
 
 **错误信息**
 
@@ -442,7 +450,7 @@ The specified SSL cipher cannot be used.
 
 **错误描述**
 
-无法使用指定的密码。
+无法使用指定的加密算法。
 
 **可能原因**
 

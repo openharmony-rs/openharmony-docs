@@ -4,13 +4,14 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface VideoOptions--><!--Device-unnamed-declare interface VideoOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## controller
 
@@ -23,10 +24,6 @@ controller?: VideoController
 **类型：** [VideoController](arkts-arkui-videocontroller-c.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -45,10 +42,6 @@ controllerAsync?: VideoControllerAsync
 **类型：** [VideoControllerAsync](arkts-arkui-videocontrollerasync-c.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,10 +63,6 @@ currentProgressRate?: number | string | PlaybackSpeed
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoOptions-currentProgressRate?: number | string | PlaybackSpeed--><!--Device-VideoOptions-currentProgressRate?: number | string | PlaybackSpeed-End-->
@@ -91,10 +80,6 @@ imageAIOptions?: ImageAIOptions
 **类型：** ImageAIOptions
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -116,10 +101,6 @@ posterOptions?: PosterOptions
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -140,10 +121,6 @@ previewUri?: string | PixelMap | Resource
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-VideoOptions-previewUri?: string | PixelMap | Resource--><!--Device-VideoOptions-previewUri?: string | PixelMap | Resource-End-->
@@ -161,10 +138,6 @@ src?: string | Resource
 **类型：** string \| Resource
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

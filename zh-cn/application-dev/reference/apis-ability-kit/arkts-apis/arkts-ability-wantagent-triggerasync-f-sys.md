@@ -1,5 +1,11 @@
 # triggerAsync（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+```
+
 ## triggerAsync
 
 ```TypeScript
@@ -9,10 +15,6 @@ function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Conte
 主动触发WantAgent实例，即按照WantAgent实例中已封装的指定操作和参数等信息执行。使用Promise异步回调。 仅当入参agent为本地WantAgent实例时需要申请: ohos.permission.TRIGGER_LOCAL_WANTAGENT permission.
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +48,7 @@ function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Conte
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not system-app, can not use system-api. |
 | [16000153](../errorcode-ability.md#16000153-wantagent对象已被取消) | The Wantagent has been canceled. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { wantAgent, Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';

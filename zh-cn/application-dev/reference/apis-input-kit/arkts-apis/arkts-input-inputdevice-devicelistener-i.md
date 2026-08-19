@@ -4,13 +4,16 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-inputDevice-interface DeviceListener--><!--Device-inputDevice-interface DeviceListener-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputDevice
+
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
 
 ## deviceId
 
@@ -23,10 +26,6 @@ deviceId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceListener-deviceId: int--><!--Device-DeviceListener-deviceId: int-End-->
 
@@ -43,10 +42,6 @@ type: ChangedType
 **类型：** [ChangedType](arkts-input-inputdevice-changedtype-t.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DeviceListener-type: ChangedType--><!--Device-DeviceListener-type: ChangedType-End-->
 

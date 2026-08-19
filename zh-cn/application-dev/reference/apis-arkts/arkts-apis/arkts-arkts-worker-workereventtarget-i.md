@@ -4,13 +4,15 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface WorkerEventTarget--><!--Device-unnamed-export interface WorkerEventTarget-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+## 导入模块
+
+```TypeScript
+import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, EventTarget, MessageEvent, MessageEvents, PostMessageOptions, ThreadWorkerGlobalScope, WorkerEventListener, WorkerEventTarget, WorkerOptions, ThreadWorkerPriority, Priority } from '@kit.ArkTS';
+```
 
 ## addEventListener
 
@@ -21,10 +23,6 @@ addEventListener(type: string, listener: WorkerEventListener): void
 向Worker线程的实例对象添加事件监听。该接口与on9+接口功能一致。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,7 +44,7 @@ addEventListener(type: string, listener: WorkerEventListener): void
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets
@@ -70,10 +68,6 @@ dispatchEvent(event: Event): boolean
 分发定义在Worker线程的事件。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -99,7 +93,7 @@ dispatchEvent(event: Event): boolean
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets
@@ -126,10 +120,6 @@ removeAllListener(): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WorkerEventTarget-removeAllListener(): void--><!--Device-WorkerEventTarget-removeAllListener(): void-End-->
@@ -142,7 +132,7 @@ removeAllListener(): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets
@@ -169,10 +159,6 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-WorkerEventTarget-removeEventListener(type: string, callback?: WorkerEventListener): void--><!--Device-WorkerEventTarget-removeEventListener(type: string, callback?: WorkerEventListener): void-End-->
@@ -192,7 +178,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 | --- | --- |
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 
-## 示例
+**示例**
 
 ```TypeScript
 // worker.ets

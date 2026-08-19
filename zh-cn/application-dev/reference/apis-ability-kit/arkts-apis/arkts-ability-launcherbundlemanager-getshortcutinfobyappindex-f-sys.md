@@ -1,5 +1,11 @@
 # getShortcutInfoByAppIndex（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { launcherBundleManager } from '@kit.AbilityKit';
+```
+
 ## getShortcutInfoByAppIndex
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<Sho
 查询当前用户下指定分身应用的快捷方式信息ShortcutInfo。 调用方获取自己的信息时不需要权限。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -45,7 +47,7 @@ function getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array<Sho
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { launcherBundleManager } from '@kit.AbilityKit';

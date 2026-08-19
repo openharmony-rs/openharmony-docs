@@ -1,5 +1,11 @@
 # getDomainAccountPolicy
 
+## 导入模块
+
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+```
+
 ## getDomainAccountPolicy
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.Domain
 获取域账号策略。适用于企业管理场景，如查询当前域账号策略配置、策略合规性审计等。
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -44,7 +46,7 @@ function getDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.Domain
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { accountManager } from '@kit.MDMKit';

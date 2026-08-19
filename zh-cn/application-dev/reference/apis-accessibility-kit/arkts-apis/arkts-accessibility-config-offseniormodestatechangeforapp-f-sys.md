@@ -1,5 +1,11 @@
 # offSeniorModeStateChangeForApp（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+```
+
 ## offSeniorModeStateChangeForApp
 
 ```TypeScript
@@ -9,10 +15,6 @@ function offSeniorModeStateChangeForApp(callback?: Callback<AppSeniorModeInfo>):
 取消监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
@@ -28,7 +30,7 @@ function offSeniorModeStateChangeForApp(callback?: Callback<AppSeniorModeInfo>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AppSeniorModeInfo](arkts-accessibility-config-appseniormodeinfo-i-sys.md)&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与 [config.onSeniorModeStateChangeForApp](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md#onseniormodestatechangeforapp系统接口) 的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[AppSeniorModeInfo](arkts-accessibility-config-appseniormodeinfo-i-sys.md)&gt; | 否 | 回调函数，取消指定callback对象的事件响应。需与 [config.onSeniorModeStateChangeForApp](arkts-accessibility-config-onseniormodestatechangeforapp-f-sys.md) 的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -37,7 +39,7 @@ function offSeniorModeStateChangeForApp(callback?: Callback<AppSeniorModeInfo>):
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. <br>The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. <br>A non-system application calls a system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { config } from '@kit.AccessibilityKit';

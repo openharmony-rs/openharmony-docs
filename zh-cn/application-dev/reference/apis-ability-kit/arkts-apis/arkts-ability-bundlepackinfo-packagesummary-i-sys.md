@@ -4,10 +4,6 @@ pack.info中的包摘要信息。
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface PackageSummary--><!--Device-unnamed-export interface PackageSummary-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -26,10 +22,6 @@ readonly app: BundleConfigInfo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PackageSummary-readonly app: BundleConfigInfo--><!--Device-PackageSummary-readonly app: BundleConfigInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -47,10 +39,6 @@ readonly modules: Array<ModuleConfigInfo>
 **类型：** Array&lt;[ModuleConfigInfo](arkts-ability-bundlepackinfo-moduleconfiginfo-i-sys.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-PackageSummary-readonly modules: Array<ModuleConfigInfo>--><!--Device-PackageSummary-readonly modules: Array<ModuleConfigInfo>-End-->
 

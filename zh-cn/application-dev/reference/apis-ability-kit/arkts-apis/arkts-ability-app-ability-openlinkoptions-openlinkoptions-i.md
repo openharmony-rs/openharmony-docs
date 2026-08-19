@@ -4,13 +4,15 @@ OpenLinkOptions可以作为[openLink()](arkts-ability-uiabilitycontext-c.md#open
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export default interface OpenLinkOptions--><!--Device-unnamed-export default interface OpenLinkOptions-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## 导入模块
+
+```TypeScript
+import { OpenLinkOptions } from '@kit.AbilityKit';
+```
 
 ## appLinkingOnly
 
@@ -18,15 +20,11 @@ OpenLinkOptions可以作为[openLink()](arkts-ability-uiabilitycontext-c.md#open
 appLinkingOnly?: boolean
 ```
 
-表示是否必须以&lt;!--RP1--&gt;[AppLinking](../../../application-models/app-linking-startup.md)&lt;!--RP1End--&gt;的方式启动UIAbility。 - 取值为true时，如果不存在与AppLinking相匹配的UIAbility，直接返回。 - 取值为false时，如果不存在与AppLinking相匹配的UIAbility，AppLinking会退化为 [DeepLinking](../../../application-models/deep-linking-startup.md)。默认值为false。 aa命令隐式拉起Ability时可以通过设置"--pb appLinkingOnly true/false"以AppLinking的方式进行启动。
+表示是否必须以<!--RP1-->[AppLinking](../../../application-models/app-linking-startup.md)<!--RP1End-->的方式启动UIAbility。 - 取值为true时，如果不存在与AppLinking相匹配的UIAbility，直接返回。 - 取值为false时，如果不存在与AppLinking相匹配的UIAbility，AppLinking会退化为 [DeepLinking](../../../application-models/deep-linking-startup.md)。默认值为false。 aa命令隐式拉起Ability时可以通过设置"--pb appLinkingOnly true/false"以AppLinking的方式进行启动。
 
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +45,6 @@ completionHandler?: CompletionHandler
 **类型：** [CompletionHandler](arkts-ability-app-ability-completionhandler-completionhandler-c.md)
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,10 +68,6 @@ hideFailureTipDialog?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
@@ -94,13 +84,9 @@ parameters?: Record<string, RecordData>
 
 表示WantParams参数。
 
-**类型：** Record&lt;string, [RecordData](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
+**类型：** Record&lt;string, [RecordData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-recorddata-t.md)&gt;
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

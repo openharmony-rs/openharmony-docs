@@ -1,12 +1,8 @@
 # PhotoSubtype（系统接口）
 
-PhotoSubtype是不同[PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md#photoasset)类型的枚举。
+PhotoSubtype是不同[PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md)类型的枚举。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-photoAccessHelper-export enum PhotoSubtype--><!--Device-photoAccessHelper-export enum PhotoSubtype-End-->
 
@@ -23,10 +19,6 @@ DEFAULT = 0
 默认照片文件类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -46,10 +38,6 @@ SCREENSHOT = 1
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoSubtype-SCREENSHOT = 1--><!--Device-PhotoSubtype-SCREENSHOT = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -65,10 +53,6 @@ CINEMATIC_VIDEO = 5
 电影视频文件类型。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5--><!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5-End-->
 
@@ -86,10 +70,6 @@ SLOW_MOTION_VIDEO = 6
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoSubtype-SLOW_MOTION_VIDEO = 6--><!--Device-PhotoSubtype-SLOW_MOTION_VIDEO = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -106,10 +86,6 @@ SPATIAL_3DGS = 7
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-PhotoSubtype-SPATIAL_3DGS = 7--><!--Device-PhotoSubtype-SPATIAL_3DGS = 7-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -125,10 +101,6 @@ CINEMATIC_VIDEO_V2 = 8
 电影版本2视频文件。与CINEMATIC_VIDEO相比，它增加了更多效果，如希区柯克风格。
 
 **起始版本：** 26.1.0
-
-**ArkTS模式：** 起始版本为26.1.0。
-
-**废弃版本：** -1
 
 <!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8--><!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8-End-->
 

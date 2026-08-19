@@ -51,7 +51,7 @@ LowPowerVideoSink需要数据时调用该方法，包含在[OH_LowPowerVideoSink
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)\* buffer | OH_AVSamplesBuffer instance that will be written in |
 | void \*userData | User specific data |
 
@@ -71,7 +71,7 @@ LowPowerVideoSink发生错误时调用该方法。
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
 | errorCode | The error code returned when an error occurs during service operation.See the definition of {@OH_AVErrCode} |
 | errorMsg | string of Error description information returned when an error occursduring service operation |
 | void\* userData | User specific data |
@@ -92,7 +92,7 @@ LowPowerVideoSink到达目标点时调用该方法，包含在[OH_LowPowerVideoS
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
 | const int64_t targetPts | Target pts of renderred frame, in microseconds |
 | const bool isTimeout | If wait target pts timeout, it is false |
 | void\* userData | User specific data |
@@ -113,7 +113,7 @@ LowPowerVideoSink开始渲染时调用该方法，包含在[OH_LowPowerVideoSink
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
 | void\* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnStreamChanged()
@@ -132,8 +132,8 @@ LowPowerVideoSink流切换调用该方法，包含在[OH_LowPowerVideoSinkCallba
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
-| [OH_AVFormat](../AVCodecKit/capi-core-oh-avformat.md)\* format | Carrying changing parameters and corresponding values |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
+| OH_AVFormat\* format | Carrying changing parameters and corresponding values |
 | void\* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()
@@ -152,7 +152,7 @@ LowPowerVideoSink第一帧解码成功时调用该方法，包含在[OH_LowPower
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
 | void\* userData | User specific data |
 
 ### OH_LowPowerVideoSink_OnEos()
@@ -171,7 +171,7 @@ LowPowerVideoSink播放完成时调用该方法，包含在[OH_LowPowerVideoSink
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_LowPowerVideoSink\* sink | OH_LowPowerVideoSink instance |
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)\* sink | OH_LowPowerVideoSink instance |
 | void\* userData | User specific data |
 
 

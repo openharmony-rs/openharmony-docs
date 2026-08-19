@@ -1,5 +1,11 @@
 # createKVManager
 
+## 导入模块
+
+```TypeScript
+import { distributedDataObject } from '@kit.ArkData';
+```
+
 ## createKVManager
 
 ```TypeScript
@@ -9,8 +15,6 @@ function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVMana
 创建一个KVManager对象实例，用于管理数据库对象，使用callback异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -25,9 +29,9 @@ function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVMana
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | KVManagerConfig | 是 | 提供KVManager实例的配置信息，包括调用方的Bundle名称和用户信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;KVManager&gt; | 是 | 回调函数。返回创建的KVManager对象实例。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;KVManager&gt; | 是 | 回调函数。返回创建的KVManager对象实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 let kvManager;
@@ -63,8 +67,6 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** createKVManager
@@ -85,7 +87,7 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 | --- | --- |
 | Promise&lt;KVManager&gt; | Promise对象。返回创建的KVManager对象实例。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 try {

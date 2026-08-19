@@ -1,5 +1,11 @@
 # hasMatchedCallLog
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## hasMatchedCallLog
 
 ```TypeScript
@@ -9,10 +15,6 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 检查是否有符合条件的通话记录，默认查询6小时以内的通话记录，仅针对运营商通话。使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHECK_CALL_LOG
 
@@ -46,7 +48,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 | [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -75,10 +77,6 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 检查是否有符合条件的通话记录，仅针对运营商通话。使用Promise异步回调。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.CHECK_CALL_LOG
 
@@ -113,7 +111,7 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: i
 | [16700002](../errorcode-contacts.md#16700002-参数检查失败) | Invalid parameter value. |
 | [16700001](../errorcode-contacts.md#16700001-系统内部错误) | General error. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 

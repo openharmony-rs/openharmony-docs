@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-cloudData-enum SyncStatus--><!--Device-cloudData-enum SyncStatus-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -24,10 +20,6 @@ RUNNING = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SyncStatus-RUNNING = 0--><!--Device-SyncStatus-RUNNING = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -43,10 +35,6 @@ FINISHED = 1
 端云同步任务已完成。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SyncStatus-FINISHED = 1--><!--Device-SyncStatus-FINISHED = 1-End-->
 

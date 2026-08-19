@@ -1,14 +1,12 @@
 # LinearGradientStyle
 
-显示为线性渐变。LinearGradientStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#shaderstyle)。
+显示为线性渐变。LinearGradientStyle继承自[ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md)。
 
-**继承/实现关系：** LinearGradientStyle extends [ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md#shaderstyle)
+**继承/实现关系：** LinearGradientStyle extends [ShaderStyle](arkts-arkui-textcommon-shaderstyle-c.md)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 <!--Device-unnamed-export declare class LinearGradientStyle--><!--Device-unnamed-export declare class LinearGradientStyle-End-->
 
@@ -24,9 +22,7 @@ constructor(options: LinearGradientOptions)
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,9 +48,7 @@ options: LinearGradientOptions
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
+**ArkTS模式：** 同时支持ArkTS-Dyn、ArkTS-Sta，起始版本为24。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

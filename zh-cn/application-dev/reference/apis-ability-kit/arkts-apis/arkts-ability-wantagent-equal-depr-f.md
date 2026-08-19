@@ -1,5 +1,10 @@
 # equal
 
+## 导入模块
+
+```TypeScript
+```
+
 ## equal
 
 ```TypeScript
@@ -10,11 +15,9 @@ function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [equal](arkts-ability-wantagent-equal-f.md#equal)
+**替代接口：** [equal](arkts-ability-wantagent-equal-f.md)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -28,9 +31,9 @@ function equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback<
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
 | otherAgent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 判断两个WantAgent实例是否相等的回调方法。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
@@ -97,11 +100,9 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [equal](arkts-ability-wantagent-equal-f.md#equal)
+**替代接口：** [equal](arkts-ability-wantagent-equal-f.md)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -122,7 +123,7 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 | --- | --- |
 | Promise&lt;boolean&gt; | 以Promise形式返回获取判断两个WantAgent实例是否相等的结果。返回true表示两个WantAgent实例相等；返回false表示不相等。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';

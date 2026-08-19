@@ -1,5 +1,11 @@
 # terminateSelf
 
+## 导入模块
+
+```TypeScript
+import { particleAbility } from '@kit.AbilityKit';
+```
+
 ## terminateSelf
 
 ```TypeScript
@@ -9,10 +15,6 @@ function terminateSelf(callback: AsyncCallback<void>): void
 销毁当前particleAbility。使用callback异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -24,9 +26,9 @@ function terminateSelf(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当销毁当前particleAbility成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当销毁当前particleAbility成功，err为undefined，否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { particleAbility } from '@kit.AbilityKit';
@@ -51,10 +53,6 @@ function terminateSelf(): Promise<void>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-particleAbility-function terminateSelf(): Promise<void>--><!--Device-particleAbility-function terminateSelf(): Promise<void>-End-->
@@ -67,7 +65,7 @@ function terminateSelf(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { particleAbility } from '@kit.AbilityKit';

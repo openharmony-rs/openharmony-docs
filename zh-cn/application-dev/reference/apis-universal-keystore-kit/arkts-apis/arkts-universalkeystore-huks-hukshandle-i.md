@@ -1,10 +1,8 @@
 # HuksHandle
 
-huks Handle结构体。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksSessionHandle&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-hukssessionhandle-i.md#hukssessionhandle)替代。
+huks Handle结构体。 > **说明：** > > 从API version 9开始废弃，建议使用[HuksSessionHandle&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-hukssessionhandle-i.md)替代。
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -13,6 +11,13 @@ huks Handle结构体。 > **说明：** > > 从API version 9开始废弃，建�
 <!--Device-huks-export interface HuksHandle--><!--Device-huks-export interface HuksHandle-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension
+
+## 导入模块
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+```
 
 ## errorCode
 
@@ -25,8 +30,6 @@ errorCode: number
 **类型：** number
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 
@@ -46,8 +49,6 @@ handle: number
 
 **起始版本：** 8
 
-**ArkTS模式：** 起始版本为8。
-
 **废弃版本：** 9
 
 <!--Device-HuksHandle-handle: number--><!--Device-HuksHandle-handle: number-End-->
@@ -65,8 +66,6 @@ token?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 8
-
-**ArkTS模式：** 起始版本为8。
 
 **废弃版本：** 9
 

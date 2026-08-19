@@ -1,5 +1,11 @@
 # onSystemPanelStatusChange（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { inputMethodSystemPanelManager } from '@kit.IMEKit';
+```
+
 ## onSystemPanelStatusChange
 
 ```TypeScript
@@ -9,10 +15,6 @@ function onSystemPanelStatusChange(callback: Callback<SystemPanelStatus>): void
 订阅系统面板状态改变事件。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -26,7 +28,7 @@ function onSystemPanelStatusChange(callback: Callback<SystemPanelStatus>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SystemPanelStatus](arkts-ime-inputmethodsystempanelmanager-systempanelstatus-i-sys.md)&gt; | 是 | 当系统面板状态改变时触发的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-callback-t.md)&lt;[SystemPanelStatus](arkts-ime-inputmethodsystempanelmanager-systempanelstatus-i-sys.md)&gt; | 是 | 当系统面板状态改变时触发的回调。 |
 
 **错误码：**
 

@@ -1,5 +1,11 @@
 # getDisplayCountry
 
+## 导入模块
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+```
+
 ## getDisplayCountry
 
 ```TypeScript
@@ -9,8 +15,6 @@ export function getDisplayCountry(country: string, locale: string, sentenceCase?
 获取指定国家的本地化名称。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -34,7 +38,7 @@ export function getDisplayCountry(country: string, locale: string, sentenceCase?
 | --- | --- |
 | string | 指定国家的本地化显示文本。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { i18n } from '@kit.LocalizationKit';

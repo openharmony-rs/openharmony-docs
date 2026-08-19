@@ -4,15 +4,20 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [InterruptEvent](arkts-audio-audio-interruptevent-i.md#interruptevent)
+**替代接口：** [InterruptEvent](arkts-audio-audio-interruptevent-i.md)
 
 <!--Device-audio-interface InterruptAction--><!--Device-audio-interface InterruptAction-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+## 导入模块
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { audioHaptic } from '@kit.AudioKit';
+```
 
 ## actionType
 
@@ -25,8 +30,6 @@ actionType: InterruptActionType
 **类型：** [InterruptActionType](arkts-audio-audio-interruptactiontype-e.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -48,8 +51,6 @@ activated?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
@@ -70,8 +71,6 @@ hint?: InterruptHint
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
@@ -91,8 +90,6 @@ type?: InterruptType
 **类型：** [InterruptType](arkts-audio-audio-interrupttype-e.md)
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

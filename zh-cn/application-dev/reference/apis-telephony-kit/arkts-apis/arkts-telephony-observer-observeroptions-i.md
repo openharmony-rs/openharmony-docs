@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-observer-export interface ObserverOptions--><!--Device-observer-export interface ObserverOptions-End-->
 
 **系统能力：** SystemCapability.Telephony.StateRegistry
+
+## 导入模块
+
+```TypeScript
+import { observer } from '@kit.TelephonyKit';
+```
 
 ## slotId
 
@@ -23,10 +25,6 @@ slotId: int
 **类型：** int
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ObserverOptions-slotId: int--><!--Device-ObserverOptions-slotId: int-End-->
 

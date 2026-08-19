@@ -1,5 +1,11 @@
 # getAllInsightIntentInfo（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { insightIntentDriver } from '@kit.AbilityKit';
+```
+
 ## getAllInsightIntentInfo
 
 ```TypeScript
@@ -9,10 +15,6 @@ function getAllInsightIntentInfo(intentFlags: int): Promise<Array<InsightIntentI
 查询当前设备上的所有意图信息。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -28,7 +30,7 @@ function getAllInsightIntentInfo(intentFlags: int): Promise<Array<InsightIntentI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| intentFlags | int | 是 | 意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md#insightintentinfo系统接口)）的标识，用于表示查询全量意图信息或者简要意 图信息，参考[GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md#getinsightintentflag系统接口)。 |
+| intentFlags | int | 是 | 意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于表示查询全量意图信息或者简要意 图信息，参考[GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md)。 |
 
 **返回值：**
 

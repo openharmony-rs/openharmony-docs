@@ -1,18 +1,22 @@
-# Router
+# Router(页面路由)
 
 通过不同的uri访问不同的页面。
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
-**替代接口：** [router](arkts-router.md#ohosrouter)
+**替代接口：** [router](../../apis-na/arkts-apis/arkts-router.md)
 
 <!--Device-unnamed-export default class Router--><!--Device-unnamed-export default class Router-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
+
+## 导入模块
+
+```TypeScript
+import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, EnableAlertBeforeBackPageOptions, RouterOptions, RouterState } from '@kit.ArkUI';
+```
 
 ## back
 
@@ -23,8 +27,6 @@ static back(options?: BackRouterOptions): void
 返回上一页面或指定的页面。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
@@ -50,8 +52,6 @@ static clear(): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
 **替代接口：** clear
@@ -69,8 +69,6 @@ static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): 
 禁用页面返回询问对话框。
 
 **起始版本：** 6
-
-**ArkTS模式：** 起始版本为6。
 
 **废弃版本：** 8
 
@@ -96,8 +94,6 @@ static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): voi
 
 **起始版本：** 6
 
-**ArkTS模式：** 起始版本为6。
-
 **废弃版本：** 8
 
 **替代接口：** showAlertBeforeBackPage
@@ -121,8 +117,6 @@ static getLength(): string
 获取当前在页面栈内的页面数量。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
@@ -148,8 +142,6 @@ static getParams(): ParamsInterface
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 8
 
 **替代接口：** getParams
@@ -173,8 +165,6 @@ static getState(): RouterState
 获取当前页面的状态信息。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 
@@ -200,8 +190,6 @@ static push(options: RouterOptions): void
 
 **起始版本：** 3
 
-**ArkTS模式：** 起始版本为3。
-
 **废弃版本：** 8
 
 **替代接口：** push
@@ -225,8 +213,6 @@ static replace(options: RouterOptions): void
 用应用内的某个页面替换当前页面，并销毁被替换的页面。
 
 **起始版本：** 3
-
-**ArkTS模式：** 起始版本为3。
 
 **废弃版本：** 8
 

@@ -4,13 +4,14 @@
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface ContextMenuOptions--><!--Device-unnamed-declare interface ContextMenuOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## aboutToAppear
 
@@ -23,10 +24,6 @@ aboutToAppear?: () => void
 **类型：** () =&gt; void
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,10 +44,6 @@ aboutToDisappear?: () => void
 **类型：** () =&gt; void
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,10 +67,6 @@ anchorPosition?: Position
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -100,10 +89,6 @@ arrowOffset?: Length
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -123,10 +108,6 @@ availableLayoutArea?: AvailableLayoutArea
 **类型：** [AvailableLayoutArea](arkts-arkui-availablelayoutarea-e.md)
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -150,10 +131,6 @@ backgroundBlurStyle?: BlurStyle
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -173,10 +150,6 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **类型：** [BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -200,10 +173,6 @@ backgroundColor?: ResourceColor
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -223,10 +192,6 @@ backgroundEffect?: BackgroundEffectOptions
 **类型：** [BackgroundEffectOptions](arkts-arkui-backgroundeffectoptions-i.md)
 
 **起始版本：** 18
-
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -250,10 +215,6 @@ borderRadius?: Length | BorderRadiuses | LocalizedBorderRadiuses
 
 **起始版本：** 12
 
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -275,10 +236,6 @@ colorMode?: AnchoredColorMode
 **默认值：** AnchoredColorMode.FOLLOW_TARGET
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -302,10 +259,6 @@ enableArrow?: boolean
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -328,10 +281,6 @@ enableHoverMode?: boolean
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -346,15 +295,11 @@ enableHoverMode?: boolean
 gridStyle?: MenuGridStyleOptions
 ```
 
-设置菜单的栅格样式。仅固定样式菜单生效，例如在 [bindMenu](arkts-arkui-commonmethod-c.md#bindmenu)、 [bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu) 、[bindContextMenuByResponseType](arkts-arkui-commonmethod-c.md#bindcontextmenubyresponsetype)、 [bindContextMenuByIsShow](arkts-arkui-commonmethod-c.md#bindcontextmenubyisshow)、 [bindContextMenuWithResponse](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse) 中使用[MenuElement](arkts-arkui-menuelement-i.md#menuelement)或在MenuItem中使用MenuItemOptions。
+设置菜单的栅格样式。仅固定样式菜单生效，例如在 [bindMenu](arkts-arkui-commonmethod-c.md#bindmenu)、 [bindContextMenu](arkts-arkui-commonmethod-c.md#bindcontextmenu) 、[bindContextMenuByResponseType](arkts-arkui-commonmethod-c.md#bindcontextmenubyresponsetype)、 [bindContextMenuByIsShow](arkts-arkui-commonmethod-c.md#bindcontextmenubyisshow)、 [bindContextMenuWithResponse](arkts-arkui-commonmethod-c.md#bindcontextmenuwithresponse) 中使用[MenuElement](arkts-arkui-menuelement-i.md)或在MenuItem中使用MenuItemOptions。
 
 **类型：** [MenuGridStyleOptions](arkts-arkui-menugridstyleoptions-i.md)
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -378,10 +323,6 @@ hapticFeedbackMode?: HapticFeedbackMode
 
 **起始版本：** 18
 
-**ArkTS模式：** 起始版本为18。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
@@ -403,10 +344,6 @@ keyboardAvoidMode?: MenuKeyboardAvoidMode
 **默认值：** MenuKeyboardAvoidMode.NONE
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -430,10 +367,6 @@ layoutRegionMargin?: Margin
 
 **起始版本：** 13
 
-**ArkTS模式：** 起始版本为13。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
@@ -456,10 +389,6 @@ mask?: boolean | MenuMaskType
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -480,10 +409,6 @@ maxHeight?: LengthMetrics
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -503,10 +428,6 @@ minKeyboardAvoidDistance?: LengthMetrics
 **类型：** LengthMetrics
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -530,10 +451,6 @@ modalMode?: ModalMode
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -556,10 +473,6 @@ offset?: Position
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -579,10 +492,6 @@ onAppear?: () => void
 **类型：** () =&gt; void
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -604,10 +513,6 @@ onDidAppear?: Callback<void>
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -627,10 +532,6 @@ onDidDisappear?: Callback<void>
 **类型：** [Callback](arkts-arkui-callback-i.md)&lt;void&gt;
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -652,10 +553,6 @@ onDisappear?: () => void
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -676,10 +573,6 @@ onWillAppear?: Callback<void>
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -699,10 +592,6 @@ onWillDisappear?: Callback<void>
 **类型：** [Callback](arkts-arkui-callback-i.md)&lt;void&gt;
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -726,10 +615,6 @@ outlineColor?: ResourceColor | EdgeColors
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -751,10 +636,6 @@ outlineWidth?: Dimension | EdgeOutlineWidths
 **默认值：** 0vp - Percentage values are not supported.
 
 **起始版本：** 20
-
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -778,10 +659,6 @@ placement?: Placement
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
@@ -803,10 +680,6 @@ preview?: MenuPreviewMode | CustomBuilder
 **默认值：** MenuPreviewMode.NONE
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -830,10 +703,6 @@ previewAnimationOptions?: ContextMenuAnimationOptions
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
@@ -855,10 +724,6 @@ previewBorderRadius?: BorderRadiusType
 **默认值：** 16vp
 
 **起始版本：** 19
-
-**ArkTS模式：** 起始版本为19。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -882,10 +747,6 @@ previewScaleMode?: PreviewScaleMode
 
 **起始版本：** 20
 
-**ArkTS模式：** 起始版本为20。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
@@ -908,10 +769,6 @@ scrollBar?: BarState
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -932,10 +789,6 @@ targetSpace?: LengthMetrics
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
@@ -950,15 +803,11 @@ targetSpace?: LengthMetrics
 transition?: TransitionEffect
 ```
 
-设置菜单显示和退出的过渡效果。 **说明：** 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。 详细描述见[TransitionEffect](arkts-arkui-transitioneffect-c.md#transitioneffect)对象说明。 动效曲线使用弹簧曲线，在动效退出时，由于弹簧曲线的回弹震荡，菜单消失后有较长的拖尾，使得其他事件无法响应。 当设置transition自定义动效时，菜单的默认显示和退出动效不生效。
+设置菜单显示和退出的过渡效果。 **说明：** 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。 详细描述见[TransitionEffect](arkts-arkui-transitioneffect-c.md)对象说明。 动效曲线使用弹簧曲线，在动效退出时，由于弹簧曲线的回弹震荡，菜单消失后有较长的拖尾，使得其他事件无法响应。 当设置transition自定义动效时，菜单的默认显示和退出动效不生效。
 
 **类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)
 
 **起始版本：** 12
-
-**ArkTS模式：** 起始版本为12。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

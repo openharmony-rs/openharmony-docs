@@ -4,10 +4,6 @@
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface DataAbilityOperation--><!--Device-unnamed-export interface DataAbilityOperation-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
@@ -23,10 +19,6 @@ expectedCount?: number
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -46,10 +38,6 @@ interrupted?: boolean
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-DataAbilityOperation-interrupted?: boolean--><!--Device-DataAbilityOperation-interrupted?: boolean-End-->
@@ -67,10 +55,6 @@ predicates?: dataAbility.DataAbilityPredicates
 **类型：** dataAbility.DataAbilityPredicates
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -90,10 +74,6 @@ predicatesBackReferences?: Map<number, number>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-DataAbilityOperation-predicatesBackReferences?: Map<number, number>--><!--Device-DataAbilityOperation-predicatesBackReferences?: Map<number, number>-End-->
@@ -111,10 +91,6 @@ type: featureAbility.DataAbilityOperationType
 **类型：** featureAbility.DataAbilityOperationType
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -134,10 +110,6 @@ uri: string
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-DataAbilityOperation-uri: string--><!--Device-DataAbilityOperation-uri: string-End-->
@@ -156,10 +128,6 @@ valueBackReferences?: rdb.ValuesBucket
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-DataAbilityOperation-valueBackReferences?: rdb.ValuesBucket--><!--Device-DataAbilityOperation-valueBackReferences?: rdb.ValuesBucket-End-->
@@ -177,10 +145,6 @@ valuesBucket?: rdb.ValuesBucket
 **类型：** rdb.ValuesBucket
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在FA模型下使用。
 

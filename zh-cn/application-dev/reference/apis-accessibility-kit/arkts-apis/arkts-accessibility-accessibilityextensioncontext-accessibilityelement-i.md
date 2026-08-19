@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export declare interface AccessibilityElement--><!--Device-unnamed-export declare interface AccessibilityElement-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
@@ -22,8 +18,6 @@ actionNames(callback: AsyncCallback<Array<string>>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-actionNames(callback: AsyncCallback<Array<string>>): void--><!--Device-AccessibilityElement-actionNames(callback: AsyncCallback<Array<string>>): void-End-->
@@ -34,9 +28,9 @@ actionNames(callback: AsyncCallback<Array<string>>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取操作名称成功，err为undefined，data为节点元素支持的所有操作名称；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数。当获取操作名称成功，err为undefined，data为节点元素支持的所有操作名称；否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -61,8 +55,6 @@ actionNames(): Promise<Array<string>>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-actionNames(): Promise<Array<string>>--><!--Device-AccessibilityElement-actionNames(): Promise<Array<string>>-End-->
@@ -75,7 +67,7 @@ actionNames(): Promise<Array<string>>
 | --- | --- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回节点元素支持的所有操作名称。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -98,8 +90,6 @@ attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<A
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<Array<T>>): void--><!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<Array<T>>): void-End-->
@@ -110,9 +100,9 @@ attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;T&gt;&gt; | 是 | 回调函数。当获取属性名称成功，err为undefined，data为节点元素的所有属性名称；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;T&gt;&gt; | 是 | 回调函数。当获取属性名称成功，err为undefined，data为节点元素的所有属性名称；否则为错误对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
@@ -138,8 +128,6 @@ attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>--><!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>-End-->
@@ -152,7 +140,7 @@ attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>
 | --- | --- |
 | Promise&lt;Array&lt;T&gt;&gt; | Promise对象，返回节点元素的所有属性名称。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
@@ -179,8 +167,6 @@ attributeValue<T extends keyof ElementAttributeValues>(
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void-End-->
@@ -192,7 +178,7 @@ attributeValue<T extends keyof ElementAttributeValues>(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | attributeName | T | 是 | 表示属性的名称。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ElementAttributeValues[T]&gt; | 是 | 回调函数。当获取属性值成功，err为undefined，data为对应属性的值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;ElementAttributeValues[T]&gt; | 是 | 回调函数。当获取属性值成功，err为undefined，data为对应属性的值；否则为错误对象。 |
 
 **错误码：**
 
@@ -201,7 +187,7 @@ attributeValue<T extends keyof ElementAttributeValues>(
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9300004](../errorcode-accessibility.md#9300004-属性不存在) | This property does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
@@ -229,8 +215,6 @@ attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promis
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promise<ElementAttributeValues[T]>--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promise<ElementAttributeValues[T]>-End-->
@@ -256,7 +240,7 @@ attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promis
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9300004](../errorcode-accessibility.md#9300004-属性不存在) | This property does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
@@ -272,7 +256,7 @@ rootElement.attributeValue(attributeName).then((data: string) => {
 });
 ```
 
-## findElement
+## findElement('content')
 
 ```TypeScript
 findElement(type: 'content', condition: string, callback: AsyncCallback<Array<AccessibilityElement>>): void
@@ -281,8 +265,6 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 根据节点内容查询所有节点元素。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -296,7 +278,7 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 | --- | --- | --- | --- |
 | type | 'content' | 是 | 固定为'content'，表示查找的类型为节点元素内容。 |
 | condition | string | 是 | 表示查找的关键字条件，用于匹配节点元素的文本内容。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询关键字的所有节点元 素；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询关键字的所有节点元 素；否则为错误对象。 |
 
 **错误码：**
 
@@ -304,7 +286,7 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -322,7 +304,7 @@ rootElement.findElement('content', condition, (err: BusinessError, data: Accessi
 });
 ```
 
-## findElement
+## findElement('content')
 
 ```TypeScript
 findElement(type: 'content', condition: string): Promise<Array<AccessibilityElement>>
@@ -331,8 +313,6 @@ findElement(type: 'content', condition: string): Promise<Array<AccessibilityElem
 根据节点内容查询所有节点元素。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -359,7 +339,7 @@ findElement(type: 'content', condition: string): Promise<Array<AccessibilityElem
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -375,7 +355,7 @@ rootElement.findElement('content', condition).then((data: AccessibilityElement[]
 });
 ```
 
-## findElement
+## findElement('focusType')
 
 ```TypeScript
 findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<AccessibilityElement>): void
@@ -384,8 +364,6 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 根据焦点元素类型查询节点元素。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -399,7 +377,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 | --- | --- | --- | --- |
 | type | 'focusType' | 是 | 固定为'focusType'，表示查询的类型为节点的焦点元素类型。 |
 | condition | [FocusType](arkts-accessibility-focustype-t.md) | 是 | 表示查询焦点元素的类型。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询焦点元素类型的节点元素；否则为错误 对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询焦点元素类型的节点元素；否则为错误 对象。 |
 
 **错误码：**
 
@@ -407,7 +385,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { FocusType, AccessibilityElement } from '@kit.AccessibilityKit';
@@ -425,7 +403,7 @@ rootElement.findElement('focusType', condition, (err: BusinessError, data: Acces
 });
 ```
 
-## findElement
+## findElement('focusType')
 
 ```TypeScript
 findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityElement>
@@ -434,8 +412,6 @@ findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityEleme
 根据焦点元素类型查询节点元素。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -462,7 +438,7 @@ findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityEleme
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { FocusType, AccessibilityElement } from '@kit.AccessibilityKit';
@@ -478,7 +454,7 @@ rootElement.findElement('focusType', condition).then((data: AccessibilityElement
 });
 ```
 
-## findElement
+## findElement('focusDirection')
 
 ```TypeScript
 findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback<AccessibilityElement>): void
@@ -487,8 +463,6 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 根据下一焦点元素方向查询节点元素。使用callback异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -502,7 +476,7 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 | --- | --- | --- | --- |
 | type | 'focusDirection' | 是 | 固定为'focusDirection'，表示查询的类型为节点的下一焦点元素方向。 |
 | condition | [FocusDirection](arkts-accessibility-focusdirection-t.md) | 是 | 表示查询下一焦点元素的方向。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询下一焦点元素方向的节点元素；否则为 错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt; | 是 | 回调函数。当查找节点元素成功，err为undefined，data为满足指定查询下一焦点元素方向的节点元素；否则为 错误对象。 |
 
 **错误码：**
 
@@ -510,7 +484,7 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { FocusDirection, AccessibilityElement } from '@kit.AccessibilityKit';
@@ -528,7 +502,7 @@ rootElement.findElement('focusDirection', condition, (err: BusinessError, data: 
 });
 ```
 
-## findElement
+## findElement('focusDirection')
 
 ```TypeScript
 findElement(type: 'focusDirection', condition: FocusDirection): Promise<AccessibilityElement>
@@ -537,8 +511,6 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise<Accessib
 根据下一焦点元素方向查询节点元素。使用Promise异步回调。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
 
 **废弃版本：** 12
 
@@ -565,7 +537,7 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise<Accessib
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { FocusDirection, AccessibilityElement } from '@kit.AccessibilityKit';
@@ -591,8 +563,6 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-performAction(actionName: string, parameters: object, callback: AsyncCallback<void>): void--><!--Device-AccessibilityElement-performAction(actionName: string, parameters: object, callback: AsyncCallback<void>): void-End-->
@@ -603,9 +573,9 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#action)。 |
+| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md)。 |
 | parameters | object | 是 | 表示执行操作时所需要的参数。不同操作类型所需的参数结构不同，具体参数格式参见各Action的说明，如setSelection需传入selectTextBegin、 selectTextEnd、selectTextInForWard参数，setCursorPosition需传入offset参数。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -614,7 +584,7 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -642,8 +612,6 @@ performAction(actionName: string, parameters?: object): Promise<void>
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-performAction(actionName: string, parameters?: object): Promise<void>--><!--Device-AccessibilityElement-performAction(actionName: string, parameters?: object): Promise<void>-End-->
@@ -654,7 +622,7 @@ performAction(actionName: string, parameters?: object): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#action)。 |
+| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md)。 |
 | parameters | object | 否 | 表示执行操作时所需要的参数。不同操作需要的参数键名和值类型不同，具体取值原则参见各Action定义，如setSelection需传入selectTextBegin、 selectTextEnd、selectTextInForWard参数，setCursorPosition需传入offset参数。不传则默认为空。 |
 
 **返回值：**
@@ -670,7 +638,7 @@ performAction(actionName: string, parameters?: object): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
-## 示例
+**示例**
 
 无参数Action。
 
@@ -730,8 +698,6 @@ performAction(actionName: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
 **废弃版本：** 12
 
 <!--Device-AccessibilityElement-performAction(actionName: string, callback: AsyncCallback<void>): void--><!--Device-AccessibilityElement-performAction(actionName: string, callback: AsyncCallback<void>): void-End-->
@@ -742,8 +708,8 @@ performAction(actionName: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md#action)。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
+| actionName | string | 是 | 表示操作的名称，取值参考[Action](arkts-accessibility-accessibility-action-t.md)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当执行操作成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -752,7 +718,7 @@ performAction(actionName: string, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -4,10 +4,6 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-audio-enum SpatialAudioSourceType--><!--Device-audio-enum SpatialAudioSourceType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
@@ -23,10 +19,6 @@ SPATIAL_AUDIO_SOURCE_TYPE_STEREO = 0
 立体声源类型。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +38,6 @@ SPATIAL_AUDIO_SOURCE_TYPE_AUDIO_VIVID = 1
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_AUDIO_VIVID = 1--><!--Device-SpatialAudioSourceType-SPATIAL_AUDIO_SOURCE_TYPE_AUDIO_VIVID = 1-End-->
@@ -67,10 +55,6 @@ SPATIAL_AUDIO_SOURCE_TYPE_MULTI_CHANNEL = 2
 多通道源类型。
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

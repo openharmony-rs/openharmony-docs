@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-export interface SystemToneOptions--><!--Device-unnamed-export interface SystemToneOptions-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -26,10 +22,6 @@ muteAudio?: boolean
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-SystemToneOptions-muteAudio?: boolean--><!--Device-SystemToneOptions-muteAudio?: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
@@ -47,10 +39,6 @@ muteHaptics?: boolean
 **类型：** boolean
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-SystemToneOptions-muteHaptics?: boolean--><!--Device-SystemToneOptions-muteHaptics?: boolean-End-->
 

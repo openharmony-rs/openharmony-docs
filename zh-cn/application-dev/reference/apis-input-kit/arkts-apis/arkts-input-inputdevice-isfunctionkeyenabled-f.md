@@ -1,5 +1,12 @@
 # isFunctionKeyEnabled
 
+## 导入模块
+
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { inputDeviceCooperate } from '@kit.InputKit';
+```
+
 ## isFunctionKeyEnabled
 
 ```TypeScript
@@ -9,10 +16,6 @@ function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>
 检查功能键（如：CapsLock键）是否使能。使用Promise异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-inputDevice-function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>--><!--Device-inputDevice-function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>-End-->
 
@@ -37,7 +40,7 @@ function isFunctionKeyEnabled(functionKey: FunctionKey): Promise<boolean>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [3900002](../errorcode-inputdevice.md#3900002-键盘设备没有连接) | There is currently no keyboard device connected. |
 
-## 示例
+**示例**
 
 ArkTS-Dyn示例：
 

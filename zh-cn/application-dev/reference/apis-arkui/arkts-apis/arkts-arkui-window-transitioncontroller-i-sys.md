@@ -4,15 +4,19 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-window-interface TransitionController--><!--Device-window-interface TransitionController-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { floatingBall } from '@kit.ArkUI';
+import { floatView } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+```
 
 ## animationForHidden
 
@@ -23,10 +27,6 @@ animationForHidden(context: TransitionContext): void
 窗口隐藏时的自定义动画配置。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-TransitionController-animationForHidden(context: TransitionContext): void--><!--Device-TransitionController-animationForHidden(context: TransitionContext): void-End-->
 
@@ -47,7 +47,7 @@ animationForHidden(context: TransitionContext): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ts
@@ -115,10 +115,6 @@ animationForShown(context: TransitionContext): void
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-TransitionController-animationForShown(context: TransitionContext): void--><!--Device-TransitionController-animationForShown(context: TransitionContext): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -138,7 +134,7 @@ animationForShown(context: TransitionContext): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
-## 示例
+**示例**
 
 ```TypeScript
 // xxx.ts
@@ -210,10 +206,6 @@ animationForHidden?: TransitionControllerCallback
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-TransitionController-animationForHidden?: TransitionControllerCallback--><!--Device-TransitionController-animationForHidden?: TransitionControllerCallback-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -233,10 +225,6 @@ animationForShown?: TransitionControllerCallback
 **默认值：** undefined
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-TransitionController-animationForShown?: TransitionControllerCallback--><!--Device-TransitionController-animationForShown?: TransitionControllerCallback-End-->
 

@@ -1,5 +1,11 @@
 # queryContact
 
+## 导入模块
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+```
+
 ## queryContact
 
 ```TypeScript
@@ -9,8 +15,6 @@ function queryContact(key: string, callback: AsyncCallback<Contact>): void
 根据联系人唯一标识符key查询联系人。使用callback异步回调。
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 10
 
@@ -27,9 +31,9 @@ function queryContact(key: string, callback: AsyncCallback<Contact>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -56,10 +60,6 @@ function queryContact(context: Context, key: string, callback: AsyncCallback<Con
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function queryContact(context: Context, key: string, callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryContact(context: Context, key: string, callback: AsyncCallback<Contact>): void-End-->
@@ -72,7 +72,7 @@ function queryContact(context: Context, key: string, callback: AsyncCallback<Con
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -81,7 +81,7 @@ function queryContact(context: Context, key: string, callback: AsyncCallback<Con
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -112,8 +112,6 @@ function queryContact(key: string, holder: Holder, callback: AsyncCallback<Conta
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;)
@@ -130,9 +128,9 @@ function queryContact(key: string, holder: Holder, callback: AsyncCallback<Conta
 | --- | --- | --- | --- |
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -163,10 +161,6 @@ function queryContact(context: Context, key: string, holder: Holder, callback: A
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function queryContact(context: Context, key: string, holder: Holder, callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryContact(context: Context, key: string, holder: Holder, callback: AsyncCallback<Contact>): void-End-->
@@ -180,7 +174,7 @@ function queryContact(context: Context, key: string, holder: Holder, callback: A
 | context | Context | 是 | 应用上下文Context。 |
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -189,7 +183,7 @@ function queryContact(context: Context, key: string, holder: Holder, callback: A
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -224,8 +218,6 @@ function queryContact(key: string, attrs: ContactAttributes, callback: AsyncCall
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [queryContact](#querycontact)(context: Context, key: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
@@ -242,9 +234,9 @@ function queryContact(key: string, attrs: ContactAttributes, callback: AsyncCall
 | --- | --- | --- | --- |
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -273,10 +265,6 @@ function queryContact(context: Context, key: string, attrs: ContactAttributes, c
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function queryContact(context: Context, key: string, attrs: ContactAttributes, callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryContact(context: Context, key: string, attrs: ContactAttributes, callback: AsyncCallback<Contact>): void-End-->
@@ -290,7 +278,7 @@ function queryContact(context: Context, key: string, attrs: ContactAttributes, c
 | context | Context | 是 | 应用上下文Context。 |
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -299,7 +287,7 @@ function queryContact(context: Context, key: string, attrs: ContactAttributes, c
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -332,8 +320,6 @@ function queryContact(key: string, holder: Holder, attrs: ContactAttributes, cal
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
@@ -351,9 +337,9 @@ function queryContact(key: string, holder: Holder, attrs: ContactAttributes, cal
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，为空则默认使用系统联系人应用查询。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，当该参数为空时，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -386,10 +372,6 @@ function queryContact(context: Context, key: string, holder: Holder, attrs: Cont
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.READ_CONTACTS
 
 <!--Device-contact-function queryContact(context: Context, key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Contact>): void--><!--Device-contact-function queryContact(context: Context, key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Contact>): void-End-->
@@ -404,7 +386,7 @@ function queryContact(context: Context, key: string, holder: Holder, attrs: Cont
 | key | string | 是 | 联系人的唯一查询键key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key,可以通过queryKey获取。 |
 | holder | [Holder](arkts-contacts-contact-holder-c.md) | 是 | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。 |
 | attrs | [ContactAttributes](arkts-contacts-contact-contactattributes-c.md) | 是 | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | 是 | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -413,7 +395,7 @@ function queryContact(context: Context, key: string, holder: Holder, attrs: Cont
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -450,8 +432,6 @@ function queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): 
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 10
 
 **替代接口：** [queryContact](#querycontact)(context: Context, key: string, holder?: Holder, attrs?: ContactAttributes)
@@ -476,7 +456,7 @@ function queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): 
 | --- | --- |
 | Promise&lt;[Contact](arkts-contacts-contact-contact-c.md)&gt; | Promise对象。返回查询到的联系人对象。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { contact } from '@kit.ContactsKit';
@@ -504,10 +484,6 @@ function queryContact(context: Context, key: string, holder?: Holder, attrs?: Co
 根据key、holder和attrs查询联系人。使用Promise异步回调。
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -537,7 +513,7 @@ function queryContact(context: Context, key: string, holder?: Holder, attrs?: Co
 | [401](../errorcode-contacts.md#401-打开联系人头像文件失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 
-## 示例
+**示例**
 
 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 

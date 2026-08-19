@@ -4,15 +4,16 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-interface WindowAnimationTarget--><!--Device-unnamed-interface WindowAnimationTarget-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## abilityName
 
@@ -25,10 +26,6 @@ readonly abilityName: string
 **类型：** string
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-WindowAnimationTarget-readonly abilityName: string--><!--Device-WindowAnimationTarget-readonly abilityName: string-End-->
 
@@ -48,10 +45,6 @@ readonly bundleName: string
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-WindowAnimationTarget-readonly bundleName: string--><!--Device-WindowAnimationTarget-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -70,10 +63,6 @@ readonly missionId: number
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-WindowAnimationTarget-readonly missionId: number--><!--Device-WindowAnimationTarget-readonly missionId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -91,10 +80,6 @@ readonly windowBounds: RRect
 **类型：** [RRect](arkts-arkui-rrect-i-sys.md)
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 <!--Device-WindowAnimationTarget-readonly windowBounds: RRect--><!--Device-WindowAnimationTarget-readonly windowBounds: RRect-End-->
 

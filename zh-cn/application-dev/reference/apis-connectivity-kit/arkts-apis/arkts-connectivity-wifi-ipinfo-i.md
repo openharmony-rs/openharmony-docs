@@ -4,15 +4,22 @@ WLAN IP信息。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [IpInfo](arkts-connectivity-wifimanager-ipinfo-i.md#ipinfo)
+**替代接口：** [IpInfo](arkts-connectivity-wifimanager-ipinfo-i.md)
 
 <!--Device-wifi-interface IpInfo--><!--Device-wifi-interface IpInfo-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## gateway
 
@@ -25,8 +32,6 @@ WLAN连接的网关
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -48,8 +53,6 @@ WLAN连接的IP地址
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [ipAddress](arkts-connectivity-wifimanager-ipinfo-i.md#ipaddress)
@@ -69,8 +72,6 @@ WLAN连接的IP地址租约时长
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -92,8 +93,6 @@ WLAN连接的网络掩码
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [netmask](arkts-connectivity-wifimanager-ipinfo-i.md#netmask)
@@ -113,8 +112,6 @@ WLAN连接的主DNS服务器IP地址
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -136,8 +133,6 @@ WLAN连接的辅助DNS服务器IP地址
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [secondDns](arkts-connectivity-wifimanager-ipinfo-i.md#seconddns)
@@ -157,8 +152,6 @@ WLAN连接的DHCP服务器IP地址
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

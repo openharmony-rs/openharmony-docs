@@ -8,10 +8,6 @@ export type EnabledPriorityNotificationByBundleCallbackData = _EnabledPriorityNo
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-notificationSubscribe-export type EnabledPriorityNotificationByBundleCallbackData = _EnabledPriorityNotificationByBundleCallbackData--><!--Device-notificationSubscribe-export type EnabledPriorityNotificationByBundleCallbackData = _EnabledPriorityNotificationByBundleCallbackData-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-media-enum HdrType--><!--Device-media-enum HdrType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -22,10 +18,6 @@ AV_HDR_TYPE_NONE = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-HdrType-AV_HDR_TYPE_NONE = 0--><!--Device-HdrType-AV_HDR_TYPE_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -39,10 +31,6 @@ AV_HDR_TYPE_VIVID = 1
 表示为HDR VIVID类型。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-HdrType-AV_HDR_TYPE_VIVID = 1--><!--Device-HdrType-AV_HDR_TYPE_VIVID = 1-End-->
 

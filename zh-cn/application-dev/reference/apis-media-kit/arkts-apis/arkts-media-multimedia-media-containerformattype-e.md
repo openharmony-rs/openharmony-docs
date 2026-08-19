@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-enum ContainerFormatType--><!--Device-unnamed-enum ContainerFormatType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -21,10 +17,6 @@ CFT_MPEG_4 = 'mp4'
 视频的容器格式，MP4。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ CFT_MPEG_4A = 'm4a'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
 <!--Device-ContainerFormatType-CFT_MPEG_4A = 'm4a'--><!--Device-ContainerFormatType-CFT_MPEG_4A = 'm4a'-End-->
@@ -62,10 +50,6 @@ CFT_MP3 = 'mp3'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContainerFormatType-CFT_MP3 = 'mp3'--><!--Device-ContainerFormatType-CFT_MP3 = 'mp3'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -79,10 +63,6 @@ CFT_WAV = 'wav'
 音频的容器格式，WAV。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContainerFormatType-CFT_WAV = 'wav'--><!--Device-ContainerFormatType-CFT_WAV = 'wav'-End-->
 
@@ -98,10 +78,6 @@ CFT_AMR = 'amr'
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-ContainerFormatType-CFT_AMR = 'amr'--><!--Device-ContainerFormatType-CFT_AMR = 'amr'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -115,10 +91,6 @@ CFT_AAC = 'aac'
 音频的容器格式，AAC。默认为ADTS帧头格式。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-ContainerFormatType-CFT_AAC = 'aac'--><!--Device-ContainerFormatType-CFT_AAC = 'aac'-End-->
 

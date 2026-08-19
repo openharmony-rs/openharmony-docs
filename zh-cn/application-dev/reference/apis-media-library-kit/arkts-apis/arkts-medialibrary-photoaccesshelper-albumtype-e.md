@@ -4,10 +4,6 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-photoAccessHelper-enum AlbumType--><!--Device-photoAccessHelper-enum AlbumType-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -22,10 +18,6 @@ USER = 0
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-AlbumType-USER = 0--><!--Device-AlbumType-USER = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -39,10 +31,6 @@ SYSTEM = 1024
 系统预置相册。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-AlbumType-SYSTEM = 1024--><!--Device-AlbumType-SYSTEM = 1024-End-->
 

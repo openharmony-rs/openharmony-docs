@@ -1,16 +1,18 @@
 # MediaSource
 
-媒体数据信息。来源于 [createMediaSourceWithUrl](arkts-media-media-createmediasourcewithurl-f.md#createmediasourcewithurl) 。 > **说明：** > > - 本Interface首批接口从API version 12开始支持。
+媒体数据信息。来源于 [createMediaSourceWithUrl](arkts-media-media-createmediasourcewithurl-f.md) 。 > **说明：** > > - 本Interface首批接口从API version 12开始支持。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-interface MediaSource--><!--Device-unnamed-interface MediaSource-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+## 导入模块
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+```
 
 ## enableOfflineCache
 
@@ -21,10 +23,6 @@ enableOfflineCache(enable: boolean): void
 是否在视频播放期间启用离线缓存。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-MediaSource-enableOfflineCache(enable: boolean): void--><!--Device-MediaSource-enableOfflineCache(enable: boolean): void-End-->
 
@@ -45,10 +43,6 @@ getID(): string
 获取媒体源的标识符。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,10 +68,6 @@ Obtains the configured audio and video feature filtering values.
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MediaSource-getTrackSelectionFilter(): TrackSelectionFilter | undefined--><!--Device-MediaSource-getTrackSelectionFilter(): TrackSelectionFilter | undefined-End-->
@@ -99,10 +89,6 @@ setMediaResourceLoaderDelegate(resourceLoader: MediaSourceLoader): void
 设置MediaSourceLoader，帮助播放器请求媒体数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -126,10 +112,6 @@ setMimeType(mimeType: AVMimeTypes): void
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-MediaSource-setMimeType(mimeType: AVMimeTypes): void--><!--Device-MediaSource-setMimeType(mimeType: AVMimeTypes): void-End-->
@@ -151,10 +133,6 @@ setTrackSelectionFilter(filter: TrackSelectionFilter): void
 Set the audio and video feature filtering items of the MediaSource, After the user defines the audio and video filtering items of the MediaSource, When playing or downloading MediaSource data offline, Preferentially perform a corresponding operation in the filtering feature.
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -21,10 +21,8 @@ struct OhosImageSourceProperty {...}
 | 名称 | 描述 |
 | -- | -- |
 | char* value = nullptr |  |
-| size_t size = 0;
-#else |  |
+| size_t size = 0; #else |  |
 | char* value |  |
-| size_t size;
-#endif |  |
+| size_t size; #endif |  |
 
 

@@ -1,12 +1,8 @@
 # BloomSettings
 
-定义泛光参数.
+泛光设置。当RenderingPipelineType为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface BloomSettings--><!--Device-unnamed-export interface BloomSettings-End-->
 
@@ -18,15 +14,11 @@
 scaleFactor?: double
 ```
 
-缩放因子. 控制缩放和泛光扩散量. 减少降缩放和上缩放步骤. 取值范围0-1. 值为0.5时减半缩放步骤.
+缩放因子，取值范围大于0，默认值为1.0。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BloomSettings-scaleFactor?: double--><!--Device-BloomSettings-scaleFactor?: double-End-->
 
@@ -38,15 +30,11 @@ scaleFactor?: double
 scatter?: double
 ```
 
-扩散（泛光扩散量）. (1.0 full spread / default).
+扩散量，取值范围大于0，默认值为1.0。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BloomSettings-scatter?: double--><!--Device-BloomSettings-scatter?: double-End-->
 
@@ -58,15 +46,11 @@ scatter?: double
 thresholdHard?: double
 ```
 
-泛光硬阈值.
+硬阈值，取值范围是非负数，默认值为1.0。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BloomSettings-thresholdHard?: double--><!--Device-BloomSettings-thresholdHard?: double-End-->
 
@@ -78,15 +62,11 @@ thresholdHard?: double
 thresholdSoft?: double
 ```
 
-泛光软阈值.
+软阈值，取值范围是非负数，默认值为2.0。
 
 **类型：** double
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-BloomSettings-thresholdSoft?: double--><!--Device-BloomSettings-thresholdSoft?: double-End-->
 

@@ -1,5 +1,12 @@
 # abort
 
+## 导入模块
+
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
+
 ## abort
 
 ```TypeScript
@@ -9,10 +16,6 @@ function abort(handle: Uint8Array, callback: AsyncCallback<void>): void
 中止签名、验签的操作。与finish方法互斥，一个签名验签流程只能选择调用其中一个方法。使用Callback异步回调。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -25,7 +28,7 @@ function abort(handle: Uint8Array, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | handle | Uint8Array | 是 | 表示初始化操作返回的句柄，。 <br>最大长度为8。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当中止签名、验签成功时，err为null，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;void&gt; | 是 | 回调函数。当中止签名、验签成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -35,7 +38,7 @@ function abort(handle: Uint8Array, callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -68,10 +71,6 @@ function abort(handle: Uint8Array): Promise<void>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 <!--Device-certificateManager-function abort(handle: Uint8Array): Promise<void>--><!--Device-certificateManager-function abort(handle: Uint8Array): Promise<void>-End-->
@@ -98,7 +97,7 @@ function abort(handle: Uint8Array): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [17500001](../errorcode-certManager.md#17500001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

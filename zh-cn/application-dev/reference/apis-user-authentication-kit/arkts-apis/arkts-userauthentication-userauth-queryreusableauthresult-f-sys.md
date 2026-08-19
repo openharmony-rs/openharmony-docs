@@ -1,5 +1,12 @@
 # queryReusableAuthResult（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { UserAuthIcon } from '@kit.UserAuthenticationKit';
+```
+
 ## queryReusableAuthResult
 
 ```TypeScript
@@ -9,10 +16,6 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 查询是否有可复用的身份认证结果。该接口用于在发起认证前查询是否存在满足复用条件的认证结果，若存在则直接返回可复用的AuthToken，无需用户再次进行认证交互。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
@@ -44,7 +47,7 @@ function queryReusableAuthResult(authParam: AuthParam): Uint8Array
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 | [12500017](../errorcode-useriam.md#12500017-复用身份认证结果失败) | Failed to reuse authentication result. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -4,10 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-PiPWindow-enum PiPControlStatus--><!--Device-PiPWindow-enum PiPControlStatus-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -21,10 +17,6 @@ PLAY = 1
 播放。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ PAUSE = 0
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPControlStatus-PAUSE = 0--><!--Device-PiPControlStatus-PAUSE = 0-End-->
@@ -62,10 +50,6 @@ OPEN = 1
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PiPControlStatus-OPEN = 1--><!--Device-PiPControlStatus-OPEN = 1-End-->
@@ -81,10 +65,6 @@ CLOSE = 0
 关闭。
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
 

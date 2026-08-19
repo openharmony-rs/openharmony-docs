@@ -1,16 +1,18 @@
 # PerfTest
 
-PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。通过[create](#create)创建实例。
+PerfTest类为白盒性能测试框架的总入口。 提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。 通过[create](#create)创建实例。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-declare class PerfTest--><!--Device-unnamed-declare class PerfTest-End-->
 
 **系统能力：** SystemCapability.Test.PerfTest
+
+## 导入模块
+
+```TypeScript
+import {PerfMetric, PerfTestStrategy, PerfMeasureResult, PerfTest} from '@kit.TestKit';
+```
 
 ## create
 
@@ -21,10 +23,6 @@ static create(strategy: PerfTestStrategy): PerfTest
 静态方法，构造一个PerfTest对象，并返回该对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -53,7 +51,7 @@ static create(strategy: PerfTestStrategy): PerfTest
 | [32400003](../errorcode-perftest.md#32400003-参数校验失败) | Parameter verification failed. |
 | [32400001](../errorcode-perftest.md#32400001-初始化失败) | Initialization failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
@@ -88,13 +86,9 @@ async function demo() {
 destroy(): void
 ```
 
-销毁PerfTest对象。
+销毁PerfTest对象，释放该对象占用的相关资源。与[create](#create)方法配对使用，在PerfTest对象使用完毕后调用， 未调用此方法可能导致资源无法释放。调用后不应再使用该PerfTest对象。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -109,7 +103,7 @@ destroy(): void
 | [32400007](../errorcode-perftest.md#32400007-接口不支持并行调用) | The API does not support concurrent calls. |
 | [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
@@ -143,10 +137,6 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
 <!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult--><!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult-End-->
@@ -157,13 +147,13 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| metric | [PerfMetric](arkts-test-test-perftest-perfmetric-e.md) | 是 | 性能指标。 |
+| metric | [PerfMetric](arkts-test-test-perftest-perfmetric-e.md) | 是 | 指定要查询的性能指标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [PerfMeasureResult](arkts-test-test-perftest-perfmeasureresult-i.md) | 性能指标对应测量结果数据。 |
+| [PerfMeasureResult](arkts-test-test-perftest-perfmeasureresult-i.md) | 指定性能指标对应的测量结果，包含各轮测量数据值及 统计值（最大值、最小值、平均值）。 |
 
 **错误码：**
 
@@ -174,7 +164,7 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 | [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 | [32400003](../errorcode-perftest.md#32400003-参数校验失败) | Parameter verification failed. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
@@ -204,13 +194,9 @@ async function demo() {
 run(): Promise<void>
 ```
 
-运行性能测试，迭代执行测试代码段并采集性能数据，使用Promise回调。
+运行性能测试，按配置次数迭代执行测试代码段并采集性能数据，使用Promise回调。每次迭代中，框架依次执行 actionCode和resetCode（若已配置），并在actionCode执行期间采集性能数据。执行完成后，可通过 [getMeasureResult](#getmeasureresult)获取采集到的测量结果数据。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
 
@@ -233,7 +219,7 @@ run(): Promise<void>
 | [32400005](../errorcode-perftest.md#32400005-采集性能数据失败) | Failed to collect metric data. |
 | [32400002](../errorcode-perftest.md#32400002-内部错误) | Internal error. Possible causes: 1. IPC connection failed. 2. The object does not exist. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';

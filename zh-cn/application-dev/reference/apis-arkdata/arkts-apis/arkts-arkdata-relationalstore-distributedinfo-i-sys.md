@@ -4,15 +4,17 @@
 
 **起始版本：** 24
 
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
-
 <!--Device-relationalStore-interface DistributedInfo--><!--Device-relationalStore-interface DistributedInfo-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData';
+```
 
 ## flag
 
@@ -25,10 +27,6 @@ flag?: DistributedOrigin
 **类型：** [DistributedOrigin](arkts-arkdata-relationalstore-distributedorigin-e-sys.md)
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,10 +47,6 @@ oriDevice?: string
 **类型：** string
 
 **起始版本：** 24
-
-**ArkTS模式：** 起始版本为24。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

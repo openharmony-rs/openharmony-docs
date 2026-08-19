@@ -1,12 +1,8 @@
 # DispatchInfo（系统接口）
 
-免安装结构体和接口版本信息类，通过接口 [freeInstall.getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo系统接口) 获取。 > **说明：** > > 本模块为系统接口。
+免安装结构体和接口版本信息类，通过接口 [freeInstall.getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md) 获取。 > **说明：** > > 本模块为系统接口。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-unnamed-export interface DispatchInfo--><!--Device-unnamed-export interface DispatchInfo-End-->
 
@@ -26,10 +22,6 @@ readonly dispatchAPIVersion: string
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-DispatchInfo-readonly dispatchAPIVersion: string--><!--Device-DispatchInfo-readonly dispatchAPIVersion: string-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
@@ -47,10 +39,6 @@ dispatchInfo结构体版本信息。
 **类型：** string
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 <!--Device-DispatchInfo-readonly version: string--><!--Device-DispatchInfo-readonly version: string-End-->
 

@@ -4,8 +4,6 @@ Defines the struct of CalendarRequestedData.
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 <!--Device-unnamed-declare interface CalendarRequestedData--><!--Device-unnamed-declare interface CalendarRequestedData-End-->
@@ -13,6 +11,11 @@ Defines the struct of CalendarRequestedData.
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
 
 ## currentMonth
 
@@ -25,8 +28,6 @@ Current Month
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -50,8 +51,6 @@ Current Year
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -73,8 +72,6 @@ Previous month
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 
@@ -98,8 +95,6 @@ State of month
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 20
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -121,8 +116,6 @@ Previous year
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 20
 

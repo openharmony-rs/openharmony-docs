@@ -4,10 +4,6 @@
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare enum FileSelectorMode--><!--Device-unnamed-declare enum FileSelectorMode-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -21,10 +17,6 @@ FileOpenMode = 0
 打开上传单个文件。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
@@ -42,10 +34,6 @@ FileOpenMultipleMode = 1
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FileSelectorMode-FileOpenMultipleMode = 1--><!--Device-FileSelectorMode-FileOpenMultipleMode = 1-End-->
@@ -62,10 +50,6 @@ FileOpenFolderMode = 2
 
 **起始版本：** 9
 
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
-
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 
 <!--Device-FileSelectorMode-FileOpenFolderMode = 2--><!--Device-FileSelectorMode-FileOpenFolderMode = 2-End-->
@@ -81,10 +65,6 @@ FileSaveMode = 3
 文件保存模式。
 
 **起始版本：** 9
-
-**ArkTS模式：** 起始版本为9。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
 

@@ -1,5 +1,10 @@
 # restoreDefault
 
+## 导入模块
+
+```TypeScript
+```
+
 ## restoreDefault
 
 ```TypeScript
@@ -9,10 +14,6 @@ function restoreDefault(): void
 方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

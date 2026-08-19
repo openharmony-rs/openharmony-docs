@@ -4,13 +4,15 @@
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 <!--Device-certificateManagerDialog-export interface AuthorizeRequest--><!--Device-certificateManagerDialog-export interface AuthorizeRequest-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## 导入模块
+
+```TypeScript
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+```
 
 ## certPurpose
 
@@ -23,10 +25,6 @@ certPurpose?: certificateManager.CertificatePurpose
 **类型：** certificateManager.CertificatePurpose
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ certTypes: Array<CertificateType>
 
 **起始版本：** 23
 
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AuthorizeRequest-certTypes: Array<CertificateType>--><!--Device-AuthorizeRequest-certTypes: Array<CertificateType>-End-->
@@ -67,10 +61,6 @@ issuers?: Array<Uint8Array>
 **类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,10 +80,6 @@ keyAlgIDs?: Array<string>
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AuthorizeRequest-keyAlgIDs?: Array<string>--><!--Device-AuthorizeRequest-keyAlgIDs?: Array<string>-End-->
@@ -111,10 +97,6 @@ uri?: string
 **类型：** string
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -4,17 +4,24 @@ WLAN热点配置信息。
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [HotspotConfig](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#hotspotconfig系统接口)
+**替代接口：** [HotspotConfig](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md)
 
 <!--Device-wifi-interface HotspotConfig--><!--Device-wifi-interface HotspotConfig-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
 
 **系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { wifi } from '@kit.ConnectivityKit';
+import { wifiext } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+```
 
 ## band
 
@@ -27,8 +34,6 @@ WLAN热点的频段
 **类型：** number
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -52,8 +57,6 @@ WLAN热点允许的最大连接数
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [maxConn](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#maxconn)
@@ -75,8 +78,6 @@ WLAN热点的密码
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 
@@ -100,8 +101,6 @@ WLAN热点的加密类型
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
 **替代接口：** [securityType](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#securitytype)
@@ -123,8 +122,6 @@ WLAN热点的SSID
 **类型：** string
 
 **起始版本：** 7
-
-**ArkTS模式：** 起始版本为7。
 
 **废弃版本：** 9
 

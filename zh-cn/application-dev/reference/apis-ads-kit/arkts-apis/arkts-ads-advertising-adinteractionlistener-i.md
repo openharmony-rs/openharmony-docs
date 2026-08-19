@@ -4,13 +4,18 @@
 
 **起始版本：** 11
 
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
-
 <!--Device-advertising-export interface AdInteractionListener--><!--Device-advertising-export interface AdInteractionListener-End-->
 
 **系统能力：** SystemCapability.Advertising.Ads
+
+## 导入模块
+
+```TypeScript
+import { AdComponent } from '@kit.AdsKit';
+import { AdsServiceExtensionAbility, RespCallback } from '@kit.AdsKit';
+import { AutoAdComponent } from '@kit.AdsKit';
+import { advertising } from '@kit.AdsKit';
+```
 
 ## onStatusChanged
 
@@ -21,10 +26,6 @@ onStatusChanged(status: string, ad: Advertisement, data: string)
 广告状态回调。
 
 **起始版本：** 11
-
-**ArkTS模式：** 起始版本为11。
-
-**废弃版本：** -1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
 
@@ -40,7 +41,7 @@ onStatusChanged(status: string, ad: Advertisement, data: string)
 | ad | Advertisement | 是 | 发生状态变化的广告内容。 |
 | data | string | 是 | 扩展信息。 当status参数为onAdClose时，data值为关闭原因，关闭原因描述如下： - adShowEnded：广告展示结束。 - adCloseBtnClicked：点击关闭按钮。 - adSkipBtnClicked：点击跳过。 - adFeedbackClosed：负反馈关闭。 - adBackgroundClosed：开屏切后台关闭。 |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { advertising } from '@kit.AdsKit';

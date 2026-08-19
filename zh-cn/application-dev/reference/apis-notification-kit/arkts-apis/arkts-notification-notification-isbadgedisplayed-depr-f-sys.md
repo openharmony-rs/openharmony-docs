@@ -1,5 +1,13 @@
 # isBadgeDisplayed（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { notificationManager } from '@kit.NotificationKit';
+import { notificationSubscribe } from '@kit.NotificationKit';
+import { notificationExtensionSubscription } from '@kit.NotificationKit';
+```
+
 ## isBadgeDisplayed
 
 ```TypeScript
@@ -10,11 +18,9 @@ function isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback<boolean>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md#isbadgedisplayed系统接口)
+**替代接口：** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -29,7 +35,7 @@ function isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback<boolean>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
-| callback | [AsyncCallback](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取角标使能状态回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-asynccallback-t.md)&lt;boolean&gt; | 是 | 获取角标使能状态回调函数。 |
 
 
 ## isBadgeDisplayed
@@ -42,11 +48,9 @@ function isBadgeDisplayed(bundle: BundleOption): Promise<boolean>
 
 **起始版本：** 7
 
-**ArkTS模式：** 起始版本为7。
-
 **废弃版本：** 9
 
-**替代接口：** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md#isbadgedisplayed系统接口)
+**替代接口：** [isBadgeDisplayed](arkts-notification-notificationmanager-isbadgedisplayed-f-sys.md)
 
 **需要权限：** ohos.permission.NOTIFICATION_CONTROLLER
 

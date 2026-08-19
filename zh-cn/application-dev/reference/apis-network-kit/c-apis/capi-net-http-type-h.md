@@ -263,7 +263,7 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 
 | 参数项 | 描述 |
 | -- | -- |
-| (struct Http_Response \*response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
+| [struct Http_Response](capi-netstack-http-response.md) \*response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
 | uint32_t errCode | 响应码。 |
 
 ### Http_OnDataReceiveCallback()
@@ -282,7 +282,7 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const char \*data | 响应体。 |
+| const char \*data | 响应体。 |
 | size_t length | 响应体的长度。 |
 
 ### Http_OnProgressCallback()
@@ -301,7 +301,7 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 
 | 参数项 | 描述 |
 | -- | -- |
-| (uint64_t totalSize | 数据总大小。 |
+| uint64_t totalSize | 数据总大小。 |
 | uint64_t transferredSize | 已传输的数据大小。 |
 
 ### Http_OnHeaderReceiveCallback()
@@ -320,7 +320,7 @@ typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 
 | 参数项 | 描述 |
 | -- | -- |
-| (Http_Headers \*headers | 接收到的请求头，指向Http_Headers的指针，参考[Http_Headers](capi-netstack-http-headers.md)。 |
+| [Http_Headers](capi-netstack-http-headers.md) \*headers | 接收到的请求头，指向Http_Headers的指针，参考[Http_Headers](capi-netstack-http-headers.md)。 |
 
 ### Http_OnVoidCallback()
 

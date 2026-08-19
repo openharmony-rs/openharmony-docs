@@ -1,5 +1,11 @@
 # updateSendRate（系统接口）
 
+## 导入模块
+
+```TypeScript
+import { backup } from '@kit.CoreFileKit';
+```
+
 ## updateSendRate
 
 ```TypeScript
@@ -9,10 +15,6 @@ function updateSendRate(bundleName: string, sendRate: int): boolean
 更新备份应用发送文件描述符的速率。
 
 **起始版本：** 23
-
-**ArkTS模式：** 起始版本为23。
-
-**废弃版本：** -1
 
 **需要权限：** ohos.permission.BACKUP
 
@@ -43,7 +45,7 @@ function updateSendRate(bundleName: string, sendRate: int): boolean
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed, application which is not a system application uses system API. |
 
-## 示例
+**示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

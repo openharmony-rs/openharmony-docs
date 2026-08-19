@@ -4,13 +4,14 @@ RichEditor初始化参数。
 
 **起始版本：** 10
 
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
-
 <!--Device-unnamed-declare interface RichEditorOptions--><!--Device-unnamed-declare interface RichEditorOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入模块
+
+```TypeScript
+```
 
 ## controller
 
@@ -23,10 +24,6 @@ controller: RichEditorController
 **类型：** [RichEditorController](arkts-arkui-richeditorcontroller-c.md)
 
 **起始版本：** 10
-
-**ArkTS模式：** 起始版本为10。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

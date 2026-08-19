@@ -4,13 +4,15 @@
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 <!--Device-floatView-interface FloatViewLimits--><!--Device-floatView-interface FloatViewLimits-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+## 导入模块
+
+```TypeScript
+import { floatView } from '@kit.ArkUI';
+```
 
 ## maxSize
 
@@ -23,10 +25,6 @@ maxSize: window.Size
 **类型：** window.Size
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,10 +44,6 @@ minSize: window.Size
 
 **起始版本：** 26.0.0
 
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FloatViewLimits-minSize: window.Size--><!--Device-FloatViewLimits-minSize: window.Size-End-->
@@ -67,10 +61,6 @@ ratioLimits: Array<RatioLimit>
 **类型：** Array&lt;[RatioLimit](arkts-arkui-floatview-ratiolimit-i.md)&gt;
 
 **起始版本：** 26.0.0
-
-**ArkTS模式：** 起始版本为26.0.0。
-
-**废弃版本：** -1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
