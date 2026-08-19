@@ -82,6 +82,7 @@
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md)
     - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
     - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
     - [ArchiveWriteCtx](capi-archive-archivewritectx.md)
@@ -99,6 +100,6 @@
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
   <!--Del-->
-  - [云盘管理错误码](errorcode-clouddiskmanager-sys.md)
+  - [云盘管理错误码（系统接口错误码）](errorcode-clouddiskmanager-sys.md)
   <!--DelEnd-->
   
