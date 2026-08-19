@@ -116,7 +116,7 @@
     - [\@CustomEnv: Custom Environment Variable](arkts-custom-env-property.md)
   - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
-    - [Component Navigation (Navigation) (Recommended)]<!--arkts-navigation-navigation-->
+    - Component Navigation (Navigation) (Recommended)<!--arkts-navigation-navigation-->
       - [Navigation Architecture](./arkts-navigation-architecture.md)
       - [Subpage](./arkts-navigation-navdestination.md)
       - [Page Routing](./arkts-navigation-jump.md)
