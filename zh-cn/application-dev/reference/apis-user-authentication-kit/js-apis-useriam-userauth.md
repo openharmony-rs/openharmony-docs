@@ -255,10 +255,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let queryType = userAuth.UserAuthType.PIN;
-let authLockState : userAuth.AuthLockState = {
-  isLocked : false,
-  remainingAuthAttempts : 0,
-  lockoutDuration : 0
+let authLockState: userAuth.AuthLockState = {
+  isLocked: false,
+  remainingAuthAttempts: 0,
+  lockoutDuration: 0
 };
 
 userAuth.getAuthLockState(queryType)
@@ -277,10 +277,10 @@ ArkTS-Sta示例：
 import { userAuth } from '@kit.UserAuthenticationKit';
 
 let queryType = userAuth.UserAuthType.PIN;
-let authLockState : userAuth.AuthLockState = {
-  isLocked : false,
-  remainingAuthAttempts : 0,
-  lockoutDuration : 0
+let authLockState: userAuth.AuthLockState = {
+  isLocked: false,
+  remainingAuthAttempts: 0,
+  lockoutDuration: 0
 };
 
 userAuth.getAuthLockState(queryType)
