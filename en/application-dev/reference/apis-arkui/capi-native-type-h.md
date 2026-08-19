@@ -28,36 +28,36 @@ Defines the common types for the native module.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | ArkUI_Node | Defines an ArkUI native component object.|
-| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md) | ArkUI_ContextCallback | Defines an event callback.|
-| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) | ArkUI_NumberValue | Defines the number type of ArkUI on the native side.|
-| [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md) | ArkUI_ColorStop | Defines a gradient color stop.|
+| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | Defines an ArkUI native component object, which is used by the **ArkUI_NodeHandle** pointer to identify and pass component instances in native APIs.|
+| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md) | ArkUI_ContextCallback | Defines an event callback type, which is used to define the callback function and its user-defined data. When an API of this type is called to trigger a callback, the callback is invoked and **userData** is passed as a parameter.|
+| [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) | ArkUI_NumberValue | Defines a numeric type used by ArkUI on the native side, including floating-point, signed integer, and unsigned integer types.|
+| [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md) | ArkUI_ColorStop | Defines a color stop, which is used to configure the gradient effect of a component. Multiple gradient styles can be defined by combining the color array and position array.|
 | [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md) | ArkUI_Rect | Defines a mask area.|
 | [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | ArkUI_IntSize | Describes the width and height of a component.|
-| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) | ArkUI_IntOffset | Defines the offset of the current component relative to its parent component.|
-| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | ArkUI_NativeDialog | Defines a custom dialog box controller object for ArkUI on the native side.|
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | Defines layout constraints for a component.|
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) | ArkUI_DrawContext | Defines the component drawing context.|
-| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component object.|
+| [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) | ArkUI_IntOffset | Defines an offset, which describes the position of the current component relative to its parent component.|
+| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | - | Defines a custom dialog box controller object for ArkUI on the native side.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | Defines the layout constraint, which is used to limit the size range during component layout. You can set the minimum and maximum size constraints. The constraint values are non-negative floating-point numbers. During component layout, the system limits the final size range of the component based on the constraint values to ensure that the layout result meets the constraints. This struct is applicable to scenarios where the size range of child components needs to be controlled during custom layout container design. For example, in a waterfall layout, the height of image cards can be limited; in a grid layout, the size of cells can be limited. It is also applicable to scenarios where the upper and lower limits of the component size need to be restricted. For example, the maximum width of an image display component can be limited to prevent stretching, and the minimum size can be limited in a responsive layout to ensure readability. This prevents the component size from exceeding the expected range, enabling more precise layout control, improving the predictability and stability of the layout, and enhancing the controllability of the interface.|
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) | ArkUI_DrawContext | Defines component drawing context, which is used to provide drawing context information during the drawing of a custom component. You can obtain the canvas pointer used for drawing and the size of the drawing area.|
+| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component object, which is used to identify and pass component instances in ArkUI native APIs, for example, creating, mounting, removing, or destroying component nodes.|
 | [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | Defines the handle to the custom dialog box controller of ArkUI on the native side.|
 | [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | Defines gesture collection interception information.|
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | Defines the item configuration for **ListItemSwipeActionOption**.|
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | Defines the configuration for **ListItemSwipeActionOption**.|
-| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a context object of the ArkUI native UI.|
-| [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | Defines the pointer to the ArkUI native UI context.|
-| [ArkUI_NodeContent*](capi-arkui-nativemodule-arkui-nodecontent8h.md) | ArkUI_NodeContentHandle | Defines the pointer to an **ArkUI_NodeContent** object on the native side.|
-| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | Defines custom property information.|
+| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a context object of the ArkUI native UI, which is used to represent the UI context of the page where the component is located. The pointer type is [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md). You can obtain the context using [OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode) and use it as the context input parameter for APIs such as dragging, animation, and UI task scheduling.|
+| [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | Defines the pointer to the context object of ArkUI on the native side, which is used to represent the UI context of the page where the component is located. You can obtain the pointer through [OH_ArkUI_GetContextByNode](capi-native-node-h.md#oh_arkui_getcontextbynode) or [OH_ArkUI_GetContextFromNapiValue](capi-native-node-napi-h.md#oh_arkui_getcontextfromnapivalue) and use it as the context input parameter for APIs such as UI task scheduling, animation, and focus control.|
+| [ArkUI_NodeContent*](capi-arkui-nativemodule-arkui-nodecontent8h.md) | ArkUI_NodeContentHandle | Defines the pointer to the node content on the native side, which is used to reference and pass the **NodeContent** instance in native APIs.|
+| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | Defines custom property information, which is used to represent the custom property of a component. You can use related APIs to add, remove, and obtain custom properties for ArkUI components, and obtain the string values of custom properties.|
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | Defines host window information.|
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines **ActiveChildrenInfo** information.|
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines a cross-language configuration option.|
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines active child node information, which is used to store information about the FrameNode child nodes whose internal active state is **true**. You can query the number of child nodes and obtain child nodes by subscript. The instance of this struct is generated by calling **OH_ArkUI_NodeUtils_GetActiveChildrenInfo**. After using the instance, you must call **OH_ArkUI_ActiveChildrenInfo_Destroy** to destroy it.|
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines a cross-language configuration option, which is used to configure the cross-language access capability of a target node, for example, whether cross-language attribute modification is allowed. Since API version 26.0.0, you can also configure cross-language operation status of a node tree.|
 | [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines a component accessibility state.|
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | ArkUI_AccessibilityValue | Defines a component accessibility value.|
-| [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | Defines a system font style event.|
-| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)| ArkUI_SelectionOptions | Defines options of the selection operation.|
+| [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | Defines a system font style change event, which is used to pass the event information to the registered system font style change callback when the system font size or weight changes.|
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)| ArkUI_SelectionOptions | Defines the options for the selection operation in ArkUI. It is applicable to scenarios where selection interaction is required within an application, providing you with the capability to customize selection behavior.|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
-| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | Defines the drag preview style of the selected text.|
-| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | Defines the options for a linear gradient effect.|
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | Defines the options for a radial gradient effect.|
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | Defines the text drag preview style in the selected state. It is applicable to scenarios where the preview effect in selected state needs to be displayed during text dragging, improving user interaction experience.|
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | Defines linear gradient options, which are used to describe the linear color gradient configuration of UI components. You can set the gradient direction, angle, and color to implement flexible linear gradient effects, improving the visual presentation capability of the UI. This is applicable to scenarios where a linear gradient style needs to be applied to components.|
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | Defines radial gradient options, which are applicable to scenarios where a radial gradient effect needs to be implemented in UI components. This helps you enrich the visual hierarchy of the UI.|
 
 ### Enums
 
@@ -86,6 +86,7 @@ Defines the common types for the native module.
 | [ArkUI_MenuPolicy](#arkui_menupolicy)                               | ArkUI_MenuPolicy                | Enumerates menu display policies.                            |
 | [ArkUI_RenderStrategy](#arkui_renderstrategy)                       | ArkUI_RenderStrategy             | Defines rendering strategies for drawing rounded corners.               |
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | Enumerates the node tree operation states of cross-language configuration options.|
+| [OH_ArkUI_ArcDirection](#oh_arkui_arcdirection) | OH_ArkUI_ArcDirection | Enumerates arc directions.|
 | [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumerates the child node mounting policy types.|
 
 ### Functions
@@ -164,9 +165,9 @@ Defines the common types for the native module.
 | [const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_getstringvalue) | - | Obtains the value of a custom property.|
 | [const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_getname) | - | Obtains the window name from a **HostWindowInfo** object.|
 | [void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_destroy) | - | Destroys a **HostWindowInfo** object.|
-| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | - | Destroys an **ActiveChildrenInfo** instance.|
-| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | - | Obtains the child node at the specified index in the specified **ActiveChildrenInfo** instance.|
-| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | - | Obtains the number of nodes in the specified **ActiveChildrenInfo** instance.|
+| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | - | Destroys an **ArkUI_ActiveChildrenInfo** instance and releases the resources allocated when obtaining active child node information.|
+| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | - | Obtains the child node whose subscript is index in **ArkUI_ActiveChildrenInfo**. This API is applicable to traversing active child nodes by subscript.|
+| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | - | Obtains the number of child nodes in **ArkUI_ActiveChildrenInfo**. This API is applicable to determining the number of active child nodes before traversal.|
 | [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | - | Creates an instance of the cross-language configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | - | Destroys an instance of the cross-language configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | - | Sets whether cross-language attribute setting is allowed in the configuration option.|
@@ -174,7 +175,7 @@ Defines the common types for the native module.
 | [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | - | Sets the node tree operation state of a cross-language configuration option.|
 | [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | - | Obtains the node tree operation state of a cross-language configuration option.|
 | [ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create) | - | Creates a **ContentTransitionEffect** attribute object.|
-| [ArkUI_SelectionOptions OH_ArkUI_SelectionOptions_Create()](#oh_arkui_selectionoptions_create) | - | Creates a selection option.|
+| [ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()](#oh_arkui_selectionoptions_create) | - | Creates a selection option.|
 | [void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_dispose) | - | Releases a selection option object.|
 | [void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_selectionoptions_setmenupolicy) | - | Sets the menu pop-up policy for selection options.|
 | [ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_getmenupolicy) | - | Obtains the menu pop-up policy for selection options.|
@@ -804,6 +805,23 @@ Enumerates the child node mounting policy types.
 | OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0 | If a [RenderNode](./js-apis-arkui-renderNode.md) needs to be mounted as a child node, this RenderNode must be the only child node.|
 | OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1 | Multiple [typeNodes](./js-apis-arkui-frameNode.md#typenode12) and RenderNodes can be mounted at the same time.|
 
+### OH_ArkUI_ArcDirection
+
+```c
+enum OH_ArkUI_ArcDirection
+```
+**Description**
+
+Enumerates arc directions.
+
+**Since**: 26.1.0
+
+| Value| Description|
+| -- | -- |
+| OH_ARKUI_ARCDIRECTION_THREE_CLOCK_DIRECTION = 0 | 3 o'clock direction.|
+| OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION = 1 | 6 o'clock direction.|
+| OH_ARKUI_ARCDIRECTION_NINE_CLOCK_DIRECTION = 2 | 9 o'clock direction.|
+
 ## Function Description
 
 ### OH_ArkUI_LayoutConstraint_Create()
@@ -814,8 +832,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 
 **Description**
 
-
-Creates layout constraints.
+Creates layout constraints. After the created layout constraint pointer is used, call [OH_ArkUI_LayoutConstraint_Dispose](#oh_arkui_layoutconstraint_dispose) to release it. If the pointer is not released, memory leakage may occur.
 
 **Since**: 12
 
@@ -833,8 +850,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 
 **Description**
 
-
-Performs a deep copy of a layout constraint.
+Performs a deep copy of a layout constraint. The new layout constraint pointer returned by the deep copy is independent of the original pointer. You need to call [OH_ArkUI_LayoutConstraint_Dispose](#oh_arkui_layoutconstraint_dispose) to release them separately after use.
 
 **Since**: 12
 
@@ -859,8 +875,7 @@ void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 
 **Description**
 
-
-Disposes of a layout constraint pointer.
+Disposes of a layout constraint pointer. This API must be used together with [OH_ArkUI_LayoutConstraint_Create](#oh_arkui_layoutconstraint_create) or [OH_ArkUI_LayoutConstraint_Copy](#oh_arkui_layoutconstraint_copy). Each layout constraint pointer can be destroyed only once. After being destroyed, the pointer should not be used anymore.
 
 **Since**: 12
 
@@ -1641,7 +1656,7 @@ Sets the layout content for the left edge (for a vertical layout) or top edge (f
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the layout information.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEnd()
@@ -1662,7 +1677,7 @@ Sets the layout content for the right edge (for a vertical layout) or bottom edg
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the layout information.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect()
@@ -1683,7 +1698,7 @@ Sets the effect used when the scroll boundary is reached.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
 | [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | Effect used when the boundary of the scrolling area is reached.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
@@ -1704,7 +1719,7 @@ Obtains the effect used when the scroll boundary is reached.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
 
 **Returns**
 
@@ -1730,7 +1745,7 @@ Sets the callback invoked when the scroll offset changes.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
 | callback | Callback event. **offset**: scroll offset, in vp.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
@@ -1751,7 +1766,7 @@ Sets the callback invoked when the scroll offset changes. User-defined data will
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance.|
 |  void* userData | Pointer to the user-defined data.|
 | callback | Callback event. **offset**: scroll offset, in vp.|
 
@@ -2457,7 +2472,7 @@ void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 **Description**
 
 
-Destroys an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
+Destroys the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance and releases the resources allocated when obtaining information about active child nodes.
 
 **Since**: 14
 
@@ -2477,7 +2492,7 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 **Description**
 
 
-Obtains the child node at the specified index in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
+Obtains the child node whose subscript is index in the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) struct. This API is applicable to traversing active child nodes by subscript.
 
 **Since**: 14
 
@@ -2504,7 +2519,7 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 **Description**
 
 
-Obtains the number of nodes in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
+Obtains the number of child nodes in the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) struct. This API is applicable to determining the number of child nodes before traversing active child nodes.
 
 **Since**: 14
 
@@ -2679,7 +2694,7 @@ Creates a **ContentTransitionEffect** attribute object.
 ### OH_ArkUI_SelectionOptions_Create()
 
 ```c
-ArkUI_SelectionOptions OH_ArkUI_SelectionOptions_Create()
+ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()
 ```
 
 **Description**
@@ -3450,7 +3465,7 @@ Obtains the background color of the preview style shown when dragging selected t
 
 | Type| Description|
 | -- | -- |
-| uint32_t color | Background color of the preview style shown when dragging selected text, in RGBA format.|
+| uint32_t | Background color of the preview style shown when dragging selected text, in RGBA format.|
 
 ### OH_ArkUI_DecorationStyleOptions_SetTextDecorationType()
 
@@ -3723,7 +3738,7 @@ Sets the callback for text entity recognition result updates.
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)\* config | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object.|
 | void\* userData | Pointer to the user data.|
-| void (\*callback)(const char\* result | Pointer to the callback when the recognition result is updated. **result** indicates the recognized text entity content. **length** indicates the end position of the selected text. **userData** indicates the user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback** API.|
+| void (\*callback)(const char* result, int32_t length, void* userData) | Pointer to the callback when the recognition result is updated. **result** indicates the recognized text entity content. **length** indicates the end position of the selected text. **userData** indicates the user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback** API.|
 
 **Returns**
 
@@ -3798,7 +3813,8 @@ Sets the decoration style of the recognized content.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object.|
-| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content. The value is an enumerated value of [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md).|
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content.|
+
 
 **Returns**
 
@@ -3823,7 +3839,8 @@ Obtains the decoration style of the recognized content.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object.|
-| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content. The value is an enumerated value of [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md).|
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content.|
+
 
 **Returns**
 
@@ -5794,7 +5811,7 @@ Sets the callback triggered when the text selection menu is displayed.
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object.|
 | void\* userData | Pointer to the user data.|
-| void (\*callback)(int32_t start | Pointer to the callback when the menu is displayed. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data.|
+| void (\*callback)(int32_t start, int32_t end, void* callbackUserData) | Pointer to the callback when the menu is displayed. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data.|
 
 **Returns**
 
@@ -5820,7 +5837,7 @@ Sets the callback triggered when the text selection menu is hidden.
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object.|
 | void\* userData | Pointer to the user data.|
-| void (\*callback)(int32_t start | Pointer to the callback when the menu is hidden. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data.|
+| void (\*callback)(int32_t start, int32_t end, void* callbackUserData) | Pointer to the callback when the menu is hidden. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data.|
 
 **Returns**
 
@@ -5846,7 +5863,7 @@ Sets the callback triggered when the text selection menu appears.
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)\* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object.|
 | void\* userData | Pointer to the user data.|
-| void (\*callback)(int32_t start | Pointer to the callback when the menu appears. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data.|
+| void (\*callback)(int32_t start, int32_t end, void* callbackUserData) | Pointer to the callback when the menu appears. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data.|
 
 **Returns**
 
@@ -6250,6 +6267,10 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradi
 **Description**
 
 Sets the direction in linear gradient effect options.
+
+> **NOTE**
+>
+> When [OH_ArkUI_LinearGradientOptions_SetAngle](#oh_arkui_lineargradientoptions_setangle) is called to set the angle, the direction setting does not take effect.
 
 **Since**: 26.0.0
 

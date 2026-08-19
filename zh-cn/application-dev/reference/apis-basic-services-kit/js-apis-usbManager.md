@@ -35,15 +35,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。
 
-```mermaid
-graph LR
-    A[开始] --> B[调用getDevices获取设备列表]
-    B --> C[调用requestRight获取权限]
-    C --> D[调用connectDevice获取USBDevicePipe]
-    D --> E[调用相关接口进行操作]
-    E --> F[调用closePipe关闭通道]
-    F --> G[结束]
-```
+![usbManager](../figures/usbManager.png)
 
 ## usbManager.getDevices
 
@@ -733,7 +725,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，包含bmRequestType、bRequest、wValue、wIndex、wLength、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -818,7 +810,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端点，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区，数组长度即为缓冲区大小。用于批量传输时写入或读取数据。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -1526,7 +1518,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备连接通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -1592,18 +1584,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
-```mermaid
-graph LR
-    A[端点类型] --> B[批量端点 bulk]
-    A --> C[中断端点 interrupt]
-    A --> D[实时端点 isochronous]
-    B --> B1[带宽共享调度]
-    B1 --> B2[适合大量数据非实时传输]
-    C --> C1[固定轮询调度]
-    C1 --> C2[适合小数据量实时传输]
-    D --> D1[带宽预留调度]
-    D1 --> D2[适合音视频等实时数据流]
-```
+![USBEndpoint](../figures/USBEndpoint.png)
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1770,7 +1751,7 @@ USB数据传输参数对象，包含USB数据传输所需的所有参数，用�
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输增加一个额外的数据包）。 |
 | endpoint | number | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
-| timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。取值范围为[0, +∞)，设置为0时无限等待直到传输完成。 |
+| timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。设置为0时无限等待直到传输完成。传入负数时抛出参数错误异常。 |
 | length | number | 否 |否 | 数据缓冲区的长度，取值范围为[0, INT_MAX]的非负数（期望长度），（单位：字节）。 |
 | callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调函数，签名：(err: Error, data: SubmitTransferCallback) => void。err为错误对象（成功时为null），data包含传输状态、实际长度等信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据，用于在回调函数中传递自定义的上下文信息。大小和格式由用户定义，在传输请求中指定，回调中原样返回。 |

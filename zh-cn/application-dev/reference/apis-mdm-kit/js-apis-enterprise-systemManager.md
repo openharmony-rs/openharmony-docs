@@ -175,7 +175,7 @@ let wantTemp: Want = {
 // 默认升级策略
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
-  "version": "version_1.0.0.0",
+  "version": "version_1.0.0.0"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy1);
@@ -186,7 +186,7 @@ try {
 // 禁止升级
 let otaUpdatePolicy2: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.PROHIBIT,
-  "version": "version_1.0.0.1",
+  "version": "version_1.0.0.1"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy2);
@@ -198,7 +198,7 @@ try {
 let otaUpdatePolicy3: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.UPDATE_TO_SPECIFIC_VERSION,
   "version": "version_1.0.0.2",
-  "latestUpdateTime": 1716343200, // 时间戳
+  "latestUpdateTime": 1716343200 // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy3);
@@ -211,7 +211,7 @@ let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
   "installStartTime": 1716281049, // 时间戳
-  "installEndTime": 1716343200, // 时间戳
+  "installEndTime": 1716343200 // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
@@ -223,7 +223,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // 单位（小时）
+  "delayUpdateTime": 5 // 单位（小时）
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
@@ -235,7 +235,7 @@ try {
 let otaUpdatePolicy6: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
   "version": "version_1.0.0.5",
-  "disableSystemOtaUpdate": true,
+  "disableSystemOtaUpdate": true
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy6);
@@ -292,7 +292,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
+  let policy: systemManager.OtaUpdatePolicy = systemManager.getOtaUpdatePolicy(wantTemp);
   console.info(`Succeeded in getting update policy: ${JSON.stringify(policy)}`);
 } catch (err) {
   console.error(`Failed to get update policy. Code is ${err.code}, message is ${err.message}`);
@@ -1209,7 +1209,7 @@ let wantTemp: Want = {
 };
 
 let keyCodes: Array<systemManager.KeyCode> = [
-  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP,
+  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP
 ];
 
 try {
@@ -1752,10 +1752,10 @@ try {
 
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
-| DEFAULT | 0 | 默认升级策略。周期提示用户，用户确认后升级。 |
+| DEFAULT | 0 | 默认升级策略。周期弹框提醒用户升级。周期从24小时开始逐渐延长。 |
 | PROHIBIT  | 1 | 禁止升级策略。 |
-| UPDATE_TO_SPECIFIC_VERSION | 2 | 强制升级策略。需指定最晚升级时间（latestUpdateTime）参数。 |
-| WINDOWS | 3 | 指定时间窗口升级策略。需指定时间窗口参数（installStartTime、installEndTime）。 |
+| UPDATE_TO_SPECIFIC_VERSION | 2 | 强制升级策略。需指定最晚升级时间（latestUpdateTime）参数。1. 距离最晚升级时间大于48小时未升级，提醒弹框每24小时常规提醒一次。2. 距离最晚升级时间小于48小时未升级，每隔X小时周期提醒安装升级，消息处于通知中心，且不可移除。3. 超过最晚升级时间还未升级，弹出闲时强制升级提醒。  |
+| WINDOWS | 3 | 指定时间窗口升级策略。需指定时间窗口参数（installStartTime、installEndTime）。时间窗口必须大于5分钟。1. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后满足空闲条件，自动升级。2. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C大于半小时，在C和B之间重新刷新一个随机时间D，到达D时间后满足空闲条件，自动升级。3. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C大于半小时，在C和B之间重新刷新一个随机时间D，到达D时间后不满足空闲条件，24小时后再检测，即窗口任务推迟到下一个[A，B]窗口。4. 配置时间[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C小于或等于半小时，24小时后再检测，即窗口任务推迟到下一个[A，B]窗口。 |
 | POSTPONE | 4 | 延迟升级策略。延迟指定时间（delayUpdateTime）后进入DEFAULT模式，周期提示用户升级。 |
 
 ## UpdatePackageInfo
