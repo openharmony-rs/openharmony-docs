@@ -1014,7 +1014,7 @@ deletePersistentGroup(netId: number): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:操作执行成功，false:操作执行失败。 |
+  | boolean | 删除永久组操作是否执行成功。true:操作执行成功，false:操作执行失败。 |
 
 **示例：**
 ```ts
