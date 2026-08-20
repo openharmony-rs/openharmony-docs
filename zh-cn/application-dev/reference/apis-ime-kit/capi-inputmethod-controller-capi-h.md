@@ -1,4 +1,4 @@
-﻿# inputmethod_controller_capi.h
+# inputmethod_controller_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

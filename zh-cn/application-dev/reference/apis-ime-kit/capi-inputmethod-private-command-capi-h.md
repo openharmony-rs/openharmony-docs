@@ -1,4 +1,4 @@
-﻿# inputmethod_private_command_capi.h
+# inputmethod_private_command_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

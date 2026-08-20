@@ -1,4 +1,4 @@
-﻿# Switching Between Input Methods
+# Switching Between Input Methods
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

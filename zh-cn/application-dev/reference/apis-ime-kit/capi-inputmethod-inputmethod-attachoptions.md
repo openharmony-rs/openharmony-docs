@@ -1,4 +1,4 @@
-﻿# InputMethod_AttachOptions
+# InputMethod_AttachOptions
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

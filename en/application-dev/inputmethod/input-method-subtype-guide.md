@@ -1,4 +1,4 @@
-﻿# Setting Input Method Subtypes
+# Setting Input Method Subtypes
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

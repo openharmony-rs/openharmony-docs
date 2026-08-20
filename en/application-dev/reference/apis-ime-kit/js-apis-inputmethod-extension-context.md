@@ -1,4 +1,4 @@
-﻿# @ohos.InputMethodExtensionContext (InputMethodExtensionContext)
+# @ohos.InputMethodExtensionContext (InputMethodExtensionContext)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

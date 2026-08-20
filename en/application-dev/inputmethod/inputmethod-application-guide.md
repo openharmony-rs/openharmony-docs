@@ -1,4 +1,4 @@
-﻿# Implementing an Input Method Application
+# Implementing an Input Method Application
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

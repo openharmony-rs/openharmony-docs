@@ -1,4 +1,4 @@
-﻿# inputmethod_types_capi.h
+# inputmethod_types_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

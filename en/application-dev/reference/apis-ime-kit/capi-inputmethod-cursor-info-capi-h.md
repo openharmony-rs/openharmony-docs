@@ -1,4 +1,4 @@
-﻿# inputmethod_cursor_info_capi.h
+# inputmethod_cursor_info_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

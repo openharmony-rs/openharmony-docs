@@ -1,4 +1,4 @@
-﻿# InputMethod_CursorInfo
+# InputMethod_CursorInfo
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

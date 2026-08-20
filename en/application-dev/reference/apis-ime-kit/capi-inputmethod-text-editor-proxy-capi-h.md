@@ -1,4 +1,4 @@
-﻿# inputmethod_text_editor_proxy_capi.h
+# inputmethod_text_editor_proxy_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

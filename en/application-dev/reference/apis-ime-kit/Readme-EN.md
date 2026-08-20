@@ -1,4 +1,4 @@
-﻿# IME Kit<!--ime-api-->
+# IME Kit<!--ime-api-->
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

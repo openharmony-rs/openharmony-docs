@@ -1,4 +1,4 @@
-﻿# Ime工具
+# Ime工具
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

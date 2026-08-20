@@ -1,4 +1,4 @@
-﻿# Managing the Input Method Using hdc Commands
+# Managing the Input Method Using hdc Commands
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

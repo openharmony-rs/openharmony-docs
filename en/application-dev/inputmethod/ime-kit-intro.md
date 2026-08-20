@@ -1,4 +1,4 @@
-﻿# About This Kit
+# About This Kit
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

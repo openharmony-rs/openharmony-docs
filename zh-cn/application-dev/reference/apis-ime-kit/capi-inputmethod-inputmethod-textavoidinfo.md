@@ -1,4 +1,4 @@
-﻿# InputMethod_TextAvoidInfo
+# InputMethod_TextAvoidInfo
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

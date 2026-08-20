@@ -1,4 +1,4 @@
-﻿# @ohos.inputMethodList (输入法切换列表控件)
+# @ohos.inputMethodList (输入法切换列表控件)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

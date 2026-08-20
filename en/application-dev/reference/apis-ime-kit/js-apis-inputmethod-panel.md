@@ -1,4 +1,4 @@
-﻿# @ohos.inputMethod.Panel (Input Method Panel)
+# @ohos.inputMethod.Panel (Input Method Panel)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

@@ -1,4 +1,4 @@
-﻿# 输入法开发服务术语
+# 输入法开发服务术语
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

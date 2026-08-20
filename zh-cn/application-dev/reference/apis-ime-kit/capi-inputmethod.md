@@ -1,4 +1,4 @@
-﻿# InputMethod
+# InputMethod
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

@@ -1,4 +1,4 @@
-﻿# @ohos.inputMethodEngine (Input Method Service)
+# @ohos.inputMethodEngine (Input Method Service)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

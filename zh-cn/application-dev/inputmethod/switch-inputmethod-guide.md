@@ -1,4 +1,4 @@
-﻿# 切换输入法应用
+# 切换输入法应用
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

@@ -1,4 +1,4 @@
-﻿# @ohos.InputMethodSubtype (输入法子类型)
+# @ohos.InputMethodSubtype (输入法子类型)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

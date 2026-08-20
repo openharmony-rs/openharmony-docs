@@ -1,4 +1,4 @@
-﻿# @ohos.inputMethodList (Input Method List)
+# @ohos.inputMethodList (Input Method List)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

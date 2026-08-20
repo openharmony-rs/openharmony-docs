@@ -1,4 +1,4 @@
-﻿# @ohos.inputMethodEngine (输入法服务)
+# @ohos.inputMethodEngine (输入法服务)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

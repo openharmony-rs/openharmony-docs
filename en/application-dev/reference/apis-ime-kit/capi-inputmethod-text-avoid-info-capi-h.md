@@ -1,4 +1,4 @@
-﻿# inputmethod_text_avoid_info_capi.h
+# inputmethod_text_avoid_info_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

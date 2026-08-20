@@ -1,4 +1,4 @@
-﻿# Input Method Framework Error Codes
+# Input Method Framework Error Codes
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

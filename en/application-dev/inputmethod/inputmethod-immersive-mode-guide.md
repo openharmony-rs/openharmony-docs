@@ -1,4 +1,4 @@
-﻿# Immersive Mode of the Input Method Application
+# Immersive Mode of the Input Method Application
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

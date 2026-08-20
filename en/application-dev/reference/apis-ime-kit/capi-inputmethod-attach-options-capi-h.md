@@ -1,4 +1,4 @@
-﻿# inputmethod_attach_options_capi.h
+# inputmethod_attach_options_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

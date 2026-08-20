@@ -1,4 +1,4 @@
-﻿# IME Kit简介
+# IME Kit简介
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

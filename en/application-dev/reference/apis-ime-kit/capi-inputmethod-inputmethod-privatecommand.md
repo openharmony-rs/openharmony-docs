@@ -1,4 +1,4 @@
-﻿# InputMethod_PrivateCommand
+# InputMethod_PrivateCommand
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

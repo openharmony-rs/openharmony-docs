@@ -1,4 +1,4 @@
-﻿# @ohos.InputMethodExtensionAbility (InputMethodExtensionAbility)
+# @ohos.InputMethodExtensionAbility (InputMethodExtensionAbility)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

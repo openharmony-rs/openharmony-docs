@@ -1,4 +1,4 @@
-﻿# InputMethod_TextEditorProxy
+# InputMethod_TextEditorProxy
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

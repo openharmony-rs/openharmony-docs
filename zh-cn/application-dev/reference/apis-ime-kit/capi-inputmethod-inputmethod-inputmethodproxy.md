@@ -1,4 +1,4 @@
-﻿# InputMethod_InputMethodProxy
+# InputMethod_InputMethodProxy
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

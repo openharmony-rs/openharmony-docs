@@ -1,4 +1,4 @@
-﻿# inputmethod_inputmethod_proxy_capi.h
+# inputmethod_inputmethod_proxy_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

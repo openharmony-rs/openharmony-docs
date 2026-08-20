@@ -1,4 +1,4 @@
-﻿# InputMethod_TextConfig
+# InputMethod_TextConfig
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

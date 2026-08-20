@@ -1,4 +1,4 @@
-﻿# @ohos.inputMethod.Panel (输入法面板)
+# @ohos.inputMethod.Panel (输入法面板)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

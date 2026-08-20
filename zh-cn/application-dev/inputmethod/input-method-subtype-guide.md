@@ -1,4 +1,4 @@
-﻿# 输入法子类型开发指南
+# 输入法子类型开发指南
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

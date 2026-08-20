@@ -1,4 +1,4 @@
-﻿# 输入法框架错误码
+# 输入法框架错误码
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

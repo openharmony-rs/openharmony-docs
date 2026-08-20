@@ -1,4 +1,4 @@
-﻿# @ohos.InputMethodExtensionContext (InputMethodExtensionContext)(系统接口)
+# @ohos.InputMethodExtensionContext (InputMethodExtensionContext)(系统接口)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

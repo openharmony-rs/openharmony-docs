@@ -1,4 +1,4 @@
-﻿# @ohos.inputMethod.ExtraConfig (输入法扩展信息)
+# @ohos.inputMethod.ExtraConfig (输入法扩展信息)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

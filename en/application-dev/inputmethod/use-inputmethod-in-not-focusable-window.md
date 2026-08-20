@@ -1,4 +1,4 @@
-﻿# Input Box and Input Method Interaction in Non-Focusable Windows
+# Input Box and Input Method Interaction in Non-Focusable Windows
 
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->

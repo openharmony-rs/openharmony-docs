@@ -1,4 +1,4 @@
-﻿# Using the Input Method in a Custom Edit Box (C/C++)
+# Using the Input Method in a Custom Edit Box (C/C++)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

@@ -1,4 +1,4 @@
-﻿# 在自绘编辑框中使用输入法
+# 在自绘编辑框中使用输入法
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

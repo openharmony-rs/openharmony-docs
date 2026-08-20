@@ -1,4 +1,4 @@
-﻿# @ohos.InputMethodSubtype (Input Method Subtype)
+# @ohos.InputMethodSubtype (Input Method Subtype)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->

@@ -1,4 +1,4 @@
-﻿# inputmethod_text_config_capi.h
+# inputmethod_text_config_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
