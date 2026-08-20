@@ -4,9 +4,9 @@
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:42.982Z pushedAt=2026-06-30T02:22:30.420Z -->
+<!-- md-trans-meta sourceCommit=2cc3d788470dfc527ff67f0d956b9e3149129ee5 translatedAt=2026-08-20T06:25:54.474Z pushedAt=2026-08-20T13:27:13.255Z -->
 
 ## When to Use
 
@@ -594,6 +594,6 @@ The following requirements must be met:
 
 The following sample is provided to help you better understand how to develop vibrators:
 
-- [Vibrator (ArkTS, API version 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator/BasicVibration)
+- [BasicVibration (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/BasicVibration)
 
-- [CustomHaptic (ArkTS, Full SDK, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator/CustomHaptic)
+- [CustomHaptic (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/CustomHaptic)
