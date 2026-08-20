@@ -30,7 +30,7 @@
 | 名称                      | 类型   | 只读 | 可选  | 说明       |
 | ------------------------- | ------ | ---- | ---- | --------- |
 | instanceKey | string | 否 | 否  | 多实例应用的唯一实例标识。 |
-| uid | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  | 表示应用的UID。 |
+| uid | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  | 应用的UID。 |
 | pids | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;int> | 否 | 否  | 应用的进程ID集合。 |
 
 **示例：**

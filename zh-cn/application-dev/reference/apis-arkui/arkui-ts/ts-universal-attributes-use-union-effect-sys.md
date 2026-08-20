@@ -18,7 +18,7 @@
 
 ## useUnionEffect
 
-useUnionEffect(value: boolean | undefined): T;
+useUnionEffect(value: boolean \| undefined): T
 
 表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，是否作为UnionEffectContainer做形状融合的一部分。
 

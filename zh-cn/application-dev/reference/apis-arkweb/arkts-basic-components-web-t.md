@@ -56,7 +56,7 @@ type OnAdsBlockedCallback = (details: AdsBlockedDetails) => void
 
 type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
-用户加载资源时发生SSL错误时触发的回调。
+用户加载资源时发生SSL错误时触发的回调，返回SSL错误详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,7 +68,7 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | 是 | 用户加载资源时发生SSL错误时触发的回调详情。 |
+| sslErrorEvent | [SslErrorEvent](./arkts-basic-components-web-i.md#sslerrorevent12)  | 是 | 用户加载资源时发生SSL错误时传递的详细信息。 |
 
 ## OnVerifyPinCallback<sup>22+</sup>
 
@@ -164,7 +164,7 @@ type OnNativeEmbedVisibilityChangeCallback = (nativeEmbedVisibilityInfo: NativeE
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| nativeEmbedVisibilityInfo | [NativeEmbedVisibilityInfo](./arkts-basic-components-web-i.md#nativeembedvisibilityinfo12)  | 是 | 提供同层标签的可见性信息。 |
+| nativeEmbedVisibilityInfo | [NativeEmbedVisibilityInfo](./arkts-basic-components-web-i.md#nativeembedvisibilityinfo12)  | 是 | 提供同层标签可见性变化的信息。|
 
 ## OnFullScreenEnterCallback<sup>12+</sup>
 
@@ -188,7 +188,7 @@ Web组件进入全屏时触发的回调。
 
 type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPaint](./arkts-basic-components-web-i.md#firstmeaningfulpaint12)) => void
 
-网页绘制页面度量信息的回调，当网页加载完页面主要内容时会触发该回调。
+网页首次绘制页面主要内容度量的回调，当网页加载完页面主要内容时会触发此回调。与OnLargestContentfulPaintCallback关注最大内容元素绘制时间、OnFirstScreenPaintCallback关注首屏可见内容渲染完成相比，本回调更关注主要内容是否加载完成，适合评估用户可见内容的加载体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -206,7 +206,7 @@ type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPai
 
 type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12)) => void
 
-网页绘制页面最大内容度量信息的回调。
+当网页绘制最大内容区域时触发的回调，用于获取最大内容绘制的性能度量信息。适用于需要监控网页加载性能、优化页面渲染速度等场景。与OnFirstMeaningfulPaintCallback关注主要内容加载完成、OnFirstScreenPaintCallback关注首屏可见内容渲染完成相比，本回调关注最大内容元素的绘制时间，适合评估页面渲染完成度和性能瓶颈。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -278,7 +278,7 @@ type OnIntelligentTrackingPreventionCallback = (details: IntelligentTrackingPrev
 
 type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean
 
-onOverrideUrlLoading的回调。
+用于拦截URL加载请求的回调，可阻止特定URL的加载或进行自定义处理。适用于需要拦截广告、阻止恶意网站跳转等场景。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -474,7 +474,7 @@ onTextSelectionChange的回调，选区内容改变时触发。
 
 type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
-检测到首屏渲染结束时会触发此回调。
+检测到首屏渲染结束时会触发此回调。与OnFirstMeaningfulPaintCallback关注主要内容加载完成、OnLargestContentfulPaintCallback关注最大内容元素绘制时间相比，本回调更关注首屏可见内容的渲染完成时间，适合评估用户首次视觉体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

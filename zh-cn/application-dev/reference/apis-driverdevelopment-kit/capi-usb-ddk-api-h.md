@@ -506,7 +506,7 @@ int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequest
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t deviceId | 设备ID，可通过[OH_Usb_GetDevices](#oh_usb_getdevices)获取，代表要进行通信的设备。 |
+| uint64_t deviceID | 设备ID，可通过[OH_Usb_GetDevices](#oh_usb_getdevices)获取，代表要进行通信的设备。 |
 | const struct [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) *setupPacket | 控制传输请求的setup包配置参数，包含了传输方向、传输数据长度等信息。 |
 | uint8_t *data | 已申请好的缓冲区，用于存放输入或输出数据。缓冲区大小应与setup包中的wLength字段一致，且最大不超过1024，否则会被截断。 |
 | uint32_t timeout | 超时时间（单位：毫秒），在未收到响应时等待的最大时间。设置为0表示无限制等待。 |

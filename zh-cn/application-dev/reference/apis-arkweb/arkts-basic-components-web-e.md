@@ -74,7 +74,7 @@ ConsoleMessage的日志来源。
 | 名称        | 值 | 说明                                 |
 | ---------- | -- | ---------------------------------- |
 | ArkTS-Dyn: All <br>ArkTS-Sta: ALL| 0 | 宽松模式：允许加载HTTP和HTTPS混合内容。所有不安全的内容都可以被加载。 |
-| ArkTS-Dyn: Compatible <br>ArkTS-Sta: COMPATIBLE| 1 | 兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。           |
+| ArkTS-Dyn: Compatible <br>ArkTS-Sta: COMPATIBLE| 1 | 兼容模式：允许部分HTTP内容在HTTPS页面中加载。 |
 | ArkTS-Dyn: None  <br>ArkTS-Sta: NONE| 2 | 严格模式：不允许加载HTTP和HTTPS混合内容。               |
 
 ## HitTestType<sup>(deprecated)</sup>
@@ -149,7 +149,7 @@ ConsoleMessage的日志来源。
 
 ## WebDarkMode<sup>9+</sup>
 
-Web深色模式的配置。
+Web深色模式的配置，用于控制网页内容的深色主题显示，帮助开发者根据用户偏好和系统主题提升视觉体验和可读性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -161,7 +161,7 @@ Web深色模式的配置。
 | ---- | -- | ------------ |
 | ArkTS-Dyn: Off <br>ArkTS-Sta: OFF| 0 | Web深色模式关闭。   |
 | ArkTS-Dyn: On  <br>ArkTS-Sta: ON| 1 | Web深色模式开启。   |
-| ArkTS-Dyn: Auto <br>ArkTS-Sta: AUTO| 2 | Web深色模式跟随系统。 |
+| ArkTS-Dyn: Auto <br>ArkTS-Sta: AUTO| 2 | Web深色模式跟随系统。适用于Web组件主题需要与系统保持一致的场景，推荐使用此模式以提供一致的用户体验。 |
 
 ## WebCaptureMode<sup>10+</sup>
 
@@ -246,7 +246,7 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 ## WebLayoutMode<sup>11+</sup>
 
-Web布局模式的配置。
+Web布局模式的配置，用于控制Web内容的页面布局方式，帮助开发者根据屏幕尺寸和显示需求优化网页的适配性和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -256,8 +256,8 @@ Web布局模式的配置。
 
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
-| NONE        | 0 | Web布局跟随系统。         |
-| FIT_CONTENT | 1 | Web基于页面大小的自适应网页布局。 |
+| NONE        | 0 | Web布局跟随系统。适用于传统网页布局场景，保持与系统默认行为一致。         |
+| FIT_CONTENT | 1 | Web基于页面大小的自适应网页布局。适用于需要根据屏幕尺寸自动调整布局的场景，推荐用于移动端网页优化。 |
 
 ## RenderProcessNotRespondingReason<sup>12+</sup>
 
@@ -448,9 +448,9 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
-| AUTO                  | 0 | 默认值，整个网页可见。   |
-| CONTAINS      | 1 | 初始布局视口和视觉视口为适应设备显示屏的最大矩形内。   |
-| COVER      | 2| 初始布局视口和视觉视口为设备物理屏幕的外接矩形内。   |
+| AUTO                  | 0 | 默认值，整个网页可见。适用于希望网页完全在可视区域内显示的场景，推荐用于大多数常规网页。   |
+| CONTAINS      | 1 | 初始布局视口和视觉视口为适应设备显示屏的最大矩形内。适用于需要确保内容完全在安全区域内的场景，如避免刘海屏遮挡重要内容。   |
+| COVER      | 2| 初始布局视口和视觉视口为设备物理屏幕的外接矩形内。适用于需要网页内容延伸到屏幕边缘的场景，如全屏背景效果或沉浸式体验。   |
 
 ## WebKeyboardAvoidMode<sup>12+</sup>
 
@@ -573,7 +573,7 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 
 ## DetectedBlankScreenReason<sup>22+</sup>
 
-白屏的具体原因。
+白屏的具体原因，用于标识页面白屏现象的底层原因，帮助开发者快速定位问题来源，提升页面加载问题的排查效率和用户体验。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -588,7 +588,7 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 
 ## BlankScreenDetectionMethod<sup>22+</sup>
 
-白屏检测使用的检测策略的方法。
+白屏检测使用的检测策略的方法，用于定义页面内容检测的具体算法和点位，帮助开发者在检测准确性和性能开销之间取得平衡，及时发现页面渲染异常。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -602,7 +602,7 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 
 ## CredentialType<sup>22+</sup>
 
-凭证类型。
+凭证类型，用于定义身份认证中使用的凭证种类。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -618,7 +618,7 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 
 ## PinVerifyResult<sup>22+</sup>
 
-PIN码认证结果。
+PIN码认证结果，用于标识PIN码验证的执行状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -665,7 +665,7 @@ PIN码认证结果。
 
 ## NavigationPolicy<sup>23+</sup>
 
-WebView中新窗口的打开方式。
+WebView中新窗口的打开方式，支持弹窗、新窗口、前台和后台标签页等多种方式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -24,6 +24,7 @@ UiTest提供UI自动化测试能力，供开发者在测试场景使用，主要
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/uitest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
+> - ArkTS-Sta模式下，本模块接口在内部错误（如IPC通信异常、对象构造失败等极端场景）时可能返回null，建议开发者在使用返回值前进行空值判断。
 
 ## 导入模块
 
@@ -160,7 +161,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
 | title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。     <br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
 | focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23|
-| actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br/>  **ArkTS-Dyn起始版本：** 9   <br/>**说明：** <br/>从API version 9开始支持，从API version 11开始废弃，建议使用active替代。  |
+| actived<sup>deprecated</sup>  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br/> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br/>  **ArkTS-Dyn起始版本：** 9   <br/>**说明：** <br/>从API version 9开始支持，从API version 11开始废弃，建议使用active替代。  |
 | active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | displayId<sup>20+</sup> | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否   | 是  | 窗口所属的屏幕ID。取值大于或等于0的整数。默认值为设备默认屏ID。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
@@ -314,7 +315,7 @@ UI事件的相关信息。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                                     |
 | ---------- | ------ |----|----|--------------------------------------------------------|
-| stay | boolean | 否  | 是  | 触摸板多指滑动结束是否停留1s后再抬起，默认为false（不停留1s），true：停留，false：不停留。 |
+| stay | boolean | 否  | 是  | 触摸板多指滑动结束是否停留1s后再抬起，true：停留，false：不停留，默认为false（不停留1s）。 |
 | speed       | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 是  | 滑动速率，取值范围为200-40000的整数，默认值为2000，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值2000。为负数时抛出参数错误的错误码。 |
 
 
@@ -442,7 +443,7 @@ UI事件的相关信息。
 ## On<sup>9+</sup>
 
 UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br/>
-On提供的API能力具有以下几个特点:<br/>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br/>2、控件属性支持多种匹配模式。<br/>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br/>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
+On提供的API能力具有以下几个特点：<br/>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br/>2、控件属性支持多种匹配模式。<br/>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br/>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
 
 ```ts
 // xxx.test.ets
@@ -583,7 +584,7 @@ id(id: string, pattern: MatchPattern): On
 // xxx.test.ets
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值。
 ```
 
 ### type<sup>9+</sup>
@@ -971,7 +972,7 @@ checked(b?: boolean): On
 // xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on: On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性
+let on: On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性。
 ```
 
 ### checkable<sup>9+</sup>
@@ -1006,7 +1007,7 @@ checkable(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. 1. Incorrect parameter types; 2. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1058,7 +1059,7 @@ isBefore(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之前。
-let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件
+let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件。
 ```
 
 ### beforeComponent
@@ -1104,7 +1105,7 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let component: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').beforeComponent(component); // 查找第一个Text组件之前的text为123的组件
+  let on: On = ON.text('123').beforeComponent(component); // 查找第一个Text组件之前的text为123的组件。
 }
 ```
 
@@ -1195,7 +1196,7 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let component: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').afterComponent(component); // 查找第一个Text组件之后的text为123的组件
+  let on: On = ON.text('123').afterComponent(component); // 查找第一个Text组件之后的text为123的组件。
 }
 ```
 
@@ -1240,7 +1241,7 @@ within(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之内。
-let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroll里面的text为java的子组件
+let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroll里面的text为java的子组件。
 ```
 
 ### withinComponent
@@ -1286,7 +1287,7 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let component: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').withinComponent(component); // 查找第一个Text组件内部的text为123的组件
+  let on: On = ON.text('123').withinComponent(component); // 查找第一个Text组件内部的text为123的组件。
 }
 ```
 
@@ -1463,7 +1464,7 @@ ArkTS-Sta: belongingDisplay(displayId: int): On
 // xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on: On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID
+let on: On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID。
 ```
 
 ### originalText<sup>20+</sup>
@@ -1511,12 +1512,12 @@ originalText(text: string, pattern?: MatchPattern): On
 // xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
-let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性
+let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性。
 ```
 
 ## Component<sup>9+</sup>
 
-UiTest框架从API version 9开始，Component类代表UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
+UiTest框架从API version 9开始，Component类代表UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。该类对象可通过[Driver.findComponent](#findcomponent9)、[Driver.findComponents](#findcomponents9)、[Driver.waitForComponent](#waitforcomponent9)等接口获取。
 
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
@@ -3003,7 +3004,7 @@ async function demo() {
 
 ## Driver<sup>9+</sup>
 
-Driver类为UiTest测试框架的总入口。提供控件匹配/查找、按键注入、坐标点击/滑动、截图等能力。
+Driver类为UiTest测试框架的总入口。提供控件匹配/查找、按键注入、坐标点击/滑动、截图等能力。通过[Driver.create()](#create9)创建实例。
 
 该类提供的所有方法均为异步方法（使用Promise方式），需使用await方式调用。Driver.create()和Driver.createUIEventObserver()为同步方法除外。
 
@@ -3066,7 +3067,7 @@ ArkTS-Sta: delayMs(duration: int): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。。传入负数时抛出401错误码。 |
+| duration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -3668,7 +3669,7 @@ import { KeyCode } from '@kit.InputKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(KeyCode.KEYCODE_BACK); // 返回键
+  await driver.triggerKey(KeyCode.KEYCODE_BACK); // 返回键。
 }
 ```
 
@@ -3719,7 +3720,7 @@ import { KeyCode } from '@kit.InputKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(KeyCode.KEYCODE_BACK, 0); // 返回键
+  await driver.triggerKey(KeyCode.KEYCODE_BACK, 0); // 返回键。
 }
 ```
 
@@ -3770,7 +3771,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // 注入Ctrl+Alt+Delete组合键
+  // 注入Ctrl+Alt+Delete组合键。
   await driver.triggerCombineKeys(2072, 2047, 2035);
 }
 ```
@@ -3973,7 +3974,7 @@ async function demo() {
   let options: TouchOptions = {
     pressure: 0.5
   };
-  // 在目标坐标点进行单击，并指定触摸压力
+  // 在目标坐标点进行单击，并指定触摸压力。
   await driver.clickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
@@ -4193,10 +4194,10 @@ import { Driver, TouchOptions } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let options: TouchOptions = {
-    duration: 2000, // 长按持续2000ms
-    pressure: 0.8  // 触摸压力值
+    duration: 2000, // 长按持续2000ms。
+    pressure: 0.8  // 触摸压力值。
   };
-  // 在目标坐标点进行长按，并指定长按时长和触摸压力
+  // 在目标坐标点进行长按，并指定长按时长和触摸压力。
   await driver.longClickAtWithOptions({ x: 100, y: 100, displayId: 0 }, options);
 }
 ```
@@ -4351,10 +4352,10 @@ import { Driver, TouchOptions } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let options: TouchOptions = {
-    speed: 800,   // 滑动速率800px/s
-    pressure: 0.5  // 触摸压力值
+    speed: 800,   // 滑动速率800px/s。
+    pressure: 0.5  // 触摸压力值。
   };
-  // 从起始坐标点滑向目标坐标点，并指定滑动速率和触摸压力
+  // 从起始坐标点滑向目标坐标点，并指定滑动速率和触摸压力。
   await driver.swipeBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
@@ -4516,11 +4517,11 @@ import { Driver, TouchOptions } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let options: TouchOptions = {
-    speed: 800,     // 拖拽速率800px/s
-    duration: 2000, // 拖拽前长按2000ms
-    pressure: 0.5   // 触摸压力值
+    speed: 800,     // 拖拽速率800px/s。
+    duration: 2000, // 拖拽前长按2000ms。
+    pressure: 0.5   // 触摸压力值。
   };
-  // 从起始坐标点拖拽至目标坐标点，并指定拖拽速率、长按时长和触摸压力
+  // 从起始坐标点拖拽至目标坐标点，并指定拖拽速率、长按时长和触摸压力。
   await driver.dragBetweenWithOptions({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, options);
 }
 ```
@@ -4668,7 +4669,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // 获取当前布局信息并保存为JSON文件
+  // 获取当前布局信息并保存为JSON文件。
   await driver.dumpLayout('/data/storage/el2/base/cache/layout.json', 0);
 }
 ```
@@ -5330,23 +5331,23 @@ ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promi
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
-  // 创建Driver对象
+  // 创建Driver对象。
   let driver: Driver = Driver.create();
-  // 创建2指5步的滑动轨迹矩阵
+  // 创建2指5步的滑动轨迹矩阵。
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  // 设置第一根手指的滑动轨迹
+  // 设置第一根手指的滑动轨迹。
   pointers.setPoint(0, 0, { x: 250, y: 480 });
   pointers.setPoint(0, 1, { x: 250, y: 440 });
   pointers.setPoint(0, 2, { x: 250, y: 400 });
   pointers.setPoint(0, 3, { x: 250, y: 360 });
   pointers.setPoint(0, 4, { x: 250, y: 320 });
-  // 设置第二根手指的滑动轨迹
+  // 设置第二根手指的滑动轨迹。
   pointers.setPoint(1, 0, { x: 250, y: 480 });
   pointers.setPoint(1, 1, { x: 250, y: 440 });
   pointers.setPoint(1, 2, { x: 250, y: 400 });
   pointers.setPoint(1, 3, { x: 250, y: 360 });
   pointers.setPoint(1, 4, { x: 250, y: 320 });
-  // 注入双指滑动操作
+  // 注入双指滑动操作。
   await driver.injectMultiPointerAction(pointers);
 }
 ```
@@ -5963,7 +5964,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。对于API版本26.0.0及之前的版本，该接口不支持鼠标跨屏拖拽操作，起始点与终点需属于同一屏幕，否则将抛出401错误码；从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6018,7 +6019,7 @@ ArkTS-Dyn: mouseDrag(from: Point, to: Point, speed?: number, duration?: number):
 
 ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。对于API版本26.0.0及之前的版本，该接口不支持鼠标跨屏拖拽操作，起始点与终点需属于同一屏幕，否则将抛出401错误码；从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -6115,14 +6116,14 @@ import { Driver, TouchOptions, KeyOptions } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let touchOptions: TouchOptions = {
-    speed: 800,     // 拖拽速率800px/s
-    duration: 2000  // 拖拽前长按2000ms
+    speed: 800,     // 拖拽速率800px/s。
+    duration: 2000  // 拖拽前长按2000ms。
   };
   let keyOptions: KeyOptions = {
-    key1: 2072,  // Ctrl键
-    key2: 2019   // C键
+    key1: 2072,  // Ctrl键。
+    key2: 2019   // C键。
   };
-  // 鼠标拖拽并同时按下Ctrl+C组合键
+  // 鼠标拖拽并同时按下Ctrl+C组合键。
   await driver.mouseDragWithOptions({ x: 100, y: 100 }, { x: 200, y: 200 }, touchOptions, keyOptions);
 }
 ```
@@ -6566,7 +6567,7 @@ ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，[PointerMatrix](#pointermatrix9)中的操作手指个数fingers必须设置为1。 |
+| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明：** 当前仅支持单指操作，[PointerMatrix](#pointermatrix9)中的操作手指个数fingers必须设置为1。 |
 | speed      | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。            |
 | pressure      | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为[0.0, 1.0]，包含0.0和1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。                                 |
 
@@ -6594,13 +6595,13 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // 创建单指8步的滑动轨迹矩阵
+  // 创建单指8步的滑动轨迹矩阵。
   let pointer = PointerMatrix.create(1, 8);
-  // 循环设置每步坐标点，模拟从下向上的滑动
+  // 循环设置每步坐标点，模拟从下向上的滑动。
   for (let step = 0; step < 8; step++) {
     pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
-  // 以600px/s速率和0.5压力值注入手写笔滑动操作
+  // 以600px/s速率和0.5压力值注入手写笔滑动操作。
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
 ```
@@ -6658,11 +6659,11 @@ import { Driver, PenKey, PenMode, PenKeyOperation } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // 手写模式下触发手写键单击
+  // 手写模式下触发手写键单击。
   await driver.triggerPenKey(PenKey.HANDWRITING, PenMode.HANDWRITING, PenKeyOperation.CLICK);
-  // 空鼠模式下触发空鼠键双击
+  // 空鼠模式下触发空鼠键双击。
   await driver.triggerPenKey(PenKey.AIR_MOUSE, PenMode.AIR_MOUSE, PenKeyOperation.DOUBLE_CLICK, { point: { x: 500, y: 500 } });
-  // 空鼠模式下触发智慧键单击
+  // 空鼠模式下触发智慧键单击。
   await driver.triggerPenKey(PenKey.SMART, PenMode.AIR_MOUSE, PenKeyOperation.CLICK);
 }
 ```
@@ -6716,9 +6717,9 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // 顺时针旋转50格，旋转速度为30格/秒
+  // 顺时针旋转50格，旋转速度为30格/秒。
   await driver.crownRotate(50, 30);
-  // 逆时针旋转20格，旋转速度为30格/秒
+  // 逆时针旋转20格，旋转速度为30格/秒。
   await driver.crownRotate(-20, 30);
 }
 ```
@@ -6776,7 +6777,7 @@ import { Driver, Point } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // 模拟指关节单指双击手势
+  // 模拟指关节单指双击手势。
   let points: Array<Point> = [{ x: 100, y: 100 }];
   await driver.knuckleKnock(points, 2);
 }
@@ -6808,7 +6809,7 @@ ArkTS-Sta: injectKnucklePointerAction(pointers: PointerMatrix, speed?: int): Pro
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，[PointerMatrix](#pointermatrix9)中的操作手指个数fingers必须设置为1。|
+| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明：** 当前仅支持单指操作，[PointerMatrix](#pointermatrix9)中的操作手指个数fingers必须设置为1。|
 | speed    | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。 |
 
 **返回值：**
@@ -6835,7 +6836,7 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // 模拟指关节滑动在屏幕上画'S'
+  // 模拟指关节滑动在屏幕上画'S'。
   let pointers: PointerMatrix = PointerMatrix.create(1, 6);
   pointers.setPoint(0, 0, { x: 750, y: 300 });
   pointers.setPoint(0, 1, { x: 500, y: 100 });
@@ -7108,7 +7109,7 @@ async function demo() {
 
 ## UiWindow<sup>9+</sup>
 
-UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
+UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。该类对象可通过[Driver.findWindow](#findwindow9)接口获取。
 
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
@@ -7904,15 +7905,15 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 async function demo() {
   // 创建Driver对象
   let driver: Driver = Driver.create();
-  // 创建UI事件监听器
+  // 创建UI事件监听器。
   let observer: UIEventObserver = driver.createUIEventObserver();
-  // 定义回调函数，输出toast控件的属性信息
+  // 定义回调函数，输出toast控件的属性信息。
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
   }
-  // 订阅toast控件出现事件
+  // 订阅toast控件出现事件。
   observer.once('toastShow', callback);
 }
 ```
@@ -8103,7 +8104,7 @@ async function demo() {
   let observer: UIEventObserver = driver.createUIEventObserver();
   let options: WindowChangeOptions = {
     timeout: 20000,
-    bundleName: 'com.example.myapplication'  // 请开发者替换为实际包名
+    bundleName: 'com.example.myapplication'  // 请开发者替换为实际包名。
   }
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
@@ -8216,7 +8217,7 @@ async function demo() {
   let observer: UIEventObserver = driver.createUIEventObserver();
   let option: ComponentEventOptions = {
     timeout: 20000,
-    on: ON.id('123')  // 请开发者替换为实际存在的控件id值
+    on: ON.id('123')  // 请开发者替换为实际存在的控件id值。
   };
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
@@ -8297,7 +8298,7 @@ async function demo() {
 ## By<sup>(deprecated)</sup>
 
 UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br/>
-By提供的API能力具有以下几个特点:<br/>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br/>2、控件属性支持多种匹配模式。<br/>3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated)和[By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated)等API限定邻近控件特征进行辅助定位。<br/>By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
+By提供的API能力具有以下几个特点：<br/>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br/>2、控件属性支持多种匹配模式。<br/>3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated)和[By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated)等API限定邻近控件特征进行辅助定位。<br/>By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
 
 > **说明：**
 >
@@ -8684,7 +8685,7 @@ isBefore(by: By): By
 import { By, BY } from '@kit.TestKit';
 
 // 使用静态构造器BY创建by对象，指定目标控件位于给出的特征属性控件之前。
-let by: By = BY.type('Button').isBefore(BY.text('123')); // 查找text为123之前的第一个Button组件
+let by: By = BY.type('Button').isBefore(BY.text('123')); // 查找text为123之前的第一个Button组件。
 ```
 
 ### isAfter<sup>(deprecated)</sup>
@@ -8722,7 +8723,7 @@ isAfter(by: By): By
 import { By, BY } from '@kit.TestKit';
 
 // 使用静态构造器BY创建by对象，指定目标控件位于给出的特征属性控件之后。
-let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找 text为123之后的第一个Text组件
+let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找text为123之后的第一个Text组件。
 ```
 
 
@@ -9437,7 +9438,7 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。使用Promise异步回调。
+断言API，用于断言当前界面存在满足给出的目标控件属性的控件；如果控件不存在，该API将抛出JS异常，使当前测试用例失败。使用Promise异步回调。
 
 > **说明：**
 >

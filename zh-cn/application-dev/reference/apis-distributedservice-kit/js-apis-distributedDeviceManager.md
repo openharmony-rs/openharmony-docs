@@ -34,8 +34,6 @@ createDeviceManager(bundleName: string): DeviceManager
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
-
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -83,8 +81,6 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
-
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -125,7 +121,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 分布式设备基本信息。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
@@ -144,7 +140,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 表示设备状态。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 

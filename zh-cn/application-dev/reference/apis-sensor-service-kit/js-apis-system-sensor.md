@@ -27,14 +27,15 @@
 
 ## 导入模块
 
-
 ```ts
 import { Sensor } from '@kit.SensorServiceKit';
 ```
 
-## Sensor.subscribeAccelerometer
+## Sensor
 
- subscribeAccelerometer(options: subscribeAccelerometerOptions): void
+### Sensor.subscribeAccelerometer
+
+ static subscribeAccelerometer(options: subscribeAccelerometerOptions): void
 
 订阅加速度传感器数据变化。通过回调函数获取设备在x、y、z三轴方向上的加速度数据，数据格式为AccelerometerResponse对象，包含x、y、z三个number类型字段。
 
@@ -42,11 +43,13 @@ import { Sensor } from '@kit.SensorServiceKit';
 
 调用此接口后，系统会按指定的回调频率上报加速度数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#sensoronaccelerometer9)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#sensoronaccelerometer9)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
+**需要权限**：ohos.permission.ACCELEROMETER
 
 **参数**：
 
@@ -390,9 +393,9 @@ export default {
 }
 ```
 
-## Sensor.unsubscribeAccelerometer
+### Sensor.unsubscribeAccelerometer
 
-unsubscribeAccelerometer(): void
+static unsubscribeAccelerometer(): void
 
 取消订阅加速度传感器数据。调用后，加速度传感器的回调函数将不再触发。
 
@@ -400,11 +403,13 @@ unsubscribeAccelerometer(): void
 
 调用此接口后，之前通过subscribeAccelerometer注册的回调函数将不再被触发。如需再次获取数据，需重新调用subscribeAccelerometer。
 
-除Lite Wearable外，从API version 8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometerdeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[ACCELEROMETER](js-apis-sensor.md#accelerometerdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**需要权限**：ohos.permission.ACCELEROMETER，该权限为系统权限
+**需要权限**：ohos.permission.ACCELEROMETER
 
 **ArkTS示例**：
 
@@ -418,9 +423,9 @@ Sensor.unsubscribeAccelerometer();
 Sensor.unsubscribeAccelerometer();
 ```
 
-## Sensor.subscribeCompass
+### Sensor.subscribeCompass
 
- subscribeCompass(options: SubscribeCompassOptions): void
+ static subscribeCompass(options: SubscribeCompassOptions): void
 
 订阅罗盘传感器数据变化。通过回调函数获取设备面对的方向度数数据，数据格式为CompassResponse对象，包含direction字段。
 
@@ -428,7 +433,9 @@ Sensor.unsubscribeAccelerometer();
 
 调用此接口后，系统会在罗盘数据变化时上报方向数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -470,9 +477,9 @@ let subscribeCompassOptions = {
 Sensor.subscribeCompass(subscribeCompassOptions);
 ```
 
-## Sensor.unsubscribeCompass
+### Sensor.unsubscribeCompass
 
-unsubscribeCompass(): void
+static unsubscribeCompass(): void
 
 取消订阅罗盘传感器数据。调用后，罗盘传感器的回调函数将不再触发。
 
@@ -480,7 +487,9 @@ unsubscribeCompass(): void
 
 调用此接口后，之前通过subscribeCompass注册的回调函数将不再被触发。需先调用subscribeCompass订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -496,9 +505,9 @@ Sensor.unsubscribeCompass();
 Sensor.unsubscribeCompass();
 ```
 
-## Sensor.subscribeProximity
+### Sensor.subscribeProximity
 
- subscribeProximity(options: SubscribeProximityOptions): void
+ static subscribeProximity(options: SubscribeProximityOptions): void
 
 订阅距离传感器数据变化。通过回调函数获取可见物体相对于设备显示屏的接近或远离状态数据，数据格式为ProximityResponse对象，包含distance字段。
 
@@ -506,7 +515,9 @@ Sensor.unsubscribeCompass();
 
 调用此接口后，系统会在距离传感器数据变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated)。
+> **说明**：
+>
+> 从 API version 3开始支持，从API version 8开始废弃。除Lite Wearable外，建议使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -550,9 +561,9 @@ let subscribeProximityOptions = {
 sensor.subscribeProximity(subscribeProximityOptions);
 ```
 
-## Sensor.unsubscribeProximity
+### Sensor.unsubscribeProximity
 
-unsubscribeProximity(): void
+static unsubscribeProximity(): void
 
 取消订阅距离传感器数据。调用后，距离传感器的回调函数将不再触发。
 
@@ -560,7 +571,9 @@ unsubscribeProximity(): void
 
 调用此接口后，之前通过subscribeProximity注册的回调函数将不再被触发。需先调用subscribeProximity订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[PROXIMITY](js-apis-sensor.md#proximitydeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -578,17 +591,19 @@ Sensor.unsubscribeProximity();
 Sensor.unsubscribeProximity();
 ```
 
-## Sensor.subscribeLight
+### Sensor.subscribeLight
 
- subscribeLight(options: SubscribeLightOptions): void
+ static subscribeLight(options: SubscribeLightOptions): void
 
-订阅环境光传感器数据变化。通过回调函数获取环境光线强度数据，数据格式为LightResponse对象，包含intensity字段（单位：lux）。
+订阅环境光传感器数据变化。通过回调函数获取环境光线强度数据，数据格式为LightResponse对象，包含intensity字段，单位：lux（勒克斯）。
 
 当开发者需要获取环境光强度以实现屏幕亮度自动调节、环境光检测等功能时，使用此接口。
 
 再次调用时，会覆盖前一次调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -632,9 +647,9 @@ let subscribeLightOptions = {
 sensor.subscribeLight(subscribeLightOptions);
 ```
 
-## Sensor.unsubscribeLight
+### Sensor.unsubscribeLight
 
-unsubscribeLight(): void
+static unsubscribeLight(): void
 
 取消订阅环境光传感器数据。调用后，环境光传感器的回调函数将不再触发。
 
@@ -642,7 +657,9 @@ unsubscribeLight(): void
 
 调用此接口后，之前通过subscribeLight注册的回调函数将不再被触发。需先调用subscribeLight订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[AMBIENT_LIGHT](js-apis-sensor.md#ambient_lightdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -660,9 +677,9 @@ Sensor.unsubscribeLight();
 Sensor.unsubscribeLight();
 ```
 
-## Sensor.subscribeStepCounter
+### Sensor.subscribeStepCounter
 
- subscribeStepCounter(options: SubscribeStepCounterOptions): void
+ static subscribeStepCounter(options: SubscribeStepCounterOptions): void
 
 订阅计步传感器数据变化。通过回调函数获取计步传感器重启后累计记录的步数数据，数据格式为StepCounterResponse对象，包含steps字段。
 
@@ -670,7 +687,9 @@ Sensor.unsubscribeLight();
 
 调用此接口后，系统会在计步数据变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated)。
+> **说明**：
+>
+>  除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -714,9 +733,9 @@ let subscribeStepCounterOptions = {
 sensor.subscribeStepCounter(subscribeStepCounterOptions);
 ```
 
-## Sensor.unsubscribeStepCounter
+### Sensor.unsubscribeStepCounter
 
-unsubscribeStepCounter(): void
+static unsubscribeStepCounter(): void
 
 取消订阅计步传感器数据。调用后，计步传感器的回调函数将不再触发。
 
@@ -724,7 +743,9 @@ unsubscribeStepCounter(): void
 
 调用此接口后，之前通过subscribeStepCounter注册的回调函数将不再被触发。需先调用subscribeStepCounter订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[PEDOMETER](js-apis-sensor.md#pedometerdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -743,17 +764,19 @@ Sensor.unsubscribeStepCounter();
 ```
 
 
-## Sensor.subscribeBarometer
+### Sensor.subscribeBarometer
 
-subscribeBarometer(options: SubscribeBarometerOptions): void
+static subscribeBarometer(options: SubscribeBarometerOptions): void
 
-订阅气压计传感器数据变化。通过回调函数获取气压值数据，数据格式为BarometerResponse对象，包含pressure字段（单位：帕斯卡）。
+订阅气压计传感器数据变化。通过回调函数获取气压值数据，数据格式为BarometerResponse对象，包含pressure字段，单位：Pa（帕斯卡）。
 
 当开发者需要获取气压信息以实现海拔估算、天气监测、室内导航等功能时，使用此接口。
 
 调用此接口后，系统会在气压数据变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-1)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-1)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -796,9 +819,9 @@ sensor.subscribeBarometer(subscribeBarometerOptions);
 ```
 
 
-## Sensor.unsubscribeBarometer
+### Sensor.unsubscribeBarometer
 
-unsubscribeBarometer(): void
+static unsubscribeBarometer(): void
 
 取消订阅气压计传感器数据。调用后，气压计传感器的回调函数将不再触发。
 
@@ -806,7 +829,9 @@ unsubscribeBarometer(): void
 
 调用此接口后，之前通过subscribeBarometer注册的回调函数将不再被触发。需先调用subscribeBarometer订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[BAROMETER](js-apis-sensor.md#barometerdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -822,17 +847,20 @@ Sensor.unsubscribeBarometer();
 Sensor.unsubscribeBarometer();
 ```
 
-## Sensor.subscribeHeartRate
 
- subscribeHeartRate(options: SubscribeHeartRateOptions): void
+### Sensor.subscribeHeartRate
 
-订阅心率传感器数据变化。通过回调函数获取心率值数据，数据格式为HeartRateResponse对象，包含heartRate字段（单位：次/分钟），默认回调频率为5秒/次。
+ static subscribeHeartRate(options: SubscribeHeartRateOptions): void
+
+订阅心率传感器数据变化。通过回调函数获取心率值数据，数据格式为HeartRateResponse对象，包含heartRate字段，单位：bpm（beats per minute，每分钟心跳次数），默认回调频率为5秒/次。
 
 当开发者需要获取用户心率数据以实现健康监测、运动强度评估等功能时，使用此接口。
 
 调用此接口后，系统会以5秒/次的频率上报心率数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -877,9 +905,9 @@ sensor.subscribeHeartRate(subscribeHeartRateOptions);
 ```
 
 
-## Sensor.unsubscribeHeartRate
+### Sensor.unsubscribeHeartRate
 
-unsubscribeHeartRate(): void
+static unsubscribeHeartRate(): void
 
 取消订阅心率传感器数据。调用后，心率传感器的回调函数将不再触发。
 
@@ -887,7 +915,9 @@ unsubscribeHeartRate(): void
 
 调用此接口后，之前通过subscribeHeartRate注册的回调函数将不再被触发。需先调用subscribeHeartRate订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[HEART_RATE](js-apis-sensor.md#heart_ratedeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -905,9 +935,9 @@ Sensor.unsubscribeHeartRate();
 Sensor.unsubscribeHeartRate();
 ```
 
-## Sensor.subscribeOnBodyState
+### Sensor.subscribeOnBodyState
 
- subscribeOnBodyState(options: SubscribeOnBodyStateOptions): void
+ static subscribeOnBodyState(options: SubscribeOnBodyStateOptions): void
 
 订阅设备佩戴状态变化。通过回调函数获取设备是否已佩戴的状态数据，数据格式为OnBodyStateResponse对象，包含value字段（boolean类型）。
 
@@ -915,7 +945,9 @@ Sensor.unsubscribeHeartRate();
 
 调用此接口后，系统会在佩戴状态变化时上报数据；针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API version 8开始，推荐使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -923,7 +955,7 @@ Sensor.unsubscribeHeartRate();
 
 | 参数名  | 类型                                                        | 必填 | 说明                   |
 | ------- | ----------------------------------------------------------- | ---- | ---------------------- |
-| options | [SubscribeOnBodyStateOptions](#subscribeonbodystateoptions) | 是   | 当穿着状态改变时调用。 |
+| options | [SubscribeOnBodyStateOptions](#subscribeonbodystateoptions) | 是   | 当佩戴状态改变时调用。 |
 
 **ArkTS示例**：
 
@@ -957,9 +989,9 @@ let subscribeOnBodyStateOptions = {
 sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
 ```
 
-## Sensor.unsubscribeOnBodyState
+### Sensor.unsubscribeOnBodyState
 
-unsubscribeOnBodyState(): void
+static unsubscribeOnBodyState(): void
 
 取消订阅设备佩戴状态。调用后，佩戴状态的回调函数将不再触发。
 
@@ -967,7 +999,9 @@ unsubscribeOnBodyState(): void
 
 调用此接口后，之前通过subscribeOnBodyState注册的回调函数将不再被触发。需先调用subscribeOnBodyState订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -983,9 +1017,9 @@ Sensor.unsubscribeOnBodyState();
 Sensor.unsubscribeOnBodyState();
 ```
 
-## Sensor.getOnBodyState
+### Sensor.getOnBodyState
 
- getOnBodyState(options: GetOnBodyStateOptions): void
+ static getOnBodyState(options: GetOnBodyStateOptions): void
 
 获取设备佩戴状态。此接口为一次性获取，不同于subscribeOnBodyState的持续订阅模式，仅返回当前时刻的佩戴状态。
 
@@ -993,13 +1027,17 @@ Sensor.unsubscribeOnBodyState();
 
 调用此接口后，系统会通过success回调返回当前佩戴状态数据。此接口不会持续上报数据，仅返回一次结果。
 
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[WEAR_DETECTION](js-apis-sensor.md#wear_detectiondeprecated-1)替代。
+
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 **参数**：
 
 | 参数名  | 类型                                            | 必填 | 说明                       |
 | ------- | ----------------------------------------------- | ---- | -------------------------- |
-| options | [GetOnBodyStateOptions](#getonbodystateoptions) | 是   | 获取传感器所在设备穿戴状态时调用。 |
+| options | [GetOnBodyStateOptions](#getonbodystateoptions) | 是   | 获取传感器所在设备佩戴状态时调用。 |
 
 **ArkTS示例**：
 
@@ -1035,15 +1073,17 @@ sensor.getOnBodyState(getOnBodyStateOptions);
 
 ### Sensor.subscribeDeviceOrientation<sup>6+</sup>
 
- subscribeDeviceOrientation(options: SubscribeDeviceOrientationOptions): void
+ static subscribeDeviceOrientation(options: SubscribeDeviceOrientationOptions): void
 
-订阅设备方向传感器数据变化。通过回调函数获取设备方向数据，数据格式为DeviceOrientationResponse对象，包含alpha、beta、gamma三个旋转角度字段（单位：度）。
+订阅设备方向传感器数据变化。通过回调函数获取设备方向数据，数据格式为DeviceOrientationResponse对象，包含alpha、beta、gamma三个旋转角度字段，单位：°（度）。
 
 当开发者需要获取设备方向信息以实现屏幕旋转、游戏方向控制、AR/VR场景等功能时，使用此接口。
 
 针对同一个应用，多次调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
-除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1093,9 +1133,9 @@ let subscribeDeviceOrientationOptions = {
 sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
 ```
 
-## Sensor.unsubscribeDeviceOrientation<sup>6+</sup>
+### Sensor.unsubscribeDeviceOrientation<sup>6+</sup>
 
-unsubscribeDeviceOrientation(): void
+static unsubscribeDeviceOrientation(): void
 
 取消订阅设备方向传感器数据。调用后，设备方向传感器的回调函数将不再触发。
 
@@ -1103,7 +1143,9 @@ unsubscribeDeviceOrientation(): void
 
 调用此接口后，之前通过subscribeDeviceOrientation注册的回调函数将不再被触发。需先调用subscribeDeviceOrientation订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[ORIENTATION](js-apis-sensor.md#orientationdeprecated-2)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -1121,21 +1163,23 @@ Sensor.unsubscribeDeviceOrientation();
 Sensor.unsubscribeDeviceOrientation();
 ```
 
-## Sensor.subscribeGyroscope<sup>6+</sup>
+### Sensor.subscribeGyroscope<sup>6+</sup>
 
- subscribeGyroscope(options: SubscribeGyroscopeOptions): void
+ static subscribeGyroscope(options: SubscribeGyroscopeOptions): void
 
-订阅陀螺仪传感器数据变化。通过回调函数获取设备在x、y、z三轴方向的旋转角速度数据，数据格式为GyroscopeResponse对象，包含x、y、z三个number类型字段（单位：rad/s）。
+订阅陀螺仪传感器数据变化。通过回调函数获取设备在x、y、z三轴方向的旋转角速度数据，数据格式为GyroscopeResponse对象，包含x、y、z三个number类型字段，单位：rad/s（弧度/秒）。
 
 当开发者需要获取设备旋转角速度以实现手势识别、游戏操控、姿态追踪等功能时，使用此接口。
 
 针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效；针对同一个方法内，不支持多次调用。
 
-除Lite Wearable外，从API version 8开始，推荐使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated)。
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated)替代。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
+**需要权限**：ohos.permission.GYROSCOPE
 
 **参数**：
 
@@ -1181,9 +1225,9 @@ let subscribeGyroscopeOptions = {
 sensor.subscribeGyroscope(subscribeGyroscopeOptions);
 ```
 
-## Sensor.unsubscribeGyroscope<sup>6+</sup>
+### Sensor.unsubscribeGyroscope<sup>6+</sup>
 
-unsubscribeGyroscope(): void
+static unsubscribeGyroscope(): void
 
 取消订阅陀螺仪传感器数据。调用后，陀螺仪传感器的回调函数将不再触发。
 
@@ -1191,11 +1235,12 @@ unsubscribeGyroscope(): void
 
 调用此接口后，之前通过subscribeGyroscope注册的回调函数将不再被触发。需先调用subscribeGyroscope订阅后，再调用此接口取消订阅，否则无效果。
 
-除Lite Wearable外，从API version 8开始，推荐使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated-2)。
-
+> **说明**：
+>
+> 除Lite Wearable外，从API version 8开始，建议使用[GYROSCOPE](js-apis-sensor.md#gyroscopedeprecated-2)替代。
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-**需要权限**：ohos.permission.GYROSCOPE，该权限为系统权限
+**需要权限**：ohos.permission.GYROSCOPE
 
 **ArkTS示例**：
 
@@ -1218,9 +1263,9 @@ Sensor.unsubscribeGyroscope();
 **需要权限**：ohos.permission.ACCELEROMETER
 
 | 名称     | 类型                                            | 只读 | 可选 | 说明                                                         |
-| -------- | ----------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
+| -------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | interval | string                                          | 否   | 否   | 频率参数，加速度的回调函数执行频率。<br/>默认值：'normal'。<br/>可选值：<br/>-'game'：极高的回调频率，20ms/次，适用于游戏场景。<br/>-'ui'：较高的回调频率，60ms/次，适用于UI更新场景。<br/>-'normal'：普通的回调频率，200ms/次，适用于低功耗场景。 |
-| success  | [AccelerometerResponse](#accelerometerresponse) | 否   | 否   | 当加速度传感器数据发生变化时的回调函数，回调参数为AccelerometerResponse对象。                          |
+| success  | [AccelerometerResponse](#accelerometerresponse) | 否   | 否   | 当加速度传感器数据发生变化时的回调函数，回调参数为AccelerometerResponse对象。                         |
 | fail     | Function                                        | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。                                     |
 
 ## AccelerometerResponse 
@@ -1232,10 +1277,10 @@ Sensor.unsubscribeGyroscope();
 **需要权限**：ohos.permission.ACCELEROMETER
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                       |
-| ---- | ------ | ---- | ---- | --------- |
-| x    | number | 否   | 否   | x轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
-| y    | number | 否   | 否   | y轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
-| z    | number | 否   | 否   | z轴的旋转角速度。单位：rad/s。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
+| ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
+| x    | number | 否   | 否   | 施加在设备x轴的加速度。单位：m/s²。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
+| y    | number | 否   | 否   | 施加在设备y轴的加速度。单位：m/s²。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
+| z    | number | 否   | 否   | 施加在设备z轴的加速度。单位：m/s²。取值范围：取值为实际上报物理量，由硬件传感器决定。静止状态下z轴加速度约为9.8 m/s²（重力加速度）。 |
 
 ## SubscribeCompassOptions
 
@@ -1244,7 +1289,7 @@ Sensor.unsubscribeGyroscope();
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 | 名称    | 类型                                | 只读 | 可选 | 说明                           |
-| ------- | ----------------------------------- | ---- | ---- | -------------------------- |
+| ------- | ----------------------------------- | ---- | ---- | ------------------------------ |
 | success | [CompassResponse](#compassresponse) | 否   | 否   | 罗盘数据改变后触发的回调函数，回调参数为CompassResponse对象。 |
 | fail    | Function                            | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。       |
 
@@ -1255,8 +1300,8 @@ Sensor.unsubscribeGyroscope();
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
 | 名称      | 类型   | 只读 | 可选 | 说明                 |
-| --------- | ------ | ---- | ---- | ---------------- |
-| direction | number | 否   | 否   | 设备面对的方向度数。单位：度（°）。取值范围：[0, 360)，0表示朝北。取值为实际上报物理量。 |
+| --------- | ------ | ---- | ---- | -------------------- |
+| direction | number | 否   | 否   | 设备面对的方向度数。单位：°（度）。取值范围：[0, 360)，0表示朝北。取值为实际上报物理量。 |
 
 ## SubscribeProximityOptions
 
@@ -1267,7 +1312,7 @@ Sensor.unsubscribeGyroscope();
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 | 名称    | 类型                                    | 只读 | 可选 | 说明                               |
-| ------- | --------------------------------------- | ---- | ---- | ------------------------------ |
+| ------- | --------------------------------------- | ---- | ---- | ---------------------------------- |
 | success | [ProximityResponse](#proximityresponse) | 否   | 否   | 距离感应数据改变后调用的回调函数，回调参数为ProximityResponse对象。 |
 | fail    | Function                                | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。           |
 
@@ -1280,7 +1325,7 @@ Sensor.unsubscribeGyroscope();
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                       |
-| -------- | ------ | ---- | ---- | -------------------------------------- |
+| -------- | ------ | ---- | ---- | ------------------------------------------ |
 | distance | number | 否   | 否   | 可见物体相对于设备显示屏的接近或远离状态。取值说明：0表示物体接近屏幕（近状态），大于0表示物体远离屏幕（远状态）。具体远状态数值由硬件传感器决定。 |
 
 ## SubscribeLightOptions
@@ -1291,8 +1336,8 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
-| 名称     | 类型                            | 只读 | 可选 | 说明                                       |
-| ------- | ------------------------------- | ---- | ----- | ------------------------- |
+| 名称    | 类型                            | 只读 | 可选 | 说明                           |
+| ------- | ------------------------------- | ---- | ---- | ------------------------------ |
 | success | [LightResponse](#lightresponse) | 否   | 否   | 光线感应数据改变后的回调函数，回调参数为LightResponse对象。 |
 | fail    | Function                        | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。       |
 
@@ -1304,9 +1349,9 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
-| 名称       | 类型   | 只读 | 可选 | 说明                                       |
-| --------- | ------ | ---- | ----- | ---------------- |
-| intensity | number | 否   | 否   | 环境光线强度。单位：lux。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
+| 名称      | 类型   | 只读 | 可选 | 说明                  |
+| --------- | ------ | ---- | ---- | --------------------- |
+| intensity | number | 否   | 否   | 环境光线强度。单位：lux（勒克斯）。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
 
 ## SubscribeStepCounterOptions
 
@@ -1316,8 +1361,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称     | 类型                                        | 只读 | 可选 | 说明                                       |
-| ------- | ------------------------------------------- | ---- | ----- | --------------------------- |
+| 名称    | 类型                                        | 只读 | 可选 | 说明                             |
+| ------- | ------------------------------------------- | ---- | ---- | -------------------------------- |
 | success | [StepCounterResponse](#stepcounterresponse) | 否   | 否   | 计步传感器数据改变后的回调函数，回调参数为StepCounterResponse对象。 |
 | fail    | Function                                    | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。         |
 
@@ -1329,8 +1374,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称   | 类型   | 只读 | 可选 | 说明                                       |
-| ----- | ------ | ---- | ----- | --------------------------- |
+| 名称  | 类型   | 只读 | 可选 | 说明                             |
+| ----- | ------ | ---- | ---- | -------------------------------- |
 | steps | number | 否   | 否   | 计步传感器重启后累计记录的步数。取值范围：大于等于0的整数，取值为实际上报物理量。传感器重启后步数从0重新开始累计。 |
 
 ## SubscribeBarometerOptions
@@ -1339,8 +1384,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                     | 只读 | 可选 | 说明                                       |
-| ------- | --------------------------------------- | ---- | ----- |--------------------------- |
+| 名称    | 类型                                    | 只读 | 可选 | 说明                             |
+| ------- | --------------------------------------- | ---- | ---- | -------------------------------- |
 | success | [BarometerResponse](#barometerresponse) | 否   | 否   | 气压计传感器数据改变后的回调函数，回调参数为BarometerResponse对象。 |
 | fail    | Function                                | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。         |
 
@@ -1350,9 +1395,9 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型     | 只读 | 可选 | 说明                                       |
-| -------- | ------ | ---- | ---- | ------------------ |
-| pressure | number | 否   | 否   | 气压值。单位：帕斯卡（Pa）。取值范围：取值为实际上报物理量，由硬件传感器决定。标准大气压约为101325 Pa。 |
+| 名称     | 类型   | 只读 | 可选 | 说明                   |
+| -------- | ------ | ---- | ---- | ---------------------- |
+| pressure | number | 否   | 否   | 气压值。单位：Pa（帕斯卡）。取值范围：取值为实际上报物理量，由硬件传感器决定。标准大气压约为101325 Pa。 |
 
 ## SubscribeHeartRateOptions
 
@@ -1362,8 +1407,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                     | 只读 | 可选 | 说明                                       |
-| -------- | -------------------------------------- | ---- | ---- | ----------------------------------------- |
+| 名称    | 类型                                    | 只读 | 可选 | 说明                                            |
+| ------- | --------------------------------------- | ---- | ---- | ----------------------------------------------- |
 | success | [HeartRateResponse](#heartrateresponse) | 否   | 否   | 心率传感器数据改变后的回调函数，回调参数为HeartRateResponse对象。回调频率固定为5s/次。 |
 | fail    | Function                                | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。                        |
 
@@ -1375,19 +1420,19 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型       | 只读 | 可选 | 说明                                       |
-| -------- | -------- | ---- | ---- | ----------------------------------------- |
-| heartRate | number | 否   | 否   | 心率值。单位：次/分钟（bpm）。取值范围：取值为实际上报物理量，由硬件传感器决定。正常成人静息心率约为60-100 bpm。 |
+| 名称      | 类型   | 只读 | 可选 | 说明     |
+| --------- | ------ | ---- | ---- | -------- |
+| heartRate | number | 否   | 否   | 心率值。单位：bpm（beats per minute，每分钟心跳次数）。取值范围：取值为实际上报物理量，由硬件传感器决定。正常成人静息心率约为60-100 bpm。 |
 
 ## SubscribeOnBodyStateOptions
 
-用于设置设备佩戴状态订阅的参数，包括回调函数。佩戴状态分为已穿戴和未穿戴两种。
+用于设置设备佩戴状态订阅的参数，包括回调函数。佩戴状态分为已佩戴和未佩戴两种。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型                                         | 只读 | 可选 | 说明                                       |
-| -------- | ------------------------------------------ | ---- | ---- | ----------------------------------------- |
-| success | [OnBodyStateResponse](#onbodystateresponse) | 否   | 否   | 传感器所在设备穿戴状态改变后的回调函数，回调参数为OnBodyStateResponse对象。 |
+| 名称    | 类型                                        | 只读 | 可选 | 说明                       |
+| ------- | ------------------------------------------- | ---- | ---- | -------------------------- |
+| success | [OnBodyStateResponse](#onbodystateresponse) | 否   | 否   | 传感器所在设备佩戴状态改变后的回调函数，回调参数为OnBodyStateResponse对象。 |
 | fail    | Function                                    | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。   |
 
 ## OnBodyStateResponse 
@@ -1396,18 +1441,18 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称    | 类型    | 只读 | 可选 | 说明                                       |
-| -------- | ----- | ---- | ---- | ----------------------------------------- |
+| 名称  | 类型    | 只读 | 可选 | 说明                                               |
+| ----- | ------- | ---- | ---- | -------------------------------------------------- |
 | value | boolean | 否   | 否   | 是否已佩戴设备。取值说明：true表示已佩戴，false表示未佩戴。 |
 
 ## GetOnBodyStateOptions
 
-获取传感器所在设备穿戴状态时的参数，包括回调函数。此接口为一次性获取，不会持续监听状态变化。
+获取传感器所在设备佩戴状态时的参数，包括回调函数。此接口为一次性获取，不会持续监听状态变化。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称     | 类型                                         | 只读 | 可选 | 说明                                       |
-| -------- | ------------------------------------------- | ---- | ---- | ----------------------------------------- |
+| 名称     | 类型                                        | 只读 | 可选 | 说明                     |
+| -------- | ------------------------------------------- | ---- | ---- | ------------------------ |
 | success  | [OnBodyStateResponse](#onbodystateresponse) | 否   | 否   | 接口调用成功的回调函数，回调参数为OnBodyStateResponse对象。 |
 | fail     | Function                                    | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。 |
 | complete | Function                                    | 否   | 是   | 接口调用结束的回调函数。无论调用成功或失败，此回调都会被执行。不填写时，接口调用结束无回调通知。 |
@@ -1420,8 +1465,8 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
-| 名称     | 类型                                                      | 只读 | 可选 | 说明                                       |
-| -------- | -------------------------------------------------------- | ---- | ---- | ----------------------------------------- |
+| 名称     | 类型                                                     | 只读 | 可选 | 说明                                                         |
+| -------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | interval | string                                                   | 否   | 否   | 频率参数，设备方向传感器的回调函数执行频率。<br/>默认值：'normal'。<br/>可选值：<br/>-'game'：极高的回调频率，20ms/次，适用于游戏场景。<br/>-'ui'：较高的回调频率，60ms/次，适用于UI更新场景。<br/>-'normal'：普通的回调频率，200ms/次，适用于低功耗场景。 |
 | success  | [DeviceOrientationResponse](#deviceorientationresponse6) | 否   | 否   | 感应到设备方向传感器数据变化后的回调函数，回调参数为DeviceOrientationResponse对象。                   |
 | fail     | Function                                                 | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。                                     |
@@ -1434,11 +1479,11 @@ Sensor.unsubscribeGyroscope();
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
 
-| 名称  | 类型    | 只读 | 可选 | 说明                                       |
-| ----- | ------ | ---- | ---- | ----------------------------------------- |
-| alpha | number | 否   | 否   | 当设备坐标X/Y和地球X/Y重合时，绕着Z轴转动的夹角。单位：度（°）。取值范围：[0, 360)。 |
-| beta  | number | 否   | 否   | 当设备坐标Y/Z和地球Y/Z重合时，绕着X轴转动的夹角。单位：度（°）。取值范围：[-180, 180)。 |
-| gamma | number | 否   | 否   | 当设备X/Z和地球X/Z重合时，绕着Y轴转动的夹角。单位：度（°）。取值范围：[-90, 90)。 |
+| 名称  | 类型   | 只读 | 可选 | 说明                                                         |
+| ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| alpha | number | 否   | 否   | 当设备坐标X/Y和地球X/Y重合时，绕着Z轴转动的夹角。单位：°（度）。取值范围：[0, 360)。 |
+| beta  | number | 否   | 否   | 当设备坐标Y/Z和地球Y/Z重合时，绕着X轴转动的夹角。单位：°（度）。取值范围：[-180, 180)。 |
+| gamma | number | 否   | 否   | 当设备X/Z和地球X/Z重合时，绕着Y轴转动的夹角。单位：°（度）。取值范围：[-90, 90)。 |
 
 ## SubscribeGyroscopeOptions<sup>6+</sup> 
 
@@ -1448,8 +1493,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称     | 类型                                     | 只读 | 可选 | 说明                                       |
-| -------- | --------------------------------------- | ---- | ---- | ----------------------------------------- |
+| 名称     | 类型                                     | 只读 | 可选 | 说明                                                         |
+| -------- | ---------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | interval | string                                   | 否   | 否   | 频率参数，陀螺仪的回调函数执行频率。<br/>默认值：'normal'。<br/>可选值：<br/>-'game'：极高的回调频率，20ms/次，适用于游戏场景。<br/>-'ui'：较高的回调频率，60ms/次，适用于UI更新场景。<br/>-'normal'：普通的回调频率，200ms/次，适用于低功耗场景。 |
 | success  | [GyroscopeResponse](#gyroscoperesponse6) | 否   | 否   | 感应到陀螺仪数据变化后的回调函数，回调参数为GyroscopeResponse对象。                           |
 | fail     | Function                                 | 否   | 是   | 接口调用失败的回调函数。回调参数为(data: string, code: number)，其中data为错误信息，code为错误码。不填写时，接口调用失败无回调通知。                                     |
@@ -1462,8 +1507,8 @@ Sensor.unsubscribeGyroscope();
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
-| 名称 | 类型   | 必填 | 说明              |
-| ---- | ------ | ---- | ----------------- |
-| x    | number | 是   | x轴的旋转角速度。 |
-| y    | number | 是   | y轴的旋转角速度。 |
-| z    | number | 是   | z轴的旋转角速度。 |
+| 名称 | 类型   | 只读 | 可选 | 说明              |
+| ---- | ------ | ---- | ---- | ----------------- |
+| x    | number | 否   | 否   | x轴的旋转角速度。单位：rad/s（弧度/秒）。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
+| y    | number | 否   | 否   | y轴的旋转角速度。单位：rad/s（弧度/秒）。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
+| z    | number | 否   | 否   | z轴的旋转角速度。单位：rad/s（弧度/秒）。取值范围：取值为实际上报物理量，由硬件传感器决定。 |

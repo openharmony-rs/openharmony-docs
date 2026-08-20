@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供通知订阅、取消订阅、通知移除等，一般情况下，只有系统应用具有这些操作权限。
+本模块提供[通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)、取消订阅、通知移除等，一般情况下，只有系统应用具有这些操作权限。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 | 参数名       | 类型                      | 必填 | 说明             |
 | ---------- | ------------------------- | ---- | ---------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅对象。     |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)对象。     |
 | info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 是   | 通知订阅信息。 |
 | callback   | AsyncCallback\<void\>     | 是   | 订阅动作回调函数。 |
 
@@ -74,7 +74,7 @@ let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -85,7 +85,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 // 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let info: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1","bundleName2"]
+  bundleNames: ['bundleName1','bundleName2']
 };
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
@@ -99,7 +99,7 @@ let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -110,7 +110,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 //不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let info: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1","bundleName2"]
+  bundleNames: ['bundleName1','bundleName2']
 };
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
@@ -139,7 +139,7 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 
 | 参数名       | 类型                   | 必填 | 说明             |
 | ---------- | ---------------------- | ---- | ---------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | 是   | 通知订阅对象。     |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)对象。     |
 | callback   | AsyncCallback\<void\>  | 是   | 订阅动作回调函数。 |
 
 **错误码：**
@@ -166,7 +166,7 @@ let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -186,7 +186,7 @@ let subscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("subscribe success");
+    console.info('subscribe success');
   }
 }
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
@@ -222,7 +222,7 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 | info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 否   | 通知订阅信息，默认为空（当为空时，表示订阅当前用户下所有应用的通知，否则表示订阅通知并指定订阅信息）。   |
 
 **返回值：**
@@ -258,7 +258,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribe(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info('subscribe success');
 }).catch((err: BusinessError) => {
   console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -273,7 +273,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribe(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info('subscribe success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribe failed, code is ${error.code}, message is ${error.message}`);
@@ -302,7 +302,7 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅者。 |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)者。 |
 
 **返回值：**
 
@@ -335,7 +335,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -350,7 +350,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
@@ -379,7 +379,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅者。 |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)者。 |
 | info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 是   | 通知订阅信息。   |
 
 **返回值：**
@@ -413,10 +413,10 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1", "bundleName2"],
+  bundleNames: ['bundleName1', 'bundleName2'],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -431,10 +431,10 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
-  bundleNames: ["bundleName1", "bundleName2"],
+  bundleNames: ['bundleName1', 'bundleName2'],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribeNotification success");
+  console.info('subscribeNotification success');
 }).catch((err: Error) => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
@@ -459,7 +459,7 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 
 **返回值：**
 
@@ -493,7 +493,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
-  console.info("subscribeSelf success");
+  console.info('subscribeSelf success');
 }).catch((err: BusinessError) => {
   console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -504,13 +504,13 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info("Consume callback: " + JSON.stringify(data));
+  console.info('Consume callback: ' + JSON.stringify(data));
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
-  console.info("subscribeSelf success");
+  console.info('subscribeSelf success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`subscribeSelf failed, code is ${error.code}, message is ${error.message}`);
@@ -535,7 +535,7 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 
 | 参数名       | 类型                   | 必填 | 说明                 |
 | ---------- | ---------------------- | ---- | -------------------- |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | 是   | 通知订阅对象。         |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)对象。         |
 | callback   | AsyncCallback\<void\>  | 是   | 取消订阅动作回调函数。 |
 
 **错误码：**
@@ -561,11 +561,11 @@ let unsubscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("unsubscribe success");
+    console.info('unsubscribe success');
   }
 }
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
@@ -581,11 +581,11 @@ let unsubscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("unsubscribe success");
+    console.info('unsubscribe success');
   }
 }
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
@@ -611,7 +611,7 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 参数名       | 类型                   | 必填 | 说明         |
 | ---------- | ---------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | 是   | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md) | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
 
 **返回值：**
 
@@ -639,13 +639,13 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
 };
 notificationSubscribe.unsubscribe(subscriber).then(() => {
-  console.info("unsubscribe success");
+  console.info('unsubscribe success');
 }).catch((err: BusinessError) => {
   console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
@@ -654,13 +654,13 @@ notificationSubscribe.unsubscribe(subscriber).then(() => {
 ArkTS-Sta示例：
 ```ts
 let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
+  console.info('subscribe disconnect');
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDisconnect: onDisconnectCallback
 };
 notificationSubscribe.unsubscribe(subscriber).then(() => {
-  console.info("unsubscribe success");
+  console.info('unsubscribe success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`unsubscribe fail, code is ${error.code}, message is ${error.message}`);
@@ -718,15 +718,15 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
@@ -741,16 +741,16 @@ let removeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let bundle: notificationManager.BundleOption = {
   // 需根据实际情况进行替换
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
@@ -810,15 +810,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
   console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
@@ -830,15 +830,15 @@ import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
   // 需根据实际情况进行替换
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
   id: 0,
-  label: "label",
+  label: 'label',
 };
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
@@ -894,7 +894,7 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -910,7 +910,7 @@ let removeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -969,7 +969,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
   console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
@@ -980,7 +980,7 @@ ArkTS-Sta示例：
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
@@ -1035,7 +1035,7 @@ let removeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -1051,7 +1051,7 @@ let removeCallback = (err: BusinessError | null ) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("remove success");
+    console.info('remove success');
   }
 }
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
@@ -1109,7 +1109,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: BusinessError) => {
   console.error(`remove fail, code is ${err.code}, message is ${err.message}`);
 });
@@ -1120,7 +1120,7 @@ ArkTS-Sta示例：
 let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
-  console.info("remove success");
+  console.info('remove success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`remove fail, code is ${error.code}, message is ${error.message}`);
@@ -1174,11 +1174,11 @@ let removeAllCallback = (err: BusinessError) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 let bundle: notificationSubscribe.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
@@ -1191,12 +1191,12 @@ let removeAllCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 let bundle: notificationSubscribe.BundleOption = {
   // 需根据实际情况进行替换
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
@@ -1246,7 +1246,7 @@ let removeAllCallback = (err: BusinessError) => {
     if (err) {
         console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeAll success");
+        console.info('removeAll success');
     }
 }
 notificationSubscribe.removeAll(removeAllCallback);
@@ -1260,7 +1260,7 @@ let removeAllCallback = (err: BusinessError | null) => {
     if (err) {
         console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeAll success");
+        console.info('removeAll success');
     }
 }
 notificationSubscribe.removeAll(removeAllCallback);
@@ -1316,7 +1316,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
@@ -1326,7 +1326,7 @@ ArkTS-Sta示例：
 ```ts
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
@@ -1382,7 +1382,7 @@ let removeAllCallback = (err: BusinessError) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -1398,7 +1398,7 @@ let removeAllCallback = (err: BusinessError | null ) => {
   if (err) {
     console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("removeAll success");
+    console.info('removeAll success');
   }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -1458,7 +1458,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail, code is ${err.code}, message is ${err.message}`);
 });
@@ -1468,7 +1468,7 @@ ArkTS-Sta示例：
 ```ts
 let userId: int = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-  console.info("removeAll success");
+  console.info('removeAll success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`removeAll fail, code is ${error.code}, message is ${error.message}`);
@@ -1479,7 +1479,7 @@ notificationSubscribe.removeAll(userId).then(() => {
 
 distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<void>
 
-触发指定通知的跨设备协同操作（例如通知跨设备点击跳转、通知跨设备快捷回复等）。使用Promise异步回调。
+触发指定通知的[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)操作（例如通知跨设备点击跳转、通知跨设备快捷回复等）。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1524,13 +1524,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let hashcode: string = 'hashcode';
 let operationInfo: notificationSubscribe.OperationInfo = {
-  actionName: "actionName",
-  userInput: "userInput",
+  actionName: 'actionName',
+  userInput: 'userInput',
   operationType: 1,
   buttonIndex: 1,
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-  console.info("distributeOperation success");
+  console.info('distributeOperation success');
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
@@ -1540,11 +1540,11 @@ ArkTS-Sta示例：
 ```ts
 let hashcode: string = 'hashcode';
 let operationInfo: notificationSubscribe.OperationInfo = {
-  actionName: "actionName",
-  userInput: "userInput",
+  actionName: 'actionName',
+  userInput: 'userInput',
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-  console.info("distributeOperation success");
+  console.info('distributeOperation success');
 }).catch((err: Error): void => {
   let error: BusinessError = err as BusinessError;
   console.error(`distributeOperation fail, code is ${error.code}, message is ${error.message}`);
@@ -1587,7 +1587,7 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 ## OperationInfo<sup>18+</sup>
 
-跨设备协同操作信息。
+[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)操作信息。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1597,5 +1597,5 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 | ----- | ------ | --- | ---- | -------- |
 | actionName    | string | 否 | 是 | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)中title字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
 | userInput | string | 否 | 是 | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1)中inputKey字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
-| operationType<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 用户点击操作类型。<br> - 0：用户点击非实况通知本体。<br> - 1：用户点击非实况通知按钮。<br> - 32：用户点击实况通知本体。<br> - 33：用户点击实况通知辅助区<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| operationType<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 用户点击操作类型。<br> - 0：用户点击非[实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)本体。<br> - 1：用户点击非实况通知按钮。<br> - 32：用户点击实况通知本体。<br> - 33：用户点击实况通知辅助区<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
 | buttonIndex<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 用户点击的非实况通知按钮序号或实况通知辅助区序号。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |

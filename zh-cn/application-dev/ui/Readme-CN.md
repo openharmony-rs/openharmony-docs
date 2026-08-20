@@ -171,7 +171,7 @@
     - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
     - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
   - 渲染控制（ArkTS-Sta）<!--arkts-rendering-control-static-->
-    - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
+    - [If：条件渲染（ArkTS-Sta）](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量 (ArkTS-Dyn)](arkts-env-system-property.md)
     - [\@Env：环境变量 (ArkTS-Sta)](state-management-static/arkts-static-new-env.md)
@@ -202,7 +202,7 @@
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
     - [创建列表 (List)](arkts-layout-development-create-list.md)
-    - [创建弧形列表 (ArcList)](arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
+    - [弧形列表 (ArcList)（圆形屏幕推荐使用）](arkts-layout-development-create-arclist.md)
     - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)<!--RP11--><!--RP11End-->
     - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)<!--RP12--><!--RP12End-->
     - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
@@ -211,7 +211,7 @@
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)
     - [文本输入 (TextInput/TextArea/Search)](arkts-common-components-text-input.md)
-    - [富文本编辑 (RichEditor)](arkts-common-components-richeditor.md)
+    - [富文本编辑（RichEditor）](arkts-common-components-richeditor.md)
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
@@ -220,11 +220,11 @@
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
-    - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）<!--RP14--><!--RP14End-->
+    - [创建弧形轮播 (ArcSwiper)（圆形屏幕推荐使用）](arkts-layout-development-arcswiper.md)<!--RP14--><!--RP14End-->
   - 按钮与选择<!--arkts-form-selection-->
     - [按钮与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
-    - [弧形按钮 (ArcButton)](arkts-advanced-components-arcbutton.md)（圆形屏幕推荐使用）
+    - [弧形按钮 (ArcButton)(圆形屏幕推荐使用)](arkts-advanced-components-arcbutton.md)
     - [单选框 (Radio)](arkts-common-components-radio-button.md)
     - [切换按钮 (Toggle)](arkts-common-components-switch.md)
   - 添加组件<!--arkts-add-component-->
@@ -244,7 +244,7 @@
        - [弹出框蒙层控制](arkts-dialog-mask.md)
      - 菜单<!--arkts-use-menu-->
        - [菜单概述](arkts-menu-overview.md)
-       - [菜单控制 (Menu)](arkts-popup-and-menu-components-menu.md)
+       - [菜单控制（Menu）](arkts-popup-and-menu-components-menu.md)
        - [不依赖UI组件的全局菜单 (openMenu)](arkts-popup-and-menu-components-uicontext-menu.md)
      - 气泡提示<!--arkts-use-popup-->
        - [气泡提示概述](arkts-popup-overview.md)
@@ -254,8 +254,8 @@
         - [绑定模态页面概述](arkts-modal-overview.md)
         - [绑定半模态页面 (bindSheet)](arkts-sheet-page.md)
         - [绑定全模态页面 (bindContentCover)](arkts-contentcover-page.md)
-     - [即时反馈 (Toast)](arkts-create-toast.md)
-     - [设置浮层 (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
+     - [即时反馈（Toast）](arkts-create-toast.md)
+     - [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
@@ -314,13 +314,13 @@
       - [自定义组件节点 (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
       - [自定义渲染节点 (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [自定义声明式节点 (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
-      - [自定义声明式节点 (BuilderNode)(ArkTS-Sta)](arkts-v1.2-user-defined-arktsNode-builderNode.md)
+      - [自定义声明式节点 (BuilderNode)（ArkTS-Sta）](arkts-v1.2-user-defined-arktsNode-builderNode.md)
       - [设置自定义节点跨语言属性](arkts-user-defined-arktsNode-crossLanguage.md)<!--RP3--><!--RP3End-->
     - 自定义绘制<!--arkts-draw-->
       - [使用画布绘制自定义图形 (Canvas)](arkts-drawing-customization-on-canvas.md)
       - [自定义绘制修改器 (DrawModifier)](arkts-user-defined-extension-drawModifier.md)
     - Modifier机制<!--arkts-modifier-->
-      - [自定义扩展概述](arkts-user-defined-modifier.md)
+      - [自定义扩展能力概述](arkts-user-defined-modifier.md)
       - [内容修改器 (ContentModifier)](arkts-common-attributes-content-modifier.md)
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
@@ -371,7 +371,7 @@
       - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的资源（Resource）](arkts-sta-interop-dyn-resource.md)
-      - [在ArkTS-Dyn中使用ArkTS-Sta的自定义组件](arkts-dyn-interop-sta-component.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta自定义组件](arkts-dyn-interop-sta-component.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）](arkts-dyn-interop-sta-builder.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）](arkts-dyn-interop-sta-wrappedbuilder.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的@BuilderParam（引用@Builder函数）](arkts-dyn-interop-sta-builderparam.md)
@@ -393,7 +393,7 @@
         - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](arkts-dyn-interop-sta-statemanagement-v2.md)
         - [在ArkTS-Dyn中使用ArkTS-Sta的@ObservedV2和@Trace（类属性变化观测）](arkts-dyn-interop-sta-observedv2.md)
         - [在ArkTS-Dyn中使用ArkTS-Sta管理应用拥有的状态](arkts-dyn-interop-sta-storages-v2.md)
-      - [状态管理V1和V2混合使用的互操作](arkts-sta-interop-dyn-statemanagement-v1-v2.md)
+      - [ArkTS-Sta与ArkTS-Dyn状态管理V1V2混用互操作校验规格](arkts-sta-interop-dyn-statemanagement-v1-v2.md)
       <!--ui-arkts-sta-interop-dyn-state-management-v1-v2-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
@@ -411,7 +411,7 @@
   - 使用文本<!--arkts-build-text-ndk-->
     - [使用Text组件](ndk-use-text-component.md)
     - [使用属性字符串](ndk-styled-string.md)
-    - [输入框文本事件监听](ndk-textarea-event.md)
+    - [添加输入框文本事件监听](ndk-textarea-event.md)
   - 媒体展示<!--arkts-build-media-ndk-->
     - [显示图片（Image）](ndk-image-component.md)
     - [使用滑块视图容器 (Swiper)](ndk-swiper.md)

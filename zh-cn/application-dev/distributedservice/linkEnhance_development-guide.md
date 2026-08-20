@@ -297,7 +297,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
    ArkTS-Dyn示例：
 
     ```ts
-    const TAG = "testDemo";
+    const TAG = "TEST";
     // client端主动连接时调用
     linkEnhanceConnect(peerDeviceId: string) {
       console.info(TAG + 'connection server deviceId = ' + peerDeviceId);

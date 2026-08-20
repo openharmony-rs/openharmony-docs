@@ -34,7 +34,7 @@ import { UIExtensionAbility } from '@kit.AbilityKit';
 
 ### 属性
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS-Dyn起始版本：** 10
 

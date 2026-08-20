@@ -9,7 +9,7 @@
 
 从API version 22开始，算法库支持该算法。
 
-对应的算法规格请查看[对称密钥加解密算法规格：ChaCha20](crypto-sym-encrypt-decrypt-spec.md#chacha20)。
+对应的算法规格请查看[对称密钥加解密算法规格：ChaCha20](crypto-encryption-decryption.md#chacha20)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -21,7 +21,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 调用[OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create)、[OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate)，生成密钥算法为ChaCha20的对称密钥（OH_CryptoSymKey）。
    
-   如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)和[随机生成对称密钥](crypto-generate-sym-key-randomly-ndk.md)理解。参考文档与示例可能存在入参差异，请注意区分。
+   如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：ChaCha20](crypto-key-generation-conversion.md#chacha20)和[随机生成对称密钥](crypto-generate-sym-key-randomly-ndk.md)理解。参考文档与示例可能存在入参差异，请注意区分。
 
 **加密**
 

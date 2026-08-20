@@ -99,7 +99,7 @@ background配置选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------ | ---- | ---- | ------- |
-| align<sup>10+</sup>          | [Alignment](ts-appendix-enums.md#alignment) | 否 | 是   | 自定义背景与组件的对齐方式。该属性仅对CustomBuilder类型的背景生效。如果设置了ignoresLayoutSafeAreaEdges，则背景的布局区域为包含了扩展安全区的范围。<br/>默认值：Alignment.Center<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| align<sup>10+</sup>          | [Alignment](ts-appendix-enums.md#alignment) | 否 | 是   | 自定义背景与组件的对齐方式。该属性仅对CustomBuilder类型的背景生效。如果设置了ignoresLayoutSafeAreaEdges，则背景的布局区域为包含了扩展安全区的范围。如果设置null/undefined，则使用Alignment.TopStart值。<br/>默认值：Alignment.Center<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
 | ignoresLayoutSafeAreaEdges | Array<[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | 否 | 是   | 配置背景要扩展到的安全区，包括：状态栏，导航栏和[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)。<br/> 默认值：<br/>- CustomBuilder背景：[]，不扩展。<br/>- ResourceColor背景：[LayoutSafeAreaEdge.ALL]，扩展至所有方向。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
 
 > **说明：**

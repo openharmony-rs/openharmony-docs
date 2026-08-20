@@ -1,4 +1,12 @@
 # 系统参数错误码
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @chenjinxiang3-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
+
+系统参数错误码用于标识系统参数操作中的错误情况，包括参数查找失败、值无效、权限不足、系统内部错误等场景。通过明确的错误码和描述，帮助开发者快速定位和解决问题。
 
 > **说明：**
 >
@@ -12,7 +20,7 @@ System parameter not found.
 
 **错误描述**
 
-workspace中没有相应节点，或者没有设置key值，系统会报此错误码。
+内存中没有设置key值，系统会报此错误码。
 
 **可能原因**
 
@@ -20,7 +28,7 @@ workspace中没有相应节点，或者没有设置key值，系统会报此错�
 
 **处理步骤**
 
-设置合法的参数。
+设置合法的参数。关于参数的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 ## 14700102 系统参数值无效
 
@@ -30,7 +38,7 @@ Invalid system parameter value.
 
 **错误描述**
 
-当系统参数value值为空字符、非法字符或长度超出范围时，系统会报此错误码。
+当系统参数value值为空字符、非法字符或长度超出范围时，系统会报此错误码。关于参数值的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 **可能原因**
 
@@ -38,9 +46,9 @@ Invalid system parameter value.
 
 **处理步骤**
 
-修改value值为合法字符串。
+修改value值为合法字符串。关于参数值的验证机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
-## 14700103 系统权限操作权限被拒绝
+## 14700103 系统操作因权限被拒绝
 
 **错误信息**
 
@@ -48,7 +56,7 @@ The operation on the system permission is denied.
 
 **错误描述**
 
-系统参数没有DAC或MAC权限时，系统会报此错误码。
+系统参数没有DAC或MAC权限时，系统会报此错误码。关于权限配置的实现机制和方法，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 **可能原因**
 
@@ -56,7 +64,7 @@ The operation on the system permission is denied.
 
 **处理步骤**
 
-添加相应的DAC或MAC权限。
+添加相应的DAC或MAC权限。关于权限配置的实现机制和方法，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 ## 14700104 系统内部错误，包括内存不足，死锁等
 
@@ -66,11 +74,11 @@ System internal error such as out memory or deadlock.
 
 **错误描述**
 
-当试图修改const属性参数、socket连接失败、内存拷贝失败等错误时，系统会报此错误码。
+当试图修改const属性参数（赋值后不可更改的参数）、socket连接失败、内存拷贝失败等错误时，系统会报此错误码。关于const属性参数的设计机制，请参见[系统参数](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 **可能原因**
 
-当socket连接异常，添加节点或获取节点失败。
+当socket连接异常，添加节点或获取节点失败，试图修改const属性参数，或内存拷贝失败。
 
 **处理步骤**
 

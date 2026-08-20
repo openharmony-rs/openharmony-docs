@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-在状态管理V1版本中，完成自定义组件封装后，调用方难以明确知晓应传入哪些变量作为组件的输入参数。当组件开发者不希望状态变量被外部初始化时，可以使用private限定符来限制当前变量不允许被外部初始化。外部初始化也需要遵循装饰器自身的规则，具体规则见[使用限制](#使用限制)。
+在状态管理V1版本中，完成自定义组件封装后，调用方难以明确知晓应传入哪些变量作为组件的输入参数。当组件开发者不希望状态变量被外部初始化时，可以使用private访问限定符来限制当前变量不允许被外部初始化。外部初始化也需要遵循装饰器自身的规则，具体规则见[使用限制](#使用限制)。
 
-ArkTS会对自定义组件的成员变量使用的访问限定符private/public/protected进行校验，当不按规范使用访问限定符private/public/protected时，会产生对应的日志信息。
+ArkTS会对自定义组件的成员变量使用的访问限定符private/public/protected进行校验，当不按规范使用访问限定符private/public/protected时，会产生对应的告警日志。
 
 在阅读本文档前，建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
@@ -26,7 +26,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 
 - 由于struct没有继承能力，上述所有的这些变量使用protected修饰时，会有编译告警日志提示。
 
-- [\@Require](./arkts-require.md)含义是当前被\@Require装饰的变量必须被外部初始化，当\@Require和private同时装饰[\@State](./arkts-state.md)/[\@Prop](./arkts-prop.md)/[\@Provide](./arkts-provide-and-consume.md)/[\@BuilderParam](./arkts-builderparam.md)/常规成员变量(不涉及更新的普通变量)时，它们的含义是自相矛盾的，会有编译告警日志提示。
+- [\@Require](./arkts-require.md)含义是当前被\@Require装饰的变量必须被外部初始化，当\@Require装饰器和private访问限定符同时修饰[\@State](./arkts-state.md)/[\@Prop](./arkts-prop.md)/[\@Provide](./arkts-provide-and-consume.md)/[\@BuilderParam](./arkts-builderparam.md)装饰的变量或常规成员变量(不涉及更新的普通变量)时，它们的含义是自相矛盾的，会有编译告警日志提示。
 
 ## 使用场景
 

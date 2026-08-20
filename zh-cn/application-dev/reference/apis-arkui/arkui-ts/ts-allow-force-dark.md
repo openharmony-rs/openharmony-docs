@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件是否使用反色能力，反色能力是在深浅色切换时自动对颜色值进行反色或变换，开发者可以通过主动设置不启用反色算法，以保持在深浅色切换时的原有逻辑。
+设置组件是否使用反色能力。反色能力是在深浅色切换时自动对颜色值进行反色或颜色变换，具体原理可参考[利用反色能力快速适配深色模式](../../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。开发者也可以通过主动设置不启用反色能力，以保持在深浅色切换时的原有逻辑。
 
 >  **说明：**
 >
@@ -28,7 +28,7 @@ ArkTS-Sta: allowForceDark(value: boolean): this
 >
 > - 当组件主动设置不使用反色能力时，该组件及其所有子组件均不启用反色能力，不受父组件、祖先组件以及自身子组件的反色配置影响。
 >
-> - 该接口仅在开启了反色能力的情况下生效，开启反色能力可参考[利用反色能力快速适配深色模式](../../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。
+> - 该接口仅在开启反色能力时生效，未开启反色能力时调用该接口设置将不产生任何效果。开启反色能力可参考[利用反色能力快速适配深色模式](../../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -44,18 +44,18 @@ ArkTS-Sta: allowForceDark(value: boolean): this
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value  | boolean   |  是  | 组件是否使用反色能力。true：组件使用反色能力；false：组件不使用反色能力。 |
+| value  | boolean   |  是  | 组件是否允许使用反色能力。true：组件允许使用反色能力；false：组件不允许使用反色能力。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件，用于链式调用。 |
 
 ## 示例
 
 ```ts
-// 组件添加allowForceDark(false)属性后，说明对当前组件不使用反色相关能力。
+// 组件添加allowForceDark(false)属性后，说明对当前组件及其所有子组件均不使用反色相关能力。
 @Entry
 @Component
 struct ComponentPage {
@@ -69,7 +69,7 @@ struct ComponentPage {
             console.info(`Text is clicked`);
           })
       }
-      .allowForceDark(false) // Column及其子组件Text不生效反色能力，不受父组件Column使用反色能力的影响。
+      .allowForceDark(false) // Column及其子组件Text不使用反色能力，不受父组件Column使用反色能力的影响。
 
       Row() {
         Button('BUTTON')
@@ -79,7 +79,7 @@ struct ComponentPage {
             console.info(`Button is clicked`);
           })
       }
-      .allowForceDark(false) // Row及其子组件Button不生效反色能力，不受父组件Column使用反色能力的影响。
+      .allowForceDark(false) // Row及其子组件Button不使用反色能力，不受父组件Column使用反色能力的影响。
     }
     .allowForceDark(true)
     .width('100%')

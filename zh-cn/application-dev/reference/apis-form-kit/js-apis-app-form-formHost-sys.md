@@ -5439,7 +5439,7 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **示例：**
@@ -5515,7 +5515,7 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **示例：**

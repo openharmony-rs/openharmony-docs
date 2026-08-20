@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -46,7 +46,7 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 20
 
