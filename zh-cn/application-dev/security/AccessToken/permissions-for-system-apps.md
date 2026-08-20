@@ -9080,7 +9080,7 @@
 
 ## ohos.permission.vehicle.AutoWiredProjection
 
-允许使用有线投屏服务，进行查询dp设备信息、投屏状态等。
+允许应用使用有线投屏服务，以查询DP设备信息、投屏状态等。
 
 **权限级别**：system_basic
 

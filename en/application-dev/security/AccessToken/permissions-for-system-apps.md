@@ -9049,7 +9049,7 @@ Allows an application on the rear armrest screen to connect to the head unit for
 
 ## ohos.permission.vehicle.AutoWiredProjection
 
-Allows the use of wired screen casting services to query DisplayPort device information, screen casting status, and more.
+Allows an application to use the wired projection service to query information such as DP device information and projection status.
 
 **Permission level**: system_basic
 
