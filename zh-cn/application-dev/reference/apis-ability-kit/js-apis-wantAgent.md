@@ -49,7 +49,7 @@ import { BusinessError } from '@ohos.base';
 // getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
     if (err.code) {
-        console.info('getWantAgent Callback err:' + JSON.stringify(err));
+        console.error('getWantAgent Callback err:' + JSON.stringify(err));
     } else { 
         console.info('getWantAgent Callback success');
     }
