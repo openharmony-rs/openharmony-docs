@@ -13,7 +13,7 @@ OpenHarmony为开发者提供了两种Docker环境，以帮助开发者快速完
 
 | 系统类型 | 运行平台 | Docker镜像仓库 | 标签 | 
 | -------- | -------- | -------- | -------- |
-| 标准系统（独立Docker环境） | Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard | 3.2 | 
+| 标准系统（独立Docker环境） | Ubuntu/Windows | swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04 | 4.0.0 | 
 | 小型系统（独立Docker环境） | Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_small | 3.2 | 
 | 轻量系统（独立Docker环境） | Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_mini | 3.2 | 
 | 轻量和小型系统（HPM Docker环境） | Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker | 0.0.3 | 
@@ -123,7 +123,7 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
    在搭建标准系统的Docker环境前，我们也需要先获取对应的Docker镜像。具体的命令如下：
      
    ```
-   docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
+   docker pull swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
    ```
 
 2. 进入Docker构建环境
@@ -133,13 +133,13 @@ Docker镜像是包含了运行环境和应用程序的轻量级、可执行的�
    - Ubuntu系统
 
       ```
-      docker run -it -v $(pwd):/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
+      docker run -it -v $(pwd):/home/openharmony swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
       ```
 
    - Windows系统（假设源码目录为`D:\OpenHarmony`）
 
       ```
-      docker run -it -v D:\OpenHarmony:/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
+      docker run -it -v D:\OpenHarmony:/home/openharmony swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
       ```
 
 ### 编译源码（标准系统）
