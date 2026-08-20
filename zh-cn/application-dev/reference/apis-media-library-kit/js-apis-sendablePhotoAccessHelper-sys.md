@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-该模块基于[Sendable](../../arkts-utils/arkts-sendable.md)对象，提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息等。
+该模块基于[Sendable](../../arkts-utils/arkts-sendable.md)对象，提供相册管理能力，包括创建相册以及访问、修改相册中的媒体数据信息等。
 
 > **说明：**
 >
@@ -58,7 +58,7 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 ```ts
 // 此处获取的phAccessHelper实例为全局对象，后续使用到phAccessHelper的地方默认为使用此处获取的对象，如未添加此段代码报phAccessHelper未定义的错误请自行添加。
-// 请在组件内获取context，确保this.getUiContext().getHostContext()返回结果为UIAbilityContext
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -88,7 +88,7 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
 - 文件名字符串长度为1~255。
-- 文件主名中不允许出现的非法英文字符。<br>API18开始，非法字符包括：\ / : * ? " < > |<br>API10-17，非法字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
+- 文件主名中不允许出现的非法英文字符。<br>API版本18开始，非法英文字符包括：\ / : * ? " < > |<br>API版本10-17，非法英文字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
 
 **系统接口**：此接口为系统接口。
 
@@ -148,7 +148,7 @@ createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions):
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
 - 文件名字符串长度为1~255。
-- 文件主名中不允许出现的非法英文字符。<br>API18开始，非法字符包括：\ / : * ? " < > |<br>API10-17，非法字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
+- 文件主名中不允许出现的非法英文字符。<br>API版本18开始，非法英文字符包括：\ / : * ? " < > |<br>API版本10-17，非法英文字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
 
 **系统接口**：此接口为系统接口。
 
@@ -334,6 +334,7 @@ getPhotoAssets(assetsData: photoAccessHelper.ValuesBucket[]): Promise&lt;PhotoAs
 phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](js-apis-sendablePhotoAccessHelper.md)的示例使用。
 
 ```ts
+import { Context } from '@kit.AbilityKit';
 async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('getPhotoAssets demo');
   let valuesArr: photoAccessHelper.ValuesBucket[] = [];
@@ -426,7 +427,7 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 **系统接口**：此接口为系统接口。
 
-**需要权限**：ohos.permission.READ\_IMAGEVIDEO
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
 
 从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出通用错误码[201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。
 
@@ -442,7 +443,7 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 | 类型                | 说明                                |
 | :------------------ | :---------------------------------- |
-| Promise&lt;string&gt; | Promise对象，返回指定分析数据结果。 |
+| Promise&lt;string&gt; | Promise对象，返回指定类型的智慧分析结果数据。 |
 
 **错误码：**
 
@@ -529,7 +530,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   try {
     console.info('getFaceIdDemo');
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo("user_display_level", 1);
+    predicates.equalTo('user_display_level', 1);
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
       predicates: predicates
