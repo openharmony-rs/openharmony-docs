@@ -21,3 +21,5 @@ Defines a configuration of a swipe action on a list item.
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [list_item.h](capi-list-item-h.md)
+
+<!--no_check-->
