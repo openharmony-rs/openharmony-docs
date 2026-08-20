@@ -6,7 +6,7 @@
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
 
-SIM卡管理模块提供了SIM卡管理的基础能力，包括获取指定卡槽SIM卡的名称、号码、ISO国家码、归属PLMN号、服务提供商名称、SIM卡状态、卡类型、是否插卡、是否激活、锁状态，设置指定卡槽SIM卡显示的名称、号码、锁状态，激活、禁用指定卡槽SIM卡，更改Pin密码，以及解锁指定卡槽SIM卡密码、SIM卡密码的解锁密码等。
+SIM卡管理模块提供了SIM卡管理的基础能力，包括获取指定卡槽SIM卡的名称、号码、ISO国家码、归属PLMN号、服务提供商名称、SIM卡状态、卡类型、是否插卡、是否激活、锁状态，设置指定卡槽SIM卡显示的名称、号码、锁状态，激活、禁用指定卡槽SIM卡，更改PIN密码，以及解锁指定卡槽SIM卡密码、SIM卡密码的解锁密码等。
 
 >**说明：** 
 >
@@ -23,7 +23,7 @@ import { sim } from '@kit.TelephonyKit';
 
 isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 
-获取指定卡槽SIM卡是否为指定运营商卡。
+获取指定卡槽SIM卡是否为指定运营商卡。例如，运营商专属应用在启动时可通过此接口判断当前SIM卡是否为自家运营商卡，从而决定是否展示运营商专属服务或功能。
 
 **系统接口：** 此接口为系统接口。
 
@@ -34,7 +34,7 @@ isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 | 参数名  | 类型                                     | 必填 | 说明                                |
 | ------ | --------------------------------------- | ---- | ---------------------------------  |
 | slotId | number                                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| operator | [OperatorSimCard](#operatorsimcard11) | 是   | 运营商卡名称。(当前仅支持中国电信卡)|
+| operator | [OperatorSimCard](#operatorsimcard11) | 是   | 运营商卡名称。（当前仅支持中国电信卡）|
 
 **返回值：**
 
@@ -67,7 +67,7 @@ try {
     let isOperatorSimCard: boolean = sim.isOperatorSimCard(slotId, operator);
     console.info(`is operator sim card: ` + isOperatorSimCard);
 } catch (err) {
-    console.error("isOperatorSimCard err: " + JSON.stringify(err));
+    console.error('isOperatorSimCard err: ' + JSON.stringify(err));
 }
 ```
 
@@ -212,7 +212,7 @@ setShowName\(slotId: number, name: string, callback: AsyncCallback\<void\>\): vo
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let name: string = "ShowName";
+let name: string = 'ShowName';
 sim.setShowName(0, name, (err: BusinessError) => {
     console.info(`callback: err->${JSON.stringify(err)}`);
 });
@@ -387,7 +387,7 @@ setShowNumber\(slotId: number, teleNumber: string, callback: AsyncCallback\<void
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------- | ---- | -------------------------------------- |
 | slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| teleNumber   | string                    | 是   | SIM卡号码。                              |
+| teleNumber   | string                    | 是   | SIM卡号码。支持数字字符，可包含加号(+)前缀。                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                             |
 
 **错误码：**
@@ -810,7 +810,7 @@ import { sim } from '@kit.TelephonyKit';
 
 let lockInfo: sim.LockInfo = {
     lockType: sim.LockType.PIN_LOCK,
-    password: "1234",
+    password: '1234',
     state: sim.LockState.LOCK_OFF
 };
 sim.setLockState(0, lockInfo, (err: BusinessError, data: sim.LockStatusResponse) => {
@@ -895,8 +895,8 @@ getLockState\(slotId: number, lockType: LockType, callback: AsyncCallback\<LockS
 | 参数名   | 类型                                      | 必填 | 说明                                    |
 | -------- | ----------------------------------------- | ---- | --------------------------------------- |
 | slotId   | number                                    | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2  |
-| callback | AsyncCallback\<[LockState](#lockstate8)\> | 是   | 回调函数。                              |
-| options  | [LockType](#locktype8)                    | 是   | 锁类型。<br/>- 1: PIN锁<br/>- 2: PIN2锁 |
+| callback | AsyncCallback\<[LockState](#lockstate8)\> | 是   | 回调函数。返回指定卡槽SIM卡的锁状态。<br/>- 0：LOCK_OFF，锁关闭状态<br/>- 1：LOCK_ON，锁开启状态 |
+| lockType  | [LockType](#locktype8)                    | 是   | 锁类型。<br/>- 1: PIN锁<br/>- 2: PIN2锁 |
 
 **错误码：**
 
@@ -943,13 +943,13 @@ getLockState\(slotId: number, lockType: LockType\): Promise\<LockState\>
 | 参数名  | 类型                   | 必填 | 说明                                    |
 | ------- | ---------------------- | ---- | --------------------------------------- |
 | slotId  | number                 | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2  |
-| options | [LockType](#locktype8) | 是   | 锁类型。<br/>- 1: PIN锁<br/>- 2: PIN2锁 |
+| lockType | [LockType](#locktype8) | 是   | 锁类型。<br/>- 1: PIN锁<br/>- 2: PIN2锁 |
 
 **返回值：**
 
 | 类型                               | 说明                                         |
 | ---------------------------------- | -------------------------------------------- |
-| Promise<[LockState](#lockstate8)\> | 以Promise形式返回获取指定卡槽SIM卡的锁状态。 |
+| Promise<[LockState](#lockstate8)\> | 以Promise形式返回获取指定卡槽SIM卡的锁状态。<br/>- 0：LOCK_OFF，锁关闭状态<br/>- 1：LOCK_ON，锁开启状态 |
 
 **错误码：**
 
@@ -998,7 +998,7 @@ alterPin\(slotId: number, newPin: string, oldPin: string, callback: AsyncCallbac
 | -------- | ----------------------------------------------------------- | ---- | -------------------------------------- |
 | slotId   | number                                                      | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | callback | AsyncCallback\<[LockStatusResponse](#lockstatusresponse7)\> | 是   | 回调函数。                             |
-| newPin   | string                                                      | 是   | 新密码。                               |
+| newPin   | string                                                      | 是   | 新密码。取值范围为4-8位数字。                               |
 | oldPin   | string                                                      | 是   | 旧密码。                               |
 
 **错误码：**
@@ -1023,7 +1023,7 @@ alterPin\(slotId: number, newPin: string, oldPin: string, callback: AsyncCallbac
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.alterPin(0, "1234", "0000", (err: BusinessError, data: sim.LockStatusResponse) => {
+sim.alterPin(0, '1234', '0000', (err: BusinessError, data: sim.LockStatusResponse) => {
     console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
@@ -1205,7 +1205,7 @@ unlockPin\(slotId: number, pin: string, callback: AsyncCallback\<LockStatusRespo
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| pin      | string                                                       | 是   | SIM卡的密码。                            |
+| pin      | string                                                       | 是   | SIM卡密码的解锁密码。取值范围为8位数字。                            |
 | callback | AsyncCallback&lt;[LockStatusResponse](#lockstatusresponse7)> | 是   | 回调函数。                             |
 
 **错误码：**
@@ -1296,7 +1296,7 @@ sim.unlockPin(0, pin).then((data: sim.LockStatusResponse) => {
 
 unlockPuk\(slotId: number, newPin: string, puk: string, callback: AsyncCallback\<LockStatusResponse\>\): void
 
-解锁指定卡槽SIM卡密码的解锁密码。使用callback异步回调。
+使用PUK解锁码解除指定卡槽SIM卡PIN码的锁定状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1310,7 +1310,7 @@ unlockPuk\(slotId: number, newPin: string, puk: string, callback: AsyncCallback\
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | newPin   | string                                                       | 是   | 重置SIM卡的密码。                        |
-| puk      | string                                                       | 是   | SIM卡密码的解锁密码。                    |
+| puk      | string                                                       | 是   | SIM卡密码的解锁密码。取值范围为8位数字。                    |
 | callback | AsyncCallback&lt;[LockStatusResponse](#lockstatusresponse7)&gt; | 是   | 回调函数。                             |
 
 **错误码：**
@@ -1404,7 +1404,7 @@ sim.unlockPuk(0, newPin, puk).then((data: sim.LockStatusResponse) => {
 
 unlockPin2\(slotId: number, pin2: string, callback: AsyncCallback\<LockStatusResponse\>\): void
 
-解锁指定卡槽SIM卡密码。使用callback异步回调。
+解锁指定卡槽SIM卡的PIN2密码。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1508,7 +1508,7 @@ sim.unlockPin2(0, pin2).then((data: sim.LockStatusResponse) => {
 
 unlockPuk2\(slotId: number, newPin2: string, puk2: string, callback: AsyncCallback\<LockStatusResponse\>\): void
 
-解锁指定卡槽SIM卡密码的解锁密码。使用callback异步回调。
+使用PUK2解锁码解除指定卡槽SIM卡PIN2码的锁定状态。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1911,7 +1911,7 @@ sim.getVoiceMailNumber(0).then((data: string) => {
 
 setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string, callback: AsyncCallback\<void\>\): void
 
-设置语音邮件信息。使用callback异步回调。
+设置语音信箱信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1925,7 +1925,7 @@ setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string, callback
 | ---------- | -------------------- | ---- | -------------------------------------- |
 | slotId     | number               | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | mailName   | string               | 是   | 邮件名字。                               |
-| mailNumber | string               | 是   | 邮件号码。                              |
+| mailNumber | string               | 是   | 语音信箱号码。支持数字字符，可包含加号(+)前缀。                              |
 | callback   | AsyncCallback<void\> | 是   | 回调函数。                             |
 
 **错误码：**
@@ -1950,7 +1950,7 @@ setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string, callback
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com", (err: BusinessError) => {
+sim.setVoiceMailInfo(0, 'mail', 'xxx@xxx.com', (err: BusinessError) => {
     console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
@@ -1960,7 +1960,7 @@ sim.setVoiceMailInfo(0, "mail", "xxx@xxx.com", (err: BusinessError) => {
 
 setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string\): Promise\<void\>
 
-设置语音邮件信息。使用Promise异步回调。
+设置语音信箱信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2889,7 +2889,7 @@ sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbers
 
 sendEnvelopeCmd\(slotId: number, cmd: string, callback: AsyncCallback\<void\>\): void
 
-发送信封命令。使用callback异步回调。
+发送信封命令，用于向SIM卡的STK（SIM Tool Kit）应用传递事件信息（如菜单选择、呼叫控制事件等）。典型场景为STK应用开发中需要与SIM卡应用交互时使用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2902,7 +2902,7 @@ sendEnvelopeCmd\(slotId: number, cmd: string, callback: AsyncCallback\<void\>\):
 | 参数名   | 类型                 | 必填 | 说明                                   |
 | -------- | -------------------- | ---- | -------------------------------------- |
 | slotId   | number               | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| cmd      | string               | 是   | 命令。                                   |
+| cmd      | string               | 是   | 命令。取值为十六进制编码的BER-TLV格式APDU命令字符串。                                   |
 | callback | AsyncCallback<void\> | 是   | 回调函数。                                     |
 
 **错误码：**
@@ -2989,7 +2989,7 @@ sim.sendEnvelopeCmd(0, "ls").then(() => {
 
 sendTerminalResponseCmd\(slotId: number, cmd: string, callback: AsyncCallback\<void\>\): void
 
-发送终端响应命令。使用callback异步回调。
+发送终端响应命令，用于在STK（SIM Tool Kit）会话中向SIM卡反馈终端对主动式命令的处理结果。典型场景为STK应用接收到SIM卡下发命令后，处理完成需回复响应时使用。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3002,7 +3002,7 @@ sendTerminalResponseCmd\(slotId: number, cmd: string, callback: AsyncCallback\<v
 | 参数名   | 类型                 | 必填 | 说明                                   |
 | -------- | -------------------- | ---- | -------------------------------------- |
 | slotId   | number               | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| cmd      | string               | 是   | 命令。                                   |
+| cmd      | string               | 是   | 终端响应命令内容，具体格式遵循3GPP TS 11.14规范。                                   |
 | callback | AsyncCallback<void\> | 是   | 回调函数。                             |
 
 **错误码：**
@@ -3049,7 +3049,7 @@ sendTerminalResponseCmd\(slotId: number, cmd: string\): Promise\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| cmd    | string | 是   | 命令。                                   |
+| cmd    | string | 是   | 终端响应命令内容，具体格式遵循3GPP TS 11.14规范。                                   |
 
 **返回值：**
 
@@ -3200,7 +3200,7 @@ sim.unlockSimLock(0, persoLockInfo).then((data: sim.LockStatusResponse) => {
 
 getDsdsMode\(callback: AsyncCallback\<DsdsMode\>\): void
 
-获取设备支持的DSDS（Dual Sim Dual Standby） Mode。使用callback异步回调。
+获取设备支持的DSDS（Dual Sim Dual Standby）Mode，用于判断设备支持的双卡双待能力级别，典型场景为双卡管理类应用根据设备能力适配双卡通话、数据业务等功能。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3212,7 +3212,7 @@ getDsdsMode\(callback: AsyncCallback\<DsdsMode\>\): void
 
 | 参数名   | 类型                        | 必填 | 说明       |
 | -------- | --------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;DsdsMode&gt; | 是   | 回调函数。返回设备支持的DSDS Mode。<br/>- 0：DSDS_MODE_V2<br/>- 1：DSDS_MODE_V3<br/>- 2：DSDS_MODE_V5_TDM<br/>- 3：DSDS_MODE_V5_DSDA |
+| callback | AsyncCallback&lt;[DsdsMode](#dsdsmode11)&gt; | 是   | 回调函数。返回设备支持的DSDS Mode。<br/>- 0：DSDS_MODE_V2<br/>- 1：DSDS_MODE_V3<br/>- 2：DSDS_MODE_V5_TDM<br/>- 3：DSDS_MODE_V5_DSDA |
 
 **错误码：**
 
@@ -3258,7 +3258,7 @@ getDsdsMode\(\): Promise\<DsdsMode\>
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| Promise\<DsdsMode\> | 以Promise形式返回设备支持的DSDS Mode。<br/>- 0：DSDS_MODE_V2<br/>- 1：DSDS_MODE_V3<br/>- 2：DSDS_MODE_V5_TDM<br/>- 3：DSDS_MODE_V5_DSDA |
+| Promise\<[DsdsMode](#dsdsmode11)\> | 以Promise形式返回设备支持的DSDS Mode。<br/>- 0：DSDS_MODE_V2<br/>- 1：DSDS_MODE_V3<br/>- 2：DSDS_MODE_V5_TDM<br/>- 3：DSDS_MODE_V5_DSDA |
 
 **错误码：**
 
@@ -3291,7 +3291,7 @@ promise.then((data: sim.DsdsMode) => {
 
 getSimAuthentication\(slotId: number, authType: AuthType, authData: string\): Promise\<SimAuthenticationResponse\>
 
-SIM卡鉴权。使用Promise异步回调。
+SIM卡鉴权，用于通过SIM卡完成身份验证（如EAP-SIM/EAP-AKA鉴权），典型场景为Wi-Fi网络接入认证、运营商安全服务等需要对用户身份进行SIM卡级别验证的场景。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3305,7 +3305,7 @@ SIM卡鉴权。使用Promise异步回调。
 | -------- | -------------------------------- | ---- | -------------------------------------- |
 | slotId   | number                           | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
 | authType | [AuthType](#authtype14)          | 是   | 身份验证类型。                         |
-| authData | string                           | 是   | 密码或其他认证信息。                   |
+| authData | string                           | 是   | 密码或其他认证信息。鉴权数据格式与authType取值相关，需传入对应鉴权类型所需的十六进制编码字符串。                   |
 
 **返回值：**
 
@@ -3350,13 +3350,15 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[IccAccountInfo](js-apis-sim.md#iccaccountinfo10)&gt;&gt; | 是   | 回调函数，获取SIM卡状态信息。|
+| callback | AsyncCallback&lt;Array&lt;[IccAccountInfo](js-apis-sim.md#iccaccountinfo10)&gt;&gt; | 是   | 回调函数，返回SIM卡账户信息列表。|
 
 **错误码：**
 
@@ -3366,6 +3368,7 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001 | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |
@@ -3378,7 +3381,7 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.getAllSimAccountInfoList((err: BusinessError) => {
+sim.getAllSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo>) => {
     console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
@@ -3390,6 +3393,8 @@ getAllSimAccountInfoList(): Promise\<Array\<IccAccountInfo\>\>
 获取所有SIM卡的账户信息列表。返回一个解析为IccAccountInfo数组的Promise对象。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
 **系统接口：** 此接口为系统接口。
 
@@ -3418,7 +3423,7 @@ getAllSimAccountInfoList(): Promise\<Array\<IccAccountInfo\>\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | null>> {
+sim.getAllSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
     try {
       const accountInfoList: sim.IccAccountInfo[] =
         await sim.getAllSimAccountInfoList();
@@ -3433,7 +3438,7 @@ async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | nu
 
 setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
 
-设置SIM卡的标签索引。使用Promise异步回调。
+设置SIM卡的标签索引，用于在双卡管理界面中标识和排序SIM卡，典型场景为设置应用中对SIM卡进行自定义标记或调整展示顺序。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -3446,7 +3451,7 @@ setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | simId | number | 是   | SIM账户信息标识的simId。<br/>范围：[1, 500]。 |
-| simLabelIndex    | number | 是   | SIM卡的标签索引。<br/>范围：[1, 10]。                                   |
+| simLabelIndex    | number | 是   | SIM卡的标签索引，用于设置SIM卡在界面上的显示排列位置，值越小显示越靠前。<br/>范围：[1, 10]。                                   |
 
 **返回值：**
 
@@ -3462,9 +3467,11 @@ setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.                     |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                      |
 | 8300002 | Service connection failed.                               |
-| 8300003  |Do not have sim card.|
+| 8300003  | System internal error.  |
+| 8300004  | Do not have sim card. |
 | 8300999  |Unknown error code.|
 
 **示例：**
@@ -3473,7 +3480,7 @@ setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-sim.setSimLabelIndex(1,  0).then(() => {
+sim.setSimLabelIndex(1, 1).then(() => {
     console.info(`setSimLabelIndex success.`);
 }).catch((err: BusinessError) => {
     console.error(`setSimLabelIndex failed, promise: err->${JSON.stringify(err)}`);
@@ -3516,15 +3523,15 @@ sim.setSimLabelIndex(1,  0).then(() => {
 
 | 名称         | 值   | 说明                                             |
 | ------------ | ---- | ------------------------------------------------ |
-| PN_PIN_LOCK  | 0    | 定制网络PIN锁(参照 3GPP TS 22.022 [33])。         |
-| PN_PUK_LOCK  | 1    | 定制网络PUk锁。                                   |
-| PU_PIN_LOCK  | 2    | 定制网络子集PIN锁(参照 3GPP TS 22.022 [33])。     |
+| PN_PIN_LOCK  | 0    | 定制网络PIN锁（参照 3GPP TS 22.022 [33]）。         |
+| PN_PUK_LOCK  | 1    | 定制网络PUK锁。                                   |
+| PU_PIN_LOCK  | 2    | 定制网络子集PIN锁（参照 3GPP TS 22.022 [33]）。     |
 | PU_PUK_LOCK  | 3    | 定制网络子集PUK锁。                               |
-| PP_PIN_LOCK  | 4    | 定制服务提供者PIN锁(参照 3GPP TS 22.022 [33])。   |
+| PP_PIN_LOCK  | 4    | 定制服务提供者PIN锁（参照 3GPP TS 22.022 [33]）。   |
 | PP_PUK_LOCK  | 5    | 定制服务提供者PUK锁。                             |
-| PC_PIN_LOCK  | 6    | 定制企业PIN锁(参照 3GPP TS 22.022 [33])。         |
-| PC_PUK_LOCK  | 7    | 定制企业Puk锁。                                   |
-| SIM_PIN_LOCK | 8    | 定制SIM的PIN锁(参照 3GPP TS 22.022 [33])。        |
+| PC_PIN_LOCK  | 6    | 定制企业PIN锁（参照 3GPP TS 22.022 [33]）。         |
+| PC_PUK_LOCK  | 7    | 定制企业PUK锁。                                   |
+| SIM_PIN_LOCK | 8    | 定制SIM的PIN锁（参照 3GPP TS 22.022 [33]）。        |
 | SIM_PUK_LOCK | 9    | 定制SIM的PUK锁。                                  |
 
 ## LockStatusResponse<sup>7+</sup>
@@ -3542,7 +3549,7 @@ sim.setSimLabelIndex(1,  0).then(() => {
 
 ## LockInfo<sup>8+</sup>
 
-锁状态响应。
+锁信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3551,12 +3558,12 @@ sim.setSimLabelIndex(1,  0).then(() => {
 | 名称     |           类型           | 必填 |   说明   |
 | -------- | ------------------------ | ---- | -------- |
 | lockType | [LockType](#locktype8)   |  是  | 锁类型。 |
-| password | string                   |  是  | 密码。   |
+| password | string                   |  是  | 密码。仅支持数字字符，长度范围为4-8位。   |
 | state    | [LockState](#lockstate8) |  是  | 锁状态。 |
 
 ## PersoLockInfo<sup>8+</sup>
 
-锁状态响应。
+定制锁类型信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3593,9 +3600,9 @@ sim.setSimLabelIndex(1,  0).then(() => {
 | 名称         | 类型   | 必填 |    说明    |
 | ------------ | ------ | ---- | ---------- |
 | alphaTag     | string |  是  | 标签。     |
-| number       | string |  是  | 号码。     |
-| recordNumber | number |  否  | 记录编号,如未传入，默认值为undefined。 |
-| pin2         | string |  否  | pin2密码。 |
+| number       | string |  是  | 号码。支持数字字符及*、#、+等拨号符号。     |
+| recordNumber | number |  否  | 记录编号，如未传入，默认值为undefined。 |
+| pin2         | string |  否  | pin2密码。如未传入，默认值为undefined。 |
 
 ## ContactType<sup>8+</sup>
 
@@ -3621,7 +3628,7 @@ sim.setSimLabelIndex(1,  0).then(() => {
 |                             名称                        |                             值                         |         说明         |
 | ------------------------------------------------------- | ------------------------------------------------------ | -------------------- |
 | KEY_VOICE_MAIL_NUMBER_STRING                            | "voice_mail_number_string"                             | 语音邮件号码。       |
-| KEY_IMS_SWITCH_ON_BY_DEFAULT_BOOL                       | "ims_switch_on_by_default_bool"                        | 固定拨号。           |
+| KEY_IMS_SWITCH_ON_BY_DEFAULT_BOOL                       | "ims_switch_on_by_default_bool"                        | IMS默认开关。           |
 | KEY_HIDE_IMS_SWITCH_BOOL                                | "hide_ims_switch_bool"                                 | 是否隐藏ims开关。    |
 | KEY_VOLTE_SUPPORTED_BOOL                                | "volte_supported_bool"                                 | 是否支持volte模式。  |
 | KEY_NR_MODE_SUPPORTED_LIST_INT_ARRAY                    | "nr_mode_supported_list_int_array"                     | nr模式支持的列表。   |
@@ -3703,8 +3710,11 @@ Icc账户信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**起始版本:** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称       | 类型    | 只读|可选| 说明             |
 | -------------| ------ | ---- | ---------- |---------- |
-| simLabelIndex  | number  |  否 | 是| 卡槽位置。  <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| operatorName | string  |  否 | 是| SIM卡运营商名称。    <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| simLabelIndex  | number  |  否 | 是| SIM卡的标签索引。 |
+| operatorName | string  |  否 | 是| SIM卡运营商名称。    |
