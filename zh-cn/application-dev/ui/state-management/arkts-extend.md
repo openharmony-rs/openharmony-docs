@@ -146,63 +146,150 @@
     }
   }
   ```
-![](figures/arkts-extend-1.gif)
+  
+  ![](figures/arkts-extend-1.gif)
 
 ## 限制条件
 
 - 和\@Styles不同，\@Extend仅支持在全局定义，不支持在组件内部定义。
 
-> **说明：**
->
-> 仅限在当前文件内使用，不支持导出。
->
-> 如果要实现export功能，推荐使用[AttributeModifier](../../ui/arkts-user-defined-extension-attributeModifier.md)。
-
-【反例】
-
-```ts
-@Entry
-@Component
-struct FancyUse {
-  // 错误写法，@Extend仅支持在全局定义，不支持在组件内部定义
-  @Extend(Text) function fancy (fontSize: number) {
+  > **说明：**
+  >
+  > 仅限在当前文件内使用，不支持导出。
+  >
+  > 如果要实现export功能，推荐使用[AttributeModifier](../arkts-user-defined-extension-attributeModifier.md)。
+  
+  【反例】
+  
+  ```ts
+  @Entry
+  @Component
+  struct FancyUse {
+    // 错误写法，@Extend仅支持在全局定义，不支持在组件内部定义。
+    @Extend(Text) function fancy (fontSize: number) {
+      .fontSize(fontSize)
+    }
+  
+    build() {
+      Row({ space: 10 }) {
+        Text('Fancy')
+          .fancy(16)
+      }
+    }
+  }
+  ```
+  
+  【正例】
+  <!-- @[Extend_Positive_Example_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendPositiveExample.ets) --> 
+  
+  ``` TypeScript
+  // 正确写法
+  @Extend(Text)
+  function fancy(fontSize: number) {
     .fontSize(fontSize)
   }
-
-  build() {
-    Row({ space: 10 }) {
-      Text('Fancy')
-        .fancy(16)
+  
+  @Entry
+  @Component
+  struct FancyUse {
+    build() {
+      Row({ space: 10 }) {
+        Text('Fancy')
+          .fancy(16)
+      }
     }
   }
-}
-```
+  ```
 
-【正例】
-<!-- @[Extend_Positive_Example_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendPositiveExample.ets) -->
+- \@Extend装饰的函数仅限当前文件使用，不支持导出，不支持在其他文件调用。
 
-``` TypeScript
-// 正确写法
-@Extend(Text)
-function fancy(fontSize: number) {
-  .fontSize(fontSize)
-}
+  【反例】
 
-@Entry
-@Component
-struct FancyUse {
-  build() {
-    Row({ space: 10 }) {
-      Text('Fancy')
-        .fancy(16)
+  ``` TypeScript
+    // 错误写法 不要在pageTwo当中使用在其他文件比如pageOne中定义的@Extend函数。
+    // pageOne.ets
+    @Extend(Button)
+    function ButtonUse() {
+      .width(100)
+      .buttonStyle(ButtonStyleMode.NORMAL)
     }
-  }
-}
-```
+
+    @Entry
+    @Component
+    struct extendUseOne {
+      build() {
+        Row() {
+          Button()
+            .ButtonUse()
+            .height(200)
+        }
+      }
+    }
+
+    // pageTwo.ets
+    @Entry
+    @Component
+    struct TextUse {
+      build() {
+        Row() {
+          Text('this is TextUse')
+
+          Button()
+            .ButtonUse()  // 会有编译告警提示: Property 'ButtonUse' does not exist  on type 'ButtonAttribute'.
+            .height(50)
+        }
+      }
+    }
+  ```
+
+  【正例】
+
+  ``` TypeScript
+    // 正确写法 在pageTwo文件当中可以定义与pageOne文件中的@Extend函数不重名的@Extend函数。
+    // pageOne.ets
+    @Extend(Button)
+    function ButtonUse() {
+      .width(100)
+      .buttonStyle(ButtonStyleMode.NORMAL)
+    }
+
+    @Entry
+    @Component
+    struct extendUseOne {
+      build() {
+        Row() {
+          Button()
+            .ButtonUse()
+            .height(200)
+        }
+      }
+    }
+
+    // pageTwo.ets
+    @Extend(Button)
+    function ButtonUse2() {
+      .width(200)
+      .buttonStyle(ButtonStyleMode.EMPHASIZED)
+    }
+
+    @Entry
+    @Component
+    struct TextUse {
+      build() {
+        Row() {
+          Text('this is TextUse')
+
+          Button()
+            .ButtonUse2()
+            .height(50)
+        }
+      }
+    }
+  ```
 
 ## 使用场景
 
-以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontstyle)、[fontWeight](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontweight) 和[backgroundColor](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)样式。
+以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontstyle)、[fontWeight](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontweight) 和[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)样式。
 <!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) --> 
 
 ``` TypeScript
@@ -232,7 +319,7 @@ struct FancyUse {
 ```
 ![](figures/arkts-extend-2.png)
 
-使用@Extend将样式组合复用，示例如下。
+使用\@Extend将样式组合复用，示例如下。
 <!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
 
 ``` TypeScript
