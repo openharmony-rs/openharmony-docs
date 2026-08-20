@@ -88,6 +88,7 @@ getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -132,6 +133,7 @@ getDLPGatheringPolicy(callback: AsyncCallback&lt;GatheringPolicyType&gt;): void
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -189,6 +191,7 @@ DLP文件管理应用打开受保护文件前，需要先为目标应用安装DL
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -241,6 +244,7 @@ DLP文件管理应用打开受保护文件前，需要先为目标应用安装DL
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -298,6 +302,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -350,6 +355,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callba
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -405,6 +411,7 @@ DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱�
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -449,6 +456,7 @@ DLP管理应用退出或不再需要追踪沙箱状态变化时，取消事件�
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -513,6 +521,7 @@ DLP应用需要通过标准文件接口访问加密文件内容时，先添加li
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -581,6 +590,7 @@ DLP应用需要通过标准文件接口访问加密文件内容时使用此接�
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -650,6 +660,7 @@ stopFuseLink(): Promise&lt;void&gt;
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -717,6 +728,7 @@ stopFuseLink(callback: AsyncCallback&lt;void&gt;): void
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -787,6 +799,7 @@ link文件替换完成后，需要恢复读写关联以继续正常的文件访�
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -856,6 +869,7 @@ link文件替换完成后需要恢复读写关联。
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -932,6 +946,7 @@ replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1001,6 +1016,7 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): v
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1080,6 +1096,7 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1149,6 +1166,7 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1224,6 +1242,7 @@ recoverDLPFile(plaintextFd: number): Promise&lt;void&gt;
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1300,6 +1319,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback&lt;void&gt;): void
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1382,6 +1402,7 @@ closeDLPFile(): Promise&lt;void&gt;
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1452,6 +1473,7 @@ closeDLPFile(callback: AsyncCallback&lt;void&gt;): void
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
@@ -1527,6 +1549,7 @@ DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象�
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1605,6 +1628,7 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1684,6 +1708,7 @@ DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先�
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1756,6 +1781,7 @@ DLP管理应用调用该接口，打开DLP文件。使用callback异步回调。
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.1.0+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |

@@ -57,6 +57,7 @@ DLP错误码的枚举。
 | 枚举项 | 描述 |
 | -- | -- |
 | ERR_OH_SUCCESS = 0 | 表示操作成功。 |
+| OH_DLP_NOT_SUPPORTED = 801 | 表示当前设备由于没有DLP特性导致能力不支持。<br>**起始版本：** 26.1.0 |
 | ERR_OH_INVALID_PARAMETER = 19100001 | 表示入参错误。 |
 | ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | 表示非DLP沙箱应用。 |
 | ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | 表示DLP沙箱应用不允许调用此接口。 |
@@ -110,7 +111,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - （API 26.1.0新增）当前设备由于没有DLP特性导致能力不支持。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_GetOriginalFileName()
 
@@ -136,7 +137,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - （API 26.1.0新增）当前设备由于没有DLP特性导致能力不支持。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_IsInSandbox()
 
@@ -161,7 +162,7 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - （API 26.1.0新增）当前设备由于没有DLP特性导致能力不支持。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_SetSandboxAppConfig()
 
@@ -186,7 +187,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - （API 26.1.0新增）当前设备由于没有DLP特性导致能力不支持。<br>         19100001 - 入参错误。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
 
 ### OH_DLP_GetSandboxAppConfig()
 
@@ -211,7 +212,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - （API 26.1.0新增）当前设备由于没有DLP特性导致能力不支持。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。<br>         19100018 - 应用未授权。 |
 
 ### OH_DLP_CleanSandboxAppConfig()
 
@@ -229,6 +230,6 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - （API 26.1.0新增）当前设备由于没有DLP特性导致能力不支持。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
 
 
