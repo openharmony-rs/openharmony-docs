@@ -587,7 +587,7 @@ removeValue(uri: string, key: number, config: DataProxyConfig): Promise&lt;void&
 | 参数名     | 类型                        | 必填 | 说明                    |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | uri      | string   | 是   | 要操作的数据所对应的URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
-| key      | number   | 是   | 添加的值所对应的Key。 <br>取值范围为全体整数。 |
+| key      | number   | 是   | 要移除的值所对应的Key。 <br>取值范围为全体整数。 |
 | config   | [DataProxyConfig](#dataproxyconfig20)   | 是   | 表示数据代理操作的配置。 |
 
 **返回值：**
