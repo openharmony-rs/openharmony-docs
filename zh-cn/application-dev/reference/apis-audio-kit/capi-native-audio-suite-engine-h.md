@@ -316,7 +316,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline*
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | 用户读取音频数据时所使用的数组指针，每个一维数组大小需一致。 |
-| int32_t* responseSize | 管线写入audioDataArray的音频数据大小。系统会确保每个一维数组被填充的数据大小一致，单位为字节。 |
+| int32_t* responseSize | 管线写入audioDataArray的音频数据大小。系统会确保每个一维数组被填充的数据大小一致，单位为字节（Byte）。 |
 | bool* finishedFlag | 标记当前管线是否渲染完成。 |
 
 **返回：**
