@@ -13,7 +13,7 @@ OpenHarmony provides the following two types of docker environments for you to q
 
 | System Type| Operating Platform| Docker Image Repository| Tag| 
 | -------- | -------- | -------- | -------- |
-| Standard system (standalone Docker environment)| Ubuntu/Windows | swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04 | 4.0.0 | 
+| Standard system (standalone Docker environment)| Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard | 3.2 | 
 | Small system (standalone Docker environment)| Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_small | 3.2 | 
 | Mini system (standalone Docker environment)| Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_mini | 3.2 | 
 | Mini and small systems (HPM Docker environment)| Ubuntu/Windows | swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker | 0.0.3 | 
@@ -124,7 +124,7 @@ A Docker image is a lightweight executable software package that contains applic
    Before setting up a Docker environment for standard-system devices, you need to obtain the corresponding Docker image by running the following command:
      
    ```
-   docker pull swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
+   docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
    ```
 
 2. Access the Docker build environment.
@@ -134,13 +134,13 @@ A Docker image is a lightweight executable software package that contains applic
    - Ubuntu
 
       ```
-      docker run -it -v $(pwd):/home/openharmony swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
+      docker run -it -v $(pwd):/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
       ```
 
    - Windows (example source code directory: D:\OpenHarmony)
 
       ```
-      docker run -it -v D:\OpenHarmony:/home/openharmony swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
+      docker run -it -v D:\OpenHarmony:/home/openharmony swr.cn-south-1.myhuaweicloud.com/openharmony-docker/docker_oh_standard:3.2
       ```
 
 ### Building for Standard-System Devices
