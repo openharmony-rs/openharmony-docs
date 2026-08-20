@@ -4561,7 +4561,7 @@ ArkTS-Sta: getSystemPanelCurrentInsets(displayId: long): Promise&lt;SystemPanelI
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 21
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5176,6 +5176,8 @@ keyboardController.exitCurrentInputType().then(() => {
 ## MessageHandler<sup>15+</sup>
 
 自定义通信对象。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 > **说明：**
 >
