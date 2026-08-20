@@ -52090,7 +52090,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":44,
 						"name":"get_file_location_example",
 						"start_line":26
 					}
