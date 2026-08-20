@@ -15,6 +15,12 @@ PageNodeInfo用于描述自动填充场景下的页面节点信息，包含节�
 
 **起始版本：** 26.0.0
 
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
+
 ## PageNodeInfo
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
