@@ -39020,7 +39020,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Promise.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":58,
 						"name":"specify_pem_string_convert_rsa_keypair",
 						"start_line":16
 					}
@@ -39060,7 +39060,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_asynchronous.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":65,
 						"name":"async_symmetry_encrypt_decrypt",
 						"start_line":16
 					}
@@ -39070,7 +39070,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_synchronous.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":64,
 						"name":"sync_symmetry_encrypt_decrypt",
 						"start_line":16
 					}
@@ -39085,7 +39085,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/ecdsa_signature_verification.cpp",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":77,
 						"name":"verify_signatures_with_ecdsa_keys_c",
 						"start_line":15
 					}
@@ -39786,7 +39786,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/pkcs8ecc/PKCS8ECC.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":43,
 						"name":"pkcs8_convert_ecc_pri_keypair",
 						"start_line":16
 					}
@@ -40248,7 +40248,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHSync.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":55,
 						"name":"use_ecdh_for_key_negotiation_sync",
 						"start_line":16
 					}
@@ -40581,7 +40581,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Sync.ets",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":107,
 						"name":"rsa_pkcs1_encrypt_decrypt_sync",
 						"start_line":16
 					}
@@ -40778,7 +40778,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionSync.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":80,
 						"name":"sm2_encrypt_decrypt_sync",
 						"start_line":16
 					}
@@ -40843,7 +40843,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_signature_verification.cpp",
 				"functions":[
 					{
-						"end_line":88,
+						"end_line":92,
 						"name":"verify_signatures_with_sm2_key_pair_c",
 						"start_line":15
 					}
@@ -64988,7 +64988,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_signature_restoration.cpp",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":97,
 						"name":"pkcs1_recover_rsa_keypair_sign",
 						"start_line":16
 					}
