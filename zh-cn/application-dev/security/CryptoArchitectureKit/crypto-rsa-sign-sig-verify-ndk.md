@@ -30,74 +30,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 调用[OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy)等释放内存。
 
-```c++
-#include "CryptoArchitectureKit/crypto_common.h"
-#include "CryptoArchitectureKit/crypto_signature.h"
-#include "CryptoArchitectureKit/crypto_asym_key.h"
-
-static OH_Crypto_ErrCode doTestRsaSignature() {
-   OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
-   OH_CryptoKeyPair *keyPair = nullptr;
-   OH_CryptoSign *sign = nullptr;
-   Crypto_DataBlob signData = {.data = nullptr, .len = 0};
-
-   uint8_t plainText[] = {
-      0x43, 0x31, 0x7d, 0xb5, 0x85, 0x2e, 0xd4, 0xef, 0x08, 0x7a, 0x17, 0x96, 0xbc, 0x7c, 0x8f, 0x80,
-      0x8c, 0xa7, 0x63, 0x7f, 0x26, 0x89, 0x8f, 0xf0, 0xfa, 0xa7, 0x51, 0xbd, 0x9c, 0x69, 0x17, 0xf3,
-      0xd1, 0xb5, 0xc7, 0x12, 0xbf, 0xcf, 0x91, 0x25, 0x82, 0x23, 0x6b, 0xd6, 0x64, 0x52, 0x77, 0x93,
-      0x01, 0x9d, 0x70, 0xa3, 0xf4, 0x92, 0x16, 0xec, 0x3f, 0xa7, 0x3c, 0x83, 0x8d, 0x40, 0x41, 0xfc,
-   }; // 待验证数据，仅供参考。
-   Crypto_DataBlob msgBlob = {
-      .data = reinterpret_cast<uint8_t *>(plainText),
-      .len = sizeof(plainText)
-   };
-
-   OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create((const char *)"RSA2048", &keyCtx);
-   if (ret != CRYPTO_SUCCESS) {
-      return ret;
-   }
-   ret = OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-
-   OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPair);
-   ret = OH_CryptoSign_Create((const char *)"RSA1024|PKCS1|SHA256", &sign);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-
-   ret = OH_CryptoSign_Init(sign, privKey);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-   ret = OH_CryptoSign_Update(sign, &msgBlob);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-   ret = OH_CryptoSign_Final(sign, nullptr, &signData);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-
-   OH_CryptoSign_Destroy(sign);
-   OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-   OH_CryptoKeyPair_Destroy(keyPair);
-   return CRYPTO_SUCCESS;
-}
-```
+<!-- @[pkcs1_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_signature.cpp) -->
 
 **验签开发步骤**
 
@@ -313,86 +246,7 @@ OH_Crypto_ErrCode DoTestRsaSignatureRecover()
 
 5. 调用[OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy)等释放内存。
 
-```c++
-#include "CryptoArchitectureKit/crypto_common.h"
-#include "CryptoArchitectureKit/crypto_asym_key.h"
-#include "CryptoArchitectureKit/crypto_signature.h"
-
-static OH_Crypto_ErrCode doTestRsaSignSeg() {
-   OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
-   OH_CryptoKeyPair *keyPair = nullptr;
-   OH_CryptoSign *sign = nullptr;
-   Crypto_DataBlob signData = {.data = nullptr, .len = 0};
-
-   uint8_t plainText[] = {
-      0x43, 0x31, 0x7d, 0xb5, 0x85, 0x2e, 0xd4, 0xef, 0x08, 0x7a, 0x17, 0x96, 0xbc, 0x7c, 0x8f, 0x80,
-      0x8c, 0xa7, 0x63, 0x7f, 0x26, 0x89, 0x8f, 0xf0, 0xfa, 0xa7, 0x51, 0xbd, 0x9c, 0x69, 0x17, 0xf3,
-      0xd1, 0xb5, 0xc7, 0x12, 0xbf, 0xcf, 0x91, 0x25, 0x82, 0x23, 0x6b, 0xd6, 0x64, 0x52, 0x77, 0x93,
-      0x01, 0x9d, 0x70, 0xa3, 0xf4, 0x92, 0x16, 0xec, 0x3f, 0xa7, 0x3c, 0x83, 0x8d, 0x40, 0x41, 0xfc,
-   };
-   Crypto_DataBlob msgBlob = {
-      .data = reinterpret_cast<uint8_t *>(plainText),
-      .len = sizeof(plainText)
-   };
-
-   OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create((const char *)"RSA2048", &keyCtx);
-   if (ret != CRYPTO_SUCCESS) {
-      return ret;
-   }
-   ret = OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-
-   OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPair);
-   ret = OH_CryptoSign_Create((const char *)"RSA1024|PKCS1|SHA256", &sign);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-
-   int blockSize = 20;
-   int cnt_s = 64 / blockSize;
-   int rem_s = 64 % blockSize;
-   ret = OH_CryptoSign_Init(sign, privKey);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-   for (int i = 0; i < cnt_s; i++) {
-      msgBlob.len = blockSize;
-      ret = OH_CryptoSign_Update(sign, &msgBlob);
-      if (ret != CRYPTO_SUCCESS) {
-         OH_CryptoSign_Destroy(sign);
-         OH_CryptoKeyPair_Destroy(keyPair);
-         OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-         return ret;
-      }
-      msgBlob.data += blockSize;
-   }
-   if (rem_s > 0) {
-      msgBlob.len = rem_s;
-      ret = OH_CryptoSign_Final(sign, &msgBlob, &signData);
-      if (ret != CRYPTO_SUCCESS) {
-         OH_CryptoSign_Destroy(sign);
-         OH_CryptoKeyPair_Destroy(keyPair);
-         OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-         return ret;
-      }
-   }
-
-   msgBlob.data -=  64 - rem_s;
-   msgBlob.len = 64;
-   OH_CryptoSign_Destroy(sign);
-   OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-   OH_CryptoKeyPair_Destroy(keyPair);
-   return CRYPTO_SUCCESS;
-}
-```
+<!-- @[pkcs1_seg_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_segment_signature.cpp) -->
 
 **验签开发步骤**
 
@@ -404,7 +258,7 @@ static OH_Crypto_ErrCode doTestRsaSignSeg() {
 
 4. 调用[OH_CryptoVerify_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final)，对数据进行验签。
 
-<!-- @[pkcs1_seg_verify_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_segment_signature.cpp) -->
+<!-- @[pkcs1_seg_verify_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_segment_signature_verify.cpp) -->
 
 ``` C++
 #include "signing_signature_verification.h"
@@ -525,72 +379,7 @@ bool DoTestRsaSignatureSeg()
 4. 调用[OH_CryptoSign_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final)，获取签名后的数据。
 5. 调用[OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy)等释放内存。
 
-```c++
-#include "CryptoArchitectureKit/crypto_common.h"
-#include "CryptoArchitectureKit/crypto_signature.h"
-#include "CryptoArchitectureKit/crypto_asym_key.h"
-
-static OH_Crypto_ErrCode doTestRsaPssSignSeg() {
-   OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
-   OH_CryptoKeyPair *keyPair = nullptr;
-   OH_CryptoSign *sign = nullptr;
-   Crypto_DataBlob signData = {.data = nullptr, .len = 0};
-
-   uint8_t plainText[] = {
-      0x13, 0xa7, 0x73, 0xe8, 0xb8, 0x22, 0x99, 0x72, 0x98, 0x29, 0xae, 0x74, 0xa8, 0x4a, 0xea, 0xa9,
-   };
-   Crypto_DataBlob msgBlob = {
-      .data = reinterpret_cast<uint8_t *>(plainText),
-      .len = sizeof(plainText)
-   };
-
-   OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create((const char *)"RSA2048", &keyCtx);
-   if (ret != CRYPTO_SUCCESS) {
-      return ret;
-   }
-   ret = OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-
-   OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPair);
-   ret = OH_CryptoSign_Create((const char *)"RSA2048|PSS|SHA256|MGF1_SHA256", &sign);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-
-   ret = OH_CryptoSign_Init(sign, privKey);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-   ret = OH_CryptoSign_Update(sign, &msgBlob);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-   ret = OH_CryptoSign_Final(sign, nullptr, &signData);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-
-   OH_CryptoSign_Destroy(sign);
-   OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-   OH_CryptoKeyPair_Destroy(keyPair);
-   return CRYPTO_SUCCESS;
-}
-
-```
+<!-- @[pss_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pss_signature_tool.cpp) -->
 
 **验签开发步骤**
 
