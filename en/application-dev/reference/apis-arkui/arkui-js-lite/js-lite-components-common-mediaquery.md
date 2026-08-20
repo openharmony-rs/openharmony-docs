@@ -6,15 +6,15 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:27:44.683Z pushedAt=2026-06-05T12:07:28.401Z -->
+<!-- md-trans-meta sourceCommit=f86c5b882ae45457afc7f83ccf6537e3546ff236 translatedAt=2026-08-20T10:40:05.657Z pushedAt=2026-08-20T10:50:12.087Z -->
 
 >  **NOTE**
 >
->  - This API is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - The **media** attribute uses the actual size, physical pixel, and screen resolution of the device by default.
+>  - The **media** attribute uses the actual size and physical pixel of the device by default.
 
-Media queries are widely used. You can use them to modify the application style based on the device type or specific features and device parameters (such as the screen resolution). Specifically, media queries allow you to design a layout style based on the device and application attributes.
+Media queries are widely used. You can use them to modify the app style based on the device type or specific features and device parameters (such as the screen size). Specifically, media queries allow you to design a layout style based on the device and app attributes.
 
 ## CSS Syntax Rules
 
@@ -56,19 +56,19 @@ You can use media logical operators to implement complex media query. The follow
 
 ## Media Features
 
-| Type              | Description                                      |
+| Type               | Description                                       |
 | ---------------- | ---------------------------------------- |
-| height           | Height of the display area on the application page.                            |
-| min-height       | Minimum height of the display area on the application page.                          |
-| max-height       | Maximum height of the display area on the application page.                          |
-| width            | Width of the display area on the application page.                            |
-| min-width        | Minimum width of the display area on the application page.                          |
-| max-width        | Maximum width of the display area on the application page.                          |
-| aspect-ratio     | Ratio of the width to the height of the display area on the application page.<br>Example: **aspect-ratio: 1/2**|
-| min-aspect-ratio | Minimum ratio of the width to the height of the display area on the application page.                    |
-| max-aspect-ratio | Maximum ratio of the width to the height of the display area on the application page.                    |
-| device-type      | Device type. <br/>Options: **liteWearable**, **smartVision**                    |
-| round-screen     | Screen type. The value **true** means that the screen is round, and **false** means the opposite.|
+| height           | Height of the display area on the application page.                             |
+| min-height       | Minimum height of the display area on the application page.                           |
+| max-height       | Maximum height of the display area on the application page.                           |
+| width            | Width of the display area on the application page.                             |
+| min-width        | Minimum width of the display area on the application page.                           |
+| max-width        | Maximum width of the display area on the application page.                           |
+| aspect-ratio     | Ratio of the width to the height of the display area on the application page.<br/>Example: **aspect-ratio: 1/2** |
+| min-aspect-ratio | Minimum ratio of the width to the height of the display area on the application page.                     |
+| max-aspect-ratio | Maximum ratio of the width to the height of the display area on the application page.                     |
+| device-type      | Type of the device.<br/>Available options: **liteWearable** and **smartVision** |
+| round-screen     | Screen type. The value **true** means that the screen is round, and **false** means the opposite. |
 
 ## Sample Code for the Common Media Feature
 

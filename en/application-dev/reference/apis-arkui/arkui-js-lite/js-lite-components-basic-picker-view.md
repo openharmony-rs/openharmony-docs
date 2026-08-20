@@ -1,10 +1,12 @@
 # picker-view
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2b4a363c0c9697348978b2b0cf80698398efa944 translatedAt=2026-08-20T10:40:00.275Z pushedAt=2026-08-20T10:50:12.084Z -->
 
 The **picker-view** component provides the view that shows an embedded scrollable picker on the screen.
 
@@ -12,11 +14,9 @@ The **picker-view** component provides the view that shows an embedded scrollabl
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 Not supported
-
 
 ## Properties
 
@@ -41,7 +41,6 @@ Time picker (**type** is **time**)
 | -------- | -------- | -------- | -------- | -------- |
 | selected | string | 00:00 | No| Default value of the time picker, in the format of HH:mm.<br>|
 
-
 ## Events
 
 Text picker (**type** is **text**)
@@ -55,7 +54,6 @@ Time picker (**type** is **time**)
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
 | change | {&nbsp;hour:&nbsp;hour,&nbsp;minute:&nbsp;minute} | Triggered when a value is specified for the time picker.<br>|
-
 
 ## Styles
 
@@ -88,7 +86,6 @@ Time picker (**type** is **time**)
 
 ## Example
 
-
 ```html
 <!-- xxx.hml -->
 <div class="container" @swipe="handleSwipe">
@@ -98,7 +95,6 @@ Time picker (**type** is **time**)
   <picker-view class="time-picker" type="time" ref="pickerViewObj" selected="{{defaultTime}}" @change="handleChange"></picker-view>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -122,13 +118,19 @@ Time picker (**type** is **time**)
 }
 ```
 
-
 ```js
 /* xxx.js */
+import app from '@system.app';
+
 export default {
   data: {
     defaultTime: "",
     time: "",
+  },
+  handleSwipe(event) {
+    if (event.direction === "right") {
+      app.terminate();
+    }
   },
   onInit() {
     this.defaultTime = this.now();
