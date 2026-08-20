@@ -7,13 +7,18 @@
 <!--Tester: @gongzheng92-->
 <!--Adviser: @w_Machine_cc-->
 
-本模块提供视频质量处理能力，目前支持视频AI-HDR增强相关功能。
+本模块为开发者提供视频质量处理能力，目前支持视频AI-HDR增强相关的功能。
 
-本模块包含一个基础类：[VideoProcessor](#videoprocessor)类。
+通过本模块，开发者可创建[VideoProcessor](#videoprocessor)实例，查询AI-HDR增强功能的当前状态，并可注册状态变更监听，以便在AI-HDR增强功能状态发生变化时及时感知并做出相应处理。
+
+当需要在应用中开启或使用AI-HDR增强能力，并随时掌握该功能的开启/关闭状态时，可使用本模块的接口。
+
+本模块接口在使用前，需先通过[videoProcessing.createVideoProcessor](#videoprocessingcreatevideoprocessor)获取[VideoProcessor](#videoprocessor)实例，并在应用退出或不再需要视频处理能力时释放相关资源，以避免资源占用。
 
 > **说明：**
 >
 > 本模块接口仅可在Stage模型下使用。
+
 **起始版本：** 26.0.0
 
 ## 导入模块
@@ -63,8 +68,6 @@ function createVideoProcessor() {
 视频处理类，提供视频质量处理相关功能，目前支持AI-HDR增强能力。
 
 **起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 ### getStatus
 
@@ -184,8 +187,6 @@ function offStatusChange() {
 
 ## VideoProcessorStatus
 
-interface VideoProcessorStatus
-
 视频处理器的统一状态。
 
 **起始版本：** 26.0.0
@@ -197,8 +198,6 @@ interface VideoProcessorStatus
 | aiHdr | [VideoProcessorAiHdrStatus](#videoprocessoraihdrstatus) | 否  | 是  | AI-HDR增强状态。 |
 
 ## VideoProcessorAiHdrStatus
-
-interface VideoProcessorAiHdrStatus
 
 AI-HDR增强功能的状态。
 
