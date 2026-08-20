@@ -23,7 +23,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 isWifiActive(): boolean
 
-查询WLAN开关是否已使能。
+查询WLAN开关是否已激活。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -33,7 +33,7 @@ isWifiActive(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:已使能，&nbsp;false:未使能。 |
+  | boolean | true:已激活，&nbsp;false:未激活。 |
 
 **错误码：**
 
@@ -127,7 +127,7 @@ disableWifi(): void
 
 scan(): void
 
-启动WLAN扫描，使用前先使能WLAN。
+启动WLAN扫描，使用前先开启WLAN。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.startScan](#wifimanagerstartscan21)替代。
@@ -537,7 +537,6 @@ WLAN热点信息。
 | WIDTH_80MHZ_PLUS | 4 | 80MHZ<sup>+</sup>。 |
 | WIDTH_INVALID | 5 | 无效值 |
 
-
 ## WifiDeviceConfig
 
 WLAN配置信息。
@@ -556,7 +555,7 @@ WLAN配置信息。
 | netId<sup>22+</sup> | number | 否 | 是 | 分配的网络ID。 |
 | eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | 否 | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时需要填写。 |
 | wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | 否 | 是 | WAPI身份验证协议配置。只有securityType为WIFI_SEC_TYPE_WAPI_CERT或WIFI_SEC_TYPE_WAPI_PSK时需要填写。 |
-| showNoInternetDialog | boolean | 否 | 是 | 当首次网络探测检测到无互联网连接时，是否显示提示框。若为false，默认网络绑定到蜂窝网络，不显示提示框；若为true，显示无互联网连接提示框，提示用户选择默认网络绑定。默认值为true。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| showNoInternetDialog | boolean | 否 | 是 | 当首次网络探测检测到无互联网连接时，是否显示提示框。若为false，默认网络绑定到蜂窝网络，不显示提示框；若为true，显示无互联网连接提示框，提示用户选择默认网络绑定。默认值为true。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## WifiEapConfig<sup>10+</sup>
 
@@ -708,7 +707,7 @@ WAPI认证方式的枚举。
 
 addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加候选网络配置，使用Promise异步回调，使用前先使能WLAN。
+添加候选网络配置，使用Promise异步回调，使用前先开启WLAN。
 
 - 通过传入[WifiDeviceConfig](#wifideviceconfig)对象，配置WLAN网络的详细信息，如SSID、密码、安全类型等。
 - 返回一个Promise对象，解析后得到一个数字，表示配置的ID，用于区分和管理不同WLAN配置。
@@ -768,7 +767,7 @@ addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&g
 
 添加候选网络配置，使用callback异步回调。
 
-- 将指定的WLAN设备配置添加为候选网络，添加后的网络在没有连接记录的情况下无法触发自动回连，可以通过 connectToCandidateConfig或connectToCandidateConfigWithUserAction 方法实现候选网络连接，页面确认连接成功后，可实现自动回连。
+- 将指定的WLAN设备配置添加为候选网络，添加后的网络在没有连接记录的情况下无法触发自动回连，可以通过[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)或[connectToCandidateConfigWithUserAction](#wifimanagerconnecttocandidateconfigwithuseraction20)方法实现候选网络连接，页面确认连接成功后，可实现自动回连。
 - 候选网络属于应用维度添加的网络配置，和系统网络配置是相互隔离的，在系统WLAN页面不可见。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -1556,7 +1555,6 @@ getLinkedInfoSync(): WifiLinkedInfo
 | isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hilink，true表示支持，&nbsp;false表示不支持。 |
 | wifiLinkType<sup>18+</sup> | [WifiLinkType](#wifilinktype18) | 否 | 是 |  Wi-Fi7连接类型。  |
 
-
 ## WifiLinkType<sup>18+</sup>
 
 枚举，Wi-Fi7连接类型。
@@ -1587,7 +1585,6 @@ getLinkedInfoSync(): WifiLinkedInfo
 | DISCONNECTING | 5 | WLAN连接正在断开。 |
 | DISCONNECTED | 6 | WLAN连接已断开。 |
 | UNKNOWN | 7 | WLAN连接建立失败。 |
-
 
 ## wifiManager.isConnected
 
@@ -1630,7 +1627,6 @@ isConnected(): boolean
 
 ```
 
-
 ## wifiManager.disconnect<sup>15+</sup>
 
 disconnect(): void
@@ -1664,7 +1660,6 @@ disconnect(): void
   }
 
 ```
-
 
 ## wifiManager.isFeatureSupported
 
@@ -1727,7 +1722,6 @@ isFeatureSupported(featureId: number): boolean
   }
 
 ```
-
 
 ## wifiManager.getDeviceMacAddress<sup>15+</sup>
 
@@ -1920,9 +1914,6 @@ getCountryCode(): string
   }
 ```
 
-
-
-
 ## wifiManager.isBandTypeSupported<sup>10+</sup>
 
 isBandTypeSupported(bandType: WifiBandType): boolean
@@ -2014,7 +2005,7 @@ isMeteredHotspot(): boolean
 
 isHotspotActive(): boolean
 
-热点是否已使能。
+热点是否已开启。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2024,7 +2015,7 @@ isHotspotActive(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:已使能，&nbsp;false:未使能。|
+  | boolean | true:已开启，&nbsp;false:未开启。|
 
 **错误码：**
 

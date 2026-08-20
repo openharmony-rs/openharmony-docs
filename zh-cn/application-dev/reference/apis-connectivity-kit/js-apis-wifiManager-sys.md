@@ -117,7 +117,7 @@ getScanAlwaysAllowed(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean| 是否始终允许扫描。 true 表示允许触发扫描，false表示在禁用wifi时不允许触发扫描。|
+| boolean| 是否始终允许扫描。true表示允许触发扫描，false表示在禁用Wi-Fi时不允许触发扫描。|
 
 **错误码：**
 
@@ -280,7 +280,7 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 connectToDevice(config: WifiDeviceConfig): void
 
-连接到指定网络（如果当前已经连接到热点，请先使用disconnect（）接口断开连接）。
+连接到指定网络（如果当前已经连接到热点，请先断开连接）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -391,7 +391,7 @@ getSupportedFeatures(): number
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | WiFi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B。|
@@ -611,7 +611,7 @@ try {
 
 disableNetwork(netId: number): void
 
-去使能网络配置。
+关闭网络配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -911,7 +911,7 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | 是 | 是否使能hiLink。true:使能，&nbsp;false:去使能。 |
-| bssid | string | 是 | 热点的mac地址，例如：00:11:22:33:44:55。 |
+| bssid | string | 是 | 热点的MAC地址，例如：00:11:22:33:44:55。 |
 | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **错误码：**
@@ -953,7 +953,7 @@ factoryReset(): void
 
 **系统接口：** 此接口为系统接口。
 
-重置wifi相关配置并关闭WiFi。
+重置Wi-Fi相关配置并关闭Wi-Fi。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 
@@ -985,7 +985,7 @@ try {
 
 enableHotspot(): void
 
-使能热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。
+开启热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1019,7 +1019,7 @@ try {
 
 disableHotspot(): void
 
-去使能热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。
+关闭热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1999,7 +1999,7 @@ wifi支持的能力。
 
 setWifiCapability(capability: WifiCapability, enable: boolean): void
 
-设置wifi能力。
+设置Wi-Fi能力。
 
 **起始版本：** 26.0.0
 
@@ -2016,7 +2016,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | capability | [WifiCapability](#wificapability) | 是 | wifi能力枚举。 |
-| enable | boolean | 是 | 是否使能wifi能力，true表示使能，false表示不使能。 |
+| enable | boolean | 是 | 是否开启Wi-Fi能力，true表示开启，false表示关闭。 |
 
 **错误码：**
 
@@ -2042,7 +2042,7 @@ wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true)
 
 getWifiCapability(capability: WifiCapability): boolean
 
-获取wifi支持的能力。
+获取Wi-Fi支持的能力。
 
 **起始版本：** 26.0.0
 
