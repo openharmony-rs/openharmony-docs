@@ -31680,6 +31680,16 @@
 						"start_line":38
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendPositiveExample.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"Extend_Positive_Example_five",
+						"start_line":29
+					}
+				]
 			}
 		]
 	},
