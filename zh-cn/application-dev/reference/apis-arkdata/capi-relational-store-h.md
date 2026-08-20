@@ -1733,8 +1733,8 @@ typedef void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | void *context | 表示数据观察者的上下文。 |
-| const char *values[] |  表示更改的端云帐户。 |
-| uint32_t count | 表示更改的端云帐户数量。 |
+| const char *values[] |  表示更改的端云账户。 |
+| uint32_t count | 表示更改的端云账户数量。 |
 
 ### Rdb_DetailsObserver()
 

@@ -857,7 +857,7 @@ predicates.greaterThan("AGE", 18)
 
 lessThan(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据字段为valueType且value小于指定值的字段。该方法等同于SQL语句中的"<"。
+配置谓词以匹配数据字段为ValueType且value小于指定值的字段。该方法等同于SQL语句中的"<"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
