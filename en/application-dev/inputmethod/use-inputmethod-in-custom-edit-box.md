@@ -1,8 +1,8 @@
-# Using the Input Method in a Custom Edit Box
+﻿# Using the Input Method in a Custom Edit Box
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

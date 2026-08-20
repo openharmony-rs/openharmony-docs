@@ -1,8 +1,8 @@
-# @ohos.inputMethod (输入法框架)
+﻿# @ohos.inputMethod (输入法框架)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

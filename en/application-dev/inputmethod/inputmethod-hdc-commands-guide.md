@@ -1,8 +1,8 @@
-# Managing the Input Method Using hdc Commands
+﻿# Managing the Input Method Using hdc Commands
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

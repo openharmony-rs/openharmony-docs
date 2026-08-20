@@ -1,9 +1,9 @@
-# 不可获焦窗口中输入框与输入法交互指南
+﻿# 不可获焦窗口中输入框与输入法交互指南
 
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

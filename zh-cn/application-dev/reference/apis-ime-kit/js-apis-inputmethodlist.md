@@ -1,8 +1,8 @@
-# @ohos.inputMethodList (输入法切换列表控件)
+﻿# @ohos.inputMethodList (输入法切换列表控件)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

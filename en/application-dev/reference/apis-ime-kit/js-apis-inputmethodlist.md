@@ -1,8 +1,8 @@
-# @ohos.inputMethodList (Input Method List)
+﻿# @ohos.inputMethodList (Input Method List)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

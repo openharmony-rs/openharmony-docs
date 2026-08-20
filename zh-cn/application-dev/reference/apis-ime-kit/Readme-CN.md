@@ -1,8 +1,8 @@
-# IME Kit（输入法开发服务）<!--ime-api-->
+﻿# IME Kit（输入法开发服务）<!--ime-api-->
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

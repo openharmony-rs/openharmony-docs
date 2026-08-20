@@ -1,8 +1,8 @@
-# inputmethod_text_editor_proxy_capi.h
+﻿# inputmethod_text_editor_proxy_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

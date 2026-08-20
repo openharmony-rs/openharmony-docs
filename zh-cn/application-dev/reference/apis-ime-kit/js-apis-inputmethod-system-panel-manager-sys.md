@@ -1,8 +1,8 @@
-# @ohos.inputMethodSystemPanelManager (输入法系统面板管理器)(系统接口)
+﻿# @ohos.inputMethodSystemPanelManager (输入法系统面板管理器)(系统接口)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

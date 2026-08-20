@@ -1,8 +1,8 @@
-# @ohos.inputMethod.Panel (Input Method Panel)
+﻿# @ohos.inputMethod.Panel (Input Method Panel)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

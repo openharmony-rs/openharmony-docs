@@ -1,9 +1,9 @@
-# Input Box and Input Method Interaction in Non-Focusable Windows
+﻿# Input Box and Input Method Interaction in Non-Focusable Windows
 
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

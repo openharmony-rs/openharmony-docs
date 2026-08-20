@@ -1,8 +1,8 @@
-# @ohos.inputMethod.ExtraConfig (Input Method Extension Information)
+﻿# @ohos.inputMethod.ExtraConfig (Input Method Extension Information)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
