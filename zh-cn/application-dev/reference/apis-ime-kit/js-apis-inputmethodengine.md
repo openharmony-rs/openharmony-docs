@@ -7436,7 +7436,7 @@ inputClient.sendMessage(msgId, msgParam).then(() => {
 
 recvMessage(msgHandler?: MessageHandler): void;
 
-注册或取消注册Messagehandler。
+注册或取消注册MessageHandler。
 
 > **说明：**
 >
