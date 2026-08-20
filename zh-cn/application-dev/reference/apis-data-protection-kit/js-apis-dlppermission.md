@@ -2070,13 +2070,7 @@ dlpPermission.getControlledAppLists().then((res) => {
 
 可以执行的插件命令枚举。
 
-例如：企业安全应用可以调用卸载插件命令，卸载透明加解密能力。
-
-**起始版本：**  26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Security.DataLossPrevention
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2107,10 +2101,10 @@ processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
 
 **参数：**
 
-| code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令。 |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令，例如：安装插件。 |
-| message | string | 是 | 要进行处理的信息。 |
+| code | [PluginCmd](#plugincmd) | 是 | 表示要进行处理的插件命令。|
+| message | string | 是 | 要进行处理的信息。长度不超过4096字节，超出此范围抛出错误码19100001。|
 
 **返回值：**
 
