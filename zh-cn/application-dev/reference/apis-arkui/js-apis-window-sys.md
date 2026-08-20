@@ -343,7 +343,6 @@ ArkTS-Sta: minimizeAll(id: long, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003  | This window manager service works abnormally.                |
 
@@ -441,7 +440,6 @@ ArkTS-Sta: minimizeAll(id: long): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003  | This window manager service works abnormally.                |
 
@@ -496,6 +494,8 @@ minimizeAllWithExclusion(displayId: number, excludeWindowId: number): Promise&lt
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **设备行为差异：** 该接口在Phone设备中可正常调用，在其他设备中返回801错误码。
@@ -519,7 +519,7 @@ minimizeAllWithExclusion(displayId: number, excludeWindowId: number): Promise&lt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A nonsystem application calls a system API. |
 | 1300002 | This window state is abnormal. Possible cause: 1.Window is nullptr; 2. Failed to find specified window by id. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1575,7 +1575,7 @@ ArkTS-Sta: setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
@@ -2023,9 +2023,9 @@ export default class EntryAbility extends UIAbility {
 
 ## window.moveMainWindowToTargetDisplay
 
-ArkTS-Dyn: moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
+ArkTS-Dyn: moveMainWindowToTargetDisplay(displayId: number, windowId: number, userId?: number): Promise&lt;void&gt;
 
-ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int): Promise&lt;void&gt;
+ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int, userId?: int): Promise&lt;void&gt;
 
 将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
@@ -2050,6 +2050,7 @@ ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int): Promis
 | -------------- | ------ | ----- | ----------------------- |
 | displayId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为非负整数，可通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.displayId获取；也可通过获取[Display](js-apis-display.md#display)对象的[id](js-apis-display.md#属性)属性获取此参数。 |
 | windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
+| userId | number | 否    | 指定的用户ID，取值范围需大于等于0。此参数不填或值小于等于-1时，表示当前用户。|
 
 **返回值：**
 
@@ -2063,12 +2064,13 @@ ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int): Promis
 
 | 错误码ID | 错误信息                                      |
 | ------- | --------------------------------------------- |
-| 202     | Permission verification failed, non-system application uses system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not found or has been destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300008 | The display device is abnormal.           |
+| 1300004 | Unauthorized operation. Possible cause: The window is not a main window. |
+| 1300008 | Invalid display. Possible cause: 1. DisplayId is a negative number or not exists. |
+| 1300016 | Parameter error. Possible cause: 1. The userId is not exist.           |
 
 **示例：**
 
@@ -2636,7 +2638,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Invalid window type. Only main windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2746,7 +2748,7 @@ setWindowMode(mode: WindowMode): Promise&lt;void&gt;
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Invalid window type. Only main windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2873,7 +2875,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally.|
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in floating mode.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in the floating mode.|
 
 **示例：**
 
@@ -3027,7 +3029,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -3115,7 +3117,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -3196,7 +3198,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -3272,7 +3274,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -4543,7 +4545,7 @@ ArkTS-Sta: raiseMainWindowAboveTarget(windowId: int): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported, and target must not be modal or topmost. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid Parameter range. 2. Invalid parameter length. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **示例：**
 
@@ -5733,7 +5735,7 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed, non-system application uses system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
@@ -5777,7 +5779,7 @@ getRotationLocked(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed, non-system application uses system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
@@ -6488,7 +6490,7 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The WindowStage is running in the background. 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 

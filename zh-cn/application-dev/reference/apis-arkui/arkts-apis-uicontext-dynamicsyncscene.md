@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供组件自定义场景下相关帧率的配置。
+提供组件自定义场景下相关帧率的配置，支持设置期望帧率范围和获取当前帧率配置，适用于动画、手势等需要动态调整帧率的场景，有助于优化渲染性能和功耗。DynamicSyncScene（动态同步场景）用于将组件的帧率需求与系统帧率调度机制进行同步，开发者可通过场景类型区分不同的帧率需求（如动画场景、跟手场景），系统会根据当前激活的场景综合决策最终帧率。
 
 > **说明：**
 >
@@ -26,7 +26,7 @@ setFrameRateRange(range: ExpectedFrameRateRange): void
 
 设置期望帧率范围。
 
-最终结果不一定是设置的帧率，会由系统能力做综合决策，尽量满足开发者的设置帧率。
+最终结果不一定是设置的帧率，会由系统综合决策，尽量满足开发者设置的帧率。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -40,7 +40,7 @@ setFrameRateRange(range: ExpectedFrameRateRange): void
 
 | 参数名      | 类型         | 必填   | 说明   |
 | -------- | ---------- | ---- | ---- |
-| range | [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11)| 是    | 设置期望的帧率范围。<br />默认值：{min:0, max:120, expected: 120} |
+| range | [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11)| 是    | 设置期望的帧率范围。其中min表示期望的最小帧率，max表示期望的最大帧率，expected表示期望的最优帧率，设置为0时，将跟随应用的帧率，需满足min ≤ expected ≤ max。<br/>默认值：{min: 0, max: 120, expected: 120} |
 
 **示例：**
 
@@ -51,13 +51,13 @@ import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
 @Component
 struct Frame {
   @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
-  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
   private scenes: SwiperDynamicSyncScene[] = [];
 
   build() {
     Column() {
-      Text("动画"+ JSON.stringify(this.ANIMATION))
-      Text("跟手"+ JSON.stringify(this.GESTURE))
+      Text("动画" + JSON.stringify(this.ANIMATION))
+      Text("跟手" + JSON.stringify(this.GESTURE))
       Row(){
         Swiper() {
           Text("one")
@@ -76,14 +76,14 @@ struct Frame {
 
       Button("set frame")
         .onClick(() => {
-          this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
+          this.scenes.forEach((scene: SwiperDynamicSyncScene) => {
 
-            if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
-              scenes.setFrameRateRange(this.ANIMATION);
+            if (scene.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scene.setFrameRateRange(this.ANIMATION);
             }
 
-            if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
-              scenes.setFrameRateRange(this.GESTURE);
+            if (scene.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scene.setFrameRateRange(this.GESTURE);
             }
           });
         })
@@ -110,7 +110,7 @@ getFrameRateRange(): ExpectedFrameRateRange
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11) | 期望帧率范围。|
+| [ExpectedFrameRateRange](../apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11) | 当前动态同步场景配置的期望帧率范围，包含期望的最小帧率(min)、期望的最大帧率(max)和期望的最优帧率(expected)信息。|
 
 **示例：**
 
@@ -126,8 +126,8 @@ struct Frame {
 
   build() {
     Column() {
-      Text("动画"+ JSON.stringify(this.ANIMATION))
-      Text("跟手"+ JSON.stringify(this.GESTURE))
+      Text("动画" + JSON.stringify(this.ANIMATION))
+      Text("跟手" + JSON.stringify(this.GESTURE))
       Row(){
         Swiper() {
           Text("one")

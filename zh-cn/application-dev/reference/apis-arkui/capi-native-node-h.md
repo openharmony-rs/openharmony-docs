@@ -117,7 +117,7 @@
 | [void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* name, const char* value)](#oh_arkui_nodeutils_addcustomproperty) | - | 设置组件的自定义属性。该接口仅在主线程生效。 |
 | [void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* name)](#oh_arkui_nodeutils_removecustomproperty) | - | 移除组件已设置的自定义属性。 |
 | [int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* name, ArkUI_CustomProperty** handle)](#oh_arkui_nodeutils_getcustomproperty) | - | 获取组件的自定义属性的值。 |
-| [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getparentinpagetree) | - | 获取父节点，可获取由ArkTs创建的组件节点。 |
+| [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getparentinpagetree) | - | 获取父节点，可获取由ArkTS创建的组件节点。 |
 | [int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_ActiveChildrenInfo** handle)](#oh_arkui_nodeutils_getactivechildreninfo) | - | 获取某个节点所有活跃的子节点。Span将不会被计入子节点的统计中。 |
 | [ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_getcurrentpagerootnode) | - | 获取当前页面的根节点。 |
 | [bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)](#oh_arkui_nodeutils_iscreatedbyndk) | - | 获取组件是否由C-API创建的标签。 |
@@ -2109,7 +2109,7 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 **描述：**
 
 
-获取父节点，可获取由ArkTs创建的组件节点。
+获取父节点，可获取由ArkTS创建的组件节点。
 
 **起始版本：** 14
 
@@ -2229,7 +2229,7 @@ int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 节点的类型，具体已开放类型参考[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)，未开放结点返回-1。 |
+| int32_t | 节点的类型，具体已开放类型参考[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)，未开放节点返回-1。 |
 
 ### OH_ArkUI_NodeUtils_GetWindowInfo()
 
@@ -2784,7 +2784,7 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-native-type-h.md#arkui_errorcode) 被接纳的节点已有父节点。<br>         [ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点无法被接纳为附属节点。<br>         [ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-native-type-h.md#arkui_errorcode) 节点无法接纳其它附属节点。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-native-type-h.md#arkui_errorcode) 被接纳的节点已有父节点。<br>         [ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点无法被接纳为附属节点。<br>         [ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-native-type-h.md#arkui_errorcode) 节点无法接纳其他附属节点。 |
 
 ### OH_ArkUI_NativeModule_RemoveAdoptedChild()
 
