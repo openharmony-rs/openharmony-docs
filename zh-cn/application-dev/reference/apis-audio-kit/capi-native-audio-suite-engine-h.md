@@ -560,7 +560,7 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 | OH_AudioNode* audioNode | 音频编创节点句柄。通过[OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode)获取句柄。 |
 | void* userData | 用户使用的数据指针。系统调用此回调函数时，将使用[OH_AudioSuiteNodeBuilder_SetRequestDataCallback](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_setrequestdatacallback)接口传入的userData。 |
 | void* audioData | 系统提供的内存地址，用于将需要处理的音频数据流写入（需由用户填充）。 |
-| int32_t audioDataSize | audioData内存地址指向的音频数据大小，单位为字节。 |
+| int32_t audioDataSize | audioData内存地址指向的音频数据大小，单位为字节（Byte）。 |
 | bool* finished | 标记audioNode节点需要处理的音频数据流是否已经写入完成。true表示已完成，false表示未完成。 |
 
 **返回：**
