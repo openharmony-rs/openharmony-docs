@@ -7536,7 +7536,7 @@ ArkTS-Sta: getAttachOptions(): AttachOptions | null
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported.<br>适用版本：19-19 |
+| 801 | Capability not supported.<br>适用版本：19-19。<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 
 > **注意：**
 >
