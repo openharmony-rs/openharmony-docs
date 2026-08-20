@@ -280,6 +280,7 @@
     <!--Del-->
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components-sys.md)
     - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components-sys.md)
+    - [景深组件 (DepthComponent，仅对系统应用开放)](arkts-depth-components-sys.md)
     <!--DelEnd-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
