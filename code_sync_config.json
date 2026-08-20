@@ -24230,6 +24230,16 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSwiper.ets",
+				"functions":[
+					{
+						"end_line":90,
+						"name":"radio_control_swiper_function",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
