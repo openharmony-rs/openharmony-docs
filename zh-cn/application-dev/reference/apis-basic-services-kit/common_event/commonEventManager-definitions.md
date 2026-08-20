@@ -844,20 +844,6 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **取值：** "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
 
-### COMMON_EVENT_DATA_VOLUME_STATUS_REPORT
-
-表示设备上的特定卷是否为可使用的状态。
-
-在开机扩展磁盘挂载完成或者用户解锁后，将会触发事件通知服务发布该系统公共事件。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**订阅者所需权限：** 无
-
-**取值：** "usual.event.DATA_VOLUME_STATUS_REPORT"
-
 ## Connectivity Kit
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE<sup>20+</sup>

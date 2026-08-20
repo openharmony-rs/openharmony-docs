@@ -933,6 +933,19 @@
 
 **取值：** "usual.event.STK_ALPHA_IDENTIFIER"
 
+### COMMON_EVENT_DATA_VOLUME_STATUS_REPORT
+
+PC场景在有扩展数据磁盘场景下，表示特定卷是否为可使用的状态。在开机扩展磁盘挂载完成或者用户解锁后广播。
+
+此事件仅在PC/2in1设备上支持。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DATA_VOLUME_STATUS_REPORT"
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 

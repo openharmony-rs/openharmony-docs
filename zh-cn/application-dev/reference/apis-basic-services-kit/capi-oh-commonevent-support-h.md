@@ -104,5 +104,4 @@
 | static const char* const COMMON_EVENT_VOLUME_DECRYPTED = "usual.event.VOLUME_DECRYPTED" | 表示设备上的特定卷已被解密。<br>**起始版本：** 26.0.0 |
 | static const char* const COMMON_EVENT_VOLUME_ENCRYPTED = "usual.event.VOLUME_ENCRYPTED" | 表示设备上的特定卷已被加密。<br>**起始版本：** 26.0.0 |
 | static const char* const COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET = "usual.event.VOLUME_ENCRYPTION_POLICY_SET" | 表示设备上的特定卷已设置其加密策略。<br>**起始版本：** 26.0.0 |
-| static const char* const COMMON_EVENT_DATA_VOLUME_STATUS_REPORT = "usual.event.DATA_VOLUME_STATUS_REPORT" | 表示设备上的特定卷是否为可使用的状态。<br>**起始版本：** 26.0.0 |
 | static const char* const COMMON_EVENT_SKILL_CHANGED = "usual.event.SKILL_CHANGED" | 表示设备上应用的skill发生变化的公共事件。<br>**起始版本：** 26.0.0 |
