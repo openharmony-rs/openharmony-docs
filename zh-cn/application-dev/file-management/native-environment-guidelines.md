@@ -55,10 +55,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, path=%{public}s", downloadPath);
-           free(downloadPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
+       free(downloadPath);
    }
    ```
 
@@ -74,10 +74,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user desktop directory, path=%{public}s", desktopPath);
-           free(desktopPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user desktop path, error code is %{public}d", ret);
        }
+       free(desktopPath);
    }
    ```
 
@@ -93,10 +93,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user document directory, path=%{public}s", documentPath);
-           free(documentPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user document path, error code is %{public}d", ret);
        }
+       free(documentPath);
    }
    ```
 
@@ -123,9 +123,9 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
            } else {
                OH_LOG_ERROR(LOG_APP, "Failed to stat user document directory, error code is %{public}d", result);
            }
-           free(documentPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get user document directory, error code is %{public}d", ret);
        }
+       free(documentPath);
    }
    ```
