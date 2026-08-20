@@ -1,4 +1,4 @@
-# 在自绘编辑框中使用输入法(C/C++)
+# 在自绘编辑框中使用输入法开发指导 (C/C++)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
