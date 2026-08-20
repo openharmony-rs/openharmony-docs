@@ -3441,7 +3441,8 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. 适用版本：18+ |
+| 801 | capability not supported. 适用版本：18+<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>|
+| 801 | capability not supported.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。<br/>|
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -4472,6 +4473,8 @@ setImmersiveEffect(effect: ImmersiveEffect): void
 
 **ArkTS-Sta起始版本：** 23
 
+**设备行为差异**：该接口仅在phone和tablet设备中可正常调用，在其他设备中返回错误码801。
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明     |
@@ -4562,8 +4565,6 @@ ArkTS-Sta: getSystemPanelCurrentInsets(displayId: long): Promise&lt;SystemPanelI
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异**：该接口仅在phone和tablet设备中可正常调用，在其他设备中返回错误码801。
-
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明     |
@@ -4627,7 +4628,7 @@ let panelConfig: inputMethodEngine.PanelInfo = {
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 // 以下逻辑需要在输入法InputMethodExtensionAbility中执行，this.context是InputMethodExtensionAbility的上下文
-inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMethodEngine.Panel) =>{
+inputMethodAbility.createPanel(this.context, panelConfig).then((panel: inputMethodEngine.Panel) => {
   panel.getDisplayId().then((displayId: long) => {
     panel.getSystemPanelCurrentInsets(displayId).then((insets: inputMethodEngine.SystemPanelInsets | null) => {
       if (insets) {
@@ -4635,9 +4636,13 @@ inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMet
       }
     }).catch((error: BusinessError) => {
       console.error(`getSystemPanelCurrentInsets failed, code: ${error.code}, message: ${error.message}`);
-    })
+    });
+  }).catch((error: BusinessError) => {
+    console.error(`getDisplayId failed, code: ${error.code}, message: ${error.message}`);
   });
-})
+}).catch((error: BusinessError) => {
+  console.error(`createPanel failed, code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ### setSystemPanelButtonColor<sup>22+</sup>
@@ -5307,7 +5312,7 @@ ArkTS-Sta: sendKeyFunction(action: int, callback: AsyncCallback&lt;boolean&gt;):
 
 **ArkTS-Sta起始版本：** 23
 
-  **参数：**
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
