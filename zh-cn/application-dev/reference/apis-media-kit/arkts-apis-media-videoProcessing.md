@@ -2,9 +2,9 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhuyicheng666-->
-<!--Designer: @gongzheng92-->
-<!--Tester: @gongzheng92-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 本模块提供视频质量处理能力，目前支持视频AI-HDR增强相关功能。
@@ -30,15 +30,13 @@ createVideoProcessor(): VideoProcessor
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **返回值：**
 
 |  类型 | 说明  |
 | ------------ | ------------ |
-|  [VideoProcessor](#videoprocessor) | 视频处理实例。 |
+|  [VideoProcessor](#videoprocessor) | 视频处理实例。如果操作成功，返回VideoProcessor实例，否则返回null |
 
 **错误码：**
 
@@ -64,6 +62,10 @@ function createVideoProcessor() {
 
 视频处理类，提供视频质量处理相关功能，目前支持AI-HDR增强能力。
 
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 ### getStatus
 
 getStatus(): Promise\<VideoProcessorStatus | undefined\>
@@ -72,19 +74,17 @@ getStatus(): Promise\<VideoProcessorStatus | undefined\>
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **返回值：**
 
 |  类型 | 说明  |
 | ------------ | ------------ |
-| Promise\<[VideoProcessorStatus](arkts-apis-media-t.md#videoprocessorstatus) \| undefined\>  |  Promise对象。返回VideoProcessorStatus，若获取失败则返回undefined。 |
+| Promise\<[VideoProcessorStatus](#videoprocessorstatus) \| undefined\>  |  Promise对象。返回VideoProcessorStatus，若获取失败则返回undefined。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[视频处理引擎错误码](../apis-image-kit/errorcode-videoprocessingengine.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息  |
 | :------------ | :------------ |
@@ -112,15 +112,13 @@ onStatusChange(callback: VideoProcessorStatusCallback): void
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **参数：**
 
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
-|  callback | [VideoProcessorStatusCallback](arkts-apis-media-t.md#videoprocessorstatuscallback)  | 是  | 状态发生变化时触发的回调函数。 |
+|  callback | [VideoProcessorStatusCallback](#videoprocessorstatuscallback)  | 是  | 状态发生变化时触发的回调函数。 |
 
 **错误码：**
 
@@ -153,15 +151,13 @@ offStatusChange(callback?: VideoProcessorStatusCallback): void
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **参数：**
 
 |  参数名 | 类型  | 必填  | 说明  |
 | :------------ | :------------ | :------------ | :------------ |
-|  callback | [VideoProcessorStatusCallback](arkts-apis-media-t.md#videoprocessorstatuscallback)  | 否  | 需要移除的回调函数。若不传入该参数，将移除该事件类型的所有回调。 |
+|  callback | [VideoProcessorStatusCallback](#videoprocessorstatuscallback)  | 否  | 需要移除的回调函数。若不传入该参数，将移除该事件类型的所有回调。 |
 
 **错误码：**
 
@@ -183,4 +179,48 @@ function offStatusChange() {
   videoProcessor.offStatusChange();
 }
 ```
+
+## VideoProcessorStatus
+
+interface VideoProcessorStatus
+
+视频处理器的统一状态。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+| 名称  | 类型  | 只读  | 可选  | 说明  |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| aiHdr | [VideoProcessorAiHdrStatus](#videoprocessoraihdrstatus) | 否  | 是  | AI-HDR增强状态。 |
+
+## VideoProcessorAiHdrStatus
+
+interface VideoProcessorAiHdrStatus
+
+AI-HDR增强功能的状态。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+| 名称  | 类型  | 只读  | 可选  | 说明  |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| enabled | boolean | 否  | 是  | AI-HDR增强功能是否已开启。<br>true表示AI-HDR增强功能已开启，false表示AI-HDR增强功能未开启。 |
+
+## VideoProcessorStatusCallback
+
+type VideoProcessorStatusCallback = (status: VideoProcessorStatus) => void
+
+视频处理器状态变更的回调类型。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| status | [VideoProcessorStatus](#videoprocessorstatus) | 是 | 变更后的视频处理器状态。 |
 
