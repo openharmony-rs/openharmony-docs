@@ -138,7 +138,9 @@ import { videoProcessing } from '@kit.MediaKit';
 function onStatusChange() {
   let videoProcessor = videoProcessing.createVideoProcessor();
   videoProcessor.onStatusChange((status: videoProcessing.VideoProcessorStatus) => {
-    console.info('AIHDR status changed, enabled: ' + status.aiHdr?.enabled);
+    if (status !== undefined && status.aiHdr !== undefined) {
+      console.info('AIHDR status changed, enabled: ' + status.aiHdr.enabled);
+	}
   });
 }
 ```
