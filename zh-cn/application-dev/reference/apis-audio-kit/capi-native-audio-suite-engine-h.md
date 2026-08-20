@@ -672,7 +672,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audio
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilderstruct.md)* builder | 音频编创节点构造器句柄。通过[OH_AudioSuiteNodeBuilder_Create](capi-native-audio-suite-engine-h.md#oh_audiosuitenodebuilder_create)获取句柄。 |
-| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)** audioNode | 用于返回创建的音频编创节点句柄的指针（输出参数）。 |
+| [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)** audioNode | 输出参数，用于返回创建的音频编创节点句柄的指针。 |
 
 **返回：**
 
