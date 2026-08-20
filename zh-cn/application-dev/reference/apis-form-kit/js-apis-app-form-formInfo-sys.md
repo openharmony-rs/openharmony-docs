@@ -95,7 +95,7 @@ import { formInfo } from '@kit.FormKit';
 | formDescription<sup>11+</sup> | string         | 是    | 否     | 提供方卡片配置文件中的描述信息。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | extraData<sup>12+</sup> | Record<string, Object> | 是    | 是     | 卡片的额外数据。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 
-## formProviderFilter<sup>10+</sup>
+## FormProviderFilter<sup>10+</sup>
 
 卡片提供方信息。
 
