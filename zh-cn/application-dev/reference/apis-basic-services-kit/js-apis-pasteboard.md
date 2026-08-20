@@ -3177,7 +3177,7 @@ struct PasteboardTest {
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
                 console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
-                console.error(`Failed to get PasteData. CerrorCode: ${err.code}, errorMessage: ${err.message}.`);
+                console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
               })
           })
         }
