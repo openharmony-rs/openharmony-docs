@@ -20,22 +20,7 @@ import { securityLabel } from '@kit.CoreFileKit';
 
 ## 使用说明
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
-
-
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
-
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
-  }
-  ```
-
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
 ## DataLevel
 

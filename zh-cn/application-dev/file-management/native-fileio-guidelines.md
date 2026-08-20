@@ -44,7 +44,7 @@ target_link_libraries(sample PUBLIC libohfileio.so)
 
 调用OH_FileIO_GetFileLocation接口获取文件存储位置。示例代码如下所示：
 
-<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->    
 
 ``` C++
 void GetFileLocationExample(char *uri)

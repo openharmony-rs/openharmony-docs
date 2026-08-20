@@ -46,7 +46,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDownloadDirPathExample()
@@ -65,7 +65,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 2. 调用OH_Environment_GetUserDesktopDir接口获取用户Desktop目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDesktopDirPathExample()
@@ -84,7 +84,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 3. 调用OH_Environment_GetUserDocumentDir接口获取用户Document目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDocumentDirPathExample()
@@ -107,7 +107,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    ``` C++
    #include <sys/stat.h>
    ```
-   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
+   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->        
    
    ``` C++
    void GetUserDownloadDirSizeExample()

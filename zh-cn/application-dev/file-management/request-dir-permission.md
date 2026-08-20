@@ -161,7 +161,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <cstdlib>
    
    ```
-   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDownloadDirExample()

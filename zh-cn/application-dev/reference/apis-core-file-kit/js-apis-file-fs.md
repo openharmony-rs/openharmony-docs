@@ -28,21 +28,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 ## 使用说明
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
-
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
-
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
-  }
-  ```
-
-获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 ## fileIo.stat
 
@@ -5184,7 +5170,7 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 
 (event: WatchEvent): void
 
-事件监听类，当监听的文件或目录发生变动事件时触发回调。
+事件监听接口，当监听的文件或目录发生变动事件时触发回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5196,7 +5182,7 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 
 ## WatchEvent<sup>10+</sup>
 
-事件类
+事件接口。
 
 ### 属性
 
