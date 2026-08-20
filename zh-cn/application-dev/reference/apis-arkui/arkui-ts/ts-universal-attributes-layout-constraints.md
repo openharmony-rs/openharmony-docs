@@ -25,7 +25,7 @@ ArkTS-Sta: aspectRatio(value: double | undefined): this
 - 仅设置height、aspectRatio时，width=height*aspectRatio。
 - 同时设置width、height和aspectRatio时，height不生效，height=width/aspectRatio。
 
-设置aspectRatio属性后，组件宽高会受父组件内容区大小限制，[constraintSize](ts-universal-attributes-size.md#constraintsize)的优先级高于aspectRatio。
+设置aspectRatio属性后，组件宽高会受父组件内容区大小限制，[constraintSize](ts-universal-attributes-size.md#constraintsize)的maxWidth/maxHeight优先级高于aspectRatio。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
