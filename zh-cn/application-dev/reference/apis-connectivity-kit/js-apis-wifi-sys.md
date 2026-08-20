@@ -452,7 +452,7 @@ getSupportedFeatures(): number
 | 0x0001 | 基础结构模式特性。 |
 | 0x0002 | 5&nbsp;GHz带宽特性。 |
 | 0x0004 | GAS/ANQP特性。 |
-| 0x0008 | Wifi-Direct特性。 |
+| 0x0008 | Wi-Fi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
 | 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
