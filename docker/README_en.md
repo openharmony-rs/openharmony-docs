@@ -15,15 +15,15 @@ The Docker image of OpenHarmony is hosted on [HUAWEI Cloud SWR](https://auth.hua
  After downloading the OpenHarmony code, perform the steps below to access the Docker environment. 
 
 1. Obtain the Docker image.
-     ```
+     ```shell
      docker pull swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
      ```
 2. Go to the root directory of OpenHarmony code and run the following command to access the Docker build environment:
-     ```
+     ```shell
      docker run -it -v $(pwd):/home/openharmony swr.cn-north-4.myhuaweicloud.com/ci-service/openharmony-standard-build-env-22.04:4.0.0
      ```
 3. Run the following script to start building for different platforms.
-     ```
+     ```shell
      hb set # Press the Up or Down key to select the platform to build on, then press Enter.
      hb build -f # Start building.
      ```

@@ -1,9 +1,3 @@
-### 4.0.0 (2025/09/05)
-
-Updated to the official Ubuntu 22.04 standard-system build environment (openharmony-standard-build-env-22.04:4.0.0).
-
-
-
 ### 1.0.0 (2022/03/09)
 
 Combine the docker build environment of Mini-System Devices (reference memory ≥ 128 KB), Small-System Devices (reference memory ≥ 1 MB) and Standard-System Devices (reference memory ≥ 128 MB).
