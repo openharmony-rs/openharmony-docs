@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -50,7 +50,7 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -61,7 +61,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 
 async function switchInputMethodWithSubtype() {
   // 1. 获取当前输入法
-  const currentIme: inputMethod.InputMethodProperty | undefined = inputMethod.getCurrentInputMethod();
+  const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
   if (!currentIme) {
     console.error("Failed to get current input method");
     return;
@@ -73,7 +73,8 @@ async function switchInputMethodWithSubtype() {
   } catch (err) {
     console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
   }
-  const currentSubtype: InputMethodSubtype | undefined = inputMethod.getCurrentInputMethodSubtype();
+  // 3. 获取当前输入法子类型
+  const currentSubtype: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
   if (!currentSubtype) {
     console.error("Failed to get current input subtype");
     return;
@@ -246,7 +247,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -299,7 +300,6 @@ isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 202      | not system application.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -356,7 +356,7 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 | 201      | permissions check fails. |
 | 202      | not system application. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception.  |
-| 12800018 | the input method is not found. |
+| 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
 
 **示例：**
@@ -422,7 +422,7 @@ getCursorInfo(userId?: number): CursorInfo
 | -------- | -------------------------------------- |
 | 202      | not system application. |
 | 12800003 | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
 | 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
@@ -642,11 +642,14 @@ getDefaultInputMethod(userId?: number): InputMethodProperty
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
   console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
 } catch (err) {
-  console.error(`Failed to getDefaultInputMethod. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -692,12 +695,14 @@ getSystemInputMethodConfigAbility(userId?: number): ElementName
 
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
   console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
 } catch (err) {
-  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -798,11 +803,14 @@ getCurrentInputMethod(userId?: number): InputMethodProperty
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
   console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
 } catch (err) {
-  console.error(`Failed to getCurrentInputMethod. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethod. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -848,12 +856,14 @@ getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
   console.info('Succeeded in getting current input method subtype, id: ' + currentImeSubType.id);
 } catch (err) {
-  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -957,11 +967,14 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
   console.info('Succeeded in getting all input methods, count: ' + imeProperty.length);
 } catch (err) {
-  console.error(`Failed to getAllInputMethodsSync. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getAllInputMethodsSync. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1009,13 +1022,15 @@ getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMetho
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 try {
   let subtypes: Array<InputMethodSubtype> = inputMethodSetting.getInputMethodSubtypes('com.example.keyboard', 100);
   console.info('Succeeded in getting input method subtypes, count: ' + subtypes.length);
 } catch (err) {
-  console.error(`Failed to getInputMethodSubtypes. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getInputMethodSubtypes. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1043,7 +1058,7 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 
 | 参数名 | 类型    | 必填 | 说明                    |
 | ------ | ------- | ---- | ----------------------- |
-| enable | boolean | 是   |- true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
+| enable | boolean | 是   |是否激活输入法列表：<br>- true表示返回已激活输入法列表。<br>- false表示返回未激活输入法列表。 |
 | userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
 
 **返回值：**
@@ -1068,11 +1083,14 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
   console.info('Succeeded in getting enabled input methods, count: ' + imeProperty.length);
 } catch (err) {
-  console.error(`Failed to getInputMethodsSync. Code: ${err.code}, message: ${err.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getInputMethodsSync. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 

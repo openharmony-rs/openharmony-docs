@@ -6,33 +6,34 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2f6bfaafe8e95aacaaa8d9bafbe155d8f668caa5 translatedAt=2026-07-29T04:49:34.459Z pushedAt=2026-07-29T06:55:48.802Z -->
 
 For details, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
-   
+
    For details about how to generate an AES symmetric key, see the following example. To learn more, see [Symmetric Key Generation and Conversion Specifications: AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). There may be differences between the input parameters in the reference documents and those in the following example.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'AES128|ECB|PKCS7'** to create a **Cipher** instance for encryption. The key type is **AES128**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and **Params** to **null** for the ECB mode.
+3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to set the mode to encryption (cryptoFramework.CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey), and initialize the encryption Cipher instance. The Params parameter for ECB mode is empty.
 
-4. If a small amount of data is to be encrypted, you can use [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) after **Cipher.init** to obtain the encrypted data.
+4. If a small amount of data is to be encrypted, you can use [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) without calling **update** to obtain the encrypted data.
 
 **Decryption**
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'AES128|ECB|PKCS7'** to create a **Cipher** instance for decryption. The key type is **AES128**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption), key to **SymKey** (the key for decryption), and **Params** to **null** for the ECB mode.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to set the mode to decryption (cryptoFramework.CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey), and initialize the decryption Cipher instance. The Params parameter for ECB mode is empty.
 
 3. If a small amount of data is to be decrypted, you can use [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) after **Cipher.init** to obtain the decrypted data.
 
 - Example (using asynchronous APIs):
 
   <!-- @[ecb_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ecb_encryption_decryption/aes_ecb_encryption_decryption_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -81,11 +82,10 @@ For details, see [AES](crypto-sym-encrypt-decrypt-spec.md#aes).
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[ecb_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ecb_encryption_decryption/aes_ecb_encryption_decryption_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';

@@ -6,10 +6,10 @@
 
   **表1** OpenHarmony小型系统已适配的开发板
 
-| 开发板 | 内核 | arch | ROM | RAM | 文件系统 | Flash&nbsp;类型 |
+| 开发板 | 内核 | arch | ROM | RAM | 文件系统 | Flash类型 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| hispark_taurus | LiteOS-A和Linux-5.10 | ARM&nbsp;Cortex-A7 | 8GB | 1GB | VFAT、EXT4 | eMMC4.5 |
-| hispark_aries | LiteOS-A | ARM&nbsp;Cortex-A7 | 16MB | 512MB | JFFS2 | SPI&nbsp;NOR |
+| hispark_taurus | LiteOS-A和Linux-5.10 | ARM&nbsp;Cortex-A7 | 8GB | 1GB | VFAT、EXT4 | eMMC |
+| hispark_aries | LiteOS-A | ARM&nbsp;Cortex-A7 | 16MB | 64MB | JFFS2 | SPI&nbsp;NOR |
 
 
 表1中的开发板可作为待移植开发板的参考，当前LiteOS-A和Linux-5.10支持的arch、ROM占用、支持的文件系统和支持的Flash类型如下表所示：
@@ -20,4 +20,4 @@
 | 内核 | 支持的arch | ROM | 文件系统 | Flash类型 |
 | -------- | -------- | -------- | -------- | -------- |
 | LiteOS-A | ARMv7 | &gt;&nbsp;2MB | VFAT、JFFS2、YAFFS2 | SPI&nbsp;NOR、NAND、eMMC |
-| Linux-5.10 | ARM、&nbsp;ARM64、&nbsp;MIPS、&nbsp;X86等 | &gt;&nbsp;5MB | VFAT、JFFS2、YAFFS、EXT/2/3/4、NFS等 | NOR、NAND、eMMC等 |
+| Linux-5.10 | ARM、&nbsp;ARM64、&nbsp;MIPS、&nbsp;X86等 | &gt;&nbsp;5MB | VFAT、JFFS2、YAFFS、EXT2/3/4、NFS等 | SPI&nbsp;NOR、NAND、eMMC等 |

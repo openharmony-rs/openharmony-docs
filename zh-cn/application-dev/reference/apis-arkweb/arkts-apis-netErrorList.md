@@ -35,7 +35,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_FILE_NOT_FOUND | -6 | 文件未找到。 |
 |ERR_TIMED_OUT | -7 | 操作超时。|
 |ERR_FILE_TOO_LARGE | -8 | 文件过大。|
-|ERR_UNEXPECTED | -9 | 遇到了一个未被预期或未被特定处理的问题。|
+|ERR_UNEXPECTED | -9 | 遇到了未被预期或未被特定处理的问题。 |
 |ERR_ACCESS_DENIED | -10 | 访问除了网络以外的资源被拒绝。 |
 |ERR_NOT_IMPLEMENTED | -11 | 功能未实现，导致操作失败。 |
 |ERR_INSUFFICIENT_RESOURCES | -12 | 系统或程序执行所需的资源不足。|
@@ -50,7 +50,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_NETWORK_CHANGED | -21 | 网络发生变化。 |
 |ERR_BLOCKED_BY_ADMINISTRATOR | -22 | 被管理员阻止。|
 |ERR_SOCKET_CONNECTED | -23 | socket 已经处于连接状态。|
-|ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED | -25 | 上传重传不支持。 |
+|ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED | -25 | 由于重试或重定向，需要重新读取上传流，但上传流不支持该操作，因此上传失败。 |
 |ERR_CONTEXT_SHUT_DOWN | -26 | 因为上下文已关闭导致请求失败。|
 |ERR_BLOCKED_BY_RESPONSE | -27 | 请求失败，因为响应不满足要求（例如“X-Frame-Options”和“Content Security Policy”检查以及“Cross Origin Resource Policy”）。|
 |ERR_CLEARTEXT_NOT_PERMITTED | -29 | 该请求被系统策略阻止，不允许部分或全部明文请求。|
@@ -159,7 +159,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_METHOD_UNSUPPORTED | -322 | 方法不支持。 |
 |ERR_UNEXPECTED_PROXY_AUTH | -323 | 意外的代理身份验证。 |
 |ERR_EMPTY_RESPONSE | -324 | 空返回错误。 |
-|ERR_RESPONSE_HEADERS_TOO_BIG | -325 | 返回体中 headers 太大。 |
+|ERR_RESPONSE_HEADERS_TOO_BIG | -325 | HTTP响应标头过大。 |
 |ERR_PAC_SCRIPT_FAILED | -327 | PAC 脚本错误。 |
 |ERR_REQUEST_RANGE_NOT_SATISFIABLE | -328 | 请求范围不可满足。 |
 |ERR_MALFORMED_IDENTITY | -329 | 用于身份验证的标识无效。|
@@ -179,7 +179,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 未记录的SSPI或GSSAPI状态码。 |
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | 响应体太大。|
 |ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH | -346 | HTTP响应包含了多个不同的Content-Length响应头。 |
-|ERR_INCOMPLETE_HTTP2_HEADERS | -347 | 不完整的 HTTP/2 headers。 |
+|ERR_INCOMPLETE_HTTP2_HEADERS | -347 | 不完整的HTTP/2标头。 |
 |ERR_PAC_NOT_IN_DHCP | -348 | PAC 不在 DHCP 中。 |
 |ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION | -349 | 响应标头多重内容处置。|
 |ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION | -350 | 多个位置的响应标头。 |

@@ -1,10 +1,12 @@
 # @ohos.animator (Animator)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-07-29T09:25:20.227Z pushedAt=2026-07-29T10:57:32.670Z -->
 
 The **Animator** module provides APIs for applying animation effects, including defining animations, starting animations, and playing animations in reverse order.
 
@@ -12,17 +14,17 @@ The **Animator** module provides APIs for applying animation effects, including 
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This module can be used in ArkTS since API version 9.
+> - This module is supported in ArkTS since API version 9.
 >
 > - This module cannot be used in the file declaration of the [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md). In other words, the APIs of this module can be used only after a component instance is created; they cannot be called in the lifecycle of the UIAbility.
 >
-> - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
+> - The functionality of this module depends on the UI execution context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> - A custom component usually holds an [AnimatorResult](#animatorresult) object returned by the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API to ensure that the animation object is not destructed during the animation. The object captures the custom component object through a callback. Therefore, the animation object needs to be released in the [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) lifecycle when the custom component is destroyed to avoid memory leakage caused by cyclic dependency. For the example details, see [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
+> - A custom component usually holds an [AnimatorResult](#animatorresult) object returned by the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API to ensure that the animation object is not destructed during animation. This object captures the custom component object through a callback. Therefore, the animation object must be released in the [aboutToDisappear](./arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) lifecycle when the custom component is destroyed, to avoid memory leakage caused by cyclic dependency. For the example details, see [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 >
-> - When the object of **Animator** is destructed or proactively calls [cancel](#cancel) or [finish](#finish), an additional [onFrame](#properties) API will be triggered. The return value is the end point value of the animation. Therefore, if [cancel](#cancel) or [finish](#finish) is called during the animation, the property value will jump to the end point value within a frame. To pause the animation, set **onFrame** to an empty function and then call [finish](#finish).
+> - When the object of Animator is destructed or proactively calls [cancel](#cancel) or [finish](#finish), an additional [onFrame](#properties) API will be triggered. The return value is the end point value of the animation. Therefore, if [cancel](#cancel) or [finish](#finish) is called during animation, the property value will jump to the end value within one frame. To pause the animation, set **onFrame** to an empty function and then call [finish](#finish).
 >
-> - For an animation in an infinite loop, the animation will continue to be played even if the global animation speed is set to 0 (disabled) in the developer options.
+> - For an animation in an infinite loop, the animation will continue to be played even if the global animation speed is set to **0** (disabled) in the developer options.
 
 ## Modules to Import
 
@@ -58,13 +60,13 @@ Creates an **AnimatorResult** object for animations.
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
+| options | [AnimatorOptions](#animatoroptions) | Yes | Animation options, including the playback duration, interpolation curve, delay, fill mode, play direction, iterations, and interpolation start and end values. |
 
 **Return value**
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator result.|
+| [AnimatorResult](#animatorresult) | Animation control object, used to set a callback function during animation. |
 
 **Error codes**
 
@@ -83,12 +85,13 @@ See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-deve
 > For precise UI context management, use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md) to specify the execution context.
 
 <!--deprecated_code_no_check-->
+
 ```ts
 import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
 
 let options: AnimatorOptions = {
   duration: 1500,
-  easing: "friction",
+  easing: 'friction',
   delay: 0,
   fill: "forwards",
   direction: "normal",
@@ -115,13 +118,13 @@ Creates an **AnimatorResult** object for animations. Compared with[create](#crea
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) \| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Yes   | Parameters of the animation.|
+| options | [AnimatorOptions](#animatoroptions) \| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Yes | Animation options. **AnimatorOptions** is used in scenarios where all animation parameters need to be fully customized. **SimpleAnimatorOptions** is used in simple animation scenarios where only the start and end points need to be specified, with other parameters using default values. |
 
 **Return value**
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator result.|
+| [AnimatorResult](#animatorresult) | Animation control object, used to set a callback function during animation. |
 
 **Error codes**
 
@@ -140,10 +143,11 @@ See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-deve
 > For precise UI context management, use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md) to specify the execution context.
 
 <!--deprecated_code_no_check-->
+
 ```ts
 import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
 let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
-animator.create(options);// You are advised to use UIContext.createAnimator().
+animator.create(options); // You are advised to use UIContext.createAnimator().
 ```
 
 ### createAnimator<sup>(deprecated)</sup>
@@ -162,13 +166,13 @@ Creates an animation.
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
+| options | [AnimatorOptions](#animatoroptions) | Yes | Animation options, including the playback duration, interpolation curve, delay, fill mode, play direction, iterations, and interpolation start and end values. |
 
 **Return value**
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator result.|
+| [AnimatorResult](#animatorresult) | Animation control object, used to set a callback function during animation. |
 
 **Example**
 
@@ -193,7 +197,7 @@ this.animator = animator.createAnimator(options);
 
 ## AnimatorResult
 
-Defines the animator result.
+Defines the **AnimatorResult** API, which provides animation playback state callbacks and animation control methods.
 
 ### Properties
 
@@ -201,14 +205,14 @@ Defines the animator result.
 
 | Name      | Type                                                       | Read-Only| Optional| Description                                                        |
 | ---------- | ------------------------------ | ---- | ------- | ----------------------------------------------------- |
-| onFrame<sup>12+</sup>   | (progress: number) => void                    | No| No  | Called when a frame is received.<br>**progress**: current value of the animation. Value range: [begin, end] defined in [AnimatorOptions](#animatoroptions). Default value range: [0, 1]<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
+| onFrame<sup>12+</sup>   | (progress: number) => void                    | No | No   | Called when a frame is received.<br>**progress**: current value of the animation. Value range: [begin, end] defined in [AnimatorOptions](#animatoroptions). Default value range: [0, 1].<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>**Model restriction:** This API can be used only in the stage model.                        |
 | onFinish<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is finished.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
 | onCancel<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is canceled.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
 | onRepeat<sup>12+</sup>   | () => void                    | No| No  | Called when this animation repeats.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
-| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | No| No  | Called when a frame is received.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onFrame** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| onfinish<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation is finished.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onFinish** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| oncancel<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation is canceled.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onCancel** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| onrepeat<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation repeats.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onRepeat** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | No | No   | Called when a frame is received.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use [onFrame](#properties) instead.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                        |
+| onfinish<sup>(deprecated)</sup>   | () => void                 | No | No   | Called when this animation is finished.<br/>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use [onFinish](#properties) instead.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.                        |
+| oncancel<sup>(deprecated)</sup>   | () => void                 | No | No   | Called when this animation is canceled.<br/>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use [onCancel](#properties) instead.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.                        |
+| onrepeat<sup>(deprecated)</sup>   | () => void                 | No | No   | Called when this animation repeats.<br/>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use [onRepeat](#properties) instead.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.                        |
 
 ### reset<sup>9+</sup>
 
@@ -224,7 +228,7 @@ Resets the animation parameters of this animator.
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
+| options | [AnimatorOptions](#animatoroptions) | Yes | Animation options, including the playback duration, interpolation curve, delay, fill mode, play direction, iterations, and interpolation start and end values. |
 
 **Error codes**
 
@@ -234,7 +238,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------- | ------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001    | The specified page is not found or the object property list is not obtained.|
-
 
 **Example**
 
@@ -307,12 +310,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 <!--deprecated_code_no_check-->
+
 ```ts
 import { Animator as animator, AnimatorResult, AnimatorOptions, SimpleAnimatorOptions } from '@kit.ArkUI';
 
 let options: AnimatorOptions = {
   duration: 1500,
-  easing: "ease",
+  easing: 'ease',
   delay: 0,
   fill: "forwards",
   direction: "normal",
@@ -332,7 +336,7 @@ animatorResult.reset(optionsNew);
 
 play(): void
 
-Plays this animation. The animation retains the previous playback state. For example, if the animation is set to **reverse** and paused, it will remain in **reverse** when resumed.
+Plays this animation. Calling this API after the animation is paused can resume playback. The animation retains the previous playback state. For example, if the animation is set to **reverse** and paused, it will remain in **reverse** when resumed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -422,7 +426,7 @@ animator.reverse();
 
 setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
-Sets the expected frame rate range.
+Sets the expected frame rate range, including the minimum, maximum, and expected frame rate values.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -454,7 +458,7 @@ let expectedFrameRate: ExpectedFrameRateRange = {
 @Entry
 @Component
 struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
+  private backAnimator: AnimatorResult | undefined = undefined;
 
   create() {
     this.backAnimator = this.getUIContext().createAnimator({
@@ -480,7 +484,7 @@ struct AnimatorTest {
 
 update(options: AnimatorOptions): void
 
-Updates this animator.
+Updates the current animator animation parameters.
 
 > **NOTE** 
 >
@@ -492,7 +496,7 @@ Updates this animator.
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
+| options | [AnimatorOptions](#animatoroptions) | Yes | Animation options, including the playback duration, interpolation curve, delay, fill mode, play direction, iterations, and interpolation start and end values. |
 
 **Example**
 
@@ -518,7 +522,7 @@ Animator options.
 | easing     | string                                                      | No| No  | Animation interpolation curve. For details about the supported curve types, see Table 1.<br>If the provided string is invalid, **"ease"** is used.|
 | delay      | number                                                      | No| No  | Animation delay duration, in milliseconds. Value **0** means that there is no delay. If the value specified is a negative number, the animation starts playing ahead of its scheduled time. If the amount of time by which the playback is advanced exceeds the total duration of the animation, the animation immediately skips to its end state.<br>Default value: **0**       |
 | fill       | 'none' \| 'forwards' \| 'backwards' \| 'both'               | No| No  | State of the animated target after the animation is executed.<br>**'none'**: No style is applied to the target before or after the animation is executed.<br>**'forwards'**: The target keeps the state at the end of the animation (defined in the last key frame) after the animation is executed.<br>**'backwards'**: During the delay period specified in [AnimatorOptions](#animatoroptions), the animation uses the value defined in the first keyframe. When **direction** in [AnimatorOptions](#animatoroptions) is **'normal'** or **'alternate'**, the animation uses the **from** keyframe value. When **direction** in [AnimatorOptions](#animatoroptions) is **'reverse'** or **'alternate-reverse'**, the animation uses the **to** keyframe value.<br>**'both'**: The animation follows the **'forwards'** and **'backwards'** rules.|
-| direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | No| No  | Animation playback mode.<br>**'normal'**: plays the animation in forward loop mode.<br>**'reverse'**: plays the animation in reverse loop mode.<br>**'alternate'**: plays the animation in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.<br>**'alternate-reverse'**: plays the animation in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.<br>Default value: **'normal'**|
+| direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | No | No   | Animation playback mode.<br/>**'normal'**: plays the animation in forward loop mode.<br/>**'reverse'**: plays the animation in reverse loop mode.<br/>**'alternate'**: plays the animation in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.<br/>**'alternate-reverse'**: plays the animation in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.<br/>Default value: **'normal'** |
 | iterations | number                                                      | No| No  | Number of times that the animation is played. The value **0** means the animation is not played, **-1** means the animation is played for an unlimited number of times, and a positive integer means the animation is played that specific number of times.<br>Note: Any negative value other than **-1** is treated as invalid. For invalid values, the animation is played once.|
 | begin      | number                                                      | No| No  | Start point of the animation interpolation.<br>Note: This setting affects the input parameter value of the [onFrame](#properties) callback.<br>Default value: **0**                                             |
 | end        | number                                                      | No| No  | End point of animation interpolation.<br>Note: This setting affects the input parameter value of the [onFrame](#properties) callback.<br>Default value: **1**                                           |
@@ -564,8 +568,8 @@ A constructor used to create a **SimpleAnimatorOptions** instance.
 
 | Name      | Type                                                       | Mandatory| Description                                                        |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  begin      | number                                                      | Yes  | Start point of the animation interpolation.                                              |
-|  end        | number                                                      | Yes  | End point of animation interpolation.                                              |
+|  begin      | number                                                      | Yes   | Start point of the animation interpolation.<br/>Note: This affects the input parameter value of the [onFrame](#properties) callback.                                               |
+|  end        | number                                                      | Yes   | End point of the animation interpolation.<br/>Note: This affects the input parameter value of the [onFrame](#properties) callback.                                               |
 
 **Example**
 
@@ -606,13 +610,13 @@ Sets the animation duration.
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| duration | number | Yes   | Animation duration, in milliseconds.<br>Default value: **1000**|
+| duration | number | Yes | Animation playback duration, in milliseconds.<br/>Default value: **1000**<br/>Note: When the interpolating-spring curve is used, **duration** does not take effect and is determined by the spring parameters. |
 
 **Return value**
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters.|
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters, which supports chaining to continue configuring animation parameters. |
 
 **Example**
 
@@ -659,7 +663,7 @@ Sets the interpolation curve for this animation.
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters.|
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters, which supports chaining to continue configuring animation parameters. |
 
 **Example**
 
@@ -688,7 +692,7 @@ struct AnimatorTest {
 
 delay(delay: number): SimpleAnimatorOptions
 
-Sets the playback delay for this animation.
+Sets the playback delay for the animator animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -706,7 +710,7 @@ Sets the playback delay for this animation.
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters.|
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters, which supports chaining to continue configuring animation parameters. |
 
 **Example**
 
@@ -753,7 +757,7 @@ Sets the fill mode for this animation.
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters.|
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters, which supports chaining to continue configuring animation parameters. |
 
 **Example**
 
@@ -782,7 +786,7 @@ struct AnimatorTest {
 
 direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): SimpleAnimatorOptions
 
-Sets the playback direction for this animator animation.
+Sets the playback direction for the animator animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -800,7 +804,7 @@ Sets the playback direction for this animator animation.
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters.|
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters, which supports chaining to continue configuring animation parameters. |
 
 **Example**
 
@@ -841,13 +845,13 @@ Sets the number of times that this animation is played.
 
 | Name    | Type                                 | Mandatory  | Description     |
 | ------- | ----------------------------------- | ---- | ------- |
-| iterations | number | Yes   | Number of times that the animation is played. The value **0** means the animation is not played, and **-1** means the animation is played for an unlimited number of times.<br>Default value: **1**|
+| iterations | number | Yes | Number of times that the animation is played. The value **0** means the animation is not played, and **-1** means the animation is played for an unlimited number of times.<br/>Note: Negative values other than -1 are considered invalid, and the animation plays once by default for invalid values.<br/>Default value: **1**<br/>When the interpolating-spring curve is used, the setting of **iterations** is invalid and its value is fixed to **1**. |
 
 **Return value**
 
 | Type                               | Description           |
 | --------------------------------- | ------------- |
-| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters.|
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | **SimpleAnimatorOptions** object for animation parameters, which supports chaining calls to continue setting animation parameters. |
 
 **Example**
 
@@ -873,6 +877,7 @@ struct AnimatorTest {
 ```
 
 ## Example
+
 ### JavaScript-compatible Web-like Development Paradigm
 
 ```html
@@ -885,6 +890,7 @@ struct AnimatorTest {
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
+
 ```ts
 import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -976,6 +982,7 @@ class DateT {
 > For precise UI context management, use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md) to specify the execution context.
 
 <!--deprecated_code_no_check-->
+
 ```ts
 import { AnimatorResult } from '@kit.ArkUI';
 
@@ -1001,18 +1008,18 @@ struct AnimatorTest {
       end: 200 // End point of the animation interpolation.
     })
     this.backAnimator.onFinish = () => {
-      this.flag = true
-      console.info(this.TAG, 'backAnimator onFinish')
+      this.flag = true;
+      console.info(this.TAG, 'backAnimator onFinish');
     }
     this.backAnimator.onRepeat = () => {
-      console.info(this.TAG, 'backAnimator repeat')
+      console.info(this.TAG, 'backAnimator repeat');
     }
     this.backAnimator.onCancel = () => {
-      console.info(this.TAG, 'backAnimator cancel')
+      console.info(this.TAG, 'backAnimator cancel');
     }
     this.backAnimator.onFrame = (value: number) => {
-      this.columnWidth = value
-      this.columnHeight = value
+      this.columnWidth = value;
+      this.columnHeight = value;
     }
   }
 
@@ -1163,7 +1170,7 @@ struct AnimatorTest {
       this.flag = true
       console.info(this.TAG, 'backAnimator onFinish')
     }
-    this.backAnimator.onFrame = (value:number) => {
+    this.backAnimator.onFrame = (value: number) => {
       this.translate_ = value
     }
   }

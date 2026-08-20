@@ -457,7 +457,7 @@ onConsole(callback: Callback\<OnConsoleEvent, boolean\>)
 
 onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
-通知主应用开始下载一个文件。
+通知主应用开始下载文件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -465,7 +465,7 @@ onDownloadStart(callback: Callback\<OnDownloadStartEvent\>)
 
 | 参数名                | 类型   | 必填   | 说明                                |
 | ------------------ | ------ | ---- | ----------------------------------- |
-| callback           | Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> | 是    | 开始下载时触发。  |
+| callback           | Callback\<[OnDownloadStartEvent](./arkts-basic-components-web-i.md#ondownloadstartevent12)\> | 是    | 开始下载时触发此回调。  |
 
 **示例：**
 
@@ -1238,7 +1238,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> | 是 | 当Web组件加载url之前触发。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
+| callback | Callback\<[OnInterceptRequestEvent](./arkts-basic-components-web-i.md#oninterceptrequestevent12), [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)\> | 是 | 当Web组件加载url之前触发此回调。<br>返回值[WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。 |
 
 **示例：**
 
@@ -1250,7 +1250,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
+    responseWeb: webview.WebResourceResponse = new webview.WebResourceResponse();
     heads: Header[] = new Array();
     webData: string = "<!DOCTYPE html>\n" +
       "<html>\n" +
@@ -1306,7 +1306,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
 
 onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 
-通知收到http auth认证请求。
+通知收到HTTP认证请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1314,7 +1314,7 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示http auth认证成功，返回false表示http auth认证失败。   |
+| callback | Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> | 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示HTTP认证成功，返回false表示HTTP认证失败。   |
 
 **示例：**
 
@@ -1375,7 +1375,7 @@ onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 通知用户加载资源时发生SSL错误，只支持主资源。
 
-如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
+如果需要支持子资源，请使用[OnSslErrorEvent](#onsslerrorevent12)接口。
 
 > **说明：**
 >
@@ -1620,7 +1620,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  controller: WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
   uiContext : UIContext = this.getUIContext();
   context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
   uri: string = ''
@@ -1834,7 +1834,7 @@ struct Index {
     @Entry
     @Component
     struct Index {
-      controller: WebviewController = new webview.WebviewController();
+      controller: webview.WebviewController = new webview.WebviewController();
       certManager = CertManagerService.getInstance();
 
       aboutToAppear(): void {
@@ -1911,7 +1911,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  controller: WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
   uiContext : UIContext = this.getUIContext();
   context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
 
@@ -2666,14 +2666,14 @@ onWindowNew(callback: Callback\<OnWindowNewEvent\>)
               this.dialogController.close();
             }
             let popController: webview.WebviewController = new webview.WebviewController();
-            this.dialogController = new CustomDialogController({
-              builder: NewWebViewComp({ webviewController1: popController })
-            })
-            this.dialogController.open();
             // 将新窗口对应WebviewController返回给Web内核。
             // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
             // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
             event.handler.setWebController(popController);
+            this.dialogController = new CustomDialogController({
+              builder: NewWebViewComp({ webviewController1: popController })
+            })
+            this.dialogController.open();
           })
       }
     }
@@ -2773,14 +2773,14 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
             this.dialogController.close();
           }
           let popController: webview.WebviewController = new webview.WebviewController();
-          this.dialogController = new CustomDialogController({
-            builder: NewWebViewComp({ webviewController1: popController })
-          })
-          this.dialogController.open();
           // 将新窗口对应WebviewController返回给Web内核。
           // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
           // 如果没有创建新窗口，在调用event.handler.setWebController接口时应设置成null，以通知Web没有创建新窗口。
           event.handler.setWebController(popController);
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController })
+          })
+          this.dialogController.open();
         })
       }
     }
@@ -2874,14 +2874,14 @@ Web页面触发window.open(url, name)时，会根据name查找是否存在已绑
               this.dialogController.close()
             }
             let popController: webview.WebviewController = new webview.WebviewController();
+            // 将新窗口对应WebviewController返回给Web内核。
+            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+            event.handler.setWebController(popController);
             this.dialogController = new CustomDialogController({
               builder: NewWebViewComp({ webviewController1: popController }),
               isModal: false
             })
             this.dialogController.open();
-            // 将新窗口对应WebviewController返回给Web内核。
-            // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
-            event.handler.setWebController(popController);
           })
       }
     }
@@ -2988,7 +2988,7 @@ onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\>)
 
 onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\>)
 
-设置网页表单可以重新提交时触发的回调函数。
+当网页表单可以重新提交时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3128,7 +3128,7 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\>)
 
-设置接收到apple-touch-icon url地址时的回调函数。
+接收到apple-touch-icon URL地址时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3136,7 +3136,7 @@ onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\>  | 是 | 接收到的apple-touch-icon url地址时触发。 |
+| callback  | Callback\<[OnTouchIconUrlReceivedEvent](./arkts-basic-components-web-i.md#ontouchiconurlreceivedevent12)\>  | 是 | 接收到的apple-touch-icon URL地址时触发。 |
 
 **示例：**
 
@@ -3242,7 +3242,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
  onFirstContentfulPaint(callback: Callback\<OnFirstContentfulPaintEvent\>)
 
-设置网页首次内容绘制时触发。
+设置网页首次内容绘制时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3250,7 +3250,7 @@ onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback| Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 网页首次内容绘制时触发。事件对象包含导航开始时间戳、首次内容绘制耗时等性能指标。 |
+| callback| Callback\<[OnFirstContentfulPaintEvent](./arkts-basic-components-web-i.md#onfirstcontentfulpaintevent12)\> | 是 | 回调函数，返回导航开始时间戳、首次内容绘制耗时等性能指标。|
 
 **示例：**
 
@@ -3363,6 +3363,12 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
 > **说明：**
+>
+> - onLoadIntercept是在页面导航前同步触发的回调，回调返回前当前导航处于挂起状态。
+>
+> - 禁止在回调中直接调用会触发新导航的接口（如[refresh()](./arkts-apis-webview-WebviewController.md#refresh)、[loadurl()](./arkts-apis-webview-WebviewController.md#loadurl)、[setCustomUserAgent()](./arkts-apis-webview-WebviewController.md#setcustomuseragent10)等），否则会导致回调重入或导航状态混乱。
+>
+> - 如需在拦截后重新加载页面，应在回调返回后通过[setTimeout()](../common/js-apis-timer.md#settimeout)等异步方法延迟调用。
 >
 > - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest9)或者通过WebSchemeHandler的[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)中获取。
 
@@ -3744,7 +3750,7 @@ onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void)
 
 > **说明：**
 >
-> - 本接口与onNativeEmbedVisibilityChange都监控同层标签状态，但监控维度不同。<br>onNativeEmbedLifecycleChange监控生命周期状态（如CREATE/UPDATE/DESTROY/ENTER_BFCACHE/LEAVE_BFCACHE）, 适用于处理标签的创建、销毁、缓存等生命周期事件。<br>onNativeEmbedVisibilityChange监控视口内的可见性变化（Visible/Hidden），适用于处理标签滚动进出视口的场景。两者可根据实际需求配合使用或单独使用。
+> - 本接口与onNativeEmbedVisibilityChange都监控同层标签状态，但监控维度不同。<br>onNativeEmbedLifecycleChange监控生命周期状态（如CREATE/UPDATE/DESTROY/ENTER_BFCACHE/LEAVE_BFCACHE），适用于处理标签的创建、销毁、缓存等生命周期事件。<br>onNativeEmbedVisibilityChange监控视口内的可见性变化（Visible/Hidden），适用于处理标签滚动进出视口的场景。两者可根据实际需求配合使用或单独使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4958,7 +4964,7 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
 
 > **说明：**
 >
-> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

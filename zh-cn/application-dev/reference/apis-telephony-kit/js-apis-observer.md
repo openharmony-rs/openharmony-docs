@@ -1,4 +1,4 @@
-# @ohos.telephony.observer (observer)
+# @ohos.telephony.observer (电话服务状态监听)
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
 <!--Owner: @shao-yikai-->
@@ -410,8 +410,8 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 
 | 参数名   | 类型                                           | 必填 | 说明                                                        |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | string                                        | 是   | 通话状态变化事件，参数固定为'callStateChange'。                |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+| type     | string                                        | 是   | 通话状态变化事件，参数固定为"callStateChange"。                |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | 是   | 回调函数，返回通话状态信息对象。<br>应用可获取到CallStateInfo。<br>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
 
 **错误码：**
 
@@ -446,9 +446,9 @@ on(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallSt
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
+| type     | string                                                       | 是   | 通话状态变化事件，参数固定为"callStateChange"。               |
 | options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。                                  |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 回调函数，返回通话状态信息对象。<br>应用可获取到CallStateInfo。<br>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
 
 **错误码：**
 
@@ -490,8 +490,8 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 否   | 回调函数，返回通话状态信息对象。参考call的[CallState](js-apis-call.md#callstate)。<br />number：电话号码。 |
+| type     | string                                                       | 是   | 通话状态变化事件，参数固定为"callStateChange"。               |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 否   | 回调函数，返回通话状态信息对象。<br>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
 
 **错误码：**
 
@@ -530,9 +530,9 @@ on(type: 'callStateChangeEx', callback: Callback\<TelCallState\>, options?: Obse
 
 | 参数名   | 类型                                           | 必填 | 说明                                                        |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | string                                        | 是   | 通话状态变化事件，参数固定为'callStateChangeEx'。                |
+| type     | string                                        | 是   | 通话状态变化事件，参数固定为"callStateChangeEx"。                |
 | callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | 是   | 回调函数，返回通话状态对象。<br/>应用可获取到TelCallState。<br/> |
-| options  | [ObserverOptions](#observeroptions11)                              | 否 | 电话相关事件订阅参数可选项。                |
+| options  | [ObserverOptions](#observeroptions11)         | 否 | 电话相关事件订阅参数可选项，指定事件订阅的卡槽ID，默认为当前默认数据卡槽ID。 |
 
 **错误码：**
 
@@ -578,7 +578,7 @@ off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
+| type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChangeEx'。               |
 | callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | 否   | 回调函数，返回通话状态对象。参考call的[TelCallState](js-apis-call.md#telcallstate21)。<br /> |
 
 **错误码：**
@@ -856,11 +856,11 @@ observer.off('cellularDataFlowChange');
 
 on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
-订阅sim状态更改事件，使用callback方式作为异步方法。
+订阅SIM卡状态更改事件，使用callback方式作为异步方法。
 
 >**说明：**
 >
-> 此接口不包含sim卡的激活状态，具体请参见[sim.isSimActive](js-apis-sim.md#simissimactive7)接口。
+> 此接口不包含SIM卡的激活状态，具体请参见[sim.isSimActive](js-apis-sim.md#simissimactive7)接口。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -868,7 +868,7 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
+| type     | string                                                       | 是   | SIM卡状态更改事件，参数固定为"simStateChange"。|
 | callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
@@ -896,7 +896,7 @@ observer.on('simStateChange', (data: observer.SimStateData) => {
 
 on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimStateData\>\): void
 
-订阅指定卡槽位的sim状态更改事件，使用callback方式作为异步方法。
+订阅指定卡槽位的SIM卡状态更改事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -904,7 +904,7 @@ on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimSta
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
+| type     | string                                                       | 是   |SIM卡状态更改事件，参数固定为"simStateChange"。                 |
 | options   | [ObserverOptions](#observeroptions11)                       | 是   | 电话相关事件订阅参数可选项。                                  |
 | callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
@@ -948,7 +948,7 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
+| type     | string                                                       | 是   | SIM状态更改事件，参数固定为"simStateChange"。|
 | callback | Callback\<[SimStateData](#simstatedata7)\> | 否   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
@@ -979,7 +979,7 @@ observer.off('simStateChange');
 
 on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 
-订阅卡帐户变化事件，使用callback方式作为异步方法。
+订阅卡账户变化事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -987,8 +987,8 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 卡帐户变化事件，参数固定为'iccAccountInfoChange'。                 |
-| callback | Callback\<void\> | 是   | 回调函数。当卡账户改变成功，err为undefined，否则为错误对象。 |
+| type     | string                                                       | 是   | 卡账户变化事件，参数固定为"iccAccountInfoChange"。                 |
+| callback | Callback\<void\> | 是   |回调函数。当卡账户变化时触发。 |
 
 **错误码：**
 
@@ -1015,7 +1015,7 @@ observer.on('iccAccountInfoChange', () => {
 
 off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 
-移除订阅卡帐户变化事件，使用callback方式作为异步方法。
+移除订阅卡账户变化事件，使用callback方式作为异步方法。
 
 > **说明：**
 >
@@ -1027,8 +1027,8 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 卡帐户变化事件，参数固定为'iccAccountInfoChange'。                 |
-| callback | Callback\<void\> | 否   | 回调函数。当卡账户改变成功，err为undefined，否则为错误对象。 |
+| type     | string                                                       | 是   | 卡账户变化事件，参数固定为"iccAccountInfoChange"。                 |
+| callback | Callback\<void\> | 否   | 回调函数。当卡账户变化时触发。 |
 
 **错误码：**
 
@@ -1059,7 +1059,7 @@ observer.off('iccAccountInfoChange');
 
 onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
-SIM卡激活状态变化的监听，使用callback方式作为异步方法。
+监听SIM卡激活状态变化，使用callback方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -1078,7 +1078,7 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied                         |
+| 201      | Permission denied.                         |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
@@ -1119,7 +1119,7 @@ offGetSimActiveState\(callback?: Callback\<boolean\>\): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied                         |
+| 201      | Permission denied.                        |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
@@ -1141,7 +1141,7 @@ observer.offGetSimActiveState(simActiveState);
 
 onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOptions): void
 
-三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
+订阅运营商通话状态变化事件并获取通话号码，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -1151,8 +1151,8 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 
 |     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallState。<br/> |
-| options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项。                |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallStateInfo。<br/> |
+| options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项，指定事件订阅的卡槽ID，默认为当前默认数据卡槽ID。                |
 
 **错误码：**
 
@@ -1173,10 +1173,10 @@ import { call, observer } from '@kit.TelephonyKit';
 
 let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
-}
+};
 let options: observer.ObserverOptions = {
     slotId: 0
-}
+};
 
 observer.onCCallStateChange(callback, options);
 observer.onCCallStateChange(callback);
@@ -1186,7 +1186,11 @@ observer.onCCallStateChange(callback);
 
 offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
-取消三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
+取消订阅运营商通话状态变化事件并获取通话号码，使用callback方式作为异步方法。
+
+> **说明：**
+> 
+> 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -1196,7 +1200,7 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 |     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 否   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 否   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallStateInfo。<br/>不传入此参数时，取消所有运营商通话状态的监听。 |
 
 **错误码：**
 
@@ -1213,7 +1217,7 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 **示例：**
 
 ```ts
-import { call, observer } from '@kit.TelephonyKit';
+import { observer } from '@kit.TelephonyKit';
 
 let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
@@ -1352,7 +1356,7 @@ SIM卡类型和状态。
 
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话类型。 |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话状态。 |
 | number              | string                                 | 否   | 否   | 电话号码。 |
 
 
@@ -1364,7 +1368,7 @@ SIM卡类型和状态。
 
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
-| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话类型。 |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话状态。 |
 | teleNumber              | string                                 | 否   | 否   | 电话号码。 |
 
 
@@ -1388,5 +1392,4 @@ SIM卡类型和状态。
 
 |     名称            |         类型      | 只读 | 可选 | 说明                                    |
 | ------------------- | ------------------| ---- | ---- | --------------------------------------- |
-| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-
+| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2    |

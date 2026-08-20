@@ -126,7 +126,7 @@ imageAccess(imageAccess: boolean)
 
 javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
-将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。当属性没有显式调用时，默认不将javaScriptProxy中的ArkTS对象注册到Web组件中。
+将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。
 
 > **说明：**
 >
@@ -795,7 +795,7 @@ textZoomRatio(textZoomRatio: number)
 
 | 参数名           | 类型   | 必填   | 说明                             |
 | ------------- | ------ | ---- | -------------------------------- |
-| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比，100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值为整数，范围为(0, 2147483647]。默认值：100。|
+| textZoomRatio | number | 是    | 要设置的页面的文本缩放百分比，100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值为整数，范围为(0, 2147483647]。|
 
 **示例：**
 
@@ -1460,16 +1460,16 @@ struct WebComponent {
                         this.dialogController.close()
                     }
                     let popController: webview.WebviewController = new webview.WebviewController();
+                    // 将新窗口对应WebviewController返回给Web内核。
+                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
+                    // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
+                    event.handler.setWebController(popController);
                     this.dialogController = new CustomDialogController({
                         builder: NewWebViewComp({ webviewController1: popController }),
                         // isModal设置为false，防止新窗口被销毁而无法触发onActivateContent回调
                         isModal: false
                     })
                     this.dialogController.open();
-                    // 将新窗口对应WebviewController返回给Web内核。
-                    // 若不调用event.handler.setWebController接口，会造成渲染进程阻塞。
-                    // 如果没有创建新窗口，调用event.handler.setWebController接口时设置成null，通知Web没有创建新窗口。
-                    event.handler.setWebController(popController);
                 })
         }
     }
@@ -1915,7 +1915,7 @@ layoutMode(mode: WebLayoutMode)
 > **说明：**
 >
 > 目前只支持两种Web布局模式，分别为
-> - Web布局跟随系统（`WebLayoutMode.NONE`）
+> - Web布局跟随系统（`WebLayoutMode.NONE`）。
 > - Web组件高度基于前端页面高度的自适应网页布局（`WebLayoutMode.FIT_CONTENT`）。
 >
 > Web组件高度基于前端页面自适应布局有如下限制：
@@ -2211,6 +2211,11 @@ forceDisplayScrollBar(enabled: boolean)
 设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。该属性没有显式调用时，默认设置滚动条不常驻。
 
 全量展开模式下不支持滚动条常驻，即layoutMode为WebLayoutMode.FIT_CONTENT模式时，参数enabled为false。
+
+> **说明：**
+>
+> - 该接口在当前应用的所有Web组件中全局生效。多个Web组件设置不同值时，以首次设置的值为准。
+> - 建议使用[setScrollbarMode](./arkts-apis-webview-WebviewController.md#setscrollbarmode23)设置当前应用所有Web组件的滚动条模式。若同时调用setScrollbarMode接口，forceDisplayScrollBar接口设置不生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3283,7 +3288,7 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 enableFollowSystemFontWeight(follow: boolean)
 
-设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认开启字重跟随系统设置变化。
+设置Web组件是否开启字重跟随系统设置变化。当属性没有显式调用时，Web组件默认字重不跟随系统设置变化。
 
 > **说明：**
 >
@@ -3295,7 +3300,7 @@ enableFollowSystemFontWeight(follow: boolean)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为true。 |
+| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -4200,7 +4205,7 @@ textZoomAtio(textZoomAtio: number)
 
 | 参数名          | 类型   | 必填  | 说明                             |
 | ------------ | ------ | ---- | -------------------------------- |
-| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。<br>取值范围为(0, 2147483647]。<br>默认值：100。 |
+| textZoomAtio | number | 是   | 要设置的页面的文本缩放百分比。100表示原始大小，大于100表示放大，小于100表示缩小。<br>取值范围为(0, 2147483647]。|
 
 **示例：**
 
@@ -4649,7 +4654,7 @@ enableFullscreenVideoOverlay(enabled: boolean)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+**设备行为差异：** 该接口在PC/2in1设备中无效果，在其他设备中可正常调用。
 
 **参数：**
 

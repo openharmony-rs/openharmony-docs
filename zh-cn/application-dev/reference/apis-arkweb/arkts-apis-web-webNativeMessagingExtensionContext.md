@@ -95,8 +95,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
       context.startAbility(abilityWant).then(() => {
         console.info('Ability started successfully');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
-          Message: ${(err as BusinessError).message}`);
+        console.error(`Failed to start ability. Code: ${err.code},
+          Message: ${err.message}`);
       });
     } catch (err) {
       console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
@@ -112,7 +112,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 
 启动一个UIAbility，使用Promise异步回调接收被拉起的UIAbility退出时的返回结果。
 
-UIAbility被启动后，有如下情况:
+UIAbility被启动后，有如下情况：
  - 正常情况下可通过调用[terminateSelfWithResult](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。
  - 异常情况下比如销毁UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。
  - 只支持拉起自己应用的UIAbility。
@@ -186,8 +186,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
           console.info(`Result data: ${JSON.stringify(result.want)}`);
         }
       }).catch((err: BusinessError) => {
-        console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
-        Message:${(err as BusinessError).message}`);
+        console.error(`Failed to start ability. Code: ${err.code},
+        Message:${err.message}`);
       });
     } catch (err) {
       console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
@@ -235,8 +235,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
         context.terminateSelf().then(() => {
           console.info('Extension terminated successfully');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to terminate extension. Code: ${(err as BusinessError).code},
-          Message: ${(err as BusinessError).message}`);
+          console.error(`Failed to terminate extension. Code: ${err.code},
+          Message: ${err.message}`);
         });       
     } catch (err) {
         console.error(`Failed to terminate extension. Code: ${(err as BusinessError).code},

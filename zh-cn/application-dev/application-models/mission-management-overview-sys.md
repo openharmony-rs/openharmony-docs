@@ -36,7 +36,7 @@
 
 一个UIAbility实例对应一个单独的任务，因此应用调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动一个UIAbility时，就是创建了一个任务。
 
-1. 桌面应用调用[missionManager](../reference/apis-ability-kit/js-apis-application-missionManager-sys.md)的接口管理任务，需要申请`ohos.permission.MANAGE_MISSIONS`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+1. 桌面应用调用[missionManager](../reference/apis-ability-kit/js-apis-app-ability-missionManager-sys.md)的接口管理任务，需要申请`ohos.permission.MANAGE_MISSIONS`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 利用missionManager进行任务管理（监听任务变化、获取任务信息、获取任务快照、清理任务、任务加锁/解锁等）。
 
@@ -96,7 +96,7 @@
     // 2.获取系统最近20个任务
     missionManager.getMissionInfos('', 20,
       (error: BusinessError, missions: Array<missionManager.MissionInfo>) => {
-        if (error.code) {
+        if (error) {
           hilog.error(DOMAIN_NUMBER, TAG,
             `getMissionInfos is called, error code: ${error.code}, err msg: ${error.message}.`);
           return;
@@ -136,7 +136,7 @@
     // 4.获取任务快照
     missionManager.getMissionSnapShot('', this.missionId,
       (error: BusinessError, snapshot: missionManager.MissionSnapshot) => {
-        if (error === null) {
+        if (!error) {
           hilog.info(DOMAIN_NUMBER, TAG, `bundleName = ${snapshot.ability.bundleName}.`);
           this.getUIContext().getPromptAction().showToast({
             message: 'obtain_snapshot_success_toast'
@@ -148,10 +148,10 @@
       });
     ```
     ```ts
-    // 5.获取低分辨任务快照
+    // 5.获取低分辨率任务快照
     missionManager.getLowResolutionMissionSnapShot('', this.missionId,
       (error: BusinessError, snapshot: missionManager.MissionSnapshot) => {
-        if (error === null) {
+        if (!error) {
           hilog.info(DOMAIN_NUMBER, TAG, `bundleName = ${snapshot.ability.bundleName}.`);
           this.getUIContext().getPromptAction().showToast({
             message: 'obtain_low_snapshot_success_toast'
@@ -204,7 +204,7 @@
     ```ts
     // 10.解注册任务变化通知
     missionManager.off('mission', this.listenerId, (error: BusinessError) => {
-      if (error === null) {
+      if (!error) {
         this.getUIContext().getPromptAction().showToast({
           message: 'unregister_success_toast'
         });

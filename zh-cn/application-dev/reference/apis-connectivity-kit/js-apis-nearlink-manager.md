@@ -1,4 +1,4 @@
-# @ohos.nearlink.manager (星闪开关能力)
+# @ohos.nearlink.manager (星闪基础管理能力)
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-本模块提供了管理星闪基础能力，包括获取设备信息、订阅状态变化事件等。
+本模块提供了星闪基础管理能力，包括查询是否支持星闪、获取本端设备信息、管理星闪开关状态及订阅状态变化事件等。
 
 
 **起始版本：** 26.0.0
@@ -20,7 +20,7 @@ import { manager } from '@kit.ConnectivityKit';
 ```
 
 
-## getState
+## manager.getState
 
 getState(): NearlinkState
 
@@ -40,7 +40,7 @@ getState(): NearlinkState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -60,7 +60,7 @@ try {
 }
 ```
 
-## isNearLinkSupported
+## manager.isNearLinkSupported
 
 isNearLinkSupported(): boolean
 
@@ -96,7 +96,7 @@ try {
 ```
 
 
-## getLocalName
+## manager.getLocalName
 
 getLocalName(): string
 
@@ -114,11 +114,11 @@ getLocalName(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 表示星闪设备本地名称。最大长度为30。 |
+| string | 表示星闪设备本地名称。最大长度为30个字符。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -141,9 +141,9 @@ try {
 ```
 
 
-## getPairedDevices
+## manager.getPairedDevices
 
-getPairedDevices(): Array&lt;string&gt;
+getPairedDevices(): string[]
 
 获取与当前设备配对的设备列表。
 
@@ -159,11 +159,11 @@ getPairedDevices(): Array&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Array&lt;string&gt; | 配对设备地址的列表。 |
+| string[] | 配对设备地址的列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -178,7 +178,7 @@ import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let pairedDevices: Array<string> = manager.getPairedDevices();
+  let pairedDevices: string[] = manager.getPairedDevices();
   if (pairedDevices.length > 0) {
         console.info('getPairedDevices return: ' + JSON.stringify(pairedDevices));
     } else {
@@ -190,7 +190,7 @@ try {
 ```
 
 
-## onStateChange
+## manager.onStateChange
 
 onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
@@ -210,7 +210,7 @@ onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -241,7 +241,7 @@ try {
 ```
 
 
-## offStateChange
+## manager.offStateChange
 
 offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
@@ -257,11 +257,11 @@ offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[NearlinkState](#nearlinkstate)&gt; | 否 | 回调函数，返回星闪的开关状态。<br/>填写该参数则取消当前callback订阅。不填写该参数则取消该type对应的所有回调。 |
+| callback | Callback&lt;[NearlinkState](#nearlinkstate)&gt; | 否 | 回调函数，返回星闪的开关状态。<br>填写该参数则取消当前callback订阅。不填写该参数则取消该事件对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

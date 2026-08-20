@@ -257,7 +257,7 @@
 
 ## SettingContent
 
-设置内容的定义（音频模板里有定义设置页面，设置内容用于设置页的填充）。
+设置内容的定义。用于在音频模板的设置页面中展示或配置相关内容。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -354,7 +354,7 @@
 
 ## CustomElement
 
-“我的主页”自定义元素的定义。继承自[OperResult](#operresult)。
+“我的主页”（应用内用户个人主页）自定义元素的定义。继承自[OperResult](#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -386,7 +386,7 @@
 
 ## SearchPlayInfo
 
-搜播信息的定义。
+搜播（搜索播放）信息的定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -412,6 +412,7 @@
 | description   | string                                        | 否   | 是   | 对音频的描述。                                      |
 | playMusicOnly | boolean                                       | 否   | 是   | 是否仅执行播放音乐的操作。true表示是，false表示否。无默认值。|
 | playMode      | string                                        | 否   | 是   | 音频的播放模式。                                    |
+| extras        | string                                        | 否   | 是   | 音频的额外信息。<br>**起始版本：** 26.1.0                                    |
 
 ## SearchPlayMusicItem
 

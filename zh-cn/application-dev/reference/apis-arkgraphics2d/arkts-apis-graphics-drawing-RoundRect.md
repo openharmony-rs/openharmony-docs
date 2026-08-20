@@ -71,7 +71,7 @@ constructor(rect: common2D.Rect, xRadii: number, yRadii: number)
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -103,7 +103,7 @@ setCorner(pos: CornerPos, x: number, y: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

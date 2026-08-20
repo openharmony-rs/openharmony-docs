@@ -1,4 +1,4 @@
-# Cross-Device UIAbility Connection Development (For System Applications Only)
+# Cross-Device UIAbility Connection Development (for System Applications Only)
 
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
@@ -6,7 +6,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:43:08.317Z pushedAt=2026-07-22T03:26:27.803Z -->
+<!-- md-trans-meta sourceCommit=0a98ce16f37887e40e6b2d0e4ac5e2fbd6b63617 translatedAt=2026-08-10T01:27:30.632Z pushedAt=2026-08-10T01:51:53.159Z -->
 
 ## Introduction
 

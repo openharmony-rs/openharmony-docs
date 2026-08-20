@@ -42,7 +42,7 @@ Immersive layout is a state that allows the app's layout area to extend to the e
 
   You can use the [isImmersiveLayout()](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20) interface to determine whether the current window is in immersive layout.
 
-For immersive development and implementation of different window forms in multi-device scenarios, refer to the [Window Immersion](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive) best practice.
+For immersive development and implementation of different window forms in multi-device scenarios, refer to the [Window Immersion](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-immersive) best practice.
 
 > **NOTE**
 >

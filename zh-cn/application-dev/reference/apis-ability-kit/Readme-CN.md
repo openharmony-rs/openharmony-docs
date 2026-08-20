@@ -13,7 +13,7 @@
     - [@ohos.app.ability.abilityLifecycleCallback (UIAbility生命周期回调监听器)](js-apis-app-ability-abilityLifecycleCallback.md)
     - [@ohos.app.ability.AbilityStage (AbilityStage组件管理器)](js-apis-app-ability-abilityStage.md)
     - [@ohos.app.ability.ActionExtensionAbility (支持业务操作自定义的ExtensionAbility组件)](js-apis-app-ability-actionExtensionAbility.md)
-    - [@ohos.app.ability.AgentUIExtensionAbility (带界面的智能体拓展组件)](js-apis-agent-agentUIExtensionAbility.md)
+    - [@ohos.app.ability.AgentUIExtensionAbility (带界面的智能体扩展组件)](js-apis-agent-agentUIExtensionAbility.md)
     - [@ohos.app.ability.application (应用工具类)](js-apis-app-ability-application.md)
     - [@ohos.app.ability.ApplicationStateChangeCallback (应用进程状态变化监听器)](js-apis-app-ability-applicationStateChangeCallback.md)
     - [@ohos.app.ability.appMemoryOptimizer (应用内存优化器)](js-apis-app-ability-appMemoryOptimizer.md)
@@ -55,7 +55,7 @@
     - [@ohos.app.appstartup.startupManager (启动框架管理能力)](js-apis-app-appstartup-startupManager.md)
     - [@ohos.app.appstartup.StartupTask (启动框架任务)](js-apis-app-appstartup-startupTask.md)
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](js-apis-app-ability-autoStartupManager.md)
-    - [@ohos.app.agent.AgentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)
+    - [@ohos.app.agent.agentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](js-apis-app-agent-agentExtensionAbility.md)
     - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
@@ -77,8 +77,8 @@
     - [@ohos.app.cli.cliManager (CLI工具管理)(系统接口)](js-apis-app-cli-cliManager-sys.md)
     <!--DelEnd-->
      - continuation<!--stage-model-continuation-->
-       - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
-       - [continuationResult](js-apis-continuation-continuationResult.md)
+       - [ContinuationExtraParams](js-apis-continuation-continuationExtraParams.md)
+       - [ContinuationResult](js-apis-continuation-continuationResult.md)
        <!--Del-->
        - [ContinuableInfo (系统接口)](js-apis-inner-application-continuableInfo-sys.md)
        - [ContinueCallback (系统接口)](js-apis-inner-application-continueCallback-sys.md)
@@ -97,7 +97,7 @@
       - [StartAbilityParameter](js-apis-inner-ability-startAbilityParameter.md)
     - app<!--app-->
       - [AppVersionInfo](js-apis-inner-app-appVersionInfo.md)
-      - [Context](js-apis-inner-app-context.md)
+      - [Context (FA模型的上下文基类)](js-apis-inner-app-context.md)
       - [ProcessInfo](js-apis-inner-app-processInfo.md)
   - 通用能力的接口(推荐)<!--both-models-->
     - [@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)
@@ -122,9 +122,9 @@
     - [@ohos.ability.screenLockFileManager (锁屏敏感数据管理)(系统接口)](js-apis-screenLockFileManager-sys.md)
     - [@ohos.app.ability.abilityManager (AbilityManager)(系统接口)](js-apis-app-ability-abilityManager-sys.md)
     - [@ohos.app.ability.appManager (appManager)(系统接口)](js-apis-app-ability-appManager-sys.md)
-    - [@ohos.app.agent.agentExtensionAbility (智能体扩展组件)(系统接口)](js-apis-app-agent-agentExtensionAbility-sys.md)
+    - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)(系统接口)](js-apis-app-agent-agentExtensionAbility-sys.md)
     - [@ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)](js-apis-app-agent-agentManager-sys.md)
-    - [@ohos.app.agent.AgentConstant (Agent常量)(系统接口)](js-apis-app-agent-agentConstant-sys.md)
+    - [@ohos.app.agent.agentConstant (Agent常量)(系统接口)](js-apis-app-agent-agentConstant-sys.md)
     - [@ohos.app.ability.kioskManager (Kiosk模式管理)(系统接口)](js-apis-app-ability-kioskManager-sys.md)
     - [@ohos.app.ability.missionManager (missionManager)(系统接口)](js-apis-app-ability-missionManager-sys.md)
     - [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](js-apis-app-ability-quickFixManager-sys.md)
@@ -235,19 +235,19 @@
       - [AgentProxy (系统接口)](js-apis-inner-application-agentProxy-sys.md)
       <!--DelEnd-->
     - bundleManager<!--bundlemanager-->
-      - [abilityInfo](js-apis-bundleManager-abilityInfo.md)
-      - [applicationInfo](js-apis-bundleManager-applicationInfo.md)
-      - [bundleInfo](js-apis-bundleManager-bundleInfo.md)
-      - [elementName](js-apis-bundleManager-elementName.md)
-      - [extensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)
-      - [hapModuleInfo](js-apis-bundleManager-hapModuleInfo.md)
-      - [launcherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)
-      - [metadata](js-apis-bundleManager-metadata.md)
+      - [AbilityInfo](js-apis-bundleManager-abilityInfo.md)
+      - [ApplicationInfo](js-apis-bundleManager-applicationInfo.md)
+      - [BundleInfo](js-apis-bundleManager-bundleInfo.md)
+      - [ElementName](js-apis-bundleManager-elementName.md)
+      - [ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)
+      - [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md)
+      - [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)
+      - [Metadata](js-apis-bundleManager-metadata.md)
       - [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)
       - [PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md)
       - [Skill](js-apis-bundleManager-skill.md)
-      - [shortcutInfo](js-apis-bundleManager-shortcutInfo.md)
-      - [skillInfo](js-apis-bundleManager-SkillInfo.md)
+      - [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)
+      - [SkillInfo](js-apis-bundleManager-SkillInfo.md)
       <!--Del-->
       - [ApplicationInfo (系统接口)](js-apis-bundleManager-ApplicationInfo-sys.md)
       - [AppProvisionInfo (系统接口)](js-apis-bundleManager-AppProvisionInfo-sys.md)
@@ -255,22 +255,21 @@
       - [BundlePackInfo (系统接口)](js-apis-bundleManager-BundlePackInfo-sys.md)
       - [BundleResourceInfo (系统接口)](js-apis-bundleManager-BundleResourceInfo-sys.md)
       - [BusinessAbilityInfo (系统接口)](js-apis-bundleManager-businessAbilityInfo-sys.md)
-      - [dispatchInfo (系统接口)](js-apis-bundleManager-dispatchInfo-sys.md)
+      - [DispatchInfo (系统接口)](js-apis-bundleManager-dispatchInfo-sys.md)
       - [LauncherAbilityResourceInfo (系统接口)](js-apis-LauncherAbilityResourceInfo-sys.md)
-      - [permissionDef (系统接口)](js-apis-bundleManager-permissionDef-sys.md)
-      - [PluginBundleInfo (系统接口)](js-apis-bundleManager-pluginBundleInfo-sys.md)
-      - [recoverableApplicationInfo (系统接口)](js-apis-recoverableApplicationInfo-sys.md)
-      - [remoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
+      - [PermissionDef (系统接口)](js-apis-bundleManager-permissionDef-sys.md)
+      - [RecoverableApplicationInfo (系统接口)](js-apis-recoverableApplicationInfo-sys.md)
+      - [RemoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (系统接口)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->
     - security<!--ability-security-->
       - [PermissionRequestResult](js-apis-permissionrequestresult.md)
     - wantAgent<!--wantagent-->
-      - [triggerInfo](js-apis-inner-wantAgent-triggerInfo.md)
-      - [wantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)
+      - [TriggerInfo](js-apis-inner-wantAgent-triggerInfo.md)
+      - [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)
       <!--Del-->
       - [TriggerInfo(系统接口)](js-apis-inner-wantAgent-triggerInfo-sys.md)
-      - [wantAgentInfo(系统接口)](js-apis-inner-wantAgent-wantAgentInfo-sys.md)
+      - [WantAgentInfo(系统接口)](js-apis-inner-wantAgent-wantAgentInfo-sys.md)
       <!--DelEnd-->
   - 已停止维护的接口<!--ability-arkts-dep-->
     - [@ohos.ability.dataUriUtils (DataUriUtils模块)](js-apis-ability-dataUriUtils.md)
@@ -296,22 +295,22 @@
     <!--DelEnd-->
     - [@system.package (应用管理)](js-apis-system-package.md)
     - ability<!--ability-deprecated-->
-      - [want](js-apis-inner-ability-want.md)
+      - [Want](js-apis-inner-ability-want.md)
     - bundle<!--bundle-->
-      - [abilityInfo](js-apis-bundle-AbilityInfo.md)
-      - [applicationInfo](js-apis-bundle-ApplicationInfo.md)
-      - [bundleInfo](js-apis-bundle-BundleInfo.md)
-      - [customizeData](js-apis-bundle-CustomizeData.md)
-      - [elementName](js-apis-bundle-ElementName.md)
-      - [hapModuleInfo](js-apis-bundle-HapModuleInfo.md)
-      - [moduleInfo](js-apis-bundle-ModuleInfo.md)
-      - [shortcutInfo](js-apis-bundle-ShortcutInfo.md)
+      - [AbilityInfo](js-apis-bundle-AbilityInfo.md)
+      - [ApplicationInfo](js-apis-bundle-ApplicationInfo.md)
+      - [BundleInfo](js-apis-bundle-BundleInfo.md)
+      - [CustomizeData](js-apis-bundle-CustomizeData.md)
+      - [ElementName](js-apis-bundle-ElementName.md)
+      - [HapModuleInfo](js-apis-bundle-HapModuleInfo.md)
+      - [ModuleInfo](js-apis-bundle-ModuleInfo.md)
+      - [ShortcutInfo](js-apis-bundle-ShortcutInfo.md)
       <!--Del-->
-      - [bundleInstaller (系统接口)](js-apis-bundle-BundleInstaller-sys.md)
-      - [bundleStatusCallback (系统接口)](js-apis-Bundle-BundleStatusCallback-sys.md)
-      - [launcherAbilityInfo (系统接口)](js-apis-bundle-LauncherAbilityInfo-sys.md)
+      - [BundleInstaller (系统接口)](js-apis-bundle-BundleInstaller-sys.md)
+      - [BundleStatusCallback (系统接口)](js-apis-Bundle-BundleStatusCallback-sys.md)
+      - [LauncherAbilityInfo (系统接口)](js-apis-bundle-LauncherAbilityInfo-sys.md)
       - [PermissionDef (系统接口)](js-apis-bundle-PermissionDef-sys.md)
-      - [remoteAbilityInfo (系统接口)](js-apis-bundle-remoteAbilityInfo-sys.md)
+      - [RemoteAbilityInfo (系统接口)](js-apis-bundle-remoteAbilityInfo-sys.md)
       - [shortcutInfo (系统接口)](js-apis-bundle-ShortcutInfo-sys.md)
       <!--DelEnd-->
 - C API<!--ability-c-->
@@ -344,7 +343,7 @@
   - 结构体<!--ability-struct-->
     - [AbilityBase_Element](capi-abilitybase-element.md)
     - [AbilityBase_Want](capi-abilitybase-want.md)
-    - [AbilityRuntime_Startoptions](capi-abilityruntime-startoptions.md)
+    - [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md)
     - [NativeChildProcess_Fd](capi-nativechildprocess-fd.md)
     - [NativeChildProcess_FdList](capi-nativechildprocess-fdlist.md)
     - [NativeChildProcess_Options](capi-nativechildprocess-options.md)
@@ -380,6 +379,7 @@
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)
   - [包管理子系统通用错误码](errorcode-bundle.md)
+  - [包管理快速修复命令的错误码](bm-quickfix-errorcode.md)
   - [访问控制错误码](errorcode-access-token.md)
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
   <!--Del-->

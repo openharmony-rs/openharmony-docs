@@ -6,9 +6,9 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:20.317Z pushedAt=2026-06-30T10:57:36.999Z -->
+<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:08:59.846Z pushedAt=2026-07-21T09:31:47.806Z -->
 
-The **NotificationContent** module provides APIs for defining the notification content.
+The **NotificationContent** module defines the notification content structure, providing multiple content description APIs for different notification types. When an application needs to publish a notification, it can select the corresponding API to construct the notification content based on the display requirements (such as normal text, long text, multi-line text, image, and live view).
 
 > **NOTE**
 >
@@ -55,9 +55,11 @@ Describes the normal live notification content. This API inherits from [Notifica
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
-Describes the system live view notification content. This API inherits from [NotificationBasicContent](#notificationbasiccontent).
+Describes the system live view notification content, which is used to display real-time status information in a live view. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application releases a notification with the same ID to update the specified content. This API inherits from [NotificationBasicContent](#notificationbasiccontent).
 
-Third-party applications are not supported to directly create this type of notification. After the system proxy creates a system live view notification, a third-party application can publish a notification with the same ID to update the specified content. This API inherits from [NotificationBasicContent](#notificationbasiccontent)
+> **NOTE**
+>
+> The actual display effect depends on the device capabilities and the notification center UI style.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -70,7 +72,11 @@ Third-party applications are not supported to directly create this type of notif
 
 ## NotificationCapsule<sup>11+</sup>
 
-Describe the notification capsule.
+Describes the notification capsule, which is used to display the capsule form in a live view.
+
+> **NOTE**
+>
+> The actual display effect depends on the device capabilities and the notification center UI style.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -101,7 +107,7 @@ Enumerates the statuses of the common live view.
 
 ## NotificationIconButton<sup>18+</sup>
 
-Describes the information of a system notification button.
+Describes the system notification button.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -146,6 +152,14 @@ Enumerates live view types.
 ## NotificationMultiLineContent
 
 Describes the multi-line text notification content. This API inherits from [NotificationBasicContent](#notificationbasiccontent).
+
+> **NOTE**
+>
+> - When this type of notification forms a group with other notifications, it is displayed in the collapsed state by default, with the title and body being the **title** and **text** from the [normal text](#notificationbasiccontent) that this type inherits.<br>When this type of notification is displayed alone, it is displayed in the expanded state by default, with the title being the expanded title **longTitle** and the text content **lines** displayed as the body in multiple lines.
+>
+> - When the user taps a grouped notification to view the details of each notification, this notification changes to the expanded state.
+>
+> - The actual display effect depends on the device capabilities and the notification center UI style.
 
 **System capability**: SystemCapability.Notification.Notification
 

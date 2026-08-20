@@ -471,8 +471,8 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | data       | string | 是   | 按照"base64"或者"URL"编码后的一段字符串。                    |
 | mimeType   | string | 是   | 媒体类型（MIME）。                                           |
 | encoding   | string | 是   | 编码类型，具体为"base64"或者"URL"编码。                       |
-| baseUrl    | string | 否   | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。<br>传入undefined或null会抛出异常错误码401。 |
-| historyUrl | string | 否   | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。<br>传入undefined或null会抛出异常错误码401。 |
+| baseUrl | string | 否 | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。<br>传入undefined或null会抛出异常错误码401。 |
+| historyUrl | string | 否 | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。<br>传入undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -1644,7 +1644,7 @@ struct WebComponent {
           try {
             let uiContext : UIContext = this.getUIContext();
             let context : Context | undefined = uiContext.getHostContext() as common.UIAbilityContext;
-            let filePath = context!.filesDir + 'test.txt';
+            let filePath = context!.filesDir + '/test.txt';
             // 新建并打开文件。
             let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
             // 写入一段内容至文件。
@@ -1865,7 +1865,7 @@ struct WebComponent {
           try {
             let uiContext : UIContext = this.getUIContext();
             let context : Context | undefined = uiContext.getHostContext() as common.UIAbilityContext;
-            let filePath = context!.filesDir + 'test.txt';
+            let filePath = context!.filesDir + '/test.txt';
             // 新建并打开文件。
             let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
             // 写入一段内容至文件。
@@ -3840,11 +3840,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除与当前WebView上下文相关的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/storage/el2/base/cache/web/Cache目录下查看Webview的缓存。
+清除应用内所有Webview产生的资源缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3896,10 +3892,6 @@ struct WebComponent {
 static removeAllCache(clearRom: boolean): void
 
 清除应用内所有Webview(含隐私模式)产生的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/app/el2/100/base/\<applicationPackageName\>/cache/web/目录下查看Webview的缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4844,7 +4836,7 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 | ------------------| --------------------------------| ---- | ------------- |
 | url               | string                          | 是    | 预加载的URL。|
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | URL的附加HTTP请求头。<br>默认值： [] |
-| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 |
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 <br>两次预取间的最小时间间隔为500ms，默认不忽略响应头中的Cache-Control: no-store。|
 
 **错误码：**
 
@@ -5132,7 +5124,7 @@ setCustomUserAgent(userAgent: string): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getUserAgent](#getuseragent)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
+| userAgent | string | 是 | 用户自定义代理信息。建议先使用[getUserAgent](#getuseragent)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 
 **错误码：**
 
@@ -5355,7 +5347,7 @@ static setAppCustomUserAgent(userAgent: string): void
 
 | 参数名          | 类型    |  必填  | 说明 |
 | ---------------| ------- | ---- | ------------- |
-| userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
+| userAgent | string | 是 | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 
 **示例：**
 
@@ -5404,7 +5396,7 @@ static setUserAgentForHosts(userAgent: string, hosts: Array\<string>): void
 
 | 参数名          | 类型    |  必填  | 说明 |
 | ---------------| ------- | ---- | ------------- |
-| userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
+| userAgent | string | 是 | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 | hosts      | Array\<string>  | 是   | 用户自定义代理的相关域名列表，每次调用时仅保留最新传入的列表，并限制最大条目数为两万，超出部分自动截断。 |
 
 
@@ -5457,7 +5449,7 @@ static setConnectionTimeout(timeout: number): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| timeout        | number  | 是   | socket连接超时时间，单位：s，必须为大于0的整数。 |
+| timeout | number | 是 | socket连接超时时间，单位：s，必须为大于0的整数。 |
 
 **错误码：**
 
@@ -7282,7 +7274,7 @@ struct WebComponent {
 
 setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-为当前应用的所有Web组件设置用于拦截ServiceWorker的WebSchemeHandler。
+为当前应用的所有Web组件设置WebSchemeHandler，用于拦截ServiceWorker中指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8620,7 +8612,7 @@ setUrlTrustList(urlTrustList: string): void
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源。典型使用场景包括：需要允许Web组件跨域访问本地资源文件，同时限制访问范围以保证安全。（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源。典型使用场景：用于需要允许Web组件跨域访问本地资源文件，同时限制访问范围以保证安全的场景。（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
  
 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
@@ -9306,7 +9298,7 @@ getAttachState(): ControllerAttachState
 
 | 类型         | 说明                 |
 | ------------ | -------------------- |
-| [ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20) | WebViewController与Web组件的绑定状态。 |
+| [ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20) | WebViewController与Web组件的绑定状态。 |
 
 **示例：**
 点击Button可以获取当前WebViewController的绑定状态并输出日志。
@@ -9353,7 +9345,7 @@ on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachSt
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
 
 **示例：**
 
@@ -9372,7 +9364,7 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **示例：**
 
@@ -9432,7 +9424,7 @@ struct WebComponent {
 
 waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
-异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。
+异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9446,7 +9438,7 @@ waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| Promise<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | Promise实例，返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。 |
+| Promise<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | Promise实例，返回当前[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)状态。 |
 
 
 **示例：**
@@ -9599,7 +9591,7 @@ getHitTest(): WebHitTestType
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9654,7 +9646,7 @@ getHitTestValue(): HitTestValue
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -10494,7 +10486,7 @@ static setAutoPreconnect(enabled: boolean): void
 
 设置Web内核的自动预连接状态。若未设置，默认启用自动预连接。
 
-需要在[initializeWebEngine()](#initializewebengine)初始化内核或者创建Web组件之前调用。
+需要在[initializeWebEngine()](#initializewebengine)初始化内核或者创建Web组件之前调用。若已加载任何Web组件，则该设置无效。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -11257,7 +11249,8 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 > **说明：**
 >
-> - 当网页不可用、命令无法执行或无结果返回时，Promise返回空字符串。
+> - 不同命令的返回格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)和[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
+> - 当命令无法分发或无结果返回时，Promise可能返回空字符串。
 > - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
 
 **起始版本：** 26.0.0
@@ -11276,7 +11269,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 类型             | 说明 |
 | ---------------- | ---- |
-| Promise\<string\> | Promise对象，执行成功时返回JSON格式的命令执行结果，执行失败或无返回值时返回空字符串。 |
+| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。命令无法分发或无返回值时，返回空字符串。 |
 
 **错误码：**
 
@@ -11374,6 +11367,9 @@ struct WebComponent {
         .onControllerAttached(() => {
           // 启用mainframe和subframe错误页功能
           this.controller.setErrorPageEnabled(true, true);
+          // 查询subframe错误页功能是否已启用
+          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled: " + isSubframeEnabled);
         })
         .onOverrideErrorPage((event) => {
           if (event.request.isMainFrame()) {
@@ -11431,33 +11427,4 @@ getSubframeErrorPageEnabled(): boolean
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
-        .onControllerAttached(() => {
-          // 启用mainframe和subframe错误页功能
-          this.controller.setErrorPageEnabled(true, true);
-          // 查询subframe错误页功能是否已启用
-          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled: " + isSubframeEnabled);
-
-          // 仅启用mainframe错误页功能，不启用subframe
-          this.controller.setErrorPageEnabled(true, false);
-          let isSubframeEnabled2: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled after disable: " + isSubframeEnabled2);
-        })
-    }
-  }
-}
-```
-
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+完整示例代码参考[setErrorPageEnabled](#seterrorpageenabled)。

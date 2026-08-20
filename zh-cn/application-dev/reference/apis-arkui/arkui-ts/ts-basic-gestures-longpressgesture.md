@@ -23,7 +23,7 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 
 创建长按手势对象。继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)。
 
-当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件，长按手势与拖拽会出现冲突，事件优先级如下：
+当组件默认支持可拖拽时，如Text、TextInput、TextArea、Hyperlink、Image和RichEditor等组件，长按手势与拖拽会出现冲突，事件优先级如下：
 
 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。
 
@@ -37,7 +37,7 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。<br> - fingers：触发长按的最少手指数，最小值为1，&nbsp;最大值为10。<br/>默认值：1 <br> - repeat：是否连续触发事件回调。true表示连续触发事件回调，false表示不连续触发事件回调。<br/>默认值：false <br> - duration：触发长按的最短时间，单位为毫秒（ms）。<br/>默认值：500 |
+| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。当需要自定义长按手势的触发手指数、是否连续触发回调或最短长按时间时传入；不传入时，使用默认配置创建长按手势。<br> - fingers：触发长按的最少手指数，最小值为1，最大值为10，超出范围时使用默认值；当需要多指长按触发时设置为大于1的值，默认值：1。<br> - repeat：是否连续触发事件回调。true表示连续触发事件回调，适用于长按期间需要持续响应的场景；false表示不连续触发事件回调，适用于仅需响应一次长按识别成功的场景，默认值：false。<br> - duration：触发长按的最短时间，单位为毫秒（ms），取值范围为[0, +∞)，当设置值小于0时使用默认值。当需要调整长按识别灵敏度时设置，默认值：500。 |
 
 ### LongPressGesture<sup>15+</sup>
 
@@ -45,7 +45,7 @@ LongPressGesture(options?: LongPressGestureHandlerOptions)
 
 创建长按手势对象。与[LongPressGesture](#longpressgesture-1)相比，options参数新增了对isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。
 
-当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件，长按手势与拖拽会出现冲突，事件优先级如下：
+当组件默认支持可拖拽时，如Text、TextInput、TextArea、Hyperlink、Image和RichEditor等组件，长按手势与拖拽会出现冲突，事件优先级如下：
 
 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。
 

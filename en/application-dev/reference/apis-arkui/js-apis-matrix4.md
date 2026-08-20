@@ -1,10 +1,12 @@
 # @ohos.matrix4 (Matrix Transformation)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-07-29T09:29:52.607Z pushedAt=2026-08-04T01:46:34.728Z -->
 
 Provides matrix transformation capabilities for components, including translation, rotation, and scaling. For details, see [Transformation](arkui-ts/ts-universal-attributes-transformation.md).
 
@@ -12,18 +14,15 @@ Provides matrix transformation capabilities for components, including translatio
 
 In [Transformation](arkui-ts/ts-universal-attributes-transformation.md), the [transform](arkui-ts/ts-universal-attributes-transformation.md#transform18) API uses the **Matrix4** object to display the matrix transformation in two-dimensional transformation, and the [transform3D](arkui-ts/ts-universal-attributes-transformation.md#transform3d20) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
 
-
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 
 ## Modules to Import
 
 ```ts
 import { matrix4 } from '@kit.ArkUI';
 ```
-
 
 ## matrix4.init
 
@@ -39,7 +38,7 @@ Matrix constructor, which is used to create a 4 x 4 matrix with the input parame
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | Yes  | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞)<br>Default value:<br>[1,&nbsp;0,&nbsp;0,&nbsp;0,<br>0,&nbsp;1,&nbsp;0,&nbsp;0,<br>0,&nbsp;0,&nbsp;1,&nbsp;0,<br>0,&nbsp;0,&nbsp;0,&nbsp;1] |
+| options | [number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number] | Yes   | Number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br/>Value range of each number: (-∞, +∞)<br/>Default value:<br/>[1,&nbsp;0,&nbsp;0,&nbsp;0,<br/>0,&nbsp;1,&nbsp;0,&nbsp;0,<br/>0,&nbsp;0,&nbsp;1,&nbsp;0,<br/>0,&nbsp;0,&nbsp;0,&nbsp;1] |
 
 **Return value**
 
@@ -63,10 +62,10 @@ Matrix constructor, which is used to create a 4 x 4 matrix with the input parame
 | m21  | number | Yes   | The tenth value, which is affected by the rotation of the x, y, and z axes. |
 | m22  | number | Yes   | Scaling value of the z-axis. The default value is **1** for the identity matrix.     |
 | m23  | number | Yes   | The 12th value, which is affected by perspective projection.              |
-| m30  | number | Yes   | Translation value of the x-axis, in px. The default value is **0** for the identity matrix.|
-| m31  | number | Yes   | Translation value of the y-axis, in px. The default value is **0** for the identity matrix.|
-| m32  | number | Yes   | Translation value of the z-axis, in px. The default value is **0** for the identity matrix.|
-| m33  | number | Yes   | Valid in homogeneous coordinates, presenting the perspective projection effect.   |
+| m30  | number | Yes    | Translation value of the x-axis, in px. The default value is **0** for the identity matrix. |
+| m31  | number | Yes    | Translation value of the y-axis, in px. The default value is **0** for the identity matrix. |
+| m32  | number | Yes    | Translation value of the z-axis, in px. The default value is **0** for the identity matrix. |
+| m33  | number | Yes    | Valid in homogeneous coordinates, presenting the perspective projection effect.    |
 
 **Example**
 
@@ -87,7 +86,7 @@ struct Tests {
     Column() {
       // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .transform(matrix)
     }
@@ -95,12 +94,11 @@ struct Tests {
 }
 ```
 
-
 ## matrix4.identity
 
 identity(): Matrix4Transit
 
-Constructs an identity matrix.
+Initializes a matrix and returns an identity matrix object, which can serve as the basis for subsequent matrix transformation operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -132,7 +130,7 @@ struct Tests {
     Column() {
       // Replace $r("app.media.zh") with the image resource file you use.
       Image($r("app.media.zh"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .transform(matrix1)
       // Replace $r("app.media.zh") with the image resource file you use.
@@ -170,7 +168,6 @@ Copies this matrix object.
 | --------------------------------- | -------------------- |
 | [Matrix4Transit](#matrix4transit) | Copy object of the current matrix.|
 
-
 **Example**
 
 ```ts
@@ -185,7 +182,7 @@ struct Test {
   imageSize: Length = '300px';
 
   build() {
-    Column({ space: "50px" }) {
+    Column({ space: '50px' }) {
       // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
@@ -201,7 +198,7 @@ struct Test {
         .height(this.imageSize)
         .transform(this.matrix2)
     }.alignItems(HorizontalAlign.Center)
-    .height('100%').width("100%")
+    .height('100%').width('100%')
     .justifyContent(FlexAlign.Center)
   }
 }
@@ -248,7 +245,7 @@ struct Test {
       // Before matrix transformation
       // Replace $r("app.media.icon") with the image resource file you use.
       Image($r("app.media.icon"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .margin({ top: 50 })
       // Translate the x-axis by 200px, and then scale it twice to obtain the resultant matrix.
@@ -263,8 +260,7 @@ struct Test {
 }
 ```
 
-![Matrix4-combine](figures/Matrix4-combine.png)
-
+![en-us_image_0000001118642902](figures/Matrix4-combine.png)
 
 ### invert
 
@@ -313,7 +309,6 @@ struct Tests {
 }
 ```
 
-
 ### translate
 
 translate(options: TranslateOption): Matrix4Transit
@@ -351,7 +346,7 @@ struct Test {
     Column() {
       // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
-        .width("40%")
+        .width('40%')
         .height(100)
     }
   }
@@ -359,7 +354,6 @@ struct Test {
 ```
 
 ![Matrix4-translate](figures/Matrix4-translate.png)
-
 
 ### scale
 
@@ -405,7 +399,7 @@ struct Test {
     Column() {
       // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage")).transform(this.matrix1)
-        .width("300px")
+        .width('300px')
         .height("300px")
     }.width("100%").height("100%").justifyContent(FlexAlign.Center)
   }
@@ -413,7 +407,6 @@ struct Test {
 ```
 
 ![Matrix4-scale](figures/Matrix4-scale.png)
-
 
 ### skew<sup>12+</sup>
 
@@ -431,8 +424,8 @@ Skews this matrix object along the x and y axes. The matrix that calls this API 
 
 | Name| Type                       | Mandatory| Description          |
 | ------ | --------------------------- | ---- | -------------- |
-| x | number | Yes  | Amount of skewing on the x-axis.|
-| y | number | Yes  | Amount of skewing on the y-axis.|
+| x | number | Yes | Amount of skewing on the x-axis.<br/>The value **0** indicates no skew, while positive and negative values correspond to skew effects in different directions. |
+| y | number | Yes | Amount of skewing on the y-axis.<br/>The value **0** indicates no skew, while positive and negative values correspond to skew effects in different directions. |
 
 **Return value**
 
@@ -460,14 +453,13 @@ struct Test {
           top: 300
         })
     }
-    .width("100%")
+    .width('100%')
     .height("100%")
   }
 }
 ```
 
 ![Matrix4-skew](figures/Matrix4-skew.jpeg)
-
 
 ### rotate
 
@@ -512,7 +504,7 @@ struct Test {
     Column() {
       // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1")).transform(this.matrix1)
-        .width("40%")
+        .width('40%')
         .height(100)
     }.width("100%").margin({ top: 50 })
   }
@@ -520,7 +512,6 @@ struct Test {
 ```
 
 ![Matrix4-rotate](figures/Matrix4-rotate.png)
-
 
 ### transformPoint
 
@@ -542,7 +533,7 @@ Applies the current transformation effect to a coordinate point.
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| [number, number] | Point object after matrix transformation|
+| [number, number] | Coordinate point after matrix transformation, in the format of [x, y]. |
 
 **Example**
 
@@ -576,18 +567,18 @@ struct Test {
         .height('300px')
         .margin({ top: 50 })
         .transform(this.matrix_2)
-    }.width("100%").padding(50)
+    }.width('100%').padding(50)
   }
 }
 ```
 
-![Matrix4-Matrix4](figures/Matrix4-Matrix4.PNG)
+![en-us_image_0000001219864133](figures/Matrix4-Matrix4.PNG)
 
 ### setPolyToPoly<sup>12+</sup>
 
 setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit
 
-Maps the vertex coordinates of a polygon to those of another polygon.
+Maps the vertex coordinates of a polygon to those of another polygon. This API is applicable to scenarios requiring custom deformation, such as image perspective correction, 3D visual effects, and card flip effects.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -599,7 +590,7 @@ Maps the vertex coordinates of a polygon to those of another polygon.
 
 | Name| Type            | Mandatory| Description              |
 | ------ | ---------------- | ---- | ------------------ |
-| options | [PolyToPolyOptions](#polytopolyoptions12)  | Yes  | Parameters for mapping.|
+| options | [PolyToPolyOptions](#polytopolyoptions12)  | Yes   | Options for polygon mapping, which specify the mapping relationship between the source polygon vertex coordinates and the target polygon vertex coordinates. |
 
 **Return value**
 
@@ -634,11 +625,13 @@ struct Index {
         .transform(this.matrix1)
         .width('500px')
         .height('500px')
-    }.width("100%").height("100%").opacity(0.5)
+    }.width('100%').height('100%').opacity(0.5)
   }
 }
 ```
+
 ![en-us_image_0000001174422898](figures/setPolyTopoly.png)
+
 ## TranslateOption
 
 Describes the translation parameters.
@@ -679,12 +672,12 @@ Describes the rotation parameters.
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---------- | -------------------------------------------------- |
-| x       | number | No| Yes  | X-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
-| y       | number | No| Yes | Y-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)     |
+| x       | number | No | Yes   | X-coordinate of the rotation axis vector, which specifies the component of the rotation axis in the x direction. Pass this parameter when rotating around an axis with an x component. If not passed, the x component of the rotation axis defaults to **0**.<br/>Default value: **0**<br/>Value range: (-∞, +∞) |
+| y       | number | No | Yes  | Y-coordinate of the rotation axis vector, which specifies the component of the rotation axis in the y direction. Pass this parameter when rotating around an axis with a y component. If not passed, the y component of the rotation axis defaults to **0**.<br/>Default value: **0**<br/>Value range: (-∞, +∞) |
 | z       | number | No| Yes | Z-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>**NOTE**<br>The rotation axis vector is valid only when at least one of **x**, **y**, and **z** is not 0.|
-| angle   | number | No| Yes | Rotation angle.<br>Default value: **0**                                    |
-| centerX | number | No| Yes | Additional x-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's x-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
-| centerY | number | No| Yes | Additional y-axis offset of the transformation center relative to the component's anchor.<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>The value **0** indicates that the transformation center coincides with the component's y-axis anchor. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
+| angle   | number | No | Yes  | Rotation angle, which is used to set the rotation amount of the component around the rotation axis. Pass this parameter when the component needs to be rotated. If not passed, the component is not rotated.<br/>Default value: **0** |
+| centerX | number | No | Yes  | Additional x-axis offset of the center point of a single matrix transformation operation relative to the component transform center point (anchor point).<br/>Unit: px<br/>Default value: **0**<br/>**Note:** <br/>When the value is **0**, the matrix transformation center in the x direction is exactly the component anchor point in the x direction. The value indicates the additional offset relative to the component anchor point in the x direction. For details about implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point). |
+| centerY | number | No| Yes | Additional y-axis offset of the center point of a single matrix transformation operation relative to the component transform center point (anchor point).<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>When the value is **0**, the matrix transformation center in the y direction is exactly the component anchor point in the y direction. The value indicates the additional offset relative to the component anchor point in the y direction. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
 
 ## PolyToPolyOptions<sup>12+</sup>
 
@@ -698,11 +691,11 @@ Describes the configuration options for polygon-to-polygon transformation mappin
 
 | Name| Type  | Read-Only| Optional| Description                                                       |
 | ---- | ------ | ---- | ---- | ----------------------------------------------------------- |
-| src    |  Array<[Point](#point12)> | No  | No  | Coordinates of the source point.|
-| srcIndex    | number | No  | Yes  | Start index of the source point coordinates.<br>Default value: **0**.<br> Value range: [0, +∞).|
-| dst    |  Array<[Point](#point12)>  | No  | No  | Coordinates of the destination point.|
+| src    |  Array<[Point](#point12)> | No   | No   | Vertex coordinates of the source polygon, used to define the start shape of the transformation mapping. |
+| srcIndex    | number | No   | Yes   | Start index of the source point coordinates, used to specify the position in the **src** array from which point obtaining starts. This parameter is passed when the source point needs to be obtained from a specific position in the **src** array. If not passed, the point is obtained from index 0.<br/>Default value: 0<br/>Value range: [0, +∞) |
+| dst    |  Array<[Point](#point12)>  | No   | No   | Vertex coordinates of the target polygon, used to define the target shape of the transformation mapping. |
 | dstIndex    | number | No  | Yes  |  Start index of the destination point coordinates.<br>Default value: **src.length/2**.<br> Value range: [0, +∞).|
-| pointCount    | number | No  | Yes  | Number of used points. **0**: returns an identity matrix. **1**: returns a translation matrix. 2-4: returns a transformation matrix.<br>Default value: **0**.<br> Value range: [0, +∞).|
+| pointCount    | number | No  | Yes  | Number of used points. **0**: returns an identity matrix. **1**: returns a translation matrix before the two points change. 2-4: returns a transformation matrix.<br>Default value: **0**.<br> Value range: [0, +∞).|
 
 ## Point<sup>12+</sup>
 
@@ -716,20 +709,18 @@ Defines the data structure of a coordinate point.
 
 | Name| Type  | Read-Only| Optional| Description                                                       |
 | ---- | ------ | ---- | -------- | --------------------------------------------------- |
-| x    |  number | No| No  | X-coordinate.<br>Value range: (-∞, +∞)|
-| y    | number | No| No  | Y-coordinate.<br>Value range: (-∞, +∞)|
+| x    |  number | No | No   | X-axis coordinate.<br/>Unit: px<br/>Value range: (-∞, +∞) |
+| y    | number | No | No   | Y-axis coordinate.<br/>Unit: px<br/>Value range: (-∞, +∞) |
 
 ## matrix4.copy<sup>(deprecated)</sup>
 
 copy(): Matrix4Transit
-
 
 Copies this matrix object.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.copy](#copy) instead.
-
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -756,7 +747,7 @@ struct Test {
     Column() {
       // Replace $r("app.media.bg1") with the image resource file you use.
       Image($r("app.media.bg1"))
-        .width("40%")
+        .width('40%')
         .height(100)
         .transform(this.matrix1)
       // Replace $r("app.media.bg2") with the image resource file you use.
@@ -806,7 +797,7 @@ Combines the effects of two matrices to generate a new matrix object.
 
 | Name | Type                             | Mandatory| Description              |
 | ------- | --------------------------------- | ---- | ------------------ |
-| options | [Matrix4Transit](#matrix4transit) | Yes  | Matrix object to be combined.|
+| options | [Matrix4Transit](#matrix4transit) | Yes | Matrix object to be combined. Its transformation effect will be combined with the identity matrix. |
 
 **Return value**
 
@@ -830,7 +821,7 @@ Translates this matrix object along the x, y, and z axes.
 
 | Name | Type                               | Mandatory| Description          |
 | ------- | ----------------------------------- | ---- | -------------- |
-| options | [TranslateOption](#translateoption) | Yes  | Translation configuration.|
+| options | [TranslateOption](#translateoption) | Yes | Translation options for setting the translation distance on the x-axis, y-axis, and z-axis. |
 
 **Return value**
 
@@ -854,7 +845,7 @@ Scales this matrix object along the x, y, and z axes.
 
 | Name | Type                       | Mandatory| Description          |
 | ------- | --------------------------- | ---- | -------------- |
-| options | [ScaleOption](#scaleoption) | Yes  | Scaling configuration.|
+| options | [ScaleOption](#scaleoption) | Yes | Scaling options for setting the scale multiples of the x-axis, y-axis, and z-axis and the coordinates of the transform center point. |
 
 **Return value**
 
@@ -878,7 +869,7 @@ Rotates this matrix object along the x, y, and z axes.
 
 | Name | Type                         | Mandatory| Description          |
 | ------- | ----------------------------- | ---- | -------------- |
-| options | [RotateOption](#rotateoption) | Yes  | Rotation configuration.|
+| options | [RotateOption](#rotateoption) | Yes | Rotation options for setting the rotation axis vector (x/y/z), rotation angle, and transform center point offset. |
 
 **Return value**
 
@@ -908,4 +899,4 @@ Applies the current transformation effect to a coordinate point.
 
 | Type            | Description                       |
 | ---------------- | --------------------------- |
-| [number, number] | Point object after matrix transformation|
+| [number, number] | Coordinate point after matrix transformation, in the format [x, y]. |

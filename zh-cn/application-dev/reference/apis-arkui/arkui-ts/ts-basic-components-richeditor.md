@@ -1222,7 +1222,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | 名称 |类型 | 只读 | 可选 | 说明|
 | -------------  | -----------------------            | ---- | ----------|-------------------------------------------------- |
 | margin | [Dimension](ts-types.md#dimension10) \| [Margin](ts-types.md#margin) | 否 | 是 | 外边距类型，用于描述组件不同方向的外边距。<br>默认值：四个方向外边距均为0。<br>参数为Dimension类型时，四个方向外边距同时生效。|
-| borderRadius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) | 否 | 是 | 圆角类型，用于描述组件边框圆角半径。<br>默认值：圆角半径为0。<br>参数为Dimension类型时，不支持以Percentage形式设置 |
+| borderRadius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) | 否 | 是 | 圆角类型，用于描述组件边框圆角半径。<br>默认值：圆角半径为0。<br>参数为Dimension类型时，不支持以Percentage形式设置。 |
 
 ## RichEditorOptions
 
@@ -4904,7 +4904,7 @@ struct RichEditorExample {
   CustomKeyboardBuilder() {
     Column() {
       Row() {
-        Button('增加特表情包').onClick(() => {
+        Button('增加表情包').onClick(() => {
           this.controller.addTextSpan("\uD83D\uDE0A",
             {
               style:
@@ -5588,7 +5588,7 @@ struct RichEditorExample {
 ![RichEditorEditMenuOptions](figures/richEditorEditMenuOptions.gif)
 
 ### 示例24（组件部分常用属性）
-从API version 18开始，该示例通过[barState](#barstate13)属性设置组件滚动条的显示模式。通过[enableKeyboardOnFocus](#enablekeyboardonfocus12)属性设置组件通过点击以外的方式获焦时，是否主动拉起软键盘。通过[enableHapticFeedback](#enablehapticfeedback13)属性设置组件是否支持触感反馈。通过[getPreviewText](#getpreviewtext12)接口获取组件预上屏信息。通过[stopBackPress](#stopbackpress18)属性设置是否阻止返回键向其它组件或应用侧传递。<br>
+从API version 18开始，该示例通过[barState](#barstate13)属性设置组件滚动条的显示模式。通过[enableKeyboardOnFocus](#enablekeyboardonfocus12)属性设置组件通过点击以外的方式获焦时，是否主动拉起软键盘。通过[enableHapticFeedback](#enablehapticfeedback13)属性设置组件是否支持触感反馈。通过[getPreviewText](#getpreviewtext12)接口获取组件预上屏信息。通过[stopBackPress](#stopbackpress18)属性设置是否阻止返回键向其他组件或应用侧传递。<br>
 从API version 21开始，该示例通过[scrollBarColor](#scrollbarcolor21)属性设置RichEditor组件滚动条颜色。
 
 ```ts

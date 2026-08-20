@@ -6,9 +6,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T08:17:24.381Z pushedAt=2026-06-23T08:19:18.881Z -->
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:14:24.801Z pushedAt=2026-08-03T01:04:27.328Z -->
 
-The **\<chart>** component displays line charts, gauge charts, and bar charts.
+The **chart** component displays a line chart, bar chart, gauge chart, progress circle chart, loading circle chart, or proportional circle chart.
 
 > **NOTE**
 >
@@ -25,7 +25,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | Name             | Type                              | Default Value| Mandatory| Description                                                        |
 | ----------------- | ---------------------------------- | ------ | ---- | ------------------------------------------------------------ |
 | type              | string                             | line   | No  | Chart type. Dynamic modification is not supported. Available values include:<br>- **bar**: bar chart.<br>- **line**: line chart.<br>- **gauge**: gauge chart.<br>- **progress**: circle chart of progresses.<br>- **loading**: circle chart of loading processes.<br>- **rainbow**: circle chart of proportions.|
-| options           | ChartOptions                       | -      | No  | Chart parameters. You can set the minimum value, maximum value, scale, and line width of the x-axis or y-axis, whether to display the x-axis and y-axis, and whether the line is smooth. Dynamic modification is not supported. Parameter settings for gauge charts do not take effect.|
+| options           | ChartOptions                       | -      | No   | Chart parameters. You can set the minimum value, maximum value, scale, and line width of the x-axis or y-axis, whether to display the x-axis and y-axis, and whether the line is smooth. Dynamic modification is not supported. Parameter settings for gauge charts do not take effect. |
 | datasets          | Array\<ChartDataset>               | -      | No  | Data sets. Data sets for a gauge chart do not take effect. You can set multiple datasets and their background colors.      |
 | segments          | DataSegment \| Array\<DataSegment> | -      | No  | Data structures used by **progress**, **loading**, and **rainbow** charts.<br>The **DataSegment** type is applicable to **progress** and **loading** charts. The **Array\<DataSegment>** type is applicable to **rainbow** charts. A maximum of nine **DataSegment** values can be set.|
 | effects           | boolean                            | true   | No  | Whether to enable the effects for **progress** and **rainbow** charts.<br>The value **true** means to enable the effects for **progress** and **rainbow** charts, and **false** means the opposite. The default value is **true**.                        |
@@ -37,7 +37,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | ------ | --------- | ---- | ---- | ---------------------------------------- |
 | xAxis  | ChartAxis | -    | Yes   | X-axis parameters. You can set the minimum value, maximum value, and scale of the x-axis, and whether to display the x-axis.         |
 | yAxis  | ChartAxis | -    | Yes   | Y-axis parameters. You can set the minimum value, maximum value, and scale of the y-axis, and whether to display the y-axis.         |
-| series | ChartAxis | -    | No   | Data series. This parameter is only available for line charts. It includes the following settings:<br>- Line style, such as the line width and whether the line is smooth.<br>- Style and size of the white point at the start of the line..|
+| series | ChartSeries | - | No | Data series. This parameter is only available for line charts. It includes the following settings:<br>- Line style, such as the line width and whether the line is smooth.<br>- Style and size of the white point at the start of the line. |
 
   **Table 2** ChartDataset
 

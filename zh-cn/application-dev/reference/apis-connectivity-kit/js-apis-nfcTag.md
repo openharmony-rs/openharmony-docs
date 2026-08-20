@@ -14,7 +14,7 @@
 > **说明：**
 >
 >1. 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->2. 从API版本26.0.0开始请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../common/init.md#caniuse) && [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported)共同判断设备是否支持NFC能力更加准确，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
+>2. 从API版本26.0.0开始请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) && [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported)共同判断设备是否支持NFC能力更加准确，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
 >3. 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 
 ## **导入模块**
@@ -23,7 +23,7 @@
 import { tag } from '@kit.ConnectivityKit';
 ```
 
-## **tag.TagInfo**
+## **tag.TagInfo示例**
 
 在对相关Tag类型卡片进行读写之前，必须先获取[TagInfo](#taginfo)相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。这样Tag应用程序才能调用正确的接口和所读取到的Tag卡片进行通信。
 ```js
@@ -1351,7 +1351,7 @@ NFC Tag有多种不同的技术类型，定义常量描述不同的技术类型�
 | MIFARE_CLASSIC               |  number | 8      | MIFARE Classic技术。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
 | MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight技术。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE技术。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。               |
-| SKIP_NDEF                    | number |     11  | 跳过NDEF检查的技术。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| SKIP_NDEF                    | number |     11  | 跳过NDEF检查的技术。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | RTD_TEXT<sup>9+</sup>        | number[] | [0x54] | 文本类型的NDEF Record，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | RTD_URI<sup>9+</sup>         | number[] | [0x55] | URI类型的NDEF Record，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 

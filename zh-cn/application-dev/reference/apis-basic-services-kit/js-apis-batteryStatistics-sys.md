@@ -132,7 +132,7 @@ getAppPowerValue(uid: number): number
 
 ```js
 try {
-    let value = batteryStats.getAppPowerValue(10021); // 10021为示例UID，实际使用时需通过bundleManager.getUidByBundleName等接口获取应用UID
+    let value = batteryStats.getAppPowerValue(10021); // 10021为示例UID，实际使用时需通过bundleManager.getBundleInfoForSelf等接口获取应用UID
     console.info('battery statistics value of app is: ' + value);
 } catch (err) {
     console.error(`Failed to get battery statistics value of app. Code: ${err.code}, message: ${err.message}`);
@@ -299,7 +299,7 @@ try {
 | CONSUMPTION_TYPE_BLUETOOTH | -15  | 表示蓝牙消耗的电量类型。      |
 | CONSUMPTION_TYPE_IDLE      | -14  | 表示CPU空闲时消耗的电量类型。 |
 | CONSUMPTION_TYPE_PHONE     | -13  | 表示通话消耗的电量类型。  |
-| CONSUMPTION_TYPE_RADIO     | -12  | 表示蜂窝通讯消耗的电量类型。  |
+| CONSUMPTION_TYPE_RADIO     | -12  | 表示蜂窝通信消耗的电量类型。  |
 | CONSUMPTION_TYPE_SCREEN    | -11  | 表示屏幕消耗的电量类型。      |
 | CONSUMPTION_TYPE_USER      | -10  | 表示用户消耗的电量类型。      |
 | CONSUMPTION_TYPE_WIFI      | -9   | 表示无线网消耗的电量类型。    |

@@ -19,7 +19,7 @@
 
 ### 使用场景
 
-下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务。可以参考下表中的场景举例，选择合适的长时任务类型。
+下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务等类型。可以参考下表中的场景举例，选择合适的长时任务类型。
 
 **表1** 长时任务类型
 | 参数名 | 描述 | 配置项 | 场景举例 |
@@ -42,6 +42,8 @@
 - 在数据传输时，若应用使用[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
 - 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
+
+- 从API版本26.1.0开始，可使用[updateDataTransferProgress()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
 
 关于AUDIO_PLAYBACK（音视频播放）说明：
 
@@ -66,15 +68,15 @@
 1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
 2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
 3. 成功扫描到设备之后，应用需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
-4. 从API版本26.0.0开始，[BR](../connectivity/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过[onAclStateChange](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononaclstatechange)接口感知ACL连接状态变化，实现重新保活。
+4. 从API版本26.0.0开始，[BR](../connectivity/bluetooth/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过[onAclStateChange](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononaclstatechange)接口感知ACL连接状态变化，实现重新保活。
 
 关于MODE_NEARLINK（星闪业务）说明： 
 
 如果应用仅申请了星闪长时任务，因设备远离等原因导致星闪断连，系统将取消应用的星闪长时任务。为确保星闪接续使用体验，在断连后的1-10分钟内（具体时长受系统负载影响），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。 
  
 1. 主动注册长时任务暂停监听的事件以避免星闪断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在星闪断连时系统不会立即取消长时任务，而是将其标记为暂停态。 
-2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后订阅星闪扫描结果，断连之后，本端设备主动发起星闪扫描，对端设备发送星闪广播。 
-3. 本端设备成功扫描到对端设备之后，需要向对端设备发起连接。如无其他业务扫描需求，本端设备可停止星闪扫描。
+2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后通过[onDeviceFound](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound)订阅星闪扫描结果，断连之后，本端设备通过[startScan](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanstartscan)主动发起星闪扫描，对端设备则通过[startAdvertising](../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md#advertisingstartadvertising)发送星闪广播。 
+3. 本端设备成功扫描到对端设备之后，需要通过[connect](../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#connect)向对端设备发起连接。如无其他业务扫描需求，本端设备可使用[stopScan](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanstopscan)停止星闪扫描。
 
 关于长时任务通知说明：
 

@@ -6,7 +6,6 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:18:34.045Z pushedAt=2026-06-29T13:30:35.709Z -->
 
 Driver Development Kit (DDK) provides peripheral driver developers with efficient, secure, and feature-rich extended peripheral driver development solutions — ArkTS APIs and C APIs — enabling a seamless plug-and-play experience for end users.
 
@@ -86,13 +85,15 @@ The following table lists the required permissions.
 
 <!--RP1--><!--RP1End-->
 
+For API call restrictions of DriverExtensionAbility, see [Constraints](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#constraints) in the API reference.
+
 ## Associated Modules
 
 The following table lists the associated modules you may use during development of peripheral drivers.
 
 | Name| Description| 
 | --------- | --------- |
-| PerformanceAnalysisKit | Introduces [hilog](../../dfx/hilog.md) for log printing.| 
+| PerformanceAnalysisKit | Introduces [hilog](../../reference/apis-performance-analysis-kit/js-apis-hilog.md) for log printing.| 
 | BasicServicesKit       | Introduces [BusinessError](../../reference/apis-basic-services-kit/js-apis-base.md#businesserror) to capture error information.|
 | IPCKit                 | Introduces [rpc](../../reference/apis-ipc-kit/js-apis-rpc.md) to implement inter-process communication between the driver and the client.|
 | AbilityKit             | Introduces [@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md) for lifecycle management.|
@@ -127,10 +128,12 @@ The following table lists the associated modules you may use during development 
 
 - Within **DriverExtensionAbility**, only DDK APIs can be accessed to perform access control and data communication for non-standard peripherals.
 
-- Due to driver development security constraints and business requirements, accessing other ArkTS APIs from within **DriverExtensionAbility** is prohibited to prevent malicious behavior and data leakage.
+- Based on the security constraints and service scenarios in driver development, access to other ArkTS APIs is not allowed within DriverExtensionAbility, which is intended to prevent malicious behavior and data leakage.
 
 - Restricted ArkTS API access in **DriverExtensionAbility** is implemented as follows:
 
   - During initialization and creation of the **Extension** process, system modules are loaded according to the configured list of ArkTS APIs accessible to **DriverExtensionAbility**. At runtime, if a restricted ArkTS API is called within **DriverExtensionAbility**, the call fails because the corresponding system module was not loaded during initialization and creation.
 
 - For the specific list of ArkTS APIs restricted in **DriverExtensionAbility**, refer to the **DriverExtension** configuration in [frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).
+
+<!--no_check-->

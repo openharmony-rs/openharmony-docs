@@ -1,4 +1,4 @@
-# @ohos.usb (USB管理)(已停止维护)
+# @ohos.usb (USB管理)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
@@ -196,7 +196,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址。 |
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引。 |
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false&nbsp;，表示不强制获取。 |
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。如果接口已被其他程序占用，使用true可强制获取但可能导致该程序功能异常；如果接口未被占用，建议使用false以避免不必要的强制操作。用户按需选择。|
 
 **返回值：**
 
@@ -507,8 +507,8 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | attributes     | number                                           | 是   |配置的属性。          |
 | maxPower       | number                                           | 是   |最大功耗，以毫安为单位。    |
 | name           | string                                           | 是   |配置的名称，可以为空。     |
-| isRemoteWakeup | boolean                                          | 是   |检查当前配置是否支持远程唤醒。 |
-| isSelfPowered  | boolean                                          | 是   |检查当前配置是否支持独立电源。 |
+| isRemoteWakeup | boolean                                          | 是   |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
+| isSelfPowered  | boolean                                          | 是   |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
 | interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | 是   |配置支持的接口属性。      |
 
 ## USBDevice
@@ -523,7 +523,7 @@ USB设备信息。
 | devAddress       | number                               | 是   |设备地址。      |
 | serial           | string                               | 是   |序列号。       |
 | name             | string                               | 是   |设备名字。      |
-| manufacturerName | string                               | 是   |产商信息。      |
+| manufacturerName | string                               | 是   |厂商信息。      |
 | productName      | string                               | 是   |产品信息。      |
 | version          | string                               | 是   |版本。        |
 | vendorId         | number                               | 是   |厂商ID。      |

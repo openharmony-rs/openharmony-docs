@@ -1,4 +1,4 @@
-# 使用多线程NDK接口并行化构建UI页面
+# NDK多线程创建组件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -68,7 +68,7 @@
 >
 > - 开发者可以在任意线程使用多线程NDK接口操作处于Free状态的组件，为保证应用功能正常和线程安全，需遵守如下使用约束：
 >   - 禁止多线程同时操作同一个处于Free状态的组件或组件树，处于Free状态的组件内部是无锁的，多线程同时访问会出现稳定性问题。
->   - 禁止使用[多线程NDK接口集合](#多线程ndk接口集合规格)外的其他NDK接口操作处于Free状态的组件，需先将组件转换为Attach状态后才可以在UI线程使用其他NDK接口，否则接口功能会出现异常。
+>   - 禁止使用[多线程NDK接口集合](#多线程ndk接口集合规格)外的其他NDK接口操作处于Free状态的组件，需先将组件转换为Attached状态后才可以在UI线程使用其他NDK接口，否则接口功能会出现异常。
 >
 > - 为兼顾性能，上述约束框架侧无运行时校验，需要开发者自行保证。
 >
@@ -262,11 +262,12 @@ export const createNodeTreeOnMultiThread: (content1: Object, content2: Object) =
 export const disposeNodeTreeOnMultiThread: (content1: Object) => void;
 ```
 
-``` cpp
-# CMakeLists.txt
+<!-- @[cmake_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBuildOnMultiThread/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.5.0)
-project(ndk_build_on_multi_thread)
+project(myapp)
 
 set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -277,8 +278,12 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(entry SHARED napi_init.cpp NativeEntry.cpp NativeModule.h ArkUIBaseNode.h ArkUINode.h ArkUIListNode.h ArkUIListItemNode.h ArkUITextNode.h NormalTextListExample.h CreateNode.h CreateNode.cpp)
-target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
+add_library(entry SHARED
+    napi_init.cpp
+    node/NodeCreator.cpp
+    card/CardCreator.cpp
+    )
+target_link_libraries(entry PUBLIC libace_napi.z.so ace_ndk.z.so hilog_ndk.z.so)
 ```
 
 ``` cpp

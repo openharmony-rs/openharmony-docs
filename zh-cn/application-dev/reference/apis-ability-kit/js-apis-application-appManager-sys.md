@@ -7,11 +7,11 @@
 <!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
-appManager模块提供App管理的能力，包括查询当前是否处于稳定性测试场景、查询是否为ram受限设备、获取应用程序的内存大小、获取有关运行进程的信息等。
+appManager模块提供App管理的能力，包括注册应用状态观测器、获取前台应用信息、终止应用进程、清除应用数据、获取运行进程信息等。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 8 开始支持，从API version 9废弃，替换模块为[@ohos.app.ability.appManager](js-apis-app-ability-appManager.md)。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 8开始支持，从API version 9开始废弃，替换模块为[@ohos.app.ability.appManager](js-apis-app-ability-appManager.md)。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.application.appManager (appManager)](js-apis-application-appManager.md)。
 
@@ -37,13 +37,13 @@ registerApplicationStateObserver(observer: ApplicationStateObserver): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是 | 表示程序状态观测器，用于观测应用的生命周期变化。 |
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是 | 表示应用程序状态观测器，用于观测应用的生命周期变化。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 已注册观测器的数字代码。|
+| number | 已注册观测器的数字代码，用于取消注册观测器。|
 
 **示例：**
     
@@ -78,7 +78,7 @@ registerApplicationStateObserver(observer: ApplicationStateObserver): number
 
 ## appManager.unregisterApplicationStateObserver
 
-unregisterApplicationStateObserver(observerId: number,  callback: AsyncCallback\<void>): void
+unregisterApplicationStateObserver(observerId: number, callback: AsyncCallback\<void>): void
 
 取消注册应用程序状态观测器。使用callback异步回调。
 
@@ -92,8 +92,8 @@ unregisterApplicationStateObserver(observerId: number,  callback: AsyncCallback\
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| observerId | number | 是 | 表示观察者的编号代码。 |
-| callback | AsyncCallback\<void> | 是 | 表示指定的callback回调方法。 |
+| observerId | number | 是 | 表示观测器的数字代码。 |
+| callback | AsyncCallback\<void> | 是 | 取消注册的回调函数。 |
 
 **示例：**
     
@@ -129,7 +129,7 @@ unregisterApplicationStateObserver(observerId: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| observerId | number | 是 | 表示观察者的编号代码。 |
+| observerId | number | 是 | 表示观测器的数字代码。 |
 
 **返回值：**
 
@@ -223,7 +223,7 @@ getForegroundApplications(): Promise\<Array\<AppStateData>>
 
 killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
-切断account进程。使用Promise异步回调。
+根据Bundle名称和账号ID终止指定账号下的应用进程。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -240,7 +240,7 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| accountId | number | 是 | 系统账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
 
 **返回值：**
 
@@ -270,25 +270,25 @@ appManager.killProcessWithAccount(bundleName, accountId)
 
 killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCallback\<void\>): void
 
-切断account进程。使用callback异步回调。
+根据Bundle名称和账号ID终止指定账号下的应用进程。使用callback异步回调。
 
 > **说明：** 
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.CLEAN_BACKGROUND_PROCESSES
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
-
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
-| callback | AsyncCallback\<void\> | 是 | 回调函数，当切断account进程成功，err为undefined，否则为错误对象。 |
+| accountId | number | 是 | 系统账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当终止指定账号下的应用进程成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -326,7 +326,7 @@ killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 表示Bundle名称。 |
+| bundleName | string | 是 | 应用Bundle名称。 |
 | callback | AsyncCallback\<void> | 是 | 回调函数，当通过Bundle名称终止进程成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -364,7 +364,7 @@ killProcessesByBundleName(bundleName: string): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 表示Bundle名称。 |
+| bundleName | string | 是 | 应用Bundle名称。 |
 
 **返回值：**
 
@@ -404,7 +404,7 @@ clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 表示Bundle名称。 |
+| bundleName | string | 是 | 应用Bundle名称。 |
 | callback | AsyncCallback\<void> | 是 | 回调函数，当通过Bundle名称清除应用数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -442,7 +442,7 @@ clearUpApplicationData(bundleName: string): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 表示Bundle名称。 |
+| bundleName | string | 是 | 应用Bundle名称。 |
 
 **返回值：**
 
@@ -489,6 +489,8 @@ getProcessRunningInformation(): Promise\<Array\<ProcessRunningInfo>>
 | Promise\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Promise对象，返回有关运行进程的信息。 |
 
 **错误码**：
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
@@ -545,7 +547,7 @@ getProcessRunningInformation(callback: AsyncCallback\<Array\<ProcessRunningInfo>
 
   appManager.getProcessRunningInformation((error, data) => {
     if (error && error.code !== 0) {
-      console.error(`getProcessRunningInformation fail, error: ${JSON.stringify(error)}`);
+      console.error(`GetProcessRunningInformation failed, error code: ${error.code}, error msg: ${error.message}.`);
     } else {
       console.info(`getProcessRunningInformation success, data: ${JSON.stringify(data)}`);
     }

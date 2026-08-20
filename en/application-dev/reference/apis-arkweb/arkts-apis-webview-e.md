@@ -1,10 +1,16 @@
 # Enums
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=595dfecd254e3797b40fd02681ac1055f9439da2 translatedAt=2026-08-07T04:26:21.387Z pushedAt=2026-08-07T07:52:02.478Z -->
+
+The ArkWeb Enums module is a collection of enum type definitions for ArkWeb (Web subsystem), providing unified type constraints and state description capabilities for the WebView component and its associated API classes. This module defines enum types covering multiple domains such as web page interaction, security status, DNS configuration, download tasks, media playback control, kernel version, process mode, memory management, offline resources, no-white-screen loading, site isolation, soft keyboard behavior, cookie policy, scroll control, and device form factor, serving as the foundational type support layer for the entire WebView API system.
+
+When using core classes such as WebviewController, WebMessagePort, WebDownloadItem, NativeMediaPlayerHandler, NativeMediaPlayerBridge, and WebSchemeHandlerRequest in [Module Description](arkts-apis-webview.md), developers must rely on the enum types in this module to configure behavior parameters or parse returned results. When developers need to finely control the running mode of the Web component, query page status, handle download tasks, integrate native media playback control, or optimize loading experience, they should refer to the corresponding enum definitions in this module.
 
 > **NOTE**
 >
@@ -12,7 +18,7 @@
 
 ## WebHitTestType
 
-Enumerates the cursor node types for the [getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18) API.
+Enumerates the node types that the cursor hits.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -20,8 +26,8 @@ Enumerates the cursor node types for the [getLastHitTest](./arkts-apis-webview-W
 | ------------- | -- |----------------------------------------- |
 | EditText      | 0 |Editable area.                           |
 | Email         | 1 |Email address.                           |
-| HttpAnchor    | 2 |Hyperlink, where **src** is **http**.                    |
-| HttpAnchorImg | 3 |Image with a hyperlink, where **src** is http + HTML::img.|
+| HttpAnchor    | 2 | Hyperlink with an HTTP address. |
+| HttpAnchorImg | 3 | Image with a hyperlink, where the link address is HTTP + HTML::img. |
 | Img           | 4 |HTML::img tag.                          |
 | Map           | 5 |Geographical address.                               |
 | Phone         | 6 |Phone number.                               |
@@ -35,7 +41,7 @@ Enumerates the modes in which the **Web** component uses HTTPDNS.
 
 | Name         | Value| Description                                     |
 | ------------- | -- |----------------------------------------- |
-| OFF                                  | 0 |HTTPDNS is not used. This value can be used to revoke the previously used HTTPDNS configuration.|
+| OFF                                  | 0 | HTTPDNS is not used. It can be used to revoke the previously used HTTPDNS configuration. |
 | AUTO                                 | 1 |HTTPDNS is used in automatic mode. If the specified HTTPDNS server is unavailable for resolution, the component falls back to the system DNS server.|
 | SECURE_ONLY                          | 2 |The specified HTTPDNS server is forcibly used for DNS resolution.|
 
@@ -54,7 +60,7 @@ Enumerates the security levels of the web page.
 
 ## MediaPlaybackState<sup>12+</sup>
 
-Enumerates the playback states on the current web page.
+Enumerates the playback control states of the current web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -78,7 +84,7 @@ Enumerates the memory pressure levels. When an application clears the cache occu
 
 ## WebMessageType<sup>10+</sup>
 
-Enumerates the data types supported by the [webMessagePort](./arkts-apis-webview-WebMessagePort.md) API.
+Enumerates the data types supported by the [WebMessagePort](./arkts-apis-webview-WebMessagePort.md) API.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -109,7 +115,7 @@ Enumerates the data types of the results returned after the [runJavaScriptExt](.
 
 ## RenderProcessMode<sup>12+</sup>
 
-Enumerates the ArkWeb render subprocess modes.
+Enumerates the ArkWeb renderer subprocess mode types. You can select the appropriate mode based on the app's requirements for memory usage and renderer process isolation.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -128,8 +134,8 @@ Enumerates the offline resource types corresponding to the [OfflineResourceMap](
 | ------------ | -- |--------------------------------- |
 | IMAGE  | 0 | Resource of the image type.|
 | CSS       | 1 | Resource of the CSS type.|
-| CLASSIC_JS       | 2 | Javascript resource loaded through the <script src="" /\> tag.|
-| MODULE_JS      | 3 |Javascript resource loaded through the <script src="" type="module" /\> tag.|
+| CLASSIC_JS       | 2 | JavaScript resources loaded via the &lt;script src="" /&gt; tag.|
+| MODULE_JS      | 3 | JavaScript resources loaded via the &lt;script src="" type="module" /&gt; tag.|
 
 ## ScrollType<sup>12+</sup>
 
@@ -139,7 +145,7 @@ Enumerates the scroll types for [setScrollable](./arkts-apis-webview-WebviewCont
 
 | Name        | Value| Description                             |
 | ------------ | -- |--------------------------------- |
-| EVENT  | 0 | Scrolling event, indicating that a web page is scrolled by using a touchscreen, a touchpad, or a mouse.|
+| EVENT  | 0 | Scroll event, which represents web page scrolling generated through the touchscreen, touchpad, or mouse wheel. |
 
 ## WebDownloadState<sup>11+</sup>
 
@@ -169,7 +175,7 @@ Enumerates the download task error codes.
 | FILE_FAILED | 1 |  Failed to operate the file.|
 | FILE_ACCESS_DENIED | 2 | No permission to access the file.|
 | FILE_NO_SPACE | 3 | The disk space is insufficient.|
-| FILE_NAME_TOO_LONG | 5 | The file name is too long.|
+| FILE_NAME_TOO_LONG | 5 | The file name is too long. |
 | FILE_TOO_LARGE | 6 | The file is too large.|
 | FILE_TRANSIENT_ERROR | 10 |  Some temporary issues occur, such as insufficient memory, files in use, and too many files open at the same time.|
 | FILE_BLOCKED | 11 |  Access to the file is blocked due to certain local policies.|
@@ -231,10 +237,10 @@ Enumerates the playback statuses of the player, which is an input parameter of t
 
 | Name| Value| Description|
 |------|----|------|
-| PAUSED  | 0 | Paused.|
-| PLAYING | 1 | Playing.|
+| PAUSED  | 0 | Media paused. |
+| PLAYING | 1 | Media playing. |
 
-## NetworkState<sup>12+<sup>
+## NetworkState<sup>12+</sup>
 
 Enumerates the network statuses of the player.
 
@@ -247,7 +253,7 @@ Enumerates the network statuses of the player.
 | LOADING       | 2 | The player is downloading media data.|
 | NETWORK_ERROR | 3 | A network error occurs.|
 
-## ReadyState<sup>12+<sup>
+## ReadyState<sup>12+</sup>
 
 Enumerates the cache states of the player.
 
@@ -258,10 +264,10 @@ Enumerates the cache states of the player.
 | HAVE_NOTHING      | 0 | There is no data cached.|
 | HAVE_METADATA     | 1 | Only media metadata is cached.|
 | HAVE_CURRENT_DATA | 2 | Data up to the current playback position is cached.|
-| HAVE_FUTURE_DATA  | 3 | Data beyond the current playback position is cached, but there might still be stutters during playback.|
+| HAVE_FUTURE_DATA | 3 | The buffered duration exceeds the current playback progress, but stuttering may still occur. |
 | HAVE_ENOUGH_DATA  | 4 | Sufficient data has been cached to ensure smooth playback.|
 
-## MediaError<sup>12+<sup>
+## MediaError<sup>12+</sup>
 
 Enumerates the error types of the player.
 
@@ -273,7 +279,7 @@ Enumerates the error types of the player.
 | FORMAT_ERROR  | 2 | Media format error.|
 | DECODE_ERROR  | 3 | Decoding error.|
 
-## SuspendType<sup>12+<sup>
+## SuspendType<sup>12+</sup>
 
 Enumerates the suspension types of the player.
 
@@ -281,11 +287,11 @@ Enumerates the suspension types of the player.
 
 | Name| Value| Description|
 |------|----|------|
-| ENTER_BACK_FORWARD_CACHE | 0 | The page enters the BFCache.|
-| ENTER_BACKGROUND         | 1 | The page is displayed in the background.|
+| ENTER_BACK_FORWARD_CACHE | 0 | The page enters the BFCache. |
+| ENTER_BACKGROUND         | 1 | The page enters the background. |
 | AUTO_CLEANUP             | 2 | The page is automatically cleaned up by the system.|
 
-## MediaType<sup>12+<sup>
+## MediaType<sup>12+</sup>
 
 Enumerates the media types.
 
@@ -296,7 +302,7 @@ Enumerates the media types.
 | VIDEO | 0 | Video.|
 | AUDIO | 1 | Audio.|
 
-## SourceType<sup>12+<sup>
+## SourceType<sup>12+</sup>
 
 Enumerates the media source types.
 
@@ -307,7 +313,7 @@ Enumerates the media source types.
 | URL | 0 | URL.|
 | MSE | 1 | Blob.|
 
-## Preload<sup>12+<sup>
+## Preload<sup>12+</sup>
 
 Enumerates how the player preloads media data.
 
@@ -350,8 +356,9 @@ Enumerates the global scrollbar modes in the web page.
 
 | Name| Value| Description|
 | ------------------------------- | - | ---------- |
-| OVERLAY_LAYOUT_SCROLLBAR  | 0 | The scrollbar is not always displayed.|
+| OVERLAY_LAYOUT_SCROLLBAR  | 0 | Overlay scrollbar that can be dragged. |
 | FORCE_DISPLAY_SCROLLBAR    | 1 | The scrollbar is always displayed.|
+| OVERLAY_VISUAL_SCROLLBAR    | 2 | Overlay scrollbar that cannot be dragged.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model. |
 
 ## WebBlanklessErrorCode<sup>20+</sup>
 
@@ -386,16 +393,17 @@ Frame interpolation status of blankless loading.
 
 ## ArkWebEngineVersion<sup>20+</sup>
 
-For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).
+For ArkWeb kernel versions, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md) and [Adaptation Guide for the M132 Kernel on OpenHarmony 7.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name         | Value| Description                                     |
 | ------------- | -- |----------------------------------------- |
-| SYSTEM_DEFAULT   | 0     | Default system kernel. For OpenHarmony 6.0, the default kernel is M132.|
-| M114             | 1     | Legacy kernel of OpenHarmony 6.0. You can select this legacy kernel. If it does not exist, the setting is invalid.|
-| M132             | 2     | Evergreen kernel of OpenHarmony 6.0, which is M132 by default. If it does not exist, the setting is invalid.|
-| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | Evergreen kernel, which is the latest kernel of the system. You can choose to use the latest kernel for each system version. This setting takes effect for OpenHarmony 6.1 and later versions.|
+| SYSTEM_DEFAULT   | 0     | System default kernel (see [Constraints](../../web/web-component-overview.md#constraints)). The default kernel is M132 for OpenHarmony 6.0 and M144 for OpenHarmony 7.0.|
+| M114             | 1     | Legacy kernel of OpenHarmony 6.0. Developers can select this legacy kernel. If this kernel does not exist on the system version, the setting does not take effect and the system default kernel is used.|
+| M132             | 2     | Evergreen kernel of OpenHarmony 6.0 (legacy kernel of OpenHarmony 7.0). M132 is the default kernel of OpenHarmony 6.0. If this kernel does not exist on the system version, the setting does not take effect and the system default kernel is used.|
+| M144             | 3     | Evergreen kernel of OpenHarmony 7.0. M144 is the default kernel of OpenHarmony 7.0. If this kernel does not exist on the system version, the setting does not take effect and the system default kernel is used.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model. |
+| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | The latest kernel (evergreen kernel) of the system. Developers can select this kernel to always use the latest kernel on each system version. |
 
 **Table 1** Description of evergreen kernel and legacy kernel
 
@@ -404,18 +412,16 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 | Evergreen kernel    | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
 | Legacy kernel    | LEGACY WebCore    | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only.|
 
-
 ## SiteIsolationMode<sup>21+</sup>
 
-Enumerates the site isolation modes. The site isolation mechanism isolates websites from different sources in different render processes to reduce the cross-domain attack surface. For example, on a PC, each tab corresponds to a render process. After site isolation is enabled, Iframes from different sources run in independent render processes.
+The site isolation mechanism isolates websites from different origins in different renderer subprocesses, reducing the cross-origin attack surface. For example, in the original process model on PC, each tab corresponds to one renderer subprocess. After site isolation is enabled, iframes from different origins run in independent renderer subprocesses.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name| Value| Description|
 | ------------------------------- | - | ---------- |
-| PARTIAL | 0 | Partial site isolation. New sites are loaded in the same render process.|
+| PARTIAL | 0 | Partial site isolation, that is, new sites are loaded in the same renderer process. |
 | STRICT  | 1 | Strict site isolation. Iframes from different sites are switched to new render processes.|
-
 
 ## WebSoftKeyboardBehaviorMode<sup>22+</sup>
 
@@ -455,5 +461,5 @@ Enumerates the user device forms.
 | MOBILE       | 'Mobile' |Mobile phone, which is a string.|
 | EINK      | 'EInk' |E-ink screen, which is a string.|
 | TABLET | 'Tablet' |Tablet, which is a string.|
-| WATCH        | 'Watch' |Watch, which is a string.|
-| XR        | 'XR' |VR+AR device, which is a string.|
+| WATCH        | 'Watch' |Watch, a string type.|
+| XR        | 'XR' |VR+AR device, a string type.|
