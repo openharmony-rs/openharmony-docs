@@ -4673,7 +4673,7 @@ isWlanSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
   | **错误码ID** | **错误信息** |
   | -------- | -------- |
