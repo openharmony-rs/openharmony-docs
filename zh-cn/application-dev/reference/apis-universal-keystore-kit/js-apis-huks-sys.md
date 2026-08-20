@@ -67,7 +67,7 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with the same alias already exists. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 
 **示例：**
 
@@ -712,7 +712,7 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 | 12000012 | The device environment or input parameter is abnormal. |
 | 12000014 | The memory is insufficient. |
 | 12000018 | The parameter is incorrect. Possible causes: <br>1. A mandatory parameter is left empty. <br>2. The parameter type is incorrect. <br>3. The parameter verification failed. |
-| 12000024 | the provider or UKey is busy. |
+| 12000024 | The operation times out. This may be caused by network jitter. You can try again later. |
 | 12000027 | The network is unavailable. Check network connections. |
 
 **示例：**
@@ -1764,7 +1764,7 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported.<br>适用版本：23+ |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
