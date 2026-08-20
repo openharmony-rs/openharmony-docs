@@ -93,7 +93,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 位置信息请求参数。
 
-**原子化服务API：** 从API版本 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -110,7 +110,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 当前位置信息请求参数。
 
-**原子化服务API：** 从API版本 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -681,7 +681,7 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 | deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示蓝牙设备的地址列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。仅当扫描到的蓝牙设备的地址与该数组中的一个元素相同时才通过callback返回该蓝牙设备信息。当传入空数组（数组长度为0）时，不会返回蓝牙扫描结果。数组中每个元素的格式如下："XX:XX:XX:XX:XX:XX"。 |
 | rssiThreshold | number | 否 | 是 | 表示RSSI阈值，只扫描RSSI大于此阈值的设备。取值范围为-128至127。 |
   
- ## Point
+## Point
 
 表示一个位置点。
 
@@ -3789,7 +3789,7 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
    
 **起始版本：** 26.0.0
    
-**原子化服务API：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
    
 **系统能力**：SystemCapability.Location.Location.Core
    
