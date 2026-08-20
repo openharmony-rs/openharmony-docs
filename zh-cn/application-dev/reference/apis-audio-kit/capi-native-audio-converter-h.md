@@ -164,7 +164,7 @@ typedef int32_t (*OH_AudioConverter_RequestDataCallback)(void* userData, const v
 
 **描述**
 
-请求数据的回调函数。转换器在[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process)期间调用此回调函数以主动请求输入音频数据。<br> 回调函数实现者必须填充输出参数（outInputData，outStatus），并返回通过回调函数读取的数据大小。<br> 单个回调返回的最大数据大小为400KB。<br> outInputData指向的内存必须保持有效，直到OH_AudioConverter_Process返回处理完成为止。
+请求数据的回调函数。转换器在[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process)期间调用此回调函数以主动请求输入音频数据。<br> 调用者必须填充输出参数（outInputData，outStatus），并返回通过回调函数读取的数据大小。<br> 单个回调返回的最大数据大小为400KB。<br> outInputData指向的内存必须保持有效，直到OH_AudioConverter_Process返回处理完成为止。
 
 **起始版本：** 26.0.0
 
