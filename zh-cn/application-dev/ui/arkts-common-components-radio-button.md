@@ -254,7 +254,7 @@ export struct RadioExample {
 ArkTS-Dyn示例：
  
 <!-- @[radio_control_swiper_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSwiper.ets) -->
- 
+
 ``` TypeScript
 // xxx.ets
 @Entry
@@ -274,14 +274,14 @@ export struct RadioSwiperSample {
     ['Swim', 'Cool off', 'Watermelon'],
     ['Moon', 'Climb', 'Autumn outing']
   ];
- 
+
   build() {
     // ...
       Column({ space: 16 }) {
         Text(`Current page: ${this.titles[this.currentIndex]}`)
           .fontSize(18)
           .fontWeight(FontWeight.Medium)
- 
+
         // Swiper每页内包含一组独立的Radio，滑动切页后各页选中状态互不影响
         Swiper() {
           ForEach(this.titles, (title: string, index: number) => {
