@@ -1,14 +1,18 @@
 # CanvasRenderingContext2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:49:58.152Z pushedAt=2026-06-15T02:39:36.661Z -->
-
+<!-- md-trans-meta sourceCommit=15b51f3421fe97d0d3d047fcc62cf84f0a11ec42 translatedAt=2026-08-20T10:40:06.103Z pushedAt=2026-08-20T10:50:12.089Z -->
 
 **CanvasRenderingContext2D** allows you to draw rectangles and text on a canvas.
+
+> **NOTE**
+>
+> Since API version 23, the previewer is no longer subject to the restriction that the JS file size cannot exceed 48 KB. For API version 22 and earlier, the JS file size cannot exceed 48 KB.
 
 **Example**
 
@@ -19,7 +23,6 @@
     <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
 </div>
 ```
-
 
 ```javascript
 // xxx.js
@@ -35,7 +38,6 @@ export default {
 ```
 
   ![en-us_image_0000001431548113](figures/en-us_image_0000001431548113.png)
-
 
 ## fillRect()
 
@@ -54,11 +56,9 @@ Fills a rectangle on the canvas.
 
  ![en-us_image_0000001431388525](figures/en-us_image_0000001431388525.png)
 
-
   ```javascript
   ctx.fillRect(20, 20, 200, 150);
   ```
-
 
 ## fillStyle
 
@@ -74,12 +74,10 @@ Sets the style to fill an area.
 
   ![en-us_image_0000001431388505](figures/en-us_image_0000001431388505.png)
 
-
   ```javascript
   ctx.fillStyle = '#0000ff';
   ctx.fillRect(20, 20, 150, 100);
   ```
-
 
 ## strokeRect()
 
@@ -98,11 +96,9 @@ Draws a rectangle stroke on the canvas.
 
   ![en-us_image_0000001381268264](figures/en-us_image_0000001381268264.png)
 
-
   ```javascript
   ctx.strokeRect(30, 30, 200, 150);
   ```
-
 
 ## fillText()
 
@@ -120,12 +116,10 @@ Draws filled text on the canvas.
 
   ![en-us_image_0000001431548109](figures/en-us_image_0000001431548109.png)
 
-
   ```javascript
   ctx.font = '35px sans-serif';
   ctx.fillText("Hello World!", 20, 60);
   ```
-
 
 ## lineWidth
 
@@ -141,12 +135,10 @@ Sets the width of a line.
 
   ![en-us_image_0000001431548121](figures/en-us_image_0000001431548121.png)
 
-
   ```javascript
   ctx.lineWidth = 5;
   ctx.strokeRect(25, 25, 85, 105);
   ```
-
 
 ## strokeStyle
 
@@ -162,13 +154,11 @@ Sets the stroke style.
 
   ![en-us_image_0000001380789172](figures/en-us_image_0000001380789172.png)
 
-
   ```javascript
   ctx.lineWidth = 10;
   ctx.strokeStyle = '#0000ff';
   ctx.strokeRect(25, 25, 155, 105);
   ```
-
 
 ### stroke()<sup>5+</sup>
 
@@ -185,7 +175,6 @@ Draws a stroke.
   ctx.stroke();
   ```
 
-
 ### beginPath()<sup>5+</sup>
 
 Creates a drawing path.
@@ -193,7 +182,6 @@ Creates a drawing path.
 **Example**
 
   ![en-us_image_0000001431548125](figures/en-us_image_0000001431548125.png)
-
 
   ```javascript
   ctx.beginPath();              
@@ -203,7 +191,6 @@ Creates a drawing path.
   ctx.lineTo(280, 80);
   ctx.stroke();
   ```
-
 
 ### moveTo()<sup>5+</sup>
 
@@ -227,7 +214,6 @@ Moves a drawing path to a target position on the canvas.
   ctx.stroke();
   ```
 
-
 ### lineTo()<sup>5+</sup>
 
 Connects the current point to a target position using a straight line.
@@ -250,7 +236,6 @@ Connects the current point to a target position using a straight line.
   ctx.stroke();
   ```
 
-
 ### closePath()<sup>5+</sup>
 
 Draws a closed path.
@@ -258,7 +243,6 @@ Draws a closed path.
 **Example**
 
   ![en-us_image_0000001381268284](figures/en-us_image_0000001381268284.png)
-
 
   ```javascript
   ctx.beginPath();
@@ -268,7 +252,6 @@ Draws a closed path.
   ctx.closePath();
   ctx.stroke();
   ```
-
 
 ## font
 
@@ -284,12 +267,10 @@ Sets the font style.
 
   ![en-us_image_0000001381108328](figures/en-us_image_0000001381108328.png)
 
-
   ```javascript
   ctx.font = '30px sans-serif';
   ctx.fillText("Hello World", 20, 60);
   ```
-
 
 ## textAlign
 
@@ -304,7 +285,6 @@ Sets the text alignment mode.
 **Example**
 
   ![en-us_image_0000001431388517](figures/en-us_image_0000001431388517.png)
-
 
   ```javascript
   ctx.strokeStyle = '#0000ff';
@@ -322,7 +302,6 @@ Sets the text alignment mode.
   ctx.textAlign = 'right';      
   ctx.fillText('textAlign=right',140, 140);
   ```
-
 
 ## arc()<sup>5+</sup>
 
@@ -348,7 +327,6 @@ Draws an arc on the canvas.
   ctx.arc(100, 75, 50, 0, 6.28);
   ctx.stroke();
   ```
-
 
 ### rect()<sup>5+</sup>
 

@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:49:52.769Z pushedAt=2026-06-15T02:39:36.656Z -->
+<!-- md-trans-meta sourceCommit=2b4a363c0c9697348978b2b0cf80698398efa944 translatedAt=2026-08-20T10:39:57.492Z pushedAt=2026-08-20T10:50:12.082Z -->
 
 The **list** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same data in a multiple and coherent row style, for example, images or text.
 
@@ -14,11 +14,9 @@ The **list** component provides a list container that presents a series of list 
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 Only &lt;[list-item](js-lite-components-container-list-item.md)&gt; is supported.
-
 
 ## Properties
 
@@ -28,7 +26,6 @@ Only &lt;[list-item](js-lite-components-container-list-item.md)&gt; is supported
 | style | string | - | No| Style declaration of the component.|
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
-
 
 ## Events
 
@@ -40,7 +37,6 @@ Only &lt;[list-item](js-lite-components-container-list-item.md)&gt; is supported
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component.|
 | scrolltop<sup>8+</sup> | - | Triggered when the list is scrolled to the top.|
 | scrollbottom<sup>8+</sup> | - | Triggered when the list is scrolled to the bottom.|
-
 
 ## Styles
 
@@ -61,22 +57,21 @@ Only &lt;[list-item](js-lite-components-container-list-item.md)&gt; is supported
 | display | string | flex | No| Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | No| Offset of the element.<br>The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of a positioned element and that of a block included in the element.<br>The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
-
 ## Methods
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
 | scrollTo | {&nbsp;index:&nbsp;number(position)&nbsp;}| Scrolls the list to the position of the item at the specified index.|
 | rotation | {&nbsp;focus:&nbsp;boolean&nbsp;} | Specifies whether to request focus for crown rotation. **focus: true**: acquires focus, allowing users to scroll options by rotating the crown (only works for single-column pickers). **focus: false**: releases focus.|
-## Example
 
+## Example
 
 ```html
 <!-- index.hml -->
 <div class="container">
     <list class="todo-wrapper" ref="listObj">
         <list-item for="{{todolist}}" class="todo-item">
-            <div style="flex-direction: column;align-items: center;justify-content: center;">
+            <div style="width: 454px;height: 80px;flex-direction: column;align-items: center;justify-content: center;">
                 <text class="todo-title">{{$item.title}}</text>
                 <text class="todo-title">{{$item.date}}</text>
             </div>
@@ -84,7 +79,6 @@ Only &lt;[list-item](js-lite-components-container-list-item.md)&gt; is supported
     </list>
 </div>
 ```
-
 
 ```js
 // index.js
@@ -118,7 +112,6 @@ export default {
     }
 }
 ```
-
 
 ```css
 /* index.css */
