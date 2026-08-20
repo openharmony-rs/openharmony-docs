@@ -25,7 +25,7 @@ import wifi from '@ohos.wifi';
 
 enableWifi(): boolean
 
-使能WLAN。
+启用Wi-Fi。
 
 **系统接口：** 此接口为系统接口。
 
@@ -142,7 +142,7 @@ try {
 
 ## WifiDeviceConfig
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
