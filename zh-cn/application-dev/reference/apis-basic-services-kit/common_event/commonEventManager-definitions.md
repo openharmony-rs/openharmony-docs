@@ -844,6 +844,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 **取值：** "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
 
+
 ## Connectivity Kit
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_CHANGE<sup>20+</sup>
