@@ -3525,8 +3525,6 @@ async function testListAliases() {
 
 关于错误码的具体信息，可在[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)中查看。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 | 名称                                           | 值 |  说明                        |
 | ---------------------------------------------- | -------- |--------------------------- |
 | HUKS_ERR_CODE_PERMISSION_FAIL                  | 201      | 权限错误导致失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core          |
@@ -3568,8 +3566,6 @@ async function testListAliases() {
 
 一个密钥仅能用于单类用途，不能既用于加解密又用于签名验签。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 | 名称                     | 值   | 说明                             |
 | ------------------------ | ---- | -------------------------------- |
 | HUKS_KEY_PURPOSE_ENCRYPT | 1    | 表示密钥用于对明文进行加密操作。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
@@ -3588,16 +3584,11 @@ async function testListAliases() {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：**
-
-- API version 12+：SystemCapability.Security.Huks.Core
-- API version 8-11：SystemCapability.Security.Huks.Extension
-
 | 名称                   | 值   | 说明                                     |
 | ---------------------- | ---- | ---------------------------------------- |
 | HUKS_DIGEST_NONE       | 0   | 表示无摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DIGEST_MD5        | 1    | 表示MD5摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
-| HUKS_DIGEST_SM3<sup>9+</sup> | 2 | 表示SM3摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
+| HUKS_DIGEST_SM3<sup>9+</sup> | 2 | 表示SM3摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DIGEST_SHA1       | 10   | 表示SHA1摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DIGEST_SHA224 | 11   | 表示SHA224摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DIGEST_SHA256 | 12  | 表示SHA256摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
@@ -3607,8 +3598,6 @@ async function testListAliases() {
 ## HuksKeyPadding
 
 表示填充算法。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 | 名称                   | 值   | 说明                                     |
 | ---------------------- | ---- | ---------------------------------------- |
@@ -3625,8 +3614,6 @@ async function testListAliases() {
 
 表示加密模式。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 | 名称          | 值   | 说明                  |
 | ------------- | ---- | --------------------- |
 | HUKS_MODE_ECB | 1    | 表示使用ECB加密模式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
@@ -3640,8 +3627,6 @@ async function testListAliases() {
 ## HuksKeySize
 
 表示密钥长度。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 | 名称                               | 值   | 说明                                       |
 | ---------------------------------- | ---- | ------------------------------------------ |
@@ -3663,8 +3648,8 @@ async function testListAliases() {
 | HUKS_DH_KEY_SIZE_2048              | 2048 | 表示使用DH算法的密钥长度为2048bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DH_KEY_SIZE_3072              | 3072 | 表示使用DH算法的密钥长度为3072bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DH_KEY_SIZE_4096              | 4096 | 表示使用DH算法的密钥长度为4096bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
-| HUKS_SM2_KEY_SIZE_256<sup>9+</sup> | 256  | 表示SM2算法的密钥长度为256bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
-| HUKS_SM4_KEY_SIZE_128<sup>9+</sup> | 128  | 表示SM4算法的密钥长度为128bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
+| HUKS_SM2_KEY_SIZE_256<sup>9+</sup> | 256  | 表示SM2算法的密钥长度为256bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
+| HUKS_SM4_KEY_SIZE_128<sup>9+</sup> | 128  | 表示SM4算法的密钥长度为128bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DES_KEY_SIZE_64<sup>12+</sup>  | 64  | 表示DES算法的密钥长度为64bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_3DES_KEY_SIZE_128<sup>12+</sup>  | 128  | 表示3DES算法的密钥长度为128bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_3DES_KEY_SIZE_192<sup>12+</sup>  | 192  | 表示3DES算法的密钥长度为192bit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
@@ -3677,8 +3662,6 @@ async function testListAliases() {
 ## HuksKeyAlg
 
 表示密钥使用的算法。
-
-**系统能力：** SystemCapability.Security.Huks.Core
 
 | 名称                      | 值   | 说明                  |
 | ------------------------- | ---- | --------------------- |
@@ -3693,9 +3676,9 @@ async function testListAliases() {
 | HUKS_ALG_X25519           | 101  | 表示使用X25519算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_ALG_ED25519          | 102  | 表示使用ED25519算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_ALG_DH               | 103  | 表示使用DH算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
-| HUKS_ALG_SM2<sup>9+</sup> | 150  | 表示使用SM2算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
-| HUKS_ALG_SM3<sup>9+</sup> | 151  | 表示使用SM3算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
-| HUKS_ALG_SM4<sup>9+</sup> | 152  | 表示使用SM4算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
+| HUKS_ALG_SM2<sup>9+</sup> | 150  | 表示使用SM2算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
+| HUKS_ALG_SM3<sup>9+</sup> | 151  | 表示使用SM3算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
+| HUKS_ALG_SM4<sup>9+</sup> | 152  | 表示使用SM4算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
 | HUKS_ALG_DES<sup>12+</sup> | 160  | 表示使用DES算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ALG_3DES<sup>12+</sup> | 161  | 表示使用3DES算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ALG_CMAC<sup>12+</sup> | 162  | 表示使用CMAC算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
@@ -3737,14 +3720,12 @@ API version 8-11系统能力为SystemCapability.Security.Huks.Extension；从API
 
 表示密钥存储方式。
 
-**系统能力：** SystemCapability.Security.Huks.Core
-
 | 名称                                          | 值   | 说明                           |
 | --------------------------------------------  | ---- | ------------------------------ |
 | HUKS_STORAGE_TEMP<sup>(deprecated)</sup>      | 0    | 表示通过本地直接管理密钥。<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，由于开发者正常使用密钥管理过程中并不需要使用此TAG，故无替代接口。针对密钥派生场景，可使用HUKS_STORAGE_ONLY_USED_IN_HUKS 与 HUKS_STORAGE_KEY_EXPORT_ALLOWED。 <br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_STORAGE_PERSISTENT<sup>(deprecated)</sup>      | 1    | 表示通过HUKS service管理密钥。<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，由于开发者正常使用密钥管理过程中并不需要使用此TAG，故无替代接口。针对密钥派生场景，可使用HUKS_STORAGE_ONLY_USED_IN_HUKS 与 HUKS_STORAGE_KEY_EXPORT_ALLOWED。 <br> **系统能力：** SystemCapability.Security.Huks.Core|
-| HUKS_STORAGE_ONLY_USED_IN_HUKS<sup>10+</sup>  | 2    | 表示主密钥派生的密钥存储于huks中，由HUKS进行托管。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
-| HUKS_STORAGE_KEY_EXPORT_ALLOWED<sup>10+</sup> | 3    | 表示主密钥派生的密钥直接导出给业务方，HUKS不对其进行托管服务。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
+| HUKS_STORAGE_ONLY_USED_IN_HUKS<sup>10+</sup>  | 2    | 表示主密钥派生的密钥存储于huks中，由HUKS进行托管。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本10-11：SystemCapability.Security.Huks.Extension|
+| HUKS_STORAGE_KEY_EXPORT_ALLOWED<sup>10+</sup> | 3    | 表示主密钥派生的密钥直接导出给业务方，HUKS不对其进行托管服务。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本10-11：SystemCapability.Security.Huks.Extension|
 
 ## HuksSendType
 
@@ -3991,10 +3972,12 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_AGREE_PUBLIC_KEY                                   | HuksTagType.HUKS_TAG_TYPE_BYTES \| 22    | 表示密钥协商时的公钥。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_ALIAS                                          | HuksTagType.HUKS_TAG_TYPE_BYTES \| 23    | 表示密钥别名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_DERIVE_KEY_SIZE                                    | HuksTagType.HUKS_TAG_TYPE_UINT \| 24     | 表示派生密钥的大小，单位：byte。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
-| HUKS_TAG_IMPORT_KEY_TYPE<sup>9+</sup>                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 25     | 表示导入的密钥类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
-| HUKS_TAG_UNWRAP_ALGORITHM_SUITE<sup>9+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \| 26     | 表示安全导入密钥的套件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
-| HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG<sup>10+</sup>      | HuksTagType.HUKS_TAG_TYPE_UINT \|29      | 表示派生密钥/协商密钥的存储类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
-| HUKS_TAG_RSA_PSS_SALT_LEN_TYPE<sup>10+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \|30      | 表示rsa_pss_salt_length的类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
+| HUKS_TAG_IMPORT_KEY_TYPE<sup>9+</sup>                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 25     | 表示导入的密钥类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_UNWRAP_ALGORITHM_SUITE<sup>9+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \| 26     | 表示安全导入密钥的套件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG<sup>10+</sup>      | HuksTagType.HUKS_TAG_TYPE_UINT \|29      | 表示派生密钥/协商密钥的存储类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本10-11：SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_RSA_PSS_SALT_LEN_TYPE<sup>10+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \|30      | 表示rsa_pss_salt_length的类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本10-11：SystemCapability.Security.Huks.Extension
+
+|
 | HUKS_TAG_ACTIVE_DATETIME<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_ULONG \| 201   |  原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_ORIGINATION_EXPIRE_DATETIME<sup>(deprecated)</sup> | HuksTagType.HUKS_TAG_TYPE_ULONG \| 202   | 原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_USAGE_EXPIRE_DATETIME<sup>(deprecated)</sup>       | HuksTagType.HUKS_TAG_TYPE_ULONG \| 203   |  原为证书业务预留字段，当前证书管理已独立，此字段废弃，不再预留。 <br> **说明：** 从API version 8开始支持，从API version 9开始废弃，无替代接口。<br> **系统能力：** SystemCapability.Security.Huks.Core |
