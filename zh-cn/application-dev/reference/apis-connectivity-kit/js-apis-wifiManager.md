@@ -61,7 +61,7 @@ isWifiActive(): boolean
 
 enableWifi(): void
 
-启动WLAN。
+启动Wi-Fi。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
@@ -127,7 +127,7 @@ disableWifi(): void
 
 scan(): void
 
-启动WLAN扫描，使用前先开启WLAN。
+启动Wi-Fi扫描，使用前先开启Wi-Fi。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.startScan](#wifimanagerstartscan21)替代。
@@ -162,7 +162,7 @@ scan(): void
 
 startScan(): void
 
-启动WLAN扫描。
+启动Wi-Fi扫描。
 
 - 应用程序在前台运行时，两分钟内最多可扫描四次。
 - 在后台运行时，三十分钟内最多可扫描一次。
@@ -2394,7 +2394,7 @@ API 11起：ohos.permission.GET_WIFI_INFO
 
 createGroup(config: WifiP2PConfig): void
 
-创建群组。
+创建群组。创建群组后，可调用[removeGroup](#wifimanagerremovegroup)移除已创建的群组。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2503,7 +2503,7 @@ removeGroup(): void
 
 p2pConnect(config: WifiP2PConfig): void
 
-执行P2P连接。
+执行P2P连接。调用此方法连接后，如需取消可调用[p2pCancelConnect](#wifimanagerp2pcancelconnect)。
 
 **需要权限：**
 
@@ -2632,7 +2632,7 @@ p2pCancelConnect(): void
 
 startDiscoverDevices(): void
 
-开始发现设备。
+开始发现设备。开始发现设备。调用此方法后，可调用[stopDiscoverDevices](#wifimanagerstopdiscoverdevices)停止发现设备以释放资源。
 
 **需要权限：**
 
