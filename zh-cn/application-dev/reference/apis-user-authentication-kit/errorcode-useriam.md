@@ -115,13 +115,13 @@ The authentication type is not supported.
 
 **可能原因**
 
-1. 传入的认证类型参数无效，例如调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口时传入的authType参数不在支持的范围内（PIN、FACE、FINGERPRINT等）。
+1. 传入的认证类型参数无效，例如调用getAvailableStatus接口时传入的authType参数不在支持的范围内（PIN、FACE、FINGERPRINT等）。
 2. 传入的认证类型参数在本设备上不支持，例如在没有部署指纹传感器的设备上发起指纹认证。
 
 **处理步骤**
 
 1. 请检查传入的认证类型参数是否正确，确保参数值在支持的范围内。
-2. 发起认证之前，调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)预先检查设备是否支持指定的认证类型，如果设备不支持某种认证类型，建议切换到其他支持的认证类型。
+2. 发起认证之前，调用getAvailableStatus预先检查设备是否支持指定的认证类型，如果设备不支持某种认证类型，建议切换到其他支持的认证类型。
 
 ## 12500006 认证信任等级不支持
 
@@ -135,7 +135,7 @@ The authentication trust level is not supported.
 
 **可能原因**
 
-1. 调用[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)或[getUserAuthInstance](js-apis-useriam-userauth.md#userauthgetuserauthinstance10)接口时，传入的authTrustLevel参数不在有效范围内（应为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000））。
+1. 调用getAvailableStatus或getUserAuthInstance接口时，传入的authTrustLevel参数不在有效范围内（应为ATL1（10000）、ATL2（20000）、ATL3（30000）或ATL4（40000））。
 2. 当前设备的认证能力无法达到指定的认证信任等级，例如在2D人脸认证设备上发起ATL4等级的人脸认证。
 3. 用户注册的凭据安全等级低于请求的认证信任等级，如4位PIN密码只能达到ATL3，无法满足ATL4要求。
 
@@ -211,7 +211,7 @@ Authentication is locked out.
 **处理步骤**
 
 1. 提示用户认证已锁定，需等待锁定解除后才能继续认证。
-2. 可通过[getAuthLockState](js-apis-useriam-userauth.md#userauthgetauthlockstate22)接口查询当前锁定状态，包括剩余锁定时间和剩余尝试次数。
+2. 可通过getAuthLockState接口查询当前锁定状态，包括剩余锁定时间和剩余尝试次数。
 3. 如果是临时锁定，提示用户等待锁定时间到期后重新尝试。
 4. 如果是永久锁定，提示用户使用密码解锁后才能继续使用生物认证。
 5. 建议用户在锁定解除后使用正确的凭据进行认证，避免再次触发锁定。
@@ -228,7 +228,7 @@ The type of credential has not been enrolled.
 
 **可能原因**
 
-1. 调用userAuth模块的[getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9)接口检查认证能力时，传入的authType参数为FACE或FINGERPRINT，但用户未在设备上录入人脸或指纹凭据。
+1. 调用userAuth模块的getAvailableStatus接口检查认证能力时，传入的authType参数为FACE或FINGERPRINT，但用户未在设备上录入人脸或指纹凭据。
 2. 调用start接口发起认证时，请求的认证类型对应的凭据未录入，如发起指纹认证但用户未录入指纹。
 3. 用户曾录入的凭据已被删除，如用户在设置中删除了已注册的人脸或指纹。
 4. 新用户账号未录入任何认证凭据。
@@ -237,7 +237,7 @@ The type of credential has not been enrolled.
 
 1. 检查用户是否已录入该类型的认证凭据。
 2. 如果用户未录入，引导用户前往系统设置录入相应凭据（人脸、指纹或PIN）。
-3. 可通过[getEnrolledState](js-apis-useriam-userauth.md#userauthgetenrolledstate12)接口查询凭据注册状态。
+3. 可通过getEnrolledState接口查询凭据注册状态。
 4. 如果用户拒绝录入，建议切换到其他已录入的认证类型。
 5. 提示用户录入凭据后才能使用相应的认证功能。
 
@@ -307,7 +307,7 @@ AuthToken完整性校验失败，表示验证的认证令牌无效或已被篡�
 1. 重新发起认证请求，获取系统签发的有效AuthToken。
 2. 确保AuthToken在传输过程中未被修改，使用安全的数据传输方式。
 3. 如果凭据已变更，需重新认证获取新的AuthToken。
-4. 参考[verifyAuthToken](js-apis-useriam-useraccessctrl-sys.md#useraccessctrlverifyauthtoken)接口了解AuthToken校验流程。
+4. 参考verifyAuthToken接口了解AuthToken校验流程。
 
 ## 12500016 AuthToken过期
 
@@ -356,7 +356,7 @@ Failed to reuse authentication result.
 1. 发起新的认证请求，让用户手动完成认证以获取有效的AuthToken。
 2. 检查reuseUnlockResult参数配置是否正确，包括reuseMode和reuseDuration。
 3. 如果需要复用认证结果，确保在有效时长内发起请求（最长5分钟）。
-4. 参考[认证结果复用](js-apis-useriam-userauth.md#reuseunlockresult12)了解复用机制和条件，选择合适的ReuseMode，设置合理的有效时长。
+4. 参考认证结果复用了解复用机制和条件，选择合适的ReuseMode，设置合理的有效时长。
 
 ## 12700001 人脸服务不可用
 
@@ -370,7 +370,7 @@ The service is unavailable.
 
 **可能原因**
 
-1. 调用faceAuth模块的[setSurfaceId](js-apis-useriam-faceauth-sys.md#setsurfaceid)接口时，人脸认证服务未启动。
+1. 调用faceAuth模块的setSurfaceId接口时，人脸认证服务未启动。
 2. IPC通信的proxy客户端写数据出错，数据传输异常。
 3. IPC通信的stub服务端解析数据出错，数据接收异常。
 4. 人脸driver层调用出错，底层驱动服务异常。
@@ -431,7 +431,7 @@ The template is not found.
 1. 在更新业务范围或订阅认证状态前，先确认模板存在。
 2. 如果模板已被删除，需重新添加伴随设备并注册模板。
 3. 确保传入的模板ID与用户注册的模板匹配。
-4. 确认模板ID是否正确，可通过[getTemplateStatus](js-apis-useriam-companiondeviceauth-sys.md#gettemplatestatus)查询当前用户的模板列表。
+4. 确认模板ID是否正确，可通过getTemplateStatus查询当前用户的模板列表。
 
 ## 32600003 业务ID无效
 
@@ -453,9 +453,9 @@ The business id is invalid.
 
 **处理步骤**
 
-1. 确认业务ID是否正确，参考[BusinessId](js-apis-useriam-companiondeviceauth-sys.md#businessid)枚举了解系统支持的业务ID。
+1. 确认业务ID是否正确，参考BusinessId枚举了解系统支持的业务ID。
 2. 使用系统预定义的业务ID（如DEFAULT）或厂商自定义ID（≥10000）。
 3. 确保自定义业务ID在应用中有明确定义，避免与系统保留值冲突。
 4. 传入业务ID数组时，确保所有元素均为有效值。
-5. 参考[updateEnabledBusinessIds](js-apis-useriam-companiondeviceauth-sys.md#companiondeviceauthupdateenabledbusinessids)接口了解业务ID的使用要求。
+5. 参考updateEnabledBusinessIds接口了解业务ID的使用要求。
 <!--DelEnd-->

@@ -134,7 +134,7 @@ The RenderNode is obtained from a FrameNode, and its corresponding FrameNode is 
 
 **处理步骤**
 
-如果通过[OH_ArkUI_NativeModule_RemoveAdoptedChild](./capi-native-node-h.md#oh_arkui_nativemodule_removeadoptedchild)取消接纳被接纳的FrameNode，或销毁该FrameNode，应调用[OH_ArkUI_RenderNodeUtils_DisposeNode](./capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放此前通过[OH_ArkUI_RenderNodeUtils_GetRenderNode](./capi-native-render-h.md#oh_arkui_rendernodeutils_getrendernode)获取的RenderNode。
+如果通过OH_ArkUI_NativeModule_RemoveAdoptedChild取消接纳被接纳的FrameNode，或销毁该FrameNode，应调用OH_ArkUI_RenderNodeUtils_DisposeNode释放此前通过OH_ArkUI_RenderNodeUtils_GetRenderNode获取的RenderNode。
 
 ## 106408 当前节点不处于被接纳状态
 
@@ -152,4 +152,4 @@ The node is not adopted.
 
 **处理步骤**
 
-先通过 [OH_ArkUI_NativeModule_AdoptChild](./capi-native-node-h.md#oh_arkui_nativemodule_adoptchild) 接口使当前节点被其他节点接纳，然后再获取其 RenderNode。
+先通过 OH_ArkUI_NativeModule_AdoptChild 接口使当前节点被其他节点接纳，然后再获取其 RenderNode。

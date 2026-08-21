@@ -78,8 +78,8 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| onAnimationFinished | [Callback](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)\<void\> | 是 | 拖拽框架动效结束后触发的回调。仅在[dragAnimationType](#属性)设置为DragAnimationType.FOLLOW_HAND_MORPH时生效。 |
-| animationOption | string | 否 | 落位动效参数。用于在需要自定义跟手变形落位动效的曲线、落位位置或落位尺寸时传入；不传入时，使用系统默认的跟手变形落位动效配置。<br> 参数为JSON字符串格式，包含以下字段：<br> **CubicCurveEnable**: boolean，表示是否启用三次曲线动画。设置为true时启用三次曲线动画，适用于需要自定义贝塞尔曲线控制落位节奏的场景；设置为false时不启用。<br> **SpringEnable**: boolean，表示是否启用弹簧动画。设置为true时启用弹簧动画效果，适用于需要弹性回落效果的场景；设置为false时不启用。 <br> **dropAnimationCurve**: number[]，表示落位动画曲线参数，其含义由SpringEnable和CubicCurveEnable决定（SpringEnable优先级更高）。当SpringEnable为true时，数组长度为3，格式为[response, dampingRatio, blendDuration]，对应[curves.springMotion](../../../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9)的弹簧曲线参数；当SpringEnable为false且CubicCurveEnable为true时，数组长度为4，格式为[x1, y1, x2, y2]，对应[curves.cubicBezierCurve](../../../reference/apis-arkui/js-apis-curve.md#curvescubicbeziercurve9)的三次贝塞尔曲线控制点参数。<br> **说明：** SpringEnable优先级高于CubicCurveEnable，当两者同时为true时，以弹簧动画为准。当SpringEnable和CubicCurveEnable均未设置为true时，使用默认弹簧动效。<br> **dropPosition**: number[]，落位位置坐标。数组长度为2，格式为[x, y]，单位为px，表示拖拽元素落位时的目标位置坐标，取值范围为(-∞, +∞)。<br> **dropSize**: number[]，落位尺寸。数组长度为2，格式为[width, height]，单位为px，表示拖拽元素落位时的目标尺寸，取值范围为(0, +∞)。 |
+| onAnimationFinished | Callback\<void\> | 是 | 拖拽框架动效结束后触发的回调。仅在[dragAnimationType](#属性)设置为DragAnimationType.FOLLOW_HAND_MORPH时生效。 |
+| animationOption | string | 否 | 落位动效参数。用于在需要自定义跟手变形落位动效的曲线、落位位置或落位尺寸时传入；不传入时，使用系统默认的跟手变形落位动效配置。<br> 参数为JSON字符串格式，包含以下字段：<br> **CubicCurveEnable**: boolean，表示是否启用三次曲线动画。设置为true时启用三次曲线动画，适用于需要自定义贝塞尔曲线控制落位节奏的场景；设置为false时不启用。<br> **SpringEnable**: boolean，表示是否启用弹簧动画。设置为true时启用弹簧动画效果，适用于需要弹性回落效果的场景；设置为false时不启用。 <br> **dropAnimationCurve**: number[]，表示落位动画曲线参数，其含义由SpringEnable和CubicCurveEnable决定（SpringEnable优先级更高）。当SpringEnable为true时，数组长度为3，格式为[response, dampingRatio, blendDuration]，对应curves.springMotion的弹簧曲线参数；当SpringEnable为false且CubicCurveEnable为true时，数组长度为4，格式为[x1, y1, x2, y2]，对应curves.cubicBezierCurve的三次贝塞尔曲线控制点参数。<br> **说明：** SpringEnable优先级高于CubicCurveEnable，当两者同时为true时，以弹簧动画为准。当SpringEnable和CubicCurveEnable均未设置为true时，使用默认弹簧动效。<br> **dropPosition**: number[]，落位位置坐标。数组长度为2，格式为[x, y]，单位为px，表示拖拽元素落位时的目标位置坐标，取值范围为(-∞, +∞)。<br> **dropSize**: number[]，落位尺寸。数组长度为2，格式为[width, height]，单位为px，表示拖拽元素落位时的目标尺寸，取值范围为(0, +∞)。 |
 
 ## DragAnimationType
 
@@ -100,7 +100,7 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 ## DragController<sup>11+</sup>
 
-提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。本文仅介绍DragController的系统接口，其他公开接口参见[DragController](../arkts-apis-uicontext-dragcontroller.md)。
+提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。本文仅介绍DragController的系统接口，其他公开接口参见DragController。
 
 ### interruptFollowHandMorphDropAnimation
 

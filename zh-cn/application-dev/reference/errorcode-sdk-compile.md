@@ -118,7 +118,7 @@ The {apiName} API is supported since SDK version {sinceVersion}. However, the cu
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
 
-参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
+参考API文档说明：apiAvailable。
 
 方案二：更换为低版本兼容的替代接口。        
 
@@ -144,7 +144,7 @@ The {apiName} API is available since SDK version {sinceVersion}. However, the cu
 
 方案一：使用apiAvailable接口判断当前设备是否支持该API，在支持时调用，不支持时走降级逻辑。
 
-参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
+参考API文档说明：apiAvailable。
 
 方案二：更换为低版本兼容的替代接口。 
 
@@ -196,7 +196,7 @@ apiAvailable接口参数格式不符合规范，包括：参数包含非法字�
 
 3、确保参数不为null或undefined。
 
-4、参考API文档说明：[apiAvailable](./apis-basic-services-kit/js-apis-device-info.md#deviceinfoapiavailable)。
+4、参考API文档说明：apiAvailable。
 
 ## 11706014 无效版本号
 
@@ -256,7 +256,7 @@ The runtime OS for the current project is {runtimeOS}. The OS version number {ve
 
 3、确保版本号不含非法字符，且格式完整（M.S.F必须为三段式）。
 
-4、参考API文档说明：[Available](./apis-basic-services-kit/js-apis-annotation.md#available)。
+4、参考API文档说明：Available。
 
 ## 11706017 @Available装饰器中的操作系统名称无效
 
@@ -284,4 +284,4 @@ The runtime OS for the current project is {runtimeOS}. @Available is not support
 
 3、确认操作系统名称拼写正确，且为当前运行时所支持的名称。
 
-4、参考API文档说明：[Available](./apis-basic-services-kit/js-apis-annotation.md#available)。
+4、参考API文档说明：Available。

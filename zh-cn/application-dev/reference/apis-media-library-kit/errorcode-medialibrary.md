@@ -139,7 +139,7 @@ Invalid input parameter.
 
 **可能原因**
 
-参数不在[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)枚举范围之内。
+参数不在PhotoKeys枚举范围之内。
 
 
 **处理步骤**
@@ -159,9 +159,9 @@ Unsupported operation type.
 
 **可能原因**
 
-1. 当前相册不支持设置传入的[AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute)。
+1. 当前相册不支持设置传入的AlbumAttribute。
 
-2. 当前[AlbumAttribute](js-apis-photoAccessHelper-sys.md#albumattribute)不支持传入的[AlbumOperationType](js-apis-photoAccessHelper-sys.md#albumoperationtype)。
+2. 当前AlbumAttribute不支持传入的AlbumOperationType。
 
 3. 存在其他限制。
 
@@ -184,11 +184,11 @@ Invalid call context. Possible causes: 1. The API is called outside the photo br
 
 1. 在非全图浏览场景下调用该接口。
 
-2. 在已经配置[BaseSelectOptions.isMovingPhotoBadgeShown](arkts-apis-photoAccessHelper-class.md#baseselectoptions)为true的情况下调用该接口。
+2. 在已经配置BaseSelectOptions.isMovingPhotoBadgeShown为true的情况下调用该接口。
 
 **处理步骤**
 
-检查接口[setMovingPhotoState](ohos-file-PhotoPickerComponent.md#setmovingphotostate23)的使用场景。
+检查接口setMovingPhotoState的使用场景。
 
 <!--Del-->
 ## 23800203 设备温度过高

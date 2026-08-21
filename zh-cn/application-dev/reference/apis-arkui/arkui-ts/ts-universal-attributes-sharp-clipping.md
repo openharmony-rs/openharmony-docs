@@ -104,7 +104,7 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 >
 > 路径的形状不支持设置宽度和高度。具体形状支持的属性参考具体形状的文档。
 >
-> 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
+> 形状中的fill属性对clipShape接口不生效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,7 +138,7 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 >
 > 路径的形状不支持设置宽度和高度。具体形状支持的属性参考具体形状的文档。
 >
-> 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
+> 形状中的fill属性对clipShape接口不生效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -176,7 +176,7 @@ type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| import('../api/@ohos.arkui.shape').[CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
+| import('../api/@ohos.arkui.shape').CircleShape | 圆形形状。 |
 
 ## EllipseShape<sup>12+</sup>
 
@@ -194,7 +194,7 @@ type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| import('../api/@ohos.arkui.shape').[EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
+| import('../api/@ohos.arkui.shape').EllipseShape | 椭圆形状。 |
 
 ## PathShape<sup>12+</sup>
 
@@ -212,7 +212,7 @@ type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| import('../api/@ohos.arkui.shape').[PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
+| import('../api/@ohos.arkui.shape').PathShape | 路径形状。 |
 
 ## RectShape<sup>12+</sup>
 
@@ -230,7 +230,7 @@ type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| import('../api/@ohos.arkui.shape').[RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
+| import('../api/@ohos.arkui.shape').RectShape | 矩形形状。 |
 
 ## mask<sup>12+</sup>
 

@@ -29,7 +29,7 @@ The specified device does not exist.
 
 **处理步骤**
 
-1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备ID，并传入正确的设备ID。
+1. 通过inputDevice.getDeviceList查询设备ID，并传入正确的设备ID。
 2. 检查设备的物理连接是否断开。<!--DelEnd-->
 
 ## 3900002 键盘设备没有连接

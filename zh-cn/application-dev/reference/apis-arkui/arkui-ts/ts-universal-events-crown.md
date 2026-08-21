@@ -18,7 +18,7 @@
 >
 > - 组件收到表冠事件的前提是该组件获焦，焦点控制可以通过[focusable](ts-universal-attributes-focus.md#focusable)、[defaultFocus](ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch](ts-universal-attributes-focus.md#focusontouch9)进行管理。
 >
-> - 仅穿戴设备支持该事件，开发者可通过deviceInfo.[deviceType](../../apis-basic-services-kit/js-apis-device-info.md#常量)获取设备类型进行判断。
+> - 仅穿戴设备支持该事件，开发者可通过deviceInfo.deviceType获取设备类型进行判断。
 >
 > - 默认支持表冠事件的组件：[Slider](ts-basic-components-slider.md)、[DatePicker](ts-basic-components-datepicker.md)、[TextPicker](ts-basic-components-textpicker.md)、[TimePicker](ts-basic-components-timepicker.md)、[Scroll](ts-container-scroll.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[WaterFlow](ts-container-waterflow.md)、[ArcList](ts-container-arclist.md)、[Refresh](ts-container-refresh.md)和[ArcSwiper](ts-container-arcswiper.md)。
 
