@@ -1403,7 +1403,7 @@ isBasicChannel(): boolean
 
 | **类型** | **说明**                                                     |
 | -------- | ------------------------------------------------------------ |
-| boolean  | true: 该Channel是基础Channel, false：该Channel是逻辑Channel 。 |
+| boolean  | true: 该Channel是基础Channel, false：该Channel逻辑Channel 。 |
 
 **错误码：**
 
