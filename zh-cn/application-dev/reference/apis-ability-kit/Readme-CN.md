@@ -258,7 +258,6 @@
       - [DispatchInfo (系统接口)](js-apis-bundleManager-dispatchInfo-sys.md)
       - [LauncherAbilityResourceInfo (系统接口)](js-apis-LauncherAbilityResourceInfo-sys.md)
       - [PermissionDef (系统接口)](js-apis-bundleManager-permissionDef-sys.md)
-      - [PluginBundleInfo (系统接口)](js-apis-bundleManager-pluginBundleInfo-sys.md)
       - [RecoverableApplicationInfo (系统接口)](js-apis-recoverableApplicationInfo-sys.md)
       - [RemoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (系统接口)](js-apis-bundleManager-sharedBundleInfo-sys.md)
@@ -380,6 +379,7 @@
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)
   - [包管理子系统通用错误码](errorcode-bundle.md)
+  - [包管理快速修复命令的错误码](bm-quickfix-errorcode.md)
   - [访问控制错误码](errorcode-access-token.md)
   - [锁屏敏感数据管理错误码](errorcode-screenLockFileManager.md)
   <!--Del-->

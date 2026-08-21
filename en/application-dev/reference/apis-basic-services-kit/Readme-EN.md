@@ -16,15 +16,17 @@
 
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
 
-    - [@ohos.account.osAccount (System Account Management)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount (OS Account Management)](js-apis-osAccount.md)
 
     <!--Del-->
 
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
 
-    - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
+    - [@ohos.account.osAccount (OS Account Management) (System API)](js-apis-osAccount-sys.md)
 
     <!--DelEnd-->
+
+    - [OS Account Constraints](appendix-osAccount-constraints.md)
 
   - Device Management<!--device-management-arkts-->
 

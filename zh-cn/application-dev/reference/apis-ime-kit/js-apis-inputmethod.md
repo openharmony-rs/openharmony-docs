@@ -96,8 +96,8 @@ controller.hideTextInput();
 controller.detach();
 
 // 8. 系统应用切换输入法
-setting.getInputMethods(true);  // 获取已启用输入法列表
-inputMethod.switchInputMethod(targetProperty);  // 切换到目标输入法
+setting.getInputMethods(true); // 获取已启用输入法列表
+inputMethod.switchInputMethod(targetProperty); // 切换到目标输入法
 ```
 > **说明：**
 >
@@ -290,10 +290,9 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 使用后效果：成功时系统将当前输入法切换为目标输入法，目标输入法成为新的当前输入法；失败时当前输入法不变。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法应用调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -310,7 +309,7 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | permissions check fails. <br>适用版本：9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -349,10 +348,9 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 使用后效果：成功时系统将当前输入法切换为目标输入法；失败时当前输入法不变。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法应用调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -374,7 +372,7 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | permissions check fails. <br>适用版本：9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -432,11 +430,9 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 切换当前输入法的子类型。使用callback异步回调。
 
-> **说明：**
->
->  - 在API version 9版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 10版本，支持系统应用和当前输入法应用调用；需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -453,7 +449,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | permissions check fails. <br>适用版本：9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -498,11 +494,9 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 切换当前输入法的子类型。使用promise异步回调。
 
-> **说明：**
->
->  - 在API version 9版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 10版本，支持系统应用和当前输入法应用调用；需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -524,7 +518,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | permissions check fails. <br>适用版本：9-10      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -589,10 +583,9 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用callback异步回调。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -610,7 +603,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | permissions check fails. <br>适用版本：9-10         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -646,10 +639,9 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。
 
-> **说明：**
->
->  - 在API version 9-10版本，仅支持系统应用调用且需要权限ohos.permission.CONNECT_IME_ABILITY。
->  - 在API version 11版本起，仅支持当前输入法调用。
+**需要权限：**
+- API版本9-10：ohos.permission.CONNECT_IME_ABILITY
+- API版本11+：N/A
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -672,7 +664,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | permissions check fails. <br>适用版本：9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -946,7 +938,7 @@ Enter键的功能类型。
 | cursorInfo  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。|
 | selection  | [Range](#range10) | 否 | 是 | 文本选中的范围。|
 | windowId  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
-| newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。 |
+| newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。默认值为false。|
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 否 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
 
 ## CursorInfo<sup>10+</sup>
@@ -961,7 +953,7 @@ Enter键的功能类型。
 | top  | number | 否 | 否 | 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。                          |
 | width  | number | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。                           |
 | height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。                           |
-| displayId  | number | 否 | 是 | 光标所在显示器的ID。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| displayId  | number | 否 | 是 | 光标所在显示器的ID，该参数应为整数，最小值为0，默认值为0。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 
 ## Range<sup>10+</sup>
 
@@ -1035,6 +1027,8 @@ Enter键的功能类型。
 > 此对象全局唯一，多次注册仅保留最后一次注册的对象及有效性，并触发上一个已注册对象的[onTerminated](#onterminated15)回调函数。
 >
 > 若取消注册全局已注册的对象时，会触发被取消对象中[onTerminated](#onterminated15)回调函数。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### onMessage<sup>15+</sup>
 
@@ -1159,6 +1153,8 @@ InputMethodController是输入法客户端控制器，面向前台应用提供�
 > **说明：**
 >
 > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### attach<sup>10+</sup>
 
@@ -3477,7 +3473,7 @@ on(type: 'finishTextPreview', callback: Callback&lt;void&gt;): void
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
 | type     | string  | 是   | 设置监听类型，固定取值为'finishTextPreview'。 |
-| callback | Callback&lt;void&gt; | 是   | 回调函数。用于处理预览文本结束的逻辑，类型为void。|
+| callback | Callback&lt;void&gt; | 是   | 回调函数。当处理预览文本结束的逻辑成功，err为undefined，否则为错误对象。|
 
 **错误码：**
 
@@ -3565,6 +3561,8 @@ InputMethodSetting提供输入法配置与查询能力，面向前台应用提�
 
 下列API均需使用[getSetting](#inputmethodgetsetting9)获取到InputMethodSetting实例后，通过实例调用。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ### on('imeChange')<sup>9+</sup>
 
 on(type: 'imeChange', callback: (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void): void
@@ -3646,7 +3644,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
-  id: 'propertyId',
+  id: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3698,7 +3696,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
-  id: 'propertyId',
+  id: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3721,7 +3719,7 @@ listCurrentInputMethodSubtype(callback: AsyncCallback&lt;Array&lt;InputMethodSub
 
 | 参数名   | 类型                                               | 必填 | 说明                   |
 | -------- | -------------------------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback&lt;Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>&gt; | 是   | 回调函数，返回当前输入法应用的所有子类型。 |
+| callback | AsyncCallback&lt;Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>&gt; | 是   | 回调函数，当返回当前输入法应用的所有子类型成功，err为undefined，data为获取到的InputMethodSubtype列表；否则为错误对象。|
 
 **错误码：**
 
@@ -3806,7 +3804,7 @@ getInputMethods(enable: boolean, callback: AsyncCallback&lt;Array&lt;InputMethod
 | 参数名   | 类型                                                | 必填 | 说明                          |
 | -------- | --------------------------------------------------- | ---- | ----------------------------- |
 | enable   | boolean                                             | 是   |true表示返回已激活输入法列表，false表示返回未激活输入法列表。 |
-| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; |  是  | 回调函数，返回已激活/未激活输入法列表。 |
+| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; |  是  | 回调函数，当返回已激活/未激活输入法列表成功，err为undefined，data为获取到的InputMethodProperty列表；否则为错误对象。|
 
 **错误码：**
 
@@ -3937,7 +3935,7 @@ getAllInputMethods(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&g
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | 是   | 回调函数，返回所有输入法列表。 |
+| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | 是   | 回调函数。当返回所有输入法列表成功，err为undefined，data为获取到的InputMethodProperty列表；否则为错误对象。|
 
 **错误码：**
 
@@ -4131,7 +4129,7 @@ listInputMethod(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt;)
 
 | 参数名   | 类型                                               | 必填 | 说明                   |
 | -------- | -------------------------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | 是   | 回调函数，返回已安装的输入法列表。 |
+| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | 是   | 回调函数。当返回已安装的输入法列表成功，err为undefined，data为获取到的InputMethodProperty列表；否则为错误对象。|
 
 **示例：**
 
@@ -4251,7 +4249,7 @@ getInputMethodState(): Promise&lt;EnabledState&gt;
 
 | 类型                                    | 说明                                                         |
 | --------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;[EnabledState](#enabledstate15)&gt; | Promise对象，返回EnabledState.DISABLED表示未启用; 返回EnabledState.BASIC_MODE表示基础模式; 返回EnabledState.FULL_EXPERIENCE_MODE表示完整体验模式。 |
+| Promise&lt;[EnabledState](#enabledstate15)&gt; | Promise对象，返回EnabledState.DISABLED表示未启用； 返回EnabledState.BASIC_MODE表示基础模式；返回EnabledState.FULL_EXPERIENCE_MODE表示完整体验模式。|
 
 **错误码：**
 
