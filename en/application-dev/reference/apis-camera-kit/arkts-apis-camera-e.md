@@ -1,10 +1,12 @@
 # Enums
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-08-20T09:34:14.406Z pushedAt=2026-08-21T02:05:07.698Z -->
 
 > **NOTE**
 >
@@ -517,7 +519,7 @@ Enumerates the OIS axes.
 
 | Name                      | Value  | Description           |
 | ------------------------- | ---- | ------------    |
-| PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.  |
+| PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.   |
 | YAW   | 1    | Yaw axis. It controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|
 
 ## ExposureState
@@ -536,3 +538,33 @@ Enumerates the exposure states.
 | ------------------------- | ---- | ------------    |
 | EXPOSURE_STATE_SCAN       | 0    | Focusing.    |
 | EXPOSURE_STATE_CONVERGED  | 1    | Exposure converged.    |
+
+## AutomotiveCameraPosition
+
+Enumerates the camera positions on a car.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                       | Value   | Description            |
+| ------------------------- | ---- | ------------    |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER       | 0    | Camera at another position outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT  | 1    | Front camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR  | 2    | Rear camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT  | 3    | Left camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT  | 4    | Right camera outside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER  | 5    | Camera at another position inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT  | 6    | Left camera in the first row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER  | 7    | Central camera in the first row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT  | 8    | Right camera in the first row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT  | 9    | Left camera in the second row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER  | 10    | Central camera in the second row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT  | 11    | Right camera in the second row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT  | 12    | Left camera in the third row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER  | 13    | Central camera in the third row inside the car.     |
+| AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT  | 14    | Right camera in the third row inside the car.     |
