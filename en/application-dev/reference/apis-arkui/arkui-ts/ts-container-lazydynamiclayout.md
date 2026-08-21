@@ -6,11 +6,11 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-08-04T12:10:18.804Z pushedAt=2026-08-07T06:50:09.239Z -->
+<!-- md-trans-meta sourceCommit=937aa556d9f58747c9a612a2370c25cbc5101587 translatedAt=2026-08-21T02:24:13.226Z pushedAt=2026-08-21T08:35:31.598Z -->
 
 This component implements a dynamic layout container that supports lazy loading and allows developers to customize the layout algorithm. It is suitable for scenarios where a large number of child components need to be displayed in a scrollable component. By loading and laying out only the child components within the visible area on demand, it reduces the first frame rendering time and memory overhead.
 
-The parent components supported by this component include [List](ts-container-list.md), [WaterFlow](ts-container-waterflow.md), [FlowItem](ts-container-flowitem.md), [Scroll](ts-container-scroll.md), and [LazyColumnLayout](ts-container-lazycolumnlayout.md). It also supports being wrapped in a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) and then used in the above components.
+Its parent components are limited to [List](ts-container-list.md), [Scroll](ts-container-scroll.md), [WaterFlow](ts-container-waterflow.md), [FlowItem](ts-container-flowitem.md), or [LazyColumnLayout](ts-container-lazycolumnlayout.md), and it can be wrapped in a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) and then applied to the preceding components.
 
 > **NOTE**
 >
@@ -20,7 +20,8 @@ The parent components supported by this component include [List](ts-container-li
 >   1. Under the **WaterFlow** component, lazy loading is supported only when **WaterFlow** is in single-column mode or in a single-column segment within a segmented layout.
 >   2. Under the **List** component, when [lanes](ts-container-list.md#lanes9) is greater than **1**, [chainAnimation](ts-container-list.md#chainanimation) is set to **true**, or [scrollSnapAlign](ts-container-list.md#scrollsnapalign10) is set to a value other than **ScrollSnapAlign.NONE**, **List** does not use the nested lazy loading measurement process. In this case, this component is measured as a regular child item, and the lazy loading feature becomes ineffective.
 >   3. When used under the **Scroll**, **List**, or **WaterFlow** component, the scroll direction (horizontal or vertical) of **Scroll**, **List**, or **WaterFlow** must be the same as the layout direction of this component. If the layout directions differ, the app will crash.
-> - When wrapped in **FlowItem**, **LazyColumnLayout**, a custom component, or **NodeContainer**, the framework searches upward along the parent component chain for a **Scroll**, **List**, or **WaterFlow** component that matches the layout direction of this component. The lazy loading support conditions are determined based on the upper-level scrollable component found.
+>   4. When wrapped in **FlowItem**, **LazyColumnLayout**, a custom component, or **NodeContainer**, the lazy loading behavior depends on the configuration conditions of its upper-level scrollable component (such as **WaterFlow**, **Scroll**, or **List**).
+> - Here, the parent component refers to the upper-level scrollable component closest to the current component. For the specific meaning in other documents, refer to the corresponding content.
 
 **Since:** 26.0.0
 
