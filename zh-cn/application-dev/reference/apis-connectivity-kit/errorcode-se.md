@@ -64,7 +64,7 @@ SecurityError, the calling application cannot be granted access to this AID or t
 
 **可能原因**
 
-1. 安全单元上没有应用所依赖的访问控制规则。
+安全单元上没有应用所依赖的访问控制规则。
 
 **处理步骤**
 
