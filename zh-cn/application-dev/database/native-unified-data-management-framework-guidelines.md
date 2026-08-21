@@ -117,6 +117,66 @@ libudmf.so
 
 <!-- @[udmf_sample_get_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
+<div class="same-source-code">
+
+``` C++
+static void ProcessHyperlinkFromRecord(OH_UdmfRecord* record, OH_UdsHyperlink* hyperlink)
+{
+    unsigned int recordTypeIdCount = 0;
+    char** typeIdsFromRecord = OH_UdmfRecord_GetTypes(record, &recordTypeIdCount);
+    for (unsigned int j = 0; j < recordTypeIdCount; j++) {
+        if (strcmp(typeIdsFromRecord[j], UDMF_META_HYPERLINK) == 0) {
+            if (OH_UdmfRecord_GetHyperlink(record, hyperlink) != Udmf_ErrCode::UDMF_E_OK) {
+                OH_LOG_ERROR(LOG_APP, "Fail get hyperlink from record!");
+            }
+            break;
+        }
+    }
+}
+
+int32_t GetUnifieddata()
+{
+    // 1. 创建统一数据OH_UdmfData。
+    OH_UdmfData* readData = OH_UdmfData_Create();
+    // 此处key为示例，不可直接使用，其值应与OH_Udmf_SetUnifiedData接口中获取到的key值保持一致。
+    char key[] = {"udmf://Drag/com.ohos.test/0123456789"};
+    // 2. 通过key值从数据库中获取到数据。
+    if (OH_Udmf_GetUnifiedData(key, Udmf_Intention::UDMF_INTENTION_DRAG, readData) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Failed to get data.");
+        OH_UdmfData_Destroy(readData);
+        return Udmf_ErrCode::UDMF_ERR;
+    }
+    // 3. 判断OH_UdmfData是否有对应的类型。
+    if (!OH_UdmfData_HasType(readData, UDMF_META_HYPERLINK)) {
+        OH_LOG_ERROR(LOG_APP, "There is no hyperlink type in data.");
+        OH_UdmfData_Destroy(readData);
+        return Udmf_ErrCode::UDMF_ERR;
+    }
+    // 4. 获取数据记录和hyperlink数据。
+    unsigned int recordsCount = 0;
+    OH_UdmfRecord** records = OH_UdmfData_GetRecords(readData, &recordsCount);
+    OH_LOG_INFO(LOG_APP, "the count of records count is %{public}u", recordsCount);
+    // 创建hyperlink的UDS，用来承载record中读取出来的hyperlink数据。
+    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
+    // 获取records中的元素。
+    for (unsigned int i = 0; i < recordsCount; i++) {
+        ProcessHyperlinkFromRecord(records[i], hyperlink);
+    }
+    // 5. 读取OH_UdsHyperlink中的各项信息。
+    OH_LOG_INFO(LOG_APP, "The hyperlink type id is : %{public}s", OH_UdsHyperlink_GetType(hyperlink));
+    OH_LOG_INFO(LOG_APP, "The hyperlink url is : %{public}s", OH_UdsHyperlink_GetUrl(hyperlink));
+    OH_LOG_INFO(LOG_APP, "The hyperlink description is : %{public}s", OH_UdsHyperlink_GetDescription(hyperlink));
+    // 6. 销毁指针。
+    OH_UdsHyperlink_Destroy(hyperlink);
+    OH_UdmfData_Destroy(readData);
+    return Udmf_ErrCode::UDMF_E_OK;
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_get_unifieddata" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+</div>
+
 ## 使用UDMF延迟发送UDS数据
 
 ### 定义UDS数据提供函数
