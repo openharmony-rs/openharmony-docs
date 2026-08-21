@@ -1409,7 +1409,7 @@ finishLogCollected(admin: Want): void
 > 
 > 在应用调用[startCollectLog](#systemmanagerstartcollectlog23)开始收集日志后，收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调时，建议立即拷贝或者处理日志，并调用此接口删除收集到的日志。
 > 
-> 若不调本接口，设备日志会占用系统存储空间，不影响下一次调用[startCollectLog](#systemmanagerstartcollectlog23)启动日志收集任务。
+> 若不调用本接口，设备日志会占用系统存储空间，不影响下一次调用[startCollectLog](#systemmanagerstartcollectlog23)启动日志收集任务。
 
 **需要权限：** ohos.permission.ENTERPRISE_READ_LOG
 
