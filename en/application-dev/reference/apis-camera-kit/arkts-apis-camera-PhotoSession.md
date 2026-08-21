@@ -1,10 +1,12 @@
 # Interface (PhotoSession)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-08-20T09:34:54.418Z pushedAt=2026-08-21T02:04:57.896Z -->
 
 **PhotoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), [ManualExposure](arkts-apis-camera-ManualExposure.md), [ManualFocus](arkts-apis-camera-ManualFocus.md), [ManualIso](arkts-apis-camera-ManualIso.md), [OIS](arkts-apis-camera-OIS.md), and [Aperture](arkts-apis-camera-Aperture.md).
 
@@ -384,7 +386,7 @@ Subscribes to system pressure level change events. This API uses an asynchronous
 | Name | Type                                                     | Mandatory| Description                                                             |
 |---------|----------------------------------------------------------|------|-------------------------------------------------------------------|
 |type     | string                                                   | Yes  | Event type. The value is fixed at **'systemPressureLevelChange'**. The event can be listened for when a session is created.|
-|callback | AsyncCallback\<[SystemPressureLevel](arkts-apis-camera-e.md#systempressurelevel20)\> | Yes| Callback used to return the current system pressure level.|
+|callback | AsyncCallback\<[SystemPressureLevel](arkts-apis-camera-e.md#systempressurelevel20)\> | Yes | Callback used to return the current system pressure level. |
 
 **Example**
 
