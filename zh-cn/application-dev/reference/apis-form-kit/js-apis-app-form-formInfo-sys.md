@@ -190,6 +190,7 @@ import { formInfo } from '@kit.FormKit';
 | NO_SPACE       | 1    | 表示没有空间添加卡片。           |
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
+| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.1.0 |
 
 ## RenderingMode<sup>18+</sup>
 
