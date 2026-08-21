@@ -75,7 +75,7 @@
 
   ArkTS-Dyn示例：
 
-  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
+  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets)  -->
   
   ``` TypeScript
   @Entry
@@ -124,7 +124,7 @@
 
   ArkTS-Sta示例：
 
-  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
+  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets)  -->
   
   ``` TypeScript
   import {
@@ -153,9 +153,9 @@
         'rgb(255,192,0)', 'rgb(170,10,33)'];
   
     build() {
-      Column({ space: 6 }) {
+      Column({ space: 6 } as ColumnOptions) {
         Text(this.currentBp)
-
+  
         GridRow({
           columns: {
             xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
@@ -375,7 +375,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
   ArkTS-Dyn示例：
 
-  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets) -->
+  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets)  -->
   
   ``` TypeScript
   // xxx.ets
@@ -385,11 +385,11 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+  
     build() {
       Column({ space: 6 }) {
         Text('columns：8').alignSelf(ItemAlign.Start)
-
+  
         Row() {
           GridRow({ columns: 8 }) {
             ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
@@ -412,7 +412,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
   ArkTS-Sta示例：
 
-  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets) -->
+  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets)  -->
   
   ``` TypeScript
   import {
@@ -439,11 +439,11 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: string[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+  
     build() {
       Column({ space: 6 } as ColumnOptions) {
         Text('columns：8').alignSelf(ItemAlign.Start)
-
+  
         Row() {
           GridRow({ columns: 8 }) {
             ForEach(this.bgColors, (item: string, index?: int | undefined) => {
@@ -1083,17 +1083,17 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
     ArkTS-Dyn示例：
 
-    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets) -->
+    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets)  -->
     
     ``` TypeScript
     @Entry
     @Component
     struct OffsetColumnOptionExample {
-      @State currentBp: string = 'unknown'
+      @State currentBp: string = 'unknown';
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+        
       build() {
         Column({ space: 6 }) {
           GridRow({ columns: 12 }) {
@@ -1119,7 +1119,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           .onBreakpointChange((breakPoint) => {
             this.currentBp = breakPoint
           })
-
+    
           Text(this.currentBp)
         }
       }
@@ -1128,7 +1128,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
     ArkTS-Sta示例：
 
-    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets) -->
+    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets)  -->
     
     ``` TypeScript
     import {
