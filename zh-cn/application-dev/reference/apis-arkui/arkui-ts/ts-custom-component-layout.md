@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-自定义组件的自定义布局通过数据计算的方式布局自定义组件内的子组件。
+自定义组件的自定义布局允许开发者通过onMeasureSize和onPlaceChildren接口，以数据计算的方式精确控制子组件的位置和尺寸，实现更灵活的布局效果。适用于需要实现复杂非标准布局、内置布局组件无法满足特定排列需求、需要根据动态数据计算子组件位置和尺寸等场景。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@
 >
 > - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 在自定义组件内实现onMeasureSize, onPlaceChildren任一方法即视为实现自定义布局，推荐同时实现两种方法，具体参数说明可见对应接口参数说明。
+> - 在自定义组件内实现onMeasureSize、onPlaceChildren任一方法即视为实现自定义布局。onMeasureSize负责测量并返回自定义组件的尺寸，onPlaceChildren负责布局子组件的位置。为实现完整的自定义布局效果，推荐同时实现两种方法：onMeasureSize确定组件尺寸后，onPlaceChildren才能根据该尺寸正确布局子组件。具体参数说明请参见对应接口的详细描述。
 >
 > - 从API version 20开始，在自定义布局的自定义组件中，子组件若设置了[LayoutPolicy](./ts-universal-attributes-size.md#layoutpolicy15)对象的fixAtIdealSize属性，表示尺寸将不受父组件约束，完全按照开发者自定义的尺寸范围布局。
 > 
@@ -28,7 +28,13 @@ ArkTS-Sta: onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array&lt;Measur
         return {width: 0, height: 0} as SizeResult;<br/>
     }
 
-ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点信息和尺寸范围通过onMeasureSize传递给该开发者。不允许在onMeasureSize函数中改变状态变量。
+ArkUI（方舟UI框架）会在自定义组件确定尺寸时，将该自定义组件的节点信息和尺寸范围通过onMeasureSize传递给开发者。不允许在onMeasureSize函数中改变状态变量。
+
+> **说明：**
+>
+> - 使用自定义布局方法时，推荐同时实现onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
+> - 自定义布局内不支持使用懒加载（包含Repeat和LazyForEach）。
+> - 父容器（自定义组件）上设置的尺寸信息，除aspectRatio之外，优先级小于onMeasureSize设置的尺寸信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -44,15 +50,15 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 | 参数名         | 类型                                                       | 必填|说明                                                         |
 | -------------- | ---------------------------------------------------------- | ---|------------------------------------------------------------ |
-| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            | 是|计算自定义组件大小后的自身布局信息。  <br/>**说明：** <br/>第一次布局时以自身设置的属性为准。                                    |
-| children       | Array&lt;[Measurable](#measurable10)&gt;                   | 是|计算子组件大小后的子组件布局信息。<br/>**说明：** <br/>如果没有设置子组件的布局信息，子组件会维持上一次的布局信息，当子组件从来没有设置过尺寸时，尺寸默认为0。 |
-| constraint     | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是|自定义组件的布局约束信息。                                       |
+| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            | 是|父组件（自定义组件）布局信息。<br>**说明：** <br>第一次布局时以自身设置的属性为准。                                    |
+| children       | Array&lt;[Measurable](#measurable10)&gt;                   | 是|计算子组件大小后的测量信息。<br>**说明：** <br>如果没有设置子组件的尺寸信息，子组件会维持上一次的尺寸，当子组件从来没有设置过尺寸时，尺寸默认为0。 |
+| constraint     | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是|父组件传入的布局约束信息，包含minWidth、maxWidth、minHeight、maxHeight等约束条件。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。                                       |
 
 **返回值：** 
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| [SizeResult](#sizeresult10) | 自定义组件自身的尺寸信息。 |
+| [SizeResult](#sizeresult10) | 自定义组件自身的尺寸信息，包含测量后的宽度和高度。 |
 
 ## onPlaceChildren<sup>10+</sup>
 
@@ -60,7 +66,7 @@ ArkTS-Dyn: onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Lay
 
 ArkTS-Sta: onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions): void {}
 
-ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节点自身的尺寸范围通过onPlaceChildren传递给该自定义组件。不允许在onPlaceChildren函数中改变状态变量。
+ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节点的布局信息通过onPlaceChildren传递给自定义组件。不允许在onPlaceChildren函数中改变状态变量。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -74,19 +80,19 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 **参数：**
 
-| 参数名            | 类型                                                         |必填| 说明               |
-|----------------|------------------------------------------------------------|---|------------------|
-| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            |是 |计算自定义组件大小后的自身布局信息。         |
-| children       | Array&lt;[Layoutable](#layoutable10)&gt;                   |是 |计算子组件大小后的子组件布局信息。         |
-| constraint     | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |是 |自定义组件的布局约束信息。 |
+| 参数名            | 类型                                                         | 必填 | 说明               |
+|----------------|------------------------------------------------------------|------|------------------|
+| selfLayoutInfo | [GeometryInfo](#geometryinfo10)                            | 是 |父组件（自定义组件）布局信息。         |
+| children       | Array&lt;[Layoutable](#layoutable10)&gt;                   | 是 |计算子组件大小后的子组件布局信息。         |
+| constraint     | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是 |父组件传入的布局约束信息，包含minWidth、maxWidth、minHeight、maxHeight等约束条件。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |
 
 **示例：**
 
-示例请参考[自定义布局代码示例](#示例)。
+示例请参考[自定义布局代码示例](#示例1自定义布局代码示例)。
 
 ## GeometryInfo<sup>10+</sup>
 
-父组件（自定义组件）布局信息，继承自[SizeResult](#sizeresult10)。
+父组件（自定义组件）布局信息，继承自[SizeResult](#sizeresult10)。在onMeasureSize和onPlaceChildren方法中，可通过selfLayoutInfo参数获取GeometryInfo对象，其中包含父组件的边框宽度、外边距和内边距信息，开发者在计算子组件布局时需要考虑这些信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -100,13 +106,15 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| borderWidth | [EdgeWidth](ts-types.md#edgewidth10) |否|否| 父组件（自定义组件）边框宽度。<br>单位：vp。            |
-| margin      | [Margin](ts-types.md#margin)       | 否|否|父组件（自定义组件）margin信息。 <br>单位：vp。       |
-| padding     | [Padding](ts-types.md#padding)   |否|否| 父组件（自定义组件）padding信息。<br>单位：vp。 |
+| borderWidth | [EdgeWidth](ts-types.md#edgewidth10) |否|否| 父组件边框宽度。<br>单位：vp。            |
+| margin      | [Margin](ts-types.md#margin)       | 否|否|父组件margin信息。 <br>单位：vp。       |
+| padding     | [Padding](ts-types.md#padding)   |否|否| 父组件padding信息。<br>单位：vp。 |
 
 ## Layoutable<sup>10+</sup>
 
-子组件位置信息。
+子组件布局信息。Layoutable对象由ArkUI框架在onPlaceChildren调用时创建并传入，包含子组件的测量结果和唯一标识。开发者通过Layoutable的layout方法设置子组件位置，通过getMargin、getPadding、getBorderWidth方法获取子组件的边距信息用于精确布局计算。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -121,7 +129,7 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 | 名称         | 类型       | 只读|可选|  说明                                                      |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
 | measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23    |
-| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18<br/> **ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |是|  系统为子组件分配的唯一标识UniqueID。用于唯一标识子组件以进行后续操作（如通过getFrameNodeByUniqueId获取FrameNode）。<br>取值范围[0,+∞)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18<br/> **ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### layout<sup>10+</sup>
 
@@ -129,7 +137,7 @@ ArkTS-Dyn: layout(position: Position): void
 
 ArkTS-Sta: layout(position: Position | undefined): void
 
-调用此方法对子组件的位置信息进行限制。
+调用此方法设置子组件的位置信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -145,7 +153,7 @@ ArkTS-Sta: layout(position: Position | undefined): void
 
 | 参数名         | 类型                                                    | 必填                 |说明         |
 |-----------------|---------------------------------------------------------|---------------------|-------------|
-|   position      | ArkTS-Dyn: [Position](ts-types.md#position)<br/>ArkTS-Sta: [Position](ts-types.md#position) \| undefined                        | 是                  |   绝对位置。<br/>取值为undefined时，与不设置表现一致。   |
+|   position      | ArkTS-Dyn: [Position](ts-types.md#position)<br/>ArkTS-Sta: [Position](ts-types.md#position) \| undefined                        | 是                  |    绝对位置，包含x和y坐标（原点为父组件左上角，x轴向右为正，y轴向下为正）。单位：vp。 <br/>取值为undefined时，与不设置表现一致。   |
 
 ### getMargin<sup>12+</sup>
 
@@ -153,7 +161,7 @@ ArkTS-Dyn: getMargin() : DirectionalEdgesT\<number>
 
 ArkTS-Sta: getMargin() : DirectionalEdgesT\<double> | undefined
 
-调用此方法获取子组件的margin信息。
+调用此方法获取子组件的margin信息，返回其外边距。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -169,7 +177,7 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double> | undefined
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的margin信息。<br/>取值为undefined时，与不设置表现一致。   |
+| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的外边距对象，包含四个方向的边距值。单位：vp。<br/>取值为undefined时，与不设置表现一致。   |
 
 ### getPadding<sup>12+</sup>
 
@@ -177,7 +185,7 @@ ArkTS-Dyn: getPadding() : DirectionalEdgesT\<number>
 
 ArkTS-Sta: getPadding() : DirectionalEdgesT\<double> | undefined
 
-调用此方法获取子组件的padding信息。
+调用此方法获取子组件的padding信息，返回其内边距。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -193,7 +201,7 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double> | undefined
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的padding信息。<br/>取值为undefined时，与不设置表现一致。  |
+| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的内边距对象，包含四个方向的内边距值。单位：vp。<br/>取值为undefined时，与不设置表现一致。  |
 
 ### getBorderWidth<sup>12+</sup>
 
@@ -201,7 +209,7 @@ ArkTS-Dyn: getBorderWidth() : DirectionalEdgesT\<number>
 
 ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
-调用此方法获取子组件的borderWidth信息。
+调用此方法获取子组件的borderWidth信息，返回其边框宽度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -217,11 +225,11 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的borderWidth信息。  |
+| ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  |  子组件的边框宽度对象，包含四个方向的边框宽度值。单位：vp。  |
 
 ## Measurable<sup>10+</sup>
 
-子组件尺寸信息。
+子组件测量信息。Measurable对象由ArkUI框架在onMeasureSize调用时创建并传入，用于测量阶段。与Layoutable（用于布局阶段）不同，Measurable主要用于测量子组件尺寸，开发者通过measure方法设置约束条件并获取测量结果。Measurable和Layoutable是同一子组件在不同布局阶段的两种表示形式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -245,15 +253,15 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。用于唯一标识子组件以进行后续操作（如通过getFrameNodeByUniqueId获取FrameNode）。取值范围[0, +∞)。系统会自动为每个子组件分配UniqueID，开发者可按需读取，无需主动设置。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
-### measure
+### measure<sup>10+</sup>
 
 ArkTS-Dyn: measure(constraint: ConstraintSizeOptions) : MeasureResult
 
 ArkTS-Sta: measure(constraint: ConstraintSizeOptions | undefined): MeasureResult | undefined
 
-调用此方法限制子组件的尺寸范围。
+ 调用此方法限制子组件的尺寸范围，返回测量后的组件布局信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -269,13 +277,13 @@ ArkTS-Sta: measure(constraint: ConstraintSizeOptions | undefined): MeasureResult
 
 | 参数名         | 类型                                                    | 必填                 |说明         |
 |-----------------|---------------------------------------------------------|---------------------|-------------|
-|   constraint    | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)<br/>ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined  | 是            |   约束尺寸。<br/>取值为undefined时，与不设置表现一致。  |
+|   constraint    | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)<br/>ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined  | 是            |   约束尺寸，包含minWidth、maxWidth、minHeight、maxHeight等约束条件，用于限制子组件的尺寸范围。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。<br/>取值为undefined时，与不设置表现一致。  |
 
 **返回值：**
 
 | 类型                               | 说明                     |
 |------------------------------------|-------------------------|
-|ArkTS-Dyn: [MeasureResult](#measureresult10)<br/>ArkTS-Sta: [MeasureResult](#measureresult10) \| undefined   | 测量后的组件布局信息。   |
+|ArkTS-Dyn: [MeasureResult](#measureresult10)<br/>ArkTS-Sta: [MeasureResult](#measureresult10) \| undefined   | 测量后的组件布局信息，包含测量后的宽度和高度。   |
 
 ### getMargin<sup>12+</sup>
 
@@ -283,7 +291,7 @@ ArkTS-Dyn: getMargin() : DirectionalEdgesT\<number\>
 
 ArkTS-Sta: getMargin() : DirectionalEdgesT\<double\> | undefined
 
-获取子组件的margin信息。
+获取子组件的margin信息，返回其外边距。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -299,7 +307,7 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double\> | undefined
 
 | 类型                               | 说明                     |
 |------------------------------------|-------------------------|
-|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的margin信息。<br/>取值为undefined时，与不设置表现一致。   |
+|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的外边距对象，包含四个方向的边距值。单位：vp。<br/>取值为undefined时，与不设置表现一致。   |
 
 ### getPadding<sup>12+</sup>
 
@@ -307,7 +315,7 @@ ArkTS-Dyn: getPadding() : DirectionalEdgesT\<number\>
 
 ArkTS-Sta: getPadding() : DirectionalEdgesT\<double\> | undefined
 
-获取子组件的padding信息。
+获取子组件的padding信息，返回其内边距。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -323,7 +331,7 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double\> | undefined
 
 | 类型                               | 说明                     |
 |------------------------------------|-------------------------|
-|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的padding信息。<br/>取值为undefined时，与不设置表现一致。   |
+|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的内边距对象，包含四个方向的内边距值。单位：vp。<br/>取值为undefined时，与不设置表现一致。   |
 
 ### getBorderWidth<sup>12+</sup>
 
@@ -331,7 +339,7 @@ ArkTS-Dyn: getBorderWidth() : DirectionalEdgesT\<number\>
 
 ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
-获取子组件的borderWidth信息。
+获取子组件的borderWidth信息，返回其边框宽度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -347,7 +355,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 | 类型                               | 说明                     |
 |------------------------------------|-------------------------|
-|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的borderWidth信息。<br/>取值为undefined时，与不设置表现一致。 |
+|ArkTS-Dyn: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;<br/>ArkTS-Sta: [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;double&gt; \| undefined  | 子组件的边框宽度对象，包含四个方向的边框宽度值。单位：vp。<br/>取值为undefined时，与不设置表现一致。 |
 
 
 ## MeasureResult<sup>10+</sup>
@@ -373,7 +381,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 >- 自定义布局暂不支持LazyForEach写法。
 >- 使用builder形式的自定义布局创建，自定义组件的build()方法内只允许存在this.builder()，即示例的推荐用法。
 >- 父容器（自定义组件）上设置的尺寸信息，除aspectRatio之外，优先级小于onMeasureSize设置的尺寸信息。
->- 子组件设置的位置信息，offset、position、markAnchor优先级大于onPlaceChildren设置的位置信息，其他位置设置属性不生效。
+>- 子组件设置的位置信息（offset、position、markAnchor）优先级大于onPlaceChildren设置的位置信息，其他位置设置属性不生效。
 >- 使用自定义布局方法时，需要同时调用onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -388,18 +396,18 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 | 名称     | 类型   |只读|可选| 说明    |
 |--------|--------|------|------|-------|
-| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的宽。<br>单位：vp。 |
-| height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的高。<br>单位：vp。 |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的宽。<br>单位：vp。<br>取值范围：[0, +∞)。 |
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的高。<br>单位：vp。<br>取值范围：[0, +∞)。 |
 
 ## onLayout<sup>(deprecated)</sup>
 
 onLayout?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions): void
 
-ArkUI框架会在自定义组件布局时，将该自定义组件的子节点信息和自身的尺寸范围通过onLayout传递给该自定义组件。不允许在onLayout函数中改变状态变量。
+ArkUI框架会在自定义组件确定子组件位置时，将该自定义组件的子节点信息和自身的尺寸范围通过onLayout传递给自定义组件，开发者可在该方法中对子组件进行布局操作。不允许在onLayout函数中改变状态变量。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，推荐使用[onPlaceChildren](#onplacechildren10)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[onPlaceChildren](#onplacechildren10)替代。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -412,17 +420,17 @@ ArkUI框架会在自定义组件布局时，将该自定义组件的子节点信
 | 参数名        | 类型                                                         | 必填|说明               |
 |------------|------------------------------------------------------------|------|------------------|
 | children   | Array&lt;[LayoutChild](#layoutchilddeprecated)&gt;                | 是  | 子组件布局信息。         |
-| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是  |父组件constraint信息。 |
+| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是  |父组件constraint信息，包含minWidth、maxWidth、minHeight、maxHeight等约束条件。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |
 
 ## onMeasure<sup>(deprecated)</sup>
 
 onMeasure?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions): void
 
-ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节点信息和自身的尺寸范围通过onMeasure传递给该自定义组件。不允许在onMeasure函数中改变状态变量。
+ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节点信息和自身的尺寸范围通过onMeasure传递给自定义组件，开发者可在该方法中对子组件进行测量操作。不允许在onMeasure函数中改变状态变量。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，推荐使用[onMeasureSize](#onmeasuresize10)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[onMeasureSize](#onmeasuresize10)替代。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -435,7 +443,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 | 参数名        | 类型                                                         |必填| 说明               |
 |------------|------------------------------------------------------------|------|------------------|
 | children   | Array&lt;[LayoutChild](#layoutchilddeprecated)&gt;                  | 是  |子组件布局信息。         |
-| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是  |父组件constraint信息。 |
+| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是  |父组件constraint信息，包含minWidth、maxWidth、minHeight、maxHeight等约束条件。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |
 
 ## LayoutChild<sup>(deprecated)</sup>
 
@@ -457,9 +465,9 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 | ---------- | ------------------------------------------------------------ | ------|------|-------------------------------------- |
 | name       | string                                                       | 否|否|子组件名称。                           |
 | id         | string                                                       | 否|否|子组件id。                             |
-| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)   | 否|否|子组件约束尺寸。                       |
+| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)   | 否|否|子组件约束尺寸。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |
 | borderInfo | [LayoutBorderInfo](#layoutborderinfodeprecated)              | 否|否|子组件border信息。                     |
-| position   | [Position](ts-types.md#position)                             | 否|否|子组件位置坐标。                       |
+| position   | [Position](ts-types.md#position)                             | 否|否|子组件位置坐标。单位：vp。                       |
 
 ### measure<sup>(deprecated)</sup>
 
@@ -469,7 +477,7 @@ measure(childConstraint: ConstraintSizeOptions)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[Measurable](#measurable10)或者[Layoutable](#layoutable10)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[Measurable](#measurable10)或者[Layoutable](#layoutable10)替代。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -481,7 +489,7 @@ measure(childConstraint: ConstraintSizeOptions)
 
 | 参数名        | 类型     |必填| 说明               |
 |------------|-----------|------|------------------|
-| childConstraint   | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是  | 子组件的尺寸范围的约束信息。|
+| childConstraint   | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是  | 子组件的尺寸范围的约束信息，包含minWidth、maxWidth、minHeight、maxHeight等约束条件。单位：vp。|
 
 ### layout<sup>(deprecated)</sup>
 
@@ -491,7 +499,7 @@ layout(childLayoutInfo: LayoutInfo)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[Measurable](#measurable10)或者[Layoutable](#layoutable10)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[Measurable](#measurable10)或者[Layoutable](#layoutable10)替代。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -503,7 +511,7 @@ layout(childLayoutInfo: LayoutInfo)
 
 | 参数名        | 类型     |必填| 说明               |
 |------------|-----------|------|------------------|
-| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | 是  |子组件layout信息。|
+| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | 是  |子组件layout信息，包含position（位置坐标）和constraint（约束尺寸）。其中position用于设置子组件的位置，constraint用于传递约束信息给子组件。|
 
 ## LayoutBorderInfo<sup>(deprecated)</sup>
 
@@ -511,7 +519,7 @@ layout(childLayoutInfo: LayoutInfo)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[getBorderWidth](#getborderwidth12)，[getMargin](#getmargin12)和[getPadding](#getpadding12)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[getBorderWidth](#getborderwidth12)、[getMargin](#getmargin12)、[getPadding](#getpadding12)替代。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -521,9 +529,9 @@ layout(childLayoutInfo: LayoutInfo)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| borderWidth | [EdgeWidths](ts-types.md#edgewidths9) | 否|否|边框宽度类型，用于描述组件边框不同方向的宽度。 |
-| margin      | [Margin](ts-types.md#margin)         | 否|否|外边距类型，用于描述组件不同方向的外边距。   |
-| padding     | [Padding](ts-types.md#padding)       | 否|否|内边距类型，用于描述组件不同方向的内边距。   |
+| borderWidth | [EdgeWidths](ts-types.md#edgewidths9) | 否|否|边框宽度类型，用于描述组件边框不同方向的宽度。<br>单位：vp。 |
+| margin      | [Margin](ts-types.md#margin)         | 否|否|外边距类型，用于描述组件不同方向的外边距。<br>单位：vp。   |
+| padding     | [Padding](ts-types.md#padding)       | 否|否|内边距类型，用于描述组件不同方向的内边距。<br>单位：vp。   |
 
 ## LayoutInfo<sup>(deprecated)</sup>
 
@@ -531,7 +539,7 @@ layout(childLayoutInfo: LayoutInfo)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[Layoutable](#layoutable10)替代。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -541,8 +549,8 @@ layout(childLayoutInfo: LayoutInfo)
 
 | 名称       | 类型                                                   | 只读|可选|说明             |
 | ---------- | ---------------------------------------------------------- | ------|------|---------------- |
-| position   | [Position](ts-types.md#position)                           |否|否| 子组件位置坐标。 |
-| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 否|否|子组件约束尺寸。 |
+| position   | [Position](ts-types.md#position)                           |否|否| 子组件位置坐标。单位：vp。 |
+| constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 否 | 否 | 子组件约束尺寸。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |
 
 
 ## 示例
@@ -593,6 +601,7 @@ struct CustomLayout {
   // 第一步：计算各子组件的大小
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
+    // 设置初始约束基准值为100vp，每次迭代累加子组件宽度的一半，逐步递增约束。
     children.forEach((child) => {
       let result: MeasureResult = child.measure({
         minHeight: size,
@@ -608,6 +617,7 @@ struct CustomLayout {
   }
   // 第二步：放置各子组件的位置
   onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
+    // 从固定起始位置反向计算子组件位置，实现从下到上的反向布局效果。
     let startPos = 300;
     children.forEach((child) => {
       let pos = startPos - child.measureResult.height;
@@ -823,7 +833,7 @@ class MyNodeController extends NodeController {
 struct CustomLayout {
   @Builder
   childrenBuilder() {
-    ForEach([1, 2, 3], (index: number) => { // 目前不支持使用lazyForEach语法。
+    ForEach([1, 2, 3], (index: number) => { // 目前不支持使用LazyForEach语法。
       NodeContainer(new MyNodeController())
     })
   };
@@ -835,6 +845,7 @@ struct CustomLayout {
   };
 
   onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
+    // 水平排列子组件，每个子组件间隔10vp。
     let prev = 0;
     children.forEach((child) => {
       let pos = prev + 10;

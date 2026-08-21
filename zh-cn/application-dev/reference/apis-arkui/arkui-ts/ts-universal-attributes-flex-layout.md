@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可以灵活排列、对齐和分配容器内的子组件空间，使元素根据可用空间扩展或收缩，以满足不同屏幕尺寸下的响应式布局。
+Flex布局提供灵活的组件排列和对齐能力，可以动态分配容器内的子组件空间，使元素根据可用空间自动扩展或收缩。适用于响应式UI布局、动态内容布局、复杂布局实现等场景，能解决传统布局在多设备适配困难、内容变化导致布局错位、复杂对齐需求难以实现等问题。
 
 >  **说明：**
 > - 从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -17,6 +17,14 @@
 > - flexBasis设定基准尺寸，flexGrow控制扩展行为，flexShrink控制压缩行为，三者可单独使用或组合使用。
 > - 仅当父组件为[Flex](ts-container-flex.md)、[Column](ts-container-column.md)、[Row](ts-container-row.md)和[DynamicLayout](ts-container-dynamiclayout.md)时设置下述四种属性生效，父组件为[GridRow](ts-container-gridrow.md)时设置[alignSelf](#alignself)生效。
 
+> **说明：**
+>
+> - **flexBasis**：设置组件的基准尺寸，作为布局的初始参考值，优先级高于width/height。
+> - **flexGrow**：定义组件在父容器有剩余空间时的扩展比例，剩余空间按各组件flexGrow比例分配。
+> - **flexShrink**：定义组件在父容器空间不足时的压缩比例，超出的尺寸按各组件flexShrink比例分摊。
+
+flexBasis设定基准尺寸，flexGrow控制扩展行为，flexShrink控制压缩行为，三者可单独使用或组合使用。
+
 ## flexBasis
 
 ArkTS-Dyn: flexBasis(value: number | string): T
@@ -25,7 +33,7 @@ ArkTS-Sta: flexBasis(value: double | string | undefined): this
 
 设置组件的基准尺寸。仅作为Flex、Column、Row和DynamicLayout容器的子组件时支持设置此属性。设置后组件会以该基准尺寸作为初始尺寸参与布局计算。当父容器为Column、Row时，需设置主轴方向的尺寸。Column和Row在未设置主轴尺寸（width/height/size）时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时可能影响flexBasis的效果。
 
-设置组件的基准尺寸。
+设置组件的基准尺寸。仅Flex、Column、Row和DynamicLayout容器支持此属性。设置后组件会以该基准尺寸作为初始尺寸参与布局计算。当父容器为Column、Row时，需设置主轴方向的尺寸。Column和Row在未设置主轴尺寸（width/height/size）时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时可能影响flexBasis的效果。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -72,7 +80,7 @@ ArkTS-Sta: flexGrow(value: double | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | 设置父容器在主轴方向上的剩余空间分配给此属性所在组件的比例。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置异常值时，该属性为默认值。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | 设置父容器在主轴方向（行布局为水平方向，列布局为垂直方向）上的剩余空间分配给此属性所在组件的比例。值为0表示不参与剩余空间分配，保持原有尺寸；值大于0时，按照比例分配父容器的剩余空间，值越大分配的空间越多。<br>取值范围：[0, +∞)<br>默认值：0<br>父容器为[Column](ts-container-column.md)、[Row](ts-container-row.md)时，需设置主轴方向的尺寸（[width](ts-universal-attributes-size.md#width)/[height](ts-universal-attributes-size.md#height)/[size](ts-universal-attributes-size.md#size)），否则可能影响flexGrow的剩余空间分配效果。<br>[constraintSize](ts-universal-attributes-size.md#constraintsize)限制组件的尺寸范围，当flexGrow扩展后的组件尺寸超出constraintSize的最大限制时，会被constraintSize约束。<br/>设置异常值时，该属性为默认值。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -90,7 +98,7 @@ ArkTS-Sta: flexShrink(value: double | undefined): this
 
 >  **说明：**
 >
->  使用[getInspectorByKey](ts-universal-attributes-component-id.md#getinspectorbykey9)获取flexShrink属性时，如果该节点未设置flexShrink属性，默认返回1。
+>  使用[getInspectorByKey](ts-universal-attributes-component-id.md#getinspectorbykey9)获取flexShrink属性时，如果该节点未设置flexShrink属性，默认返回1（与Flex容器的默认值一致，与Column、Row容器的默认值0不同）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -106,7 +114,7 @@ ArkTS-Sta: flexShrink(value: double | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | 设置父容器压缩尺寸分配给此属性所在组件的比例。<br/>父容器为[Column](ts-container-column.md)、[Row](ts-container-row.md)时，默认值：0，取值范围[0,+∞)。<br/> 父容器为[Flex](ts-container-flex.md)时，默认值：1 <br/>[constraintSize](ts-universal-attributes-size.md#constraintsize)限制组件的尺寸范围。[Column](ts-container-column.md)和[Row](ts-container-row.md)即使设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，在未设置主轴尺寸（[width](ts-universal-attributes-size.md#width)/[height](ts-universal-attributes-size.md#height)/[size](ts-universal-attributes-size.md#size)）时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效。<br/>设置异常值时，该属性为默认值。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | 设置父容器空间不足时，压缩尺寸分配给此属性所在组件的比例。值为0表示该组件不参与压缩；值大于0时，按照比例压缩，值越大压缩量越大。<br/>父容器为[Column](ts-container-column.md)、[Row](ts-container-row.md)时，默认值：0，取值范围[0,+∞)。<br/> 父容器为[Flex](ts-container-flex.md)时，默认值：1 <br/>[constraintSize](ts-universal-attributes-size.md#constraintsize)限制组件的尺寸范围。[Column](ts-container-column.md)和[Row](ts-container-row.md)即使设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，在未设置主轴尺寸（[width](ts-universal-attributes-size.md#width)/[height](ts-universal-attributes-size.md#height)/[size](ts-universal-attributes-size.md#size)）时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效。<br/>设置异常值时，该属性为默认值。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
@@ -120,7 +128,7 @@ ArkTS-Dyn: alignSelf(value: ItemAlign): T
 
 ArkTS-Sta: alignSelf(value: ItemAlign | undefined): this
 
-子组件在父容器交叉轴的对齐格式。
+子组件在父容器交叉轴（与主轴垂直的方向）的对齐格式，设置后会覆盖父容器的alignItems设置。仅Flex、Column、Row、DynamicLayout和GridRow容器支持此属性。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -136,7 +144,7 @@ ArkTS-Sta: alignSelf(value: ItemAlign | undefined): this
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ItemAlign](ts-appendix-enums.md#itemalign)<br/>ArkTS-Sta: [ItemAlign](ts-appendix-enums.md#itemalign) \| undefined | 是   | 子组件在父容器交叉轴的对齐格式，会覆盖[Flex](ts-container-flex.md)、[Column](ts-container-column.md)、[Row](ts-container-row.md)、[GridRow](ts-container-gridrow.md)布局容器中的alignItems设置。<br/>[GridCol](./ts-container-gridcol.md)可以绑定alignSelf属性来改变它自身在交叉轴方向上的布局。<br/>默认值：ItemAlign.Auto<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [ItemAlign](ts-appendix-enums.md#itemalign)<br/>ArkTS-Sta: [ItemAlign](ts-appendix-enums.md#itemalign) \| undefined | 是   | 子组件在父容器交叉轴的对齐格式，会覆盖[Flex](ts-container-flex.md)、[Column](ts-container-column.md)、[Row](ts-container-row.md)、[GridRow](ts-container-gridrow.md)布局容器中的alignItems设置。<br/>[GridCol](./ts-container-gridcol.md)可以绑定alignSelf属性来改变它自身在交叉轴方向上的布局。<br/>默认值：ItemAlign.Auto（表示继承父容器的对齐设置）<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
