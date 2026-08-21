@@ -18,7 +18,7 @@ Data not found.
 
 **Description**
 
-This error code is reported when no data has been obtained using the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent**.
+This error code is reported when no data has been obtained using the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent**. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -36,7 +36,7 @@ Data error.
 
 **Description**
 
-This error code is reported when the data obtained via the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent** is incorrect.
+This error code is reported when the data obtained via the [getData](./arkui-ts/ts-universal-events-drag-drop.md#getdata10) API of **DragEvent** is incorrect. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -54,7 +54,7 @@ Operation not allowed for current phase.
 
 **Description**
 
-This error code is reported when you call an API that is only supported during the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase outside of that phase.
+This error code is reported when you call an API that is only supported during the [onDrop](./arkui-ts/ts-universal-events-drag-drop.md#ondrop) phase outside of that phase. This error code is represented as a string type.
 
 **Possible Causes**
 
@@ -72,7 +72,7 @@ Operation failed.
 
 **Description**
 
-This error code is reported if the [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) API is called when data has not been loaded or loading is complete.
+This error code is reported if the [cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15) API is called when data has not been loaded or loading is complete. This error code is represented as a string type.
 
 **Possible Causes**
 
