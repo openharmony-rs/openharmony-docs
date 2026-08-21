@@ -34,8 +34,8 @@ getErrorCode(): number
 
 **返回值：**
 
-| 类型     | 说明          |
-| ------ | ----------- |
+| 类型   | 说明                                                                                                                |
+| ------ | ------------------------------------------------------------------------------------------------------------------- |
 | number | 返回加载资源的错误码。错误码含义参考[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)或HTTP协议状态码。 |
 
 ## getErrorInfo
@@ -48,6 +48,27 @@ getErrorInfo(): string
 
 **返回值：**
 
-| 类型     | 说明           |
-| ------ | ------------ |
+| 类型   | 说明                     |
+| ------ | ------------------------ |
 | string | 返回加载资源的错误信息。 |
+
+## getCustomErrorCode
+
+getCustomErrorCode(): number
+
+获取加载资源的自定义错误码。自定义错误码通过[WebSchemeHandlerResponse](arkts-apis-webview-WebSchemeHandlerResponse.md)的[setCustomErrorCode](arkts-apis-webview-WebSchemeHandlerResponse.md#setcustomerrorcode)设置，并通过[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)事件直接传递给应用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型   | 说明                         |
+| ------ | ---------------------------- |
+| number | 返回加载资源的自定义错误码。 |
+
+**示例：**
+
+完整示例代码参考[onErrorReceive事件](./arkts-basic-components-web-events.md#onerrorreceive)。
+
