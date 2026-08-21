@@ -248,7 +248,7 @@ duration(value: number)
 
 duration需要和[curve](#curve8)一起使用。
 
-curve默认曲线为[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)，此时动画时长只受曲线自身参数影响，不再受duration的控制。不受duration控制的曲线可以查阅[插值计算](../js-apis-curve.md)模块，比如，[springMotion](../js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](../js-apis-curve.md#curvesresponsivespringmotion9)和interpolatingSpring类型的曲线不受duration控制。如果希望动画时长受到duration控制，需要给curve设置其他曲线。
+curve默认曲线为interpolatingSpring，此时动画时长只受曲线自身参数影响，不再受duration的控制。不受duration控制的曲线可以查阅插值计算模块，比如，springMotion、responsiveSpringMotion和interpolatingSpring类型的曲线不受duration控制。如果希望动画时长受到duration控制，需要给curve设置其他曲线。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -264,7 +264,7 @@ curve默认曲线为[interpolatingSpring](../js-apis-curve.md#curvesinterpolatin
 
 curve(value: Curve | string | ICurve)
 
-设置Swiper的动画曲线，默认为弹簧插值曲线，常用曲线参考[Curve枚举说明](ts-appendix-enums.md#curve)，也可以通过[插值计算](../js-apis-curve.md)模块提供的接口创建自定义的插值曲线对象。
+设置Swiper的动画曲线，默认为弹簧插值曲线，常用曲线参考[Curve枚举说明](ts-appendix-enums.md#curve)，也可以通过插值计算模块提供的接口创建自定义的插值曲线对象。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -276,7 +276,7 @@ curve(value: Curve | string | ICurve)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
-| value  | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) | 是   | Swiper的动画曲线。<br/>string类型来源[curves.init](../js-apis-curve.md#curvesinitdeprecated)，[curves.steps](../js-apis-curve.md#curvesstepsdeprecated)，[curves.cubicBezier](../js-apis-curve.md#curvescubicbezierdeprecated)，[curves.spring](../js-apis-curve.md#curvesspringdeprecated)函数从API version 9开始废弃，推荐使用Curve和ICurve类型。<br/>默认值：[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)(-1, 1, 328, 34) |
+| value  | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;ICurve | 是   | Swiper的动画曲线。<br/>string类型来源curves.init，curves.steps，curves.cubicBezier，curves.spring函数从API version 9开始废弃，推荐使用Curve和ICurve类型。<br/>默认值：interpolatingSpring(-1, 1, 328, 34) |
 
 ### vertical
 
@@ -1118,7 +1118,7 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 <!--Table: 15%; 25%; 10%; 50%-->
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)| 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。<br/>单位参考[Length](ts-types.md#length)类型的说明。  |
+| bottom  | LengthMetrics&nbsp;\|&nbsp;[Length](ts-types.md#length)| 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。<br/>单位参考[Length](ts-types.md#length)类型的说明。  |
 | ignoreSize  | boolean | 是   | 设置是否忽略导航点本身大小，默认false。<br/>设置为true时，忽略导航点大小，可以将导航点更靠近Swiper底部；设置为false时，不忽略导航点大小，导航点按默认大小布局。使用方法可以参考[示例9](#示例9演示导航点space与bottom)演示导航点space与bottom。<br/> 说明：当导航点为[DigitIndicator](#digitindicator10)的类型时，不生效的场景如下：<br/> &bull;  当[vertical](#vertical) 设置为false，且bottom > 0。<br/>  &bull;  当[vertical](#vertical) 设置为true时：<br/>1、bottom > 0 时。<br/> 2、bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。|
 
 **返回值：**
@@ -1145,7 +1145,7 @@ start(value: LengthMetrics): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 设置在RTL模式下为导航点距离Swiper组件右边的距离，在LTR模式下为导航点距离Swiper组件左边的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。 |
+| value  | LengthMetrics | 是   | 设置在RTL模式下为导航点距离Swiper组件右边的距离，在LTR模式下为导航点距离Swiper组件左边的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。 |
 
 **返回值：**
 
@@ -1171,7 +1171,7 @@ end(value: LengthMetrics): T
 
 | 参数名 | 类型                         | 必填  | 说明                                     |
 | ------ | ---------------------------- | ---- | ---------------------------------------- |
-| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是    | 设置在RTL模式下为导航点距离Swiper组件左边的距离，在LTR模式下为导航点距离Swiper组件右边的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。  |
+| value | LengthMetrics | 是    | 设置在RTL模式下为导航点距离Swiper组件左边的距离，在LTR模式下为导航点距离Swiper组件右边的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。  |
 
 **返回值：**
 
@@ -1475,7 +1475,7 @@ space(space: LengthMetrics): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：PC/2in1设备上为10，其他设备为8。<br/>单位：vp<br/>取值范围：[0, +∞)，设置小于0的值时按照默认值处理。 |
+| space  | LengthMetrics  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：PC/2in1设备上为10，其他设备为8。<br/>单位：vp<br/>取值范围：[0, +∞)，设置小于0的值时按照默认值处理。 |
 
 **返回值：** 
 

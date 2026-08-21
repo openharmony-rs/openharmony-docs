@@ -83,7 +83,7 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 
-当开启朗读类辅助应用（如屏幕朗读器）且手指触摸在组件区域，同时该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，会触发该回调，并通过回调参数返回该触摸事件对应的TouchEvent。仅支持手指触摸。不支持触摸位置位于以下组件区域内的场景，包括[UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)，以及与第三方UI框架对接的场景。在上述场景下，该回调接口无法生效。
+当开启朗读类辅助应用（如屏幕朗读器）且手指触摸在组件区域，同时该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，会触发该回调，并通过回调参数返回该触摸事件对应的TouchEvent。仅支持手指触摸。不支持触摸位置位于以下组件区域内的场景，包括UIExtension、Web、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)，以及与第三方UI框架对接的场景。在上述场景下，该回调接口无法生效。
 
 组件无法被无障碍悬浮识别为可聚焦的主要原因包括，组件的无障碍重要性[accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel)为"no"或者"no-hide-descendants"；组件无文本且未配置无障碍文本[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)，同时不支持点击或长按操作。
 

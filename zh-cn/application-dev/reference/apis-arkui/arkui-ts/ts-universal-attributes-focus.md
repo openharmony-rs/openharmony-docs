@@ -59,7 +59,7 @@ tabIndex(index: number): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | ------------------------------------ |
-| index  | number | 是   | 自定义组件Tab键走焦能力。若有配置了tabIndex大于0的组件，则Tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br>[UiExtension](../js-apis-arkui-uiExtension.md)组件未适配tabIndex，在含有[UiExtension](../js-apis-arkui-uiExtension.md)组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br>- tabIndex >= 0：表示元素是可聚焦的，并且可以通过Tab键走焦来访问到该元素。<br>- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过Tab键走焦来访问到该元素。<br> **说明：**<br> tabIndex与focusScopeId不能混用。|
+| index  | number | 是   | 自定义组件Tab键走焦能力。若有配置了tabIndex大于0的组件，则Tab键走焦只会在tabIndex大于0的组件内按照tabIndex的值从小到大并循环依次走焦。若没有配置tabIndex大于0的组件，则tabIndex等于0的组件按照组件预设的走焦规则走焦。<br>UiExtension组件未适配tabIndex，在含有UiExtension组件的[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)使用tabIndex会导致走焦错乱。<br>- tabIndex >= 0：表示元素是可聚焦的，并且可以通过Tab键走焦来访问到该元素。<br>- tabIndex < 0（通常是tabIndex = -1）：表示元素是可聚焦的，但是不能通过Tab键走焦来访问到该元素。<br> **说明：**<br> tabIndex与focusScopeId不能混用。|
 
 **返回值：**
 
@@ -169,7 +169,7 @@ focusBox(style: FocusBoxStyle): T
 
 > **说明：**
 >
-> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取UIContext实例，并使用getFocusController获取绑定实例的focusControl。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -181,7 +181,7 @@ requestFocus(value: string): boolean
 
 方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。
 
-如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)。
+如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口requestFocus。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -215,9 +215,9 @@ requestFocus(value: string): boolean
 
 | 名称 | 类型 |  只读 | 可选 | 说明  |
 | ---- | ---- | ---- |  ---- | ---- |
-| margin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 |焦点框相对组件边缘的距离。<br>正数代表外侧，负数代表内侧。不支持百分比。未设置时，使用默认焦点框边距2.0vp。 |
-| strokeColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 |焦点框颜色。未设置时，使用默认焦点框颜色#FF007DFF。 |
-| strokeWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 |焦点框宽度。<br>不支持负数与百分比。未设置时，使用默认焦点框宽度2.0vp。|
+| margin  | LengthMetrics | 否 | 是 |焦点框相对组件边缘的距离。<br>正数代表外侧，负数代表内侧。不支持百分比。未设置时，使用默认焦点框边距2.0vp。 |
+| strokeColor  | ColorMetrics | 否 | 是 |焦点框颜色。未设置时，使用默认焦点框颜色#FF007DFF。 |
+| strokeWidth | LengthMetrics | 否 | 是 |焦点框宽度。<br>不支持负数与百分比。未设置时，使用默认焦点框宽度2.0vp。|
 
 ## focusScopePriority<sup>12+</sup>
 
@@ -343,7 +343,7 @@ tabStop(isTabStop: boolean): T
 <!--Table: auto; 10%; 10%; auto-->
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isTabStop  | boolean | 是   | 设置当前容器组件是否为走焦可停留容器。true表示当前容器组件为走焦可停留容器，false表示当前容器组件不是走焦可停留容器。<br>**说明：** <br>1.配置tabStop需要确保是容器组件且有可获焦的子组件，默认容器组件不能直接获焦。<br> 2.通过[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)请求焦点，如果是容器组件且配置tabStop，焦点能够停留在容器组件，如果目标容器组件未配置tabStop，即使整条焦点链上有配置了tabStop的组件，目标组件依然能获取到焦点。<br>3.配置tabStop的容器不允许嵌套超过2层。<br>tabStop走焦规则：<br>1.通过tab键和方向键走焦，焦点会停留在配置了tabStop的组件上，如果焦点停留在配置了tabStop的容器内部时，可以走焦到容器内部的下一个可获焦组件，如果焦点停留在配置了tabStop的容器外部时，可以走焦到容器外的下一个可获焦组件。<br>2.当焦点停留在tabStop上时，按Enter键可以走焦到内部第一个可获焦组件，按ESC能够将焦点退回到不超过当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)根容器的上一个配置了tabStop的组件，按空格键可以响应该容器的onClick事件。<br>3.不建议根容器配置tabStop。如果根容器配置了tabStop，通过[clearFocus](../arkts-apis-uicontext-focuscontroller.md#clearfocus12)将焦点清理到根容器，再按Enter键会重新走回内部上一次获焦组件，通过ESC键将焦点清理到根容器，再按Enter键会走焦到内部第一个可获焦组件。|
+| isTabStop  | boolean | 是   | 设置当前容器组件是否为走焦可停留容器。true表示当前容器组件为走焦可停留容器，false表示当前容器组件不是走焦可停留容器。<br>**说明：** <br>1.配置tabStop需要确保是容器组件且有可获焦的子组件，默认容器组件不能直接获焦。<br> 2.通过requestFocus请求焦点，如果是容器组件且配置tabStop，焦点能够停留在容器组件，如果目标容器组件未配置tabStop，即使整条焦点链上有配置了tabStop的组件，目标组件依然能获取到焦点。<br>3.配置tabStop的容器不允许嵌套超过2层。<br>tabStop走焦规则：<br>1.通过tab键和方向键走焦，焦点会停留在配置了tabStop的组件上，如果焦点停留在配置了tabStop的容器内部时，可以走焦到容器内部的下一个可获焦组件，如果焦点停留在配置了tabStop的容器外部时，可以走焦到容器外的下一个可获焦组件。<br>2.当焦点停留在tabStop上时，按Enter键可以走焦到内部第一个可获焦组件，按ESC能够将焦点退回到不超过当前[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)根容器的上一个配置了tabStop的组件，按空格键可以响应该容器的onClick事件。<br>3.不建议根容器配置tabStop。如果根容器配置了tabStop，通过clearFocus将焦点清理到根容器，再按Enter键会重新走回内部上一次获焦组件，通过ESC键将焦点清理到根容器，再按Enter键会走焦到内部第一个可获焦组件。|
 
 **返回值：**
 

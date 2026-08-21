@@ -1053,7 +1053,7 @@ onEditModeChange(callback: Callback\<boolean\> | undefined)
 | totalLength   | number | 否 | 否 |  Grid内容总长度，单位px。    |
 
 ## UIGridEvent<sup>19+</sup>
-frameNode中[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)方法的返回值，可用于给Grid节点设置滚动事件。
+frameNode中getEvent('Grid')方法的返回值，可用于给Grid节点设置滚动事件。
 
 UIGridEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 
@@ -2232,7 +2232,7 @@ struct GridExample {
 
 ### 示例13（设置滚动事件）
 
-该示例通过FrameNode中的[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+该示例通过FrameNode中的getEvent('Grid')获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
 
 从API version 19开始，新增UIGridEvent接口。
 

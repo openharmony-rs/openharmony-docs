@@ -12,7 +12,7 @@
 >
 > - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见UIContext说明。
 >
 > - 本模块不支持深浅色模式热更新，如果需要进行深浅色模式切换，请重新打开弹窗。
 >
@@ -28,9 +28,9 @@ static show(options?: TextPickerDialogOptions)
 
 > **说明：**
 > 
-> 从API version 8开始支持，从API version 18开始废弃，建议使用[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)替代。showTextPickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
+> 从API version 8开始支持，从API version 18开始废弃，建议使用showTextPickerDialog替代。showTextPickerDialog需先获取UIContext实例后再进行调用。
 >
-> 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)来明确UI的执行上下文。
+> 从API version 10开始，可以通过使用UIContext中的showTextPickerDialog来明确UI的执行上下文。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -151,7 +151,7 @@ static show(options?: TextPickerDialogOptions)
 
 >  **说明：**
 >
-> 推荐通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)来明确UI的执行上下文。
+> 推荐通过使用UIContext中的showTextPickerDialog来明确UI的执行上下文。
 
 ### 示例1（弹出文本选择弹窗）
 

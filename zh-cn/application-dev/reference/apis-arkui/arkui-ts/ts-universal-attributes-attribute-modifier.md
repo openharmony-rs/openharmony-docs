@@ -253,7 +253,7 @@ applyHoveredAttribute?(instance: T): void
 | <!--DelRow-->FormComponentAttribute | FormComponent的[属性](ts-basic-components-formcomponent-sys.md#属性)。 |
 | <!--DelRow-->PluginComponentAttribute | PluginComponent的[属性](ts-basic-components-plugincomponent-sys.md#属性)。 |
 | <!--DelRow-->RemoteWindowAttribute | RemoteWindow的[属性](ts-basic-components-remotewindow-sys.md#属性)。 |
-| UIExtensionComponentAttribute | UIExtensionComponent的[属性](../js-apis-arkui-uiExtension.md#属性)。 |
+| UIExtensionComponentAttribute | UIExtensionComponent的属性。 |
 
 > **说明：**
 >

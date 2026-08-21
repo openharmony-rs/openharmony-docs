@@ -919,7 +919,7 @@ type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetrics
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.graphics.text').default.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) | 用于描述文本布局中单行文字的度量信息。 |
+| import('../api/@ohos.graphics.text').default.LineMetrics | 用于描述文本布局中单行文字的度量信息。 |
 
 ## Affinity<sup>12+</sup>
 
@@ -933,7 +933,7 @@ type Affinity = import('../api/@ohos.graphics.text').default.Affinity
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.graphics.text').default.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
+| import('../api/@ohos.graphics.text').default.Affinity | 位置亲和度枚举。 |
 
 ## TextBox<sup>14+</sup>
 
@@ -947,7 +947,7 @@ type TextBox = import('../api/@ohos.graphics.text').default.TextBox
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.graphics.text').default.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
+| import('../api/@ohos.graphics.text').default.TextBox | 文本矩形区域。 |
 
 ## Paragraph<sup>20+</sup>
 
@@ -959,7 +959,7 @@ type Paragraph = import('../api/@ohos.graphics.text').default.Paragraph
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.graphics.text').default.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
+| import('../api/@ohos.graphics.text').default.Paragraph | 保存文本内容及样式的载体，支持排版与绘制操作。 |
 
 ## RectHeightStyle<sup>14+</sup>
 
@@ -973,7 +973,7 @@ type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightSt
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.graphics.text').default.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
+| import('../api/@ohos.graphics.text').default.RectHeightStyle | 矩形区域高度规格枚举。 |
 
 ## RectWidthStyle<sup>14+</sup>
 
@@ -987,7 +987,7 @@ type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyl
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.graphics.text').default.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
+| import('../api/@ohos.graphics.text').default.RectWidthStyle | 矩形区域宽度规格枚举。 |
 
 ## TextChangeOptions<sup>15+</sup>对象说明
 
@@ -1029,7 +1029,7 @@ type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyl
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | DEFAULT | 0 | 显示在当前窗口中。<br>|
-| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br>**说明：** <br>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br>在预览器中不支持将文本选择菜单显示在独立窗口中。<br>在[UIExtension](../js-apis-arkui-uiExtension.md)中不支持将文本选择菜单显示在独立窗口中。<br>当文本类组件已经显示在子窗类型的[Popup](./ohos-arkui-advanced-Popup.md)、[Dialog](./ohos-arkui-advanced-Dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、[Menu](./ts-basic-components-menu.md)中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br>|
+| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br>**说明：** <br>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br>在预览器中不支持将文本选择菜单显示在独立窗口中。<br>在UIExtension中不支持将文本选择菜单显示在独立窗口中。<br>当文本类组件已经显示在子窗类型的[Popup](./ohos-arkui-advanced-Popup.md)、[Dialog](./ohos-arkui-advanced-Dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、[Menu](./ts-basic-components-menu.md)中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br>|
 
 ## TextMenuOptions<sup>16+</sup>对象说明
 
@@ -1316,7 +1316,7 @@ constructor(options?: NumericTextTransitionOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| constraintWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。 |
+| constraintWidth | LengthMetrics  | 否 | 是 | 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。 |
 
 ## SelectedDragPreviewStyle<sup>23+</sup>对象说明
 
@@ -1387,7 +1387,7 @@ type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConfig').Inp
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.inputMethod.ExtraConfig').[InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
+| import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig | 输入法扩展信息。 |
 
 ## AccessibilitySpanOptions<sup>23+</sup>对象说明
 
@@ -1423,7 +1423,7 @@ type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| import('../api/@ohos.graphics.text').default.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) | 可变字体的属性。 |
+| import('../api/@ohos.graphics.text').default.FontVariation | 可变字体的属性。 |
 
 ## OnCreateMenuCallback
 

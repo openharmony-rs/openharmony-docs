@@ -12,7 +12,7 @@
 >
 > - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
+> - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见UIContext说明。
 >
 > - 本模块不支持深浅色模式热更新，如果需要进行深浅色模式切换，请重新打开弹窗。
 >
@@ -28,9 +28,9 @@ static show(options?: DatePickerDialogOptions)
 
 > **说明：**
 > 
->  从API version 8开始支持，从API version 18开始废弃，建议使用[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)替代。showDatePickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
+>  从API version 8开始支持，从API version 18开始废弃，建议使用showDatePickerDialog替代。showDatePickerDialog需先获取UIContext实例后再进行调用。
 >
-> 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)来明确UI的执行上下文。
+> 从API version 10开始，可以通过使用UIContext中的showDatePickerDialog来明确UI的执行上下文。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -84,7 +84,7 @@ static show(options?: DatePickerDialogOptions)
 | onWillAppear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 弹窗显示动效前的事件回调。<br>**说明：**<br>1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br>2.在onWillAppear内设置改变弹窗显示效果的回调事件，再次调用showDatePickerDialog时生效。<br>3.快速连续触发弹出与关闭时，存在onWillDisappear在onDidAppear前生效。<br>4. 当弹窗入场动效未完成时关闭弹窗，onDidAppear和后续回调不会触发。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onWillDisappear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 弹窗退出动效前的事件回调。<br>**说明：**<br>1.正常时序依次为：onWillAppear>>onDidAppear>>(onDateAccept/onCancel/onDateChange)>>onWillDisappear>>onDidDisappear。<br>2.快速连续触发弹出与关闭时，存在onWillDisappear在onDidAppear前生效。<br>3. 当弹窗入场动效未完成时关闭弹窗，该回调不会触发。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | shadow<sup>12+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否 | 是 | 设置弹窗背板的阴影。<br>当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| dateTimeOptions<sup>12+</sup> | [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | 否 | 是 | 设置时分是否显示前导0，目前只支持设置hour和minute参数，仅当showTime为true时生效。<br>默认值：<br>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。可选值为"numeric"或"2-digit"，传入其他值时按默认值处理。<br>minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。可选值为"numeric"或"2-digit"，传入其他值时按默认值处理。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| dateTimeOptions<sup>12+</sup> | DateTimeOptions | 否 | 是 | 设置时分是否显示前导0，目前只支持设置hour和minute参数，仅当showTime为true时生效。<br>默认值：<br>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。可选值为"numeric"或"2-digit"，传入其他值时按默认值处理。<br>minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。可选值为"numeric"或"2-digit"，传入其他值时按默认值处理。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | enableHoverMode<sup>14+</sup>     | boolean | 否  | 是  | 是否响应悬停态。悬停态指折叠屏等设备处于悬停折叠状态时的交互模式，而非鼠标悬停。<br>- true：响应悬停态。<br>- false：不响应悬停态。<br>默认值：false<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否  | 是  | 设置悬停态下弹窗默认展示区域，仅在enableHoverMode为true时生效。<br>默认值：HoverModeAreaType.BOTTOM_SCREEN<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | enableHapticFeedback<sup>18+</sup> | boolean | 否  | 是  | 设置是否开启触控反馈。<br>- true：开启触控反馈（当需要为用户提供操作反馈时选择）。<br>- false：不开启触控反馈（当不需要触控反馈或设备不支持时选择）。<br>默认值：true<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**说明：**<br>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br>2. 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
@@ -113,7 +113,7 @@ static show(options?: DatePickerDialogOptions)
 
 >  **说明：**
 >
-> 推荐通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)来明确UI的执行上下文。
+> 推荐通过使用UIContext中的showDatePickerDialog来明确UI的执行上下文。
 
 ### 示例1（设置显示时间）
 

@@ -225,7 +225,7 @@ barHeight(height: Length, noMinHeightLimit: boolean)
 
 animationCurve(curve: Curve | ICurve)
 
-设置Tabs翻页动画曲线。常用曲线参考[Curve](ts-appendix-enums.md#curve)枚举说明，也可以通过[插值计算](../js-apis-curve.md)模块提供的接口创建自定义的插值曲线对象。
+设置Tabs翻页动画曲线。常用曲线参考[Curve](ts-appendix-enums.md#curve)枚举说明，也可以通过插值计算模块提供的接口创建自定义的插值曲线对象。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -238,7 +238,7 @@ animationCurve(curve: Curve | ICurve)
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名 | 类型                                                         | 必填 | 说明                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
-| curve  | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) | 是   | Tabs翻页的动画曲线。<br/>默认值：<br/>滑动TabContent翻页时，默认值为interpolatingSpring(-1, 1, 228, 30)。<br/>点击TabBar页签和调用TabsController的changeIndex接口翻页时，默认值为cubicBezierCurve(0.2, 0.0, 0.1, 1.0)。<br/>设置自定义动画曲线时，滑动翻页和点击页签、调用changeIndex翻页都使用设置的动画曲线。 |
+| curve  | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;ICurve | 是   | Tabs翻页的动画曲线。<br/>默认值：<br/>滑动TabContent翻页时，默认值为interpolatingSpring(-1, 1, 228, 30)。<br/>点击TabBar页签和调用TabsController的changeIndex接口翻页时，默认值为cubicBezierCurve(0.2, 0.0, 0.1, 1.0)。<br/>设置自定义动画曲线时，滑动翻页和点击页签、调用changeIndex翻页都使用设置的动画曲线。 |
 
 ### animationDuration
 
@@ -248,7 +248,7 @@ animationDuration(value: number)
 
 animationCurve不设置时，由于滑动TabContent翻页动画曲线interpolatingSpring(-1, 1, 228, 30)时长只受曲线自身参数影响，animationDuration只能控制点击TabBar页签和调用TabsController的changeIndex接口切换TabContent的动画时长。
 
-不受animationDuration控制的曲线可以查阅[插值计算](../js-apis-curve.md)模块，比如[springMotion](../js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](../js-apis-curve.md#curvesresponsivespringmotion9)和[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)类型的曲线。
+不受animationDuration控制的曲线可以查阅插值计算模块，比如springMotion、responsiveSpringMotion和interpolatingSpring类型的曲线。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -673,7 +673,7 @@ TabBar悬浮样式。
 | maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。 |
 | maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。 |
 | adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false |
-| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。 |
+| systemMaterial | [UIMaterial](#uimaterial).ImmersiveMaterial | 否 | 是 | TabBar的背板沉浸式材质样式。 |
 
 ## BarMode枚举说明
 
@@ -1316,7 +1316,7 @@ setTabBarTranslate(translate: TranslateOptions): void
 
 > **说明：**
 >
-> 当使用[bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13)或[bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13)等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarTranslate接口设置的TabBar平移距离会失效。因此不建议同时使用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarTranslate接口。
+> 当使用bindTabsToScrollable或bindTabsToNestedScrollable等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarTranslate接口设置的TabBar平移距离会失效。因此不建议同时使用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarTranslate接口。
 >
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
@@ -1339,7 +1339,7 @@ setTabBarOpacity(opacity: number): void
 
 > **说明：**
 >
-> 当使用[bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13)或[bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13)等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarOpacity接口设置的TabBar不透明度会失效。因此不建议同时使用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarOpacity接口。
+> 当使用bindTabsToScrollable或bindTabsToNestedScrollable等接口绑定了Tabs组件和可滚动容器组件后，在滑动可滚动容器组件时，会触发所有与其绑定的Tabs组件的TabBar的显示和隐藏动效，调用setTabBarOpacity接口设置的TabBar不透明度会失效。因此不建议同时使用bindTabsToScrollable、bindTabsToNestedScrollable和setTabBarOpacity接口。
 >
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。

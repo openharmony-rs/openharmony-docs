@@ -12,7 +12,7 @@
 >
 >  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](../arkts-apis-uicontext-uicontext.md)说明。
+> 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见UIContext说明。
 
 ## ActionSheetOptions对象说明
 
@@ -55,10 +55,10 @@
 | onWillDisappear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br />2.快速点击弹出、关闭弹窗时，onWillDisappear可能在onDidAppear前生效。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | levelMode<sup>15+</sup>       | [LevelMode](#levelmode15) | 否   | 是  | 设置弹窗显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY <br />- 仅当showInSubWindow属性设置为false时生效。<br />- 设置为LevelMode.EMBEDDED时，可通过levelUniqueId设置页面级弹窗的层级，通过immersiveMode设置页面内弹窗蒙层效果。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的[getUniqueId](../js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的getUniqueId。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| levelOrder<sup>18+</sup>       | LevelOrder | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## SheetInfo对象说明
 
@@ -88,7 +88,7 @@ type LevelMode = import('../api/@ohos.promptAction').LevelMode
 
 | 类型                                                        | 说明                 |
 | ----------------------------------------------------------- | -------------------- |
-| import('../api/@ohos.promptAction').[LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
+| import('../api/@ohos.promptAction').LevelMode | 设置弹窗的显示层级。 |
 
 ## ImmersiveMode<sup>15+</sup>
 
@@ -104,7 +104,7 @@ type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
 | 类型                                                         | 说明                       |
 | ------------------------------------------------------------ | -------------------------- |
-| import('../api/@ohos.promptAction').[ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
+| import('../api/@ohos.promptAction').ImmersiveMode | 设置页面内弹窗的蒙层效果。 |
 
 ## DismissDialogAction<sup>12+</sup>
 
@@ -170,9 +170,9 @@ static show(value: ActionSheetOptions)
 
 > **说明：**
 > 
-> 从API version 8开始支持，从API version 18开始废弃，建议使用[showActionSheet](../arkts-apis-uicontext-uicontext.md#showactionsheet)替代。showActionSheet需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
+> 从API version 8开始支持，从API version 18开始废弃，建议使用showActionSheet替代。showActionSheet需先获取UIContext实例后再进行调用。
 >
-> 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showActionSheet](../arkts-apis-uicontext-uicontext.md#showactionsheet)来明确UI的执行上下文。
+> 从API version 10开始，可以通过使用UIContext中的showActionSheet来明确UI的执行上下文。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -188,7 +188,7 @@ static show(value: ActionSheetOptions)
 
 > **说明：**
 > 
-> 直接使用ActionSheet可能导致实例不明确的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[showActionSheet](../arkts-apis-uicontext-uicontext.md#showactionsheet)调用绑定实例的ActionSheet.show()。
+> 直接使用ActionSheet可能导致实例不明确的问题，建议使用getUIContext()获取UIContext实例，并使用showActionSheet调用绑定实例的ActionSheet.show()。
 
 ### 示例1（弹出列表选择弹窗）
 

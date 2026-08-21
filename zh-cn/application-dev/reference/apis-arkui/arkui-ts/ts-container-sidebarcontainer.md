@@ -369,9 +369,9 @@ showSideBarWithGesture(value: boolean)
 
 | 名称       | 类型                           | 只读 | 可选 | 说明                                        |
 | --------- | ------------------------------- | ---- | ---- | ------------------------------------------ |
-| shown<sup>8+</sup>     | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏显示时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
-| hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏隐藏时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
-| switching<sup>8+</sup> | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是   | 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| shown<sup>8+</sup>     | string&nbsp;\|&nbsp;PixelMap&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏显示时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
+| hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;PixelMap&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏隐藏时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
+| switching<sup>8+</sup> | string&nbsp;\|&nbsp;PixelMap&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是   | 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SideBarPosition<sup>9+</sup>枚举说明
 

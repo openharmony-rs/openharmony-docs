@@ -22,7 +22,7 @@ UIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI。�
 
 本组件不支持预览。
 
-被拉起的Ability（应用组件）必须是带UI的Ability扩展，如何实现带UI的Ability扩展请参考[带界面的ExtensionAbility组件](../../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+被拉起的Ability（应用组件）必须是带UI的Ability扩展，如何实现带UI的Ability扩展请参考带界面的ExtensionAbility组件。
 
 必须显式设置组件宽高为非0有效值。
 
@@ -45,7 +45,7 @@ UIExtensionComponent(want: Want, options?: UIExtensionOptions)
 
 | 参数名                | 类型                                                   | 必填 | 说明           |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------ |
-| want                  | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 要加载的Ability，必须是带UI的Ability扩展。Want的parameters中需设置ability.want.params.uiExtensionType字段，取值需与扩展Ability在module.json5中配置的type一致。  |
+| want                  | Want | 是   | 要加载的Ability，必须是带UI的Ability扩展。Want的parameters中需设置ability.want.params.uiExtensionType字段，取值需与扩展Ability在module.json5中配置的type一致。  |
 | options<sup>11+</sup> | [UIExtensionOptions](#uiextensionoptions11) | 否 | 需要传递的构造参数，用于自定义UIExtensionComponent的配置（如设置占位符、DPI跟随策略、窗口Mode跟随策略等）。当需要自定义上述配置时传入此参数，不传入时使用默认配置。 |
 
 ## 属性
@@ -62,7 +62,7 @@ UIExtensionComponent(want: Want, options?: UIExtensionOptions)
 
 ### onRemoteReady
 
-onRemoteReady(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<UIExtensionProxy>)
+onRemoteReady(callback: Callback\<UIExtensionProxy>)
 
 UIExtensionAbility连接完成时的回调，之后可使用proxy向被拉起的Ability发送数据。
 
@@ -74,7 +74,7 @@ UIExtensionAbility连接完成时的回调，之后可使用proxy向被拉起的
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。UIExtensionAbility连接完成后触发，入参为UIExtensionProxy，可通过proxy向被拉起的Ability发送数据。                          |
+| callback                        | Callback\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。UIExtensionAbility连接完成后触发，入参为UIExtensionProxy，可通过proxy向被拉起的Ability发送数据。                          |
 
 ### onReceive
 
@@ -94,11 +94,11 @@ onReceive(callback: ReceiveCallback)
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: Want}>)
+onResult(callback: Callback\<{code: number; want?: Want}>)
 
 被拉起的Ability扩展调用terminateSelfWithResult时会先触发本回调函数，再触发onRelease。
 
-本回调内可处理被拉起的Ability的结果数据，可参考[AbilityResult](../../apis-ability-kit/js-apis-inner-ability-abilityResult.md)。
+本回调内可处理被拉起的Ability的结果数据，可参考AbilityResult。
 
 > **说明：**
 > 从API version 10开始支持，从API version 12开始废弃。建议使用[onTerminated](#onterminated12)替代。
@@ -111,11 +111,11 @@ onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#call
 
 | 参数名                       | 类型   | 必填 |说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------------ |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: [Want](../../apis-ability-kit/js-apis-app-ability-want.md)}> | 是 | 回调函数，被拉起的Ability扩展调用terminateSelfWithResult时返回的结果数据。                          |
+| callback                        | Callback\<{code: number; want?: Want}> | 是 | 回调函数，被拉起的Ability扩展调用terminateSelfWithResult时返回的结果数据。                          |
 
 ### onRelease<sup>(deprecated)</sup>
 
-onRelease(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number>)
+onRelease(callback: Callback\<number>)
 
 用于处理被拉起的Ability销毁时的回调。
 
@@ -134,11 +134,11 @@ onRelease(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#cal
 
 | 参数名                       | 类型  | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------------ |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number> | 是 | 回调函数，对端Ability销毁时的code，0为正常销毁，1为异常销毁。                          |
+| callback                        | Callback\<number> | 是 | 回调函数，对端Ability销毁时的code，0为正常销毁，1为异常销毁。                          |
 
 ### onError
 
-onError(callback:[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback))
+onError(callback:ErrorCallback)
 
 被拉起的Ability扩展在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
@@ -150,7 +150,7 @@ onError(callback:[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#e
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------------ |
-| callback                        | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数。返回报错信息。    |
+| callback                        | ErrorCallback | 是 | 回调函数。返回报错信息。    |
 
 ### onTerminated<sup>12+</sup>
 
@@ -166,7 +166,7 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 | 参数名   | 类型   | 必填 | 说明                                                                                     |
 | -------  | ------ | ------ | ------------------------------------------------------------------------------------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo12)> | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo12)。 |
+| callback | Callback\<[TerminationInfo](#terminationinfo12)> | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo12)。 |
 
 > **说明：**
 >
@@ -187,7 +187,7 @@ onDrawReady(callback: Callback\<void>)
 
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------------ |
-| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<void> | 是 | 回调函数。UIExtensionAbility绘制第一帧时触发本回调，类型为void。    |
+| callback                        | Callback\<void> | 是 | 回调函数。UIExtensionAbility绘制第一帧时触发本回调，类型为void。    |
 
 ### TerminationInfo<sup>12+</sup>
 
@@ -200,10 +200,10 @@ onDrawReady(callback: Callback\<void>)
 |  名称 | 类型   | 只读 |可选 | 说明                                                 |
 | ------- | ------ | ------ | ------ |---------------------------------------------------  |
 | code    | number | 否 | 否 | 被拉起的UIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
-| want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | 否 | 是 | 被拉起的UIExtensionAbility退出时返回的数据。默认值为undefined。   |
+| want    | Want   | 否 | 是 | 被拉起的UIExtensionAbility退出时返回的数据。默认值为undefined。   |
 
 ## ReceiveCallback<sup>18+</sup>
-type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>
+type ReceiveCallback = Callback\<Record\<string, Object\>\>
 
 回调函数，用于封装被拉起的Ability发送的数据。
 
@@ -213,7 +213,7 @@ type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 类型   | 说明                                                         |
 | ------ | --------------------------------------------------------- |
-| [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\> | 回调函数，用于封装被拉起的Ability发送的数据。                 |
+| Callback\<Record\<string, Object\>\> | 回调函数，用于封装被拉起的Ability发送的数据。                 |
 
 ## UIExtensionOptions<sup>11+</sup>
 
@@ -227,9 +227,9 @@ type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#
 | 名称               | 类型                             | 只读 | 可选 | 说明                                                                                                      |
 | ----                 | ---------------------------------------- | ---- | ---- | ---------------                                                                                               |
 | isTransferringCaller | boolean                                  | 否 | 是  | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。true表示转发上一级的Caller信息，false表示不转发上一级的Caller信息。<br> 默认值：false |
-| placeholder<sup>12+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置占位符，在UIExtensionComponent与UIExtensionAbility建立连接前显示。当需要在连接建立前向用户展示加载状态或提示内容时传入此参数，不设置时默认不显示占位内容。 |
+| placeholder<sup>12+</sup> | ComponentContent | 否 | 是 | 设置占位符，在UIExtensionComponent与UIExtensionAbility建立连接前显示。当需要在连接建立前向用户展示加载状态或提示内容时传入此参数，不设置时默认不显示占位内容。 |
 | dpiFollowStrategy<sup>12+</sup> | [DpiFollowStrategy](#dpifollowstrategy12)                 | 否 | 是   | 提供接口支持设置DPI跟随宿主或跟随UIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI |
-| areaChangePlaceholder<sup>14+</sup> | Record<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)>      | 否 | 是   | 设置尺寸变化占位符，在UIExtensionComponent尺寸发生变化并且UIExtensionAbility内部渲染未完成时显示，key值仅支持"FOLD_TO_EXPAND"(折叠展开尺寸变化)、"UNDEFINED"(默认尺寸变化)，传入其他key值时不生效。不设置时默认不显示尺寸变化占位内容。 |
+| areaChangePlaceholder<sup>14+</sup> | Record<string, ComponentContent>      | 否 | 是   | 设置尺寸变化占位符，在UIExtensionComponent尺寸发生变化并且UIExtensionAbility内部渲染未完成时显示，key值仅支持"FOLD_TO_EXPAND"(折叠展开尺寸变化)、"UNDEFINED"(默认尺寸变化)，传入其他key值时不生效。不设置时默认不显示尺寸变化占位内容。 |
 | windowModeFollowStrategy<sup>18+</sup> | [WindowModeFollowStrategy](#windowmodefollowstrategy18)   | 否 | 是   | 提供接口以支持设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE |
 
 ## DpiFollowStrategy<sup>12+</sup>
@@ -331,7 +331,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名  | 类型 |必填 | 说明 |
 | ------ | -------- |---- | ------- |
 | type   | string | 是 | 事件类型，取值为'asyncReceiverRegister'，表示订阅扩展Ability发生异步注册回调。 |
-| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
+| callback   | Callback\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。订阅扩展Ability注册setReceiveDataCallback后触发的回调。 |
 
 ### on('syncReceiverRegister')<sup>11+</sup>
 
@@ -348,7 +348,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名  | 类型 |必填 | 说明 |
 | ------ | -------- |---- | ------- |
 | type   | string | 是 | 事件类型，取值为'syncReceiverRegister'，表示订阅扩展Ability发生同步注册回调。 |
-| callback   | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
+| callback   | Callback\<[UIExtensionProxy](#uiextensionproxy)> | 是 | 回调函数。扩展Ability注册setReceiveDataForResultCallback后触发的回调。 |
 
 ### off('asyncReceiverRegister')<sup>11+</sup>
 
@@ -365,7 +365,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | ----- | ------- |
 | type   | string | 是 | 事件类型，取值为'asyncReceiverRegister'，表示取消订阅扩展Ability发生异步注册回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。<br> 非空代表取消订阅对应的异步注册回调。 |
+| callback | Callback\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability异步注册后触发回调。<br> 非空代表取消订阅对应的异步注册回调。 |
 
 ### off('syncReceiverRegister')<sup>11+</sup>
 
@@ -382,7 +382,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | ----- | ------- |
 | type   | string | 是 | 事件类型，取值为'syncReceiverRegister'，表示取消订阅扩展Ability发生同步注册回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability同步注册后触发回调。<br> 非空代表取消订阅对应的同步注册回调。 |
+| callback | Callback\<[UIExtensionProxy](#uiextensionproxy)> | 否 | 回调函数。为空代表取消订阅所有扩展Ability同步注册后触发回调。<br> 非空代表取消订阅对应的同步注册回调。 |
 
 ## 示例
 

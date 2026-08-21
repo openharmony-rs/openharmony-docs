@@ -163,7 +163,7 @@ scrollBarHeight(height: LengthMetrics | undefined): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | 滚动条滑轨高度。<br/>值必须大于等于0。设置为undefined或小于0时，自适应滚动组件高度，儿童智能表则恢复至默认值37vp。设置为0时，不显示滚动条。 |
+| height | LengthMetrics \| undefined | 是 | 滚动条滑轨高度。<br/>值必须大于等于0。设置为undefined或小于0时，自适应滚动组件高度，儿童智能表则恢复至默认值37vp。设置为0时，不显示滚动条。 |
 
 **返回值：**
 
@@ -355,7 +355,7 @@ clipContent(clip: ContentClipMode | RectShape): T
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| clip | [ContentClipMode](#contentclipmode14枚举说明)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)   | 是   | 裁剪只针对滚动容器的内容，即其子节点，背景不受影响。通过RectShape传入自定义矩形区域时仅支持设置宽高和相对于组件左上角的[offset](../js-apis-arkui-shape.md#offset)，不支持圆角。<br>默认值：Grid、Scroll的默认值为ContentClipMode.BOUNDARY，List、WaterFlow的默认值为ContentClipMode.CONTENT_ONLY。 |
+| clip | [ContentClipMode](#contentclipmode14枚举说明)&nbsp;\|&nbsp;RectShape   | 是   | 裁剪只针对滚动容器的内容，即其子节点，背景不受影响。通过RectShape传入自定义矩形区域时仅支持设置宽高和相对于组件左上角的offset，不支持圆角。<br>默认值：Grid、Scroll的默认值为ContentClipMode.BOUNDARY，List、WaterFlow的默认值为ContentClipMode.CONTENT_ONLY。 |
 
 **返回值：**
 
@@ -940,7 +940,7 @@ onDidStopFling(handler: VoidCallback): T
 
 | 名称           | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| fadingEdgeLength | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是 | 设置边缘渐隐长度。默认值为32vp，设置小于0的值或undefined或不设置则取默认值。设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。 |
+| fadingEdgeLength | LengthMetrics | 否   | 是 | 设置边缘渐隐长度。默认值为32vp，设置小于0的值或undefined或不设置则取默认值。设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。 |
 
 ## EditModeOptions<sup>23+</sup>对象说明
 

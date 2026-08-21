@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在[UIContext](../arkts-apis-uicontext-uicontext.md)中提供keyframeAnimateTo接口来指定若干个关键帧状态，实现分段的动画。关键帧动画是通过若干个关键时刻的状态，将动画过程划分为多段，同一属性在动画过程内不是单调的从起点到终点的过渡，而可以是分段的过渡。同属性动画，布局类改变宽高的动画，内容都是直接到终点状态，例如文字、[Canvas](ts-components-canvas-canvas.md)的内容等，如果要内容跟随宽高变化，可以使用[renderFit](ts-universal-attributes-renderfit.md#renderfit)属性配置。
+在UIContext中提供keyframeAnimateTo接口来指定若干个关键帧状态，实现分段的动画。关键帧动画是通过若干个关键时刻的状态，将动画过程划分为多段，同一属性在动画过程内不是单调的从起点到终点的过渡，而可以是分段的过渡。同属性动画，布局类改变宽高的动画，内容都是直接到终点状态，例如文字、[Canvas](ts-components-canvas-canvas.md)的内容等，如果要内容跟随宽高变化，可以使用[renderFit](ts-universal-attributes-renderfit.md#renderfit)属性配置。
 
 >  **说明：**
 >
@@ -14,7 +14,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 该接口为[UIContext](../arkts-apis-uicontext-uicontext.md)类的成员函数，需要通过UIContext实例对象调用。
+> - 该接口为UIContext类的成员函数，需要通过UIContext实例对象调用。
 
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState&gt;): void
 
@@ -56,7 +56,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState
 | 名称       | 类型                              | 只读 | 可选 | 说明                                       |
 | ---------- | ------------------------------------ | --- | ---- | ---------------------------------------- |
 | duration   | number                               | 否 | 否      | 该段关键帧动画的持续时间，单位为毫秒。<br/>取值范围：[0, +∞)<br/>**说明：**<br/>-&nbsp;设置小于0的值时按0处理。<br/>-&nbsp;设置浮点型的值时，向下取整。例如，设置值为1.2，按照1处理。 |
-| curve      | [Curve](ts-appendix-enums.md#curve)\|&nbsp;string&nbsp;\|&nbsp;[ICurve](./ts-explicit-animation.md#icurve9) | 否 | 是  | 该关键帧使用的动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.EaseInOut<br/>**说明：**<br/>由于[springMotion](../js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](../js-apis-curve.md#curvesresponsivespringmotion9)、[interpolatingSpring](../js-apis-curve.md#curvesinterpolatingspring10)曲线时长不生效，故不支持这三种曲线。 |
+| curve      | [Curve](ts-appendix-enums.md#curve)\|&nbsp;string&nbsp;\|&nbsp;[ICurve](./ts-explicit-animation.md#icurve9) | 否 | 是  | 该关键帧使用的动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.EaseInOut<br/>**说明：**<br/>由于springMotion、responsiveSpringMotion、interpolatingSpring曲线时长不生效，故不支持这三种曲线。 |
 | event      | () => void                           | 否 | 否 | 指定在该关键帧时刻状态的闭包函数，即在该关键帧时刻要达到的状态。 |
 
 ## 示例

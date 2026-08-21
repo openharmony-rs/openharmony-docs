@@ -20,7 +20,7 @@ Shape组件的两种使用方式：
 >
 >  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+>  该组件从API version 20开始支持使用AttributeUpdater类的updateConstructorParams接口更新构造参数。
 
 
 ## 子组件
@@ -44,7 +44,7 @@ new Shape(value?: PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | PixelMap | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ### Shape
 
@@ -60,7 +60,7 @@ Shape(value: PixelMap)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中。<br>说明：此参数为必填参数，应传入有效的PixelMap对象，传入undefined或null时不生效。 |
+| value | PixelMap | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中。<br>说明：此参数为必填参数，应传入有效的PixelMap对象，传入undefined或null时不生效。 |
 
 ### Shape
 
@@ -132,7 +132,7 @@ mesh(value: Array&lt;any&gt;, column: number, row: number)
 
 > **说明：**
 >
-> mesh只对shape传入pixelMap时生效，且效果作用于传入的pixelMap。与[绘制模块](../../../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)的[drawPixelMapMesh<sup>12+</sup>](../../../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawpixelmapmesh12)效果一致，建议使用drawPixelMapMesh。
+> mesh只对shape传入pixelMap时生效，且效果作用于传入的pixelMap。与绘制模块的drawPixelMapMesh<sup>12+</sup>效果一致，建议使用drawPixelMapMesh。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

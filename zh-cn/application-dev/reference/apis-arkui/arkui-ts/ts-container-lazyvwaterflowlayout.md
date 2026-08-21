@@ -99,7 +99,7 @@ columnsGap(value: LengthMetrics | undefined): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 列与列的间距。<br/>默认值：LengthMetrics.vp(0)<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按LengthMetrics.vp(0)处理。<br/>方法入参为undefined时，恢复为默认值（LengthMetrics.vp(0)）。 |
+| value  |  LengthMetrics \| undefined | 是   | 列与列的间距。<br/>默认值：LengthMetrics.vp(0)<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按LengthMetrics.vp(0)处理。<br/>方法入参为undefined时，恢复为默认值（LengthMetrics.vp(0)）。 |
 
 **返回值：**
 
@@ -125,7 +125,7 @@ rowsGap(value: LengthMetrics | undefined): T
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 行与行的间距。<br/>默认值：LengthMetrics.vp(0)<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按LengthMetrics.vp(0)处理。<br/>方法入参为undefined时，恢复为默认值（LengthMetrics.vp(0)）。 |
+| value  | LengthMetrics \| undefined | 是   | 行与行的间距。<br/>默认值：LengthMetrics.vp(0)<br/>取值范围：[0, +∞)<br/>设置为小于0的值时，按LengthMetrics.vp(0)处理。<br/>方法入参为undefined时，恢复为默认值（LengthMetrics.vp(0)）。 |
 
 **返回值：**
 

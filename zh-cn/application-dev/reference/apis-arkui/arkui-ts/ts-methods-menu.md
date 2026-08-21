@@ -20,7 +20,7 @@ static close(): void
 
 >  **说明：**
 >
-> 从API version 8开始支持。从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12)获取[ContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md)实例，再通过此实例调用替代方法[close](../arkts-apis-uicontext-contextmenucontroller.md#close12)。
+> 从API version 8开始支持。从API version 18开始废弃，建议使用UIContext中的getContextMenuController获取ContextMenuController实例，再通过此实例调用替代方法close。
 >
 > 两者功能相同，区别在于：ContextMenu.close()是静态方法，在多窗口场景下可能无法明确指定要关闭哪个窗口的菜单；而通过UIContext获取的ContextMenuController实例调用close()可以关联到具体的UIContext，从而明确指定操作的UI上下文，建议在API version 12及以上版本中使用UIContext方式。
 
@@ -34,7 +34,7 @@ static close(): void
 
 >  **说明：**
 >
-> 推荐通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12)来明确UI的执行上下文。
+> 推荐通过使用UIContext中的getContextMenuController来明确UI的执行上下文。
 
 <!--deprecated_code_no_check-->
 

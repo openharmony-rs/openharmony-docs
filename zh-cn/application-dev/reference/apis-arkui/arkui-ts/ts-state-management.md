@@ -898,9 +898,9 @@ static getShared(): LocalStorage
 
 > **说明：**
 > 
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
+> 从API version 10开始支持，从API version 18开始废弃，建议使用UIContext中的getSharedLocalStorage替代。
 >
-> 从API version 12开始，可使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)明确UI执行上下文中的LocalStorage实例。
+> 从API version 12开始，可使用UIContext中的getSharedLocalStorage明确UI执行上下文中的LocalStorage实例。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1396,7 +1396,7 @@ static GetShared(): LocalStorage
 
 > **说明：** 
 > 
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用UIContext中的getSharedLocalStorage替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

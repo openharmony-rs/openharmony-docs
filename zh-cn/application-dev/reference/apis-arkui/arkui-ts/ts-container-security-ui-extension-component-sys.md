@@ -8,7 +8,7 @@
 
 SecurityUIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI，展示的内容在另一个进程中运行，本应用并不参与其中的布局和渲染。
 
-通常用于有进程隔离诉求的模块化开发场景，SecurityUIExtensionComponent当前仅支持拉起[PhotoPicker](../../apis-media-library-kit/ohos-file-PhotoPickerComponent.md)类型的UIExtensionAbility。
+通常用于有进程隔离诉求的模块化开发场景，SecurityUIExtensionComponent当前仅支持拉起PhotoPicker类型的UIExtensionAbility。
 
 > **说明：**
 >
@@ -26,7 +26,7 @@ SecurityUIExtensionComponent用于支持在本页面内嵌入其他应用提供�
 
 SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
-创建SecurityUIExtensionComponent组件，用于嵌入显示远程[UIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)提供的UI。
+创建SecurityUIExtensionComponent组件，用于嵌入显示远程UIExtensionAbility提供的UI。
 
 **起始版本：** 26.0.0
 
@@ -38,7 +38,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 是 | 要加载的Ability信息。通过bundleName和abilityName共同确定被拉起的UIExtensionAbility，同时需要在parameters中配置ability.want.params.uiExtensionType字段指定UIExtensionAbility的类型，当前仅支持'sysPicker/photoPicker'。 |
+| want | Want | 是 | 要加载的Ability信息。通过bundleName和abilityName共同确定被拉起的UIExtensionAbility，同时需要在parameters中配置ability.want.params.uiExtensionType字段指定UIExtensionAbility的类型，当前仅支持'sysPicker/photoPicker'。 |
 | options | [SecurityUIExtensionOptions](#securityuiextensionoptions) | 否 | 用于构造SecurityUIExtensionComponent的参数。不填时各字段使用默认值。 |
 
 ## SecurityUIExtensionOptions
@@ -54,7 +54,7 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isTransferringCaller | boolean | 否 | 是 | 在使用SecurityUIExtensionComponent嵌套时，设置当前组件是否转发上一级调用方的Caller信息（即发起调用的Ability身份信息），用于支持多级嵌套场景下的调用链传递。<br>true：转发上一级的Caller信息；false：不转发上一级的Caller信息。<br>默认值：false |
-| placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。未设置时不显示占位符。 |
+| placeholder | ComponentContent | 否 | 是 | 设置占位符，在SecurityUIExtensionComponent与UIExtensionAbility建立连接前显示。未设置时不显示占位符。 |
 | dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | 否 | 是 | 设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。<br>默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI |
 
 ## SecurityDpiFollowStrategy
@@ -96,7 +96,7 @@ UIExtensionAbility连接完成时触发的回调，使用callback异步回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数，入参为SecurityUIExtensionProxy，可用于向对端Ability发送数据及事件订阅。 |
+| callback | Callback\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | 是 | 回调函数，入参为SecurityUIExtensionProxy，可用于向对端Ability发送数据及事件订阅。 |
 
 ### onReceive
 
@@ -114,7 +114,7 @@ onReceive(callback: Callback\<Record\<string, Object\>\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\> | 是 | 回调函数，返回收到的来自对端Ability的数据。 |
+| callback | Callback\<Record\<string, Object\>\> | 是 | 回调函数，返回收到的来自对端Ability的数据。 |
 
 ### onError
 
@@ -132,13 +132,13 @@ onError(callback: ErrorCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息。 |
+| callback | ErrorCallback | 是 | 回调函数，入参用于接收异常信息。 |
 
 ### onTerminated
 
 onTerminated(callback: Callback\<TerminationInfo\>)
 
-被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。使用callback异步回调。
+被拉起的UIExtensionAbility通过调用terminateSelfWithResult或terminateSelf正常退出时触发此回调。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -150,7 +150,7 @@ onTerminated(callback: Callback\<TerminationInfo\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)\> | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。 |
+| callback | Callback\<[TerminationInfo](#terminationinfo)\> | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。 |
 
 ## TerminationInfo
 
@@ -165,7 +165,7 @@ onTerminated(callback: Callback\<TerminationInfo\>)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | code | number | 否 | 否 | 被拉起的UIExtensionAbility退出时返回的结果码，0表示正常退出，非0表示异常退出。具体结果码含义由被拉起的UIExtensionAbility定义。 |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。未返回数据时该字段为空。 |
+| want | Want | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。未返回数据时该字段为空。 |
 
 ## SecurityUIExtensionProxy
 
@@ -181,7 +181,7 @@ onTerminated(callback: Callback\<TerminationInfo\>)
 
 send(data: Record\<string, Object\>): void
 
-用于在双方建立连接成功后，向被拉起的Ability发送数据，提供异步发送能力。数据将被扩展Ability通过[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)接收处理。
+用于在双方建立连接成功后，向被拉起的Ability发送数据，提供异步发送能力。数据将被扩展Ability通过setReceiveDataCallback接收处理。
 
 **起始版本：** 26.0.0
 
@@ -245,7 +245,7 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，代表订阅被拉起的Ability异步注册时触发的回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。订阅被拉起的Ability注册[setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)后触发的回调。 |
+| callback | Callback\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。订阅被拉起的Ability注册setReceiveDataCallback后触发的回调。 |
 
 ### on('syncReceiverRegister')
 
@@ -264,7 +264,7 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，代表订阅被拉起的Ability同步注册时触发的回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。被拉起的Ability注册[setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedataforresultcallback11)后触发的回调。 |
+| callback | Callback\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 是 | 回调函数。被拉起的Ability注册setReceiveDataForResultCallback后触发的回调。 |
 
 ### off('asyncReceiverRegister')
 
@@ -283,7 +283,7 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'asyncReceiverRegister'，取消订阅被拉起的Ability异步注册时触发的回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 否 | 回调函数。为空时取消订阅所有异步注册的回调。非空时取消订阅指定的异步注册回调。 |
+| callback | Callback\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 否 | 回调函数。为空时取消订阅所有异步注册的回调。非空时取消订阅指定的异步注册回调。 |
 
 ### off('syncReceiverRegister')
 
@@ -302,13 +302,13 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填'syncReceiverRegister'，取消订阅被拉起的Ability同步注册时触发的回调。 |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 否 | 回调函数。为空时取消订阅所有同步注册的回调。非空时取消订阅指定的同步注册回调。 |
+| callback | Callback\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | 否 | 回调函数。为空时取消订阅所有同步注册的回调。非空时取消订阅指定的同步注册回调。 |
 
 ## 示例
 
 ### 示例1（SecurityUIExtensionComponent拉起远程UIExtensionAbility并进行双向数据通信）
 
-本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置[Want](../../apis-ability-kit/js-apis-app-ability-want.md#want)拉起指定的UIExtensionAbility，通过[onRemoteReady](#onremoteready)获取[SecurityUIExtensionProxy](#securityuiextensionproxy)，使用[send](#send)或[sendSync](#sendsync)发送数据，以及通过[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)等回调处理事件。
+本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置Want拉起指定的UIExtensionAbility，通过[onRemoteReady](#onremoteready)获取[SecurityUIExtensionProxy](#securityuiextensionproxy)，使用[send](#send)或[sendSync](#sendsync)发送数据，以及通过[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)等回调处理事件。
 
 从API版本26.0.0开始，新增[onRemoteReady](#onremoteready)、[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)事件。
 

@@ -97,7 +97,7 @@ bindContextMenu(content: CustomBuilder, responseType: ResponseType, options?: Co
 
 >  **说明：**
 >
->  - 不支持在输入法类型窗口中使用bindContextMenu(默认子窗实现)，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>  - 不支持在输入法类型窗口中使用bindContextMenu(默认子窗实现)，详情见输入法框架的约束与限制说明createPanel。
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -131,7 +131,7 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 
 >  **说明：**
 >
->  - 不支持在输入法类型窗口中使用bindContextMenu(默认子窗实现)，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>  - 不支持在输入法类型窗口中使用bindContextMenu(默认子窗实现)，详情见输入法框架的约束与限制说明createPanel。
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -163,7 +163,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 
 >  **说明：**
 >
->  - 不支持在输入法类型窗口中使用bindContextMenuWithResponse（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>  - 不支持在输入法类型窗口中使用bindContextMenuWithResponse（默认子窗实现），详情见输入法框架的约束与限制说明createPanel。
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -194,7 +194,7 @@ bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement&gt;, re
 
 > **说明：**
 >
-> - 不支持在输入法类型窗口中使用bindContextMenuByResponseType（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+> - 不支持在输入法类型窗口中使用bindContextMenuByResponseType（默认子窗实现），详情见输入法框架的约束与限制说明createPanel。
 >
 > - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -228,7 +228,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | Array<MenuE
 
 > **说明：**
 >
-> - 不支持在输入法类型窗口中使用bindContextMenuWithResponse（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+> - 不支持在输入法类型窗口中使用bindContextMenuWithResponse（默认子窗实现），详情见输入法框架的约束与限制说明createPanel。
 >
 > - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -265,7 +265,7 @@ bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElem
 
 > **说明：**
 >
-> - 不支持在输入法类型窗口中使用bindContextMenuByIsShow（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+> - 不支持在输入法类型窗口中使用bindContextMenuByIsShow（默认子窗实现），详情见输入法框架的约束与限制说明createPanel。
 >
 > - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -361,11 +361,11 @@ bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElem
 | onWillDisappear<sup>20+</sup> | [Callback](ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 菜单退出动效前的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br />2. 快速点击弹出，消失菜单时，存在onWillDisappear在onDidAppear前生效。<br/>3. aboutToDisappear和onWillDisappear触发时机相同，onWillDisappear在aboutToDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | onDidDisappear<sup>20+</sup> | [Callback](ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2. onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23枚举说明) | 否 | 是 | 设置菜单是否避让软键盘。<br /> **说明：** <br />未设置或设置为undefined时，按照MenuKeyboardAvoidMode.NONE处理。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| minKeyboardAvoidDistance<sup>23+</sup> | LengthMetrics | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或者设置为undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| maxHeight | LengthMetrics | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | colorMode | [AnchoredColorMode](ts-universal-attributes-popup.md#anchoredcolormode) | 否 | 是 | 设置菜单深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br />3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
-| targetSpace | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单与目标组件之间的间距。<br /> **说明：** <br />- 同时使用targetSpace与offset时，两者会叠加生效。推荐使用targetSpace设置菜单与目标的间距，使用offset设置菜单弹出位置的偏移量。<br />- 二级菜单会避让targetSpace范围。<br />- 设置为负数或undefined时，菜单与目标组件之间的间距为默认8vp，且子菜单不避让targetSpace。<br />- targetSpace属性在存在默认placement时可直接生效，无默认placement的场景，需配合placement属性使用才可生效。<br />- anchorPosition的优先级要高于targetSpace。<br />- 不支持设置百分比。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| targetSpace | LengthMetrics | 否 | 是 | 设置菜单与目标组件之间的间距。<br /> **说明：** <br />- 同时使用targetSpace与offset时，两者会叠加生效。推荐使用targetSpace设置菜单与目标的间距，使用offset设置菜单弹出位置的偏移量。<br />- 二级菜单会避让targetSpace范围。<br />- 设置为负数或undefined时，菜单与目标组件之间的间距为默认8vp，且子菜单不避让targetSpace。<br />- targetSpace属性在存在默认placement时可直接生效，无默认placement的场景，需配合placement属性使用才可生效。<br />- anchorPosition的优先级要高于targetSpace。<br />- 不支持设置百分比。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。材质设置为非法值、undefined时，按照不设置系统材质处理。<br />默认值： undefined<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
 | gridStyle | [MenuGridStyleOptions](#menugridstyleoptions) | 否 | 是 | 设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](#bindmenu)、[bindContextMenu](#bindcontextmenu8)、[bindContextMenuByResponseType](#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](#bindcontextmenubyisshow)、[bindContextMenuWithResponse](#bindcontextmenuwithresponse)中使用[MenuElement](#menuelement)或在[MenuItem](ts-basic-components-menuitem.md)中使用MenuItemOptions。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 

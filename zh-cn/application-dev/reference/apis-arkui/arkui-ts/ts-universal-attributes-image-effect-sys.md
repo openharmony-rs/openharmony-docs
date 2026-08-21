@@ -32,7 +32,7 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 
 | 参数名 | 类型                            | 必填 | 说明                                                         |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
-| effect  | [BlendMode](ts-universal-attributes-image-effect.md#blendmode11枚举说明)&nbsp;\|&nbsp;[Blender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#blender13)  | 是   | 入参类型为BlendMode时表示混合模式。<br/>默认值：BlendMode.NONE <br/>入参类型为Blender时表示混合器类型，用于描述混合效果。<br/>需要使用uiEffect模块中的方法创建Blender实例。例如：[uiEffect.createBrightnessBlender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#uieffectcreatebrightnessblender)。使用自定义object作为入参不会生效。  |
+| effect  | [BlendMode](ts-universal-attributes-image-effect.md#blendmode11枚举说明)&nbsp;\|&nbsp;Blender  | 是   | 入参类型为BlendMode时表示混合模式。<br/>默认值：BlendMode.NONE <br/>入参类型为Blender时表示混合器类型，用于描述混合效果。<br/>需要使用uiEffect模块中的方法创建Blender实例。例如：uiEffect.createBrightnessBlender。使用自定义object作为入参不会生效。  |
 | type   | [BlendApplyType](ts-universal-attributes-image-effect-sys.md#blendapplytype枚举说明)  |    否    | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置为BlendApplyType.FAST，不离屏。<br/>2. 设置为BlendApplyType.OFFSCREEN，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。<br/>3. 不离屏情况下对文字类组件中emoji表情不生效。<br/>4. 相比BlendApplyType.OFFSCREEN，设置为BlendApplyType.OFFSCREEN_WITH_BACKGROUND，系统在创建与当前组件大小一致的离屏画布时，会先复制一份带有背景的画布作为初始化底色（BlendApplyType.OFFSCREEN类型的画布初始为透明背景），随后在此基础上进行混合操作。两者在其他功能特性上保持一致。     |
 
 **返回值：**
@@ -89,7 +89,7 @@ excludeFromRenderGroup(exclude: boolean \| undefined): T
 
 systemMaterial(material: SystemUiMaterial | undefined): T
 
-设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[设置系统材质](../arkts-apis-uimaterial-sys.md#示例1设置系统材质)。
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考设置系统材质。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -131,7 +131,7 @@ type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象基类。 |
+| import('../api/@ohos.arkui.uiMaterial').default.Material     | 系统材质对象基类。 |
 
 ## edgeLight
    
@@ -141,7 +141,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 
 > **说明：**
 >
-> - 仅设置edgeLight不会产生边缘流光效果，需结合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)更改position参数达到流光效果。可参考[示例4（设置组件边缘流光效果）](#示例4设置组件边缘流光效果)。
+> - 仅设置edgeLight不会产生边缘流光效果，需结合animateTo更改position参数达到流光效果。可参考[示例4（设置组件边缘流光效果）](#示例4设置组件边缘流光效果)。
 >
 > - 当position参数以对角线方式变更时（如从TOP_LEFT变更到BOTTOM_RIGHT）时，边缘流光将沿倾斜角45°的方式运行。
 

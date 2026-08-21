@@ -42,7 +42,7 @@ type UIContext = import('../api/@ohos.arkui.UIContext').UIContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| import('../api/@ohos.arkui.UIContext').[UIContext](../arkts-apis-uicontext-uicontext.md) | 返回UIContext实例对象。 |
+| import('../api/@ohos.arkui.UIContext').UIContext | 返回UIContext实例对象。 |
 
 **示例：**
 
@@ -281,7 +281,7 @@ NavDestinationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.arkui.observer').default.[NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | 返回NavDestinationInfo实例对象。 |
+| import('../api/@ohos.arkui.observer').default.NavDestinationInfo | 返回NavDestinationInfo实例对象。 |
 
 
 ## queryNavigationInfo<sup>12+</sup>
@@ -352,7 +352,7 @@ NavigationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.arkui.observer').default.[NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | 返回NavigationInfo实例对象。 |
+| import('../api/@ohos.arkui.observer').default.NavigationInfo | 返回NavigationInfo实例对象。 |
 
 ## queryRouterPageInfo<sup>12+</sup>
 
@@ -400,7 +400,7 @@ RouterPageInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| import('../api/@ohos.arkui.observer').default.[RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | 返回RouterPageInfo实例对象。 |
+| import('../api/@ohos.arkui.observer').default.RouterPageInfo | 返回RouterPageInfo实例对象。 |
 
 ## getDialogController<sup>18+</sup>
 
@@ -488,7 +488,7 @@ struct Index {
 
 type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController
 
-自定义弹窗控制器，可以控制当前自定义弹窗，具体控制能力包括关闭弹窗等，详见[promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18)。
+自定义弹窗控制器，可以控制当前自定义弹窗，具体控制能力包括关闭弹窗等，详见promptAction.DialogController。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -496,4 +496,4 @@ type PromptActionDialogController = import('../api/@ohos.promptAction').promptAc
 
 | 类型                                                         | 说明                         |
 | ------------------------------------------------------------ | ---------------------------- |
-| import('../api/@ohos.promptAction').[promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18) | 表示对象类型为promptAction.DialogController实例对象。 |
+| import('../api/@ohos.promptAction').promptAction.DialogController | 表示对象类型为promptAction.DialogController实例对象。 |

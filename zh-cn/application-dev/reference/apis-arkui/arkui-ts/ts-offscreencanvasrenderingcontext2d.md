@@ -12,7 +12,7 @@
 >
 >  * 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  * OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+>  * OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用绘制模块进行离屏绘制。
 >
 >  * [beginPath](./ts-components-canvas-common-method.md#beginpath)、[moveTo](./ts-components-canvas-common-method.md#moveto)、[lineTo](./ts-components-canvas-common-method.md#lineto)、[closePath](./ts-components-canvas-common-method.md#closepath)、[bezierCurveTo](./ts-components-canvas-common-method.md#beziercurveto)、[quadraticCurveTo](./ts-components-canvas-common-method.md#quadraticcurveto)、[arc](./ts-components-canvas-common-method.md#arc)、[arcTo](./ts-components-canvas-common-method.md#arcto)、[ellipse](./ts-components-canvas-common-method.md#ellipse)、[rect](./ts-components-canvas-common-method.md#rect)和[roundRect](./ts-components-canvas-common-method.md#roundrect20)接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 >
@@ -59,7 +59,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 | width    | number                                   | 是    | 离屏画布的宽度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
 | height   | number                                   | 是    | 离屏画布的高度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
 | settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT|
+| unit | LengthMetricsUnit | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT|
 
 ## toDataURL
 

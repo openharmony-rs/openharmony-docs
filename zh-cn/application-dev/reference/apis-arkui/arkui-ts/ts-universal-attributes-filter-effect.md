@@ -156,7 +156,7 @@ type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| import('../api/@ohos.graphics.uiEffect').default.[Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | 用于将相应的效果添加到指定的组件上。 |
+| import('../api/@ohos.graphics.uiEffect').default.Filter | 用于将相应的效果添加到指定的组件上。 |
 
 ## VisualEffect
 
@@ -170,7 +170,7 @@ type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffec
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| import('../api/@ohos.graphics.uiEffect').default.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
+| import('../api/@ohos.graphics.uiEffect').default.VisualEffect | 用于将相应的效果添加到指定的组件上。 |
 
 ## 示例
 
