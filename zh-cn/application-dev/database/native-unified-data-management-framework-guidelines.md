@@ -93,6 +93,42 @@ libudmf.so
 
 <!-- @[udmf_sample_get_typeId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
+<div class="same-source-code">
+
+``` C++
+int32_t GetTypeId()
+{
+    // 1. 通过文件后缀名获取纯文本类型的UTD的typeId
+    unsigned int typeIds1Count = 0;
+    const char** typeIds1 = OH_Utd_GetTypesByFilenameExtension(".txt", &typeIds1Count);
+    OH_LOG_INFO(LOG_APP, "the count of typeIds1 is %{public}u", typeIds1Count);
+    // 2. 通过MIME类型获取typeId
+    unsigned int typeIds2Count = 0;
+    const char** typeIds2 = OH_Utd_GetTypesByMimeType("text/plain", &typeIds2Count);
+    OH_LOG_INFO(LOG_APP, "the count of typeIds2 is %{public}u", typeIds2Count);
+    // 3. 使用以上两个步骤获取到的typeId创建UTD实例对象。
+    OH_Utd* utd1 = OH_Utd_Create(typeIds1[0]);
+    OH_Utd* utd2 = OH_Utd_Create(typeIds2[0]);
+    // 4. 比较两种方式获取到的typeId对应的UTD是否相同
+    bool isEquals = OH_Utd_Equals(utd1, utd2);
+    if (isEquals) {
+        OH_LOG_INFO(LOG_APP, "utd1 == utd2");
+    } else {
+        OH_LOG_ERROR(LOG_APP, "utd1 != utd2");
+    }
+    // 5. 销毁OH_Utd_GetTypesByFilenameExtension与OH_Utd_GetFilenameExtensions函数获取到的指针，同时销毁UTD指针
+    OH_Utd_DestroyStringList(typeIds1, typeIds1Count);
+    OH_Utd_DestroyStringList(typeIds2, typeIds2Count);
+    OH_Utd_Destroy(utd1);
+    OH_Utd_Destroy(utd2);
+    return Udmf_ErrCode::UDMF_E_OK;
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_get_typeId" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+</div>
+
 ## 使用UDMF发送UDS数据
 
 下面以发送超链接hyperlink类型数据场景为例，说明如何使用UDS与UDMF。
