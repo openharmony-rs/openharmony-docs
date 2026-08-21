@@ -25,7 +25,7 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## NfcATag
 
-NfcATag 提供对 NFC-A(ISO 14443-3A)技术的属性和I/O操作的访问，继承自[TagSession](js-apis-tagSession.md)。
+NfcATag提供对NFC-A(ISO 14443-3A)技术的属性和I/O操作的访问，继承自[TagSession](js-apis-tagSession.md)。
 
 TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](js-apis-tagSession.md)。
 
@@ -484,7 +484,7 @@ console.info("ndef ndefRecords number: " + ndefRecords.length);
 
 ## NdefTag<sup>9+</sup>
 
-NdefTag提供对已格式化为NDEF的NFC标签的数据和操作的访问，继承自TagSession。
+NdefTag提供对已格式化为NDEF的NFC标签的数据和操作的访问，继承自[TagSession](js-apis-tagSession.md)。
 
 TagSession是所有NFC Tag技术类型的基类，提供建立连接和发送数据等共同接口。具体请参见[TagSession](js-apis-tagSession.md)。
 
