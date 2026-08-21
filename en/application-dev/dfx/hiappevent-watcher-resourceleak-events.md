@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=315d74c0050913bfe2026299cb2fa15d99fa9c1d translatedAt=2026-07-30T09:21:29.905Z pushedAt=2026-07-30T11:11:53.864Z -->
+<!-- md-trans-meta sourceCommit=336b192b15b46c20e4683cc1c73802a6eb6f0201 translatedAt=2026-08-21T03:20:20.948Z pushedAt=2026-08-21T09:20:53.507Z -->
 
 ## Overview
 
@@ -54,7 +54,7 @@ let configParams: Record<string, hiAppEvent.ParamType> = {
     // "js_heap_logtype": "event_rawheap", // Obtain heap snapshots.
 };
 
-hiAppEvent.setEventConfig(hiappEvent.event.RESOURCE_OVERLIMIT, configParams);
+hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
 ```
 
 > **NOTE**
@@ -117,9 +117,9 @@ The **params** parameter in the event information is described as follows.
 | pid | number | Process ID of an application.|
 | uid | number | User ID of an application.|
 | resource_type | string | Resource type. For details, see **resource_type**.|
-| memory | object | Memory information (only available for **pss_memory** and **js_heap**). For details, see **memory**.|
-| fd | object | File descriptor information (only available for **fd**). For details, see **fd**.|
-| thread | object | Thread information (only available for **thread**). For details, see **thread**.|
+| memory | object | Memory information. This field is available only when **resource_type** is **pss_memory** or **js_heap**. For details, see [memory](#memory). |
+| fd | object | File descriptor information. This field is available only when **resource_type** is **fd**. For details, see [fd](#fd). |
+| thread | object | Thread information. This field is available only when **resource_type** is **thread**. For details, see [thread](#thread). |
 | external_log | string[] | Path of the error log file. If the directory files exceed the threshold (for details, see **log_over_limit**), new log files may fail to be written. Therefore, delete the log files immediately after they are processed.|
 | log_over_limit | boolean | Whether the size of generated fault log files and existing log files exceeds the upper limit (2 GB). The value **true** indicates that the upper limit is exceeded and logs fail to be written. The value **false** indicates that the upper limit is not exceeded.|
 | page_switch_log | string | Page switch log path. For details about the log, see [Page Switch Logs](pageswitch-log.md).<br>**Note**: Supported since API version 24. |
@@ -132,7 +132,7 @@ The **params** parameter in the event information is described as follows.
 | rss_memory | RSS memory leak.<br>**Note:** This field is supported since API version 26.0.0. |
 | ion_memory | ION memory leak.<br>**Note:** This field is supported since API version 20. |
 | gpu_memory | GPU memory leak.<br>**Note:** This field is supported since API version 20. |
-| js_heap | JS memory leak.|
+| js_heap | JS memory leak. |
 | fd | Handle leak.|
 | thread | Thread leak.|
 
@@ -192,7 +192,7 @@ The **params** parameter in the event information is described as follows.
 
 ## Customizing params
 
-Currently, the resource leak event reports the JS memory leak event information, which may not meet your personal requirements. Therefore, the **setEventParam** method is provided to customize event reporting information.
+The JS memory leak information reported by the current resource leak event may not meet developers' specific needs. Therefore, the **setEventParam** method is provided to customize the information reported for the event.
 
 ### Available APIs
 
