@@ -2015,7 +2015,7 @@ isHotspotActive(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true:已开启，&nbsp;false:未开启。|
+  | boolean | 热点是否已开启。true:已开启，&nbsp;false:未开启。|
 
 **错误码：**
 
