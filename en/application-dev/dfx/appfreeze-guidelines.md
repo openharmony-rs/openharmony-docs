@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe;@lipengpeng97-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=13910b013ecb4fa1fd994642c8590bcc094e6fc5 translatedAt=2026-07-28T09:31:34.090Z pushedAt=2026-07-29T01:11:47.580Z -->
+<!-- md-trans-meta sourceCommit=f78aa31bf5d144c7d0366738de54880904fef883 translatedAt=2026-08-21T03:18:54.476Z pushedAt=2026-08-21T08:25:10.953Z -->
 
 ## Overview
 
@@ -40,7 +40,7 @@ When any of the preceding app freeze faults occurs, the system kills the app to 
 
 **Description**: This fault indicates that the main thread of this application is suspended or too many tasks are executed, affecting task execution smoothness and experience.
 
-**Detection principle**: The watchdog thread of the application periodically inserts an liveness detection to the main thread. If the liveness detection is not executed within 3s, the **THREAD_BLOCK_3S** warning event is reported. If the liveness detection is not executed within 6s, the **THREAD_BLOCK_6S** main thread timeout event is reported. The two events constitute an AppFreeze log.
+**Detection principle**: The watchdog thread of the application periodically inserts a liveness detection to the main thread. If the liveness detection is not executed within 3s, the **THREAD_BLOCK_3S** warning event is reported. If the liveness detection is not executed within 6s, the **THREAD_BLOCK_6S** main thread timeout event is reported. The two events constitute an AppFreeze log.
 
 The following figure shows the detection principle.
 
@@ -178,7 +178,7 @@ Since API version 20, when a `THREAD_BLOCK_6S` fault occurs, [HiTraceId](../refe
 
 - **Since API version 20**, the system supports the following output prompt: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults. When a device resource alarm is generated (for example, the device memory is low or thermal throttling is enabled), the system outputs this information in the NOTE. In this case, you can ignore the app freeze fault.
 
-- **Since API version 26.0.0**, the system supports the following output prompt: Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis. The AppFreeze log can be associated with [resource Leak detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-leak-guidelines) event information. If the current process already has a memory leak before the freeze fault occurs, the fault log prompts the leak event and indicates that it may be the cause of the freeze. In this case, you can prioritize resolving the resource leak issue.
+- **Since API version 26.0.0**, the system supports the following output prompt: Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis. It supports associating [resource Leak detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-leak-guidelines) event information in AppFreeze logs. If the current process already has a memory leak before the freeze fault occurs, the fault log prompts the leak event and indicates that it may be the cause of the freeze. In this case, you can prioritize resolving the resource leak issue.
 
 - **Since API version 26.0.0**, the system supports the following output prompt: Main thread is blocked by GC, which may be caused by high memory usage or system resource overload.
 
@@ -852,5 +852,71 @@ The clustering method for AppFreeze fault information is the same as that for Cp
 The clustering specifications for enhanced log information are consistent with those for extracting stack information from AppFreeze fault information. Enhanced log information is mainly included in clustering to address cases where AppFreeze fault stack information is insufficient for clustering.
 
 You can obtain clustering features for enhanced log information by referring to [AppFreeze Fault Information Clustering](#appfreeze-fault-information-clustering) and use these features for clustering enhanced log information.
+
+## Disabling AppFreeze Detection
+
+During development and debugging, you can disable AppFreeze detection by using the following commands to prevent timeout detection from affecting your development and debugging.
+
+### Environment Requirement
+
+Before using the disabling command, obtain the [hdc tool](hdc.md#environment-setup) and run `hdc shell` to enter the device shell.
+
+### Constraints
+
+- **App type restriction**: Only debug-type apps support disabling detection. Release-type apps do not support this feature.
+
+- **Execution timing restriction**: Run the disabling command after the app is started.
+
+### How to Use
+
+**Enter debug mode**
+
+```shell
+aa attach -b <bundleName>
+```
+
+Example:
+
+```shell
+aa attach -b com.example.appfreeze
+```
+
+When the app successfully enters debug mode, the following is returned:
+
+```text
+attach app debug successfully.
+```
+
+When the given `<bundleName>` parameter is invalid or does not exist, the following content is returned. For more details, see [attach](../tools/aa-tool.md#attach).
+
+```text
+error: failed to attach app debug.
+```
+
+**Exit debug mode**
+
+After debugging is complete, run the `aa detach` command to exit debug mode and restore the AppFreeze detection capability, ensuring that fault detection is not affected during normal app running.
+
+```shell
+aa detach -b <bundleName>
+```
+
+Example:
+
+```shell
+aa detach -b com.example.appfreeze
+```
+
+When the app exits debug mode, the following is returned:
+
+```text
+detach app debug successfully.
+```
+
+When the given `<bundleName>` parameter is invalid or does not exist, the following content is returned. For more details, see [detach](../tools/aa-tool.md#detach).
+
+```text
+error: failed to detach app debug.
+```
 
 <!--no_check-->

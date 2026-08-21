@@ -2,11 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @xuxinao-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d1cb6b637f499ebdeae6b7f739089a338de1a8f9 translatedAt=2026-07-30T02:50:51.899Z pushedAt=2026-07-30T03:36:12.059Z -->
+<!-- md-trans-meta sourceCommit=ec121c2784bcfdcd6bed31c59479fdb588154d76 translatedAt=2026-08-21T03:18:42.375Z pushedAt=2026-08-21T09:01:58.046Z -->
 
 ## Event Specifications
 
@@ -101,6 +101,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
                           auto foreground = params["foreground"].asString();
                           auto appRunningUniqueId = params["app_running_unique_id"].asString();
                           auto bundleVersion = params["bundle_version"].asString();
+                          auto lastExitDetailInfo = writer.write(params["last_exit_detail_info"]);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.reason=%{public}s",
                                       reason.c_str());
@@ -110,6 +111,8 @@ For details about how to use the APIs (such as parameter usage restrictions and 
                                       appRunningUniqueId.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
                                       bundleVersion.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.last_exit_detail_info=%{public}s",
+                                      lastExitDetailInfo.c_str());
                       }
                   }
               }
@@ -203,6 +206,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
       HiAppEvent eventInfo.params.foreground=true
       HiAppEvent eventInfo.params.app_running_unique_id=207544
       HiAppEvent eventInfo.params.bundle_version=1000000
+      HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"THREAD_BLOCK_6S","kill_reason":"ThreadBlock6S","pid":"52036","process_name":"com.example.apphicollietest0108","process_state":"2","pss":"0","rss":"0","timestamp":"1785753171368","uid":"20020205"}
     ```
 
     > **NOTE**
