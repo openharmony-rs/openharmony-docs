@@ -1530,7 +1530,7 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 用于在延迟加载场景下描述发送方的数据加载策略。
 
-当同时传入loadHandler和delayedDataLoadHandler时，优先使用delayedDataLoadHandler，loadHandler不生效。
+当同时传入loadHandler和delayedDataLoadHandler时，优先使用delayedDataLoadHandler，loadHandler不生效。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
