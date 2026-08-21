@@ -30,7 +30,7 @@ When using this module to configure gestures, it is recommended to follow the pr
 
 | Name | Description |
 | -- | -- |
-| int32_t version | Struct version number = 1. |
+| int32_t version | The struct version is 1. |
 
 ### Member Functions
 
