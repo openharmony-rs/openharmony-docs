@@ -47,7 +47,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 枚举，媒体文件的动态范围类型。
 
-**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
@@ -105,32 +105,32 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | URI           | 'uri'                 | 文件uri。<br>**注意：**<br>查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
 | PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 | DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]。<br>- 文件主名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
-| SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
-| DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。         |
-| DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳（单位：秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| DURATION      | 'duration'            | 持续时间（单位：毫秒）。在API version 23之前，动态照片的duration将返回0；在API version 23及之后，返回动态照片附带视频片段的时长，异常场景返回-1。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
-| WIDTH         | 'width'               | 图片宽度（单位：像素）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                    |
-| HEIGHT        | 'height'              | 图片高度（单位：像素）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
-| DATE_TAKEN    | 'date_taken'          | 拍摄时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| ORIENTATION   | 'orientation'         | 文件的旋转角度，单位为度。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| SIZE          | 'size'                | 文件大小，单位：字节（Byte）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
+| DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳，单位：秒（s）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。         |
+| DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳，单位：秒（s）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| DURATION      | 'duration'            | 持续时间，单位：毫秒（ms）。在API version 23之前，动态照片的duration将返回0；在API version 23及之后，返回动态照片附带视频片段的时长，异常场景返回-1。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
+| WIDTH         | 'width'               | 图片宽度，单位：像素（px）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                    |
+| HEIGHT        | 'height'              | 图片高度，单位：像素（px）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
+| DATE_TAKEN    | 'date_taken'          | 拍摄时的Unix时间戳，单位：秒（s）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
+| ORIENTATION   | 'orientation'         | 文件的旋转角度，单位：度（°）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | FAVORITE      | 'is_favorite'            | 收藏。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                 |
 | TITLE         | 'title'               | 文件标题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                 |
-| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳（单位：毫秒）。<br>**注意：**<br>查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
-| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳（单位：毫秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**注意：**<br>查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
+| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳，单位：毫秒（ms）。<br>**注意：**<br>查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
+| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳，单位：毫秒（ms）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**注意：**<br>查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
 | PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | 媒体文件的子类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。     |
 | DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | 媒体文件的动态范围类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| COVER_POSITION<sup>12+</sup>   | 'cover_position'               | 动态照片的封面位置，具体表示封面帧所对应的视频时间戳（单位：微秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
+| COVER_POSITION<sup>12+</sup>   | 'cover_position'               | 动态照片的封面位置，具体表示封面帧所对应的视频时间戳，单位：微秒（μs）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | BURST_KEY<sup>12+</sup>   | 'burst_key'               | 一组连拍照片的唯一标识：uuid。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | LCD_SIZE<sup>12+</sup>  | 'lcd_size'  | LCD图片的宽高，值为width:height拼接而成的字符串。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | THM_SIZE<sup>12+</sup>  | 'thm_size'  | THUMB图片的宽高，值为width:height拼接而成的字符串。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。       |
 | DETAIL_TIME<sup>13+</sup>  | 'detail_time'  | 大图浏览时间，值为拍摄时对应时区的时间的字符串，不会跟随时区变化。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。       |
-| DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳（单位：毫秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
+| DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳，单位：毫秒（ms）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 | POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。                               |
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。 |
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。|
-| CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间（单位：秒）。 |
-| LOCAL_ASSET_SIZE | 'local_asset_size' | 本地文件的实际大小（单位：字节）。<br>- 该属性仅表示本地文件大小，默认值为0表示纯云文件或尚未识别的本地文件大小。<br>- 当本地文件为动态照片且模式发生变化时，该属性会发生变化。例如：当图库中的动态照片处于“关闭动态”状态时，该属性仅表示封面帧大小。<br>**起始版本：** 26.0.0<br> ​**模型约束：** 此接口仅可在Stage模型下使用。 |
+| CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间，单位：秒（s）。 |
+| LOCAL_ASSET_SIZE | 'local_asset_size' | 本地文件的实际大小，单位：字节（Byte）。<br>- 该属性仅表示本地文件大小，默认值为0表示纯云文件或尚未识别的本地文件大小。<br>- 当本地文件为动态照片且模式发生变化时，该属性会发生变化。例如：当图库中的动态照片处于“关闭动态”状态时，该属性仅表示封面帧大小。<br>**起始版本：** 26.0.0<br> ​**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AlbumKeys
 
@@ -143,7 +143,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | URI           | 'uri'                 | 相册uri。                                                   |
 | ALBUM_NAME    | 'album_name'          | 相册名字。                                                   |
 | ALBUM_LPATH<sup>23+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
-| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册的更改时间（单位：秒）。                                                   |
+| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册内容更改的时间戳，单位：秒（s）。 |
 
 ## ResourceType<sup>11+</sup>
 
@@ -191,8 +191,8 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称              | 值                      | 说明                                                         |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
-| DEFAULT_PHOTO_URI | 'file://media/Photo'      | 默认PhotoAsset的uri，与forSubUri{true}一起使用，将接收所有PhotoAsset的更改通知。 |
-| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | 默认相册的uri，与forSubUri{true}一起使用，将接收所有相册的更改通知。 |
+| DEFAULT_PHOTO_URI | 'file://media/Photo'      | 默认PhotoAsset的URI。使用时需要将forSubUri参数设置为true，才能接收所有PhotoAsset的更改通知。如果forSubUri设置为false或不设置，将不会接收更改通知。 |
+| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | 默认相册的URI。使用时需要将forSubUri参数设置为true，才能接收所有相册的更改通知。如果forSubUri设置为false或不设置，将不会接收更改通知。 |
 
 ## PhotoViewMIMETypes
 
@@ -296,9 +296,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| FAST_MODE |  0 |  快速模式。<br>针对分段式拍照或视频场景，若当前存在高质量图或视频，则立即返回高质量图或视频的请求结果回调；若当前存在低质量图或视频，则立即返回低质量图或视频的请求结果回调。 |
-| HIGH_QUALITY_MODE |  1 |  高质量模式。<br>针对分段式拍照或视频场景，若当前存在高质量图或视频，则立即返回高质量图或视频的请求结果回调；若当前存在低质量图或视频，则申请高质量图或视频的生成任务，待高质量图或视频生成后，返回高质量图或视频的请求结果回调。 |
-| BALANCE_MODE |  2 |  均衡模式。<br>- 针对分段式拍照场景，若当前存在高质量图，则立即返回高质量图的请求结果回调；若当前存在低质量图，则立即返回低质量图的请求结果回调，并申请高质量图生成任务，待高质量图生成后，再次返回高质量图的请求结果回调。<br>- 针对分段式视频场景，若当前存在高质量视频，则立即返回高质量视频的请求结果回调；若当前存在低质量视频，则立即返回低质量视频的请求结果回调。 |
+| FAST_MODE |  0 |  快速模式，优先返回当前可用的资源。<br>针对分段式拍照或视频场景，若当前存在高质量图或视频，则立即返回高质量图或视频的请求结果回调；若当前存在低质量图或视频，则立即返回低质量图或视频的请求结果回调。 |
+| HIGH_QUALITY_MODE |  1 |  高质量模式，确保返回高质量资源。<br>针对分段式拍照或视频场景，若当前存在高质量图或视频，则立即返回高质量图或视频的请求结果回调；若当前存在低质量图或视频，则申请高质量图或视频的生成任务，待高质量图或视频生成后，返回高质量图或视频的请求结果回调。 |
+| BALANCE_MODE |  2 |  均衡模式，在平衡性能和质量的基础上返回资源。<br>- 针对分段式拍照场景，若当前存在高质量图，则立即返回高质量图的请求结果回调；若当前存在低质量图，则立即返回低质量图的请求结果回调，并申请高质量图生成任务，待高质量图生成后，再次返回高质量图的请求结果回调。<br>- 针对分段式视频场景，若当前存在高质量视频，则立即返回高质量视频的请求结果回调；若当前存在低质量视频，则立即返回低质量视频的请求结果回调。 |
 
 ## CompatibleMode<sup>15+</sup>
 
@@ -395,11 +395,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，视频文件的log模式。
 
-**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。|
+| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或尚未判断类型。待视频类型异步判断完成后，若该视频为log模式，VideoMode将更新为LOG_VIDEO。因此不建议使用VideoMode作为查询条件。 |
 | LOG_VIDEO |  1 |  log模式视频的文件类型。  |
 
 ## OperationType<sup>22+</sup>
@@ -506,7 +506,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  根据配置的资产兼容性功能执行转码。|
+| DEFAULT |  0 |  根据系统的资产兼容性配置自动判断是否执行转码。如果当前设备不支持资产的原始格式，则会自动转码为兼容格式。 |
 | CURRENT |  1 |  不进行转码。资产将以其原始格式返回。|
 | COMPATIBLE |  2 |  所有资产都被转码为最广泛兼容的格式（如JPEG）。|
 

@@ -68,9 +68,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
-  let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
-  let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  } catch (err) {
+    console.error(`MediaAlbumChangeRequest constructorDemo failed with error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -127,19 +131,13 @@ setAlbumName(name: string): void
 
 设置相册名称。
 
-相册名参数规格：
-- 相册名字符串长度为1~255。
-- 不允许出现的非法英文字符，包括：<br> . \ / : * ? " ' ` < > | { } [ ]
-- 英文字符大小写不敏感。
-- 相册名不允许重名。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| name | string | 是   | 待设置的相册名称。|
+| name | string | 是   | 待设置的相册名称。<br>相册名字符串长度为1~255。不允许出现的非法英文字符，包括：<br> . \ / : * ? " ' ` < > \| { } [ ]<br>英文字符大小写不敏感。<br>相册名不允许重名。 |
 
 **错误码：**
 
