@@ -53,7 +53,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
    
    ``` TypeScript
    let callback : Callback<number> = (event: number) => {};
-   let bundleName: string = '';
+   let bundleName: string = 'com.example.app';
    ```
 
 3. 订阅记忆服务。
@@ -77,7 +77,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
    <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   let metadata: string = '';
+   let metadata: string = 'sample metadata';
    try {
      metadataBinding.submitMetadata(metadata);
      // ...
