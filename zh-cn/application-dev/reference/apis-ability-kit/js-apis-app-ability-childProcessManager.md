@@ -103,7 +103,7 @@ ArkTS-Sta: startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt
 
 ArkTS-Dyn示例：
 ```ts
-// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // entry/src/main/ets/process/DemoProcess.ets
 import { ChildProcess } from '@kit.AbilityKit';
 
@@ -132,7 +132,7 @@ export default class StaticDemoProcess extends ChildProcess {
 ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startChildProcess方法启动子进程:
+// 使用childProcessManager.startChildProcess方法启动子进程：
 // entry/src/main/ets/pages/Index.ets
 import { childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -287,7 +287,7 @@ ArkTS-Sta: startChildProcess(srcEntry: string, startMode: StartMode, callback: A
 
 ArkTS-Dyn示例：
 ```ts
-// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // entry/src/main/ets/process/DemoProcess.ets
 import { ChildProcess } from '@kit.AbilityKit';
 
@@ -316,7 +316,7 @@ export default class StaticDemoProcess extends ChildProcess {
 ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startChildProcess方法启动子进程:
+// 使用childProcessManager.startChildProcess方法启动子进程：
 // entry/src/main/ets/pages/Index.ets
 import { childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -477,7 +477,7 @@ ArkTS-Sta: startArkChildProcess(srcEntry: string, args: ChildProcessArgs, option
 
 ArkTS-Dyn示例：
 ```ts
-// 在module1模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在module1模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // module1/src/main/ets/process/DemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
 
@@ -508,7 +508,7 @@ export default class StaticDemoProcess extends ChildProcess {
 ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startArkChildProcess方法启动子进程:
+// 使用childProcessManager.startArkChildProcess方法启动子进程：
 // module1/src/main/ets/pages/Index.ets
 import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -733,7 +733,7 @@ void Main(NativeChildProcess_Args args)
 
 ```ts
 // 主进程：
-// 使用childProcessManager.startNativeChildProcess方法启动子进程:
+// 使用childProcessManager.startNativeChildProcess方法启动子进程：
 import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
