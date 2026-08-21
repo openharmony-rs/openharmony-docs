@@ -95,7 +95,7 @@ import { formInfo } from '@kit.FormKit';
 | formDescription<sup>11+</sup> | string         | 是    | 否     | 提供方卡片配置文件中的描述信息。 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | extraData<sup>12+</sup> | Record<string, Object> | 是    | 是     | 卡片的额外数据。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 
-## formProviderFilter<sup>10+</sup>
+## FormProviderFilter<sup>10+</sup>
 
 卡片提供方信息。
 
@@ -126,11 +126,11 @@ import { formInfo } from '@kit.FormKit';
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称        | 类型   | 必填         |说明         |
-| ----------- | ---- | ------------ |------------ |
-| bundleName<sup>12+</sup>    | string    |否    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。|
-| supportedDimensions<sup>12+</sup> |  ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的整数的数组，数值5从API version 9开始支持，从API version 20开始废弃。<br>具体规格参考 [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension)。  |
-| supportedShapes<sup>12+</sup>  | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。|
+| 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
+| ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
+| bundleName<sup>12+</sup>    | string    | 否    | 是    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。|
+| supportedDimensions<sup>12+</sup> |  ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> | 否    | 是    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的整数的数组，数值5从API version 9开始支持，从API version 20开始废弃。<br>具体规格参考 [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension)。  |
+| supportedShapes<sup>12+</sup>  | ArkTS-Dyn: Array\<number\> <br> ArkTS-Sta: Array\<int\> | 否    | 是    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。|
 
 ## FormLocation<sup>12+</sup>
 
@@ -379,10 +379,10 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 | moduleName | string | 否 | 否  | 卡片所属模块的模块名称。 |
 | abilityName | string | 否 | 否  | 卡片所属的Ability名称。 |
 | formName | string | 否 | 否  | 卡片名称。 |
-| dimension | string | 否 | 否  | 卡片规格 |
-| detailId | string | 否 | 否  | 卡片信息id |
-| displayName | string | 否 | 否  | 卡片展示名称 |
-| description | string | 否 | 否  | 卡片描述 |
+| dimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | 否 | 否  | 卡片规格。 |
+| detailId | string | 否 | 否  | 卡片信息id。 |
+| displayName | string | 否 | 否  | 卡片展示名称。 |
+| description | string | 否 | 否  | 卡片描述。 |
 
 ## TemplateFormDetailInfoCallback<sup>23+</sup>
 
