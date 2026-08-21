@@ -34,7 +34,7 @@ UpdatedCallback是监听系统环境变化的回调函数，开发者可通过[A
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS-Dyn起始版本：** 24
 
