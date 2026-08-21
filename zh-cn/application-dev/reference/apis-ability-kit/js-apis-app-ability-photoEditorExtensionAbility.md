@@ -158,7 +158,7 @@ onDestroy(): void | Promise\<void>
 **返回值：**
 |  类型 |说明   |
 | ------------ | ------------ |
-|  void \| Promise\<void> |  无返回值或Promise对象。 |
+|  void \| Promise\<void> |  无返回值或者无返回结果的Promise对象。 |
 
 **示例：**
 

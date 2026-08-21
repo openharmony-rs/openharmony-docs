@@ -7,7 +7,7 @@
 <!--Tester: @lusq-->
 <!--Adviser: @HelloCrease-->
 
-PhotoEditorExtensionContext 是PhotoEditorExtensionAbility的上下文，继承自ExtensionContext，提供PhotoEditorExtensionAbility的配置信息以及保存图片接口。
+PhotoEditorExtensionContext是PhotoEditorExtensionAbility的上下文，继承自ExtensionContext，提供PhotoEditorExtensionAbility的配置信息以及保存图片接口。
 > **说明：**
 > 
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -25,9 +25,9 @@ import { common } from '@kit.AbilityKit';
 
 saveEditedContentWithUri(uri: string): Promise\<AbilityResult\>
 
-传入编辑过的图片的沙箱路径以保存编辑后的图片。使用Promise异步回调。适用于将编辑后的图片已保存到沙箱路径的场景。
+传入编辑过的图片的沙箱路径以保存编辑后的图片。使用Promise异步回调。适用于将编辑后的图片已保存到沙箱路径的场景。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
@@ -110,9 +110,9 @@ struct Index {
 
 saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
 
-传入编辑过的图片的PixelMap对象以保存编辑后的图片。使用Promise异步回调。适用于立即保存PixelMap对象的场景。
+传入编辑过的图片的PixelMap对象以保存编辑后的图片。使用Promise异步回调。适用于立即保存PixelMap对象的场景。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
@@ -125,7 +125,7 @@ saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption
 **返回值：**
 |  类型 | 说明  |
 | ------------ | ------------ |
-| Promise\<AbilityResult\> | Promise对象，返回AbilityResult对象， 编辑后图片的uri存在want.uri中，[uri](../apis-core-file-kit/js-apis-file-fileuri.md)格式为file://\<bundleName>/\<sandboxPath>。  |
+| Promise\<AbilityResult\> | Promise对象，返回AbilityResult对象，编辑后图片的uri存在want.uri中，[uri](../apis-core-file-kit/js-apis-file-fileuri.md)格式为file://\<bundleName>/\<sandboxPath>。  |
 
 **错误码：**
 
