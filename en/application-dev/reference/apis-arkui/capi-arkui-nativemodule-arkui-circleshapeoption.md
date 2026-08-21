@@ -1,4 +1,4 @@
-# ArkUI_CircleShape
+# ArkUI_CircleShapeOption
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
