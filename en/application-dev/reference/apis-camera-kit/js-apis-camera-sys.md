@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=c2cfa105fe17727f8a1a4915b5f4dc15a45577c9 translatedAt=2026-08-20T09:47:44.067Z pushedAt=2026-08-21T07:14:03.011Z -->
+<!-- md-trans-meta sourceCommit=c2cfa105fe17727f8a1a4915b5f4dc15a45577c9 translatedAt=2026-08-20T09:47:44.067Z pushedAt=2026-08-21T08:23:47.036Z -->
 
 The module provides a set of camera service APIs for you to easily develop a camera application. The application can access and operate the camera hardware to implement basic operations, such as preview, taking photos, and recording videos. It can also perform more operations, for example, controlling the flash and exposure time, and focusing or adjusting the focus.
 
@@ -1953,7 +1953,7 @@ async function enableQuickThumbnail(context: common.BaseContext, mode: camera.Sc
   let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
   await cameraInput.open();
   session.addInput(cameraInput);
-  // Add the PhotoOutPut to the session.
+  // Add the PhotoOutput to the session.
   let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
   session.addOutput(photoOutput);
   let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
