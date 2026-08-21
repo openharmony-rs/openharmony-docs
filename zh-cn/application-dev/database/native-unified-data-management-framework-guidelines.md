@@ -140,3 +140,39 @@ libudmf.so
 5. 使用结束后，删除上述步骤中产生的指针。
 
 <!-- @[udmf_sample_send_delay_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
+
+<div class="same-source-code">
+
+``` C++
+int32_t SendDelayUnifieddata()
+{
+    // 为了代码可读性，代码中省略了各个步骤操作结果的校验，实际开发中需要确认每次调用的成功。
+    // 1. 创建一个统一数据提供者，并配置它提供数据、销毁时的两个回调函数。
+    OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+    OH_UdmfRecordProvider_SetData(provider, (void*)provider, GetDataCallback, ProviderFinalizeCallback);
+
+    // 2. 创建一个OH_UdmfRecord对象，并将OH_UdmfRecordProvider配置到其中。
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    const char* types[1] = {UDMF_META_HYPERLINK};
+    OH_UdmfRecord_SetProvider(record, types, 1, provider);
+
+    // 3. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
+    OH_UdmfData* data = OH_UdmfData_Create();
+    OH_UdmfData_AddRecord(data, record);
+
+    // 4. 构建数据，将数据写入数据库中，得到返回的Key值。
+    char key[UDMF_KEY_BUFFER_LEN] = {0};
+    OH_Udmf_SetUnifiedData(Udmf_Intention::UDMF_INTENTION_DRAG, data, key, sizeof(key));
+    OH_LOG_INFO(LOG_APP, "key = %{public}s", key);
+
+    // 5. 使用完成后销毁指针。
+    OH_UdmfRecordProvider_Destroy(provider);
+    OH_UdmfRecord_Destroy(record);
+    OH_UdmfData_Destroy(data);
+    return Udmf_ErrCode::UDMF_E_OK;
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_send_delay_unifieddata" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+</div>
