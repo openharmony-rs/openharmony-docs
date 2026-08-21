@@ -3832,7 +3832,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 > **说明：**
 >
 > - 本接口仅执行色彩空间之间的数学转换，不包含HDR到SDR的色调映射。当源图像为HDR色彩空间（传输函数为HLG或PQ，例如BT2020_HLG、BT2020_PQ、P3_HLG、P3_PQ等）且目标为SDR色彩空间（传输函数为sRGB gamma，例如SRGB、DISPLAY_P3、DCI_P3、ADOBE_RGB_1998等）时，直接调用本接口会导致图像整体偏亮、泛白、高光细节丢失。
-> - 从API版本12开始，如果要将HDR图像转换为SDR图像，请先调用[toSdr](#tosdr12)完成HDR到SDR的色调映射，再按需调用本接口在SDR色彩空间之间转换。
+> - 从API版本12开始，如果要将HDR色彩空间转换为SDR色彩空间，请先调用[toSdr](#tosdr12)完成HDR到SDR的转换和色调映射，再按需调用本接口在SDR色彩空间之间转换。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -3882,7 +3882,7 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 > **说明：**
 >
 > - 本接口仅执行色彩空间之间的数学转换，不包含HDR到SDR的色调映射。当源图像为HDR色彩空间（传输函数为HLG或PQ，例如BT2020_HLG、BT2020_PQ、P3_HLG、P3_PQ等）且目标为SDR色彩空间（传输函数为sRGB gamma，例如SRGB、DISPLAY_P3、DCI_P3、ADOBE_RGB_1998等）时，直接调用本接口会导致图像整体偏亮、泛白、高光细节丢失。
-> - 从API版本12开始，如果要将HDR图像转换为SDR图像，请先调用[toSdr](#tosdr12)完成HDR到SDR的色调映射，再按需调用本接口在SDR色彩空间之间转换。
+> - 从API版本12开始，如果要将HDR色彩空间转换为SDR色彩空间，请先调用[toSdr](#tosdr12)完成HDR到SDR的转换和色调映射，再按需调用本接口在SDR色彩空间之间转换。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
