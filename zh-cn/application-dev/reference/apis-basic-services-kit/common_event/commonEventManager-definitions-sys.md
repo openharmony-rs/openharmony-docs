@@ -301,7 +301,7 @@
 **取值：** "usual.event.USER_REMOVED"
 
 
-### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
+### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED<sup>10+</sup>
 
 表示域账号状态发生变化。
 
@@ -335,7 +335,7 @@
 **取值：** "usual.event.USER_SWITCHED"
 
 
-### COMMON_EVENT_USER_LOCKING
+### COMMON_EVENT_USER_LOCKING<sup>20+</sup>
 
 表示用户即将被锁定的公共事件的动作。
 
@@ -348,7 +348,7 @@
 **取值：** "usual.event.USER_LOCKING"
 
 
-### COMMON_EVENT_USER_LOCKED
+### COMMON_EVENT_USER_LOCKED<sup>20+</sup>
 
 表示用户锁定完成的公共事件的动作。
 
