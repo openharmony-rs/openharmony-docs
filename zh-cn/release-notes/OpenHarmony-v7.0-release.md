@@ -262,8 +262,8 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 | 软件 | 版本 | 备注 | 
 | -------- | -------- | -------- |
 | OpenHarmony | 7.0 Release | NA | 
-| Public SDK | Ohos_sdk_public 26.0.0.105 (API Version 26.0.0 Release) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
-| HUAWEI DevEco Studio（可选） | 26.0.0 Release | OpenHarmony应用开发推荐使用。<br />*待发布*。 | 
+| Public SDK | Ohos_sdk_public 26.0.0.38 (API Version 26.0.0 Release) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
+| HUAWEI DevEco Studio（可选） | 26.0.0 Release | OpenHarmony应用开发推荐使用。<br />*软件上传中*。 | 
 | HUAWEI DevEco Device Tool（可选） | 4.0 Release | OpenHarmony智能设备集成开发环境推荐使用。<br />[请点击这里获取](https://device.harmonyos.com/cn/develop/ide#download)。 | 
 | HarmonyOS SDK for OpenHarmony | 7.0 Release | 面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力。<br />详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/master/README.md) | 
 
@@ -346,18 +346,40 @@ HiDebug新增支持注册内存导出监听器，用于在内存占用较高或�
 
 | 版本源码 | **版本信息** | **下载站点** | **SHA256校验码** | **软件包容量** |
 |---------------------------------------|------------|------------------------------------------------------------|------------------------------------------------------------|--------|
-| 全量代码（标准、轻量和小型系统）        | 7.0 Release    | *待发布* | *待发布* | NA |
-| Hi3861解决方案（二进制）        | 7.0 Release    | *待发布* | *待发布* | NA |
-| Hi3863解决方案（二进制）        | 7.0 Release    | *待发布* | *待发布* | NA |
-| Hi3861 64K解决方案（二进制）        | 7.0 Release    | *待发布* | *待发布* | NA |
-| Hi3863 64K解决方案（二进制）        | 7.0 Release    | *待发布* | *待发布* | NA |
-| Hi3516解决方案-LiteOS（二进制） | 7.0 Release    | *待发布* | *待发布* | NA |
-| Hi3516解决方案-Linux（二进制）  | 7.0 Release    | *待发布* | *待发布* | NA |
-| RK3568标准系统解决方案（二进制）ROM包        | 7.0 Release    | *待发布* | *待发布* | NA |
-| RK3568标准系统解决方案（二进制）XTS包        | 7.0 Release    | *待发布* | *待发布* | NA |
-| P7885标准系统解决方案（二进制）ROM包        | 7.0 Release    | *待发布* | *待发布* | NA |
-| P7885标准系统解决方案（二进制）XTS包        | 7.0 Release    | *待发布* | *待发布* | NA |
-| 标准系统Public SDK包（Mac）             | 26.0.0.105 | *待发布* | *待发布* | NA |
-| 标准系统Public SDK包（Mac-M1）             | 26.0.0.105  | *待发布* | *待发布* | NA |
-| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.105   | *待发布* | *待发布* | NA |
+| 全量代码（标准、轻量和小型系统）        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| Hi3861解决方案（二进制）        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| Hi3863解决方案（二进制）        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| Hi3861 64K解决方案（二进制）        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| Hi3863 64K解决方案（二进制）        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| Hi3516解决方案-LiteOS（二进制） | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| Hi3516解决方案-Linux（二进制）  | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| RK3568标准系统解决方案（二进制）ROM包        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| RK3568标准系统解决方案（二进制）XTS包        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| P7885标准系统解决方案（二进制）ROM包        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| P7885标准系统解决方案（二进制）XTS包        | 7.0 Release    | *软件上传中* | *软件上传中* | NA |
+| 标准系统Public SDK包（Mac）             | 26.0.0.38 | *软件上传中* | *软件上传中* | NA |
+| 标准系统Public SDK包（Mac-M1）             | 26.0.0.38  | *软件上传中* | *软件上传中* | NA |
+| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.38   | *软件上传中* | *软件上传中* | NA |
 
+## 修复缺陷列表
+
+**表3** 修复缺陷ISSUE列表
+
+| ISSUE单 | 问题描述 | 
+| ------- | ------- |
+| [468](https://gitcode.com/openharmony/systemabilitymgr_safwk/issues/468) | 进程foundation在wukong压测下出现内存泄露，5天内存占用增长100M左右。 |
+| [329](https://gitcode.com/openharmony/applications_contacts/issues/329)<br />[192](https://gitcode.com/openharmony/telephony_telephony_data/issues/192) |
+| [193](https://gitcode.com/openharmony/telephony_telephony_data/issues/193) | 首次启动联系人应用的时间超出基线要求。 |
+| [73886](https://gitcode.com/openharmony/arkui_ace_engine/issues/73886) | 开机完成时延较长，不满足基线要求。 |
+| [633](https://gitcode.com/openharmony/applications_systemui/issues/633) | 进程com.ohos.systemui有较高概率由于THREAD_BLOCK_6S类型的故障导致appfreeze。该问题在新版本未复现。 |
+| [263](https://gitcode.com/openharmony/device_soc_rockchip/issues/263) | 进程render_service低概率出现由于SERVICE_BLOCK导致的sysfreeze，崩溃栈为libmali-bifrost-g52-g7p0-ohos.so。该问题在新版本未复现。 |
+| [772](https://gitcode.com/openharmony/applications_photos/issues/772) | 首次启动图库应用的时间超出基线要求。 |
+
+## 遗留缺陷列表
+
+**表4** 遗留缺陷列表
+
+| ISSUE | 问题描述 | 影响 | 计划解决日期 | 
+| [793](https://gitcode.com/openharmony/applications_photos/issues/793) | 进程com.ohos.photos低概率出现cppcrash，崩溃栈为libimage_effect_impl.so | 图库进入编辑模式出现黑屏，退出后重新进入编辑模式可恢复。 | OpenHarmony7.1 |
+| [6750](https://gitcode.com/openharmony/web_webview/issues/6750) | 进程com.ohos.note:render低概率出现cppcrash，崩溃栈为libarkweb_engine.so | 记事本应用白屏，重启应用可恢复。 | OpenHarmony7.1 |
+| [472](https://gitcode.com/openharmony/communication_bluetooth_service/issues/472) | 进程bluetooth_service低概率出现cppcrash，崩溃栈为libbtstack.z.so | 蓝牙服务会自动重启，用户无明显感知。 | OpenHarmony7.1 |
