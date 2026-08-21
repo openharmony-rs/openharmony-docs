@@ -22,7 +22,7 @@
 
 ## 开发步骤
 
-图片解码相关API的详细介绍请参见：[图片解码接口文档](../../reference/apis-image-kit/capi-image-source-mdk-h.md)。
+图片解码相关API的详细介绍请参见：图片解码接口文档[image_source_mdk.h](../../reference/apis-image-kit/capi-image-source-mdk-h.md)。
 
 ### 添加依赖
 
