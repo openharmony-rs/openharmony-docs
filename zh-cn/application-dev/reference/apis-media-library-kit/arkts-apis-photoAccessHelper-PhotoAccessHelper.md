@@ -906,11 +906,15 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 调用接口显示保存确认弹窗。如果用户同意保存，将返回一个已创建并授予保存权限的URI列表（此列表永久生效），应用可使用这些URI写入图片或视频。如果用户拒绝保存，将返回一个空列表。
 
-弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+弹框需显示应用名称，但无法直接获取。因此，调用此接口时，开发者需确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 
 > **说明：**
 >
 > 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+>
+> 与showAssetsCreationDialogEx的区别：本接口使用PhotoCreationConfig配置；showAssetsCreationDialogEx使用CreationSetting配置。请开发者根据需要选择使用。
+>
+> 与showSingleAssetCreationDialogEx的区别：本接口支持批量保存（最多100张），后者仅支持单个资产保存。批量保存时使用本接口，单个资产保存时如需控制图片显示方式可使用showSingleAssetCreationDialogEx。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -964,7 +968,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('showAssetsCreationDialog success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialog failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialog failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -978,8 +982,8 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 > **说明：**
 >
 > - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
-> - 弹框需显示应用名称，名称和图标需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
-> - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
+> - 弹框需显示应用名称，开发者需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
+> - 当传入URI为沙箱路径时，可正常保存图片或视频，但无界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1023,17 +1027,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let srcFileUris: Array<string> = [
       'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
-    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
+    let creationConfigs: Array<photoAccessHelper.CreationSetting> = [
       {
         title: 'test2', // 可选。
         fileNameExtension: 'jpg',
         photoType: photoAccessHelper.PhotoType.IMAGE
       }
     ];
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, creationConfigs);
     console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1047,8 +1051,21 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 > **说明：**
 >
 > - 如果用户同意保存，将返回一个已创建并授予保存权限的URI（此URI永久生效），应用可使用这个URI写入图片或视频。如果用户拒绝保存，将返回一个空字符串。
-> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，开发者需确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 > - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+
+**交互流程示意：**
+```mermaid
+flowchart TD
+    A[调用接口] --> B[显示保存确认弹窗]
+    B --> C{用户选择}
+    C -->|同意| D[返回已授权URI]
+    D --> E[应用写入图片/视频]
+    C -->|拒绝| F[返回空字符串]
+    G[URI类型判断] --> H{路径类型}
+    H -->|普通URI| I[正常保存+界面预览]
+    H -->|沙箱路径| J[正常保存+无界面预览]
+```
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1068,7 +1085,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。正常情况下返回可用的媒体库URI字符串，URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1100,7 +1117,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
     console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
   } catch (err) {
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showSingleAssetCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1109,9 +1126,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-接口提供给应用调用，支持首次调用后拉起保存确认弹框。在用户同意保存后返回已创建并授予保存权限的uri，支持应用使用uri写入图片/视频。
+应用调用该接口后，首次调用时弹出保存确认弹框。用户同意保存后，返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 
 在用户"同意"后的5分钟之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
+
+> **说明：**
+>
+> 与createAssetWithShortTermPermissionEx的区别：本接口使用PhotoCreationConfig配置；createAssetWithShortTermPermissionEx使用CreationSetting配置。请开发者根据需要选择使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1175,7 +1196,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         fileIo.closeSync(srcFile);
         fileIo.closeSync(resultFile);
     } catch (err) {
-        console.error('createAssetWithShortTermPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+        console.error(`createAssetWithShortTermPermission failed. Code: ${err.code}, message: ${err.message}`);
     }
     
 }
@@ -1191,6 +1212,24 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 >
 > - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 > - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
+
+**授权流程示意：**
+```mermaid
+sequenceDiagram
+    participant App as 应用
+    participant System as 系统
+    participant User as 用户
+    App->>System: 首次调用接口
+    System->>User: 拉起保存确认弹框
+    User->>System: 同意保存
+    System->>App: 返回已授权URI
+    Note over App,System: 5分钟内
+    App->>System: 再次调用接口
+    System->>App: 直接返回已授权URI（无需弹框）
+    Note over App: 退出应用
+    App->>System: 再次进入后调用接口
+    System->>User: 重新拉起保存确认弹框
+```
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1224,6 +1263,10 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
 <!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
+
+> **说明：**
+>
+> 与requestPhotoUrisReadPermissionEx的区别：本接口仅返回已授权的URI列表；requestPhotoUrisReadPermissionEx返回RequestReadPermissionResult，包含已授权URI列表和无效URI列表，便于开发者识别哪些URI无效。建议API version 23+优先使用requestPhotoUrisReadPermissionEx以获得更完整的授权结果。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1268,7 +1311,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1326,7 +1369,7 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
     let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
     console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermissionEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1629,7 +1672,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
-应用使用PhotoPickerComponent组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。跟随当前系统语言，支持返回当前语言的相册名。使用Promise异步回调。
+应用使用PhotoPickerComponent组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。根据当前系统语言设置，返回对应语言的相册名。使用Promise异步回调。
 
 **原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1723,10 +1766,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     phAccessHelper.createDeleteRequest([asset.uri], (err) => {
-      if (err === undefined) {
-        console.info('createDeleteRequest successfully');
-      } else {
+      if (err) {
         console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+      } else {
+        console.info('createDeleteRequest successfully');
       }
     });
   } catch (err) {
@@ -1762,7 +1805,7 @@ createDeleteRequest(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt;| Promise对象，返回void。 |
+| Promise&lt;void&gt;|  Promise对象，无返回结果。 |
 
 **错误码：**
 
