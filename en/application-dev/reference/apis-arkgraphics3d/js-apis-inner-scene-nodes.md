@@ -1,12 +1,14 @@
 # SceneNode
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4d7e02a7df2a06122e229dcfa39cff42326177c0 translatedAt=2026-08-20T12:26:57.125Z pushedAt=2026-08-21T08:43:10.144Z -->
 
-The module provides the types and operation methods of scene nodes in 3D graphics.
+This module provides the types and operation methods of scene resource nodes in ArkGraphics 3D. SceneNode is the basic building unit of a 3D scene. It allows developers to manage objects in a scene through a hierarchical structure, implementing efficient scene organization and interaction control.
 
 > **NOTE**
 >
@@ -59,8 +61,8 @@ function layerMask(): void {
           let enabled: boolean = node.layerMask.getEnabled(1);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -96,8 +98,8 @@ function layerMask(): void {
           node.layerMask.setEnabled(1, true);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -124,7 +126,7 @@ Container for defining scene nodes. It provides a way to group scene nodes into 
 
 append(item: T): void
 
-Appends a node to the container.
+Appends an object to the container. If the object to be appended already exists in the container, the container removes the object first and then inserts it, so the count does not increase.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -150,8 +152,8 @@ function append(): void {
         result.root?.children.get(0)?.children.append(node);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -160,7 +162,7 @@ function append(): void {
 
 insertAfter(item: T, sibling: T | null): void
 
-Inserts the object after the sibling node.
+Inserts an object after a sibling node. If the object to be inserted already exists in the container, the container removes the object first and then inserts it, so the count does not increase.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -169,7 +171,7 @@ Inserts the object after the sibling node.
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | item | T | Yes| Node to be inserted.|
-| sibling | T \| null | Yes| Sibling node.|
+| sibling | T \| null | Yes | Sibling node. If the value is null, the node is inserted at the beginning of the container. |
 
 **Example**
 
@@ -187,8 +189,8 @@ function insertAfter(): void {
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -223,8 +225,8 @@ function remove(): void {
         result.root?.children.remove(node);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -260,11 +262,13 @@ function get(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // Get node 0 from children.
-      result.root?.children.get(0)?.children.insertAfter(node, null);
+      if (node) {
+        // Obtain the node with index 0 from children.
+        result.root?.children.get(0)?.children.insertAfter(node, null);
+      }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -293,8 +297,8 @@ function clear(): void {
         node.children.clear();
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -336,7 +340,7 @@ function count(): void {
 
 ## Node
 
-The 3D scene consists of nodes in a tree hierarchy, where each node implements a **Node** interface. This class inherits from [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1).
+A 3D scene consists of nodes in a tree-like hierarchical structure, where each node implements the Node interface. Inherited from [SceneResource](js-apis-inner-scene-resources.md#sceneresource).
 
 ### Properties
 
@@ -352,7 +356,7 @@ The 3D scene consists of nodes in a tree hierarchy, where each node implements a
 | layerMask | [LayerMask](#layermask) | Yes| No| Layer mask of a node.|
 | path | string | Yes| No| Node path.|
 | parent | [Node](#node) \| null | Yes| No| Parent node of the node and null if it does not exist.|
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | Yes| No| Child node of the node and null if it does not exist. This is a read-only property, indicating that you cannot directly replace the entire children container. However, you can operate the child nodes using container methods like [append()](#append), [insertAfter()](#insertafter), [remove()](#remove), or [clear()](#clear). If the node being appended or inserted already exists in the container, it is removed first and then reinserted. As a result, the total number of child nodes remains unchanged, making the operation seem ineffective. The count increases only when a new node is added.|
+| children | [Container](#containert)\<[Node](#node)> | Yes | No | Child nodes of the node. If no child node exists, the value is empty. This is a read-only property, which means that the entire children container cannot be replaced, but child nodes can be operated through container methods (such as [append()](#append), [insertAfter()](#insertafter), [remove()](#remove), or [clear()](#clear)). If the node to be appended or inserted after already exists in the container, the container removes the node first and then inserts it, so the number does not increase and the operation seems to be ineffective. Only adding a new node actually increases the number of child nodes. |
 
 ### getNodeByPath
 
@@ -391,6 +395,32 @@ function getNode(): void {
 }
 ```
 
+When calling getNodeByPath, you need to pass in the node path parameter path. You can obtain the available path value by traversing the node tree and printing the attributes of each node. The following is an example:
+
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+// Print the tree structure of the given node, with each line representing the path of a node.
+function printNodeTreeInRelativePath(node: Node | null): void {
+  if (!node) {
+    return;
+  }
+  let basePath: string = node.path + node.name + '/';
+  let printRelative = (n: Node | null): void => {
+    if (!n) {
+      return;
+    }
+    console.info(n.path.substring(basePath.length + 1) + n.name);
+    for (let i = 0; i < n.children.count(); i++) {
+      printRelative(n.children.get(i));
+    }
+  }
+  for (let i = 0; i < node.children.count(); i++) {
+    printRelative(node.children.get(i));
+  }
+}
+```
+
 ## Geometry
 
 Geometric node type that holds renderable mesh data and supports optional deformation features. It inherits from [Node](#node).
@@ -411,7 +441,7 @@ Enumerates the light types.
 | Name| Value| Description|
 | ---- | ---- | ---- |
 | DIRECTIONAL | 1 | Directional light.|
-| SPOT | 2 | Spot light.|
+| SPOT | 2 | Spot light type. |
 
 ## Light
 
@@ -423,7 +453,7 @@ Light node, which inherits from [Node](#node).
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | Yes| No| Light type.|
 | color | [Color](js-apis-inner-scene-types.md#color) | No| No| Color.|
-| intensity | number | No| No| Light density in candelas (cd) with a value range of real numbers greater than 0.|
+| intensity | number | No | No | Light intensity, in candela (cd). The value range is a real number greater than 0. |
 | shadowEnabled | boolean | No| No| Whether the shadow effect is enabled. **true** if enabled, **false** otherwise.|
 | enabled | boolean | No| No| Whether the light is used. **true** if used, **false** otherwise.|
 
@@ -460,7 +490,7 @@ Camera node, which inherits from [Node](#node).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| fov | number | No| No| Field of view. The unit is radian (rad). The value ranges from 0 to π radians.|
+| fov | number | No | No | Field of view, in radians (rad), with a value range of (0, π). |
 | nearPlane | number | No| No| Near plane. The unit is the scene unit (such as cm, m, and km) in the world coordinate system. The value is greater than 0.|
 | farPlane | number | No| No| Far plane. The unit is the scene unit (such as cm, m, and km) in the world coordinate system. The value is greater than that of nearPlane.|
 | enabled | boolean | No| No| Whether the camera is enabled. **true** if enabled, **false** otherwise.|
@@ -489,7 +519,7 @@ Casts a ray from a specific position on the screen to detect and retrieve inform
 
 | Type| Description|
 | ---- | ---- |
-| Promise<[RaycastResult](js-apis-inner-scene.md#raycastresult20)[]> | An array of hit objects sorted by distance (from nearest to farthest). If no objects are hit, an empty array is returned.|
+| Promise<[RaycastResult](js-apis-inner-scene.md#raycastresult20)[]> | Promise used to return the result. The value is an array of hit results sorted by distance from near to far, or an empty array if no hit occurs. |
 
 **Example**
 
@@ -528,7 +558,7 @@ function Sub(l: Vec3, r: Vec3): Vec3 {
 }
 // Vector dot product, which returns the inner product of l and r.
 function Dot(l: Vec3, r: Vec3): number {
-  return l.x * r.x + l.y * r.y + r.z * l.z;
+  return l.x * r.x + l.y * r.y + l.z * r.z;
 }
 // Vector normalization, which returns the unit vector of l.
 function Normalize(l: Vec3): Vec3 {
@@ -597,7 +627,7 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
         y: m2.x - m0.z,
         z: m0.y - m1.x,
         w: t
-      }
+      };
     }
   }
   node.position = eye;
