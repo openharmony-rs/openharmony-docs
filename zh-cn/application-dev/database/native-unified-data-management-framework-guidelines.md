@@ -141,6 +141,49 @@ int32_t GetTypeId()
 
 <!-- @[udmf_sample_send_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
+<div class="same-source-code">
+
+``` C++
+int32_t SendUnifieddata()
+{
+    // 1. 创建超链接hyperlink数据的UDS数据结构。
+    OH_UdsHyperlink* hyperlink = OH_UdsHyperlink_Create();
+    // 2. 设置hyperlink中的URL和描述信息。
+    if (OH_UdsHyperlink_SetUrl(hyperlink, "www.demo.com") != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Hyperlink set url error!");
+    }
+    if (OH_UdsHyperlink_SetDescription(hyperlink, "This is the description.") != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Hyperlink set description error!");
+    }
+    // 3. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加超链接类型数据。
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    if (OH_UdmfRecord_AddHyperlink(record, hyperlink) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Add hyperlink to record error!");
+    }
+    // 4. 创建OH_UdmfData对象，并向OH_UdmfData中添加OH_UdmfRecord。
+    OH_UdmfData* data = OH_UdmfData_Create();
+    if (OH_UdmfData_AddRecord(data, record) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Add record to data error!");
+    }
+    // 5. 构建数据，将数据写入数据库中，得到返回的key值。
+    char key[UDMF_KEY_BUFFER_LEN] = {0};
+    if (OH_Udmf_SetUnifiedData(Udmf_Intention::UDMF_INTENTION_DRAG, data, key,
+        sizeof(key)) != Udmf_ErrCode::UDMF_E_OK) {
+        OH_LOG_ERROR(LOG_APP, "Set data error!");
+    }
+    OH_LOG_INFO(LOG_APP, "key = %{public}s", key);
+    // 6. 使用完成后销毁指针。
+    OH_UdsHyperlink_Destroy(hyperlink);
+    OH_UdmfRecord_Destroy(record);
+    OH_UdmfData_Destroy(data);
+    return Udmf_ErrCode::UDMF_E_OK;
+}
+```
+
+<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_send_unifieddata" target="_blank" rel="nofollow">napi_init.cpp</a></p>
+
+</div>
+
 ## 使用UDMF接收UDS数据
 
 下面继续以获取超链接hyperlink类型数据场景为例，说明如何使用UDS与UDMF。
