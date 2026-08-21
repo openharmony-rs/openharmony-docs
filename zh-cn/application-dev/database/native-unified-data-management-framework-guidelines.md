@@ -82,8 +82,6 @@ libudmf.so
 
 <!-- @[udmf_sample_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
-<div class="same-source-code">
-
 ``` C++
 #include <cstdint>
 #include <cstdio>
@@ -99,10 +97,6 @@ libudmf.so
 #define LOG_TAG "MY_LOG"
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_head_file" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
-
 ## 通过不同方式获取纯文本类型数据
 
 下面以获取纯文本数据的查询场景为例，说明如何使用UTD。
@@ -113,8 +107,6 @@ libudmf.so
 5. 使用结束后，删除上述步骤中产生的指针。
 
 <!-- @[udmf_sample_get_typeId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
-
-<div class="same-source-code">
 
 ``` C++
 int32_t GetTypeId()
@@ -146,10 +138,6 @@ int32_t GetTypeId()
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_get_typeId" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
-
 ## 使用UDMF发送UDS数据
 
 下面以发送超链接hyperlink类型数据场景为例，说明如何使用UDS与UDMF。
@@ -161,8 +149,6 @@ int32_t GetTypeId()
 6. 使用结束后，删除上述步骤中产生的指针。
 
 <!-- @[udmf_sample_send_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
-
-<div class="same-source-code">
 
 ``` C++
 int32_t SendUnifieddata()
@@ -201,10 +187,6 @@ int32_t SendUnifieddata()
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_send_unifieddata" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
-
 ## 使用UDMF接收UDS数据
 
 下面继续以获取超链接hyperlink类型数据场景为例，说明如何使用UDS与UDMF。
@@ -216,8 +198,6 @@ int32_t SendUnifieddata()
 6. 使用结束后，删除上述步骤中产生的指针。
 
 <!-- @[udmf_sample_get_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
-
-<div class="same-source-code">
 
 ``` C++
 static void ProcessHyperlinkFromRecord(OH_UdmfRecord* record, OH_UdsHyperlink* hyperlink)
@@ -273,10 +253,6 @@ int32_t GetUnifieddata()
 }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_get_unifieddata" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
-
 ## 使用UDMF延迟发送UDS数据
 
 ### 定义UDS数据提供函数
@@ -287,9 +263,7 @@ int32_t GetUnifieddata()
 3. 设置hyperlink中的URL和描述信息。
 4. 定义OH_UdmfRecordProvider实例注销回调函数。
 
-<!-- @[udmf_ample_get_data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
-
-<div class="same-source-code">
+<!-- @[udmf_sample_get_data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 为了代码可读性，代码中省略了各个步骤操作结果的校验，实际开发中需要确认每次调用的成功。
@@ -310,10 +284,6 @@ static void* GetDataCallback(void* context, const char* type)
 static void ProviderFinalizeCallback(void* context) { OH_LOG_INFO(LOG_APP, "OH_UdmfRecordProvider finalize."); }
 ```
 
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_ample_get_data_callback" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
-
 ### 延迟发送UDS数据
 
 下面以延迟发送超链接hyperlink类型数据场景为例，说明如何使用OH_UdmfRecordProvider与UDMF。需要注意，此步骤完成后超链接类型数据并未真正写入数据库，只有当数据使用者从OH_UdmfRecord中获取OH_UdsHyperlink时，才会触发上文定义的`GetDataCallback`数据提供函数，从中得到数据。
@@ -325,8 +295,6 @@ static void ProviderFinalizeCallback(void* context) { OH_LOG_INFO(LOG_APP, "OH_U
 5. 使用结束后，删除上述步骤中产生的指针。
 
 <!-- @[udmf_sample_send_delay_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
-
-<div class="same-source-code">
 
 ``` C++
 int32_t SendDelayUnifieddata()
@@ -357,7 +325,3 @@ int32_t SendDelayUnifieddata()
     return Udmf_ErrCode::UDMF_E_OK;
 }
 ```
-
-<p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp?same_code_link_text=udmf_sample_send_delay_unifieddata" target="_blank" rel="nofollow">napi_init.cpp</a></p>
-
-</div>
