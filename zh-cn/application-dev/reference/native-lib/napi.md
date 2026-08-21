@@ -2063,4 +2063,26 @@ napi_status napi_set_property_with_callsite_info(napi_env env,
 **返回：**
 
 如果API成功，则返回napi_ok。
+
+### napi_get_global_handle_count
+
+```cpp
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
+```
+
+**描述：**
+
+获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] count：指向size_t的指针，用于接收global handle数量。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
 <!--no_check-->
