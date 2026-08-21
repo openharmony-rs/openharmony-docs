@@ -85,11 +85,11 @@
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+  
     build() {
       Column({ space: 6 }) {
         Text(this.currentBp)
-
+  
         GridRow({
           columns: {
             xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
